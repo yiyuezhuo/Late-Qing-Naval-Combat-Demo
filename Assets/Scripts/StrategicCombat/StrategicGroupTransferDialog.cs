@@ -788,7 +788,7 @@ public class StrategicGroupTransferDialog
             if (current.objectId == potentialAncestor.objectId)
                 return true;
 
-            current = current.strategicGroupReference.Get();
+            current = current.parentGroupReference.Get();
         }
 
         return false;

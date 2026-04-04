@@ -39,7 +39,7 @@ namespace StrategicCombatCore
         // public string brief => $"({x}, {y}), {terrain} {Label?.GetShortName()}";
 
         // [CreateProperty]
-        // public int cellInfoGroupCount => StrategicGameState.Instance.hexInfoMap.GetValueOrDefault((x, y))?.strategicGroupReferences?.Count ?? 0;
+        // public int cellInfoGroupCount => StrategicGameState.Instance.hexInfoMap.GetValueOrDefault((x, y))?.parentGroupReferences?.Count ?? 0;
 
         [CreateProperty]
         public int cellInfoGroupCount => StrategicGroupReferences?.Count ?? 0;
@@ -204,7 +204,7 @@ namespace StrategicCombatCore
         public bool isXYEditable => deployState == DeployState.Independent;
 
         [CreateProperty]
-        public StrategicGroupReference strategicGroupReferenceProp => strategicGroupReference;
+        public StrategicGroupReference parentGroupReferenceProp => parentGroupReference;
 
         [CreateProperty]
         public string nameLink

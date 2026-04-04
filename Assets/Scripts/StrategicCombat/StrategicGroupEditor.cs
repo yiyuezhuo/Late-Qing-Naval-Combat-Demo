@@ -224,7 +224,7 @@ public class StrategicGroupEditor : LeftObjectPickerRightEditorStrategic<Strateg
 
     protected override void ProcessCopiedLastOne(StrategicGroup group)
     {
-        group.strategicGroupReference.referenceId = null;
+        group.parentGroupReference.referenceId = null;
         group.assignedMissionObjectId = null;
     }
 

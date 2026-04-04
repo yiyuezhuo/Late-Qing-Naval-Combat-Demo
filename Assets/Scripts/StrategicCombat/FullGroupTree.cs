@@ -10,7 +10,7 @@ public class FullGroupTree : ITree<IStrategicGroupMemberReferenceable, string>
 {
     public IStrategicGroupMemberReferenceable GetParent(IStrategicGroupMemberReferenceable node)
     {
-        return node.strategicGroupReference.Get();
+        return node.parentGroupReference.Get();
     }
 
     public IEnumerable<IStrategicGroupMemberReferenceable> GetChildren(IStrategicGroupMemberReferenceable node)
@@ -52,10 +52,10 @@ public class FullGroupTreeNameLink : ITree<IStrategicGroupMemberReferenceable, I
 
     public IStrategicGroupMemberReferenceable GetParent(IStrategicGroupMemberReferenceable node)
     {
-        var parent = node.strategicGroupReference.Get();
+        var parent = node.parentGroupReference.Get();
         while (parent is StrategicGroup group && group.type == StrategicGroup.Type.Base)
         {
-            parent = parent.strategicGroupReference.Get();
+            parent = parent.parentGroupReference.Get();
         }
 
         return parent;
@@ -63,12 +63,12 @@ public class FullGroupTreeNameLink : ITree<IStrategicGroupMemberReferenceable, I
 
     public bool ShouldHideAsBaseRootDescendant(IStrategicGroupMemberReferenceable node)
     {
-        var parent = node?.strategicGroupReference?.Get();
+        var parent = node?.parentGroupReference?.Get();
         var skippedBase = false;
         while (parent is StrategicGroup group && group.type == StrategicGroup.Type.Base)
         {
             skippedBase = true;
-            parent = parent.strategicGroupReference.Get();
+            parent = parent.parentGroupReference.Get();
         }
 
         return skippedBase && parent == null;

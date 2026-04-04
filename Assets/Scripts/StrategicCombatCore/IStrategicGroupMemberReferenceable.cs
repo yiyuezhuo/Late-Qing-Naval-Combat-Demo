@@ -4,7 +4,7 @@ namespace StrategicCombatCore
 {
     public interface IStrategicGroupMemberReferenceable : IObjectIdLabeled
     {
-        StrategicGroupReference strategicGroupReference { get; set; }
+        StrategicGroupReference parentGroupReference { get; set; }
         public float GetShipTons();
         // public float GetCombatShipTons();
         public int GetStrengthMen();
@@ -27,10 +27,10 @@ namespace StrategicCombatCore
             if (this is StrategicGroup group)
                 return group.GetCurrentSourceDepot();
 
-            return strategicGroupReference.Get()?.GetCurrentSourceDepot();
+            return parentGroupReference.Get()?.GetCurrentSourceDepot();
         }
 
-        public string GetParentName() => strategicGroupReference.Get()?.name?.mergedName ?? "[Undefined or Invalid]";
+        public string GetParentName() => parentGroupReference.Get()?.name?.mergedName ?? "[Undefined or Invalid]";
         public string GetCurrentSourceDepotName() => GetCurrentSourceDepot()?.name?.mergedName ?? "[Not Defined]";
     }
 }

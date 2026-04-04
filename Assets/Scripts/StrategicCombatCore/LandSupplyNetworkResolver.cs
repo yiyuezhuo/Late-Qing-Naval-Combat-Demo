@@ -256,7 +256,7 @@ namespace StrategicCombatCore
             if (member is StrategicGroup group)
                 return group.GetCurrentSourceDepot(cache);
 
-            return member.strategicGroupReference.Get()?.GetCurrentSourceDepot(cache);
+            return member.parentGroupReference.Get()?.GetCurrentSourceDepot(cache);
         }
 
         bool TryToAddSupplyRequestTarget(ISupplyNetworkNode requestUnit, ISupplyNetworkNode requestedUnit, double supplyTons)

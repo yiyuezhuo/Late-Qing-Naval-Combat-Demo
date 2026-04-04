@@ -39,5 +39,10 @@ Check Localization_AI_Guide.md for making localization modifications in UI Toolk
 ## Local command guardrails
 - Only build this repo’s solution: `Late-Qing-Naval-Combat-Demo.slnx`.
 
+## XML editing guardrails
+- For bulk edits to scenario XML under `Assets/StreamingAssets/Scenarios/`, prefer Python scripts over PowerShell text replacement/write-back.
+- Do not use PowerShell write-back commands such as `Set-Content` for multilingual scenario XML, because they may corrupt encoding or localized text.
+- When renaming or batch-replacing XML tags/attributes, preserve the original file encoding and line endings, and verify the diff only changes the intended XML nodes.
+
 ## Subagent Authorization
 - For tasks in this repository, the agent may autonomously use subagents when helpful for exploration, parallel analysis, focused implementation, or verification.

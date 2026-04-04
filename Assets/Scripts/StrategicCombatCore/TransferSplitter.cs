@@ -39,7 +39,7 @@ namespace StrategicCombatCore
             }
 
             // Handle LandUnits
-            foreach(var g in building.OfType<LandUnit>().GroupBy(u => u.strategicGroupReference.Get()))
+            foreach(var g in building.OfType<LandUnit>().GroupBy(u => u.parentGroupReference.Get()))
             {
                 var originalParent = g.Key;
                 var subLandUnits = g.ToList();

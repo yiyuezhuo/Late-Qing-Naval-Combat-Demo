@@ -364,9 +364,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>16ebd7b1-a096-4c50-bcf5-5813e1cb23aa</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>f8481328-de97-4466-af47-6c302493b6ef</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -700,9 +700,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>43482ae8-fe81-41c6-9b58-9a58138945c7</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>f8481328-de97-4466-af47-6c302493b6ef</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -1018,9 +1018,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>82baaac9-2399-49c2-82d8-de5c4ea39e67</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>f8481328-de97-4466-af47-6c302493b6ef</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -1275,9 +1275,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>b0823768-4624-41e1-892e-33e2fced17c8</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>8961f909-0f74-4ef1-b983-315e9a93204a</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -1519,9 +1519,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>3dca9a53-db13-4a85-b328-4ba71d7a5280</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>8961f909-0f74-4ef1-b983-315e9a93204a</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -1792,9 +1792,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>cd01b37f-e23c-4d86-a48c-1087e64cd94d</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>f6a1138b-48f1-4978-8e52-95b6f7678bbe</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -2065,9 +2065,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>3ff86f43-fe21-4ffb-adb4-e1e535d165fb</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>f6a1138b-48f1-4978-8e52-95b6f7678bbe</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -2328,9 +2328,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>325ad7cd-8735-4b41-88a8-ae8270ae8e7a</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>f6a1138b-48f1-4978-8e52-95b6f7678bbe</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -2591,9 +2591,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>8a1a512f-3735-4cbe-b714-f805fa48b280</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>f6a1138b-48f1-4978-8e52-95b6f7678bbe</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -2866,9 +2866,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>77e93908-bf8e-4e88-8b27-ad38ee3c16bc</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>f6a1138b-48f1-4978-8e52-95b6f7678bbe</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -3141,9 +3141,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>ce8e7384-514e-4564-ab60-bda46369f489</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>f6a1138b-48f1-4978-8e52-95b6f7678bbe</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -3397,9 +3397,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>acdc23f7-8bbf-4e71-8a04-e5061b246508</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>f6a1138b-48f1-4978-8e52-95b6f7678bbe</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -3653,9 +3653,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>0f9cf151-dbb0-4dd2-a41f-9bd491386c35</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>f6a1138b-48f1-4978-8e52-95b6f7678bbe</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -3909,9 +3909,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>3d87b7a0-050b-49f1-a611-4d73904445c9</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>f6a1138b-48f1-4978-8e52-95b6f7678bbe</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -4156,9 +4156,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>b8b8048c-e3f5-4f81-ac80-7e131395d522</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>f6a1138b-48f1-4978-8e52-95b6f7678bbe</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -4449,7 +4449,7 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>cfca8b28-2ec4-4ddf-a16b-d6c72ab139ed</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <parentGroupReference />
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -4810,9 +4810,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>3ecd7c9f-0ec9-47a8-b87a-1ffb881b8642</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>ec983b9b-ec3f-443c-a7ef-e6ac27a1f8c4</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -5173,9 +5173,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>c1438b92-e89a-478c-8583-18e7a62cafe5</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>ec983b9b-ec3f-443c-a7ef-e6ac27a1f8c4</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -5475,9 +5475,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>51f2f5f4-2c59-482a-bcac-249e449e5ae9</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>f6bd836d-5641-4a06-952d-2329545b8a1a</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -5847,9 +5847,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>f7a7b58e-e555-40c5-b258-be96b39517ad</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>ec983b9b-ec3f-443c-a7ef-e6ac27a1f8c4</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -6165,9 +6165,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>26de8348-ea6f-43bf-a13c-4c76034fc55e</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>ec983b9b-ec3f-443c-a7ef-e6ac27a1f8c4</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -6470,9 +6470,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>5c18d2b9-b15b-4606-985d-9a5f9e6670bb</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>ec983b9b-ec3f-443c-a7ef-e6ac27a1f8c4</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -6714,9 +6714,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>4004750c-6471-48c6-8321-04d4d5fb2bbe</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>f6a1138b-48f1-4978-8e52-95b6f7678bbe</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -6934,7 +6934,7 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>5e60e839-887f-4bc3-952f-8310d976206c</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <parentGroupReference />
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -7121,7 +7121,7 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>6f521c93-3aff-4c59-a48b-7fa054339eb3</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <parentGroupReference />
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -7295,9 +7295,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>ed3fe972-15ed-4694-ba4d-93f326268a73</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>88450a80-6c3f-4450-b4d1-95a10190dbab</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -7471,9 +7471,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>f2235a73-0f6e-4c25-97e3-bd3cccf2fa5d</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>88450a80-6c3f-4450-b4d1-95a10190dbab</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -7773,7 +7773,7 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>4a35ad9a-23fd-4818-aedb-8238655039c2</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <parentGroupReference />
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -8055,9 +8055,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>34b465d2-dbe0-402c-a04c-50fe4ae60f30</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>a3888f16-9ca8-4a84-9b62-615ed86f1d43</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -8339,9 +8339,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>583f19f4-04a5-4d33-9fa1-60d221357d33</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>a3888f16-9ca8-4a84-9b62-615ed86f1d43</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -8623,7 +8623,7 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>e5923261-5665-40d5-a373-59e8f5a1b2b6</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <parentGroupReference />
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -8868,9 +8868,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>f7b44472-dbdb-49a1-8701-8b531b9c6ec3</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>a3888f16-9ca8-4a84-9b62-615ed86f1d43</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -9134,9 +9134,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>0a4b00f3-824b-442b-9021-1fee10192cca</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>a3888f16-9ca8-4a84-9b62-615ed86f1d43</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -9310,7 +9310,7 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>da9e0756-29e4-4ae9-89dd-79415843a0d0</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <parentGroupReference />
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -9484,7 +9484,7 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>f872dfe2-33ff-48d3-b86b-9119aa25f565</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <parentGroupReference />
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -9658,9 +9658,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>25b32637-c8f0-4422-8ea8-b002597ff93e</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>6374bb0b-b59f-454f-a223-eb4e414b78b7</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -9834,9 +9834,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>f39a0e18-6e86-44a3-9cc7-b443857d9617</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>6374bb0b-b59f-454f-a223-eb4e414b78b7</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -10010,9 +10010,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>63abb730-6a91-48e3-b130-00b2b043d233</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>d87649ad-84bd-4a2d-9ac3-3b7dd97ed8f4</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -10186,9 +10186,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>e8c6f1fa-aba7-4ff7-954d-be74b05fa728</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>682774fd-e96e-4a4c-bbb2-16d3a3f5ed9a</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -10362,9 +10362,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>3ff03004-5a80-48bc-a24d-55374d14c1c2</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>682774fd-e96e-4a4c-bbb2-16d3a3f5ed9a</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -10538,9 +10538,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>da6e7820-2821-484c-ac08-f0251f45b0c6</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>6374bb0b-b59f-454f-a223-eb4e414b78b7</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -10714,9 +10714,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>66c51b6a-e0cd-4866-a90d-b22bc4122cbb</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>d87649ad-84bd-4a2d-9ac3-3b7dd97ed8f4</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -10890,7 +10890,7 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>da3b967a-ea5b-415e-9e5b-11d3d441efd8</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <parentGroupReference />
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -11064,9 +11064,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>85887e65-cdb9-4ba4-b78f-fec059343b42</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>d87649ad-84bd-4a2d-9ac3-3b7dd97ed8f4</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -11240,9 +11240,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>5c1aa8e7-54b7-4c76-8a89-2c8470479604</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>682774fd-e96e-4a4c-bbb2-16d3a3f5ed9a</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -11416,7 +11416,7 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>8a7f65a5-6500-411d-b912-96f03520454d</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <parentGroupReference />
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -11590,7 +11590,7 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>8079a8e3-ceab-4a7d-ac17-91cffee2bb88</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <parentGroupReference />
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -11764,9 +11764,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>1fdc8bed-44cb-48cc-89f8-b5d1f326f6b2</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>682774fd-e96e-4a4c-bbb2-16d3a3f5ed9a</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -11940,9 +11940,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>aa17c1f0-9dfc-43a5-bf30-eda612244755</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>682774fd-e96e-4a4c-bbb2-16d3a3f5ed9a</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -12125,9 +12125,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>98b9934a-d5ef-48a3-92dd-f2574736d2f3</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>682774fd-e96e-4a4c-bbb2-16d3a3f5ed9a</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -12310,9 +12310,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>9984498a-c379-4f73-8d99-f0d461ebfabc</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>6374bb0b-b59f-454f-a223-eb4e414b78b7</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -12495,9 +12495,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>2c011475-59eb-4d4d-8817-4a2b3c866b90</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>d87649ad-84bd-4a2d-9ac3-3b7dd97ed8f4</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -12689,9 +12689,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>a4fa54d4-1989-4abe-8925-62766fc18ed0</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>d87649ad-84bd-4a2d-9ac3-3b7dd97ed8f4</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -12865,9 +12865,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>8ae57099-bd4e-46f8-b742-672a78619220</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>88450a80-6c3f-4450-b4d1-95a10190dbab</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -13041,9 +13041,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>cd66fcdb-09b3-40b8-9fa5-9f0023b210df</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>88450a80-6c3f-4450-b4d1-95a10190dbab</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -13217,9 +13217,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>33b69972-48cb-4a9f-ac77-26df34b09ede</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>88450a80-6c3f-4450-b4d1-95a10190dbab</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -13393,9 +13393,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>8336a5f0-8693-4495-83bc-0b8ee587c0cc</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>88450a80-6c3f-4450-b4d1-95a10190dbab</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -13569,9 +13569,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>afcc0159-dce7-4128-b7fa-78af29108cef</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>88450a80-6c3f-4450-b4d1-95a10190dbab</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -13716,9 +13716,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>6e5768ce-6058-423c-ac81-cf6cab2dc826</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -13863,9 +13863,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>4c17e474-a453-48a0-b353-4fce4f54c533</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>c48c4012-e43a-4933-8cc9-5e8755cf6b7f</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -14010,9 +14010,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>534a1346-bbcb-4741-a94f-dc95fdc6e616</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -14157,9 +14157,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>f4e0440d-0c11-4be6-831e-36de285e1dd2</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>c48c4012-e43a-4933-8cc9-5e8755cf6b7f</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -14304,9 +14304,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>4eff8972-1878-4201-9f3b-1e69c894a251</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -14451,9 +14451,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>aafc4c82-5014-4f8f-8b00-5c47729f028a</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>c48c4012-e43a-4933-8cc9-5e8755cf6b7f</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -14598,9 +14598,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>687dce60-89ed-4f0e-a7b4-048afb9b6c40</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -14745,9 +14745,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>992239d0-7bd1-4c3c-b925-b8761e182058</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>c48c4012-e43a-4933-8cc9-5e8755cf6b7f</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -14892,9 +14892,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>f2e568fb-611b-4fe9-94cb-46bdc03ac66a</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -15039,9 +15039,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>42bef4b0-ce44-475e-a356-592419d0ab2f</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>c48c4012-e43a-4933-8cc9-5e8755cf6b7f</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -15186,9 +15186,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>90cdaeb3-7ac6-448f-85be-a164f9222d76</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -15333,9 +15333,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>2251925f-3ad4-4003-97de-56612be7e2f1</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>c48c4012-e43a-4933-8cc9-5e8755cf6b7f</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -15480,9 +15480,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>b96ad426-e457-434e-b141-dc0965f35f56</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -15627,9 +15627,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>e91c9321-ef04-4338-ac54-4ffaaae48e1f</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>c48c4012-e43a-4933-8cc9-5e8755cf6b7f</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -15774,9 +15774,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>b5ec58c5-1993-47f5-9c4b-20496fb6d01f</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -15921,9 +15921,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>65c69ab0-6f43-4e53-ae55-e820b16bf7d9</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>c48c4012-e43a-4933-8cc9-5e8755cf6b7f</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -16068,9 +16068,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>c93c6d47-cca7-41c3-a6f8-e89cd93f32cf</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -16215,9 +16215,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>cba2aa40-1e2b-42a3-a6a1-27602961a213</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>c48c4012-e43a-4933-8cc9-5e8755cf6b7f</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -16362,9 +16362,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>6efbbca4-c786-495e-949c-c2aab5af78ea</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>a7d4f7b4-4ada-4f34-8588-509c87c5a037</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -16509,9 +16509,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>0ff924f2-d41b-4071-94d7-d5f07d7b215a</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>643148ed-5d9c-4329-b6b0-9c91c90fa4d2</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -16656,9 +16656,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>0c94365e-5c06-4448-8874-c1bbf152f248</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>ffd39a21-64a4-4131-b404-4aba8c63f3a2</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -16803,9 +16803,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>54735c24-34b8-4315-b67c-49d2ecd9194c</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>ffd39a21-64a4-4131-b404-4aba8c63f3a2</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -16950,9 +16950,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>2ad0f75b-1d4c-4fb2-a165-91e83bc7a60a</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>c42825cb-ad36-44f1-842b-49019caa5d23</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -17097,9 +17097,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>a5bfb31f-1567-46e1-94c6-b36674e6933e</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>c42825cb-ad36-44f1-842b-49019caa5d23</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -17244,9 +17244,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>2263355d-925d-432d-9b0a-e04d74d5eef5</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>c42825cb-ad36-44f1-842b-49019caa5d23</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -17391,9 +17391,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>395ae33c-10db-4dfe-a992-a4c2da92e19e</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>1ca93054-7ae0-4bd5-bfb4-2643c57fa8b5</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -17538,9 +17538,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>256b4195-9c2e-4e10-8d96-c182930c264e</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>1ca93054-7ae0-4bd5-bfb4-2643c57fa8b5</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -17821,9 +17821,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>748db68a-aacd-44fa-9ba3-98d434fa19e5</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>31fe37b1-d813-4e17-a7e8-c7b29610514e</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -18122,9 +18122,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>69cfc51d-4e28-4cfd-b115-345abfe8b93f</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>31fe37b1-d813-4e17-a7e8-c7b29610514e</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -18423,9 +18423,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>062ad813-488a-40f1-ba73-de6b095f2ae8</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>31fe37b1-d813-4e17-a7e8-c7b29610514e</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -18725,9 +18725,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>58762176-11fe-4017-abc6-0d3734a7610e</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>31fe37b1-d813-4e17-a7e8-c7b29610514e</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -19027,9 +19027,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>a6c5cc76-208d-4051-9133-5c0b9c7ccf95</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>31fe37b1-d813-4e17-a7e8-c7b29610514e</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -19216,9 +19216,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>4febddfe-d4c6-48e7-b68f-061675439ccd</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>0c2e2e38-544a-4552-a149-4656e40e2239</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -19405,9 +19405,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>5a547881-e549-49ba-b15d-8fe5a8171823</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>0c2e2e38-544a-4552-a149-4656e40e2239</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -19594,9 +19594,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>933e6967-58ef-4cb2-b439-d2b9c2976fa3</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>0c2e2e38-544a-4552-a149-4656e40e2239</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -19783,9 +19783,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>8138cc4e-a9b2-4481-b2e4-a176698a589c</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>0c2e2e38-544a-4552-a149-4656e40e2239</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -19972,9 +19972,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>c65aa6c3-df38-4d78-9fd4-1d6123e831d5</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>0c2e2e38-544a-4552-a149-4656e40e2239</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -20161,9 +20161,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>918eda0c-b71a-42b7-b3a6-f3d74b3c6082</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>0c2e2e38-544a-4552-a149-4656e40e2239</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -20327,9 +20327,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>077f340b-2709-499e-a4af-f09f325450ae</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>88450a80-6c3f-4450-b4d1-95a10190dbab</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -20493,9 +20493,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>111d046a-97f6-4bf1-b3af-4ea22e4923af</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>88450a80-6c3f-4450-b4d1-95a10190dbab</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -20659,9 +20659,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>f745d023-a8b3-48f8-9eaa-d51b690993fe</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>88450a80-6c3f-4450-b4d1-95a10190dbab</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -20825,9 +20825,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>f0cc7f81-af58-4f4b-abcd-3bcc26c2f052</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>88450a80-6c3f-4450-b4d1-95a10190dbab</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -20992,9 +20992,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>0e527e27-1a2e-477f-b242-aa051dfec51a</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>88450a80-6c3f-4450-b4d1-95a10190dbab</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -21159,9 +21159,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>2a56778f-5ee6-47a8-9bcd-a57376fb09f2</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>88450a80-6c3f-4450-b4d1-95a10190dbab</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -21414,9 +21414,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>42755614-b02a-4fda-927b-286ab4e7fa80</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>64009a7e-d665-4c23-b499-56061a062a60</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -21603,9 +21603,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>12beb343-c66a-47cb-b51a-2a7694236a85</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>95da6c1b-d4eb-401a-98e0-1cefe2e59ea6</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -21877,9 +21877,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>02c20359-9dd3-4f6e-95b7-48e5f97278b2</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>31fe37b1-d813-4e17-a7e8-c7b29610514e</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -22121,9 +22121,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>7645d388-bd69-416f-a03e-a3bac7bb56ad</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>cb51bc0c-d189-4747-bd49-f61180c10499</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -22533,9 +22533,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>bbfbf8f4-2067-4bcd-b654-61646679b9b4</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>3391b8ea-4a7a-44d2-bdf1-f70f42bbd346</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -22880,9 +22880,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>b974bc11-fe37-422c-8b0e-ff88418bc606</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>3391b8ea-4a7a-44d2-bdf1-f70f42bbd346</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -23245,9 +23245,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>1928ecc7-800a-4b37-852a-74518543b523</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>3391b8ea-4a7a-44d2-bdf1-f70f42bbd346</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -23628,9 +23628,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>0b4af659-c92f-4972-98ab-178d85f03d6b</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>3391b8ea-4a7a-44d2-bdf1-f70f42bbd346</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -24005,9 +24005,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>897a0d2e-584c-402a-b4ee-24ebe41294af</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>3391b8ea-4a7a-44d2-bdf1-f70f42bbd346</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -24258,9 +24258,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>2de02998-85f9-4a3a-9c98-503474ef8d8d</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>1f1037fb-f3a9-4a0b-ab38-7f0a5ae7a2bd</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -24632,9 +24632,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>891dd9f3-d8cf-45be-95b5-96a80a2931dd</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>1f1037fb-f3a9-4a0b-ab38-7f0a5ae7a2bd</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -24896,9 +24896,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>482c6ab6-4f1a-4964-a5df-6f2556ee93e2</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>1f1037fb-f3a9-4a0b-ab38-7f0a5ae7a2bd</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
   </shipLogs>
   <serializedCustomBoolMap />
@@ -25290,9 +25290,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>1a224c7c-18cf-446f-90b3-551568f435b2</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>8807adb3-1eca-45a9-9274-573ad9f29e3c</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -25320,9 +25320,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>75dde615-d1a6-4440-8fe3-99de5c6f14c7</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>8807adb3-1eca-45a9-9274-573ad9f29e3c</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -25350,9 +25350,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>c62f419b-643c-44e6-a651-c807b19c3bf0</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>8807adb3-1eca-45a9-9274-573ad9f29e3c</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -25380,9 +25380,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>20979489-2a2f-4dbc-82e0-bc959243fdad</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>8807adb3-1eca-45a9-9274-573ad9f29e3c</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -25410,9 +25410,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>44acbf65-286d-44a8-b75e-b9e403ede455</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>8807adb3-1eca-45a9-9274-573ad9f29e3c</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -25440,9 +25440,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>0a986b15-619a-4f21-82e8-1c7b19131d1f</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>7da4fd10-12a7-4c69-8107-b16396cee390</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -25470,9 +25470,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>0bd7ec00-7cda-401d-ab6a-358fbbf7d504</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>7da4fd10-12a7-4c69-8107-b16396cee390</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -25500,9 +25500,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>f40450f6-b028-4d76-a038-2a72f27660dc</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>7da4fd10-12a7-4c69-8107-b16396cee390</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -25530,9 +25530,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>b6bf38a7-b85c-4b33-9da6-04ae02140758</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>df089c53-6033-4d2c-8df2-849dd7593f57</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -25560,9 +25560,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>d2bd16ab-cc21-46f1-82bc-238b918eb3e6</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>df089c53-6033-4d2c-8df2-849dd7593f57</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -25590,9 +25590,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>f54b7796-3727-46a2-b215-799cd588604a</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>df089c53-6033-4d2c-8df2-849dd7593f57</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -25620,9 +25620,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>279747b6-2f59-456d-88e1-66c664d207e2</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>df089c53-6033-4d2c-8df2-849dd7593f57</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -25650,9 +25650,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>3a5f2b15-bdfe-42f7-a1c9-3ce5364ffb53</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>df089c53-6033-4d2c-8df2-849dd7593f57</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -25680,9 +25680,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>6c050d18-d5f1-479c-a34f-d0163c377590</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>7b96de0e-6c80-4b23-a3f4-2176cfe99148</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -25710,9 +25710,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>19f52aad-c996-4804-b1d9-a58dde32aed6</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>7b96de0e-6c80-4b23-a3f4-2176cfe99148</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -25740,9 +25740,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>4b921964-d592-406a-bd77-69febf0f8415</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>7b96de0e-6c80-4b23-a3f4-2176cfe99148</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -25770,9 +25770,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>4be6c875-d190-4ef7-8eae-b53996d23e1a</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>7b96de0e-6c80-4b23-a3f4-2176cfe99148</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -25800,9 +25800,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>4fb2c986-6b0e-4730-ad82-82734aae8604</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>7b96de0e-6c80-4b23-a3f4-2176cfe99148</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -25830,7 +25830,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>fbcc1c30-266d-4c87-a768-70d2ea882363</objectId>
-    <strategicGroupReference />
+    <parentGroupReference />
    </LandUnit>
    <LandUnit>
     <name>
@@ -25858,7 +25858,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>25082074-8a17-4adc-8e61-02a3b31d4599</objectId>
-    <strategicGroupReference />
+    <parentGroupReference />
    </LandUnit>
    <LandUnit>
     <name>
@@ -25886,7 +25886,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>23f7d1fc-4e4a-4fea-a810-7a4bc6870c04</objectId>
-    <strategicGroupReference />
+    <parentGroupReference />
    </LandUnit>
    <LandUnit>
     <name>
@@ -25914,9 +25914,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>532276bd-8fa1-415b-b224-45a279e81bc1</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>f11d4aee-dea9-4776-913c-a1d684510b06</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -25944,9 +25944,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>ab7db3ab-51ce-4641-9236-0ac311edce20</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>f11d4aee-dea9-4776-913c-a1d684510b06</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -25974,9 +25974,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>65f4f6ea-01c4-4a47-9dc3-d27457bef322</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>f11d4aee-dea9-4776-913c-a1d684510b06</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -26004,9 +26004,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>b9fe6dcc-ed60-4859-9748-750372d8b5aa</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>f11d4aee-dea9-4776-913c-a1d684510b06</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -26034,9 +26034,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>6d2f2148-7f94-4695-97c8-5282e8db3a1a</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>f11d4aee-dea9-4776-913c-a1d684510b06</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -26064,9 +26064,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>b81a11c7-164b-4042-80df-f9f5854e256c</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -26094,9 +26094,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>bd7483a0-3682-44b3-9602-0916a70ca39b</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -26124,9 +26124,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>3097daff-bd82-4a43-9e34-69e524d54ae6</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -26154,9 +26154,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>5eb3077c-f62f-499b-93ba-b6eca8b7b53f</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -26184,9 +26184,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>302a7d65-9319-4014-80cd-df5738f49c72</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -26214,9 +26214,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>7a9e7efa-c000-4c62-94bc-bbcbea2a974a</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -26244,9 +26244,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>8f100840-11d5-4409-a65e-6b5447546a7d</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -26274,9 +26274,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>0a2df1a4-c566-4feb-89bc-9d39c19d683b</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -26304,9 +26304,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>57057021-a645-4b60-ba37-4827ab44a46e</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -26334,9 +26334,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>ed9cc67e-a2c0-4669-8e8c-ec95a82bbf23</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -26364,9 +26364,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>d05c4b4e-c937-4280-bd08-e357d3a3dcba</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>5a7f6397-7e25-45b6-8423-98b3e22e815a</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -26394,9 +26394,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>78204a0e-7d7c-450e-b10d-826561a70857</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>5a7f6397-7e25-45b6-8423-98b3e22e815a</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -26425,9 +26425,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>90d60e0e-ccf7-4aba-9a67-986907bdd56f</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>71f4ebf5-1ef0-4dbb-bd00-37dc02dbf05e</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -26455,9 +26455,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>309e644c-8005-4c5f-8821-2aeeb8b971cf</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>71f4ebf5-1ef0-4dbb-bd00-37dc02dbf05e</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -26486,9 +26486,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>a78a315d-c3c2-4b2b-a14b-d82e06d44eb6</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>71f4ebf5-1ef0-4dbb-bd00-37dc02dbf05e</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -26517,9 +26517,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>0abfe5cb-3b7e-4dfa-b722-747763468bdd</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>b9f4ff90-f43c-4922-bf2c-4475ca0607ea</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -26547,9 +26547,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>8809f6a2-bf65-473c-90bc-424a1fca6f48</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>b9f4ff90-f43c-4922-bf2c-4475ca0607ea</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -26577,9 +26577,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>34d10468-a099-494d-b285-e51275e9d004</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>b9f4ff90-f43c-4922-bf2c-4475ca0607ea</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -26607,9 +26607,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>71dece21-c1af-4eb8-b030-94ff6263c6a1</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>597e3e29-935d-4e3c-8465-7064622245c6</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -26637,9 +26637,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>21ea6501-23fc-4280-a9f0-6bf283ee6ef6</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>47f90d2e-a1fb-4d5f-9fa8-e3ab034b6e54</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -26667,9 +26667,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>744fdb08-5b3c-4d46-b292-15b599fa4cab</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>ea5907f6-fa2a-4102-9d23-bc95f1f20ee0</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -26697,9 +26697,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>786dbf87-3093-41ee-afa8-a34843395250</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>1d4474c1-4e1a-4851-adb4-28c1595e3358</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -26727,9 +26727,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>bb39d25f-aed9-431a-9014-e9cc7856372b</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>71ef8ca0-8e61-4eda-b53b-a1f4459d1c5d</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -26758,9 +26758,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>9383e113-f7f4-42f2-b32c-4fcd821336de</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>ea5907f6-fa2a-4102-9d23-bc95f1f20ee0</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -26788,9 +26788,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>0ae1f8e4-52a8-4256-8d98-b88378d9a528</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>1d4474c1-4e1a-4851-adb4-28c1595e3358</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -26819,9 +26819,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>2bd37132-e136-43e8-831b-3413c45be55a</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>597e3e29-935d-4e3c-8465-7064622245c6</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -26849,9 +26849,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>77e9aa0f-8850-41e2-a7f4-554a0f3f007b</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>47f90d2e-a1fb-4d5f-9fa8-e3ab034b6e54</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -26879,9 +26879,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>f19f58a9-7866-40e8-9589-15672295ab95</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>71ef8ca0-8e61-4eda-b53b-a1f4459d1c5d</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -26909,9 +26909,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>9b66d180-e9c0-4ee7-89e1-edda7c79ca9e</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>dc778b97-f5fe-4a1a-869f-58133cb451ab</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -26939,9 +26939,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>41e14bd1-f7d2-42b9-ac31-3365bb68115a</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>dc778b97-f5fe-4a1a-869f-58133cb451ab</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -26969,9 +26969,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>d521272c-705e-4d1f-b66e-e10c970a4d49</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>dc778b97-f5fe-4a1a-869f-58133cb451ab</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -26999,9 +26999,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>9206fa6b-d455-4a6c-8d05-df374032a67d</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>fa3430e2-124a-46dd-a18e-c20a42555159</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -27029,9 +27029,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>31bfdf8e-72a4-4cfe-b870-3cd04aef5557</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>fa3430e2-124a-46dd-a18e-c20a42555159</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -27059,9 +27059,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>69257650-5568-4745-bf2b-4dbf77eee35b</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>fa3430e2-124a-46dd-a18e-c20a42555159</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -27089,9 +27089,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>fc5f0aba-1dc3-4a12-abfa-dc6082a9843e</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>8debdc25-a274-4158-a38c-c4dc36162a2d</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -27119,9 +27119,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>f75409d5-81c3-4fe4-a6b1-eb60989de5f1</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>8debdc25-a274-4158-a38c-c4dc36162a2d</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -27149,9 +27149,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>7fc0b19f-3496-4ea2-b2c0-14a0e2f41c3a</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>8debdc25-a274-4158-a38c-c4dc36162a2d</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -27179,9 +27179,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>a99aa3f3-569b-424a-acfc-108e9f4642f8</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>10a4192d-931c-469b-b315-716438d8c28b</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -27209,9 +27209,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>095acc25-5782-4bbe-8889-b0412cb4b7c0</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>10a4192d-931c-469b-b315-716438d8c28b</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -27239,9 +27239,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>6862c389-a5ce-48f3-b518-89ed59482fdc</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>10a4192d-931c-469b-b315-716438d8c28b</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -27269,9 +27269,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>6cc0bc3c-9727-45b6-9ac0-33a98a87b8cf</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>e0686526-37a4-459a-bc5b-0b0345a980e2</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -27299,9 +27299,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>6e68c251-1d8f-4cfb-b6b9-17aceda85a68</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>e0686526-37a4-459a-bc5b-0b0345a980e2</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -27329,9 +27329,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>a7160e12-e738-4284-bbdb-53b88dfc4ca2</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>e0686526-37a4-459a-bc5b-0b0345a980e2</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -27359,9 +27359,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>b72f7677-0389-432a-8023-7c43c742ac19</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>7873abb1-5e4c-4e0c-a59c-d43db01842ed</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -27389,9 +27389,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>5ca34a45-9308-49b6-9c6d-eb7f76bcb5e9</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>7873abb1-5e4c-4e0c-a59c-d43db01842ed</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -27419,9 +27419,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>5c90d03a-de15-476f-a1ad-378d29c73a5c</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>7873abb1-5e4c-4e0c-a59c-d43db01842ed</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -27449,9 +27449,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>64a7fcbd-f578-4a78-b936-83654522c7a3</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>5eb01bdd-7b9a-401a-89be-3382df10e892</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -27479,9 +27479,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>068da9d0-7f9e-4807-8f22-15560ec5dc8a</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>5eb01bdd-7b9a-401a-89be-3382df10e892</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -27509,9 +27509,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>ead160b3-693d-4492-a3cb-4925f3434415</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>5eb01bdd-7b9a-401a-89be-3382df10e892</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -27539,9 +27539,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>2952840f-eb81-4225-8682-6e65448aa023</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>ccc60016-86aa-40c9-b402-40174ba04ed6</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -27569,9 +27569,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>5d97c2bb-c5be-44e9-9c58-a74eb5212e41</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>ccc60016-86aa-40c9-b402-40174ba04ed6</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -27599,9 +27599,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>60de5790-f50c-4ec5-bbf9-8f91bf3c681c</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>ccc60016-86aa-40c9-b402-40174ba04ed6</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -27629,9 +27629,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>a3f4ea7c-a9e3-4024-8f38-a129528ab6f9</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>9e0224f3-d2ad-4b79-bb3b-939b2096bf03</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -27659,9 +27659,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>ec63f55c-17b7-49c6-8b4f-116f77fba90b</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>9e0224f3-d2ad-4b79-bb3b-939b2096bf03</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -27689,9 +27689,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>c731ac41-c894-4afc-860f-eed6b3d3556f</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>9e0224f3-d2ad-4b79-bb3b-939b2096bf03</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -27719,9 +27719,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>d67d33f1-1c03-430f-9ab5-e48a24fbeb0a</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>bcef7d21-574b-4323-b651-0e67445b25cc</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -27749,9 +27749,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>dc733a40-cac6-4c90-8c1a-794d86d21b02</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>bcef7d21-574b-4323-b651-0e67445b25cc</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -27779,9 +27779,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>39b41a0c-82d8-4489-9aa0-387650bf1fe6</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>bcef7d21-574b-4323-b651-0e67445b25cc</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -27809,9 +27809,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>d937a0ae-1ce7-4479-b051-afb218946d47</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>5862b272-0953-46a8-a6f8-bb7353b671b2</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -27839,9 +27839,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>55ef32a1-592c-4a97-bdc2-5d2bd423c890</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>5862b272-0953-46a8-a6f8-bb7353b671b2</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -27869,9 +27869,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>75715540-89ba-4cd9-b97d-4751991143e0</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>5862b272-0953-46a8-a6f8-bb7353b671b2</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -27899,9 +27899,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>ecc7bf8b-9f78-46a2-9baa-7818b56b5863</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>bbfbf098-0b5e-400c-90a1-5af53c5e4533</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -27929,9 +27929,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>0e2c0a7c-c5e9-47be-ac78-882f04d9a595</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>bbfbf098-0b5e-400c-90a1-5af53c5e4533</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -27959,9 +27959,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>921ac2aa-21fb-40f0-94bf-9bba129b040a</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>bbfbf098-0b5e-400c-90a1-5af53c5e4533</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -27989,9 +27989,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>72ac4c13-088b-4452-a43e-bab0bd9866fc</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>fa371e9a-6add-4f6c-84f0-52b5e427e75a</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -28019,9 +28019,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>f8695aa7-4690-4f4f-9e98-39a2ccd46892</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>fa371e9a-6add-4f6c-84f0-52b5e427e75a</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -28049,9 +28049,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>763a0932-b790-4adb-b9ba-187e22eb50f9</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>fa371e9a-6add-4f6c-84f0-52b5e427e75a</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -28079,9 +28079,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>7a3c9270-111c-4fe6-863d-8fbe39ec2696</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>645d9e54-c6e8-4bef-a17e-558a9f632285</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -28109,9 +28109,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>fd8e3d19-ab24-4e6b-9ef9-3af173be41c4</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>645d9e54-c6e8-4bef-a17e-558a9f632285</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -28139,9 +28139,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>fcc5d9e3-1e0b-4c8a-bc57-8918506d9ced</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>645d9e54-c6e8-4bef-a17e-558a9f632285</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -28169,9 +28169,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>513c4a86-8168-4d3c-8e5f-11c6d704ebbb</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>f97d2f58-fb9e-487b-a8fb-999246e1804f</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -28199,9 +28199,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>204aa4c9-6cd6-4e54-9c52-bebf3d461f01</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>f97d2f58-fb9e-487b-a8fb-999246e1804f</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -28229,9 +28229,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>19b23c0b-d645-483f-b82f-139224d379f5</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>f97d2f58-fb9e-487b-a8fb-999246e1804f</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -28259,9 +28259,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>e4240780-b29d-4e82-ab68-6a290f4e9337</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>e212bfd1-456d-4fc7-8bd3-d57dc997b2f1</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -28289,9 +28289,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>d7e31f80-f3a3-4a7c-b467-ef35ab4ccc29</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>e212bfd1-456d-4fc7-8bd3-d57dc997b2f1</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -28319,9 +28319,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>f1063f6c-eaec-479e-8436-6c8397397640</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>e212bfd1-456d-4fc7-8bd3-d57dc997b2f1</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -28349,9 +28349,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>327d1e37-cc6b-4319-bf54-e0faa4526c16</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>522876be-0947-4332-8bd4-4ff4590fe99b</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -28379,9 +28379,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>fba1472f-19a2-448d-8c41-e3f0aa5459f3</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>522876be-0947-4332-8bd4-4ff4590fe99b</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -28409,9 +28409,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>9efb6f22-ea00-47b3-a1a7-5981ea3a3233</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>522876be-0947-4332-8bd4-4ff4590fe99b</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -28439,9 +28439,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>6c18dbb3-294d-4442-838f-d476b8392205</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>b8955e93-c485-445a-bea6-03cb3334ff86</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -28469,9 +28469,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>fa9c0c09-9e70-4294-87f4-3db67334d577</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>b8955e93-c485-445a-bea6-03cb3334ff86</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -28499,9 +28499,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>9c048763-2666-4119-aa60-173746573dea</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>b8955e93-c485-445a-bea6-03cb3334ff86</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -28529,9 +28529,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>edd1c129-2003-494f-b81e-40cd0a7d212e</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>5a6008b4-3d17-4ab8-b1a1-6db59608317b</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -28559,9 +28559,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>efacaa00-8a19-4a08-8611-d97f9e5884f4</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>5a6008b4-3d17-4ab8-b1a1-6db59608317b</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -28589,9 +28589,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>c7f7557a-cf77-4a26-bf49-bdf686f771f7</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>5a6008b4-3d17-4ab8-b1a1-6db59608317b</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -28619,9 +28619,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>20f41b70-41ef-4e64-8106-eb400ed6ba16</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>2acf5724-c334-4d1c-99a5-7412c7337c9c</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -28649,9 +28649,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>3e62679d-f3b8-4970-961f-2516545bb311</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>2acf5724-c334-4d1c-99a5-7412c7337c9c</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -28679,9 +28679,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>405d806c-db60-40ea-9619-9e08cd712e28</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>2acf5724-c334-4d1c-99a5-7412c7337c9c</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -28709,9 +28709,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>cb02c455-68cd-409b-a14f-b4027eaaf3b6</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>e5b44beb-48e2-4296-9a8f-98f89f7d1cc4</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -28739,9 +28739,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>3488f64a-2d81-47eb-9249-f64018aba4e8</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>e5b44beb-48e2-4296-9a8f-98f89f7d1cc4</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -28769,9 +28769,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>c0acf4ca-6b18-4ee4-9017-9172d4e08a6e</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>e5b44beb-48e2-4296-9a8f-98f89f7d1cc4</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -28798,9 +28798,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>11888857-f4d5-4240-a43d-ea18d17ac389</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>1a1422a1-96c0-401d-b71e-fc10e508e678</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -28827,9 +28827,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>ac4d2790-5ef2-48c1-b301-912561c88438</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>1a1422a1-96c0-401d-b71e-fc10e508e678</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -28856,9 +28856,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>c7b655f1-28f4-4ac4-8a39-94a6bec7b65c</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>1a1422a1-96c0-401d-b71e-fc10e508e678</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -28885,9 +28885,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>bf325b20-bd37-4b2a-a8c2-ba3832fb249d</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>1a1422a1-96c0-401d-b71e-fc10e508e678</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -28915,9 +28915,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>228a782c-0855-431d-982b-d491daa9f777</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>123b42e1-1cc9-41c6-a612-10a6768eb0e0</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -28945,9 +28945,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>516b1836-bf28-4962-980c-fff048a6cf60</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>123b42e1-1cc9-41c6-a612-10a6768eb0e0</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -28975,9 +28975,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>d053e22e-33f7-4f40-af28-d44857794f02</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>123b42e1-1cc9-41c6-a612-10a6768eb0e0</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -29005,9 +29005,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>cce9eb79-905b-43b5-8f96-113334e435a8</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>123b42e1-1cc9-41c6-a612-10a6768eb0e0</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -29034,9 +29034,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>d1e66b3d-8881-42a0-a844-2adb36da7408</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>006864f2-71d6-42be-9210-08555952259d</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -29064,9 +29064,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>1b768a62-c168-4904-a143-b70aa2bdcee0</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>04002987-63e3-4f8e-ac77-9c6595f47f60</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -29094,9 +29094,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>9e4567ad-f1f7-4ab1-bec6-1e0b1a25060d</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>04002987-63e3-4f8e-ac77-9c6595f47f60</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -29123,9 +29123,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>77b32998-03ab-4809-8c98-75b4072fca59</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>49f0c009-c700-468b-9268-e9084351835c</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -29152,9 +29152,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>5db0a7ec-4bbf-4b9f-8e5e-18a1d625235f</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>49f0c009-c700-468b-9268-e9084351835c</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -29181,9 +29181,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>1a03e2b6-6ba3-4a25-b699-aaaa32ffa837</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>49f0c009-c700-468b-9268-e9084351835c</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -29210,9 +29210,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>8bcaec1b-b23a-483d-bfb7-337a1a160833</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>49f0c009-c700-468b-9268-e9084351835c</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -29239,9 +29239,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>6d97cf92-3e15-4888-b879-cd1f09dcf794</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>49f0c009-c700-468b-9268-e9084351835c</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -29268,9 +29268,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>3ca989bd-80b8-42fe-8a1f-83bc03b448af</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>49f0c009-c700-468b-9268-e9084351835c</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -29297,9 +29297,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>6a8ccd1c-c6dc-45d3-bde4-fcebc91983cd</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>49f0c009-c700-468b-9268-e9084351835c</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -29326,9 +29326,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>6ecaecbe-e81a-4ec6-8d39-f142c468ce21</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>49f0c009-c700-468b-9268-e9084351835c</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -29355,9 +29355,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>0bf1cf6a-c393-4085-ac93-2a3df16d797f</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>7435a9f5-5161-49f0-b1ab-cba06b6eee0b</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -29385,9 +29385,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>a0f79c00-bacd-4eed-90ec-ef9e8937d354</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>c57852e7-58fc-4373-87f0-016a1043d705</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -29415,9 +29415,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>ef754eee-c64a-40a4-8b3b-e1282c86390f</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>c57852e7-58fc-4373-87f0-016a1043d705</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -29445,9 +29445,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>c76ec82a-ecb1-414c-b9e5-045aa6f990e2</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>c57852e7-58fc-4373-87f0-016a1043d705</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -29475,9 +29475,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>8f6e5350-06a9-49d0-8889-0455c7d944ea</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>c57852e7-58fc-4373-87f0-016a1043d705</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -29505,9 +29505,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>ac518e02-50af-40e7-a761-af253ae65973</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>c57852e7-58fc-4373-87f0-016a1043d705</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -29535,9 +29535,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>bb9bf2b3-67bf-4b76-8321-a65a29b937ad</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>c57852e7-58fc-4373-87f0-016a1043d705</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -29566,9 +29566,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>82e4ac06-f614-432e-a82f-c0c1dfc055df</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>fa6bf1eb-c201-405f-a6f4-7c714d6cd2ea</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -29597,9 +29597,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>4bed7260-ce35-4876-bc7f-ae025cec21b4</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>4a33ad57-3e8d-4496-83c2-889cb1024e91</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -29627,9 +29627,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>f4d6ffd3-4566-46bb-a178-5811cf748be5</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>0e49ae2f-5d43-4a1e-a5e1-5ef9709c79e7</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -29657,9 +29657,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>69fa8dac-d422-4297-9726-e145ece4ab13</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>e8e81f29-4c58-4e0c-acc7-d089ebe3e863</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -29687,9 +29687,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>0c66f06a-2031-478c-8899-bce39dc614ba</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>1dad34b2-1ddd-40ec-86e6-c2533261da78</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -29717,9 +29717,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>08cbd225-e688-4354-aaa2-9509a71af1e2</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>98e31d97-95e9-428c-81f8-1e28218c3b66</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -29747,9 +29747,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>49888c20-7d72-4eae-ab87-02be51361b92</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>062a8581-948d-4e6f-a192-c944ea148f12</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -29777,9 +29777,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>7a652a81-3d4e-4caf-86a1-9ebfe5130b60</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>d1c1613a-412d-4865-a8fc-f3b72273b8a1</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -29807,9 +29807,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>e44d9f9b-f6d1-4e29-9c58-c2c5e2cf3eb7</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>2ec01ac9-17e9-4f9a-8c4d-e05caacea520</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -29837,9 +29837,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>f2e89083-25ff-4e73-9470-e6b74fcbeb07</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>cd2d3e47-9de3-4d98-8bb4-4435b320f9f0</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -29867,7 +29867,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>449422d2-5026-4fd5-b7b7-48aa3f1384f4</objectId>
-    <strategicGroupReference />
+    <parentGroupReference />
    </LandUnit>
    <LandUnit>
     <name>
@@ -29895,9 +29895,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>5d57c765-a31d-423e-8cd8-7064c565049c</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>03952567-843b-4447-8574-ecf41bcfa11c</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -29925,9 +29925,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>10</portLevel>
     <repairShipyardLevel>10</repairShipyardLevel>
     <objectId>0a850198-2f79-4900-83bf-164a2a5c6435</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>062a8581-948d-4e6f-a192-c944ea148f12</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -29955,9 +29955,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>10</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>ce7d0d4f-d2f5-466a-ab8a-ef5736f8aef1</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>98e31d97-95e9-428c-81f8-1e28218c3b66</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -29985,9 +29985,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>10</portLevel>
     <repairShipyardLevel>10</repairShipyardLevel>
     <objectId>27fe9116-dd84-4921-82e1-78d0fabb70f5</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>cd2d3e47-9de3-4d98-8bb4-4435b320f9f0</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -30015,9 +30015,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>10</portLevel>
     <repairShipyardLevel>10</repairShipyardLevel>
     <objectId>599ecacd-043e-42d4-82eb-706740f55fc1</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>4a33ad57-3e8d-4496-83c2-889cb1024e91</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -30045,9 +30045,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>10</portLevel>
     <repairShipyardLevel>10</repairShipyardLevel>
     <objectId>e585da76-cd35-4b78-8b4c-486292fb55a5</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>03952567-843b-4447-8574-ecf41bcfa11c</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -30075,9 +30075,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>10</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>49e370c7-a59d-4273-987b-5c65cc99a533</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>0e49ae2f-5d43-4a1e-a5e1-5ef9709c79e7</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -30104,7 +30104,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>4c896c0a-7146-4e07-8696-1d684b426a83</objectId>
-    <strategicGroupReference />
+    <parentGroupReference />
    </LandUnit>
    <LandUnit>
     <name>
@@ -30132,9 +30132,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>fb7b64ef-b35f-4c65-afba-134f6a28942c</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>15a7175c-1740-4b9f-863e-d83ed2d16962</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
   </landUnits>
   <weapons>
@@ -30584,9 +30584,9 @@ By Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
     <stackPriority>0.333333343</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>d9c2462c-21c4-4d6a-869b-0a628697cce0</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>7fb53e3b-5cdc-4c03-b38f-c2b0d1a4f112</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -30646,7 +30646,7 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <stackPriority>0.5</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>300aee3b-90c3-40c4-8075-0cd8ee37ab19</objectId>
-    <strategicGroupReference />
+    <parentGroupReference />
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -30677,7 +30677,7 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>fa6bf1eb-c201-405f-a6f4-7c714d6cd2ea</objectId>
-    <strategicGroupReference />
+    <parentGroupReference />
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -30706,9 +30706,9 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>536fe1cd-f87d-4781-b90b-21dbb4b67ce4</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>300aee3b-90c3-40c4-8075-0cd8ee37ab19</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -30741,9 +30741,9 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>6f2ff133-e2e6-429d-b719-88f9124b76b8</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>300aee3b-90c3-40c4-8075-0cd8ee37ab19</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -30776,9 +30776,9 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>d9103ed8-50ae-49ca-810c-6eb72e30264c</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>300aee3b-90c3-40c4-8075-0cd8ee37ab19</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -30825,9 +30825,9 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <stackPriority>0.6666667</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>7fb53e3b-5cdc-4c03-b38f-c2b0d1a4f112</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>300aee3b-90c3-40c4-8075-0cd8ee37ab19</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -30862,7 +30862,7 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>0e49ae2f-5d43-4a1e-a5e1-5ef9709c79e7</objectId>
-    <strategicGroupReference />
+    <parentGroupReference />
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -30901,9 +30901,9 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <stackPriority>0.2</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>c1bab757-235c-4e54-8dd7-048a36abd130</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>7fb53e3b-5cdc-4c03-b38f-c2b0d1a4f112</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -30943,7 +30943,7 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <stackPriority>0.4</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>98e31d97-95e9-428c-81f8-1e28218c3b66</objectId>
-    <strategicGroupReference />
+    <parentGroupReference />
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -30983,7 +30983,7 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <stackPriority>0.6666667</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>062a8581-948d-4e6f-a192-c944ea148f12</objectId>
-    <strategicGroupReference />
+    <parentGroupReference />
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -31027,9 +31027,9 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <stackPriority>0.8</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>ecac6d58-7c5e-49ed-b50f-88501c73fb4a</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>c1bab757-235c-4e54-8dd7-048a36abd130</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -31092,9 +31092,9 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <stackPriority>0.5</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>490423ba-377f-498f-afce-5f90463901d4</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>7fb53e3b-5cdc-4c03-b38f-c2b0d1a4f112</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -31125,7 +31125,7 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>1dad34b2-1ddd-40ec-86e6-c2533261da78</objectId>
-    <strategicGroupReference />
+    <parentGroupReference />
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -31192,9 +31192,9 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>88450a80-6c3f-4450-b4d1-95a10190dbab</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>ecac6d58-7c5e-49ed-b50f-88501c73fb4a</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -31257,9 +31257,9 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>f6a1138b-48f1-4978-8e52-95b6f7678bbe</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>ecac6d58-7c5e-49ed-b50f-88501c73fb4a</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -31306,9 +31306,9 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>8961f909-0f74-4ef1-b983-315e9a93204a</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>ecac6d58-7c5e-49ed-b50f-88501c73fb4a</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -31354,9 +31354,9 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>ffd39a21-64a4-4131-b404-4aba8c63f3a2</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>c42825cb-ad36-44f1-842b-49019caa5d23</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -31393,9 +31393,9 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>1f1037fb-f3a9-4a0b-ab38-7f0a5ae7a2bd</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>062a8581-948d-4e6f-a192-c944ea148f12</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -31422,9 +31422,9 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>8b898359-2cba-47b0-855c-bc6dbf0b6d8d</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>98e31d97-95e9-428c-81f8-1e28218c3b66</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -31459,9 +31459,9 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>a7d4f7b4-4ada-4f34-8588-509c87c5a037</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>c42825cb-ad36-44f1-842b-49019caa5d23</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -31501,9 +31501,9 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>643148ed-5d9c-4329-b6b0-9c91c90fa4d2</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>c42825cb-ad36-44f1-842b-49019caa5d23</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -31542,7 +31542,7 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <stackPriority>0.714285731</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>380340b3-7ec3-4404-9601-c0470d750510</objectId>
-    <strategicGroupReference />
+    <parentGroupReference />
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -31578,7 +31578,7 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <stackPriority>0.857142866</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>4a33ad57-3e8d-4496-83c2-889cb1024e91</objectId>
-    <strategicGroupReference />
+    <parentGroupReference />
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -31622,9 +31622,9 @@ It was revived for the Russo-Japanese War from 2 February 1904 – 9 December 19
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>2895a7b5-5422-45c0-a01b-a516c966f9c1</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>380340b3-7ec3-4404-9601-c0470d750510</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -31669,9 +31669,9 @@ It was revived for the Russo-Japanese War from 2 February 1904 – 9 December 19
     <stackPriority>0</stackPriority>
     <enableArriveState>true</enableArriveState>
     <objectId>5fe39499-f5f7-416a-9ca3-951f077a937d</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>380340b3-7ec3-4404-9601-c0470d750510</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -31721,9 +31721,9 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>ae078a24-3dee-4111-a4dc-bf301c6cde33</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>380340b3-7ec3-4404-9601-c0470d750510</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -31783,9 +31783,9 @@ It was formed in May 1888 (Meiji 21) based on the Tokyo Garrison. At the same ti
     <stackPriority>0</stackPriority>
     <enableArriveState>true</enableArriveState>
     <objectId>ea5907f6-fa2a-4102-9d23-bc95f1f20ee0</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>5fe39499-f5f7-416a-9ca3-951f077a937d</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -31849,9 +31849,9 @@ It participated in Japan's major wars until the dissolution of the Imperial Japa
     <stackPriority>0</stackPriority>
     <enableArriveState>true</enableArriveState>
     <objectId>1d4474c1-4e1a-4851-adb4-28c1595e3358</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>5fe39499-f5f7-416a-9ca3-951f077a937d</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -31919,9 +31919,9 @@ It is one of the oldest divisions among the approximately 200 Army divisions.
     <stackPriority>0</stackPriority>
     <enableArriveState>true</enableArriveState>
     <objectId>597e3e29-935d-4e3c-8465-7064622245c6</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>2895a7b5-5422-45c0-a01b-a516c966f9c1</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -31981,9 +31981,9 @@ It was a division composed of soldiers from Shimane, Hiroshima, and Yamaguchi, w
     <stackPriority>0.5714286</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>47f90d2e-a1fb-4d5f-9fa8-e3ab034b6e54</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>2895a7b5-5422-45c0-a01b-a516c966f9c1</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -32047,9 +32047,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>true</enableArriveState>
     <objectId>71ef8ca0-8e61-4eda-b53b-a1f4459d1c5d</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>5fe39499-f5f7-416a-9ca3-951f077a937d</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -32096,9 +32096,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>e7da4734-5986-4765-9687-5c818df24f09</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>ae078a24-3dee-4111-a4dc-bf301c6cde33</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -32134,9 +32134,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>420f4cce-0a91-432d-9df6-a79bf52ce8d5</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>47f90d2e-a1fb-4d5f-9fa8-e3ab034b6e54</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -32172,9 +32172,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>77135c77-356b-4eca-a404-77d41ce53d37</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>71ef8ca0-8e61-4eda-b53b-a1f4459d1c5d</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -32210,9 +32210,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>f085019b-b735-4ad1-bfb5-b94b94aa267b</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>71ef8ca0-8e61-4eda-b53b-a1f4459d1c5d</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -32248,9 +32248,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>f73090fe-6417-426c-96c7-3ba0a0638216</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>ea5907f6-fa2a-4102-9d23-bc95f1f20ee0</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -32286,9 +32286,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>8e96a6fd-cc26-4141-8d7b-7525ef0cc8c4</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>ea5907f6-fa2a-4102-9d23-bc95f1f20ee0</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -32324,9 +32324,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>eb801c55-b700-4916-85de-e57350a8530d</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>1d4474c1-4e1a-4851-adb4-28c1595e3358</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -32362,9 +32362,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>93c85a86-de1e-4419-b334-ab132482ac2c</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>1d4474c1-4e1a-4851-adb4-28c1595e3358</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -32400,9 +32400,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>990958dd-5d87-4b4e-8f6c-e6503905f2f5</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>597e3e29-935d-4e3c-8465-7064622245c6</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -32438,9 +32438,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>50981db4-4301-4799-85d2-1810b49b2e58</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>597e3e29-935d-4e3c-8465-7064622245c6</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -32485,9 +32485,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0.5</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>b9f4ff90-f43c-4922-bf2c-4475ca0607ea</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>47f90d2e-a1fb-4d5f-9fa8-e3ab034b6e54</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -32518,7 +32518,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>e8e81f29-4c58-4e0c-acc7-d089ebe3e863</objectId>
-    <strategicGroupReference />
+    <parentGroupReference />
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -32555,9 +32555,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>5a7f6397-7e25-45b6-8423-98b3e22e815a</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>b9f4ff90-f43c-4922-bf2c-4475ca0607ea</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -32597,9 +32597,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>fa3430e2-124a-46dd-a18e-c20a42555159</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>420f4cce-0a91-432d-9df6-a79bf52ce8d5</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -32627,9 +32627,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>a76c17c1-c4be-4917-8422-54553be670b5</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>77135c77-356b-4eca-a404-77d41ce53d37</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -32669,9 +32669,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>f97d2f58-fb9e-487b-a8fb-999246e1804f</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>f085019b-b735-4ad1-bfb5-b94b94aa267b</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -32711,9 +32711,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>bbfbf098-0b5e-400c-90a1-5af53c5e4533</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>f73090fe-6417-426c-96c7-3ba0a0638216</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -32753,9 +32753,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>ccc60016-86aa-40c9-b402-40174ba04ed6</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>eb801c55-b700-4916-85de-e57350a8530d</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -32795,9 +32795,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>bcef7d21-574b-4323-b651-0e67445b25cc</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>93c85a86-de1e-4419-b334-ab132482ac2c</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -32837,9 +32837,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>e0686526-37a4-459a-bc5b-0b0345a980e2</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>990958dd-5d87-4b4e-8f6c-e6503905f2f5</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -32879,9 +32879,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>8debdc25-a274-4158-a38c-c4dc36162a2d</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>50981db4-4301-4799-85d2-1810b49b2e58</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -32920,9 +32920,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>5862b272-0953-46a8-a6f8-bb7353b671b2</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>f73090fe-6417-426c-96c7-3ba0a0638216</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -32962,9 +32962,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>71f4ebf5-1ef0-4dbb-bd00-37dc02dbf05e</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>b9f4ff90-f43c-4922-bf2c-4475ca0607ea</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -33004,9 +33004,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>dc778b97-f5fe-4a1a-869f-58133cb451ab</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>420f4cce-0a91-432d-9df6-a79bf52ce8d5</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -33034,9 +33034,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>e476fcb0-a7c9-478c-b685-d77291ea06b3</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>77135c77-356b-4eca-a404-77d41ce53d37</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -33076,9 +33076,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>e212bfd1-456d-4fc7-8bd3-d57dc997b2f1</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>f085019b-b735-4ad1-bfb5-b94b94aa267b</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -33118,9 +33118,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>fa371e9a-6add-4f6c-84f0-52b5e427e75a</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>8e96a6fd-cc26-4141-8d7b-7525ef0cc8c4</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -33160,9 +33160,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>645d9e54-c6e8-4bef-a17e-558a9f632285</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>8e96a6fd-cc26-4141-8d7b-7525ef0cc8c4</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -33202,9 +33202,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>5eb01bdd-7b9a-401a-89be-3382df10e892</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>eb801c55-b700-4916-85de-e57350a8530d</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -33244,9 +33244,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>9e0224f3-d2ad-4b79-bb3b-939b2096bf03</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>93c85a86-de1e-4419-b334-ab132482ac2c</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -33286,9 +33286,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>7873abb1-5e4c-4e0c-a59c-d43db01842ed</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>990958dd-5d87-4b4e-8f6c-e6503905f2f5</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -33328,9 +33328,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>10a4192d-931c-469b-b315-716438d8c28b</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>50981db4-4301-4799-85d2-1810b49b2e58</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -33369,9 +33369,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>522876be-0947-4332-8bd4-4ff4590fe99b</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>ea5907f6-fa2a-4102-9d23-bc95f1f20ee0</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -33410,9 +33410,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>b8955e93-c485-445a-bea6-03cb3334ff86</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>1d4474c1-4e1a-4851-adb4-28c1595e3358</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -33451,9 +33451,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>5a6008b4-3d17-4ab8-b1a1-6db59608317b</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>597e3e29-935d-4e3c-8465-7064622245c6</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -33492,9 +33492,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>2acf5724-c334-4d1c-99a5-7412c7337c9c</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>47f90d2e-a1fb-4d5f-9fa8-e3ab034b6e54</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -33533,9 +33533,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>e5b44beb-48e2-4296-9a8f-98f89f7d1cc4</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>71ef8ca0-8e61-4eda-b53b-a1f4459d1c5d</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -33576,9 +33576,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>f8481328-de97-4466-af47-6c302493b6ef</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>e7da4734-5986-4765-9687-5c818df24f09</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -33621,9 +33621,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>d87649ad-84bd-4a2d-9ac3-3b7dd97ed8f4</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>f6bd836d-5641-4a06-952d-2329545b8a1a</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -33669,9 +33669,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>a3888f16-9ca8-4a84-9b62-615ed86f1d43</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>e7da4734-5986-4765-9687-5c818df24f09</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -33717,9 +33717,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>682774fd-e96e-4a4c-bbb2-16d3a3f5ed9a</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>f6bd836d-5641-4a06-952d-2329545b8a1a</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -33759,9 +33759,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>6374bb0b-b59f-454f-a223-eb4e414b78b7</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>f6bd836d-5641-4a06-952d-2329545b8a1a</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -33806,9 +33806,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>ec983b9b-ec3f-443c-a7ef-e6ac27a1f8c4</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>e7da4734-5986-4765-9687-5c818df24f09</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -33856,9 +33856,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>f6bd836d-5641-4a06-952d-2329545b8a1a</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>e7da4734-5986-4765-9687-5c818df24f09</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -33890,9 +33890,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>ff0665fc-3324-4015-b532-f94b1f7c6d97</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>d9103ed8-50ae-49ca-810c-6eb72e30264c</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -33924,7 +33924,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0.333333343</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>d1c1613a-412d-4865-a8fc-f3b72273b8a1</objectId>
-    <strategicGroupReference />
+    <parentGroupReference />
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -33971,9 +33971,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0.6666667</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>31fe37b1-d813-4e17-a7e8-c7b29610514e</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>ff0665fc-3324-4015-b532-f94b1f7c6d97</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -34008,9 +34008,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>741e2594-9434-4915-89e2-d17985701961</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>300aee3b-90c3-40c4-8075-0cd8ee37ab19</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -34042,7 +34042,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0.333333343</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>2ec01ac9-17e9-4f9a-8c4d-e05caacea520</objectId>
-    <strategicGroupReference />
+    <parentGroupReference />
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -34073,9 +34073,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0.6666667</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>cb51bc0c-d189-4747-bd49-f61180c10499</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>741e2594-9434-4915-89e2-d17985701961</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -34107,9 +34107,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0.6666667</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>95da6c1b-d4eb-401a-98e0-1cefe2e59ea6</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>6f2ff133-e2e6-429d-b719-88f9124b76b8</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -34166,9 +34166,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0.142857149</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>748b4491-cf73-4f62-8f7d-075e0dcdec09</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>ae078a24-3dee-4111-a4dc-bf301c6cde33</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -34225,9 +34225,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0.2857143</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>c48c4012-e43a-4933-8cc9-5e8755cf6b7f</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>ae078a24-3dee-4111-a4dc-bf301c6cde33</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -34274,9 +34274,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>c42825cb-ad36-44f1-842b-49019caa5d23</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>c1bab757-235c-4e54-8dd7-048a36abd130</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -34332,9 +34332,9 @@ By Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
     <stackPriority>0.333333343</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>71e28861-3373-4cd5-8e0c-c5eed491d5db</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>7fb53e3b-5cdc-4c03-b38f-c2b0d1a4f112</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -34383,9 +34383,9 @@ By Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>8807adb3-1eca-45a9-9274-573ad9f29e3c</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>71e28861-3373-4cd5-8e0c-c5eed491d5db</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -34422,9 +34422,9 @@ By Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>7da4fd10-12a7-4c69-8107-b16396cee390</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>71e28861-3373-4cd5-8e0c-c5eed491d5db</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -34467,9 +34467,9 @@ By Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>df089c53-6033-4d2c-8df2-849dd7593f57</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>71e28861-3373-4cd5-8e0c-c5eed491d5db</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -34530,9 +34530,9 @@ Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>7b96de0e-6c80-4b23-a3f4-2176cfe99148</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>7fb53e3b-5cdc-4c03-b38f-c2b0d1a4f112</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -34580,9 +34580,9 @@ Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
     <stackPriority>0.5</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>1a1422a1-96c0-401d-b71e-fc10e508e678</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>d9c2462c-21c4-4d6a-869b-0a628697cce0</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -34624,9 +34624,9 @@ Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>123b42e1-1cc9-41c6-a612-10a6768eb0e0</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>d9c2462c-21c4-4d6a-869b-0a628697cce0</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -34659,9 +34659,9 @@ Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
     <stackPriority>0.6666667</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>511bc6d0-2ab7-4fa4-99df-bb674c494284</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>300aee3b-90c3-40c4-8075-0cd8ee37ab19</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -34692,7 +34692,7 @@ Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>006864f2-71d6-42be-9210-08555952259d</objectId>
-    <strategicGroupReference />
+    <parentGroupReference />
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -34728,9 +34728,9 @@ Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
     <stackPriority>0.333333343</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>04002987-63e3-4f8e-ac77-9c6595f47f60</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>511bc6d0-2ab7-4fa4-99df-bb674c494284</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -34818,9 +34818,9 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>49f0c009-c700-468b-9268-e9084351835c</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>fd8fd83b-bfa2-4c3b-8396-3dd0d796abad</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -34857,9 +34857,9 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <stackPriority>0.75</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>fd8fd83b-bfa2-4c3b-8396-3dd0d796abad</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>300aee3b-90c3-40c4-8075-0cd8ee37ab19</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -34891,7 +34891,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <stackPriority>0.25</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>7435a9f5-5161-49f0-b1ab-cba06b6eee0b</objectId>
-    <strategicGroupReference />
+    <parentGroupReference />
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -34972,9 +34972,9 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <stackPriority>0.5</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>c57852e7-58fc-4373-87f0-016a1043d705</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>fd8fd83b-bfa2-4c3b-8396-3dd0d796abad</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -35019,9 +35019,9 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>f11d4aee-dea9-4776-913c-a1d684510b06</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>490423ba-377f-498f-afce-5f90463901d4</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -35058,7 +35058,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>cd2d3e47-9de3-4d98-8bb4-4435b320f9f0</objectId>
-    <strategicGroupReference />
+    <parentGroupReference />
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -35095,7 +35095,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>03952567-843b-4447-8574-ecf41bcfa11c</objectId>
-    <strategicGroupReference />
+    <parentGroupReference />
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -35130,9 +35130,9 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <stackPriority>0.428571433</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>1ca93054-7ae0-4bd5-bfb4-2643c57fa8b5</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>ae078a24-3dee-4111-a4dc-bf301c6cde33</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -35159,7 +35159,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <stackPriority>0.333333343</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>6a736f8b-040e-47ef-93fe-bb0b657db07f</objectId>
-    <strategicGroupReference />
+    <parentGroupReference />
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -35204,9 +35204,9 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>0c2e2e38-544a-4552-a149-4656e40e2239</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>ecac6d58-7c5e-49ed-b50f-88501c73fb4a</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -35236,9 +35236,9 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <stackPriority>0.6</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>64009a7e-d665-4c23-b499-56061a062a60</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>c1bab757-235c-4e54-8dd7-048a36abd130</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -35281,9 +35281,9 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>3391b8ea-4a7a-44d2-bdf1-f70f42bbd346</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>c1d45c08-3ada-495e-adf9-a6f840c5b571</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -35313,7 +35313,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <stackPriority>0.333333343</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>15a7175c-1740-4b9f-863e-d83ed2d16962</objectId>
-    <strategicGroupReference />
+    <parentGroupReference />
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -35343,7 +35343,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <stackPriority>0.6666667</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>c1d45c08-3ada-495e-adf9-a6f840c5b571</objectId>
-    <strategicGroupReference />
+    <parentGroupReference />
    </StrategicGroup>
   </strategicGroups>
   <scenarioState>

@@ -1411,7 +1411,7 @@ namespace StrategicCombatCore
         {
             foreach(var group in strategicGroups.ToList())
             {
-                var parentGroup = group.strategicGroupReference.Get();
+                var parentGroup = group.parentGroupReference.Get();
                 if (group.autoCombinable && group.deployState == StrategicGroup.DeployState.Independent)
                 {
                     // if (parentGroup.x == group.x && parentGroup.y == group.y)
@@ -1441,7 +1441,7 @@ namespace StrategicCombatCore
                 if (!group.detachedRepair || group.deployState != StrategicGroup.DeployState.Independent)
                     continue;
 
-                var parentGroup = group.strategicGroupReference.Get();
+                var parentGroup = group.parentGroupReference.Get();
                 if (parentGroup == null || parentGroup.cell != group.cell)
                     continue;
 
@@ -2254,7 +2254,7 @@ namespace StrategicCombatCore
 
         static bool TheaterNamingGroupHasNoSuperior(StrategicGroup group)
         {
-            var parentGroup = group?.strategicGroupReference?.Get();
+            var parentGroup = group?.parentGroupReference?.Get();
             return parentGroup == null || parentGroup == group;
         }
 
@@ -2501,7 +2501,7 @@ namespace StrategicCombatCore
                 return true;
 
             var visitedGroupIds = new HashSet<string>() { group.objectId };
-            var parentId = group.strategicGroupReference.referenceId;
+            var parentId = group.parentGroupReference.referenceId;
             while (!string.IsNullOrWhiteSpace(parentId))
             {
                 if (!groupMap.TryGetValue(parentId, out var parentGroup))
@@ -2510,7 +2510,7 @@ namespace StrategicCombatCore
                 if (!visitedGroupIds.Add(parentId))
                     return false;
 
-                parentId = parentGroup.strategicGroupReference.referenceId;
+                parentId = parentGroup.parentGroupReference.referenceId;
             }
 
             return true;
@@ -2549,16 +2549,16 @@ namespace StrategicCombatCore
 
             foreach (var member in memberMap.Values)
             {
-                var parentId = member.strategicGroupReference.referenceId;
+                var parentId = member.parentGroupReference.referenceId;
                 if (string.IsNullOrWhiteSpace(parentId) || !groupMap.ContainsKey(parentId))
                 {
-                    member.strategicGroupReference.referenceId = null;
+                    member.parentGroupReference.referenceId = null;
                     continue;
                 }
 
                 if (member is StrategicGroup memberGroup && memberGroup.objectId == parentId)
                 {
-                    memberGroup.strategicGroupReference.referenceId = null;
+                    memberGroup.parentGroupReference.referenceId = null;
                 }
             }
 
@@ -2604,11 +2604,11 @@ namespace StrategicCombatCore
 
             foreach (var claimedParentId in claimedParentIds)
             {
-                memberMap[claimedParentId.Key].strategicGroupReference.referenceId = claimedParentId.Value;
+                memberMap[claimedParentId.Key].parentGroupReference.referenceId = claimedParentId.Value;
             }
 
             var groupsWithCycles = strategicGroups
-                .Where(group => group != null && !string.IsNullOrWhiteSpace(group.strategicGroupReference.referenceId))
+                .Where(group => group != null && !string.IsNullOrWhiteSpace(group.parentGroupReference.referenceId))
                 .ToList();
             foreach (var group in groupsWithCycles)
             {
@@ -2616,7 +2616,7 @@ namespace StrategicCombatCore
                     continue;
 
                 RemoveDirectMemberReferenceFromAllGroups(group.objectId);
-                group.strategicGroupReference.referenceId = null;
+                group.parentGroupReference.referenceId = null;
             }
 
             var finalClaimedIds = strategicGroups
@@ -2630,7 +2630,7 @@ namespace StrategicCombatCore
             {
                 if (!finalClaimedIds.Contains(member.objectId))
                 {
-                    member.strategicGroupReference.referenceId = null;
+                    member.parentGroupReference.referenceId = null;
                 }
             }
         }

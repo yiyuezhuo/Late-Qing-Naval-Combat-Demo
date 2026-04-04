@@ -23,21 +23,21 @@ public class SubordinatePickerDialog
     public Mode mode = Mode.ParentUnassignedMember;
 
     // [CreateProperty]
-    // public List<ShipLog> unassignedShipLogs => !showNonParentGroupOnly ? StrategicGameState.Instance.shipLogs : StrategicGameState.Instance.shipLogs.Where(shipLog => !shipLog.strategicGroupReference.isReferenceAny()).ToList();
+    // public List<ShipLog> unassignedShipLogs => !showNonParentGroupOnly ? StrategicGameState.Instance.shipLogs : StrategicGameState.Instance.shipLogs.Where(shipLog => !shipLog.parentGroupReference.isReferenceAny()).ToList();
 
     // [CreateProperty]
-    // public List<LandUnit> unassignedLandUnits => !showNonParentGroupOnly ? StrategicGameState.Instance.landUnits : StrategicGameState.Instance.landUnits.Where(landUnit => !landUnit.strategicGroupReference.isReferenceAny()).ToList();
+    // public List<LandUnit> unassignedLandUnits => !showNonParentGroupOnly ? StrategicGameState.Instance.landUnits : StrategicGameState.Instance.landUnits.Where(landUnit => !landUnit.parentGroupReference.isReferenceAny()).ToList();
 
     // [CreateProperty]
-    // public List<StrategicGroup> unassignedGroups => !showNonParentGroupOnly ? StrategicGameState.Instance.strategicGroups : StrategicGameState.Instance.strategicGroups.Where(group => !group.strategicGroupReference.isReferenceAny()).ToList();
+    // public List<StrategicGroup> unassignedGroups => !showNonParentGroupOnly ? StrategicGameState.Instance.strategicGroups : StrategicGameState.Instance.strategicGroups.Where(group => !group.parentGroupReference.isReferenceAny()).ToList();
 
     public List<ShipLog> filteredShipLogs;
     public List<LandUnit> filteredLandUnits;
     public List<StrategicGroup> filteredGroups;
 
-    // public List<ShipLog> MakeUnassignedShipLogs() => !showNonParentGroupOnly ? StrategicGameState.Instance.shipLogs : StrategicGameState.Instance.shipLogs.Where(shipLog => !shipLog.strategicGroupReference.isReferenceAny()).ToList();
-    // public List<LandUnit> MakeUnassignedLandUnits() => !showNonParentGroupOnly ? StrategicGameState.Instance.landUnits : StrategicGameState.Instance.landUnits.Where(landUnit => !landUnit.strategicGroupReference.isReferenceAny()).ToList();
-    // public List<StrategicGroup> MakeUnassignedGroups() => !showNonParentGroupOnly ? StrategicGameState.Instance.strategicGroups : StrategicGameState.Instance.strategicGroups.Where(group => !group.strategicGroupReference.isReferenceAny()).ToList();
+    // public List<ShipLog> MakeUnassignedShipLogs() => !showNonParentGroupOnly ? StrategicGameState.Instance.shipLogs : StrategicGameState.Instance.shipLogs.Where(shipLog => !shipLog.parentGroupReference.isReferenceAny()).ToList();
+    // public List<LandUnit> MakeUnassignedLandUnits() => !showNonParentGroupOnly ? StrategicGameState.Instance.landUnits : StrategicGameState.Instance.landUnits.Where(landUnit => !landUnit.parentGroupReference.isReferenceAny()).ToList();
+    // public List<StrategicGroup> MakeUnassignedGroups() => !showNonParentGroupOnly ? StrategicGameState.Instance.strategicGroups : StrategicGameState.Instance.strategicGroups.Where(group => !group.parentGroupReference.isReferenceAny()).ToList();
 
     ListView shipListView;
     ListView landUnitListView;
@@ -60,9 +60,9 @@ public class SubordinatePickerDialog
         if (mode == Mode.ParentUnassignedMember)
         {
             // Debug.Log(1);
-            filteredShipLogs = filteredShipLogs.Where(shipLog => !shipLog.strategicGroupReference.isReferenceAny()).ToList();
-            filteredLandUnits = filteredLandUnits.Where(landUnit => !landUnit.strategicGroupReference.isReferenceAny()).ToList();
-            filteredGroups = filteredGroups.Where(group => !group.strategicGroupReference.isReferenceAny()).ToList();
+            filteredShipLogs = filteredShipLogs.Where(shipLog => !shipLog.parentGroupReference.isReferenceAny()).ToList();
+            filteredLandUnits = filteredLandUnits.Where(landUnit => !landUnit.parentGroupReference.isReferenceAny()).ToList();
+            filteredGroups = filteredGroups.Where(group => !group.parentGroupReference.isReferenceAny()).ToList();
         }
         else if (mode == Mode.Depot)
         {

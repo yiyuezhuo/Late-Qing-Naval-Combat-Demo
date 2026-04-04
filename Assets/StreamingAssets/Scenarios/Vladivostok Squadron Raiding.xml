@@ -435,9 +435,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>929b331f-b157-43ff-883b-d175d9549859</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>f99477a6-49ae-4f0d-9f5b-09fc0543f47e</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -860,9 +860,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>234f4724-f391-4747-a1f4-047031c4b936</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>f99477a6-49ae-4f0d-9f5b-09fc0543f47e</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -1377,9 +1377,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>7401a4b2-6831-4909-9f5a-24274a935c28</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>f99477a6-49ae-4f0d-9f5b-09fc0543f47e</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -1665,9 +1665,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>c006956f-a843-4d7f-8a04-133c8b79e697</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>f99477a6-49ae-4f0d-9f5b-09fc0543f47e</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -2053,9 +2053,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>1f7793b3-ea4b-4a8c-9d68-4454577b10fa</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>a65da163-4f17-4ab8-be8e-dd7d7389ee67</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -2423,9 +2423,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>260bfbd6-e122-4b72-ae8c-c5931d8647c4</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>a65da163-4f17-4ab8-be8e-dd7d7389ee67</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -2811,9 +2811,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>7678b19f-c5b1-40e3-80ff-0fcdadb86a8e</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>a65da163-4f17-4ab8-be8e-dd7d7389ee67</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -3199,9 +3199,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>7252fce7-e8e4-4a3d-a2ec-086befe170f0</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>a65da163-4f17-4ab8-be8e-dd7d7389ee67</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -3587,9 +3587,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>364276a6-5b5d-4cda-a512-f93aa85adf12</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>a65da163-4f17-4ab8-be8e-dd7d7389ee67</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -3948,9 +3948,9 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>1ea45719-c8f0-49a4-affc-3d2c9d1828f2</objectId>
     </doctrine>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>a65da163-4f17-4ab8-be8e-dd7d7389ee67</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </ShipLog>
   </shipLogs>
   <serializedCustomBoolMap />
@@ -4506,9 +4506,9 @@
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>0341200d-9758-4163-91cf-41a6d1116bd3</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>7cc10e6e-260c-4492-8f4c-304596825029</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -4535,9 +4535,9 @@
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>03762cd1-571c-4b1a-bf0b-cdc6f9b7b856</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>d7239c1d-abdf-49fe-80bc-a2568d837526</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -4589,9 +4589,9 @@
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>85c6b847-efe0-4227-bde9-a2b82454188e</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>6a301c4b-f894-4223-a719-0831dc11c156</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -4618,9 +4618,9 @@
     <portLevel>10</portLevel>
     <repairShipyardLevel>20</repairShipyardLevel>
     <objectId>fedc9e74-2c1f-4ecc-9085-bdf1f5e97101</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>867755df-7de6-44a3-a0c1-c733bc0cfe9c</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -4647,9 +4647,9 @@
     <portLevel>10</portLevel>
     <repairShipyardLevel>20</repairShipyardLevel>
     <objectId>1b80c744-b892-41e1-96be-bd6e81aaf829</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>7cc10e6e-260c-4492-8f4c-304596825029</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -4676,9 +4676,9 @@
     <portLevel>10</portLevel>
     <repairShipyardLevel>20</repairShipyardLevel>
     <objectId>f779b4c8-82c5-43ca-8024-4cf6c8adf778</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>d7239c1d-abdf-49fe-80bc-a2568d837526</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -4705,9 +4705,9 @@
     <portLevel>5</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>6d0989bf-ffa1-4103-9e0a-2d70e286734f</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>6a301c4b-f894-4223-a719-0831dc11c156</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
    <LandUnit>
     <name>
@@ -4732,9 +4732,9 @@
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
     <objectId>f1378a47-5c3b-4db1-b663-13efa30cc241</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>867755df-7de6-44a3-a0c1-c733bc0cfe9c</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </LandUnit>
   </landUnits>
   <weapons />
@@ -4770,7 +4770,7 @@
     <stackPriority>0.333333343</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>00552ba8-0962-43c1-9da7-31a07da39aaa</objectId>
-    <strategicGroupReference />
+    <parentGroupReference />
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -4804,7 +4804,7 @@
     <stackPriority>0.6666667</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>6a301c4b-f894-4223-a719-0831dc11c156</objectId>
-    <strategicGroupReference />
+    <parentGroupReference />
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -4848,9 +4848,9 @@
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>f99477a6-49ae-4f0d-9f5b-09fc0543f47e</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>00552ba8-0962-43c1-9da7-31a07da39aaa</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -4885,9 +4885,9 @@
     <stackPriority>0.5</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>4efd9eac-e7d0-4c88-8c33-8094b3c8d5cf</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>7b01e810-a85c-4833-a283-de9529d45258</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -4934,9 +4934,9 @@
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>a65da163-4f17-4ab8-be8e-dd7d7389ee67</objectId>
-    <strategicGroupReference>
+    <parentGroupReference>
      <referenceId>4efd9eac-e7d0-4c88-8c33-8094b3c8d5cf</referenceId>
-    </strategicGroupReference>
+    </parentGroupReference>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -4972,7 +4972,7 @@
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>d7239c1d-abdf-49fe-80bc-a2568d837526</objectId>
-    <strategicGroupReference />
+    <parentGroupReference />
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -5008,7 +5008,7 @@
     <stackPriority>0.5</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>7cc10e6e-260c-4492-8f4c-304596825029</objectId>
-    <strategicGroupReference />
+    <parentGroupReference />
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -5044,7 +5044,7 @@
     <stackPriority>0</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>867755df-7de6-44a3-a0c1-c733bc0cfe9c</objectId>
-    <strategicGroupReference />
+    <parentGroupReference />
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -5077,7 +5077,7 @@
     <stackPriority>0.5</stackPriority>
     <enableArriveState>false</enableArriveState>
     <objectId>7b01e810-a85c-4833-a283-de9529d45258</objectId>
-    <strategicGroupReference />
+    <parentGroupReference />
    </StrategicGroup>
   </strategicGroups>
   <scenarioState>

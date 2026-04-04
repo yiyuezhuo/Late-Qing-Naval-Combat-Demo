@@ -539,7 +539,7 @@ public static class Utils
         {
             if (TryResolveCurrentValueForBinding(gotoParentButton, out IStrategicGroupMemberReferenceable group))
             {
-                var parentGroup = group.strategicGroupReference.Get();
+                var parentGroup = group.parentGroupReference.Get();
                 // var idx = StrategicGameState.Instance.strategicGroups.IndexOf(parentGroup);
                 // if (parentGroup != null && idx != -1)
                 // {

@@ -10,7 +10,7 @@ namespace NavalCombatCore
     public partial class ShipLog : IStrategicGroupMemberReferenceable, ISupplyNetworkNode
     {
         // public string strategicGroupId;
-        public StrategicGroupReference strategicGroupReference { get; set; } = new();
+        public StrategicGroupReference parentGroupReference { get; set; } = new();
         public void SetStrategicGroupReference(StrategicGroup group) => IStrategicGroupMemberReferenceable.SetStrategicGroupReference(this, group);
         public double supplyTons;
         
@@ -82,8 +82,8 @@ namespace NavalCombatCore
         public double GetSupplyTons() => supplyTons;
         public void SetSupplyTons(double value) => supplyTons = value;
         public SupplyTransferState GetSupplyTransferState() => supplyTransferState;
-        public Cell cell => strategicGroupReference.GetCell();
-        public SideState side => strategicGroupReference.GetSide();
+        public Cell cell => parentGroupReference.GetCell();
+        public SideState side => parentGroupReference.GetSide();
         public bool IsDepotSameCellOnlySupply() => true;
         public double GetTransferableWeightTons() => (shipClass?.displacementTons ?? 0) * 0.4; // 40%
 

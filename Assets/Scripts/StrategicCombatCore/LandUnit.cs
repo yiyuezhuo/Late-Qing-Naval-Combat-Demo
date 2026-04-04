@@ -24,7 +24,7 @@ namespace StrategicCombatCore
         public string remark;
 
         // public string strategicGroupId;
-        public StrategicGroupReference strategicGroupReference { get; set; } = new();
+        public StrategicGroupReference parentGroupReference { get; set; } = new();
 
         public string landUnitTemplateId;
         public LandUnitTemplate GetLandUnitTemplate() => EntityManager.Instance.Get<LandUnitTemplate>(landUnitTemplateId);
@@ -131,7 +131,7 @@ namespace StrategicCombatCore
 
         float GetSupplyCostTonsPerDayForDepot()
         {
-            var parentGroup = strategicGroupReference.Get();
+            var parentGroup = parentGroupReference.Get();
             if (parentGroup == null)
                 return 0;
             var firstDepot = parentGroup.subordinatesCombined.FirstOrDefault(r => r.Get() is LandUnit landUnit && landUnit?.GetLandUnitTemplate()?.unitType == LandUnitType.Supply);
@@ -157,9 +157,9 @@ namespace StrategicCombatCore
             return strength * baseNormalTransferWeightTonPerMen * unitTypeCoef + supplyTons;
         }
 
-        public Cell cell => strategicGroupReference.GetCell();
+        public Cell cell => parentGroupReference.GetCell();
 
-        public SideState side => strategicGroupReference.GetSide();
+        public SideState side => parentGroupReference.GetSide();
 
         GlobalString ISupplyNetworkNode.GetName() => name;
         public double GetSupplyTons() => supplyTons;

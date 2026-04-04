@@ -142,7 +142,7 @@ namespace StrategicCombatCore
                 }
                 else if (deployState == DeployState.Combined)
                 {
-                    return strategicGroupReference.Get()?.x ?? -1;
+                    return parentGroupReference.Get()?.x ?? -1;
                 }
                 return independentX;
             }
@@ -166,7 +166,7 @@ namespace StrategicCombatCore
                 }
                 else if (deployState == DeployState.Combined)
                 {
-                    return strategicGroupReference.Get()?.y ?? -1;
+                    return parentGroupReference.Get()?.y ?? -1;
                 }
                 return independentY;
             }
@@ -190,7 +190,7 @@ namespace StrategicCombatCore
                 }
                 else if(deployState == DeployState.Combined)
                 {
-                    return strategicGroupReference.Get()?.areaCellObjectId;
+                    return parentGroupReference.Get()?.areaCellObjectId;
                 }
                 return independentAreaCellObjectId;
             }
@@ -202,7 +202,7 @@ namespace StrategicCombatCore
         // public List<StrategicGroupMemberReference> subordinatesInCommandOfChain = new();
 
         // public string strategicGroupId;
-        public StrategicGroupReference strategicGroupReference { get; set; } = new(); // parent strategic group
+        public StrategicGroupReference parentGroupReference { get; set; } = new(); // parent strategic group
         public string assignedMissionObjectId;
         public string homeBaseObjectId;
 
@@ -230,7 +230,7 @@ namespace StrategicCombatCore
         {
             if (deployState != DeployState.Independent)
             {
-                var parentGroup = strategicGroupReference.Get();
+                var parentGroup = parentGroupReference.Get();
                 if (parentGroup == null || parentGroup == this)
                     return null;
                 return parentGroup.GetHomeBaseGroup();
@@ -312,7 +312,7 @@ namespace StrategicCombatCore
             get
             {
                 var currentSide = side;
-                // return hexInfo.strategicGroupReferences.Select(r => r.Get()).Where(g => g.side == currentSide).ToList();
+                // return hexInfo.parentGroupReferences.Select(r => r.Get()).Where(g => g.side == currentSide).ToList();
                 return cell.StrategicGroupReferences.Select(r => r.Get()).Where(g => g.side == currentSide).ToList();
             }
         }
@@ -387,8 +387,8 @@ namespace StrategicCombatCore
             { StrategicUnitSize.Regiment, "III" },
             { StrategicUnitSize.Battalion, "II" },
             { StrategicUnitSize.Company, "I" },
-            { StrategicUnitSize.Platoon, "···" },
-            { StrategicUnitSize.Squad, "··" },
+            { StrategicUnitSize.Platoon, "ﾂｷﾂｷﾂｷ" },
+            { StrategicUnitSize.Squad, "ﾂｷﾂｷ" },
         };
 
         public override string ToString()
@@ -413,7 +413,7 @@ namespace StrategicCombatCore
             {
                 if (pt.deployState == DeployState.Independent)
                     return true;
-                pt = pt.strategicGroupReference.Get(); 
+                pt = pt.parentGroupReference.Get(); 
             }
             return false;
         }
@@ -560,17 +560,17 @@ namespace StrategicCombatCore
             if (member == null)
                 return;
 
-            var oldParentGroup = member.strategicGroupReference.Get();
+            var oldParentGroup = member.parentGroupReference.Get();
             if (oldParentGroup == newParentGroup)
             {
                 newParentGroup?.EnsureDirectMemberReference(member.objectId);
-                member.strategicGroupReference.referenceId = newParentGroup?.objectId;
+                member.parentGroupReference.referenceId = newParentGroup?.objectId;
                 return;
             }
 
             oldParentGroup?.RemoveDirectMemberReference(member.objectId);
             newParentGroup?.EnsureDirectMemberReference(member.objectId);
-            member.strategicGroupReference.referenceId = newParentGroup?.objectId;
+            member.parentGroupReference.referenceId = newParentGroup?.objectId;
         }
 
         public void AttachMember(IStrategicGroupMemberReferenceable member) => ReassignMember(member, this);
@@ -588,18 +588,18 @@ namespace StrategicCombatCore
             var oldMember = slot.Get();
             if (oldMember != null)
             {
-                oldMember.strategicGroupReference.referenceId = null;
+                oldMember.parentGroupReference.referenceId = null;
             }
 
             slot.referenceId = null;
             if (newMember == null)
                 return true;
 
-            var oldParentGroup = newMember.strategicGroupReference.Get();
+            var oldParentGroup = newMember.parentGroupReference.Get();
             oldParentGroup?.RemoveDirectMemberReference(newMember.objectId);
 
             slot.referenceId = newMember.objectId;
-            newMember.strategicGroupReference.referenceId = objectId;
+            newMember.parentGroupReference.referenceId = objectId;
             subordinatesCombined.RemoveAll(reference => !ReferenceEquals(reference, slot) && reference.referenceId == newMember.objectId);
             return true;
         }
@@ -695,7 +695,7 @@ namespace StrategicCombatCore
                 var container = EntityManager.Instance.Get<ShipLog>(containerObjectId);
                 if(container != null)
                 {
-                    var containerGroup = container.strategicGroupReference.Get();
+                    var containerGroup = container.parentGroupReference.Get();
                     if(containerGroup != null)
                     {
                         // MoveToCell(containerGroup.x, containerGroup.y, false);
@@ -721,7 +721,7 @@ namespace StrategicCombatCore
 
             if (deployState == DeployState.Independent)
             {
-                // cellInfo.strategicGroupReferences.RemoveAll(gp => gp.referenceId == objectId);
+                // cellInfo.parentGroupReferences.RemoveAll(gp => gp.referenceId == objectId);
                 cell.StrategicGroupReferences.RemoveAll(gp => gp.referenceId == objectId);
             }
 
@@ -741,7 +741,7 @@ namespace StrategicCombatCore
 
             if (newState == DeployState.Independent)
             {
-                var parentGroup = strategicGroupReference.Get();
+                var parentGroup = parentGroupReference.Get();
                 var parentCell = parentGroup?.cell;
                 if (parentCell != null)
                 {
@@ -963,7 +963,7 @@ namespace StrategicCombatCore
             gameState.strategicGroups.Insert(idx + 1, newGroup);
             EntityManager.Instance.Register(newGroup, null);
 
-            newGroup.AttachTo(strategicGroupReference.Get());
+            newGroup.AttachTo(parentGroupReference.Get());
 
             if (deployState == DeployState.Independent)
             {
@@ -1192,7 +1192,7 @@ namespace StrategicCombatCore
         public StrategicGroup GetDepotGroup()
         {
             var groupDepot = GetCurrentSourceDepot();
-            return groupDepot?.strategicGroupReference.Get();
+            return groupDepot?.parentGroupReference.Get();
         }
 
         public bool IsInDepotLocation()

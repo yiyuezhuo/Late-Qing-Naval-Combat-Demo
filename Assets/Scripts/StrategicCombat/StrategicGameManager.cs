@@ -716,7 +716,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         //     foreach(var unitRef in group.subordinatesCombined)
         //     {
         //         var unit = unitRef.Get();
-        //         unit.strategicGroupReference.referenceId = group.objectId;
+        //         unit.parentGroupReference.referenceId = group.objectId;
         //     }
         // }
 
@@ -725,14 +725,14 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
         // foreach (var group in StrategicGameState.Instance.strategicGroups)
         // {
-        //     var parentGroup = group.strategicGroupReference.Get();
+        //     var parentGroup = group.parentGroupReference.Get();
         //     if (parentGroup != null)
         //     {
         //         var matched = parentGroup.subordinatesCombined.Any(ordRef => ordRef.Get() == group);
         //         if (!matched)
         //         {
         //             Debug.Log($"Fix: {group.name.mergedName}");
-        //             group.strategicGroupReference.referenceId = null;
+        //             group.parentGroupReference.referenceId = null;
         //         }
         //     }
         // }
@@ -753,12 +753,12 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         // foreach (var ((x, y), hexInfo) in StrategicGameState.Instance.hexInfoMap)
         // {
         //     var hex = StrategicGameState.Instance.cellMatrix[x, y];
-        //     hex.StrategicGroupReferences.AddRange(hexInfo.strategicGroupReferences);
+        //     hex.StrategicGroupReferences.AddRange(hexInfo.parentGroupReferences);
         // }
 
         // foreach (var hexInfo in StrategicGameState.Instance.hexInfoMap.Values)
         // {
-        //     hexInfo.strategicGroupReference.Clear();
+        //     hexInfo.parentGroupReference.Clear();
         // }
 
         // foreach (var group in StrategicGameState.Instance.strategicGroups)
@@ -772,7 +772,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         //     foreach (var subordinate in group.subordinatesCombined)
         //     {
         //         var obj = subordinate.Get();
-        //         obj.strategicGroupReference.referenceId = group.objectId;
+        //         obj.parentGroupReference.referenceId = group.objectId;
         //     }
         // }
 
@@ -1082,14 +1082,14 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
     static Cell ResolveSuperiorDisplayCell(StrategicGroup selectedGroup)
     {
-        var parentGroup = selectedGroup?.strategicGroupReference.Get();
+        var parentGroup = selectedGroup?.parentGroupReference.Get();
         while (parentGroup != null)
         {
             var cell = parentGroup.cell;
             if (cell != null)
                 return cell;
 
-            parentGroup = parentGroup.strategicGroupReference.Get();
+            parentGroup = parentGroup.parentGroupReference.Get();
         }
 
         return null;

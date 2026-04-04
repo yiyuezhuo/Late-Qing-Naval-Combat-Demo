@@ -296,6 +296,12 @@ public static class StrategicGroupSubGroupUtility
 
 public class StrategicGroupTransferDialog
 {
+    enum AttachMode
+    {
+        Permanent,
+        TemporaryAttach,
+    }
+
     class TargetOption
     {
         public string label;
@@ -331,6 +337,7 @@ public class StrategicGroupTransferDialog
 
     DropdownField sourceDropdownField;
     DropdownField targetDropdownField;
+    DropdownField attachModeDropdownField;
     Toggle includeCombinedToggle;
     Toggle createIndependentSubGroupToggle;
     VisualElement createIndependentSubGroupRow;
@@ -347,6 +354,7 @@ public class StrategicGroupTransferDialog
     string selectedSourceGroupId;
     string selectedTargetGroupId = CreateNewTargetValue;
     bool createIndependentSubGroup = true;
+    AttachMode attachMode;
 
     StrategicGroup InitialGroup => EntityManager.Instance.Get<StrategicGroup>(initialGroupObjectId);
 
@@ -374,6 +382,7 @@ public class StrategicGroupTransferDialog
     {
         sourceDropdownField = el.Q<DropdownField>("SourceGroupDropdownField");
         targetDropdownField = el.Q<DropdownField>("TargetGroupDropdownField");
+        attachModeDropdownField = el.Q<DropdownField>("AttachModeDropdownField");
         includeCombinedToggle = el.Q<Toggle>("IncludeCombinedToggle");
         createIndependentSubGroupToggle = el.Q<Toggle>("CreateIndependentSubGroupToggle");
         createIndependentSubGroupRow = el.Q<VisualElement>("CreateIndependentSubGroupRow");
@@ -387,6 +396,16 @@ public class StrategicGroupTransferDialog
         includeCombinedToggle?.SetValueWithoutNotify(includeCombined);
         createIndependentSubGroupToggle?.SetValueWithoutNotify(true);
         createIndependentSubGroup = true;
+        attachMode = AttachMode.Permanent;
+        if (attachModeDropdownField != null)
+        {
+            attachModeDropdownField.choices = new()
+            {
+                Localize("Permanent"),
+                Localize("Temporarily Attach"),
+            };
+            attachModeDropdownField.index = 0;
+        }
         UpdateCreateIndependentSubGroupRow(resetToggle: true);
 
         sourceDropdownField?.RegisterValueChangedCallback(_ =>
@@ -429,6 +448,16 @@ public class StrategicGroupTransferDialog
             createIndependentSubGroup = evt.newValue;
         });
 
+        attachModeDropdownField?.RegisterValueChangedCallback(_ =>
+        {
+            if (suppressCallbacks)
+                return;
+
+            attachMode = attachModeDropdownField.index == 1
+                ? AttachMode.TemporaryAttach
+                : AttachMode.Permanent;
+        });
+
         RefreshSourceOptions();
         RefreshTargetOptions();
         ResetStagedLists();
@@ -457,7 +486,7 @@ public class StrategicGroupTransferDialog
                 var member = EntityManager.Instance.Get<IStrategicGroupMemberReferenceable>(objectId);
                 if (member != null)
                 {
-                    sourceGroup.MoveElementTo(member, newGroup);
+                    ApplyMemberTransfer(member, newGroup);
                 }
             }
             return;
@@ -476,7 +505,7 @@ public class StrategicGroupTransferDialog
             var member = EntityManager.Instance.Get<IStrategicGroupMemberReferenceable>(objectId);
             if (member != null)
             {
-                sourceGroup.MoveElementTo(member, targetGroup);
+                ApplyMemberTransfer(member, targetGroup);
             }
         }
 
@@ -485,8 +514,20 @@ public class StrategicGroupTransferDialog
             var member = EntityManager.Instance.Get<IStrategicGroupMemberReferenceable>(objectId);
             if (member != null)
             {
-                targetGroup.MoveElementTo(member, sourceGroup);
+                ApplyMemberTransfer(member, sourceGroup);
             }
+        }
+    }
+
+    void ApplyMemberTransfer(IStrategicGroupMemberReferenceable member, StrategicGroup targetGroup)
+    {
+        if (attachMode == AttachMode.TemporaryAttach)
+        {
+            IStrategicGroupMemberReferenceable.TemporaryAttachTo(member, targetGroup);
+        }
+        else
+        {
+            IStrategicGroupMemberReferenceable.PermanentTransferTo(member, targetGroup);
         }
     }
 

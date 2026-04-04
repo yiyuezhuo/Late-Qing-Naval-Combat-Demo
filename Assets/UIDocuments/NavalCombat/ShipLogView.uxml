@@ -1,6 +1,7 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="DoctrineEditor" src="project://database/Assets/UIDocuments/NavalCombat/DoctrineEditor.uxml?fileID=9197481963319205126&amp;guid=9963f3ab57e9cd545869989ed4b99a3d&amp;type=3#DoctrineEditor"/>
     <ui:Template name="IStrategicGroupMemberReferenceableParentDepotUI" src="project://database/Assets/UIDocuments/Templates/IStrategicGroupMemberReferenceableParentDepotUI.uxml?fileID=9197481963319205126&amp;guid=a4efcf1499aee3c4e856250902f80d71&amp;type=3#IStrategicGroupMemberReferenceableParentDepotUI"/>
+    <ui:Template name="IStrategicGroupMemberReferenceableDetachedUI" src="project://database/Assets/UIDocuments/Templates/IStrategicGroupMemberReferenceableDetachedUI.uxml?fileID=9197481963319205126&amp;guid=3f3d593c5cc7421cb86f379bf1b62239&amp;type=3#IStrategicGroupMemberReferenceableDetachedUI"/>
     <ui:Template name="SubStateMultiColumnListView" src="project://database/Assets/UIDocuments/NavalCombat/SubStateMultiColumnListView.uxml?fileID=9197481963319205126&amp;guid=24ad9cde11c482e408a031471b51bca7&amp;type=3#SubStateMultiColumnListView"/>
     <ui:VisualElement name="ShipLogView" data-source-type="NavalCombatCore.ShipLog, Assembly-CSharp" style="flex-grow: 1;">
         <ui:VisualElement style="flex-grow: 0; flex-direction: row; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
@@ -629,6 +630,7 @@
                 </ui:Tab>
                 <ui:Tab label="Strategic">
                     <ui:VisualElement style="flex-grow: 1;">
+                        <ui:Instance template="IStrategicGroupMemberReferenceableDetachedUI"/>
                         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
                             <ui:VisualElement style="flex-grow: 1; flex-basis: 50px;">
                                 <ui:DoubleField label="Supply (tons)">

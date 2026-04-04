@@ -11,6 +11,8 @@ namespace NavalCombatCore
     {
         // public string strategicGroupId;
         public StrategicGroupReference parentGroupReference { get; set; } = new();
+        public StrategicGroupReference detachedFromGroupReference { get; set; } = new();
+        public bool enableAutoReattach { get; set; }
         public void SetStrategicGroupReference(StrategicGroup group) => IStrategicGroupMemberReferenceable.SetStrategicGroupReference(this, group);
         public double supplyTons;
         

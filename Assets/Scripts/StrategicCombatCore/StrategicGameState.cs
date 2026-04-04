@@ -816,6 +816,7 @@ namespace StrategicCombatCore
             Advance1HourForMovement();
             Advance1HourForGroupPosture();
             Advance1HourForRepair();
+            Advance1HourForDetachedAutoReattach();
 
             CombinedAutoCombinableAndDissolvable();
 
@@ -1072,6 +1073,26 @@ namespace StrategicCombatCore
             {
                 var damageRepairResolver = new DamageRepairResolver();
                 damageRepairResolver.Resolve();
+            }
+        }
+
+        public void Advance1HourForDetachedAutoReattach()
+        {
+            foreach (var member in IterAllStrategicGroupMembers().ToList())
+            {
+                if (member == null || !member.enableAutoReattach)
+                    continue;
+
+                if (member.GetDetachedFromGroup() == null)
+                {
+                    IStrategicGroupMemberReferenceable.ClearDetachedFromGroupState(member);
+                    continue;
+                }
+
+                if (!member.IsOnSameCellWithDetachedFromGroup())
+                    continue;
+
+                IStrategicGroupMemberReferenceable.TryReattachToDetachedFromGroup(member);
             }
         }
 
@@ -1505,6 +1526,28 @@ namespace StrategicCombatCore
                 // Ship ammunition replenishment, if supply percentage >= 10% of displacement (standard fuel capacity), convert supply to ammo
                 DoShipAmmunitionReplenishment();
             }
+        }
+
+        public bool TryDestroyGroupIfEmptyRecursive(StrategicGroup group)
+        {
+            var destroyedAny = false;
+            while (group != null && group.subordinatesCombined.Count == 0)
+            {
+                var parentGroup = group.parentGroupReference.Get();
+                group.ClearPlannedPath();
+                group.RemoveFromMap();
+                ClearDetachedFromReferenceFromAllMembers(group.objectId);
+                IStrategicGroupMemberReferenceable.ClearDetachedFromGroupState(group);
+                group.AttachTo(null);
+
+                EntityManager.Instance.Unregister(group);
+                strategicGroups.Remove(group);
+
+                destroyedAny = true;
+                group = parentGroup;
+            }
+
+            return destroyedAny;
         }
         
         public void DoShipAmmunitionReplenishment()
@@ -2527,6 +2570,20 @@ namespace StrategicCombatCore
             }
         }
 
+        void ClearDetachedFromReferenceFromAllMembers(string groupObjectId)
+        {
+            if (string.IsNullOrWhiteSpace(groupObjectId))
+                return;
+
+            foreach (var member in IterAllStrategicGroupMembers())
+            {
+                if (member?.detachedFromGroupReference?.referenceId != groupObjectId)
+                    continue;
+
+                IStrategicGroupMemberReferenceable.ClearDetachedFromGroupState(member);
+            }
+        }
+
         static void RemoveIndicesDescending<T>(List<T> list, List<int> indices)
         {
             for (var idx = indices.Count - 1; idx >= 0; idx--)
@@ -2549,16 +2606,26 @@ namespace StrategicCombatCore
 
             foreach (var member in memberMap.Values)
             {
+                member.detachedFromGroupReference ??= new();
+
                 var parentId = member.parentGroupReference.referenceId;
                 if (string.IsNullOrWhiteSpace(parentId) || !groupMap.ContainsKey(parentId))
                 {
                     member.parentGroupReference.referenceId = null;
-                    continue;
                 }
-
-                if (member is StrategicGroup memberGroup && memberGroup.objectId == parentId)
+                else if (member is StrategicGroup memberGroup && memberGroup.objectId == parentId)
                 {
                     memberGroup.parentGroupReference.referenceId = null;
+                }
+
+                var detachedFromId = member.detachedFromGroupReference.referenceId;
+                if (string.IsNullOrWhiteSpace(detachedFromId) ||
+                    !groupMap.ContainsKey(detachedFromId) ||
+                    detachedFromId == member.objectId ||
+                    detachedFromId == member.parentGroupReference.referenceId)
+                {
+                    member.detachedFromGroupReference.referenceId = null;
+                    member.enableAutoReattach = false;
                 }
             }
 

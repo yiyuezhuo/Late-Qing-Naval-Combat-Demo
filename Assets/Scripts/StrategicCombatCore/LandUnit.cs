@@ -25,6 +25,8 @@ namespace StrategicCombatCore
 
         // public string strategicGroupId;
         public StrategicGroupReference parentGroupReference { get; set; } = new();
+        public StrategicGroupReference detachedFromGroupReference { get; set; } = new();
+        public bool enableAutoReattach { get; set; }
 
         public string landUnitTemplateId;
         public LandUnitTemplate GetLandUnitTemplate() => EntityManager.Instance.Get<LandUnitTemplate>(landUnitTemplateId);

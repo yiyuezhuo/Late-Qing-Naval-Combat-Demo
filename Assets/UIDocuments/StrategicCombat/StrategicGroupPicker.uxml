@@ -1,7 +1,13 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement class="panel-dialog">
+    <ui:VisualElement data-source-type="PlaceholderNamedSelector, Assembly-CSharp" class="panel-dialog">
         <ui:Label text="Strategic Group Picker" class="title" />
-        <ui:ListView binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/Templates/StrategicGroupLabel.uxml?fileID=9197481963319205126&amp;guid=34ee77fc95e8a904caa681718cd94b24&amp;type=3#StrategicGroupLabel" name="ObjectListView" style="flex-grow: 1;" />
+        <ui:TextField label="Filter">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(38619517602664448)" />
+                <ui:DataBinding property="value" data-source-path="filterString" binding-mode="TwoWay" />
+            </Bindings>
+        </ui:TextField>
+        <ui:ListView binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/Templates/StrategicGroupLabel.uxml?fileID=9197481963319205126&amp;guid=34ee77fc95e8a904caa681718cd94b24&amp;type=3#StrategicGroupLabel" data-source-path="filteredObjects" name="ObjectListView" style="flex-grow: 1;" />
         <ui:VisualElement style="flex-direction: row; flex-shrink: 0;">
             <ui:Button text="Confirm" name="ConfirmButton" style="flex-grow: 1; flex-basis: 50px;" />
             <ui:Button text="Cancel" name="CancelButton" style="flex-basis: 50px; flex-grow: 1;" />

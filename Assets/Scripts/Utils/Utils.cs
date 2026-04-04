@@ -535,48 +535,127 @@ public static class Utils
     public static void BindIStrategicGroupMemberReferenceable(VisualElement root)
     {
         var gotoParentButton = root.Q<Button>("GotoParentButton");
-        gotoParentButton.clicked += () =>
+        if (gotoParentButton != null)
         {
-            if (TryResolveCurrentValueForBinding(gotoParentButton, out IStrategicGroupMemberReferenceable group))
+            gotoParentButton.clicked += () =>
             {
-                var parentGroup = group.parentGroupReference.Get();
-                // var idx = StrategicGameState.Instance.strategicGroups.IndexOf(parentGroup);
-                // if (parentGroup != null && idx != -1)
-                // {
-                //     if (!StrategicGroupEditor.Instance.gameObject.activeSelf)
-                //     {
-                //         meDoc.Hide();
-                //         StrategicGroupEditor.Instance.Show();
-                //     }
-                //     BehaviourUtils.Instance.ScheduleToSetSelectionForListView(StrategicGroupEditor.Instance.objectListView, idx);
-                // }
-                SwitchCenter.Instance.SwitchToStrategicGroupView(parentGroup);
-            }
-        };
+                if (TryResolveCurrentValueForBinding(gotoParentButton, out IStrategicGroupMemberReferenceable group))
+                {
+                    var parentGroup = group.parentGroupReference.Get();
+                    // var idx = StrategicGameState.Instance.strategicGroups.IndexOf(parentGroup);
+                    // if (parentGroup != null && idx != -1)
+                    // {
+                    //     if (!StrategicGroupEditor.Instance.gameObject.activeSelf)
+                    //     {
+                    //         meDoc.Hide();
+                    //         StrategicGroupEditor.Instance.Show();
+                    //     }
+                    //     BehaviourUtils.Instance.ScheduleToSetSelectionForListView(StrategicGroupEditor.Instance.objectListView, idx);
+                    // }
+                    SwitchCenter.Instance.SwitchToStrategicGroupView(parentGroup);
+                }
+            };
+        }
 
         var currentSourceDepotButton = root.Q<Button>("CurrentSourceDepotButton");
-        currentSourceDepotButton.clicked += () =>
+        if (currentSourceDepotButton != null)
         {
-            if (TryResolveCurrentValueForBinding(currentSourceDepotButton, out IStrategicGroupMemberReferenceable group))
+            currentSourceDepotButton.clicked += () =>
             {
-                var currentSourceDepot = group.GetCurrentSourceDepot();
-                // if (currentSourceDepot != null)
-                // {
-                //     var idx = StrategicGameState.Instance.landUnits.IndexOf(currentSourceDepot);
-                //     if (idx != -1)
-                //     {
-                //         // Hide();
-                //         if (!LandUnitEditor.Instance.gameObject.activeSelf)
-                //         {
-                //             meDoc.Hide();
-                //             LandUnitEditor.Instance.Show();
-                //         }
-                //         BehaviourUtils.Instance.ScheduleToSetSelectionForListView(LandUnitEditor.Instance.objectListView, idx);
-                //     }
-                // }
-                SwitchCenter.Instance.SwitchToLandUnitView(currentSourceDepot);
-            }
-        };
+                if (TryResolveCurrentValueForBinding(currentSourceDepotButton, out IStrategicGroupMemberReferenceable group))
+                {
+                    var currentSourceDepot = group.GetCurrentSourceDepot();
+                    // if (currentSourceDepot != null)
+                    // {
+                    //     var idx = StrategicGameState.Instance.landUnits.IndexOf(currentSourceDepot);
+                    //     if (idx != -1)
+                    //     {
+                    //         // Hide();
+                    //         if (!LandUnitEditor.Instance.gameObject.activeSelf)
+                    //         {
+                    //             meDoc.Hide();
+                    //             LandUnitEditor.Instance.Show();
+                    //         }
+                    //         BehaviourUtils.Instance.ScheduleToSetSelectionForListView(LandUnitEditor.Instance.objectListView, idx);
+                    //     }
+                    // }
+                    SwitchCenter.Instance.SwitchToLandUnitView(currentSourceDepot);
+                }
+            };
+        }
+
+        var setDetachedFromGroupButton = root.Q<Button>("SetDetachedFromGroupButton");
+        if (setDetachedFromGroupButton != null)
+        {
+            setDetachedFromGroupButton.clicked += () =>
+            {
+                if (!TryResolveCurrentValueForBinding(setDetachedFromGroupButton, out IStrategicGroupMemberReferenceable group))
+                    return;
+
+                var groupSide = GetStrategicMemberSide(group);
+                DialogRoot.Instance.PopupStrategicGroupPickerDialog(selectedGroup =>
+                {
+                    IStrategicGroupMemberReferenceable.SetDetachedFromGroupReference(group, selectedGroup);
+                }, candidate =>
+                    candidate != null &&
+                    candidate.objectId != group.objectId &&
+                    candidate.objectId != group.parentGroupReference?.referenceId &&
+                    (groupSide == null || candidate.side == groupSide)
+                );
+            };
+        }
+
+        var reattachToDetachedFromGroupButton = root.Q<Button>("ReattachToDetachedFromGroupButton");
+        if (reattachToDetachedFromGroupButton != null)
+        {
+            reattachToDetachedFromGroupButton.clicked += () =>
+            {
+                if (!TryResolveCurrentValueForBinding(reattachToDetachedFromGroupButton, out IStrategicGroupMemberReferenceable group))
+                    return;
+
+                TryPromptReattachToDetachedFromGroup(group);
+            };
+        }
+    }
+
+    static SideState GetStrategicMemberSide(IStrategicGroupMemberReferenceable member)
+    {
+        if (member is StrategicGroup strategicGroup)
+            return strategicGroup.side;
+        if (member is LandUnit landUnit)
+            return landUnit.side;
+        if (member is ShipLog shipLog)
+            return shipLog.side;
+        return member?.parentGroupReference.GetSide();
+    }
+
+    static void TryPromptReattachToDetachedFromGroup(IStrategicGroupMemberReferenceable member)
+    {
+        var detachedFromGroup = member?.GetDetachedFromGroup();
+        if (member == null || detachedFromGroup == null)
+        {
+            DialogRoot.Instance.PopupMessageDialog("Detached From group is not set.");
+            return;
+        }
+
+        if (member.IsOnSameCellWithDetachedFromGroup())
+        {
+            IStrategicGroupMemberReferenceable.TryReattachToDetachedFromGroup(member);
+            return;
+        }
+
+        var currentCellLabel = member.GetCurrentCell()?.Label?.GetMergedName() ?? "[Unknown]";
+        var detachedCellLabel = detachedFromGroup.cell?.Label?.GetMergedName() ?? "[Unknown]";
+        var message = $"The unit and detached-from group are not in the same cell ({currentCellLabel} vs {detachedCellLabel}).";
+        if (GamePreference.Instance.isInEditMode)
+        {
+            DialogRoot.Instance.PopupConfirmDialog(
+                $"{message}\nForce transfer back anyway?",
+                () => IStrategicGroupMemberReferenceable.TryReattachToDetachedFromGroup(member, true));
+            return;
+        }
+
+        DialogRoot.Instance.PopupMessageDialog($"{message}\nReattach is not allowed outside edit mode.");
     }
 
     // static void GotoReferenceable(IStrategicGroupMemberReferenceable gotoObj, IHidable meDoc)

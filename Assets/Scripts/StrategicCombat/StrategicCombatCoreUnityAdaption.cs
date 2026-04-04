@@ -277,6 +277,12 @@ namespace StrategicCombatCore
 
         [CreateProperty]
         public string currentSourceDepotName => ((IStrategicGroupMemberReferenceable)this).GetCurrentSourceDepotName();
+
+        [CreateProperty]
+        public string detachedFromGroupName => ((IStrategicGroupMemberReferenceable)this).GetDetachedFromGroupName();
+
+        [CreateProperty]
+        public bool canReattachToDetachedGroup => ((IStrategicGroupMemberReferenceable)this).GetDetachedFromGroup() != null;
         #endregion
 
         [CreateProperty]
@@ -594,6 +600,12 @@ namespace StrategicCombatCore
 
         [CreateProperty]
         public string currentSourceDepotName => ((IStrategicGroupMemberReferenceable)this).GetCurrentSourceDepotName();
+
+        [CreateProperty]
+        public string detachedFromGroupName => ((IStrategicGroupMemberReferenceable)this).GetDetachedFromGroupName();
+
+        [CreateProperty]
+        public bool canReattachToDetachedGroup => ((IStrategicGroupMemberReferenceable)this).GetDetachedFromGroup() != null;
         #endregion
 
         [CreateProperty]
@@ -1181,6 +1193,12 @@ namespace NavalCombatCore
 
         [CreateProperty]
         public string currentSourceDepotName => ((IStrategicGroupMemberReferenceable)this).GetCurrentSourceDepotName();
+
+        [CreateProperty]
+        public string detachedFromGroupName => ((IStrategicGroupMemberReferenceable)this).GetDetachedFromGroupName();
+
+        [CreateProperty]
+        public bool canReattachToDetachedGroup => ((IStrategicGroupMemberReferenceable)this).GetDetachedFromGroup() != null;
 
         [CreateProperty]
         public float supplyCostTonsPerDay => GetSupplyCostTonsPerDay();

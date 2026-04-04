@@ -3153,20 +3153,21 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             strategicGroups = strategicGroups.Where(filter).ToList();
         }
 
+        var selectorDialog = new NamedSelector<StrategicGroup>()
+        {
+            fullObjects = strategicGroups,
+            callback = callback
+        };
+        selectorDialog.RefreshFilter();
+
         var tempDialog = new TempDialog()
         {
             root = root,
             template = strategicGroupPickerDialogDocument,
-            // templateDataSource = StrategicGameManager.Instance,
-            templateDataSource = strategicGroups
+            templateDataSource = selectorDialog
         };
 
-        tempDialog.onConfirmed += (sender, el) =>
-        {
-            var objectListView = el.Q<ListView>("ObjectListView");
-            var strategicGroup = objectListView.selectedItem as StrategicGroup;
-            callback(strategicGroup);
-        };
+        tempDialog.onConfirmed += selectorDialog.OnConfirm;
 
         tempDialog.Popup();
     }

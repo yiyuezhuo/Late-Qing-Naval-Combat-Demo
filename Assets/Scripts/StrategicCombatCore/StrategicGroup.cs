@@ -203,6 +203,8 @@ namespace StrategicCombatCore
 
         // public string strategicGroupId;
         public StrategicGroupReference parentGroupReference { get; set; } = new(); // parent strategic group
+        public StrategicGroupReference detachedFromGroupReference { get; set; } = new();
+        public bool enableAutoReattach { get; set; }
         public string assignedMissionObjectId;
         public string homeBaseObjectId;
 
@@ -589,6 +591,7 @@ namespace StrategicCombatCore
             if (oldMember != null)
             {
                 oldMember.parentGroupReference.referenceId = null;
+                IStrategicGroupMemberReferenceable.ClearDetachedFromGroupState(oldMember);
             }
 
             slot.referenceId = null;
@@ -600,6 +603,7 @@ namespace StrategicCombatCore
 
             slot.referenceId = newMember.objectId;
             newMember.parentGroupReference.referenceId = objectId;
+            IStrategicGroupMemberReferenceable.ClearDetachedFromGroupState(newMember);
             subordinatesCombined.RemoveAll(reference => !ReferenceEquals(reference, slot) && reference.referenceId == newMember.objectId);
             return true;
         }

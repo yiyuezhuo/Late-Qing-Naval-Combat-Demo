@@ -1,6 +1,7 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="GlobalStringEditor" src="project://database/Assets/UIDocuments/Common/GlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=bbf36dc1793baa44a987432580e3d674&amp;type=3#GlobalStringEditor"/>
     <ui:Template name="IStrategicGroupMemberReferenceableParentDepotUI" src="project://database/Assets/UIDocuments/Templates/IStrategicGroupMemberReferenceableParentDepotUI.uxml?fileID=9197481963319205126&amp;guid=a4efcf1499aee3c4e856250902f80d71&amp;type=3#IStrategicGroupMemberReferenceableParentDepotUI"/>
+    <ui:Template name="IStrategicGroupMemberReferenceableDetachedUI" src="project://database/Assets/UIDocuments/Templates/IStrategicGroupMemberReferenceableDetachedUI.uxml?fileID=9197481963319205126&amp;guid=3f3d593c5cc7421cb86f379bf1b62239&amp;type=3#IStrategicGroupMemberReferenceableDetachedUI"/>
     <ui:VisualElement name="LandUnitView" data-source-type="StrategicCombatCore.LandUnit, Assembly-CSharp" style="flex-grow: 1;">
         <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
             <ui:TextField label="Land Unit Template" style="flex-grow: 1;">
@@ -25,6 +26,7 @@
             <AttributeOverrides element-name="GlobalStringLabel" text="Name"/>
         </ui:Instance>
         <ui:Instance template="IStrategicGroupMemberReferenceableParentDepotUI"/>
+        <ui:Instance template="IStrategicGroupMemberReferenceableDetachedUI"/>
         <ui:VisualElement>
             <ui:VisualElement style="flex-direction: row;">
                 <ui:IntegerField label="Port" style="flex-grow: 1; flex-basis: 50px;">

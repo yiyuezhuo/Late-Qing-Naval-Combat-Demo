@@ -67,6 +67,8 @@ public class LandUnitEditor : LeftObjectPickerRightEditorStrategic<LandUnitEdito
     protected override void ProcessCopiedLastOne(LandUnit landUnit)
     {
         landUnit.parentGroupReference.referenceId = null;
+        landUnit.detachedFromGroupReference.referenceId = null;
+        landUnit.enableAutoReattach = false;
     }
 
     // public override string GetObjectListViewName() => "LandUnitListView";

@@ -4757,11 +4757,11 @@
     <leaderReference>
      <referenceObjectId>de5c3853-f922-47fa-81d3-31564419f71c</referenceObjectId>
     </leaderReference>
-    <subordinatesCombined>
+    <directMemberReferences>
      <StrategicGroupMemberReference>
       <referenceId>f99477a6-49ae-4f0d-9f5b-09fc0543f47e</referenceId>
      </StrategicGroupMemberReference>
-    </subordinatesCombined>
+    </directMemberReferences>
     <moveProgressionKm>0</moveProgressionKm>
     <plannedPath />
     <posture>Active</posture>
@@ -4788,14 +4788,14 @@
     <independentY>-1</independentY>
     <independentAreaCellObjectId>8f47e057-3f82-4c2e-a5c4-e18e614b3b16</independentAreaCellObjectId>
     <leaderReference />
-    <subordinatesCombined>
+    <directMemberReferences>
      <StrategicGroupMemberReference>
       <referenceId>85c6b847-efe0-4227-bde9-a2b82454188e</referenceId>
      </StrategicGroupMemberReference>
      <StrategicGroupMemberReference>
       <referenceId>6d0989bf-ffa1-4103-9e0a-2d70e286734f</referenceId>
      </StrategicGroupMemberReference>
-    </subordinatesCombined>
+    </directMemberReferences>
     <moveProgressionKm>0</moveProgressionKm>
     <plannedPath />
     <posture>Active</posture>
@@ -4824,7 +4824,7 @@
     <leaderReference>
      <referenceObjectId>de5c3853-f922-47fa-81d3-31564419f71c</referenceObjectId>
     </leaderReference>
-    <subordinatesCombined>
+    <directMemberReferences>
      <StrategicGroupMemberReference>
       <referenceId>451c1bee-b7bd-4d25-9566-f7b1c41ff33c</referenceId>
      </StrategicGroupMemberReference>
@@ -4837,7 +4837,7 @@
      <StrategicGroupMemberReference>
       <referenceId>c22a1d1e-92c6-494a-a6c9-7a455672454e</referenceId>
      </StrategicGroupMemberReference>
-    </subordinatesCombined>
+    </directMemberReferences>
     <assignedMissionObjectId>7f99dd12-cdca-4a29-984c-ac1a1ee911c3</assignedMissionObjectId>
     <homeBaseObjectId>6a301c4b-f894-4223-a719-0831dc11c156</homeBaseObjectId>
     <moveProgressionKm>0</moveProgressionKm>
@@ -4870,11 +4870,11 @@
     <leaderReference>
      <referenceObjectId>43bfbde8-70e0-4d42-8122-3dc082557429</referenceObjectId>
     </leaderReference>
-    <subordinatesCombined>
+    <directMemberReferences>
      <StrategicGroupMemberReference>
       <referenceId>a65da163-4f17-4ab8-be8e-dd7d7389ee67</referenceId>
      </StrategicGroupMemberReference>
-    </subordinatesCombined>
+    </directMemberReferences>
     <assignedMissionObjectId>24f14b9b-d919-4df6-a4bb-66fb9165d2b1</assignedMissionObjectId>
     <homeBaseObjectId>d7239c1d-abdf-49fe-80bc-a2568d837526</homeBaseObjectId>
     <moveProgressionKm>0</moveProgressionKm>
@@ -4906,7 +4906,7 @@
     <leaderReference>
      <referenceObjectId>74729e4e-1b29-410d-8e4a-c4e384e48fba</referenceObjectId>
     </leaderReference>
-    <subordinatesCombined>
+    <directMemberReferences>
      <StrategicGroupMemberReference>
       <referenceId>f48d6167-f5a9-4d7d-9d32-43ae611e2317</referenceId>
      </StrategicGroupMemberReference>
@@ -4925,7 +4925,7 @@
      <StrategicGroupMemberReference>
       <referenceId>46ced6d6-2f10-499a-966d-22ab623f9754</referenceId>
      </StrategicGroupMemberReference>
-    </subordinatesCombined>
+    </directMemberReferences>
     <moveProgressionKm>0</moveProgressionKm>
     <plannedPath />
     <posture>Active</posture>
@@ -4956,14 +4956,14 @@
     <leaderReference>
      <referenceObjectId>416402fe-d252-48fd-8f54-d546128ced8f</referenceObjectId>
     </leaderReference>
-    <subordinatesCombined>
+    <directMemberReferences>
      <StrategicGroupMemberReference>
       <referenceId>03762cd1-571c-4b1a-bf0b-cdc6f9b7b856</referenceId>
      </StrategicGroupMemberReference>
      <StrategicGroupMemberReference>
       <referenceId>f779b4c8-82c5-43ca-8024-4cf6c8adf778</referenceId>
      </StrategicGroupMemberReference>
-    </subordinatesCombined>
+    </directMemberReferences>
     <moveProgressionKm>0</moveProgressionKm>
     <plannedPath />
     <posture>Active</posture>
@@ -4992,14 +4992,14 @@
     <leaderReference>
      <referenceObjectId>55bcaa87-3db0-4dba-8138-9d4b345d0cb9</referenceObjectId>
     </leaderReference>
-    <subordinatesCombined>
+    <directMemberReferences>
      <StrategicGroupMemberReference>
       <referenceId>0341200d-9758-4163-91cf-41a6d1116bd3</referenceId>
      </StrategicGroupMemberReference>
      <StrategicGroupMemberReference>
       <referenceId>1b80c744-b892-41e1-96be-bd6e81aaf829</referenceId>
      </StrategicGroupMemberReference>
-    </subordinatesCombined>
+    </directMemberReferences>
     <moveProgressionKm>0</moveProgressionKm>
     <plannedPath />
     <posture>Active</posture>
@@ -5028,14 +5028,14 @@
     <leaderReference>
      <referenceObjectId>cf6cab8d-b542-4930-aaeb-bc24eccace43</referenceObjectId>
     </leaderReference>
-    <subordinatesCombined>
+    <directMemberReferences>
      <StrategicGroupMemberReference>
       <referenceId>f1378a47-5c3b-4db1-b663-13efa30cc241</referenceId>
      </StrategicGroupMemberReference>
      <StrategicGroupMemberReference>
       <referenceId>fedc9e74-2c1f-4ecc-9085-bdf1f5e97101</referenceId>
      </StrategicGroupMemberReference>
-    </subordinatesCombined>
+    </directMemberReferences>
     <moveProgressionKm>0</moveProgressionKm>
     <plannedPath />
     <posture>Active</posture>
@@ -5064,11 +5064,11 @@
     <leaderReference>
      <referenceObjectId>a77bd722-8233-4d1c-a65c-b712c07297d0</referenceObjectId>
     </leaderReference>
-    <subordinatesCombined>
+    <directMemberReferences>
      <StrategicGroupMemberReference>
       <referenceId>4efd9eac-e7d0-4c88-8c33-8094b3c8d5cf</referenceId>
      </StrategicGroupMemberReference>
-    </subordinatesCombined>
+    </directMemberReferences>
     <moveProgressionKm>0</moveProgressionKm>
     <plannedPath />
     <posture>Active</posture>

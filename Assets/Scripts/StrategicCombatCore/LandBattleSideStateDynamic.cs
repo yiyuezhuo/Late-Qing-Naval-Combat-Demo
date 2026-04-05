@@ -295,7 +295,7 @@ namespace StrategicCombatCore
             var sumLandUnitCommandUsage = 0f;
             var groupTacWeight = 0f;
 
-            foreach(var subordinateRef in parent.subordinatesCombined)
+            foreach(var subordinateRef in parent.directMemberReferences)
             {
                 var subordinate = subordinateRef.Get();
                 if(subordinate is LandUnit landUnit)

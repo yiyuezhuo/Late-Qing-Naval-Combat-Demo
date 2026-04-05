@@ -198,7 +198,7 @@ namespace StrategicCombatCore
 
         public LeaderReference leaderReference = new();
 
-        public List<StrategicGroupMemberReference> subordinatesCombined = new();
+        public List<StrategicGroupMemberReference> directMemberReferences = new();
         // public List<StrategicGroupMemberReference> subordinatesInCommandOfChain = new();
 
         // public string strategicGroupId;
@@ -249,7 +249,7 @@ namespace StrategicCombatCore
 
         public LandUnit GetFirstDepot()
         {
-            foreach (var subordinateRef in subordinatesCombined)
+            foreach (var subordinateRef in directMemberReferences)
             {
                 if (subordinateRef.Get() is LandUnit landUnit &&
                     landUnit.GetLandUnitTemplate()?.unitType == LandUnitType.Supply)
@@ -420,14 +420,14 @@ namespace StrategicCombatCore
             return false;
         }
 
-        public int GetSubUnitSize() => subordinatesCombined.Sum(r => r.GetSubUnitSize());
-        public int GetStrengthMen() => subordinatesCombined.Sum(r => r.GetStrengthMen());
-        public float GetShipTons() => subordinatesCombined.Sum(r => r.GetShipTons());
+        public int GetSubUnitSize() => directMemberReferences.Sum(r => r.GetSubUnitSize());
+        public int GetStrengthMen() => directMemberReferences.Sum(r => r.GetStrengthMen());
+        public float GetShipTons() => directMemberReferences.Sum(r => r.GetShipTons());
         public float GetCombatShipTons() => WalkGroupMembersDeployedShips().Select(shipLog => shipLog.shipClass).Where(shipClass => shipClass.IsCombatShip()).Sum(shipClass => shipClass.displacementTons);
         // WalkGroupMembersDeployedShips
         public IEnumerable<IStrategicGroupMemberReferenceable> WalkDirectMembers()
         {
-            foreach (var subordinateRef in subordinatesCombined)
+            foreach (var subordinateRef in directMemberReferences)
             {
                 var subordinate = subordinateRef.Get();
                 if (subordinate != null)
@@ -525,13 +525,13 @@ namespace StrategicCombatCore
         {
             if (!isTop && deployState != DeployState.Combined)
                 return 0;
-            return subordinatesCombined.Sum(r => r.GetCombinedPowerPoint(false));
+            return directMemberReferences.Sum(r => r.GetCombinedPowerPoint(false));
         }
 
         public float GetSupplyCostTonsPerDay() // Combined
         {
             var supplySum = 0f;
-            foreach (var subordinateRef in subordinatesCombined)
+            foreach (var subordinateRef in directMemberReferences)
             {
                 var subordinate = subordinateRef.Get();
                 if (subordinate == null)
@@ -573,9 +573,9 @@ namespace StrategicCombatCore
             if (string.IsNullOrWhiteSpace(memberObjectId) || memberObjectId == objectId)
                 return;
 
-            if (subordinatesCombined.All(reference => reference.referenceId != memberObjectId))
+            if (directMemberReferences.All(reference => reference.referenceId != memberObjectId))
             {
-                subordinatesCombined.Add(new StrategicGroupMemberReference() { referenceId = memberObjectId });
+                directMemberReferences.Add(new StrategicGroupMemberReference() { referenceId = memberObjectId });
             }
         }
 
@@ -584,7 +584,7 @@ namespace StrategicCombatCore
             if (string.IsNullOrWhiteSpace(memberObjectId))
                 return;
 
-            subordinatesCombined.RemoveAll(reference => reference.referenceId == memberObjectId);
+            directMemberReferences.RemoveAll(reference => reference.referenceId == memberObjectId);
         }
 
         public static void ReassignMember(IStrategicGroupMemberReferenceable member, StrategicGroup newParentGroup)
@@ -611,7 +611,7 @@ namespace StrategicCombatCore
 
         public bool ReplaceDirectMemberReference(StrategicGroupMemberReference slot, IStrategicGroupMemberReferenceable newMember)
         {
-            if (slot == null || !subordinatesCombined.Contains(slot))
+            if (slot == null || !directMemberReferences.Contains(slot))
                 return false;
 
             if (newMember is StrategicGroup newGroup && newGroup.objectId == objectId)
@@ -634,7 +634,7 @@ namespace StrategicCombatCore
             slot.referenceId = newMember.objectId;
             newMember.parentGroupReference.referenceId = objectId;
             IStrategicGroupMemberReferenceable.ClearDetachedFromGroupState(newMember);
-            subordinatesCombined.RemoveAll(reference => !ReferenceEquals(reference, slot) && reference.referenceId == newMember.objectId);
+            directMemberReferences.RemoveAll(reference => !ReferenceEquals(reference, slot) && reference.referenceId == newMember.objectId);
             return true;
         }
 
@@ -796,7 +796,7 @@ namespace StrategicCombatCore
 
         public int GetCombinedSubUnitSize()
         {
-            return subordinatesCombined.Sum(r => r.GetCombinedSubUnitSize());
+            return directMemberReferences.Sum(r => r.GetCombinedSubUnitSize());
         }
 
         public string GetSizeStr()
@@ -979,7 +979,7 @@ namespace StrategicCombatCore
 
         public void Split()
         {
-            if (subordinatesCombined.Count < 2)
+            if (directMemberReferences.Count < 2)
                 return;
 
             var newGroup = new StrategicGroup()
@@ -1003,9 +1003,9 @@ namespace StrategicCombatCore
                 newGroup.MoveToCell(cell, false);
             }
 
-            var transferElements = Enumerable.Range(0, subordinatesCombined.Count)
+            var transferElements = Enumerable.Range(0, directMemberReferences.Count)
                 .Where(idx => idx % 2 == 1)
-                .Select(idx => subordinatesCombined[idx])
+                .Select(idx => directMemberReferences[idx])
                 .ToList();
 
             foreach (var transferElementRef in transferElements)
@@ -1311,7 +1311,7 @@ namespace StrategicCombatCore
 
         public float GetCombinedCommandUsage()
         {
-            var combinedCommandUsage = subordinatesCombined.Sum(subordinateRef =>
+            var combinedCommandUsage = directMemberReferences.Sum(subordinateRef =>
             {
                 var subordinate = subordinateRef.Get();
                 if (subordinate is LandUnit landUnit)
@@ -1330,7 +1330,7 @@ namespace StrategicCombatCore
 
         public float GetCombinedCommandUsageFlatten()
         {
-            var combinedCommandUsage = subordinatesCombined.Sum(subordinateRef =>
+            var combinedCommandUsage = directMemberReferences.Sum(subordinateRef =>
             {
                 var subordinate = subordinateRef.Get();
                 if (subordinate is LandUnit landUnit)
@@ -1409,7 +1409,7 @@ namespace StrategicCombatCore
             var usageDirect = 0f;
             var usage = 0f;
             var accCostModWeight = 0f;
-            foreach(var subordinateRef in subordinatesCombined)
+            foreach(var subordinateRef in directMemberReferences)
             {
                 var subordinate = subordinateRef.Get();
                 if(subordinate is LandUnit landUnit)

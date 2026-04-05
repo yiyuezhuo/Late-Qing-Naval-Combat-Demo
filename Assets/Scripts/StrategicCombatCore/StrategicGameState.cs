@@ -1445,7 +1445,7 @@ namespace StrategicCombatCore
                 }
                 if(group.dissolvable && group.deployState == StrategicGroup.DeployState.Combined)
                 {
-                    foreach (var memberRef in group.subordinatesCombined.ToList())
+            foreach (var memberRef in group.directMemberReferences.ToList())
                     {
                         var member = memberRef.Get();
                         group.MoveElementTo(member, parentGroup);
@@ -1466,7 +1466,7 @@ namespace StrategicCombatCore
                 if (parentGroup == null)
                     continue;
 
-                foreach (var memberRef in group.subordinatesCombined.ToList())
+            foreach (var memberRef in group.directMemberReferences.ToList())
                 {
                     if (memberRef.Get() is not ShipLog shipLog || StrategicGroupSubGroupUtility.NeedsDetachForRepair(shipLog))
                         continue;
@@ -1484,7 +1484,7 @@ namespace StrategicCombatCore
                     }
                 }
 
-                if (group.subordinatesCombined.Count > 0)
+            if (group.directMemberReferences.Count > 0)
                     continue;
 
                 group.ClearPlannedPath();
@@ -1541,7 +1541,7 @@ namespace StrategicCombatCore
         public bool TryDestroyGroupIfEmptyRecursive(StrategicGroup group)
         {
             var destroyedAny = false;
-            while (group != null && group.subordinatesCombined.Count == 0)
+            while (group != null && group.directMemberReferences.Count == 0)
             {
                 var parentGroup = group.parentGroupReference.Get();
                 group.ClearPlannedPath();
@@ -2641,13 +2641,13 @@ namespace StrategicCombatCore
 
             foreach (var group in strategicGroups.Where(group => group != null))
             {
-                group.subordinatesCombined ??= new List<StrategicGroupMemberReference>();
+                group.directMemberReferences ??= new List<StrategicGroupMemberReference>();
 
                 var seenMemberIds = new HashSet<string>();
                 var indicesToRemove = new List<int>();
-                for (var idx = 0; idx < group.subordinatesCombined.Count; idx++)
+                for (var idx = 0; idx < group.directMemberReferences.Count; idx++)
                 {
-                    var memberId = group.subordinatesCombined[idx]?.referenceId;
+                    var memberId = group.directMemberReferences[idx]?.referenceId;
                     if (string.IsNullOrWhiteSpace(memberId) ||
                         memberId == group.objectId ||
                         !memberMap.ContainsKey(memberId) ||
@@ -2657,16 +2657,16 @@ namespace StrategicCombatCore
                     }
                 }
 
-                RemoveIndicesDescending(group.subordinatesCombined, indicesToRemove);
+                RemoveIndicesDescending(group.directMemberReferences, indicesToRemove);
             }
 
             var claimedParentIds = new Dictionary<string, string>();
             foreach (var group in strategicGroups.Where(group => group != null))
             {
                 var duplicateIndices = new List<int>();
-                for (var idx = 0; idx < group.subordinatesCombined.Count; idx++)
+                for (var idx = 0; idx < group.directMemberReferences.Count; idx++)
                 {
-                    var memberId = group.subordinatesCombined[idx].referenceId;
+                    var memberId = group.directMemberReferences[idx].referenceId;
                     if (claimedParentIds.ContainsKey(memberId))
                     {
                         duplicateIndices.Add(idx);
@@ -2676,7 +2676,7 @@ namespace StrategicCombatCore
                     claimedParentIds.Add(memberId, group.objectId);
                 }
 
-                RemoveIndicesDescending(group.subordinatesCombined, duplicateIndices);
+                RemoveIndicesDescending(group.directMemberReferences, duplicateIndices);
             }
 
             foreach (var claimedParentId in claimedParentIds)
@@ -2698,7 +2698,7 @@ namespace StrategicCombatCore
 
             var finalClaimedIds = strategicGroups
                 .Where(group => group != null)
-                .SelectMany(group => group.subordinatesCombined)
+                .SelectMany(group => group.directMemberReferences)
                 .Where(reference => reference != null && !string.IsNullOrWhiteSpace(reference.referenceId))
                 .Select(reference => reference.referenceId)
                 .ToHashSet();

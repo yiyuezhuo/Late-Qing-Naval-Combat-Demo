@@ -713,7 +713,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
     {
         // foreach(var group in StrategicGameState.Instance.strategicGroups)
         // {
-        //     foreach(var unitRef in group.subordinatesCombined)
+            //     foreach(var unitRef in group.directMemberReferences)
         //     {
         //         var unit = unitRef.Get();
         //         unit.parentGroupReference.referenceId = group.objectId;
@@ -728,7 +728,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         //     var parentGroup = group.parentGroupReference.Get();
         //     if (parentGroup != null)
         //     {
-        //         var matched = parentGroup.subordinatesCombined.Any(ordRef => ordRef.Get() == group);
+            //         var matched = parentGroup.directMemberReferences.Any(ordRef => ordRef.Get() == group);
         //         if (!matched)
         //         {
         //             Debug.Log($"Fix: {group.name.mergedName}");
@@ -769,7 +769,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
         // foreach (var group in StrategicGameState.Instance.strategicGroups)
         // {
-        //     foreach (var subordinate in group.subordinatesCombined)
+            //     foreach (var subordinate in group.directMemberReferences)
         //     {
         //         var obj = subordinate.Get();
         //         obj.parentGroupReference.referenceId = group.objectId;

@@ -11,7 +11,7 @@ public class StrategicGroupView //
 {
     public VisualElement root;
 
-    ListView subordinatesCombinedListView;
+    ListView directMemberReferencesListView;
     Button setHomeBaseButton;
 
     void RefreshHomeBaseButtonState(StrategicGroup group = null)
@@ -22,8 +22,8 @@ public class StrategicGroupView //
     public void Bind()
     {
         var contentContainer = root.Q<VisualElement>("StrategicGroupView");
-        subordinatesCombinedListView = root.Q<ListView>("SubordinatesCombinedListView");
-        Utils.BindStrategicGroupMemberReferenceListView(subordinatesCombinedListView, contentContainer);
+        directMemberReferencesListView = root.Q<ListView>("DirectMemberReferencesListView");
+        Utils.BindStrategicGroupMemberReferenceListView(directMemberReferencesListView, contentContainer);
 
         var setLeaderButton = root.Q<Button>("SetLeaderButton");
         setLeaderButton.clicked += () =>
@@ -174,7 +174,7 @@ public class StrategicGroupView //
 
 public class StrategicGroupEditor : LeftObjectPickerRightEditorStrategic<StrategicGroupEditor, StrategicGroup>
 {
-    // ListView subordinatesCombinedListView;
+        // ListView directMemberReferencesListView;
     StrategicGroupView view;
 
     protected override void GetFullObjects()

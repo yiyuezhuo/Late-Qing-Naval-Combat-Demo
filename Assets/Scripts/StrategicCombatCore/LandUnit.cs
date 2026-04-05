@@ -136,7 +136,7 @@ namespace StrategicCombatCore
             var parentGroup = parentGroupReference.Get();
             if (parentGroup == null)
                 return 0;
-            var firstDepot = parentGroup.subordinatesCombined.FirstOrDefault(r => r.Get() is LandUnit landUnit && landUnit?.GetLandUnitTemplate()?.unitType == LandUnitType.Supply);
+            var firstDepot = parentGroup.directMemberReferences.FirstOrDefault(r => r.Get() is LandUnit landUnit && landUnit?.GetLandUnitTemplate()?.unitType == LandUnitType.Supply);
             if (firstDepot.Get() == this)
                 return parentGroup.GetSupplyCostTonsPerDay();
             return 0;

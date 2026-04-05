@@ -727,15 +727,15 @@ public static class Utils
         };
     }
 
-    // public static void BindStrategicGroupMemberReferenceListView(ListView subordinatesCombinedListView, VisualElement contentContainer, IHidable meDoc)
-    public static void BindStrategicGroupMemberReferenceListView(ListView subordinatesCombinedListView, VisualElement contentContainer)
+    // public static void BindStrategicGroupMemberReferenceListView(ListView directMemberReferencesListView, VisualElement contentContainer, IHidable meDoc)
+    public static void BindStrategicGroupMemberReferenceListView(ListView directMemberReferencesListView, VisualElement contentContainer)
     {
-        // BindItemsAddedRemoved<StrategicGroupMemberReference>(subordinatesCombinedListView, () => null);
-        BindParentGroupChildrenAddedRemoved<StrategicGroupMemberReference>(subordinatesCombinedListView, () => null);
+        // BindItemsAddedRemoved<StrategicGroupMemberReference>(directMemberReferencesListView, () => null);
+        BindParentGroupChildrenAddedRemoved<StrategicGroupMemberReference>(directMemberReferencesListView, () => null);
 
-        subordinatesCombinedListView.makeItem = () =>
+        directMemberReferencesListView.makeItem = () =>
         {
-            var item = subordinatesCombinedListView.itemTemplate.CloneTree();
+            var item = directMemberReferencesListView.itemTemplate.CloneTree();
             // BindStrategicGroupMemberReference(item);
 
             var setButton = item.Q<Button>("SetButton");
@@ -761,14 +761,14 @@ public static class Utils
         };
     }
 
-    public static void BindMissionMembership(ListView subordinatesCombinedListView, VisualElement contentContainer, IHidable meDoc)
+    public static void BindMissionMembership(ListView directMemberReferencesListView, VisualElement contentContainer, IHidable meDoc)
     {
-        // BindItemsAddedRemoved<StrategicGroupMemberReference>(subordinatesCombinedListView, () => null);
-        BindMissionMembershipAddedRemoved<StrategicGroupMemberReference>(subordinatesCombinedListView, () => null);
+        // BindItemsAddedRemoved<StrategicGroupMemberReference>(directMemberReferencesListView, () => null);
+        BindMissionMembershipAddedRemoved<StrategicGroupMemberReference>(directMemberReferencesListView, () => null);
 
-        subordinatesCombinedListView.makeItem = () =>
+        directMemberReferencesListView.makeItem = () =>
         {
-            var item = subordinatesCombinedListView.itemTemplate.CloneTree();
+            var item = directMemberReferencesListView.itemTemplate.CloneTree();
             // BindStrategicGroupMemberReference(item);
 
             var setButton = item.Q<Button>("SetButton");

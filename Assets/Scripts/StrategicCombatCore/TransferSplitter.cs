@@ -69,7 +69,7 @@ namespace StrategicCombatCore
                     originalParent.TransferLandUnit(subLandUnit, newDissolvableGroup);
                 }
 
-                // originalParent.subordinatesCombined.Add(new() { referenceId = newDissolvableGroup.objectId });
+            // originalParent.directMemberReferences.Add(new() { referenceId = newDissolvableGroup.objectId });
             }
 
 
@@ -96,7 +96,7 @@ namespace StrategicCombatCore
 
         public void SplitLoadWalk(StrategicGroup root)
         {
-            foreach (var refItem in root.subordinatesCombined.ToList()) // New subordinate may be added but would not be considered in the iteration.
+            foreach (var refItem in root.directMemberReferences.ToList()) // New subordinate may be added but would not be considered in the iteration.
             {
                 if (isEnd)
                     return;
@@ -123,7 +123,7 @@ namespace StrategicCombatCore
 
             if (!isEnd)
             {
-                var idSet = root.subordinatesCombined.Select(r => r.referenceId).ToHashSet();
+            var idSet = root.directMemberReferences.Select(r => r.referenceId).ToHashSet();
                 building.RemoveAll(el => idSet.Contains(el.objectId));
                 building.Add(root);
             }

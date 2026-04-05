@@ -276,7 +276,7 @@ public static class StrategicGroupSubGroupUtility
         if (group == null)
             return new();
 
-        return group.subordinatesCombined
+        return group.directMemberReferences
             .Select(reference => reference.Get())
             .OfType<ShipLog>()
             .Where(shipLog => shipLog.mapState == MapState.Deployed)
@@ -690,10 +690,10 @@ public class StrategicGroupTransferDialog
 
         leftItems = sourceGroup == null
             ? new()
-            : MakeItems(sourceGroup.subordinatesCombined.Select(reference => reference.referenceId));
+            : MakeItems(sourceGroup.directMemberReferences.Select(reference => reference.referenceId));
         rightItems = targetGroup == null
             ? new()
-            : MakeItems(targetGroup.subordinatesCombined.Select(reference => reference.referenceId));
+            : MakeItems(targetGroup.directMemberReferences.Select(reference => reference.referenceId));
 
         originalSourceIds = leftItems.Select(item => item.objectId).ToHashSet();
         originalTargetIds = rightItems.Select(item => item.objectId).ToHashSet();

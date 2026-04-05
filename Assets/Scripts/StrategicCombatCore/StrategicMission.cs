@@ -298,7 +298,7 @@ namespace StrategicCombatCore
         public void TryPlanPathWithSupplyCheck(StrategicGroup strategicGroup, Cell dst)
         {
             // Check supply condition if fleet group is in its home port (depot base cell)
-            if(!strategicGroup.IsFleetOnSeaOrSuppliedInHomePort())
+            if(!strategicGroup.IsFleetReadyForMissionDeparture())
             {
                 return;
             }
@@ -308,7 +308,7 @@ namespace StrategicCombatCore
 
         public void TrySetPathWithSupplyCheck(StrategicGroup strategicGroup, List<XY> _waypoints)
         {
-            if(!strategicGroup.IsFleetOnSeaOrSuppliedInHomePort())
+            if(!strategicGroup.IsFleetReadyForMissionDeparture())
             {
                 return;
             }
@@ -453,6 +453,8 @@ namespace StrategicCombatCore
         {
             EndNow();
         }
+
+        public virtual bool ShouldInterruptOnCombatFailure() => false;
 
         public virtual bool IsNavyOnly() => false;
     }
@@ -1009,6 +1011,8 @@ namespace StrategicCombatCore
 
     public class OneShotPassiveSortieMission : OneShotSortieMission
     {
+        public override bool ShouldInterruptOnCombatFailure() => true;
+
         protected override void UpdatePosture(StrategicGroup strategicGroup)
         {
             if(strategicGroup.posture == StrategicGroup.GroupPostureType.Active)
@@ -1020,6 +1024,8 @@ namespace StrategicCombatCore
 
     public class OneShotActiveSortieMission : OneShotSortieMission
     {
+        public override bool ShouldInterruptOnCombatFailure() => true;
+
         protected override void UpdatePosture(StrategicGroup strategicGroup)
         {
             if(strategicGroup.posture == StrategicGroup.GroupPostureType.Passive)

@@ -122,9 +122,8 @@ namespace StrategicCombatCore
         public DeployState deployState; // generally, deployState should be set with SetDeployState()
         
         // Independent sub states:
-        public bool autoCombinable; // if true, it will convert from independent to combining when applicable 
+        public bool autoCombinable; // if true, it will convert from independent to combining when applicable
         public bool dissolvable; // if true, it would "dissolve" automatically if combine is applicable.
-        public bool detachedRepair; // if true, this group automatically returns recovered ships to its parent when they reunite.
         
         public string containerObjectId; // Generally shipLog's objectId.
         
@@ -1177,7 +1176,7 @@ namespace StrategicCombatCore
             SetPlannedPath(pathXY);
         }
 
-        public bool IsFleetOnSeaOrSuppliedInHomePort()
+        public bool IsFleetReadyForMissionDeparture()
         {
             var groupCell = cell;
             if(type == Type.Fleet)
@@ -1186,6 +1185,10 @@ namespace StrategicCombatCore
                 if(depotCell != null && groupCell == depotCell)
                 {
                     var ships = WalkGroupMembersDeployedShips().ToList();
+                    if (ships.Any(StrategicGroupSubGroupUtility.NeedsDetachForRepair))
+                    {
+                        return false;
+                    }
                     if(ships.Any(ship => ship.GetSupplyPercent() < 0.95))
                     {
                         return false;
@@ -1542,12 +1545,6 @@ namespace StrategicCombatCore
                         if(forcedReturningToBase || !IsFleetHasSufficientFuelToReturnHome())
                         {
                             forcedReturningToBase = true;
-
-                            var mission = GetAssignedMission();
-                            if(mission != null)
-                            {
-                                mission.InterruptNow();
-                            }
 
                             if(plannedPath.Count == 0 || (plannedPath.Count >= 1 && plannedPath[^1].GetCell() != depotCell))
                             {

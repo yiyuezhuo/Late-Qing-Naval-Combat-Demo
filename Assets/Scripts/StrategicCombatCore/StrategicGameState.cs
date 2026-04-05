@@ -779,6 +779,12 @@ namespace StrategicCombatCore
                 foreach (var group in groups)
                 {
                     group.StartReturnToBase(24);
+
+                    var assignedMission = group.GetAssignedMission();
+                    if(assignedMission != null && assignedMission.ShouldInterruptOnCombatFailure())
+                    {
+                        assignedMission.InterruptNow();
+                    }
                 }
             }
             else
@@ -792,7 +798,7 @@ namespace StrategicCombatCore
 
             foreach (var group in groups)
             {
-                StrategicGroupSubGroupUtility.DetachDamagedShipsForRepair(group);
+                TryAutoDetachDamagedShips(group);
             }
         }
 
@@ -818,6 +824,7 @@ namespace StrategicCombatCore
             Advance1HourForGroupPosture();
             Advance1HourForRepair();
             Advance1HourForDetachedAutoReattach();
+            Advance1HourForAutoDetachDamagedShips();
 
             CombinedAutoCombinableAndDissolvable();
 
@@ -1074,6 +1081,39 @@ namespace StrategicCombatCore
             {
                 var damageRepairResolver = new DamageRepairResolver();
                 damageRepairResolver.Resolve();
+            }
+        }
+
+        bool TryAutoDetachDamagedShips(StrategicGroup group)
+        {
+            if (group == null ||
+                group.deployState != StrategicGroup.DeployState.Independent ||
+                !group.IsNavy() ||
+                group.IsInDepotLocation())
+            {
+                return false;
+            }
+
+            var ships = group.WalkGroupMembersDeployedShips().ToList();
+            if (ships.Count == 0)
+                return false;
+
+            var hasShipsNeedingDetach = ships.Any(StrategicGroupSubGroupUtility.NeedsDetachForRepair);
+            if (!hasShipsNeedingDetach)
+                return false;
+
+            var hasShipsNotNeedingDetach = ships.Any(shipLog => !StrategicGroupSubGroupUtility.NeedsDetachForRepair(shipLog));
+            if (!hasShipsNotNeedingDetach)
+                return false;
+
+            return StrategicGroupSubGroupUtility.DetachDamagedShipsForRepair(group).applied;
+        }
+
+        public void Advance1HourForAutoDetachDamagedShips()
+        {
+            foreach (var group in IterIndependentStrategicGroups().Where(group => group.IsNavy()).ToList())
+            {
+                TryAutoDetachDamagedShips(group);
             }
         }
 
@@ -1458,23 +1498,6 @@ namespace StrategicCombatCore
                 }
             }
 
-            foreach (var group in strategicGroups.ToList())
-            {
-                if (!group.detachedRepair || group.deployState != StrategicGroup.DeployState.Independent)
-                    continue;
-
-                // Repair-only detached groups now rely on the generic auto-reattach path.
-                // Keep them alive until their members are reattached elsewhere.
-                if (group.directMemberReferences.Count > 0)
-                    continue;
-
-                group.ClearPlannedPath();
-                group.RemoveFromMap();
-                group.AttachTo(null);
-
-                EntityManager.Instance.Unregister(group);
-                strategicGroups.Remove(group);
-            }
         }
 
         public void Advance1HourForSupply()

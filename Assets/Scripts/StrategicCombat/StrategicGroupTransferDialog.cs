@@ -264,7 +264,7 @@ public static class StrategicGroupSubGroupUtility
 
     public static bool NeedsDetachForRepair(ShipLog shipLog)
     {
-        if (shipLog == null)
+        if (shipLog == null || shipLog.mapState != MapState.Deployed)
             return false;
 
         var maxDamagePoint = Math.Max(1f, shipLog.shipClass?.damagePoint ?? 0f);
@@ -294,30 +294,108 @@ public static class StrategicGroupSubGroupUtility
             .ToList();
     }
 
-    public static StrategicGroup DetachDamagedShipsForRepair(StrategicGroup initialGroup, List<ShipLog> detachedShips = null)
+    public class RepairDetachResult
     {
-        if (initialGroup == null || initialGroup.cell == null)
-            return null;
+        public StrategicGroup sourceGroup;
+        public StrategicGroup detachedGroup;
+        public List<ShipLog> detachedShips = new();
+        public bool applied;
+        public bool convertedSourceGroupInPlace;
+        public bool createdDetachedGroup => detachedGroup != null;
+    }
 
-        detachedShips ??= CollectCombinedHierarchyShipsNeedingDetach(initialGroup);
+    static List<ShipLog> NormalizeDetachedShipList(IEnumerable<ShipLog> shipLogs)
+    {
+        return shipLogs?
+            .Where(shipLog => shipLog != null)
+            .Distinct()
+            .ToList() ?? new();
+    }
+
+    static bool WouldDetachAllDeployedShips(StrategicGroup sourceGroup, IReadOnlyCollection<ShipLog> detachedShips)
+    {
+        if (sourceGroup == null || detachedShips == null || detachedShips.Count == 0)
+            return false;
+
+        var detachedShipIds = detachedShips
+            .Where(shipLog => !string.IsNullOrWhiteSpace(shipLog.objectId))
+            .Select(shipLog => shipLog.objectId)
+            .ToHashSet();
+
+        if (detachedShipIds.Count == 0)
+            return false;
+
+        return sourceGroup.WalkGroupMembersDeployedShips()
+            .Select(shipLog => shipLog.objectId)
+            .Where(objectId => !string.IsNullOrWhiteSpace(objectId))
+            .All(detachedShipIds.Contains);
+    }
+
+    static void PrepareShipsForDetachedAutoReattach(IEnumerable<ShipLog> detachedShips)
+    {
+        foreach (var shipLog in detachedShips)
+        {
+            shipLog.enableAutoReattach = false;
+        }
+    }
+
+    static void InterruptAssignedMissionForForcedReturn(StrategicGroup group)
+    {
+        var mission = group?.GetAssignedMission();
+        if (mission != null)
+        {
+            mission.InterruptNow();
+        }
+    }
+
+    public static RepairDetachResult DetachDamagedShipsForRepair(
+        StrategicGroup initialGroup,
+        List<ShipLog> detachedShips = null)
+    {
+        var result = new RepairDetachResult()
+        {
+            sourceGroup = initialGroup,
+        };
+
+        if (initialGroup == null || initialGroup.cell == null)
+            return result;
+
+        detachedShips = NormalizeDetachedShipList(detachedShips ?? CollectCombinedHierarchyShipsNeedingDetach(initialGroup));
+        result.detachedShips = detachedShips;
         if (detachedShips.Count == 0)
-            return null;
+            return result;
+
+        var wouldEmptySourceGroup = WouldDetachAllDeployedShips(initialGroup, detachedShips);
+        var shouldKeepSourceGroup = wouldEmptySourceGroup;
+        if (shouldKeepSourceGroup)
+        {
+            PrepareShipsForDetachedAutoReattach(detachedShips);
+            initialGroup.forcedReturningToBase = true;
+            InterruptAssignedMissionForForcedReturn(initialGroup);
+            initialGroup.StartReturnToBase(24);
+
+            result.applied = true;
+            result.convertedSourceGroupInPlace = true;
+            return result;
+        }
 
         var newGroup = CreateNewSubGroup(initialGroup, true, group =>
         {
-            group.detachedRepair = true;
             group.homeBaseObjectId = initialGroup.homeBaseObjectId;
         });
 
+        PrepareShipsForDetachedAutoReattach(detachedShips);
+
         foreach (var shipLog in detachedShips)
         {
-            shipLog.repairing = true;
-            shipLog.enableAutoReattach = false;
             IStrategicGroupMemberReferenceable.TemporaryAttachTo(shipLog, newGroup);
         }
 
-        newGroup.StartReturnToBase(0);
-        return newGroup;
+        newGroup.StartReturnToBase(24);
+
+        result.applied = true;
+        result.detachedGroup = newGroup;
+        return result;
     }
 
     public static string BuildDetachDamagedShipList(IEnumerable<ShipLog> shipLogs)

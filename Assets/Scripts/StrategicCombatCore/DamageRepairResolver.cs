@@ -598,13 +598,12 @@ namespace StrategicCombatCore
 
             foreach (var shipLog in StrategicGameState.Instance.shipLogs)
             {
-                if (shipLog == null || !shipLog.repairing)
+                if (shipLog?.detachedFromGroupReference?.Get() == null)
                     continue;
 
-                if (DamageRepairRecord.Extract(shipLog).Count > 0 || StrategicGroupSubGroupUtility.NeedsDetachForRepair(shipLog))
+                if (StrategicGroupSubGroupUtility.NeedsDetachForRepair(shipLog))
                     continue;
 
-                shipLog.repairing = false;
                 shipLog.enableAutoReattach = true;
             }
         }

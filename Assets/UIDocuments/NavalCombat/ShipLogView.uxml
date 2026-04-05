@@ -631,11 +631,11 @@
                 <ui:Tab label="Strategic">
                     <ui:VisualElement style="flex-grow: 1;">
                         <ui:Instance template="IStrategicGroupMemberReferenceableDetachedUI"/>
-                        <ui:Toggle label="Repairing">
+                        <ui:Label style="color: rgb(192, 0, 0);">
                             <Bindings>
-                                <ui:DataBinding property="value" data-source-path="repairingProp" binding-mode="TwoWay"/>
+                                <ui:DataBinding property="text" data-source-path="needsDetachForRepairLabel" binding-mode="ToTarget"/>
                             </Bindings>
-                        </ui:Toggle>
+                        </ui:Label>
                         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
                             <ui:VisualElement style="flex-grow: 1; flex-basis: 50px;">
                                 <ui:DoubleField label="Supply (tons)">

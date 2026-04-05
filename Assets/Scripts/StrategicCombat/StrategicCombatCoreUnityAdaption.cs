@@ -553,9 +553,9 @@ namespace StrategicCombatCore
                     var operationalStateStr = shipLog.operationalState == ShipOperationalState.Operational ? $"{shipLog.operationalState}" : $"<b><color=\"red\">{shipLog.operationalState}</color></b>";
                     var extraParts = new List<string>();
                     AddDetachedDisplayPart(extraParts, shipLog);
-                    if (shipLog.repairing)
+                    if (StrategicGroupSubGroupUtility.NeedsDetachForRepair(shipLog))
                     {
-                        extraParts.Add("<b><color=\"red\">Reparing</color></b>");
+                        extraParts.Add("<b><color=\"red\">Detached for Repair</color></b>");
                     }
                     var extraSuffix = extraParts.Count > 0 ? $", {string.Join(", ", extraParts)}" : "";
                     return $"{mapStateStr}, {operationalStateStr}, {maxSpeed} kts, DP: {shipLog.damagePoint} / {shipLog.shipClass.damagePoint}{extraSuffix}";
@@ -565,11 +565,10 @@ namespace StrategicCombatCore
                     var deployStateStr = group.deployState == StrategicGroup.DeployState.Combined ? $"{group.deployState}" : $"<b>{group.deployState}</b>";
                     var autoCombinedableStr = group.autoCombinable ? " <b>Auto-Combinedable</b>" : "";
                     var dissolvableStr = group.dissolvable ? " <b><color=\"red\">Dissolvable</color></b>" : "";
-                    var detachedRepairStr = group.detachedRepair ? " <b><color=\"red\">Detached Repair</color></b>" : "";
                     var extraParts = new List<string>();
                     AddDetachedDisplayPart(extraParts, group);
                     var extraSuffix = extraParts.Count > 0 ? $", {string.Join(", ", extraParts)}" : "";
-                    return $"{deployStateStr}{autoCombinedableStr}{dissolvableStr}{detachedRepairStr}{extraSuffix}";
+                    return $"{deployStateStr}{autoCombinedableStr}{dissolvableStr}{extraSuffix}";
                 }
                 else if (obj is LandUnit landUnit)
                 {
@@ -1248,10 +1247,9 @@ namespace NavalCombatCore
         }
 
         [CreateProperty]
-        public bool repairingProp
+        public string needsDetachForRepairLabel
         {
-            get => repairing;
-            set => repairing = value;
+            get => StrategicGroupSubGroupUtility.NeedsDetachForRepair(this) ? "Detached for Repair" : string.Empty;
         }
 
         [CreateProperty]

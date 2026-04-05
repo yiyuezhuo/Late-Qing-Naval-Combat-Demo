@@ -138,18 +138,6 @@
                                 </Bindings>
                             </ui:Toggle>
                         </ui:VisualElement>
-                        <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
-                            <ui:Label text="Detached Repair">
-                                <Bindings>
-                                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-90000000000001)"/>
-                                </Bindings>
-                            </ui:Label>
-                            <ui:Toggle style="margin-right: 10px;">
-                                <Bindings>
-                                    <ui:DataBinding property="value" data-source-path="detachedRepair" binding-mode="TwoWay"/>
-                                </Bindings>
-                            </ui:Toggle>
-                        </ui:VisualElement>
                         <ui:VisualElement style="flex-direction: row;">
                             <ui:Label text="Posture">
                                 <Bindings>

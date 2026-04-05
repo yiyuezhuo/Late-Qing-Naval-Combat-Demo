@@ -3255,20 +3255,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             Localize("The following ships will be detached for repair:") + "\n" + shipList,
             () =>
             {
-                var newGroup = StrategicGroupSubGroupUtility.CreateNewSubGroup(initialGroup, true, group =>
-                {
-                    group.detachedRepair = true;
-                    group.homeBaseObjectId = initialGroup.homeBaseObjectId;
-                });
-
-                foreach (var shipLog in detachedShips)
-                {
-                    shipLog.repairing = true;
-                    shipLog.enableAutoReattach = false;
-                    IStrategicGroupMemberReferenceable.TemporaryAttachTo(shipLog, newGroup);
-                }
-
-                newGroup.StartReturnToBase(0);
+                StrategicGroupSubGroupUtility.DetachDamagedShipsForRepair(initialGroup, detachedShips);
             },
             Localize("Detach Damaged Ships")
         );

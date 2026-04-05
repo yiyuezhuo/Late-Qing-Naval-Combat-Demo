@@ -794,6 +794,11 @@ namespace StrategicCombatCore
                 }
                 // reorgnize for a given time interval. (Combat time + 12h)
             }
+
+            foreach (var group in groups)
+            {
+                StrategicGroupSubGroupUtility.DetachDamagedShipsForRepair(group);
+            }
         }
 
         public void Advance1Hour()

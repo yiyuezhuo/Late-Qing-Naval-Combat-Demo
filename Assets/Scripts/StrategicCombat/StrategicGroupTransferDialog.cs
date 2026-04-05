@@ -294,6 +294,32 @@ public static class StrategicGroupSubGroupUtility
             .ToList();
     }
 
+    public static StrategicGroup DetachDamagedShipsForRepair(StrategicGroup initialGroup, List<ShipLog> detachedShips = null)
+    {
+        if (initialGroup == null || initialGroup.cell == null)
+            return null;
+
+        detachedShips ??= CollectCombinedHierarchyShipsNeedingDetach(initialGroup);
+        if (detachedShips.Count == 0)
+            return null;
+
+        var newGroup = CreateNewSubGroup(initialGroup, true, group =>
+        {
+            group.detachedRepair = true;
+            group.homeBaseObjectId = initialGroup.homeBaseObjectId;
+        });
+
+        foreach (var shipLog in detachedShips)
+        {
+            shipLog.repairing = true;
+            shipLog.enableAutoReattach = false;
+            IStrategicGroupMemberReferenceable.TemporaryAttachTo(shipLog, newGroup);
+        }
+
+        newGroup.StartReturnToBase(0);
+        return newGroup;
+    }
+
     public static string BuildDetachDamagedShipList(IEnumerable<ShipLog> shipLogs)
     {
         return string.Join("\n", shipLogs.Select(shipLog =>

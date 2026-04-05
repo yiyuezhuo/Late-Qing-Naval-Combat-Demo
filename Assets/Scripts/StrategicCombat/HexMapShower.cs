@@ -682,6 +682,12 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
     {
         // var (x, y) = args;
         // Color32 color = new Color32((byte)StrategicGameState.Instance.terrainMatrix[x, y], 0, 0, 255);
+        if (cell == null || !cell.IsGridCell())
+            return;
+
+        if (terrainTypeTexture == null || gridCellViewerMap == null || !gridCellViewerMap.ContainsKey((cell.x, cell.y)))
+            return;
+
         if(cell.IsGridCell())
         {
             Color32 color = new Color32((byte)cell.terrain, 0, 0, 255);

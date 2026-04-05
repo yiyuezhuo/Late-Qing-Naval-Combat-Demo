@@ -1482,11 +1482,6 @@ namespace StrategicCombatCore
 
                         continue;
                     }
-
-                    if (parentGroup.cell == group.cell)
-                    {
-                        group.MoveElementTo(shipLog, parentGroup);
-                    }
                 }
 
                 if (group.subordinatesCombined.Count > 0)

@@ -283,6 +283,13 @@ namespace StrategicCombatCore
 
         [CreateProperty]
         public bool canReattachToDetachedGroup => ((IStrategicGroupMemberReferenceable)this).GetDetachedFromGroup() != null;
+
+        [CreateProperty]
+        public bool enableAutoReattachProp
+        {
+            get => enableAutoReattach;
+            set => enableAutoReattach = value;
+        }
         #endregion
 
         [CreateProperty]
@@ -544,7 +551,14 @@ namespace StrategicCombatCore
                     // var operationalStateStr = shipLog.operationalState == ShipOperationalState.Operational ? $"{shipLog.operationalState}" : $"<b>{shipLog.operationalState}</b>";
                     var mapStateStr = shipLog.mapState == MapState.Deployed ? $"{shipLog.mapState}" : $"<b><color=\"red\">{shipLog.mapState}</color></b>";
                     var operationalStateStr = shipLog.operationalState == ShipOperationalState.Operational ? $"{shipLog.operationalState}" : $"<b><color=\"red\">{shipLog.operationalState}</color></b>";
-                    return $"{mapStateStr}, {operationalStateStr}, {maxSpeed} kts, DP: {shipLog.damagePoint} / {shipLog.shipClass.damagePoint}";
+                    var extraParts = new List<string>();
+                    AddDetachedDisplayPart(extraParts, shipLog);
+                    if (shipLog.repairing)
+                    {
+                        extraParts.Add("<b><color=\"red\">Reparing</color></b>");
+                    }
+                    var extraSuffix = extraParts.Count > 0 ? $", {string.Join(", ", extraParts)}" : "";
+                    return $"{mapStateStr}, {operationalStateStr}, {maxSpeed} kts, DP: {shipLog.damagePoint} / {shipLog.shipClass.damagePoint}{extraSuffix}";
                 }
                 else if (obj is StrategicGroup group)
                 {
@@ -552,10 +566,29 @@ namespace StrategicCombatCore
                     var autoCombinedableStr = group.autoCombinable ? " <b>Auto-Combinedable</b>" : "";
                     var dissolvableStr = group.dissolvable ? " <b><color=\"red\">Dissolvable</color></b>" : "";
                     var detachedRepairStr = group.detachedRepair ? " <b><color=\"red\">Detached Repair</color></b>" : "";
-                    return $"{deployStateStr}{autoCombinedableStr}{dissolvableStr}{detachedRepairStr}";
+                    var extraParts = new List<string>();
+                    AddDetachedDisplayPart(extraParts, group);
+                    var extraSuffix = extraParts.Count > 0 ? $", {string.Join(", ", extraParts)}" : "";
+                    return $"{deployStateStr}{autoCombinedableStr}{dissolvableStr}{detachedRepairStr}{extraSuffix}";
+                }
+                else if (obj is LandUnit landUnit)
+                {
+                    var extraParts = new List<string>();
+                    AddDetachedDisplayPart(extraParts, landUnit);
+                    return string.Join(", ", extraParts);
                 }
 
                 return "";
+            }
+        }
+
+        static void AddDetachedDisplayPart(List<string> parts, IStrategicGroupMemberReferenceable member)
+        {
+            var detachedFromGroup = member?.GetDetachedFromGroup();
+            var detachedShortName = detachedFromGroup?.name?.GetShortName();
+            if (!string.IsNullOrWhiteSpace(detachedShortName))
+            {
+                parts.Add($"Detached from {detachedShortName}");
             }
         }
 
@@ -606,6 +639,13 @@ namespace StrategicCombatCore
 
         [CreateProperty]
         public bool canReattachToDetachedGroup => ((IStrategicGroupMemberReferenceable)this).GetDetachedFromGroup() != null;
+
+        [CreateProperty]
+        public bool enableAutoReattachProp
+        {
+            get => enableAutoReattach;
+            set => enableAutoReattach = value;
+        }
         #endregion
 
         [CreateProperty]
@@ -1199,6 +1239,20 @@ namespace NavalCombatCore
 
         [CreateProperty]
         public bool canReattachToDetachedGroup => ((IStrategicGroupMemberReferenceable)this).GetDetachedFromGroup() != null;
+
+        [CreateProperty]
+        public bool enableAutoReattachProp
+        {
+            get => enableAutoReattach;
+            set => enableAutoReattach = value;
+        }
+
+        [CreateProperty]
+        public bool repairingProp
+        {
+            get => repairing;
+            set => repairing = value;
+        }
 
         [CreateProperty]
         public float supplyCostTonsPerDay => GetSupplyCostTonsPerDay();

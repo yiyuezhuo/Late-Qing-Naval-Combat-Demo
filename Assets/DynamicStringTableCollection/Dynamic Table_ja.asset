@@ -1953,7 +1953,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1543969483427840
-    m_Localized: "DP\u9032\u6357 {0} \u640D\u50B7\u6BB5\u968E: {1}"
+    m_Localized: "DP\u9032\u6357 {0} ({1}/{2}) \u640D\u50B7\u6BB5\u968E: {3}"
     m_Metadata:
       m_Items: []
   - m_Id: 1547822383665152

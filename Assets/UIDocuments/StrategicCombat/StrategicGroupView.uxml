@@ -232,7 +232,7 @@
                             </ui:VisualElement>
                             <ui:Toggle label="Enable Auto Reattach">
                                 <Bindings>
-                                    <ui:DataBinding property="value" data-source-path="enableAutoReattach" binding-mode="TwoWay"/>
+                                    <ui:DataBinding property="value" data-source-path="enableAutoReattachProp" binding-mode="TwoWay"/>
                                 </Bindings>
                             </ui:Toggle>
                             <ui:VisualElement style="flex-grow: 0; flex-direction: row; flex-shrink: 0;">

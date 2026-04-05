@@ -3263,6 +3263,8 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
                 foreach (var shipLog in detachedShips)
                 {
+                    shipLog.repairing = true;
+                    shipLog.enableAutoReattach = false;
                     IStrategicGroupMemberReferenceable.TemporaryAttachTo(shipLog, newGroup);
                 }
 

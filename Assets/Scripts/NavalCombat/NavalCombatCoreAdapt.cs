@@ -445,7 +445,20 @@ namespace NavalCombatCore
         public Doctrine doctrineProp => doctrine;
 
         [CreateProperty]
-        public string damagePointProgrssDesc => Localize("DP Progress {0} Damage Tier: {1}", (damagePoint / Math.Max(1, shipClass?.damagePoint ?? 0)).ToString("P1"), GetDamageTier());
+        public string damagePointProgrssDesc
+        {
+            get
+            {
+                var totalDamagePoint = shipClass?.damagePoint ?? 0;
+                var progressRatio = damagePoint / Math.Max(1, totalDamagePoint);
+                return Localize(
+                    "DP Progress {0} ({1}/{2}) Damage Tier: {3}",
+                    progressRatio.ToString("P1"),
+                    damagePoint.ToString("F0"),
+                    totalDamagePoint.ToString("F0"),
+                    GetDamageTier());
+            }
+        }
         // public string damagePointProgrssDesc => $"DP Progress {(damagePoint / Math.Max(1, shipClass?.damagePoint ?? 0)).ToString("P1")} Damage Tier: {GetDamageTier()}";
 
         [CreateProperty]

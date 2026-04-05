@@ -595,6 +595,18 @@ namespace StrategicCombatCore
                     bundle.Resolve();
                 }
             }
+
+            foreach (var shipLog in StrategicGameState.Instance.shipLogs)
+            {
+                if (shipLog == null || !shipLog.repairing)
+                    continue;
+
+                if (DamageRepairRecord.Extract(shipLog).Count > 0 || StrategicGroupSubGroupUtility.NeedsDetachForRepair(shipLog))
+                    continue;
+
+                shipLog.repairing = false;
+                shipLog.enableAutoReattach = true;
+            }
         }
     }
 }

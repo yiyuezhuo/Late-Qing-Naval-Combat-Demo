@@ -1949,7 +1949,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1543969483427840
-    m_Localized: "\u640D\u50B7\u9EDE\u9032\u5EA6 {0} \u640D\u50B7\u7B49\u7D1A: {1}"
+    m_Localized: "\u640D\u50B7\u9EDE\u9032\u5EA6 {0} ({1}/{2}) \u640D\u50B7\u7B49\u7D1A: {3}"
     m_Metadata:
       m_Items: []
   - m_Id: 1547822383665152

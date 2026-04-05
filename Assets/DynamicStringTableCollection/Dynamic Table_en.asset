@@ -1937,7 +1937,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1543969483427840
-    m_Localized: 'DP Progress {0} Damage Tier: {1}'
+    m_Localized: 'DP Progress {0} ({1}/{2}) Damage Tier: {3}'
     m_Metadata:
       m_Items: []
   - m_Id: 1547822383665152

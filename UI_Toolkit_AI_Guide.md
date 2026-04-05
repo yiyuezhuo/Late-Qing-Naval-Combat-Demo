@@ -260,3 +260,9 @@ The following web CSS properties DO NOT exist in USS and MUST NEVER be generated
 
 If shadow or glow is needed, use **background images or gradients instead**.
 
+## Binding Rule
+
+- Unity UI Toolkit runtime data binding in this project does not reliably bind to plain auto-properties like `public bool foo { get; set; }`.
+- For bindable model state, prefer `public` fields.
+- If a type must expose an auto-property for interface/API reasons, add a separate `[CreateProperty]` wrapper in the adaption layer and bind UXML to that wrapper instead of the auto-property itself.
+- When adding or reviewing bindings, always verify the `data-source-path` points to either a field or a `[CreateProperty]` property.

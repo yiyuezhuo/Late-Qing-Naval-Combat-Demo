@@ -579,6 +579,62 @@ namespace StrategicCombatCore
             }
         }
 
+        static int GetDirectMemberSortCategory(IStrategicGroupMemberReferenceable member)
+        {
+            return member switch
+            {
+                LandUnit => 0,
+                ShipLog => 1,
+                StrategicGroup => 2,
+                _ => 3,
+            };
+        }
+
+        static string GetDirectMemberSortName(IStrategicGroupMemberReferenceable member)
+        {
+            return member switch
+            {
+                LandUnit landUnit => landUnit.name?.GetMergedName() ?? string.Empty,
+                ShipLog shipLog => shipLog.namedShip?.name?.GetMergedName() ?? string.Empty,
+                StrategicGroup group => group.name?.GetMergedName() ?? string.Empty,
+                _ => string.Empty,
+            };
+        }
+
+        public void SortDirectMemberReferencesByPower()
+        {
+            directMemberReferences.Sort((left, right) =>
+            {
+                var leftMember = left?.Get();
+                var rightMember = right?.Get();
+
+                if (leftMember == null || rightMember == null)
+                {
+                    if (leftMember == null && rightMember == null)
+                        return string.Compare(left?.referenceId, right?.referenceId, StringComparison.Ordinal);
+                    return leftMember == null ? 1 : -1;
+                }
+
+                var categoryResult = GetDirectMemberSortCategory(leftMember).CompareTo(GetDirectMemberSortCategory(rightMember));
+                if (categoryResult != 0)
+                    return categoryResult;
+
+                var powerResult = rightMember.GetCombinedPowerPoint(true).CompareTo(leftMember.GetCombinedPowerPoint(true));
+                if (powerResult != 0)
+                    return powerResult;
+
+                var nameResult = string.Compare(
+                    GetDirectMemberSortName(leftMember),
+                    GetDirectMemberSortName(rightMember),
+                    StringComparison.CurrentCultureIgnoreCase
+                );
+                if (nameResult != 0)
+                    return nameResult;
+
+                return string.Compare(leftMember.objectId, rightMember.objectId, StringComparison.Ordinal);
+            });
+        }
+
         internal void RemoveDirectMemberReference(string memberObjectId)
         {
             if (string.IsNullOrWhiteSpace(memberObjectId))
@@ -596,6 +652,7 @@ namespace StrategicCombatCore
             if (oldParentGroup == newParentGroup)
             {
                 newParentGroup?.EnsureDirectMemberReference(member.objectId);
+                newParentGroup?.SortDirectMemberReferencesByPower();
                 member.parentGroupReference.referenceId = newParentGroup?.objectId;
                 return;
             }
@@ -603,6 +660,8 @@ namespace StrategicCombatCore
             oldParentGroup?.RemoveDirectMemberReference(member.objectId);
             newParentGroup?.EnsureDirectMemberReference(member.objectId);
             member.parentGroupReference.referenceId = newParentGroup?.objectId;
+            oldParentGroup?.SortDirectMemberReferencesByPower();
+            newParentGroup?.SortDirectMemberReferencesByPower();
         }
 
         public void AttachMember(IStrategicGroupMemberReferenceable member) => ReassignMember(member, this);
@@ -635,6 +694,7 @@ namespace StrategicCombatCore
             newMember.parentGroupReference.referenceId = objectId;
             IStrategicGroupMemberReferenceable.ClearDetachedFromGroupState(newMember);
             directMemberReferences.RemoveAll(reference => !ReferenceEquals(reference, slot) && reference.referenceId == newMember.objectId);
+            SortDirectMemberReferencesByPower();
             return true;
         }
 

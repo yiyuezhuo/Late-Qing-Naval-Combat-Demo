@@ -7,7 +7,6 @@ using StrategicCombatCore;
 using Unity.Properties;
 using UnityEngine;
 using UnityEngine.Localization;
-using UnityEngine.Localization.Settings;
 using UnityEngine.UIElements;
 
 public class StrategicGroupTransferDialogItem
@@ -184,147 +183,15 @@ public static class StrategicGroupSubGroupUtility
         return result;
     }
 
-    static string LocalizeDynamicKeyForLocale(string key, string localeCode, string fallback)
-    {
-        var locale = LocalizationSettings.AvailableLocales?.Locales?
-            .FirstOrDefault(candidate => candidate?.Identifier.CultureInfo.Name == localeCode);
-        if (locale == null)
-            return fallback;
-
-        var result = LocalizationSettings.StringDatabase.GetLocalizedString("Dynamic Table", key, locale);
-        if (string.IsNullOrEmpty(result) || result.StartsWith("No translation found"))
-            return fallback;
-
-        return result;
-    }
-
-    static GlobalString LocalizeEnumGlobalString<T>(T value)
-    {
-        var fallback = value?.ToString() ?? string.Empty;
-        return new GlobalString()
-        {
-            english = LocalizeEnumForLocale(typeof(T), value, "en", fallback),
-            japanese = LocalizeEnumForLocale(typeof(T), value, "ja", fallback),
-            chineseSimplified = LocalizeEnumForLocale(typeof(T), value, "zh-Hans", fallback),
-            chineseTraditional = LocalizeEnumForLocale(typeof(T), value, "zh-Hant", fallback),
-        };
-    }
-
-    static string LocalizeEnumForLocale(Type enumType, object value, string localeCode, string fallback)
-    {
-        foreach (var key in UnityLocalizationService.GetEnumKeys(enumType, value))
-        {
-            var result = LocalizeDynamicKeyForLocale(key, localeCode, key);
-            if (!string.Equals(result, key, StringComparison.Ordinal))
-                return result;
-        }
-
-        return fallback;
-    }
-
-    static string CombineNameSegment(string left, string right, string separator)
-    {
-        if (string.IsNullOrWhiteSpace(left))
-            return right;
-        if (string.IsNullOrWhiteSpace(right))
-            return left;
-        return $"{left}{separator}{right}";
-    }
-
-    static GlobalString CombineNameParts(GlobalString left, GlobalString right)
-    {
-        return new GlobalString()
-        {
-            english = CombineNameSegment(left?.english, right?.english, " "),
-            japanese = CombineNameSegment(left?.japanese, right?.japanese, string.Empty),
-            chineseSimplified = CombineNameSegment(left?.chineseSimplified, right?.chineseSimplified, string.Empty),
-            chineseTraditional = CombineNameSegment(left?.chineseTraditional, right?.chineseTraditional, string.Empty),
-        };
-    }
-
-    static GlobalString AppendGeneratedNameIndex(GlobalString baseName, int index)
-    {
-        var suffix = index.ToString();
-        return new GlobalString()
-        {
-            english = CombineNameSegment(baseName?.english, suffix, " "),
-            japanese = CombineNameSegment(baseName?.japanese, suffix, string.Empty),
-            chineseSimplified = CombineNameSegment(baseName?.chineseSimplified, suffix, string.Empty),
-            chineseTraditional = CombineNameSegment(baseName?.chineseTraditional, suffix, string.Empty),
-        };
-    }
-
-    static string GetEnglishName(GlobalString name) => name?.GetNameFromType(LanguageType.English)?.Trim();
-
-    static GlobalString GetGeneratedSubGroupRoleName(StrategicGroup sourceGroup)
-    {
-        if (sourceGroup.IsNavy())
-            return LocalizeEnumGlobalString(StrategicGroup.Type.Fleet);
-
-        if (sourceGroup.size != StrategicUnitSize.Unspecified)
-            return LocalizeEnumGlobalString(sourceGroup.size);
-
-        return LocalizeEnumGlobalString(sourceGroup.type);
-    }
-
     public static GlobalString BuildGeneratedSubGroupName(StrategicGroup sourceGroup)
     {
-        var baseName = CombineNameParts(
-            LocalizeEnumGlobalString(sourceGroup.country),
-            GetGeneratedSubGroupRoleName(sourceGroup)
-        );
-        var existingEnglishNames = StrategicGameState.Instance.strategicGroups
-            .Where(group => group != null)
-            .Select(group => GetEnglishName(group.name))
-            .Where(name => !string.IsNullOrWhiteSpace(name))
-            .ToHashSet(StringComparer.OrdinalIgnoreCase);
-
-        var nextIndex = 1;
-        while (existingEnglishNames.Contains(GetEnglishName(AppendGeneratedNameIndex(baseName, nextIndex))))
-        {
-            nextIndex++;
-        }
-
-        return AppendGeneratedNameIndex(baseName, nextIndex);
+        return StrategicGroupNamingUtility.BuildGeneratedSubGroupName(sourceGroup);
     }
 
     public static StrategicGroup CreateNewSubGroup(StrategicGroup sourceGroup, bool createIndependent, Action<StrategicGroup> configureNewGroup = null)
     {
-        if (sourceGroup == null)
-            return null;
-
-        var newGroup = new StrategicGroup()
-        {
-            name = BuildGeneratedSubGroupName(sourceGroup),
-            type = sourceGroup.type,
-            size = sourceGroup.size,
-            country = sourceGroup.country,
-            deployState = createIndependent ? StrategicGroup.DeployState.Independent : StrategicGroup.DeployState.Combined,
-        };
-
+        var newGroup = StrategicGroupNamingUtility.CreateNewSubGroup(sourceGroup, createIndependent);
         configureNewGroup?.Invoke(newGroup);
-
-        var gameState = StrategicGameState.Instance;
-        var sourceIndex = gameState.strategicGroups.IndexOf(sourceGroup);
-        if (sourceIndex >= 0)
-        {
-            gameState.strategicGroups.Insert(sourceIndex + 1, newGroup);
-        }
-        else
-        {
-            gameState.strategicGroups.Add(newGroup);
-        }
-
-        EntityManager.Instance.Register(newGroup, null);
-        newGroup.AttachTo(sourceGroup);
-        if (createIndependent)
-        {
-            newGroup.MoveToCell(sourceGroup.cell, false);
-        }
-        else
-        {
-            newGroup.deployState = StrategicGroup.DeployState.Combined;
-        }
         return newGroup;
     }
 
@@ -476,25 +343,6 @@ public static class StrategicGroupSubGroupUtility
 
 public class StrategicGroupTransferDialog
 {
-    class TransferAtom
-    {
-        public string objectId;
-        public string rootObjectId;
-        public float power;
-    }
-
-    class MemberSelectionSummary
-    {
-        public int totalAtoms;
-        public int selectedAtoms;
-        public float totalPower;
-        public float selectedPower;
-
-        public bool anySelected => selectedAtoms > 0;
-        public bool allSelected => totalAtoms > 0 && selectedAtoms == totalAtoms;
-        public bool isPartial => anySelected && !allSelected;
-    }
-
     enum AttachMode
     {
         Permanent,
@@ -565,8 +413,8 @@ public class StrategicGroupTransferDialog
     HashSet<string> stagedTargetToSourceIds = new();
     HashSet<string> stagedSourceAtomIds = new();
     HashSet<string> stagedZeroPowerSourceRootIds = new();
-    List<TransferAtom> orderedSourceAtoms = new();
-    Dictionary<string, List<TransferAtom>> sourceAtomsByRootId = new();
+    List<StrategicGroupTransferAtom> orderedSourceAtoms = new();
+    Dictionary<string, List<StrategicGroupTransferAtom>> sourceAtomsByRootId = new();
     Dictionary<string, float> sourceAtomPowerById = new();
     float totalSourcePower;
 
@@ -1024,8 +872,8 @@ public class StrategicGroupTransferDialog
             if (member == null)
                 continue;
 
-            var atoms = new List<TransferAtom>();
-            CollectTransferAtoms(member, rootId, atoms);
+            var atoms = new List<StrategicGroupTransferAtom>();
+            StrategicGroupTransferSplitUtility.CollectTransferAtoms(member, rootId, atoms, ShouldIncludeMemberInDialog);
             sourceAtomsByRootId[rootId] = atoms;
 
             foreach (var atom in atoms)
@@ -1036,35 +884,6 @@ public class StrategicGroupTransferDialog
         }
 
         totalSourcePower = orderedSourceAtoms.Sum(atom => atom.power);
-    }
-
-    void CollectTransferAtoms(IStrategicGroupMemberReferenceable member, string rootObjectId, List<TransferAtom> atoms)
-    {
-        if (member == null)
-            return;
-
-        if (!ShouldIncludeMemberInDialog(member))
-            return;
-
-        if (member is StrategicGroup group && group.deployState == StrategicGroup.DeployState.Combined)
-        {
-            foreach (var reference in group.directMemberReferences.ToList())
-            {
-                var child = reference.Get();
-                if (child != null)
-                {
-                    CollectTransferAtoms(child, rootObjectId, atoms);
-                }
-            }
-            return;
-        }
-
-        atoms.Add(new TransferAtom()
-        {
-            objectId = member.objectId,
-            rootObjectId = rootObjectId,
-            power = Mathf.Max(0f, member.GetCombinedPowerPoint(true)),
-        });
     }
 
     void RefreshDisplayedItems()
@@ -1155,41 +974,9 @@ public class StrategicGroupTransferDialog
         return $"{partialPower:0.##} / {totalPower:0.##} power";
     }
 
-    MemberSelectionSummary BuildMemberSelectionSummary(IStrategicGroupMemberReferenceable member)
+    StrategicGroupTransferSelectionSummary BuildMemberSelectionSummary(IStrategicGroupMemberReferenceable member)
     {
-        if (member == null)
-            return new();
-
-        if (!ShouldIncludeMemberInDialog(member))
-            return new();
-
-        if (member is StrategicGroup group && group.deployState == StrategicGroup.DeployState.Combined)
-        {
-            var summary = new MemberSelectionSummary();
-            foreach (var reference in group.directMemberReferences.ToList())
-            {
-                var child = reference.Get();
-                if (child == null)
-                    continue;
-
-                var childSummary = BuildMemberSelectionSummary(child);
-                summary.totalAtoms += childSummary.totalAtoms;
-                summary.selectedAtoms += childSummary.selectedAtoms;
-                summary.totalPower += childSummary.totalPower;
-                summary.selectedPower += childSummary.selectedPower;
-            }
-            return summary;
-        }
-
-        var isSelected = stagedSourceAtomIds.Contains(member.objectId);
-        var power = Mathf.Max(0f, member.GetCombinedPowerPoint(true));
-        return new MemberSelectionSummary()
-        {
-            totalAtoms = 1,
-            selectedAtoms = isSelected ? 1 : 0,
-            totalPower = power,
-            selectedPower = isSelected ? power : 0f,
-        };
+        return StrategicGroupTransferSplitUtility.BuildSelectionSummary(member, stagedSourceAtomIds, ShouldIncludeMemberInDialog);
     }
 
     void UpdateTransferPowerRatioControl()
@@ -1327,88 +1114,23 @@ public class StrategicGroupTransferDialog
             if (member is not StrategicGroup sourceSubGroup || sourceSubGroup.deployState != StrategicGroup.DeployState.Combined)
                 continue;
 
-            var splitGroup = CreateSplitGroupLike(sourceSubGroup, sourceGroup);
-            MaterializePartialGroupSelection(sourceSubGroup, splitGroup);
+            var splitGroup = StrategicGroupTransferSplitUtility.CreateSplitGroupLike(
+                sourceSubGroup,
+                sourceGroup,
+                StrategicGroup.DeployState.Combined);
+            StrategicGroupTransferSplitUtility.MaterializePartialGroupSelection(
+                sourceSubGroup,
+                splitGroup,
+                stagedSourceAtomIds,
+                ShouldIncludeMemberInDialog);
             if (splitGroup.directMemberReferences.Count == 0)
             {
-                DestroyEmptySplitGroup(splitGroup);
+                StrategicGroupTransferSplitUtility.DestroyEmptySplitGroup(splitGroup);
                 continue;
             }
 
             ApplyMemberTransfer(splitGroup, targetGroup);
         }
-    }
-
-    StrategicGroup CreateSplitGroupLike(StrategicGroup templateGroup, StrategicGroup parentGroup)
-    {
-        var splitGroup = new StrategicGroup()
-        {
-            name = StrategicGroupSubGroupUtility.BuildGeneratedSubGroupName(templateGroup),
-            type = templateGroup.type,
-            size = templateGroup.size,
-            country = templateGroup.country,
-            deployState = StrategicGroup.DeployState.Combined,
-            homeBaseObjectId = templateGroup.homeBaseObjectId,
-        };
-
-        var gameState = StrategicGameState.Instance;
-        var templateIndex = gameState.strategicGroups.IndexOf(templateGroup);
-        if (templateIndex >= 0)
-        {
-            gameState.strategicGroups.Insert(templateIndex + 1, splitGroup);
-        }
-        else
-        {
-            gameState.strategicGroups.Add(splitGroup);
-        }
-
-        EntityManager.Instance.Register(splitGroup, null);
-        splitGroup.AttachTo(parentGroup);
-        splitGroup.deployState = StrategicGroup.DeployState.Combined;
-        return splitGroup;
-    }
-
-    void MaterializePartialGroupSelection(StrategicGroup sourceGroup, StrategicGroup splitGroup)
-    {
-        foreach (var reference in sourceGroup.directMemberReferences.ToList())
-        {
-            var member = reference.Get();
-            if (member == null)
-                continue;
-
-            if (!ShouldIncludeMemberInDialog(member))
-                continue;
-
-            var summary = BuildMemberSelectionSummary(member);
-            if (!summary.anySelected)
-                continue;
-
-            if (summary.allSelected)
-            {
-                IStrategicGroupMemberReferenceable.PermanentTransferTo(member, splitGroup);
-                continue;
-            }
-
-            if (member is StrategicGroup childGroup && childGroup.deployState == StrategicGroup.DeployState.Combined)
-            {
-                var childSplitGroup = CreateSplitGroupLike(childGroup, splitGroup);
-                MaterializePartialGroupSelection(childGroup, childSplitGroup);
-                if (childSplitGroup.directMemberReferences.Count == 0)
-                {
-                    DestroyEmptySplitGroup(childSplitGroup);
-                }
-            }
-        }
-    }
-
-    void DestroyEmptySplitGroup(StrategicGroup group)
-    {
-        if (group == null || group.directMemberReferences.Count > 0)
-            return;
-
-        group.AttachTo(null);
-        EntityManager.Instance.Unregister(group);
-        StrategicGameState.Instance?.strategicGroups.Remove(group);
     }
 
     DeployStateHandlingMode GetHandlingModeFromDropdown(DropdownField dropdownField)

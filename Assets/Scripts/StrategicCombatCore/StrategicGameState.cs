@@ -846,6 +846,7 @@ namespace StrategicCombatCore
             {
                 RefreshDailyPowerInfluenceMapCaches();
                 RefreshTheaters();
+                Advance1DayForAiFrontlineAllocation();
             }
         }
 
@@ -855,6 +856,442 @@ namespace StrategicCombatCore
             {
                 sideState.powerInfluenceMapCache = StrategicInfluenceMapUtility.BuildPowerCache(this, sideState);
             }
+        }
+
+        const float AiFrontlineAllocationEpsilon = 0.0001f;
+
+        sealed class AiFrontlineSourceState
+        {
+            public StrategicGroup group;
+            public float remainingPower;
+        }
+
+        sealed class AiFrontlineDemandState
+        {
+            public Cell cell;
+            public float remainingDemand;
+            public float requestedWeight;
+        }
+
+        sealed class AiFrontlineAssignment
+        {
+            public StrategicGroup group;
+            public Cell targetCell;
+        }
+
+        sealed class AiFrontlineCandidate
+        {
+            public AiFrontlineSourceState source;
+            public AiFrontlineDemandState demand;
+            public float distance;
+        }
+
+        void Advance1DayForAiFrontlineAllocation()
+        {
+            var viewerSideObjectId = StrategicGameManager.Instance?.GetViewerSide()?.objectId;
+            foreach (var theater in theaters ?? Enumerable.Empty<Theater>())
+            {
+                if (theater?.side == null)
+                    continue;
+
+                if (!string.IsNullOrEmpty(viewerSideObjectId) && theater.side.objectId == viewerSideObjectId)
+                    continue;
+
+                Advance1DayForAiTheaterFrontlineAllocation(theater);
+            }
+        }
+
+        void Advance1DayForAiTheaterFrontlineAllocation(Theater theater)
+        {
+            if (theater?.side == null)
+                return;
+
+            var theaterCellSet = BuildTheaterCellKeySet(theater.cells);
+            var sourceStates = IterIndependentStrategicGroups()
+                .Where(group =>
+                    group != null &&
+                    group.side == theater.side &&
+                    group.IsArmy() &&
+                    !group.IsBase() &&
+                    group.cell != null &&
+                    theaterCellSet.Contains((group.cell.x, group.cell.y)))
+                .Select(group => new AiFrontlineSourceState()
+                {
+                    group = group,
+                    remainingPower = GetIndependentArmyPower(group),
+                })
+                .Where(state => state.remainingPower > AiFrontlineAllocationEpsilon)
+                .ToList();
+
+            if (sourceStates.Count == 0)
+                return;
+
+            var weightedFrontlineCells = (theater.frontlineCellInfos ?? Enumerable.Empty<FrontlineCellInfo>())
+                .Where(info => info != null && info.weightRequested > AiFrontlineAllocationEpsilon)
+                .Select(info => info.xy?.GetCell())
+                .Where(cell => cell != null && cell.IsGridCell() && cell.IsArmyPassable())
+                .GroupBy(cell => (cell.x, cell.y))
+                .Select(group => new
+                {
+                    cell = group.First(),
+                    weight = theater.frontlineCellInfos
+                        .Where(info => info != null && info.x == group.Key.x && info.y == group.Key.y)
+                        .Sum(info => info.weightRequested)
+                })
+                .Where(item => item.weight > AiFrontlineAllocationEpsilon)
+                .ToList();
+
+            if (weightedFrontlineCells.Count == 0)
+                return;
+
+            var totalPower = sourceStates.Sum(state => state.remainingPower);
+            var totalWeight = weightedFrontlineCells.Sum(item => item.weight);
+            if (totalPower <= AiFrontlineAllocationEpsilon || totalWeight <= AiFrontlineAllocationEpsilon)
+                return;
+
+            var demandStates = weightedFrontlineCells
+                .Select(item => new AiFrontlineDemandState()
+                {
+                    cell = item.cell,
+                    requestedWeight = item.weight,
+                    remainingDemand = totalPower * item.weight / totalWeight,
+                })
+                .Where(state => state.remainingDemand > AiFrontlineAllocationEpsilon)
+                .ToList();
+
+            if (demandStates.Count == 0)
+                return;
+
+            var pathCostCache = new Dictionary<(Cell src, Cell dst), AStarResult<Cell>>();
+            var movementGraph = new DynamicCellGraphArmy();
+            var assignments = new List<AiFrontlineAssignment>();
+
+            while (sourceStates.Count > 0 && demandStates.Count > 0)
+            {
+                AiFrontlineCandidate bestCandidate = null;
+                foreach (var sourceState in sourceStates)
+                {
+                    foreach (var demandState in demandStates)
+                    {
+                        if (!TryGetAiFrontlineEffectiveDistance(
+                            sourceState.group,
+                            demandState.cell,
+                            movementGraph,
+                            pathCostCache,
+                            out var distance))
+                        {
+                            continue;
+                        }
+
+                        if (IsBetterAiFrontlineCandidate(distance, demandState, sourceState, bestCandidate))
+                        {
+                            bestCandidate = new AiFrontlineCandidate()
+                            {
+                                source = sourceState,
+                                demand = demandState,
+                                distance = distance,
+                            };
+                        }
+                    }
+                }
+
+                if (bestCandidate == null)
+                    break;
+
+                var source = bestCandidate.source;
+                var demand = bestCandidate.demand;
+                if (source.remainingPower <= demand.remainingDemand + AiFrontlineAllocationEpsilon)
+                {
+                    assignments.Add(new AiFrontlineAssignment()
+                    {
+                        group = source.group,
+                        targetCell = demand.cell,
+                    });
+
+                    demand.remainingDemand = Math.Max(0f, demand.remainingDemand - source.remainingPower);
+                    sourceStates.Remove(source);
+                    if (demand.remainingDemand <= AiFrontlineAllocationEpsilon)
+                    {
+                        demandStates.Remove(demand);
+                    }
+                    continue;
+                }
+
+                if (TrySplitSourceForAiFrontlineAllocation(source.group, demand.remainingDemand, out var splitGroup))
+                {
+                    assignments.Add(new AiFrontlineAssignment()
+                    {
+                        group = splitGroup,
+                        targetCell = demand.cell,
+                    });
+
+                    source.remainingPower = GetIndependentArmyPower(source.group);
+                    demandStates.Remove(demand);
+                    if (source.remainingPower <= AiFrontlineAllocationEpsilon)
+                    {
+                        sourceStates.Remove(source);
+                    }
+                    continue;
+                }
+
+                assignments.Add(new AiFrontlineAssignment()
+                {
+                    group = source.group,
+                    targetCell = demand.cell,
+                });
+                sourceStates.Remove(source);
+                demandStates.Remove(demand);
+            }
+
+            ApplyAiFrontlineAssignments(assignments);
+        }
+
+        static bool IsBetterAiFrontlineCandidate(
+            float distance,
+            AiFrontlineDemandState demand,
+            AiFrontlineSourceState source,
+            AiFrontlineCandidate currentBest)
+        {
+            if (currentBest == null)
+                return true;
+
+            var distanceCompare = distance.CompareTo(currentBest.distance);
+            if (distanceCompare != 0)
+                return distanceCompare < 0;
+
+            var demandCompare = demand.remainingDemand.CompareTo(currentBest.demand.remainingDemand);
+            if (demandCompare != 0)
+                return demandCompare > 0;
+
+            var sourceCompare = source.remainingPower.CompareTo(currentBest.source.remainingPower);
+            if (sourceCompare != 0)
+                return sourceCompare > 0;
+
+            var sourceIdCompare = string.CompareOrdinal(source.group?.objectId, currentBest.source.group?.objectId);
+            if (sourceIdCompare != 0)
+                return sourceIdCompare < 0;
+
+            return string.CompareOrdinal(
+                GetAiFrontlineDemandStableId(demand),
+                GetAiFrontlineDemandStableId(currentBest.demand)) < 0;
+        }
+
+        static string GetAiFrontlineDemandStableId(AiFrontlineDemandState demand)
+        {
+            if (demand?.cell == null)
+                return string.Empty;
+
+            return $"{demand.cell.x:D4},{demand.cell.y:D4}";
+        }
+
+        static float GetIndependentArmyPower(StrategicGroup group)
+        {
+            if (group == null)
+                return 0f;
+
+            return group
+                .WalkGroupMembers<LandUnit>()
+                .Sum(landUnit => landUnit?.GetCombinedPowerPoint(false) ?? 0f);
+        }
+
+        static bool ShouldIncludeMemberInAiFrontlineSplit(IStrategicGroupMemberReferenceable member)
+        {
+            return member is not StrategicGroup group || group.deployState == StrategicGroup.DeployState.Combined;
+        }
+
+        bool TrySplitSourceForAiFrontlineAllocation(StrategicGroup sourceGroup, float requestedPower, out StrategicGroup splitGroup)
+        {
+            splitGroup = null;
+            if (sourceGroup == null || requestedPower <= AiFrontlineAllocationEpsilon)
+                return false;
+
+            if (sourceGroup.detachedFromGroupReference?.Get() != null)
+                return false;
+
+            var orderedAtoms = new List<StrategicGroupTransferAtom>();
+            foreach (var rootReference in sourceGroup.directMemberReferences.ToList())
+            {
+                var member = rootReference.Get();
+                if (member == null || !ShouldIncludeMemberInAiFrontlineSplit(member))
+                    continue;
+
+                StrategicGroupTransferSplitUtility.CollectTransferAtoms(
+                    member,
+                    member.objectId,
+                    orderedAtoms,
+                    ShouldIncludeMemberInAiFrontlineSplit);
+            }
+
+            if (orderedAtoms.Count <= 1)
+                return false;
+
+            var bestPrefixLength = -1;
+            var bestDiff = float.PositiveInfinity;
+            var cumulativePower = 0f;
+            for (var prefixLength = 1; prefixLength < orderedAtoms.Count; prefixLength++)
+            {
+                cumulativePower += orderedAtoms[prefixLength - 1].power;
+                var diff = Math.Abs(cumulativePower - requestedPower);
+                if (diff < bestDiff - AiFrontlineAllocationEpsilon)
+                {
+                    bestDiff = diff;
+                    bestPrefixLength = prefixLength;
+                }
+            }
+
+            if (bestPrefixLength <= 0 || bestPrefixLength >= orderedAtoms.Count)
+                return false;
+
+            var selectedAtomIds = new HashSet<string>();
+            for (var idx = 0; idx < bestPrefixLength; idx++)
+            {
+                selectedAtomIds.Add(orderedAtoms[idx].objectId);
+            }
+
+            if (selectedAtomIds.Count == 0)
+                return false;
+
+            var parentGroup = sourceGroup.parentGroupReference.Get();
+            splitGroup = StrategicGroupTransferSplitUtility.CreateSplitGroupLike(
+                sourceGroup,
+                parentGroup,
+                StrategicGroup.DeployState.Independent);
+            if (splitGroup == null)
+                return false;
+
+            CopyAiFrontlineMovementState(sourceGroup, splitGroup);
+            IStrategicGroupMemberReferenceable.SetDetachedFromGroupReference(splitGroup, sourceGroup);
+            splitGroup.enableAutoReattach = false;
+            StrategicGroupTransferSplitUtility.MaterializePartialGroupSelection(
+                sourceGroup,
+                splitGroup,
+                selectedAtomIds,
+                ShouldIncludeMemberInAiFrontlineSplit);
+
+            if (splitGroup.directMemberReferences.Count == 0)
+            {
+                StrategicGroupTransferSplitUtility.DestroyEmptySplitGroup(splitGroup);
+                splitGroup = null;
+                return false;
+            }
+
+            return true;
+        }
+
+        static void CopyAiFrontlineMovementState(StrategicGroup sourceGroup, StrategicGroup targetGroup)
+        {
+            if (sourceGroup == null || targetGroup == null)
+                return;
+
+            targetGroup.plannedPath = sourceGroup.plannedPath
+                .Select(xy => new XY()
+                {
+                    x = xy.x,
+                    y = xy.y,
+                    areaCellObjectId = xy.areaCellObjectId,
+                })
+                .ToList();
+            targetGroup.moveProgressionKm = sourceGroup.moveProgressionKm;
+        }
+
+        static void ApplyAiFrontlineAssignments(IEnumerable<AiFrontlineAssignment> assignments)
+        {
+            if (assignments == null)
+                return;
+
+            var movementGraph = new DynamicCellGraphArmy();
+            foreach (var assignment in assignments)
+            {
+                var group = assignment?.group;
+                var targetCell = assignment?.targetCell;
+                if (group?.cell == null || targetCell == null || group.deployState != StrategicGroup.DeployState.Independent)
+                    continue;
+
+                if (group.cell == targetCell)
+                {
+                    group.ClearPlannedPath();
+                    continue;
+                }
+
+                var pathResult = PathFinding<Cell>.AStar3(movementGraph, group.cell, targetCell);
+                if (pathResult?.Path == null || pathResult.Path.Count < 2)
+                    continue;
+
+                group.SetPlannedPath(pathResult.Path.Select(cell => cell.ToXY()).ToList());
+            }
+        }
+
+        static bool TryGetAiFrontlineEffectiveDistance(
+            StrategicGroup group,
+            Cell targetCell,
+            DynamicCellGraphArmy movementGraph,
+            Dictionary<(Cell src, Cell dst), AStarResult<Cell>> pathCostCache,
+            out float effectiveDistance)
+        {
+            effectiveDistance = float.PositiveInfinity;
+            if (group?.cell == null || targetCell == null)
+                return false;
+
+            if (group.TryGetDistanceToNextLocationInPlannedPathWithoutProgression(out var segmentDistanceKm))
+            {
+                var nextCell = group.GetPathNextCell();
+                if (nextCell != null &&
+                    TryGetAiFrontlinePathCost(nextCell, targetCell, movementGraph, pathCostCache, out var tailCost))
+                {
+                    effectiveDistance = GetAiFrontlineRemainingSegmentCost(group, nextCell, movementGraph, segmentDistanceKm) + tailCost;
+                    return !float.IsPositiveInfinity(effectiveDistance);
+                }
+            }
+
+            return TryGetAiFrontlinePathCost(group.cell, targetCell, movementGraph, pathCostCache, out effectiveDistance);
+        }
+
+        static float GetAiFrontlineRemainingSegmentCost(
+            StrategicGroup group,
+            Cell nextCell,
+            DynamicCellGraphArmy movementGraph,
+            float segmentDistanceKm)
+        {
+            if (group?.cell == null || nextCell == null)
+                return 0f;
+
+            if (segmentDistanceKm <= AiFrontlineAllocationEpsilon)
+                return 0f;
+
+            var progressedDistanceKm = Math.Max(0f, Math.Min(group.moveProgressionKm, segmentDistanceKm));
+            var remainingRatio = Math.Max(0f, segmentDistanceKm - progressedDistanceKm) / segmentDistanceKm;
+            return movementGraph.MoveCost(group.cell, nextCell) * remainingRatio;
+        }
+
+        static bool TryGetAiFrontlinePathCost(
+            Cell srcCell,
+            Cell dstCell,
+            DynamicCellGraphArmy movementGraph,
+            Dictionary<(Cell src, Cell dst), AStarResult<Cell>> pathCostCache,
+            out float pathCost)
+        {
+            pathCost = float.PositiveInfinity;
+            if (srcCell == null || dstCell == null)
+                return false;
+
+            if (srcCell == dstCell)
+            {
+                pathCost = 0f;
+                return true;
+            }
+
+            var key = (srcCell, dstCell);
+            if (!pathCostCache.TryGetValue(key, out var pathResult))
+            {
+                pathResult = PathFinding<Cell>.AStar3(movementGraph, srcCell, dstCell);
+                pathCostCache[key] = pathResult;
+            }
+
+            if (pathResult?.Path == null || pathResult.Path.Count == 0 || float.IsPositiveInfinity(pathResult.Cost))
+                return false;
+
+            pathCost = pathResult.Cost;
+            return true;
         }
 
         void Advance1HourForReinforcement()

@@ -136,14 +136,12 @@ namespace StrategicCombatCore
 
         public StrategicMissionReference parentMissionRef = new();
 
-        public List<StrategicMissionReference> childrenMissionRefs = new(); // If a children mission is completed or forced interrupted, its assigned group (asset) would go back to its parent mission automatically, parent mission sometimes would cancel its child mission and reclaim asset to do more important things sometimes.  
+        public List<StrategicMissionReference> childrenMissionRefs = new(); // Child mission ends by immediately returning assigned groups to its parent when present.
 
         public string sideObjectId;
         public SideState GetSide() => EntityManager.Instance.Get<SideState>(sideObjectId);
 
-        public bool completed = false;
         public bool active = true; // Active is expected to be set by Player in the current semantic
-        public bool interrupted = false;
 
         // public List<StrategicGroupMemberReference> loadTargetGroups = new();
         // Non-Fleet groups in assigned groups are transported groups.
@@ -231,30 +229,6 @@ namespace StrategicCombatCore
                 return;
 
             DoTransition();
-
-            // Move assigned group to parent mission if it has parent mission and is completed
-            if(IsCompletedOrInterrupted())
-            {
-                var parentMission = parentMissionRef.Get();
-                if(parentMission != null)
-                {
-                    RemoveAndTransferAssignedTo(parentMission);
-
-                    // foreach(var g in IterAssignedStrategicGroups().ToList())
-                    // {
-                    //     g.SetAssignedMission(parentMission);
-                    // }
-
-                    // StrategicGameState.Instance.missions.Remove(this);
-                    // RemoveCleanup();
-                    
-                    // If no parent mission, mission would not be auto-deleted.
-                }
-
-                // RemoveFromParent();
-                // StrategicGameState.Instance.missions.Remove(this);
-                // Ignoring manual de-registering since full-scan based re-registering happens very frequently now
-            }
         }
 
         public void RemoveAndTransferAssignedTo(StrategicMission other)
@@ -283,20 +257,6 @@ namespace StrategicCombatCore
             {
                 return;
             }
-
-            if(IsCompletedOrInterrupted())
-            {
-                PlanReturnToBasePathForNonBasedFleet();
-                return;
-            }
-
-            // var assignedFleetGroups = IterAssignedFleetGroups();
-            // if(!assignedFleetGroups.All(g => g.IsFleetHasSufficientFuelToReturnHome()))
-            // {
-            //     interrupted = true; // TODO: Give some more log to indicate it's caused by out of fuel?
-            //     PlanReturnToBasePathForNonBasedFleet(true);
-            //     return;
-            // }
 
             // Check supply condition
 
@@ -463,8 +423,36 @@ namespace StrategicCombatCore
             }
         }
 
-        protected bool IsOperational() => active && !interrupted && !completed;
-        protected bool IsCompletedOrInterrupted() => interrupted || completed;
+        protected bool IsOperational() => active;
+
+        void EndNow()
+        {
+            if(!StrategicGameState.Instance.missions.Contains(this))
+            {
+                return;
+            }
+
+            var parentMission = parentMissionRef.Get();
+            if(parentMission != null)
+            {
+                RemoveAndTransferAssignedTo(parentMission);
+            }
+            else
+            {
+                StrategicGameState.Instance.missions.Remove(this);
+                RemoveCleanup();
+            }
+        }
+
+        public void CompleteNow()
+        {
+            EndNow();
+        }
+
+        public void InterruptNow()
+        {
+            EndNow();
+        }
 
         public virtual bool IsNavyOnly() => false;
     }
@@ -722,7 +710,7 @@ namespace StrategicCombatCore
                 if (cargoGroupsInStartCell.Count == 0)
                 {
                     navalTransferState = NavalTransferState.Completed;
-                    completed = true;
+                    CompleteNow();
                 }
                 else
                 {
@@ -988,7 +976,7 @@ namespace StrategicCombatCore
                 else if (oneShotSortieState == OneShotSortieState.DestinationToStart && groupingCell == GetWaypointStartCell())
                 {
                     // oneShotRaidingState = OneShotRaidingState.StartToDestination;
-                    completed = true;
+                    CompleteNow();
                 }
             }
         }

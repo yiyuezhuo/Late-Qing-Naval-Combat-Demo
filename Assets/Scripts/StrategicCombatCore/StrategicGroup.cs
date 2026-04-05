@@ -1544,10 +1544,9 @@ namespace StrategicCombatCore
                             forcedReturningToBase = true;
 
                             var mission = GetAssignedMission();
-                            if(mission != null && !mission.interrupted)
+                            if(mission != null)
                             {
-                                mission.interrupted = true;
-                                // TODO: Notify other group assigned to this mission to return?
+                                mission.InterruptNow();
                             }
 
                             if(plannedPath.Count == 0 || (plannedPath.Count >= 1 && plannedPath[^1].GetCell() != depotCell))

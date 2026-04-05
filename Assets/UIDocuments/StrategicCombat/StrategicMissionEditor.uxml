@@ -56,18 +56,6 @@
                                         <ui:DataBinding property="value" data-source-path="active" binding-mode="TwoWay"/>
                                     </Bindings>
                                 </ui:Toggle>
-                                <ui:Label text="Completed"/>
-                                <ui:Toggle>
-                                    <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="completed" binding-mode="TwoWay"/>
-                                    </Bindings>
-                                </ui:Toggle>
-                                <ui:Label text="Interrupted"/>
-                                <ui:Toggle>
-                                    <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="interrupted" binding-mode="TwoWay"/>
-                                    </Bindings>
-                                </ui:Toggle>
                                 <ui:Label text="Mission Type Name" style="flex-grow: 1; -unity-text-align: upper-right;">
                                     <Bindings>
                                         <ui:DataBinding property="text" data-source-path="missionTypeName" binding-mode="ToTarget"/>

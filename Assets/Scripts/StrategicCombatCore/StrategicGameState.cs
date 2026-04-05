@@ -779,11 +779,6 @@ namespace StrategicCombatCore
                 foreach (var group in groups)
                 {
                     group.StartReturnToBase(24);
-                    var assignedMission = group.GetAssignedMission();
-                    if(assignedMission != null)
-                    {
-                        assignedMission.interrupted = true;
-                    }
                 }
             }
             else
@@ -818,6 +813,7 @@ namespace StrategicCombatCore
             Advance1HourForSupply();
             Advance1HourForMission();
             Advance1HourForOutOfFuelFleetCheck();
+            Advance1HourForIdleFleetReturnToBase();
             Advance1HourForMovement();
             Advance1HourForGroupPosture();
             Advance1HourForRepair();
@@ -1639,6 +1635,30 @@ namespace StrategicCombatCore
             foreach(var mission in missions)
             {
                 mission.UpdateStrategicGroups();
+            }
+        }
+
+        public void Advance1HourForIdleFleetReturnToBase()
+        {
+            foreach(var group in IterIndependentStrategicGroups())
+            {
+                if(group.type != StrategicGroup.Type.Fleet)
+                {
+                    continue;
+                }
+
+                if(group.GetAssignedMission() != null || group.IsBase() || group.cell == null || group.plannedPath.Count > 0)
+                {
+                    continue;
+                }
+
+                var homeBase = group.GetHomeBaseGroup();
+                if(homeBase?.cell == null || group.cell == homeBase.cell)
+                {
+                    continue;
+                }
+
+                group.StartReturnToBase(0);
             }
         }
 

@@ -182,7 +182,7 @@ public class NavalCombatResolver // Dialog
                     var mission = group.GetAssignedMission();
                     if(mission != null)
                     {
-                        mission.interrupted = true;
+                        mission.InterruptNow();
                     }
                 }
 

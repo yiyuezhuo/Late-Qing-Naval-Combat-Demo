@@ -13,28 +13,96 @@ using UnityEngine.UIElements;
 public class StrategicGroupTransferDialogItem
 {
     public string objectId;
+    public string clickObjectId;
+    public string displayName;
+    public string displayDesc;
+    public StyleBackground displayIcon;
+    public bool hasDisplayIcon;
+    public ItemOrigin origin;
+    public bool isPreview;
+
+    public enum ItemOrigin
+    {
+        Source,
+        Target,
+    }
 
     IStrategicGroupMemberReferenceable GetMember() => EntityManager.Instance.Get<IStrategicGroupMemberReferenceable>(objectId);
+
+    static string GetMemberName(IStrategicGroupMemberReferenceable member)
+    {
+        if (member is ShipLog shipLog)
+        {
+            return shipLog?.namedShip?.name?.mergedName ?? "[Undefined or Invalid ShipLog]";
+        }
+        if (member is StrategicGroup group)
+        {
+            return group?.name?.mergedName ?? "[Undefined or Invalid StrategicGroup]";
+        }
+        if (member is LandUnit landUnit)
+        {
+            return landUnit?.name?.mergedName ?? "[Undefined or Invalid LandUnit]";
+        }
+        return "[Undefined or Invalid]";
+    }
+
+    static StyleBackground GetMemberIcon(IStrategicGroupMemberReferenceable member)
+    {
+        if (member is ShipLog shipLog)
+        {
+            return shipLog?.shipClass?.portraitStyleBackground ?? null;
+        }
+        if (member is StrategicGroup group)
+        {
+            return group.typeIcon;
+        }
+        if (member is LandUnit landUnit)
+        {
+            return landUnit.GetLandUnitTemplate()?.typeIcon ?? null;
+        }
+        return null;
+    }
+
+    static string GetMemberDescription(IStrategicGroupMemberReferenceable member)
+    {
+        if (member is ShipLog shipLog)
+        {
+            var tons = shipLog?.shipClass?.displacementTons ?? 0f;
+            var type = shipLog?.shipClass?.type.ToString() ?? "";
+            var crews = shipLog?.shipClass?.complementMen ?? 0;
+            return $"{type}, {tons} tons, {crews} men";
+        }
+        if (member is StrategicGroup group)
+        {
+            var shipTons = group.GetShipTons();
+            var shipTonsStr = shipTons == 0 ? "" : $", {shipTons} tons ships";
+            return $"{group.type}, {group.combinedSubUnitSize} sub units, {group.GetStrengthMen()} men{shipTonsStr}";
+        }
+        if (member is LandUnit landUnit)
+        {
+            var unitType = landUnit.GetLandUnitTemplate()?.unitType;
+            if (unitType == LandUnitType.Supply)
+            {
+                return $"Supply: {landUnit.supplyTons} tons";
+            }
+            if (unitType == LandUnitType.Port)
+            {
+                return $"Port: {landUnit.portLevel}, Repair Yard: {landUnit.repairShipyardLevel}";
+            }
+            return $"{landUnit.strength} men";
+        }
+        return "";
+    }
 
     [CreateProperty]
     public string name
     {
         get
         {
-            var member = GetMember();
-            if (member is ShipLog shipLog)
-            {
-                return shipLog?.namedShip?.name?.mergedName ?? "[Undefined or Invalid ShipLog]";
-            }
-            if (member is StrategicGroup group)
-            {
-                return group?.name?.mergedName ?? "[Undefined or Invalid StrategicGroup]";
-            }
-            if (member is LandUnit landUnit)
-            {
-                return landUnit?.name?.mergedName ?? "[Undefined or Invalid LandUnit]";
-            }
-            return "[Undefined or Invalid]";
+            if (!string.IsNullOrEmpty(displayName))
+                return displayName;
+
+            return GetMemberName(GetMember());
         }
     }
 
@@ -43,20 +111,10 @@ public class StrategicGroupTransferDialogItem
     {
         get
         {
-            var member = GetMember();
-            if (member is ShipLog shipLog)
-            {
-                return shipLog?.shipClass?.portraitStyleBackground ?? null;
-            }
-            if (member is StrategicGroup group)
-            {
-                return group.typeIcon;
-            }
-            if (member is LandUnit landUnit)
-            {
-                return landUnit.GetLandUnitTemplate()?.typeIcon ?? null;
-            }
-            return null;
+            if (hasDisplayIcon)
+                return displayIcon;
+
+            return GetMemberIcon(GetMember());
         }
     }
 
@@ -65,35 +123,43 @@ public class StrategicGroupTransferDialogItem
     {
         get
         {
-            var member = GetMember();
-            if (member is ShipLog shipLog)
-            {
-                var tons = shipLog?.shipClass?.displacementTons ?? 0f;
-                var type = shipLog?.shipClass?.type.ToString() ?? "";
-                var crews = shipLog?.shipClass?.complementMen ?? 0;
-                return $"{type}, {tons} tons, {crews} men";
-            }
-            if (member is StrategicGroup group)
-            {
-                var shipTons = group.GetShipTons();
-                var shipTonsStr = shipTons == 0 ? "" : $", {shipTons} tons ships";
-                return $"{group.type}, {group.combinedSubUnitSize} sub units, {group.GetStrengthMen()} men{shipTonsStr}";
-            }
-            if (member is LandUnit landUnit)
-            {
-                var unitType = landUnit.GetLandUnitTemplate()?.unitType;
-                if (unitType == LandUnitType.Supply)
-                {
-                    return $"Supply: {landUnit.supplyTons} tons";
-                }
-                if (unitType == LandUnitType.Port)
-                {
-                    return $"Port: {landUnit.portLevel}, Repair Yard: {landUnit.repairShipyardLevel}";
-                }
-                return $"{landUnit.strength} men";
-            }
-            return "";
+            if (!string.IsNullOrEmpty(displayDesc))
+                return displayDesc;
+
+            return GetMemberDescription(GetMember());
         }
+    }
+
+    public string interactionObjectId => !string.IsNullOrEmpty(clickObjectId) ? clickObjectId : objectId;
+    public bool IsSourceOrigin => origin == ItemOrigin.Source;
+
+    public static StrategicGroupTransferDialogItem CreateLive(string objectId, ItemOrigin origin)
+    {
+        return new StrategicGroupTransferDialogItem()
+        {
+            objectId = objectId,
+            clickObjectId = objectId,
+            origin = origin,
+        };
+    }
+
+    public static StrategicGroupTransferDialogItem CreatePreview(
+        IStrategicGroupMemberReferenceable member,
+        string clickObjectId,
+        ItemOrigin origin,
+        string desc)
+    {
+        return new StrategicGroupTransferDialogItem()
+        {
+            objectId = member?.objectId ?? clickObjectId,
+            clickObjectId = clickObjectId,
+            origin = origin,
+            isPreview = true,
+            displayName = GetMemberName(member),
+            displayDesc = desc,
+            displayIcon = GetMemberIcon(member),
+            hasDisplayIcon = true,
+        };
     }
 }
 
@@ -410,10 +476,35 @@ public static class StrategicGroupSubGroupUtility
 
 public class StrategicGroupTransferDialog
 {
+    class TransferAtom
+    {
+        public string objectId;
+        public string rootObjectId;
+        public float power;
+    }
+
+    class MemberSelectionSummary
+    {
+        public int totalAtoms;
+        public int selectedAtoms;
+        public float totalPower;
+        public float selectedPower;
+
+        public bool anySelected => selectedAtoms > 0;
+        public bool allSelected => totalAtoms > 0 && selectedAtoms == totalAtoms;
+        public bool isPartial => anySelected && !allSelected;
+    }
+
     enum AttachMode
     {
         Permanent,
         TemporaryAttach,
+    }
+
+    enum DeployStateHandlingMode
+    {
+        Exclude,
+        Atom,
     }
 
     class TargetOption
@@ -424,6 +515,7 @@ public class StrategicGroupTransferDialog
     }
 
     const string CreateNewTargetValue = "__CREATE_NEW_SUB_GROUP__";
+    const float PowerEpsilon = 0.0001f;
 
     static readonly Dictionary<string, LocalizedString> localizedStringMap = new();
 
@@ -452,9 +544,13 @@ public class StrategicGroupTransferDialog
     DropdownField sourceDropdownField;
     DropdownField targetDropdownField;
     DropdownField attachModeDropdownField;
+    DropdownField independentHandlingDropdownField;
+    DropdownField notDeployedHandlingDropdownField;
     Toggle includeCombinedToggle;
     Toggle createIndependentSubGroupToggle;
     VisualElement createIndependentSubGroupRow;
+    Slider transferPowerRatioSlider;
+    Label transferPowerRatioValueLabel;
     ListView sourceListView;
     ListView targetListView;
 
@@ -464,11 +560,22 @@ public class StrategicGroupTransferDialog
     List<StrategicGroupTransferDialogItem> rightItems = new();
     HashSet<string> originalSourceIds = new();
     HashSet<string> originalTargetIds = new();
+    List<string> originalSourceRootIds = new();
+    List<string> originalTargetRootIds = new();
+    HashSet<string> stagedTargetToSourceIds = new();
+    HashSet<string> stagedSourceAtomIds = new();
+    HashSet<string> stagedZeroPowerSourceRootIds = new();
+    List<TransferAtom> orderedSourceAtoms = new();
+    Dictionary<string, List<TransferAtom>> sourceAtomsByRootId = new();
+    Dictionary<string, float> sourceAtomPowerById = new();
+    float totalSourcePower;
 
     string selectedSourceGroupId;
     string selectedTargetGroupId = CreateNewTargetValue;
     bool createIndependentSubGroup = true;
     AttachMode attachMode;
+    DeployStateHandlingMode independentHandlingMode = DeployStateHandlingMode.Exclude;
+    DeployStateHandlingMode notDeployedHandlingMode = DeployStateHandlingMode.Exclude;
 
     StrategicGroup InitialGroup => EntityManager.Instance.Get<StrategicGroup>(initialGroupObjectId);
 
@@ -497,9 +604,13 @@ public class StrategicGroupTransferDialog
         sourceDropdownField = el.Q<DropdownField>("SourceGroupDropdownField");
         targetDropdownField = el.Q<DropdownField>("TargetGroupDropdownField");
         attachModeDropdownField = el.Q<DropdownField>("AttachModeDropdownField");
+        independentHandlingDropdownField = el.Q<DropdownField>("IndependentHandlingDropdownField");
+        notDeployedHandlingDropdownField = el.Q<DropdownField>("NotDeployedHandlingDropdownField");
         includeCombinedToggle = el.Q<Toggle>("IncludeCombinedToggle");
         createIndependentSubGroupToggle = el.Q<Toggle>("CreateIndependentSubGroupToggle");
         createIndependentSubGroupRow = el.Q<VisualElement>("CreateIndependentSubGroupRow");
+        transferPowerRatioSlider = el.Q<Slider>("TransferPowerRatioSlider");
+        transferPowerRatioValueLabel = el.Q<Label>("TransferPowerRatioValueLabel");
         sourceListView = el.Q<ListView>("SourceSubordinatesListView");
         targetListView = el.Q<ListView>("TargetSubordinatesListView");
 
@@ -519,6 +630,24 @@ public class StrategicGroupTransferDialog
                 Localize("Temporarily Attach"),
             };
             attachModeDropdownField.index = 0;
+        }
+        if (independentHandlingDropdownField != null)
+        {
+            independentHandlingDropdownField.choices = new()
+            {
+                Localize("Exclude"),
+                Localize("Atom"),
+            };
+            independentHandlingDropdownField.index = 0;
+        }
+        if (notDeployedHandlingDropdownField != null)
+        {
+            notDeployedHandlingDropdownField.choices = new()
+            {
+                Localize("Exclude"),
+                Localize("Atom"),
+            };
+            notDeployedHandlingDropdownField.index = 0;
         }
         UpdateCreateIndependentSubGroupRow(resetToggle: true);
 
@@ -572,6 +701,32 @@ public class StrategicGroupTransferDialog
                 : AttachMode.Permanent;
         });
 
+        independentHandlingDropdownField?.RegisterValueChangedCallback(_ =>
+        {
+            if (suppressCallbacks)
+                return;
+
+            independentHandlingMode = GetHandlingModeFromDropdown(independentHandlingDropdownField);
+            ResetStagedLists();
+        });
+
+        notDeployedHandlingDropdownField?.RegisterValueChangedCallback(_ =>
+        {
+            if (suppressCallbacks)
+                return;
+
+            notDeployedHandlingMode = GetHandlingModeFromDropdown(notDeployedHandlingDropdownField);
+            ResetStagedLists();
+        });
+
+        transferPowerRatioSlider?.RegisterValueChangedCallback(evt =>
+        {
+            if (suppressCallbacks)
+                return;
+
+            ApplyRequestedTransferRatio(evt.newValue);
+        });
+
         RefreshSourceOptions();
         RefreshTargetOptions();
         ResetStagedLists();
@@ -584,43 +739,23 @@ public class StrategicGroupTransferDialog
             return;
 
         var targetGroup = GetSelectedTargetGroup();
-        var sourceToTargetIds = rightItems
-            .Select(item => item.objectId)
-            .Where(id => originalSourceIds.Contains(id))
-            .ToList();
+        var sourceHasTransfer = HasSourceSelection();
+        var targetToSourceIds = stagedTargetToSourceIds.ToList();
 
         if (targetGroup == null)
         {
-            if (sourceToTargetIds.Count == 0)
+            if (!sourceHasTransfer)
                 return;
 
-            var newGroup = StrategicGroupSubGroupUtility.CreateNewSubGroup(sourceGroup, createIndependentSubGroup);
-            foreach (var objectId in sourceToTargetIds)
-            {
-                var member = EntityManager.Instance.Get<IStrategicGroupMemberReferenceable>(objectId);
-                if (member != null)
-                {
-                    ApplyMemberTransfer(member, newGroup);
-                }
-            }
-            return;
+            targetGroup = StrategicGroupSubGroupUtility.CreateNewSubGroup(sourceGroup, createIndependentSubGroup);
         }
 
-        var targetToSourceIds = leftItems
-            .Select(item => item.objectId)
-            .Where(id => originalTargetIds.Contains(id))
-            .ToList();
-
-        if (sourceToTargetIds.Count == 0 && targetToSourceIds.Count == 0)
+        if (!sourceHasTransfer && targetToSourceIds.Count == 0)
             return;
 
-        foreach (var objectId in sourceToTargetIds)
+        if (sourceHasTransfer)
         {
-            var member = EntityManager.Instance.Get<IStrategicGroupMemberReferenceable>(objectId);
-            if (member != null)
-            {
-                ApplyMemberTransfer(member, targetGroup);
-            }
+            ApplySourceSelectionToTarget(sourceGroup, targetGroup);
         }
 
         foreach (var objectId in targetToSourceIds)
@@ -657,7 +792,7 @@ public class StrategicGroupTransferDialog
             {
                 if (item.dataSource is StrategicGroupTransferDialogItem dialogItem)
                 {
-                    MoveItemBetweenLists(dialogItem.objectId, moveToRight);
+                    MoveItemBetweenLists(dialogItem, moveToRight);
                 }
             });
             return item;
@@ -792,18 +927,17 @@ public class StrategicGroupTransferDialog
         var sourceGroup = GetSelectedSourceGroup();
         var targetGroup = GetSelectedTargetGroup();
 
-        leftItems = sourceGroup == null
-            ? new()
-            : MakeItems(sourceGroup.directMemberReferences.Select(reference => reference.referenceId));
-        rightItems = targetGroup == null
-            ? new()
-            : MakeItems(targetGroup.directMemberReferences.Select(reference => reference.referenceId));
+        originalSourceRootIds = CollectDirectMemberIds(sourceGroup);
+        originalTargetRootIds = CollectDirectMemberIds(targetGroup);
+        originalSourceIds = originalSourceRootIds.ToHashSet();
+        originalTargetIds = originalTargetRootIds.ToHashSet();
 
-        originalSourceIds = leftItems.Select(item => item.objectId).ToHashSet();
-        originalTargetIds = rightItems.Select(item => item.objectId).ToHashSet();
+        stagedTargetToSourceIds.Clear();
+        stagedSourceAtomIds.Clear();
+        stagedZeroPowerSourceRootIds.Clear();
 
-        ApplyItems(sourceListView, leftItems);
-        ApplyItems(targetListView, rightItems);
+        RebuildSourceTransferAtoms(sourceGroup);
+        RefreshDisplayedItems();
     }
 
     void ApplyItems(ListView listView, List<StrategicGroupTransferDialogItem> items)
@@ -831,45 +965,475 @@ public class StrategicGroupTransferDialog
         }
     }
 
-    void MoveItemBetweenLists(string objectId, bool moveToRight)
+    void MoveItemBetweenLists(StrategicGroupTransferDialogItem item, bool moveToRight)
     {
-        if (moveToRight)
+        if (item == null)
+            return;
+
+        var interactionObjectId = item.interactionObjectId;
+        if (string.IsNullOrEmpty(interactionObjectId))
+            return;
+
+        if (item.IsSourceOrigin)
         {
-            var targetGroup = GetSelectedTargetGroup();
-            if (!CanMoveItemToGroup(objectId, targetGroup))
+            var destinationGroup = moveToRight ? GetSelectedTargetGroup() : GetSelectedSourceGroup();
+            if (!CanMoveItemToGroup(interactionObjectId, destinationGroup))
                 return;
 
-            var item = leftItems.FirstOrDefault(candidate => candidate.objectId == objectId);
-            if (item == null)
-                return;
-
-            leftItems.RemoveAll(candidate => candidate.objectId == objectId);
-            rightItems.Add(item);
+            SetWholeSourceRootTransfer(interactionObjectId, moveToRight);
         }
         else
         {
-            var sourceGroup = GetSelectedSourceGroup();
-            if (!CanMoveItemToGroup(objectId, sourceGroup))
+            var destinationGroup = moveToRight ? GetSelectedTargetGroup() : GetSelectedSourceGroup();
+            if (!CanMoveItemToGroup(interactionObjectId, destinationGroup))
                 return;
 
-            var item = rightItems.FirstOrDefault(candidate => candidate.objectId == objectId);
-            if (item == null)
-                return;
+            if (moveToRight)
+            {
+                stagedTargetToSourceIds.Remove(interactionObjectId);
+            }
+            else
+            {
+                stagedTargetToSourceIds.Add(interactionObjectId);
+            }
+        }
 
-            rightItems.RemoveAll(candidate => candidate.objectId == objectId);
-            leftItems.Add(item);
+        RefreshDisplayedItems();
+    }
+
+    List<string> CollectDirectMemberIds(StrategicGroup group)
+    {
+        return group?.directMemberReferences
+            .Select(reference => reference.referenceId)
+            .Where(objectId => !string.IsNullOrEmpty(objectId))
+            .Select(objectId => EntityManager.Instance.Get<IStrategicGroupMemberReferenceable>(objectId))
+            .Where(member => member != null && ShouldIncludeMemberInDialog(member))
+            .Select(member => member.objectId)
+            .ToList() ?? new();
+    }
+
+    void RebuildSourceTransferAtoms(StrategicGroup sourceGroup)
+    {
+        orderedSourceAtoms = new();
+        sourceAtomsByRootId = new();
+        sourceAtomPowerById = new();
+
+        foreach (var rootId in originalSourceRootIds)
+        {
+            var member = EntityManager.Instance.Get<IStrategicGroupMemberReferenceable>(rootId);
+            if (member == null)
+                continue;
+
+            var atoms = new List<TransferAtom>();
+            CollectTransferAtoms(member, rootId, atoms);
+            sourceAtomsByRootId[rootId] = atoms;
+
+            foreach (var atom in atoms)
+            {
+                orderedSourceAtoms.Add(atom);
+                sourceAtomPowerById[atom.objectId] = atom.power;
+            }
+        }
+
+        totalSourcePower = orderedSourceAtoms.Sum(atom => atom.power);
+    }
+
+    void CollectTransferAtoms(IStrategicGroupMemberReferenceable member, string rootObjectId, List<TransferAtom> atoms)
+    {
+        if (member == null)
+            return;
+
+        if (!ShouldIncludeMemberInDialog(member))
+            return;
+
+        if (member is StrategicGroup group && group.deployState == StrategicGroup.DeployState.Combined)
+        {
+            foreach (var reference in group.directMemberReferences.ToList())
+            {
+                var child = reference.Get();
+                if (child != null)
+                {
+                    CollectTransferAtoms(child, rootObjectId, atoms);
+                }
+            }
+            return;
+        }
+
+        atoms.Add(new TransferAtom()
+        {
+            objectId = member.objectId,
+            rootObjectId = rootObjectId,
+            power = Mathf.Max(0f, member.GetCombinedPowerPoint(true)),
+        });
+    }
+
+    void RefreshDisplayedItems()
+    {
+        leftItems = new();
+        rightItems = new();
+
+        foreach (var rootId in originalSourceRootIds)
+        {
+            var member = EntityManager.Instance.Get<IStrategicGroupMemberReferenceable>(rootId);
+            if (member == null)
+                continue;
+
+            BuildSourceRootItems(member, rootId);
+        }
+
+        foreach (var rootId in originalTargetRootIds)
+        {
+            var member = EntityManager.Instance.Get<IStrategicGroupMemberReferenceable>(rootId);
+            if (member == null)
+                continue;
+
+            var item = StrategicGroupTransferDialogItem.CreateLive(rootId, StrategicGroupTransferDialogItem.ItemOrigin.Target);
+            if (stagedTargetToSourceIds.Contains(rootId))
+            {
+                leftItems.Add(item);
+            }
+            else
+            {
+                rightItems.Add(item);
+            }
         }
 
         ApplyItems(sourceListView, leftItems);
         ApplyItems(targetListView, rightItems);
+        UpdateTransferPowerRatioControl();
     }
 
-    List<StrategicGroupTransferDialogItem> MakeItems(IEnumerable<string> objectIds)
+    void BuildSourceRootItems(IStrategicGroupMemberReferenceable member, string rootId)
     {
-        return objectIds
-            .Where(objectId => !string.IsNullOrEmpty(objectId) && EntityManager.Instance.Get<IStrategicGroupMemberReferenceable>(objectId) != null)
-            .Select(objectId => new StrategicGroupTransferDialogItem() { objectId = objectId })
-            .ToList();
+        sourceAtomsByRootId.TryGetValue(rootId, out var rootAtoms);
+        rootAtoms ??= new();
+
+        if (rootAtoms.Count == 0)
+        {
+            var liveItem = StrategicGroupTransferDialogItem.CreateLive(rootId, StrategicGroupTransferDialogItem.ItemOrigin.Source);
+            if (stagedZeroPowerSourceRootIds.Contains(rootId))
+            {
+                rightItems.Add(liveItem);
+            }
+            else
+            {
+                leftItems.Add(liveItem);
+            }
+            return;
+        }
+
+        var summary = BuildMemberSelectionSummary(member);
+        if (!summary.anySelected)
+        {
+            leftItems.Add(StrategicGroupTransferDialogItem.CreateLive(rootId, StrategicGroupTransferDialogItem.ItemOrigin.Source));
+            return;
+        }
+
+        if (summary.allSelected)
+        {
+            rightItems.Add(StrategicGroupTransferDialogItem.CreateLive(rootId, StrategicGroupTransferDialogItem.ItemOrigin.Source));
+            return;
+        }
+
+        var remainingPower = Mathf.Max(0f, summary.totalPower - summary.selectedPower);
+        leftItems.Add(StrategicGroupTransferDialogItem.CreatePreview(
+            member,
+            rootId,
+            StrategicGroupTransferDialogItem.ItemOrigin.Source,
+            BuildPartialPreviewDescription(remainingPower, summary.totalPower)
+        ));
+        rightItems.Add(StrategicGroupTransferDialogItem.CreatePreview(
+            member,
+            rootId,
+            StrategicGroupTransferDialogItem.ItemOrigin.Source,
+            BuildPartialPreviewDescription(summary.selectedPower, summary.totalPower)
+        ));
+    }
+
+    string BuildPartialPreviewDescription(float partialPower, float totalPower)
+    {
+        return $"{partialPower:0.##} / {totalPower:0.##} power";
+    }
+
+    MemberSelectionSummary BuildMemberSelectionSummary(IStrategicGroupMemberReferenceable member)
+    {
+        if (member == null)
+            return new();
+
+        if (!ShouldIncludeMemberInDialog(member))
+            return new();
+
+        if (member is StrategicGroup group && group.deployState == StrategicGroup.DeployState.Combined)
+        {
+            var summary = new MemberSelectionSummary();
+            foreach (var reference in group.directMemberReferences.ToList())
+            {
+                var child = reference.Get();
+                if (child == null)
+                    continue;
+
+                var childSummary = BuildMemberSelectionSummary(child);
+                summary.totalAtoms += childSummary.totalAtoms;
+                summary.selectedAtoms += childSummary.selectedAtoms;
+                summary.totalPower += childSummary.totalPower;
+                summary.selectedPower += childSummary.selectedPower;
+            }
+            return summary;
+        }
+
+        var isSelected = stagedSourceAtomIds.Contains(member.objectId);
+        var power = Mathf.Max(0f, member.GetCombinedPowerPoint(true));
+        return new MemberSelectionSummary()
+        {
+            totalAtoms = 1,
+            selectedAtoms = isSelected ? 1 : 0,
+            totalPower = power,
+            selectedPower = isSelected ? power : 0f,
+        };
+    }
+
+    void UpdateTransferPowerRatioControl()
+    {
+        var ratio = GetCurrentTransferredSourceRatio();
+
+        suppressCallbacks = true;
+        if (transferPowerRatioSlider != null)
+        {
+            transferPowerRatioSlider.lowValue = 0f;
+            transferPowerRatioSlider.highValue = 1f;
+            transferPowerRatioSlider.SetValueWithoutNotify(ratio);
+            transferPowerRatioSlider.SetEnabled(totalSourcePower > PowerEpsilon);
+        }
+        suppressCallbacks = false;
+
+        if (transferPowerRatioValueLabel != null)
+        {
+            transferPowerRatioValueLabel.text = $"{ratio * 100f:0.##}%";
+        }
+    }
+
+    float GetCurrentTransferredSourceRatio()
+    {
+        if (totalSourcePower <= PowerEpsilon)
+            return 0f;
+
+        return Mathf.Clamp01(GetCurrentTransferredSourcePower() / totalSourcePower);
+    }
+
+    float GetCurrentTransferredSourcePower()
+    {
+        return stagedSourceAtomIds.Sum(atomId => sourceAtomPowerById.GetValueOrDefault(atomId, 0f));
+    }
+
+    void ApplyRequestedTransferRatio(float requestedRatio)
+    {
+        stagedSourceAtomIds.Clear();
+
+        if (orderedSourceAtoms.Count == 0 || totalSourcePower <= PowerEpsilon)
+        {
+            RefreshDisplayedItems();
+            return;
+        }
+
+        var clampedRatio = Mathf.Clamp01(requestedRatio);
+        var requestedPower = clampedRatio * totalSourcePower;
+
+        var bestPrefixLength = 0;
+        var bestDiff = float.MaxValue;
+        var cumulativePower = 0f;
+        for (var prefixLength = 0; prefixLength <= orderedSourceAtoms.Count; prefixLength++)
+        {
+            var diff = Mathf.Abs(cumulativePower - requestedPower);
+            if (diff < bestDiff - PowerEpsilon)
+            {
+                bestDiff = diff;
+                bestPrefixLength = prefixLength;
+            }
+
+            if (prefixLength < orderedSourceAtoms.Count)
+            {
+                cumulativePower += orderedSourceAtoms[prefixLength].power;
+            }
+        }
+
+        for (var i = 0; i < bestPrefixLength; i++)
+        {
+            stagedSourceAtomIds.Add(orderedSourceAtoms[i].objectId);
+        }
+
+        RefreshDisplayedItems();
+    }
+
+    void SetWholeSourceRootTransfer(string rootId, bool transferToTarget)
+    {
+        sourceAtomsByRootId.TryGetValue(rootId, out var atoms);
+        atoms ??= new();
+
+        if (atoms.Count == 0)
+        {
+            if (transferToTarget)
+            {
+                stagedZeroPowerSourceRootIds.Add(rootId);
+            }
+            else
+            {
+                stagedZeroPowerSourceRootIds.Remove(rootId);
+            }
+            return;
+        }
+
+        foreach (var atom in atoms)
+        {
+            if (transferToTarget)
+            {
+                stagedSourceAtomIds.Add(atom.objectId);
+            }
+            else
+            {
+                stagedSourceAtomIds.Remove(atom.objectId);
+            }
+        }
+    }
+
+    bool HasSourceSelection()
+    {
+        return stagedSourceAtomIds.Count > 0 || stagedZeroPowerSourceRootIds.Count > 0;
+    }
+
+    void ApplySourceSelectionToTarget(StrategicGroup sourceGroup, StrategicGroup targetGroup)
+    {
+        foreach (var rootId in originalSourceRootIds.ToList())
+        {
+            var member = EntityManager.Instance.Get<IStrategicGroupMemberReferenceable>(rootId);
+            if (member == null)
+                continue;
+
+            if (stagedZeroPowerSourceRootIds.Contains(rootId))
+            {
+                ApplyMemberTransfer(member, targetGroup);
+                continue;
+            }
+
+            var summary = BuildMemberSelectionSummary(member);
+            if (!summary.anySelected)
+                continue;
+
+            if (summary.allSelected)
+            {
+                ApplyMemberTransfer(member, targetGroup);
+                continue;
+            }
+
+            if (member is not StrategicGroup sourceSubGroup || sourceSubGroup.deployState != StrategicGroup.DeployState.Combined)
+                continue;
+
+            var splitGroup = CreateSplitGroupLike(sourceSubGroup, sourceGroup);
+            MaterializePartialGroupSelection(sourceSubGroup, splitGroup);
+            if (splitGroup.directMemberReferences.Count == 0)
+            {
+                DestroyEmptySplitGroup(splitGroup);
+                continue;
+            }
+
+            ApplyMemberTransfer(splitGroup, targetGroup);
+        }
+    }
+
+    StrategicGroup CreateSplitGroupLike(StrategicGroup templateGroup, StrategicGroup parentGroup)
+    {
+        var splitGroup = new StrategicGroup()
+        {
+            name = StrategicGroupSubGroupUtility.BuildGeneratedSubGroupName(templateGroup),
+            type = templateGroup.type,
+            size = templateGroup.size,
+            country = templateGroup.country,
+            deployState = StrategicGroup.DeployState.Combined,
+            homeBaseObjectId = templateGroup.homeBaseObjectId,
+        };
+
+        var gameState = StrategicGameState.Instance;
+        var templateIndex = gameState.strategicGroups.IndexOf(templateGroup);
+        if (templateIndex >= 0)
+        {
+            gameState.strategicGroups.Insert(templateIndex + 1, splitGroup);
+        }
+        else
+        {
+            gameState.strategicGroups.Add(splitGroup);
+        }
+
+        EntityManager.Instance.Register(splitGroup, null);
+        splitGroup.AttachTo(parentGroup);
+        splitGroup.deployState = StrategicGroup.DeployState.Combined;
+        return splitGroup;
+    }
+
+    void MaterializePartialGroupSelection(StrategicGroup sourceGroup, StrategicGroup splitGroup)
+    {
+        foreach (var reference in sourceGroup.directMemberReferences.ToList())
+        {
+            var member = reference.Get();
+            if (member == null)
+                continue;
+
+            if (!ShouldIncludeMemberInDialog(member))
+                continue;
+
+            var summary = BuildMemberSelectionSummary(member);
+            if (!summary.anySelected)
+                continue;
+
+            if (summary.allSelected)
+            {
+                IStrategicGroupMemberReferenceable.PermanentTransferTo(member, splitGroup);
+                continue;
+            }
+
+            if (member is StrategicGroup childGroup && childGroup.deployState == StrategicGroup.DeployState.Combined)
+            {
+                var childSplitGroup = CreateSplitGroupLike(childGroup, splitGroup);
+                MaterializePartialGroupSelection(childGroup, childSplitGroup);
+                if (childSplitGroup.directMemberReferences.Count == 0)
+                {
+                    DestroyEmptySplitGroup(childSplitGroup);
+                }
+            }
+        }
+    }
+
+    void DestroyEmptySplitGroup(StrategicGroup group)
+    {
+        if (group == null || group.directMemberReferences.Count > 0)
+            return;
+
+        group.AttachTo(null);
+        EntityManager.Instance.Unregister(group);
+        StrategicGameState.Instance?.strategicGroups.Remove(group);
+    }
+
+    DeployStateHandlingMode GetHandlingModeFromDropdown(DropdownField dropdownField)
+    {
+        return dropdownField?.index == 1
+            ? DeployStateHandlingMode.Atom
+            : DeployStateHandlingMode.Exclude;
+    }
+
+    bool ShouldIncludeMemberInDialog(IStrategicGroupMemberReferenceable member)
+    {
+        if (member is not StrategicGroup group)
+            return true;
+
+        return GetDeployStateHandlingMode(group.deployState) != DeployStateHandlingMode.Exclude;
+    }
+
+    DeployStateHandlingMode GetDeployStateHandlingMode(StrategicGroup.DeployState deployState)
+    {
+        return deployState switch
+        {
+            StrategicGroup.DeployState.Independent => independentHandlingMode,
+            StrategicGroup.DeployState.NotDeployed => notDeployedHandlingMode,
+            _ => DeployStateHandlingMode.Atom,
+        };
     }
 
     List<StrategicGroup> CollectCandidateGroups(StrategicGroup initialGroup, bool includeCombinedChildren)

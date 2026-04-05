@@ -2843,6 +2843,26 @@ MonoBehaviour:
     m_Localized: "\u8981\u5206\u79BB\u53D7\u635F\u8230\u8247\uFF0C\u5F53\u524D\u7F16\u7EC4\u5FC5\u987B\u80FD\u89E3\u6790\u5230\u4E00\u4E2A\u683C\u4F4D\u3002"
     m_Metadata:
       m_Items: []
+  - m_Id: -90000000000007
+    m_Localized: "\u8F6C\u51FA\u6218\u529B\u6BD4\u4F8B"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -90000000000008
+    m_Localized: "\u72EC\u7ACB\u72B6\u6001\u5904\u7406"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -90000000000009
+    m_Localized: "\u672A\u5C55\u5F00\u72B6\u6001\u5904\u7406"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -90000000000010
+    m_Localized: "\u6392\u9664"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -90000000000011
+    m_Localized: "\u539F\u5B50"
+    m_Metadata:
+      m_Items: []
   - m_Id: -81000000000001
     m_Localized: "\u9635\u84251"
     m_Metadata:

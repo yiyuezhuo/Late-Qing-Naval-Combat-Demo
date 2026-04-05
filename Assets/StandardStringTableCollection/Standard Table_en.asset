@@ -2891,6 +2891,26 @@ MonoBehaviour:
     m_Localized: Detach damaged requires the current group to resolve to a cell.
     m_Metadata:
       m_Items: []
+  - m_Id: -90000000000007
+    m_Localized: Transfer Power Ratio
+    m_Metadata:
+      m_Items: []
+  - m_Id: -90000000000008
+    m_Localized: Independent Handling
+    m_Metadata:
+      m_Items: []
+  - m_Id: -90000000000009
+    m_Localized: Not Deployed Handling
+    m_Metadata:
+      m_Items: []
+  - m_Id: -90000000000010
+    m_Localized: Exclude
+    m_Metadata:
+      m_Items: []
+  - m_Id: -90000000000011
+    m_Localized: Atom
+    m_Metadata:
+      m_Items: []
   - m_Id: -81000000000001
     m_Localized: Side 1
     m_Metadata:

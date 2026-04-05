@@ -1467,29 +1467,9 @@ namespace StrategicCombatCore
                 if (!group.detachedRepair || group.deployState != StrategicGroup.DeployState.Independent)
                     continue;
 
-                var parentGroup = group.parentGroupReference.Get();
-                if (parentGroup == null)
-                    continue;
-
-            foreach (var memberRef in group.directMemberReferences.ToList())
-                {
-                    if (memberRef.Get() is not ShipLog shipLog || StrategicGroupSubGroupUtility.NeedsDetachForRepair(shipLog))
-                        continue;
-
-                    var member = (IStrategicGroupMemberReferenceable)shipLog;
-                    var detachedFromGroup = member.GetDetachedFromGroup();
-                    if (detachedFromGroup != null)
-                    {
-                        if (member.IsOnSameCellWithDetachedFromGroup())
-                        {
-                            IStrategicGroupMemberReferenceable.TryReattachToDetachedFromGroup(shipLog);
-                        }
-
-                        continue;
-                    }
-                }
-
-            if (group.directMemberReferences.Count > 0)
+                // Repair-only detached groups now rely on the generic auto-reattach path.
+                // Keep them alive until their members are reattached elsewhere.
+                if (group.directMemberReferences.Count > 0)
                     continue;
 
                 group.ClearPlannedPath();

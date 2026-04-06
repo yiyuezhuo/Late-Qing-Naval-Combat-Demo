@@ -78,6 +78,80 @@ namespace StrategicCombatCore
 
     public static class StrategicGroupTransferSplitUtility
     {
+        public static List<IStrategicGroupMemberReferenceable> CollectTransferMembers(
+            IStrategicGroupMemberReferenceable member,
+            HashSet<string> selectedAtomIds,
+            Func<IStrategicGroupMemberReferenceable, bool> shouldIncludeMember)
+        {
+            var members = new List<IStrategicGroupMemberReferenceable>();
+            CollectTransferMembers(member, selectedAtomIds, members, shouldIncludeMember);
+            return members;
+        }
+
+        public static List<IStrategicGroupMemberReferenceable> CollectTransferMembers(
+            StrategicGroup sourceGroup,
+            HashSet<string> selectedAtomIds,
+            Func<IStrategicGroupMemberReferenceable, bool> shouldIncludeMember)
+        {
+            var members = new List<IStrategicGroupMemberReferenceable>();
+            if (sourceGroup == null)
+                return members;
+
+            shouldIncludeMember ??= static _ => true;
+            foreach (var reference in sourceGroup.directMemberReferences.ToList())
+            {
+                var member = reference.Get();
+                if (member == null)
+                    continue;
+
+                CollectTransferMembers(member, selectedAtomIds, members, shouldIncludeMember);
+            }
+
+            return members;
+        }
+
+        static void CollectTransferMembers(
+            IStrategicGroupMemberReferenceable member,
+            HashSet<string> selectedAtomIds,
+            List<IStrategicGroupMemberReferenceable> members,
+            Func<IStrategicGroupMemberReferenceable, bool> shouldIncludeMember)
+        {
+            if (member == null || members == null)
+                return;
+
+            shouldIncludeMember ??= static _ => true;
+            if (!shouldIncludeMember(member))
+                return;
+
+            if (member is StrategicGroup group && group.deployState == StrategicGroup.DeployState.Combined)
+            {
+                var summary = BuildSelectionSummary(member, selectedAtomIds, shouldIncludeMember);
+                if (!summary.anySelected)
+                    return;
+
+                if (summary.allSelected)
+                {
+                    members.Add(member);
+                    return;
+                }
+
+                foreach (var reference in group.directMemberReferences.ToList())
+                {
+                    var child = reference.Get();
+                    if (child != null)
+                    {
+                        CollectTransferMembers(child, selectedAtomIds, members, shouldIncludeMember);
+                    }
+                }
+                return;
+            }
+
+            if (selectedAtomIds != null && selectedAtomIds.Contains(member.objectId))
+            {
+                members.Add(member);
+            }
+        }
+
         public static void CollectTransferAtoms(
             IStrategicGroupMemberReferenceable member,
             string rootObjectId,
@@ -206,29 +280,9 @@ namespace StrategicCombatCore
             if (sourceGroup == null || splitGroup == null)
                 return;
 
-            shouldIncludeMember ??= static _ => true;
-            foreach (var reference in sourceGroup.directMemberReferences.ToList())
+            foreach (var member in CollectTransferMembers(sourceGroup, selectedAtomIds, shouldIncludeMember))
             {
-                var member = reference.Get();
-                if (member == null || !shouldIncludeMember(member))
-                    continue;
-
-                var summary = BuildSelectionSummary(member, selectedAtomIds, shouldIncludeMember);
-                if (!summary.anySelected)
-                    continue;
-
-                if (summary.allSelected)
-                {
-                    IStrategicGroupMemberReferenceable.PermanentTransferTo(member, splitGroup);
-                    continue;
-                }
-
-                if (member is StrategicGroup childGroup && childGroup.deployState == StrategicGroup.DeployState.Combined)
-                {
-                    var childSplitGroup = CreateSplitGroupLike(childGroup, splitGroup, StrategicGroup.DeployState.Combined);
-                    MaterializePartialGroupSelection(childGroup, childSplitGroup, selectedAtomIds, shouldIncludeMember);
-                    DestroyEmptySplitGroup(childSplitGroup);
-                }
+                IStrategicGroupMemberReferenceable.PermanentTransferTo(member, splitGroup);
             }
         }
 

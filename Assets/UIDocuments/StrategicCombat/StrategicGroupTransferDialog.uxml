@@ -53,6 +53,8 @@
                     <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000060)"/>
                 </Bindings>
             </ui:Toggle>
+            <ui:Toggle name="SimplifyOneGroupOnlyRootGroupToggle" text="Simplify One Group only root group" style="margin-left: 12px;">
+            </ui:Toggle>
         </ui:VisualElement>
         <ui:VisualElement style="flex-direction: row; align-items: center; flex-shrink: 0;">
             <ui:Slider name="TransferPowerRatioSlider" label="Transfer Power Ratio" low-value="0" high-value="1" show-input-field="true" fill="true" style="flex-grow: 1;">

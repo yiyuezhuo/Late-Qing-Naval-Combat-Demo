@@ -396,6 +396,7 @@ public class StrategicGroupTransferDialog
     DropdownField notDeployedHandlingDropdownField;
     Toggle includeCombinedToggle;
     Toggle createIndependentSubGroupToggle;
+    Toggle simplifyOneGroupOnlyRootGroupToggle;
     VisualElement createIndependentSubGroupRow;
     Slider transferPowerRatioSlider;
     Label transferPowerRatioValueLabel;
@@ -421,6 +422,7 @@ public class StrategicGroupTransferDialog
     string selectedSourceGroupId;
     string selectedTargetGroupId = CreateNewTargetValue;
     bool createIndependentSubGroup = true;
+    bool simplifyOneGroupOnlyRootGroup = true;
     AttachMode attachMode;
     DeployStateHandlingMode independentHandlingMode = DeployStateHandlingMode.Exclude;
     DeployStateHandlingMode notDeployedHandlingMode = DeployStateHandlingMode.Exclude;
@@ -456,6 +458,7 @@ public class StrategicGroupTransferDialog
         notDeployedHandlingDropdownField = el.Q<DropdownField>("NotDeployedHandlingDropdownField");
         includeCombinedToggle = el.Q<Toggle>("IncludeCombinedToggle");
         createIndependentSubGroupToggle = el.Q<Toggle>("CreateIndependentSubGroupToggle");
+        simplifyOneGroupOnlyRootGroupToggle = el.Q<Toggle>("SimplifyOneGroupOnlyRootGroupToggle");
         createIndependentSubGroupRow = el.Q<VisualElement>("CreateIndependentSubGroupRow");
         transferPowerRatioSlider = el.Q<Slider>("TransferPowerRatioSlider");
         transferPowerRatioValueLabel = el.Q<Label>("TransferPowerRatioValueLabel");
@@ -468,7 +471,9 @@ public class StrategicGroupTransferDialog
         includeCombined = InitialGroup?.deployState == StrategicGroup.DeployState.Combined;
         includeCombinedToggle?.SetValueWithoutNotify(includeCombined);
         createIndependentSubGroupToggle?.SetValueWithoutNotify(true);
+        simplifyOneGroupOnlyRootGroupToggle?.SetValueWithoutNotify(true);
         createIndependentSubGroup = true;
+        simplifyOneGroupOnlyRootGroup = true;
         attachMode = AttachMode.Permanent;
         if (attachModeDropdownField != null)
         {
@@ -539,6 +544,14 @@ public class StrategicGroupTransferDialog
             createIndependentSubGroup = evt.newValue;
         });
 
+        simplifyOneGroupOnlyRootGroupToggle?.RegisterValueChangedCallback(evt =>
+        {
+            if (suppressCallbacks)
+                return;
+
+            simplifyOneGroupOnlyRootGroup = evt.newValue;
+        });
+
         attachModeDropdownField?.RegisterValueChangedCallback(_ =>
         {
             if (suppressCallbacks)
@@ -587,23 +600,32 @@ public class StrategicGroupTransferDialog
             return;
 
         var targetGroup = GetSelectedTargetGroup();
-        var sourceHasTransfer = HasSourceSelection();
+        var sourceMembersToTransfer = HasSourceSelection()
+            ? CollectSelectedSourceMembers(sourceGroup)
+            : new List<IStrategicGroupMemberReferenceable>();
         var targetToSourceIds = stagedTargetToSourceIds.ToList();
 
         if (targetGroup == null)
         {
-            if (!sourceHasTransfer)
+            if (sourceMembersToTransfer.Count == 0)
                 return;
 
+            if (simplifyOneGroupOnlyRootGroup &&
+                sourceMembersToTransfer.Count == 1 &&
+                sourceMembersToTransfer[0] is StrategicGroup singleSourceGroup)
+            {
+                MakeSingleStrategicGroupIndependent(singleSourceGroup);
+                return;
+            }
+
             targetGroup = StrategicGroupSubGroupUtility.CreateNewSubGroup(sourceGroup, createIndependentSubGroup);
+            ApplyMemberTransfers(sourceMembersToTransfer, targetGroup);
+            return;
         }
 
-        if (!sourceHasTransfer && targetToSourceIds.Count == 0)
-            return;
-
-        if (sourceHasTransfer)
+        if (sourceMembersToTransfer.Count > 0)
         {
-            ApplySourceSelectionToTarget(sourceGroup, targetGroup);
+            ApplyMemberTransfers(sourceMembersToTransfer, targetGroup);
         }
 
         foreach (var objectId in targetToSourceIds)
@@ -613,6 +635,17 @@ public class StrategicGroupTransferDialog
             {
                 ApplyMemberTransfer(member, sourceGroup);
             }
+        }
+    }
+
+    void ApplyMemberTransfers(IEnumerable<IStrategicGroupMemberReferenceable> members, StrategicGroup targetGroup)
+    {
+        if (members == null || targetGroup == null)
+            return;
+
+        foreach (var member in members)
+        {
+            ApplyMemberTransfer(member, targetGroup);
         }
     }
 
@@ -626,6 +659,42 @@ public class StrategicGroupTransferDialog
         {
             IStrategicGroupMemberReferenceable.PermanentTransferTo(member, targetGroup);
         }
+    }
+
+    List<IStrategicGroupMemberReferenceable> CollectSelectedSourceMembers(StrategicGroup sourceGroup)
+    {
+        var selectedMembers = new List<IStrategicGroupMemberReferenceable>();
+        if (sourceGroup == null)
+            return selectedMembers;
+
+        foreach (var rootId in originalSourceRootIds.ToList())
+        {
+            var member = EntityManager.Instance.Get<IStrategicGroupMemberReferenceable>(rootId);
+            if (member == null)
+                continue;
+
+            if (stagedZeroPowerSourceRootIds.Contains(rootId))
+            {
+                selectedMembers.Add(member);
+                continue;
+            }
+
+            selectedMembers.AddRange(
+                StrategicGroupTransferSplitUtility.CollectTransferMembers(
+                    member,
+                    stagedSourceAtomIds,
+                    ShouldIncludeMemberInDialog));
+        }
+
+        return selectedMembers;
+    }
+
+    void MakeSingleStrategicGroupIndependent(StrategicGroup promotedGroup)
+    {
+        if (promotedGroup == null)
+            return;
+
+        promotedGroup.SetDeployState(StrategicGroup.DeployState.Independent);
     }
 
     void ConfigureListView(ListView listView, bool moveToRight)
@@ -810,6 +879,8 @@ public class StrategicGroupTransferDialog
         {
             createIndependentSubGroup = true;
             createIndependentSubGroupToggle?.SetValueWithoutNotify(true);
+            simplifyOneGroupOnlyRootGroup = true;
+            simplifyOneGroupOnlyRootGroupToggle?.SetValueWithoutNotify(true);
         }
     }
 
@@ -1085,52 +1156,6 @@ public class StrategicGroupTransferDialog
     bool HasSourceSelection()
     {
         return stagedSourceAtomIds.Count > 0 || stagedZeroPowerSourceRootIds.Count > 0;
-    }
-
-    void ApplySourceSelectionToTarget(StrategicGroup sourceGroup, StrategicGroup targetGroup)
-    {
-        foreach (var rootId in originalSourceRootIds.ToList())
-        {
-            var member = EntityManager.Instance.Get<IStrategicGroupMemberReferenceable>(rootId);
-            if (member == null)
-                continue;
-
-            if (stagedZeroPowerSourceRootIds.Contains(rootId))
-            {
-                ApplyMemberTransfer(member, targetGroup);
-                continue;
-            }
-
-            var summary = BuildMemberSelectionSummary(member);
-            if (!summary.anySelected)
-                continue;
-
-            if (summary.allSelected)
-            {
-                ApplyMemberTransfer(member, targetGroup);
-                continue;
-            }
-
-            if (member is not StrategicGroup sourceSubGroup || sourceSubGroup.deployState != StrategicGroup.DeployState.Combined)
-                continue;
-
-            var splitGroup = StrategicGroupTransferSplitUtility.CreateSplitGroupLike(
-                sourceSubGroup,
-                sourceGroup,
-                StrategicGroup.DeployState.Combined);
-            StrategicGroupTransferSplitUtility.MaterializePartialGroupSelection(
-                sourceSubGroup,
-                splitGroup,
-                stagedSourceAtomIds,
-                ShouldIncludeMemberInDialog);
-            if (splitGroup.directMemberReferences.Count == 0)
-            {
-                StrategicGroupTransferSplitUtility.DestroyEmptySplitGroup(splitGroup);
-                continue;
-            }
-
-            ApplyMemberTransfer(splitGroup, targetGroup);
-        }
     }
 
     DeployStateHandlingMode GetHandlingModeFromDropdown(DropdownField dropdownField)

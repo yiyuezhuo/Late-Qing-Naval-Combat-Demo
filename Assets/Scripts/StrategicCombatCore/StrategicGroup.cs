@@ -602,6 +602,9 @@ namespace StrategicCombatCore
 
         public void SortDirectMemberReferencesByPower()
         {
+            if (type != Type.Fleet)
+                return;
+
             directMemberReferences.Sort((left, right) =>
             {
                 var leftMember = left?.Get();

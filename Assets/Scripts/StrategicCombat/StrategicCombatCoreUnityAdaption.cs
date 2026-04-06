@@ -936,7 +936,7 @@ namespace StrategicCombatCore
         }
 
         [CreateProperty]
-        public StyleBackground leaderPortrait => battleLeader.portraitReference?.pictureStyleBackground ?? null;
+        public StyleBackground leaderPortrait => battleLeader?.portraitReference?.pictureStyleBackground ?? null;
 
         [CreateProperty]
         public string leaderName => battleLeader?.name?.GetShortName() ?? "";
@@ -971,6 +971,12 @@ namespace StrategicCombatCore
     public partial class LandBattle
     {
         static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
+
+        [CreateProperty]
+        public bool isActive => !end;
+
+        [CreateProperty]
+        public string mapProgressText => $"{attackerSituation:+0%;-0%;0%}";
 
         [CreateProperty]
         public string labelName

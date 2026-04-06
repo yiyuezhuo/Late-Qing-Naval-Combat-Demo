@@ -64,6 +64,8 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
     public Transform hitAreasRootTransform;
     public Transform counterContainerTransform;
     public GameObject strategicGroupIconPrefab;
+    public Transform landBattleMarkerContainerTransform;
+    public GameObject landBattleMarkerPrefab;
 
     public Transform missionWaypointLineContainerTransform;
     public GameObject missionWaypointLinePrefab;
@@ -174,6 +176,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
     public bool currentLogOnly = true;
 
     UIDocument[] allUIDocuments;
+    static readonly Vector3 landBattleMarkerOffset = Vector3.zero;
 
     bool _isRealtimeAdvancing;
 
@@ -532,6 +535,11 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
         GamePreference.Instance.shortLabelLanguageTypeChanged -= OnShortLabelLanguageTypeChanged;
         GamePreference.Instance.isInEditModeChanged -= OnIsInEditModeChanged;
+
+        if (landBattleMarkerContainerTransform != null && landBattleMarkerContainerTransform.name == "LandBattleMarkerContainer_Auto")
+        {
+            Destroy(landBattleMarkerContainerTransform.gameObject);
+        }
     }
 
     void OnShortLabelLanguageTypeChanged(object sender, EventArgs e)
@@ -919,6 +927,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         }
 
         BindStrategicUnitIcons(counterContainerTransform, strategicGroupIconPrefab, observedStrategicUnits);
+        BindLandBattleMarkers(StrategicGameState.Instance.landBattles.Where(battle => battle != null && battle.isActive).ToList());
 
         UpdatePathLines();
         UpdateSelectedRelationLines();
@@ -1157,6 +1166,74 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
                     0.05f
                 );
             }
+        }
+    }
+
+    void BindLandBattleMarkers(List<LandBattle> landBattles)
+    {
+        var containerTransform = EnsureLandBattleMarkerContainer();
+        if (containerTransform == null)
+            return;
+
+        SyncLandBattleMarkerLength(containerTransform, landBattles.Count);
+
+        var markers = containerTransform.GetComponentsInChildren<LandBattleMarker>(true);
+        for (int i = 0; i < landBattles.Count; i++)
+        {
+            var landBattle = landBattles[i];
+            var marker = markers[i];
+            var position = GetCellWorldCenter(landBattle.GetCell()) + landBattleMarkerOffset;
+            marker.Bind(landBattle, position);
+        }
+    }
+
+    Transform EnsureLandBattleMarkerContainer()
+    {
+        if (landBattleMarkerContainerTransform != null)
+            return landBattleMarkerContainerTransform;
+
+        var containerObject = new GameObject("LandBattleMarkerContainer_Auto");
+        landBattleMarkerContainerTransform = containerObject.transform;
+        return landBattleMarkerContainerTransform;
+    }
+
+    void SyncLandBattleMarkerLength(Transform containerTransform, int length)
+    {
+        var markers = containerTransform.GetComponentsInChildren<LandBattleMarker>(true).ToList();
+        var diff = length - markers.Count;
+
+        if (diff > 0)
+        {
+            for (int i = 0; i < diff; i++)
+            {
+                CreateLandBattleMarker(containerTransform);
+            }
+        }
+        else if (diff < 0)
+        {
+            for (int i = 0; i < -diff; i++)
+            {
+                Destroy(markers[i].gameObject);
+            }
+        }
+    }
+
+    void CreateLandBattleMarker(Transform containerTransform)
+    {
+        GameObject markerObject;
+        if (landBattleMarkerPrefab != null)
+        {
+            markerObject = Instantiate(landBattleMarkerPrefab, containerTransform);
+        }
+        else
+        {
+            markerObject = new GameObject("LandBattleMarker");
+            markerObject.transform.SetParent(containerTransform, false);
+        }
+
+        if (markerObject.GetComponent<LandBattleMarker>() == null)
+        {
+            markerObject.AddComponent<LandBattleMarker>();
         }
     }
 
@@ -1882,5 +1959,67 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
             
             // rectAreaLineController.Sync()
         }
+    }
+}
+
+public class LandBattleMarker : MonoBehaviour
+{
+    const float MarkerWidth = 1.55f;
+    const float MarkerHeight = 0.56f;
+    const float ZOffset = -0.02f;
+    static readonly Vector3 FixedWorldScale = Vector3.one * 0.064f;
+
+    SpriteRenderer backgroundRenderer;
+    TextMeshPro markerText;
+    LandBattle currentLandBattle;
+
+    public LandBattle CurrentLandBattle => currentLandBattle;
+
+    void Awake()
+    {
+        EnsureView();
+    }
+
+    public void Bind(LandBattle landBattle, Vector3 position)
+    {
+        EnsureView();
+
+        currentLandBattle = landBattle;
+        transform.position = position + new Vector3(0f, 0f, ZOffset);
+        transform.rotation = Quaternion.identity;
+        transform.localScale = FixedWorldScale;
+        markerText.text = landBattle?.mapProgressText ?? string.Empty;
+        gameObject.SetActive(landBattle != null && landBattle.isActive);
+    }
+
+    void EnsureView()
+    {
+        if (backgroundRenderer == null)
+        {
+            backgroundRenderer = GetComponent<SpriteRenderer>();
+        }
+        if (backgroundRenderer == null)
+        {
+            backgroundRenderer = gameObject.AddComponent<SpriteRenderer>();
+        }
+
+        backgroundRenderer.enabled = false;
+
+        if (markerText == null)
+        {
+            var textObject = new GameObject("Text");
+            textObject.transform.SetParent(transform, false);
+            markerText = textObject.AddComponent<TextMeshPro>();
+        }
+
+        markerText.font = TMP_Settings.defaultFontAsset;
+        markerText.fontSize = 72f;
+        markerText.alignment = TextAlignmentOptions.Center;
+        markerText.color = Color.white;
+        markerText.textWrappingMode = TextWrappingModes.NoWrap;
+        markerText.overflowMode = TextOverflowModes.Overflow;
+        markerText.sortingOrder = 21;
+        markerText.rectTransform.sizeDelta = new Vector2(MarkerWidth, MarkerHeight);
+        markerText.transform.localPosition = new Vector3(0f, 0f, -0.01f);
     }
 }

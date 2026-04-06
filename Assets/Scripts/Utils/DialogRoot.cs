@@ -1570,17 +1570,31 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
             LandBattleDialog.OnCreated(sender, root);
 
-            attacker.battleLeader.portraitReference.RequestIfNotRequestedYetOtherwiseExecuteDirectly(styleBackground =>
+            if (attacker?.battleLeader?.portraitReference != null)
             {
-                var el = root.Q<VisualElement>("AttackerState").Q<VisualElement>("LeaderPortrait");
-                el.style.backgroundImage = styleBackground;
-            });
+                attacker.battleLeader.portraitReference.RequestIfNotRequestedYetOtherwiseExecuteDirectly(styleBackground =>
+                {
+                    var state = root.Q<VisualElement>("AttackerState");
+                    var el = state?.Q<VisualElement>("LeaderPortrait");
+                    if (el != null)
+                    {
+                        el.style.backgroundImage = styleBackground;
+                    }
+                });
+            }
 
-            defender.battleLeader.portraitReference.RequestIfNotRequestedYetOtherwiseExecuteDirectly(styleBackground =>
+            if (defender?.battleLeader?.portraitReference != null)
             {
-                var el = root.Q<VisualElement>("DefenderState").Q<VisualElement>("LeaderPortrait");
-                el.style.backgroundImage = styleBackground;
-            });
+                defender.battleLeader.portraitReference.RequestIfNotRequestedYetOtherwiseExecuteDirectly(styleBackground =>
+                {
+                    var state = root.Q<VisualElement>("DefenderState");
+                    var el = state?.Q<VisualElement>("LeaderPortrait");
+                    if (el != null)
+                    {
+                        el.style.backgroundImage = styleBackground;
+                    }
+                });
+            }
         };
 
         tempDialog.Popup();

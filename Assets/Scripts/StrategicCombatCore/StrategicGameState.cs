@@ -1076,7 +1076,38 @@ namespace StrategicCombatCore
 
         static bool CanSplitAiSourceGroup(StrategicGroup group)
         {
-            return group != null && group.detachedFromGroupReference?.Get() == null;
+            // Theater AI split is allowed even for already-detached groups. The split semantics
+            // follow the transfer dialog's simplify behavior rather than treating detached groups
+            // as terminal nodes.
+            return group != null;
+        }
+
+        bool TryPromoteSingleSelectedGroupForAiSplit(
+            StrategicGroup sourceGroup,
+            HashSet<string> selectedAtomIdSet,
+            out StrategicGroup assignedGroup)
+        {
+            assignedGroup = null;
+            if (sourceGroup == null || selectedAtomIdSet == null || selectedAtomIdSet.Count == 0)
+                return false;
+
+            var selectedMembers = StrategicGroupTransferSplitUtility.CollectTransferMembers(
+                sourceGroup,
+                selectedAtomIdSet,
+                ShouldIncludeMemberInAiFrontlineSplit);
+            if (selectedMembers.Count != 1 ||
+                selectedMembers[0] is not StrategicGroup singleSelectedGroup)
+            {
+                return false;
+            }
+
+            // Preserve the existing subgroup when the requested slice collapses cleanly to one
+            // StrategicGroup. This matches the transfer dialog's simplify mode and avoids
+            // creating redundant wrapper groups such as "new group -> A1".
+            singleSelectedGroup.SetDeployState(StrategicGroup.DeployState.Independent);
+            CopyAiFrontlineMovementState(sourceGroup, singleSelectedGroup);
+            assignedGroup = singleSelectedGroup;
+            return true;
         }
 
         static bool TryConsumeAiSourceAtoms(
@@ -1644,6 +1675,10 @@ namespace StrategicCombatCore
             if (!CanSplitAiSourceGroup(sourceGroup))
                 return false;
 
+            var selectedAtomIdSet = materializedAtomIds.ToHashSet();
+            if (TryPromoteSingleSelectedGroupForAiSplit(sourceGroup, selectedAtomIdSet, out assignedGroup))
+                return true;
+
             var parentGroup = sourceGroup.parentGroupReference.Get();
             assignedGroup = StrategicGroupTransferSplitUtility.CreateSplitGroupLike(
                 sourceGroup,
@@ -1653,12 +1688,15 @@ namespace StrategicCombatCore
                 return false;
 
             CopyAiFrontlineMovementState(sourceGroup, assignedGroup);
-            IStrategicGroupMemberReferenceable.SetDetachedFromGroupReference(assignedGroup, sourceGroup);
-            assignedGroup.enableAutoReattach = false;
-            StrategicGroupTransferSplitUtility.MaterializePartialGroupSelection(
+            // Newly created AI split groups are just containers for the detached members chosen in
+            // this assignment. The container itself should not remember a detached-from source;
+            // only members whose parent changes should keep detached-from references, using the
+            // same semantics as TemporaryAttachTo.
+            IStrategicGroupMemberReferenceable.ClearDetachedFromGroupState(assignedGroup);
+            StrategicGroupTransferSplitUtility.MaterializePartialGroupSelectionTemporaryAttach(
                 sourceGroup,
                 assignedGroup,
-                materializedAtomIds.ToHashSet(),
+                selectedAtomIdSet,
                 ShouldIncludeMemberInAiFrontlineSplit);
 
             if (assignedGroup.directMemberReferences.Count == 0)

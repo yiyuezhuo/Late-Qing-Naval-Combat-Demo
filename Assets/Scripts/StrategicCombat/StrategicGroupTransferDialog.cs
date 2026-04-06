@@ -474,7 +474,7 @@ public class StrategicGroupTransferDialog
         simplifyOneGroupOnlyRootGroupToggle?.SetValueWithoutNotify(true);
         createIndependentSubGroup = true;
         simplifyOneGroupOnlyRootGroup = true;
-        attachMode = AttachMode.Permanent;
+        attachMode = AttachMode.TemporaryAttach;
         if (attachModeDropdownField != null)
         {
             attachModeDropdownField.choices = new()
@@ -482,7 +482,7 @@ public class StrategicGroupTransferDialog
                 Localize("Permanent"),
                 Localize("Temporarily Attach"),
             };
-            attachModeDropdownField.index = 0;
+            attachModeDropdownField.index = 1;
         }
         if (independentHandlingDropdownField != null)
         {

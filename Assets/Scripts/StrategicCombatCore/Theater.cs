@@ -286,6 +286,21 @@ namespace StrategicCombatCore
             }
         }
 
+        public static void MaterializePartialGroupSelectionTemporaryAttach(
+            StrategicGroup sourceGroup,
+            StrategicGroup splitGroup,
+            HashSet<string> selectedAtomIds,
+            Func<IStrategicGroupMemberReferenceable, bool> shouldIncludeMember)
+        {
+            if (sourceGroup == null || splitGroup == null)
+                return;
+
+            foreach (var member in CollectTransferMembers(sourceGroup, selectedAtomIds, shouldIncludeMember))
+            {
+                IStrategicGroupMemberReferenceable.TemporaryAttachTo(member, splitGroup);
+            }
+        }
+
         public static void DestroyEmptySplitGroup(StrategicGroup group)
         {
             if (group == null || group.directMemberReferences.Count > 0)

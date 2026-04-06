@@ -370,6 +370,8 @@ namespace StrategicCombatCore
             if(validLandUnitBundles.Count == 0)
                 return null;
             var weights = validLandUnitBundles.Select(b => b.GetTargetWeight()).ToList();
+            if (weights.Sum() <= 0)
+                return null;
             return RandomUtils.Sample(validLandUnitBundles, weights);
         }
 
@@ -379,6 +381,8 @@ namespace StrategicCombatCore
             if(validLandUnitBundles.Count == 0)
                 return null;
             var weights = validLandUnitBundles.Select(b => b.GetAttackerWeight(isGlobalAttacker)).ToList();
+            if (weights.Sum() <= 0)
+                return null;
             return RandomUtils.Sample(validLandUnitBundles, weights);
         }
 

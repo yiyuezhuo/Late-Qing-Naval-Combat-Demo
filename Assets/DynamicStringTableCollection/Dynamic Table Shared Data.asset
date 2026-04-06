@@ -3406,6 +3406,14 @@ MonoBehaviour:
     m_Key: Fire Control (Lowest Speed Broad)
     m_Metadata:
       m_Items: []
+  - m_Id: -97000000100001
+    m_Key: TheaterPosture.Attack
+    m_Metadata:
+      m_Items: []
+  - m_Id: -97000000100002
+    m_Key: TheaterPosture.Defense
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -9,6 +9,12 @@ using UnityEngine.Localization.Settings;
 
 namespace StrategicCombatCore
 {
+    public enum TheaterPosture
+    {
+        Attack,
+        Defense,
+    }
+
     public class FrontlineCellInfo
     {
         [XmlAttribute]
@@ -29,6 +35,8 @@ namespace StrategicCombatCore
         public string objectId { get; set; }
         public GlobalString name = new();
         public string sideObjectId;
+        [XmlAttribute]
+        public TheaterPosture posture = TheaterPosture.Attack;
         public List<XY> cells = new();
         public List<FrontlineCellInfo> frontlineCellInfos = new();
 
@@ -45,7 +53,7 @@ namespace StrategicCombatCore
 
         public override string ToString()
         {
-            return $"Theater({name?.GetMergedName()}, {cells?.Count ?? 0}, frontline {frontlineCellInfos?.Count ?? 0})";
+            return $"Theater({name?.GetMergedName()}, {posture}, {cells?.Count ?? 0}, frontline {frontlineCellInfos?.Count ?? 0})";
         }
     }
 

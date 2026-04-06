@@ -1132,6 +1132,13 @@ namespace StrategicCombatCore
     public partial class Theater
     {
         [CreateProperty]
+        public int postureValue
+        {
+            get => (int)posture;
+            set => posture = (TheaterPosture)value;
+        }
+
+        [CreateProperty]
         public string sideName => GetSide()?.name?.GetMergedName() ?? string.Empty;
 
         [CreateProperty]

@@ -3415,6 +3415,14 @@ MonoBehaviour:
     m_Localized: Fire Control (Lowest Speed Broad)
     m_Metadata:
       m_Items: []
+  - m_Id: -97000000100001
+    m_Localized: Attack
+    m_Metadata:
+      m_Items: []
+  - m_Id: -97000000100002
+    m_Localized: Defense
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

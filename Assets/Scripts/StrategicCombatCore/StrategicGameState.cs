@@ -860,10 +860,14 @@ namespace StrategicCombatCore
 
         const float AiFrontlineAllocationEpsilon = 0.0001f;
 
-        sealed class AiFrontlineSourceState
+        sealed class AiSourcePlanState
         {
             public StrategicGroup group;
+            public List<StrategicGroupTransferAtom> orderedAtoms = new();
+            public int nextAtomIndex;
             public float remainingPower;
+
+            public Cell cell => group?.cell;
         }
 
         sealed class AiFrontlineDemandState
@@ -873,17 +877,39 @@ namespace StrategicCombatCore
             public float requestedWeight;
         }
 
-        sealed class AiFrontlineAssignment
-        {
-            public StrategicGroup group;
-            public Cell targetCell;
-        }
-
         sealed class AiFrontlineCandidate
         {
-            public AiFrontlineSourceState source;
+            public AiSourcePlanState source;
             public AiFrontlineDemandState demand;
             public float distance;
+        }
+
+        sealed class AiPlannedAssignment
+        {
+            public StrategicGroup rootGroup;
+            public Cell targetCell;
+            public List<string> atomObjectIds = new();
+        }
+
+        sealed class AiAttackTargetState
+        {
+            public Cell cell;
+            public float friendlyPowerInCell;
+            public float enemyPower;
+        }
+
+        sealed class AiReservedCommitState
+        {
+            public Cell cell;
+            public float remainingPower;
+            public int targetOptionCount;
+        }
+
+        sealed class AiAttackEvaluationContext
+        {
+            public Dictionary<(int x, int y), AiAttackTargetState> targets = new();
+            public Dictionary<(int x, int y), List<(int x, int y)>> targetToReservedKeys = new();
+            public Dictionary<(int x, int y), AiReservedCommitState> reservedCommits = new();
         }
 
         void Advance1DayForAiFrontlineAllocation()
@@ -907,149 +933,25 @@ namespace StrategicCombatCore
                 return;
 
             var theaterCellSet = BuildTheaterCellKeySet(theater.cells);
-            var sourceStates = IterIndependentStrategicGroups()
-                .Where(group =>
-                    group != null &&
-                    group.side == theater.side &&
-                    group.IsArmy() &&
-                    !group.IsBase() &&
-                    group.cell != null &&
-                    theaterCellSet.Contains((group.cell.x, group.cell.y)))
-                .Select(group => new AiFrontlineSourceState()
-                {
-                    group = group,
-                    remainingPower = GetIndependentArmyPower(group),
-                })
-                .Where(state => state.remainingPower > AiFrontlineAllocationEpsilon)
-                .ToList();
-
+            var sourceStates = BuildAiTheaterSourceStates(theater.side, theaterCellSet);
             if (sourceStates.Count == 0)
                 return;
 
-            var weightedFrontlineCells = (theater.frontlineCellInfos ?? Enumerable.Empty<FrontlineCellInfo>())
-                .Where(info => info != null && info.weightRequested > AiFrontlineAllocationEpsilon)
-                .Select(info => info.xy?.GetCell())
-                .Where(cell => cell != null && cell.IsGridCell() && cell.IsArmyPassable())
-                .GroupBy(cell => (cell.x, cell.y))
-                .Select(group => new
-                {
-                    cell = group.First(),
-                    weight = theater.frontlineCellInfos
-                        .Where(info => info != null && info.x == group.Key.x && info.y == group.Key.y)
-                        .Sum(info => info.weightRequested)
-                })
-                .Where(item => item.weight > AiFrontlineAllocationEpsilon)
-                .ToList();
-
-            if (weightedFrontlineCells.Count == 0)
-                return;
-
-            var totalPower = sourceStates.Sum(state => state.remainingPower);
-            var totalWeight = weightedFrontlineCells.Sum(item => item.weight);
-            if (totalPower <= AiFrontlineAllocationEpsilon || totalWeight <= AiFrontlineAllocationEpsilon)
-                return;
-
-            var demandStates = weightedFrontlineCells
-                .Select(item => new AiFrontlineDemandState()
-                {
-                    cell = item.cell,
-                    requestedWeight = item.weight,
-                    remainingDemand = totalPower * item.weight / totalWeight,
-                })
-                .Where(state => state.remainingDemand > AiFrontlineAllocationEpsilon)
-                .ToList();
-
-            if (demandStates.Count == 0)
-                return;
-
-            var pathCostCache = new Dictionary<(Cell src, Cell dst), AStarResult<Cell>>();
-            var movementGraph = new DynamicCellGraphArmy();
-            var assignments = new List<AiFrontlineAssignment>();
-
-            while (sourceStates.Count > 0 && demandStates.Count > 0)
+            var frontlinePlan = BuildAiFrontlinePlan(theater, CloneAiSourcePlanStates(sourceStates));
+            var consumedAtomIds = new HashSet<string>();
+            if (theater.posture == TheaterPosture.Attack)
             {
-                AiFrontlineCandidate bestCandidate = null;
-                foreach (var sourceState in sourceStates)
-                {
-                    foreach (var demandState in demandStates)
-                    {
-                        if (!TryGetAiFrontlineEffectiveDistance(
-                            sourceState.group,
-                            demandState.cell,
-                            movementGraph,
-                            pathCostCache,
-                            out var distance))
-                        {
-                            continue;
-                        }
-
-                        if (IsBetterAiFrontlineCandidate(distance, demandState, sourceState, bestCandidate))
-                        {
-                            bestCandidate = new AiFrontlineCandidate()
-                            {
-                                source = sourceState,
-                                demand = demandState,
-                                distance = distance,
-                            };
-                        }
-                    }
-                }
-
-                if (bestCandidate == null)
-                    break;
-
-                var source = bestCandidate.source;
-                var demand = bestCandidate.demand;
-                if (source.remainingPower <= demand.remainingDemand + AiFrontlineAllocationEpsilon)
-                {
-                    assignments.Add(new AiFrontlineAssignment()
-                    {
-                        group = source.group,
-                        targetCell = demand.cell,
-                    });
-
-                    demand.remainingDemand = Math.Max(0f, demand.remainingDemand - source.remainingPower);
-                    sourceStates.Remove(source);
-                    if (demand.remainingDemand <= AiFrontlineAllocationEpsilon)
-                    {
-                        demandStates.Remove(demand);
-                    }
-                    continue;
-                }
-
-                if (TrySplitSourceForAiFrontlineAllocation(source.group, demand.remainingDemand, out var splitGroup))
-                {
-                    assignments.Add(new AiFrontlineAssignment()
-                    {
-                        group = splitGroup,
-                        targetCell = demand.cell,
-                    });
-
-                    source.remainingPower = GetIndependentArmyPower(source.group);
-                    demandStates.Remove(demand);
-                    if (source.remainingPower <= AiFrontlineAllocationEpsilon)
-                    {
-                        sourceStates.Remove(source);
-                    }
-                    continue;
-                }
-
-                assignments.Add(new AiFrontlineAssignment()
-                {
-                    group = source.group,
-                    targetCell = demand.cell,
-                });
-                sourceStates.Remove(source);
-                demandStates.Remove(demand);
+                var attackPlan = BuildAiAttackPlan(theater, CloneAiSourcePlanStates(sourceStates));
+                ApplyAiPlannedAssignments(attackPlan, consumedAtomIds);
             }
 
-            ApplyAiFrontlineAssignments(assignments);
+            ApplyAiPlannedAssignments(frontlinePlan, consumedAtomIds);
         }
 
         static bool IsBetterAiFrontlineCandidate(
             float distance,
             AiFrontlineDemandState demand,
-            AiFrontlineSourceState source,
+            AiSourcePlanState source,
             AiFrontlineCandidate currentBest)
         {
             if (currentBest == null)
@@ -1084,14 +986,12 @@ namespace StrategicCombatCore
             return $"{demand.cell.x:D4},{demand.cell.y:D4}";
         }
 
-        static float GetIndependentArmyPower(StrategicGroup group)
+        static string GetAiCellStableId(Cell cell)
         {
-            if (group == null)
-                return 0f;
+            if (cell == null)
+                return string.Empty;
 
-            return group
-                .WalkGroupMembers<LandUnit>()
-                .Sum(landUnit => landUnit?.GetCombinedPowerPoint(false) ?? 0f);
+            return $"{cell.x:D4},{cell.y:D4}";
         }
 
         static bool ShouldIncludeMemberInAiFrontlineSplit(IStrategicGroupMemberReferenceable member)
@@ -1099,16 +999,27 @@ namespace StrategicCombatCore
             return member is not StrategicGroup group || group.deployState == StrategicGroup.DeployState.Combined;
         }
 
-        bool TrySplitSourceForAiFrontlineAllocation(StrategicGroup sourceGroup, float requestedPower, out StrategicGroup splitGroup)
+        static bool IsAiCombatableArmyGroup(StrategicGroup group)
         {
-            splitGroup = null;
-            if (sourceGroup == null || requestedPower <= AiFrontlineAllocationEpsilon)
-                return false;
+            return group != null &&
+                   group.LandCombatable() &&
+                   !group.IsBase();
+        }
 
-            if (sourceGroup.detachedFromGroupReference?.Get() != null)
-                return false;
+        static bool IsAiTheaterSourceGroup(StrategicGroup group, SideState side, HashSet<(int, int)> theaterCellSet)
+        {
+            return IsAiCombatableArmyGroup(group) &&
+                   group.side == side &&
+                   group.cell != null &&
+                   theaterCellSet.Contains((group.cell.x, group.cell.y));
+        }
 
+        List<StrategicGroupTransferAtom> CollectAiSourceAtoms(StrategicGroup sourceGroup)
+        {
             var orderedAtoms = new List<StrategicGroupTransferAtom>();
+            if (sourceGroup == null)
+                return orderedAtoms;
+
             foreach (var rootReference in sourceGroup.directMemberReferences.ToList())
             {
                 var member = rootReference.Get();
@@ -1122,60 +1033,569 @@ namespace StrategicCombatCore
                     ShouldIncludeMemberInAiFrontlineSplit);
             }
 
-            if (orderedAtoms.Count <= 1)
+            return orderedAtoms;
+        }
+
+        List<AiSourcePlanState> BuildAiTheaterSourceStates(SideState side, HashSet<(int, int)> theaterCellSet)
+        {
+            var sourceStates = new List<AiSourcePlanState>();
+            foreach (var group in IterIndependentStrategicGroups()
+                .Where(group => IsAiTheaterSourceGroup(group, side, theaterCellSet)))
+            {
+                var orderedAtoms = CollectAiSourceAtoms(group);
+                var remainingPower = orderedAtoms.Sum(atom => atom?.power ?? 0f);
+                if (remainingPower <= AiFrontlineAllocationEpsilon)
+                    continue;
+
+                sourceStates.Add(new AiSourcePlanState()
+                {
+                    group = group,
+                    orderedAtoms = orderedAtoms,
+                    remainingPower = remainingPower,
+                });
+            }
+
+            return sourceStates;
+        }
+
+        static List<AiSourcePlanState> CloneAiSourcePlanStates(IEnumerable<AiSourcePlanState> sourceStates)
+        {
+            return (sourceStates ?? Enumerable.Empty<AiSourcePlanState>())
+                .Where(state => state?.group != null && state.remainingPower > AiFrontlineAllocationEpsilon)
+                .Select(state => new AiSourcePlanState()
+                {
+                    group = state.group,
+                    orderedAtoms = state.orderedAtoms?.ToList() ?? new List<StrategicGroupTransferAtom>(),
+                    nextAtomIndex = state.nextAtomIndex,
+                    remainingPower = state.remainingPower,
+                })
+                .ToList();
+        }
+
+        static bool CanSplitAiSourceGroup(StrategicGroup group)
+        {
+            return group != null && group.detachedFromGroupReference?.Get() == null;
+        }
+
+        static bool TryConsumeAiSourceAtoms(
+            AiSourcePlanState sourceState,
+            float requestedPower,
+            bool forceAtLeastOneAtom,
+            out List<string> atomObjectIds,
+            out float selectedPower,
+            out bool usedAllRemaining)
+        {
+            atomObjectIds = null;
+            selectedPower = 0f;
+            usedAllRemaining = false;
+            if (sourceState == null || sourceState.remainingPower <= AiFrontlineAllocationEpsilon)
                 return false;
 
-            var bestPrefixLength = -1;
-            var bestDiff = float.PositiveInfinity;
-            var cumulativePower = 0f;
-            for (var prefixLength = 1; prefixLength < orderedAtoms.Count; prefixLength++)
+            var remainingAtoms = (sourceState.orderedAtoms ?? new List<StrategicGroupTransferAtom>())
+                .Skip(sourceState.nextAtomIndex)
+                .Where(atom => atom != null && atom.power > AiFrontlineAllocationEpsilon)
+                .ToList();
+            if (remainingAtoms.Count == 0)
+                return false;
+
+            var canSplit = CanSplitAiSourceGroup(sourceState.group) && remainingAtoms.Count > 1;
+            var selectCount = remainingAtoms.Count;
+            if (canSplit && requestedPower < sourceState.remainingPower - AiFrontlineAllocationEpsilon)
             {
-                cumulativePower += orderedAtoms[prefixLength - 1].power;
-                var diff = Math.Abs(cumulativePower - requestedPower);
-                if (diff < bestDiff - AiFrontlineAllocationEpsilon)
+                if (forceAtLeastOneAtom && requestedPower <= AiFrontlineAllocationEpsilon)
                 {
-                    bestDiff = diff;
-                    bestPrefixLength = prefixLength;
+                    selectCount = 1;
+                }
+                else
+                {
+                    var bestPrefixLength = -1;
+                    var bestDiff = float.PositiveInfinity;
+                    var cumulativePower = 0f;
+                    for (var prefixLength = 1; prefixLength < remainingAtoms.Count; prefixLength++)
+                    {
+                        cumulativePower += remainingAtoms[prefixLength - 1].power;
+                        var diff = Math.Abs(cumulativePower - requestedPower);
+                        if (diff < bestDiff - AiFrontlineAllocationEpsilon)
+                        {
+                            bestDiff = diff;
+                            bestPrefixLength = prefixLength;
+                        }
+                    }
+
+                    if (bestPrefixLength > 0)
+                        selectCount = bestPrefixLength;
                 }
             }
 
-            if (bestPrefixLength <= 0 || bestPrefixLength >= orderedAtoms.Count)
-                return false;
+            atomObjectIds = remainingAtoms.Take(selectCount).Select(atom => atom.objectId).ToList();
+            selectedPower = remainingAtoms.Take(selectCount).Sum(atom => atom.power);
+            sourceState.nextAtomIndex += selectCount;
+            sourceState.remainingPower = Math.Max(0f, sourceState.remainingPower - selectedPower);
+            usedAllRemaining = sourceState.remainingPower <= AiFrontlineAllocationEpsilon ||
+                               sourceState.nextAtomIndex >= sourceState.orderedAtoms.Count;
+            return atomObjectIds.Count > 0 && selectedPower > AiFrontlineAllocationEpsilon;
+        }
 
-            var selectedAtomIds = new HashSet<string>();
-            for (var idx = 0; idx < bestPrefixLength; idx++)
+        List<AiPlannedAssignment> BuildAiFrontlinePlan(Theater theater, List<AiSourcePlanState> sourceStates)
+        {
+            var assignments = new List<AiPlannedAssignment>();
+            if (theater == null || sourceStates == null || sourceStates.Count == 0)
+                return assignments;
+
+            var weightedFrontlineCells = (theater.frontlineCellInfos ?? Enumerable.Empty<FrontlineCellInfo>())
+                .Where(info => info != null && info.weightRequested > AiFrontlineAllocationEpsilon)
+                .Select(info => info.xy?.GetCell())
+                .Where(cell => cell != null && cell.IsGridCell() && cell.IsArmyPassable())
+                .GroupBy(cell => (cell.x, cell.y))
+                .Select(group => new
+                {
+                    cell = group.First(),
+                    weight = theater.frontlineCellInfos
+                        .Where(info => info != null && info.x == group.Key.x && info.y == group.Key.y)
+                        .Sum(info => info.weightRequested)
+                })
+                .Where(item => item.weight > AiFrontlineAllocationEpsilon)
+                .ToList();
+            if (weightedFrontlineCells.Count == 0)
+                return assignments;
+
+            var totalPower = sourceStates.Sum(state => state.remainingPower);
+            var totalWeight = weightedFrontlineCells.Sum(item => item.weight);
+            if (totalPower <= AiFrontlineAllocationEpsilon || totalWeight <= AiFrontlineAllocationEpsilon)
+                return assignments;
+
+            var demandStates = weightedFrontlineCells
+                .Select(item => new AiFrontlineDemandState()
+                {
+                    cell = item.cell,
+                    requestedWeight = item.weight,
+                    remainingDemand = totalPower * item.weight / totalWeight,
+                })
+                .Where(state => state.remainingDemand > AiFrontlineAllocationEpsilon)
+                .ToList();
+            if (demandStates.Count == 0)
+                return assignments;
+
+            var pathCostCache = new Dictionary<(Cell src, Cell dst), AStarResult<Cell>>();
+            var movementGraph = new DynamicCellGraphArmy();
+            while (sourceStates.Count > 0 && demandStates.Count > 0)
             {
-                selectedAtomIds.Add(orderedAtoms[idx].objectId);
+                AiFrontlineCandidate bestCandidate = null;
+                foreach (var sourceState in sourceStates)
+                {
+                    foreach (var demandState in demandStates)
+                    {
+                        if (!TryGetAiFrontlineEffectiveDistance(
+                            sourceState.group,
+                            demandState.cell,
+                            movementGraph,
+                            pathCostCache,
+                            out var distance))
+                        {
+                            continue;
+                        }
+
+                        if (IsBetterAiFrontlineCandidate(distance, demandState, sourceState, bestCandidate))
+                        {
+                            bestCandidate = new AiFrontlineCandidate()
+                            {
+                                source = sourceState,
+                                demand = demandState,
+                                distance = distance,
+                            };
+                        }
+                    }
+                }
+
+                if (bestCandidate == null)
+                    break;
+
+                var source = bestCandidate.source;
+                var demand = bestCandidate.demand;
+                var requestedPower = source.remainingPower <= demand.remainingDemand + AiFrontlineAllocationEpsilon
+                    ? source.remainingPower
+                    : demand.remainingDemand;
+                if (!TryConsumeAiSourceAtoms(
+                    source,
+                    requestedPower,
+                    false,
+                    out var atomObjectIds,
+                    out var selectedPower,
+                    out var usedAllRemaining))
+                {
+                    sourceStates.Remove(source);
+                    continue;
+                }
+
+                AppendAiPlannedAssignment(assignments, source.group, demand.cell, atomObjectIds);
+                demand.remainingDemand = usedAllRemaining
+                    ? Math.Max(0f, demand.remainingDemand - selectedPower)
+                    : 0f;
+
+                if (source.remainingPower <= AiFrontlineAllocationEpsilon)
+                    sourceStates.Remove(source);
+                if (demand.remainingDemand <= AiFrontlineAllocationEpsilon)
+                    demandStates.Remove(demand);
             }
 
-            if (selectedAtomIds.Count == 0)
+            return assignments;
+        }
+
+        float GetAiFriendlyPowerInCell(Cell cell, SideState side)
+        {
+            return GetAiPowerInCell(cell, group => group.side == side);
+        }
+
+        float GetAiHostilePowerInCell(Cell cell, SideState side)
+        {
+            return GetAiPowerInCell(cell, group => IsHostile(side, group.side));
+        }
+
+        static float GetAiPowerInCell(Cell cell, Func<StrategicGroup, bool> predicate)
+        {
+            if (cell == null || predicate == null)
+                return 0f;
+
+            return cell.StrategicGroupReferences
+                .Select(reference => reference.Get())
+                .Where(group => IsAiCombatableArmyGroup(group) && predicate(group))
+                .Sum(group => group.WalkGroupMembers<LandUnit>().Sum(landUnit => landUnit?.GetCombinedPowerPoint(false) ?? 0f));
+        }
+
+        bool HasAiFriendlyPresenceAroundCell(Cell cell, SideState side)
+        {
+            if (cell == null || side == null)
                 return false;
 
-            var parentGroup = sourceGroup.parentGroupReference.Get();
-            splitGroup = StrategicGroupTransferSplitUtility.CreateSplitGroupLike(
-                sourceGroup,
-                parentGroup,
-                StrategicGroup.DeployState.Independent);
-            if (splitGroup == null)
-                return false;
-
-            CopyAiFrontlineMovementState(sourceGroup, splitGroup);
-            IStrategicGroupMemberReferenceable.SetDetachedFromGroupReference(splitGroup, sourceGroup);
-            splitGroup.enableAutoReattach = false;
-            StrategicGroupTransferSplitUtility.MaterializePartialGroupSelection(
-                sourceGroup,
-                splitGroup,
-                selectedAtomIds,
-                ShouldIncludeMemberInAiFrontlineSplit);
-
-            if (splitGroup.directMemberReferences.Count == 0)
+            foreach (var candidate in cell.GetNeighbors().Prepend(cell))
             {
-                StrategicGroupTransferSplitUtility.DestroyEmptySplitGroup(splitGroup);
-                splitGroup = null;
-                return false;
+                if (GetAiFriendlyPowerInCell(candidate, side) > AiFrontlineAllocationEpsilon)
+                    return true;
             }
 
-            return true;
+            return false;
+        }
+
+        IEnumerable<Cell> BuildAiAttackCandidateTargets(Theater theater, IEnumerable<AiSourcePlanState> sourceStates)
+        {
+            if (theater?.side == null || sourceStates == null)
+                yield break;
+
+            var yielded = new HashSet<(int, int)>();
+            foreach (var sourceCell in sourceStates
+                .Select(state => state?.cell)
+                .Where(cell => cell != null && cell.IsGridCell() && cell.IsArmyPassable()))
+            {
+                foreach (var cell in sourceCell.GetNeighbors().Prepend(sourceCell))
+                {
+                    if (cell == null ||
+                        !cell.IsGridCell() ||
+                        !cell.IsArmyPassable() ||
+                        !yielded.Add((cell.x, cell.y)))
+                    {
+                        continue;
+                    }
+
+                    var enemyPower = GetAiHostilePowerInCell(cell, theater.side);
+                    var isControlled = cell.GetHexSide()?.objectId == theater.side.objectId;
+                    if ((enemyPower > AiFrontlineAllocationEpsilon || !isControlled) &&
+                        HasAiFriendlyPresenceAroundCell(cell, theater.side))
+                    {
+                        yield return cell;
+                    }
+                }
+            }
+        }
+
+        AiAttackEvaluationContext BuildAiAttackEvaluationContext(
+            SideState side,
+            IEnumerable<Cell> targetCells,
+            IEnumerable<AiSourcePlanState> sourceStates)
+        {
+            var context = new AiAttackEvaluationContext();
+            if (side == null)
+                return context;
+
+            var sourceStatesByCell = (sourceStates ?? Enumerable.Empty<AiSourcePlanState>())
+                .Where(state => state?.cell != null && state.remainingPower > AiFrontlineAllocationEpsilon)
+                .GroupBy(state => (state.cell.x, state.cell.y))
+                .ToDictionary(group => group.Key, group => group.ToList());
+
+            foreach (var cellGroup in sourceStatesByCell)
+            {
+                var cell = cellGroup.Value[0].cell;
+                if (cell == null || GetAiHostilePowerInCell(cell, side) > AiFrontlineAllocationEpsilon)
+                    continue;
+
+                context.reservedCommits[cellGroup.Key] = new AiReservedCommitState()
+                {
+                    cell = cell,
+                    remainingPower = cellGroup.Value.Sum(state => state.remainingPower),
+                };
+            }
+
+            foreach (var targetCell in (targetCells ?? Enumerable.Empty<Cell>())
+                .Where(cell => cell != null)
+                .GroupBy(cell => (cell.x, cell.y))
+                .Select(group => group.First()))
+            {
+                var key = (targetCell.x, targetCell.y);
+                context.targets[key] = new AiAttackTargetState()
+                {
+                    cell = targetCell,
+                    friendlyPowerInCell = GetAiFriendlyPowerInCell(targetCell, side),
+                    enemyPower = GetAiHostilePowerInCell(targetCell, side),
+                };
+                context.targetToReservedKeys[key] = targetCell.GetNeighbors()
+                    .Where(cell => cell != null)
+                    .Select(cell => (cell.x, cell.y))
+                    .Where(context.reservedCommits.ContainsKey)
+                    .Distinct()
+                    .ToList();
+            }
+
+            foreach (var reservedKey in context.reservedCommits.Keys.ToList())
+            {
+                context.reservedCommits[reservedKey].targetOptionCount = context.targetToReservedKeys
+                    .Count(entry => entry.Value.Contains(reservedKey));
+            }
+
+            return context;
+        }
+
+        List<Cell> PruneAiAttackTargets(SideState side, IEnumerable<Cell> candidateTargets, IEnumerable<AiSourcePlanState> sourceStates)
+        {
+            var targets = (candidateTargets ?? Enumerable.Empty<Cell>())
+                .Where(cell => cell != null)
+                .GroupBy(cell => (cell.x, cell.y))
+                .Select(group => group.First())
+                .ToList();
+            if (side == null || targets.Count == 0)
+                return new List<Cell>();
+
+            while (true)
+            {
+                var context = BuildAiAttackEvaluationContext(side, targets, sourceStates);
+                var nextTargets = targets
+                    .Where(target =>
+                    {
+                        var key = (target.x, target.y);
+                        if (!context.targetToReservedKeys.TryGetValue(key, out var reservedKeys) || reservedKeys.Count == 0)
+                            return false;
+
+                        var targetState = context.targets[key];
+                        if (targetState.enemyPower <= AiFrontlineAllocationEpsilon)
+                            return true;
+
+                        var reservablePower = reservedKeys
+                            .Select(reservedKey => context.reservedCommits.GetValueOrDefault(reservedKey)?.remainingPower ?? 0f)
+                            .Sum();
+                        return targetState.friendlyPowerInCell + reservablePower + AiFrontlineAllocationEpsilon >=
+                               targetState.enemyPower * 1.5f;
+                    })
+                    .ToList();
+                if (nextTargets.Count == targets.Count)
+                    return nextTargets;
+
+                targets = nextTargets;
+                if (targets.Count == 0)
+                    return targets;
+            }
+        }
+
+        static Cell SelectBestAiAttackTarget(AiAttackEvaluationContext context, IEnumerable<Cell> candidateTargets)
+        {
+            Cell bestTarget = null;
+            var bestReservedCount = int.MaxValue;
+            var bestEnemyPower = float.PositiveInfinity;
+            var bestStableId = string.Empty;
+            foreach (var target in candidateTargets ?? Enumerable.Empty<Cell>())
+            {
+                if (target == null)
+                    continue;
+
+                var key = (target.x, target.y);
+                var reservedCount = context.targetToReservedKeys.GetValueOrDefault(key)?.Count ?? 0;
+                if (reservedCount <= 0)
+                    continue;
+
+                var enemyPower = context.targets.GetValueOrDefault(key)?.enemyPower ?? 0f;
+                var stableId = GetAiCellStableId(target);
+                if (bestTarget == null ||
+                    reservedCount < bestReservedCount ||
+                    (reservedCount == bestReservedCount && enemyPower < bestEnemyPower - AiFrontlineAllocationEpsilon) ||
+                    (reservedCount == bestReservedCount &&
+                     Math.Abs(enemyPower - bestEnemyPower) <= AiFrontlineAllocationEpsilon &&
+                     string.CompareOrdinal(stableId, bestStableId) < 0))
+                {
+                    bestTarget = target;
+                    bestReservedCount = reservedCount;
+                    bestEnemyPower = enemyPower;
+                    bestStableId = stableId;
+                }
+            }
+
+            return bestTarget;
+        }
+
+        bool ShouldContinueAiAttackPass1Allocation(float enemyPower, float friendlyPowerInCell, float reservedCommittedPower)
+        {
+            if (enemyPower <= AiFrontlineAllocationEpsilon)
+                return friendlyPowerInCell + reservedCommittedPower <= AiFrontlineAllocationEpsilon;
+
+            return friendlyPowerInCell + reservedCommittedPower + AiFrontlineAllocationEpsilon < enemyPower * 3f;
+        }
+
+        static void AppendAiPlannedAssignment(
+            List<AiPlannedAssignment> assignments,
+            StrategicGroup rootGroup,
+            Cell targetCell,
+            IEnumerable<string> atomObjectIds)
+        {
+            if (assignments == null || rootGroup == null || targetCell == null)
+                return;
+
+            var atomIds = (atomObjectIds ?? Enumerable.Empty<string>())
+                .Where(atomObjectId => !string.IsNullOrWhiteSpace(atomObjectId))
+                .ToList();
+            if (atomIds.Count == 0)
+                return;
+
+            var existing = assignments.FirstOrDefault(assignment =>
+                assignment?.rootGroup == rootGroup &&
+                assignment.targetCell != null &&
+                assignment.targetCell.x == targetCell.x &&
+                assignment.targetCell.y == targetCell.y);
+            if (existing == null)
+            {
+                existing = new AiPlannedAssignment()
+                {
+                    rootGroup = rootGroup,
+                    targetCell = targetCell,
+                };
+                assignments.Add(existing);
+            }
+
+            existing.atomObjectIds.AddRange(atomIds);
+        }
+
+        void AllocateAiAttackTarget(
+            AiAttackEvaluationContext context,
+            Cell targetCell,
+            List<AiSourcePlanState> sourceStates,
+            List<AiPlannedAssignment> assignments,
+            bool limitToThreeToOne)
+        {
+            if (context == null || targetCell == null || sourceStates == null || assignments == null)
+                return;
+
+            var targetKey = (targetCell.x, targetCell.y);
+            if (!context.targetToReservedKeys.TryGetValue(targetKey, out var reservedKeys) || reservedKeys.Count == 0)
+                return;
+
+            var targetState = context.targets.GetValueOrDefault(targetKey);
+            if (targetState == null)
+                return;
+
+            var orderedReservedKeys = reservedKeys
+                .OrderBy(key => context.reservedCommits.GetValueOrDefault(key)?.targetOptionCount ?? int.MaxValue)
+                .ThenBy(key => key.x)
+                .ThenBy(key => key.y)
+                .ToList();
+            var reservedCommittedPower = 0f;
+            foreach (var reservedKey in orderedReservedKeys)
+            {
+                var cellSources = sourceStates
+                    .Where(state =>
+                        state?.cell != null &&
+                        state.remainingPower > AiFrontlineAllocationEpsilon &&
+                        state.cell.x == reservedKey.x &&
+                        state.cell.y == reservedKey.y)
+                    .OrderBy(state => state.group?.objectId)
+                    .ToList();
+                if (cellSources.Count == 0)
+                    continue;
+
+                while (cellSources.Any(state => state.remainingPower > AiFrontlineAllocationEpsilon))
+                {
+                    if (limitToThreeToOne &&
+                        !ShouldContinueAiAttackPass1Allocation(
+                            targetState.enemyPower,
+                            targetState.friendlyPowerInCell,
+                            reservedCommittedPower))
+                    {
+                        return;
+                    }
+
+                    var sourceState = cellSources.FirstOrDefault(state => state.remainingPower > AiFrontlineAllocationEpsilon);
+                    if (sourceState == null)
+                        break;
+
+                    var requestedPower = limitToThreeToOne
+                        ? Math.Max(0f, targetState.enemyPower * 3f - targetState.friendlyPowerInCell - reservedCommittedPower)
+                        : float.PositiveInfinity;
+                    var forceAtLeastOneAtom = limitToThreeToOne &&
+                                              targetState.enemyPower <= AiFrontlineAllocationEpsilon &&
+                                              targetState.friendlyPowerInCell + reservedCommittedPower <= AiFrontlineAllocationEpsilon;
+                    if (!TryConsumeAiSourceAtoms(
+                        sourceState,
+                        requestedPower,
+                        forceAtLeastOneAtom,
+                        out var atomObjectIds,
+                        out var selectedPower,
+                        out _))
+                    {
+                        break;
+                    }
+
+                    AppendAiPlannedAssignment(assignments, sourceState.group, targetCell, atomObjectIds);
+                    reservedCommittedPower += selectedPower;
+                }
+            }
+        }
+
+        void RunAiAttackPlanningPass(
+            SideState side,
+            List<AiSourcePlanState> sourceStates,
+            IEnumerable<Cell> baseTargets,
+            List<AiPlannedAssignment> assignments,
+            bool limitToThreeToOne)
+        {
+            var remainingTargets = (baseTargets ?? Enumerable.Empty<Cell>())
+                .Where(cell => cell != null)
+                .GroupBy(cell => (cell.x, cell.y))
+                .ToDictionary(group => group.Key, group => group.First());
+            while (remainingTargets.Count > 0)
+            {
+                var context = BuildAiAttackEvaluationContext(side, remainingTargets.Values, sourceStates);
+                var targetCell = SelectBestAiAttackTarget(
+                    context,
+                    remainingTargets.Values.Where(target =>
+                        context.targetToReservedKeys.GetValueOrDefault((target.x, target.y))?.Count > 0));
+                if (targetCell == null)
+                    break;
+
+                AllocateAiAttackTarget(context, targetCell, sourceStates, assignments, limitToThreeToOne);
+                remainingTargets.Remove((targetCell.x, targetCell.y));
+            }
+        }
+
+        List<AiPlannedAssignment> BuildAiAttackPlan(Theater theater, List<AiSourcePlanState> sourceStates)
+        {
+            var assignments = new List<AiPlannedAssignment>();
+            if (theater?.side == null || sourceStates == null || sourceStates.Count == 0)
+                return assignments;
+
+            var validTargets = PruneAiAttackTargets(
+                theater.side,
+                BuildAiAttackCandidateTargets(theater, sourceStates),
+                sourceStates);
+            if (validTargets.Count == 0)
+                return assignments;
+
+            RunAiAttackPlanningPass(theater.side, sourceStates, validTargets, assignments, true);
+            RunAiAttackPlanningPass(theater.side, sourceStates, validTargets, assignments, false);
+            return assignments;
         }
 
         static void CopyAiFrontlineMovementState(StrategicGroup sourceGroup, StrategicGroup targetGroup)
@@ -1194,18 +1614,90 @@ namespace StrategicCombatCore
             targetGroup.moveProgressionKm = sourceGroup.moveProgressionKm;
         }
 
-        static void ApplyAiFrontlineAssignments(IEnumerable<AiFrontlineAssignment> assignments)
+        bool TryMaterializeAiAssignmentGroup(
+            StrategicGroup sourceGroup,
+            IReadOnlyCollection<string> requestedAtomIds,
+            out StrategicGroup assignedGroup,
+            out List<string> materializedAtomIds)
+        {
+            assignedGroup = null;
+            materializedAtomIds = new List<string>();
+            if (sourceGroup == null || requestedAtomIds == null || requestedAtomIds.Count == 0)
+                return false;
+
+            var availableAtoms = CollectAiSourceAtoms(sourceGroup);
+            materializedAtomIds = availableAtoms
+                .Where(atom => atom != null && requestedAtomIds.Contains(atom.objectId))
+                .Select(atom => atom.objectId)
+                .ToList();
+            if (materializedAtomIds.Count == 0)
+                return false;
+
+            if (materializedAtomIds.Count == availableAtoms.Count)
+            {
+                assignedGroup = sourceGroup;
+                return true;
+            }
+
+            if (!CanSplitAiSourceGroup(sourceGroup))
+                return false;
+
+            var parentGroup = sourceGroup.parentGroupReference.Get();
+            assignedGroup = StrategicGroupTransferSplitUtility.CreateSplitGroupLike(
+                sourceGroup,
+                parentGroup,
+                StrategicGroup.DeployState.Independent);
+            if (assignedGroup == null)
+                return false;
+
+            CopyAiFrontlineMovementState(sourceGroup, assignedGroup);
+            IStrategicGroupMemberReferenceable.SetDetachedFromGroupReference(assignedGroup, sourceGroup);
+            assignedGroup.enableAutoReattach = false;
+            StrategicGroupTransferSplitUtility.MaterializePartialGroupSelection(
+                sourceGroup,
+                assignedGroup,
+                materializedAtomIds.ToHashSet(),
+                ShouldIncludeMemberInAiFrontlineSplit);
+
+            if (assignedGroup.directMemberReferences.Count == 0)
+            {
+                StrategicGroupTransferSplitUtility.DestroyEmptySplitGroup(assignedGroup);
+                assignedGroup = null;
+                return false;
+            }
+
+            return true;
+        }
+
+        void ApplyAiPlannedAssignments(IEnumerable<AiPlannedAssignment> assignments, HashSet<string> consumedAtomIds)
         {
             if (assignments == null)
                 return;
 
+            consumedAtomIds ??= new HashSet<string>();
             var movementGraph = new DynamicCellGraphArmy();
             foreach (var assignment in assignments)
             {
-                var group = assignment?.group;
+                var sourceGroup = assignment?.rootGroup;
                 var targetCell = assignment?.targetCell;
-                if (group?.cell == null || targetCell == null || group.deployState != StrategicGroup.DeployState.Independent)
+                if (sourceGroup?.cell == null ||
+                    targetCell == null ||
+                    sourceGroup.deployState != StrategicGroup.DeployState.Independent)
+                {
                     continue;
+                }
+
+                var requestedAtomIds = assignment.atomObjectIds
+                    .Where(atomObjectId => !string.IsNullOrWhiteSpace(atomObjectId) && !consumedAtomIds.Contains(atomObjectId))
+                    .ToList();
+                if (requestedAtomIds.Count == 0 ||
+                    !TryMaterializeAiAssignmentGroup(sourceGroup, requestedAtomIds, out var group, out var materializedAtomIds))
+                {
+                    continue;
+                }
+
+                foreach (var atomObjectId in materializedAtomIds)
+                    consumedAtomIds.Add(atomObjectId);
 
                 if (group.cell == targetCell)
                 {

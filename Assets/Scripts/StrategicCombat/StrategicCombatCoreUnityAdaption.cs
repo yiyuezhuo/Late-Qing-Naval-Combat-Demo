@@ -85,6 +85,18 @@ namespace StrategicCombatCore
 
         [CreateProperty]
         public bool hasActiveLandBattle => landBattleId != null;
+
+        [CreateProperty]
+        public Theater currentTheater => StrategicGameState.Instance?.FindTheaterByCell(this);
+
+        [CreateProperty]
+        public bool hasCurrentTheater => currentTheater != null;
+
+        [CreateProperty]
+        public string currentTheaterNameLink =>
+            currentTheater == null
+                ? string.Empty
+                : $"<link=\"theaterLink\"><color=#40a0ff>{currentTheater.GetName().GetMergedName()}</color></link>";
     }
 
     public static class StyleConstants

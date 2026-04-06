@@ -46,6 +46,16 @@
                             </Bindings>
                         </ui:Label>
                     </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                        <ui:Label text="Theater Name" name="CellTheaterNameLabel" style="flex-grow: 1; white-space: normal;">
+                            <Bindings>
+                                <ui:DataBinding property="text" data-source-path="currentTheaterNameLink" binding-mode="ToTarget"/>
+                            </Bindings>
+                        </ui:Label>
+                        <Bindings>
+                            <ui:DataBinding property="style.display" data-source-path="hasCurrentTheater" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
+                        </Bindings>
+                    </ui:VisualElement>
                     <ui:Button name="CellEditButton" text="Cell State">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(44749922277953536)"/>

@@ -101,6 +101,8 @@ namespace StrategicCombatCore
         public List<PendingNavalCombat> pendingNavalCombats = new();
         public List<LandBattle> landBattles = new();
         public List<Theater> theaters = new();
+        [XmlIgnore]
+        Dictionary<(int x, int y), Theater> theaterByHex = new();
 
         public List<SidedLazyLocalizedString> logs = new();
         // public List<LazyLocalizedString> logs = new();
@@ -2759,6 +2761,7 @@ namespace StrategicCombatCore
             }
 
             RefreshTheaterFrontlineWeightRequested();
+            RebuildTheaterHexIndex();
         }
 
         public void ClearTheaters()
@@ -2771,6 +2774,54 @@ namespace StrategicCombatCore
                 EntityManager.Instance.Unregister(theater);
             }
             theaters.Clear();
+            theaterByHex?.Clear();
+        }
+
+        void RebuildTheaterHexIndex()
+        {
+            theaterByHex ??= new();
+            theaterByHex.Clear();
+
+            foreach (var theater in theaters ?? Enumerable.Empty<Theater>())
+            {
+                if (theater?.cells == null)
+                    continue;
+
+                foreach (var xy in theater.cells)
+                {
+                    if (xy == null || !string.IsNullOrWhiteSpace(xy.areaCellObjectId))
+                        continue;
+
+                    theaterByHex[(xy.x, xy.y)] = theater;
+                }
+            }
+        }
+
+        public Theater FindTheaterByXY(int x, int y)
+        {
+            theaterByHex ??= new();
+            if (theaterByHex.Count == 0)
+            {
+                if ((theaters?.Count ?? 0) == 0)
+                {
+                    RefreshTheaters();
+                }
+                else
+                {
+                    RebuildTheaterHexIndex();
+                }
+            }
+
+            theaterByHex.TryGetValue((x, y), out var theater);
+            return theater;
+        }
+
+        public Theater FindTheaterByCell(Cell cell)
+        {
+            if (cell == null || cell.IsAreaCell())
+                return null;
+
+            return FindTheaterByXY(cell.x, cell.y);
         }
 
         IEnumerable<Theater> ScanTheaters()

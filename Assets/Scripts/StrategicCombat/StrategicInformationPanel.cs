@@ -101,6 +101,24 @@ public class StrategicInformationPanel : SingletonDocument<StrategicInformationP
             }
         };
 
+        var cellTheaterNameLabel = root.Q<Label>("CellTheaterNameLabel");
+        Utils.RegisterLinkTag(cellTheaterNameLabel, new()
+        {
+            {
+                "theaterLink", () =>
+                {
+                    if (Utils.TryResolveCurrentValueForBinding(cellTheaterNameLabel, out Cell cell))
+                    {
+                        var theater = cell.currentTheater;
+                        if (theater != null)
+                        {
+                            DialogRoot.Instance.PopupTheaterDetailDialog(theater);
+                        }
+                    }
+                }
+            }
+        });
+
         var moveButton = root.Q<Button>("MoveButton");
         moveButton.clicked += StrategicGameManager.Instance.TryToStartMakeNewMove;
 

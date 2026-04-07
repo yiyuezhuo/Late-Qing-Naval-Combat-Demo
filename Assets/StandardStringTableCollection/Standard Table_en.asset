@@ -3143,6 +3143,22 @@ MonoBehaviour:
     m_Localized: Frontline
     m_Metadata:
       m_Items: []
+  - m_Id: -74
+    m_Localized: Land Battle Losses
+    m_Metadata:
+      m_Items: []
+  - m_Id: -75
+    m_Localized: Destroyed Ships
+    m_Metadata:
+      m_Items: []
+  - m_Id: -76
+    m_Localized: Land Battle Wins
+    m_Metadata:
+      m_Items: []
+  - m_Id: -77
+    m_Localized: Land Battle Defeats
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

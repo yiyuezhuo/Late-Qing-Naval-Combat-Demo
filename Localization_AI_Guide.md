@@ -168,9 +168,9 @@ The script auto-assigns the next sequential small negative ID, handles YAML quot
 
 **Only works for Dynamic Table.** For Standard Table entries, use `Tools/standard_localization.py` and then paste the printed `entry="Id(...)"` binding into the target UXML file.
 
-### `Tools/standard_localization.py` — query and add Standard Table entries
+### `Tools/standard_localization.py` — query, add, ensure, and scan Standard Table entries
 
-Use for UXML-bound static labels. The script prints a ready-to-paste UXML binding snippet so the agent only needs to do a text insertion.
+Use for UXML-bound static labels. The script prints ready-to-paste UXML binding snippets and can also scan a UXML file for unlocalized `text` / `label` attributes.
 
 **Agent workflow:**
 ```bash
@@ -178,7 +178,7 @@ Use for UXML-bound static labels. The script prints a ready-to-paste UXML bindin
 python Tools/standard_localization.py query "Range Ring Display"
 
 # → FOUND: prints ID + 4 translations + UXML snippet → paste snippet into UXML file, done.
-# → NOT FOUND: continue to step 2.
+# → NOT FOUND: prints close-match reuse suggestions → continue to step 2 if needed.
 
 # Step 2 — add the entry
 python Tools/standard_localization.py add \
@@ -193,9 +193,21 @@ python Tools/standard_localization.py add \
 
 Other commands:
 ```bash
-python Tools/standard_localization.py list       # list all keys and IDs
-python Tools/standard_localization.py add --dry-run ...  # preview without writing
+python Tools/standard_localization.py list                  # list all keys and IDs
+python Tools/standard_localization.py add --dry-run ...    # preview without writing
+python Tools/standard_localization.py ensure --file keys.json
+python Tools/standard_localization.py scan-uxml Assets/UIDocuments/StrategicCombat/StrategicVictoryStatusDialog.uxml
 ```
+
+`ensure --file` supports:
+- JSON array entries with `key`, `en`, `ja`, `zh-hans`, `zh-hant`, optional `prop`
+- Pipe-delimited text lines: `key|en|ja|zh-hans|zh-hant[|prop]`
+
+`scan-uxml` reports:
+- controls whose `text` / `label` attribute is not localized through `LocalizedString` or `DataBinding`
+- exact Standard Table key reuse opportunities
+- near-match suggestions when no exact key exists
+- a ready-to-run `add` command for missing keys
 
 The printed UXML snippet looks like:
 ```xml
@@ -208,13 +220,15 @@ Wrap it in a `<Bindings>` block inside the target UXML element. Change `property
 
 **Only works for Standard Table.** For Dynamic Table entries, use `Tools/add_localization.py`.
 
-### `Tools/normalize_localization_ids.py` — renumber manual negative IDs
+### `Tools/normalize_localization_ids.py` — normalize and verify localization IDs
 
-Renumbers all manual negative IDs in both tables to a clean `-1, -2, -3, …` sequence and updates `entry="Id(...)"` references in UXML files.
+Renumbers all manual negative IDs in both tables to a clean `-1, -2, -3, …` sequence and updates `entry="Id(...)"` references in Standard Table UXML files. It can also report current ID health and verify that no issues remain.
 
 ```bash
 python Tools/normalize_localization_ids.py          # dry-run (no writes)
 python Tools/normalize_localization_ids.py --apply  # apply changes
+python Tools/normalize_localization_ids.py status   # show ID ranges, next free IDs, locale/UXML status
+python Tools/normalize_localization_ids.py verify   # fail if IDs are fragmented or references are broken
 ```
 
 ## 11. Notes

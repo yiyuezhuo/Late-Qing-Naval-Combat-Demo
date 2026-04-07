@@ -3059,6 +3059,22 @@ MonoBehaviour:
     m_Key: Frontline
     m_Metadata:
       m_Items: []
+  - m_Id: -74
+    m_Key: Land Battle Losses
+    m_Metadata:
+      m_Items: []
+  - m_Id: -75
+    m_Key: Destroyed Ships
+    m_Metadata:
+      m_Items: []
+  - m_Id: -76
+    m_Key: Land Battle Wins
+    m_Metadata:
+      m_Items: []
+  - m_Id: -77
+    m_Key: Land Battle Defeats
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

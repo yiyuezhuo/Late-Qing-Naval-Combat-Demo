@@ -7,11 +7,31 @@
             </Bindings>
         </ui:Label>
         <ui:VisualElement style="flex-direction: row; flex-shrink: 0; margin-bottom: 4px; padding-left: 4px; padding-right: 4px;">
-            <ui:Label text="Side" style="flex-basis: 220px; flex-shrink: 0; -unity-font-style: bold;" />
-            <ui:Label text="Land Battle Losses" style="flex-basis: 180px; flex-shrink: 0; -unity-font-style: bold;" />
-            <ui:Label text="Destroyed Ships" style="flex-basis: 140px; flex-shrink: 0; -unity-font-style: bold;" />
-            <ui:Label text="Land Battle Wins" style="flex-basis: 120px; flex-shrink: 0; -unity-font-style: bold;" />
-            <ui:Label text="Land Battle Defeats" style="flex-basis: 140px; flex-shrink: 0; -unity-font-style: bold;" />
+            <ui:Label text="Side" style="flex-basis: 220px; flex-shrink: 0; -unity-font-style: bold;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11053585590292480)" />
+                </Bindings>
+            </ui:Label>
+            <ui:Label text="Land Battle Losses" style="flex-basis: 180px; flex-shrink: 0; -unity-font-style: bold;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-74)" />
+                </Bindings>
+            </ui:Label>
+            <ui:Label text="Destroyed Ships" style="flex-basis: 140px; flex-shrink: 0; -unity-font-style: bold;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-75)" />
+                </Bindings>
+            </ui:Label>
+            <ui:Label text="Land Battle Wins" style="flex-basis: 120px; flex-shrink: 0; -unity-font-style: bold;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-76)" />
+                </Bindings>
+            </ui:Label>
+            <ui:Label text="Land Battle Defeats" style="flex-basis: 140px; flex-shrink: 0; -unity-font-style: bold;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-77)" />
+                </Bindings>
+            </ui:Label>
         </ui:VisualElement>
         <ui:ListView name="StrategicVictoryStatusListView" fixed-item-height="28" selection-type="None" style="flex-grow: 1;" />
         <ui:VisualElement style="flex-shrink: 0;">

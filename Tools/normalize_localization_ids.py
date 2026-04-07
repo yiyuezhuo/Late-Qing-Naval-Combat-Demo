@@ -1,58 +1,44 @@
 #!/usr/bin/env python3
 """
-normalize_localization_ids.py — Renumber all manual (negative) localization IDs
-in both Dynamic Table and Standard Table to a clean sequential scheme: -1, -2, -3, ...
-
-WHAT IT DOES
-------------
-  Before:  -97000000100001, -96000000010001, -81000000100002, ...  (fragmented ad-hoc ranges)
-  After:   -1, -2, -3, ...  (simple sequential)
-
-FILES UPDATED
--------------
-  Dynamic Table:
-    - Assets/DynamicStringTableCollection/Dynamic Table Shared Data.asset
-    - Assets/DynamicStringTableCollection/Dynamic Table_{en,ja,zh-Hans,zh-Hant}.asset
-
-  Standard Table:
-    - Assets/StandardStringTableCollection/Standard Table Shared Data.asset
-    - Assets/StandardStringTableCollection/Standard Table_{en,ja,zh-Hans,zh-Hant}.asset
-    - All Assets/**/*.uxml files that reference Standard Table negative IDs via entry="Id(-...)"
+normalize_localization_ids.py — Normalize localization IDs and verify their health.
 
 USAGE
 -----
-  python Tools/normalize_localization_ids.py              # dry run (safe, prints diff)
-  python Tools/normalize_localization_ids.py --apply      # actually write files
+  python Tools/normalize_localization_ids.py              # dry run
+  python Tools/normalize_localization_ids.py --apply      # apply normalization
+  python Tools/normalize_localization_ids.py status       # show current summary
+  python Tools/normalize_localization_ids.py verify       # fail if issues remain
 
-SAFETY
-------
-  - Default is dry-run; nothing is written without --apply.
-  - Prints a full mapping of old ID → new ID before applying.
-  - All negative IDs are treated as manual/custom IDs and are renumbered.
-  - IDs are ordered from least-negative to most-negative so the assignment is
-    deterministic and stable across runs (same key always gets the same new ID).
+WHAT IT DOES
+------------
+  - Renumbers all negative IDs in Dynamic Table and Standard Table to -1, -2, -3, ...
+  - Updates Standard Table UXML references when their entry IDs change.
+  - Reports the current negative-ID range, next free ID, fragmentation, legacy large negatives,
+    locale synchronization status, and Standard Table UXML reference health.
 """
 
 import argparse
+import glob
 import os
 import re
-import glob
+import sys
 
 ROOT = os.path.join(os.path.dirname(__file__), "..")
+LARGE_NEGATIVE_THRESHOLD = 10 ** 15
 
 TABLES = {
     "dynamic": {
-        "shared":  "Assets/DynamicStringTableCollection/Dynamic Table Shared Data.asset",
+        "shared": "Assets/DynamicStringTableCollection/Dynamic Table Shared Data.asset",
         "locales": [
             "Assets/DynamicStringTableCollection/Dynamic Table_en.asset",
             "Assets/DynamicStringTableCollection/Dynamic Table_ja.asset",
             "Assets/DynamicStringTableCollection/Dynamic Table_zh-Hans.asset",
             "Assets/DynamicStringTableCollection/Dynamic Table_zh-Hant.asset",
         ],
-        "uxml_guid": None,  # Dynamic Table is only referenced from C#, not UXML
+        "uxml_guid": None,
     },
     "standard": {
-        "shared":  "Assets/StandardStringTableCollection/Standard Table Shared Data.asset",
+        "shared": "Assets/StandardStringTableCollection/Standard Table Shared Data.asset",
         "locales": [
             "Assets/StandardStringTableCollection/Standard Table_en.asset",
             "Assets/StandardStringTableCollection/Standard Table_ja.asset",
@@ -62,6 +48,7 @@ TABLES = {
         "uxml_guid": "7dfd13ea0ff0ef0408a7f015356a0054",
     },
 }
+
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -82,37 +69,46 @@ def write(path: str, content: str, apply: bool):
             f.write(content)
 
 
-def get_manual_negative_ids(shared_content: str) -> list[int]:
-    """Return all manual negative IDs sorted from least-negative to most-negative."""
-    ids = [
-        int(x) for x in re.findall(r"m_Id: (-\d+)", shared_content)
-    ]
-    return sorted(set(ids), reverse=True)  # -1 > -2 > -3 ...  (least negative first)
+def parse_all_ids(content: str) -> list[int]:
+    return [int(value) for value in re.findall(r"m_Id: (-?\d+)", content)]
+
+
+def parse_negative_ids(content: str) -> list[int]:
+    ids = [entry_id for entry_id in parse_all_ids(content) if entry_id < 0]
+    return sorted(set(ids), reverse=True)
+
+
+def expected_sequential_ids(count: int) -> list[int]:
+    return [-(index + 1) for index in range(count)]
+
+
+def is_sequential(ids: list[int]) -> bool:
+    return ids == expected_sequential_ids(len(ids))
+
+
+def next_free_negative_id(ids: list[int]) -> int:
+    return (min(ids) - 1) if ids else -1
 
 
 def build_mapping(ids: list[int]) -> dict[int, int]:
-    """Assign -1, -2, -3, ... in order of least-negative to most-negative."""
-    return {old: -(i + 1) for i, old in enumerate(ids)}
+    return {old: -(index + 1) for index, old in enumerate(ids)}
 
 
 def apply_mapping_shared(content: str, mapping: dict[int, int]) -> str:
-    """Replace m_Id: OLD with m_Id: NEW in SharedData (exact whole-line match)."""
     for old, new in mapping.items():
         content = re.sub(
             rf"(m_Id: ){re.escape(str(old))}(\b)",
-            lambda m, new=new: f"{m.group(1)}{new}",
-            content
+            lambda match, new=new: f"{match.group(1)}{new}",
+            content,
         )
     return content
 
 
 def apply_mapping_locale(content: str, mapping: dict[int, int]) -> str:
-    """Replace m_Id: OLD in locale files."""
     return apply_mapping_shared(content, mapping)
 
 
 def apply_mapping_uxml(content: str, mapping: dict[int, int]) -> str:
-    """Replace entry="Id(OLD)" in UXML files."""
     for old, new in mapping.items():
         content = content.replace(f'entry="Id({old})"', f'entry="Id({new})"')
     return content
@@ -123,35 +119,94 @@ def find_uxml_files() -> list[str]:
     return glob.glob(pattern, recursive=True)
 
 
+def find_table_uxml_refs(guid: str) -> list[dict]:
+    pattern = re.compile(
+        rf'<UnityEngine\.Localization\.LocalizedString\b'
+        rf'(?=[^>]*\btable="GUID:{re.escape(guid)}")'
+        rf'(?=[^>]*\bentry="Id\((-?\d+)\)")'
+        rf'[^>]*/?>'
+    )
+    refs = []
+    for path in find_uxml_files():
+        with open(path, "r", encoding="utf-8") as f:
+            content = f.read()
+
+        for match in pattern.finditer(content):
+            refs.append({
+                "path": os.path.relpath(path, abs_path(".")),
+                "id": int(match.group(1)),
+                "line": content.count("\n", 0, match.start()) + 1,
+            })
+    return refs
+
+
+def summarize_table(name: str, cfg: dict) -> dict:
+    shared_content = read(cfg["shared"])
+    shared_all_ids = parse_all_ids(shared_content)
+    negative_ids = parse_negative_ids(shared_content)
+
+    locale_sets = {}
+    locale_mismatches = []
+    for locale_path in cfg["locales"]:
+        locale_ids = set(parse_negative_ids(read(locale_path)))
+        locale_sets[locale_path] = locale_ids
+        shared_set = set(negative_ids)
+        if locale_ids != shared_set:
+            locale_mismatches.append({
+                "path": locale_path,
+                "missing": sorted(shared_set - locale_ids, reverse=True),
+                "extra": sorted(locale_ids - shared_set, reverse=True),
+            })
+
+    uxml_refs = []
+    missing_uxml_refs = []
+    if cfg["uxml_guid"]:
+        uxml_refs = find_table_uxml_refs(cfg["uxml_guid"])
+        valid_ids = set(shared_all_ids)
+        missing_uxml_refs = [ref for ref in uxml_refs if ref["id"] not in valid_ids]
+
+    large_negative_ids = [entry_id for entry_id in negative_ids if abs(entry_id) >= LARGE_NEGATIVE_THRESHOLD]
+    return {
+        "name": name,
+        "shared_path": cfg["shared"],
+        "negative_ids": negative_ids,
+        "negative_count": len(negative_ids),
+        "all_id_count": len(shared_all_ids),
+        "sequential": is_sequential(negative_ids),
+        "next_free_negative_id": next_free_negative_id(negative_ids),
+        "large_negative_ids": large_negative_ids,
+        "locale_mismatches": locale_mismatches,
+        "uxml_refs": uxml_refs,
+        "missing_uxml_refs": missing_uxml_refs,
+    }
+
+
 # ---------------------------------------------------------------------------
-# Per-table migration
+# Commands
 # ---------------------------------------------------------------------------
 
-def migrate_table(name: str, cfg: dict, apply: bool):
-    print(f"\n{'='*60}")
+def migrate_table(name: str, cfg: dict, apply: bool) -> dict[int, int]:
+    print(f"\n{'=' * 60}")
     print(f"  TABLE: {name.upper()}")
-    print(f"{'='*60}")
+    print(f"{'=' * 60}")
 
     shared_content = read(cfg["shared"])
-    ids = get_manual_negative_ids(shared_content)
+    ids = parse_negative_ids(shared_content)
 
     if not ids:
-        print("  No manual negative IDs found. Nothing to do.")
+        print("  No negative IDs found. Nothing to do.")
         return {}
 
     mapping = build_mapping(ids)
-
-    print(f"  {len(mapping)} IDs to renumber:")
+    print(f"  {len(mapping)} negative IDs to renumber:")
     for old, new in mapping.items():
         print(f"    {old:>25}  →  {new}")
 
-    # SharedData
     new_shared = apply_mapping_shared(shared_content, mapping)
     if new_shared != shared_content:
         print(f"\n  {'WRITE' if apply else 'DRY'}  {cfg['shared']}")
         write(cfg["shared"], new_shared, apply)
 
-    # Locale files
     for locale_path in cfg["locales"]:
         content = read(locale_path)
         new_content = apply_mapping_locale(content, mapping)
@@ -168,22 +223,20 @@ def migrate_uxml(mapping: dict[int, int], guid: str, apply: bool):
     if not mapping or not guid:
         return
 
-    uxml_files = find_uxml_files()
     hits = 0
-    for path in uxml_files:
+    for path in find_uxml_files():
         with open(path, "r", encoding="utf-8") as f:
             content = f.read()
 
-        # Only process files that reference this table's GUID and have negative IDs
         if guid not in content:
             continue
-        if not re.search(r'entry="Id\(-\d+\)"', content):
+        if not re.search(r'entry="Id\(-?\d+\)"', content):
             continue
 
         new_content = apply_mapping_uxml(content, mapping)
         if new_content != content:
-            rel = os.path.relpath(path, abs_path("."))
-            print(f"  {'WRITE' if apply else 'DRY'}  {rel}")
+            rel_path = os.path.relpath(path, abs_path("."))
+            print(f"  {'WRITE' if apply else 'DRY'}  {rel_path}")
             if apply:
                 with open(path, "w", encoding="utf-8", newline="\n") as f:
                     f.write(new_content)
@@ -193,31 +246,96 @@ def migrate_uxml(mapping: dict[int, int], guid: str, apply: bool):
         print("  No UXML files needed updating.")
 
 
+def cmd_normalize(apply: bool):
+    if not apply:
+        print("DRY RUN -- pass --apply to write changes\n")
+
+    for table_name, cfg in TABLES.items():
+        mapping = migrate_table(table_name, cfg, apply)
+        if cfg["uxml_guid"]:
+            print(f"\n  UXML files ({table_name}):")
+            migrate_uxml(mapping, cfg["uxml_guid"], apply)
+
+    if not apply:
+        print("\n--- Dry run complete. Run with --apply to write. ---")
+    else:
+        print("\n--- Done. Localization IDs are now normalized. ---")
+
+
+def cmd_status():
+    for table_name, cfg in TABLES.items():
+        summary = summarize_table(table_name, cfg)
+        negative_ids = summary["negative_ids"]
+        range_text = "none"
+        if negative_ids:
+            range_text = f"{min(negative_ids)} .. {max(negative_ids)}"
+
+        print(f"\n{table_name.upper()}")
+        print("-" * 40)
+        print(f"Shared asset: {summary['shared_path']}")
+        print(f"Negative IDs: {summary['negative_count']}")
+        print(f"Negative range: {range_text}")
+        print(f"Sequential: {'yes' if summary['sequential'] else 'no'}")
+        print(f"Next free negative ID: {summary['next_free_negative_id']}")
+        print(f"Large-magnitude negatives: {len(summary['large_negative_ids'])}")
+        print(f"Locale sync: {'ok' if not summary['locale_mismatches'] else 'mismatch'}")
+
+        if summary["uxml_refs"]:
+            print(f"UXML refs: {len(summary['uxml_refs'])}")
+            print(f"Missing UXML refs: {len(summary['missing_uxml_refs'])}")
+
+
+def cmd_verify() -> int:
+    issues = []
+    for table_name, cfg in TABLES.items():
+        summary = summarize_table(table_name, cfg)
+        if not summary["sequential"]:
+            issues.append(f"{table_name}: negative IDs are fragmented; run normalize.")
+        if summary["large_negative_ids"]:
+            issues.append(
+                f"{table_name}: found {len(summary['large_negative_ids'])} large-magnitude negative IDs."
+            )
+        for mismatch in summary["locale_mismatches"]:
+            issues.append(
+                f"{table_name}: locale mismatch in {mismatch['path']} "
+                f"(missing {len(mismatch['missing'])}, extra {len(mismatch['extra'])})."
+            )
+        for ref in summary["missing_uxml_refs"]:
+            issues.append(
+                f"{table_name}: missing UXML reference {ref['id']} at {ref['path']}:{ref['line']}."
+            )
+
+    if issues:
+        print("VERIFY FAILED")
+        for issue in issues:
+            print(f"  - {issue}")
+        return 1
+
+    print("VERIFY OK")
+    return 0
+
+
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
 
 def main():
-    parser = argparse.ArgumentParser(description=__doc__,
-        formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--apply", action="store_true",
-        help="Actually write files (default is dry-run)")
+    parser = argparse.ArgumentParser(
+        description="Normalize localization IDs or inspect localization ID health.",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog=__doc__,
+    )
+    parser.add_argument("command", nargs="?", choices=("status", "verify"))
+    parser.add_argument("--apply", action="store_true", help="Actually write normalized files")
     args = parser.parse_args()
 
-    if not args.apply:
-        print("DRY RUN -- pass --apply to write changes\n")
+    if args.command == "status":
+        cmd_status()
+        return
+    if args.command == "verify":
+        sys.exit(cmd_verify())
 
-    for table_name, cfg in TABLES.items():
-        mapping = migrate_table(table_name, cfg, args.apply)
-
-        if cfg["uxml_guid"]:
-            print(f"\n  UXML files ({table_name}):")
-            migrate_uxml(mapping, cfg["uxml_guid"], args.apply)
-
-    if not args.apply:
-        print("\n--- Dry run complete. Run with --apply to write. ---")
-    else:
-        print("\n--- Done. Localization IDs are now normalized. ---")
+    cmd_normalize(args.apply)
 
 
 if __name__ == "__main__":

@@ -287,6 +287,14 @@ namespace StrategicCombatCore
             set => destroyed = value;
         }
 
+        [XmlIgnore]
+        [CreateProperty]
+        public bool nonHistoricalProp
+        {
+            get => nonHistorical;
+            set => nonHistorical = value;
+        }
+
         // IStrategicGroupMemberReferenceable Shared
         # region
         [CreateProperty]

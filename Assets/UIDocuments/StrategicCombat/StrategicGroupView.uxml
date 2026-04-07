@@ -146,6 +146,14 @@
                                 </Bindings>
                             </ui:Toggle>
                         </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
+                            <ui:Label text="Non-Historical"/>
+                            <ui:Toggle style="margin-right: 10px;">
+                                <Bindings>
+                                    <ui:DataBinding property="value" data-source-path="nonHistoricalProp" binding-mode="TwoWay"/>
+                                </Bindings>
+                            </ui:Toggle>
+                        </ui:VisualElement>
                         <ui:VisualElement style="flex-direction: row;">
                             <ui:Label text="Posture">
                                 <Bindings>

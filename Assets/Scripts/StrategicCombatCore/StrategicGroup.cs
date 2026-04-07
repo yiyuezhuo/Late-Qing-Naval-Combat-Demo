@@ -125,6 +125,7 @@ namespace StrategicCombatCore
         // Independent sub states:
         public bool autoCombinable; // if true, it will convert from independent to combining when applicable
         public bool dissolvable; // if true, it would "dissolve" automatically if combine is applicable.
+        public bool nonHistorical;
         
         public string containerObjectId; // Generally shipLog's objectId.
         
@@ -398,6 +399,7 @@ namespace StrategicCombatCore
             return $"StrategicGroup({name.GetMergedName()})";
         }
 
+        public bool HasLeader() => leaderReference.Get() != null;
         public bool IsNavy() => type == Type.Fleet;
         public bool IsArmy() => type != Type.Fleet;
         public bool IsBase() => type == Type.Base;
@@ -472,6 +474,27 @@ namespace StrategicCombatCore
         public bool HasDescendantStrategicGroupType(Type targetType)
         {
             return WalkSelfAndDescendantStrategicGroups().Any(group => group != this && group.type == targetType);
+        }
+
+        public bool IsDescendantOf(StrategicGroup ancestorCandidate)
+        {
+            if (ancestorCandidate == null)
+                return false;
+
+            var current = parentGroupReference.Get();
+            while (current != null)
+            {
+                if (current == ancestorCandidate)
+                    return true;
+                current = current.parentGroupReference.Get();
+            }
+
+            return false;
+        }
+
+        public bool IsAncestorOf(StrategicGroup descendantCandidate)
+        {
+            return descendantCandidate != null && descendantCandidate.IsDescendantOf(this);
         }
 
         public bool IsHostileFortifiedBaseFor(SideState otherSide)
@@ -953,6 +976,39 @@ namespace StrategicCombatCore
                 return plannedPath[1].GetCell();
             }
             return null;
+        }
+
+        public bool HasSamePlannedPathAndProgressAs(StrategicGroup other, float epsilon = 0.001f)
+        {
+            if (other == null)
+                return false;
+
+            if (plannedPath.Count != other.plannedPath.Count ||
+                Math.Abs(moveProgressionKm - other.moveProgressionKm) > epsilon)
+            {
+                return false;
+            }
+
+            for (var idx = 0; idx < plannedPath.Count; idx++)
+            {
+                var left = plannedPath[idx];
+                var right = other.plannedPath[idx];
+                if (left == null || right == null)
+                {
+                    if (!ReferenceEquals(left, right))
+                        return false;
+                    continue;
+                }
+
+                if (left.x != right.x ||
+                    left.y != right.y ||
+                    left.areaCellObjectId != right.areaCellObjectId)
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         public static float GetSpeedKmPerHour(Cell src, Cell dst)

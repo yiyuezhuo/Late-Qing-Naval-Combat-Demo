@@ -31378,6 +31378,7 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>21</independentX>
     <independentY>30</independentY>
     <leaderReference>
@@ -31435,6 +31436,7 @@ By Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>13</independentX>
     <independentY>33</independentY>
     <leaderReference>
@@ -31498,6 +31500,7 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>13</independentX>
     <independentY>33</independentY>
     <leaderReference />
@@ -31532,6 +31535,7 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>6</independentX>
     <independentY>16</independentY>
     <leaderReference>
@@ -31566,6 +31570,7 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>2</independentX>
     <independentY>3</independentY>
     <leaderReference>
@@ -31604,6 +31609,7 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>16</independentX>
     <independentY>18</independentY>
     <leaderReference>
@@ -31642,6 +31648,7 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>14</independentX>
     <independentY>32</independentY>
     <leaderReference>
@@ -31694,6 +31701,7 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>14</independentX>
     <independentY>32</independentY>
     <leaderReference />
@@ -31732,6 +31740,7 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>22</independentX>
     <independentY>28</independentY>
     <leaderReference>
@@ -31776,6 +31785,7 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>22</independentX>
     <independentY>28</independentY>
     <leaderReference>
@@ -31819,6 +31829,7 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>21</independentX>
     <independentY>30</independentY>
     <leaderReference>
@@ -31862,6 +31873,7 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>22</independentX>
     <independentY>28</independentY>
     <leaderReference>
@@ -31911,6 +31923,7 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>31</independentX>
     <independentY>27</independentY>
     <leaderReference>
@@ -31979,6 +31992,7 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>31</independentX>
     <independentY>27</independentY>
     <leaderReference />
@@ -32013,6 +32027,7 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference />
@@ -32085,6 +32100,7 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -32153,6 +32169,7 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <destroyed>false</destroyed>
     <autoCombinable>true</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>30</independentX>
     <independentY>28</independentY>
     <leaderReference>
@@ -32205,6 +32222,7 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <destroyed>false</destroyed>
     <autoCombinable>true</autoCombinable>
     <dissolvable>true</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>29</independentX>
     <independentY>28</independentY>
     <leaderReference />
@@ -32256,6 +32274,7 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference />
@@ -32298,6 +32317,7 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference />
@@ -32330,6 +32350,7 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <destroyed>false</destroyed>
     <autoCombinable>true</autoCombinable>
     <dissolvable>true</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>23</independentX>
     <independentY>28</independentY>
     <leaderReference />
@@ -32370,6 +32391,7 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <destroyed>false</destroyed>
     <autoCombinable>true</autoCombinable>
     <dissolvable>true</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>28</independentX>
     <independentY>28</independentY>
     <leaderReference />
@@ -32415,6 +32437,7 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>42</independentX>
     <independentY>23</independentY>
     <leaderReference>
@@ -32457,6 +32480,7 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>42</independentX>
     <independentY>23</independentY>
     <leaderReference>
@@ -32496,6 +32520,7 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>42</independentX>
     <independentY>23</independentY>
     <leaderReference>
@@ -32545,6 +32570,7 @@ It was revived for the Russo-Japanese War from 2 February 1904 – 9 December 19
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -32595,6 +32621,7 @@ It was revived for the Russo-Japanese War from 2 February 1904 – 9 December 19
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -32650,6 +32677,7 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -32715,6 +32743,7 @@ It was formed in May 1888 (Meiji 21) based on the Tokyo Garrison. At the same ti
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -32784,6 +32813,7 @@ It participated in Japan's major wars until the dissolution of the Imperial Japa
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -32857,6 +32887,7 @@ It is one of the oldest divisions among the approximately 200 Army divisions.
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>42</independentX>
     <independentY>23</independentY>
     <leaderReference>
@@ -32922,6 +32953,7 @@ It was a division composed of soldiers from Shimane, Hiroshima, and Yamaguchi, w
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -32991,6 +33023,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>30</independentX>
     <independentY>27</independentY>
     <leaderReference>
@@ -33043,6 +33076,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -33084,6 +33118,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -33125,6 +33160,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -33166,6 +33202,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -33207,6 +33244,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -33248,6 +33286,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -33289,6 +33328,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -33330,6 +33370,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -33371,6 +33412,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -33412,6 +33454,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>31</independentX>
     <independentY>28</independentY>
     <leaderReference>
@@ -33462,6 +33505,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>31</independentX>
     <independentY>28</independentY>
     <leaderReference />
@@ -33496,6 +33540,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -33538,6 +33583,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -33583,6 +33629,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference />
@@ -33616,6 +33663,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -33661,6 +33709,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -33706,6 +33755,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -33751,6 +33801,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -33796,6 +33847,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -33841,6 +33893,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -33886,6 +33939,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -33930,6 +33984,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -33975,6 +34030,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -34020,6 +34076,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference />
@@ -34053,6 +34110,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -34098,6 +34156,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -34143,6 +34202,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -34188,6 +34248,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -34233,6 +34294,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -34278,6 +34340,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -34323,6 +34386,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -34368,6 +34432,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -34412,6 +34477,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -34456,6 +34522,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -34500,6 +34567,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -34544,6 +34612,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -34588,6 +34657,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>30</independentX>
     <independentY>28</independentY>
     <leaderReference>
@@ -34634,6 +34704,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference />
@@ -34682,6 +34753,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>30</independentX>
     <independentY>26</independentY>
     <leaderReference />
@@ -34733,6 +34805,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference />
@@ -34784,6 +34857,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference />
@@ -34829,6 +34903,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -34879,6 +34954,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>30</independentX>
     <independentY>25</independentY>
     <leaderReference />
@@ -34932,6 +35008,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>21</independentX>
     <independentY>16</independentY>
     <leaderReference />
@@ -34969,6 +35046,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>21</independentX>
     <independentY>16</independentY>
     <leaderReference />
@@ -35004,6 +35082,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>21</independentX>
     <independentY>16</independentY>
     <leaderReference />
@@ -35056,6 +35135,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>16</independentX>
     <independentY>8</independentY>
     <leaderReference>
@@ -35096,6 +35176,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>16</independentX>
     <independentY>8</independentY>
     <leaderReference />
@@ -35131,6 +35212,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>16</independentX>
     <independentY>8</independentY>
     <leaderReference />
@@ -35167,6 +35249,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>2</independentX>
     <independentY>3</independentY>
     <leaderReference />
@@ -35204,6 +35287,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>42</independentX>
     <independentY>23</independentY>
     <leaderReference />
@@ -35266,6 +35350,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>42</independentX>
     <independentY>23</independentY>
     <leaderReference />
@@ -35328,6 +35413,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>22</independentX>
     <independentY>28</independentY>
     <leaderReference />
@@ -35380,6 +35466,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>14</independentX>
     <independentY>32</independentY>
     <leaderReference>
@@ -35441,6 +35528,7 @@ By Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>27</independentX>
     <independentY>32</independentY>
     <leaderReference />
@@ -35495,6 +35583,7 @@ By Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference />
@@ -35537,6 +35626,7 @@ By Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference />
@@ -35585,6 +35675,7 @@ By Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>21</independentX>
     <independentY>30</independentY>
     <leaderReference>
@@ -35651,6 +35742,7 @@ Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>27</independentX>
     <independentY>32</independentY>
     <leaderReference>
@@ -35704,6 +35796,7 @@ Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -35751,6 +35844,7 @@ Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>20</independentX>
     <independentY>6</independentY>
     <leaderReference>
@@ -35789,6 +35883,7 @@ Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>20</independentX>
     <independentY>6</independentY>
     <leaderReference />
@@ -35823,6 +35918,7 @@ Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>20</independentX>
     <independentY>6</independentY>
     <leaderReference>
@@ -35864,6 +35960,7 @@ Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>26</independentX>
     <independentY>36</independentY>
     <leaderReference>
@@ -35957,6 +36054,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>26</independentX>
     <independentY>36</independentY>
     <leaderReference>
@@ -35999,6 +36097,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>26</independentX>
     <independentY>36</independentY>
     <leaderReference />
@@ -36034,6 +36133,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>26</independentX>
     <independentY>36</independentY>
     <leaderReference>
@@ -36120,6 +36220,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -36170,6 +36271,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>55</independentX>
     <independentY>25</independentY>
     <leaderReference>
@@ -36210,6 +36312,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>37</independentX>
     <independentY>19</independentY>
     <leaderReference>
@@ -36250,6 +36353,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>42</independentX>
     <independentY>23</independentY>
     <leaderReference />
@@ -36289,6 +36393,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>2</independentX>
     <independentY>3</independentY>
     <leaderReference />
@@ -36319,6 +36424,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference />
@@ -36369,6 +36475,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>22</independentX>
     <independentY>28</independentY>
     <leaderReference />
@@ -36405,6 +36512,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>40</independentX>
     <independentY>39</independentY>
     <leaderReference />
@@ -36452,6 +36560,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>40</independentX>
     <independentY>39</independentY>
     <leaderReference />
@@ -36485,6 +36594,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>40</independentX>
     <independentY>39</independentY>
     <leaderReference />
@@ -38835,7 +38945,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
   <pendingNavalCombats />
   <landBattles />
   <theaters>
-   <Theater posture="Attack">
+   <Theater posture="Defense">
     <name>
      <english>Grand Council Theater</english>
      <japanese>軍機処戦区</japanese>
@@ -39701,7 +39811,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
      <FrontlineCellInfo x="36" y="39" weightRequested="0.007389307" />
      <FrontlineCellInfo x="37" y="39" weightRequested="0.00210973341" />
     </frontlineCellInfos>
-    <postureValue>0</postureValue>
+    <postureValue>1</postureValue>
     <objectId>3358843a-2c1b-4018-83bb-aea90a3523c6</objectId>
    </Theater>
    <Theater posture="Attack">

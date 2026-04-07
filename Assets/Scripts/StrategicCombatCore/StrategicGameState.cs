@@ -989,7 +989,10 @@ namespace StrategicCombatCore
             var theaterCellSet = BuildTheaterCellKeySet(theater.cells);
             var sourceStates = BuildAiTheaterSourceStates(theater.side, theaterCellSet);
             if (sourceStates.Count == 0)
+            {
+                TryAutoMergeIndependentLandGroupsInTheater(theater, theaterCellSet);
                 return;
+            }
 
             var frontlinePlan = BuildAiFrontlinePlan(theater, CloneAiSourcePlanStates(sourceStates));
             var consumedAtomIds = new HashSet<string>();
@@ -1000,6 +1003,7 @@ namespace StrategicCombatCore
             }
 
             ApplyAiPlannedAssignments(frontlinePlan, consumedAtomIds);
+            TryAutoMergeIndependentLandGroupsInTheater(theater, theaterCellSet);
         }
 
         static bool IsBetterAiFrontlineCandidate(
@@ -1735,7 +1739,8 @@ namespace StrategicCombatCore
             assignedGroup = StrategicGroupTransferSplitUtility.CreateSplitGroupLike(
                 sourceGroup,
                 parentGroup,
-                StrategicGroup.DeployState.Independent);
+                StrategicGroup.DeployState.Independent,
+                nonHistorical: true);
             if (assignedGroup == null)
                 return false;
 
@@ -1802,6 +1807,230 @@ namespace StrategicCombatCore
                     continue;
 
                 group.SetPlannedPath(pathResult.Path.Select(cell => cell.ToXY()).ToList());
+            }
+        }
+
+        bool IsEligibleTheaterLandMergeGroup(StrategicGroup group, Theater theater, HashSet<(int, int)> theaterCellSet)
+        {
+            return group != null &&
+                   group.deployState == StrategicGroup.DeployState.Independent &&
+                   group.IsArmy() &&
+                   group.type != StrategicGroup.Type.Base &&
+                   group.type != StrategicGroup.Type.HeadQuarter &&
+                   group.side == theater?.side &&
+                   group.cell != null &&
+                   theaterCellSet.Contains((group.cell.x, group.cell.y));
+        }
+
+        static bool HasEquivalentTheaterMergeMovementState(StrategicGroup left, StrategicGroup right)
+        {
+            if (left == null || right == null)
+                return false;
+
+            var leftMoving = left.IsMovingStrategically;
+            var rightMoving = right.IsMovingStrategically;
+            if (!leftMoving || !rightMoving)
+                return !leftMoving && !rightMoving;
+
+            return left.HasSamePlannedPathAndProgressAs(right);
+        }
+
+        static IEnumerable<IStrategicGroupMemberReferenceable> EnumerateTheaterMergeMembers(IEnumerable<StrategicGroup> groups)
+        {
+            var seenIds = new HashSet<string>();
+            foreach (var group in groups ?? Enumerable.Empty<StrategicGroup>())
+            {
+                if (group == null || !seenIds.Add(group.objectId))
+                    continue;
+
+                yield return group;
+                foreach (var member in group.WalkGroupMembers<IStrategicGroupMemberReferenceable>(includeNotCombined: true))
+                {
+                    if (member != null && seenIds.Add(member.objectId))
+                        yield return member;
+                }
+            }
+        }
+
+        void NormalizeDetachedRelationshipsWithinTheaterMergeBucket(List<StrategicGroup> groups)
+        {
+            if (groups == null || groups.Count == 0)
+                return;
+
+            var changed = true;
+            while (changed)
+            {
+                changed = false;
+                var activeGroups = groups
+                    .Where(group => group != null)
+                    .Distinct()
+                    .ToList();
+                var relevantGroupIds = activeGroups
+                    .SelectMany(group => group.WalkSelfAndDescendantStrategicGroups())
+                    .Where(group => group != null && !string.IsNullOrWhiteSpace(group.objectId))
+                    .Select(group => group.objectId)
+                    .ToHashSet();
+
+                foreach (var member in EnumerateTheaterMergeMembers(activeGroups).ToList())
+                {
+                    var detachedFromGroup = member?.GetDetachedFromGroup();
+                    if (detachedFromGroup == null ||
+                        !relevantGroupIds.Contains(detachedFromGroup.objectId))
+                    {
+                        continue;
+                    }
+
+                    if (IStrategicGroupMemberReferenceable.TryReattachToDetachedFromGroup(member, force: true))
+                    {
+                        changed = true;
+                    }
+                }
+            }
+        }
+
+        static StrategicGroup SelectTheaterMergeKeeper(IEnumerable<StrategicGroup> groups)
+        {
+            var candidates = (groups ?? Enumerable.Empty<StrategicGroup>())
+                .Where(group => group != null)
+                .ToList();
+            var nonDescendantCandidates = candidates
+                .Where(candidate => !candidates.Any(other => other != candidate && other.IsAncestorOf(candidate)))
+                .ToList();
+
+            return (nonDescendantCandidates.Count > 0 ? nonDescendantCandidates : candidates)
+                .OrderBy(group => group.nonHistorical)
+                .ThenByDescending(group => group.HasLeader())
+                .ThenByDescending(group => group.GetCombinedPowerPoint(true))
+                .ThenBy(group => group.objectId, StringComparer.Ordinal)
+                .FirstOrDefault();
+        }
+
+        void MergeHistoricalGroupIntoKeeper(StrategicGroup sourceGroup, StrategicGroup keeper)
+        {
+            if (sourceGroup == null ||
+                keeper == null ||
+                sourceGroup == keeper ||
+                sourceGroup.IsAncestorOf(keeper))
+            {
+                return;
+            }
+
+            sourceGroup.ClearPlannedPath();
+            sourceGroup.SetDeployState(StrategicGroup.DeployState.Combined);
+            IStrategicGroupMemberReferenceable.PermanentTransferTo(sourceGroup, keeper);
+        }
+
+        void DissolveNonHistoricalGroupIntoKeeper(StrategicGroup sourceGroup, StrategicGroup keeper)
+        {
+            if (sourceGroup == null ||
+                keeper == null ||
+                sourceGroup == keeper ||
+                sourceGroup.IsAncestorOf(keeper))
+            {
+                return;
+            }
+
+            foreach (var memberRef in sourceGroup.directMemberReferences.ToList())
+            {
+                var member = memberRef.Get();
+                if (member == null)
+                    continue;
+
+                if (member is StrategicGroup childGroup &&
+                    childGroup.deployState == StrategicGroup.DeployState.Combined &&
+                    childGroup.nonHistorical)
+                {
+                    DissolveNonHistoricalGroupIntoKeeper(childGroup, keeper);
+                    continue;
+                }
+
+                if (member is StrategicGroup transferredGroup)
+                {
+                    transferredGroup.ClearPlannedPath();
+                    transferredGroup.SetDeployState(StrategicGroup.DeployState.Combined);
+                    IStrategicGroupMemberReferenceable.PermanentTransferTo(transferredGroup, keeper);
+                    continue;
+                }
+
+                IStrategicGroupMemberReferenceable.PermanentTransferTo(member, keeper);
+            }
+
+            sourceGroup.ClearPlannedPath();
+            TryDestroyGroupIfEmptyRecursive(sourceGroup);
+        }
+
+        void TryAutoMergeTheaterLandBucket(List<StrategicGroup> bucket)
+        {
+            if (bucket == null || bucket.Count < 2)
+                return;
+
+            NormalizeDetachedRelationshipsWithinTheaterMergeBucket(bucket);
+            var activeGroups = bucket
+                .Select(group => group == null ? null : EntityManager.Instance.Get<StrategicGroup>(group.objectId))
+                .Where(group => group != null && group.deployState == StrategicGroup.DeployState.Independent)
+                .Distinct()
+                .ToList();
+            if (activeGroups.Count < 2)
+                return;
+
+            var keeper = SelectTheaterMergeKeeper(activeGroups);
+            if (keeper == null)
+                return;
+
+            foreach (var sourceGroup in activeGroups.Where(group => group != keeper).ToList())
+            {
+                if (sourceGroup.nonHistorical)
+                {
+                    DissolveNonHistoricalGroupIntoKeeper(sourceGroup, keeper);
+                    continue;
+                }
+
+                MergeHistoricalGroupIntoKeeper(sourceGroup, keeper);
+            }
+        }
+
+        void TryAutoMergeIndependentLandGroupsInTheater(Theater theater, HashSet<(int, int)> theaterCellSet)
+        {
+            if (theater?.side == null || theaterCellSet == null || theaterCellSet.Count == 0)
+                return;
+
+            var candidatesByCell = IterIndependentStrategicGroups()
+                .Where(group => IsEligibleTheaterLandMergeGroup(group, theater, theaterCellSet))
+                .GroupBy(group => group.cell)
+                .ToList();
+
+            foreach (var cellGrouping in candidatesByCell)
+            {
+                var pendingIds = cellGrouping
+                    .Where(group => group != null)
+                    .Select(group => group.objectId)
+                    .ToList();
+                while (pendingIds.Count > 0)
+                {
+                    var seedId = pendingIds[0];
+                    pendingIds.RemoveAt(0);
+
+                    var seedGroup = EntityManager.Instance.Get<StrategicGroup>(seedId);
+                    if (!IsEligibleTheaterLandMergeGroup(seedGroup, theater, theaterCellSet))
+                        continue;
+
+                    var bucket = new List<StrategicGroup>() { seedGroup };
+                    for (var idx = pendingIds.Count - 1; idx >= 0; idx--)
+                    {
+                        var otherGroup = EntityManager.Instance.Get<StrategicGroup>(pendingIds[idx]);
+                        if (!IsEligibleTheaterLandMergeGroup(otherGroup, theater, theaterCellSet) ||
+                            otherGroup.cell != seedGroup.cell ||
+                            !HasEquivalentTheaterMergeMovementState(seedGroup, otherGroup))
+                        {
+                            continue;
+                        }
+
+                        bucket.Add(otherGroup);
+                        pendingIds.RemoveAt(idx);
+                    }
+
+                    TryAutoMergeTheaterLandBucket(bucket);
+                }
             }
         }
 

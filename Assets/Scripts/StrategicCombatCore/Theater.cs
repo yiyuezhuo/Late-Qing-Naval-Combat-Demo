@@ -227,7 +227,8 @@ namespace StrategicCombatCore
         public static StrategicGroup CreateSplitGroupLike(
             StrategicGroup templateGroup,
             StrategicGroup parentGroup,
-            StrategicGroup.DeployState deployState)
+            StrategicGroup.DeployState deployState,
+            bool nonHistorical = false)
         {
             if (templateGroup == null)
                 return null;
@@ -240,6 +241,7 @@ namespace StrategicCombatCore
                 country = templateGroup.country,
                 deployState = deployState,
                 homeBaseObjectId = templateGroup.homeBaseObjectId,
+                nonHistorical = nonHistorical,
             };
 
             var gameState = StrategicGameState.Instance;
@@ -443,7 +445,11 @@ namespace StrategicCombatCore
             var deployState = createIndependent
                 ? StrategicGroup.DeployState.Independent
                 : StrategicGroup.DeployState.Combined;
-            var newGroup = StrategicGroupTransferSplitUtility.CreateSplitGroupLike(sourceGroup, sourceGroup, deployState);
+            var newGroup = StrategicGroupTransferSplitUtility.CreateSplitGroupLike(
+                sourceGroup,
+                sourceGroup,
+                deployState,
+                nonHistorical: true);
             configureNewGroup?.Invoke(newGroup);
             return newGroup;
         }

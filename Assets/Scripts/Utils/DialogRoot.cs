@@ -840,6 +840,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset streamingAssetReferenceDialogDocument;
     public VisualTreeAsset scenarioPickerDialogDocument;
     public VisualTreeAsset victoryStatusDocument;
+    public VisualTreeAsset strategicVictoryStatusDialogDocument;
     public VisualTreeAsset helpDialogDocument;
     public VisualTreeAsset faqDialogDocument;
     public VisualTreeAsset locationLabelDialogDocument;
@@ -4026,6 +4027,80 @@ public class DialogRoot : SingletonDocument<DialogRoot>
                     SetVictoryStatusMode(!showingDetail);
                 };
             }
+        };
+
+        tempDialog.Popup();
+    }
+
+    public void PopupStrategicVictoryStatusDialog()
+    {
+        if (strategicVictoryStatusDialogDocument == null)
+        {
+            PopupMessageDialog("StrategicVictoryStatusDialog is not configured.");
+            return;
+        }
+
+        var model = StrategicVictoryStatusDialogModel.Generate(StrategicGameState.Instance);
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = strategicVictoryStatusDialogDocument,
+            templateDataSource = model
+        };
+
+        tempDialog.onCreated += (sender, el) =>
+        {
+            var listView = el.Q<ListView>("StrategicVictoryStatusListView");
+            if (listView == null)
+                return;
+
+            listView.makeItem = () =>
+            {
+                var row = new VisualElement()
+                {
+                    style =
+                    {
+                        flexDirection = FlexDirection.Row,
+                        paddingLeft = 4,
+                        paddingRight = 4
+                    }
+                };
+
+                Label MakeCell(string name, float basis)
+                {
+                    var label = new Label();
+                    label.name = name;
+                    label.style.flexBasis = basis;
+                    label.style.flexShrink = 0;
+                    return label;
+                }
+
+                row.Add(MakeCell("SideNameLabel", 220));
+                row.Add(MakeCell("LandBattleLossLabel", 180));
+                row.Add(MakeCell("DestroyedShipsLabel", 140));
+                row.Add(MakeCell("LandBattleVictoryLabel", 120));
+                row.Add(MakeCell("LandBattleDefeatLabel", 140));
+
+                return row;
+            };
+
+            listView.bindItem = (item, index) =>
+            {
+                if (listView.itemsSource is not List<StrategicVictoryStatusRow> rows ||
+                    index < 0 ||
+                    index >= rows.Count)
+                    return;
+
+                var row = rows[index];
+                item.Q<Label>("SideNameLabel").text = row.sideName;
+                item.Q<Label>("LandBattleLossLabel").text = row.totalLandBattleLossMenText;
+                item.Q<Label>("DestroyedShipsLabel").text = row.totalDestroyedShipCountText;
+                item.Q<Label>("LandBattleVictoryLabel").text = row.landBattleVictoryCountText;
+                item.Q<Label>("LandBattleDefeatLabel").text = row.landBattleDefeatCountText;
+            };
+
+            listView.itemsSource = model.rows;
+            listView.Rebuild();
         };
 
         tempDialog.Popup();

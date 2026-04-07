@@ -209,6 +209,11 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
             DialogRoot.Instance.PopupPendingNavalCombatDialog();
         };
 
+        root.Q<Button>("LossStatusButton").clicked += () =>
+        {
+            DialogRoot.Instance.PopupStrategicVictoryStatusDialog();
+        };
+
         root.Q<Button>("OOBTreeButton").clicked += () =>
         {
             var viewableGroups = StrategicGameState.Instance.strategicGroups;

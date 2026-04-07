@@ -310,6 +310,16 @@
                             <ui:DataBinding property="value" data-source-path="cellLabelDisplayMode" binding-mode="TwoWay"/>
                         </Bindings>
                     </ui:EnumField>
+                    <ui:Label text="Hide Units">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-80)"/>
+                        </Bindings>
+                    </ui:Label>
+                    <ui:Toggle>
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="hideUnitsInMapEdit" binding-mode="TwoWay"/>
+                        </Bindings>
+                    </ui:Toggle>
                 </ui:VisualElement>
                 <Bindings>
                     <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(348264442007552)"/>

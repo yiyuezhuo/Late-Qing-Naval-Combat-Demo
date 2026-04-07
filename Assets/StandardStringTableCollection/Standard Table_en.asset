@@ -3167,6 +3167,10 @@ MonoBehaviour:
     m_Localized: Full OOB Tree
     m_Metadata:
       m_Items: []
+  - m_Id: -80
+    m_Localized: Hide Units
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

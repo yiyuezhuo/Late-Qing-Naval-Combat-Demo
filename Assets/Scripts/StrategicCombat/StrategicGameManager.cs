@@ -143,6 +143,25 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         set => HexMapShower.Instance.showAccurateSeaLand = value;
     }
 
+    bool _hideUnitsInMapEdit;
+    [CreateProperty]
+    public bool hideUnitsInMapEdit
+    {
+        get => _hideUnitsInMapEdit;
+        set
+        {
+            if (_hideUnitsInMapEdit == value)
+                return;
+
+            _hideUnitsInMapEdit = value;
+
+            if (ShouldHideUnitsInMapEdit)
+            {
+                ClearSelectedUnitPresentation();
+            }
+        }
+    }
+
     public Cell lastSelectedCell;
     public StrategicGroup lastSelectedStrategicGroup;
     public NavalContactReport lastSelectedNavalContactReport;
@@ -501,6 +520,11 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
     void OnIsInEditModeChanged(object sender, bool isInEditMode)
     {
+        if (ShouldHideUnitsInMapEdit)
+        {
+            ClearSelectedUnitPresentation();
+        }
+
         RefreshDisplayedLogs();
     }
 
@@ -860,7 +884,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         // Update Path Lines
         var pathLineActiveStrategicGroups = new List<StrategicGroup>();
 
-        var selectedGroup = lastSelectedStrategicGroup; // Consider only the selected strategic group now.
+        var selectedGroup = ShouldHideUnitsInMapEdit ? null : lastSelectedStrategicGroup; // Consider only the selected strategic group now.
         if (selectedGroup != null)
         {
             pathLineActiveStrategicGroups.Add(selectedGroup);
@@ -896,11 +920,18 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
     public SideState GetViewerSide() => EntityManager.Instance.Get<SideState>(viewerSideId);
 
+    bool ShouldHideUnitsInMapEdit => isInEditMode && hideUnitsInMapEdit;
+
     public IEnumerable<StrategicGroup> GetObserveableStrategicGroups()
     {
         // var independentStrategicGroupsOrderedByCell = StrategicGameState.Instance.IterIndependentStrategicGroupsOrderedByCell();
         var independentStrategicGroups = StrategicGameState.Instance.IterIndependentStrategicGroups();
         
+        if (ShouldHideUnitsInMapEdit)
+        {
+            return Enumerable.Empty<StrategicGroup>();
+        }
+
         if(isInEditMode)
         {
             return independentStrategicGroups;
@@ -918,7 +949,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         observedStrategicUnits.AddRange(observableStrategicGroups);
 
         // TODO: Add Contact Report
-        if(!isInEditMode) // TODO: Add a toggle to show contact report in the edit mode?
+        if(!ShouldHideUnitsInMapEdit && !isInEditMode) // TODO: Add a toggle to show contact report in the edit mode?
         {
             var viewerSide = GetViewerSide();
             observedStrategicUnits.AddRange(
@@ -1001,6 +1032,9 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
     List<SelectedRelationLineSpec> BuildSelectedRelationLineSpecs()
     {
         var lineSpecs = new List<SelectedRelationLineSpec>();
+        if (ShouldHideUnitsInMapEdit)
+            return lineSpecs;
+
         var selectedGroup = lastSelectedStrategicGroup;
         if (selectedGroup == null)
             return lineSpecs;
@@ -1303,6 +1337,9 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
     
     List<ILayableWorldSpaceGroupIconDataSource> CollectObservableStack(SideState observerSide, SideState observedSide, Cell cell)
     {
+        if (ShouldHideUnitsInMapEdit)
+            return new();
+
         // var groups = cell.StrategicGroupReferences.Select(r => r.Get()).Where(g => g.side == observedSide || g.type != StrategicGroup.Type.Fleet);
         // var contacts = StrategicGameState.Instance.navalContactReports.Where(r => r.observerSideId == side.objectId);
         var groups = cell.StrategicGroupReferences.Select(r => r.Get()).Where(g => g.side == observedSide);
@@ -1330,6 +1367,12 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         {
             stack[i].stackPriority = (float) i / count;
         }
+    }
+
+    void ClearSelectedUnitPresentation()
+    {
+        lastSelectedObject = null;
+        StrategicInformationPanel.Instance?.ClearStack();
     }
 
     void HandleInput()
@@ -1702,9 +1745,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         if (mapEditMode == StrategicMapEditMode.Select)
         {
             lastSelectedCell = activeCell;
-            // lastSelectedStrategicGroup = null;
-            lastSelectedObject = null;
-            StrategicInformationPanel.Instance.ClearStack();
+            ClearSelectedUnitPresentation();
         }
         else if (mapEditMode == StrategicMapEditMode.WaitOneshotCellClickCallback)
         {

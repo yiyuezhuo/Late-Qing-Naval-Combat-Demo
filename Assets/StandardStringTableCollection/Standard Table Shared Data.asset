@@ -3083,6 +3083,10 @@ MonoBehaviour:
     m_Key: Full OOB Tree
     m_Metadata:
       m_Items: []
+  - m_Id: -80
+    m_Key: Hide Units
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

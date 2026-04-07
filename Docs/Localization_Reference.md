@@ -147,7 +147,29 @@ Use `Tools\add_localization.py` or `Tools\standard_localization.py add` to assig
 
 ## 10. Tools
 
-Three Python helper scripts live in `Tools\` to reduce manual error when editing the YAML asset files.
+Four Python helper scripts live in `Tools\` to reduce manual error when editing the YAML asset files.
+
+### `Tools\dynamic_localization.py` — query and scan Dynamic Table usage
+
+Use for runtime C# lookups that resolve through Dynamic Table.
+
+```bash
+python Tools\dynamic_localization.py query "Paused"
+python Tools\dynamic_localization.py scan-cs Assets\Scripts\StrategicCombat\StrategicOverlay.cs
+```
+
+`query` prints:
+- exact key ID
+- en / ja / zh-Hans / zh-Hant values
+- reuse suggestions when no exact key exists
+
+`scan-cs` reports:
+- `Localize("...")` and `ILocalizeService.Get("...")` string lookups
+- `LocalizeEnum(...)` and `GetEnum(...)` enum lookups
+- exact Dynamic Table matches
+- missing keys with ready-to-run `Tools\add_localization.py` commands
+
+For enum expressions that are not simple `EnumType.Member` literals, the script flags them for manual verification instead of guessing.
 
 ### `Tools\add_localization.py` — add a new Dynamic Table entry
 

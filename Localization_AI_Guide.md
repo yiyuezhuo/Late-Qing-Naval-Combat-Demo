@@ -17,25 +17,48 @@ The deciding factor is **how the text is looked up**, not where it appears on sc
 
 ## 2. Default workflow
 
+Use the helper that matches the target table:
+
+- `Tools\dynamic_localization.py` is for **Dynamic Table query / scan**.
+- `Tools\add_localization.py` is for **Dynamic Table add**.
+- `Tools\standard_localization.py` is for **Standard Table only**.
+
 ### Dynamic Table
 
+- Query an existing key when needed:
+  - `python Tools\dynamic_localization.py query "My Key"`
+- Scan a target C# file for Dynamic Table lookups:
+  - `python Tools\dynamic_localization.py scan-cs Assets\...\MyScript.cs`
 - Use `python Tools\add_localization.py --key "..." --en "..." --ja "..." --zh-hans "..." --zh-hant "..."`.
 - For batch mode, use `--file path\to\keys.json` or `--file path\to\keys.txt`.
 - For enum keys, use `{EnumTypeName}.{EnumMemberName}`.
+- If the text is looked up from C# via `Localize(...)` / `Get(...)`, it belongs here.
 
 ### Standard Table
 
+- UXML text is **not localized automatically**. A literal `text="..."` / `label="..."` stays literal until you add a `LocalizedString` binding.
 - Scan a target UXML file first:
   - `python Tools\standard_localization.py scan-uxml Assets\...\MyDialog.uxml`
 - Reuse or add keys:
   - `python Tools\standard_localization.py query "My Label"`
   - `python Tools\standard_localization.py add --key "..." --en "..." --ja "..." --zh-hans "..." --zh-hant "..."`
   - `python Tools\standard_localization.py ensure --file keys.json`
-- After adding or reusing a key, paste the printed `LocalizedString` snippet into the target UXML file.
+- After adding or reusing a key, paste the printed `LocalizedString` snippet into the target UXML file inside a `<Bindings>` block.
+- Use `property="text"` for Button/Label text and `property="label"` for control labels.
 
 For **Standard Table**, treat `--key` as the stable lookup identifier. It can match the English text for simple static labels, but it does not have to.
 
-## 3. Verification commands
+## 3. Default checklist
+
+1. Decide which table owns the text.
+2. If editing C# Dynamic Table lookups, run `python Tools\dynamic_localization.py scan-cs ...` first.
+3. If editing UXML, run `python Tools\standard_localization.py scan-uxml ...` first.
+4. Add or reuse the key with the matching helper script.
+5. If using Standard Table, paste the generated binding snippet into the UXML file.
+6. Run `python Tools\normalize_localization_ids.py verify`.
+7. If the UI shows raw key text in-game, first suspect the wrong table or a missing key/binding.
+
+## 4. Verification commands
 
 - Check localization ID health:
   - `python Tools\normalize_localization_ids.py status`
@@ -43,8 +66,9 @@ For **Standard Table**, treat `--key` as the stable lookup identifier. It can ma
   - `python Tools\normalize_localization_ids.py verify`
 - Re-pack fragmented negative IDs when necessary:
   - `python Tools\normalize_localization_ids.py --apply`
+- For new entries, let the helper scripts assign the next sequential small negative ID automatically. Do not manually invent large arbitrary negative IDs.
 
-## 4. Only read the reference if needed
+## 5. Only read the reference if needed
 
 Open `Docs\Localization_Reference.md` only when you need one of these:
 

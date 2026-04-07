@@ -3075,6 +3075,14 @@ MonoBehaviour:
     m_Key: Land Battle Defeats
     m_Metadata:
       m_Items: []
+  - m_Id: -78
+    m_Key: Loss Status
+    m_Metadata:
+      m_Items: []
+  - m_Id: -79
+    m_Key: Full OOB Tree
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

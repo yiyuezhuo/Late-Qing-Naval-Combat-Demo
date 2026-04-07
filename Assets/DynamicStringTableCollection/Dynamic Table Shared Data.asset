@@ -3426,6 +3426,30 @@ MonoBehaviour:
     m_Key: '{0} ({1}) Victory'
     m_Metadata:
       m_Items: []
+  - m_Id: -95
+    m_Key: Strategic Victory Status
+    m_Metadata:
+      m_Items: []
+  - m_Id: -96
+    m_Key: Slow
+    m_Metadata:
+      m_Items: []
+  - m_Id: -97
+    m_Key: Normal
+    m_Metadata:
+      m_Items: []
+  - m_Id: -98
+    m_Key: Fast
+    m_Metadata:
+      m_Items: []
+  - m_Id: -99
+    m_Key: Paused
+    m_Metadata:
+      m_Items: []
+  - m_Id: -100
+    m_Key: Playing
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

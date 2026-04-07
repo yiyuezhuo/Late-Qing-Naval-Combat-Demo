@@ -3159,6 +3159,14 @@ MonoBehaviour:
     m_Localized: Land Battle Defeats
     m_Metadata:
       m_Items: []
+  - m_Id: -78
+    m_Localized: Loss Status
+    m_Metadata:
+      m_Items: []
+  - m_Id: -79
+    m_Localized: Full OOB Tree
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

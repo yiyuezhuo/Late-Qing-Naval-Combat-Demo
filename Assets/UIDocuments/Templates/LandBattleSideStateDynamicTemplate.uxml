@@ -14,9 +14,9 @@
                         </Bindings>
                     </ui:VisualElement>
                 </ui:VisualElement>
-                <ui:Label text="Leader Name">
+                <ui:Label text="Leader Name" name="LeaderNameLabel" style="white-space: normal;">
                     <Bindings>
-                        <ui:DataBinding property="text" data-source-path="leaderName" binding-mode="ToTarget" />
+                        <ui:DataBinding property="text" data-source-path="leaderNameLink" binding-mode="ToTarget" />
                     </Bindings>
                 </ui:Label>
             </ui:VisualElement>

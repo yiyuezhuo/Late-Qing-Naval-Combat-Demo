@@ -912,6 +912,13 @@ namespace StrategicCombatCore
 
     public partial class LandBattleSideStateDynamic
     {
+        static string FormatModifierPercent(float value)
+        {
+            return float.IsNaN(value) || float.IsInfinity(value)
+                ? ""
+                : $"{value:+0.00%;-0.00%;0.00%}";
+        }
+
         public partial class LandUnitBundle
         {
             [CreateProperty]
@@ -919,13 +926,13 @@ namespace StrategicCombatCore
 
             [CreateProperty]
             public string desc => $"{landUnit.name.GetShortName()}";
-            // TODO: Disable hyperlink since it seem to related to strange UITK bugs
-            // [CreateProperty]
-            // public string desc => $"<link=\"nameLink\"><color=#40a0ff><u>{landUnit.name.GetShortName()}</u></color></link>";
+
+            [CreateProperty]
+            public string descLink => $"<link=\"nameLink\"><color=#40a0ff>{landUnit.name.GetShortName()}</color></link>";
 
             // TODO: Replace S, L, K, ... with icon
             [CreateProperty]
-            public string desc2 => $"S: {landUnit.strength}, L: {battleUnitState.accumulatedStrengthLoss} (+{battleUnitState.currentStrengthLoss}) K:{battleUnitState.accumulatedStrengthKill} (+{battleUnitState.currentStrengthKill}) CM:{chanceCostModifier:+0.00%;-0.00%;0.00%}, TM: {tacticalModifier:+0.00%;-0.00%;0.00%}";
+            public string desc2 => $"S: {landUnit.strength}, L: {battleUnitState.accumulatedStrengthLoss} (+{battleUnitState.currentStrengthLoss}) K:{battleUnitState.accumulatedStrengthKill} (+{battleUnitState.currentStrengthKill}) CM:{FormatModifierPercent(chanceCostModifier)}, TM: {FormatModifierPercent(tacticalModifier)}";
 
             [CreateProperty]
             public Length strengthPercent => new Length(
@@ -949,6 +956,21 @@ namespace StrategicCombatCore
         [CreateProperty]
         public string leaderName => battleLeader?.name?.GetShortName() ?? "";
 
+        [CreateProperty]
+        public string leaderNameLink
+        {
+            get
+            {
+                var leaderName = battleLeader?.name?.GetShortName();
+                if (string.IsNullOrEmpty(leaderName))
+                {
+                    return string.Empty;
+                }
+
+                return $"<link=\"leaderLink\"><color=#40a0ff>{leaderName}</color></link>";
+            }
+        }
+
         static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
 
         [CreateProperty]
@@ -960,8 +982,8 @@ namespace StrategicCombatCore
                 var currentLoss = landUnitBundles.Sum(b => b.battleUnitState.currentStrengthLoss);
                 var accLos = landUnitBundles.Sum(b => b.battleUnitState.accumulatedStrengthLoss);
 
-                var costModifierStr = strengh == 0 ? "" : $"{leadingGroupBundle.accumulatedChanceCostModifier:+0.00%;-0.00%;0.00%}";
-                var tacticalModifierStr = strengh == 0 ? "" : $"{leadingGroupBundle.averageTacticalModifier:+0.00%;-0.00%;0.00%}";
+                var costModifierStr = strengh == 0 ? "" : FormatModifierPercent(leadingGroupBundle.accumulatedChanceCostModifier);
+                var tacticalModifierStr = strengh == 0 ? "" : FormatModifierPercent(leadingGroupBundle.averageTacticalModifier);
 
                 // return $"Land Units: {landUnitBundles.Count}, Strength: {strengh}, Loss: {accLos} (+{currentLoss}), avg CM: {costModifierStr}, avg TM: {tacticalModifierStr}";
                 return Localize(

@@ -103,42 +103,36 @@ public class LandBattleDialog
 
     public static void OnCreated(object sender, VisualElement root)
     {
+        foreach (var leaderLabel in root.Query<Label>("LeaderNameLabel").ToList())
+        {
+            Utils.RegisterLinkTag(leaderLabel, new()
+            {
+                ["leaderLink"] = () =>
+                {
+                    if (Utils.TryResolveCurrentValueForBinding<LandBattleSideStateDynamic>(leaderLabel, out var sideStateDynamic))
+                    {
+                        SwitchCenter.Instance.SwitchToLeaderView(sideStateDynamic.battleLeader);
+                    }
+                }
+            });
+        }
+
         foreach(var listView in root.Query<ListView>("LandUnitBundleListView").ToList())
         {
             listView.makeItem = () =>
             {
                 var el = listView.itemTemplate.CloneTree();
-                // TODO: Disable hyperlink since it seem to related to strange UITK bugs
-                // var nameLabel = el.Q<Label>("NameLabel");
-                // Utils.RegisterLinkTag(nameLabel, new()
-                // {
-                //     {"nameLink", () =>{
-                //         if(Utils.TryResolveCurrentValueForBinding<LandBattleSideStateDynamic.LandUnitBundle>(nameLabel, out var landUnitBundle))
-                //         {
-                //             var idx = StrategicGameState.Instance.landUnits.IndexOf(landUnitBundle.landUnit);
-                //             if(idx != -1)
-                //             {
-                //                 LandUnitEditor.Instance.Show();
-                //                 BehaviourUtils.Instance.ScheduleToSetSelectionForListView(LandUnitEditor.Instance.objectListView, idx);
-                //             }
-                //         }
-                //     }}
-                // });
-                var nameButton = el.Q<Button>("NameButton");
-                nameButton.clicked += () =>
+                var nameLabel = el.Q<Label>("NameLabel");
+                Utils.RegisterLinkTag(nameLabel, new()
                 {
-                    if(Utils.TryResolveCurrentValueForBinding<LandBattleSideStateDynamic.LandUnitBundle>(nameButton, out var landUnitBundle))
+                    ["nameLink"] = () =>
                     {
-                        // var idx = StrategicGameState.Instance.landUnits.IndexOf(landUnitBundle.landUnit);
-                        // if(idx != -1)
-                        // {
-                        //     LandUnitEditor.Instance.Show();
-                        //     BehaviourUtils.Instance.ScheduleToSetSelectionForListView(LandUnitEditor.Instance.objectListView, idx);
-                        // }
-
-                        SwitchCenter.Instance.SwitchToLandUnitView(landUnitBundle.landUnit);
+                        if(Utils.TryResolveCurrentValueForBinding<LandBattleSideStateDynamic.LandUnitBundle>(nameLabel, out var landUnitBundle))
+                        {
+                            SwitchCenter.Instance.SwitchToLandUnitView(landUnitBundle.landUnit);
+                        }
                     }
-                };
+                });
                 return el;
             };
         }

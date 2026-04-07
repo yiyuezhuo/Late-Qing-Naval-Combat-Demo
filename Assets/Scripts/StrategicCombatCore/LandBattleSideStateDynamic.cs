@@ -9,6 +9,22 @@ namespace StrategicCombatCore
 {
     public partial class LandBattleSideStateDynamic // Not serializable helper, generate it when needed
     {
+        static float FiniteOrDefault(float value, float fallback = 0f)
+        {
+            return float.IsNaN(value) || float.IsInfinity(value) ? fallback : value;
+        }
+
+        static float SafeWeightedAverage(float weightedValue, float weight, float fallback = 0f)
+        {
+            if (weight <= 0f || float.IsNaN(weight) || float.IsInfinity(weight))
+            {
+                return fallback;
+            }
+
+            var value = weightedValue / weight;
+            return FiniteOrDefault(value, fallback);
+        }
+
         public class StrategicGroupBundle
         {
             public StrategicGroup group;
@@ -240,13 +256,23 @@ namespace StrategicCombatCore
 
             topGroupBundles = topGroups.Select(_Scan).ToList();
 
+            if (topGroupBundles.Count == 0)
+            {
+                battleLeader = null;
+                country = battleSideState.GetSide()?.countries?.FirstOrDefault() ?? default;
+                maxChance = chance = 0;
+                return;
+            }
+
             var maxCommandUsageDirect = topGroupBundles.Max(b => b.commandUsageFlatten);
             leadingGroupBundle = topGroupBundles.First(b => b.commandUsageFlatten == maxCommandUsageDirect);
 
             // Recalculate the leading group's command properties
             
-            var leadingGroupAccWeight = (leadingGroupBundle.accumulatedChanceCostModifier - leadingGroupBundle.currentLayerChanceCostModifier) * leadingGroupBundle.commandUsageFlatten;
-            var leadingGroupTacWeight = leadingGroupBundle.averageTacticalModifier * leadingGroupBundle.commandUsageFlatten;
+            var leadingGroupAccWeight =
+                FiniteOrDefault(leadingGroupBundle.accumulatedChanceCostModifier - leadingGroupBundle.currentLayerChanceCostModifier) *
+                leadingGroupBundle.commandUsageFlatten;
+            var leadingGroupTacWeight = FiniteOrDefault(leadingGroupBundle.averageTacticalModifier) * leadingGroupBundle.commandUsageFlatten;
             foreach(var groupBundle in topGroupBundles)
             {
                 if(groupBundle != leadingGroupBundle)
@@ -256,19 +282,21 @@ namespace StrategicCombatCore
                     leadingGroupBundle.commandUsage += groupBundle.commandUsage / 3;
                     leadingGroupBundle.commandUsageFlatten += groupBundle.commandUsageFlatten;
 
-                    leadingGroupAccWeight += groupBundle.commandUsageFlatten * groupBundle.accumulatedChanceCostModifier;
-                    leadingGroupTacWeight += groupBundle.commandUsageFlatten * groupBundle.averageTacticalModifier;
+                    leadingGroupAccWeight += groupBundle.commandUsageFlatten * FiniteOrDefault(groupBundle.accumulatedChanceCostModifier);
+                    leadingGroupTacWeight += groupBundle.commandUsageFlatten * FiniteOrDefault(groupBundle.averageTacticalModifier);
                 }
             }
 
             leadingGroupBundle.currentLayerChanceCostModifier = StrategicGroup.GetChanceCostModifier(
                 leadingGroupBundle.commandUsage, leadingGroupBundle.group.GetCommandCapacity(), leadingGroupBundle.group.GetLeaderSkillLevel()
             );
-            leadingGroupBundle.accumulatedChanceCostModifier = leadingGroupAccWeight / leadingGroupBundle.commandUsageFlatten + leadingGroupBundle.currentLayerChanceCostModifier;
+            leadingGroupBundle.accumulatedChanceCostModifier =
+                SafeWeightedAverage(leadingGroupAccWeight, leadingGroupBundle.commandUsageFlatten) +
+                leadingGroupBundle.currentLayerChanceCostModifier;
             leadingGroupBundle.directLayerTacticalModifier = StrategicGroup.GetTacticalModifier(
                 leadingGroupBundle.commandUsage, leadingGroupBundle.group.GetCommandCapacity(), leadingGroupBundle.group.GetLeaderSkillLevel()
             );
-            leadingGroupBundle.averageTacticalModifier = leadingGroupTacWeight / leadingGroupBundle.commandUsageFlatten;
+            leadingGroupBundle.averageTacticalModifier = SafeWeightedAverage(leadingGroupTacWeight, leadingGroupBundle.commandUsageFlatten);
 
             foreach(var landUnitBundle in landUnitBundles)
             {
@@ -334,9 +362,9 @@ namespace StrategicCombatCore
                         parentBundle.commandUsageFlatten += subGroupBundle.commandUsageFlatten;
                         parentBundle.commandUsage += subGroupBundle.commandUsage / 3;
 
-                        accCostModWeight += subGroupBundle.commandUsageFlatten * subGroupBundle.accumulatedChanceCostModifier;
+                        accCostModWeight += subGroupBundle.commandUsageFlatten * FiniteOrDefault(subGroupBundle.accumulatedChanceCostModifier);
 
-                        groupTacWeight += subGroupBundle.commandUsageFlatten * subGroupBundle.averageTacticalModifier;
+                        groupTacWeight += subGroupBundle.commandUsageFlatten * FiniteOrDefault(subGroupBundle.averageTacticalModifier);
                     }
                 }
             }
@@ -344,12 +372,17 @@ namespace StrategicCombatCore
             parentBundle.currentLayerChanceCostModifier = StrategicGroup.GetChanceCostModifier(
                 parentBundle.commandUsage, parent.GetCommandCapacity(), parent.GetLeaderSkillLevel()
             );
-            parentBundle.accumulatedChanceCostModifier = accCostModWeight / parentBundle.commandUsageFlatten + parentBundle.currentLayerChanceCostModifier;
+            parentBundle.accumulatedChanceCostModifier =
+                SafeWeightedAverage(accCostModWeight, parentBundle.commandUsageFlatten) +
+                parentBundle.currentLayerChanceCostModifier;
 
             parentBundle.directLayerTacticalModifier = StrategicGroup.GetTacticalModifier(
                 parentBundle.commandUsage, parent.GetCommandCapacity(), parent.GetLeaderSkillLevel()
             );
-            parentBundle.averageTacticalModifier = (parentBundle.directLayerTacticalModifier * sumLandUnitCommandUsage + groupTacWeight) / parentBundle.commandUsageFlatten;
+            parentBundle.averageTacticalModifier = SafeWeightedAverage(
+                parentBundle.directLayerTacticalModifier * sumLandUnitCommandUsage + groupTacWeight,
+                parentBundle.commandUsageFlatten
+            );
 
             return parentBundle;
         }

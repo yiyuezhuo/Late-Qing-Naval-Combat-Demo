@@ -287,7 +287,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>415</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -366,7 +365,6 @@
      <objectId>16ebd7b1-a096-4c50-bcf5-5813e1cb23aa</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>f8481328-de97-4466-af47-6c302493b6ef</referenceId>
     </parentGroupReference>
@@ -628,7 +626,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>310</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -707,7 +704,6 @@
      <objectId>43482ae8-fe81-41c6-9b58-9a58138945c7</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>f8481328-de97-4466-af47-6c302493b6ef</referenceId>
     </parentGroupReference>
@@ -951,7 +947,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>375</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -1030,7 +1025,6 @@
      <objectId>82baaac9-2399-49c2-82d8-de5c4ea39e67</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>f8481328-de97-4466-af47-6c302493b6ef</referenceId>
     </parentGroupReference>
@@ -1213,7 +1207,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>230</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -1292,7 +1285,6 @@
      <objectId>b0823768-4624-41e1-892e-33e2fced17c8</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>8961f909-0f74-4ef1-b983-315e9a93204a</referenceId>
     </parentGroupReference>
@@ -1462,7 +1454,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>100</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -1541,7 +1532,6 @@
      <objectId>3dca9a53-db13-4a85-b328-4ba71d7a5280</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>8961f909-0f74-4ef1-b983-315e9a93204a</referenceId>
     </parentGroupReference>
@@ -1740,7 +1730,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>740</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -1819,7 +1808,6 @@
      <objectId>cd01b37f-e23c-4d86-a48c-1087e64cd94d</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>f6a1138b-48f1-4978-8e52-95b6f7678bbe</referenceId>
     </parentGroupReference>
@@ -2018,7 +2006,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>740</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -2097,7 +2084,6 @@
      <objectId>3ff86f43-fe21-4ffb-adb4-e1e535d165fb</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>f6a1138b-48f1-4978-8e52-95b6f7678bbe</referenceId>
     </parentGroupReference>
@@ -2286,7 +2272,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>145</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -2365,7 +2350,6 @@
      <objectId>325ad7cd-8735-4b41-88a8-ae8270ae8e7a</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>f6a1138b-48f1-4978-8e52-95b6f7678bbe</referenceId>
     </parentGroupReference>
@@ -2554,7 +2538,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>145</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -2633,7 +2616,6 @@
      <objectId>8a1a512f-3735-4cbe-b714-f805fa48b280</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>f6a1138b-48f1-4978-8e52-95b6f7678bbe</referenceId>
     </parentGroupReference>
@@ -2834,7 +2816,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>230</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -2913,7 +2894,6 @@
      <objectId>77e93908-bf8e-4e88-8b27-ad38ee3c16bc</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>f6a1138b-48f1-4978-8e52-95b6f7678bbe</referenceId>
     </parentGroupReference>
@@ -3114,7 +3094,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>230</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -3193,7 +3172,6 @@
      <objectId>ce8e7384-514e-4564-ab60-bda46369f489</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>f6a1138b-48f1-4978-8e52-95b6f7678bbe</referenceId>
     </parentGroupReference>
@@ -3375,7 +3353,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>285</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -3454,7 +3431,6 @@
      <objectId>acdc23f7-8bbf-4e71-8a04-e5061b246508</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>f6a1138b-48f1-4978-8e52-95b6f7678bbe</referenceId>
     </parentGroupReference>
@@ -3636,7 +3612,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>285</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -3715,7 +3690,6 @@
      <objectId>0f9cf151-dbb0-4dd2-a41f-9bd491386c35</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>f6a1138b-48f1-4978-8e52-95b6f7678bbe</referenceId>
     </parentGroupReference>
@@ -3897,7 +3871,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>220</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -3976,7 +3949,6 @@
      <objectId>3d87b7a0-050b-49f1-a611-4d73904445c9</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>f6a1138b-48f1-4978-8e52-95b6f7678bbe</referenceId>
     </parentGroupReference>
@@ -4149,7 +4121,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>130</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -4228,7 +4199,6 @@
      <objectId>b8b8048c-e3f5-4f81-ac80-7e131395d522</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>f6a1138b-48f1-4978-8e52-95b6f7678bbe</referenceId>
     </parentGroupReference>
@@ -4447,7 +4417,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>380</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -4526,7 +4495,6 @@
      <objectId>cfca8b28-2ec4-4ddf-a16b-d6c72ab139ed</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference />
     <detachedFromGroupReference />
     <enableAutoReattach>false</enableAutoReattach>
@@ -4813,7 +4781,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>422</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -4892,7 +4859,6 @@
      <objectId>3ecd7c9f-0ec9-47a8-b87a-1ffb881b8642</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>ec983b9b-ec3f-443c-a7ef-e6ac27a1f8c4</referenceId>
     </parentGroupReference>
@@ -5181,7 +5147,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>422</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -5260,7 +5225,6 @@
      <objectId>c1438b92-e89a-478c-8583-18e7a62cafe5</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>ec983b9b-ec3f-443c-a7ef-e6ac27a1f8c4</referenceId>
     </parentGroupReference>
@@ -5488,7 +5452,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>226</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -5567,7 +5530,6 @@
      <objectId>51f2f5f4-2c59-482a-bcac-249e449e5ae9</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>f6bd836d-5641-4a06-952d-2329545b8a1a</referenceId>
     </parentGroupReference>
@@ -5865,7 +5827,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>422</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -5944,7 +5905,6 @@
      <objectId>f7a7b58e-e555-40c5-b258-be96b39517ad</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>ec983b9b-ec3f-443c-a7ef-e6ac27a1f8c4</referenceId>
     </parentGroupReference>
@@ -6188,7 +6148,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>375</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -6267,7 +6226,6 @@
      <objectId>26de8348-ea6f-43bf-a13c-4c76034fc55e</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>ec983b9b-ec3f-443c-a7ef-e6ac27a1f8c4</referenceId>
     </parentGroupReference>
@@ -6498,7 +6456,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>240</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -6577,7 +6534,6 @@
      <objectId>5c18d2b9-b15b-4606-985d-9a5f9e6670bb</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>ec983b9b-ec3f-443c-a7ef-e6ac27a1f8c4</referenceId>
     </parentGroupReference>
@@ -6747,7 +6703,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>100</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -6826,7 +6781,6 @@
      <objectId>4004750c-6471-48c6-8321-04d4d5fb2bbe</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>f6a1138b-48f1-4978-8e52-95b6f7678bbe</referenceId>
     </parentGroupReference>
@@ -6972,7 +6926,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>61.200000762939453</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -7051,7 +7004,6 @@
      <objectId>5e60e839-887f-4bc3-952f-8310d976206c</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference />
     <detachedFromGroupReference />
     <enableAutoReattach>false</enableAutoReattach>
@@ -7164,7 +7116,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>291.30001831054688</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -7243,7 +7194,6 @@
      <objectId>6f521c93-3aff-4c59-a48b-7fa054339eb3</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference />
     <detachedFromGroupReference />
     <enableAutoReattach>false</enableAutoReattach>
@@ -7343,7 +7293,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>12</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -7422,7 +7371,6 @@
      <objectId>ed3fe972-15ed-4694-ba4d-93f326268a73</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>88450a80-6c3f-4450-b4d1-95a10190dbab</referenceId>
     </parentGroupReference>
@@ -7524,7 +7472,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>9</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -7603,7 +7550,6 @@
      <objectId>f2235a73-0f6e-4c25-97e3-bd3cccf2fa5d</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>88450a80-6c3f-4450-b4d1-95a10190dbab</referenceId>
     </parentGroupReference>
@@ -7831,7 +7777,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>226</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -7910,7 +7855,6 @@
      <objectId>4a35ad9a-23fd-4818-aedb-8238655039c2</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference />
     <detachedFromGroupReference />
     <enableAutoReattach>false</enableAutoReattach>
@@ -8118,7 +8062,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>147.60000610351563</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -8197,7 +8140,6 @@
      <objectId>34b465d2-dbe0-402c-a04c-50fe4ae60f30</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>a3888f16-9ca8-4a84-9b62-615ed86f1d43</referenceId>
     </parentGroupReference>
@@ -8407,7 +8349,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>147.60000610351563</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -8486,7 +8427,6 @@
      <objectId>583f19f4-04a5-4d33-9fa1-60d221357d33</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>a3888f16-9ca8-4a84-9b62-615ed86f1d43</referenceId>
     </parentGroupReference>
@@ -8696,7 +8636,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>147.60000610351563</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -8775,7 +8714,6 @@
      <objectId>e5923261-5665-40d5-a373-59e8f5a1b2b6</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference />
     <detachedFromGroupReference />
     <enableAutoReattach>false</enableAutoReattach>
@@ -8946,7 +8884,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>152.5</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -9025,7 +8962,6 @@
      <objectId>f7b44472-dbdb-49a1-8701-8b531b9c6ec3</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>a3888f16-9ca8-4a84-9b62-615ed86f1d43</referenceId>
     </parentGroupReference>
@@ -9217,7 +9153,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>175</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -9296,7 +9231,6 @@
      <objectId>0a4b00f3-824b-442b-9021-1fee10192cca</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>a3888f16-9ca8-4a84-9b62-615ed86f1d43</referenceId>
     </parentGroupReference>
@@ -9398,7 +9332,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>5.3000001907348633</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -9477,7 +9410,6 @@
      <objectId>da9e0756-29e4-4ae9-89dd-79415843a0d0</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference />
     <detachedFromGroupReference />
     <enableAutoReattach>false</enableAutoReattach>
@@ -9577,7 +9509,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>5.3000001907348633</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -9656,7 +9587,6 @@
      <objectId>f872dfe2-33ff-48d3-b86b-9119aa25f565</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference />
     <detachedFromGroupReference />
     <enableAutoReattach>false</enableAutoReattach>
@@ -9756,7 +9686,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>5.4000000953674316</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -9835,7 +9764,6 @@
      <objectId>25b32637-c8f0-4422-8ea8-b002597ff93e</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>6374bb0b-b59f-454f-a223-eb4e414b78b7</referenceId>
     </parentGroupReference>
@@ -9937,7 +9865,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>5.4000000953674316</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -10016,7 +9943,6 @@
      <objectId>f39a0e18-6e86-44a3-9cc7-b443857d9617</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>6374bb0b-b59f-454f-a223-eb4e414b78b7</referenceId>
     </parentGroupReference>
@@ -10118,7 +10044,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>5.4000000953674316</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -10197,7 +10122,6 @@
      <objectId>63abb730-6a91-48e3-b130-00b2b043d233</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>d87649ad-84bd-4a2d-9ac3-3b7dd97ed8f4</referenceId>
     </parentGroupReference>
@@ -10299,7 +10223,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>5.4000000953674316</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -10378,7 +10301,6 @@
      <objectId>e8c6f1fa-aba7-4ff7-954d-be74b05fa728</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>682774fd-e96e-4a4c-bbb2-16d3a3f5ed9a</referenceId>
     </parentGroupReference>
@@ -10480,7 +10402,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>5.4000000953674316</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -10559,7 +10480,6 @@
      <objectId>3ff03004-5a80-48bc-a24d-55374d14c1c2</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>682774fd-e96e-4a4c-bbb2-16d3a3f5ed9a</referenceId>
     </parentGroupReference>
@@ -10661,7 +10581,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>5.4000000953674316</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -10740,7 +10659,6 @@
      <objectId>da6e7820-2821-484c-ac08-f0251f45b0c6</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>6374bb0b-b59f-454f-a223-eb4e414b78b7</referenceId>
     </parentGroupReference>
@@ -10842,7 +10760,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>5.4000000953674316</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -10921,7 +10838,6 @@
      <objectId>66c51b6a-e0cd-4866-a90d-b22bc4122cbb</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>d87649ad-84bd-4a2d-9ac3-3b7dd97ed8f4</referenceId>
     </parentGroupReference>
@@ -11023,7 +10939,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>5.4000000953674316</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -11102,7 +11017,6 @@
      <objectId>da3b967a-ea5b-415e-9e5b-11d3d441efd8</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference />
     <detachedFromGroupReference />
     <enableAutoReattach>false</enableAutoReattach>
@@ -11202,7 +11116,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>5.4000000953674316</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -11281,7 +11194,6 @@
      <objectId>85887e65-cdb9-4ba4-b78f-fec059343b42</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>d87649ad-84bd-4a2d-9ac3-3b7dd97ed8f4</referenceId>
     </parentGroupReference>
@@ -11383,7 +11295,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>5.4000000953674316</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -11462,7 +11373,6 @@
      <objectId>5c1aa8e7-54b7-4c76-8a89-2c8470479604</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>682774fd-e96e-4a4c-bbb2-16d3a3f5ed9a</referenceId>
     </parentGroupReference>
@@ -11564,7 +11474,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>5.4000000953674316</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -11643,7 +11552,6 @@
      <objectId>8a7f65a5-6500-411d-b912-96f03520454d</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference />
     <detachedFromGroupReference />
     <enableAutoReattach>false</enableAutoReattach>
@@ -11743,7 +11651,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>5.4000000953674316</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -11822,7 +11729,6 @@
      <objectId>8079a8e3-ceab-4a7d-ac17-91cffee2bb88</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference />
     <detachedFromGroupReference />
     <enableAutoReattach>false</enableAutoReattach>
@@ -11922,7 +11828,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>5.4000000953674316</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -12001,7 +11906,6 @@
      <objectId>1fdc8bed-44cb-48cc-89f8-b5d1f326f6b2</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>682774fd-e96e-4a4c-bbb2-16d3a3f5ed9a</referenceId>
     </parentGroupReference>
@@ -12103,7 +12007,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>5.4000000953674316</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -12182,7 +12085,6 @@
      <objectId>aa17c1f0-9dfc-43a5-bf30-eda612244755</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>682774fd-e96e-4a4c-bbb2-16d3a3f5ed9a</referenceId>
     </parentGroupReference>
@@ -12293,7 +12195,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>8</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -12372,7 +12273,6 @@
      <objectId>98b9934a-d5ef-48a3-92dd-f2574736d2f3</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>682774fd-e96e-4a4c-bbb2-16d3a3f5ed9a</referenceId>
     </parentGroupReference>
@@ -12483,7 +12383,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>8.5</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -12562,7 +12461,6 @@
      <objectId>9984498a-c379-4f73-8d99-f0d461ebfabc</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>6374bb0b-b59f-454f-a223-eb4e414b78b7</referenceId>
     </parentGroupReference>
@@ -12673,7 +12571,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>8.5</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -12752,7 +12649,6 @@
      <objectId>2c011475-59eb-4d4d-8817-4a2b3c866b90</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>d87649ad-84bd-4a2d-9ac3-3b7dd97ed8f4</referenceId>
     </parentGroupReference>
@@ -12872,7 +12768,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>20.30000114440918</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -12951,7 +12846,6 @@
      <objectId>a4fa54d4-1989-4abe-8925-62766fc18ed0</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>d87649ad-84bd-4a2d-9ac3-3b7dd97ed8f4</referenceId>
     </parentGroupReference>
@@ -13053,7 +12947,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>7.4000000953674316</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -13132,7 +13025,6 @@
      <objectId>8ae57099-bd4e-46f8-b742-672a78619220</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>88450a80-6c3f-4450-b4d1-95a10190dbab</referenceId>
     </parentGroupReference>
@@ -13234,7 +13126,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>7.4000000953674316</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -13313,7 +13204,6 @@
      <objectId>cd66fcdb-09b3-40b8-9fa5-9f0023b210df</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>88450a80-6c3f-4450-b4d1-95a10190dbab</referenceId>
     </parentGroupReference>
@@ -13415,7 +13305,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>7.4000000953674316</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -13494,7 +13383,6 @@
      <objectId>33b69972-48cb-4a9f-ac77-26df34b09ede</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>88450a80-6c3f-4450-b4d1-95a10190dbab</referenceId>
     </parentGroupReference>
@@ -13596,7 +13484,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>7.4000000953674316</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -13675,7 +13562,6 @@
      <objectId>8336a5f0-8693-4495-83bc-0b8ee587c0cc</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>88450a80-6c3f-4450-b4d1-95a10190dbab</referenceId>
     </parentGroupReference>
@@ -13777,7 +13663,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>7.4000000953674316</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -13856,7 +13741,6 @@
      <objectId>afcc0159-dce7-4128-b7fa-78af29108cef</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>88450a80-6c3f-4450-b4d1-95a10190dbab</referenceId>
     </parentGroupReference>
@@ -13929,7 +13813,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>1500</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -14008,7 +13891,6 @@
      <objectId>6e5768ce-6058-423c-ac81-cf6cab2dc826</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
     </parentGroupReference>
@@ -14081,7 +13963,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>1500</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -14160,7 +14041,6 @@
      <objectId>4c17e474-a453-48a0-b353-4fce4f54c533</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>c48c4012-e43a-4933-8cc9-5e8755cf6b7f</referenceId>
     </parentGroupReference>
@@ -14233,7 +14113,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>1500</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -14312,7 +14191,6 @@
      <objectId>534a1346-bbcb-4741-a94f-dc95fdc6e616</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
     </parentGroupReference>
@@ -14385,7 +14263,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>1500</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -14464,7 +14341,6 @@
      <objectId>f4e0440d-0c11-4be6-831e-36de285e1dd2</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>c48c4012-e43a-4933-8cc9-5e8755cf6b7f</referenceId>
     </parentGroupReference>
@@ -14537,7 +14413,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>1500</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -14616,7 +14491,6 @@
      <objectId>4eff8972-1878-4201-9f3b-1e69c894a251</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
     </parentGroupReference>
@@ -14689,7 +14563,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>1500</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -14768,7 +14641,6 @@
      <objectId>aafc4c82-5014-4f8f-8b00-5c47729f028a</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>c48c4012-e43a-4933-8cc9-5e8755cf6b7f</referenceId>
     </parentGroupReference>
@@ -14841,7 +14713,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>1500</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -14920,7 +14791,6 @@
      <objectId>687dce60-89ed-4f0e-a7b4-048afb9b6c40</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
     </parentGroupReference>
@@ -14993,7 +14863,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>1500</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -15072,7 +14941,6 @@
      <objectId>992239d0-7bd1-4c3c-b925-b8761e182058</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>c48c4012-e43a-4933-8cc9-5e8755cf6b7f</referenceId>
     </parentGroupReference>
@@ -15145,7 +15013,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>1500</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -15224,7 +15091,6 @@
      <objectId>f2e568fb-611b-4fe9-94cb-46bdc03ac66a</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
     </parentGroupReference>
@@ -15297,7 +15163,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>1500</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -15376,7 +15241,6 @@
      <objectId>42bef4b0-ce44-475e-a356-592419d0ab2f</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>c48c4012-e43a-4933-8cc9-5e8755cf6b7f</referenceId>
     </parentGroupReference>
@@ -15449,7 +15313,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>1500</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -15528,7 +15391,6 @@
      <objectId>90cdaeb3-7ac6-448f-85be-a164f9222d76</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
     </parentGroupReference>
@@ -15601,7 +15463,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>1500</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -15680,7 +15541,6 @@
      <objectId>2251925f-3ad4-4003-97de-56612be7e2f1</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>c48c4012-e43a-4933-8cc9-5e8755cf6b7f</referenceId>
     </parentGroupReference>
@@ -15753,7 +15613,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>1500</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -15832,7 +15691,6 @@
      <objectId>b96ad426-e457-434e-b141-dc0965f35f56</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
     </parentGroupReference>
@@ -15905,7 +15763,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>1500</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -15984,7 +15841,6 @@
      <objectId>e91c9321-ef04-4338-ac54-4ffaaae48e1f</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>c48c4012-e43a-4933-8cc9-5e8755cf6b7f</referenceId>
     </parentGroupReference>
@@ -16057,7 +15913,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>1500</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -16136,7 +15991,6 @@
      <objectId>b5ec58c5-1993-47f5-9c4b-20496fb6d01f</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
     </parentGroupReference>
@@ -16209,7 +16063,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>1500</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -16288,7 +16141,6 @@
      <objectId>65c69ab0-6f43-4e53-ae55-e820b16bf7d9</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>c48c4012-e43a-4933-8cc9-5e8755cf6b7f</referenceId>
     </parentGroupReference>
@@ -16361,7 +16213,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>1500</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -16440,7 +16291,6 @@
      <objectId>c93c6d47-cca7-41c3-a6f8-e89cd93f32cf</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
     </parentGroupReference>
@@ -16513,7 +16363,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>1500</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -16592,7 +16441,6 @@
      <objectId>cba2aa40-1e2b-42a3-a6a1-27602961a213</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>c48c4012-e43a-4933-8cc9-5e8755cf6b7f</referenceId>
     </parentGroupReference>
@@ -16665,7 +16513,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>1500</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -16744,7 +16591,6 @@
      <objectId>6efbbca4-c786-495e-949c-c2aab5af78ea</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>a7d4f7b4-4ada-4f34-8588-509c87c5a037</referenceId>
     </parentGroupReference>
@@ -16817,7 +16663,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>1500</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -16896,7 +16741,6 @@
      <objectId>0ff924f2-d41b-4071-94d7-d5f07d7b215a</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>643148ed-5d9c-4329-b6b0-9c91c90fa4d2</referenceId>
     </parentGroupReference>
@@ -16969,7 +16813,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>1500</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -17048,7 +16891,6 @@
      <objectId>0c94365e-5c06-4448-8874-c1bbf152f248</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>ffd39a21-64a4-4131-b404-4aba8c63f3a2</referenceId>
     </parentGroupReference>
@@ -17121,7 +16963,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>1500</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -17200,7 +17041,6 @@
      <objectId>54735c24-34b8-4315-b67c-49d2ecd9194c</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>ffd39a21-64a4-4131-b404-4aba8c63f3a2</referenceId>
     </parentGroupReference>
@@ -17273,7 +17113,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>1500</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -17352,7 +17191,6 @@
      <objectId>2ad0f75b-1d4c-4fb2-a165-91e83bc7a60a</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>c42825cb-ad36-44f1-842b-49019caa5d23</referenceId>
     </parentGroupReference>
@@ -17425,7 +17263,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>1500</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -17504,7 +17341,6 @@
      <objectId>a5bfb31f-1567-46e1-94c6-b36674e6933e</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>c42825cb-ad36-44f1-842b-49019caa5d23</referenceId>
     </parentGroupReference>
@@ -17577,7 +17413,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>1500</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -17656,7 +17491,6 @@
      <objectId>2263355d-925d-432d-9b0a-e04d74d5eef5</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>c42825cb-ad36-44f1-842b-49019caa5d23</referenceId>
     </parentGroupReference>
@@ -17729,7 +17563,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>219.80000305175781</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -17808,7 +17641,6 @@
      <objectId>395ae33c-10db-4dfe-a992-a4c2da92e19e</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>1ca93054-7ae0-4bd5-bfb4-2643c57fa8b5</referenceId>
     </parentGroupReference>
@@ -17881,7 +17713,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>219.80000305175781</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -17960,7 +17791,6 @@
      <objectId>256b4195-9c2e-4e10-8d96-c182930c264e</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>1ca93054-7ae0-4bd5-bfb4-2643c57fa8b5</referenceId>
     </parentGroupReference>
@@ -18169,7 +17999,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -18248,7 +18077,6 @@
      <objectId>748db68a-aacd-44fa-9ba3-98d434fa19e5</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>31fe37b1-d813-4e17-a7e8-c7b29610514e</referenceId>
     </parentGroupReference>
@@ -18475,7 +18303,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -18554,7 +18381,6 @@
      <objectId>69cfc51d-4e28-4cfd-b115-345abfe8b93f</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>31fe37b1-d813-4e17-a7e8-c7b29610514e</referenceId>
     </parentGroupReference>
@@ -18781,7 +18607,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -18860,7 +18685,6 @@
      <objectId>062ad813-488a-40f1-ba73-de6b095f2ae8</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>31fe37b1-d813-4e17-a7e8-c7b29610514e</referenceId>
     </parentGroupReference>
@@ -19088,7 +18912,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -19167,7 +18990,6 @@
      <objectId>58762176-11fe-4017-abc6-0d3734a7610e</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>31fe37b1-d813-4e17-a7e8-c7b29610514e</referenceId>
     </parentGroupReference>
@@ -19395,7 +19217,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -19474,7 +19295,6 @@
      <objectId>a6c5cc76-208d-4051-9133-5c0b9c7ccf95</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>31fe37b1-d813-4e17-a7e8-c7b29610514e</referenceId>
     </parentGroupReference>
@@ -19589,7 +19409,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -19668,7 +19487,6 @@
      <objectId>4febddfe-d4c6-48e7-b68f-061675439ccd</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>0c2e2e38-544a-4552-a149-4656e40e2239</referenceId>
     </parentGroupReference>
@@ -19783,7 +19601,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -19862,7 +19679,6 @@
      <objectId>5a547881-e549-49ba-b15d-8fe5a8171823</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>0c2e2e38-544a-4552-a149-4656e40e2239</referenceId>
     </parentGroupReference>
@@ -19977,7 +19793,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -20056,7 +19871,6 @@
      <objectId>933e6967-58ef-4cb2-b439-d2b9c2976fa3</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>0c2e2e38-544a-4552-a149-4656e40e2239</referenceId>
     </parentGroupReference>
@@ -20171,7 +19985,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -20250,7 +20063,6 @@
      <objectId>8138cc4e-a9b2-4481-b2e4-a176698a589c</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>0c2e2e38-544a-4552-a149-4656e40e2239</referenceId>
     </parentGroupReference>
@@ -20365,7 +20177,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -20444,7 +20255,6 @@
      <objectId>c65aa6c3-df38-4d78-9fd4-1d6123e831d5</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>0c2e2e38-544a-4552-a149-4656e40e2239</referenceId>
     </parentGroupReference>
@@ -20559,7 +20369,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -20638,7 +20447,6 @@
      <objectId>918eda0c-b71a-42b7-b3a6-f3d74b3c6082</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>0c2e2e38-544a-4552-a149-4656e40e2239</referenceId>
     </parentGroupReference>
@@ -20730,7 +20538,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -20809,7 +20616,6 @@
      <objectId>077f340b-2709-499e-a4af-f09f325450ae</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>88450a80-6c3f-4450-b4d1-95a10190dbab</referenceId>
     </parentGroupReference>
@@ -20901,7 +20707,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -20980,7 +20785,6 @@
      <objectId>111d046a-97f6-4bf1-b3af-4ea22e4923af</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>88450a80-6c3f-4450-b4d1-95a10190dbab</referenceId>
     </parentGroupReference>
@@ -21072,7 +20876,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -21151,7 +20954,6 @@
      <objectId>f745d023-a8b3-48f8-9eaa-d51b690993fe</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>88450a80-6c3f-4450-b4d1-95a10190dbab</referenceId>
     </parentGroupReference>
@@ -21243,7 +21045,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -21322,7 +21123,6 @@
      <objectId>f0cc7f81-af58-4f4b-abcd-3bcc26c2f052</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>88450a80-6c3f-4450-b4d1-95a10190dbab</referenceId>
     </parentGroupReference>
@@ -21415,7 +21215,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -21494,7 +21293,6 @@
      <objectId>0e527e27-1a2e-477f-b242-aa051dfec51a</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>88450a80-6c3f-4450-b4d1-95a10190dbab</referenceId>
     </parentGroupReference>
@@ -21587,7 +21385,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -21666,7 +21463,6 @@
      <objectId>2a56778f-5ee6-47a8-9bcd-a57376fb09f2</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>88450a80-6c3f-4450-b4d1-95a10190dbab</referenceId>
     </parentGroupReference>
@@ -21847,7 +21643,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -21926,7 +21721,6 @@
      <objectId>42755614-b02a-4fda-927b-286ab4e7fa80</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>64009a7e-d665-4c23-b499-56061a062a60</referenceId>
     </parentGroupReference>
@@ -22041,7 +21835,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -22120,7 +21913,6 @@
      <objectId>12beb343-c66a-47cb-b51a-2a7694236a85</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>95da6c1b-d4eb-401a-98e0-1cefe2e59ea6</referenceId>
     </parentGroupReference>
@@ -22320,7 +22112,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -22399,7 +22190,6 @@
      <objectId>02c20359-9dd3-4f6e-95b7-48e5f97278b2</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>31fe37b1-d813-4e17-a7e8-c7b29610514e</referenceId>
     </parentGroupReference>
@@ -22569,7 +22359,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -22648,7 +22437,6 @@
      <objectId>7645d388-bd69-416f-a03e-a3bac7bb56ad</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>cb51bc0c-d189-4747-bd49-f61180c10499</referenceId>
     </parentGroupReference>
@@ -22986,7 +22774,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -23065,7 +22852,6 @@
      <objectId>bbfbf8f4-2067-4bcd-b654-61646679b9b4</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>3391b8ea-4a7a-44d2-bdf1-f70f42bbd346</referenceId>
     </parentGroupReference>
@@ -23338,7 +23124,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -23417,7 +23202,6 @@
      <objectId>b974bc11-fe37-422c-8b0e-ff88418bc606</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>3391b8ea-4a7a-44d2-bdf1-f70f42bbd346</referenceId>
     </parentGroupReference>
@@ -23708,7 +23492,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -23787,7 +23570,6 @@
      <objectId>1928ecc7-800a-4b37-852a-74518543b523</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>3391b8ea-4a7a-44d2-bdf1-f70f42bbd346</referenceId>
     </parentGroupReference>
@@ -24096,7 +23878,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -24175,7 +23956,6 @@
      <objectId>0b4af659-c92f-4972-98ab-178d85f03d6b</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>3391b8ea-4a7a-44d2-bdf1-f70f42bbd346</referenceId>
     </parentGroupReference>
@@ -24478,7 +24258,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -24557,7 +24336,6 @@
      <objectId>897a0d2e-584c-402a-b4ee-24ebe41294af</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>3391b8ea-4a7a-44d2-bdf1-f70f42bbd346</referenceId>
     </parentGroupReference>
@@ -24736,7 +24514,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -24815,7 +24592,6 @@
      <objectId>2de02998-85f9-4a3a-9c98-503474ef8d8d</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>1f1037fb-f3a9-4a0b-ab38-7f0a5ae7a2bd</referenceId>
     </parentGroupReference>
@@ -25115,7 +24891,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -25194,7 +24969,6 @@
      <objectId>891dd9f3-d8cf-45be-95b5-96a80a2931dd</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>1f1037fb-f3a9-4a0b-ab38-7f0a5ae7a2bd</referenceId>
     </parentGroupReference>
@@ -25384,7 +25158,6 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
-    <repairing>false</repairing>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -25463,7 +25236,6 @@
      <objectId>482c6ab6-4f1a-4964-a5df-6f2556ee93e2</objectId>
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
-    <repairingProp>false</repairingProp>
     <parentGroupReference>
      <referenceId>1f1037fb-f3a9-4a0b-ab38-7f0a5ae7a2bd</referenceId>
     </parentGroupReference>
@@ -31603,9 +31375,9 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
     <size>Division</size>
     <country>China</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>21</independentX>
     <independentY>30</independentY>
     <leaderReference>
@@ -31660,9 +31432,9 @@ By Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
     <size>ArmyGroup</size>
     <country>China</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>13</independentX>
     <independentY>33</independentY>
     <leaderReference>
@@ -31723,9 +31495,9 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <size>Unspecified</size>
     <country>China</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>13</independentX>
     <independentY>33</independentY>
     <leaderReference />
@@ -31757,9 +31529,9 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <size>Army</size>
     <country>China</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>6</independentX>
     <independentY>16</independentY>
     <leaderReference>
@@ -31791,9 +31563,9 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <size>Army</size>
     <country>China</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>2</independentX>
     <independentY>3</independentY>
     <leaderReference>
@@ -31829,9 +31601,9 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <size>Army</size>
     <country>China</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>16</independentX>
     <independentY>18</independentY>
     <leaderReference>
@@ -31867,9 +31639,9 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <size>Army</size>
     <country>China</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>14</independentX>
     <independentY>32</independentY>
     <leaderReference>
@@ -31919,9 +31691,9 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <size>Unspecified</size>
     <country>China</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>14</independentX>
     <independentY>32</independentY>
     <leaderReference />
@@ -31957,9 +31729,9 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <size>Corp</size>
     <country>China</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>22</independentX>
     <independentY>28</independentY>
     <leaderReference>
@@ -32001,9 +31773,9 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <size>Unspecified</size>
     <country>China</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>22</independentX>
     <independentY>28</independentY>
     <leaderReference>
@@ -32044,9 +31816,9 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <size>Unspecified</size>
     <country>China</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>21</independentX>
     <independentY>30</independentY>
     <leaderReference>
@@ -32087,9 +31859,9 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <size>Division</size>
     <country>China</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>22</independentX>
     <independentY>28</independentY>
     <leaderReference>
@@ -32136,9 +31908,9 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <size>Bridge</size>
     <country>China</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>31</independentX>
     <independentY>27</independentY>
     <leaderReference>
@@ -32204,9 +31976,9 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <size>Unspecified</size>
     <country>China</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>31</independentX>
     <independentY>27</independentY>
     <leaderReference />
@@ -32238,9 +32010,9 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <size>Regiment</size>
     <country>China</country>
     <deployState>Combined</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference />
@@ -32310,9 +32082,9 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <size>Regiment</size>
     <country>China</country>
     <deployState>Combined</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -32378,9 +32150,9 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <size>Regiment</size>
     <country>China</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>true</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>30</independentX>
     <independentY>28</independentY>
     <leaderReference>
@@ -32430,9 +32202,9 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <size>Regiment</size>
     <country>China</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>true</autoCombinable>
     <dissolvable>true</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>29</independentX>
     <independentY>28</independentY>
     <leaderReference />
@@ -32481,9 +32253,9 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <size>Regiment</size>
     <country>China</country>
     <deployState>Combined</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference />
@@ -32523,9 +32295,9 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <size>Regiment</size>
     <country>China</country>
     <deployState>Combined</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference />
@@ -32555,9 +32327,9 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <size>Battalion</size>
     <country>China</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>true</autoCombinable>
     <dissolvable>true</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>23</independentX>
     <independentY>28</independentY>
     <leaderReference />
@@ -32595,9 +32367,9 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <size>Battalion</size>
     <country>China</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>true</autoCombinable>
     <dissolvable>true</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>28</independentX>
     <independentY>28</independentY>
     <leaderReference />
@@ -32640,9 +32412,9 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <size>ArmyGroup</size>
     <country>Japan</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>42</independentX>
     <independentY>23</independentY>
     <leaderReference>
@@ -32664,7 +32436,7 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <posture>Active</posture>
     <restoredHours>0</restoredHours>
     <forcedReturningToBase>false</forcedReturningToBase>
-    <stackPriority>0.714285731</stackPriority>
+    <stackPriority>0.857142866</stackPriority>
     <enableAutoReattachProp>false</enableAutoReattachProp>
     <enableArriveState>false</enableArriveState>
     <objectId>380340b3-7ec3-4404-9601-c0470d750510</objectId>
@@ -32682,9 +32454,9 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <size>Unspecified</size>
     <country>Japan</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>42</independentX>
     <independentY>23</independentY>
     <leaderReference>
@@ -32703,7 +32475,7 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <posture>Active</posture>
     <restoredHours>0</restoredHours>
     <forcedReturningToBase>false</forcedReturningToBase>
-    <stackPriority>0.857142866</stackPriority>
+    <stackPriority>0</stackPriority>
     <enableAutoReattachProp>false</enableAutoReattachProp>
     <enableArriveState>false</enableArriveState>
     <objectId>4a33ad57-3e8d-4496-83c2-889cb1024e91</objectId>
@@ -32721,9 +32493,9 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <size>Army</size>
     <country>Japan</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>42</independentX>
     <independentY>23</independentY>
     <leaderReference>
@@ -32750,7 +32522,7 @@ It was revived for the Russo-Japanese War from 2 February 1904 – 9 December 19
     <posture>Active</posture>
     <restoredHours>0</restoredHours>
     <forcedReturningToBase>false</forcedReturningToBase>
-    <stackPriority>0</stackPriority>
+    <stackPriority>0.142857149</stackPriority>
     <enableAutoReattachProp>false</enableAutoReattachProp>
     <enableArriveState>false</enableArriveState>
     <objectId>2895a7b5-5422-45c0-a01b-a516c966f9c1</objectId>
@@ -32770,9 +32542,9 @@ It was revived for the Russo-Japanese War from 2 February 1904 – 9 December 19
     <size>Army</size>
     <country>Japan</country>
     <deployState>NotDeployed</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -32820,9 +32592,9 @@ It was revived for the Russo-Japanese War from 2 February 1904 – 9 December 19
     <size>Army</size>
     <country>Japan</country>
     <deployState>Combined</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -32875,9 +32647,9 @@ The Naval General Staff (Gunreibu) was the imperial Japanese Navy's military com
     <size>Division</size>
     <country>Japan</country>
     <deployState>NotDeployed</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -32940,9 +32712,9 @@ It was formed in May 1888 (Meiji 21) based on the Tokyo Garrison. At the same ti
     <size>Division</size>
     <country>Japan</country>
     <deployState>NotDeployed</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -33009,9 +32781,9 @@ It participated in Japan's major wars until the dissolution of the Imperial Japa
     <size>Division</size>
     <country>Japan</country>
     <deployState>NotDeployed</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -33082,9 +32854,9 @@ It is one of the oldest divisions among the approximately 200 Army divisions.
     <size>Division</size>
     <country>Japan</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>42</independentX>
     <independentY>23</independentY>
     <leaderReference>
@@ -33127,7 +32899,7 @@ It was a division composed of soldiers from Shimane, Hiroshima, and Yamaguchi, w
     <posture>Active</posture>
     <restoredHours>0</restoredHours>
     <forcedReturningToBase>false</forcedReturningToBase>
-    <stackPriority>0.5714286</stackPriority>
+    <stackPriority>0.714285731</stackPriority>
     <enableAutoReattachProp>false</enableAutoReattachProp>
     <enableArriveState>false</enableArriveState>
     <objectId>47f90d2e-a1fb-4d5f-9fa8-e3ab034b6e54</objectId>
@@ -33147,9 +32919,9 @@ It was a division composed of soldiers from Shimane, Hiroshima, and Yamaguchi, w
     <size>Division</size>
     <country>Japan</country>
     <deployState>NotDeployed</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -33216,9 +32988,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Division</size>
     <country>Japan</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>30</independentX>
     <independentY>27</independentY>
     <leaderReference>
@@ -33268,9 +33040,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Bridge</size>
     <country>Japan</country>
     <deployState>Combined</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -33309,9 +33081,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Bridge</size>
     <country>Japan</country>
     <deployState>Combined</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -33350,9 +33122,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Bridge</size>
     <country>Japan</country>
     <deployState>Combined</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -33391,9 +33163,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Bridge</size>
     <country>Japan</country>
     <deployState>Combined</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -33432,9 +33204,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Bridge</size>
     <country>Japan</country>
     <deployState>Combined</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -33473,9 +33245,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Bridge</size>
     <country>Japan</country>
     <deployState>Combined</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -33514,9 +33286,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Bridge</size>
     <country>Japan</country>
     <deployState>Combined</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -33555,9 +33327,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Bridge</size>
     <country>Japan</country>
     <deployState>Combined</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -33596,9 +33368,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Bridge</size>
     <country>Japan</country>
     <deployState>Combined</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -33637,9 +33409,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Bridge</size>
     <country>Japan</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>31</independentX>
     <independentY>28</independentY>
     <leaderReference>
@@ -33687,9 +33459,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Unspecified</size>
     <country>Japan</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>31</independentX>
     <independentY>28</independentY>
     <leaderReference />
@@ -33721,9 +33493,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Regiment</size>
     <country>Japan</country>
     <deployState>Combined</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -33763,9 +33535,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Regiment</size>
     <country>Japan</country>
     <deployState>Combined</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -33808,9 +33580,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Regiment</size>
     <country>Japan</country>
     <deployState>NotDeployed</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference />
@@ -33841,9 +33613,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Regiment</size>
     <country>Japan</country>
     <deployState>NotDeployed</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -33886,9 +33658,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Regiment</size>
     <country>Japan</country>
     <deployState>NotDeployed</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -33931,9 +33703,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Regiment</size>
     <country>Japan</country>
     <deployState>NotDeployed</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -33976,9 +33748,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Regiment</size>
     <country>Japan</country>
     <deployState>NotDeployed</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -34021,9 +33793,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Regiment</size>
     <country>Japan</country>
     <deployState>Combined</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -34066,9 +33838,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Regiment</size>
     <country>Japan</country>
     <deployState>Combined</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -34111,9 +33883,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Regiment</size>
     <country>Japan</country>
     <deployState>NotDeployed</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -34155,9 +33927,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Regiment</size>
     <country>Japan</country>
     <deployState>Combined</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -34200,9 +33972,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Regiment</size>
     <country>Japan</country>
     <deployState>Combined</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -34245,9 +34017,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Regiment</size>
     <country>Japan</country>
     <deployState>NotDeployed</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference />
@@ -34278,9 +34050,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Regiment</size>
     <country>Japan</country>
     <deployState>NotDeployed</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -34323,9 +34095,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Regiment</size>
     <country>Japan</country>
     <deployState>NotDeployed</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -34368,9 +34140,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Regiment</size>
     <country>Japan</country>
     <deployState>NotDeployed</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -34413,9 +34185,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Regiment</size>
     <country>Japan</country>
     <deployState>NotDeployed</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -34458,9 +34230,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Regiment</size>
     <country>Japan</country>
     <deployState>NotDeployed</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -34503,9 +34275,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Regiment</size>
     <country>Japan</country>
     <deployState>Combined</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -34548,9 +34320,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Regiment</size>
     <country>Japan</country>
     <deployState>Combined</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -34593,9 +34365,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Regiment</size>
     <country>Japan</country>
     <deployState>Combined</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -34637,9 +34409,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Regiment</size>
     <country>Japan</country>
     <deployState>Combined</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -34681,9 +34453,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Regiment</size>
     <country>Japan</country>
     <deployState>Combined</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -34725,9 +34497,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Regiment</size>
     <country>Japan</country>
     <deployState>Combined</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -34769,9 +34541,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Regiment</size>
     <country>Japan</country>
     <deployState>Combined</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -34813,9 +34585,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Regiment</size>
     <country>Japan</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>30</independentX>
     <independentY>28</independentY>
     <leaderReference>
@@ -34859,9 +34631,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Regiment</size>
     <country>Japan</country>
     <deployState>Combined</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference />
@@ -34907,9 +34679,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Regiment</size>
     <country>Japan</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>30</independentX>
     <independentY>26</independentY>
     <leaderReference />
@@ -34958,9 +34730,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Regiment</size>
     <country>Japan</country>
     <deployState>Combined</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference />
@@ -35009,9 +34781,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Regiment</size>
     <country>Japan</country>
     <deployState>Combined</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference />
@@ -35054,9 +34826,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Regiment</size>
     <country>Japan</country>
     <deployState>Combined</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -35104,9 +34876,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Regiment</size>
     <country>Japan</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>30</independentX>
     <independentY>25</independentY>
     <leaderReference />
@@ -35157,9 +34929,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Division</size>
     <country>China</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>21</independentX>
     <independentY>16</independentY>
     <leaderReference />
@@ -35194,9 +34966,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Unspecified</size>
     <country>China</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>21</independentX>
     <independentY>16</independentY>
     <leaderReference />
@@ -35229,9 +35001,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Unspecified</size>
     <country>China</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>21</independentX>
     <independentY>16</independentY>
     <leaderReference />
@@ -35281,9 +35053,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Army</size>
     <country>China</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>16</independentX>
     <independentY>8</independentY>
     <leaderReference>
@@ -35321,9 +35093,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Unspecified</size>
     <country>China</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>16</independentX>
     <independentY>8</independentY>
     <leaderReference />
@@ -35356,9 +35128,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Unspecified</size>
     <country>China</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>16</independentX>
     <independentY>8</independentY>
     <leaderReference />
@@ -35392,9 +35164,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Unspecified</size>
     <country>China</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>2</independentX>
     <independentY>3</independentY>
     <leaderReference />
@@ -35429,9 +35201,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Regiment</size>
     <country>Japan</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>42</independentX>
     <independentY>23</independentY>
     <leaderReference />
@@ -35471,7 +35243,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <posture>Active</posture>
     <restoredHours>0</restoredHours>
     <forcedReturningToBase>false</forcedReturningToBase>
-    <stackPriority>0.142857149</stackPriority>
+    <stackPriority>0.2857143</stackPriority>
     <enableAutoReattachProp>false</enableAutoReattachProp>
     <enableArriveState>false</enableArriveState>
     <objectId>748b4491-cf73-4f62-8f7d-075e0dcdec09</objectId>
@@ -35491,9 +35263,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Regiment</size>
     <country>Japan</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>42</independentX>
     <independentY>23</independentY>
     <leaderReference />
@@ -35533,7 +35305,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <posture>Active</posture>
     <restoredHours>0</restoredHours>
     <forcedReturningToBase>false</forcedReturningToBase>
-    <stackPriority>0.2857143</stackPriority>
+    <stackPriority>0.428571433</stackPriority>
     <enableAutoReattachProp>false</enableAutoReattachProp>
     <enableArriveState>false</enableArriveState>
     <objectId>c48c4012-e43a-4933-8cc9-5e8755cf6b7f</objectId>
@@ -35553,9 +35325,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Regiment</size>
     <country>China</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>22</independentX>
     <independentY>28</independentY>
     <leaderReference />
@@ -35605,9 +35377,9 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <size>Division</size>
     <country>China</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>14</independentX>
     <independentY>32</independentY>
     <leaderReference>
@@ -35666,9 +35438,9 @@ By Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
     <size>Regiment</size>
     <country>China</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>27</independentX>
     <independentY>32</independentY>
     <leaderReference />
@@ -35720,9 +35492,9 @@ By Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
     <size>Regiment</size>
     <country>China</country>
     <deployState>Combined</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference />
@@ -35762,9 +35534,9 @@ By Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
     <size>Regiment</size>
     <country>China</country>
     <deployState>Combined</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference />
@@ -35810,9 +35582,9 @@ By Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
     <size>Bridge</size>
     <country>China</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>21</independentX>
     <independentY>30</independentY>
     <leaderReference>
@@ -35876,9 +35648,9 @@ Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
     <size>Regiment</size>
     <country>China</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>27</independentX>
     <independentY>32</independentY>
     <leaderReference>
@@ -35929,9 +35701,9 @@ Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
     <size>Regiment</size>
     <country>China</country>
     <deployState>Combined</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -35976,9 +35748,9 @@ Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
     <size>Army</size>
     <country>China</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>20</independentX>
     <independentY>6</independentY>
     <leaderReference>
@@ -36014,9 +35786,9 @@ Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
     <size>Unspecified</size>
     <country>China</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>20</independentX>
     <independentY>6</independentY>
     <leaderReference />
@@ -36048,9 +35820,9 @@ Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
     <size>Regiment</size>
     <country>China</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>20</independentX>
     <independentY>6</independentY>
     <leaderReference>
@@ -36089,9 +35861,9 @@ Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
     <size>Bridge</size>
     <country>China</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>26</independentX>
     <independentY>36</independentY>
     <leaderReference>
@@ -36182,9 +35954,9 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <size>Army</size>
     <country>China</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>26</independentX>
     <independentY>36</independentY>
     <leaderReference>
@@ -36224,9 +35996,9 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <size>Unspecified</size>
     <country>China</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>26</independentX>
     <independentY>36</independentY>
     <leaderReference />
@@ -36259,9 +36031,9 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <size>Bridge</size>
     <country>China</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>26</independentX>
     <independentY>36</independentY>
     <leaderReference>
@@ -36345,9 +36117,9 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <size>Bridge</size>
     <country>China</country>
     <deployState>Combined</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -36395,9 +36167,9 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <size>Unspecified</size>
     <country>Japan</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>55</independentX>
     <independentY>25</independentY>
     <leaderReference>
@@ -36435,9 +36207,9 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <size>Unspecified</size>
     <country>Japan</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>37</independentX>
     <independentY>19</independentY>
     <leaderReference>
@@ -36475,9 +36247,9 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <size>Regiment</size>
     <country>Japan</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>42</independentX>
     <independentY>23</independentY>
     <leaderReference />
@@ -36495,7 +36267,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <posture>Active</posture>
     <restoredHours>0</restoredHours>
     <forcedReturningToBase>false</forcedReturningToBase>
-    <stackPriority>0.428571433</stackPriority>
+    <stackPriority>0.5714286</stackPriority>
     <enableAutoReattachProp>false</enableAutoReattachProp>
     <enableArriveState>false</enableArriveState>
     <objectId>1ca93054-7ae0-4bd5-bfb4-2643c57fa8b5</objectId>
@@ -36514,9 +36286,9 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <size>Unspecified</size>
     <country>China</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>2</independentX>
     <independentY>3</independentY>
     <leaderReference />
@@ -36544,9 +36316,9 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <size>Regiment</size>
     <country>China</country>
     <deployState>Combined</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference />
@@ -36594,9 +36366,9 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <size>Regiment</size>
     <country>China</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>22</independentX>
     <independentY>28</independentY>
     <leaderReference />
@@ -36630,9 +36402,9 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <size>Division</size>
     <country>Russia</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>40</independentX>
     <independentY>39</independentY>
     <leaderReference />
@@ -36677,9 +36449,9 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <size>Unspecified</size>
     <country>Russia</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>40</independentX>
     <independentY>39</independentY>
     <leaderReference />
@@ -36710,9 +36482,9 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <size>Unspecified</size>
     <country>Russia</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
-    <detachedRepair>false</detachedRepair>
     <independentX>40</independentX>
     <independentY>39</independentY>
     <leaderReference />
@@ -38927,9 +38699,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <parentMissionRef />
     <childrenMissionRefs />
     <sideObjectId>3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d</sideObjectId>
-    <completed>false</completed>
     <active>true</active>
-    <interrupted>false</interrupted>
     <objectId>382b9f09-2109-4f56-84fb-640f3129a8e5</objectId>
     <supplyState>AssemblingAndLoading</supplyState>
    </StrategicMission>
@@ -38959,9 +38729,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <parentMissionRef />
     <childrenMissionRefs />
     <sideObjectId>3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d</sideObjectId>
-    <completed>false</completed>
     <active>true</active>
-    <interrupted>false</interrupted>
     <objectId>8fe50183-1a8f-4eba-a889-ce3237333b0f</objectId>
     <navalTransferState>Assembling</navalTransferState>
    </StrategicMission>
@@ -38978,9 +38746,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <parentMissionRef />
     <childrenMissionRefs />
     <sideObjectId>dd43c3f3-1a02-46ca-b287-4ac069c23218</sideObjectId>
-    <completed>false</completed>
     <active>true</active>
-    <interrupted>false</interrupted>
     <objectId>5a3bcd1c-c241-437d-9b0b-37b34ff9bcbe</objectId>
     <rectangle>
      <xy1 x="20" y="31" />
@@ -39009,9 +38775,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <parentMissionRef />
     <childrenMissionRefs />
     <sideObjectId>3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d</sideObjectId>
-    <completed>false</completed>
     <active>true</active>
-    <interrupted>false</interrupted>
     <objectId>f4e79afc-af77-41cd-be8d-7df916899132</objectId>
     <rectangle>
      <xy1 x="14" y="32" />
@@ -39041,9 +38805,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     </waypoints>
     <parentMissionRef />
     <childrenMissionRefs />
-    <completed>false</completed>
     <active>true</active>
-    <interrupted>false</interrupted>
     <objectId>ec418139-4c78-4360-93b6-4e16e16a056e</objectId>
    </StrategicMission>
    <StrategicMission xsi:type="LandOperationMission">
@@ -39066,16 +38828,14 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     </waypoints>
     <parentMissionRef />
     <childrenMissionRefs />
-    <completed>false</completed>
     <active>true</active>
-    <interrupted>false</interrupted>
     <objectId>7a1167de-02b7-4073-b3a1-3062d1726007</objectId>
    </StrategicMission>
   </missions>
   <pendingNavalCombats />
   <landBattles />
   <theaters>
-   <Theater>
+   <Theater posture="Attack">
     <name>
      <english>Grand Council Theater</english>
      <japanese>軍機処戦区</japanese>
@@ -39941,9 +39701,10 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
      <FrontlineCellInfo x="36" y="39" weightRequested="0.007389307" />
      <FrontlineCellInfo x="37" y="39" weightRequested="0.00210973341" />
     </frontlineCellInfos>
+    <postureValue>0</postureValue>
     <objectId>3358843a-2c1b-4018-83bb-aea90a3523c6</objectId>
    </Theater>
-   <Theater>
+   <Theater posture="Attack">
     <name>
      <english>Macao</english>
      <japanese>マカオ</japanese>
@@ -39956,9 +39717,10 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <frontlineCellInfos>
      <FrontlineCellInfo x="3" y="1" weightRequested="0" />
     </frontlineCellInfos>
+    <postureValue>0</postureValue>
     <objectId>6e4b59a9-73cf-434f-acd1-296b3590070c</objectId>
    </Theater>
-   <Theater>
+   <Theater posture="Attack">
     <name>
      <english>Hong Kong</english>
      <japanese>香港</japanese>
@@ -39974,9 +39736,10 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
      <FrontlineCellInfo x="4" y="2" weightRequested="0" />
      <FrontlineCellInfo x="5" y="1" weightRequested="0" />
     </frontlineCellInfos>
+    <postureValue>0</postureValue>
     <objectId>38de578b-801d-4631-8acc-22fb86cafe20</objectId>
    </Theater>
-   <Theater>
+   <Theater posture="Attack">
     <name>
      <english>Governor of Taiwan Theater</english>
      <japanese>台湾巡撫戦区</japanese>
@@ -40007,9 +39770,10 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
      <XY x="21" y="5" />
     </cells>
     <frontlineCellInfos />
+    <postureValue>0</postureValue>
     <objectId>4c8fb4b6-5627-463f-b7e2-e641eed208f3</objectId>
    </Theater>
-   <Theater>
+   <Theater posture="Attack">
     <name>
      <english>Taketomi</english>
      <japanese>竹富島</japanese>
@@ -40023,9 +39787,10 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
      <XY x="26" y="4" />
     </cells>
     <frontlineCellInfos />
+    <postureValue>0</postureValue>
     <objectId>4007df9b-f540-4110-b76b-2dc51448a45f</objectId>
    </Theater>
-   <Theater>
+   <Theater posture="Attack">
     <name>
      <english>Miyakojima</english>
      <japanese>宮古島</japanese>
@@ -40036,9 +39801,10 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
      <XY x="28" y="5" />
     </cells>
     <frontlineCellInfos />
+    <postureValue>0</postureValue>
     <objectId>d71aba50-dda6-4e7d-8ca8-7051a44b4bdd</objectId>
    </Theater>
-   <Theater>
+   <Theater posture="Attack">
     <name>
      <english>Quelpart</english>
      <japanese>済州島</japanese>
@@ -40050,9 +39816,10 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
      <XY x="31" y="20" />
     </cells>
     <frontlineCellInfos />
+    <postureValue>0</postureValue>
     <objectId>f1de3514-b5f9-4119-9044-48577da73fbb</objectId>
    </Theater>
-   <Theater>
+   <Theater posture="Attack">
     <name>
      <english>Asan Corp Theater</english>
      <japanese>牙山軍戦区</japanese>
@@ -40065,9 +39832,10 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <frontlineCellInfos>
      <FrontlineCellInfo x="31" y="27" weightRequested="1109.48181" />
     </frontlineCellInfos>
+    <postureValue>0</postureValue>
     <objectId>652cddb8-33f3-4b00-93ab-fcd26acc0f49</objectId>
    </Theater>
-   <Theater>
+   <Theater posture="Attack">
     <name>
      <english>9th Combined Bridge Theater</english>
      <japanese>第九混成旅団戦区</japanese>
@@ -40080,9 +39848,10 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <frontlineCellInfos>
      <FrontlineCellInfo x="31" y="28" weightRequested="403.5515" />
     </frontlineCellInfos>
+    <postureValue>0</postureValue>
     <objectId>74b6fe0d-0a0e-49ec-817c-56ecd201387f</objectId>
    </Theater>
-   <Theater>
+   <Theater posture="Attack">
     <name>
      <english>Okinawa</english>
      <japanese>沖縄</japanese>
@@ -40096,9 +39865,10 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
      <XY x="34" y="9" />
     </cells>
     <frontlineCellInfos />
+    <postureValue>0</postureValue>
     <objectId>c229ceb1-2e53-4f06-b30b-1b7388ed0860</objectId>
    </Theater>
-   <Theater>
+   <Theater posture="Attack">
     <name>
      <english>Amami Oshima</english>
      <japanese>奄美大島</japanese>
@@ -40113,9 +39883,10 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
      <XY x="37" y="11" />
     </cells>
     <frontlineCellInfos />
+    <postureValue>0</postureValue>
     <objectId>84ac2083-b918-4ab8-906b-e30a4a357385</objectId>
    </Theater>
-   <Theater>
+   <Theater posture="Attack">
     <name>
      <english>Imperial General Headquarters Theater</english>
      <japanese>大本営戦区</japanese>
@@ -40304,9 +40075,10 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
      <XY x="59" y="38" />
     </cells>
     <frontlineCellInfos />
+    <postureValue>0</postureValue>
     <objectId>a73da4dd-05f8-4868-aca5-acf5bab5e3ad</objectId>
    </Theater>
-   <Theater>
+   <Theater posture="Attack">
     <name>
      <english>Vladivostok HQ Theater</english>
      <chineseSimplified>海参崴总部战区</chineseSimplified>
@@ -40333,6 +40105,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
      <FrontlineCellInfo x="37" y="38" weightRequested="0" />
      <FrontlineCellInfo x="38" y="39" weightRequested="0" />
     </frontlineCellInfos>
+    <postureValue>0</postureValue>
     <objectId>92c0d12a-731c-431d-906b-d5e534cf451f</objectId>
    </Theater>
   </theaters>
@@ -41663,7 +41436,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="26" y="33" terrain="ForestRough" longitude="124.0376" latitude="40.0514221" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="4/2" riversStr="2/3" />
     <Cell x="26" y="34" terrain="Forest" longitude="124.017555" latitude="40.5843" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="26" y="35" terrain="Forest" longitude="124.00013" latitude="41.116497" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
-    <Cell x="26" y="36" terrain="LightUrban" longitude="123.986168" latitude="41.64829" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="5">
+    <Cell x="26" y="36" terrain="LightUrban" longitude="123.986168" latitude="41.64829" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="5/2">
      <Label>
       <english>Mukden</english>
       <japanese>奉天</japanese>
@@ -41731,7 +41504,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     </Cell>
     <Cell x="27" y="33" terrain="Forest" longitude="124.574867" latitude="40.32042" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" riversStr="3" />
     <Cell x="27" y="34" terrain="Forest" longitude="124.558594" latitude="40.8534851" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
-    <Cell x="27" y="35" terrain="Forest" longitude="124.545021" latitude="41.38588" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
+    <Cell x="27" y="35" terrain="Forest" longitude="124.545021" latitude="41.38588" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="5/2" />
     <Cell x="27" y="36" terrain="Forest" longitude="124.534828" latitude="41.9177628" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="27" y="37" terrain="Forest" longitude="124.528419" latitude="42.4491844" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="27" y="38" terrain="Forest" longitude="124.525955" latitude="42.98012" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
@@ -41783,7 +41556,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="28" y="32" terrain="ForestRough" longitude="125.144676" latitude="39.5179634" roadsStr="5/2" riversStr="0" />
     <Cell x="28" y="33" terrain="ForestRough" longitude="125.129242" latitude="40.05331" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" riversStr="4/3/2/1" />
     <Cell x="28" y="34" terrain="Forest" longitude="125.11483" latitude="40.5875053" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" riversStr="2" />
-    <Cell x="28" y="35" terrain="Forest" longitude="125.102379" latitude="41.12081" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
+    <Cell x="28" y="35" terrain="Forest" longitude="125.102379" latitude="41.12081" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="5/2" />
     <Cell x="28" y="36" terrain="Forest" longitude="125.092667" latitude="41.6534081" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="28" y="37" terrain="Forest" longitude="125.086273" latitude="42.1853752" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="28" y="38" terrain="Forest" longitude="125.083549" latitude="42.716713" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
@@ -41840,7 +41613,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     </Cell>
     <Cell x="29" y="32" terrain="ForestRough" longitude="125.680733" latitude="39.7829857" riversStr="5" />
     <Cell x="29" y="33" terrain="ForestRough" longitude="125.668694" latitude="40.3184128" riversStr="4/5/0" />
-    <Cell x="29" y="34" terrain="ForestRough" longitude="125.657982" latitude="40.85284" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" riversStr="3/2/1" />
+    <Cell x="29" y="34" terrain="ForestRough" longitude="125.657982" latitude="40.85284" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="5/2" riversStr="3/2/1" />
     <Cell x="29" y="35" terrain="ForestRough" longitude="125.649353" latitude="41.3864136" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" riversStr="2" />
     <Cell x="29" y="36" terrain="ForestRough" longitude="125.643486" latitude="41.9192047" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="29" y="37" terrain="Forest" longitude="125.640892" latitude="42.45122" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
@@ -41911,9 +41684,9 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="30" y="29" terrain="Field" longitude="126.259094" latitude="37.8937836" IsCoast="true" roadsStr="2/5" />
     <Cell x="30" y="30" terrain="Field" longitude="126.24894" latitude="38.4332237" />
     <Cell x="30" y="31" terrain="ForestRough" longitude="126.239128" latitude="38.97187" />
-    <Cell x="30" y="32" terrain="ForestRough" longitude="126.229492" latitude="39.50954" roadsStr="1/4" />
-    <Cell x="30" y="33" terrain="ForestRough" longitude="126.220192" latitude="40.0461769" />
-    <Cell x="30" y="34" terrain="ForestRough" longitude="126.211716" latitude="40.5818253" riversStr="5" />
+    <Cell x="30" y="32" terrain="ForestRough" longitude="126.229492" latitude="39.50954" roadsStr="1/4/2/0" />
+    <Cell x="30" y="33" terrain="ForestRough" longitude="126.220192" latitude="40.0461769" roadsStr="0/3" />
+    <Cell x="30" y="34" terrain="ForestRough" longitude="126.211716" latitude="40.5818253" roadsStr="5/3" riversStr="5" />
     <Cell x="30" y="35" terrain="ForestRough" longitude="126.20472" latitude="41.11655" riversStr="4/5/0/1" />
     <Cell x="30" y="36" terrain="ForestRough" longitude="126.19989" latitude="41.6503944" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" riversStr="3" />
     <Cell x="30" y="37" terrain="ForestRough" longitude="126.19783" latitude="42.1833458" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
@@ -41962,7 +41735,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
       </StrategicGroupReference>
      </StrategicGroupReferences>
     </Cell>
-    <Cell x="31" y="28" terrain="LightUrban" longitude="126.796326" latitude="37.6154976" IsCoast="true" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" roadsStr="5/3">
+    <Cell x="31" y="28" terrain="LightUrban" longitude="126.796326" latitude="37.6154976" IsCoast="true" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" roadsStr="5/3/1">
      <Label>
       <english>Soul</english>
       <japanese>京城</japanese>
@@ -41979,7 +41752,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     </Cell>
     <Cell x="31" y="29" terrain="Field" longitude="126.788933" latitude="38.155262" />
     <Cell x="31" y="30" terrain="ForestRough" longitude="126.782158" latitude="38.6945343" />
-    <Cell x="31" y="31" terrain="ForestRough" longitude="126.775665" latitude="39.23311" />
+    <Cell x="31" y="31" terrain="ForestRough" longitude="126.775665" latitude="39.23311" roadsStr="2/5" />
     <Cell x="31" y="32" terrain="ForestRough" longitude="126.7694" latitude="39.77085" roadsStr="1/4" />
     <Cell x="31" y="33" terrain="Mountain" longitude="126.763596" latitude="40.30771" />
     <Cell x="31" y="34" terrain="Mountain" longitude="126.758728" latitude="40.8436737" riversStr="0" />
@@ -42017,9 +41790,15 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="32" y="26" terrain="ForestRough" longitude="127.343994" latitude="36.2552757" />
     <Cell x="32" y="27" terrain="Field" longitude="127.336266" latitude="36.79499" />
     <Cell x="32" y="28" terrain="Field" longitude="127.330429" latitude="37.3349075" />
-    <Cell x="32" y="29" terrain="ForestRough" longitude="127.326012" latitude="37.874836" />
+    <Cell x="32" y="29" terrain="ForestRough" longitude="127.326012" latitude="37.874836" roadsStr="4/1" />
     <Cell x="32" y="30" terrain="ForestRough" longitude="127.322472" latitude="38.414547" />
-    <Cell x="32" y="31" terrain="ForestRough" longitude="127.319359" latitude="38.9538345" IsCoast="true" />
+    <Cell x="32" y="31" terrain="ForestRough" longitude="127.319359" latitude="38.9538345" IsCoast="true" roadsStr="2/5">
+     <Label>
+      <english>Wonsan</english>
+      <japanese>元山</japanese>
+      <chineseSimplified>元山</chineseSimplified>
+     </Label>
+    </Cell>
     <Cell x="32" y="32" terrain="ForestRough" longitude="127.316422" latitude="39.492527" IsCoast="true" />
     <Cell x="32" y="33" terrain="ForestRough" longitude="127.313667" latitude="40.0305061" roadsStr="1/4" />
     <Cell x="32" y="34" terrain="Mountain" longitude="127.311394" latitude="40.5677071" />
@@ -42057,8 +41836,8 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="33" y="26" terrain="Field" longitude="127.86412" latitude="36.51235" />
     <Cell x="33" y="27" terrain="ForestRough" longitude="127.861252" latitude="37.0521049" />
     <Cell x="33" y="28" terrain="ForestRough" longitude="127.860085" latitude="37.5920677" />
-    <Cell x="33" y="29" terrain="ForestRough" longitude="127.860039" latitude="38.1320534" />
-    <Cell x="33" y="30" terrain="ForestRough" longitude="127.860573" latitude="38.6718674" IsCoast="true" />
+    <Cell x="33" y="29" terrain="ForestRough" longitude="127.860039" latitude="38.1320534" roadsStr="2/0/4" />
+    <Cell x="33" y="30" terrain="ForestRough" longitude="127.860573" latitude="38.6718674" IsCoast="true" roadsStr="3/5" />
     <Cell x="33" y="31" terrain="ShallowWater" longitude="127.861282" latitude="39.21133" />
     <Cell x="33" y="32" terrain="ForestRough" longitude="127.861984" latitude="39.7502975" IsCoast="true" />
     <Cell x="33" y="33" terrain="ForestRough" longitude="127.862762" latitude="40.28865" roadsStr="1/4" />
@@ -42102,8 +41881,8 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="34" y="25" terrain="Field" longitude="128.390259" latitude="35.68859" />
     <Cell x="34" y="26" terrain="Field" longitude="128.38826" latitude="36.2276726" />
     <Cell x="34" y="27" terrain="ForestRough" longitude="128.388641" latitude="36.7671967" />
-    <Cell x="34" y="28" terrain="ForestRough" longitude="128.391" latitude="37.3070831" />
-    <Cell x="34" y="29" terrain="ForestRough" longitude="128.39476" latitude="37.84719" IsCoast="true" />
+    <Cell x="34" y="28" terrain="ForestRough" longitude="128.391" latitude="37.3070831" roadsStr="2/0" />
+    <Cell x="34" y="29" terrain="ForestRough" longitude="128.39476" latitude="37.84719" IsCoast="true" roadsStr="3/5" />
     <Cell x="34" y="30" terrain="ForestRough" longitude="128.399261" latitude="38.3873558" IsCoast="true" />
     <Cell x="34" y="31" terrain="DeepWater" longitude="128.403976" latitude="38.92741" />
     <Cell x="34" y="32" terrain="DeepWater" longitude="128.408554" latitude="39.4671936" />
@@ -42144,10 +41923,10 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
       <chineseSimplified>釜山</chineseSimplified>
      </Label>
     </Cell>
-    <Cell x="35" y="24" terrain="Field" longitude="128.9074" latitude="35.4023323" IsCoast="true" roadsStr="4/3" />
-    <Cell x="35" y="25" terrain="Field" longitude="128.908615" latitude="35.94106" />
-    <Cell x="35" y="26" terrain="ForestRough" longitude="128.912491" latitude="36.4802933" />
-    <Cell x="35" y="27" terrain="ForestRough" longitude="128.918671" latitude="37.0200043" IsCoast="true" />
+    <Cell x="35" y="24" terrain="Field" longitude="128.9074" latitude="35.4023323" IsCoast="true" roadsStr="4/3/0" />
+    <Cell x="35" y="25" terrain="Field" longitude="128.908615" latitude="35.94106" roadsStr="3/0" />
+    <Cell x="35" y="26" terrain="ForestRough" longitude="128.912491" latitude="36.4802933" roadsStr="3/0" />
+    <Cell x="35" y="27" terrain="ForestRough" longitude="128.918671" latitude="37.0200043" IsCoast="true" roadsStr="3/5" />
     <Cell x="35" y="28" terrain="ForestRough" longitude="128.926529" latitude="37.56011" IsCoast="true" />
     <Cell x="35" y="29" terrain="DeepWater" longitude="128.935349" latitude="38.1004677" />
     <Cell x="35" y="30" terrain="DeepWater" longitude="128.944458" latitude="38.64093" />
@@ -43223,9 +43002,9 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
   </serializedCells>
  </gameState>
  <viewState>
-  <xPosition>2.02093</xPosition>
-  <yPosition>10.6695013</yPosition>
-  <orthographicSize>11</orthographicSize>
+  <xPosition>2.895229</xPosition>
+  <yPosition>10.2430763</yPosition>
+  <orthographicSize>12</orthographicSize>
   <hitAreaMapRecords>
    <HitAreaMapRecord hitAreaObjectId="0b2cbd39-ad25-4233-b5a1-5744048e7491" areaCellObjectId="" />
    <HitAreaMapRecord hitAreaObjectId="54b9824b-f430-407e-9d7e-867728dccccb" areaCellObjectId="" />

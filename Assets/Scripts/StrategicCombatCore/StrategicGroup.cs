@@ -120,6 +120,7 @@ namespace StrategicCombatCore
             // VolatileIndependent // Similar to Independent, but it would "dissolve" automatically if it's possible to combine to its parent. Use to naval transfer
         }
         public DeployState deployState; // generally, deployState should be set with SetDeployState()
+        public bool destroyed;
         
         // Independent sub states:
         public bool autoCombinable; // if true, it will convert from independent to combining when applicable
@@ -1264,8 +1265,15 @@ namespace StrategicCombatCore
             if (IsBase())
                 return;
 
+            MarkAsDestroyed();
+        }
+
+        public void MarkAsDestroyed()
+        {
+            ClearPlannedPath();
             RemoveFromMap();
             deployState = DeployState.NotDeployed;
+            destroyed = true;
             // TODO: Add log?
         }
         

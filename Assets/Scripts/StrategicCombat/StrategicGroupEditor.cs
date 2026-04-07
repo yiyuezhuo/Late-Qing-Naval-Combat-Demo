@@ -228,6 +228,7 @@ public class StrategicGroupEditor : LeftObjectPickerRightEditorStrategic<Strateg
         group.detachedFromGroupReference.referenceId = null;
         group.enableAutoReattach = false;
         group.assignedMissionObjectId = null;
+        group.destroyed = false;
     }
 
 }

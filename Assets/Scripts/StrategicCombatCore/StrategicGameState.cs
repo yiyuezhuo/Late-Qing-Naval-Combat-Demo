@@ -739,7 +739,59 @@ namespace StrategicCombatCore
             // TODO: Move to Core
 
             CleanupIndependentStrategicGroups();
+            CleanupDestroyedStrategicGroupsFromPendingNavalCombat();
             HandlePendingNavalCombat(victoryStatus);
+        }
+
+        void CleanupDestroyedStrategicGroupsFromPendingNavalCombat()
+        {
+            var pendingNavalCombat = EntityManager.Instance.Get<PendingNavalCombat>(scenarioState.pendingNavalCombatId);
+            if (pendingNavalCombat == null)
+                return;
+
+            foreach (var group in pendingNavalCombat.sideState0.GetGroups())
+            {
+                MarkDestroyedNavalGroupsRecursive(group);
+            }
+
+            foreach (var group in pendingNavalCombat.sideState1.GetGroups())
+            {
+                MarkDestroyedNavalGroupsRecursive(group);
+            }
+        }
+
+        bool MarkDestroyedNavalGroupsRecursive(StrategicGroup group)
+        {
+            if (group == null)
+                return false;
+
+            foreach (var subGroup in group.WalkDirectMembers<StrategicGroup>())
+            {
+                if (subGroup.deployState == StrategicGroup.DeployState.Combined)
+                {
+                    MarkDestroyedNavalGroupsRecursive(subGroup);
+                }
+            }
+
+            if (group.type != StrategicGroup.Type.Fleet)
+                return false;
+
+            var hasRemainingShip = group
+                .WalkDirectMembers()
+                .Any(member =>
+                {
+                    if (member is ShipLog shipLog)
+                        return shipLog.mapState != MapState.Destroyed;
+                    if (member is StrategicGroup subGroup && subGroup.deployState == StrategicGroup.DeployState.Combined)
+                        return !subGroup.destroyed;
+                    return false;
+                });
+
+            if (hasRemainingShip)
+                return false;
+
+            group.MarkAsDestroyed();
+            return true;
         }
 
         public void HandlePendingNavalCombat(VictoryStatus victoryStatus)
@@ -2270,6 +2322,9 @@ namespace StrategicCombatCore
                         g.type != StrategicGroup.Type.Fleet
                     );
 
+                    MarkDestroyedLandBattleGroups(battle.attacker.participantGroupIds);
+                    MarkDestroyedLandBattleGroups(battle.defender.participantGroupIds);
+
                     cell.landBattleId = null;
 
                     var vicDesc = battle.attackerVictory ? "Attacker Victory" : "Defender Victory";
@@ -2702,6 +2757,47 @@ namespace StrategicCombatCore
                 {
                     yield return landUnit;
                 }
+            }
+        }
+
+        void MarkDestroyedLandBattleGroups(IEnumerable<string> participantGroupIds)
+        {
+            if (participantGroupIds == null)
+                return;
+
+            foreach (var groupId in participantGroupIds)
+            {
+                var group = EntityManager.Instance.Get<StrategicGroup>(groupId);
+                if (group == null)
+                    continue;
+
+                foreach (var candidate in EnumerateLandBattleParticipantGroups(group))
+                {
+                    if (candidate.type == StrategicGroup.Type.Fleet ||
+                        candidate.type == StrategicGroup.Type.HeadQuarter ||
+                        candidate.type == StrategicGroup.Type.CoastArtillery ||
+                        candidate.type == StrategicGroup.Type.Base)
+                    {
+                        continue;
+                    }
+
+                    if (candidate.GetStrengthMen() != 0)
+                        continue;
+
+                    candidate.MarkAsDestroyed();
+                }
+            }
+        }
+
+        IEnumerable<StrategicGroup> EnumerateLandBattleParticipantGroups(StrategicGroup rootGroup)
+        {
+            if (rootGroup == null)
+                yield break;
+
+            yield return rootGroup;
+            foreach (var candidate in rootGroup.WalkDescendantStrategicGroups())
+            {
+                yield return candidate;
             }
         }
 

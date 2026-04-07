@@ -1,30 +1,30 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:Template name="LandBattleViewTemplate" src="project://database/Assets/UIDocuments/Templates/LandBattleViewTemplate.uxml?fileID=9197481963319205126&amp;guid=56d29b40cb985e745a83d011c11b992d&amp;type=3#LandBattleViewTemplate" />
+    <ui:Template name="LandBattleViewTemplate" src="project://database/Assets/UIDocuments/Templates/LandBattleViewTemplate.uxml?fileID=9197481963319205126&amp;guid=56d29b40cb985e745a83d011c11b992d&amp;type=3#LandBattleViewTemplate"/>
     <ui:VisualElement data-source-type="LandBattleEditor, Assembly-CSharp" class="panel" style="flex-grow: 1;">
         <ui:Label text="Land Battle" class="title">
             <Bindings>
-                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(30245956232056832)" />
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(30245956232056832)"/>
             </Bindings>
         </ui:Label>
         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
             <ui:VisualElement style="border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); flex-basis: 250px; flex-shrink: 0;">
-                <ui:ListView binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" reorderable="true" name="ObjectListView" item-template="project://database/Assets/UIDocuments/Templates/LandBattleLabel.uxml?fileID=9197481963319205126&amp;guid=a52ffbb8515700a48a5643382fbbd1de&amp;type=3#LandBattleLabel" data-source-path="currentGameState.landBattles" style="flex-grow: 1;" />
-                <ui:VisualElement name="ControlButtons">
-                    <ui:Button text="Copy Last" name="CopyLastButton" />
-                    <ui:Button text="Confirm" name="ConfirmButton" />
+                <ui:ListView binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" reorderable="true" name="ObjectListView" item-template="project://database/Assets/UIDocuments/Templates/LandBattleLabel.uxml?fileID=9197481963319205126&amp;guid=a52ffbb8515700a48a5643382fbbd1de&amp;type=3#LandBattleLabel" data-source-path="currentGameState.landBattles" style="flex-grow: 1;"/>
+                <ui:VisualElement name="ControlButtons" style="flex-shrink: 0;">
+                    <ui:Button text="Copy Last" name="CopyLastButton"/>
+                    <ui:Button text="Confirm" name="ConfirmButton"/>
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement style="flex-grow: 1;">
                 <ui:Label text="Not Selected or Invalid">
                     <Bindings>
-                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66691591213056)" />
-                        <ui:DataBinding property="style.display" data-source-path="selectedValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)" />
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66691591213056)"/>
+                        <ui:DataBinding property="style.display" data-source-path="selectedValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)"/>
                     </Bindings>
                 </ui:Label>
                 <ui:VisualElement style="flex-grow: 1;">
-                    <ui:Instance template="LandBattleViewTemplate" name="LandBattleViewTemplate" data-source-path="selectedObject" />
+                    <ui:Instance template="LandBattleViewTemplate" name="LandBattleViewTemplate" data-source-path="selectedObject"/>
                     <Bindings>
-                        <ui:DataBinding property="style.display" data-source-path="selectedValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle" />
+                        <ui:DataBinding property="style.display" data-source-path="selectedValid" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
                     </Bindings>
                 </ui:VisualElement>
             </ui:VisualElement>

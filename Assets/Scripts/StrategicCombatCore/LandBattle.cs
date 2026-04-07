@@ -36,6 +36,7 @@ namespace StrategicCombatCore
     {
         public string sideId;
         public List<LandBattleUnitState> unitStates = new();
+        public List<string> participantGroupIds = new();
         // public float globalTacticalModifier; // TODO: Represent it in Hex instead of Battle?
 
         // frozen attributes
@@ -155,6 +156,11 @@ namespace StrategicCombatCore
         {
             landBattleSideState.currentLeaderId = landBattleSideStateDyanmic.battleLeader?.objectId;
             landBattleSideState.currentCountry = landBattleSideStateDyanmic.country;
+            landBattleSideState.participantGroupIds = landBattleSideStateDyanmic.topGroupBundles
+                .Select(bundle => bundle.group?.objectId)
+                .Where(id => !string.IsNullOrWhiteSpace(id))
+                .Distinct()
+                .ToList();
 
             foreach(var landUnitBundle in landBattleSideStateDyanmic.landUnitBundles)
             {

@@ -279,6 +279,14 @@ namespace StrategicCombatCore
             set => SetDeployState(value);
         }
 
+        [XmlIgnore]
+        [CreateProperty]
+        public bool destroyedProp
+        {
+            get => destroyed;
+            set => destroyed = value;
+        }
+
         // IStrategicGroupMemberReferenceable Shared
         # region
         [CreateProperty]

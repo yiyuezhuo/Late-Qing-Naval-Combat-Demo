@@ -35,6 +35,8 @@ Check UI_Toolkit_AI_Guide.md for making style-related modifications in UI Toolki
 
 ## Unity Localization related thing
 Check Localization_AI_Guide.md for making localization modifications in UI Toolkit.
+Use `python Tools/add_localization.py` to add Dynamic Table entries (handles YAML quoting and ID assignment automatically).
+Use `python Tools/normalize_localization_ids.py --apply` to re-normalize IDs after bulk edits.
 
 ## Local command guardrails
 - Only build this repo’s solution: `Late-Qing-Naval-Combat-Demo.slnx`.

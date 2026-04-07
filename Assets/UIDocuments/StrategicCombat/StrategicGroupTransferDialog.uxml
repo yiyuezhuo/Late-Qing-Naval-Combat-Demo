@@ -29,7 +29,7 @@
         <ui:VisualElement style="flex-direction: row; align-items: center; flex-shrink: 0;">
             <ui:Label text="Independent Handling" style="min-width: 120px;">
                 <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-90000000000008)"/>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-18)"/>
                 </Bindings>
             </ui:Label>
             <ui:DropdownField name="IndependentHandlingDropdownField" style="flex-grow: 1;"/>
@@ -37,7 +37,7 @@
         <ui:VisualElement style="flex-direction: row; align-items: center; flex-shrink: 0;">
             <ui:Label text="Not Deployed Handling" style="min-width: 120px;">
                 <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-90000000000009)"/>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-19)"/>
                 </Bindings>
             </ui:Label>
             <ui:DropdownField name="NotDeployedHandlingDropdownField" style="flex-grow: 1;"/>
@@ -59,7 +59,7 @@
         <ui:VisualElement style="flex-direction: row; align-items: center; flex-shrink: 0;">
             <ui:Slider name="TransferPowerRatioSlider" label="Transfer Power Ratio" low-value="0" high-value="1" show-input-field="true" fill="true" style="flex-grow: 1;">
                 <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-90000000000007)"/>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-17)"/>
                 </Bindings>
             </ui:Slider>
             <ui:Label name="TransferPowerRatioValueLabel" text="0%" style="min-width: 64px; unity-text-align: middle-right; margin-left: 8px;"/>

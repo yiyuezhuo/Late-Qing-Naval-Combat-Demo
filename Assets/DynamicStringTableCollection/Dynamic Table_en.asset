@@ -1584,83 +1584,83 @@ MonoBehaviour:
     m_Localized: Japan
     m_Metadata:
       m_Items: []
-  - m_Id: -910000000000000001
+  - m_Id: -75
     m_Localized: General
     m_Metadata:
       m_Items: []
-  - m_Id: -910000000000000002
+  - m_Id: -76
     m_Localized: Headquarters
     m_Metadata:
       m_Items: []
-  - m_Id: -910000000000000003
+  - m_Id: -77
     m_Localized: Infantry
     m_Metadata:
       m_Items: []
-  - m_Id: -910000000000000004
+  - m_Id: -78
     m_Localized: Cavalry
     m_Metadata:
       m_Items: []
-  - m_Id: -910000000000000005
+  - m_Id: -79
     m_Localized: Artillery
     m_Metadata:
       m_Items: []
-  - m_Id: -910000000000000006
+  - m_Id: -80
     m_Localized: Engineer
     m_Metadata:
       m_Items: []
-  - m_Id: -910000000000000007
+  - m_Id: -81
     m_Localized: Fleet
     m_Metadata:
       m_Items: []
-  - m_Id: -910000000000000008
+  - m_Id: -82
     m_Localized: Coast Artillery
     m_Metadata:
       m_Items: []
-  - m_Id: -910000000000000009
+  - m_Id: -83
     m_Localized: Base
     m_Metadata:
       m_Items: []
-  - m_Id: -910000000000000010
+  - m_Id: -84
     m_Localized: Unspecified
     m_Metadata:
       m_Items: []
-  - m_Id: -910000000000000011
+  - m_Id: -85
     m_Localized: Army Group
     m_Metadata:
       m_Items: []
-  - m_Id: -910000000000000012
+  - m_Id: -86
     m_Localized: Army
     m_Metadata:
       m_Items: []
-  - m_Id: -910000000000000013
+  - m_Id: -87
     m_Localized: Corps
     m_Metadata:
       m_Items: []
-  - m_Id: -910000000000000014
+  - m_Id: -88
     m_Localized: Division
     m_Metadata:
       m_Items: []
-  - m_Id: -910000000000000015
+  - m_Id: -89
     m_Localized: Brigade
     m_Metadata:
       m_Items: []
-  - m_Id: -910000000000000016
+  - m_Id: -90
     m_Localized: Regiment
     m_Metadata:
       m_Items: []
-  - m_Id: -910000000000000017
+  - m_Id: -91
     m_Localized: Battalion
     m_Metadata:
       m_Items: []
-  - m_Id: -910000000000000018
+  - m_Id: -92
     m_Localized: Company
     m_Metadata:
       m_Items: []
-  - m_Id: -910000000000000019
+  - m_Id: -93
     m_Localized: Platoon
     m_Metadata:
       m_Items: []
-  - m_Id: -910000000000000020
+  - m_Id: -94
     m_Localized: Squad
     m_Metadata:
       m_Items: []
@@ -3139,288 +3139,300 @@ MonoBehaviour:
     m_Localized: SJS - Pacific Fleet in the First Sino-Japanese War
     m_Metadata:
       m_Items: []
-  - m_Id: -81000000100001
+  - m_Id: -1
     m_Localized: Power
     m_Metadata:
       m_Items: []
-  - m_Id: -81000000100002
+  - m_Id: -2
     m_Localized: Control
     m_Metadata:
       m_Items: []
-  - m_Id: -92000000100001
+  - m_Id: -3
     m_Localized: Invalid
     m_Metadata:
       m_Items: []
-  - m_Id: -92000000100002
+  - m_Id: -4
     m_Localized: No Solution
     m_Metadata:
       m_Items: []
-  - m_Id: -92000000100003
+  - m_Id: -5
     m_Localized: Can Fire
     m_Metadata:
       m_Items: []
-  - m_Id: -92000000100004
+  - m_Id: -6
     m_Localized: Reloading
     m_Metadata:
       m_Items: []
-  - m_Id: -92000000100005
+  - m_Id: -7
     m_Localized: No Ammunition
     m_Metadata:
       m_Items: []
-  - m_Id: -92000000100006
+  - m_Id: -8
     m_Localized: Out Of Arc
     m_Metadata:
       m_Items: []
-  - m_Id: -92000000100007
+  - m_Id: -9
     m_Localized: Doctrine Blocked
     m_Metadata:
       m_Items: []
-  - m_Id: -92000000100008
+  - m_Id: -10
     m_Localized: Unsafe
     m_Metadata:
       m_Items: []
-  - m_Id: -92000000100009
+  - m_Id: -11
     m_Localized: No Torpedo Setting
     m_Metadata:
       m_Items: []
-  - m_Id: -92000000100010
+  - m_Id: -12
     m_Localized: Disabled
     m_Metadata:
       m_Items: []
-  - m_Id: -92000000100011
+  - m_Id: -13
     m_Localized: Azimuth {0} deg, Distance {1} yd
     m_Metadata:
       m_Items: []
-  - m_Id: -92000000100012
+  - m_Id: -14
     m_Localized: 'Hit Probability: {0}'
     m_Metadata:
       m_Items: []
-  - m_Id: -92000000100013
+  - m_Id: -15
     m_Localized: 'Azimuth {0} deg, Distance {1} yd, Time {2}s @ {3} kts'
     m_Metadata:
       m_Items: []
-  - m_Id: -92000000100014
+  - m_Id: -16
     m_Localized: Confirm to restart current scene?
     m_Metadata:
       m_Items: []
-  - m_Id: -93000000100001
+  - m_Id: -17
     m_Localized: Scan
     m_Metadata:
       m_Items: []
-  - m_Id: -93000000100002
+  - m_Id: -18
     m_Localized: Shooter
     m_Metadata:
       m_Items: []
-  - m_Id: -93000000100003
+  - m_Id: -19
     m_Localized: Target
     m_Metadata:
       m_Items: []
-  - m_Id: -93000000100004
+  - m_Id: -20
     m_Localized: Gain
     m_Metadata:
       m_Items: []
-  - m_Id: -93000000100005
+  - m_Id: -21
     m_Localized: Raw Gain
     m_Metadata:
       m_Items: []
-  - m_Id: -93000000100006
+  - m_Id: -22
     m_Localized: Distance
     m_Metadata:
       m_Items: []
-  - m_Id: -93000000100007
+  - m_Id: -23
     m_Localized: Target FP
     m_Metadata:
       m_Items: []
-  - m_Id: -93000000100008
+  - m_Id: -24
     m_Localized: Target SV
     m_Metadata:
       m_Items: []
-  - m_Id: -93000000100009
+  - m_Id: -25
     m_Localized: Urgency
     m_Metadata:
       m_Items: []
-  - m_Id: -93000000100010
+  - m_Id: -26
     m_Localized: Under FP
     m_Metadata:
       m_Items: []
-  - m_Id: -93000000100011
+  - m_Id: -27
     m_Localized: Over Conc
     m_Metadata:
       m_Items: []
-  - m_Id: -93000000100012
+  - m_Id: -28
     m_Localized: FP Base
     m_Metadata:
       m_Items: []
-  - m_Id: -93000000100013
+  - m_Id: -29
     m_Localized: FP Eff
     m_Metadata:
       m_Items: []
-  - m_Id: -93000000100014
+  - m_Id: -30
     m_Localized: Try OC
     m_Metadata:
       m_Items: []
-  - m_Id: -93000000100015
+  - m_Id: -31
     m_Localized: Current
     m_Metadata:
       m_Items: []
-  - m_Id: -93000000100016
+  - m_Id: -32
     m_Localized: Current Eff
     m_Metadata:
       m_Items: []
-  - m_Id: -93000000100017
+  - m_Id: -33
     m_Localized: Stickiness
     m_Metadata:
       m_Items: []
-  - m_Id: -93000000100018
+  - m_Id: -34
     m_Localized: Long Threat
     m_Metadata:
       m_Items: []
-  - m_Id: -93000000100019
+  - m_Id: -35
     m_Localized: Short Threat
     m_Metadata:
       m_Items: []
-  - m_Id: -93000000100020
+  - m_Id: -36
     m_Localized: Threat Dist
     m_Metadata:
       m_Items: []
-  - m_Id: -94000000000011
+  - m_Id: -37
     m_Localized: Choose source
     m_Metadata:
       m_Items: []
-  - m_Id: -94000000000012
+  - m_Id: -38
     m_Localized: Choose destination
     m_Metadata:
       m_Items: []
-  - m_Id: -94000000000013
+  - m_Id: -39
     m_Localized: Shore field unavailable
     m_Metadata:
       m_Items: []
-  - m_Id: -94000000000014
+  - m_Id: -40
     m_Localized: Outside ROI
     m_Metadata:
       m_Items: []
-  - m_Id: -94000000000015
+  - m_Id: -41
     m_Localized: Source blocked
     m_Metadata:
       m_Items: []
-  - m_Id: -94000000000016
+  - m_Id: -42
     m_Localized: Destination blocked
     m_Metadata:
       m_Items: []
-  - m_Id: -94000000000017
+  - m_Id: -43
     m_Localized: No path
     m_Metadata:
       m_Items: []
-  - m_Id: -94000000000018
+  - m_Id: -44
     m_Localized: Routed distance {0:0.00} nm
     m_Metadata:
       m_Items: []
-  - m_Id: -94000000000019
+  - m_Id: -45
     m_Localized: Choose source
     m_Metadata:
       m_Items: []
-  - m_Id: -94000000000020
+  - m_Id: -46
     m_Localized: Choose destination
     m_Metadata:
       m_Items: []
-  - m_Id: -94000000000021
+  - m_Id: -47
     m_Localized: Routed distance {0:0.00} nm
     m_Metadata:
       m_Items: []
-  - m_Id: -94000000000022
+  - m_Id: -48
     m_Localized: Outside exact search window
     m_Metadata:
       m_Items: []
-  - m_Id: -95000000010001
+  - m_Id: -49
     m_Localized: No route
     m_Metadata:
       m_Items: []
-  - m_Id: -95000000010002
+  - m_Id: -50
     m_Localized: Active
     m_Metadata:
       m_Items: []
-  - m_Id: -95000000010003
+  - m_Id: -51
     m_Localized: Ignored by automatic maneuver
     m_Metadata:
       m_Items: []
-  - m_Id: -95000000010004
+  - m_Id: -52
     m_Localized: Ignored by control mode
     m_Metadata:
       m_Items: []
-  - m_Id: -95000000010005
+  - m_Id: -53
     m_Localized: 'Waypoints: {0}, Remaining distance: {1:0.00} nm'
     m_Metadata:
       m_Items: []
-  - m_Id: -95000000010006
+  - m_Id: -54
     m_Localized: 'Waypoint: choose destination'
     m_Metadata:
       m_Items: []
-  - m_Id: -95000000010007
+  - m_Id: -55
     m_Localized: 'Waypoint: shore field unavailable'
     m_Metadata:
       m_Items: []
-  - m_Id: -95000000010008
+  - m_Id: -56
     m_Localized: 'Waypoint: outside ROI'
     m_Metadata:
       m_Items: []
-  - m_Id: -95000000010009
+  - m_Id: -57
     m_Localized: 'Waypoint: source blocked'
     m_Metadata:
       m_Items: []
-  - m_Id: -95000000010010
+  - m_Id: -58
     m_Localized: 'Waypoint: destination blocked'
     m_Metadata:
       m_Items: []
-  - m_Id: -95000000010011
+  - m_Id: -59
     m_Localized: 'Waypoint: no path'
     m_Metadata:
       m_Items: []
-  - m_Id: -95000000010012
+  - m_Id: -60
     m_Localized: 'Waypoint: routed distance {0:0.00} nm'
     m_Metadata:
       m_Items: []
-  - m_Id: -95000000010013
+  - m_Id: -61
     m_Localized: 'Waypoint: outside exact search window'
     m_Metadata:
       m_Items: []
-  - m_Id: -96000000010001
+  - m_Id: -62
     m_Localized: None
     m_Metadata:
       m_Items: []
-  - m_Id: -96000000010002
+  - m_Id: -63
     m_Localized: Weak
     m_Metadata:
       m_Items: []
-  - m_Id: -96000000010003
+  - m_Id: -64
     m_Localized: Strong
     m_Metadata:
       m_Items: []
-  - m_Id: -96000000010004
+  - m_Id: -65
     m_Localized: Sleep ({0} min)
     m_Metadata:
       m_Items: []
-  - m_Id: -96000000010005
+  - m_Id: -66
     m_Localized: Awaking ({0} min)
     m_Metadata:
       m_Items: []
-  - m_Id: -96000000010006
+  - m_Id: -67
     m_Localized: Vertical Penetration (in)
     m_Metadata:
       m_Items: []
-  - m_Id: -96000000010007
+  - m_Id: -68
     m_Localized: Horizontal Penetration (in)
     m_Metadata:
       m_Items: []
-  - m_Id: -96000000010008
+  - m_Id: -69
     m_Localized: Fire Control (Lowest Speed Broad)
     m_Metadata:
       m_Items: []
-  - m_Id: -97000000100001
+  - m_Id: -70
     m_Localized: Attack
     m_Metadata:
       m_Items: []
-  - m_Id: -97000000100002
+  - m_Id: -71
     m_Localized: Defense
+    m_Metadata:
+      m_Items: []
+  - m_Id: -72
+    m_Localized: Attacker
+    m_Metadata:
+      m_Items: []
+  - m_Id: -73
+    m_Localized: Defender
+    m_Metadata:
+      m_Items: []
+  - m_Id: -74
+    m_Localized: '{0} ({1}) Victory'
     m_Metadata:
       m_Items: []
   references:

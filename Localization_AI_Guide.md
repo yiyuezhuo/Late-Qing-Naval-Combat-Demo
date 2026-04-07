@@ -1,157 +1,223 @@
 # Localization AI Guide
 
-This document summarizes the localization workflow used in this repository, based on recent implementation and feedback.
+This document summarizes the localization workflow used in this repository.
 
-## 1. Two-table model in this project
+## 1. Two-table model
 
-This project uses two string table collections with different responsibilities:
+This project uses two string table collections:
 
-- `Standard Table`: UI labels and static document strings (mostly UXML-bound labels/text).
-- `Dynamic Table`: runtime keys, especially enum option texts used by `LocalizedEnumField`.
+| Table | Responsibility |
+|-------|----------------|
+| **Dynamic Table** | Runtime C# lookups — `Localize(...)`, `LocalizeEnum(...)`, `LocalizedEnumField` options |
+| **Standard Table** | Static UXML-bound labels and text |
 
-## 2. The most important rule: `Localize()` uses `Dynamic Table`
+The deciding factor is **how the text is looked up**, not where it appears on screen.
 
-This is the part that is easiest to get wrong.
+## 2. Routing rule: which table to use
 
-- If the text is fetched in C# through `Localize("...")`, `ILocalizeService.Get(...)`, or `ServiceLocator.Get<ILocalizeService>().Get(...)`, then it is a **runtime lookup**, and the key must exist in **Dynamic Table**.
-- If the text is a static UXML label/text and is localized by adding a `LocalizedString` binding in UXML, then the key should be in **Standard Table**.
+| Usage | Table |
+|-------|-------|
+| C# `Localize("key")` / `ILocalizeService.Get(...)` | **Dynamic Table** |
+| C# `LocalizeEnum(enumVal)` / `ILocalizeService.GetEnum(...)` | **Dynamic Table** |
+| `LocalizedEnumField` option values | **Dynamic Table** |
+| UXML `LocalizedString` binding (`property="label"`, `property="text"`, etc.) | **Standard Table** |
 
-In this repository, `UnityLocalizationService.Get(...)` looks up keys from `Dynamic Table`, not `Standard Table`.
+> ⚠️ Putting a `Localize(...)` key into Standard Table causes silent fallback to raw key text.
 
-So:
+## 3. Key naming conventions
 
-- `Localize("Invalid")` => add `Invalid` to **Dynamic Table**
-- `Localize("Azimuth {0} deg, Distance {1} yd", ...)` => add that format string to **Dynamic Table**
-- `<ui:Label text="Torpedo Intercept Solution Visualizer">` with a UXML `LocalizedString` binding => add that key to **Standard Table**
+**Enum keys (Dynamic Table):**
 
-If you put a runtime `Localize(...)` key only into `Standard Table`, localization will fail and usually fall back to the raw key text.
+Format: `{EnumTypeName}.{EnumMemberName}` — e.g. `RangeRingDisplayMode.Circle`, `Country.China`
 
-## 3. `LocalizeEnum(...)` also uses `Dynamic Table`
+When you add a new enum displayed by `LocalizedEnumField` or accessed via `LocalizeEnum(...)`, add a key for every member.
 
-`LocalizeEnum(...)`, `ILocalizeService.GetEnum(...)`, and `ServiceLocator.Get<ILocalizeService>().GetEnum(...)` are also runtime lookups, so they also use **Dynamic Table**.
+**Format strings (Dynamic Table):**
 
-This is another common source of mistakes:
+Use `{0}`, `{1}`, … placeholders — e.g. `Azimuth {0} deg, Distance {1} yd`
 
-- `Localize("RangeRingDisplayMode.Circle")` => runtime lookup in **Dynamic Table**
-- `LocalizeEnum(RangeRingDisplayMode.Circle)` => runtime lookup in **Dynamic Table**
-- `LocalizedEnumField` displaying `RangeRingDisplayMode.Circle` => also needs keys in **Dynamic Table**
+## 4. UXML label binding (Standard Table)
 
-The difference is the key format:
+Localizing a UXML control label is **not automatic**. Add a `LocalizedString` binding explicitly:
 
-- `Localize("...")` uses exactly the string you pass in as the key
-- `LocalizeEnum(...)` builds the key from the enum type and enum member
+```xml
+<Bindings>
+    <UnityEngine.Localization.LocalizedString
+        property="label"
+        table="GUID:7dfd13ea0ff0ef0408a7f015356a0054"
+        entry="Id(-1)" />
+</Bindings>
+```
 
-In practice, `LocalizeEnum(RangeRingDisplayMode.Circle)` expects a key like:
+- Standard Table collection GUID: `7dfd13ea0ff0ef0408a7f015356a0054`
+- `entry` ID comes from Standard Table Shared Data
 
-- `RangeRingDisplayMode.Circle`
+After adding a Standard Table entry, update the `entry="Id(...)"` in the corresponding UXML file.
 
-So if enum text is wrong, do not add it to `Standard Table`; add the enum keys to **Dynamic Table**.
+## 5. Asset files to modify
 
-## 4. How enum localization works
+When adding a new localizable key, update:
 
-`LocalizedEnumField` localizes enum options by key convention:
-
-- Key format: `{EnumTypeName}.{EnumMemberName}`
-- Example:
-  - `RangeRingDisplayMode.Circle`
-  - `RangeRingDisplayMode.MergedArcs`
-  - `RangeRingDisplayMode.DistinctArcs`
-
-So when you add a new enum shown by `LocalizedEnumField`, you must add matching keys into **Dynamic Table Shared Data** and localized values into each locale file.
-
-This rule is the same rule that `LocalizeEnum(...)` relies on.
-
-## 5. How field label localization works
-
-For a control label in UXML (for example, `label="Range Ring Display"`), localization is **not automatic**.  
-You must explicitly add a `LocalizedString` binding in UXML:
-
-- `property="label"`
-- `table="GUID:..."` (the Standard Table collection GUID already used in the file)
-- `entry="Id(...)"` (ID from Standard Table Shared Data)
-
-Without this, the label stays as raw text.
-
-This is different from `Localize("Range Ring Display")` in C#:
-
-- UXML binding => **Standard Table**
-- C# `Localize(...)` => **Dynamic Table**
-
-Also:
-
-- C# `LocalizeEnum(...)` => **Dynamic Table**
-- `LocalizedEnumField` option values => **Dynamic Table**
-
-## 6. Asset files to modify
-
-When adding a new localizable key, update all required files:
-
-- Shared key definition:
+- **Shared key definition** (one of):
+  - `Assets/DynamicStringTableCollection/Dynamic Table Shared Data.asset`
   - `Assets/StandardStringTableCollection/Standard Table Shared Data.asset`
-  - or `Assets/DynamicStringTableCollection/Dynamic Table Shared Data.asset`
-- Per-locale values:
-  - `*_en.asset`
-  - `*_ja.asset`
-  - `*_zh-Hans.asset`
-  - `*_zh-Hant.asset`
+- **Per-locale values** (all four):
+  - `*_en.asset`, `*_ja.asset`, `*_zh-Hans.asset`, `*_zh-Hant.asset`
 
-All locale tables must include the same `m_Id`.
+**Prefer `Tools/add_localization.py` for Dynamic Table entries** — it handles insertion position, quoting, and ID assignment automatically. See Section 10.
 
-## 7. Encoding convention for non-English locale assets
+### Manual insertion positions
 
-For Japanese / Simplified Chinese / Traditional Chinese in these YAML assets:
+New entries must be inserted at specific positions — **not appended to the end of the file**.
 
-- Use Unicode escape form in `m_Localized`, e.g.:
-  - `"\u30D3\u30E5\u30FC\u30D5\u30A9\u30FC\u30C8\u98A8\u529B\u968E\u7D1A\uFF1A{0}"`
-- Do not leave English source text in non-English locale files when translation is expected.
+**Shared Data assets** (both Dynamic and Standard) — insert immediately before:
+```yaml
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+```
 
-## 8. Recommended implementation checklist
+**Locale assets** (`_en`, `_ja`, `_zh-Hans`, `_zh-Hant` — both tables) — insert immediately before:
+```yaml
+  references:
+    version: 2
+```
+
+## 6. YAML formatting rules
+
+### Quoting
+
+Values containing `{`, `}`, `:`, or `#` **must be quoted** or Unity's YAML parser throws a parse error.
+
+- **English — single-quoted:** `'Azimuth {0} deg'`
+  - Escape an internal single quote by doubling: `'It''s done'`
+- **Non-English — double-quoted with Unicode escapes:** `"\u65B9\u4F4D{0}\u5EA6"`
+  - Do not mix raw CJK/kana characters with double-quoting; always use `\uXXXX` form.
+
+### Encoding for non-English locales
+
+For Japanese / Simplified Chinese / Traditional Chinese, write `m_Localized` as Unicode escape sequences:
+
+- ✅ `"\u30D3\u30E5\u30FC\u30D5\u30A9\u30FC\u30C8\u98A8\u529B\u968E\u7D1A\uFF1A{0}"`
+- ❌ `"ビューフォート風力階級：{0}"`
+
+This avoids encoding corruption when files are processed by tools or scripts.
+
+## 7. Recommended implementation checklist
 
 1. Add enum/property in C#.
 2. Register enum converter if needed (`RegisterConverters.cs`).
-3. Decide whether the string is:
-   - a UXML-bound static label/text => use **Standard Table**
-   - a runtime C# `Localize(...)` lookup => use **Dynamic Table**
-   - a runtime C# `LocalizeEnum(...)` lookup => use **Dynamic Table**
-   - a `LocalizedEnumField` option => use **Dynamic Table**
-4. Add the key to the correct `* Shared Data.asset`.
-5. Add/adjust UXML binding (`LocalizedString` for labels) if it is a UXML label/text.
-6. Add `m_Localized` entries for every locale file with the same `m_Id`.
-7. Verify fallback is not happening (no `No translation found` / raw key shown).
+3. Decide which table (see Section 2).
+4. **Dynamic Table:** run `python Tools/add_localization.py --key "..." --en "..." --ja "..." --zh-hans "..." --zh-hant "..."`.
+5. **Standard Table:**
+   a. Run `python Tools/standard_localization.py query "My Label"` — check if already localized.
+   b. If not found, run `python Tools/standard_localization.py add --key "..." --en "..." --ja "..." --zh-hans "..." --zh-hant "..."`.
+   c. Paste the printed UXML snippet into the target UXML file inside a `<Bindings>` block.
+6. Verify no fallback is happening — raw key text shown in-game means wrong table or missing entry.
 
-## 9. Example from recent change
+For **Standard Table**, treat `--key` as the stable lookup identifier. It can match the English text for simple static labels, but it does not have to.
 
-- New UI label key in Standard Table: `Range Ring Display`
-- New enum keys in Dynamic Table:
-  - `RangeRingDisplayMode.Circle`
-  - `RangeRingDisplayMode.MergedArcs`
-  - `RangeRingDisplayMode.DistinctArcs`
-- Runtime format string in Dynamic Table:
-  - `Azimuth {0} deg, Distance {1} yd`
-- Non-English locale values were written as Unicode escapes, per project convention.
+## 8. Examples
 
-## 10. Table Keys
+**Dynamic Table — format string:**
+- Key: `{0} ({1}) Victory` → en stored as `'{0} ({1}) Victory'` (single-quoted because of `{`)
+- Used as: `string.Format(Localize("{0} ({1}) Victory"), countryName, role)`
 
-Distributed ID generator
+**Dynamic Table — enum keys:**
+- `RangeRingDisplayMode.Circle`, `RangeRingDisplayMode.MergedArcs`, `RangeRingDisplayMode.DistinctArcs`
 
-By default, Unity uses a distributed Key Id generator to provide a unique Key Id value specific to the machine that generates it. This means that it is safe for multiple users to work on the same Table. Note that you might need to resolve some merge conflicts, but because Unity never generates the same Key Id twice, resolving these conflicts should be straightforward.
+**Dynamic Table — plain format string:**
+- Key: `Azimuth {0} deg, Distance {1} yd`
 
-A Key is a 64-bit long data type. It has the following structure:
+**Standard Table — UXML label:**
+- Key: `Range Ring Display`, bound via `LocalizedString` with `property="label"`
 
+## 9. Key ID scheme
 
-| **Bits**        | **Name**                                             | **Description**                                                                                                                                                                                                                                                                                                                            |
-| --------------- | ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 12 (0-11)       | Sequence Number                                      | A local counter per machine that starts at 0 and increments by 1 for each new ID request that is made during the same millisecond.  <br>The value is limited to 12 bytes, so it can contain 4095 items before the IDs for this millisecond are exhausted and the ID generator must wait until the next millisecond before it can continue. |
-| 10 Bits (12-21) | Machine Id                                           | The ID of the machine.  <br>By default, in the Editor, this value is generated from the machine's network interface physical address.  <br>However, you can also set it to a custom value. There is enough space for 1024 machines.                                                                                                        |
-| 41 Bits (22-63) | Timestamp                                            | A timestamp using a custom epoch (or start time), which is the time the class was created.  <br>The maximum timestamp that can be represented is 69 years from the custom epoch.  <br>At this point, the Key generator will have exhausted all possible unique Ids.                                                                        |
-| 1 Bit (64)      | [Signed Bit](https://en.wikipedia.org/wiki/Sign_bit) | The ID generator does not use the signed bit.  <br>If you want to add custom Id values, use the signed bit and add Key IDs with negative values to avoid conflicts.                                                                                                                                                                        |
+Unity's distributed generator uses bits 0–62 (always non-negative). The sign bit is explicitly reserved for custom IDs — **all manually assigned IDs must be negative**.
+
+This project uses sequential manual IDs: `-1, -2, -3, …`
+
+For **new entries**, use the helper scripts so they assign the next sequential small negative ID automatically.
+
+> ⚠️ Do not manually invent large arbitrary negatives such as `-97000000100001`. Use the next sequential value.
+
+Use `Tools/add_localization.py` or `Tools/standard_localization.py add` to assign the next ID. Use `Tools/normalize_localization_ids.py --apply` to re-pack fragmented manual IDs back into a clean sequential scheme when needed.
+
+## 10. Tools
+
+Three Python helper scripts live in `Tools/` to reduce manual error when editing the YAML asset files.
+
+### `Tools/add_localization.py` — add a new Dynamic Table entry
+
+```bash
+python Tools/add_localization.py \
+  --key "My New Key" \
+  --en "English text" \
+  --ja "日本語テキスト" \
+  --zh-hans "简体中文" \
+  --zh-hant "繁體中文"
+```
+
+Options:
+- `--dry-run` — preview changes without writing
+- `--file path/to/keys.json` — batch mode using a JSON array of entry objects
+- `--file path/to/keys.txt` — batch mode; each non-empty non-comment line is `key|en|ja|zh-hans|zh-hant`
+
+The script auto-assigns the next sequential small negative ID, handles YAML quoting, and Unicode-escapes non-ASCII text in the ja/zh-Hans/zh-Hant files.
+
+**Only works for Dynamic Table.** For Standard Table entries, use `Tools/standard_localization.py` and then paste the printed `entry="Id(...)"` binding into the target UXML file.
+
+### `Tools/standard_localization.py` — query and add Standard Table entries
+
+Use for UXML-bound static labels. The script prints a ready-to-paste UXML binding snippet so the agent only needs to do a text insertion.
+
+**Agent workflow:**
+```bash
+# Step 1 — check if the label is already localized
+python Tools/standard_localization.py query "Range Ring Display"
+
+# → FOUND: prints ID + 4 translations + UXML snippet → paste snippet into UXML file, done.
+# → NOT FOUND: continue to step 2.
+
+# Step 2 — add the entry
+python Tools/standard_localization.py add \
+  --key "Range Ring Display" \
+  --en "Range Ring Display" \
+  --ja "射程環表示" \
+  --zh-hans "射程环显示" \
+  --zh-hant "射程環顯示"
+
+# → prints assigned ID + UXML snippet → paste snippet into UXML file, done.
+```
+
+Other commands:
+```bash
+python Tools/standard_localization.py list       # list all keys and IDs
+python Tools/standard_localization.py add --dry-run ...  # preview without writing
+```
+
+The printed UXML snippet looks like:
+```xml
+<UnityEngine.Localization.LocalizedString
+    property="label"
+    table="GUID:7dfd13ea0ff0ef0408a7f015356a0054"
+    entry="Id(-74)" />
+```
+Wrap it in a `<Bindings>` block inside the target UXML element. Change `property="label"` to `property="text"` if localizing a Button or Label's text attribute instead.
+
+**Only works for Standard Table.** For Dynamic Table entries, use `Tools/add_localization.py`.
+
+### `Tools/normalize_localization_ids.py` — renumber manual negative IDs
+
+Renumbers all manual negative IDs in both tables to a clean `-1, -2, -3, …` sequence and updates `entry="Id(...)"` references in UXML files.
+
+```bash
+python Tools/normalize_localization_ids.py          # dry-run (no writes)
+python Tools/normalize_localization_ids.py --apply  # apply changes
+```
+
 ## 11. Notes
 
-"/n" should not be used in the `Localize`.
-
-Common pitfall:
-
-- Do not assume "UI text" always belongs in `Standard Table`.
-- In this project, the deciding factor is **how the text is looked up**, not whether it appears on screen.
-- If C# calls `Localize(...)`, it belongs in `Dynamic Table`.
-- If C# calls `LocalizeEnum(...)`, it also belongs in `Dynamic Table`.
+- Avoid passing newline characters into `Localize(...)`. In this repository, localized UI text is treated as single-line keys/labels; if you need multi-line presentation, prefer separate keys or UI layout changes instead.
+- The deciding factor for which table to use is **how** the text is looked up (see Section 2), not where it appears on screen.

@@ -163,7 +163,7 @@
             <ui:VisualElement data-source-path="searchlightAutomaticType" style="flex-grow: 0; flex-direction: row;">
                 <ui:Label text="Searchlight Control:">
                     <Bindings>
-                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-96000000000005)"/>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-62)"/>
                     </Bindings>
                 </ui:Label>
                 <ui:Label text="Inherit">
@@ -401,7 +401,7 @@
             <ui:VisualElement data-source-path="awakeCountdownMinutes" style="flex-grow: 0; flex-direction: row;">
                 <ui:Label text="Awake Countdown Minutes:">
                     <Bindings>
-                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-96000000000008)"/>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-65)"/>
                     </Bindings>
                 </ui:Label>
                 <ui:Label text="Inherit">
@@ -439,7 +439,7 @@
             <ui:VisualElement data-source-path="awaking" style="flex-grow: 0; flex-direction: row;">
                 <ui:Label text="Awaking:">
                     <Bindings>
-                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-96000000000009)"/>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-66)"/>
                     </Bindings>
                 </ui:Label>
                 <ui:Label text="Inherit">

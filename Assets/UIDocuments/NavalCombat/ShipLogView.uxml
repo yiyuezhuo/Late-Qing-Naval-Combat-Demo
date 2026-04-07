@@ -316,14 +316,14 @@
                                     <ui:Toggle label="Port Searchlight On">
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="portSearchlightEnabled" binding-mode="TwoWay"/>
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-1001001)"/>
+                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-1)"/>
                                             <ui:DataBinding property="enabledSelf" data-source-path="portSearchlightToggleEditable" binding-mode="ToTarget"/>
                                         </Bindings>
                                     </ui:Toggle>
                                     <ui:Slider label="Port Searchlight Relative Bearing (deg)" low-value="180" high-value="360" show-input-field="true">
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="portSearchlightDirectionDeg" binding-mode="TwoWay"/>
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-1001002)"/>
+                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-2)"/>
                                             <ui:DataBinding property="enabledSelf" data-source-path="portSearchlightDirectionEditable" binding-mode="ToTarget"/>
                                         </Bindings>
                                     </ui:Slider>
@@ -337,14 +337,14 @@
                                     <ui:Toggle label="Starboard Searchlight On">
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="starboardSearchlightEnabled" binding-mode="TwoWay"/>
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-1001003)"/>
+                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-3)"/>
                                             <ui:DataBinding property="enabledSelf" data-source-path="starboardSearchlightToggleEditable" binding-mode="ToTarget"/>
                                         </Bindings>
                                     </ui:Toggle>
                                     <ui:Slider label="Starboard Searchlight Relative Bearing (deg)" high-value="180" show-input-field="true">
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="starboardSearchlightDirectionDeg" binding-mode="TwoWay"/>
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-1001004)"/>
+                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-4)"/>
                                             <ui:DataBinding property="enabledSelf" data-source-path="starboardSearchlightDirectionEditable" binding-mode="ToTarget"/>
                                         </Bindings>
                                     </ui:Slider>
@@ -736,24 +736,24 @@
                             <ui:TextField label="Route Status" readonly="true">
                                 <Bindings>
                                     <ui:DataBinding property="value" data-source-path="manualRouteStatusDesc" binding-mode="ToTarget"/>
-                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-95000000000002)"/>
+                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-54)"/>
                                 </Bindings>
                             </ui:TextField>
                             <ui:TextField label="Route Summary" readonly="true">
                                 <Bindings>
                                     <ui:DataBinding property="value" data-source-path="manualRouteSummaryDesc" binding-mode="ToTarget"/>
-                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-95000000000003)"/>
+                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-55)"/>
                                 </Bindings>
                             </ui:TextField>
                             <ui:Label text="Waypoints">
                                 <Bindings>
-                                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-95000000000004)"/>
+                                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-56)"/>
                                 </Bindings>
                             </ui:Label>
                             <ui:VisualElement style="flex-direction: row; margin-top: 2px; margin-bottom: 2px;">
                                 <ui:Label text="Index" style="width: 56px;">
                                     <Bindings>
-                                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-95000000000005)"/>
+                                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-57)"/>
                                     </Bindings>
                                 </ui:Label>
                                 <ui:Label text="Latitude" style="flex-grow: 1;">

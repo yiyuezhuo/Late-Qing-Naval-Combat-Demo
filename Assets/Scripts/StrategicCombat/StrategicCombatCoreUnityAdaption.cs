@@ -979,6 +979,7 @@ namespace StrategicCombatCore
     public partial class LandBattle
     {
         static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
+        static string LocalizeEnum<T>(T obj) => ServiceLocator.Get<ILocalizeService>().GetEnum(obj);
 
         [CreateProperty]
         public bool isActive => !end;
@@ -1015,7 +1016,16 @@ namespace StrategicCombatCore
         }
 
         [CreateProperty]
-        public string summary => Localize(attackerVictory ? "Attacker Victory" : "Defender Victory");
+        public string summary
+        {
+            get
+            {
+                var winningSide = attackerVictory ? attacker : defender;
+                var countryName = LocalizeEnum(winningSide.currentCountry);
+                var roleKey = attackerVictory ? "Attacker" : "Defender";
+                return Localize("{0} ({1}) Victory", countryName, Localize(roleKey));
+            }
+        }
 
         [CreateProperty]
         public string dateTimeRange

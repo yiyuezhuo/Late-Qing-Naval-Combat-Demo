@@ -85,13 +85,13 @@
                                 <ui:Toggle label="Surprise Attack">
                                     <Bindings>
                                         <ui:DataBinding property="value" data-source-path="scenarioState.surpriseAttack" binding-mode="TwoWay"/>
-                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-96000000000006)"/>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-63)"/>
                                     </Bindings>
                                 </ui:Toggle>
                                 <ui:FloatField label="Awake Distance Yards">
                                     <Bindings>
                                         <ui:DataBinding property="value" data-source-path="scenarioState.awakeDistanceYards" binding-mode="TwoWay"/>
-                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-96000000000007)"/>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-64)"/>
                                     </Bindings>
                                 </ui:FloatField>
                             </ui:VisualElement>

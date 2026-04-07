@@ -14,12 +14,12 @@
             </LocalizedEnumField>
             <ui:DropdownField name="Side1DropdownField" label="Side 1">
                 <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-81000000000001)"/>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-5)"/>
                 </Bindings>
             </ui:DropdownField>
             <ui:DropdownField name="Side2DropdownField" label="Side 2">
                 <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-81000000000002)"/>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-6)"/>
                 </Bindings>
             </ui:DropdownField>
             <ui:Toggle name="ForceRefreshToggle" label="Force Refresh">
@@ -37,7 +37,7 @@
                 <ui:FloatField name="LinearRangeField" label="Linear Range (movement cost)">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="linearRangeCost" binding-mode="TwoWay"/>
-                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-81000000000003)"/>
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-7)"/>
                     </Bindings>
                 </ui:FloatField>
             </ui:VisualElement>
@@ -45,7 +45,7 @@
                 <ui:FloatField name="ExponentialDecayField" label="Exponential Decay Length (movement cost)">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="exponentialDecayLengthCost" binding-mode="TwoWay"/>
-                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-81000000000004)"/>
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-8)"/>
                     </Bindings>
                 </ui:FloatField>
             </ui:VisualElement>
@@ -53,7 +53,7 @@
                 <ui:FloatField name="InverseHalfEffectField" label="Inverse Half-Effect Distance (movement cost)">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="inverseHalfEffectDistanceCost" binding-mode="TwoWay"/>
-                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-81000000000005)"/>
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-9)"/>
                     </Bindings>
                 </ui:FloatField>
             </ui:VisualElement>
@@ -61,7 +61,7 @@
                 <ui:FloatField name="GaussianSigmaField" label="Gaussian Sigma (movement cost)">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="gaussianSigmaCost" binding-mode="TwoWay"/>
-                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-81000000000006)"/>
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-10)"/>
                     </Bindings>
                 </ui:FloatField>
             </ui:VisualElement>

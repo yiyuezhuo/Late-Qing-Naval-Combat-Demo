@@ -3,12 +3,12 @@
     <ui:VisualElement data-source-type="StrategicCombatCore.StrategicGameState, Assembly-CSharp" class="panel-dialog" style="width: 520px; height: 420px;">
         <ui:Label text="Theater Selector" class="title">
             <Bindings>
-                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-97000000000002)"/>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-68)"/>
             </Bindings>
         </ui:Label>
         <ui:DropdownField name="DisplayModeDropdownField" label="Display Mode" style="margin-bottom: 4px;">
             <Bindings>
-                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-97000000000005)"/>
+                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-71)"/>
             </Bindings>
         </ui:DropdownField>
         <ui:ListView name="TheaterListView" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/Templates/TheaterListItem.uxml?fileID=9197481963319205126&amp;guid=1cb5240fcfc44fbcba26755d95d930aa&amp;type=3#TheaterListItem" fixed-item-height="28" style="flex-grow: 1;"/>

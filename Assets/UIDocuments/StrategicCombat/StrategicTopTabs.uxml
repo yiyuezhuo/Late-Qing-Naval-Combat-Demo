@@ -96,7 +96,7 @@
                     </ui:Button>
                     <ui:Button text="Restart" name="RestartButton">
                         <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-91000000000002)"/>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-23)"/>
                         </Bindings>
                     </ui:Button>
                 </ui:VisualElement>
@@ -153,7 +153,7 @@
                     <ui:Button text="Scenario State" name="StrategicScenarioStateButton"/>
                     <ui:Button text="Theater" name="TheaterButton">
                         <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-97000000000001)"/>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-67)"/>
                             <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                         </Bindings>
                     </ui:Button>

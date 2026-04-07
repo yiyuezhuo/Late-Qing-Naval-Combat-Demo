@@ -127,7 +127,7 @@
                     </ui:Button>
                     <ui:Button text="Detach Damaged" name="DetachDamagedButton">
                         <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-90000000000002)"/>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-12)"/>
                         </Bindings>
                     </ui:Button>
                     <ui:Label text="Summary" style="white-space: normal;">

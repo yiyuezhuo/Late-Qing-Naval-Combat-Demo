@@ -2,7 +2,7 @@
     <ui:VisualElement data-source-type="TorpedoInterceptSolutionDialogModel, Assembly-CSharp" class="panel-dialog" style="width: 540px; height: auto;">
         <ui:Label text="Torpedo Intercept Solution Visualizer" class="title">
             <Bindings>
-                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-92000000000001)"/>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-24)"/>
             </Bindings>
         </ui:Label>
         <ui:VisualElement style="flex-grow: 1;">
@@ -23,32 +23,32 @@
             <ui:Label name="ProbabilityLabel" text="Hit Probability: Invalid" style="white-space: normal; margin-bottom: 6px;"/>
             <ui:Label text="Speed Random Model" style="margin-top: 4px;">
                 <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-92000000000015)"/>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-38)"/>
                 </Bindings>
             </ui:Label>
             <ui:FloatField name="MinSpeedField" label="Minimum Speed (kts)">
                 <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-92000000000016)"/>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-39)"/>
                 </Bindings>
             </ui:FloatField>
             <ui:FloatField name="MaxSpeedField" label="Maximum Speed (kts)">
                 <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-92000000000017)"/>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-40)"/>
                 </Bindings>
             </ui:FloatField>
             <ui:Label text="Heading Random Model" style="margin-top: 4px;">
                 <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-92000000000018)"/>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-41)"/>
                 </Bindings>
             </ui:Label>
             <ui:FloatField name="LowerOffsetField" label="Lower Offset (deg)">
                 <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-92000000000019)"/>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-42)"/>
                 </Bindings>
             </ui:FloatField>
             <ui:FloatField name="UpperOffsetField" label="Upper Offset (deg)">
                 <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-92000000000020)"/>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-43)"/>
                 </Bindings>
             </ui:FloatField>
             <ui:ScrollView name="MountStatusScrollView" style="height: 180px; flex-grow: 1; margin-top: 6px; margin-bottom: 6px;"/>

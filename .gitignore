@@ -85,3 +85,4 @@ Assets/AddressableAssetsData/link.xml.meta
 # Ignore GIS large shore field data
 
 Assets/Textures/NavalCombat/GIS/full_uint16_16384x8192_shoreField.*
+*.pyc

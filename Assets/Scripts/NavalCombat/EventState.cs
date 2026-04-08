@@ -22,7 +22,9 @@ namespace NavalCombat
         ShipClassEditorOpened,
         ShipClassEditorClosed,
         DistanceMeasureLineFixed,
-        OrderOfBattleEditorShown
+        OrderOfBattleEditorShown,
+        FirstRemainOneOperationalFleetPrompted,
+        ReachEndDateTimePrompted
     }
 
     public class EventItem
@@ -134,6 +136,14 @@ namespace NavalCombat
                 {
                     ResetAndBind(ref orderOfBattleEditor.shown, grouping);
                 }
+                else if (eventType == EventType.FirstRemainOneOperationalFleetPrompted)
+                {
+                    ResetAndBind(ref manager.firstRemainOneOperationalFleetPrompted, grouping);
+                }
+                else if (eventType == EventType.ReachEndDateTimePrompted)
+                {
+                    ResetAndBind(ref manager.reachEndDateTimePrompted, grouping);
+                }
             }
         }
 
@@ -151,6 +161,8 @@ namespace NavalCombat
             cameraController.cameraMoved = null;
             cameraController.cameraZoomed = null;
             manager.shipLogClicked = null;
+            manager.firstRemainOneOperationalFleetPrompted = null;
+            manager.reachEndDateTimePrompted = null;
             switchCenter.shipLogViewShown = null;
             namedShipEditor.shown = null;
             shipClassEditor.shown = null;

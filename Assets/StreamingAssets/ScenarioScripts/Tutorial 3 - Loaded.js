@@ -8,8 +8,6 @@ The Japanese side has been set to be automatically controlled as the opponent.
 
 Control the two Beiyang Fleet ships you have seen before and approach the three Japanese ships to engage in combat until one side is eliminated or the time limit is reached (you will be prompted to check the "Victory Status").
 
-At that point, you can exit this tutorial and proceed to the next one.
-
 Other tutorial tips will be displayed during the process.
 `,
 `
@@ -18,8 +16,6 @@ Other tutorial tips will be displayed during the process.
 日本側は対戦相手として自動操作に設定されています。
 
 これまでに見た北洋艦隊の2隻を操作し、日本の3隻の艦船に接近して戦闘を行い、いずれかの側が全滅するか、制限時間に達するまで続けます（「勝利状況」を確認するように促されます）。
-
-その時点で、このチュートリアルを終了し、次のチュートリアルに進むことができます。
 
 その他のチュートリアルのヒントは進行中に表示されます。
 `,
@@ -30,8 +26,6 @@ Other tutorial tips will be displayed during the process.
 
 控制你之前见过的两艘北洋水师的船接近日本的三艘船进行战斗，直到一方被消灭或者时间限制抵达（你会被提示查看"胜利状况"）。
 
-到那时可以退出本教程查看下一个教程。
-
 其他教学提示会在战斗过程中显示出来。
 `,
 `
@@ -40,8 +34,6 @@ Other tutorial tips will be displayed during the process.
 日本方已被設定為自動控制作為對手。
 
 控制你之前見過的兩艘北洋水師的船，接近日本的三艘船進行戰鬥，直到一方被消滅或時間限制到達（系統會提示你查看「勝利狀況」）。
-
-此時你可以退出本教學並查看下一個教學。
 
 其他教學提示將會在過程中顯示出來。
 `)

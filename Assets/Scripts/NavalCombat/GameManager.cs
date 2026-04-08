@@ -408,6 +408,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public EventHandler loaded;
     public EventHandler minuteChanged;
     public EventHandler shipLogClicked;
+    public EventHandler firstRemainOneOperationalFleetPrompted;
+    public EventHandler reachEndDateTimePrompted;
 
     void TempFix()
     {
@@ -854,6 +856,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
                 if(!scenarioState.disableFirstRemainOneOperationalFleetPrompt)
                 {
+                    firstRemainOneOperationalFleetPrompted?.Invoke(this, EventArgs.Empty);
+
                     if(startupConfig.IsFromStrategic())
                     {
                         PopupConfirmWithPause(Localize(
@@ -915,6 +919,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         if(scenarioState.hasEndDateTime && scenarioState.dateTime > scenarioState.endDateTime && !scenarioState.firstReachEndDateTime)
         {
             scenarioState.firstReachEndDateTime = true;
+            reachEndDateTimePrompted?.Invoke(this, EventArgs.Empty);
 
             if(startupConfig.IsFromStrategic())
             {

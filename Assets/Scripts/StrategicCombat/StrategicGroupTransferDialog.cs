@@ -620,6 +620,7 @@ public class StrategicGroupTransferDialog
 
             targetGroup = StrategicGroupSubGroupUtility.CreateNewSubGroup(sourceGroup, createIndependentSubGroup);
             ApplyMemberTransfers(sourceMembersToTransfer, targetGroup);
+            StrategicGroupNamingUtility.RefreshGeneratedGroupIdentity(targetGroup);
             return;
         }
 

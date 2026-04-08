@@ -390,8 +390,8 @@ namespace StrategicCombatCore
             { StrategicUnitSize.Regiment, "III" },
             { StrategicUnitSize.Battalion, "II" },
             { StrategicUnitSize.Company, "I" },
-            { StrategicUnitSize.Platoon, "ﾂｷﾂｷﾂｷ" },
-            { StrategicUnitSize.Squad, "ﾂｷﾂｷ" },
+            { StrategicUnitSize.Platoon, "···" },
+            { StrategicUnitSize.Squad, "··" },
         };
 
         public override string ToString()

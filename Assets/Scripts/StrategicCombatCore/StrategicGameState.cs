@@ -1993,6 +1993,11 @@ namespace StrategicCombatCore
 
                 MergeHistoricalGroupIntoKeeper(sourceGroup, keeper);
             }
+
+            if (keeper.nonHistorical)
+            {
+                StrategicGroupNamingUtility.RefreshGeneratedGroupIdentity(keeper);
+            }
         }
 
         void TryAutoMergeIndependentLandGroupsInTheater(Theater theater, HashSet<(int, int)> theaterCellSet)

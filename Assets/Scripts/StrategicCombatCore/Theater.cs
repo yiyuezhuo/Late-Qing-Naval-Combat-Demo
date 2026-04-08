@@ -286,6 +286,8 @@ namespace StrategicCombatCore
             {
                 IStrategicGroupMemberReferenceable.PermanentTransferTo(member, splitGroup);
             }
+
+            StrategicGroupNamingUtility.RefreshGeneratedGroupIdentity(splitGroup);
         }
 
         public static void MaterializePartialGroupSelectionTemporaryAttach(
@@ -301,6 +303,8 @@ namespace StrategicCombatCore
             {
                 IStrategicGroupMemberReferenceable.TemporaryAttachTo(member, splitGroup);
             }
+
+            StrategicGroupNamingUtility.RefreshGeneratedGroupIdentity(splitGroup);
         }
 
         public static void DestroyEmptySplitGroup(StrategicGroup group)
@@ -314,6 +318,19 @@ namespace StrategicCombatCore
 
     public static class StrategicGroupNamingUtility
     {
+        static readonly (StrategicUnitSize size, int maxExclusiveStrength)[] generatedSizeThresholds =
+        {
+            (StrategicUnitSize.Squad, 15),
+            (StrategicUnitSize.Platoon, 60),
+            (StrategicUnitSize.Company, 240),
+            (StrategicUnitSize.Battalion, 900),
+            (StrategicUnitSize.Regiment, 2500),
+            (StrategicUnitSize.Bridge, 8000),
+            (StrategicUnitSize.Division, 30000),
+            (StrategicUnitSize.Corp, 70000),
+            (StrategicUnitSize.Army, 150000),
+        };
+
         static readonly Dictionary<string, LocalizedString> localizedStringMap = new();
 
         static string Localize(string key, params object[] args)
@@ -416,17 +433,37 @@ namespace StrategicCombatCore
             return LocalizeEnumGlobalString(sourceGroup.type);
         }
 
-        public static GlobalString BuildGeneratedSubGroupName(StrategicGroup sourceGroup)
+        static HashSet<string> CollectExistingEnglishNames(StrategicGroup excludedGroup = null)
+        {
+            var excludedId = excludedGroup?.objectId;
+            return StrategicGameState.Instance.strategicGroups
+                .Where(group => group != null && group.objectId != excludedId)
+                .Select(group => GetEnglishName(group.name))
+                .Where(name => !string.IsNullOrWhiteSpace(name))
+                .ToHashSet(StringComparer.OrdinalIgnoreCase);
+        }
+
+        public static StrategicUnitSize InferGeneratedGroupSize(int strengthMen)
+        {
+            if (strengthMen <= 0)
+                return StrategicUnitSize.ArmyGroup;
+
+            foreach (var (size, maxExclusiveStrength) in generatedSizeThresholds)
+            {
+                if (strengthMen < maxExclusiveStrength)
+                    return size;
+            }
+
+            return StrategicUnitSize.ArmyGroup;
+        }
+
+        public static GlobalString BuildGeneratedSubGroupName(StrategicGroup sourceGroup, StrategicGroup excludedGroup = null)
         {
             var baseName = CombineNameParts(
                 LocalizeEnumGlobalString(sourceGroup.country),
                 GetGeneratedSubGroupRoleName(sourceGroup)
             );
-            var existingEnglishNames = StrategicGameState.Instance.strategicGroups
-                .Where(group => group != null)
-                .Select(group => GetEnglishName(group.name))
-                .Where(name => !string.IsNullOrWhiteSpace(name))
-                .ToHashSet(StringComparer.OrdinalIgnoreCase);
+            var existingEnglishNames = CollectExistingEnglishNames(excludedGroup);
 
             var nextIndex = 1;
             while (existingEnglishNames.Contains(GetEnglishName(AppendGeneratedNameIndex(baseName, nextIndex))))
@@ -435,6 +472,15 @@ namespace StrategicCombatCore
             }
 
             return AppendGeneratedNameIndex(baseName, nextIndex);
+        }
+
+        public static void RefreshGeneratedGroupIdentity(StrategicGroup group)
+        {
+            if (group == null)
+                return;
+
+            group.size = InferGeneratedGroupSize(group.GetStrengthMen());
+            group.name = BuildGeneratedSubGroupName(group, group);
         }
 
         public static StrategicGroup CreateNewSubGroup(StrategicGroup sourceGroup, bool createIndependent, Action<StrategicGroup> configureNewGroup = null)

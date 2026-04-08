@@ -994,7 +994,8 @@ namespace StrategicCombatCore
                 return;
             }
 
-            var frontlinePlan = BuildAiFrontlinePlan(theater, CloneAiSourcePlanStates(sourceStates));
+            var frontlineMovementGraph = new DynamicCellGraphArmyTheaterFrontline() { movingSide = theater.side };
+            var frontlinePlan = BuildAiFrontlinePlan(theater, CloneAiSourcePlanStates(sourceStates), frontlineMovementGraph);
             var consumedAtomIds = new HashSet<string>();
             if (theater.posture == TheaterPosture.Attack)
             {
@@ -1002,7 +1003,7 @@ namespace StrategicCombatCore
                 ApplyAiPlannedAssignments(attackPlan, consumedAtomIds);
             }
 
-            ApplyAiPlannedAssignments(frontlinePlan, consumedAtomIds);
+            ApplyAiPlannedAssignments(frontlinePlan, consumedAtomIds, frontlineMovementGraph);
             TryAutoMergeIndependentLandGroupsInTheater(theater, theaterCellSet);
         }
 
@@ -1225,7 +1226,10 @@ namespace StrategicCombatCore
             return atomObjectIds.Count > 0 && selectedPower > AiFrontlineAllocationEpsilon;
         }
 
-        List<AiPlannedAssignment> BuildAiFrontlinePlan(Theater theater, List<AiSourcePlanState> sourceStates)
+        List<AiPlannedAssignment> BuildAiFrontlinePlan(
+            Theater theater,
+            List<AiSourcePlanState> sourceStates,
+            IGraphEnumerable<Cell> movementGraph)
         {
             var assignments = new List<AiPlannedAssignment>();
             if (theater == null || sourceStates == null || sourceStates.Count == 0)
@@ -1266,7 +1270,6 @@ namespace StrategicCombatCore
                 return assignments;
 
             var pathCostCache = new Dictionary<(Cell src, Cell dst), AStarResult<Cell>>();
-            var movementGraph = new DynamicCellGraphArmy();
             while (sourceStates.Count > 0 && demandStates.Count > 0)
             {
                 AiFrontlineCandidate bestCandidate = null;
@@ -1766,13 +1769,16 @@ namespace StrategicCombatCore
             return true;
         }
 
-        void ApplyAiPlannedAssignments(IEnumerable<AiPlannedAssignment> assignments, HashSet<string> consumedAtomIds)
+        void ApplyAiPlannedAssignments(
+            IEnumerable<AiPlannedAssignment> assignments,
+            HashSet<string> consumedAtomIds,
+            IGraphEnumerable<Cell> movementGraph = null)
         {
             if (assignments == null)
                 return;
 
             consumedAtomIds ??= new HashSet<string>();
-            var movementGraph = new DynamicCellGraphArmy();
+            movementGraph ??= new DynamicCellGraphArmy();
             foreach (var assignment in assignments)
             {
                 var sourceGroup = assignment?.rootGroup;
@@ -2037,7 +2043,7 @@ namespace StrategicCombatCore
         static bool TryGetAiFrontlineEffectiveDistance(
             StrategicGroup group,
             Cell targetCell,
-            DynamicCellGraphArmy movementGraph,
+            IGraphEnumerable<Cell> movementGraph,
             Dictionary<(Cell src, Cell dst), AStarResult<Cell>> pathCostCache,
             out float effectiveDistance)
         {
@@ -2062,7 +2068,7 @@ namespace StrategicCombatCore
         static float GetAiFrontlineRemainingSegmentCost(
             StrategicGroup group,
             Cell nextCell,
-            DynamicCellGraphArmy movementGraph,
+            IGraphEnumerable<Cell> movementGraph,
             float segmentDistanceKm)
         {
             if (group?.cell == null || nextCell == null)
@@ -2079,7 +2085,7 @@ namespace StrategicCombatCore
         static bool TryGetAiFrontlinePathCost(
             Cell srcCell,
             Cell dstCell,
-            DynamicCellGraphArmy movementGraph,
+            IGraphEnumerable<Cell> movementGraph,
             Dictionary<(Cell src, Cell dst), AStarResult<Cell>> pathCostCache,
             out float pathCost)
         {

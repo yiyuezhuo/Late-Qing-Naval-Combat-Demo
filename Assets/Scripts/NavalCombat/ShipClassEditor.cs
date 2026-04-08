@@ -31,12 +31,15 @@ public partial class BatteryPenetrationFireControlChart : VisualElement
     readonly VisualElement labelLayer = new();
     List<BatteryFigurePoint> points = new();
     float? rangeYards;
+    float? mainBeltEffectiveInches;
 
     static readonly Color VerticalPenetrationColor = new(0.75f, 0.2f, 0.18f, 1f);
     static readonly Color HorizontalPenetrationColor = new(0.16f, 0.42f, 0.78f, 1f);
     static readonly Color FireControlColor = new(0.12f, 0.6f, 0.24f, 1f);
     static readonly Color GridColor = new(0f, 0f, 0f, 0.18f);
     static readonly Color RangeLineColor = new(0.85f, 0.85f, 0.85f, 0.9f);
+    static readonly Color ImmuneZoneColor = new(0.0f, 0.72f, 0.72f, 1f);
+    static readonly Color VulnerableZoneColor = new(0.9f, 0.6f, 0.12f, 1f);
 
     public BatteryPenetrationFireControlChart()
     {
@@ -68,6 +71,13 @@ public partial class BatteryPenetrationFireControlChart : VisualElement
         MarkDirtyRepaint();
     }
 
+    public void SetMainBeltEffectiveInches(float? value)
+    {
+        mainBeltEffectiveInches = value.HasValue && value.Value > 0f ? value.Value : null;
+        RebuildLabels();
+        MarkDirtyRepaint();
+    }
+
     void OnGenerateVisualContent(MeshGenerationContext context)
     {
         var chartRect = GetChartRect();
@@ -89,6 +99,7 @@ public partial class BatteryPenetrationFireControlChart : VisualElement
         var (minDistance, maxDistance) = GetDistanceBounds();
 
         DrawRangeLine(painter, chartRect, minDistance, maxDistance);
+        DrawMainBeltEffectiveLine(painter, chartRect, minDistance, maxDistance, leftMax);
 
         DrawSeries(
             painter,
@@ -242,6 +253,8 @@ public partial class BatteryPenetrationFireControlChart : VisualElement
             : Mathf.Max(
                 points.Max(point => point.verticalPenetrationInches),
                 points.Max(point => point.horizontalPenetrationInches));
+        if (mainBeltEffectiveInches.HasValue)
+            maxValue = Mathf.Max(maxValue, mainBeltEffectiveInches.Value);
         return Mathf.Max(1f, Mathf.Ceil(maxValue));
     }
 
@@ -364,6 +377,108 @@ public partial class BatteryPenetrationFireControlChart : VisualElement
         {
             DrawRangeLine(painter, chartRect, minDistance, maxDistance, rangeYards.Value);
         }
+    }
+
+    void DrawMainBeltEffectiveLine(Painter2D painter, Rect chartRect, float minDistance, float maxDistance, float leftAxisMax)
+    {
+        if (!mainBeltEffectiveInches.HasValue || points.Count == 0)
+            return;
+
+        var armorValue = mainBeltEffectiveInches.Value;
+        var y = Mathf.Lerp(chartRect.yMax, chartRect.yMin, Mathf.InverseLerp(0f, Mathf.Max(1f, leftAxisMax), armorValue));
+        if (y < chartRect.yMin || y > chartRect.yMax)
+            return;
+
+        var splitDistances = new List<float> { minDistance, maxDistance };
+        for (int i = 0; i < points.Count - 1; i++)
+        {
+            AddCrossingDistance(splitDistances, points[i].distanceYards, points[i + 1].distanceYards, points[i].verticalPenetrationInches, points[i + 1].verticalPenetrationInches, armorValue);
+            AddCrossingDistance(splitDistances, points[i].distanceYards, points[i + 1].distanceYards, points[i].horizontalPenetrationInches, points[i + 1].horizontalPenetrationInches, armorValue);
+        }
+
+        splitDistances = splitDistances
+            .Distinct()
+            .Where(distance => distance >= minDistance && distance <= maxDistance)
+            .OrderBy(distance => distance)
+            .ToList();
+
+        painter.lineWidth = 1f;
+        const float dashLength = 6f;
+        const float gapLength = 4f;
+
+        for (int i = 0; i < splitDistances.Count - 1; i++)
+        {
+            var startDistance = splitDistances[i];
+            var endDistance = splitDistances[i + 1];
+            if (endDistance <= startDistance)
+                continue;
+
+            var midDistance = (startDistance + endDistance) * 0.5f;
+            painter.strokeColor = IsImmuneAtDistance(midDistance, armorValue) ? ImmuneZoneColor : VulnerableZoneColor;
+
+            var startX = Mathf.Lerp(chartRect.xMin, chartRect.xMax, Mathf.InverseLerp(minDistance, maxDistance, startDistance));
+            var endX = Mathf.Lerp(chartRect.xMin, chartRect.xMax, Mathf.InverseLerp(minDistance, maxDistance, endDistance));
+
+            var x = startX;
+            while (x < endX)
+            {
+                var dashEnd = Mathf.Min(x + dashLength, endX);
+                painter.BeginPath();
+                painter.MoveTo(new Vector2(x, y));
+                painter.LineTo(new Vector2(dashEnd, y));
+                painter.Stroke();
+                x += dashLength + gapLength;
+            }
+        }
+    }
+
+    bool IsImmuneAtDistance(float distanceYards, float armorValue)
+    {
+        var verticalPenetration = EvaluatePenetration(distanceYards, point => point.verticalPenetrationInches);
+        var horizontalPenetration = EvaluatePenetration(distanceYards, point => point.horizontalPenetrationInches);
+        return verticalPenetration < armorValue && horizontalPenetration < armorValue;
+    }
+
+    float EvaluatePenetration(float distanceYards, Func<BatteryFigurePoint, float> selector)
+    {
+        if (points.Count == 0)
+            return 0f;
+        if (points.Count == 1)
+            return selector(points[0]);
+
+        if (distanceYards <= points[0].distanceYards)
+            return selector(points[0]);
+        if (distanceYards >= points[^1].distanceYards)
+            return selector(points[^1]);
+
+        for (int i = 0; i < points.Count - 1; i++)
+        {
+            var start = points[i];
+            var end = points[i + 1];
+            if (distanceYards < start.distanceYards || distanceYards > end.distanceYards)
+                continue;
+
+            var t = Mathf.InverseLerp(start.distanceYards, end.distanceYards, distanceYards);
+            return Mathf.Lerp(selector(start), selector(end), t);
+        }
+
+        return selector(points[^1]);
+    }
+
+    static void AddCrossingDistance(List<float> splitDistances, float startDistance, float endDistance, float startValue, float endValue, float threshold)
+    {
+        var startDelta = startValue - threshold;
+        var endDelta = endValue - threshold;
+
+        if (Mathf.Approximately(startDelta, 0f))
+            splitDistances.Add(startDistance);
+        if (Mathf.Approximately(endDelta, 0f))
+            splitDistances.Add(endDistance);
+        if (Mathf.Approximately(startDelta, 0f) || Mathf.Approximately(endDelta, 0f) || Mathf.Sign(startDelta) == Mathf.Sign(endDelta))
+            return;
+
+        var t = Mathf.InverseLerp(startValue, endValue, threshold);
+        splitDistances.Add(Mathf.Lerp(startDistance, endDistance, t));
     }
 
     static Label BuildOverlayLabel(string text, float x, float y, float width, float height, TextAnchor textAnchor, Color? color = null)
@@ -880,7 +995,7 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
 
         for (int i = 0; i < shipClass.batteryRecords.Count; i++)
         {
-            batteryFigureChartsContainer.Add(BuildBatteryFigureChartCard(shipClass.batteryRecords[i], i));
+            batteryFigureChartsContainer.Add(BuildBatteryFigureChartCard(shipClass, shipClass.batteryRecords[i], i));
         }
     }
 
@@ -922,7 +1037,7 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
         return card;
     }
 
-    VisualElement BuildBatteryFigureChartCard(BatteryRecord batteryRecord, int batteryIndex)
+    VisualElement BuildBatteryFigureChartCard(ShipClass shipClass, BatteryRecord batteryRecord, int batteryIndex)
     {
         var card = new VisualElement();
         card.style.flexDirection = FlexDirection.Column;
@@ -959,6 +1074,7 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
         chart.style.minHeight = 220;
         chart.SetPoints(BuildBatteryFigurePoints(batteryRecord));
         chart.SetRangeYards(batteryRecord?.rangeYards);
+        chart.SetMainBeltEffectiveInches(shipClass?.armorRating?.mainBelt?.effectInch);
         chartRow.Add(chart);
         chartRow.Add(BuildBatteryFigureLegend());
         card.Add(chartRow);
@@ -1031,6 +1147,7 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
         return string.Join("|", new[]
         {
             shipClass.objectId ?? "",
+            $"{shipClass.armorRating?.mainBelt?.effectInch:0.###}",
             batterySignature,
             BuildMountLocationSignature(shipClass.torpedoSector?.mountLocationRecords)
         });

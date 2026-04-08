@@ -328,6 +328,11 @@ namespace StrategicCombatCore
                 var subordinate = subordinateRef.Get();
                 if(subordinate is LandUnit landUnit)
                 {
+                    if (landUnit.strength <= 0 || landUnit.GetLandUnitTemplate()?.unitType == LandUnitType.Supply)
+                    {
+                        continue;
+                    }
+
                     if(!idToBattleUnitState.TryGetValue(landUnit.objectId, out var battleUnitState))
                     {
                         battleUnitState = new(){

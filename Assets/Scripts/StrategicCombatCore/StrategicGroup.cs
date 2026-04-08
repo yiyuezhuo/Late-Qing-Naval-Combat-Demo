@@ -969,6 +969,15 @@ namespace StrategicCombatCore
             );
         }
 
+        public bool HasCombatEffectiveLandUnit()
+        {
+            return WalkGroupMembers<LandUnit>().Any(landUnit =>
+                landUnit != null &&
+                landUnit.strength > 0 &&
+                landUnit.GetLandUnitTemplate()?.unitType != LandUnitType.Supply
+            );
+        }
+
         public Cell GetPathNextCell()
         {
             if (plannedPath.Count >= 2)

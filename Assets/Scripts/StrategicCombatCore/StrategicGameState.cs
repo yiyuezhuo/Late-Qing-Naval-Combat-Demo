@@ -2425,7 +2425,9 @@ namespace StrategicCombatCore
         {
             var happeningBattleKeys = new HashSet<(Cell, SideState, SideState)>(); // Cell, Attacker, Defender
 
-            foreach (var g in strategicGroups.Where(g => g.LandCombatable()).GroupBy(g => g.cell))
+            foreach (var g in strategicGroups
+                .Where(g => g.LandCombatable() && g.HasCombatEffectiveLandUnit())
+                .GroupBy(g => g.cell))
             {
                 var cell = g.Key;
                 cell.RefreshControlState(); // TODO: Code smell? Extract it to the top level?

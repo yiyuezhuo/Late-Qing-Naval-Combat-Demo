@@ -99,7 +99,7 @@ namespace StrategicCombatCore
 
         bool IsLandSupplyPassable(Cell src, Cell dst)
         {
-            if (dst.GetHexSide() == side)
+            if (src.GetHexSide() == side)
                 return true;
             if (src.TryGetDirection(dst, out var edge) && src.GetEdgeSide(edge) == side)
                 return true;

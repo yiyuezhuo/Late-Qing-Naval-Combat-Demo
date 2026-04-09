@@ -3171,6 +3171,10 @@ MonoBehaviour:
     m_Localized: Hide Units
     m_Metadata:
       m_Items: []
+  - m_Id: -81
+    m_Localized: Battery Detail Show Non-Active Modifier
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

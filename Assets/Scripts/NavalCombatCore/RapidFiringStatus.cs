@@ -285,6 +285,15 @@ namespace NavalCombatCore
             return $"{v:0.##}";
         }
 
+        static bool ShouldShowOffset(float value) => CoreParameter.Instance.batteryDetailShowNonActiveModifier || Math.Abs(value) > 0.0001f;
+        static bool ShouldShowCondition(bool active) => CoreParameter.Instance.batteryDetailShowNonActiveModifier || active;
+
+        static void AddModifierLine(List<string> lines, bool show, string key, params object[] args)
+        {
+            if (show)
+                lines.Add(Localize(key, args));
+        }
+
         static string DescribeBlockedReason(BreakdownBlockedReason reason)
         {
             return reason switch
@@ -315,21 +324,24 @@ namespace NavalCombatCore
             lines.Add(Localize("{0} yards", FormatNumber(breakdown.distanceYards)));
             lines.Add(Localize("{0} deg => {1}", FormatNumber(breakdown.bearingDeg), breakdown.side));
             lines.Add(Localize("Barrels: allocated {0}, available {1}", breakdown.allocatedBarrels, breakdown.availableBarrels));
-            lines.Add(breakdown.isMasked
-                ? Localize("Masked: yes, seconds per shot {0}", FormatNumber(breakdown.secondsPerShot))
-                : Localize("Masked: no, seconds per shot {0}", FormatNumber(breakdown.secondsPerShot)));
+            if (ShouldShowCondition(breakdown.isMasked))
+            {
+                lines.Add(breakdown.isMasked
+                    ? Localize("Masked: yes, seconds per shot {0}", FormatNumber(breakdown.secondsPerShot))
+                    : Localize("Masked: no, seconds per shot {0}", FormatNumber(breakdown.secondsPerShot)));
+            }
 
             lines.Add("");
             lines.Add(Localize("Base Fire Control Value ({0} Range / FC Damage Level {1}) => {2}", breakdown.usingEffectiveRange ? Localize("Effective") : Localize("Max"), breakdown.fireControlRecordIndex, FormatNumber(breakdown.baseFireControlScore)));
-            lines.Add(Localize("Visibility ({0}): {1}", NavalGameState.Instance.scenarioState.visibility, FormatSigned(breakdown.visibilityOffset)));
-            lines.Add(Localize("Dawn/Dusk (Sun Bearing Sector): {0}", FormatSigned(breakdown.dawnDuskOffset)));
-            lines.Add(Localize("Night/Moonlight: {0}", FormatSigned(breakdown.nightMoonlightOffset)));
-            lines.Add(Localize("Illumination/Afire: {0}", FormatSigned(breakdown.illuminationOffset)));
-            lines.Add(Localize("Evasive Action: {0}", FormatSigned(breakdown.evasiveActionOffset)));
-            lines.Add(Localize("Under Fire (3+ ships): {0}", FormatSigned(breakdown.underFireOffset)));
-            lines.Add(Localize("Target Size: {0}", FormatSigned(breakdown.targetSizeOffset)));
-            lines.Add(Localize("Sea State: {0}", FormatSigned(breakdown.seaStateOffset)));
-            lines.Add(Localize("Crew Quality: {0}", FormatSigned(breakdown.crewQualityOffset)));
+            AddModifierLine(lines, ShouldShowOffset(breakdown.visibilityOffset), "Visibility ({0}): {1}", NavalGameState.Instance.scenarioState.visibility, FormatSigned(breakdown.visibilityOffset));
+            AddModifierLine(lines, ShouldShowOffset(breakdown.dawnDuskOffset), "Dawn/Dusk (Sun Bearing Sector): {0}", FormatSigned(breakdown.dawnDuskOffset));
+            AddModifierLine(lines, ShouldShowOffset(breakdown.nightMoonlightOffset), "Night/Moonlight: {0}", FormatSigned(breakdown.nightMoonlightOffset));
+            AddModifierLine(lines, ShouldShowOffset(breakdown.illuminationOffset), "Illumination/Afire: {0}", FormatSigned(breakdown.illuminationOffset));
+            AddModifierLine(lines, ShouldShowOffset(breakdown.evasiveActionOffset), "Evasive Action: {0}", FormatSigned(breakdown.evasiveActionOffset));
+            AddModifierLine(lines, ShouldShowOffset(breakdown.underFireOffset), "Under Fire (3+ ships): {0}", FormatSigned(breakdown.underFireOffset));
+            AddModifierLine(lines, ShouldShowOffset(breakdown.targetSizeOffset), "Target Size: {0}", FormatSigned(breakdown.targetSizeOffset));
+            AddModifierLine(lines, ShouldShowOffset(breakdown.seaStateOffset), "Sea State: {0}", FormatSigned(breakdown.seaStateOffset));
+            AddModifierLine(lines, ShouldShowOffset(breakdown.crewQualityOffset), "Crew Quality: {0}", FormatSigned(breakdown.crewQualityOffset));
 
             lines.Add("");
             lines.Add(Localize("Final Fire Control Score => {0}", FormatNumber(breakdown.finalFireControlScore)));

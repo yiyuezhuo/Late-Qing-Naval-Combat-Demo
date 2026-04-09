@@ -3087,6 +3087,10 @@ MonoBehaviour:
     m_Key: Hide Units
     m_Metadata:
       m_Items: []
+  - m_Id: -81
+    m_Key: Battery Detail Show Non-Active Modifier
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

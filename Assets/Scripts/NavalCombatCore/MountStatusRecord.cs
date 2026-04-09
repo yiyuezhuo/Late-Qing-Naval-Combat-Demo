@@ -608,6 +608,15 @@ namespace NavalCombatCore
 
         static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
 
+        static bool ShouldShowOffset(float value) => CoreParameter.Instance.batteryDetailShowNonActiveModifier || Math.Abs(value) > 0.0001f;
+        static bool ShouldShowCoef(float value) => CoreParameter.Instance.batteryDetailShowNonActiveModifier || Math.Abs(value - 1f) > 0.0001f;
+
+        static void AddModifierLine(List<string> lines, bool show, string key, params object[] args)
+        {
+            if (show)
+                lines.Add(Localize(key, args));
+        }
+
         static string DescribeBlockedReason(BreakdownBlockedReason reason)
         {
             return reason switch
@@ -667,31 +676,39 @@ namespace NavalCombatCore
                 ? Localize("{0} knots", FormatNumber(breakdown.targetSpeedKnots.Value))
                 : Localize("N/A");
             lines.Add(Localize("Base Fire Control Value ({0}/{1}/{2}) => {3}", breakdown.rangeBand, breakdown.targetAspect, baseFireControlTargetSpeedLabel, FormatNumber(breakdown.baseFireControlValue)));
-            lines.Add(Localize("Close Range Override: {0}", FormatSigned(breakdown.closeRangeOverrideDelta)));
-            lines.Add(Localize("Mount/Substate FC Offset: {0}", FormatSigned(breakdown.mountSubstateOffset)));
-            lines.Add(Localize("Mount/Substate FC Coef: x{0}", FormatNumber(breakdown.mountSubstateCoef)));
-            lines.Add(Localize("Visibility ({0}): {1}", NavalGameState.Instance.scenarioState.visibility, FormatSigned(breakdown.visibilityOffset)));
-            lines.Add(Localize("Dawn/Dusk (Sun Bearing Sector): {0}", FormatSigned(breakdown.dawnDuskOffset)));
-            lines.Add(Localize("Night/Moonlight: {0}", FormatSigned(breakdown.nightMoonlightOffset)));
-            lines.Add(string.IsNullOrWhiteSpace(breakdown.illuminationReason)
-                ? Localize("Illumination/Afire: {0}", FormatSigned(breakdown.illuminationOffset))
-                : Localize("Illumination/Afire ({0}): {1}", breakdown.illuminationReason, FormatSigned(breakdown.illuminationOffset)));
-            lines.Add(Localize("Evasive Action: {0}", FormatSigned(breakdown.evasiveActionOffset)));
-            lines.Add(breakdown.trackingLocalControl
-                ? Localize("Tracking (Local Control): x{0}", "0.5")
-                : Localize("Tracking State: {0}", FormatSigned(breakdown.trackingOffset)));
-            lines.Add(Localize("Under Fire (3+ ships): {0}", FormatSigned(breakdown.underFireOffset)));
-            lines.Add(Localize("Over Concentration: {0}", FormatSigned(breakdown.overConcentrationOffset)));
-            lines.Add(Localize("Target Size: {0}", FormatSigned(breakdown.targetSizeOffset)));
-            lines.Add(Localize("Sea State: {0}", FormatSigned(breakdown.seaStateOffset)));
-            lines.Add(Localize("Crew Quality: {0}", FormatSigned(breakdown.crewQualityBase)));
-            lines.Add(Localize("Leader Naval Tactical ({0}): {1}", breakdown.leaderNavalTacticalLevel, FormatSigned(breakdown.leaderNavalTacticalOffset)));
-            lines.Add(Localize("Fire Control Radar: {0}", FormatSigned(breakdown.fireControlRadarOffset)));
+            AddModifierLine(lines, ShouldShowOffset(breakdown.closeRangeOverrideDelta), "Close Range Override: {0}", FormatSigned(breakdown.closeRangeOverrideDelta));
+            AddModifierLine(lines, ShouldShowOffset(breakdown.mountSubstateOffset), "Mount/Substate FC Offset: {0}", FormatSigned(breakdown.mountSubstateOffset));
+            AddModifierLine(lines, ShouldShowCoef(breakdown.mountSubstateCoef), "Mount/Substate FC Coef: x{0}", FormatNumber(breakdown.mountSubstateCoef));
+            AddModifierLine(lines, ShouldShowOffset(breakdown.visibilityOffset), "Visibility ({0}): {1}", NavalGameState.Instance.scenarioState.visibility, FormatSigned(breakdown.visibilityOffset));
+            AddModifierLine(lines, ShouldShowOffset(breakdown.dawnDuskOffset), "Dawn/Dusk (Sun Bearing Sector): {0}", FormatSigned(breakdown.dawnDuskOffset));
+            AddModifierLine(lines, ShouldShowOffset(breakdown.nightMoonlightOffset), "Night/Moonlight: {0}", FormatSigned(breakdown.nightMoonlightOffset));
+            if (ShouldShowOffset(breakdown.illuminationOffset))
+            {
+                lines.Add(string.IsNullOrWhiteSpace(breakdown.illuminationReason)
+                    ? Localize("Illumination/Afire: {0}", FormatSigned(breakdown.illuminationOffset))
+                    : Localize("Illumination/Afire ({0}): {1}", breakdown.illuminationReason, FormatSigned(breakdown.illuminationOffset)));
+            }
+            AddModifierLine(lines, ShouldShowOffset(breakdown.evasiveActionOffset), "Evasive Action: {0}", FormatSigned(breakdown.evasiveActionOffset));
+            if (breakdown.trackingLocalControl)
+            {
+                lines.Add(Localize("Tracking (Local Control): x{0}", "0.5"));
+            }
+            else
+            {
+                AddModifierLine(lines, ShouldShowOffset(breakdown.trackingOffset), "Tracking State: {0}", FormatSigned(breakdown.trackingOffset));
+            }
+            AddModifierLine(lines, ShouldShowOffset(breakdown.underFireOffset), "Under Fire (3+ ships): {0}", FormatSigned(breakdown.underFireOffset));
+            AddModifierLine(lines, ShouldShowOffset(breakdown.overConcentrationOffset), "Over Concentration: {0}", FormatSigned(breakdown.overConcentrationOffset));
+            AddModifierLine(lines, ShouldShowOffset(breakdown.targetSizeOffset), "Target Size: {0}", FormatSigned(breakdown.targetSizeOffset));
+            AddModifierLine(lines, ShouldShowOffset(breakdown.seaStateOffset), "Sea State: {0}", FormatSigned(breakdown.seaStateOffset));
+            AddModifierLine(lines, ShouldShowOffset(breakdown.crewQualityBase), "Crew Quality: {0}", FormatSigned(breakdown.crewQualityBase));
+            AddModifierLine(lines, ShouldShowOffset(breakdown.leaderNavalTacticalOffset), "Leader Naval Tactical ({0}): {1}", breakdown.leaderNavalTacticalLevel, FormatSigned(breakdown.leaderNavalTacticalOffset));
+            AddModifierLine(lines, ShouldShowOffset(breakdown.fireControlRadarOffset), "Fire Control Radar: {0}", FormatSigned(breakdown.fireControlRadarOffset));
 
             lines.Add("");
             lines.Add(Localize("Final Fire Control Score => {0}", FormatNumber(breakdown.finalFireControlScore)));
             lines.Add(Localize("Hit Probability Table => {0}%", FormatNumber(breakdown.hitProbabilityTableP100)));
-            lines.Add(Localize("Global Hit Coef => x{0}", FormatNumber(breakdown.globalHitCoef)));
+            AddModifierLine(lines, ShouldShowCoef(breakdown.globalHitCoef), "Global Hit Coef => x{0}", FormatNumber(breakdown.globalHitCoef));
             lines.Add(Localize("Final Hit Probability => {0}%", FormatNumber(breakdown.finalHitProbability * 100f)));
 
             return lines;

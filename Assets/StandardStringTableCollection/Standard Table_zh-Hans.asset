@@ -3123,6 +3123,10 @@ MonoBehaviour:
     m_Localized: "\u9690\u85CF\u5355\u4F4D"
     m_Metadata:
       m_Items: []
+  - m_Id: -81
+    m_Localized: "Battery Detail \u663E\u793A\u672A\u751F\u6548\u4FEE\u6B63"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

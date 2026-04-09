@@ -22,6 +22,7 @@ namespace NavalCombatCore
         public float extrapolateSeconds=360;
         public float globalHitCoef = 1f;
         public float noPenetrationDamageCoef = 0.1f;
+        public bool batteryDetailShowNonActiveModifier = false;
 
         public float automaticTorpedoFiringRangeRelaxedCoef = 2.5f;
 

@@ -49,6 +49,11 @@ class MountFiringLogDetailRow
     public MountFiringRecord log;
 }
 
+class RapidFiringLogDetailRow
+{
+    public RapidFiringLog log;
+}
+
 [UxmlElement]
 public partial class HistoryPieChart : VisualElement
 {
@@ -539,7 +544,7 @@ public class ShipLogView
             {
                 if (Utils.TryResolveCurrentValueForBinding(el, out RapidFiringStatus r))
                 {
-                    DialogRoot.Instance.PopupMessageDialog(r.DescribeDetail());
+                    PopupRapidFiringDetailDialog(r);
                 }
             };
 
@@ -759,6 +764,11 @@ public class ShipLogView
 
     VisualElement BuildGunneryDetailContent(string fireControlText, List<MountFiringLogDetailRow> allRows)
     {
+        return BuildGunneryDetailContent(fireControlText, BuildBatteryFiringLogDetailTab(allRows));
+    }
+
+    VisualElement BuildGunneryDetailContent(string fireControlText, VisualElement shotResultsTabContent)
+    {
         var tabView = new TabView
         {
             name = "GunneryDetailTabView",
@@ -770,8 +780,30 @@ public class ShipLogView
         };
 
         tabView.Add(BuildDetailTab(Localize("Fire Control"), BuildFireControlDetailTab(fireControlText)));
-        tabView.Add(BuildDetailTab(Localize("Shot Results"), BuildFiringLogDetailTab(allRows)));
+        tabView.Add(BuildDetailTab(Localize("Shot Results"), shotResultsTabContent));
         return tabView;
+    }
+
+    void PopupRapidFiringDetailDialog(RapidFiringStatus rapidFiringStatus)
+    {
+        if (rapidFiringStatus == null)
+            return;
+
+        DialogRoot.Instance.PopupCustomMessageContentDialog(
+            Localize("Rapid Firing Detail"),
+            () => BuildGunneryDetailContent(
+                rapidFiringStatus.DescribeFireControlDetail(),
+                BuildRapidFiringLogDetailTab(
+                    rapidFiringStatus.logs
+                        .OrderBy(log => log.firingTime)
+                        .Select(log => new RapidFiringLogDetailRow
+                        {
+                            log = log
+                        })
+                        .ToList()
+                )
+            )
+        );
     }
 
     Tab BuildDetailTab(string label, VisualElement content)
@@ -806,7 +838,7 @@ public class ShipLogView
         return textField;
     }
 
-    VisualElement BuildFiringLogDetailTab(List<MountFiringLogDetailRow> allRows)
+    VisualElement BuildBatteryFiringLogDetailTab(List<MountFiringLogDetailRow> allRows)
     {
         allRows ??= new();
         var displayedRows = new List<MountFiringLogDetailRow>();
@@ -915,6 +947,112 @@ public class ShipLogView
         return root;
     }
 
+    VisualElement BuildRapidFiringLogDetailTab(List<RapidFiringLogDetailRow> allRows)
+    {
+        allRows ??= new();
+        var displayedRows = new List<RapidFiringLogDetailRow>();
+
+        var root = new VisualElement
+        {
+            style =
+            {
+                flexGrow = 1,
+                flexShrink = 1,
+            }
+        };
+
+        var toolbar = new VisualElement
+        {
+            style =
+            {
+                flexDirection = FlexDirection.Row,
+                flexShrink = 0,
+            }
+        };
+
+        var hitsOnlyToggle = new Toggle(Localize("Hits only"));
+        var countLabel = new Label
+        {
+            style =
+            {
+                marginLeft = 12,
+                unityTextAlign = TextAnchor.MiddleLeft,
+            }
+        };
+        toolbar.Add(hitsOnlyToggle);
+        toolbar.Add(countLabel);
+        root.Add(toolbar);
+
+        var listView = new MultiColumnListView
+        {
+            name = "RapidFiringLogMultiColumnListView",
+            selectionType = SelectionType.None,
+            virtualizationMethod = CollectionVirtualizationMethod.DynamicHeight,
+            style =
+            {
+                flexGrow = 1,
+                flexShrink = 1,
+            }
+        };
+
+        void AddColumn(string name, string title, int width, Func<RapidFiringLogDetailRow, string> valueSelector)
+        {
+            listView.columns.Add(new Column
+            {
+                name = name,
+                title = title,
+                width = width,
+                minWidth = Math.Min(width, 90),
+                stretchable = false,
+                makeCell = () => new Label
+                {
+                    style =
+                    {
+                        whiteSpace = WhiteSpace.Normal,
+                    }
+                },
+                bindCell = (element, index) =>
+                {
+                    if (element is not Label label)
+                        return;
+
+                    var row = index >= 0 && index < displayedRows.Count ? displayedRows[index] : null;
+                    label.text = row != null ? valueSelector(row) : "";
+                }
+            });
+        }
+
+        AddColumn("time", Localize("Time"), 150, row => FormatFiringTime(row.log));
+        AddColumn("target", Localize("Target"), 160, row => FormatTarget(row.log));
+        AddColumn("distance", Localize("Distance"), 100, row => FormatYards(row.log?.distanceYards ?? 0));
+        AddColumn("hitProbability", Localize("Hit Prob"), 100, row => FormatPercent(row.log?.hitProb ?? 0));
+        AddColumn("result", Localize("Result"), 110, row => FormatRapidFiringResult(row.log));
+        AddColumn("damage", Localize("Damage"), 90, row => FormatDamage(row.log));
+
+        root.Add(listView);
+
+        void RefreshRows()
+        {
+            var hitsOnly = hitsOnlyToggle.value;
+            displayedRows = allRows
+                .Where(row => row?.log != null && (!hitsOnly || row.log.hit))
+                .OrderBy(row => row.log.firingTime)
+                .ToList();
+
+            listView.itemsSource = displayedRows;
+            listView.Rebuild();
+            countLabel.text = Localize(
+                hitsOnly ? "{0} hits / {1} shots" : "{1} shots, {0} hits",
+                allRows.Count(row => row?.log != null && row.log.hit),
+                allRows.Count(row => row?.log != null)
+            );
+        }
+
+        hitsOnlyToggle.RegisterValueChangedCallback(_ => RefreshRows());
+        RefreshRows();
+        return root;
+    }
+
     List<MountFiringLogDetailRow> BuildBatteryFiringLogRows(NavalCombatCore.BatteryStatus batteryStatus)
     {
         var rows = new List<MountFiringLogDetailRow>();
@@ -945,6 +1083,11 @@ public class ShipLogView
         return log == null ? "" : CoreParameter.Instance.GetReferenceTimeZoneDateTimeOffsetString(log.firingTime);
     }
 
+    static string FormatFiringTime(RapidFiringLog log)
+    {
+        return log == null ? "" : CoreParameter.Instance.GetReferenceTimeZoneDateTimeOffsetString(log.firingTime);
+    }
+
     static string FormatAmmunition(MountFiringRecord log)
     {
         if (log == null)
@@ -956,6 +1099,17 @@ public class ShipLogView
     }
 
     string FormatTarget(MountFiringRecord log)
+    {
+        if (log == null)
+            return "";
+
+        return log.GetFiringTarget()?.namedShip?.name?.GetShortName()
+            ?? log.GetFiringTarget()?.namedShip?.name?.GetMergedName()
+            ?? log.firingTargetObjectId
+            ?? Localize("Unknown");
+    }
+
+    string FormatTarget(RapidFiringLog log)
     {
         if (log == null)
             return "";
@@ -996,6 +1150,21 @@ public class ShipLogView
     {
         return log != null && log.hit
             ? $"{log.ShellDamageResult.damagePoint:0.##}"
+            : "";
+    }
+
+    string FormatRapidFiringResult(RapidFiringLog log)
+    {
+        if (log == null)
+            return "";
+
+        return log.hit ? Localize("Hit") : Localize("miss");
+    }
+
+    static string FormatDamage(RapidFiringLog log)
+    {
+        return log != null && log.hit
+            ? $"{log.damagePoint:0.##}"
             : "";
     }
 

@@ -101,10 +101,81 @@ namespace NavalCombatCore
             yield break;
         }
 
+        public enum BreakdownBlockedReason
+        {
+            None,
+            ShooterNotResolved,
+            BatteryRecordNotResolved,
+            NoTarget,
+            DoctrineBlocked,
+        }
+
+        public class HitProbabilityBreakdown
+        {
+            public bool canResolveProbability;
+            public BreakdownBlockedReason blockedReason;
+
+            public string targetObjectId;
+            public string targetName;
+            public float distanceYards;
+            public float bearingDeg;
+            public RapidFiringBatteryLocation side;
+            public int allocatedBarrels;
+            public int availableBarrels;
+            public bool isMasked;
+            public float secondsPerShot;
+
+            public int fireControlRecordIndex;
+            public bool usingEffectiveRange;
+            public float baseFireControlScore;
+            public float visibilityOffset;
+            public float dawnDuskOffset;
+            public float nightMoonlightOffset;
+            public float illuminationOffset;
+            public float evasiveActionOffset;
+            public float underFireOffset;
+            public float targetSizeOffset;
+            public float seaStateOffset;
+            public float crewQualityOffset;
+
+            public float finalFireControlScore;
+            public float hitProbabilityTableP100;
+            public float finalHitProbability;
+        }
+
         public string DescribeDetail()
         {
             var lines = new List<string>() { $"Detail: {objectId}" };
             lines.AddRange(logs.Select(r => r.Summary()));
+            return string.Join("\n", lines);
+        }
+
+        public string DescribeFireControlDetail()
+        {
+            var lines = new List<string>() { $"Rapid Firing Detail: {objectId}" };
+
+            var targetRecords = targettingRecords
+                .Where(record => record != null)
+                .ToList();
+
+            if (targetRecords.Count == 0)
+            {
+                lines.Add("");
+                lines.Add("No current target.");
+                return string.Join("\n", lines);
+            }
+
+            using (var fireCtx = GunneryFireContext.Begin())
+            {
+                foreach (var targetRecord in targetRecords)
+                {
+                    if (lines.Count > 0 && lines[^1] != "")
+                        lines.Add("");
+
+                    lines.AddRange(BuildHitProbabilityBreakdownLines(GetCurrentHitProbabilityBreakdown(targetRecord, fireCtx)));
+                }
+            }
+
             return string.Join("\n", lines);
         }
 
@@ -200,6 +271,201 @@ namespace NavalCombatCore
             return fireControlScore;
         }
 
+        static string FormatSigned(float value)
+        {
+            var v = Math.Abs(value) < 0.0001f ? 0f : value;
+            return $"{(v >= 0 ? "+" : "")}{v:0.##}";
+        }
+
+        static string FormatNumber(float value)
+        {
+            var v = Math.Abs(value) < 0.0001f ? 0f : value;
+            return $"{v:0.##}";
+        }
+
+        static string DescribeBlockedReason(BreakdownBlockedReason reason)
+        {
+            return reason switch
+            {
+                BreakdownBlockedReason.None => "No blocking reason.",
+                BreakdownBlockedReason.ShooterNotResolved => "Firing ship is not resolved.",
+                BreakdownBlockedReason.BatteryRecordNotResolved => "Rapid firing battery record is not resolved.",
+                BreakdownBlockedReason.NoTarget => "No current firing target.",
+                BreakdownBlockedReason.DoctrineBlocked => "Blocked by maximum firing distance doctrine.",
+                _ => "Blocked by an unknown reason."
+            };
+        }
+
+        public static List<string> BuildHitProbabilityBreakdownLines(HitProbabilityBreakdown breakdown)
+        {
+            var lines = new List<string>();
+            var targetName = string.IsNullOrWhiteSpace(breakdown?.targetName) ? "[No Target]" : breakdown.targetName;
+            lines.Add($"Hit probability of {targetName}:");
+
+            if (breakdown == null || !breakdown.canResolveProbability)
+            {
+                lines.Add("");
+                lines.Add("Final Hit Probability => 0%");
+                lines.Add($"Reason: {DescribeBlockedReason(breakdown?.blockedReason ?? BreakdownBlockedReason.ShooterNotResolved)}");
+                return lines;
+            }
+
+            lines.Add($"{FormatNumber(breakdown.distanceYards)} yards");
+            lines.Add($"{FormatNumber(breakdown.bearingDeg)} deg => {breakdown.side}");
+            lines.Add($"Barrels: allocated {breakdown.allocatedBarrels}, available {breakdown.availableBarrels}");
+            lines.Add(breakdown.isMasked
+                ? $"Masked: yes, seconds per shot {FormatNumber(breakdown.secondsPerShot)}"
+                : $"Masked: no, seconds per shot {FormatNumber(breakdown.secondsPerShot)}");
+
+            lines.Add("");
+            lines.Add($"Base Fire Control Value ({(breakdown.usingEffectiveRange ? "Effective" : "Max")} Range / FC Damage Level {breakdown.fireControlRecordIndex}) => {FormatNumber(breakdown.baseFireControlScore)}");
+            lines.Add($"Visibility ({NavalGameState.Instance.scenarioState.visibility}): {FormatSigned(breakdown.visibilityOffset)}");
+            lines.Add($"Dawn/Dusk (Sun Bearing Sector): {FormatSigned(breakdown.dawnDuskOffset)}");
+            lines.Add($"Night/Moonlight: {FormatSigned(breakdown.nightMoonlightOffset)}");
+            lines.Add($"Illumination/Afire: {FormatSigned(breakdown.illuminationOffset)}");
+            lines.Add($"Evasive Action: {FormatSigned(breakdown.evasiveActionOffset)}");
+            lines.Add($"Under Fire (3+ ships): {FormatSigned(breakdown.underFireOffset)}");
+            lines.Add($"Target Size: {FormatSigned(breakdown.targetSizeOffset)}");
+            lines.Add($"Sea State: {FormatSigned(breakdown.seaStateOffset)}");
+            lines.Add($"Crew Quality: {FormatSigned(breakdown.crewQualityOffset)}");
+
+            lines.Add("");
+            lines.Add($"Final Fire Control Score => {FormatNumber(breakdown.finalFireControlScore)}");
+            lines.Add($"Hit Probability Table => {FormatNumber(breakdown.hitProbabilityTableP100)}%");
+            lines.Add($"Final Hit Probability => {FormatNumber(breakdown.finalHitProbability * 100f)}%");
+            return lines;
+        }
+
+        public HitProbabilityBreakdown GetCurrentHitProbabilityBreakdown(
+            RapidFiringTargettingStatus targetRecord,
+            GunneryFireContext fireCtx = null,
+            int? allocatedBarrelsOverride = null,
+            float? secondsPerShotOverride = null)
+        {
+            var breakdown = new HitProbabilityBreakdown()
+            {
+                blockedReason = BreakdownBlockedReason.ShooterNotResolved,
+                targetObjectId = targetRecord?.targetObjectId,
+                targetName = targetRecord?.GetTarget()?.namedShip?.name?.GetMergedName(),
+                allocatedBarrels = allocatedBarrelsOverride ?? Math.Max(0, targetRecord?.allocated ?? 0)
+            };
+
+            var shooter = EntityManager.Instance.GetParent<ShipLog>(this);
+            if (shooter == null)
+                return breakdown;
+
+            var r = GetRapidFireBatteryRecord();
+            if (r == null)
+            {
+                breakdown.blockedReason = BreakdownBlockedReason.BatteryRecordNotResolved;
+                return breakdown;
+            }
+
+            var target = targetRecord?.GetTarget();
+            if (target == null)
+            {
+                breakdown.blockedReason = BreakdownBlockedReason.NoTarget;
+                return breakdown;
+            }
+
+            fireCtx ??= GunneryFireContext.GetCurrentOrCreateTemp();
+
+            var stTgtSup = fireCtx.GetOrCalcualteShipLogPairSupplementary(shooter, target);
+            var stats = stTgtSup.stats;
+            breakdown.distanceYards = stats.distanceYards;
+            breakdown.bearingDeg = stats.observerToTargetBearingRelativeToBowDeg;
+            breakdown.side = NavalUtils.GetBatterySide(stats.observerToTargetBearingRelativeToBowDeg);
+            breakdown.availableBarrels = GetAvailableBarrels(breakdown.side);
+            breakdown.targetObjectId = target.objectId;
+            breakdown.targetName = target.namedShip?.name?.GetMergedName();
+
+            var doctrineRespected = shooter.doctrine.GetMaximumFiringDistanceYardsFor100mmLess().IsGreaterThanIfSpecified(stats.distanceYards);
+            if (!doctrineRespected)
+            {
+                breakdown.blockedReason = BreakdownBlockedReason.DoctrineBlocked;
+                return breakdown;
+            }
+
+            breakdown.canResolveProbability = true;
+            breakdown.blockedReason = BreakdownBlockedReason.None;
+
+            var maskCheckResult = stTgtSup.GetOrCalcualteMaskCheckResult();
+            breakdown.isMasked = maskCheckResult.isMasked;
+            if (secondsPerShotOverride.HasValue)
+            {
+                breakdown.secondsPerShot = secondsPerShotOverride.Value;
+            }
+            else if (breakdown.allocatedBarrels > 0)
+            {
+                breakdown.secondsPerShot = 120f / breakdown.allocatedBarrels * (breakdown.isMasked ? 2f : 1f);
+            }
+
+            var fcRecord = fireControlHits >= r.fireControlRecords.Count ? null : r.fireControlRecords[fireControlHits];
+            breakdown.fireControlRecordIndex = fireControlHits;
+            breakdown.usingEffectiveRange = stats.distanceYards <= r.effectiveRangeYards;
+            breakdown.baseFireControlScore = fcRecord == null
+                ? 0
+                : (breakdown.usingEffectiveRange ? fcRecord.fireControlEffectiveRange : fcRecord.fireControlMaxRange);
+
+            var targetIlluminationSup = fireCtx.GetOrCalculateTargetIlluminationSupplementary(target);
+            var targetSunState = targetIlluminationSup?.targetSunState;
+            if ((targetIlluminationSup?.fireControlOffset ?? 0) <= 0)
+            {
+                breakdown.dawnDuskOffset = NavalUtils.GetDawnDuskFireControlOffset(targetSunState, stats.observerToTargetTrueBearingRelativeToNorthDeg);
+                if (targetSunState.GetDayNightLevel() == DayNightLevel.Night)
+                    breakdown.nightMoonlightOffset = NavalGameState.Instance.scenarioState.hasMoonlight ? -2 : -4;
+            }
+
+            breakdown.illuminationOffset = targetIlluminationSup?.fireControlOffset ?? 0;
+
+            var visibility = NavalGameState.Instance.scenarioState.visibility;
+            if (visibility >= VisibilityDescription.LightHaze)
+                breakdown.visibilityOffset = 0;
+            else if (visibility >= VisibilityDescription.ThinFog)
+                breakdown.visibilityOffset = -2;
+            else
+                breakdown.visibilityOffset = -4;
+
+            var firingShipEA = shooter.IsEvasiveManeuvering();
+            var targetShipEA = target.IsEvasiveManeuvering();
+            if (firingShipEA && targetShipEA)
+                breakdown.evasiveActionOffset = -8;
+            else if (targetShipEA)
+                breakdown.evasiveActionOffset = -3;
+            else if (firingShipEA)
+                breakdown.evasiveActionOffset = -2;
+
+            if (fireCtx.shipLogSupplementaryMap.TryGetValue(shooter, out var meShipLogSup) &&
+                meShipLogSup.shipLogsFiredAtMe.Count >= 3)
+            {
+                breakdown.underFireOffset = -2;
+            }
+
+            breakdown.targetSizeOffset = target.shipClass.targetSizeModifier;
+            breakdown.seaStateOffset = RuleChart.ResolveSeaStateOffset(
+                shooter.shipClass.displacementTons,
+                NavalGameState.Instance.scenarioState.seaStateBeaufort,
+                out bool blocked
+            );
+            breakdown.crewQualityOffset = shooter.GetEffectiveCrewQualityForFloatUsage();
+
+            breakdown.finalFireControlScore = breakdown.baseFireControlScore
+                + breakdown.visibilityOffset
+                + breakdown.dawnDuskOffset
+                + breakdown.nightMoonlightOffset
+                + breakdown.illuminationOffset
+                + breakdown.evasiveActionOffset
+                + breakdown.underFireOffset
+                + breakdown.targetSizeOffset
+                + breakdown.seaStateOffset
+                + breakdown.crewQualityOffset;
+
+            breakdown.hitProbabilityTableP100 = RuleChart.GetHitProbP100(breakdown.finalFireControlScore);
+            breakdown.finalHitProbability = breakdown.hitProbabilityTableP100 * 0.01f;
+
+            return breakdown;
+        }
+
         public int GetAvailableBarrels(RapidFiringBatteryLocation side)
         {
             var r = GetRapidFireBatteryRecord();
@@ -280,28 +546,7 @@ namespace NavalCombatCore
                         secondsPerShot *= 2; // ROF / 2 if masked
                     }
 
-                    var targetIlluminationSup = fireCtx.GetOrCalculateTargetIlluminationSupplementary(tgt);
-                    var targetSunState = targetIlluminationSup?.targetSunState;
-                    var dawnDuskOffset = 0;
-                    var nightMoonlightOffset = 0;
-
-                    if ((targetIlluminationSup?.fireControlOffset ?? 0) <= 0)
-                    {
-                        // Target silhouetted by horizon: +1
-                        // Target in darkness: -2
-                        // None of above: +0
-                        // (EQ to Batteries)
-                        dawnDuskOffset = NavalUtils.GetDawnDuskFireControlOffset(targetSunState, stats.observerToTargetTrueBearingRelativeToNorthDeg);
-
-                        // Handle Additional for night conditions
-                        // No moonlight: -4
-                        // Moonlight: -2
-                        // (EQ to Batteries)
-                        if (targetSunState.GetDayNightLevel() == DayNightLevel.Night)
-                        {
-                            nightMoonlightOffset = NavalGameState.Instance.scenarioState.hasMoonlight ? -2 : -4;
-                        }
-                    }
+                    var hitProbabilityBreakdown = GetCurrentHitProbabilityBreakdown(tgtRec, fireCtx, used, secondsPerShot);
 
                     while (tgtRec.processingSeconds >= secondsPerShot && ammunition > 0)
                     {
@@ -312,73 +557,7 @@ namespace NavalCombatCore
                             ammunition -= 1;
                         }
 
-                        var fireControlScore = GetFireControlScore(stats.distanceYards);
-
-                        // Visibility - apply to all conditions
-                        var visibility = NavalGameState.Instance.scenarioState.visibility;
-                        if (visibility >= VisibilityDescription.LightHaze)
-                        {
-                            fireControlScore += 0;
-                        }
-                        else if (visibility >= VisibilityDescription.ThinFog)
-                        {
-                            fireControlScore += -2;
-                        }
-                        else
-                        {
-                            fireControlScore += -4;
-                        }
-
-                        fireControlScore += dawnDuskOffset;
-                        fireControlScore += nightMoonlightOffset;
-                        fireControlScore += targetIlluminationSup?.fireControlOffset ?? 0;
-
-                        // TODO: Smoke 
-                        // Target obscured by battle smoke or funnel smokescreen: -2
-
-                        // Evasive Action / Emergency Turn
-                        // Target only in EA: -3
-                        // Target ship only in EA: -2
-                        // Target and firing ships in EA: -8
-                        // (EQ to Batteries)
-
-                        var firingShipEA = shooter.IsEvasiveManeuvering();
-                        var targetShipEA = tgt.IsEvasiveManeuvering();
-
-                        if (firingShipEA && targetShipEA)
-                            fireControlScore -= 8;
-                        else if (targetShipEA)
-                            fireControlScore -= 3;
-                        else if (firingShipEA)
-                            fireControlScore -= 2;
-
-                        // TODO: Firing ship under fire
-                        // Under fire from 3 or more ships during this turn: -2
-                        // (EQ to Batteries)
-
-                        var meShipLogSup = fireCtx.shipLogSupplementaryMap[shooter];
-                        if (meShipLogSup.shipLogsFiredAtMe.Count >= 3)
-                        {
-                            fireControlScore -= 2;
-                        }
-
-                        // Size of target ship
-                        // TS (from Ship Log of target ship)
-                        fireControlScore += tgt.shipClass.targetSizeModifier;
-
-                        // Battle factor
-                        // Sea State + Crew Rating (from Ship Log)
-                        // (EQ to Batteries)
-
-                        var seaStateOffset = RuleChart.ResolveSeaStateOffset(
-                            shooter.shipClass.displacementTons,
-                            NavalGameState.Instance.scenarioState.seaStateBeaufort,
-                            out bool blocked
-                        );
-                        fireControlScore += seaStateOffset; // Use -100 to soft block
-                        fireControlScore += shooter.GetEffectiveCrewQualityForFloatUsage();
-
-                        var hitProb = RuleChart.GetHitProbP100(fireControlScore) * 0.01f;
+                        var hitProb = hitProbabilityBreakdown.finalHitProbability;
                         var hit = (float)RandomUtils.rand.NextDouble() < hitProb;
 
                         var log = new RapidFiringLog()

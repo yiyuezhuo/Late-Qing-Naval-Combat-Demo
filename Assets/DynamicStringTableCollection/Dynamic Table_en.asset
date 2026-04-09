@@ -3515,6 +3515,18 @@ MonoBehaviour:
     m_Localized: '{0} hits / {1} shots'
     m_Metadata:
       m_Items: []
+  - m_Id: -115
+    m_Localized: Rapid Firing Detail
+    m_Metadata:
+      m_Items: []
+  - m_Id: -116
+    m_Localized: No incoming battery hits.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -117
+    m_Localized: No outgoing weapon fire records.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

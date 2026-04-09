@@ -36,7 +36,11 @@
                     <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                 </Bindings>
             </ui:IntegerField>
-            <ui:Button text="Detail" name="DetailButton"/>
+            <ui:Button text="Detail" name="DetailButton">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(102671505330176)"/>
+                </Bindings>
+            </ui:Button>
         </ui:VisualElement>
         <ui:MultiColumnListView name="RapidFiringTargettingStatusMultiColumnListView" data-source-path="targettingRecords" binding-source-selection-mode="AutoAssign" show-add-remove-footer="true">
             <ui:Columns>

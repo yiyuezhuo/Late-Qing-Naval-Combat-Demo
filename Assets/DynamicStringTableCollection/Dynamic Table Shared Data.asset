@@ -3506,6 +3506,18 @@ MonoBehaviour:
     m_Key: '{0} hits / {1} shots'
     m_Metadata:
       m_Items: []
+  - m_Id: -115
+    m_Key: Rapid Firing Detail
+    m_Metadata:
+      m_Items: []
+  - m_Id: -116
+    m_Key: No incoming battery hits.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -117
+    m_Key: No outgoing weapon fire records.
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -913,6 +913,7 @@ namespace StrategicCombatCore
         }
 
         const float AiFrontlineAllocationEpsilon = 0.0001f;
+        public static float reservedPercentForCounterAttack = 0.5f;
 
         sealed class AiSourcePlanState
         {
@@ -964,6 +965,7 @@ namespace StrategicCombatCore
             public Dictionary<(int x, int y), AiAttackTargetState> targets = new();
             public Dictionary<(int x, int y), List<(int x, int y)>> targetToReservedKeys = new();
             public Dictionary<(int x, int y), AiReservedCommitState> reservedCommits = new();
+            public HashSet<((int x, int y) reservedKey, (int x, int y) targetKey)> coveredThreatPairs = new();
         }
 
         void Advance1DayForAiFrontlineAllocation()
@@ -1402,7 +1404,9 @@ namespace StrategicCombatCore
         AiAttackEvaluationContext BuildAiAttackEvaluationContext(
             SideState side,
             IEnumerable<Cell> targetCells,
-            IEnumerable<AiSourcePlanState> sourceStates)
+            IEnumerable<AiSourcePlanState> sourceStates,
+            IEnumerable<Cell> selectableTargets = null,
+            IEnumerable<AiPlannedAssignment> assignments = null)
         {
             var context = new AiAttackEvaluationContext();
             if (side == null)
@@ -1446,13 +1450,113 @@ namespace StrategicCombatCore
                     .ToList();
             }
 
+            var selectableTargetSet = (selectableTargets ?? targetCells ?? Enumerable.Empty<Cell>())
+                .Where(cell => cell != null)
+                .Select(cell => (cell.x, cell.y))
+                .ToHashSet();
+
             foreach (var reservedKey in context.reservedCommits.Keys.ToList())
             {
                 context.reservedCommits[reservedKey].targetOptionCount = context.targetToReservedKeys
-                    .Count(entry => entry.Value.Contains(reservedKey));
+                    .Count(entry => selectableTargetSet.Contains(entry.Key) && entry.Value.Contains(reservedKey));
+            }
+
+            foreach (var assignment in assignments ?? Enumerable.Empty<AiPlannedAssignment>())
+            {
+                if (assignment?.rootGroup?.cell == null ||
+                    assignment.targetCell == null ||
+                    assignment.atomObjectIds == null ||
+                    assignment.atomObjectIds.Count == 0)
+                {
+                    continue;
+                }
+
+                context.coveredThreatPairs.Add((
+                    (assignment.rootGroup.cell.x, assignment.rootGroup.cell.y),
+                    (assignment.targetCell.x, assignment.targetCell.y)));
+            }
+
+            foreach (var group in IterIndependentStrategicGroups())
+            {
+                if (!IsAiCombatableArmyGroup(group) ||
+                    group.side != side ||
+                    group.cell == null ||
+                    group.plannedPath == null ||
+                    group.plannedPath.Count < 2)
+                {
+                    continue;
+                }
+
+                var nextCell = group.plannedPath[1].GetCell();
+                if (nextCell == null)
+                    continue;
+
+                context.coveredThreatPairs.Add((
+                    (group.cell.x, group.cell.y),
+                    (nextCell.x, nextCell.y)));
             }
 
             return context;
+        }
+
+        bool IsAiThreatCovered(
+            AiAttackEvaluationContext context,
+            (int x, int y) reservedKey,
+            (int x, int y) targetKey,
+            SideState side)
+        {
+            if (context == null || side == null)
+                return false;
+
+            if (context.coveredThreatPairs.Contains((reservedKey, targetKey)))
+                return true;
+
+            var targetCell = context.targets.GetValueOrDefault(targetKey)?.cell;
+            var reservedCell = context.reservedCommits.GetValueOrDefault(reservedKey)?.cell;
+            if (targetCell == null || reservedCell == null)
+                return false;
+
+            return targetCell.TryGetDirection(reservedCell, out var edge) &&
+                   targetCell.GetEdgeSide(edge) == side;
+        }
+
+        bool IsAiHostileThreatCell(Cell cell, SideState side)
+        {
+            return cell != null &&
+                   side != null &&
+                   GetAiHostilePowerInCell(cell, side) > AiFrontlineAllocationEpsilon;
+        }
+
+        bool HasUncoveredAiCounterAttackThreat(
+            AiAttackEvaluationContext context,
+            (int x, int y) reservedKey,
+            (int x, int y) activeTargetKey,
+            SideState side)
+        {
+            if (context == null ||
+                !context.reservedCommits.TryGetValue(reservedKey, out var reservedState) ||
+                reservedState?.cell == null)
+            {
+                return false;
+            }
+
+            foreach (var neighbor in reservedState.cell.GetNeighbors())
+            {
+                if (neighbor == null)
+                    continue;
+
+                var threatKey = (neighbor.x, neighbor.y);
+                if (threatKey == activeTargetKey)
+                    continue;
+
+                if (!IsAiHostileThreatCell(neighbor, side))
+                    continue;
+
+                if (!IsAiThreatCovered(context, reservedKey, threatKey, side))
+                    return true;
+            }
+
+            return false;
         }
 
         List<Cell> PruneAiAttackTargets(SideState side, IEnumerable<Cell> candidateTargets, IEnumerable<AiSourcePlanState> sourceStates)
@@ -1573,12 +1677,13 @@ namespace StrategicCombatCore
 
         void AllocateAiAttackTarget(
             AiAttackEvaluationContext context,
+            SideState side,
             Cell targetCell,
             List<AiSourcePlanState> sourceStates,
             List<AiPlannedAssignment> assignments,
             bool limitToThreeToOne)
         {
-            if (context == null || targetCell == null || sourceStates == null || assignments == null)
+            if (context == null || side == null || targetCell == null || sourceStates == null || assignments == null)
                 return;
 
             var targetKey = (targetCell.x, targetCell.y);
@@ -1588,6 +1693,18 @@ namespace StrategicCombatCore
             var targetState = context.targets.GetValueOrDefault(targetKey);
             if (targetState == null)
                 return;
+
+            var sourceStateSnapshots = sourceStates.ToDictionary(
+                state => state,
+                state => (nextAtomIndex: state.nextAtomIndex, remainingPower: state.remainingPower));
+            var assignmentSnapshots = assignments
+                .Select(assignment => new AiPlannedAssignment()
+                {
+                    rootGroup = assignment.rootGroup,
+                    targetCell = assignment.targetCell,
+                    atomObjectIds = assignment.atomObjectIds?.ToList() ?? new List<string>(),
+                })
+                .ToList();
 
             var orderedReservedKeys = reservedKeys
                 .OrderBy(key => context.reservedCommits.GetValueOrDefault(key)?.targetOptionCount ?? int.MaxValue)
@@ -1623,26 +1740,81 @@ namespace StrategicCombatCore
                     if (sourceState == null)
                         break;
 
+                    var remainingCellPower = cellSources
+                        .Where(state => state.remainingPower > AiFrontlineAllocationEpsilon)
+                        .Sum(state => state.remainingPower);
+                    var hasUncoveredThreat = HasUncoveredAiCounterAttackThreat(
+                        context,
+                        reservedKey,
+                        targetKey,
+                        side);
+                    var reservePower = hasUncoveredThreat
+                        ? remainingCellPower * Math.Clamp(reservedPercentForCounterAttack, 0f, 1f)
+                        : 0f;
+                    var maxAllocatablePower = Math.Max(0f, remainingCellPower - reservePower);
+                    if (maxAllocatablePower <= AiFrontlineAllocationEpsilon)
+                        break;
+
                     var requestedPower = limitToThreeToOne
                         ? Math.Max(0f, targetState.enemyPower * 3f - targetState.friendlyPowerInCell - reservedCommittedPower)
                         : float.PositiveInfinity;
+                    requestedPower = Math.Min(requestedPower, maxAllocatablePower);
                     var forceAtLeastOneAtom = limitToThreeToOne &&
                                               targetState.enemyPower <= AiFrontlineAllocationEpsilon &&
                                               targetState.friendlyPowerInCell + reservedCommittedPower <= AiFrontlineAllocationEpsilon;
-                    if (!TryConsumeAiSourceAtoms(
-                        sourceState,
-                        requestedPower,
-                        forceAtLeastOneAtom,
-                        out var atomObjectIds,
-                        out var selectedPower,
-                        out _))
+
+                    List<string> atomObjectIds = null;
+                    float selectedPower = 0f;
+                    var consumed = false;
+                    foreach (var candidateSource in cellSources
+                        .Where(state => state.remainingPower > AiFrontlineAllocationEpsilon)
+                        .OrderBy(state => state.group?.objectId))
+                    {
+                        var snapshot = (candidateSource.nextAtomIndex, candidateSource.remainingPower);
+                        if (!TryConsumeAiSourceAtoms(
+                            candidateSource,
+                            requestedPower,
+                            forceAtLeastOneAtom,
+                            out atomObjectIds,
+                            out selectedPower,
+                            out _))
+                        {
+                            continue;
+                        }
+
+                        if (selectedPower <= maxAllocatablePower + AiFrontlineAllocationEpsilon)
+                        {
+                            sourceState = candidateSource;
+                            consumed = true;
+                            break;
+                        }
+
+                        candidateSource.nextAtomIndex = snapshot.nextAtomIndex;
+                        candidateSource.remainingPower = snapshot.remainingPower;
+                    }
+
+                    if (!consumed)
                     {
                         break;
                     }
 
                     AppendAiPlannedAssignment(assignments, sourceState.group, targetCell, atomObjectIds);
                     reservedCommittedPower += selectedPower;
+                    context.coveredThreatPairs.Add((reservedKey, targetKey));
                 }
+            }
+
+            if (targetState.enemyPower > AiFrontlineAllocationEpsilon &&
+                targetState.friendlyPowerInCell + reservedCommittedPower + AiFrontlineAllocationEpsilon < targetState.enemyPower * 1.5f)
+            {
+                foreach (var snapshot in sourceStateSnapshots)
+                {
+                    snapshot.Key.nextAtomIndex = snapshot.Value.nextAtomIndex;
+                    snapshot.Key.remainingPower = snapshot.Value.remainingPower;
+                }
+
+                assignments.Clear();
+                assignments.AddRange(assignmentSnapshots);
             }
         }
 
@@ -1659,7 +1831,12 @@ namespace StrategicCombatCore
                 .ToDictionary(group => group.Key, group => group.First());
             while (remainingTargets.Count > 0)
             {
-                var context = BuildAiAttackEvaluationContext(side, remainingTargets.Values, sourceStates);
+                var context = BuildAiAttackEvaluationContext(
+                    side,
+                    baseTargets,
+                    sourceStates,
+                    remainingTargets.Values,
+                    assignments);
                 var targetCell = SelectBestAiAttackTarget(
                     context,
                     remainingTargets.Values.Where(target =>
@@ -1667,7 +1844,7 @@ namespace StrategicCombatCore
                 if (targetCell == null)
                     break;
 
-                AllocateAiAttackTarget(context, targetCell, sourceStates, assignments, limitToThreeToOne);
+                AllocateAiAttackTarget(context, side, targetCell, sourceStates, assignments, limitToThreeToOne);
                 remainingTargets.Remove((targetCell.x, targetCell.y));
             }
         }

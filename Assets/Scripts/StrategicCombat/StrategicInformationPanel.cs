@@ -52,11 +52,6 @@ public class StrategicInformationPanel : SingletonDocument<StrategicInformationP
             }
         };
 
-        root.Q<Button>("EditMoveButton").clicked += () =>
-        {
-            StrategicGameManager.Instance.StartToEditMove();
-        };
-
         var strategicGroupNameLabel = root.Q<Label>("StrategicGroupNameLabel");
         Utils.RegisterLinkTag(strategicGroupNameLabel, new()
         {
@@ -119,10 +114,6 @@ public class StrategicInformationPanel : SingletonDocument<StrategicInformationP
             }
         });
 
-        var moveButton = root.Q<Button>("MoveButton");
-        moveButton.clicked += StrategicGameManager.Instance.TryToStartMakeNewMove;
-
-        root.Q<Button>("MoveAppendButton").clicked += StrategicGameManager.Instance.TryToStartAppendMove;
         root.Q<Button>("TransferButton").clicked += () =>
         {
             DialogRoot.Instance.PopupStrategicGroupTransferDialog(StrategicGameManager.Instance.lastSelectedStrategicGroup);

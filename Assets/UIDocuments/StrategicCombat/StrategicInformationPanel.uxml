@@ -105,21 +105,6 @@
                             <ui:DataBinding property="style.display" data-source-path="hasAssignedMission" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
                         </Bindings>
                     </ui:Label>
-                    <ui:Button text="Move (New, M)" name="MoveButton">
-                        <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(16832839338856448)"/>
-                        </Bindings>
-                    </ui:Button>
-                    <ui:Button text="Move (Append, A)" name="MoveAppendButton">
-                        <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(16832983358672896)"/>
-                        </Bindings>
-                    </ui:Button>
-                    <ui:Button text="Move (Edit, M)" name="EditMoveButton">
-                        <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(360963381039104)"/>
-                        </Bindings>
-                    </ui:Button>
                     <ui:Button text="Transfer" name="TransferButton">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000052)"/>

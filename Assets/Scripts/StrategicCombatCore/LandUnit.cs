@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using CoreUtils;
 
 namespace StrategicCombatCore
@@ -85,7 +84,7 @@ namespace StrategicCombatCore
         static float baseNormalSupplyCostTonPerMenDay = 0.003f; // 3kg/Day/Man 
         // static float baseCombatSupplyCostTonPerMenDay = 0.015f;
         static float carryDays = 7;
-        static float depotReserveDays = 30;
+        internal static float depotReserveDays = 30;
 
         static Dictionary<LandUnitType, float> supplyCostCoefMap = new()
         {
@@ -100,10 +99,12 @@ namespace StrategicCombatCore
             if (template == null)
                 return 0;
             if (template.unitType == LandUnitType.Supply)
-                return GetSupplyCostTonsPerDayForDepot() * depotReserveDays;
+                return GetSupplyTransferState().resolvedSupplyCapTons;
 
-            return GetSupplyCostTonsPerDay() * carryDays;
+            return GetCarriedSupplyCapTons();
         }
+
+        internal float GetCarriedSupplyCapTons() => GetSupplyCostTonsPerDay() * carryDays;
 
         public float GetSupplyCostTonsPerDay() => GetSupplyCostTonsPerMenDay() * strength;
 
@@ -129,17 +130,6 @@ namespace StrategicCombatCore
 
             var unitTypeCoef = supplyCostCoefMap.GetValueOrDefault(template.unitType, 1);
             return baseNormalSupplyCostTonPerMenDay * unitTypeCoef;
-        }
-
-        float GetSupplyCostTonsPerDayForDepot()
-        {
-            var parentGroup = parentGroupReference.Get();
-            if (parentGroup == null)
-                return 0;
-            var firstDepot = parentGroup.directMemberReferences.FirstOrDefault(r => r.Get() is LandUnit landUnit && landUnit?.GetLandUnitTemplate()?.unitType == LandUnitType.Supply);
-            if (firstDepot.Get() == this)
-                return parentGroup.GetSupplyCostTonsPerDay();
-            return 0;
         }
 
         static double baseNormalTransferWeightTonPerMen = 0.5; // 500kg per man

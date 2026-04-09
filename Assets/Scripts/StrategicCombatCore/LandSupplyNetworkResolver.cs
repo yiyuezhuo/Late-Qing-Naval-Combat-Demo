@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Xml.Serialization;
 using CoreUtils;
@@ -51,6 +50,8 @@ namespace StrategicCombatCore
     {
         public SupplyFlowRecord requestRecord = new();
         public List<SupplyFlowRecord> requestedRecords = new();
+        public float resolvedSupplyCapTons;
+        public bool ShouldSerializeresolvedSupplyCapTons() => Math.Abs(resolvedSupplyCapTons) > 1e-4;
         public void Clear()
         {
             requestRecord.Clear();
@@ -73,6 +74,110 @@ namespace StrategicCombatCore
     public class LandSupplyNetworkResolver
     {
         readonly SupplyNetworkCache cache = new();
+
+        class SupplyCapResolution
+        {
+            readonly Dictionary<LandUnit, float> terminalReserveCapByDepot = new();
+            readonly Dictionary<LandUnit, List<LandUnit>> downstreamDepotsByDepot = new();
+            readonly Dictionary<LandUnit, float> resolvedDepotCapCache = new();
+            readonly HashSet<LandUnit> visitingDepots = new();
+
+            public void RegisterLandUnit(LandUnit landUnit, LandUnit sourceDepot, LandUnitTemplate template)
+            {
+                if (landUnit == null || template == null)
+                    return;
+
+                if (template.unitType == LandUnitType.Supply)
+                {
+                    landUnit.GetSupplyTransferState().resolvedSupplyCapTons = 0;
+                    if (sourceDepot != null &&
+                        sourceDepot != landUnit &&
+                        IsBaseFirstDepot(landUnit))
+                    {
+                        AddDownstreamDepot(sourceDepot, landUnit);
+                    }
+                    return;
+                }
+
+                if (sourceDepot != null)
+                    AddTerminalReserveCap(sourceDepot, landUnit.GetSupplyCostTonsPerDay() * LandUnit.depotReserveDays);
+            }
+
+            public void RegisterShipLog(ShipLog shipLog)
+            {
+                var homeDepot = shipLog?.parentGroupReference.Get()?.GetHomeBaseDepot();
+                if (homeDepot != null)
+                    AddTerminalReserveCap(homeDepot, shipLog.GetSupplyCostTonsPerDay() * LandUnit.depotReserveDays);
+            }
+
+            public void ResolveDepotCaps(IEnumerable<LandUnit> depots)
+            {
+                foreach (var depot in depots)
+                {
+                    if (depot == null)
+                        continue;
+
+                    depot.GetSupplyTransferState().resolvedSupplyCapTons = ResolveDepotCap(depot);
+                }
+            }
+
+            float ResolveDepotCap(LandUnit depot)
+            {
+                if (!IsBaseFirstDepot(depot))
+                    return 0;
+
+                if (resolvedDepotCapCache.TryGetValue(depot, out var cachedCap))
+                    return cachedCap;
+
+                if (!visitingDepots.Add(depot))
+                {
+                    ServiceLocator.Get<ILoggerService>()?.LogError($"Recursive depot supply cap dependency detected for {depot.name?.GetMergedName()}");
+                    return 0;
+                }
+
+                var cap = terminalReserveCapByDepot.GetValueOrDefault(depot);
+                if (downstreamDepotsByDepot.TryGetValue(depot, out var downstreamDepots))
+                {
+                    foreach (var downstreamDepot in downstreamDepots)
+                    {
+                        cap += ResolveDepotCap(downstreamDepot);
+                    }
+                }
+
+                visitingDepots.Remove(depot);
+                resolvedDepotCapCache[depot] = cap;
+                return cap;
+            }
+
+            void AddTerminalReserveCap(LandUnit depot, float reserveCap)
+            {
+                if (reserveCap <= 0)
+                    return;
+
+                terminalReserveCapByDepot[depot] = terminalReserveCapByDepot.GetValueOrDefault(depot) + reserveCap;
+            }
+
+            void AddDownstreamDepot(LandUnit depot, LandUnit downstreamDepot)
+            {
+                if (!downstreamDepotsByDepot.TryGetValue(depot, out var downstreamDepots))
+                {
+                    downstreamDepots = new List<LandUnit>();
+                    downstreamDepotsByDepot[depot] = downstreamDepots;
+                }
+
+                if (!downstreamDepots.Contains(downstreamDepot))
+                    downstreamDepots.Add(downstreamDepot);
+            }
+
+            static bool IsBaseFirstDepot(LandUnit depot)
+            {
+                var parentGroup = depot?.parentGroupReference.Get();
+                // Base direct facilities currently have no supply cost. If they begin
+                // consuming supply, revisit whether they should reserve depot cap.
+                return parentGroup?.type == StrategicGroup.Type.Base &&
+                    parentGroup.GetFirstDepot() == depot;
+            }
+        }
 
         public class Bundle
         {
@@ -97,9 +202,11 @@ namespace StrategicCombatCore
         public void Resolve()
         {
             var gameState = StrategicGameState.Instance;
+            var supplyCapResolution = new SupplyCapResolution();
 
             // Collect and freeze related information
             var bundleMap = new Dictionary<string, Bundle>();
+            var supplyDepots = new List<LandUnit>();
             foreach (var landUnit in gameState.landUnits)
             {
                 var template = landUnit.GetLandUnitTemplate();
@@ -107,17 +214,21 @@ namespace StrategicCombatCore
                     continue;
 
                 var depot = GetCurrentSourceDepot((IStrategicGroupMemberReferenceable)landUnit);
+                supplyCapResolution.RegisterLandUnit(landUnit, depot, template);
+                if (template.unitType == LandUnitType.Supply)
+                    supplyDepots.Add(landUnit);
 
                 bundleMap[landUnit.objectId] = new()
                 {
                     unit = landUnit,
                     isDepot = template.unitType == LandUnitType.Supply,
                     depot = depot,
-                    supplyCapTons = landUnit.GetSupplyCapTons()
                 };
             }
             foreach (var shipLog in gameState.shipLogs)
             {
+                supplyCapResolution.RegisterShipLog(shipLog);
+
                 if(Math.Abs(shipLog.supplyTons - shipLog.GetSupplyCapTons()) > 1e-4)
                 {
                     var depot = GetCurrentSourceDepot((IStrategicGroupMemberReferenceable)shipLog);
@@ -130,6 +241,12 @@ namespace StrategicCombatCore
                         supplyCapTons = shipLog.GetSupplyCapTons()
                     };
                 }
+            }
+            supplyCapResolution.ResolveDepotCaps(supplyDepots);
+            foreach (var bundle in bundleMap.Values)
+            {
+                if (bundle.unit is LandUnit landUnit)
+                    bundle.supplyCapTons = landUnit.GetSupplyCapTons();
             }
 
             // Clear states

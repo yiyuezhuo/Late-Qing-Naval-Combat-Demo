@@ -410,6 +410,9 @@ namespace StrategicCombatCore
 
     public class DamageRepairResolver
     {
+        const float repairPointsPerPortLevel = 100f;
+        const float repairShipRepairPoints = repairPointsPerPortLevel;
+
         public class RepairCapacity
         {
             public float displacementUpperTons;
@@ -519,6 +522,17 @@ namespace StrategicCombatCore
         {
             // Collect cell containing friendly port or shipyard
             Dictionary<(SideState, Cell), Bundle> bundleMap = new();
+            Bundle GetOrCreateBundle(SideState side, Cell cell)
+            {
+                var key = (side, cell);
+                if (!bundleMap.TryGetValue(key, out var bundle))
+                {
+                    bundleMap[key] = bundle = new Bundle() { sideState = side, cell = cell };
+                }
+
+                return bundle;
+            }
+
             foreach (var landUnit in StrategicGameState.Instance.landUnits)
             {
                 if (landUnit.GetLandUnitTemplate()?.unitType == LandUnitType.Port && (landUnit.portLevel > 0 || landUnit.repairShipyardLevel > 0))
@@ -528,11 +542,7 @@ namespace StrategicCombatCore
 
                     if (cell != null && side != null)
                     {
-                        var key = (side, cell);
-                        if (!bundleMap.TryGetValue(key, out var bundle))
-                        {
-                            bundleMap[key] = bundle = new Bundle() { sideState = side, cell = cell };
-                        }
+                        var bundle = GetOrCreateBundle(side, cell);
                         bundle.ports.Add(landUnit);
 
                         if (landUnit.portLevel > 0)
@@ -540,8 +550,7 @@ namespace StrategicCombatCore
                             bundle.repairCapacities.Add(new()
                             {
                                 displacementUpperTons = 0,
-                                // repairPoints = landUnit.portLevel * 100
-                                repairPoints = landUnit.portLevel * 100
+                                repairPoints = landUnit.portLevel * repairPointsPerPortLevel
                             });
                         }
                         if (landUnit.repairShipyardLevel > 0)
@@ -549,14 +558,35 @@ namespace StrategicCombatCore
                             bundle.repairCapacities.Add(new()
                             {
                                 displacementUpperTons = landUnit.repairShipyardLevel * 1000,
-                                repairPoints = landUnit.repairShipyardLevel * 100
+                                repairPoints = landUnit.repairShipyardLevel * repairPointsPerPortLevel
                             });
                         }
                     }
                 }
             }
-            
-            // TODO: Collect Repair Ship's repair capacity
+
+            foreach (var group in StrategicGameState.Instance.IterIndependentStrategicGroups())
+            {
+                if (group.IsMovingStrategically || group.side == null || group.cell == null)
+                    continue;
+
+                var bundle = (Bundle)null;
+                foreach (var shipLog in group.WalkGroupMembersDeployedShips())
+                {
+                    if (shipLog?.shipClass?.type != ShipType.Repair ||
+                        shipLog.operationalState != ShipOperationalState.Operational)
+                    {
+                        continue;
+                    }
+
+                    bundle ??= GetOrCreateBundle(group.side, group.cell);
+                    bundle.repairCapacities.Add(new()
+                    {
+                        displacementUpperTons = 0,
+                        repairPoints = repairShipRepairPoints
+                    });
+                }
+            }
 
             // Collect Repairable ships
             foreach (var group in StrategicGameState.Instance.IterIndependentStrategicGroups())

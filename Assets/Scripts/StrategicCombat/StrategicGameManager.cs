@@ -694,6 +694,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         if(!gameState.scenarioState.firstLoaded)
         {
             gameState.scenarioState.firstLoaded = true;
+            gameState.DoInitialSupplyPass();
 
             PopupMessageWithPause(gameState.scenarioState.globalDescription.GetShortName(), "Scenario Description");
         }

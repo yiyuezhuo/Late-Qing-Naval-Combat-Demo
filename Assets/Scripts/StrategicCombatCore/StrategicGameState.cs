@@ -2945,11 +2945,27 @@ namespace StrategicCombatCore
 
         public void Advance1HourForSupply()
         {
+            DoSupplyConsumption(1f / 24);
+
+            if (scenarioState.dateTime.Hour == 0) // per day
+            {
+                DoDailySupplyReplenishment();
+            }
+        }
+
+        public void DoInitialSupplyPass()
+        {
+            DoSupplyConsumption(1);
+            DoDailySupplyReplenishment();
+        }
+
+        void DoSupplyConsumption(float days)
+        {
             foreach (var group in IterIndependentStrategicGroups())
             {
                 foreach (var landUnit in group.WalkGroupMembers<LandUnit>())
                 {
-                    landUnit.supplyTons = Math.Max(0, landUnit.supplyTons + (landUnit.supplyGeneratedTons - landUnit.GetSupplyCostTonsPerDay()) / 24);
+                    landUnit.supplyTons = Math.Max(0, landUnit.supplyTons + (landUnit.supplyGeneratedTons - landUnit.GetSupplyCostTonsPerDay()) * days);
                 }
             }
 
@@ -2959,7 +2975,7 @@ namespace StrategicCombatCore
                 {
                     foreach (var shipLog in group.WalkGroupMembersDeployedShips())
                     {
-                        shipLog.supplyTons = Math.Max(0, shipLog.supplyTons - shipLog.GetSupplyCostTonsPerHour());
+                        shipLog.supplyTons = Math.Max(0, shipLog.supplyTons - shipLog.GetSupplyCostTonsPerDay() * days);
                     }
                 }
                 // else
@@ -2976,13 +2992,14 @@ namespace StrategicCombatCore
             }
 
 
-            if (scenarioState.dateTime.Hour == 0) // per day
-            {
-                DoLandSupplyNetworkTransfer();
+        }
 
-                // Ship ammunition replenishment, if supply percentage >= 10% of displacement (standard fuel capacity), convert supply to ammo
-                DoShipAmmunitionReplenishment();
-            }
+        void DoDailySupplyReplenishment()
+        {
+            DoLandSupplyNetworkTransfer();
+
+            // Ship ammunition replenishment, if supply percentage >= 10% of displacement (standard fuel capacity), convert supply to ammo
+            DoShipAmmunitionReplenishment();
         }
 
         public bool TryDestroyGroupIfEmptyRecursive(StrategicGroup group)

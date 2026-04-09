@@ -96,6 +96,8 @@ namespace NavalCombatCore
             return $"RapidFiringStatus({GetRapidFireBatteryRecord()?.name?.GetMergedNamePure()})";
         }
 
+        static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
+
         public IEnumerable<IObjectIdLabeled> GetSubObjects()
         {
             yield break;
@@ -161,7 +163,7 @@ namespace NavalCombatCore
             if (targetRecords.Count == 0)
             {
                 lines.Add("");
-                lines.Add("No current target.");
+                lines.Add(Localize("No current target."));
                 return string.Join("\n", lines);
             }
 
@@ -287,52 +289,52 @@ namespace NavalCombatCore
         {
             return reason switch
             {
-                BreakdownBlockedReason.None => "No blocking reason.",
-                BreakdownBlockedReason.ShooterNotResolved => "Firing ship is not resolved.",
-                BreakdownBlockedReason.BatteryRecordNotResolved => "Rapid firing battery record is not resolved.",
-                BreakdownBlockedReason.NoTarget => "No current firing target.",
-                BreakdownBlockedReason.DoctrineBlocked => "Blocked by maximum firing distance doctrine.",
-                _ => "Blocked by an unknown reason."
+                BreakdownBlockedReason.None => Localize("No blocking reason."),
+                BreakdownBlockedReason.ShooterNotResolved => Localize("Firing ship is not resolved."),
+                BreakdownBlockedReason.BatteryRecordNotResolved => Localize("Rapid firing battery record is not resolved."),
+                BreakdownBlockedReason.NoTarget => Localize("No current firing target."),
+                BreakdownBlockedReason.DoctrineBlocked => Localize("Blocked by maximum firing distance doctrine."),
+                _ => Localize("Blocked by an unknown reason.")
             };
         }
 
         public static List<string> BuildHitProbabilityBreakdownLines(HitProbabilityBreakdown breakdown)
         {
             var lines = new List<string>();
-            var targetName = string.IsNullOrWhiteSpace(breakdown?.targetName) ? "[No Target]" : breakdown.targetName;
-            lines.Add($"Hit probability of {targetName}:");
+            var targetName = string.IsNullOrWhiteSpace(breakdown?.targetName) ? Localize("[No Target]") : breakdown.targetName;
+            lines.Add(Localize("Hit probability of {0}:", targetName));
 
             if (breakdown == null || !breakdown.canResolveProbability)
             {
                 lines.Add("");
-                lines.Add("Final Hit Probability => 0%");
-                lines.Add($"Reason: {DescribeBlockedReason(breakdown?.blockedReason ?? BreakdownBlockedReason.ShooterNotResolved)}");
+                lines.Add(Localize("Final Hit Probability => {0}%", 0));
+                lines.Add(Localize("Reason: {0}", DescribeBlockedReason(breakdown?.blockedReason ?? BreakdownBlockedReason.ShooterNotResolved)));
                 return lines;
             }
 
-            lines.Add($"{FormatNumber(breakdown.distanceYards)} yards");
-            lines.Add($"{FormatNumber(breakdown.bearingDeg)} deg => {breakdown.side}");
-            lines.Add($"Barrels: allocated {breakdown.allocatedBarrels}, available {breakdown.availableBarrels}");
+            lines.Add(Localize("{0} yards", FormatNumber(breakdown.distanceYards)));
+            lines.Add(Localize("{0} deg => {1}", FormatNumber(breakdown.bearingDeg), breakdown.side));
+            lines.Add(Localize("Barrels: allocated {0}, available {1}", breakdown.allocatedBarrels, breakdown.availableBarrels));
             lines.Add(breakdown.isMasked
-                ? $"Masked: yes, seconds per shot {FormatNumber(breakdown.secondsPerShot)}"
-                : $"Masked: no, seconds per shot {FormatNumber(breakdown.secondsPerShot)}");
+                ? Localize("Masked: yes, seconds per shot {0}", FormatNumber(breakdown.secondsPerShot))
+                : Localize("Masked: no, seconds per shot {0}", FormatNumber(breakdown.secondsPerShot)));
 
             lines.Add("");
-            lines.Add($"Base Fire Control Value ({(breakdown.usingEffectiveRange ? "Effective" : "Max")} Range / FC Damage Level {breakdown.fireControlRecordIndex}) => {FormatNumber(breakdown.baseFireControlScore)}");
-            lines.Add($"Visibility ({NavalGameState.Instance.scenarioState.visibility}): {FormatSigned(breakdown.visibilityOffset)}");
-            lines.Add($"Dawn/Dusk (Sun Bearing Sector): {FormatSigned(breakdown.dawnDuskOffset)}");
-            lines.Add($"Night/Moonlight: {FormatSigned(breakdown.nightMoonlightOffset)}");
-            lines.Add($"Illumination/Afire: {FormatSigned(breakdown.illuminationOffset)}");
-            lines.Add($"Evasive Action: {FormatSigned(breakdown.evasiveActionOffset)}");
-            lines.Add($"Under Fire (3+ ships): {FormatSigned(breakdown.underFireOffset)}");
-            lines.Add($"Target Size: {FormatSigned(breakdown.targetSizeOffset)}");
-            lines.Add($"Sea State: {FormatSigned(breakdown.seaStateOffset)}");
-            lines.Add($"Crew Quality: {FormatSigned(breakdown.crewQualityOffset)}");
+            lines.Add(Localize("Base Fire Control Value ({0} Range / FC Damage Level {1}) => {2}", breakdown.usingEffectiveRange ? Localize("Effective") : Localize("Max"), breakdown.fireControlRecordIndex, FormatNumber(breakdown.baseFireControlScore)));
+            lines.Add(Localize("Visibility ({0}): {1}", NavalGameState.Instance.scenarioState.visibility, FormatSigned(breakdown.visibilityOffset)));
+            lines.Add(Localize("Dawn/Dusk (Sun Bearing Sector): {0}", FormatSigned(breakdown.dawnDuskOffset)));
+            lines.Add(Localize("Night/Moonlight: {0}", FormatSigned(breakdown.nightMoonlightOffset)));
+            lines.Add(Localize("Illumination/Afire: {0}", FormatSigned(breakdown.illuminationOffset)));
+            lines.Add(Localize("Evasive Action: {0}", FormatSigned(breakdown.evasiveActionOffset)));
+            lines.Add(Localize("Under Fire (3+ ships): {0}", FormatSigned(breakdown.underFireOffset)));
+            lines.Add(Localize("Target Size: {0}", FormatSigned(breakdown.targetSizeOffset)));
+            lines.Add(Localize("Sea State: {0}", FormatSigned(breakdown.seaStateOffset)));
+            lines.Add(Localize("Crew Quality: {0}", FormatSigned(breakdown.crewQualityOffset)));
 
             lines.Add("");
-            lines.Add($"Final Fire Control Score => {FormatNumber(breakdown.finalFireControlScore)}");
-            lines.Add($"Hit Probability Table => {FormatNumber(breakdown.hitProbabilityTableP100)}%");
-            lines.Add($"Final Hit Probability => {FormatNumber(breakdown.finalHitProbability * 100f)}%");
+            lines.Add(Localize("Final Fire Control Score => {0}", FormatNumber(breakdown.finalFireControlScore)));
+            lines.Add(Localize("Hit Probability Table => {0}%", FormatNumber(breakdown.hitProbabilityTableP100)));
+            lines.Add(Localize("Final Hit Probability => {0}%", FormatNumber(breakdown.finalHitProbability * 100f)));
             return lines;
         }
 

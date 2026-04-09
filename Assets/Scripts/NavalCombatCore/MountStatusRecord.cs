@@ -606,23 +606,25 @@ namespace NavalCombatCore
             return $"{v:0.##}";
         }
 
+        static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
+
         static string DescribeBlockedReason(BreakdownBlockedReason reason)
         {
             return reason switch
             {
-                BreakdownBlockedReason.None => "No blocking reason.",
-                BreakdownBlockedReason.MountNotOperational => "Mount is not operational.",
-                BreakdownBlockedReason.NoTarget => "No current firing target.",
-                BreakdownBlockedReason.ContextNotResolved => "Mount context is not fully resolved.",
-                BreakdownBlockedReason.TargetSupplementaryMissing => "Target supplementary data is unavailable.",
-                BreakdownBlockedReason.OutOfRange => "Target is out of battery range.",
-                BreakdownBlockedReason.OutOfArc => "Target is outside this mount's firing arc.",
-                BreakdownBlockedReason.DoctrineBlocked => "Blocked by maximum firing distance doctrine.",
-                BreakdownBlockedReason.AmmunitionUnavailable => "Ammunition is unavailable for current doctrine/ammo state.",
-                BreakdownBlockedReason.FireCheckFailed => "Not included in current gunnery fire-check set.",
-                BreakdownBlockedReason.PenetrationTableMissing => "No penetration table record for current distance.",
-                BreakdownBlockedReason.FireControlTableMissing => "No fire control table record for target speed.",
-                _ => "Blocked by an unknown reason."
+                BreakdownBlockedReason.None => Localize("No blocking reason."),
+                BreakdownBlockedReason.MountNotOperational => Localize("Mount is not operational."),
+                BreakdownBlockedReason.NoTarget => Localize("No current firing target."),
+                BreakdownBlockedReason.ContextNotResolved => Localize("Mount context is not fully resolved."),
+                BreakdownBlockedReason.TargetSupplementaryMissing => Localize("Target supplementary data is unavailable."),
+                BreakdownBlockedReason.OutOfRange => Localize("Target is out of battery range."),
+                BreakdownBlockedReason.OutOfArc => Localize("Target is outside this mount's firing arc."),
+                BreakdownBlockedReason.DoctrineBlocked => Localize("Blocked by maximum firing distance doctrine."),
+                BreakdownBlockedReason.AmmunitionUnavailable => Localize("Ammunition is unavailable for current doctrine/ammo state."),
+                BreakdownBlockedReason.FireCheckFailed => Localize("Not included in current gunnery fire-check set."),
+                BreakdownBlockedReason.PenetrationTableMissing => Localize("No penetration table record for current distance."),
+                BreakdownBlockedReason.FireControlTableMissing => Localize("No fire control table record for target speed."),
+                _ => Localize("Blocked by an unknown reason.")
             };
         }
 
@@ -630,65 +632,67 @@ namespace NavalCombatCore
         {
             var lines = new List<string>();
 
-            var targetName = string.IsNullOrWhiteSpace(breakdown?.targetName) ? "[No Target]" : breakdown.targetName;
-            lines.Add($"Hit probability of {targetName}:");
+            var targetName = string.IsNullOrWhiteSpace(breakdown?.targetName) ? Localize("[No Target]") : breakdown.targetName;
+            lines.Add(Localize("Hit probability of {0}:", targetName));
 
             if (mountLabels != null)
             {
                 var mountLabelList = mountLabels.Where(s => !string.IsNullOrWhiteSpace(s)).Distinct().ToList();
                 if (mountLabelList.Count > 0)
                 {
-                    lines.Add($"Mounts: {string.Join(", ", mountLabelList)}");
+                    lines.Add(Localize("Mounts: {0}", string.Join(", ", mountLabelList)));
                 }
             }
 
             if (breakdown != null && breakdown.hasMeasurement)
             {
                 var targetSpeedLabel = breakdown.targetSpeedKnots.HasValue
-                    ? $"{FormatNumber(breakdown.targetSpeedKnots.Value)} knots"
-                    : "N/A";
-                lines.Add($"{FormatNumber(breakdown.distanceYards)} yards => {(breakdown.rangeBand?.ToString() ?? "N/A")} Range Band");
-                lines.Add($"{FormatNumber(breakdown.bearingDeg)} deg => {(breakdown.targetAspect?.ToString() ?? "N/A")} Angle");
-                lines.Add($"Target Speed: {targetSpeedLabel}");
+                    ? Localize("{0} knots", FormatNumber(breakdown.targetSpeedKnots.Value))
+                    : Localize("N/A");
+                lines.Add(Localize("{0} yards => {1} Range Band", FormatNumber(breakdown.distanceYards), breakdown.rangeBand?.ToString() ?? Localize("N/A")));
+                lines.Add(Localize("{0} deg => {1} Angle", FormatNumber(breakdown.bearingDeg), breakdown.targetAspect?.ToString() ?? Localize("N/A")));
+                lines.Add(Localize("Target Speed: {0}", targetSpeedLabel));
             }
 
             if (breakdown == null || !breakdown.canFire)
             {
                 lines.Add("");
-                lines.Add("Final Hit Probability => 0%");
-                lines.Add($"Reason: {DescribeBlockedReason(breakdown?.blockedReason ?? BreakdownBlockedReason.ContextNotResolved)}");
+                lines.Add(Localize("Final Hit Probability => {0}%", 0));
+                lines.Add(Localize("Reason: {0}", DescribeBlockedReason(breakdown?.blockedReason ?? BreakdownBlockedReason.ContextNotResolved)));
                 return lines;
             }
 
             lines.Add("");
             var baseFireControlTargetSpeedLabel = breakdown.targetSpeedKnots.HasValue
-                ? $"{FormatNumber(breakdown.targetSpeedKnots.Value)} knots"
-                : "N/A";
-            lines.Add($"Base Fire Control Value ({breakdown.rangeBand}/{breakdown.targetAspect}/{baseFireControlTargetSpeedLabel}) => {FormatNumber(breakdown.baseFireControlValue)}");
-            lines.Add($"Close Range Override: {FormatSigned(breakdown.closeRangeOverrideDelta)}");
-            lines.Add($"Mount/Substate FC Offset: {FormatSigned(breakdown.mountSubstateOffset)}");
-            lines.Add($"Mount/Substate FC Coef: x{FormatNumber(breakdown.mountSubstateCoef)}");
-            lines.Add($"Visibility ({NavalGameState.Instance.scenarioState.visibility}): {FormatSigned(breakdown.visibilityOffset)}");
-            lines.Add($"Dawn/Dusk (Sun Bearing Sector): {FormatSigned(breakdown.dawnDuskOffset)}");
-            lines.Add($"Night/Moonlight: {FormatSigned(breakdown.nightMoonlightOffset)}");
-            lines.Add($"Illumination/Afire{(string.IsNullOrWhiteSpace(breakdown.illuminationReason) ? "" : $" ({breakdown.illuminationReason})")}: {FormatSigned(breakdown.illuminationOffset)}");
-            lines.Add($"Evasive Action: {FormatSigned(breakdown.evasiveActionOffset)}");
+                ? Localize("{0} knots", FormatNumber(breakdown.targetSpeedKnots.Value))
+                : Localize("N/A");
+            lines.Add(Localize("Base Fire Control Value ({0}/{1}/{2}) => {3}", breakdown.rangeBand, breakdown.targetAspect, baseFireControlTargetSpeedLabel, FormatNumber(breakdown.baseFireControlValue)));
+            lines.Add(Localize("Close Range Override: {0}", FormatSigned(breakdown.closeRangeOverrideDelta)));
+            lines.Add(Localize("Mount/Substate FC Offset: {0}", FormatSigned(breakdown.mountSubstateOffset)));
+            lines.Add(Localize("Mount/Substate FC Coef: x{0}", FormatNumber(breakdown.mountSubstateCoef)));
+            lines.Add(Localize("Visibility ({0}): {1}", NavalGameState.Instance.scenarioState.visibility, FormatSigned(breakdown.visibilityOffset)));
+            lines.Add(Localize("Dawn/Dusk (Sun Bearing Sector): {0}", FormatSigned(breakdown.dawnDuskOffset)));
+            lines.Add(Localize("Night/Moonlight: {0}", FormatSigned(breakdown.nightMoonlightOffset)));
+            lines.Add(string.IsNullOrWhiteSpace(breakdown.illuminationReason)
+                ? Localize("Illumination/Afire: {0}", FormatSigned(breakdown.illuminationOffset))
+                : Localize("Illumination/Afire ({0}): {1}", breakdown.illuminationReason, FormatSigned(breakdown.illuminationOffset)));
+            lines.Add(Localize("Evasive Action: {0}", FormatSigned(breakdown.evasiveActionOffset)));
             lines.Add(breakdown.trackingLocalControl
-                ? "Tracking (Local Control): x0.5"
-                : $"Tracking State: {FormatSigned(breakdown.trackingOffset)}");
-            lines.Add($"Under Fire (3+ ships): {FormatSigned(breakdown.underFireOffset)}");
-            lines.Add($"Over Concentration: {FormatSigned(breakdown.overConcentrationOffset)}");
-            lines.Add($"Target Size: {FormatSigned(breakdown.targetSizeOffset)}");
-            lines.Add($"Sea State: {FormatSigned(breakdown.seaStateOffset)}");
-            lines.Add($"Crew Quality: {FormatSigned(breakdown.crewQualityBase)}");
-            lines.Add($"Leader Naval Tactical ({breakdown.leaderNavalTacticalLevel}): {FormatSigned(breakdown.leaderNavalTacticalOffset)}");
-            lines.Add($"Fire Control Radar: {FormatSigned(breakdown.fireControlRadarOffset)}");
+                ? Localize("Tracking (Local Control): x{0}", "0.5")
+                : Localize("Tracking State: {0}", FormatSigned(breakdown.trackingOffset)));
+            lines.Add(Localize("Under Fire (3+ ships): {0}", FormatSigned(breakdown.underFireOffset)));
+            lines.Add(Localize("Over Concentration: {0}", FormatSigned(breakdown.overConcentrationOffset)));
+            lines.Add(Localize("Target Size: {0}", FormatSigned(breakdown.targetSizeOffset)));
+            lines.Add(Localize("Sea State: {0}", FormatSigned(breakdown.seaStateOffset)));
+            lines.Add(Localize("Crew Quality: {0}", FormatSigned(breakdown.crewQualityBase)));
+            lines.Add(Localize("Leader Naval Tactical ({0}): {1}", breakdown.leaderNavalTacticalLevel, FormatSigned(breakdown.leaderNavalTacticalOffset)));
+            lines.Add(Localize("Fire Control Radar: {0}", FormatSigned(breakdown.fireControlRadarOffset)));
 
             lines.Add("");
-            lines.Add($"Final Fire Control Score => {FormatNumber(breakdown.finalFireControlScore)}");
-            lines.Add($"Hit Probability Table => {FormatNumber(breakdown.hitProbabilityTableP100)}%");
-            lines.Add($"Global Hit Coef => x{FormatNumber(breakdown.globalHitCoef)}");
-            lines.Add($"Final Hit Probability => {FormatNumber(breakdown.finalHitProbability * 100f)}%");
+            lines.Add(Localize("Final Fire Control Score => {0}", FormatNumber(breakdown.finalFireControlScore)));
+            lines.Add(Localize("Hit Probability Table => {0}%", FormatNumber(breakdown.hitProbabilityTableP100)));
+            lines.Add(Localize("Global Hit Coef => x{0}", FormatNumber(breakdown.globalHitCoef)));
+            lines.Add(Localize("Final Hit Probability => {0}%", FormatNumber(breakdown.finalHitProbability * 100f)));
 
             return lines;
         }

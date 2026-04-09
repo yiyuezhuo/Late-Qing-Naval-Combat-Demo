@@ -5,10 +5,17 @@ using System.Xml.Serialization;
 using CoreUtils;
 using NavalCombatCore;
 using Unity.VisualScripting;
+using YYZ;
 using YYZ.PathFinding;
 
 namespace StrategicCombatCore
 {
+    public enum NavySubMission
+    {
+        General,
+        Supply
+    }
+
     public partial class StrategicGroupMemberReference
     {
         public string referenceId;
@@ -208,6 +215,7 @@ namespace StrategicCombatCore
         public bool enableAutoReattach { get; set; }
         public string assignedMissionObjectId;
         public string homeBaseObjectId;
+        public NavySubMission navySubMission;
 
         public void SetAssignedMission(StrategicMission mission)
         {
@@ -1360,6 +1368,63 @@ namespace StrategicCombatCore
             moveProgressionKm = 0;
         }
 
+        LandUnit GetFriendlyDepotAtCurrentCell()
+        {
+            var currentCell = cell;
+            var currentSide = side;
+            if (currentCell == null || currentSide == null)
+                return null;
+
+            return currentCell.StrategicGroupReferences
+                .Select(reference => reference.Get())
+                .Where(group => group != null && group.IsBase() && group.side == currentSide)
+                .Select(group => group.GetFirstDepot())
+                .FirstOrDefault(depot => depot != null);
+        }
+
+        public void HandleCompletedStrategicPath()
+        {
+            if (type != Type.Fleet)
+                return;
+
+            if (navySubMission == NavySubMission.Supply)
+            {
+                UnloadOneShotSupplySubMission();
+                navySubMission = NavySubMission.General;
+
+                if (plannedPath.Count == 0)
+                {
+                    StartReturnToBase(0);
+                }
+            }
+        }
+
+        void UnloadOneShotSupplySubMission()
+        {
+            var targetDepot = GetFriendlyDepotAtCurrentCell();
+            if (targetDepot == null)
+            {
+                ServiceLocator.Get<ILoggerService>().Log($"Supply Sub Mission: {name.GetMergedName()} found no friendly depot at destination.");
+                return;
+            }
+
+            foreach (var ship in WalkGroupMembersDeployedShips())
+            {
+                if (ship?.shipClass?.type != ShipType.Transport)
+                    continue;
+
+                var returnToBaseThresholdTons = ship.GetSupplyCapTons() * 0.1;
+                var transferableTons = Math.Max(0, ship.supplyTons - returnToBaseThresholdTons);
+                if (transferableTons <= 0)
+                    continue;
+
+                ship.supplyTons -= transferableTons;
+                targetDepot.supplyTons += transferableTons;
+
+                ServiceLocator.Get<ILoggerService>().Log($"Supply Sub Mission Transfer: {ship.namedShip.name.GetMergedName()} -> {targetDepot.name.GetMergedName()} ({transferableTons})");
+            }
+        }
+
         public StrategicGroup GetDepotGroup()
         {
             var groupDepot = GetCurrentSourceDepot();
@@ -1634,6 +1699,7 @@ namespace StrategicCombatCore
 
         public void Advance1HourForMovement()
         {
+            var completedStrategicPath = false;
             if (plannedPath.Count == 0)
             {
                 moveProgressionKm = 0;
@@ -1678,9 +1744,15 @@ namespace StrategicCombatCore
                         if (plannedPath.Count < 2)
                         {
                             plannedPath.Clear();
+                            completedStrategicPath = true;
                         }
                     }
                 }
+            }
+
+            if (completedStrategicPath)
+            {
+                HandleCompletedStrategicPath();
             }
         }
 

@@ -105,6 +105,16 @@
                             <ui:DataBinding property="style.display" data-source-path="hasAssignedMission" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
                         </Bindings>
                     </ui:Label>
+                    <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                        <ui:EnumField value="Center" type="StrategicCombatCore.NavySubMission, Assembly-CSharp" style="flex-grow: 1;">
+                            <Bindings>
+                                <ui:DataBinding property="value" data-source-path="navySubMission" binding-mode="TwoWay"/>
+                            </Bindings>
+                        </ui:EnumField>
+                        <Bindings>
+                            <ui:DataBinding property="style.display" data-source-path="isFleet" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
+                        </Bindings>
+                    </ui:VisualElement>
                     <ui:Button text="Transfer" name="TransferButton">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000052)"/>

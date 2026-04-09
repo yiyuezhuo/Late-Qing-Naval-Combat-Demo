@@ -190,6 +190,17 @@
                                 <ui:DataBinding property="value" data-source-path="forcedReturningToBase" binding-mode="TwoWay"/>
                             </Bindings>
                         </ui:Toggle>
+                        <ui:VisualElement style="flex-direction: row;">
+                            <ui:Label text="Navy Sub Mission"/>
+                            <ui:EnumField value="Center" type="StrategicCombatCore.NavySubMission, Assembly-CSharp" style="width: 130px;">
+                                <Bindings>
+                                    <ui:DataBinding property="value" data-source-path="navySubMission" binding-mode="TwoWay"/>
+                                </Bindings>
+                            </ui:EnumField>
+                            <Bindings>
+                                <ui:DataBinding property="style.display" data-source-path="isFleet" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
+                            </Bindings>
+                        </ui:VisualElement>
                     </ui:VisualElement>
                     <ui:VisualElement style="flex-direction: row;">
                         <ui:VisualElement style="flex-grow: 1; flex-basis: 50px; flex-shrink: 0;">

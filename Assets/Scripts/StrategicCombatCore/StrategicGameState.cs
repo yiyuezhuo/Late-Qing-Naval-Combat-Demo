@@ -946,6 +946,11 @@ namespace StrategicCombatCore
                     continue;
                 }
 
+                if(group.navySubMission != NavySubMission.General)
+                {
+                    continue;
+                }
+
                 if(group.GetAssignedMission() != null || group.IsBase() || group.cell == null || group.plannedPath.Count > 0)
                 {
                     continue;

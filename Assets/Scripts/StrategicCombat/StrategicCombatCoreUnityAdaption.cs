@@ -346,6 +346,9 @@ namespace StrategicCombatCore
         [CreateProperty]
         public bool isIndependent => deployState == DeployState.Independent;
 
+        [CreateProperty]
+        public bool isFleet => type == Type.Fleet;
+
         // [CreateProperty]
         // public bool isActivePosture => posture == GroupPostureType.Active;
 

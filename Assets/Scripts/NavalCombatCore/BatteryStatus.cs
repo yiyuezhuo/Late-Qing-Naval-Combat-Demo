@@ -253,7 +253,7 @@ namespace NavalCombatCore
             }
         }
 
-        public string DescribeDetail()
+        public string DescribeFireControlDetail()
         {
             var lines = new List<string>();
 
@@ -299,6 +299,16 @@ namespace NavalCombatCore
                 lines.Add("SubStates:");
                 lines.AddRange(subStateDescriptions.Select(desc => $"- {desc}"));
             }
+
+            return string.Join("\n", lines);
+        }
+
+        public string DescribeDetail()
+        {
+            var lines = new List<string>();
+            var fireControlDetail = DescribeFireControlDetail();
+            if (!string.IsNullOrWhiteSpace(fireControlDetail))
+                lines.Add(fireControlDetail);
 
             var logsFlatten = mountStatus.SelectMany(mount => mount.logs).ToList();
             logsFlatten.Sort((log1, log2) => log1.firingTime.CompareTo(log2.firingTime));

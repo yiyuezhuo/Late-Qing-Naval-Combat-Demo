@@ -3452,6 +3452,47 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         tempDialog.Popup();
     }
 
+    public TempDialog PopupCustomMessageContentDialog(string title, Func<VisualElement> contentFactory, float width = 900f, float height = 560f)
+    {
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = messageDialogDocument,
+            templateDataSource = null,
+        };
+
+        tempDialog.onCreated += (sender, el) =>
+        {
+            var contentTextField = el.Q<TextField>("ContentTextField");
+            var panel = contentTextField?.parent;
+            if (panel != null)
+            {
+                panel.style.width = width;
+                panel.style.height = height;
+            }
+
+            if (title != null)
+            {
+                var titleLabel = el.Q<Label>("TitleLabel");
+                titleLabel.text = title;
+            }
+
+            var customContent = contentFactory?.Invoke();
+            if (contentTextField != null && customContent != null)
+            {
+                var parent = contentTextField.parent;
+                var index = parent.IndexOf(contentTextField);
+                contentTextField.RemoveFromHierarchy();
+                customContent.style.flexGrow = 1;
+                customContent.style.flexShrink = 1;
+                parent.Insert(index, customContent);
+            }
+        };
+
+        tempDialog.Popup();
+        return tempDialog;
+    }
+
     public void PopupConfirmDialog(string message, Action confirmCallback, string title = null)
     {
         var tempDialog = new TempDialog()

@@ -3450,6 +3450,62 @@ MonoBehaviour:
     m_Key: Playing
     m_Metadata:
       m_Items: []
+  - m_Id: -101
+    m_Key: Battery Detail
+    m_Metadata:
+      m_Items: []
+  - m_Id: -102
+    m_Key: Mount Detail
+    m_Metadata:
+      m_Items: []
+  - m_Id: -103
+    m_Key: Fire Control
+    m_Metadata:
+      m_Items: []
+  - m_Id: -104
+    m_Key: Shot Results
+    m_Metadata:
+      m_Items: []
+  - m_Id: -105
+    m_Key: Hits only
+    m_Metadata:
+      m_Items: []
+  - m_Id: -106
+    m_Key: Time
+    m_Metadata:
+      m_Items: []
+  - m_Id: -107
+    m_Key: Mount
+    m_Metadata:
+      m_Items: []
+  - m_Id: -108
+    m_Key: Ammo
+    m_Metadata:
+      m_Items: []
+  - m_Id: -109
+    m_Key: Hit Prob
+    m_Metadata:
+      m_Items: []
+  - m_Id: -110
+    m_Key: Result
+    m_Metadata:
+      m_Items: []
+  - m_Id: -111
+    m_Key: Damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: -112
+    m_Key: Effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: -113
+    m_Key: '{1} shots, {0} hits'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -114
+    m_Key: '{0} hits / {1} shots'
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

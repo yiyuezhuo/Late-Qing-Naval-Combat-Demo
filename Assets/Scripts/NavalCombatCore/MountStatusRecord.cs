@@ -1041,7 +1041,7 @@ namespace NavalCombatCore
             return BuildResolvedHitProbabilityBreakdown(fireCtx, ctx, target, stats, penRecord, targetSup);
         }
 
-        public string DescribeDetail()
+        public string DescribeFireControlDetail()
         {
             var lines = new List<string>() { $"Detail: {objectId}" };
             var breakdown = GetCurrentHitProbabilityBreakdown();
@@ -1059,6 +1059,16 @@ namespace NavalCombatCore
                 lines.Add("SubStates:");
                 lines.AddRange(subStateDescriptions.Select(desc => $"- {desc}"));
             }
+
+            return string.Join("\n", lines);
+        }
+
+        public string DescribeDetail()
+        {
+            var lines = new List<string>();
+            var fireControlDetail = DescribeFireControlDetail();
+            if (!string.IsNullOrWhiteSpace(fireControlDetail))
+                lines.Add(fireControlDetail);
 
             if (logs.Count > 0)
             {

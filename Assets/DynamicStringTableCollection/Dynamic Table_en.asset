@@ -3459,6 +3459,62 @@ MonoBehaviour:
     m_Localized: Playing
     m_Metadata:
       m_Items: []
+  - m_Id: -101
+    m_Localized: Battery Detail
+    m_Metadata:
+      m_Items: []
+  - m_Id: -102
+    m_Localized: Mount Detail
+    m_Metadata:
+      m_Items: []
+  - m_Id: -103
+    m_Localized: Fire Control
+    m_Metadata:
+      m_Items: []
+  - m_Id: -104
+    m_Localized: Shot Results
+    m_Metadata:
+      m_Items: []
+  - m_Id: -105
+    m_Localized: Hits only
+    m_Metadata:
+      m_Items: []
+  - m_Id: -106
+    m_Localized: Time
+    m_Metadata:
+      m_Items: []
+  - m_Id: -107
+    m_Localized: Mount
+    m_Metadata:
+      m_Items: []
+  - m_Id: -108
+    m_Localized: Ammo
+    m_Metadata:
+      m_Items: []
+  - m_Id: -109
+    m_Localized: Hit Prob
+    m_Metadata:
+      m_Items: []
+  - m_Id: -110
+    m_Localized: Result
+    m_Metadata:
+      m_Items: []
+  - m_Id: -111
+    m_Localized: Damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: -112
+    m_Localized: Effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: -113
+    m_Localized: '{1} shots, {0} hits'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -114
+    m_Localized: '{0} hits / {1} shots'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

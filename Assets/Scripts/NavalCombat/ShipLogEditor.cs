@@ -43,6 +43,12 @@ class HistoryLegendItem
     public Color color;
 }
 
+class MountFiringLogDetailRow
+{
+    public string mountLabel;
+    public MountFiringRecord log;
+}
+
 [UxmlElement]
 public partial class HistoryPieChart : VisualElement
 {
@@ -444,7 +450,7 @@ public class ShipLogView
                     // TODO: Transfer to Utils.TryResolveCurrentValueForBinding
                     if (PropertyContainer.TryGetValue(ctx.dataSource, ctx.dataSourcePath, out MountStatusRecord mountStatus))
                     {
-                        DialogRoot.Instance.PopupMessageDialog(mountStatus.DescribeDetail(), "Mount Detail");
+                        PopupMountDetailDialog(mountStatus);
                     }
                 };
 
@@ -483,7 +489,7 @@ public class ShipLogView
             {
                 if (Utils.TryResolveCurrentValueForBinding(batteryDetailButton, out NavalCombatCore.BatteryStatus batteryStatus))
                 {
-                    DialogRoot.Instance.PopupMessageDialog(batteryStatus.DescribeDetail(), "Battery Detail");
+                    PopupBatteryDetailDialog(batteryStatus);
                 }
             };
 
@@ -713,6 +719,284 @@ public class ShipLogView
             Utils.BindGotoButton(el);
             return el;
         };
+    }
+
+    void PopupBatteryDetailDialog(NavalCombatCore.BatteryStatus batteryStatus)
+    {
+        if (batteryStatus == null)
+            return;
+
+        DialogRoot.Instance.PopupCustomMessageContentDialog(
+            Localize("Battery Detail"),
+            () => BuildGunneryDetailContent(
+                batteryStatus.DescribeFireControlDetail(),
+                BuildBatteryFiringLogRows(batteryStatus)
+            )
+        );
+    }
+
+    void PopupMountDetailDialog(MountStatusRecord mountStatus)
+    {
+        if (mountStatus == null)
+            return;
+
+        var mountLabel = GetMountLabel(mountStatus);
+        DialogRoot.Instance.PopupCustomMessageContentDialog(
+            Localize("Mount Detail"),
+            () => BuildGunneryDetailContent(
+                mountStatus.DescribeFireControlDetail(),
+                mountStatus.logs
+                    .OrderBy(log => log.firingTime)
+                    .Select(log => new MountFiringLogDetailRow
+                    {
+                        mountLabel = mountLabel,
+                        log = log
+                    })
+                    .ToList()
+            )
+        );
+    }
+
+    VisualElement BuildGunneryDetailContent(string fireControlText, List<MountFiringLogDetailRow> allRows)
+    {
+        var tabView = new TabView
+        {
+            name = "GunneryDetailTabView",
+            style =
+            {
+                flexGrow = 1,
+                flexShrink = 1,
+            }
+        };
+
+        tabView.Add(BuildDetailTab(Localize("Fire Control"), BuildFireControlDetailTab(fireControlText)));
+        tabView.Add(BuildDetailTab(Localize("Shot Results"), BuildFiringLogDetailTab(allRows)));
+        return tabView;
+    }
+
+    Tab BuildDetailTab(string label, VisualElement content)
+    {
+        var tab = new Tab
+        {
+            label = label,
+            style =
+            {
+                flexGrow = 1,
+            }
+        };
+        tab.Add(content);
+        return tab;
+    }
+
+    VisualElement BuildFireControlDetailTab(string fireControlText)
+    {
+        var textField = new TextField
+        {
+            multiline = true,
+            isReadOnly = true,
+            verticalScrollerVisibility = ScrollerVisibility.Auto,
+            style =
+            {
+                flexGrow = 1,
+                flexShrink = 1,
+                whiteSpace = WhiteSpace.Normal,
+            }
+        };
+        textField.SetValueWithoutNotify(fireControlText ?? "");
+        return textField;
+    }
+
+    VisualElement BuildFiringLogDetailTab(List<MountFiringLogDetailRow> allRows)
+    {
+        allRows ??= new();
+        var displayedRows = new List<MountFiringLogDetailRow>();
+
+        var root = new VisualElement
+        {
+            style =
+            {
+                flexGrow = 1,
+                flexShrink = 1,
+            }
+        };
+
+        var toolbar = new VisualElement
+        {
+            style =
+            {
+                flexDirection = FlexDirection.Row,
+                flexShrink = 0,
+            }
+        };
+
+        var hitsOnlyToggle = new Toggle(Localize("Hits only"));
+        var countLabel = new Label
+        {
+            style =
+            {
+                marginLeft = 12,
+                unityTextAlign = TextAnchor.MiddleLeft,
+            }
+        };
+        toolbar.Add(hitsOnlyToggle);
+        toolbar.Add(countLabel);
+        root.Add(toolbar);
+
+        var listView = new MultiColumnListView
+        {
+            name = "FiringLogMultiColumnListView",
+            selectionType = SelectionType.None,
+            virtualizationMethod = CollectionVirtualizationMethod.DynamicHeight,
+            style =
+            {
+                flexGrow = 1,
+                flexShrink = 1,
+            }
+        };
+
+        void AddColumn(string name, string title, int width, Func<MountFiringLogDetailRow, string> valueSelector)
+        {
+            listView.columns.Add(new Column
+            {
+                name = name,
+                title = title,
+                width = width,
+                minWidth = Math.Min(width, 90),
+                stretchable = false,
+                makeCell = () => new Label
+                {
+                    style =
+                    {
+                        whiteSpace = WhiteSpace.Normal,
+                    }
+                },
+                bindCell = (element, index) =>
+                {
+                    if (element is not Label label)
+                        return;
+
+                    var row = index >= 0 && index < displayedRows.Count ? displayedRows[index] : null;
+                    label.text = row != null ? valueSelector(row) : "";
+                }
+            });
+        }
+
+        AddColumn("time", Localize("Time"), 150, row => FormatFiringTime(row.log));
+        AddColumn("mount", Localize("Mount"), 190, row => row.mountLabel);
+        AddColumn("ammunition", Localize("Ammo"), 70, row => FormatAmmunition(row.log));
+        AddColumn("target", Localize("Target"), 140, row => FormatTarget(row.log));
+        AddColumn("distance", Localize("Distance"), 90, row => FormatYards(row.log?.distanceYards ?? 0));
+        AddColumn("hitProbability", Localize("Hit Prob"), 90, row => FormatPercent(row.log?.hitProb ?? 0));
+        AddColumn("result", Localize("Result"), 210, row => FormatFiringResult(row.log));
+        AddColumn("damage", Localize("Damage"), 80, row => FormatDamage(row.log));
+        AddColumn("effect", Localize("Effect"), 150, row => row.log?.DamageEffectId ?? "");
+
+        root.Add(listView);
+
+        void RefreshRows()
+        {
+            var hitsOnly = hitsOnlyToggle.value;
+            displayedRows = allRows
+                .Where(row => row?.log != null && (!hitsOnly || row.log.hit))
+                .OrderBy(row => row.log.firingTime)
+                .ToList();
+
+            listView.itemsSource = displayedRows;
+            listView.Rebuild();
+            countLabel.text = Localize(
+                hitsOnly ? "{0} hits / {1} shots" : "{1} shots, {0} hits",
+                allRows.Count(row => row?.log != null && row.log.hit),
+                allRows.Count(row => row?.log != null)
+            );
+        }
+
+        hitsOnlyToggle.RegisterValueChangedCallback(_ => RefreshRows());
+        RefreshRows();
+        return root;
+    }
+
+    List<MountFiringLogDetailRow> BuildBatteryFiringLogRows(NavalCombatCore.BatteryStatus batteryStatus)
+    {
+        var rows = new List<MountFiringLogDetailRow>();
+        foreach (var mountStatus in batteryStatus.mountStatus)
+        {
+            var mountLabel = GetMountLabel(mountStatus);
+            rows.AddRange(mountStatus.logs.Select(log => new MountFiringLogDetailRow
+            {
+                mountLabel = mountLabel,
+                log = log
+            }));
+        }
+
+        return rows
+            .OrderBy(row => row.log.firingTime)
+            .ToList();
+    }
+
+    static string GetMountLabel(MountStatusRecord mountStatus)
+    {
+        return mountStatus?.GetMountLocationRecordInfo()?.Summary()
+            ?? mountStatus?.objectId
+            ?? "";
+    }
+
+    static string FormatFiringTime(MountFiringRecord log)
+    {
+        return log == null ? "" : CoreParameter.Instance.GetReferenceTimeZoneDateTimeOffsetString(log.firingTime);
+    }
+
+    static string FormatAmmunition(MountFiringRecord log)
+    {
+        if (log == null)
+            return "";
+
+        return BatteryAmmunitionRecord.ammunitionTypeAcronymMap.TryGetValue(log.ammunitionType, out var acronym)
+            ? acronym
+            : log.ammunitionType.ToString();
+    }
+
+    string FormatTarget(MountFiringRecord log)
+    {
+        if (log == null)
+            return "";
+
+        return log.GetFiringTarget()?.namedShip?.name?.GetShortName()
+            ?? log.GetFiringTarget()?.namedShip?.name?.GetMergedName()
+            ?? log.firingTargetObjectId
+            ?? Localize("Unknown");
+    }
+
+    static string FormatYards(float yards) => $"{yards:0} yd";
+
+    static string FormatPercent(float ratio) => $"{ratio * 100f:0.#}%";
+
+    string FormatFiringResult(MountFiringRecord log)
+    {
+        if (log == null)
+            return "";
+
+        if (!log.hit)
+            return Localize("miss");
+
+        var location = log.DamageSchema switch
+        {
+            DamageSchema.Warship => LocalizeEnum(log.ArmorLocation),
+            DamageSchema.LandBattery => LocalizeEnum(log.ArmorLocation),
+            DamageSchema.MerchantVessal => LocalizeEnum(log.HitLocationMerchantVessel),
+            _ => ""
+        };
+
+        var penetration = LocalizeEnum(log.HitPenDetType);
+        return string.IsNullOrWhiteSpace(location)
+            ? $"{Localize("Hit")} / {penetration}"
+            : $"{Localize("Hit")} / {location} / {penetration}";
+    }
+
+    static string FormatDamage(MountFiringRecord log)
+    {
+        return log != null && log.hit
+            ? $"{log.ShellDamageResult.damagePoint:0.##}"
+            : "";
     }
 
     void InitializeHistoryTab()

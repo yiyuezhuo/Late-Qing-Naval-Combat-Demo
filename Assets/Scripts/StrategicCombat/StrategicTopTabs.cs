@@ -205,6 +205,11 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
             }
         };
 
+        root.Q<Button>("ReplanAutoSupplyButton").clicked += () =>
+        {
+            StrategicGameState.Instance.ReplanAutoSupply(StrategicGameManager.Instance.GetViewerSide());
+        };
+
         root.Q<Button>("PendingNavalCombatsButton").clicked += () =>
         {
             DialogRoot.Instance.PopupPendingNavalCombatDialog();
@@ -306,7 +311,7 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
             if (StrategicGameManager.Instance.currentLogOnly && advancedHours == 0)
                 StrategicGameState.Instance.ClearLogs();
 
-            StrategicGameState.Instance.Advance1Hour();
+            StrategicGameState.Instance.Advance1Hour(StrategicGameManager.Instance.GetViewerSide());
             advancedHours++;
             yield return new WaitForSeconds(StrategicGameManager.Instance.GetStrategicAdvanceIntervalSeconds());
         }

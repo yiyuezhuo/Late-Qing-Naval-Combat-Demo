@@ -27,6 +27,11 @@
                                 <ui:DataBinding property="value" data-source-path="victoryPoints" binding-mode="TwoWay"/>
                             </Bindings>
                         </ui:FloatField>
+                        <ui:Toggle label="Supply Automation">
+                            <Bindings>
+                                <ui:DataBinding property="value" data-source-path="supplyAutomation" binding-mode="TwoWay"/>
+                            </Bindings>
+                        </ui:Toggle>
                         <ui:Label text="Countries"/>
                         <ui:ListView binding-source-selection-mode="AutoAssign" data-source-path="countries" show-add-remove-footer="true" item-template="project://database/Assets/UIDocuments/Templates/CountryEnumField.uxml?fileID=9197481963319205126&amp;guid=f760d6fe0c512a842b3944c72b90e696&amp;type=3#CountryEnumField"/>
                         <ui:Label text="Diplomacy"/>

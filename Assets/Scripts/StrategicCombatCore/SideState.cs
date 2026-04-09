@@ -35,6 +35,7 @@ namespace StrategicCombatCore
         public List<Country> countries = new();
         public List<DiplomacyRelation> diplomacyRelations = new();
         public float victoryPoints;
+        public bool supplyAutomation = true;
         public string remark;
         public StrategicPowerInfluenceMapCache powerInfluenceMapCache = new();
 

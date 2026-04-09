@@ -269,6 +269,7 @@ public static class StrategicGroupSubGroupUtility
         foreach (var shipLog in detachedShips)
         {
             shipLog.enableAutoReattach = false;
+            shipLog.autoReattachAfterRepair = true;
         }
     }
 

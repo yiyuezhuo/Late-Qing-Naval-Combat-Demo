@@ -5,6 +5,7 @@ using System.Xml.Serialization;
 using CoreUtils;
 using NavalCombatCore;
 using YYZ;
+using YYZ.PathFinding;
 
 namespace StrategicCombatCore
 {
@@ -365,7 +366,7 @@ namespace StrategicCombatCore
             new StrategicTacticalResultApplier(this).HandlePendingNavalCombat(victoryStatus);
         }
 
-        public void Advance1Hour()
+        public void Advance1Hour(SideState viewerSide = null)
         {
             scenarioState.dateTime = scenarioState.dateTime.AddHours(1);
 
@@ -379,7 +380,7 @@ namespace StrategicCombatCore
 
             Advance1HourForReinforcement();
 
-            Advance1HourForSupply();
+            Advance1HourForSupply(viewerSide);
             Advance1HourForMission();
             Advance1HourForOutOfFuelFleetCheck();
             Advance1HourForIdleFleetReturnToBase();
@@ -528,20 +529,65 @@ namespace StrategicCombatCore
         {
             foreach (var member in IterAllStrategicGroupMembers().ToList())
             {
-                if (member == null || !member.enableAutoReattach)
-                    continue;
-
-                if (member.GetDetachedFromGroup() == null)
-                {
-                    IStrategicGroupMemberReferenceable.ClearDetachedFromGroupState(member);
-                    continue;
-                }
-
-                if (!member.IsOnSameCellWithDetachedFromGroup())
+                if (!ShouldAutoReattachDetachedMember(member))
                     continue;
 
                 IStrategicGroupMemberReferenceable.TryReattachToDetachedFromGroup(member);
             }
+        }
+
+        bool ShouldAutoReattachDetachedMember(IStrategicGroupMemberReferenceable member)
+        {
+            if (member == null)
+                return false;
+
+            if (member.GetDetachedFromGroup() == null)
+            {
+                IStrategicGroupMemberReferenceable.ClearDetachedFromGroupState(member);
+                return false;
+            }
+
+            if (member.enableAutoReattach)
+            {
+                return CanAutoReattachIdleDetachedMember(member);
+            }
+
+            return member is ShipLog shipLog && ShouldAutoReattachRepairedShip(shipLog);
+        }
+
+        bool ShouldAutoReattachRepairedShip(ShipLog shipLog)
+        {
+            if (shipLog == null || !shipLog.autoReattachAfterRepair)
+                return false;
+
+            if (StrategicGroupSubGroupUtility.NeedsDetachForRepair(shipLog))
+                return false;
+
+            return CanAutoReattachIdleDetachedMember(shipLog);
+        }
+
+        bool CanAutoReattachIdleDetachedMember(IStrategicGroupMemberReferenceable member)
+        {
+            if (!member.IsOnSameCellWithDetachedFromGroup())
+                return false;
+
+            var currentIndependentGroup = GetCurrentIndependentStrategicGroup(member);
+            return currentIndependentGroup != null && currentIndependentGroup.plannedPath.Count == 0;
+        }
+
+        StrategicGroup GetCurrentIndependentStrategicGroup(IStrategicGroupMemberReferenceable member)
+        {
+            var group = member as StrategicGroup ?? member?.parentGroupReference?.Get();
+            var visitedGroupIds = new HashSet<string>();
+            while (group != null && visitedGroupIds.Add(group.objectId))
+            {
+                if (group.deployState == StrategicGroup.DeployState.Independent)
+                    return group;
+
+                group = group.parentGroupReference?.Get();
+            }
+
+            return null;
         }
 
         public void Advance1HourForGroupPosture()
@@ -759,13 +805,14 @@ namespace StrategicCombatCore
 
         }
 
-        public void Advance1HourForSupply()
+        public void Advance1HourForSupply(SideState viewerSide = null)
         {
             DoSupplyConsumption(1f / 24);
 
             if (scenarioState.dateTime.Hour == 0) // per day
             {
                 DoDailySupplyReplenishment();
+                ReplanAutoSupply(viewerSide);
             }
         }
 
@@ -866,6 +913,11 @@ namespace StrategicCombatCore
         {
             var resolver = new LandSupplyNetworkResolver();
             resolver.Resolve();
+        }
+
+        public void ReplanAutoSupply(SideState viewerSide = null)
+        {
+            new StrategicAutoSupplyPlanner(this, viewerSide).Replan();
         }
 
         public void Advance1HourForOutOfFuelFleetCheck()
@@ -2106,6 +2158,280 @@ namespace StrategicCombatCore
                 }
                 return _instance;
             }
+        }
+    }
+
+    public class StrategicAutoSupplyPlanner
+    {
+        const double EstimatedTransportSupplyDeliveryRatio = 0.6;
+
+        readonly StrategicGameState state;
+        readonly SideState viewerSide;
+        readonly Dictionary<Cell, double> projectedIncomingSupplyTonsByDepotCell = new();
+        readonly HashSet<string> assignedTransportShipIds = new();
+
+        class DepotRequest
+        {
+            public LandUnit depot;
+            public Cell cell;
+            public double gapTons;
+        }
+
+        class IdleNavyAsset
+        {
+            public ShipLog transportShip;
+            public StrategicGroup idleFleet;
+            public Cell homePortCell;
+            public double estimatedSupplyDeliveryTons;
+        }
+
+        class SupplyPathCandidate
+        {
+            public IdleNavyAsset asset;
+            public List<Cell> pathCells;
+            public float pathCost;
+        }
+
+        public StrategicAutoSupplyPlanner(StrategicGameState state, SideState viewerSide)
+        {
+            this.state = state;
+            this.viewerSide = viewerSide;
+        }
+
+        public void Replan()
+        {
+            if (state == null)
+                return;
+
+            projectedIncomingSupplyTonsByDepotCell.Clear();
+            assignedTransportShipIds.Clear();
+
+            IndexProjectedIncomingSupplySubMissions();
+
+            foreach (var side in GetEligibleSides())
+            {
+                ReplanSide(side);
+            }
+        }
+
+        IEnumerable<SideState> GetEligibleSides()
+        {
+            return state.sideStates
+                .Where(side => side != null)
+                .Where(side => side != viewerSide || side.supplyAutomation);
+        }
+
+        void ReplanSide(SideState side)
+        {
+            var depotRequests = CollectDepotRequests(side)
+                .OrderByDescending(request => GetRemainingGapTons(request))
+                .ToList();
+            if (depotRequests.Count == 0)
+                return;
+
+            // Idle Navy Asset Pool: transport ships currently idle in their home-port fleet.
+            var idleNavyAssetPool = CollectIdleNavyAssetPool(side).ToList();
+            if (idleNavyAssetPool.Count == 0)
+                return;
+
+            foreach (var depotRequest in depotRequests)
+            {
+                while (GetRemainingGapTons(depotRequest) > 0)
+                {
+                    var candidate = FindNearestSupplyPathCandidate(side, depotRequest.cell, idleNavyAssetPool);
+                    if (candidate == null)
+                        break;
+
+                    idleNavyAssetPool.Remove(candidate.asset);
+                    assignedTransportShipIds.Add(candidate.asset.transportShip.objectId);
+
+                    var taskForce = MaterializeSupplyTaskForce(candidate.asset);
+                    if (taskForce == null)
+                        continue;
+
+                    AddProjectedIncomingSupply(depotRequest.cell, candidate.asset.estimatedSupplyDeliveryTons);
+
+                    // Task Force: one transport split from the Idle Navy Asset Pool for a one-shot supply sub mission.
+                    taskForce.navySubMission = NavySubMission.Supply;
+                    taskForce.SetPlannedPath(candidate.pathCells.Select(cell => cell.ToXY()).ToList());
+                }
+            }
+        }
+
+        List<DepotRequest> CollectDepotRequests(SideState side)
+        {
+            return state.landUnits
+                .Where(landUnit => landUnit != null && landUnit.side == side)
+                .Where(IsSupplyDepot)
+                .Select(landUnit => new DepotRequest()
+                {
+                    depot = landUnit,
+                    cell = landUnit.cell,
+                    gapTons = Math.Max(0, landUnit.GetSupplyCapTons() - landUnit.supplyTons)
+                })
+                .Where(request => request.cell != null && request.gapTons > 0 && GetRemainingGapTons(request) > 0)
+                .ToList();
+        }
+
+        static bool IsSupplyDepot(LandUnit landUnit)
+        {
+            return landUnit?.GetLandUnitTemplate()?.unitType == LandUnitType.Supply;
+        }
+
+        double GetRemainingGapTons(DepotRequest request)
+        {
+            return Math.Max(0, request.gapTons - GetProjectedIncomingSupply(request.cell));
+        }
+
+        double GetProjectedIncomingSupply(Cell depotCell)
+        {
+            return depotCell != null && projectedIncomingSupplyTonsByDepotCell.TryGetValue(depotCell, out var tons)
+                ? tons
+                : 0;
+        }
+
+        void AddProjectedIncomingSupply(Cell depotCell, double tons)
+        {
+            if (depotCell == null || tons <= 0)
+                return;
+
+            projectedIncomingSupplyTonsByDepotCell[depotCell] = GetProjectedIncomingSupply(depotCell) + tons;
+        }
+
+        static double EstimateTransportSupplyDeliveryTons(ShipLog ship)
+        {
+            return ship.GetSupplyCapTons() * EstimatedTransportSupplyDeliveryRatio;
+        }
+
+        void IndexProjectedIncomingSupplySubMissions()
+        {
+            foreach (var group in state.strategicGroups.Where(group => group?.navySubMission == NavySubMission.Supply))
+            {
+                var targetCell = group.plannedPath.Count > 0 ? group.plannedPath[^1].GetCell() : null;
+                if (targetCell == null)
+                    continue;
+
+                foreach (var ship in group.WalkGroupMembersDeployedShips())
+                {
+                    if (ship?.shipClass?.type != ShipType.Transport)
+                        continue;
+
+                    AddProjectedIncomingSupply(targetCell, EstimateTransportSupplyDeliveryTons(ship));
+                    if (!string.IsNullOrWhiteSpace(ship.objectId))
+                    {
+                        assignedTransportShipIds.Add(ship.objectId);
+                    }
+                }
+            }
+        }
+
+        IEnumerable<IdleNavyAsset> CollectIdleNavyAssetPool(SideState side)
+        {
+            foreach (var group in state.IterIndependentStrategicGroups())
+            {
+                if (!IsIdleHomePortFleet(group, side))
+                    continue;
+
+                foreach (var ship in group.WalkGroupMembersDeployedShips())
+                {
+                    if (!IsAvailableTransport(ship))
+                        continue;
+
+                    yield return new IdleNavyAsset()
+                    {
+                        transportShip = ship,
+                        idleFleet = group,
+                        homePortCell = group.cell,
+                        estimatedSupplyDeliveryTons = EstimateTransportSupplyDeliveryTons(ship)
+                    };
+                }
+            }
+        }
+
+        static bool IsIdleHomePortFleet(StrategicGroup group, SideState side)
+        {
+            if (group == null ||
+                group.side != side ||
+                group.type != StrategicGroup.Type.Fleet ||
+                group.deployState != StrategicGroup.DeployState.Independent ||
+                group.GetAssignedMission() != null ||
+                group.navySubMission != NavySubMission.General ||
+                group.plannedPath.Count > 0 ||
+                group.cell == null)
+            {
+                return false;
+            }
+
+            var depotGroup = group.GetDepotGroup();
+            return depotGroup?.cell != null &&
+                group.cell == depotGroup.cell &&
+                group.IsFleetReadyForMissionDeparture();
+        }
+
+        bool IsAvailableTransport(ShipLog ship)
+        {
+            return ship != null &&
+                ship.mapState == MapState.Deployed &&
+                ship.shipClass?.type == ShipType.Transport &&
+                !string.IsNullOrWhiteSpace(ship.objectId) &&
+                !assignedTransportShipIds.Contains(ship.objectId);
+        }
+
+        SupplyPathCandidate FindNearestSupplyPathCandidate(SideState side, Cell depotCell, IEnumerable<IdleNavyAsset> assets)
+        {
+            SupplyPathCandidate bestCandidate = null;
+            var graph = new DynamicCellGraphNavy() { movingSide = side };
+
+            foreach (var asset in assets)
+            {
+                if (asset?.homePortCell == null || depotCell == null || asset.homePortCell == depotCell)
+                    continue;
+
+                var pathCost = PathFinding<Cell>.AStar2(graph, asset.homePortCell, depotCell, out var pathCells);
+                if (pathCells.Count < 2 || float.IsInfinity(pathCost))
+                    continue;
+
+                if (bestCandidate == null || pathCost < bestCandidate.pathCost)
+                {
+                    bestCandidate = new SupplyPathCandidate()
+                    {
+                        asset = asset,
+                        pathCells = pathCells,
+                        pathCost = pathCost
+                    };
+                }
+            }
+
+            return bestCandidate;
+        }
+
+        StrategicGroup MaterializeSupplyTaskForce(IdleNavyAsset asset)
+        {
+            var sourceFleet = asset?.idleFleet;
+            var transportShip = asset?.transportShip;
+            if (sourceFleet == null || transportShip == null)
+                return null;
+
+            var sourceFleetShips = sourceFleet.WalkGroupMembersDeployedShips().ToList();
+            if (sourceFleetShips.Count == 1 && sourceFleetShips[0] == transportShip)
+            {
+                return sourceFleet;
+            }
+
+            var taskForce = StrategicGroupTransferSplitUtility.CreateSplitGroupLike(
+                sourceFleet,
+                sourceFleet.parentGroupReference.Get(),
+                StrategicGroup.DeployState.Independent,
+                nonHistorical: true);
+            if (taskForce == null)
+                return null;
+
+            IStrategicGroupMemberReferenceable.ClearDetachedFromGroupState(taskForce);
+            IStrategicGroupMemberReferenceable.TemporaryAttachTo(transportShip, taskForce);
+            transportShip.enableAutoReattach = true;
+            StrategicGroupNamingUtility.RefreshGeneratedGroupIdentity(taskForce);
+
+            return taskForce;
         }
     }
 }

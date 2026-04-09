@@ -631,6 +631,11 @@
                 <ui:Tab label="Strategic">
                     <ui:VisualElement style="flex-grow: 1;">
                         <ui:Instance template="IStrategicGroupMemberReferenceableDetachedUI"/>
+                        <ui:Toggle label="Auto Reattach After Repair" name="AutoReattachAfterRepairToggle">
+                            <Bindings>
+                                <ui:DataBinding property="value" data-source-path="autoReattachAfterRepair" binding-mode="TwoWay"/>
+                            </Bindings>
+                        </ui:Toggle>
                         <ui:Label style="color: rgb(192, 0, 0);">
                             <Bindings>
                                 <ui:DataBinding property="text" data-source-path="needsDetachForRepairLabel" binding-mode="ToTarget"/>

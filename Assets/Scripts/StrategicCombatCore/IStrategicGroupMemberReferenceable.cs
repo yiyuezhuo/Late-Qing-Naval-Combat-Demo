@@ -41,6 +41,10 @@ namespace StrategicCombatCore
 
             SetDetachedFromGroupReference(self, null);
             self.enableAutoReattach = false;
+            if (self is ShipLog shipLog)
+            {
+                shipLog.autoReattachAfterRepair = false;
+            }
         }
 
         static void PermanentTransferTo(IStrategicGroupMemberReferenceable self, StrategicGroup group)
@@ -91,6 +95,8 @@ namespace StrategicCombatCore
             var previousParentGroup = self.parentGroupReference.Get();
             StrategicGroup.ReassignMember(self, detachedFromGroup);
             ClearDetachedFromGroupState(self);
+            // Reattach moves only this member back. If its temporary parent is empty afterwards
+            // (for example a one-ship task force), TryDestroyGroupIfEmptyRecursive removes that parent.
             StrategicGameState.Instance?.TryDestroyGroupIfEmptyRecursive(previousParentGroup);
             return true;
         }

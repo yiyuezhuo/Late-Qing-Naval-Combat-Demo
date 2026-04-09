@@ -155,6 +155,7 @@
                         </Bindings>
                     </ui:Button>
                     <ui:Button text="Reset Strength &amp; Supply" name="ResetStrengthSupplyButton"/>
+                    <ui:Button text="Replan Auto Supply" name="ReplanAutoSupplyButton"/>
                     <ui:Button text="Land Battle" name="LandBattleEditorButton">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(30245956232056832)"/>

@@ -626,16 +626,6 @@ namespace StrategicCombatCore
                 }
             }
 
-            foreach (var shipLog in StrategicGameState.Instance.shipLogs)
-            {
-                if (shipLog?.detachedFromGroupReference?.Get() == null)
-                    continue;
-
-                if (StrategicGroupSubGroupUtility.NeedsDetachForRepair(shipLog))
-                    continue;
-
-                shipLog.enableAutoReattach = true;
-            }
         }
     }
 }

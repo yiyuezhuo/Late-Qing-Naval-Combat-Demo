@@ -2181,6 +2181,7 @@ namespace StrategicCombatCore
         {
             public ShipLog transportShip;
             public StrategicGroup idleFleet;
+            public StrategicGroup homePortGroup;
             public Cell homePortCell;
             public double estimatedSupplyDeliveryTons;
         }
@@ -2199,6 +2200,14 @@ namespace StrategicCombatCore
             public List<StrategicGroup> cargoGroups = new();
         }
 
+        class HomePortDemand
+        {
+            public Cell cell;
+            public StrategicGroup targetBaseGroup;
+            public int demand;
+            public int targetTransportCount;
+        }
+
         public StrategicAutoSupplyPlanner(StrategicGameState state, SideState viewerSide)
         {
             this.state = state;
@@ -2215,21 +2224,34 @@ namespace StrategicCombatCore
 
             IndexProjectedIncomingSupplySubMissions();
 
-            foreach (var side in GetEligibleSides())
+            foreach (var side in state.sideStates.Where(side => side != null))
             {
                 ReplanSide(side);
             }
         }
 
-        IEnumerable<SideState> GetEligibleSides()
+        bool ShouldAutomateSupplyForSide(SideState side)
         {
-            return state.sideStates
-                .Where(side => side != null)
-                .Where(side => side != viewerSide || side.supplyAutomation);
+            return side != null &&
+                (side != viewerSide || side.supplyAutomation);
+        }
+
+        bool ShouldBalanceTransportAssets(SideState side)
+        {
+            return side != null &&
+                (side != viewerSide || side.automaticalTransportAssetBalance);
         }
 
         void ReplanSide(SideState side)
         {
+            if (ShouldBalanceTransportAssets(side))
+            {
+                RebalanceTransportHomePorts(side);
+            }
+
+            if (!ShouldAutomateSupplyForSide(side))
+                return;
+
             var idleNavyAssetPool = CollectIdleNavyAssetPool(side).ToList();
             if (idleNavyAssetPool.Count == 0)
                 return;
@@ -2264,6 +2286,316 @@ namespace StrategicCombatCore
             }
 
             ReplanNavalInvasionTransfers(side, idleNavyAssetPool);
+        }
+
+        void RebalanceTransportHomePorts(SideState side)
+        {
+            var idleNavyAssetPool = CollectIdleNavyAssetPool(side).ToList();
+            if (idleNavyAssetPool.Count == 0)
+                return;
+
+            var homePortDemands = CollectTransportHomePortDemands(side);
+            if (homePortDemands.Count == 0)
+                return;
+
+            var assignedTransportCountsByHomePort = CountAssignedTransportAssetsByHomePort(side);
+            var totalTransportAssetCount = CountTotalTransportAssets(side);
+            if (totalTransportAssetCount <= 0)
+                return;
+
+            AssignTargetTransportCounts(homePortDemands, totalTransportAssetCount);
+
+            var targetTransportCountsByHomePort = homePortDemands.ToDictionary(
+                demand => demand.targetBaseGroup,
+                demand => demand.targetTransportCount);
+            var remainingAssets = CollectMovableTransportAssetPool(
+                idleNavyAssetPool,
+                assignedTransportCountsByHomePort,
+                targetTransportCountsByHomePort);
+
+            var graph = new DynamicCellGraphNavy() { movingSide = side };
+            foreach (var demand in homePortDemands
+                .Select(demand => new
+                {
+                    demand,
+                    deficitCount = Math.Max(
+                        0,
+                        demand.targetTransportCount - assignedTransportCountsByHomePort.GetValueOrDefault(demand.targetBaseGroup))
+                })
+                .Where(entry => entry.deficitCount > 0)
+                .OrderByDescending(entry => entry.deficitCount)
+                .ThenByDescending(entry => entry.demand.demand)
+                .ThenBy(entry => entry.demand.cell?.x ?? -1)
+                .ThenBy(entry => entry.demand.cell?.y ?? -1)
+                .ThenBy(entry => entry.demand.targetBaseGroup?.objectId))
+            {
+                var remainingDeficitCount = demand.deficitCount;
+                while (remainingDeficitCount > 0)
+                {
+                    var candidate = FindClosestIdleTransportAsset(graph, demand.demand.cell, remainingAssets);
+                    if (candidate == null)
+                        break;
+
+                    remainingAssets.Remove(candidate);
+                    AssignIdleTransportAssetHomePort(candidate, demand.demand.targetBaseGroup);
+                    remainingDeficitCount--;
+                }
+            }
+        }
+
+        List<HomePortDemand> CollectTransportHomePortDemands(SideState side)
+        {
+            var demandMap = new Dictionary<Cell, HomePortDemand>();
+
+            foreach (var group in state.strategicGroups.Where(group =>
+                group != null &&
+                group.side == side &&
+                group.type == StrategicGroup.Type.HeadQuarter &&
+                group.cell != null))
+            {
+                var targetBaseGroup = GetPreferredHomePortBase(side, group.cell);
+                if (targetBaseGroup != null && BaseHasPort(targetBaseGroup))
+                {
+                    IncreaseHomePortDemand(demandMap, group.cell, targetBaseGroup);
+                }
+            }
+
+            foreach (var group in state.strategicGroups.Where(group =>
+                group != null &&
+                group.side == side &&
+                group.IsReadyForNavalInvasionTransfer()))
+            {
+                var targetBaseGroup = GetPreferredHomePortBase(side, group.cell);
+                if (targetBaseGroup != null)
+                {
+                    IncreaseHomePortDemand(demandMap, group.cell, targetBaseGroup);
+                }
+            }
+
+            return demandMap.Values
+                .OrderByDescending(demand => demand.demand)
+                .ThenBy(demand => demand.cell?.x ?? -1)
+                .ThenBy(demand => demand.cell?.y ?? -1)
+                .ThenBy(demand => demand.targetBaseGroup?.objectId)
+                .ToList();
+        }
+
+        int CountTotalTransportAssets(SideState side)
+        {
+            return state.IterIndependentStrategicGroups()
+                .Where(group => group != null && group.side == side)
+                .SelectMany(group => group.WalkGroupMembersDeployedShips())
+                .Count(IsCountableTransportAsset);
+        }
+
+        Dictionary<StrategicGroup, int> CountAssignedTransportAssetsByHomePort(SideState side)
+        {
+            var counts = new Dictionary<StrategicGroup, int>();
+
+            foreach (var group in state.IterIndependentStrategicGroups().Where(group => group != null && group.side == side))
+            {
+                var homePortGroup = group.GetHomeBaseGroup();
+                foreach (var ship in group.WalkGroupMembersDeployedShips())
+                {
+                    if (!IsCountableTransportAsset(ship) || homePortGroup == null)
+                        continue;
+
+                    counts[homePortGroup] = counts.GetValueOrDefault(homePortGroup) + 1;
+                }
+            }
+
+            return counts;
+        }
+
+        static bool IsCountableTransportAsset(ShipLog ship)
+        {
+            return ship != null &&
+                ship.mapState == MapState.Deployed &&
+                ship.shipClass?.type == ShipType.Transport &&
+                !string.IsNullOrWhiteSpace(ship.objectId);
+        }
+
+        static List<IdleNavyAsset> CollectMovableTransportAssetPool(
+            List<IdleNavyAsset> idleNavyAssetPool,
+            IReadOnlyDictionary<StrategicGroup, int> assignedTransportCountsByHomePort,
+            IReadOnlyDictionary<StrategicGroup, int> targetTransportCountsByHomePort)
+        {
+            var movableAssets = new List<IdleNavyAsset>();
+            if (idleNavyAssetPool == null || idleNavyAssetPool.Count == 0)
+                return movableAssets;
+
+            foreach (var group in idleNavyAssetPool
+                .GroupBy(asset => asset.homePortGroup)
+                .OrderBy(grouping => grouping.Key?.objectId))
+            {
+                var groupAssets = group
+                    .OrderBy(asset => asset.transportShip.objectId)
+                    .ToList();
+
+                if (group.Key == null)
+                {
+                    movableAssets.AddRange(groupAssets);
+                    continue;
+                }
+
+                var assignedTransportCount = assignedTransportCountsByHomePort.GetValueOrDefault(group.Key);
+                var targetTransportCount = targetTransportCountsByHomePort.GetValueOrDefault(group.Key);
+                var movableTransportCount = Math.Min(groupAssets.Count, Math.Max(0, assignedTransportCount - targetTransportCount));
+                movableAssets.AddRange(groupAssets.Take(movableTransportCount));
+            }
+
+            return movableAssets;
+        }
+
+        static void IncreaseHomePortDemand(
+            IDictionary<Cell, HomePortDemand> demandMap,
+            Cell cell,
+            StrategicGroup targetBaseGroup)
+        {
+            if (cell == null || targetBaseGroup == null)
+                return;
+
+            if (!demandMap.TryGetValue(cell, out var demand))
+            {
+                demand = new HomePortDemand()
+                {
+                    cell = cell,
+                    targetBaseGroup = targetBaseGroup
+                };
+                demandMap[cell] = demand;
+            }
+
+            demand.demand++;
+        }
+
+        StrategicGroup GetPreferredHomePortBase(SideState side, Cell cell)
+        {
+            if (side == null || cell == null)
+                return null;
+
+            return cell.StrategicGroupReferences
+                .Select(reference => reference.Get())
+                .Where(group => group != null && group.side == side && group.IsBase())
+                .OrderByDescending(BaseHasPort)
+                .ThenBy(group => group.objectId)
+                .FirstOrDefault();
+        }
+
+        static bool BaseHasPort(StrategicGroup baseGroup)
+        {
+            return baseGroup != null &&
+                baseGroup.WalkGroupMembers<LandUnit>().Any(landUnit =>
+                    landUnit?.GetLandUnitTemplate()?.unitType == LandUnitType.Port);
+        }
+
+        static void AssignTargetTransportCounts(List<HomePortDemand> homePortDemands, int totalTransportCount)
+        {
+            foreach (var demand in homePortDemands)
+            {
+                demand.targetTransportCount = 0;
+            }
+
+            if (totalTransportCount <= 0 || homePortDemands.Count == 0)
+                return;
+
+            var totalDemand = homePortDemands.Sum(demand => demand.demand);
+            if (totalDemand <= 0)
+                return;
+
+            foreach (var demand in homePortDemands)
+            {
+                demand.targetTransportCount = (int)Math.Floor((double)totalTransportCount * demand.demand / totalDemand);
+            }
+
+            var remainingTransportCount = totalTransportCount - homePortDemands.Sum(demand => demand.targetTransportCount);
+            foreach (var demand in homePortDemands
+                .OrderByDescending(demand => (double)totalTransportCount * demand.demand / totalDemand - demand.targetTransportCount)
+                .ThenByDescending(demand => demand.demand)
+                .ThenBy(demand => demand.cell?.x ?? -1)
+                .ThenBy(demand => demand.cell?.y ?? -1)
+                .ThenBy(demand => demand.targetBaseGroup?.objectId))
+            {
+                if (remainingTransportCount <= 0)
+                    break;
+
+                demand.targetTransportCount++;
+                remainingTransportCount--;
+            }
+        }
+
+        IdleNavyAsset FindClosestIdleTransportAsset(
+            DynamicCellGraphNavy graph,
+            Cell targetCell,
+            IEnumerable<IdleNavyAsset> assets)
+        {
+            IdleNavyAsset bestAsset = null;
+            var bestPathCost = float.PositiveInfinity;
+
+            foreach (var asset in assets)
+            {
+                if (asset?.homePortCell == null || targetCell == null)
+                    continue;
+
+                var pathCost = GetPathCostBetweenHomePorts(graph, asset.homePortCell, targetCell);
+                if (float.IsInfinity(pathCost))
+                    continue;
+
+                if (bestAsset == null ||
+                    pathCost < bestPathCost ||
+                    (Math.Abs(pathCost - bestPathCost) < 0.001f &&
+                     string.CompareOrdinal(asset.transportShip.objectId, bestAsset.transportShip.objectId) < 0))
+                {
+                    bestAsset = asset;
+                    bestPathCost = pathCost;
+                }
+            }
+
+            return bestAsset;
+        }
+
+        static float GetPathCostBetweenHomePorts(DynamicCellGraphNavy graph, Cell srcCell, Cell dstCell)
+        {
+            if (srcCell == null || dstCell == null)
+                return float.PositiveInfinity;
+
+            if (srcCell == dstCell)
+                return 0;
+
+            var pathCost = PathFinding<Cell>.AStar2(graph, srcCell, dstCell, out var pathCells);
+            if (pathCells.Count < 2 || float.IsInfinity(pathCost))
+                return float.PositiveInfinity;
+
+            return pathCost;
+        }
+
+        void AssignIdleTransportAssetHomePort(IdleNavyAsset asset, StrategicGroup targetBaseGroup)
+        {
+            var sourceFleet = asset?.idleFleet;
+            var transportShip = asset?.transportShip;
+            if (sourceFleet == null || transportShip == null || targetBaseGroup == null)
+                return;
+
+            if (sourceFleet.GetHomeBaseGroup() == targetBaseGroup)
+                return;
+
+            var targetFleet = sourceFleet;
+            var sourceFleetShips = sourceFleet.WalkGroupMembersDeployedShips().ToList();
+            if (sourceFleetShips.Count != 1 || sourceFleetShips[0] != transportShip)
+            {
+                targetFleet = StrategicGroupTransferSplitUtility.CreateSplitGroupLike(
+                    sourceFleet,
+                    sourceFleet.parentGroupReference.Get(),
+                    StrategicGroup.DeployState.Independent,
+                    nonHistorical: true);
+                if (targetFleet == null)
+                    return;
+
+                IStrategicGroupMemberReferenceable.PermanentTransferTo(transportShip, targetFleet);
+                StrategicGroupNamingUtility.RefreshGeneratedGroupIdentity(targetFleet);
+                StrategicGameState.Instance?.TryDestroyGroupIfEmptyRecursive(sourceFleet);
+            }
+
+            targetFleet.homeBaseObjectId = targetBaseGroup.objectId;
         }
 
         List<DepotRequest> CollectDepotRequests(SideState side)
@@ -2349,6 +2681,7 @@ namespace StrategicCombatCore
                     {
                         transportShip = ship,
                         idleFleet = group,
+                        homePortGroup = group.GetHomeBaseGroup(),
                         homePortCell = group.cell,
                         estimatedSupplyDeliveryTons = EstimateTransportSupplyDeliveryTons(ship)
                     };
@@ -2378,10 +2711,7 @@ namespace StrategicCombatCore
 
         bool IsAvailableTransport(ShipLog ship)
         {
-            return ship != null &&
-                ship.mapState == MapState.Deployed &&
-                ship.shipClass?.type == ShipType.Transport &&
-                !string.IsNullOrWhiteSpace(ship.objectId) &&
+            return IsCountableTransportAsset(ship) &&
                 !assignedTransportShipIds.Contains(ship.objectId);
         }
 

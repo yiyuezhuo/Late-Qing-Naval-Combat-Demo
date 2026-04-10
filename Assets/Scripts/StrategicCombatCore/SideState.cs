@@ -37,6 +37,7 @@ namespace StrategicCombatCore
         public float victoryPoints;
         public bool recommended = false;
         public bool supplyAutomation = true;
+        public bool automaticalTransportAssetBalance = true;
         public string remark;
         public StrategicPowerInfluenceMapCache powerInfluenceMapCache = new();
 

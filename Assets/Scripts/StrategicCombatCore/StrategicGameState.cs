@@ -930,7 +930,7 @@ namespace StrategicCombatCore
 
         public void Advance1HourForMovement()
         {
-            foreach (var strategicGroup in IterIndependentStrategicGroups())
+            foreach (var strategicGroup in IterIndependentStrategicGroups().ToList())
             {
                 strategicGroup.Advance1HourForMovement();
 
@@ -2192,6 +2192,13 @@ namespace StrategicCombatCore
             public float pathCost;
         }
 
+        class NavalInvasionTransferBucket
+        {
+            public Cell departureCell;
+            public Cell targetCell;
+            public List<StrategicGroup> cargoGroups = new();
+        }
+
         public StrategicAutoSupplyPlanner(StrategicGameState state, SideState viewerSide)
         {
             this.state = state;
@@ -2223,39 +2230,40 @@ namespace StrategicCombatCore
 
         void ReplanSide(SideState side)
         {
-            var depotRequests = CollectDepotRequests(side)
-                .OrderByDescending(request => GetRemainingGapTons(request))
-                .ToList();
-            if (depotRequests.Count == 0)
-                return;
-
-            // Idle Navy Asset Pool: transport ships currently idle in their home-port fleet.
             var idleNavyAssetPool = CollectIdleNavyAssetPool(side).ToList();
             if (idleNavyAssetPool.Count == 0)
                 return;
 
-            foreach (var depotRequest in depotRequests)
+            var depotRequests = CollectDepotRequests(side)
+                .OrderByDescending(request => GetRemainingGapTons(request))
+                .ToList();
+            if (depotRequests.Count > 0)
             {
-                while (GetRemainingGapTons(depotRequest) > 0)
+                foreach (var depotRequest in depotRequests)
                 {
-                    var candidate = FindNearestSupplyPathCandidate(side, depotRequest.cell, idleNavyAssetPool);
-                    if (candidate == null)
-                        break;
+                    while (GetRemainingGapTons(depotRequest) > 0)
+                    {
+                        var candidate = FindNearestSupplyPathCandidate(side, depotRequest.cell, idleNavyAssetPool);
+                        if (candidate == null)
+                            break;
 
-                    idleNavyAssetPool.Remove(candidate.asset);
-                    assignedTransportShipIds.Add(candidate.asset.transportShip.objectId);
+                        idleNavyAssetPool.Remove(candidate.asset);
+                        assignedTransportShipIds.Add(candidate.asset.transportShip.objectId);
 
-                    var taskForce = MaterializeSupplyTaskForce(candidate.asset);
-                    if (taskForce == null)
-                        continue;
+                        var taskForce = MaterializeSupplyTaskForce(candidate.asset);
+                        if (taskForce == null)
+                            continue;
 
-                    AddProjectedIncomingSupply(depotRequest.cell, candidate.asset.estimatedSupplyDeliveryTons);
+                        AddProjectedIncomingSupply(depotRequest.cell, candidate.asset.estimatedSupplyDeliveryTons);
 
-                    // Task Force: one transport split from the Idle Navy Asset Pool for a one-shot supply sub mission.
-                    taskForce.navySubMission = NavySubMission.Supply;
-                    taskForce.SetPlannedPath(candidate.pathCells.Select(cell => cell.ToXY()).ToList());
+                        // Task Force: one transport split from the Idle Navy Asset Pool for a one-shot supply sub mission.
+                        taskForce.navySubMission = NavySubMission.Supply;
+                        taskForce.SetPlannedPath(candidate.pathCells.Select(cell => cell.ToXY()).ToList());
+                    }
                 }
             }
+
+            ReplanNavalInvasionTransfers(side, idleNavyAssetPool);
         }
 
         List<DepotRequest> CollectDepotRequests(SideState side)
@@ -2388,6 +2396,132 @@ namespace StrategicCombatCore
                     continue;
 
                 var pathCost = PathFinding<Cell>.AStar2(graph, asset.homePortCell, depotCell, out var pathCells);
+                if (pathCells.Count < 2 || float.IsInfinity(pathCost))
+                    continue;
+
+                if (bestCandidate == null || pathCost < bestCandidate.pathCost)
+                {
+                    bestCandidate = new SupplyPathCandidate()
+                    {
+                        asset = asset,
+                        pathCells = pathCells,
+                        pathCost = pathCost
+                    };
+                }
+            }
+
+            return bestCandidate;
+        }
+
+        void ReplanNavalInvasionTransfers(SideState side, List<IdleNavyAsset> idleNavyAssetPool)
+        {
+            if (side == null || idleNavyAssetPool == null || idleNavyAssetPool.Count == 0)
+                return;
+
+            foreach (var bucket in CollectNavalInvasionTransferBuckets(side))
+            {
+                var remainingCargoGroups = bucket.cargoGroups
+                    .Where(group => IsGroupReadyForBucket(group, bucket))
+                    .ToList();
+                while (remainingCargoGroups.Count > 0)
+                {
+                    var candidate = FindNavalInvasionPathCandidate(side, bucket.departureCell, bucket.targetCell, idleNavyAssetPool);
+                    if (candidate == null)
+                        break;
+
+                    idleNavyAssetPool.Remove(candidate.asset);
+                    assignedTransportShipIds.Add(candidate.asset.transportShip.objectId);
+
+                    var taskForce = MaterializeSupplyTaskForce(candidate.asset);
+                    if (taskForce == null)
+                        continue;
+
+                    TransferSplitter.SequenceSplit(new List<ShipLog>() { candidate.asset.transportShip }, remainingCargoGroups);
+                    if (!HasLoadedCargo(candidate.asset.transportShip))
+                    {
+                        taskForce.navySubMission = NavySubMission.General;
+                        taskForce.ClearPlannedPath();
+                        continue;
+                    }
+
+                    taskForce.navySubMission = NavySubMission.Transfer;
+                    taskForce.SetPlannedPath(candidate.pathCells.Select(cell => cell.ToXY()).ToList());
+
+                    remainingCargoGroups = remainingCargoGroups
+                        .Where(group => IsGroupReadyForBucket(group, bucket))
+                        .ToList();
+                }
+            }
+        }
+
+        IEnumerable<NavalInvasionTransferBucket> CollectNavalInvasionTransferBuckets(SideState side)
+        {
+            var bucketMap = new Dictionary<(Cell departureCell, Cell targetCell), NavalInvasionTransferBucket>();
+            var orderedBuckets = new List<NavalInvasionTransferBucket>();
+
+            foreach (var group in state.strategicGroups.Where(group =>
+                group != null &&
+                group.side == side &&
+                group.IsReadyForNavalInvasionTransfer()))
+            {
+                var departureCell = group.cell;
+                var targetCell = group.GetNavalInvasionTargetCell();
+                if (departureCell == null || targetCell == null || departureCell == targetCell)
+                    continue;
+
+                var key = (departureCell, targetCell);
+                if (!bucketMap.TryGetValue(key, out var bucket))
+                {
+                    bucket = new NavalInvasionTransferBucket()
+                    {
+                        departureCell = departureCell,
+                        targetCell = targetCell,
+                    };
+                    bucketMap[key] = bucket;
+                    orderedBuckets.Add(bucket);
+                }
+
+                bucket.cargoGroups.Add(group);
+            }
+
+            return orderedBuckets;
+        }
+
+        static bool IsGroupReadyForBucket(StrategicGroup group, NavalInvasionTransferBucket bucket)
+        {
+            return group != null &&
+                bucket != null &&
+                group.IsReadyForNavalInvasionTransfer() &&
+                group.cell == bucket.departureCell &&
+                group.GetNavalInvasionTargetCell() == bucket.targetCell;
+        }
+
+        static bool HasLoadedCargo(ShipLog transportShip)
+        {
+            return transportShip?.loadedGroups?.Any(reference => reference.Get() is StrategicGroup) == true;
+        }
+
+        SupplyPathCandidate FindNavalInvasionPathCandidate(
+            SideState side,
+            Cell departureCell,
+            Cell targetCell,
+            IEnumerable<IdleNavyAsset> assets)
+        {
+            SupplyPathCandidate bestCandidate = null;
+            var graph = new DynamicCellGraphNavy() { movingSide = side };
+
+            foreach (var asset in assets)
+            {
+                if (asset?.homePortCell == null ||
+                    departureCell == null ||
+                    targetCell == null ||
+                    asset.homePortCell != departureCell ||
+                    departureCell == targetCell)
+                {
+                    continue;
+                }
+
+                var pathCost = PathFinding<Cell>.AStar2(graph, departureCell, targetCell, out var pathCells);
                 if (pathCells.Count < 2 || float.IsInfinity(pathCost))
                     continue;
 

@@ -181,7 +181,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         }
     }
 
-    Action<Cell> oneshotCellClickCallback;
+    Func<Cell, bool> oneshotCellClickCallback;
 
     [CreateProperty]
     public bool showSideFlag
@@ -296,11 +296,13 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
     static readonly Color selectedOutgoingSupplyPathColor = Color.red;
     static readonly Color selectedSuperiorLineColor = new(1f, 0.55f, 0f, 1f);
     static readonly Color selectedSubordinateLineColor = new(0f, 0.85f, 0.75f, 1f);
+    static readonly Color selectedNavalInvasionLineColor = new(0.65f, 0.65f, 0.65f, 1f);
     const float selectedRelationLineWidth = 0.05f;
     const float selectedSupplyPathOffset = -0.08f;
     const float selectedOutgoingSupplyPathOffset = -0.14f;
     const float selectedSuperiorLineOffset = 0.04f;
     const float selectedSubordinateLineOffset = 0.1f;
+    const float selectedNavalInvasionLineOffset = 0.16f;
 
     class SelectedRelationLineSpec
     {
@@ -1075,6 +1077,19 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
             });
         }
 
+        if (TryBuildDirectLine(selectedGroup.cell, selectedGroup.GetNavalInvasionTargetCell(), out var navalInvasionLine))
+        {
+            lineSpecs.Add(new()
+            {
+                points = navalInvasionLine,
+                color = selectedNavalInvasionLineColor,
+                smooth = false,
+                widthMultiplier = selectedRelationLineWidth,
+                planarOffset = selectedNavalInvasionLineOffset,
+                preserveEndpoints = false
+            });
+        }
+
         foreach (var subordinateGroup in EnumerateDisplayedIndependentSubordinates(selectedGroup))
         {
             if (!TryBuildDirectLine(selectedGroup.cell, subordinateGroup.cell, out var subordinateLine))
@@ -1486,6 +1501,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 mapEditMode = StrategicMapEditMode.Select;
+                oneshotCellClickCallback = null;
             }
         }
     }
@@ -1732,8 +1748,41 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
     public void ScheduleOneshotCellClickCallback(Action<Cell> callback)
     {
+        if (callback == null)
+            return;
+
+        ScheduleOneshotCellClickCallback(cell =>
+        {
+            callback(cell);
+            return true;
+        });
+    }
+
+    public void ScheduleOneshotCellClickCallback(Func<Cell, bool> callback)
+    {
+        if (callback == null)
+            return;
+
         mapEditMode = StrategicMapEditMode.WaitOneshotCellClickCallback;
         oneshotCellClickCallback = callback;
+    }
+
+    public void StartNavalInvasionTargetSelection(StrategicGroup group)
+    {
+        if (group == null)
+            return;
+
+        group.ClearNavalInvasionTarget();
+        if (!group.CanConfigureNavalInvasion())
+            return;
+
+        ScheduleOneshotCellClickCallback(cell =>
+        {
+            if (!group.TrySetNavalInvasionTargetCell(cell))
+                return false;
+
+            return true;
+        });
     }
 
     // void HandleMapClick(Vector2Int cellXY)
@@ -1746,8 +1795,11 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         }
         else if (mapEditMode == StrategicMapEditMode.WaitOneshotCellClickCallback)
         {
-            oneshotCellClickCallback(activeCell);
-            mapEditMode = StrategicMapEditMode.Select;
+            if (oneshotCellClickCallback?.Invoke(activeCell) != false)
+            {
+                mapEditMode = StrategicMapEditMode.Select;
+                oneshotCellClickCallback = null;
+            }
         }
         else if (mapEditMode == StrategicMapEditMode.WaypointPlotting)
         {

@@ -13,7 +13,8 @@ namespace StrategicCombatCore
     public enum NavySubMission
     {
         General,
-        Supply
+        Supply,
+        Transfer
     }
 
     public partial class StrategicGroupMemberReference
@@ -216,6 +217,25 @@ namespace StrategicCombatCore
         public string assignedMissionObjectId;
         public string homeBaseObjectId;
         public NavySubMission navySubMission;
+        public XY navalInvasionTarget;
+
+        public bool ShouldSerializeNavalInvasionTarget() => GetNavalInvasionTargetCell() != null;
+
+        static readonly GlobalString advanceBaseSuffix = new()
+        {
+            english = " Advance Base",
+            japanese = " 前進基地",
+            chineseSimplified = " 前进基地",
+            chineseTraditional = " 前進基地",
+        };
+
+        static readonly GlobalString depotSuffix = new()
+        {
+            english = " Depot",
+            japanese = " 倉庫",
+            chineseSimplified = " 仓库",
+            chineseTraditional = " 倉庫",
+        };
 
         public void SetAssignedMission(StrategicMission mission)
         {
@@ -312,6 +332,65 @@ namespace StrategicCombatCore
             }
 
             return GetNearestFriendlyBaseDepot(cache);
+        }
+
+        public Cell GetNavalInvasionTargetCell() => navalInvasionTarget?.GetCell();
+
+        public bool HasNavalInvasionTarget() => GetNavalInvasionTargetCell() != null;
+
+        public void ClearNavalInvasionTarget()
+        {
+            navalInvasionTarget = null;
+        }
+
+        public bool IsValidNavalInvasionTargetCell(Cell targetCell)
+        {
+            return targetCell != null &&
+                targetCell.IsCoast &&
+                targetCell.IsArmyPassable();
+        }
+
+        public bool TrySetNavalInvasionTargetCell(Cell targetCell)
+        {
+            if (!IsValidNavalInvasionTargetCell(targetCell))
+                return false;
+
+            navalInvasionTarget = targetCell.ToXY();
+            return true;
+        }
+
+        public StrategicGroup GetFriendlyBaseOnCell(Cell targetCell)
+        {
+            var currentSide = side;
+            if (targetCell == null || currentSide == null)
+                return null;
+
+            return targetCell.StrategicGroupReferences
+                .Select(reference => reference.Get())
+                .FirstOrDefault(group => group != null && group.IsBase() && group.side == currentSide);
+        }
+
+        public StrategicGroup GetFriendlyBaseOnCurrentCell() => GetFriendlyBaseOnCell(cell);
+
+        public bool CanConfigureNavalInvasion()
+        {
+            return !IsNavy() &&
+                !IsBase() &&
+                deployState == DeployState.Independent &&
+                GetFriendlyBaseOnCurrentCell() != null;
+        }
+
+        public bool IsReadyForNavalInvasionTransfer()
+        {
+            return !IsNavy() &&
+                !IsBase() &&
+                deployState == DeployState.Independent &&
+                cell != null &&
+                containerObjectId == null &&
+                GetAssignedMission() == null &&
+                plannedPath.Count == 0 &&
+                HasNavalInvasionTarget() &&
+                GetFriendlyBaseOnCurrentCell() != null;
         }
 
         public SideState side => StrategicGameState.Instance.countryToSideStateMap.GetValueOrDefault(country);
@@ -1391,11 +1470,11 @@ namespace StrategicCombatCore
             {
                 UnloadOneShotSupplySubMission();
                 navySubMission = NavySubMission.General;
-
-                if (plannedPath.Count == 0)
-                {
-                    StartReturnToBase(0);
-                }
+            }
+            else if (navySubMission == NavySubMission.Transfer)
+            {
+                UnloadOneShotTransferSubMission();
+                navySubMission = NavySubMission.General;
             }
         }
 
@@ -1423,6 +1502,143 @@ namespace StrategicCombatCore
 
                 ServiceLocator.Get<ILoggerService>().Log($"Supply Sub Mission Transfer: {ship.namedShip.name.GetMergedName()} -> {targetDepot.name.GetMergedName()} ({transferableTons})");
             }
+        }
+
+        void UnloadOneShotTransferSubMission()
+        {
+            var landingCell = cell;
+            var landingSide = side;
+            if (landingCell == null || landingSide == null)
+                return;
+
+            var previousController = landingCell.GetHexSide();
+            var unloadedAnyCargo = false;
+
+            foreach (var ship in WalkGroupMembersDeployedShips())
+            {
+                if (ship?.shipClass?.type != ShipType.Transport)
+                    continue;
+
+                foreach (var loadedGroupRef in ship.loadedGroups.ToList())
+                {
+                    if (loadedGroupRef.Get() is not StrategicGroup loadedGroup)
+                        continue;
+
+                    loadedGroup.UnloadFromContainer();
+                    loadedGroup.ClearNavalInvasionTarget();
+                    unloadedAnyCargo = true;
+                }
+            }
+
+            if (!unloadedAnyCargo)
+                return;
+
+            var currentController = landingCell.GetHexSide();
+            if (previousController != landingSide &&
+                currentController == landingSide &&
+                !HasFriendlyDepotConnection(landingCell, landingSide))
+            {
+                EnsureAdvanceBaseAtCell(landingCell, landingSide);
+            }
+        }
+
+        static bool HasFriendlyDepotConnection(Cell targetCell, SideState targetSide)
+        {
+            if (targetCell == null || targetSide == null)
+                return false;
+
+            foreach (var baseGroup in StrategicGameState.Instance.strategicGroups.Where(
+                group => group != null && group.IsBase() && group.side == targetSide))
+            {
+                var depot = baseGroup.GetFirstDepot();
+                var depotCell = baseGroup.cell;
+                if (depot == null || depotCell == null)
+                    continue;
+
+                if (depotCell == targetCell)
+                    return true;
+            }
+
+            var graph = new DynamicLandSupplyNetworkingGraph() { side = targetSide };
+            foreach (var baseGroup in StrategicGameState.Instance.strategicGroups.Where(
+                group => group != null && group.IsBase() && group.side == targetSide))
+            {
+                var depot = baseGroup.GetFirstDepot();
+                var depotCell = baseGroup.cell;
+                if (depot == null || depotCell == null || depotCell == targetCell)
+                    continue;
+
+                var result = PathFinding<Cell>.AStar3(graph, targetCell, depotCell);
+                if (result.Path?.Count > 0 && !float.IsInfinity(result.Cost))
+                    return true;
+            }
+
+            return false;
+        }
+
+        static StrategicGroup EnsureAdvanceBaseAtCell(Cell targetCell, SideState targetSide)
+        {
+            if (targetCell == null || targetSide == null)
+                return null;
+
+            var existingBase = targetCell.StrategicGroupReferences
+                .Select(reference => reference.Get())
+                .FirstOrDefault(group => group != null && group.IsBase() && group.side == targetSide);
+            if (existingBase?.GetFirstDepot() != null)
+                return existingBase;
+
+            var depotTemplate = StrategicGameState.Instance.landUnitTemplates.FirstOrDefault(template =>
+                template != null &&
+                template.unitType == LandUnitType.Supply &&
+                template.name?.EqualsAny("Depot") == true);
+            depotTemplate ??= StrategicGameState.Instance.landUnitTemplates.FirstOrDefault(template =>
+                template?.unitType == LandUnitType.Supply);
+            if (depotTemplate == null)
+            {
+                ServiceLocator.Get<ILoggerService>()?.LogWarning(
+                    $"Naval invasion transfer: unable to create advance base at {targetCell.GetLocationSummary()} because no depot template was found.");
+                return existingBase;
+            }
+
+            var baseGroup = existingBase;
+            if (baseGroup == null)
+            {
+                baseGroup = new StrategicGroup()
+                {
+                    name = BuildAdvanceBaseName(targetCell),
+                    type = Type.Base,
+                    size = StrategicUnitSize.Unspecified,
+                    country = targetSide.countries.FirstOrDefault(),
+                    deployState = DeployState.NotDeployed,
+                    nonHistorical = true,
+                    navySubMission = NavySubMission.General,
+                };
+                StrategicGameState.Instance.strategicGroups.Add(baseGroup);
+                EntityManager.Instance.Register(baseGroup, null);
+                baseGroup.MoveToCell(targetCell, false);
+            }
+
+            var depotUnit = new LandUnit()
+            {
+                name = BuildAdvanceBaseDepotName(targetCell),
+                strength = 0,
+                landUnitTemplateId = depotTemplate.objectId,
+            };
+            StrategicGameState.Instance.landUnits.Add(depotUnit);
+            EntityManager.Instance.Register(depotUnit, null);
+            depotUnit.SetStrategicGroupReference(baseGroup);
+            targetCell.RefreshControlState();
+            return baseGroup;
+        }
+
+        static GlobalString BuildAdvanceBaseName(Cell targetCell)
+        {
+            return targetCell?.GetLocationSummaryGlobalString()?.Add(advanceBaseSuffix) ?? advanceBaseSuffix.Clone();
+        }
+
+        static GlobalString BuildAdvanceBaseDepotName(Cell targetCell)
+        {
+            return targetCell?.GetLocationSummaryGlobalString()?.Add(depotSuffix) ?? depotSuffix.Clone();
         }
 
         public StrategicGroup GetDepotGroup()

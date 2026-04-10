@@ -120,6 +120,18 @@
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000052)"/>
                         </Bindings>
                     </ui:Button>
+                    <ui:Button text="Naval Invasion" name="NavalInvasionButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-91)"/>
+                            <ui:DataBinding property="style.display" data-source-path="isFleet" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle (Not)"/>
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Label text="Naval Invasion Target" name="NavalInvasionTargetLabel" style="white-space: normal;">
+                        <Bindings>
+                            <ui:DataBinding property="text" data-source-path="navalInvasionTargetName" binding-mode="ToTarget"/>
+                            <ui:DataBinding property="style.display" data-source-path="hasNavalInvasionTarget" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
+                        </Bindings>
+                    </ui:Label>
                     <ui:Button text="Detach Damaged" name="DetachDamagedButton">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-12)"/>

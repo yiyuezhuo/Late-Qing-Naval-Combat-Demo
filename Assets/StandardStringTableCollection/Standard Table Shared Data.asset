@@ -3129,6 +3129,10 @@ MonoBehaviour:
     m_Key: Select Side
     m_Metadata:
       m_Items: []
+  - m_Id: -91
+    m_Key: Naval Invasion
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

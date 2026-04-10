@@ -3213,6 +3213,10 @@ MonoBehaviour:
     m_Localized: Select Side
     m_Metadata:
       m_Items: []
+  - m_Id: -91
+    m_Localized: Naval Invasion
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

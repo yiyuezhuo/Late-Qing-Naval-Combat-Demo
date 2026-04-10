@@ -354,16 +354,24 @@
     <searchLightHits>
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
+     <portEnabled>false</portEnabled>
+     <portDirectionDeg>180</portDirectionDeg>
+     <starboardEnabled>false</starboardEnabled>
+     <starboardDirectionDeg>0</starboardDirectionDeg>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>Independent</controlMode>
+    <manualRoute />
     <followDistanceYards>500</followDistanceYards>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
+    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -376,6 +384,7 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
+    <autoReattachAfterRepair>false</autoReattachAfterRepair>
     <supplyTons>1367.5</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -383,11 +392,18 @@
       <targetSupplyTons>858.48617696762085</targetSupplyTons>
       <flowSupplyTons>858.48617696762085</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <loadedGroups />
     <repairPriority>0</repairPriority>
+    <portSearchlightHits>0</portSearchlightHits>
+    <starboardSearchlightHits>0</starboardSearchlightHits>
+    <portSearchlightEnabled>false</portSearchlightEnabled>
+    <portSearchlightDirectionDeg>180</portSearchlightDirectionDeg>
+    <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
+    <starboardSearchlightDirectionDeg>0</starboardSearchlightDirectionDeg>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -397,6 +413,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -405,6 +425,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -435,9 +463,12 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>929b331f-b157-43ff-883b-d175d9549859</objectId>
     </doctrine>
+    <enableAutoReattachProp>false</enableAutoReattachProp>
     <parentGroupReference>
      <referenceId>f99477a6-49ae-4f0d-9f5b-09fc0543f47e</referenceId>
     </parentGroupReference>
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -779,16 +810,24 @@
     <searchLightHits>
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
+     <portEnabled>false</portEnabled>
+     <portDirectionDeg>180</portDirectionDeg>
+     <starboardEnabled>false</starboardEnabled>
+     <starboardDirectionDeg>0</starboardDirectionDeg>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>Independent</controlMode>
+    <manualRoute />
     <followDistanceYards>500</followDistanceYards>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
+    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -801,6 +840,7 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
+    <autoReattachAfterRepair>false</autoReattachAfterRepair>
     <supplyTons>1322</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -808,11 +848,18 @@
       <targetSupplyTons>829.92220306396484</targetSupplyTons>
       <flowSupplyTons>829.92220306396484</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <loadedGroups />
     <repairPriority>0</repairPriority>
+    <portSearchlightHits>0</portSearchlightHits>
+    <starboardSearchlightHits>0</starboardSearchlightHits>
+    <portSearchlightEnabled>false</portSearchlightEnabled>
+    <portSearchlightDirectionDeg>180</portSearchlightDirectionDeg>
+    <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
+    <starboardSearchlightDirectionDeg>0</starboardSearchlightDirectionDeg>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -822,6 +869,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -830,6 +881,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -860,9 +919,12 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>234f4724-f391-4747-a1f4-047031c4b936</objectId>
     </doctrine>
+    <enableAutoReattachProp>false</enableAutoReattachProp>
     <parentGroupReference>
      <referenceId>f99477a6-49ae-4f0d-9f5b-09fc0543f47e</referenceId>
     </parentGroupReference>
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -1296,16 +1358,24 @@
     <searchLightHits>
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
+     <portEnabled>false</portEnabled>
+     <portDirectionDeg>180</portDirectionDeg>
+     <starboardEnabled>false</starboardEnabled>
+     <starboardDirectionDeg>0</starboardDirectionDeg>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>Independent</controlMode>
+    <manualRoute />
     <followDistanceYards>500</followDistanceYards>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
+    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -1318,6 +1388,7 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
+    <autoReattachAfterRepair>false</autoReattachAfterRepair>
     <supplyTons>1169</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -1325,11 +1396,18 @@
       <targetSupplyTons>733.87221384048462</targetSupplyTons>
       <flowSupplyTons>733.87221384048462</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <loadedGroups />
     <repairPriority>0</repairPriority>
+    <portSearchlightHits>0</portSearchlightHits>
+    <starboardSearchlightHits>0</starboardSearchlightHits>
+    <portSearchlightEnabled>false</portSearchlightEnabled>
+    <portSearchlightDirectionDeg>180</portSearchlightDirectionDeg>
+    <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
+    <starboardSearchlightDirectionDeg>0</starboardSearchlightDirectionDeg>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -1339,6 +1417,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -1347,6 +1429,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -1377,9 +1467,12 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>7401a4b2-6831-4909-9f5a-24274a935c28</objectId>
     </doctrine>
+    <enableAutoReattachProp>false</enableAutoReattachProp>
     <parentGroupReference>
      <referenceId>f99477a6-49ae-4f0d-9f5b-09fc0543f47e</referenceId>
     </parentGroupReference>
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -1584,16 +1677,24 @@
     <searchLightHits>
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
+     <portEnabled>false</portEnabled>
+     <portDirectionDeg>180</portDirectionDeg>
+     <starboardEnabled>false</starboardEnabled>
+     <starboardDirectionDeg>0</starboardDirectionDeg>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>Independent</controlMode>
+    <manualRoute />
     <followDistanceYards>500</followDistanceYards>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
+    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -1606,6 +1707,7 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
+    <autoReattachAfterRepair>false</autoReattachAfterRepair>
     <supplyTons>664.5</supplyTons>
     <supplyTransferState>
      <requestRecord>
@@ -1613,11 +1715,18 @@
       <targetSupplyTons>417.15832614898682</targetSupplyTons>
       <flowSupplyTons>417.15832614898682</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <loadedGroups />
     <repairPriority>0</repairPriority>
+    <portSearchlightHits>0</portSearchlightHits>
+    <starboardSearchlightHits>0</starboardSearchlightHits>
+    <portSearchlightEnabled>false</portSearchlightEnabled>
+    <portSearchlightDirectionDeg>180</portSearchlightDirectionDeg>
+    <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
+    <starboardSearchlightDirectionDeg>0</starboardSearchlightDirectionDeg>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -1627,6 +1736,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -1635,6 +1748,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -1665,9 +1786,12 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>c006956f-a843-4d7f-8a04-133c8b79e697</objectId>
     </doctrine>
+    <enableAutoReattachProp>false</enableAutoReattachProp>
     <parentGroupReference>
      <referenceId>f99477a6-49ae-4f0d-9f5b-09fc0543f47e</referenceId>
     </parentGroupReference>
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -1973,16 +2097,24 @@
     <searchLightHits>
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
+     <portEnabled>false</portEnabled>
+     <portDirectionDeg>180</portDirectionDeg>
+     <starboardEnabled>false</starboardEnabled>
+     <starboardDirectionDeg>0</starboardDirectionDeg>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>Independent</controlMode>
+    <manualRoute />
     <followDistanceYards>500</followDistanceYards>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
+    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -1995,17 +2127,25 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
+    <autoReattachAfterRepair>false</autoReattachAfterRepair>
     <supplyTons>975</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <loadedGroups />
     <repairPriority>0</repairPriority>
+    <portSearchlightHits>0</portSearchlightHits>
+    <starboardSearchlightHits>0</starboardSearchlightHits>
+    <portSearchlightEnabled>false</portSearchlightEnabled>
+    <portSearchlightDirectionDeg>180</portSearchlightDirectionDeg>
+    <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
+    <starboardSearchlightDirectionDeg>0</starboardSearchlightDirectionDeg>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -2015,6 +2155,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -2023,6 +2167,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -2053,9 +2205,12 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>1f7793b3-ea4b-4a8c-9d68-4454577b10fa</objectId>
     </doctrine>
+    <enableAutoReattachProp>false</enableAutoReattachProp>
     <parentGroupReference>
      <referenceId>a65da163-4f17-4ab8-be8e-dd7d7389ee67</referenceId>
     </parentGroupReference>
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -2343,16 +2498,24 @@
     <searchLightHits>
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
+     <portEnabled>false</portEnabled>
+     <portDirectionDeg>180</portDirectionDeg>
+     <starboardEnabled>false</starboardEnabled>
+     <starboardDirectionDeg>0</starboardDirectionDeg>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>Independent</controlMode>
+    <manualRoute />
     <followDistanceYards>500</followDistanceYards>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
+    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -2365,17 +2528,25 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
+    <autoReattachAfterRepair>false</autoReattachAfterRepair>
     <supplyTons>930.70001220703125</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <loadedGroups />
     <repairPriority>0</repairPriority>
+    <portSearchlightHits>0</portSearchlightHits>
+    <starboardSearchlightHits>0</starboardSearchlightHits>
+    <portSearchlightEnabled>false</portSearchlightEnabled>
+    <portSearchlightDirectionDeg>180</portSearchlightDirectionDeg>
+    <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
+    <starboardSearchlightDirectionDeg>0</starboardSearchlightDirectionDeg>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -2385,6 +2556,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -2393,6 +2568,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -2423,9 +2606,12 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>260bfbd6-e122-4b72-ae8c-c5931d8647c4</objectId>
     </doctrine>
+    <enableAutoReattachProp>false</enableAutoReattachProp>
     <parentGroupReference>
      <referenceId>a65da163-4f17-4ab8-be8e-dd7d7389ee67</referenceId>
     </parentGroupReference>
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -2731,16 +2917,24 @@
     <searchLightHits>
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
+     <portEnabled>false</portEnabled>
+     <portDirectionDeg>180</portDirectionDeg>
+     <starboardEnabled>false</starboardEnabled>
+     <starboardDirectionDeg>0</starboardDirectionDeg>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>Independent</controlMode>
+    <manualRoute />
     <followDistanceYards>500</followDistanceYards>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
+    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -2753,17 +2947,25 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
+    <autoReattachAfterRepair>false</autoReattachAfterRepair>
     <supplyTons>970</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <loadedGroups />
     <repairPriority>0</repairPriority>
+    <portSearchlightHits>0</portSearchlightHits>
+    <starboardSearchlightHits>0</starboardSearchlightHits>
+    <portSearchlightEnabled>false</portSearchlightEnabled>
+    <portSearchlightDirectionDeg>180</portSearchlightDirectionDeg>
+    <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
+    <starboardSearchlightDirectionDeg>0</starboardSearchlightDirectionDeg>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -2773,6 +2975,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -2781,6 +2987,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -2811,9 +3025,12 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>7678b19f-c5b1-40e3-80ff-0fcdadb86a8e</objectId>
     </doctrine>
+    <enableAutoReattachProp>false</enableAutoReattachProp>
     <parentGroupReference>
      <referenceId>a65da163-4f17-4ab8-be8e-dd7d7389ee67</referenceId>
     </parentGroupReference>
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -3119,16 +3336,24 @@
     <searchLightHits>
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
+     <portEnabled>false</portEnabled>
+     <portDirectionDeg>180</portDirectionDeg>
+     <starboardEnabled>false</starboardEnabled>
+     <starboardDirectionDeg>0</starboardDirectionDeg>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>Independent</controlMode>
+    <manualRoute />
     <followDistanceYards>500</followDistanceYards>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
+    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -3141,17 +3366,25 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
+    <autoReattachAfterRepair>false</autoReattachAfterRepair>
     <supplyTons>975</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <loadedGroups />
     <repairPriority>0</repairPriority>
+    <portSearchlightHits>0</portSearchlightHits>
+    <starboardSearchlightHits>0</starboardSearchlightHits>
+    <portSearchlightEnabled>false</portSearchlightEnabled>
+    <portSearchlightDirectionDeg>180</portSearchlightDirectionDeg>
+    <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
+    <starboardSearchlightDirectionDeg>0</starboardSearchlightDirectionDeg>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -3161,6 +3394,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -3169,6 +3406,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -3199,9 +3444,12 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>7252fce7-e8e4-4a3d-a2ec-086befe170f0</objectId>
     </doctrine>
+    <enableAutoReattachProp>false</enableAutoReattachProp>
     <parentGroupReference>
      <referenceId>a65da163-4f17-4ab8-be8e-dd7d7389ee67</referenceId>
     </parentGroupReference>
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -3507,16 +3755,24 @@
     <searchLightHits>
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
+     <portEnabled>false</portEnabled>
+     <portDirectionDeg>180</portDirectionDeg>
+     <starboardEnabled>false</starboardEnabled>
+     <starboardDirectionDeg>0</starboardDirectionDeg>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>Independent</controlMode>
+    <manualRoute />
     <followDistanceYards>500</followDistanceYards>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
+    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -3529,17 +3785,25 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
+    <autoReattachAfterRepair>false</autoReattachAfterRepair>
     <supplyTons>970</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <loadedGroups />
     <repairPriority>0</repairPriority>
+    <portSearchlightHits>0</portSearchlightHits>
+    <starboardSearchlightHits>0</starboardSearchlightHits>
+    <portSearchlightEnabled>false</portSearchlightEnabled>
+    <portSearchlightDirectionDeg>180</portSearchlightDirectionDeg>
+    <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
+    <starboardSearchlightDirectionDeg>0</starboardSearchlightDirectionDeg>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -3549,6 +3813,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -3557,6 +3825,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -3587,9 +3863,12 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>364276a6-5b5d-4cda-a512-f93aa85adf12</objectId>
     </doctrine>
+    <enableAutoReattachProp>false</enableAutoReattachProp>
     <parentGroupReference>
      <referenceId>a65da163-4f17-4ab8-be8e-dd7d7389ee67</referenceId>
     </parentGroupReference>
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -3868,16 +4147,24 @@
     <searchLightHits>
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
+     <portEnabled>false</portEnabled>
+     <portDirectionDeg>180</portDirectionDeg>
+     <starboardEnabled>false</starboardEnabled>
+     <starboardDirectionDeg>0</starboardDirectionDeg>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>Independent</controlMode>
+    <manualRoute />
     <followDistanceYards>500</followDistanceYards>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
+    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -3890,17 +4177,25 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
+    <autoReattachAfterRepair>false</autoReattachAfterRepair>
     <supplyTons>973.5</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <loadedGroups />
     <repairPriority>0</repairPriority>
+    <portSearchlightHits>0</portSearchlightHits>
+    <starboardSearchlightHits>0</starboardSearchlightHits>
+    <portSearchlightEnabled>false</portSearchlightEnabled>
+    <portSearchlightDirectionDeg>180</portSearchlightDirectionDeg>
+    <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
+    <starboardSearchlightDirectionDeg>0</starboardSearchlightDirectionDeg>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -3910,6 +4205,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -3918,6 +4217,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -3948,9 +4255,12 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>1ea45719-c8f0-49a4-affc-3d2c9d1828f2</objectId>
     </doctrine>
+    <enableAutoReattachProp>false</enableAutoReattachProp>
     <parentGroupReference>
      <referenceId>a65da163-4f17-4ab8-be8e-dd7d7389ee67</referenceId>
     </parentGroupReference>
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </ShipLog>
   </shipLogs>
   <serializedCustomBoolMap />
@@ -4492,7 +4802,7 @@
     <suppression>1</suppression>
     <morale>0</morale>
     <fatigue>1</fatigue>
-    <supplyTons>0</supplyTons>
+    <supplyTons>5000</supplyTons>
     <supplyGeneratedTons>5000</supplyGeneratedTons>
     <landUnitTemplateId>f5b42971-fd6a-4e48-b6c1-33ffd39f5f4b</landUnitTemplateId>
     <supplyTransferState>
@@ -4500,15 +4810,19 @@
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
+    <enableAutoReattachProp>false</enableAutoReattachProp>
     <objectId>0341200d-9758-4163-91cf-41a6d1116bd3</objectId>
     <parentGroupReference>
      <referenceId>7cc10e6e-260c-4492-8f4c-304596825029</referenceId>
     </parentGroupReference>
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </LandUnit>
    <LandUnit>
     <name>
@@ -4521,7 +4835,7 @@
     <suppression>1</suppression>
     <morale>0</morale>
     <fatigue>1</fatigue>
-    <supplyTons>0</supplyTons>
+    <supplyTons>5000</supplyTons>
     <supplyGeneratedTons>5000</supplyGeneratedTons>
     <landUnitTemplateId>f5b42971-fd6a-4e48-b6c1-33ffd39f5f4b</landUnitTemplateId>
     <supplyTransferState>
@@ -4529,15 +4843,20 @@
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
+     <resolvedSupplyCapTons>11588.3994</resolvedSupplyCapTons>
     </supplyTransferState>
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
+    <enableAutoReattachProp>false</enableAutoReattachProp>
     <objectId>03762cd1-571c-4b1a-bf0b-cdc6f9b7b856</objectId>
     <parentGroupReference>
      <referenceId>d7239c1d-abdf-49fe-80bc-a2568d837526</referenceId>
     </parentGroupReference>
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </LandUnit>
    <LandUnit>
     <name>
@@ -4550,7 +4869,7 @@
     <suppression>1</suppression>
     <morale>0</morale>
     <fatigue>1</fatigue>
-    <supplyTons>0</supplyTons>
+    <supplyTons>3000</supplyTons>
     <supplyGeneratedTons>3000</supplyGeneratedTons>
     <landUnitTemplateId>f5b42971-fd6a-4e48-b6c1-33ffd39f5f4b</landUnitTemplateId>
     <supplyTransferState>
@@ -4558,40 +4877,20 @@
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
-     <requestedRecords>
-      <SupplyFlowRecord>
-       <otherObjectId>451c1bee-b7bd-4d25-9566-f7b1c41ff33c</otherObjectId>
-       <targetSupplyTons>858.48617696762085</targetSupplyTons>
-       <flowSupplyTons>858.48617696762085</flowSupplyTons>
-       <cost>0</cost>
-      </SupplyFlowRecord>
-      <SupplyFlowRecord>
-       <otherObjectId>aa099f1b-f793-4382-a212-ea1913c44360</otherObjectId>
-       <targetSupplyTons>829.92220306396484</targetSupplyTons>
-       <flowSupplyTons>829.92220306396484</flowSupplyTons>
-       <cost>0</cost>
-      </SupplyFlowRecord>
-      <SupplyFlowRecord>
-       <otherObjectId>4991a5ba-edf8-4e9b-b6f2-89c854bc3058</otherObjectId>
-       <targetSupplyTons>733.87221384048462</targetSupplyTons>
-       <flowSupplyTons>733.87221384048462</flowSupplyTons>
-       <cost>0</cost>
-      </SupplyFlowRecord>
-      <SupplyFlowRecord>
-       <otherObjectId>c22a1d1e-92c6-494a-a6c9-7a455672454e</otherObjectId>
-       <targetSupplyTons>417.15832614898682</targetSupplyTons>
-       <flowSupplyTons>417.15832614898682</flowSupplyTons>
-       <cost>0</cost>
-      </SupplyFlowRecord>
-     </requestedRecords>
+     <requestedRecords />
+     <resolvedSupplyCapTons>9046</resolvedSupplyCapTons>
     </supplyTransferState>
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
+    <enableAutoReattachProp>false</enableAutoReattachProp>
     <objectId>85c6b847-efe0-4227-bde9-a2b82454188e</objectId>
     <parentGroupReference>
      <referenceId>6a301c4b-f894-4223-a719-0831dc11c156</referenceId>
     </parentGroupReference>
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </LandUnit>
    <LandUnit>
     <name>
@@ -4612,15 +4911,19 @@
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <portLevel>10</portLevel>
     <repairShipyardLevel>20</repairShipyardLevel>
+    <enableAutoReattachProp>false</enableAutoReattachProp>
     <objectId>fedc9e74-2c1f-4ecc-9085-bdf1f5e97101</objectId>
     <parentGroupReference>
      <referenceId>867755df-7de6-44a3-a0c1-c733bc0cfe9c</referenceId>
     </parentGroupReference>
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </LandUnit>
    <LandUnit>
     <name>
@@ -4641,15 +4944,19 @@
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <portLevel>10</portLevel>
     <repairShipyardLevel>20</repairShipyardLevel>
+    <enableAutoReattachProp>false</enableAutoReattachProp>
     <objectId>1b80c744-b892-41e1-96be-bd6e81aaf829</objectId>
     <parentGroupReference>
      <referenceId>7cc10e6e-260c-4492-8f4c-304596825029</referenceId>
     </parentGroupReference>
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </LandUnit>
    <LandUnit>
     <name>
@@ -4670,15 +4977,19 @@
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <portLevel>10</portLevel>
     <repairShipyardLevel>20</repairShipyardLevel>
+    <enableAutoReattachProp>false</enableAutoReattachProp>
     <objectId>f779b4c8-82c5-43ca-8024-4cf6c8adf778</objectId>
     <parentGroupReference>
      <referenceId>d7239c1d-abdf-49fe-80bc-a2568d837526</referenceId>
     </parentGroupReference>
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </LandUnit>
    <LandUnit>
     <name>
@@ -4699,15 +5010,19 @@
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <portLevel>5</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
+    <enableAutoReattachProp>false</enableAutoReattachProp>
     <objectId>6d0989bf-ffa1-4103-9e0a-2d70e286734f</objectId>
     <parentGroupReference>
      <referenceId>6a301c4b-f894-4223-a719-0831dc11c156</referenceId>
     </parentGroupReference>
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </LandUnit>
    <LandUnit>
     <name>
@@ -4718,7 +5033,7 @@
     <suppression>1</suppression>
     <morale>0</morale>
     <fatigue>1</fatigue>
-    <supplyTons>0</supplyTons>
+    <supplyTons>5000</supplyTons>
     <supplyGeneratedTons>5000</supplyGeneratedTons>
     <landUnitTemplateId>f5b42971-fd6a-4e48-b6c1-33ffd39f5f4b</landUnitTemplateId>
     <supplyTransferState>
@@ -4726,15 +5041,19 @@
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
+    <enableAutoReattachProp>false</enableAutoReattachProp>
     <objectId>f1378a47-5c3b-4db1-b663-13efa30cc241</objectId>
     <parentGroupReference>
      <referenceId>867755df-7de6-44a3-a0c1-c733bc0cfe9c</referenceId>
     </parentGroupReference>
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </LandUnit>
   </landUnits>
   <weapons />
@@ -4749,8 +5068,10 @@
     <size>Division</size>
     <country>Russia</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <independentAreaCellObjectId>8f47e057-3f82-4c2e-a5c4-e18e614b3b16</independentAreaCellObjectId>
@@ -4762,15 +5083,19 @@
       <referenceId>f99477a6-49ae-4f0d-9f5b-09fc0543f47e</referenceId>
      </StrategicGroupMemberReference>
     </directMemberReferences>
+    <navySubMission>General</navySubMission>
     <moveProgressionKm>0</moveProgressionKm>
     <plannedPath />
     <posture>Active</posture>
     <restoredHours>0</restoredHours>
     <forcedReturningToBase>false</forcedReturningToBase>
-    <stackPriority>0.333333343</stackPriority>
+    <stackPriority>0</stackPriority>
+    <enableAutoReattachProp>false</enableAutoReattachProp>
     <enableArriveState>false</enableArriveState>
     <objectId>00552ba8-0962-43c1-9da7-31a07da39aaa</objectId>
     <parentGroupReference />
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -4782,8 +5107,10 @@
     <size>Unspecified</size>
     <country>Russia</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <independentAreaCellObjectId>8f47e057-3f82-4c2e-a5c4-e18e614b3b16</independentAreaCellObjectId>
@@ -4796,15 +5123,19 @@
       <referenceId>6d0989bf-ffa1-4103-9e0a-2d70e286734f</referenceId>
      </StrategicGroupMemberReference>
     </directMemberReferences>
+    <navySubMission>General</navySubMission>
     <moveProgressionKm>0</moveProgressionKm>
     <plannedPath />
     <posture>Active</posture>
     <restoredHours>0</restoredHours>
     <forcedReturningToBase>false</forcedReturningToBase>
-    <stackPriority>0.6666667</stackPriority>
+    <stackPriority>0.333333343</stackPriority>
+    <enableAutoReattachProp>false</enableAutoReattachProp>
     <enableArriveState>false</enableArriveState>
     <objectId>6a301c4b-f894-4223-a719-0831dc11c156</objectId>
     <parentGroupReference />
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -4816,8 +5147,10 @@
     <size>Bridge</size>
     <country>Russia</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <independentAreaCellObjectId>8f47e057-3f82-4c2e-a5c4-e18e614b3b16</independentAreaCellObjectId>
@@ -4840,17 +5173,21 @@
     </directMemberReferences>
     <assignedMissionObjectId>7f99dd12-cdca-4a29-984c-ac1a1ee911c3</assignedMissionObjectId>
     <homeBaseObjectId>6a301c4b-f894-4223-a719-0831dc11c156</homeBaseObjectId>
+    <navySubMission>General</navySubMission>
     <moveProgressionKm>0</moveProgressionKm>
     <plannedPath />
     <posture>Passive</posture>
     <restoredHours>0</restoredHours>
     <forcedReturningToBase>false</forcedReturningToBase>
-    <stackPriority>0</stackPriority>
+    <stackPriority>0.6666667</stackPriority>
+    <enableAutoReattachProp>false</enableAutoReattachProp>
     <enableArriveState>false</enableArriveState>
     <objectId>f99477a6-49ae-4f0d-9f5b-09fc0543f47e</objectId>
     <parentGroupReference>
      <referenceId>00552ba8-0962-43c1-9da7-31a07da39aaa</referenceId>
     </parentGroupReference>
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -4862,8 +5199,10 @@
     <size>Division</size>
     <country>Japan</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <independentAreaCellObjectId>065a6098-b765-4a8b-bc41-b430c8efc50d</independentAreaCellObjectId>
@@ -4877,17 +5216,21 @@
     </directMemberReferences>
     <assignedMissionObjectId>24f14b9b-d919-4df6-a4bb-66fb9165d2b1</assignedMissionObjectId>
     <homeBaseObjectId>d7239c1d-abdf-49fe-80bc-a2568d837526</homeBaseObjectId>
+    <navySubMission>General</navySubMission>
     <moveProgressionKm>0</moveProgressionKm>
     <plannedPath />
     <posture>Active</posture>
     <restoredHours>0</restoredHours>
     <forcedReturningToBase>false</forcedReturningToBase>
     <stackPriority>0.5</stackPriority>
+    <enableAutoReattachProp>false</enableAutoReattachProp>
     <enableArriveState>false</enableArriveState>
     <objectId>4efd9eac-e7d0-4c88-8c33-8094b3c8d5cf</objectId>
     <parentGroupReference>
      <referenceId>7b01e810-a85c-4833-a283-de9529d45258</referenceId>
     </parentGroupReference>
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -4899,8 +5242,10 @@
     <size>Bridge</size>
     <country>Japan</country>
     <deployState>Combined</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <leaderReference>
@@ -4926,17 +5271,21 @@
       <referenceId>46ced6d6-2f10-499a-966d-22ab623f9754</referenceId>
      </StrategicGroupMemberReference>
     </directMemberReferences>
+    <navySubMission>General</navySubMission>
     <moveProgressionKm>0</moveProgressionKm>
     <plannedPath />
     <posture>Active</posture>
     <restoredHours>0</restoredHours>
     <forcedReturningToBase>false</forcedReturningToBase>
     <stackPriority>0</stackPriority>
+    <enableAutoReattachProp>false</enableAutoReattachProp>
     <enableArriveState>false</enableArriveState>
     <objectId>a65da163-4f17-4ab8-be8e-dd7d7389ee67</objectId>
     <parentGroupReference>
      <referenceId>4efd9eac-e7d0-4c88-8c33-8094b3c8d5cf</referenceId>
     </parentGroupReference>
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -4948,8 +5297,10 @@
     <size>Unspecified</size>
     <country>Japan</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <independentAreaCellObjectId>065a6098-b765-4a8b-bc41-b430c8efc50d</independentAreaCellObjectId>
@@ -4964,15 +5315,19 @@
       <referenceId>f779b4c8-82c5-43ca-8024-4cf6c8adf778</referenceId>
      </StrategicGroupMemberReference>
     </directMemberReferences>
+    <navySubMission>General</navySubMission>
     <moveProgressionKm>0</moveProgressionKm>
     <plannedPath />
     <posture>Active</posture>
     <restoredHours>0</restoredHours>
     <forcedReturningToBase>false</forcedReturningToBase>
     <stackPriority>0</stackPriority>
+    <enableAutoReattachProp>false</enableAutoReattachProp>
     <enableArriveState>false</enableArriveState>
     <objectId>d7239c1d-abdf-49fe-80bc-a2568d837526</objectId>
     <parentGroupReference />
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -4984,8 +5339,10 @@
     <size>Unspecified</size>
     <country>Japan</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <independentAreaCellObjectId>832147e0-ad8a-469b-8a01-59558646f97d</independentAreaCellObjectId>
@@ -5000,15 +5357,19 @@
       <referenceId>1b80c744-b892-41e1-96be-bd6e81aaf829</referenceId>
      </StrategicGroupMemberReference>
     </directMemberReferences>
+    <navySubMission>General</navySubMission>
     <moveProgressionKm>0</moveProgressionKm>
     <plannedPath />
     <posture>Active</posture>
     <restoredHours>0</restoredHours>
     <forcedReturningToBase>false</forcedReturningToBase>
     <stackPriority>0.5</stackPriority>
+    <enableAutoReattachProp>false</enableAutoReattachProp>
     <enableArriveState>false</enableArriveState>
     <objectId>7cc10e6e-260c-4492-8f4c-304596825029</objectId>
     <parentGroupReference />
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -5020,8 +5381,10 @@
     <size>Unspecified</size>
     <country>Japan</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <independentAreaCellObjectId>a3f12676-afe1-4bee-92e1-7ca717938bd8</independentAreaCellObjectId>
@@ -5036,15 +5399,19 @@
       <referenceId>fedc9e74-2c1f-4ecc-9085-bdf1f5e97101</referenceId>
      </StrategicGroupMemberReference>
     </directMemberReferences>
+    <navySubMission>General</navySubMission>
     <moveProgressionKm>0</moveProgressionKm>
     <plannedPath />
     <posture>Active</posture>
     <restoredHours>0</restoredHours>
     <forcedReturningToBase>false</forcedReturningToBase>
     <stackPriority>0</stackPriority>
+    <enableAutoReattachProp>false</enableAutoReattachProp>
     <enableArriveState>false</enableArriveState>
     <objectId>867755df-7de6-44a3-a0c1-c733bc0cfe9c</objectId>
     <parentGroupReference />
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </StrategicGroup>
    <StrategicGroup>
     <name>
@@ -5056,8 +5423,10 @@
     <size>Corp</size>
     <country>Japan</country>
     <deployState>Independent</deployState>
+    <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
+    <nonHistorical>false</nonHistorical>
     <independentX>-1</independentX>
     <independentY>-1</independentY>
     <independentAreaCellObjectId>a3f12676-afe1-4bee-92e1-7ca717938bd8</independentAreaCellObjectId>
@@ -5069,15 +5438,19 @@
       <referenceId>4efd9eac-e7d0-4c88-8c33-8094b3c8d5cf</referenceId>
      </StrategicGroupMemberReference>
     </directMemberReferences>
+    <navySubMission>General</navySubMission>
     <moveProgressionKm>0</moveProgressionKm>
     <plannedPath />
     <posture>Active</posture>
     <restoredHours>0</restoredHours>
     <forcedReturningToBase>false</forcedReturningToBase>
     <stackPriority>0.5</stackPriority>
+    <enableAutoReattachProp>false</enableAutoReattachProp>
     <enableArriveState>false</enableArriveState>
     <objectId>7b01e810-a85c-4833-a283-de9529d45258</objectId>
     <parentGroupReference />
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </StrategicGroup>
   </strategicGroups>
   <scenarioState>
@@ -5119,6 +5492,16 @@
    </globalDescription>
    <firstLoaded>false</firstLoaded>
    <estimationRuleMode>RussoJapaneseWar</estimationRuleMode>
+   <powerInfluenceFalloffAlgorithm>Linear</powerInfluenceFalloffAlgorithm>
+   <powerInfluenceLinearRangeCost>240</powerInfluenceLinearRangeCost>
+   <powerInfluenceExponentialDecayLengthCost>120</powerInfluenceExponentialDecayLengthCost>
+   <powerInfluenceInverseHalfEffectDistanceCost>120</powerInfluenceInverseHalfEffectDistanceCost>
+   <powerInfluenceGaussianSigmaCost>120</powerInfluenceGaussianSigmaCost>
+   <falloffAlgorithmValue>0</falloffAlgorithmValue>
+   <linearRangeCost>240</linearRangeCost>
+   <exponentialDecayLengthCost>120</exponentialDecayLengthCost>
+   <inverseHalfEffectDistanceCost>120</inverseHalfEffectDistanceCost>
+   <gaussianSigmaCost>120</gaussianSigmaCost>
   </scenarioState>
   <sideStates>
    <SideState>
@@ -5137,6 +5520,21 @@
      </DiplomacyRelation>
     </diplomacyRelations>
     <victoryPoints>0</victoryPoints>
+    <recommended>true</recommended>
+    <supplyAutomation>true</supplyAutomation>
+    <powerInfluenceMapCache>
+     <generatedAtTicks>0</generatedAtTicks>
+     <parameterSnapshot>
+      <falloffAlgorithm>Linear</falloffAlgorithm>
+      <linearRangeCost>240</linearRangeCost>
+      <exponentialDecayLengthCost>120</exponentialDecayLengthCost>
+      <inverseHalfEffectDistanceCost>120</inverseHalfEffectDistanceCost>
+      <gaussianSigmaCost>120</gaussianSigmaCost>
+     </parameterSnapshot>
+     <maxAbs>0</maxAbs>
+     <gridValues />
+     <areaValues />
+    </powerInfluenceMapCache>
     <defaultAmmunitionLoadoutWeightRecord>
      <shellSizeInchLow>0</shellSizeInchLow>
      <shellSizeInchHigh>999</shellSizeInchHigh>
@@ -5165,6 +5563,21 @@
      </DiplomacyRelation>
     </diplomacyRelations>
     <victoryPoints>2</victoryPoints>
+    <recommended>true</recommended>
+    <supplyAutomation>true</supplyAutomation>
+    <powerInfluenceMapCache>
+     <generatedAtTicks>0</generatedAtTicks>
+     <parameterSnapshot>
+      <falloffAlgorithm>Linear</falloffAlgorithm>
+      <linearRangeCost>240</linearRangeCost>
+      <exponentialDecayLengthCost>120</exponentialDecayLengthCost>
+      <inverseHalfEffectDistanceCost>120</inverseHalfEffectDistanceCost>
+      <gaussianSigmaCost>120</gaussianSigmaCost>
+     </parameterSnapshot>
+     <maxAbs>0</maxAbs>
+     <gridValues />
+     <areaValues />
+    </powerInfluenceMapCache>
     <defaultAmmunitionLoadoutWeightRecord>
      <shellSizeInchLow>0</shellSizeInchLow>
      <shellSizeInchHigh>999</shellSizeInchHigh>
@@ -5191,9 +5604,7 @@
     <parentMissionRef />
     <childrenMissionRefs />
     <sideObjectId>f781e78a-aaf5-411f-8f49-d1561e7949a2</sideObjectId>
-    <completed>false</completed>
     <active>true</active>
-    <interrupted>false</interrupted>
     <objectId>7f99dd12-cdca-4a29-984c-ac1a1ee911c3</objectId>
    </StrategicMission>
    <StrategicMission xsi:type="GlobalTradeProtectionMission">
@@ -5209,14 +5620,13 @@
     <parentMissionRef />
     <childrenMissionRefs />
     <sideObjectId>ee8a123f-aed1-4cd2-b84d-b4b8b0d3a52b</sideObjectId>
-    <completed>false</completed>
     <active>true</active>
-    <interrupted>false</interrupted>
     <objectId>24f14b9b-d919-4df6-a4bb-66fb9165d2b1</objectId>
    </StrategicMission>
   </missions>
   <pendingNavalCombats />
   <landBattles />
+  <theaters />
   <logs />
   <navalContactReports>
    <NavalContactReport>
@@ -5226,6 +5636,54 @@
     <observedSideId>f781e78a-aaf5-411f-8f49-d1561e7949a2</observedSideId>
     <estimation>
      <records>
+      <EsimationRecord>
+       <estimateCategory>BB</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>CA</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>CL</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>DD</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>TB</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>Other</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>BB</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>CA</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>CL</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>DD</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>TB</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>Other</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
       <EsimationRecord>
        <estimateCategory>BB</estimateCategory>
        <count>0</count>

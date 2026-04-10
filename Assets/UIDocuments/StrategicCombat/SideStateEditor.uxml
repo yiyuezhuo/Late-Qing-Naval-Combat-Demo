@@ -27,6 +27,11 @@
                                 <ui:DataBinding property="value" data-source-path="victoryPoints" binding-mode="TwoWay"/>
                             </Bindings>
                         </ui:FloatField>
+                        <ui:Toggle label="Recommended">
+                            <Bindings>
+                                <ui:DataBinding property="value" data-source-path="recommended" binding-mode="TwoWay"/>
+                            </Bindings>
+                        </ui:Toggle>
                         <ui:Toggle label="Supply Automation">
                             <Bindings>
                                 <ui:DataBinding property="value" data-source-path="supplyAutomation" binding-mode="TwoWay"/>

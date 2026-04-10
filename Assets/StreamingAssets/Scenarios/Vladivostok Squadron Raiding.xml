@@ -4802,7 +4802,7 @@
     <suppression>1</suppression>
     <morale>0</morale>
     <fatigue>1</fatigue>
-    <supplyTons>5000</supplyTons>
+    <supplyTons>10000</supplyTons>
     <supplyGeneratedTons>5000</supplyGeneratedTons>
     <landUnitTemplateId>f5b42971-fd6a-4e48-b6c1-33ffd39f5f4b</landUnitTemplateId>
     <supplyTransferState>
@@ -4835,7 +4835,7 @@
     <suppression>1</suppression>
     <morale>0</morale>
     <fatigue>1</fatigue>
-    <supplyTons>5000</supplyTons>
+    <supplyTons>10000</supplyTons>
     <supplyGeneratedTons>5000</supplyGeneratedTons>
     <landUnitTemplateId>f5b42971-fd6a-4e48-b6c1-33ffd39f5f4b</landUnitTemplateId>
     <supplyTransferState>
@@ -4869,7 +4869,7 @@
     <suppression>1</suppression>
     <morale>0</morale>
     <fatigue>1</fatigue>
-    <supplyTons>3000</supplyTons>
+    <supplyTons>6000</supplyTons>
     <supplyGeneratedTons>3000</supplyGeneratedTons>
     <landUnitTemplateId>f5b42971-fd6a-4e48-b6c1-33ffd39f5f4b</landUnitTemplateId>
     <supplyTransferState>
@@ -5033,7 +5033,7 @@
     <suppression>1</suppression>
     <morale>0</morale>
     <fatigue>1</fatigue>
-    <supplyTons>5000</supplyTons>
+    <supplyTons>10000</supplyTons>
     <supplyGeneratedTons>5000</supplyGeneratedTons>
     <landUnitTemplateId>f5b42971-fd6a-4e48-b6c1-33ffd39f5f4b</landUnitTemplateId>
     <supplyTransferState>
@@ -5485,10 +5485,10 @@
    <enableVladivostokSquadronScript>true</enableVladivostokSquadronScript>
    <enableStrategicDisengagementRoll>true</enableStrategicDisengagementRoll>
    <globalDescription>
-    <english>Note: The Strategic Mode is still far from complete. Compared to that, the Tactical Naval Combat (the left column in the main menu) is relatively more polished and playable in the current version. However, you can still explore some work-in-progress sub system here.</english>
-    <japanese>注：ストラテジックモードはまだ完成には程遠い状態です。それに比べて、現在のバージョンではタクティカル海戦（メインメニューの左列）が比較的完成度が高く、プレイ可能です。ただし、ここでは進行中のサブシステムも一部体験できます。</japanese>
-    <chineseSimplified>注：战略模式仍远未完成。相比之下，在当前版本中，战术海战（主菜单左列）相对更完善且可玩性较高。不过，您仍可在此探索一些开发中的子系统。</chineseSimplified>
-    <chineseTraditional>注：戰略模式仍遠未完成。相比之下，在目前版本中，戰術海戰（主選單左列）相對更完善且可玩性較高。不過，您仍可在此探索一些開發中的子系統。</chineseTraditional>
+    <english>The campaign and strategic mode are not yet complete in the EA/Demo version and are still under development. You can preview part of them here.</english>
+    <japanese>戦役および戦略モードは、早期アクセス版／デモ版ではまだ未完成で、現在も開発中です。ここではその一部をプレビューできます。</japanese>
+    <chineseSimplified>战役与战略模式在EA/DEMO版中尚未完成仍在开发中，你可以在此预览它的一部分。</chineseSimplified>
+    <chineseTraditional>戰役與戰略模式在搶先體驗版／DEMO中尚未完成，仍在開發中。你可以在此預覽其中的一部分。</chineseTraditional>
    </globalDescription>
    <firstLoaded>false</firstLoaded>
    <estimationRuleMode>RussoJapaneseWar</estimationRuleMode>
@@ -5636,6 +5636,54 @@
     <observedSideId>f781e78a-aaf5-411f-8f49-d1561e7949a2</observedSideId>
     <estimation>
      <records>
+      <EsimationRecord>
+       <estimateCategory>BB</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>CA</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>CL</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>DD</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>TB</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>Other</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>BB</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>CA</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>CL</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>DD</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>TB</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>Other</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
       <EsimationRecord>
        <estimateCategory>BB</estimateCategory>
        <count>0</count>

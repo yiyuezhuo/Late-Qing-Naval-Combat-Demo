@@ -137,11 +137,16 @@ public class UnityWebRequestImageReader
                 {
                     spriteCallback(taskPrev.sprite);
                 }
+                foreach (var styleBackgroundCallback in task.styleBackgroundCallbacks)
+                {
+                    styleBackgroundCallback(taskPrev.styleBackground);
+                }
             }
             else
             {
                 taskPrev.textureCallbacks.AddRange(task.textureCallbacks);
                 taskPrev.spriteCallbacks.AddRange(task.spriteCallbacks);
+                taskPrev.styleBackgroundCallbacks.AddRange(task.styleBackgroundCallbacks);
             }
             return;
         }

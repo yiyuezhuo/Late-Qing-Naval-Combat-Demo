@@ -234,6 +234,69 @@ public class RelativeFormationDialogModel
     public RelativeFormationMode mode => (RelativeFormationMode)modeValue;
 }
 
+public sealed class StrategicViewerSideQuickPickerDialogOption
+{
+    public string sideObjectId;
+    public bool isObserverEditorMode;
+    public string displayName;
+    public string topGroupName;
+    public string flagPath;
+
+    [CreateProperty]
+    public StyleBackground flagBackground => UnityWebRequestImageReader.Instance.FetchStyleBackground(flagPath);
+
+}
+
+public sealed class StrategicViewerSideQuickPickerDialogModel
+{
+    public List<StrategicViewerSideQuickPickerDialogOption> options { get; }
+
+    public StrategicViewerSideQuickPickerDialogModel()
+    {
+        var gameState = StrategicGameManager.Instance.gameState;
+        var sideStates = gameState?.sideStates ?? new List<SideState>();
+        var strategicGroups = gameState?.strategicGroups ?? new List<StrategicGroup>();
+
+        options = sideStates
+            .Where(sideState => sideState != null && sideState.recommended)
+            .Select(sideState => BuildSideOption(sideState, strategicGroups))
+            .OrderBy(option => option.displayName)
+            .ToList();
+
+        options.Add(new StrategicViewerSideQuickPickerDialogOption()
+        {
+            isObserverEditorMode = true,
+            displayName = "Observer / Editor",
+            topGroupName = "Free Observation",
+        });
+    }
+
+    static StrategicViewerSideQuickPickerDialogOption BuildSideOption(SideState sideState, List<StrategicGroup> strategicGroups)
+    {
+        var topGroupName = strategicGroups
+            .FirstOrDefault(group =>
+                group != null &&
+                group.side == sideState &&
+                !group.parentGroupReference.isReferenceAny())
+            ?.name?.GetMergedName();
+
+        Country? firstCountry = sideState != null && sideState.countries.Count > 0
+            ? sideState.countries[0]
+            : null;
+
+        return new StrategicViewerSideQuickPickerDialogOption()
+        {
+            sideObjectId = sideState?.objectId,
+            displayName = sideState?.name?.GetMergedName() ?? "[Unnamed Side]",
+            topGroupName = string.IsNullOrWhiteSpace(topGroupName) ? "[No Top Group]" : topGroupName,
+            flagPath = firstCountry.HasValue ? Utils.GetCountryPath(firstCountry.Value) : null,
+            // flagBackground = firstCountry.HasValue
+            //     ? UnityWebRequestImageReader.Instance.FetchStyleBackground(Utils.GetCountryPath(firstCountry.Value))
+            //     : default,
+        };
+    }
+}
+
 public class TorpedoInterceptSolutionDialogModel
 {
     public string shooterObjectId;
@@ -862,6 +925,8 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset eventStateEditorDialogDocument;
     public VisualTreeAsset weaponPickerDialogDocument;
     public VisualTreeAsset sideStatePickerDialogDocument;
+    public VisualTreeAsset strategicViewerSideQuickPickerDialogDocument;
+    public VisualTreeAsset strategicViewerSideQuickPickerOptionDocument;
     public VisualTreeAsset landUnitTemplateDialogDocument;
     public VisualTreeAsset subStrategicCombatDialogDocument;
     public VisualTreeAsset cellEditorDialogDocument;
@@ -3184,6 +3249,70 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         };
 
         tempDialog.onConfirmed += selectorDialog.OnConfirm;
+
+        tempDialog.Popup();
+    }
+
+    public void PopupStrategicViewerSideQuickPickerDialog()
+    {
+        var model = new StrategicViewerSideQuickPickerDialogModel();
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = strategicViewerSideQuickPickerDialogDocument,
+            templateDataSource = model,
+        };
+
+        tempDialog.onCreated += (sender, el) =>
+        {
+            el.Q<Label>("TitleLabel").text = "Choose Viewer Side";
+            el.Q<Label>("DescriptionLabel").text = "Select one option to continue. The dialog closes immediately after you choose.";
+
+            var optionsContainer = el.Q<VisualElement>("OptionsContainer");
+            optionsContainer.Clear();
+
+            foreach (var option in model.options)
+            {
+                var optionElement = strategicViewerSideQuickPickerOptionDocument.CloneTree();
+                optionElement.dataSource = option;
+                Utils.BindItemsSourceRecursive(optionElement);
+                var button = optionElement.Q<Button>("OptionButton");
+                var flagElement = optionElement.Q<VisualElement>("FlagElement");
+
+                if (!string.IsNullOrWhiteSpace(option.flagPath))
+                {
+                    UnityWebRequestImageReader.Instance.RequestIfNotRequestedYetOtherwiseExecuteDirectly(new ImageFetchTask()
+                    {
+                        path = option.flagPath,
+                        styleBackgroundCallbacks = new()
+                        {
+                            styleBackground =>
+                            {
+                                flagElement.style.backgroundImage = styleBackground;
+                            }
+                        }
+                    });
+                }
+
+                button.clicked += () =>
+                {
+                    tempDialog.Close();
+
+                    if (option.isObserverEditorMode)
+                    {
+                        StrategicGameManager.Instance.viewerSideId = null;
+                        StrategicGameManager.Instance.isInEditMode = true;
+                    }
+                    else
+                    {
+                        StrategicGameManager.Instance.viewerSideId = option.sideObjectId;
+                        StrategicGameManager.Instance.isInEditMode = false;
+                    }
+                };
+
+                optionsContainer.Add(optionElement);
+            }
+        };
 
         tempDialog.Popup();
     }

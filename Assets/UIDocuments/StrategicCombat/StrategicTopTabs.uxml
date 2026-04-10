@@ -39,6 +39,11 @@
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000021)"/>
                         </Bindings>
                     </ui:Button>
+                    <ui:Button text="Select Side" name="QuickViewerSideButtonCommand">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(79786762512797696)"/>
+                        </Bindings>
+                    </ui:Button>
                     <ui:Label text="Edit Mode">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(40292542655926272)"/>
@@ -49,23 +54,6 @@
                             <ui:DataBinding property="value" data-source-path="isInEditMode" binding-mode="TwoWay"/>
                         </Bindings>
                     </ui:Toggle>
-                    <ui:VisualElement style="flex-direction: row;">
-                        <ui:Label text="Viewer">
-                            <Bindings>
-                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11053435773947904)"/>
-                            </Bindings>
-                        </ui:Label>
-                        <ui:TextField enabled="false" style="width: 100px;">
-                            <Bindings>
-                                <ui:DataBinding property="value" data-source-path="fogOfWarViewerSideStateName" binding-mode="ToTarget"/>
-                            </Bindings>
-                        </ui:TextField>
-                        <ui:Button text="Set" name="SetFogOrWarViewerButton">
-                            <Bindings>
-                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196510937157632)"/>
-                            </Bindings>
-                        </ui:Button>
-                    </ui:VisualElement>
                     <ui:Button text="Run Debug Script" name="RunDebugScriptButton">
                         <Bindings>
                             <ui:DataBinding property="style.display" data-source-path="isInUnityEditor" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
@@ -154,6 +142,24 @@
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(357022840819712)"/>
                         </Bindings>
                     </ui:Button>
+                    <ui:Button text="Viewer Side (Quick)" name="QuickViewerSideButton"/>
+                    <ui:VisualElement style="flex-direction: row; align-items: center;">
+                        <ui:Label text="Viewer">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11053435773947904)"/>
+                            </Bindings>
+                        </ui:Label>
+                        <ui:TextField enabled="false" style="width: 120px;">
+                            <Bindings>
+                                <ui:DataBinding property="value" data-source-path="fogOfWarViewerSideStateName" binding-mode="ToTarget"/>
+                            </Bindings>
+                        </ui:TextField>
+                        <ui:Button text="Set" name="SetFogOrWarViewerButton">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(196510937157632)"/>
+                            </Bindings>
+                        </ui:Button>
+                    </ui:VisualElement>
                     <ui:Button text="Reset Strength &amp; Supply" name="ResetStrengthSupplyButton"/>
                     <ui:Button text="Replan Auto Supply" name="ReplanAutoSupplyButton"/>
                     <ui:Button text="Land Battle" name="LandBattleEditorButton">

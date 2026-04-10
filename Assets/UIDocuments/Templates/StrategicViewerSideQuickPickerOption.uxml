@@ -1,0 +1,20 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style"/>
+    <ui:Button name="OptionButton" style="width: 170px; min-height: 220px; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; flex-direction: column; justify-content: space-between; align-items: center; white-space: normal; -unity-text-align: middle-center;">
+        <ui:VisualElement name="FlagElement" data-source-type="StrategicViewerSideQuickPickerDialogOption, Assembly-CSharp" style="width: 96px; height: 60px; margin-bottom: 10px; background-color: rgba(46, 46, 46, 0.9); -unity-background-scale-mode: scale-to-fit; border-top-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-right-width: 1px;">
+            <Bindings>
+                <ui:DataBinding property="style.backgroundImage" data-source-path="flagBackground" binding-mode="ToTarget"/>
+            </Bindings>
+        </ui:VisualElement>
+        <ui:Label name="DisplayNameLabel" style="-unity-text-align: middle-center; white-space: normal; unity-font-style: bold; margin-bottom: 6px;">
+            <Bindings>
+                <ui:DataBinding property="text" data-source-path="displayName" binding-mode="ToTarget"/>
+            </Bindings>
+        </ui:Label>
+        <ui:Label name="TopGroupLabel" style="-unity-text-align: middle-center; white-space: normal; flex-grow: 1;">
+            <Bindings>
+                <ui:DataBinding property="text" data-source-path="topGroupName" binding-mode="ToTarget"/>
+            </Bindings>
+        </ui:Label>
+    </ui:Button>
+</ui:UXML>

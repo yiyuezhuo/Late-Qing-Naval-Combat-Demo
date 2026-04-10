@@ -159,6 +159,16 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
             });
         };
 
+        root.Q<Button>("QuickViewerSideButton").clicked += () =>
+        {
+            DialogRoot.Instance.PopupStrategicViewerSideQuickPickerDialog();
+        };
+
+        root.Q<Button>("QuickViewerSideButtonCommand").clicked += () =>
+        {
+            DialogRoot.Instance.PopupStrategicViewerSideQuickPickerDialog();
+        };
+
         root.Q<Button>("StrategicMissionEditorButton").clicked += () =>
         {
             StrategicMissionEditor.Instance.Show();

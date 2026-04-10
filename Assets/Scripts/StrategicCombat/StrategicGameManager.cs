@@ -657,14 +657,6 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         //     StrategicGameState.Instance.InvokeMapRebuilt();
         // }
 
-        if(!isInEditMode && GetViewerSide() == null)
-        {
-            DialogRoot.Instance.PopupSideStatePickerDialog(sideState =>
-            {
-                viewerSideId = sideState?.objectId;
-            });
-        }
-
         RefreshDisplayedLogs();
 
         TempFix();
@@ -693,10 +685,14 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
         if(!gameState.scenarioState.firstLoaded)
         {
-            gameState.scenarioState.firstLoaded = true;
             gameState.DoInitialSupplyPass();
+            if(GetViewerSide() == null)
+            {
+                DialogRoot.Instance.PopupStrategicViewerSideQuickPickerDialog();
+            }
 
             PopupMessageWithPause(gameState.scenarioState.globalDescription.GetShortName(), "Scenario Description");
+            gameState.scenarioState.firstLoaded = true;
         }
     }
 

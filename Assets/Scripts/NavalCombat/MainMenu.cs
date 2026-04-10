@@ -20,7 +20,8 @@ public class MainMenu : SingletonDocument<MainMenu>
         var selectScenarioButton = root.Q<Button>("SelectScenarioButton");
         var loadGameButton = root.Q<Button>("LoadGameButton");
         // var galleryButton = root.Q<Button>("GalleryButton");
-        var openSourceRepositoryButton = root.Q<Button>("OpenSourceRepositoryButton");
+        var onlineManualButton = root.Q<Button>("OnlineManualButton");
+        var aboutButton = root.Q<Button>("AboutButton");
         var exitButton = root.Q<Button>("ExitButton");
 
         selectScenarioButton.clicked += DialogRoot.Instance.PopupScenarioPickerDialogForSwitchingSceneWithSelectedScenario;
@@ -32,21 +33,7 @@ public class MainMenu : SingletonDocument<MainMenu>
         };
 
 
-        // openSourceRepositoryButton.clicked += () => Application.OpenURL("https://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo");
-        openSourceRepositoryButton.clicked += () =>
-        {
-            // DialogRoot.Instance.PopupConfirmDialog("Open online open resource repository link with browser?\nhttps://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo", () =>
-            // {
-            //     Application.OpenURL("https://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo");
-            // });
-            DialogRoot.Instance.PopupConfirmOpenURLDialog("https://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo");
-        };
-
         exitButton.clicked += Application.Quit;
-
-        root.Q<Button>("HelpButton").clicked += () => DialogRoot.Instance.PopupHelpDialogDocument();
-        root.Q<Button>("FAQButton").clicked += () => DialogRoot.Instance.PopupFAQDialogDocument();
-
 
         // if (Utils.SceneInBuildSettings("Strategic Game"))
         // {
@@ -69,10 +56,18 @@ public class MainMenu : SingletonDocument<MainMenu>
 
         root.Q<Button>("SettingButton").clicked += DialogRoot.Instance.PopupGamePreferenceDialog;
 
+        root.Q<Button>("ManualButton").text = MyLocale.Get("Manual");
         root.Q<Button>("ManualButton").clicked += () => {
             var readmePath = Application.streamingAssetsPath + "/" + "Manuals/readme.pdf"; // This file is under version control, should be manual placed.
             DialogRoot.Instance.PopupConfirmOpenURLDialog(readmePath);
         };
+        onlineManualButton.text = MyLocale.Get("Online Manual");
+        onlineManualButton.clicked += () =>
+        {
+            DialogRoot.Instance.PopupConfirmOpenURLDialog("https://github.com/yiyuezhuo/First-Sino-Japanese-War-Manual");
+        };
+        aboutButton.text = MyLocale.Get("About");
+        aboutButton.clicked += DialogRoot.Instance.PopupAboutDialogDocument;
 
         root.Q<Button>("StartAsEmptyButton").clicked += () =>
         {

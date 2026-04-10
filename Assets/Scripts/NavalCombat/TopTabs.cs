@@ -211,8 +211,6 @@ public class TopTabs : SingletonDocument<TopTabs>
         root.Q<Button>("TorpedoInterceptSolutionVisualizerButton").clicked += DialogRoot.Instance.PopupTorpedoInterceptSolutionVisualizerDialog;
         root.Q<Button>("WtaSolverInspectorButton").clicked += DialogRoot.Instance.PopupWtaSolverInspectorDialog;
 
-        root.Q<Button>("HelpButton").clicked += () => DialogRoot.Instance.PopupHelpDialogDocument();
-
         root.Q<Button>("SetCourseButton").clicked += () =>
         {
             // GameManager.Instance.StartSetCourse();
@@ -222,18 +220,6 @@ public class TopTabs : SingletonDocument<TopTabs>
         root.Q<Button>("WaypointButton").clicked += () =>
         {
             GameManager.Instance.ToggleSelectedShipWaypointEditing();
-        };
-
-        // root.Q<Button>("OpenOpenSourceRepoButton").clicked += () =>
-        // {
-        //     Application.OpenURL("https://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo");
-        // };
-        root.Q<Button>("OpenOpenSourceRepoButton").clicked += () =>
-        {
-            DialogRoot.Instance.PopupConfirmDialog("Open online open resource repository link with browser?\nhttps://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo", () =>
-            {
-                Application.OpenURL("https://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo");
-            });
         };
 
         var goToMainMenuButton = root.Q<Button>("GoToMainMenuButton");
@@ -273,17 +259,25 @@ public class TopTabs : SingletonDocument<TopTabs>
 
         root.Q<Button>("EventEditorDialogButton").clicked += DialogRoot.Instance.PopupEventStateEditorDialog;
 
-        root.Q<Button>("FAQButton").clicked += () => DialogRoot.Instance.PopupFAQDialogDocument();
-
         root.Q<Button>("AIButton").clicked += () =>
         {
             DialogRoot.Instance.PopupAIDialog();
         };
 
+        root.Q<Button>("ManualButton").text = MyLocale.Get("Manual");
         root.Q<Button>("ManualButton").clicked += () => {
             var readmePath = Application.streamingAssetsPath + "/" + "Manuals/readme.pdf"; // This file is under version control, should be manual placed.
             DialogRoot.Instance.PopupConfirmOpenURLDialog(readmePath);
         };
+        var onlineManualButton = root.Q<Button>("OnlineManualButton");
+        onlineManualButton.text = MyLocale.Get("Online Manual");
+        onlineManualButton.clicked += () =>
+        {
+            DialogRoot.Instance.PopupConfirmOpenURLDialog("https://github.com/yiyuezhuo/First-Sino-Japanese-War-Manual");
+        };
+        var aboutButton = root.Q<Button>("AboutButton");
+        aboutButton.text = MyLocale.Get("About");
+        aboutButton.clicked += DialogRoot.Instance.PopupAboutDialogDocument;
 
         root.Q<Button>("ForceBuilderButton").clicked += () =>
         {

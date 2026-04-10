@@ -43,7 +43,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7671924822016
-    m_Localized: "\u64CD\u4F5C\u6307\u5357"
+    m_Localized: "\u5E2E\u52A9"
     m_Metadata:
       m_Items: []
   - m_Id: 60491600400384
@@ -2545,7 +2545,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 58877035788537856
-    m_Localized: "\u6218\u5F79 (\u91CD\u5236\u4E2D)"
+    m_Localized: "\u6218\u5F79"
     m_Metadata:
       m_Items: []
   - m_Id: 58882281352892416
@@ -3125,6 +3125,42 @@ MonoBehaviour:
       m_Items: []
   - m_Id: -81
     m_Localized: "Battery Detail \u663E\u793A\u672A\u751F\u6548\u4FEE\u6B63"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -82
+    m_Localized: "\u5728\u7EBF\u624B\u518C"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -83
+    m_Localized: "\u5173\u4E8E"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -84
+    m_Localized: "\u7531 January Desk \u5F00\u53D1"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -85
+    m_Localized: "\u4EE5 MIT \u8BB8\u53EF\u8BC1\u5F00\u6E90"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -86
+    m_Localized: "GitHub\uFF08\u5F00\u6E90\u4ED3\u5E93\uFF09"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -87
+    m_Localized: "GitHub Release\uFF08\u66F4\u65B0\u5185\u5BB9\uFF09"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -88
+    m_Localized: "Steam \u5546\u5E97"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -89
+    m_Localized: "Steam \u8BA8\u8BBA\u533A"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -90
+    m_Localized: Discord
     m_Metadata:
       m_Items: []
   references:

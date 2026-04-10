@@ -46,10 +46,9 @@
                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(34615625252507648)"/>
                             </Bindings>
                         </ui:Button>
-                        <ui:Button text="Campaign (Reworking)" name="CampaignButton" class="verylarge">
+                        <ui:Button text="Campaign" name="CampaignButton" class="verylarge">
                             <Bindings>
                                 <ui:DataBinding property="enabled" data-source-path="isDebug" binding-mode="ToTarget"/>
-                                <ui:DataBinding property="enabledSelf" data-source-path="isDebug" binding-mode="ToTarget"/>
                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(58877035788537856)"/>
                             </Bindings>
                         </ui:Button>
@@ -78,15 +77,14 @@
                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(33508883324112896)"/>
                             </Bindings>
                         </ui:Button>
-                        <ui:Button text="Help" name="HelpButton" class="verylarge">
+                        <ui:Button text="Online Manual" name="OnlineManualButton" class="verylarge">
                             <Bindings>
-                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(7671924822016)"/>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-82)"/>
                             </Bindings>
                         </ui:Button>
-                        <ui:Button text="FAQ" name="FAQButton" class="verylarge"/>
-                        <ui:Button text="Open Source Code Repository" name="OpenSourceRepositoryButton" class="verylarge">
+                        <ui:Button text="About" name="AboutButton" class="verylarge">
                             <Bindings>
-                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(7050274443264)"/>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-83)"/>
                             </Bindings>
                         </ui:Button>
                         <ui:Button text="Exit" name="ExitButton" class="verylarge">

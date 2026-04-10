@@ -83,6 +83,7 @@ MonoBehaviour:
   victoryStatusDocument: {fileID: 9197481963319205126, guid: a3563e17e57e3a34fa7f72852a1d0720, type: 3}
   strategicVictoryStatusDialogDocument: {fileID: 9197481963319205126, guid: e8eea072ef1043b4a8606ed6c4d2d2cb, type: 3}
   helpDialogDocument: {fileID: 9197481963319205126, guid: d099853a82a32fd43899dcdaad9b3ec9, type: 3}
+  aboutDialogDocument: {fileID: 9197481963319205126, guid: 5aef2f30a1b84cf8b1a947f0384cb9f7, type: 3}
   faqDialogDocument: {fileID: 9197481963319205126, guid: ec3d6affeb06f9e40a75316e527105ca, type: 3}
   locationLabelDialogDocument: {fileID: 9197481963319205126, guid: d41e54b604e35b445bdad39d061b541b, type: 3}
   navalLocationLabelEditorDialogDocument: {fileID: 9197481963319205126, guid: e8c5e4aab73d4b28bb4f8a137c5a4f11, type: 3}

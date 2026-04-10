@@ -2589,7 +2589,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 58877035788537856
-    m_Localized: Campaign (Reworking)
+    m_Localized: Campaign
     m_Metadata:
       m_Items: []
   - m_Id: 58882281352892416
@@ -3173,6 +3173,42 @@ MonoBehaviour:
       m_Items: []
   - m_Id: -81
     m_Localized: Battery Detail Show Non-Active Modifier
+    m_Metadata:
+      m_Items: []
+  - m_Id: -82
+    m_Localized: Online Manual
+    m_Metadata:
+      m_Items: []
+  - m_Id: -83
+    m_Localized: About
+    m_Metadata:
+      m_Items: []
+  - m_Id: -84
+    m_Localized: Developed by January Desk
+    m_Metadata:
+      m_Items: []
+  - m_Id: -85
+    m_Localized: Open-source under the MIT License
+    m_Metadata:
+      m_Items: []
+  - m_Id: -86
+    m_Localized: GitHub (Open Source Repository)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -87
+    m_Localized: GitHub Release (What's New)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -88
+    m_Localized: Steam Store
+    m_Metadata:
+      m_Items: []
+  - m_Id: -89
+    m_Localized: Steam Discussions
+    m_Metadata:
+      m_Items: []
+  - m_Id: -90
+    m_Localized: Discord
     m_Metadata:
       m_Items: []
   references:

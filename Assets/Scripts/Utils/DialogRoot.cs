@@ -842,6 +842,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset victoryStatusDocument;
     public VisualTreeAsset strategicVictoryStatusDialogDocument;
     public VisualTreeAsset helpDialogDocument;
+    public VisualTreeAsset aboutDialogDocument;
     public VisualTreeAsset faqDialogDocument;
     public VisualTreeAsset locationLabelDialogDocument;
     public VisualTreeAsset navalLocationLabelEditorDialogDocument;
@@ -4159,6 +4160,34 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
         tempDialog.Popup();
     }
+
+    public void PopupAboutDialogDocument()
+    {
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = aboutDialogDocument,
+            templateDataSource = null,
+            positionMode = TempDialog.PositionMode.Centering,
+        };
+
+        tempDialog.onCreated += (_, el) =>
+        {
+            el.Q<Label>("TitleLabel").text = MyLocale.Get("About");
+            el.Q<Label>("ProductNameLabel").text = MyLocale.Get("First Sino-Japanese War");
+            el.Q<Label>("VersionLabel").text = $"Version: {Application.version}";
+            el.Q<Label>("DeveloperLabel").text = MyLocale.Get("Developed by January Desk");
+            el.Q<Label>("LicenseLabel").text = MyLocale.Get("Open-source under the MIT License");
+
+            BindOpenUrlButton(el, "GitHubButton", "GitHub (Open Source Repository)", "https://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo");
+            BindOpenUrlButton(el, "GitHubReleaseButton", "GitHub Release (What's New)", "https://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo/releases");
+            BindOpenUrlButton(el, "SteamStoreButton", "Steam Store", "https://store.steampowered.com/app/3996220/First_SinoJapanese_War/");
+            BindOpenUrlButton(el, "SteamDiscussionsButton", "Steam Discussions", "https://steamcommunity.com/app/3996220/discussions/");
+            BindOpenUrlButton(el, "DiscordButton", "Discord", "https://discord.gg/2yqbyGwsdQ");
+        };
+
+        tempDialog.Popup();
+    }
     
     public void PopupFAQDialogDocument()
     {
@@ -4171,5 +4200,15 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         };
 
         tempDialog.Popup();
+    }
+
+    void BindOpenUrlButton(VisualElement rootElement, string buttonName, string labelKey, string url)
+    {
+        var button = rootElement.Q<Button>(buttonName);
+        if (button == null)
+            return;
+
+        button.text = MyLocale.Get(labelKey);
+        button.clicked += () => PopupConfirmOpenURLDialog(url);
     }
 }

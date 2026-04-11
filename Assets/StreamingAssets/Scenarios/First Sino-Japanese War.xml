@@ -1211,7 +1211,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>153.33333015441895</supplyTons>
+    <supplyTons>107.33332824707031</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -1459,7 +1459,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>66.666665077209473</supplyTons>
+    <supplyTons>46.666664123535156</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -4798,7 +4798,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>281.33333396911621</supplyTons>
+    <supplyTons>196.93333435058594</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -5165,7 +5165,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>281.33333396911621</supplyTons>
+    <supplyTons>196.93333435058594</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -5471,7 +5471,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>150.66666698455811</supplyTons>
+    <supplyTons>105.46666717529297</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -5847,7 +5847,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>281.33333396911621</supplyTons>
+    <supplyTons>196.93333435058594</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -6169,7 +6169,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>250</supplyTons>
+    <supplyTons>175</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -6478,7 +6478,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>160</supplyTons>
+    <supplyTons>112</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -8091,7 +8091,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>98.400005340576172</supplyTons>
+    <supplyTons>68.8800048828125</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -8379,7 +8379,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>98.400005340576172</supplyTons>
+    <supplyTons>68.8800048828125</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -8916,7 +8916,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>101.66666507720947</supplyTons>
+    <supplyTons>71.166664123535156</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -9186,7 +9186,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>116.66666507720947</supplyTons>
+    <supplyTons>81.666664123535156</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -9722,7 +9722,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>3.6000000238418579</supplyTons>
+    <supplyTons>2.5199999809265137</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -9902,7 +9902,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>3.6000000238418579</supplyTons>
+    <supplyTons>2.5199999809265137</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -10082,7 +10082,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>3.6000000238418579</supplyTons>
+    <supplyTons>2.5199999809265137</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -10262,7 +10262,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>3.6000000238418579</supplyTons>
+    <supplyTons>2.5199999809265137</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -10442,7 +10442,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>3.6000000238418579</supplyTons>
+    <supplyTons>2.5199999809265137</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -10622,7 +10622,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>3.6000000238418579</supplyTons>
+    <supplyTons>2.5199999809265137</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -10802,7 +10802,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>3.6000000238418579</supplyTons>
+    <supplyTons>2.5199999809265137</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -11160,7 +11160,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>3.6000000238418579</supplyTons>
+    <supplyTons>2.5199999809265137</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -11340,7 +11340,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>3.6000000238418579</supplyTons>
+    <supplyTons>2.5199999809265137</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -11876,7 +11876,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>3.6000000238418579</supplyTons>
+    <supplyTons>2.5199999809265137</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -12056,7 +12056,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>3.6000000238418579</supplyTons>
+    <supplyTons>2.5199999809265137</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -12245,7 +12245,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>5.3333331942558289</supplyTons>
+    <supplyTons>3.7333331108093262</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -12434,7 +12434,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>5.6666666865348816</supplyTons>
+    <supplyTons>3.9666666984558105</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -12623,7 +12623,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>5.6666666865348816</supplyTons>
+    <supplyTons>3.9666666984558105</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -12821,7 +12821,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>13.533334374427795</supplyTons>
+    <supplyTons>9.4733343124389648</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -14102,7 +14102,7 @@
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
     <parentGroupReference>
-     <referenceId>c48c4012-e43a-4933-8cc9-5e8755cf6b7f</referenceId>
+     <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
     </parentGroupReference>
     <detachedFromGroupReference />
     <enableAutoReattach>false</enableAutoReattach>
@@ -14404,7 +14404,7 @@
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
     <parentGroupReference>
-     <referenceId>c48c4012-e43a-4933-8cc9-5e8755cf6b7f</referenceId>
+     <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
     </parentGroupReference>
     <detachedFromGroupReference />
     <enableAutoReattach>false</enableAutoReattach>
@@ -14706,7 +14706,7 @@
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
     <parentGroupReference>
-     <referenceId>c48c4012-e43a-4933-8cc9-5e8755cf6b7f</referenceId>
+     <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
     </parentGroupReference>
     <detachedFromGroupReference />
     <enableAutoReattach>false</enableAutoReattach>
@@ -15008,7 +15008,7 @@
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
     <parentGroupReference>
-     <referenceId>c48c4012-e43a-4933-8cc9-5e8755cf6b7f</referenceId>
+     <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
     </parentGroupReference>
     <detachedFromGroupReference />
     <enableAutoReattach>false</enableAutoReattach>
@@ -15310,7 +15310,7 @@
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
     <parentGroupReference>
-     <referenceId>c48c4012-e43a-4933-8cc9-5e8755cf6b7f</referenceId>
+     <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
     </parentGroupReference>
     <detachedFromGroupReference />
     <enableAutoReattach>false</enableAutoReattach>
@@ -15612,7 +15612,7 @@
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
     <parentGroupReference>
-     <referenceId>c48c4012-e43a-4933-8cc9-5e8755cf6b7f</referenceId>
+     <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
     </parentGroupReference>
     <detachedFromGroupReference />
     <enableAutoReattach>false</enableAutoReattach>
@@ -15914,7 +15914,7 @@
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
     <parentGroupReference>
-     <referenceId>c48c4012-e43a-4933-8cc9-5e8755cf6b7f</referenceId>
+     <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
     </parentGroupReference>
     <detachedFromGroupReference />
     <enableAutoReattach>false</enableAutoReattach>
@@ -16216,7 +16216,7 @@
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
     <parentGroupReference>
-     <referenceId>c48c4012-e43a-4933-8cc9-5e8755cf6b7f</referenceId>
+     <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
     </parentGroupReference>
     <detachedFromGroupReference />
     <enableAutoReattach>false</enableAutoReattach>
@@ -16518,7 +16518,7 @@
     </doctrine>
     <enableAutoReattachProp>false</enableAutoReattachProp>
     <parentGroupReference>
-     <referenceId>c48c4012-e43a-4933-8cc9-5e8755cf6b7f</referenceId>
+     <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
     </parentGroupReference>
     <detachedFromGroupReference />
     <enableAutoReattach>false</enableAutoReattach>
@@ -16590,7 +16590,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>1400</supplyTons>
+    <supplyTons>1340</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -16741,7 +16741,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>1400</supplyTons>
+    <supplyTons>1340</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -16892,7 +16892,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>1400</supplyTons>
+    <supplyTons>1340</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -17043,7 +17043,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>1400</supplyTons>
+    <supplyTons>1340</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -25763,7 +25763,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
        <XY x="26" y="33" />
        <XY x="25" y="32" />
        <XY x="24" y="32" />
-       <XY x="23" y="32" />
+       <XY x="23" y="31" />
        <XY x="22" y="32" />
        <XY x="22" y="31" />
        <XY x="21" y="30" />
@@ -25806,7 +25806,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
        <XY x="26" y="33" />
        <XY x="25" y="32" />
        <XY x="24" y="32" />
-       <XY x="23" y="32" />
+       <XY x="23" y="31" />
        <XY x="22" y="32" />
        <XY x="22" y="31" />
        <XY x="21" y="30" />
@@ -25849,7 +25849,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
        <XY x="26" y="33" />
        <XY x="25" y="32" />
        <XY x="24" y="32" />
-       <XY x="23" y="32" />
+       <XY x="23" y="31" />
        <XY x="22" y="32" />
        <XY x="22" y="31" />
        <XY x="21" y="30" />
@@ -25892,7 +25892,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
        <XY x="26" y="33" />
        <XY x="25" y="32" />
        <XY x="24" y="32" />
-       <XY x="23" y="32" />
+       <XY x="23" y="31" />
        <XY x="22" y="32" />
        <XY x="22" y="31" />
        <XY x="21" y="30" />
@@ -25935,7 +25935,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
        <XY x="26" y="33" />
        <XY x="25" y="32" />
        <XY x="24" y="32" />
-       <XY x="23" y="32" />
+       <XY x="23" y="31" />
        <XY x="22" y="32" />
        <XY x="22" y="31" />
        <XY x="21" y="30" />
@@ -29719,7 +29719,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
        <XY x="26" y="33" />
        <XY x="25" y="32" />
        <XY x="24" y="32" />
-       <XY x="23" y="32" />
+       <XY x="23" y="31" />
        <XY x="22" y="32" />
        <XY x="22" y="31" />
        <XY x="21" y="30" />
@@ -29761,7 +29761,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
        <XY x="26" y="33" />
        <XY x="25" y="32" />
        <XY x="24" y="32" />
-       <XY x="23" y="32" />
+       <XY x="23" y="31" />
        <XY x="22" y="32" />
        <XY x="22" y="31" />
        <XY x="21" y="30" />
@@ -29803,7 +29803,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
        <XY x="26" y="33" />
        <XY x="25" y="32" />
        <XY x="24" y="32" />
-       <XY x="23" y="32" />
+       <XY x="23" y="31" />
        <XY x="22" y="32" />
        <XY x="22" y="31" />
        <XY x="21" y="30" />
@@ -29845,7 +29845,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
        <XY x="26" y="33" />
        <XY x="25" y="32" />
        <XY x="24" y="32" />
-       <XY x="23" y="32" />
+       <XY x="23" y="31" />
        <XY x="22" y="32" />
        <XY x="22" y="31" />
        <XY x="21" y="30" />
@@ -30009,7 +30009,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>575.75000166893</supplyTons>
+    <supplyTons>866.66000175476074</supplyTons>
     <supplyGeneratedTons>100</supplyGeneratedTons>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
     <supplyTransferState>
@@ -30397,17 +30397,18 @@ Each cavalry battalion has 277 personnel (excluding laborers)
       <otherObjectId>82e4ac06-f614-432e-a82f-c0c1dfc055df</otherObjectId>
       <targetSupplyTons>40.562999606132507</targetSupplyTons>
       <flowSupplyTons>40.562999606132507</flowSupplyTons>
-      <cost>7</cost>
+      <cost>7.5</cost>
       <pathCells>
        <XY x="26" y="36" />
-       <XY x="25" y="36" />
-       <XY x="24" y="36" />
-       <XY x="23" y="35" />
+       <XY x="25" y="35" />
+       <XY x="25" y="34" />
+       <XY x="24" y="34" />
+       <XY x="23" y="34" />
        <XY x="22" y="35" />
        <XY x="21" y="34" />
-       <XY x="20" y="35" />
-       <XY x="19" y="34" />
-       <XY x="18" y="34" />
+       <XY x="20" y="34" />
+       <XY x="19" y="33" />
+       <XY x="18" y="33" />
        <XY x="17" y="33" />
        <XY x="16" y="33" />
        <XY x="15" y="32" />
@@ -30743,7 +30744,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>72948.344097495079</supplyTons>
+    <supplyTons>102744.84509944916</supplyTons>
     <supplyGeneratedTons>10000</supplyGeneratedTons>
     <remark>Generic Super Depot Supply Source.</remark>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
@@ -30764,14 +30765,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
         <XY x="21" y="30" />
         <XY x="22" y="31" />
         <XY x="22" y="32" />
-        <XY x="23" y="32" />
+        <XY x="22" y="33" />
         <XY x="23" y="33" />
         <XY x="23" y="34" />
         <XY x="22" y="35" />
         <XY x="21" y="34" />
-        <XY x="20" y="35" />
-        <XY x="19" y="34" />
-        <XY x="18" y="34" />
+        <XY x="20" y="34" />
+        <XY x="19" y="33" />
+        <XY x="18" y="33" />
         <XY x="17" y="33" />
         <XY x="16" y="33" />
         <XY x="15" y="32" />
@@ -30809,8 +30810,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
        <otherObjectId>49e370c7-a59d-4273-987b-5c65cc99a533</otherObjectId>
        <targetSupplyTons>0</targetSupplyTons>
        <flowSupplyTons>0</flowSupplyTons>
-       <cost>1</cost>
+       <cost>2</cost>
        <pathCells>
+        <XY x="15" y="31" />
         <XY x="14" y="32" />
         <XY x="14" y="33" />
         <XY x="13" y="33" />
@@ -30820,17 +30822,18 @@ Each cavalry battalion has 277 personnel (excluding laborers)
        <otherObjectId>0bf1cf6a-c393-4085-ac93-2a3df16d797f</otherObjectId>
        <targetSupplyTons>40.562999606132507</targetSupplyTons>
        <flowSupplyTons>40.562999606132507</flowSupplyTons>
-       <cost>7</cost>
+       <cost>7.5</cost>
        <pathCells>
         <XY x="26" y="36" />
-        <XY x="25" y="36" />
-        <XY x="24" y="36" />
-        <XY x="23" y="35" />
+        <XY x="25" y="35" />
+        <XY x="25" y="34" />
+        <XY x="24" y="34" />
+        <XY x="23" y="34" />
         <XY x="22" y="35" />
         <XY x="21" y="34" />
-        <XY x="20" y="35" />
-        <XY x="19" y="34" />
-        <XY x="18" y="34" />
+        <XY x="20" y="34" />
+        <XY x="19" y="33" />
+        <XY x="18" y="33" />
         <XY x="17" y="33" />
         <XY x="16" y="33" />
         <XY x="15" y="32" />
@@ -30848,14 +30851,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
         <XY x="21" y="30" />
         <XY x="22" y="31" />
         <XY x="22" y="32" />
-        <XY x="23" y="32" />
+        <XY x="22" y="33" />
         <XY x="23" y="33" />
         <XY x="23" y="34" />
         <XY x="22" y="35" />
         <XY x="21" y="34" />
-        <XY x="20" y="35" />
-        <XY x="19" y="34" />
-        <XY x="18" y="34" />
+        <XY x="20" y="34" />
+        <XY x="19" y="33" />
+        <XY x="18" y="33" />
         <XY x="17" y="33" />
         <XY x="16" y="33" />
         <XY x="15" y="32" />
@@ -30888,7 +30891,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>90538.577277421951</supplyTons>
+    <supplyTons>120431.24327278137</supplyTons>
     <supplyGeneratedTons>10000</supplyGeneratedTons>
     <remark>Generic Super Depot Supply Source.</remark>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
@@ -31040,7 +31043,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>26377.40335893631</supplyTons>
+    <supplyTons>26327.354358673096</supplyTons>
     <supplyGeneratedTons>0</supplyGeneratedTons>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
     <supplyTransferState>
@@ -31131,7 +31134,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>343.87496012449265</supplyTons>
+    <supplyTons>302.60995817184448</supplyTons>
     <supplyGeneratedTons>0</supplyGeneratedTons>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
     <supplyTransferState>
@@ -31222,7 +31225,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>459.00004734098911</supplyTons>
+    <supplyTons>403.92004644870758</supplyTons>
     <supplyGeneratedTons>0</supplyGeneratedTons>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
     <supplyTransferState>
@@ -31409,14 +31412,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
        <XY x="21" y="30" />
        <XY x="22" y="31" />
        <XY x="22" y="32" />
-       <XY x="23" y="32" />
+       <XY x="22" y="33" />
        <XY x="23" y="33" />
        <XY x="23" y="34" />
        <XY x="22" y="35" />
        <XY x="21" y="34" />
-       <XY x="20" y="35" />
-       <XY x="19" y="34" />
-       <XY x="18" y="34" />
+       <XY x="20" y="34" />
+       <XY x="19" y="33" />
+       <XY x="18" y="33" />
        <XY x="17" y="33" />
        <XY x="16" y="33" />
        <XY x="15" y="32" />
@@ -31436,7 +31439,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
         <XY x="26" y="33" />
         <XY x="25" y="32" />
         <XY x="24" y="32" />
-        <XY x="23" y="32" />
+        <XY x="23" y="31" />
         <XY x="22" y="32" />
         <XY x="22" y="31" />
         <XY x="21" y="30" />
@@ -31452,7 +31455,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
         <XY x="26" y="33" />
         <XY x="25" y="32" />
         <XY x="24" y="32" />
-        <XY x="23" y="32" />
+        <XY x="23" y="31" />
         <XY x="22" y="32" />
         <XY x="22" y="31" />
         <XY x="21" y="30" />
@@ -31468,7 +31471,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
         <XY x="26" y="33" />
         <XY x="25" y="32" />
         <XY x="24" y="32" />
-        <XY x="23" y="32" />
+        <XY x="23" y="31" />
         <XY x="22" y="32" />
         <XY x="22" y="31" />
         <XY x="21" y="30" />
@@ -31484,7 +31487,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
         <XY x="26" y="33" />
         <XY x="25" y="32" />
         <XY x="24" y="32" />
-        <XY x="23" y="32" />
+        <XY x="23" y="31" />
         <XY x="22" y="32" />
         <XY x="22" y="31" />
         <XY x="21" y="30" />
@@ -31500,7 +31503,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
         <XY x="26" y="33" />
         <XY x="25" y="32" />
         <XY x="24" y="32" />
-        <XY x="23" y="32" />
+        <XY x="23" y="31" />
         <XY x="22" y="32" />
         <XY x="22" y="31" />
         <XY x="21" y="30" />
@@ -31551,7 +31554,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
         <XY x="26" y="33" />
         <XY x="25" y="32" />
         <XY x="24" y="32" />
-        <XY x="23" y="32" />
+        <XY x="23" y="31" />
         <XY x="22" y="32" />
         <XY x="22" y="31" />
         <XY x="21" y="30" />
@@ -31567,7 +31570,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
         <XY x="26" y="33" />
         <XY x="25" y="32" />
         <XY x="24" y="32" />
-        <XY x="23" y="32" />
+        <XY x="23" y="31" />
         <XY x="22" y="32" />
         <XY x="22" y="31" />
         <XY x="21" y="30" />
@@ -31583,7 +31586,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
         <XY x="26" y="33" />
         <XY x="25" y="32" />
         <XY x="24" y="32" />
-        <XY x="23" y="32" />
+        <XY x="23" y="31" />
         <XY x="22" y="32" />
         <XY x="22" y="31" />
         <XY x="21" y="30" />
@@ -31599,7 +31602,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
         <XY x="26" y="33" />
         <XY x="25" y="32" />
         <XY x="24" y="32" />
-        <XY x="23" y="32" />
+        <XY x="23" y="31" />
         <XY x="22" y="32" />
         <XY x="22" y="31" />
         <XY x="21" y="30" />
@@ -31835,14 +31838,14 @@ Each cavalry battalion has 277 personnel (excluding laborers)
        <XY x="21" y="30" />
        <XY x="22" y="31" />
        <XY x="22" y="32" />
-       <XY x="23" y="32" />
+       <XY x="22" y="33" />
        <XY x="23" y="33" />
        <XY x="23" y="34" />
        <XY x="22" y="35" />
        <XY x="21" y="34" />
-       <XY x="20" y="35" />
-       <XY x="19" y="34" />
-       <XY x="18" y="34" />
+       <XY x="20" y="34" />
+       <XY x="19" y="33" />
+       <XY x="18" y="33" />
        <XY x="17" y="33" />
        <XY x="16" y="33" />
        <XY x="15" y="32" />
@@ -32060,8 +32063,9 @@ Each cavalry battalion has 277 personnel (excluding laborers)
       <otherObjectId>82e4ac06-f614-432e-a82f-c0c1dfc055df</otherObjectId>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
-      <cost>1</cost>
+      <cost>2</cost>
       <pathCells>
+       <XY x="15" y="31" />
        <XY x="14" y="32" />
        <XY x="14" y="33" />
        <XY x="13" y="33" />
@@ -33780,7 +33784,7 @@ It was revived for the Russo-Japanese War from 2 February 1904 – 9 December 19
       <referenceId>71ef8ca0-8e61-4eda-b53b-a1f4459d1c5d</referenceId>
      </StrategicGroupMemberReference>
     </directMemberReferences>
-    <assignedMissionObjectId>ec418139-4c78-4360-93b6-4e16e16a056e</assignedMissionObjectId>
+    <assignedMissionObjectId>bdb91242-ba6f-4365-b554-99ddf9593bc8</assignedMissionObjectId>
     <navySubMission>General</navySubMission>
     <moveProgressionKm>0</moveProgressionKm>
     <plannedPath />
@@ -33827,9 +33831,6 @@ It was revived for the Russo-Japanese War from 2 February 1904 – 9 December 19
      </StrategicGroupMemberReference>
      <StrategicGroupMemberReference>
       <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
-     </StrategicGroupMemberReference>
-     <StrategicGroupMemberReference>
-      <referenceId>c48c4012-e43a-4933-8cc9-5e8755cf6b7f</referenceId>
      </StrategicGroupMemberReference>
      <StrategicGroupMemberReference>
       <referenceId>1ca93054-7ae0-4bd5-bfb4-2643c57fa8b5</referenceId>
@@ -34109,7 +34110,7 @@ It is one of the oldest divisions among the approximately 200 Army divisions.
      </StrategicGroupMemberReference>
     </directMemberReferences>
     <navySubMission>General</navySubMission>
-    <navalInvasionTarget x="35" y="23" />
+    <navalTransportTarget x="35" y="23" />
     <remark>http://www.yhigasi6.com/meiji/meiji4/riku4.html
 
 1873年（明治6年）に設置された広島鎮台を母体に1888年（明治21年）5月14日に編成された。
@@ -36544,31 +36545,58 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <leaderReference />
     <directMemberReferences>
      <StrategicGroupMemberReference>
+      <referenceId>e45890c4-72a7-4e0f-9bd6-d8ca1ebb4a1a</referenceId>
+     </StrategicGroupMemberReference>
+     <StrategicGroupMemberReference>
       <referenceId>ce853438-efba-4760-8772-0f20af195c6d</referenceId>
-     </StrategicGroupMemberReference>
-     <StrategicGroupMemberReference>
-      <referenceId>ed519773-97f2-438c-8c29-ed23388a4892</referenceId>
-     </StrategicGroupMemberReference>
-     <StrategicGroupMemberReference>
-      <referenceId>dd69551a-c7e2-422f-87f1-1c372a532910</referenceId>
-     </StrategicGroupMemberReference>
-     <StrategicGroupMemberReference>
-      <referenceId>f5a5d796-24fa-4a66-b3a3-fbfdd6fc24f4</referenceId>
-     </StrategicGroupMemberReference>
-     <StrategicGroupMemberReference>
-      <referenceId>293055e0-877d-42f5-b9f5-1105e2bb87d4</referenceId>
-     </StrategicGroupMemberReference>
-     <StrategicGroupMemberReference>
-      <referenceId>a9a2f4a3-9116-4e0f-830c-bf1e8673f38b</referenceId>
-     </StrategicGroupMemberReference>
-     <StrategicGroupMemberReference>
-      <referenceId>7f46bb1a-da14-4469-83e2-90b523558657</referenceId>
      </StrategicGroupMemberReference>
      <StrategicGroupMemberReference>
       <referenceId>07cda472-bc97-4e2c-9e25-2f0a020f2c31</referenceId>
      </StrategicGroupMemberReference>
      <StrategicGroupMemberReference>
+      <referenceId>175c9300-b657-4f6d-8fc5-726591619f02</referenceId>
+     </StrategicGroupMemberReference>
+     <StrategicGroupMemberReference>
+      <referenceId>ff2a2be8-4dc0-4f2e-a9d3-204b97464787</referenceId>
+     </StrategicGroupMemberReference>
+     <StrategicGroupMemberReference>
+      <referenceId>884e9470-40e5-4f94-8907-06f780895d64</referenceId>
+     </StrategicGroupMemberReference>
+     <StrategicGroupMemberReference>
+      <referenceId>a9a2f4a3-9116-4e0f-830c-bf1e8673f38b</referenceId>
+     </StrategicGroupMemberReference>
+     <StrategicGroupMemberReference>
+      <referenceId>dd69551a-c7e2-422f-87f1-1c372a532910</referenceId>
+     </StrategicGroupMemberReference>
+     <StrategicGroupMemberReference>
+      <referenceId>300356d2-20bf-4c19-a64f-6debfa317b57</referenceId>
+     </StrategicGroupMemberReference>
+     <StrategicGroupMemberReference>
+      <referenceId>7f46bb1a-da14-4469-83e2-90b523558657</referenceId>
+     </StrategicGroupMemberReference>
+     <StrategicGroupMemberReference>
+      <referenceId>c1bef169-989d-49a9-b307-29e530f139b2</referenceId>
+     </StrategicGroupMemberReference>
+     <StrategicGroupMemberReference>
+      <referenceId>f5a5d796-24fa-4a66-b3a3-fbfdd6fc24f4</referenceId>
+     </StrategicGroupMemberReference>
+     <StrategicGroupMemberReference>
       <referenceId>1f00ac7d-fed4-4916-afb1-981145dda0e7</referenceId>
+     </StrategicGroupMemberReference>
+     <StrategicGroupMemberReference>
+      <referenceId>293055e0-877d-42f5-b9f5-1105e2bb87d4</referenceId>
+     </StrategicGroupMemberReference>
+     <StrategicGroupMemberReference>
+      <referenceId>09455c86-4e7e-4306-b329-32cbb07918f0</referenceId>
+     </StrategicGroupMemberReference>
+     <StrategicGroupMemberReference>
+      <referenceId>9a9658a3-ccae-48d8-89ea-23386df96a8b</referenceId>
+     </StrategicGroupMemberReference>
+     <StrategicGroupMemberReference>
+      <referenceId>8bff33f7-f824-4147-883f-a2335263aafb</referenceId>
+     </StrategicGroupMemberReference>
+     <StrategicGroupMemberReference>
+      <referenceId>ed519773-97f2-438c-8c29-ed23388a4892</referenceId>
      </StrategicGroupMemberReference>
     </directMemberReferences>
     <homeBaseObjectId>4a33ad57-3e8d-4496-83c2-889cb1024e91</homeBaseObjectId>
@@ -36582,69 +36610,6 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <enableAutoReattachProp>false</enableAutoReattachProp>
     <enableArriveState>false</enableArriveState>
     <objectId>748b4491-cf73-4f62-8f7d-075e0dcdec09</objectId>
-    <parentGroupReference>
-     <referenceId>ae078a24-3dee-4111-a4dc-bf301c6cde33</referenceId>
-    </parentGroupReference>
-    <detachedFromGroupReference />
-    <enableAutoReattach>false</enableAutoReattach>
-   </StrategicGroup>
-   <StrategicGroup>
-    <name>
-     <english>IJN Transports/2</english>
-     <japanese>日本軍輸送船団/2</japanese>
-     <chineseSimplified>日军运输船队/2</chineseSimplified>
-    </name>
-    <type>Fleet</type>
-    <size>Regiment</size>
-    <country>Japan</country>
-    <deployState>Independent</deployState>
-    <destroyed>false</destroyed>
-    <autoCombinable>false</autoCombinable>
-    <dissolvable>false</dissolvable>
-    <nonHistorical>false</nonHistorical>
-    <independentX>42</independentX>
-    <independentY>23</independentY>
-    <leaderReference />
-    <directMemberReferences>
-     <StrategicGroupMemberReference>
-      <referenceId>ff2a2be8-4dc0-4f2e-a9d3-204b97464787</referenceId>
-     </StrategicGroupMemberReference>
-     <StrategicGroupMemberReference>
-      <referenceId>884e9470-40e5-4f94-8907-06f780895d64</referenceId>
-     </StrategicGroupMemberReference>
-     <StrategicGroupMemberReference>
-      <referenceId>9a9658a3-ccae-48d8-89ea-23386df96a8b</referenceId>
-     </StrategicGroupMemberReference>
-     <StrategicGroupMemberReference>
-      <referenceId>e45890c4-72a7-4e0f-9bd6-d8ca1ebb4a1a</referenceId>
-     </StrategicGroupMemberReference>
-     <StrategicGroupMemberReference>
-      <referenceId>175c9300-b657-4f6d-8fc5-726591619f02</referenceId>
-     </StrategicGroupMemberReference>
-     <StrategicGroupMemberReference>
-      <referenceId>09455c86-4e7e-4306-b329-32cbb07918f0</referenceId>
-     </StrategicGroupMemberReference>
-     <StrategicGroupMemberReference>
-      <referenceId>300356d2-20bf-4c19-a64f-6debfa317b57</referenceId>
-     </StrategicGroupMemberReference>
-     <StrategicGroupMemberReference>
-      <referenceId>c1bef169-989d-49a9-b307-29e530f139b2</referenceId>
-     </StrategicGroupMemberReference>
-     <StrategicGroupMemberReference>
-      <referenceId>8bff33f7-f824-4147-883f-a2335263aafb</referenceId>
-     </StrategicGroupMemberReference>
-    </directMemberReferences>
-    <homeBaseObjectId>4a33ad57-3e8d-4496-83c2-889cb1024e91</homeBaseObjectId>
-    <navySubMission>General</navySubMission>
-    <moveProgressionKm>0</moveProgressionKm>
-    <plannedPath />
-    <posture>Active</posture>
-    <restoredHours>0</restoredHours>
-    <forcedReturningToBase>false</forcedReturningToBase>
-    <stackPriority>0.5714286</stackPriority>
-    <enableAutoReattachProp>false</enableAutoReattachProp>
-    <enableArriveState>false</enableArriveState>
-    <objectId>c48c4012-e43a-4933-8cc9-5e8755cf6b7f</objectId>
     <parentGroupReference>
      <referenceId>ae078a24-3dee-4111-a4dc-bf301c6cde33</referenceId>
     </parentGroupReference>
@@ -37812,7 +37777,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <posture>Active</posture>
     <restoredHours>0</restoredHours>
     <forcedReturningToBase>false</forcedReturningToBase>
-    <stackPriority>0</stackPriority>
+    <stackPriority>0.6666667</stackPriority>
     <enableAutoReattachProp>false</enableAutoReattachProp>
     <enableArriveState>false</enableArriveState>
     <objectId>3391b8ea-4a7a-44d2-bdf1-f70f42bbd346</objectId>
@@ -37849,7 +37814,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <posture>Active</posture>
     <restoredHours>0</restoredHours>
     <forcedReturningToBase>false</forcedReturningToBase>
-    <stackPriority>0.333333343</stackPriority>
+    <stackPriority>0</stackPriority>
     <enableAutoReattachProp>false</enableAutoReattachProp>
     <enableArriveState>false</enableArriveState>
     <objectId>15a7175c-1740-4b9f-863e-d83ed2d16962</objectId>
@@ -37884,7 +37849,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <posture>Active</posture>
     <restoredHours>0</restoredHours>
     <forcedReturningToBase>false</forcedReturningToBase>
-    <stackPriority>0.6666667</stackPriority>
+    <stackPriority>0.333333343</stackPriority>
     <enableAutoReattachProp>false</enableAutoReattachProp>
     <enableArriveState>false</enableArriveState>
     <objectId>c1d45c08-3ada-495e-adf9-a6f840c5b571</objectId>
@@ -40115,14 +40080,11 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
    </StrategicMission>
    <StrategicMission xsi:type="LandOperationMission">
     <name>
-     <english>Japan Land Operation</english>
+     <english>1st Army Land Attack</english>
     </name>
     <groups>
      <StrategicGroupMemberReference>
       <referenceId>2895a7b5-5422-45c0-a01b-a516c966f9c1</referenceId>
-     </StrategicGroupMemberReference>
-     <StrategicGroupMemberReference>
-      <referenceId>5fe39499-f5f7-416a-9ca3-951f077a937d</referenceId>
      </StrategicGroupMemberReference>
     </groups>
     <waypoints>
@@ -40133,11 +40095,37 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
      <XY x="21" y="30" />
      <XY x="21" y="34" />
      <XY x="14" y="32" />
+     <XY x="13" y="33" />
     </waypoints>
     <parentMissionRef />
     <childrenMissionRefs />
+    <sideObjectId>3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d</sideObjectId>
     <active>true</active>
     <objectId>ec418139-4c78-4360-93b6-4e16e16a056e</objectId>
+   </StrategicMission>
+   <StrategicMission xsi:type="LandOperationMission">
+    <name>
+     <english>2nd Army Land Attack</english>
+    </name>
+    <groups>
+     <StrategicGroupMemberReference>
+      <referenceId>5fe39499-f5f7-416a-9ca3-951f077a937d</referenceId>
+     </StrategicGroupMemberReference>
+    </groups>
+    <waypoints>
+     <XY x="24" y="32" />
+     <XY x="22" y="31" />
+     <XY x="21" y="30" />
+     <XY x="22" y="28" />
+     <XY x="15" y="31" />
+     <XY x="14" y="32" />
+     <XY x="13" y="33" />
+    </waypoints>
+    <parentMissionRef />
+    <childrenMissionRefs />
+    <sideObjectId>3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d</sideObjectId>
+    <active>true</active>
+    <objectId>bdb91242-ba6f-4365-b554-99ddf9593bc8</objectId>
    </StrategicMission>
    <StrategicMission xsi:type="LandOperationMission">
     <name>
@@ -40159,6 +40147,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     </waypoints>
     <parentMissionRef />
     <childrenMissionRefs />
+    <sideObjectId>dd43c3f3-1a02-46ca-b287-4ac069c23218</sideObjectId>
     <active>true</active>
     <objectId>7a1167de-02b7-4073-b3a1-3062d1726007</objectId>
    </StrategicMission>
@@ -41705,8 +41694,8 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="5" y="21" terrain="Field" longitude="113.325211" latitude="33.467762" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="5" y="22" terrain="Field" longitude="113.254433" latitude="34.0120468" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="5" y="23" terrain="Rough" longitude="113.1843" latitude="34.5553436" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
-    <Cell x="5" y="24" terrain="Rough" longitude="113.115128" latitude="35.0977745" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" riversStr="1/0/5" />
-    <Cell x="5" y="25" terrain="Rough" longitude="113.047325" latitude="35.6394844" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" riversStr="3" />
+    <Cell x="5" y="24" terrain="Rough" longitude="113.115128" latitude="35.0977745" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="0" riversStr="1/0/5" />
+    <Cell x="5" y="25" terrain="Rough" longitude="113.047325" latitude="35.6394844" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="2/3" riversStr="3" />
     <Cell x="5" y="26" terrain="ForestRough" longitude="112.981392" latitude="36.18066" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="5" y="27" terrain="Mountain" longitude="112.917923" latitude="36.7215157" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="5" y="28" terrain="Mountain" longitude="112.857567" latitude="37.2623024" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
@@ -41757,7 +41746,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="6" y="22" terrain="Field" longitude="113.804138" latitude="33.762413" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="0/3" />
     <Cell x="6" y="23" terrain="Field" longitude="113.734619" latitude="34.30561" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="1/3" />
     <Cell x="6" y="24" terrain="Rough" longitude="113.66571" latitude="34.8478432" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" riversStr="0" />
-    <Cell x="6" y="25" terrain="Rough" longitude="113.597763" latitude="35.3892365" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" riversStr="2/3/4" />
+    <Cell x="6" y="25" terrain="Rough" longitude="113.597763" latitude="35.3892365" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="1/5" riversStr="2/3/4" />
     <Cell x="6" y="26" terrain="ForestRough" longitude="113.53125" latitude="35.9299545" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="6" y="27" terrain="Mountain" longitude="113.466743" latitude="36.4702034" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="6" y="28" terrain="Mountain" longitude="113.404922" latitude="37.01024" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
@@ -41797,7 +41786,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="7" y="22" terrain="Field" longitude="114.2851" latitude="34.056366" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="7" y="23" terrain="Field" longitude="114.216873" latitude="34.5984955" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="1/4" />
     <Cell x="7" y="24" terrain="Field" longitude="114.149208" latitude="35.1396751" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" riversStr="1/0/5" />
-    <Cell x="7" y="25" terrain="Field" longitude="114.082527" latitude="35.6800461" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" riversStr="3" />
+    <Cell x="7" y="25" terrain="Field" longitude="114.082527" latitude="35.6800461" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="1/4/2" riversStr="3" />
     <Cell x="7" y="26" terrain="Field" longitude="114.017342" latitude="36.2197876" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="7" y="27" terrain="Field" longitude="113.95433" latitude="36.75914" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="7" y="28" terrain="Field" longitude="113.894287" latitude="37.2984" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
@@ -41843,10 +41832,10 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
       <chineseSimplified>开封</chineseSimplified>
      </Label>
     </Cell>
-    <Cell x="8" y="25" terrain="Field" longitude="114.63504" latitude="35.43086" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="1/3" riversStr="2/3/4" />
-    <Cell x="8" y="26" terrain="Field" longitude="114.569641" latitude="35.9702263" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
-    <Cell x="8" y="27" terrain="Field" longitude="114.505836" latitude="36.5090141" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
-    <Cell x="8" y="28" terrain="Field" longitude="114.444389" latitude="37.0475044" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
+    <Cell x="8" y="25" terrain="Field" longitude="114.63504" latitude="35.43086" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="1/3/5" riversStr="2/3/4" />
+    <Cell x="8" y="26" terrain="Field" longitude="114.569641" latitude="35.9702263" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="0/4" />
+    <Cell x="8" y="27" terrain="Field" longitude="114.505836" latitude="36.5090141" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="0/3" />
+    <Cell x="8" y="28" terrain="Field" longitude="114.444389" latitude="37.0475044" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="1/3" />
     <Cell x="8" y="29" terrain="Field" longitude="114.386269" latitude="37.5860443" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="8" y="30" terrain="Field" longitude="114.33252" latitude="38.12505" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="8" y="31" terrain="Field" longitude="114.284187" latitude="38.6649246" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
@@ -41892,9 +41881,9 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="9" y="25" terrain="Field" longitude="115.123428" latitude="35.72141" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="1/4" riversStr="1/2/3" />
     <Cell x="9" y="26" terrain="Field" longitude="115.059357" latitude="36.2598038" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" riversStr="2" />
     <Cell x="9" y="27" terrain="Field" longitude="114.996979" latitude="36.7976723" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
-    <Cell x="9" y="28" terrain="Field" longitude="114.9372" latitude="37.33534" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
-    <Cell x="9" y="29" terrain="Field" longitude="114.881187" latitude="37.87324" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
-    <Cell x="9" y="30" terrain="Field" longitude="114.830223" latitude="38.4118843" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
+    <Cell x="9" y="28" terrain="Field" longitude="114.9372" latitude="37.33534" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="0/4" />
+    <Cell x="9" y="29" terrain="Field" longitude="114.881187" latitude="37.87324" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="0/3" />
+    <Cell x="9" y="30" terrain="Field" longitude="114.830223" latitude="38.4118843" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="1/3" />
     <Cell x="9" y="31" terrain="ForestRough" longitude="114.785454" latitude="38.95173" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="9" y="32" terrain="ForestRough" longitude="114.74749" latitude="39.4929924" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="9" y="33" terrain="ForestRough" longitude="114.716187" latitude="40.035553" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
@@ -41935,8 +41924,8 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="10" y="28" terrain="Field" longitude="115.491074" latitude="37.0858231" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="10" y="29" terrain="Field" longitude="115.4331" latitude="37.62272" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="10" y="30" terrain="Field" longitude="115.379448" latitude="38.1600876" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
-    <Cell x="10" y="31" terrain="Field" longitude="115.331718" latitude="38.69857" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
-    <Cell x="10" y="32" terrain="ForestRough" longitude="115.291138" latitude="39.2386475" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
+    <Cell x="10" y="31" terrain="Field" longitude="115.331718" latitude="38.69857" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="0/4" />
+    <Cell x="10" y="32" terrain="ForestRough" longitude="115.291138" latitude="39.2386475" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="2/3" />
     <Cell x="10" y="33" terrain="ForestRough" longitude="115.257965" latitude="39.7803841" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="10" y="34" terrain="ForestRough" longitude="115.231445" latitude="40.32339" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="10" y="35" terrain="LightUrban" longitude="115.210442" latitude="40.8671265" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="2">
@@ -41981,8 +41970,8 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="11" y="28" terrain="Field" longitude="115.98848" latitude="37.373558" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="11" y="29" terrain="Field" longitude="115.932457" latitude="37.90976" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="11" y="30" terrain="Field" longitude="115.881546" latitude="38.44675" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
-    <Cell x="11" y="31" terrain="Field" longitude="115.83773" latitude="38.9853477" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
-    <Cell x="11" y="32" terrain="ForestRough" longitude="115.802109" latitude="39.52599" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
+    <Cell x="11" y="31" terrain="Field" longitude="115.83773" latitude="38.9853477" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="0/5" />
+    <Cell x="11" y="32" terrain="ForestRough" longitude="115.802109" latitude="39.52599" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="1/3" />
     <Cell x="11" y="33" terrain="ForestRough" longitude="115.774132" latitude="40.068367" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="11" y="34" terrain="ForestRough" longitude="115.752335" latitude="40.6117668" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="2/5" />
     <Cell x="11" y="35" terrain="ForestRough" longitude="115.735344" latitude="41.1555367" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
@@ -42023,7 +42012,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="12" y="30" terrain="Field" longitude="116.435822" latitude="38.1966171" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="12" y="31" terrain="Field" longitude="116.3882" latitude="38.7334671" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="12" y="32" terrain="Field" longitude="116.349274" latitude="39.2726135" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
-    <Cell x="12" y="33" terrain="ForestRough" longitude="116.319359" latitude="39.8141365" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
+    <Cell x="12" y="33" terrain="ForestRough" longitude="116.319359" latitude="39.8141365" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="1/4" />
     <Cell x="12" y="34" terrain="ForestRough" longitude="116.29657" latitude="40.3571167" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="2/5" />
     <Cell x="12" y="35" terrain="ForestRough" longitude="116.278984" latitude="40.9006462" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="12" y="36" terrain="ForestRough" longitude="116.265366" latitude="41.4441452" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
@@ -42075,7 +42064,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="13" y="30" terrain="Field" longitude="116.943886" latitude="38.48355" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="1/3" />
     <Cell x="13" y="31" terrain="Field" longitude="116.90052" latitude="39.02067" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="13" y="32" terrain="Field" longitude="116.8678" latitude="39.5609436" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
-    <Cell x="13" y="33" terrain="HeavyUrban" longitude="116.843727" latitude="40.10338" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="2/5">
+    <Cell x="13" y="33" terrain="HeavyUrban" longitude="116.843727" latitude="40.10338" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="2/5/4">
      <Label>
       <english>PeKing</english>
       <japanese>北平</japanese>
@@ -42179,10 +42168,10 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
        <referenceId>7fb53e3b-5cdc-4c03-b38f-c2b0d1a4f112</referenceId>
       </StrategicGroupReference>
       <StrategicGroupReference>
-       <referenceId>71e28861-3373-4cd5-8e0c-c5eed491d5db</referenceId>
+       <referenceId>0e49ae2f-5d43-4a1e-a5e1-5ef9709c79e7</referenceId>
       </StrategicGroupReference>
       <StrategicGroupReference>
-       <referenceId>0e49ae2f-5d43-4a1e-a5e1-5ef9709c79e7</referenceId>
+       <referenceId>71e28861-3373-4cd5-8e0c-c5eed491d5db</referenceId>
       </StrategicGroupReference>
      </StrategicGroupReferences>
     </Cell>
@@ -42301,7 +42290,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="17" y="30" terrain="ShallowWater" longitude="119.126587" latitude="38.5721741" />
     <Cell x="17" y="31" terrain="Field" longitude="119.087776" latitude="39.1080666" IsCoast="true" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="17" y="32" terrain="Field" longitude="119.057213" latitude="39.6459122" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
-    <Cell x="17" y="33" terrain="Clear" longitude="119.033546" latitude="40.1850357" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="4/1" />
+    <Cell x="17" y="33" terrain="Clear" longitude="119.033546" latitude="40.1850357" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="4/2" />
     <Cell x="17" y="34" terrain="Rough" longitude="119.014694" latitude="40.7244568" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="17" y="35" terrain="Rough" longitude="118.99968" latitude="41.26372" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="17" y="36" terrain="Rough" longitude="118.988075" latitude="41.80264" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
@@ -42339,10 +42328,22 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="18" y="28" terrain="Field" longitude="119.788773" latitude="37.25553" IsCoast="true" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="18" y="29" terrain="ShallowWater" longitude="119.745323" latitude="37.7924347" />
     <Cell x="18" y="30" terrain="ShallowWater" longitude="119.703606" latitude="38.3287239" />
-    <Cell x="18" y="31" terrain="ShallowWater" longitude="119.6648" latitude="38.8647041" />
+    <Cell x="18" y="31" terrain="ShallowWater" longitude="119.6648" latitude="38.8647041">
+     <Label>
+      <english>Bohai</english>
+      <japanese>渤海</japanese>
+      <chineseSimplified>渤海</chineseSimplified>
+     </Label>
+    </Cell>
     <Cell x="18" y="32" terrain="ShallowWater" longitude="119.630783" latitude="39.40106" />
-    <Cell x="18" y="33" terrain="Field" longitude="119.602554" latitude="39.9381638" IsCoast="true" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
-    <Cell x="18" y="34" terrain="Field" longitude="119.579575" latitude="40.47576" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="4/1" />
+    <Cell x="18" y="33" terrain="Field" longitude="119.602554" latitude="39.9381638" IsCoast="true" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="1/5">
+     <Label>
+      <english>Shanhaiguan</english>
+      <japanese>山海関</japanese>
+      <chineseSimplified>山海关</chineseSimplified>
+     </Label>
+    </Cell>
+    <Cell x="18" y="34" terrain="Field" longitude="119.579575" latitude="40.47576" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="18" y="35" terrain="Rough" longitude="119.561073" latitude="41.0135" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="18" y="36" terrain="Rough" longitude="119.546562" latitude="41.5511436" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="18" y="37" terrain="Rough" longitude="119.535713" latitude="42.0885468" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
@@ -42381,8 +42382,8 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="19" y="30" terrain="ShallowWater" longitude="120.242455" latitude="38.6206627" />
     <Cell x="19" y="31" terrain="ShallowWater" longitude="120.207817" latitude="39.1568527" />
     <Cell x="19" y="32" terrain="ShallowWater" longitude="120.176216" latitude="39.69251" />
-    <Cell x="19" y="33" terrain="Field" longitude="120.148979" latitude="40.2282372" IsCoast="true" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
-    <Cell x="19" y="34" terrain="Field" longitude="120.126488" latitude="40.76422" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="4/1" />
+    <Cell x="19" y="33" terrain="Field" longitude="120.148979" latitude="40.2282372" IsCoast="true" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="1/4" />
+    <Cell x="19" y="34" terrain="Field" longitude="120.126488" latitude="40.76422" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="19" y="35" terrain="Field" longitude="120.108521" latitude="41.30037" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="19" y="36" terrain="Field" longitude="120.094765" latitude="41.8365135" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="19" y="37" terrain="Field" longitude="120.084915" latitude="42.3725128" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
@@ -42445,8 +42446,8 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="20" y="31" terrain="ShallowWater" longitude="120.785095" latitude="38.9116936" />
     <Cell x="20" y="32" terrain="ShallowWater" longitude="120.75235" latitude="39.4469528" />
     <Cell x="20" y="33" terrain="ShallowWater" longitude="120.721687" latitude="39.9811974" />
-    <Cell x="20" y="34" terrain="Field" longitude="120.695236" latitude="40.5154648" IsCoast="true" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
-    <Cell x="20" y="35" terrain="Field" longitude="120.673592" latitude="41.0500221" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="4/2" />
+    <Cell x="20" y="34" terrain="Field" longitude="120.695236" latitude="40.5154648" IsCoast="true" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="1/4" />
+    <Cell x="20" y="35" terrain="Field" longitude="120.673592" latitude="41.0500221" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="20" y="36" terrain="Field" longitude="120.656616" latitude="41.5848045" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="20" y="37" terrain="Field" longitude="120.644028" latitude="42.119648" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="20" y="38" terrain="Field" longitude="120.635521" latitude="42.6544075" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
@@ -42496,7 +42497,13 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="21" y="25" terrain="ShallowWater" longitude="121.517319" latitude="35.9626122" />
     <Cell x="21" y="26" terrain="ShallowWater" longitude="121.482285" latitude="36.5030823" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="21" y="27" terrain="Field" longitude="121.448677" latitude="37.0435829" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="4/1" />
-    <Cell x="21" y="28" terrain="Field" longitude="121.41703" latitude="37.58409" IsCoast="true" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
+    <Cell x="21" y="28" terrain="Field" longitude="121.41703" latitude="37.58409" IsCoast="true" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218">
+     <Label>
+      <english>Yantai</english>
+      <japanese>煙台</japanese>
+      <chineseSimplified>烟台</chineseSimplified>
+     </Label>
+    </Cell>
     <Cell x="21" y="29" terrain="ShallowWater" longitude="121.387474" latitude="38.1244049" />
     <Cell x="21" y="30" terrain="HeavyUrban" longitude="121.359032" latitude="38.6637535" IsCoast="true" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="1" blockSeaMovementsStr="0">
      <Label>
@@ -42519,7 +42526,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="21" y="31" terrain="Clear" longitude="121.328209" latitude="39.2000961" IsCoast="true" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" blockSeaMovementsStr="3/2" />
     <Cell x="21" y="32" terrain="Field" longitude="121.295654" latitude="39.73358" IsCoast="true" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="21" y="33" terrain="ShallowWater" longitude="121.266" latitude="40.2664833" />
-    <Cell x="21" y="34" terrain="LightUrban" longitude="121.240929" latitude="40.7996" IsCoast="true" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="5/1">
+    <Cell x="21" y="34" terrain="LightUrban" longitude="121.240929" latitude="40.7996" IsCoast="true" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="1/4">
      <Label>
       <english>Kin tschou</english>
       <japanese>錦州</japanese>
@@ -42585,12 +42592,18 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     </Cell>
     <Cell x="22" y="29" terrain="ShallowWater" longitude="121.951164" latitude="37.8703346" />
     <Cell x="22" y="30" terrain="ShallowWater" longitude="121.925812" latitude="38.41109" />
-    <Cell x="22" y="31" terrain="Field" longitude="121.9" latitude="38.95" GroundControlPoint="true" IsCoast="true" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="0/4" blockSeaMovementsStr="5" />
-    <Cell x="22" y="32" terrain="Field" longitude="121.868111" latitude="39.48395" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="1/3" />
-    <Cell x="22" y="33" terrain="Field" longitude="121.836807" latitude="40.01623" IsCoast="true" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
+    <Cell x="22" y="31" terrain="Field" longitude="121.9" latitude="38.95" GroundControlPoint="true" IsCoast="true" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="4/0" blockSeaMovementsStr="5">
+     <Label>
+      <english>Dalian</english>
+      <japanese>大連</japanese>
+      <chineseSimplified>大连</chineseSimplified>
+     </Label>
+    </Cell>
+    <Cell x="22" y="32" terrain="Field" longitude="121.868111" latitude="39.48395" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="0/2/3" />
+    <Cell x="22" y="33" terrain="Field" longitude="121.836807" latitude="40.01623" IsCoast="true" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="1/3" />
     <Cell x="22" y="34" terrain="ShallowWater" longitude="121.809212" latitude="40.5483551" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
-    <Cell x="22" y="35" terrain="Field" longitude="121.786285" latitude="41.0807266" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="4/2/1" />
-    <Cell x="22" y="36" terrain="Field" longitude="121.768211" latitude="41.6133842" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
+    <Cell x="22" y="35" terrain="Field" longitude="121.786285" latitude="41.0807266" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="4/2/0/1" />
+    <Cell x="22" y="36" terrain="Field" longitude="121.768211" latitude="41.6133842" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="1/3" />
     <Cell x="22" y="37" terrain="Field" longitude="121.754845" latitude="42.14622" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="22" y="38" terrain="Field" longitude="121.745934" latitude="42.6790848" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="22" y="39" terrain="Field" longitude="121.741165" latitude="43.2118378" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
@@ -42631,12 +42644,12 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     </Cell>
     <Cell x="23" y="29" terrain="ShallowWater" longitude="122.485596" latitude="38.1538124" />
     <Cell x="23" y="30" terrain="ShallowWater" longitude="122.4622" latitude="38.6938324" />
-    <Cell x="23" y="31" terrain="Field" longitude="122.435242" latitude="39.2303429" IsCoast="true" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
-    <Cell x="23" y="32" terrain="Field" longitude="122.405144" latitude="39.7634" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="0/4/2" />
-    <Cell x="23" y="33" terrain="Field" longitude="122.376709" latitude="40.2953377" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="0/3" />
-    <Cell x="23" y="34" terrain="ForestRough" longitude="122.352043" latitude="40.82713" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="5/3" />
-    <Cell x="23" y="35" terrain="Field" longitude="122.331886" latitude="41.35907" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="4/1" />
-    <Cell x="23" y="36" terrain="Field" longitude="122.316414" latitude="41.8911743" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
+    <Cell x="23" y="31" terrain="Field" longitude="122.435242" latitude="39.2303429" IsCoast="true" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="1/5" />
+    <Cell x="23" y="32" terrain="Field" longitude="122.405144" latitude="39.7634" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
+    <Cell x="23" y="33" terrain="Field" longitude="122.376709" latitude="40.2953377" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="0/4" />
+    <Cell x="23" y="34" terrain="ForestRough" longitude="122.352043" latitude="40.82713" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="5/3/2" />
+    <Cell x="23" y="35" terrain="Field" longitude="122.331886" latitude="41.35907" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="0/4" />
+    <Cell x="23" y="36" terrain="Field" longitude="122.316414" latitude="41.8911743" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="2/4/3" />
     <Cell x="23" y="37" terrain="Field" longitude="122.305527" latitude="42.42335" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="23" y="38" terrain="Field" longitude="122.299" latitude="42.9554672" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="23" y="39" terrain="Field" longitude="122.29657" latitude="43.4874077" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
@@ -42672,11 +42685,17 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="24" y="29" terrain="ShallowWater" longitude="123.040413" latitude="37.8929977" />
     <Cell x="24" y="30" terrain="ShallowWater" longitude="123.018448" latitude="38.43349" />
     <Cell x="24" y="31" terrain="ShallowWater" longitude="122.995064" latitude="38.9717522" />
-    <Cell x="24" y="32" terrain="Field" longitude="122.968674" latitude="39.5067673" IsCoast="true" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="5/1" />
+    <Cell x="24" y="32" terrain="Field" longitude="122.968674" latitude="39.5067673" IsCoast="true" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="1/4">
+     <Label>
+      <english>Huayuankou</english>
+      <japanese>花園口</japanese>
+      <chineseSimplified>花园口</chineseSimplified>
+     </Label>
+    </Cell>
     <Cell x="24" y="33" terrain="Field" longitude="122.941582" latitude="40.039566" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
-    <Cell x="24" y="34" terrain="ForestRough" longitude="122.916626" latitude="40.5714836" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
+    <Cell x="24" y="34" terrain="ForestRough" longitude="122.916626" latitude="40.5714836" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="5/2/1" />
     <Cell x="24" y="35" terrain="Field" longitude="122.89534" latitude="41.1031837" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
-    <Cell x="24" y="36" terrain="Field" longitude="122.878342" latitude="41.6348839" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="4/1" />
+    <Cell x="24" y="36" terrain="Field" longitude="122.878342" latitude="41.6348839" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="1/5" />
     <Cell x="24" y="37" terrain="Field" longitude="122.865829" latitude="42.1665955" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="24" y="38" terrain="Field" longitude="122.857742" latitude="42.698246" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="24" y="39" terrain="Field" longitude="122.853889" latitude="43.2297249" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
@@ -42724,12 +42743,12 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="25" y="29" terrain="ShallowWater" longitude="123.570541" latitude="38.1699524" />
     <Cell x="25" y="30" terrain="ShallowWater" longitude="123.549484" latitude="38.7091751" />
     <Cell x="25" y="31" terrain="ShallowWater" longitude="123.526688" latitude="39.2459641" />
-    <Cell x="25" y="32" terrain="Field" longitude="123.502449" latitude="39.780304" IsCoast="true" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="4/1" riversStr="2" />
-    <Cell x="25" y="33" terrain="ForestRough" longitude="123.478767" latitude="40.313076" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
-    <Cell x="25" y="34" terrain="Forest" longitude="123.457527" latitude="40.8451042" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
-    <Cell x="25" y="35" terrain="Forest" longitude="123.439842" latitude="41.3768234" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
-    <Cell x="25" y="36" terrain="Field" longitude="123.426247" latitude="41.9083939" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="4/2" />
-    <Cell x="25" y="37" terrain="Field" longitude="123.416939" latitude="42.43981" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
+    <Cell x="25" y="32" terrain="Field" longitude="123.502449" latitude="39.780304" IsCoast="true" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="4/1/0" riversStr="2" />
+    <Cell x="25" y="33" terrain="ForestRough" longitude="123.478767" latitude="40.313076" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="3/1/5" />
+    <Cell x="25" y="34" terrain="Forest" longitude="123.457527" latitude="40.8451042" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="4/0" />
+    <Cell x="25" y="35" terrain="Forest" longitude="123.439842" latitude="41.3768234" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="3/1" />
+    <Cell x="25" y="36" terrain="Field" longitude="123.426247" latitude="41.9083939" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="4/2/0" />
+    <Cell x="25" y="37" terrain="Field" longitude="123.416939" latitude="42.43981" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="3/1" />
     <Cell x="25" y="38" terrain="Field" longitude="123.41188" latitude="42.9710159" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="25" y="39" terrain="Field" longitude="123.410919" latitude="43.5019226" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="26" y="0" terrain="DeepWater" longitude="124.660316" latitude="22.0009861" />
@@ -42766,9 +42785,9 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="26" y="31" terrain="ShallowWater" longitude="124.079994" latitude="38.98143" />
     <Cell x="26" y="32" terrain="ShallowWater" longitude="124.058922" latitude="39.5173454" riversStr="0/5" />
     <Cell x="26" y="33" terrain="ForestRough" longitude="124.0376" latitude="40.0514221" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="4/2" riversStr="2/3" />
-    <Cell x="26" y="34" terrain="Forest" longitude="124.017555" latitude="40.5843" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
+    <Cell x="26" y="34" terrain="Forest" longitude="124.017555" latitude="40.5843" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="4" />
     <Cell x="26" y="35" terrain="Forest" longitude="124.00013" latitude="41.116497" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
-    <Cell x="26" y="36" terrain="LightUrban" longitude="123.986168" latitude="41.64829" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="5/2">
+    <Cell x="26" y="36" terrain="LightUrban" longitude="123.986168" latitude="41.64829" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="5/2/4">
      <Label>
       <english>Mukden</english>
       <japanese>奉天</japanese>
@@ -42790,8 +42809,8 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
      </StrategicGroupReferences>
     </Cell>
     <Cell x="26" y="37" terrain="Forest" longitude="123.97612" latitude="42.17978" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
-    <Cell x="26" y="38" terrain="Forest" longitude="123.970177" latitude="42.7109528" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
-    <Cell x="26" y="39" terrain="Forest" longitude="123.968323" latitude="43.2417526" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
+    <Cell x="26" y="38" terrain="Forest" longitude="123.970177" latitude="42.7109528" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="4/0/2" />
+    <Cell x="26" y="39" terrain="Forest" longitude="123.968323" latitude="43.2417526" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="3/1" />
     <Cell x="27" y="0" terrain="DeepWater" longitude="125.115479" latitude="22.2946224" />
     <Cell x="27" y="1" terrain="DeepWater" longitude="125.061768" latitude="22.86179" />
     <Cell x="27" y="2" terrain="DeepWater" longitude="125.010559" latitude="23.4278831" />
@@ -42838,9 +42857,9 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="27" y="34" terrain="Forest" longitude="124.558594" latitude="40.8534851" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="27" y="35" terrain="Forest" longitude="124.545021" latitude="41.38588" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="5/2" />
     <Cell x="27" y="36" terrain="Forest" longitude="124.534828" latitude="41.9177628" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
-    <Cell x="27" y="37" terrain="Forest" longitude="124.528419" latitude="42.4491844" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
+    <Cell x="27" y="37" terrain="Forest" longitude="124.528419" latitude="42.4491844" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="5/2" />
     <Cell x="27" y="38" terrain="Forest" longitude="124.525955" latitude="42.98012" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
-    <Cell x="27" y="39" terrain="Forest" longitude="124.52742" latitude="43.51053" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
+    <Cell x="27" y="39" terrain="Forest" longitude="124.52742" latitude="43.51053" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="4" />
     <Cell x="28" y="0" terrain="DeepWater" longitude="125.629082" latitude="22.0187454" />
     <Cell x="28" y="1" terrain="DeepWater" longitude="125.57412" latitude="22.5857944" />
     <Cell x="28" y="2" terrain="DeepWater" longitude="125.52121" latitude="23.1519318" />
@@ -42860,7 +42879,13 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="28" y="10" terrain="DeepWater" longitude="125.337662" latitude="27.5981789" />
     <Cell x="28" y="11" terrain="DeepWater" longitude="125.337036" latitude="28.1447754" />
     <Cell x="28" y="12" terrain="ShallowWater" longitude="125.338013" latitude="28.6904488" />
-    <Cell x="28" y="13" terrain="ShallowWater" longitude="125.340271" latitude="29.2354221" />
+    <Cell x="28" y="13" terrain="ShallowWater" longitude="125.340271" latitude="29.2354221">
+     <Label>
+      <english>East China Sea</english>
+      <japanese>東シナ海</japanese>
+      <chineseSimplified>东海</chineseSimplified>
+     </Label>
+    </Cell>
     <Cell x="28" y="14" terrain="ShallowWater" longitude="125.343513" latitude="29.7798748" />
     <Cell x="28" y="15" terrain="ShallowWater" longitude="125.34742" latitude="30.323946" />
     <Cell x="28" y="16" terrain="ShallowWater" longitude="125.351563" latitude="30.86772" />
@@ -42890,7 +42915,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="28" y="34" terrain="Forest" longitude="125.11483" latitude="40.5875053" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" riversStr="2" />
     <Cell x="28" y="35" terrain="Forest" longitude="125.102379" latitude="41.12081" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="5/2" />
     <Cell x="28" y="36" terrain="Forest" longitude="125.092667" latitude="41.6534081" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
-    <Cell x="28" y="37" terrain="Forest" longitude="125.086273" latitude="42.1853752" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
+    <Cell x="28" y="37" terrain="Forest" longitude="125.086273" latitude="42.1853752" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="5" />
     <Cell x="28" y="38" terrain="Forest" longitude="125.083549" latitude="42.716713" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="28" y="39" terrain="Forest" longitude="125.084641" latitude="43.2473946" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="29" y="0" terrain="DeepWater" longitude="126.091148" latitude="22.3082886" />
@@ -43014,9 +43039,9 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
      </StrategicGroupReferences>
     </Cell>
     <Cell x="30" y="29" terrain="Field" longitude="126.259094" latitude="37.8937836" IsCoast="true" roadsStr="2/5" />
-    <Cell x="30" y="30" terrain="Field" longitude="126.24894" latitude="38.4332237" />
+    <Cell x="30" y="30" terrain="Field" longitude="126.24894" latitude="38.4332237" roadsStr="2" />
     <Cell x="30" y="31" terrain="ForestRough" longitude="126.239128" latitude="38.97187" />
-    <Cell x="30" y="32" terrain="ForestRough" longitude="126.229492" latitude="39.50954" roadsStr="1/4/2/0" />
+    <Cell x="30" y="32" terrain="ForestRough" longitude="126.229492" latitude="39.50954" roadsStr="4/2/0" />
     <Cell x="30" y="33" terrain="ForestRough" longitude="126.220192" latitude="40.0461769" roadsStr="0/3" />
     <Cell x="30" y="34" terrain="ForestRough" longitude="126.211716" latitude="40.5818253" roadsStr="5/3" riversStr="5" />
     <Cell x="30" y="35" terrain="ForestRough" longitude="126.20472" latitude="41.11655" riversStr="4/5/0/1" />
@@ -43067,7 +43092,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
       </StrategicGroupReference>
      </StrategicGroupReferences>
     </Cell>
-    <Cell x="31" y="28" terrain="LightUrban" longitude="126.796326" latitude="37.6154976" IsCoast="true" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" roadsStr="5/3/1">
+    <Cell x="31" y="28" terrain="LightUrban" longitude="126.796326" latitude="37.6154976" IsCoast="true" sideObjectIdHex="3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d" roadsStr="5/3/1/2/0">
      <Label>
       <english>Soul</english>
       <japanese>京城</japanese>
@@ -43082,10 +43107,10 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
       </StrategicGroupReference>
      </StrategicGroupReferences>
     </Cell>
-    <Cell x="31" y="29" terrain="Field" longitude="126.788933" latitude="38.155262" />
+    <Cell x="31" y="29" terrain="Field" longitude="126.788933" latitude="38.155262" roadsStr="3/5" />
     <Cell x="31" y="30" terrain="ForestRough" longitude="126.782158" latitude="38.6945343" />
-    <Cell x="31" y="31" terrain="ForestRough" longitude="126.775665" latitude="39.23311" roadsStr="2/5" />
-    <Cell x="31" y="32" terrain="ForestRough" longitude="126.7694" latitude="39.77085" roadsStr="1/4" />
+    <Cell x="31" y="31" terrain="ForestRough" longitude="126.775665" latitude="39.23311" roadsStr="2/5/1" />
+    <Cell x="31" y="32" terrain="ForestRough" longitude="126.7694" latitude="39.77085" />
     <Cell x="31" y="33" terrain="Mountain" longitude="126.763596" latitude="40.30771" />
     <Cell x="31" y="34" terrain="Mountain" longitude="126.758728" latitude="40.8436737" riversStr="0" />
     <Cell x="31" y="35" terrain="ForestRough" longitude="126.755417" latitude="41.37873" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" riversStr="4/3/2" />
@@ -43118,10 +43143,10 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="32" y="22" terrain="ShallowWater" longitude="127.39312" latitude="34.0996552" />
     <Cell x="32" y="23" terrain="Field" longitude="127.379433" latitude="34.6382179" IsCoast="true" roadsStr="0/1" />
     <Cell x="32" y="24" terrain="Field" longitude="127.365913" latitude="35.1769" roadsStr="0/3" />
-    <Cell x="32" y="25" terrain="Field" longitude="127.353905" latitude="35.7158966" roadsStr="5/3" />
-    <Cell x="32" y="26" terrain="ForestRough" longitude="127.343994" latitude="36.2552757" />
-    <Cell x="32" y="27" terrain="Field" longitude="127.336266" latitude="36.79499" />
-    <Cell x="32" y="28" terrain="Field" longitude="127.330429" latitude="37.3349075" />
+    <Cell x="32" y="25" terrain="Field" longitude="127.353905" latitude="35.7158966" roadsStr="5/3/0" />
+    <Cell x="32" y="26" terrain="ForestRough" longitude="127.343994" latitude="36.2552757" roadsStr="0/3/2" />
+    <Cell x="32" y="27" terrain="Field" longitude="127.336266" latitude="36.79499" roadsStr="0/3/1" />
+    <Cell x="32" y="28" terrain="Field" longitude="127.330429" latitude="37.3349075" roadsStr="5/3" />
     <Cell x="32" y="29" terrain="ForestRough" longitude="127.326012" latitude="37.874836" roadsStr="4/1" />
     <Cell x="32" y="30" terrain="ForestRough" longitude="127.322472" latitude="38.414547" />
     <Cell x="32" y="31" terrain="ForestRough" longitude="127.319359" latitude="38.9538345" IsCoast="true" roadsStr="2/5">
@@ -43131,8 +43156,8 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
       <chineseSimplified>元山</chineseSimplified>
      </Label>
     </Cell>
-    <Cell x="32" y="32" terrain="ForestRough" longitude="127.316422" latitude="39.492527" IsCoast="true" />
-    <Cell x="32" y="33" terrain="ForestRough" longitude="127.313667" latitude="40.0305061" roadsStr="1/4" />
+    <Cell x="32" y="32" terrain="ForestRough" longitude="127.316422" latitude="39.492527" IsCoast="true" roadsStr="0/4" />
+    <Cell x="32" y="33" terrain="ForestRough" longitude="127.313667" latitude="40.0305061" roadsStr="1/3" />
     <Cell x="32" y="34" terrain="Mountain" longitude="127.311394" latitude="40.5677071" />
     <Cell x="32" y="35" terrain="Mountain" longitude="127.310081" latitude="41.1040535" riversStr="5/0" />
     <Cell x="32" y="36" terrain="ForestRough" longitude="127.310371" latitude="41.63945" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" riversStr="3/2" />
@@ -43164,9 +43189,9 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="33" y="22" terrain="ShallowWater" longitude="127.896317" latitude="34.35693" />
     <Cell x="33" y="23" terrain="ForestRough" longitude="127.885864" latitude="34.8953133" IsCoast="true" roadsStr="4/1" />
     <Cell x="33" y="24" terrain="ForestRough" longitude="127.876488" latitude="35.4339333" />
-    <Cell x="33" y="25" terrain="ForestRough" longitude="127.869141" latitude="35.9729347" />
+    <Cell x="33" y="25" terrain="ForestRough" longitude="127.869141" latitude="35.9729347" roadsStr="5/2" />
     <Cell x="33" y="26" terrain="Field" longitude="127.86412" latitude="36.51235" />
-    <Cell x="33" y="27" terrain="ForestRough" longitude="127.861252" latitude="37.0521049" />
+    <Cell x="33" y="27" terrain="ForestRough" longitude="127.861252" latitude="37.0521049" roadsStr="2/4" />
     <Cell x="33" y="28" terrain="ForestRough" longitude="127.860085" latitude="37.5920677" />
     <Cell x="33" y="29" terrain="ForestRough" longitude="127.860039" latitude="38.1320534" roadsStr="2/0/4" />
     <Cell x="33" y="30" terrain="ForestRough" longitude="127.860573" latitude="38.6718674" IsCoast="true" roadsStr="3/5" />
@@ -43209,10 +43234,10 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="34" y="21" terrain="ShallowWater" longitude="128.412735" latitude="33.5350266" />
     <Cell x="34" y="22" terrain="ShallowWater" longitude="128.40773" latitude="34.07347" />
     <Cell x="34" y="23" terrain="Field" longitude="128.40097" latitude="34.6116562" IsCoast="true" />
-    <Cell x="34" y="24" terrain="Field" longitude="128.394684" latitude="35.1499519" roadsStr="4/1" />
-    <Cell x="34" y="25" terrain="Field" longitude="128.390259" latitude="35.68859" />
+    <Cell x="34" y="24" terrain="Field" longitude="128.394684" latitude="35.1499519" roadsStr="4/1/0" />
+    <Cell x="34" y="25" terrain="Field" longitude="128.390259" latitude="35.68859" roadsStr="5/3" />
     <Cell x="34" y="26" terrain="Field" longitude="128.38826" latitude="36.2276726" />
-    <Cell x="34" y="27" terrain="ForestRough" longitude="128.388641" latitude="36.7671967" />
+    <Cell x="34" y="27" terrain="ForestRough" longitude="128.388641" latitude="36.7671967" roadsStr="2/5" />
     <Cell x="34" y="28" terrain="ForestRough" longitude="128.391" latitude="37.3070831" roadsStr="2/0" />
     <Cell x="34" y="29" terrain="ForestRough" longitude="128.39476" latitude="37.84719" IsCoast="true" roadsStr="3/5" />
     <Cell x="34" y="30" terrain="ForestRough" longitude="128.399261" latitude="38.3873558" IsCoast="true" />
@@ -43257,7 +43282,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     </Cell>
     <Cell x="35" y="24" terrain="Field" longitude="128.9074" latitude="35.4023323" IsCoast="true" roadsStr="4/3/0" />
     <Cell x="35" y="25" terrain="Field" longitude="128.908615" latitude="35.94106" roadsStr="3/0" />
-    <Cell x="35" y="26" terrain="ForestRough" longitude="128.912491" latitude="36.4802933" roadsStr="3/0" />
+    <Cell x="35" y="26" terrain="ForestRough" longitude="128.912491" latitude="36.4802933" roadsStr="3/0/5" />
     <Cell x="35" y="27" terrain="ForestRough" longitude="128.918671" latitude="37.0200043" IsCoast="true" roadsStr="3/5" />
     <Cell x="35" y="28" terrain="ForestRough" longitude="128.926529" latitude="37.56011" IsCoast="true" />
     <Cell x="35" y="29" terrain="DeepWater" longitude="128.935349" latitude="38.1004677" />
@@ -43266,8 +43291,8 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="35" y="32" terrain="DeepWater" longitude="128.961685" latitude="39.72155" />
     <Cell x="35" y="33" terrain="ShallowWater" longitude="128.969482" latitude="40.2614021" />
     <Cell x="35" y="34" terrain="ForestRough" longitude="128.976929" latitude="40.8007355" IsCoast="true" roadsStr="0/4" />
-    <Cell x="35" y="35" terrain="ForestRough" longitude="128.984543" latitude="41.33933" roadsStr="0/3" />
-    <Cell x="35" y="36" terrain="Clear" longitude="128.993057" latitude="41.8768845" roadsStr="3/1" riversStr="5/0/1" />
+    <Cell x="35" y="35" terrain="ForestRough" longitude="128.984543" latitude="41.33933" roadsStr="3/1" />
+    <Cell x="35" y="36" terrain="Clear" longitude="128.993057" latitude="41.8768845" riversStr="5/0/1" />
     <Cell x="35" y="37" terrain="ForestRough" longitude="129.003418" latitude="42.4130325" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" riversStr="3" />
     <Cell x="35" y="38" terrain="ForestRough" longitude="129.016678" latitude="42.94735" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="35" y="39" terrain="ForestRough" longitude="129.033585" latitude="43.4795532" />
@@ -43319,9 +43344,9 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="36" y="33" terrain="DeepWater" longitude="129.521088" latitude="39.97449" />
     <Cell x="36" y="34" terrain="ShallowWater" longitude="129.532135" latitude="40.5148849" />
     <Cell x="36" y="35" terrain="ForestRough" longitude="129.542587" latitude="41.05476" IsCoast="true" />
-    <Cell x="36" y="36" terrain="ForestRough" longitude="129.553055" latitude="41.5938377" IsCoast="true" riversStr="0" />
-    <Cell x="36" y="37" terrain="ForestRough" longitude="129.564453" latitude="42.1317253" roadsStr="4/0" riversStr="4/3" />
-    <Cell x="36" y="38" terrain="ForestRough" longitude="129.578018" latitude="42.6679039" roadsStr="1/3" />
+    <Cell x="36" y="36" terrain="ForestRough" longitude="129.553055" latitude="41.5938377" IsCoast="true" roadsStr="0/4" riversStr="0" />
+    <Cell x="36" y="37" terrain="ForestRough" longitude="129.564453" latitude="42.1317253" roadsStr="1/3" riversStr="4/3" />
+    <Cell x="36" y="38" terrain="ForestRough" longitude="129.578018" latitude="42.6679039" />
     <Cell x="36" y="39" terrain="ForestRough" longitude="129.594986" latitude="43.2018356" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="37" y="0" terrain="DeepWater" longitude="130.138885" latitude="22.2991486" />
     <Cell x="37" y="1" terrain="DeepWater" longitude="130.093765" latitude="22.85816" />
@@ -43371,8 +43396,8 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="37" y="34" terrain="DeepWater" longitude="130.101089" latitude="40.7670174" />
     <Cell x="37" y="35" terrain="DeepWater" longitude="130.114258" latitude="41.3074226" />
     <Cell x="37" y="36" terrain="ShallowWater" longitude="130.127335" latitude="41.84694" />
-    <Cell x="37" y="37" terrain="ForestRough" longitude="130.141464" latitude="42.3850555" IsCoast="true" sideObjectIdHex="6900b3ca-0f12-491a-9799-2e499a9d6e3e" />
-    <Cell x="37" y="38" terrain="ForestRough" longitude="130.158279" latitude="42.92106" sideObjectIdHex="6900b3ca-0f12-491a-9799-2e499a9d6e3e" roadsStr="1/4" />
+    <Cell x="37" y="37" terrain="ForestRough" longitude="130.141464" latitude="42.3850555" IsCoast="true" sideObjectIdHex="6900b3ca-0f12-491a-9799-2e499a9d6e3e" roadsStr="4" />
+    <Cell x="37" y="38" terrain="ForestRough" longitude="130.158279" latitude="42.92106" sideObjectIdHex="6900b3ca-0f12-491a-9799-2e499a9d6e3e" />
     <Cell x="37" y="39" terrain="ForestRough" longitude="130.1793" latitude="43.454258" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="38" y="0" terrain="DeepWater" longitude="130.681717" latitude="22.0127335" />
     <Cell x="38" y="1" terrain="DeepWater" longitude="130.636139" latitude="22.5714436" />
@@ -43413,7 +43438,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="38" y="36" terrain="DeepWater" longitude="130.6922" latitude="41.5586357" />
     <Cell x="38" y="37" terrain="ShallowWater" longitude="130.707657" latitude="42.09851" />
     <Cell x="38" y="38" terrain="ForestRough" longitude="130.724426" latitude="42.6367073" IsCoast="true" sideObjectIdHex="6900b3ca-0f12-491a-9799-2e499a9d6e3e" />
-    <Cell x="38" y="39" terrain="ForestRough" longitude="130.7448" latitude="43.1721764" sideObjectIdHex="6900b3ca-0f12-491a-9799-2e499a9d6e3e" roadsStr="1/4" />
+    <Cell x="38" y="39" terrain="ForestRough" longitude="130.7448" latitude="43.1721764" sideObjectIdHex="6900b3ca-0f12-491a-9799-2e499a9d6e3e" />
     <Cell x="39" y="0" terrain="DeepWater" longitude="131.180725" latitude="22.284317" />
     <Cell x="39" y="1" terrain="DeepWater" longitude="131.1379" latitude="22.8414974" />
     <Cell x="39" y="2" terrain="DeepWater" longitude="131.098663" latitude="23.3973179" />
@@ -43453,7 +43478,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="39" y="36" terrain="DeepWater" longitude="131.2767" latitude="41.8082275" />
     <Cell x="39" y="37" terrain="ShallowWater" longitude="131.294418" latitude="42.34831" />
     <Cell x="39" y="38" terrain="ForestRough" longitude="131.3139" latitude="42.88634" IsCoast="true" sideObjectIdHex="6900b3ca-0f12-491a-9799-2e499a9d6e3e" />
-    <Cell x="39" y="39" terrain="ForestRough" longitude="131.338745" latitude="43.4206429" sideObjectIdHex="6900b3ca-0f12-491a-9799-2e499a9d6e3e" roadsStr="2/4" />
+    <Cell x="39" y="39" terrain="ForestRough" longitude="131.338745" latitude="43.4206429" sideObjectIdHex="6900b3ca-0f12-491a-9799-2e499a9d6e3e" />
     <Cell x="40" y="0" terrain="DeepWater" longitude="131.727356" latitude="21.99686" />
     <Cell x="40" y="1" terrain="DeepWater" longitude="131.684067" latitude="22.5537567" />
     <Cell x="40" y="2" terrain="DeepWater" longitude="131.644012" latitude="23.1093769" />
@@ -43493,7 +43518,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="40" y="36" terrain="DeepWater" longitude="131.848083" latitude="41.51454" />
     <Cell x="40" y="37" terrain="DeepWater" longitude="131.86824" latitude="42.0559158" />
     <Cell x="40" y="38" terrain="ShallowWater" longitude="131.888428" latitude="42.59588" />
-    <Cell x="40" y="39" terrain="LightUrban" longitude="131.9113" latitude="43.1332" GroundControlPoint="true" IsCoast="true" sideObjectIdHex="6900b3ca-0f12-491a-9799-2e499a9d6e3e" roadsStr="5">
+    <Cell x="40" y="39" terrain="LightUrban" longitude="131.9113" latitude="43.1332" GroundControlPoint="true" IsCoast="true" sideObjectIdHex="6900b3ca-0f12-491a-9799-2e499a9d6e3e">
      <Label>
       <english>Vladivostok</english>
       <japanese>ウラジオストク</japanese>
@@ -43597,9 +43622,6 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
        <referenceId>748b4491-cf73-4f62-8f7d-075e0dcdec09</referenceId>
       </StrategicGroupReference>
       <StrategicGroupReference>
-       <referenceId>c48c4012-e43a-4933-8cc9-5e8755cf6b7f</referenceId>
-      </StrategicGroupReference>
-      <StrategicGroupReference>
        <referenceId>1ca93054-7ae0-4bd5-bfb4-2643c57fa8b5</referenceId>
       </StrategicGroupReference>
      </StrategicGroupReferences>
@@ -43651,7 +43673,13 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="43" y="28" terrain="DeepWater" longitude="133.299042" latitude="37.3620758" />
     <Cell x="43" y="29" terrain="DeepWater" longitude="133.352127" latitude="37.9036026" />
     <Cell x="43" y="30" terrain="DeepWater" longitude="133.402374" latitude="38.44584" />
-    <Cell x="43" y="31" terrain="DeepWater" longitude="133.449234" latitude="38.9886131" />
+    <Cell x="43" y="31" terrain="DeepWater" longitude="133.449234" latitude="38.9886131">
+     <Label>
+      <english>Sea of Japan</english>
+      <japanese>日本海</japanese>
+      <chineseSimplified>日本海</chineseSimplified>
+     </Label>
+    </Cell>
     <Cell x="43" y="32" terrain="DeepWater" longitude="133.492462" latitude="39.53175" />
     <Cell x="43" y="33" terrain="DeepWater" longitude="133.532028" latitude="40.075058" />
     <Cell x="43" y="34" terrain="DeepWater" longitude="133.568115" latitude="40.6183243" />
@@ -44135,7 +44163,13 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="55" y="14" terrain="DeepWater" longitude="139.712112" latitude="29.58246" />
     <Cell x="55" y="15" terrain="DeepWater" longitude="139.726959" latitude="30.1107025" />
     <Cell x="55" y="16" terrain="DeepWater" longitude="139.7459" latitude="30.638195" />
-    <Cell x="55" y="17" terrain="DeepWater" longitude="139.769531" latitude="31.1650734" />
+    <Cell x="55" y="17" terrain="DeepWater" longitude="139.769531" latitude="31.1650734">
+     <Label>
+      <english>Pacific Ocean</english>
+      <japanese>太平洋</japanese>
+      <chineseSimplified>太平洋</chineseSimplified>
+     </Label>
+    </Cell>
     <Cell x="55" y="18" terrain="DeepWater" longitude="139.79863" latitude="31.6914978" />
     <Cell x="55" y="19" terrain="DeepWater" longitude="139.834122" latitude="32.21766" />
     <Cell x="55" y="20" terrain="DeepWater" longitude="139.877029" latitude="32.7437668" />
@@ -44334,8 +44368,8 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
   </serializedCells>
  </gameState>
  <viewState>
-  <xPosition>1.907681</xPosition>
-  <yPosition>11.3546181</yPosition>
+  <xPosition>3.44878149</xPosition>
+  <yPosition>9.235607</yPosition>
   <orthographicSize>11</orthographicSize>
   <hitAreaMapRecords>
    <HitAreaMapRecord hitAreaObjectId="0b2cbd39-ad25-4233-b5a1-5744048e7491" areaCellObjectId="" />

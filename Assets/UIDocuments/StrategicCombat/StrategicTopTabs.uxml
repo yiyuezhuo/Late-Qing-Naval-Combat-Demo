@@ -39,9 +39,15 @@
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000021)"/>
                         </Bindings>
                     </ui:Button>
-                    <ui:Button text="Select Side" name="QuickViewerSideButtonCommand">
+                    <ui:Button text="Select Side" name="QuickViewerSideButton">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(79786762512797696)"/>
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="Group" name="StrategicGroupEditorButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(203935249502208)"/>
+                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                         </Bindings>
                     </ui:Button>
                     <ui:Label text="Edit Mode">
@@ -57,6 +63,16 @@
                     <ui:Button text="Run Debug Script" name="RunDebugScriptButton">
                         <Bindings>
                             <ui:DataBinding property="style.display" data-source-path="isInUnityEditor" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="Side State" name="SideStateButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(357022840819712)"/>
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="Theater" name="TheaterButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-67)"/>
                         </Bindings>
                     </ui:Button>
                 </ui:VisualElement>
@@ -125,24 +141,12 @@
                             <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                         </Bindings>
                     </ui:Button>
-                    <ui:Button text="Group" name="StrategicGroupEditorButton">
-                        <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(203935249502208)"/>
-                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
-                        </Bindings>
-                    </ui:Button>
                     <ui:Button text="Move (Edit, Alt+M)" name="EditMoveButton">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(360963381039104)"/>
                             <ui:DataBinding property="enabledSelf" data-source-path="selectedStrategicGroupObservable" binding-mode="ToTarget"/>
                         </Bindings>
                     </ui:Button>
-                    <ui:Button text="Side State" name="SideStateButton">
-                        <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(357022840819712)"/>
-                        </Bindings>
-                    </ui:Button>
-                    <ui:Button text="Viewer Side (Quick)" name="QuickViewerSideButton"/>
                     <ui:VisualElement style="flex-direction: row; align-items: center;">
                         <ui:Label text="Viewer">
                             <Bindings>
@@ -168,12 +172,6 @@
                         </Bindings>
                     </ui:Button>
                     <ui:Button text="Scenario State" name="StrategicScenarioStateButton"/>
-                    <ui:Button text="Theater" name="TheaterButton">
-                        <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-67)"/>
-                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
-                        </Bindings>
-                    </ui:Button>
                 </ui:VisualElement>
                 <Bindings>
                     <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(61775904673792)"/>

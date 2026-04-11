@@ -84,6 +84,17 @@
                                 </ui:Button>
                             </ui:VisualElement>
                             <ui:ListView header-title="Sub Missions" show-add-remove-footer="true" show-foldout-header="true" name="ChildrenMissionsListView" data-source-path="childrenMissionRefs" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/Templates/StrategicMissionRefItem.uxml?fileID=9197481963319205126&amp;guid=1c982627f2203144681397daae23b597&amp;type=3#StrategicMissionRefItem" fixed-item-height="30"/>
+                            <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                                <ui:Label text="Current Target"/>
+                                <ui:Label text="Target Cell" style="flex-grow: 1;">
+                                    <Bindings>
+                                        <ui:DataBinding property="text" data-source-path="landOperationCurrentTarget" binding-mode="ToTarget"/>
+                                    </Bindings>
+                                </ui:Label>
+                                <Bindings>
+                                    <ui:DataBinding property="style.display" data-source-path="hasLandOperationCurrentTarget" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
+                                </Bindings>
+                            </ui:VisualElement>
                             <ui:VisualElement style="flex-grow: 0;">
                                 <ui:VisualElement data-source-path="asPatrol" style="flex-grow: 1;">
                                     <ui:EnumField label="Patrol State" value="Center" type="StrategicCombatCore.PatrolMission+PatrolState, Assembly-CSharp">

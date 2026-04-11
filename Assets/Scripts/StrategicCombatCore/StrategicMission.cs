@@ -170,6 +170,22 @@ namespace StrategicCombatCore
             return waypoints.Count == 0 ? null : waypoints[^1].GetCell();
         }
 
+        public Cell GetLandOperationCurrentTargetCell()
+        {
+            var missionSide = GetSide();
+            foreach (var waypoint in waypoints)
+            {
+                var cell = waypoint?.GetCell();
+                if (cell == null)
+                    continue;
+
+                if (missionSide == null || cell.GetHexSide() != missionSide)
+                    return cell;
+            }
+
+            return null;
+        }
+
 
         public IEnumerable<T> WalkGroupMembers<T>() where T : IStrategicGroupMemberReferenceable
         {

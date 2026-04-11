@@ -54,6 +54,9 @@ namespace StrategicCombatCore
                     country = originalParent.country,
                     // autoCombinable = true,
                     dissolvable = true,
+                    plannedPath = originalParent.plannedPath?.Select(xy => xy?.Clone()).Where(xy => xy != null).ToList() ?? new(),
+                    embarkingLandingPairs = originalParent.embarkingLandingPairs?.Select(pair => pair?.Clone()).Where(pair => pair != null).ToList() ?? new(),
+                    moveProgressionKm = originalParent.moveProgressionKm,
                     // containerObjectId = ships[0].objectId,
                 };
                 StrategicGameState.Instance.strategicGroups.Add(newDissolvableGroup);

@@ -98,6 +98,31 @@ namespace StrategicCombatCore
 
         public string GetAreaCellName() => areaCellObjectId != null ? EntityManager.Instance.Get<Cell>(areaCellObjectId)?.Label?.GetShortName() : areaCellObjectId;
         public GlobalString GetAreaCellNameGlobalString() => areaCellObjectId != null ? EntityManager.Instance.Get<Cell>(areaCellObjectId)?.Label : new(){english=areaCellObjectId};
+
+        public XY Clone()
+        {
+            return new XY()
+            {
+                x = x,
+                y = y,
+                areaCellObjectId = areaCellObjectId,
+            };
+        }
+    }
+
+    public class EmbarkingLandingPair
+    {
+        public XY embarking;
+        public XY landing;
+
+        public EmbarkingLandingPair Clone()
+        {
+            return new EmbarkingLandingPair()
+            {
+                embarking = embarking?.Clone(),
+                landing = landing?.Clone(),
+            };
+        }
     }
 
     public partial class StrategicGroup : IObjectIdLabeled, IStrategicGroupMemberReferenceable, INamed
@@ -218,8 +243,10 @@ namespace StrategicCombatCore
         public string homeBaseObjectId;
         public NavySubMission navySubMission;
         public XY navalTransportTarget;
+        public List<EmbarkingLandingPair> embarkingLandingPairs = new();
 
-        public bool ShouldSerializeNavalTransportTarget() => GetNavalTransportTargetCell() != null;
+        public bool ShouldSerializeNavalTransportTarget() => false;
+        public bool ShouldSerializeEmbarkingLandingPairs() => embarkingLandingPairs != null && embarkingLandingPairs.Count > 0;
 
         static readonly GlobalString advanceBaseSuffix = new()
         {
@@ -334,13 +361,123 @@ namespace StrategicCombatCore
             return GetNearestFriendlyBaseDepot(cache);
         }
 
-        public Cell GetNavalTransportTargetCell() => navalTransportTarget?.GetCell();
+        public EmbarkingLandingPair GetCurrentEmbarkingLandingPair()
+        {
+            return embarkingLandingPairs?
+                .FirstOrDefault(pair => pair?.embarking?.GetCell() != null && pair.landing?.GetCell() != null);
+        }
+
+        public Cell GetCurrentEmbarkingCell() => GetCurrentEmbarkingLandingPair()?.embarking?.GetCell();
+        public Cell GetCurrentLandingCell() => GetCurrentEmbarkingLandingPair()?.landing?.GetCell();
+        public Cell GetNavalTransportTargetCell() => GetCurrentLandingCell() ?? navalTransportTarget?.GetCell();
 
         public bool HasNavalTransportTarget() => GetNavalTransportTargetCell() != null;
 
         public void ClearNavalTransportTarget()
         {
             navalTransportTarget = null;
+            ClearEmbarkingLandingPairs();
+        }
+
+        public void ClearEmbarkingLandingPairs()
+        {
+            embarkingLandingPairs?.Clear();
+        }
+
+        public void SetEmbarkingLandingPairs(IEnumerable<EmbarkingLandingPair> pairs)
+        {
+            embarkingLandingPairs = pairs?
+                .Where(pair => pair?.embarking != null && pair.landing != null)
+                .Select(pair => pair.Clone())
+                .ToList() ?? new List<EmbarkingLandingPair>();
+            navalTransportTarget = null;
+        }
+
+        public void AppendEmbarkingLandingPairs(IEnumerable<EmbarkingLandingPair> pairs)
+        {
+            embarkingLandingPairs ??= new();
+            if (pairs == null)
+                return;
+
+            embarkingLandingPairs.AddRange(pairs
+                .Where(pair => pair?.embarking != null && pair.landing != null)
+                .Select(pair => pair.Clone()));
+            navalTransportTarget = null;
+        }
+
+        public List<Cell> GetCurrentNavalTransportPathCells()
+        {
+            var pair = GetCurrentEmbarkingLandingPair();
+            var embarkingCell = pair?.embarking?.GetCell();
+            var landingCell = pair?.landing?.GetCell();
+            if (embarkingCell == null || landingCell == null)
+                return new();
+
+            var embarkingIndex = FindPlannedPathCellIndex(embarkingCell);
+            var landingIndex = embarkingIndex >= 0 ? FindPlannedPathCellIndex(landingCell, embarkingIndex + 1) : -1;
+            if (embarkingIndex >= 0 && landingIndex > embarkingIndex)
+            {
+                return plannedPath
+                    .Skip(embarkingIndex)
+                    .Take(landingIndex - embarkingIndex + 1)
+                    .Select(xy => xy?.GetCell())
+                    .Where(cell => cell != null)
+                    .ToList();
+            }
+
+            return new() { embarkingCell, landingCell };
+        }
+
+        public void CompleteCurrentNavalTransportTransfer(Cell landingCell)
+        {
+            var targetLandingCell = GetCurrentLandingCell() ?? landingCell;
+            if (embarkingLandingPairs != null && embarkingLandingPairs.Count > 0)
+            {
+                embarkingLandingPairs.RemoveAt(0);
+            }
+
+            navalTransportTarget = null;
+            TrimPlannedPathThroughLanding(targetLandingCell);
+        }
+
+        int FindPlannedPathCellIndex(Cell targetCell, int startIndex = 0)
+        {
+            if (targetCell == null || plannedPath == null)
+                return -1;
+
+            for (var idx = Math.Max(0, startIndex); idx < plannedPath.Count; idx++)
+            {
+                if (plannedPath[idx]?.GetCell() == targetCell)
+                    return idx;
+            }
+
+            return -1;
+        }
+
+        void TrimPlannedPathThroughLanding(Cell landingCell)
+        {
+            if (landingCell == null || plannedPath == null || plannedPath.Count == 0)
+            {
+                ClearPlannedPath();
+                return;
+            }
+
+            var landingIndex = FindPlannedPathCellIndex(landingCell);
+            if (landingIndex > 0)
+            {
+                plannedPath.RemoveRange(0, landingIndex);
+            }
+            else if (landingIndex < 0)
+            {
+                plannedPath.Clear();
+                plannedPath.Add(landingCell.ToXY());
+            }
+
+            moveProgressionKm = 0;
+            if (plannedPath.Count < 2)
+            {
+                plannedPath.Clear();
+            }
         }
 
         public bool IsValidNavalTransportTargetCell(Cell targetCell)
@@ -382,14 +519,25 @@ namespace StrategicCombatCore
 
         public bool IsReadyForNavalTransportTransfer()
         {
-            return !IsNavy() &&
-                !IsBase() &&
-                deployState == DeployState.Independent &&
-                cell != null &&
-                containerObjectId == null &&
-                GetAssignedMission() == null &&
-                plannedPath.Count == 0 &&
-                HasNavalTransportTarget() &&
+            if (IsNavy() ||
+                IsBase() ||
+                deployState != DeployState.Independent ||
+                cell == null ||
+                containerObjectId != null ||
+                GetAssignedMission() != null)
+            {
+                return false;
+            }
+
+            var currentPair = GetCurrentEmbarkingLandingPair();
+            var hasCurrentEmbarkingLandingPair = currentPair != null &&
+                currentPair.embarking?.GetCell() == cell &&
+                currentPair.landing?.GetCell() != null;
+            var hasLegacyNavalTransportTarget = currentPair == null &&
+                (plannedPath?.Count ?? 0) == 0 &&
+                navalTransportTarget?.GetCell() != null;
+
+            return (hasCurrentEmbarkingLandingPair || hasLegacyNavalTransportTarget) &&
                 GetFriendlyBaseOnCurrentCell() != null;
         }
 
@@ -611,6 +759,9 @@ namespace StrategicCombatCore
 
             if (cell == toCell)
                 return true;
+
+            if (IsArmy() && !toCell.IsArmyPassable())
+                return false;
 
             return !IsNavy() || !CellHasHostileFortifiedBaseFor(toCell, side);
         }
@@ -895,7 +1046,7 @@ namespace StrategicCombatCore
             return true;
         }
         
-        public void UnloadFromContainer()
+        public void UnloadFromContainer(bool clearPlannedPath = true)
         {
             if(containerObjectId != null)
             {
@@ -909,7 +1060,10 @@ namespace StrategicCombatCore
                         MoveToCell(containerGroup.cell, false);
                         container.loadedGroups.RemoveAll(r => r.referenceId == objectId);
                         containerObjectId = null;
-                        ClearPlannedPath();
+                        if (clearPlannedPath)
+                        {
+                            ClearPlannedPath();
+                        }
                     }
                 }
             }
@@ -1001,10 +1155,17 @@ namespace StrategicCombatCore
             
             if (IsArmy())
             {
+                if (cell == null || side == null)
+                    return 0;
+
+                if (IsReadyForNavalTransportTransfer())
+                    return 0;
+
                 var nextCell = GetPathNextCell();
                 if (nextCell != null && cell.TryGetDirection(nextCell, out var edge))
                 {
-                    if (cell.GetEdgeSide(edge).objectId != side.objectId)
+                    var edgeSide = cell.GetEdgeSide(edge);
+                    if (edgeSide == null || edgeSide.objectId != side.objectId)
                         return 0; // edge control block
 
                     var normalSpeedKmPerHour = GetSpeedKmPerHour(cell, nextCell);
@@ -1167,6 +1328,9 @@ namespace StrategicCombatCore
 
         public void LoadToShip(ShipLog shipLog)
         {
+            if (shipLog == null || string.IsNullOrWhiteSpace(objectId))
+                return;
+
             if (deployState == DeployState.Combined)
             {
                 autoCombinable = true;
@@ -1179,6 +1343,7 @@ namespace StrategicCombatCore
             deployState = DeployState.NotDeployed;
 
             containerObjectId = shipLog.objectId;
+            shipLog.loadedGroups.RemoveAll(reference => reference.referenceId == objectId);
             shipLog.loadedGroups.Add(new() { referenceId = objectId });
         }
 
@@ -1308,6 +1473,7 @@ namespace StrategicCombatCore
             if(newPlannedPath.Count < 2)
             {
                 plannedPath.Clear();
+                ClearEmbarkingLandingPairs();
                 moveProgressionKm = 0;
                 return;
             }
@@ -1317,6 +1483,7 @@ namespace StrategicCombatCore
             {
                 moveProgressionKm = 0;
             }
+            ClearEmbarkingLandingPairs();
             plannedPath.Clear();
             plannedPath.AddRange(newPlannedPath);
         }
@@ -1444,6 +1611,7 @@ namespace StrategicCombatCore
         public void ClearPlannedPath()
         {
             plannedPath.Clear();
+            ClearEmbarkingLandingPairs();
             moveProgressionKm = 0;
         }
 
@@ -1524,9 +1692,18 @@ namespace StrategicCombatCore
                     if (loadedGroupRef.Get() is not StrategicGroup loadedGroup)
                         continue;
 
-                    loadedGroup.UnloadFromContainer();
-                    loadedGroup.ClearNavalTransportTarget();
-                    unloadedAnyCargo = true;
+                    if (loadedGroup.containerObjectId != ship.objectId)
+                    {
+                        ship.loadedGroups.RemoveAll(reference => reference.referenceId == loadedGroup.objectId);
+                        continue;
+                    }
+
+                    loadedGroup.UnloadFromContainer(false);
+                    if (loadedGroup.containerObjectId == null)
+                    {
+                        loadedGroup.CompleteCurrentNavalTransportTransfer(landingCell);
+                        unloadedAnyCargo = true;
+                    }
                 }
             }
 
@@ -1882,6 +2059,12 @@ namespace StrategicCombatCore
             }
             var currentCell = cell;
             var nextCell = plannedPath[1].GetCell();
+            if (currentCell == null || nextCell == null)
+            {
+                distanceKm = -1;
+                return false;
+            }
+
             return currentCell.TryGetDistance(nextCell, out distanceKm);
         }
 
@@ -1932,7 +2115,7 @@ namespace StrategicCombatCore
                         break;
                     }
 
-                    var nextDistKm = cellDistKm - moveProgressionKm; // 50km/hex
+                    var nextDistKm = Math.Max(0, cellDistKm - moveProgressionKm); // 50km/hex
                     if (moveKmCap < nextDistKm)
                     {
                         moveProgressionKm += moveKmCap;

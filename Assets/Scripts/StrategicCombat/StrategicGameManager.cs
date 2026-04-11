@@ -48,8 +48,17 @@ public enum StrategicTimeAdvanceSpeed
 
 public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 {
+    public enum ArmyPathFindingMode
+    {
+        LandOnly,
+        EnableNavalTransport
+    }
+
     [CreateProperty]
     public StrategicGameState gameState => StrategicGameState.Instance;
+
+    [CreateProperty]
+    public ArmyPathFindingMode armyPathFindingMode { get; set; } = ArmyPathFindingMode.LandOnly;
 
     public StrategicMapEditMode mapEditMode;
     public TerrainType currentTerrainType;
@@ -291,18 +300,23 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
     public WaypointController rectAreaLineController;
     public float rightClickMaxClickDistancePixels = 12f;
     Transform selectedRelationLineContainerTransform;
+    Transform selectedNavalTransportMarkerContainerTransform;
 
     static readonly Color selectedSupplyPathColor = Color.blue;
     static readonly Color selectedOutgoingSupplyPathColor = Color.red;
     static readonly Color selectedSuperiorLineColor = new(1f, 0.55f, 0f, 1f);
     static readonly Color selectedSubordinateLineColor = new(0f, 0.85f, 0.75f, 1f);
-    static readonly Color selectedNavalTransportLineColor = new(0.65f, 0.65f, 0.65f, 1f);
+    static readonly Color selectedEmbarkingMarkerColor = new(1f, 0.52f, 0.52f, 1f);
+    static readonly Color selectedLandingMarkerColor = new(0.52f, 0.78f, 1f, 1f);
     const float selectedRelationLineWidth = 0.05f;
     const float selectedSupplyPathOffset = -0.08f;
     const float selectedOutgoingSupplyPathOffset = -0.14f;
     const float selectedSuperiorLineOffset = 0.04f;
     const float selectedSubordinateLineOffset = 0.1f;
-    const float selectedNavalTransportLineOffset = 0.16f;
+    const float selectedNavalTransportMarkerRadius = 0.28f;
+    const float selectedNavalTransportMarkerWidth = 0.06f;
+    const int selectedNavalTransportMarkerSegments = 32;
+    static Material selectedNavalTransportMarkerMaterial;
 
     class SelectedRelationLineSpec
     {
@@ -312,6 +326,12 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         public float widthMultiplier;
         public float planarOffset;
         public bool preserveEndpoints;
+    }
+
+    class SelectedNavalTransportMarkerSpec
+    {
+        public Cell cell;
+        public Color color;
     }
 
 
@@ -961,6 +981,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
         UpdatePathLines();
         UpdateSelectedRelationLines();
+        UpdateSelectedNavalTransportMarkers();
         UpdateMissionWaypointLines();
         UpdateRectangleEditingLine();
     }
@@ -1077,19 +1098,6 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
             });
         }
 
-        if (TryBuildDirectLine(selectedGroup.cell, selectedGroup.GetNavalTransportTargetCell(), out var navalTransportLine))
-        {
-            lineSpecs.Add(new()
-            {
-                points = navalTransportLine,
-                color = selectedNavalTransportLineColor,
-                smooth = false,
-                widthMultiplier = selectedRelationLineWidth,
-                planarOffset = selectedNavalTransportLineOffset,
-                preserveEndpoints = false
-            });
-        }
-
         foreach (var subordinateGroup in EnumerateDisplayedIndependentSubordinates(selectedGroup))
         {
             if (!TryBuildDirectLine(selectedGroup.cell, subordinateGroup.cell, out var subordinateLine))
@@ -1107,6 +1115,136 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         }
 
         return lineSpecs;
+    }
+
+    void UpdateSelectedNavalTransportMarkers()
+    {
+        var markerSpecs = BuildSelectedNavalTransportMarkerSpecs();
+        var container = EnsureSelectedNavalTransportMarkerContainerTransform();
+
+        SyncSelectedNavalTransportMarkerLength(container, markerSpecs.Count);
+        var markerRenderers = container.GetComponentsInChildren<LineRenderer>();
+
+        for (int i = 0; i < markerSpecs.Count; i++)
+        {
+            SyncSelectedNavalTransportMarker(markerRenderers[i], markerSpecs[i]);
+        }
+    }
+
+    List<SelectedNavalTransportMarkerSpec> BuildSelectedNavalTransportMarkerSpecs()
+    {
+        var markerSpecs = new List<SelectedNavalTransportMarkerSpec>();
+        if (ShouldHideUnitsInMapEdit)
+            return markerSpecs;
+
+        foreach (var pair in lastSelectedStrategicGroup?.embarkingLandingPairs ?? Enumerable.Empty<EmbarkingLandingPair>())
+        {
+            var embarkingCell = pair?.embarking?.GetCell();
+            if (embarkingCell != null)
+            {
+                markerSpecs.Add(new()
+                {
+                    cell = embarkingCell,
+                    color = selectedEmbarkingMarkerColor
+                });
+            }
+
+            var landingCell = pair?.landing?.GetCell();
+            if (landingCell != null)
+            {
+                markerSpecs.Add(new()
+                {
+                    cell = landingCell,
+                    color = selectedLandingMarkerColor
+                });
+            }
+        }
+
+        return markerSpecs;
+    }
+
+    Transform EnsureSelectedNavalTransportMarkerContainerTransform()
+    {
+        if (selectedNavalTransportMarkerContainerTransform != null)
+            return selectedNavalTransportMarkerContainerTransform;
+
+        var existingContainer = transform.Find("SelectedNavalTransportMarkerContainer");
+        if (existingContainer != null)
+        {
+            selectedNavalTransportMarkerContainerTransform = existingContainer;
+            return selectedNavalTransportMarkerContainerTransform;
+        }
+
+        var containerObject = new GameObject("SelectedNavalTransportMarkerContainer");
+        containerObject.transform.SetParent(transform, false);
+        selectedNavalTransportMarkerContainerTransform = containerObject.transform;
+        return selectedNavalTransportMarkerContainerTransform;
+    }
+
+    void SyncSelectedNavalTransportMarkerLength(Transform containerTransform, int length)
+    {
+        var markers = containerTransform.GetComponentsInChildren<LineRenderer>(true).ToList();
+        var diff = length - markers.Count;
+
+        if (diff > 0)
+        {
+            for (int i = 0; i < diff; i++)
+            {
+                CreateSelectedNavalTransportMarker(containerTransform);
+            }
+        }
+        else if (diff < 0)
+        {
+            for (int i = 0; i < -diff; i++)
+            {
+                Destroy(markers[i].gameObject);
+            }
+        }
+    }
+
+    void CreateSelectedNavalTransportMarker(Transform containerTransform)
+    {
+        var markerObject = new GameObject("SelectedNavalTransportMarker");
+        markerObject.transform.SetParent(containerTransform, false);
+        var lineRenderer = markerObject.AddComponent<LineRenderer>();
+        lineRenderer.material = GetSelectedNavalTransportMarkerMaterial();
+    }
+
+    static Material GetSelectedNavalTransportMarkerMaterial()
+    {
+        if (selectedNavalTransportMarkerMaterial == null)
+        {
+            selectedNavalTransportMarkerMaterial = new Material(Shader.Find("Sprites/Default"));
+        }
+
+        return selectedNavalTransportMarkerMaterial;
+    }
+
+    void SyncSelectedNavalTransportMarker(LineRenderer lineRenderer, SelectedNavalTransportMarkerSpec spec)
+    {
+        if (lineRenderer == null || spec?.cell == null)
+            return;
+
+        var center = GetCellWorldCenter(spec.cell);
+        center.z = -0.12f;
+
+        var positions = new Vector3[selectedNavalTransportMarkerSegments];
+        for (int i = 0; i < selectedNavalTransportMarkerSegments; i++)
+        {
+            var radians = 2f * Mathf.PI * i / selectedNavalTransportMarkerSegments;
+            positions[i] = center + new Vector3(
+                Mathf.Cos(radians) * selectedNavalTransportMarkerRadius,
+                Mathf.Sin(radians) * selectedNavalTransportMarkerRadius,
+                0f);
+        }
+
+        StrategicLineRenderUtils.ConfigureLineRenderer(lineRenderer, true);
+        lineRenderer.material = GetSelectedNavalTransportMarkerMaterial();
+        lineRenderer.widthMultiplier = selectedNavalTransportMarkerWidth;
+        lineRenderer.startColor = spec.color;
+        lineRenderer.endColor = spec.color;
+        lineRenderer.positionCount = positions.Length;
+        lineRenderer.SetPositions(positions);
     }
 
     static IEnumerable<StrategicGroup> EnumerateDisplayedIndependentSubordinates(StrategicGroup rootGroup)
@@ -1494,10 +1632,6 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
             {
                 TryToStartAppendMove();
             }
-            if (Input.GetKeyDown(KeyCode.N))
-            {
-                StartNavalTransportTargetSelection(lastSelectedStrategicGroup);
-            }
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 ToggleRealtimeAdvance();
@@ -1661,6 +1795,83 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         return false;
     }
 
+    bool TryBuildMovePath(
+        StrategicGroup strategicGroup,
+        Cell srcCell,
+        Cell dstCell,
+        out List<Cell> pathCells,
+        out List<EmbarkingLandingPair> embarkingLandingPairs)
+    {
+        pathCells = new();
+        embarkingLandingPairs = new();
+        if (strategicGroup == null || srcCell == null || dstCell == null)
+            return false;
+
+        if (strategicGroup.IsArmy() && armyPathFindingMode == ArmyPathFindingMode.EnableNavalTransport)
+        {
+            return TryBuildArmyNavalTransportPath(strategicGroup, srcCell, dstCell, out pathCells, out embarkingLandingPairs);
+        }
+
+        IGraphEnumerable<Cell> graph = strategicGroup.IsArmy()
+            ? new DynamicCellGraphArmy()
+            : new DynamicCellGraphNavy(){movingSide=strategicGroup.side};
+        pathCells = PathFinding<Cell>.AStar(graph, srcCell, dstCell);
+        return pathCells.Count >= 2;
+    }
+
+    bool TryBuildArmyNavalTransportPath(
+        StrategicGroup strategicGroup,
+        Cell srcCell,
+        Cell dstCell,
+        out List<Cell> pathCells,
+        out List<EmbarkingLandingPair> embarkingLandingPairs)
+    {
+        pathCells = new();
+        embarkingLandingPairs = new();
+        if (strategicGroup == null || srcCell == null || dstCell == null || !dstCell.IsArmyPassable())
+            return false;
+
+        var graph = new DynamicCellGraphArmyWithNavalTransport() { movingSide = strategicGroup.side };
+        var srcNode = new DynamicCellGraphArmyWithNavalTransport.Node(srcCell, false);
+        var dstNode = new DynamicCellGraphArmyWithNavalTransport.Node(dstCell, false);
+        var pathCost = PathFinding<DynamicCellGraphArmyWithNavalTransport.Node>.AStar2(graph, srcNode, dstNode, out var pathNodes);
+        if (pathNodes.Count < 2 || float.IsInfinity(pathCost))
+            return false;
+
+        Cell currentEmbarkingCell = null;
+        foreach (var node in pathNodes)
+        {
+            if (pathCells.Count == 0 || pathCells[^1] != node.cell)
+            {
+                pathCells.Add(node.cell);
+            }
+        }
+
+        for (var idx = 1; idx < pathNodes.Count; idx++)
+        {
+            var prev = pathNodes[idx - 1];
+            var current = pathNodes[idx];
+            if (prev.cell != current.cell)
+                continue;
+
+            if (!prev.navalTransportState && current.navalTransportState)
+            {
+                currentEmbarkingCell = current.cell;
+            }
+            else if (prev.navalTransportState && !current.navalTransportState && currentEmbarkingCell != null)
+            {
+                embarkingLandingPairs.Add(new()
+                {
+                    embarking = currentEmbarkingCell.ToXY(),
+                    landing = current.cell.ToXY(),
+                });
+                currentEmbarkingCell = null;
+            }
+        }
+
+        return pathCells.Count >= 2;
+    }
+
     bool TryToSetNewMove(StrategicGroup strategicGroup, Cell dstCell)
     {
         if (strategicGroup == null)
@@ -1673,13 +1884,11 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         if (strategicGroup.deployState != StrategicGroup.DeployState.Independent)
             return false;
 
-        var srcCell = strategicGroup.cell;
-        IGraphEnumerable<Cell> graph = strategicGroup.IsArmy()
-            ? new DynamicCellGraphArmy()
-            : new DynamicCellGraphNavy(){movingSide=strategicGroup.side};
-        var pathCells = PathFinding<Cell>.AStar(graph, srcCell, dstCell);
+        if (!TryBuildMovePath(strategicGroup, strategicGroup.cell, dstCell, out var pathCells, out var embarkingLandingPairs))
+            return false;
 
         strategicGroup.SetPlannedPath(pathCells.Select(c => c.ToXY()).ToList());
+        strategicGroup.SetEmbarkingLandingPairs(embarkingLandingPairs);
 
         Debug.Log("Set path");
         return true;
@@ -1701,19 +1910,19 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         var appending = p.Count >= 2;
         var srcCell = appending ? p[^1].GetCell() : strategicGroup.cell;
 
-        IGraphEnumerable<Cell> graph = strategicGroup.IsArmy()
-            ? new DynamicCellGraphArmy()
-            : new DynamicCellGraphNavy(){movingSide=strategicGroup.side};
-        var pathCells = PathFinding<Cell>.AStar(graph, srcCell, dstCell);
+        if (!TryBuildMovePath(strategicGroup, srcCell, dstCell, out var pathCells, out var embarkingLandingPairs))
+            return false;
 
         if (appending)
         {
             strategicGroup.plannedPath.AddRange(pathCells.Skip(1).Select(c => c.ToXY()));
+            strategicGroup.AppendEmbarkingLandingPairs(embarkingLandingPairs);
         }
         else
         {
             strategicGroup.plannedPath.Clear();
             strategicGroup.plannedPath.AddRange(pathCells.Select(c => c.ToXY()));
+            strategicGroup.SetEmbarkingLandingPairs(embarkingLandingPairs);
             strategicGroup.moveProgressionKm = 0;
         }
 
@@ -1769,24 +1978,6 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
         mapEditMode = StrategicMapEditMode.WaitOneshotCellClickCallback;
         oneshotCellClickCallback = callback;
-    }
-
-    public void StartNavalTransportTargetSelection(StrategicGroup group)
-    {
-        if (group == null)
-            return;
-
-        group.ClearNavalTransportTarget();
-        if (!group.CanConfigureNavalTransport())
-            return;
-
-        ScheduleOneshotCellClickCallback(cell =>
-        {
-            if (!group.TrySetNavalTransportTargetCell(cell))
-                return false;
-
-            return true;
-        });
     }
 
     // void HandleMapClick(Vector2Int cellXY)

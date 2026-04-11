@@ -118,10 +118,6 @@ public class StrategicInformationPanel : SingletonDocument<StrategicInformationP
         {
             DialogRoot.Instance.PopupStrategicGroupTransferDialog(StrategicGameManager.Instance.lastSelectedStrategicGroup);
         };
-        root.Q<Button>("NavalTransportButton").clicked += () =>
-        {
-            StrategicGameManager.Instance.StartNavalTransportTargetSelection(StrategicGameManager.Instance.lastSelectedStrategicGroup);
-        };
         root.Q<Button>("DetachDamagedButton").clicked += () =>
         {
             DialogRoot.Instance.PopupStrategicGroupDetachDamagedDialog(StrategicGameManager.Instance.lastSelectedStrategicGroup);

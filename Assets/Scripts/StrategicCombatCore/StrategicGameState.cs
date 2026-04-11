@@ -2197,6 +2197,7 @@ namespace StrategicCombatCore
         {
             public Cell departureCell;
             public Cell targetCell;
+            public List<Cell> pathCells;
             public List<StrategicGroup> cargoGroups = new();
         }
 
@@ -2753,9 +2754,11 @@ namespace StrategicCombatCore
                 var remainingCargoGroups = bucket.cargoGroups
                     .Where(group => IsGroupReadyForBucket(group, bucket))
                     .ToList();
-                while (remainingCargoGroups.Count > 0)
+                var remainingAttempts = idleNavyAssetPool.Count;
+                while (remainingCargoGroups.Count > 0 && remainingAttempts > 0)
                 {
-                    var candidate = FindNavalTransportPathCandidate(side, bucket.departureCell, bucket.targetCell, idleNavyAssetPool);
+                    remainingAttempts--;
+                    var candidate = FindNavalTransportPathCandidate(side, bucket.departureCell, bucket.targetCell, bucket.pathCells, idleNavyAssetPool);
                     if (candidate == null)
                         break;
 
@@ -2771,6 +2774,9 @@ namespace StrategicCombatCore
                     {
                         taskForce.navySubMission = NavySubMission.General;
                         taskForce.ClearPlannedPath();
+                        remainingCargoGroups = remainingCargoGroups
+                            .Where(group => IsGroupReadyForBucket(group, bucket))
+                            .ToList();
                         continue;
                     }
 
@@ -2794,10 +2800,14 @@ namespace StrategicCombatCore
                 group.side == side &&
                 group.IsReadyForNavalTransportTransfer()))
             {
-                var departureCell = group.cell;
+                var departureCell = group.GetCurrentEmbarkingCell() ?? group.cell;
                 var targetCell = group.GetNavalTransportTargetCell();
                 if (departureCell == null || targetCell == null || departureCell == targetCell)
                     continue;
+
+                var pathCells = group.GetCurrentEmbarkingLandingPair() != null
+                    ? group.GetCurrentNavalTransportPathCells()
+                    : null;
 
                 var key = (departureCell, targetCell);
                 if (!bucketMap.TryGetValue(key, out var bucket))
@@ -2806,9 +2816,14 @@ namespace StrategicCombatCore
                     {
                         departureCell = departureCell,
                         targetCell = targetCell,
+                        pathCells = pathCells,
                     };
                     bucketMap[key] = bucket;
                     orderedBuckets.Add(bucket);
+                }
+                else if ((bucket.pathCells == null || bucket.pathCells.Count < 2) && pathCells?.Count >= 2)
+                {
+                    bucket.pathCells = pathCells;
                 }
 
                 bucket.cargoGroups.Add(group);
@@ -2828,13 +2843,16 @@ namespace StrategicCombatCore
 
         static bool HasLoadedCargo(ShipLog transportShip)
         {
-            return transportShip?.loadedGroups?.Any(reference => reference.Get() is StrategicGroup) == true;
+            return transportShip?.loadedGroups?.Any(reference =>
+                reference.Get() is StrategicGroup group &&
+                group.containerObjectId == transportShip.objectId) == true;
         }
 
         SupplyPathCandidate FindNavalTransportPathCandidate(
             SideState side,
             Cell departureCell,
             Cell targetCell,
+            List<Cell> transportPathCells,
             IEnumerable<IdleNavyAsset> assets)
         {
             SupplyPathCandidate bestCandidate = null;
@@ -2851,11 +2869,24 @@ namespace StrategicCombatCore
                     continue;
                 }
 
-                var pathCost = PathFinding<Cell>.AStar2(graph, departureCell, targetCell, out var pathCells);
-                if (pathCells.Count < 2 || float.IsInfinity(pathCost))
-                    continue;
+                List<Cell> pathCells;
+                float pathCost;
+                if (transportPathCells != null && transportPathCells.Count >= 2)
+                {
+                    pathCells = transportPathCells;
+                    pathCost = CalculateNavalPathCost(graph, pathCells);
+                }
+                else
+                {
+                    pathCost = PathFinding<Cell>.AStar2(graph, departureCell, targetCell, out pathCells);
+                    if (pathCells.Count < 2 || float.IsInfinity(pathCost))
+                        continue;
+                }
 
-                if (bestCandidate == null || pathCost < bestCandidate.pathCost)
+                if (bestCandidate == null ||
+                    pathCost < bestCandidate.pathCost ||
+                    (Math.Abs(pathCost - bestCandidate.pathCost) < 0.001f &&
+                     string.CompareOrdinal(asset.transportShip.objectId, bestCandidate.asset.transportShip.objectId) < 0))
                 {
                     bestCandidate = new SupplyPathCandidate()
                     {
@@ -2867,6 +2898,25 @@ namespace StrategicCombatCore
             }
 
             return bestCandidate;
+        }
+
+        static float CalculateNavalPathCost(DynamicCellGraphNavy graph, List<Cell> pathCells)
+        {
+            if (graph == null || pathCells == null || pathCells.Count < 2)
+                return float.PositiveInfinity;
+
+            var cost = 0f;
+            for (var idx = 0; idx < pathCells.Count - 1; idx++)
+            {
+                var src = pathCells[idx];
+                var dst = pathCells[idx + 1];
+                if (src == null || dst == null || !graph.Neighbors(src).Contains(dst))
+                    return float.PositiveInfinity;
+
+                cost += graph.MoveCost(src, dst);
+            }
+
+            return cost;
         }
 
         StrategicGroup MaterializeSupplyTaskForce(IdleNavyAsset asset)

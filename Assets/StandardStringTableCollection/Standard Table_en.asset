@@ -3229,6 +3229,10 @@ MonoBehaviour:
     m_Localized: Reinforcement
     m_Metadata:
       m_Items: []
+  - m_Id: -95
+    m_Localized: Army Path Finding Mode
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

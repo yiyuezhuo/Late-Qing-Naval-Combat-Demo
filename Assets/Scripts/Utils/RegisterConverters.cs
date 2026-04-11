@@ -186,6 +186,7 @@ public static class RegisteredConverters
         RegisterEnumIntTwoWay<CargoType>();
         RegisterEnumIntTwoWay<MountArcsPattern>();
         RegisterEnumIntTwoWay<GameManager.HostSyncMode>();
+        RegisterEnumIntTwoWay<StrategicGameManager.ArmyPathFindingMode>();
     }
 
     // static ShipClass GetShipClassOfShipLog(NavalCombatCore.ShipLog shipLog)

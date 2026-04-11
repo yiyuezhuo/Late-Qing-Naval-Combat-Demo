@@ -3774,6 +3774,14 @@ MonoBehaviour:
     m_Localized: "{0} \u7BC0"
     m_Metadata:
       m_Items: []
+  - m_Id: -174
+    m_Localized: "\u50C5\u9678\u5730"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -175
+    m_Localized: "\u555F\u7528\u6D77\u904B"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

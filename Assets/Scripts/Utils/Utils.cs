@@ -844,10 +844,13 @@ public static class Utils
 
     public static Vector3[] XYListToVector3Array(List<XY> pathCells)
     {
-        return pathCells.Select(xy =>
+        return (pathCells ?? new List<XY>()).Select(xy =>
         {
             var posZ = -0.1f;
-            var cell = xy.GetCell();
+            var cell = xy?.GetCell();
+            if (cell == null)
+                return (Vector3?)null;
+
             if(cell.IsGridCell())
             {
                 var (xf, yf) = HexMapShower.CellXYToLocalXY(xy.x, xy.y);
@@ -856,10 +859,15 @@ public static class Utils
             }
             else
             {
-                var hitArea = StrategicGameManager.Instance.areaCellObjectIdToHitArea[cell.objectId];
+                if (!StrategicGameManager.Instance.areaCellObjectIdToHitArea.TryGetValue(cell.objectId, out var hitArea) || hitArea == null)
+                    return (Vector3?)null;
+
                 return new Vector3(hitArea.transform.position.x, hitArea.transform.position.y, posZ);
             }
-        }).ToArray();
+        })
+        .Where(pos => pos.HasValue)
+        .Select(pos => pos.Value)
+        .ToArray();
     }
 
     // public static class UIInputGuard

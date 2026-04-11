@@ -3742,6 +3742,14 @@ MonoBehaviour:
     m_Key: '{0} knots'
     m_Metadata:
       m_Items: []
+  - m_Id: -174
+    m_Key: StrategicGameManager.ArmyPathFindingMode.LandOnly
+    m_Metadata:
+      m_Items: []
+  - m_Id: -175
+    m_Key: StrategicGameManager.ArmyPathFindingMode.EnableNavalTransport
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -3145,6 +3145,10 @@ MonoBehaviour:
     m_Key: Reinforcement
     m_Metadata:
       m_Items: []
+  - m_Id: -95
+    m_Key: Army Path Finding Mode
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

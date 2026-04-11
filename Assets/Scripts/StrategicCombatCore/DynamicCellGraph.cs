@@ -2,6 +2,7 @@ using YYZ.PathFinding;
 using System.Collections.Generic;
 using System;
 using System.Linq;
+using NavalCombatCore;
 
 namespace StrategicCombatCore
 {
@@ -222,6 +223,122 @@ namespace StrategicCombatCore
                 foreach (var cell in gameState.areaCells)
                     yield return cell;
             }
+        }
+    }
+
+    public class DynamicCellGraphArmyWithNavalTransport : IGraphEnumerable<DynamicCellGraphArmyWithNavalTransport.Node>
+    {
+        public readonly struct Node : IEquatable<Node>
+        {
+            public readonly Cell cell;
+            public readonly bool navalTransportState;
+
+            public Node(Cell cell, bool navalTransportState)
+            {
+                this.cell = cell;
+                this.navalTransportState = navalTransportState;
+            }
+
+            public bool Equals(Node other) => cell == other.cell && navalTransportState == other.navalTransportState;
+            public override bool Equals(object obj) => obj is Node other && Equals(other);
+            public override int GetHashCode() => HashCode.Combine(cell, navalTransportState);
+        }
+
+        const float EmbarkCostHours = 72f;
+        const float LandingCostHours = 24f;
+        const float NavalTransportSpeedKnots = 6f;
+
+        public SideState movingSide;
+
+        public IEnumerable<Node> Neighbors(Node pos)
+        {
+            if (pos.cell == null)
+                yield break;
+
+            if (pos.navalTransportState)
+            {
+                foreach (var nei in pos.cell.GetNeighbors())
+                {
+                    if (CanMoveByNavalTransport(pos.cell, nei))
+                        yield return new Node(nei, true);
+                }
+
+                if (CanLandAt(pos.cell))
+                    yield return new Node(pos.cell, false);
+            }
+            else
+            {
+                foreach (var nei in pos.cell.GetNeighbors())
+                {
+                    if (nei.IsArmyPassable())
+                        yield return new Node(nei, false);
+                }
+
+                if (CanEmbarkAt(pos.cell))
+                    yield return new Node(pos.cell, true);
+            }
+        }
+
+        public float EstimateCost(Node src, Node dst) => 0f;
+
+        public float MoveCost(Node src, Node dst)
+        {
+            if (src.cell == dst.cell && !src.navalTransportState && dst.navalTransportState)
+                return EmbarkCostHours;
+            if (src.cell == dst.cell && src.navalTransportState && !dst.navalTransportState)
+                return LandingCostHours;
+
+            var distanceKm = src.cell.GetDistanceUnsafe(dst.cell);
+            if (src.navalTransportState && dst.navalTransportState)
+                return distanceKm / (NavalTransportSpeedKnots * MeasureUtils.navalMileToKilometer);
+
+            return distanceKm / StrategicGroup.GetSpeedKmPerHour(src.cell, dst.cell);
+        }
+
+        public IEnumerable<Node> Nodes()
+        {
+            var gameState = StrategicGameState.Instance;
+            if (gameState.scenarioState.enableGridSystem)
+            {
+                foreach (var cell in gameState.cellMatrix)
+                {
+                    yield return new Node(cell, false);
+                    yield return new Node(cell, true);
+                }
+            }
+            if (gameState.scenarioState.enableAreaSystem)
+            {
+                foreach (var cell in gameState.areaCells)
+                {
+                    yield return new Node(cell, false);
+                    yield return new Node(cell, true);
+                }
+            }
+        }
+
+        bool CanMoveByNavalTransport(Cell src, Cell dst)
+        {
+            return dst != null &&
+                dst.IsNavyPassable() &&
+                !src.HasEdgeFeatureTo(dst, EdgeFeatureType.BlockSeaMovement) &&
+                !StrategicGroup.CellHasHostileFortifiedBaseFor(dst, movingSide);
+        }
+
+        bool CanEmbarkAt(Cell cell)
+        {
+            return cell != null &&
+                cell.IsCoast &&
+                cell.IsArmyPassable() &&
+                cell.StrategicGroupReferences
+                    .Select(reference => reference.Get())
+                    .Any(group => group != null && group.IsBase() && group.side == movingSide);
+        }
+
+        static bool CanLandAt(Cell cell)
+        {
+            return cell != null &&
+                cell.IsCoast &&
+                cell.IsArmyPassable();
         }
     }
 }

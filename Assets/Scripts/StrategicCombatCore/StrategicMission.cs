@@ -173,9 +173,9 @@ namespace StrategicCombatCore
         public Cell GetLandOperationCurrentTargetCell()
         {
             var missionSide = GetSide();
-            foreach (var waypoint in waypoints)
+            for (var i = 0; i < waypoints.Count; i++)
             {
-                var cell = waypoint?.GetCell();
+                var cell = waypoints[i]?.GetCell();
                 if (cell == null)
                     continue;
 
@@ -184,6 +184,33 @@ namespace StrategicCombatCore
             }
 
             return null;
+        }
+
+        public Cell GetLandOperationFrontierCell()
+        {
+            var missionSide = GetSide();
+            for (var i = 0; i < waypoints.Count; i++)
+            {
+                var cell = waypoints[i]?.GetCell();
+                if (cell == null)
+                    continue;
+
+                if (missionSide == null || cell.GetHexSide() != missionSide)
+                    return i > 0 ? waypoints[i - 1]?.GetCell() : null;
+            }
+
+            return null;
+        }
+
+        public string GetLandOperationCurrentTargetPathSummary()
+        {
+            var targetCell = GetLandOperationCurrentTargetCell();
+            if (targetCell == null)
+                return "";
+
+            var frontierCell = GetLandOperationFrontierCell();
+            var frontierText = frontierCell?.GetLocationSummary() ?? "()";
+            return $"{frontierText} -> {targetCell.GetLocationSummary()}";
         }
 
 

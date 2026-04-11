@@ -88,11 +88,11 @@
                                 <ui:Label text="Current Target"/>
                                 <ui:Label text="Target Cell" style="flex-grow: 1;">
                                     <Bindings>
-                                        <ui:DataBinding property="text" data-source-path="landOperationCurrentTarget" binding-mode="ToTarget"/>
+                                        <ui:DataBinding property="text" data-source-path="landOperationCurrentTargetPath" binding-mode="ToTarget"/>
                                     </Bindings>
                                 </ui:Label>
                                 <Bindings>
-                                    <ui:DataBinding property="style.display" data-source-path="hasLandOperationCurrentTarget" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
+                                    <ui:DataBinding property="style.display" data-source-path="hasLandOperationCurrentTargetPath" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
                                 </Bindings>
                             </ui:VisualElement>
                             <ui:VisualElement style="flex-grow: 0;">

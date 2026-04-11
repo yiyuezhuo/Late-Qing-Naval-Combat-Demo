@@ -921,10 +921,16 @@ namespace StrategicCombatCore
         public bool isRectAreaPatrol => asRectAreaPatrol != null;
 
         [CreateProperty]
-        public bool hasLandOperationCurrentTarget => GetLandOperationCurrentTargetCell() != null;
+        public bool hasLandOperationCurrentTargetPath => !string.IsNullOrEmpty(GetLandOperationCurrentTargetPathSummary());
 
         [CreateProperty]
-        public string landOperationCurrentTarget => GetLandOperationCurrentTargetCell()?.GetLocationSummary() ?? "";
+        public string landOperationCurrentTargetPath => GetLandOperationCurrentTargetPathSummary();
+
+        [CreateProperty]
+        public bool hasLandOperationCurrentTarget => hasLandOperationCurrentTargetPath;
+
+        [CreateProperty]
+        public string landOperationCurrentTarget => landOperationCurrentTargetPath;
 
         [CreateProperty]
         public string missionTypeName => GetType().Name;

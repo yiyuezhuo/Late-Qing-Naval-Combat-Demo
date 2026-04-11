@@ -80,6 +80,7 @@ namespace StrategicCombatCore
         
         public void Advance1Hour()
         {
+            ResolveOverruns();
             CreateNewLandBattles();
             ConcludeLandBattles();
 
@@ -90,6 +91,60 @@ namespace StrategicCombatCore
             }
 
             ConcludeLandBattles();
+        }
+
+        void ResolveOverruns()
+        {
+            var updatedCells = new HashSet<Cell>();
+            var groupsByCell = strategicGroups
+                .Where(g => g != null && g.LandCombatable())
+                .GroupBy(g => g.cell)
+                .Where(g => g.Key != null)
+                .ToList();
+
+            foreach (var cellGroup in groupsByCell)
+            {
+                var positiveStrengthSides = cellGroup
+                    .Where(IsOverrunAttacker)
+                    .Select(g => g.side)
+                    .Where(s => s != null)
+                    .ToHashSet();
+
+                if (positiveStrengthSides.Count == 0)
+                    continue;
+
+                foreach (var overrunTarget in cellGroup
+                    .Where(IsOverrunTarget)
+                    .Where(g => g.side != null && positiveStrengthSides.Any(side => side != g.side))
+                    .ToList())
+                {
+                    overrunTarget.MarkAsDestroyed();
+                    updatedCells.Add(cellGroup.Key);
+                }
+            }
+
+            foreach (var cell in updatedCells)
+            {
+                cell.RefreshControlState();
+                state.InvokeMapCellUpdated(cell);
+            }
+        }
+
+        static bool IsOverrunAttacker(StrategicGroup group)
+        {
+            return group != null &&
+                group.LandCombatable() &&
+                group.HasCombatEffectiveLandUnit();
+        }
+
+        static bool IsOverrunTarget(StrategicGroup group)
+        {
+            return group != null &&
+                group.LandCombatable() &&
+                group.GetStrengthMen() == 0 &&
+                group.type != StrategicGroup.Type.Fleet &&
+                group.type != StrategicGroup.Type.CoastArtillery &&
+                group.type != StrategicGroup.Type.Base;
         }
 
         void CreateNewLandBattles()
@@ -194,7 +249,6 @@ namespace StrategicCombatCore
                 foreach (var candidate in EnumerateLandBattleParticipantGroups(group))
                 {
                     if (candidate.type == StrategicGroup.Type.Fleet ||
-                        candidate.type == StrategicGroup.Type.HeadQuarter ||
                         candidate.type == StrategicGroup.Type.CoastArtillery ||
                         candidate.type == StrategicGroup.Type.Base)
                     {

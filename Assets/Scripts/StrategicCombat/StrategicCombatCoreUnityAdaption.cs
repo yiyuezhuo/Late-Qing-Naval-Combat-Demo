@@ -406,6 +406,15 @@ namespace StrategicCombatCore
                     dt =>arriveTime = dt
                 );
             }
+
+            [CreateProperty]
+            public string arriveToName => arriveTo?.GetCell()?.GetLocationSummary() ?? "[Not Set]";
+
+            [CreateProperty]
+            public string arriveTimeStr => CoreParameter.Instance.GetReferenceTimeZoneDateTimeOffsetString(arriveTime);
+
+            [CreateProperty]
+            public string reinforcementSummary => $"{arriveToName} ({arriveTimeStr})";
         }
 
         [CreateProperty]
@@ -427,6 +436,31 @@ namespace StrategicCombatCore
                 }
             }
         }
+
+        [CreateProperty]
+        public string reinforcementSummary => arriveState?.reinforcementSummary ?? "";
+
+        [CreateProperty]
+        public string reinforcementShortNameChain
+        {
+            get
+            {
+                var parts = new List<string>();
+                var current = this;
+                var visited = new HashSet<string>();
+                while (current != null && visited.Add(current.objectId))
+                {
+                    var shortName = current.name?.GetShortName();
+                    parts.Add(string.IsNullOrWhiteSpace(shortName) ? "_" : shortName);
+                    current = current.parentGroupReference.Get();
+                }
+
+                return string.Join("/", parts);
+            }
+        }
+
+        [CreateProperty]
+        public string reinforcementDisplayText => $"<link=\"nameLink\"><color=#40a0ff>{reinforcementShortNameChain}</color></link> -> {reinforcementSummary}";
     }
 
     public partial class StrategicGroupReference

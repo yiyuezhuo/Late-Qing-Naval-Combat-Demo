@@ -946,6 +946,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset strategicScenarioStateEditorDialogDocument;
     public VisualTreeAsset unbindHitAreaDialogDocument;
     public VisualTreeAsset strategicGroupDialogDocument;
+    public VisualTreeAsset strategicReinforcementDialogDocument;
     public VisualTreeAsset shipLogDialogDocument;
     public VisualTreeAsset landUnitDialogDocument;
     public VisualTreeAsset strategicMissionSelectorDialogDocument;
@@ -1782,6 +1783,88 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             };
         };
         
+        tempDialog.Popup();
+    }
+
+    public void PopupStrategicReinforcementDialog()
+    {
+        var strategicReinforcements = StrategicGameState.Instance.strategicGroups
+            .Where(group => group.arriveState != null && !group.arriveState.arrived)
+            .OrderBy(group => group.arriveState.arriveTime)
+            .ThenBy(group => group.name.GetMergedName())
+            .ToList();
+
+        if (strategicReinforcementDialogDocument == null)
+        {
+            PopupMessageDialog("ReinforcementDialog is not configured.");
+            return;
+        }
+
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = strategicReinforcementDialogDocument,
+            templateDataSource = StrategicGameState.Instance
+        };
+
+        tempDialog.onCreated += (sender, el) =>
+        {
+            var listView = el.Q<ListView>("ReinforcementListView");
+            listView.selectionType = SelectionType.None;
+            listView.itemsSource = strategicReinforcements;
+            listView.fixedItemHeight = 28;
+
+            listView.makeItem = () =>
+            {
+                var row = new VisualElement();
+                row.style.flexDirection = FlexDirection.Row;
+                row.style.alignItems = Align.Center;
+                row.style.minHeight = 28;
+                row.style.paddingLeft = 0;
+                row.style.paddingRight = 0;
+                row.style.marginLeft = 0;
+                row.style.marginRight = 0;
+
+                var nameLabel = new Label
+                {
+                    name = "ReinforcementGroupLabel",
+                };
+                nameLabel.style.flexGrow = 1;
+                nameLabel.style.minWidth = 0;
+                nameLabel.style.whiteSpace = WhiteSpace.Normal;
+                nameLabel.style.unityTextAlign = TextAnchor.MiddleLeft;
+
+                Utils.RegisterLinkTag(nameLabel, new()
+                {
+                    ["nameLink"] = () =>
+                    {
+                        if (Utils.TryResolveCurrentValueForBinding(row, out StrategicGroup group))
+                        {
+                            SwitchCenter.Instance.SwitchToStrategicGroupView(group);
+                        }
+                    }
+                });
+
+                row.Add(nameLabel);
+                return row;
+            };
+
+            listView.bindItem = (item, index) =>
+            {
+                if (index < 0 || index >= strategicReinforcements.Count)
+                    return;
+
+                var group = strategicReinforcements[index];
+                item.dataSource = group;
+
+                var nameLabel = item.Q<Label>("ReinforcementGroupLabel");
+                if (nameLabel != null)
+                {
+                    nameLabel.text = group.reinforcementDisplayText;
+                }
+            };
+        };
+
         tempDialog.Popup();
     }
 
@@ -3582,7 +3665,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         tempDialog.Popup();
     }
 
-    public TempDialog PopupCustomMessageContentDialog(string title, Func<VisualElement> contentFactory, float width = 900f, float height = 560f)
+    public TempDialog PopupCustomMessageContentDialog(string title, Func<VisualElement> contentFactory, float width = 900f, float height = 560f, string confirmButtonText = null)
     {
         var tempDialog = new TempDialog()
         {
@@ -3605,6 +3688,15 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             {
                 var titleLabel = el.Q<Label>("TitleLabel");
                 titleLabel.text = title;
+            }
+
+            if (!string.IsNullOrEmpty(confirmButtonText))
+            {
+                var confirmButton = el.Q<Button>("ConfirmButton");
+                if (confirmButton != null)
+                {
+                    confirmButton.text = confirmButtonText;
+                }
             }
 
             var customContent = contentFactory?.Invoke();

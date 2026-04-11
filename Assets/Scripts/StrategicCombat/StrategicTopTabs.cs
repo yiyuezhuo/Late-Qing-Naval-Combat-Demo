@@ -225,6 +225,11 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
             DialogRoot.Instance.PopupPendingNavalCombatDialog();
         };
 
+        root.Q<Button>("ReinforcementButton").clicked += () =>
+        {
+            DialogRoot.Instance.PopupStrategicReinforcementDialog();
+        };
+
         root.Q<Button>("LossStatusButton").clicked += () =>
         {
             DialogRoot.Instance.PopupStrategicVictoryStatusDialog();

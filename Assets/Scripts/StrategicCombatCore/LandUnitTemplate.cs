@@ -30,7 +30,8 @@ namespace StrategicCombatCore
         Engineer,
         Supply,
         MilitaryPolice,
-        Port
+        Port,
+        HeadQuarter
     }
 
     public enum LandUnitQuality // JTS

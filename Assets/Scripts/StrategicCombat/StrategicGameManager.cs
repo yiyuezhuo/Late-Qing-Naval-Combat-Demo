@@ -60,6 +60,9 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
     [CreateProperty]
     public ArmyPathFindingMode armyPathFindingMode { get; set; } = ArmyPathFindingMode.LandOnly;
 
+    [CreateProperty]
+    public bool preventHostileControlInArmyPathFinding { get; set; } = false;
+
     public StrategicMapEditMode mapEditMode;
     public TerrainType currentTerrainType;
     public int tempMapWidth = 60;
@@ -1814,6 +1817,10 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
         IGraphEnumerable<Cell> graph = strategicGroup.IsArmy()
             ? new DynamicCellGraphArmy()
+            {
+                movingSide = strategicGroup.side,
+                preventHostileControl = preventHostileControlInArmyPathFinding,
+            }
             : new DynamicCellGraphNavy(){movingSide=strategicGroup.side};
         pathCells = PathFinding<Cell>.AStar(graph, srcCell, dstCell);
         return pathCells.Count >= 2;
@@ -1831,7 +1838,11 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         if (strategicGroup == null || srcCell == null || dstCell == null || !dstCell.IsArmyPassable())
             return false;
 
-        var graph = new DynamicCellGraphArmyWithNavalTransport() { movingSide = strategicGroup.side };
+        var graph = new DynamicCellGraphArmyWithNavalTransport()
+        {
+            movingSide = strategicGroup.side,
+            preventHostileControl = preventHostileControlInArmyPathFinding,
+        };
         var srcNode = new DynamicCellGraphArmyWithNavalTransport.Node(srcCell, false);
         var dstNode = new DynamicCellGraphArmyWithNavalTransport.Node(dstCell, false);
         var pathCost = PathFinding<DynamicCellGraphArmyWithNavalTransport.Node>.AStar2(graph, srcNode, dstNode, out var pathNodes);

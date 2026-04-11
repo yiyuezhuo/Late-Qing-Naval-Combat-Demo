@@ -26,13 +26,32 @@ namespace StrategicCombatCore
 
     public class DynamicCellGraphArmy : IGraphEnumerable<Cell>
     {
+        public SideState movingSide;
+        public bool preventHostileControl;
+
         public IEnumerable<Cell> Neighbors(Cell pos)
         {
             foreach (var nei in pos.GetNeighbors())
             {
-                if (nei.IsArmyPassable())
+                if (IsPassable(nei))
                     yield return nei;
             }
+        }
+
+        public bool IsPassable(Cell cell)
+        {
+            return cell != null &&
+                cell.IsArmyPassable() &&
+                !IsHostileControlled(cell);
+        }
+
+        bool IsHostileControlled(Cell cell)
+        {
+            var cellSide = cell?.GetHexSide();
+            return preventHostileControl &&
+                movingSide != null &&
+                cellSide != null &&
+                cellSide != movingSide;
         }
 
         public float EstimateCost(Cell src, Cell dst)
@@ -249,6 +268,7 @@ namespace StrategicCombatCore
         const float NavalTransportSpeedKnots = 6f;
 
         public SideState movingSide;
+        public bool preventHostileControl;
 
         public IEnumerable<Node> Neighbors(Node pos)
         {
@@ -270,7 +290,7 @@ namespace StrategicCombatCore
             {
                 foreach (var nei in pos.cell.GetNeighbors())
                 {
-                    if (nei.IsArmyPassable())
+                    if (CanMoveByLand(nei))
                         yield return new Node(nei, false);
                 }
 
@@ -329,16 +349,34 @@ namespace StrategicCombatCore
             return cell != null &&
                 cell.IsCoast &&
                 cell.IsArmyPassable() &&
+                !IsHostileControlled(cell) &&
                 cell.StrategicGroupReferences
                     .Select(reference => reference.Get())
                     .Any(group => group != null && group.IsBase() && group.side == movingSide);
         }
 
-        static bool CanLandAt(Cell cell)
+        bool CanMoveByLand(Cell cell)
+        {
+            return cell != null &&
+                cell.IsArmyPassable() &&
+                !IsHostileControlled(cell);
+        }
+
+        bool CanLandAt(Cell cell)
         {
             return cell != null &&
                 cell.IsCoast &&
-                cell.IsArmyPassable();
+                cell.IsArmyPassable() &&
+                !IsHostileControlled(cell);
+        }
+
+        bool IsHostileControlled(Cell cell)
+        {
+            var cellSide = cell?.GetHexSide();
+            return preventHostileControl &&
+                movingSide != null &&
+                cellSide != null &&
+                cellSide != movingSide;
         }
     }
 }

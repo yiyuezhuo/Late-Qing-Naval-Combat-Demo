@@ -3149,6 +3149,10 @@ MonoBehaviour:
     m_Key: Army Path Finding Mode
     m_Metadata:
       m_Items: []
+  - m_Id: -96
+    m_Key: Prevent Hostile Control
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

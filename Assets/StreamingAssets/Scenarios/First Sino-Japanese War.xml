@@ -1211,7 +1211,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>168.66666412353516</supplyTons>
+    <supplyTons>153.33333015441895</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -1459,7 +1459,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>73.333332061767578</supplyTons>
+    <supplyTons>66.666665077209473</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -4798,7 +4798,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>309.46666717529297</supplyTons>
+    <supplyTons>281.33333396911621</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -5165,7 +5165,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>309.46666717529297</supplyTons>
+    <supplyTons>281.33333396911621</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -5471,7 +5471,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>165.73333358764648</supplyTons>
+    <supplyTons>150.66666698455811</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -5847,7 +5847,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>309.46666717529297</supplyTons>
+    <supplyTons>281.33333396911621</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -6169,7 +6169,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>275</supplyTons>
+    <supplyTons>250</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -6478,7 +6478,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>176</supplyTons>
+    <supplyTons>160</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -8091,7 +8091,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>108.24000549316406</supplyTons>
+    <supplyTons>98.400005340576172</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -8379,7 +8379,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>108.24000549316406</supplyTons>
+    <supplyTons>98.400005340576172</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -8916,7 +8916,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>111.83333206176758</supplyTons>
+    <supplyTons>101.66666507720947</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -9186,7 +9186,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>128.33333206176758</supplyTons>
+    <supplyTons>116.66666507720947</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -9722,7 +9722,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>3.9600000381469727</supplyTons>
+    <supplyTons>3.6000000238418579</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -9902,7 +9902,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>3.9600000381469727</supplyTons>
+    <supplyTons>3.6000000238418579</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -10082,7 +10082,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>3.9600000381469727</supplyTons>
+    <supplyTons>3.6000000238418579</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -10262,7 +10262,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>3.9600000381469727</supplyTons>
+    <supplyTons>3.6000000238418579</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -10442,7 +10442,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>3.9600000381469727</supplyTons>
+    <supplyTons>3.6000000238418579</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -10622,7 +10622,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>3.9600000381469727</supplyTons>
+    <supplyTons>3.6000000238418579</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -10802,7 +10802,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>3.9600000381469727</supplyTons>
+    <supplyTons>3.6000000238418579</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -11160,7 +11160,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>3.9600000381469727</supplyTons>
+    <supplyTons>3.6000000238418579</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -11340,7 +11340,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>3.9600000381469727</supplyTons>
+    <supplyTons>3.6000000238418579</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -11876,7 +11876,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>3.9600000381469727</supplyTons>
+    <supplyTons>3.6000000238418579</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -12056,7 +12056,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>3.9600000381469727</supplyTons>
+    <supplyTons>3.6000000238418579</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -12245,7 +12245,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>5.8666665554046631</supplyTons>
+    <supplyTons>5.3333331942558289</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -12434,7 +12434,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>6.2333333492279053</supplyTons>
+    <supplyTons>5.6666666865348816</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -12623,7 +12623,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>6.2333333492279053</supplyTons>
+    <supplyTons>5.6666666865348816</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -12821,7 +12821,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>14.886667728424072</supplyTons>
+    <supplyTons>13.533334374427795</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -16590,7 +16590,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>1420</supplyTons>
+    <supplyTons>1400</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -16741,7 +16741,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>1420</supplyTons>
+    <supplyTons>1400</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -16892,7 +16892,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>1420</supplyTons>
+    <supplyTons>1400</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -17043,7 +17043,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>1420</supplyTons>
+    <supplyTons>1400</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -30009,7 +30009,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>478.78000164031982</supplyTons>
+    <supplyTons>575.75000166893</supplyTons>
     <supplyGeneratedTons>100</supplyGeneratedTons>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
     <supplyTransferState>
@@ -30743,7 +30743,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>63016.177096843719</supplyTons>
+    <supplyTons>72948.344097495079</supplyTons>
     <supplyGeneratedTons>10000</supplyGeneratedTons>
     <remark>Generic Super Depot Supply Source.</remark>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
@@ -30888,7 +30888,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>80574.355278968811</supplyTons>
+    <supplyTons>90538.577277421951</supplyTons>
     <supplyGeneratedTons>10000</supplyGeneratedTons>
     <remark>Generic Super Depot Supply Source.</remark>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
@@ -31040,7 +31040,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>26394.086359024048</supplyTons>
+    <supplyTons>26377.40335893631</supplyTons>
     <supplyGeneratedTons>0</supplyGeneratedTons>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
     <supplyTransferState>
@@ -31131,7 +31131,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>357.62996077537537</supplyTons>
+    <supplyTons>343.87496012449265</supplyTons>
     <supplyGeneratedTons>0</supplyGeneratedTons>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
     <supplyTransferState>
@@ -31222,7 +31222,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>477.36004763841629</supplyTons>
+    <supplyTons>459.00004734098911</supplyTons>
     <supplyGeneratedTons>0</supplyGeneratedTons>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
     <supplyTransferState>
@@ -32830,8 +32830,8 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
     <nonHistorical>false</nonHistorical>
-    <independentX>14</independentX>
-    <independentY>32</independentY>
+    <independentX>15</independentX>
+    <independentY>31</independentY>
     <leaderReference>
      <referenceObjectId>f24ac743-e528-4c85-82d4-f089c4cc189c</referenceObjectId>
     </leaderReference>
@@ -32884,8 +32884,8 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
     <nonHistorical>false</nonHistorical>
-    <independentX>14</independentX>
-    <independentY>32</independentY>
+    <independentX>15</independentX>
+    <independentY>31</independentY>
     <leaderReference />
     <directMemberReferences>
      <StrategicGroupMemberReference>
@@ -36719,8 +36719,8 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
     <nonHistorical>false</nonHistorical>
-    <independentX>14</independentX>
-    <independentY>32</independentY>
+    <independentX>15</independentX>
+    <independentY>31</independentY>
     <leaderReference>
      <referenceObjectId>d780f176-90ac-4161-985c-18d2058b2a60</referenceObjectId>
     </leaderReference>
@@ -37946,6 +37946,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <victoryPoints>0</victoryPoints>
     <recommended>true</recommended>
     <supplyAutomation>true</supplyAutomation>
+    <automaticalTransportAssetBalance>true</automaticalTransportAssetBalance>
     <powerInfluenceMapCache>
      <generatedAtTicks>639108137084890335</generatedAtTicks>
      <parameterSnapshot>
@@ -38935,6 +38936,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <victoryPoints>0</victoryPoints>
     <recommended>true</recommended>
     <supplyAutomation>true</supplyAutomation>
+    <automaticalTransportAssetBalance>true</automaticalTransportAssetBalance>
     <powerInfluenceMapCache>
      <generatedAtTicks>639108137158361229</generatedAtTicks>
      <parameterSnapshot>
@@ -39959,6 +39961,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <victoryPoints>0</victoryPoints>
     <recommended>false</recommended>
     <supplyAutomation>true</supplyAutomation>
+    <automaticalTransportAssetBalance>true</automaticalTransportAssetBalance>
     <powerInfluenceMapCache>
      <generatedAtTicks>0</generatedAtTicks>
      <parameterSnapshot>
@@ -39996,6 +39999,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <victoryPoints>0</victoryPoints>
     <recommended>false</recommended>
     <supplyAutomation>true</supplyAutomation>
+    <automaticalTransportAssetBalance>true</automaticalTransportAssetBalance>
     <powerInfluenceMapCache>
      <generatedAtTicks>0</generatedAtTicks>
      <parameterSnapshot>
@@ -40033,6 +40037,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <victoryPoints>0</victoryPoints>
     <recommended>false</recommended>
     <supplyAutomation>true</supplyAutomation>
+    <automaticalTransportAssetBalance>true</automaticalTransportAssetBalance>
     <powerInfluenceMapCache>
      <generatedAtTicks>0</generatedAtTicks>
      <parameterSnapshot>
@@ -42129,17 +42134,6 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
       <japanese>天津</japanese>
       <chineseSimplified>天津</chineseSimplified>
      </Label>
-     <StrategicGroupReferences>
-      <StrategicGroupReference>
-       <referenceId>7fb53e3b-5cdc-4c03-b38f-c2b0d1a4f112</referenceId>
-      </StrategicGroupReference>
-      <StrategicGroupReference>
-       <referenceId>0e49ae2f-5d43-4a1e-a5e1-5ef9709c79e7</referenceId>
-      </StrategicGroupReference>
-      <StrategicGroupReference>
-       <referenceId>71e28861-3373-4cd5-8e0c-c5eed491d5db</referenceId>
-      </StrategicGroupReference>
-     </StrategicGroupReferences>
     </Cell>
     <Cell x="14" y="33" terrain="Field" longitude="117.394676" latitude="39.85088" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="5/3" />
     <Cell x="14" y="34" terrain="Forest" longitude="117.375229" latitude="40.3936348" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
@@ -42179,7 +42173,19 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="15" y="28" terrain="Field" longitude="118.127327" latitude="37.4566841" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" riversStr="1/2/3/4" />
     <Cell x="15" y="29" terrain="Field" longitude="118.074059" latitude="37.9907875" IsCoast="true" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" riversStr="2" />
     <Cell x="15" y="30" terrain="ShallowWater" longitude="118.023636" latitude="38.52467" />
-    <Cell x="15" y="31" terrain="LightUrban" longitude="117.98" latitude="39.06" GroundControlPoint="true" IsCoast="true" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
+    <Cell x="15" y="31" terrain="LightUrban" longitude="117.98" latitude="39.06" GroundControlPoint="true" IsCoast="true" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218">
+     <StrategicGroupReferences>
+      <StrategicGroupReference>
+       <referenceId>7fb53e3b-5cdc-4c03-b38f-c2b0d1a4f112</referenceId>
+      </StrategicGroupReference>
+      <StrategicGroupReference>
+       <referenceId>71e28861-3373-4cd5-8e0c-c5eed491d5db</referenceId>
+      </StrategicGroupReference>
+      <StrategicGroupReference>
+       <referenceId>0e49ae2f-5d43-4a1e-a5e1-5ef9709c79e7</referenceId>
+      </StrategicGroupReference>
+     </StrategicGroupReferences>
+    </Cell>
     <Cell x="15" y="32" terrain="Field" longitude="117.950928" latitude="39.600235" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="4/1" railroadsStr="1/4" />
     <Cell x="15" y="33" terrain="Forest" longitude="117.929581" latitude="40.1421738" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="15" y="34" terrain="ForestRough" longitude="117.912758" latitude="40.6843147" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
@@ -42248,7 +42254,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <Cell x="16" y="29" terrain="Field" longitude="118.645538" latitude="37.7464066" IsCoast="true" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" riversStr="5/4" />
     <Cell x="16" y="30" terrain="ShallowWater" longitude="118.596039" latitude="38.2806931" />
     <Cell x="16" y="31" terrain="ShallowWater" longitude="118.550713" latitude="38.81528" />
-    <Cell x="16" y="32" terrain="Field" longitude="118.515129" latitude="39.3525848" IsCoast="true" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
+    <Cell x="16" y="32" terrain="Field" longitude="118.515129" latitude="39.3525848" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="16" y="33" terrain="Field" longitude="118.489861" latitude="39.8927879" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" roadsStr="4/1" railroadsStr="4" />
     <Cell x="16" y="34" terrain="Rough" longitude="118.470329" latitude="40.4337425" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
     <Cell x="16" y="35" terrain="Rough" longitude="118.454727" latitude="40.9745941" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
@@ -44328,9 +44334,9 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
   </serializedCells>
  </gameState>
  <viewState>
-  <xPosition>2.895229</xPosition>
-  <yPosition>10.2430763</yPosition>
-  <orthographicSize>12</orthographicSize>
+  <xPosition>1.907681</xPosition>
+  <yPosition>11.3546181</yPosition>
+  <orthographicSize>11</orthographicSize>
   <hitAreaMapRecords>
    <HitAreaMapRecord hitAreaObjectId="0b2cbd39-ad25-4233-b5a1-5744048e7491" areaCellObjectId="" />
    <HitAreaMapRecord hitAreaObjectId="54b9824b-f430-407e-9d7e-867728dccccb" areaCellObjectId="" />

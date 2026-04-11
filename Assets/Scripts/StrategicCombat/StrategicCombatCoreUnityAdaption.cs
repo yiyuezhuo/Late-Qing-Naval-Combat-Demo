@@ -921,6 +921,26 @@ namespace StrategicCombatCore
         public bool isRectAreaPatrol => asRectAreaPatrol != null;
 
         [CreateProperty]
+        public LandOperationMission asLandOperation => this as LandOperationMission;
+
+        [CreateProperty]
+        public bool isLandOperation => asLandOperation != null;
+
+        [CreateProperty]
+        public bool allowNavalInvasionProp
+        {
+            get => asLandOperation?.allowNavalInvasion ?? false;
+            set
+            {
+                var landOperation = asLandOperation;
+                if(landOperation != null)
+                {
+                    landOperation.allowNavalInvasion = value;
+                }
+            }
+        }
+
+        [CreateProperty]
         public bool hasLandOperationCurrentTargetPath => !string.IsNullOrEmpty(GetLandOperationCurrentTargetPathSummary());
 
         [CreateProperty]

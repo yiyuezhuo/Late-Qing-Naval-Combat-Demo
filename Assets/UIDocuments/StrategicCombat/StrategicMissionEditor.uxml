@@ -160,6 +160,16 @@
                                     <ui:Button text="Edit" name="EditRectangleButton"/>
                                 </ui:VisualElement>
                             </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 1;">
+                                <Bindings>
+                                    <ui:DataBinding property="style.display" data-source-path="isLandOperation" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
+                                </Bindings>
+                                <ui:Toggle data-source-path="asLandOperation" label="Allow Naval Invasion">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="allowNavalInvasionProp" binding-mode="TwoWay"/>
+                                    </Bindings>
+                                </ui:Toggle>
+                            </ui:VisualElement>
                             <ui:VisualElement style="flex-direction: row;">
                                 <ui:Button text="Edit Waypoints" name="EditWaypointsButton">
                                     <Bindings>

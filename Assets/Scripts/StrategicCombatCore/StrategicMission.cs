@@ -1128,6 +1128,8 @@ namespace StrategicCombatCore
 
     public class LandOperationMission : StrategicMission
     {
+        public bool allowNavalInvasion = false;
+
         public override bool IsLandOperationMission() => true;
     }
 }

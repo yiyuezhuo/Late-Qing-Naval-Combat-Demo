@@ -40,6 +40,7 @@ Use `python Tools/normalize_localization_ids.py --apply` to re-normalize IDs aft
 
 ## Local command guardrails
 - Only build this repo’s solution: `Late-Qing-Naval-Combat-Demo.slnx`.
+- When validating a build from the command line, use `dotnet build "Late-Qing-Naval-Combat-Demo.slnx" -v minimal`.
 
 ## XML editing guardrails
 - For bulk edits to scenario XML under `Assets/StreamingAssets/Scenarios/`, prefer Python scripts over PowerShell text replacement/write-back.

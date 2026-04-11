@@ -217,9 +217,9 @@ namespace StrategicCombatCore
         public string assignedMissionObjectId;
         public string homeBaseObjectId;
         public NavySubMission navySubMission;
-        public XY navalInvasionTarget;
+        public XY navalTransportTarget;
 
-        public bool ShouldSerializeNavalInvasionTarget() => GetNavalInvasionTargetCell() != null;
+        public bool ShouldSerializeNavalTransportTarget() => GetNavalTransportTargetCell() != null;
 
         static readonly GlobalString advanceBaseSuffix = new()
         {
@@ -334,28 +334,28 @@ namespace StrategicCombatCore
             return GetNearestFriendlyBaseDepot(cache);
         }
 
-        public Cell GetNavalInvasionTargetCell() => navalInvasionTarget?.GetCell();
+        public Cell GetNavalTransportTargetCell() => navalTransportTarget?.GetCell();
 
-        public bool HasNavalInvasionTarget() => GetNavalInvasionTargetCell() != null;
+        public bool HasNavalTransportTarget() => GetNavalTransportTargetCell() != null;
 
-        public void ClearNavalInvasionTarget()
+        public void ClearNavalTransportTarget()
         {
-            navalInvasionTarget = null;
+            navalTransportTarget = null;
         }
 
-        public bool IsValidNavalInvasionTargetCell(Cell targetCell)
+        public bool IsValidNavalTransportTargetCell(Cell targetCell)
         {
             return targetCell != null &&
                 targetCell.IsCoast &&
                 targetCell.IsArmyPassable();
         }
 
-        public bool TrySetNavalInvasionTargetCell(Cell targetCell)
+        public bool TrySetNavalTransportTargetCell(Cell targetCell)
         {
-            if (!IsValidNavalInvasionTargetCell(targetCell))
+            if (!IsValidNavalTransportTargetCell(targetCell))
                 return false;
 
-            navalInvasionTarget = targetCell.ToXY();
+            navalTransportTarget = targetCell.ToXY();
             return true;
         }
 
@@ -372,7 +372,7 @@ namespace StrategicCombatCore
 
         public StrategicGroup GetFriendlyBaseOnCurrentCell() => GetFriendlyBaseOnCell(cell);
 
-        public bool CanConfigureNavalInvasion()
+        public bool CanConfigureNavalTransport()
         {
             return !IsNavy() &&
                 !IsBase() &&
@@ -380,7 +380,7 @@ namespace StrategicCombatCore
                 GetFriendlyBaseOnCurrentCell() != null;
         }
 
-        public bool IsReadyForNavalInvasionTransfer()
+        public bool IsReadyForNavalTransportTransfer()
         {
             return !IsNavy() &&
                 !IsBase() &&
@@ -389,7 +389,7 @@ namespace StrategicCombatCore
                 containerObjectId == null &&
                 GetAssignedMission() == null &&
                 plannedPath.Count == 0 &&
-                HasNavalInvasionTarget() &&
+                HasNavalTransportTarget() &&
                 GetFriendlyBaseOnCurrentCell() != null;
         }
 
@@ -1525,7 +1525,7 @@ namespace StrategicCombatCore
                         continue;
 
                     loadedGroup.UnloadFromContainer();
-                    loadedGroup.ClearNavalInvasionTarget();
+                    loadedGroup.ClearNavalTransportTarget();
                     unloadedAnyCargo = true;
                 }
             }
@@ -1596,7 +1596,7 @@ namespace StrategicCombatCore
             if (depotTemplate == null)
             {
                 ServiceLocator.Get<ILoggerService>()?.LogWarning(
-                    $"Naval invasion transfer: unable to create advance base at {targetCell.GetLocationSummary()} because no depot template was found.");
+                    $"Naval transport transfer: unable to create advance base at {targetCell.GetLocationSummary()} because no depot template was found.");
                 return existingBase;
             }
 

@@ -296,13 +296,13 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
     static readonly Color selectedOutgoingSupplyPathColor = Color.red;
     static readonly Color selectedSuperiorLineColor = new(1f, 0.55f, 0f, 1f);
     static readonly Color selectedSubordinateLineColor = new(0f, 0.85f, 0.75f, 1f);
-    static readonly Color selectedNavalInvasionLineColor = new(0.65f, 0.65f, 0.65f, 1f);
+    static readonly Color selectedNavalTransportLineColor = new(0.65f, 0.65f, 0.65f, 1f);
     const float selectedRelationLineWidth = 0.05f;
     const float selectedSupplyPathOffset = -0.08f;
     const float selectedOutgoingSupplyPathOffset = -0.14f;
     const float selectedSuperiorLineOffset = 0.04f;
     const float selectedSubordinateLineOffset = 0.1f;
-    const float selectedNavalInvasionLineOffset = 0.16f;
+    const float selectedNavalTransportLineOffset = 0.16f;
 
     class SelectedRelationLineSpec
     {
@@ -1077,15 +1077,15 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
             });
         }
 
-        if (TryBuildDirectLine(selectedGroup.cell, selectedGroup.GetNavalInvasionTargetCell(), out var navalInvasionLine))
+        if (TryBuildDirectLine(selectedGroup.cell, selectedGroup.GetNavalTransportTargetCell(), out var navalTransportLine))
         {
             lineSpecs.Add(new()
             {
-                points = navalInvasionLine,
-                color = selectedNavalInvasionLineColor,
+                points = navalTransportLine,
+                color = selectedNavalTransportLineColor,
                 smooth = false,
                 widthMultiplier = selectedRelationLineWidth,
-                planarOffset = selectedNavalInvasionLineOffset,
+                planarOffset = selectedNavalTransportLineOffset,
                 preserveEndpoints = false
             });
         }
@@ -1494,6 +1494,10 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
             {
                 TryToStartAppendMove();
             }
+            if (Input.GetKeyDown(KeyCode.N))
+            {
+                StartNavalTransportTargetSelection(lastSelectedStrategicGroup);
+            }
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 ToggleRealtimeAdvance();
@@ -1767,18 +1771,18 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         oneshotCellClickCallback = callback;
     }
 
-    public void StartNavalInvasionTargetSelection(StrategicGroup group)
+    public void StartNavalTransportTargetSelection(StrategicGroup group)
     {
         if (group == null)
             return;
 
-        group.ClearNavalInvasionTarget();
-        if (!group.CanConfigureNavalInvasion())
+        group.ClearNavalTransportTarget();
+        if (!group.CanConfigureNavalTransport())
             return;
 
         ScheduleOneshotCellClickCallback(cell =>
         {
-            if (!group.TrySetNavalInvasionTargetCell(cell))
+            if (!group.TrySetNavalTransportTargetCell(cell))
                 return false;
 
             return true;

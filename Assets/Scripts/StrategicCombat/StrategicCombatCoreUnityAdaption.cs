@@ -351,10 +351,10 @@ namespace StrategicCombatCore
         public bool isFleet => type == Type.Fleet;
 
         [CreateProperty]
-        public bool hasNavalInvasionTarget => HasNavalInvasionTarget();
+        public bool hasNavalTransportTarget => HasNavalTransportTarget();
 
         [CreateProperty]
-        public string navalInvasionTargetName => GetNavalInvasionTargetCell()?.GetLocationSummary() ?? "[Not Set]";
+        public string navalTransportTargetName => GetNavalTransportTargetCell()?.GetLocationSummary() ?? "[Not Set]";
 
         // [CreateProperty]
         // public bool isActivePosture => posture == GroupPostureType.Active;

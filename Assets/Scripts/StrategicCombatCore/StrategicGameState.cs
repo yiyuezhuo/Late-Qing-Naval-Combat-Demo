@@ -2193,7 +2193,7 @@ namespace StrategicCombatCore
             public float pathCost;
         }
 
-        class NavalInvasionTransferBucket
+        class NavalTransportTransferBucket
         {
             public Cell departureCell;
             public Cell targetCell;
@@ -2285,7 +2285,7 @@ namespace StrategicCombatCore
                 }
             }
 
-            ReplanNavalInvasionTransfers(side, idleNavyAssetPool);
+            ReplanNavalTransportTransfers(side, idleNavyAssetPool);
         }
 
         void RebalanceTransportHomePorts(SideState side)
@@ -2363,7 +2363,7 @@ namespace StrategicCombatCore
             foreach (var group in state.strategicGroups.Where(group =>
                 group != null &&
                 group.side == side &&
-                group.IsReadyForNavalInvasionTransfer()))
+                group.IsReadyForNavalTransportTransfer()))
             {
                 var targetBaseGroup = GetPreferredHomePortBase(side, group.cell);
                 if (targetBaseGroup != null)
@@ -2743,19 +2743,19 @@ namespace StrategicCombatCore
             return bestCandidate;
         }
 
-        void ReplanNavalInvasionTransfers(SideState side, List<IdleNavyAsset> idleNavyAssetPool)
+        void ReplanNavalTransportTransfers(SideState side, List<IdleNavyAsset> idleNavyAssetPool)
         {
             if (side == null || idleNavyAssetPool == null || idleNavyAssetPool.Count == 0)
                 return;
 
-            foreach (var bucket in CollectNavalInvasionTransferBuckets(side))
+            foreach (var bucket in CollectNavalTransportTransferBuckets(side))
             {
                 var remainingCargoGroups = bucket.cargoGroups
                     .Where(group => IsGroupReadyForBucket(group, bucket))
                     .ToList();
                 while (remainingCargoGroups.Count > 0)
                 {
-                    var candidate = FindNavalInvasionPathCandidate(side, bucket.departureCell, bucket.targetCell, idleNavyAssetPool);
+                    var candidate = FindNavalTransportPathCandidate(side, bucket.departureCell, bucket.targetCell, idleNavyAssetPool);
                     if (candidate == null)
                         break;
 
@@ -2784,25 +2784,25 @@ namespace StrategicCombatCore
             }
         }
 
-        IEnumerable<NavalInvasionTransferBucket> CollectNavalInvasionTransferBuckets(SideState side)
+        IEnumerable<NavalTransportTransferBucket> CollectNavalTransportTransferBuckets(SideState side)
         {
-            var bucketMap = new Dictionary<(Cell departureCell, Cell targetCell), NavalInvasionTransferBucket>();
-            var orderedBuckets = new List<NavalInvasionTransferBucket>();
+            var bucketMap = new Dictionary<(Cell departureCell, Cell targetCell), NavalTransportTransferBucket>();
+            var orderedBuckets = new List<NavalTransportTransferBucket>();
 
             foreach (var group in state.strategicGroups.Where(group =>
                 group != null &&
                 group.side == side &&
-                group.IsReadyForNavalInvasionTransfer()))
+                group.IsReadyForNavalTransportTransfer()))
             {
                 var departureCell = group.cell;
-                var targetCell = group.GetNavalInvasionTargetCell();
+                var targetCell = group.GetNavalTransportTargetCell();
                 if (departureCell == null || targetCell == null || departureCell == targetCell)
                     continue;
 
                 var key = (departureCell, targetCell);
                 if (!bucketMap.TryGetValue(key, out var bucket))
                 {
-                    bucket = new NavalInvasionTransferBucket()
+                    bucket = new NavalTransportTransferBucket()
                     {
                         departureCell = departureCell,
                         targetCell = targetCell,
@@ -2817,13 +2817,13 @@ namespace StrategicCombatCore
             return orderedBuckets;
         }
 
-        static bool IsGroupReadyForBucket(StrategicGroup group, NavalInvasionTransferBucket bucket)
+        static bool IsGroupReadyForBucket(StrategicGroup group, NavalTransportTransferBucket bucket)
         {
             return group != null &&
                 bucket != null &&
-                group.IsReadyForNavalInvasionTransfer() &&
+                group.IsReadyForNavalTransportTransfer() &&
                 group.cell == bucket.departureCell &&
-                group.GetNavalInvasionTargetCell() == bucket.targetCell;
+                group.GetNavalTransportTargetCell() == bucket.targetCell;
         }
 
         static bool HasLoadedCargo(ShipLog transportShip)
@@ -2831,7 +2831,7 @@ namespace StrategicCombatCore
             return transportShip?.loadedGroups?.Any(reference => reference.Get() is StrategicGroup) == true;
         }
 
-        SupplyPathCandidate FindNavalInvasionPathCandidate(
+        SupplyPathCandidate FindNavalTransportPathCandidate(
             SideState side,
             Cell departureCell,
             Cell targetCell,

@@ -845,6 +845,9 @@ namespace StrategicCombatCore
         // public bool activeOnlyForAI;
 
         [CreateProperty]
+        public bool active => IsActiveFor(StrategicGameManager.Instance?.GetViewerSide());
+
+        [CreateProperty]
         public string sideName => EntityManager.Instance.Get<SideState>(sideObjectId)?.name?.GetMergedName() ?? "[Unspecified or Invalid]";
 
         [CreateProperty]

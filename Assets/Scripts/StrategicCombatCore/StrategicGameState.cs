@@ -381,7 +381,7 @@ namespace StrategicCombatCore
             Advance1HourForReinforcement();
 
             Advance1HourForSupply(viewerSide);
-            Advance1HourForMission();
+            Advance1HourForMission(viewerSide);
             Advance1HourForOutOfFuelFleetCheck();
             Advance1HourForIdleFleetReturnToBase();
             Advance1HourForMovement();
@@ -974,18 +974,18 @@ namespace StrategicCombatCore
             }
         }
 
-        public void Advance1HourForMission()
+        public void Advance1HourForMission(SideState viewerSide = null)
         {
             // Mission state transition
             foreach (var mission in missions.ToList()) // Advance Mission may generate new mission
             {
-                mission.TransitionMission();
+                mission.TransitionMission(viewerSide);
             }
 
             // UpdateStrategicGroups
             foreach(var mission in missions)
             {
-                mission.UpdateStrategicGroups();
+                mission.UpdateStrategicGroups(viewerSide);
             }
         }
 

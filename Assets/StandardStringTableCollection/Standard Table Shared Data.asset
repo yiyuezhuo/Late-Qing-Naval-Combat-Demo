@@ -3133,6 +3133,14 @@ MonoBehaviour:
     m_Key: Naval Transport (N)
     m_Metadata:
       m_Items: []
+  - m_Id: -92
+    m_Key: Automatic Army Operation
+    m_Metadata:
+      m_Items: []
+  - m_Id: -93
+    m_Key: Automatic Navy Operation
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

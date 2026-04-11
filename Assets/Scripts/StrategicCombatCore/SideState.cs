@@ -38,6 +38,8 @@ namespace StrategicCombatCore
         public bool recommended = false;
         public bool supplyAutomation = true;
         public bool automaticalTransportAssetBalance = true;
+        public bool automaticArmyOperation = false;
+        public bool automaticNavyOperation = false;
         public string remark;
         public StrategicPowerInfluenceMapCache powerInfluenceMapCache = new();
 

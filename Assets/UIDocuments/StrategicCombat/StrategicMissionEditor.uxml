@@ -3,7 +3,7 @@
     <ui:Template name="ManualAddRemoveFooter" src="project://database/Assets/UIDocuments/Templates/ManualAddRemoveFooter.uxml?fileID=9197481963319205126&amp;guid=3c339b211ba24df4b98f430371a18857&amp;type=3#ManualAddRemoveFooter"/>
     <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style"/>
     <ui:VisualElement data-source-type="StrategicMissionEditor, Assembly-CSharp" class="panel" style="flex-grow: 1;">
-        <ui:Label text="Strategic Mission Editor" class="title">
+        <ui:Label text="AI Mission Editor" class="title">
             <Bindings>
                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11054042698125312)"/>
             </Bindings>
@@ -51,9 +51,9 @@
                             </ui:Instance>
                             <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
                                 <ui:Label text="Active"/>
-                                <ui:Toggle>
+                                <ui:Toggle enabled="false">
                                     <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="active" binding-mode="TwoWay"/>
+                                        <ui:DataBinding property="value" data-source-path="active" binding-mode="ToTarget"/>
                                     </Bindings>
                                 </ui:Toggle>
                                 <ui:Label text="Mission Type Name" style="flex-grow: 1; -unity-text-align: upper-right;">

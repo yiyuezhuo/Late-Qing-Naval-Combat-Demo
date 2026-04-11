@@ -19,7 +19,7 @@
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(3474825257062400)"/>
                         </Bindings>
                     </ui:Button>
-                    <ui:Button text="Missions" name="StrategicMissionEditorButton">
+                    <ui:Button text="AI Mission Editor" name="StrategicMissionEditorButton">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11053886028288000)"/>
                         </Bindings>

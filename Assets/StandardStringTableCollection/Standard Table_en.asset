@@ -1791,11 +1791,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 11053886028288000
-    m_Localized: Missions
+    m_Localized: AI Mission Editor
     m_Metadata:
       m_Items: []
   - m_Id: 11054042698125312
-    m_Localized: Strategic Mission Editor
+    m_Localized: AI Mission Editor
     m_Metadata:
       m_Items: []
   - m_Id: 11054227549491200
@@ -3215,6 +3215,14 @@ MonoBehaviour:
       m_Items: []
   - m_Id: -91
     m_Localized: Naval Transport (N)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -92
+    m_Localized: Automatic Army Operation
+    m_Metadata:
+      m_Items: []
+  - m_Id: -93
+    m_Localized: Automatic Navy Operation
     m_Metadata:
       m_Items: []
   references:

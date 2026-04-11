@@ -141,11 +141,20 @@ namespace StrategicCombatCore
         public string sideObjectId;
         public SideState GetSide() => EntityManager.Instance.Get<SideState>(sideObjectId);
 
-        public bool active = true; // Active is expected to be set by Player in the current semantic
-
         // public List<StrategicGroupMemberReference> loadTargetGroups = new();
         // Non-Fleet groups in assigned groups are transported groups.
         // Naval Transfer's destination is the end cell of waypoint.
+
+        public bool IsActiveFor(SideState viewerSide)
+        {
+            var side = GetSide();
+            if (side == null || viewerSide == null || side != viewerSide)
+                return true;
+
+            return IsLandOperationMission()
+                ? side.automaticArmyOperation
+                : side.automaticNavyOperation;
+        }
 
         public Cell GetWaypointStartCell()
         {
@@ -223,9 +232,9 @@ namespace StrategicCombatCore
             return name;
         }
 
-        public void TransitionMission()
+        public void TransitionMission(SideState viewerSide)
         {
-            if(!active)
+            if(!IsActiveFor(viewerSide))
                 return;
 
             DoTransition();
@@ -251,9 +260,9 @@ namespace StrategicCombatCore
         public IEnumerable<StrategicGroup> IterAssignedFleetGroups() => IterAssignedStrategicGroups().Where(g => g.type == StrategicGroup.Type.Fleet);
         public IEnumerable<StrategicGroup> IterAssignedStationedAtBaseGroups() => IterAssignedFleetGroups().Where(g => g.cell == g.GetDepotGroup()?.cell && !g.IsMovingStrategically);
 
-        public void UpdateStrategicGroups()
+        public void UpdateStrategicGroups(SideState viewerSide)
         {
-            if(!active)
+            if(!IsActiveFor(viewerSide))
             {
                 return;
             }
@@ -423,7 +432,7 @@ namespace StrategicCombatCore
             }
         }
 
-        protected bool IsOperational() => active;
+        protected bool IsOperational(SideState viewerSide) => IsActiveFor(viewerSide);
 
         void EndNow()
         {
@@ -457,6 +466,8 @@ namespace StrategicCombatCore
         public virtual bool ShouldInterruptOnCombatFailure() => false;
 
         public virtual bool IsNavyOnly() => false;
+
+        public virtual bool IsLandOperationMission() => false;
     }
 
     public class NavyMission : StrategicMission
@@ -1074,6 +1085,6 @@ namespace StrategicCombatCore
 
     public class LandOperationMission : StrategicMission
     {
-        
+        public override bool IsLandOperationMission() => true;
     }
 }

@@ -233,13 +233,22 @@ namespace StrategicCombatCore
             if (templateGroup == null)
                 return null;
 
+            var independentTargetCell = deployState == StrategicGroup.DeployState.Independent
+                ? templateGroup.cell
+                : null;
+            if (deployState == StrategicGroup.DeployState.Independent && independentTargetCell == null)
+            {
+                UnityEngine.Debug.LogWarning($"Refusing to create an independent split group from {templateGroup} without a valid source location.");
+                return null;
+            }
+
             var splitGroup = new StrategicGroup()
             {
                 name = StrategicGroupNamingUtility.BuildGeneratedSubGroupName(templateGroup),
                 type = templateGroup.type,
                 size = templateGroup.size,
                 country = templateGroup.country,
-                deployState = deployState,
+                deployState = StrategicGroup.DeployState.NotDeployed,
                 homeBaseObjectId = templateGroup.homeBaseObjectId,
                 nonHistorical = nonHistorical,
             };
@@ -261,9 +270,16 @@ namespace StrategicCombatCore
             EntityManager.Instance.Register(splitGroup, null);
             splitGroup.AttachTo(parentGroup);
 
-            if (deployState == StrategicGroup.DeployState.Independent && templateGroup.cell != null)
+            if (deployState == StrategicGroup.DeployState.Independent)
             {
-                splitGroup.MoveToCell(templateGroup.cell, false);
+                if (!splitGroup.MoveToCell(independentTargetCell, false))
+                {
+                    UnityEngine.Debug.LogWarning($"Refusing to create an independent split group from {templateGroup} at {independentTargetCell}.");
+                    splitGroup.AttachTo(null);
+                    EntityManager.Instance.Unregister(splitGroup);
+                    gameState?.strategicGroups.Remove(splitGroup);
+                    return null;
+                }
             }
             else
             {
@@ -496,7 +512,8 @@ namespace StrategicCombatCore
                 sourceGroup,
                 deployState,
                 nonHistorical: true);
-            configureNewGroup?.Invoke(newGroup);
+            if (newGroup != null)
+                configureNewGroup?.Invoke(newGroup);
             return newGroup;
         }
     }

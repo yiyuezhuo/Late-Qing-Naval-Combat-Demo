@@ -1304,6 +1304,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
     {
         var orderedStrategicGroups = strategicGroups
             .Where(group => group != null)
+            .Where(group => group.cell != null)
             .OrderBy(group => GetStrategicUnitIconStableKey(group), StringComparer.Ordinal)
             .ToList();
 
@@ -1480,6 +1481,9 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
     Vector3 GetCellWorldCenter(Cell cell)
     {
+        if (cell == null)
+            return Vector3.zero;
+
         if(cell.IsGridCell())
         {
             var x = cell.x;

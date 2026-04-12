@@ -191,7 +191,8 @@ public static class StrategicGroupSubGroupUtility
     public static StrategicGroup CreateNewSubGroup(StrategicGroup sourceGroup, bool createIndependent, Action<StrategicGroup> configureNewGroup = null)
     {
         var newGroup = StrategicGroupNamingUtility.CreateNewSubGroup(sourceGroup, createIndependent);
-        configureNewGroup?.Invoke(newGroup);
+        if (newGroup != null)
+            configureNewGroup?.Invoke(newGroup);
         return newGroup;
     }
 
@@ -317,6 +318,8 @@ public static class StrategicGroupSubGroupUtility
         {
             group.homeBaseObjectId = initialGroup.homeBaseObjectId;
         });
+        if (newGroup == null)
+            return result;
 
         PrepareShipsForDetachedAutoReattach(detachedShips);
 
@@ -620,6 +623,9 @@ public class StrategicGroupTransferDialog
             }
 
             targetGroup = StrategicGroupSubGroupUtility.CreateNewSubGroup(sourceGroup, createIndependentSubGroup);
+            if (targetGroup == null)
+                return;
+
             ApplyMemberTransfers(sourceMembersToTransfer, targetGroup);
             StrategicGroupNamingUtility.RefreshGeneratedGroupIdentity(targetGroup);
             return;

@@ -525,8 +525,7 @@ namespace StrategicCombatCore
                 IsBase() ||
                 deployState != DeployState.Independent ||
                 cell == null ||
-                containerObjectId != null ||
-                GetAssignedMission() != null)
+                containerObjectId != null)
             {
                 return false;
             }

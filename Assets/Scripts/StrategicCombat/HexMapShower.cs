@@ -46,6 +46,22 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
     public SpriteRenderer mapRenderer;
 
     static readonly Color blockSeaMovementColor = new(0.55f, 0.55f, 0.55f, 1f);
+    static readonly Color riverColor = new(0.48776254f, 0.6639441f, 0.9150943f, 1f);
+    static readonly EdgeDirection[] uniqueEdgeDirections =
+    {
+        EdgeDirection.Top,
+        EdgeDirection.TopRight,
+        EdgeDirection.BottomRight
+    };
+
+    const float riverMeshWidth = 0.04f;
+    const float blockSeaMovementMeshWidth = 0.035f;
+    const float sideBorderMeshWidth = 0.0525f;
+
+    Mesh riverMesh;
+    Mesh blockSeaMovementMesh;
+    Mesh sideBorderMesh;
+    Material vertexColorMaterial;
 
     // public LineRenderer pathLineRenderer;
 
@@ -144,6 +160,11 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
         gameState.edgeFeatureUpdated -= OnEdgeFeatureUpdated;
 
         GamePreference.Instance.shortLabelLanguageTypeChanged -= OnShortLabelLanguageTypeChanged;
+
+        DestroyMeshResource(riverMesh);
+        DestroyMeshResource(blockSeaMovementMesh);
+        DestroyMeshResource(sideBorderMesh);
+        DestroyMaterialResource(vertexColorMaterial);
     }
 
     void OnShortLabelLanguageTypeChanged(object sender, EventArgs e)
@@ -176,17 +197,24 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
             smoothConnectedLines: true
         );
 
-        BindHexEdgeLineRenderers(
-            riverContainerTransform, riverPrefab,
-            StrategicGameState.Instance.IterateCellPairsFor(EdgeFeatureType.River).ToList()
+        BindHexEdgeMesh(
+            riverContainerTransform, "RiverMesh",
+            ref riverMesh,
+            StrategicGameState.Instance.IterateCellPairsFor(EdgeFeatureType.River),
+            riverMeshWidth,
+            riverColor,
+            sortingOrder: mapRenderer != null ? mapRenderer.sortingOrder + 1 : 0
         );
 
         if (blockSeaMovementContainerTransform != null && blockSeaMovementPrefab != null)
         {
-            BindHexEdgeLineRenderers(
-                blockSeaMovementContainerTransform, blockSeaMovementPrefab,
-                StrategicGameState.Instance.IterateCellPairsFor(EdgeFeatureType.BlockSeaMovement).ToList(),
-                lineColor: blockSeaMovementColor
+            BindHexEdgeMesh(
+                blockSeaMovementContainerTransform, "BlockSeaMovementMesh",
+                ref blockSeaMovementMesh,
+                StrategicGameState.Instance.IterateCellPairsFor(EdgeFeatureType.BlockSeaMovement),
+                blockSeaMovementMeshWidth,
+                blockSeaMovementColor,
+                sortingOrder: mapRenderer != null ? mapRenderer.sortingOrder + 2 : 1
             );
         }
 
@@ -268,6 +296,34 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
         }
     }
 
+    void BindHexEdgeMesh(
+        Transform containerTransform,
+        string meshObjectName,
+        ref Mesh mesh,
+        IEnumerable<(Cell, Cell, EdgeDirection)> cellPairs,
+        float lineWidth,
+        Color lineColor,
+        int sortingOrder)
+    {
+        if (containerTransform == null)
+            return;
+
+        ClearLineRendererChildren(containerTransform);
+
+        var meshTransform = EnsureMeshRenderer(containerTransform, meshObjectName, ref mesh, sortingOrder);
+        var meshBuilder = new StrategicMapLineMeshBuilder();
+        foreach (var (cellSrc, cellDst, edgeDirection) in cellPairs)
+        {
+            if (cellSrc == null || cellDst == null)
+                continue;
+
+            var (p0, p1) = GetHexEdgeLocalSegment(cellSrc, edgeDirection, meshTransform);
+            meshBuilder.AddLine(p0, p1, lineWidth, lineColor);
+        }
+
+        meshBuilder.ApplyTo(mesh);
+    }
+
     void EnsureBlockSeaMovementRenderSetup()
     {
         if (blockSeaMovementContainerTransform == null)
@@ -302,6 +358,134 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
         if (blockSeaMovementContainerTransform.gameObject.activeSelf != show)
         {
             blockSeaMovementContainerTransform.gameObject.SetActive(show);
+        }
+    }
+
+    Transform EnsureMeshRenderer(Transform containerTransform, string meshObjectName, ref Mesh mesh, int sortingOrder)
+    {
+        var meshTransform = containerTransform.Find(meshObjectName);
+        if (meshTransform == null)
+        {
+            var meshObject = new GameObject(meshObjectName);
+            meshTransform = meshObject.transform;
+            meshTransform.SetParent(containerTransform, false);
+            meshObject.AddComponent<MeshFilter>();
+            meshObject.AddComponent<MeshRenderer>();
+        }
+
+        var meshFilter = meshTransform.GetComponent<MeshFilter>();
+        var meshRenderer = meshTransform.GetComponent<MeshRenderer>();
+        if (mesh == null)
+        {
+            mesh = new Mesh
+            {
+                name = meshObjectName
+            };
+            mesh.MarkDynamic();
+        }
+
+        meshFilter.sharedMesh = mesh;
+        meshRenderer.sharedMaterial = GetVertexColorMaterial();
+        if (mapRenderer != null)
+        {
+            meshRenderer.sortingLayerID = mapRenderer.sortingLayerID;
+        }
+        meshRenderer.sortingOrder = sortingOrder;
+        meshRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+        meshRenderer.receiveShadows = false;
+
+        return meshTransform;
+    }
+
+    static void ClearLineRendererChildren(Transform containerTransform)
+    {
+        if (containerTransform == null)
+            return;
+
+        for (var i = containerTransform.childCount - 1; i >= 0; i--)
+        {
+            var child = containerTransform.GetChild(i);
+            if (child.GetComponent<LineRenderer>() == null)
+                continue;
+
+            if (Application.isPlaying)
+            {
+                Destroy(child.gameObject);
+            }
+            else
+            {
+                DestroyImmediate(child.gameObject);
+            }
+        }
+    }
+
+    Material GetVertexColorMaterial()
+    {
+        if (vertexColorMaterial != null)
+            return vertexColorMaterial;
+
+        var shader = Shader.Find("Unlit/SimpleEntity");
+        if (shader == null)
+        {
+            shader = Shader.Find("Sprites/Default");
+        }
+        vertexColorMaterial = new Material(shader)
+        {
+            name = "Strategic Map Vertex Color"
+        };
+        if (vertexColorMaterial.HasProperty("_MainColor"))
+        {
+            vertexColorMaterial.SetColor("_MainColor", Color.white);
+        }
+        return vertexColorMaterial;
+    }
+
+    (Vector3, Vector3) GetHexEdgeLocalSegment(Cell cell, EdgeDirection edgeDirection, Transform targetTransform, float z = 0)
+    {
+        var ((dx1, dy1), (dx2, dy2)) = DirectionTo2LocalDxDy(edgeDirection);
+        var (xf, yf) = CellXYToLocalXY(cell.x, cell.y);
+        var p0 = controlledRenderer.transform.TransformPoint(xf + dx1, yf + dy1, z);
+        var p1 = controlledRenderer.transform.TransformPoint(xf + dx2, yf + dy2, z);
+        return (
+            targetTransform.InverseTransformPoint(p0),
+            targetTransform.InverseTransformPoint(p1)
+        );
+    }
+
+    Vector3 GetCellLocalCenter(Cell cell, Transform targetTransform, float z = 0)
+    {
+        var (xf, yf) = CellXYToLocalXY(cell.x, cell.y);
+        var point = controlledRenderer.transform.TransformPoint(xf, yf, z);
+        return targetTransform.InverseTransformPoint(point);
+    }
+
+    static void DestroyMeshResource(Mesh mesh)
+    {
+        if (mesh == null)
+            return;
+
+        if (Application.isPlaying)
+        {
+            Destroy(mesh);
+        }
+        else
+        {
+            DestroyImmediate(mesh);
+        }
+    }
+
+    static void DestroyMaterialResource(Material material)
+    {
+        if (material == null)
+            return;
+
+        if (Application.isPlaying)
+        {
+            Destroy(material);
+        }
+        else
+        {
+            DestroyImmediate(material);
         }
     }
 
@@ -644,6 +828,7 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
         {
             SyncSideFlag(xy);
         }
+        RefreshSideBorderMesh();
     }
 
     void SyncSideFlag((int, int) xy)
@@ -696,7 +881,67 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
 
             SyncSideFlag((cell.x, cell.y));
             RefreshCellLabelDisplayMode(cell.x, cell.y);
+            RefreshSideBorderMesh();
         }
+    }
+
+    void RefreshSideBorderMesh()
+    {
+        if (controlledRenderer == null)
+            return;
+
+        var meshTransform = EnsureMeshRenderer(transform, "SideBorderMesh", ref sideBorderMesh, mapRenderer != null ? mapRenderer.sortingOrder + 3 : 2);
+        var meshBuilder = new StrategicMapLineMeshBuilder();
+        var gameState = StrategicGameState.Instance;
+        var width = gameState.GetMapWidth();
+        var height = gameState.GetMapHeight();
+
+        for (var x = 0; x < width; x++)
+        {
+            for (var y = 0; y < height; y++)
+            {
+                var cell = gameState.cellMatrix[x, y];
+                if (cell == null || !cell.IsGridCell())
+                    continue;
+
+                foreach (var edgeDirection in uniqueEdgeDirections)
+                {
+                    var neighbor = cell.GetNeighbor(edgeDirection);
+                    if (neighbor == null || !neighbor.IsGridCell())
+                        continue;
+
+                    var cellSide = cell.GetHexSide();
+                    var neighborSide = neighbor.GetHexSide();
+                    if (cellSide == null && neighborSide == null)
+                        continue;
+
+                    if (cellSide != null && neighborSide != null && neighborSide.objectId == cellSide.objectId)
+                        continue;
+
+                    var (p0, p1) = GetHexEdgeLocalSegment(cell, edgeDirection, meshTransform);
+                    var cellCenter = GetCellLocalCenter(cell, meshTransform);
+                    var edgeCenter = (p0 + p1) * 0.5f;
+                    var cellSideNormal = cellCenter - edgeCenter;
+                    if (cellSideNormal.sqrMagnitude <= Mathf.Epsilon)
+                        continue;
+
+                    var cellColor = GetSidePrimaryCountryColor(cellSide);
+                    var neighborColor = GetSidePrimaryCountryColor(neighborSide);
+                    meshBuilder.AddSplitLine(p0, p1, cellSideNormal.normalized, sideBorderMeshWidth, cellColor, neighborColor);
+                }
+            }
+        }
+
+        meshBuilder.ApplyTo(sideBorderMesh);
+    }
+
+    static Color GetSidePrimaryCountryColor(SideState sideState)
+    {
+        if (sideState == null)
+            return Color.gray;
+
+        var country = sideState.countries.FirstOrDefault();
+        return StyleConstants.countryColorMap.GetValueOrDefault(country, Color.gray);
     }
 
     public void GenerateTextureAndRefreshMaterial()
@@ -735,6 +980,78 @@ public class HexMapShower : SingletonMonoBehaviour<HexMapShower>
         // Update scale
         // transform.localScale = new Vector3(width, height, 0);
         controlledRenderer.transform.localScale = new Vector3(width * 0.867f, height, 0);
+    }
+}
+
+sealed class StrategicMapLineMeshBuilder
+{
+    readonly List<Vector3> vertices = new();
+    readonly List<int> triangles = new();
+    readonly List<Color> colors = new();
+    readonly List<Vector2> uvs = new();
+
+    public void AddLine(Vector3 p0, Vector3 p1, float width, Color color)
+    {
+        var edge = p1 - p0;
+        if (edge.sqrMagnitude <= Mathf.Epsilon)
+            return;
+
+        var normal = new Vector3(-edge.y, edge.x, 0f).normalized;
+        var offset = normal * (width * 0.5f);
+        AddQuad(p0 - offset, p1 - offset, p1 + offset, p0 + offset, color);
+    }
+
+    public void AddSplitLine(Vector3 p0, Vector3 p1, Vector3 sideNormal, float width, Color side0Color, Color side1Color)
+    {
+        var edge = p1 - p0;
+        if (edge.sqrMagnitude <= Mathf.Epsilon || sideNormal.sqrMagnitude <= Mathf.Epsilon)
+            return;
+
+        var offset = sideNormal.normalized * (width * 0.5f);
+        AddQuad(p0, p1, p1 + offset, p0 + offset, side0Color);
+        AddQuad(p1, p0, p0 - offset, p1 - offset, side1Color);
+    }
+
+    void AddQuad(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, Color color)
+    {
+        var index = vertices.Count;
+        vertices.Add(p0);
+        vertices.Add(p1);
+        vertices.Add(p2);
+        vertices.Add(p3);
+
+        colors.Add(color);
+        colors.Add(color);
+        colors.Add(color);
+        colors.Add(color);
+
+        uvs.Add(new Vector2(0f, 0f));
+        uvs.Add(new Vector2(1f, 0f));
+        uvs.Add(new Vector2(1f, 1f));
+        uvs.Add(new Vector2(0f, 1f));
+
+        triangles.Add(index);
+        triangles.Add(index + 1);
+        triangles.Add(index + 2);
+        triangles.Add(index);
+        triangles.Add(index + 2);
+        triangles.Add(index + 3);
+    }
+
+    public void ApplyTo(Mesh mesh)
+    {
+        mesh.Clear();
+        if (vertices.Count == 0)
+            return;
+
+        mesh.indexFormat = vertices.Count > 65535
+            ? UnityEngine.Rendering.IndexFormat.UInt32
+            : UnityEngine.Rendering.IndexFormat.UInt16;
+        mesh.SetVertices(vertices);
+        mesh.SetColors(colors);
+        mesh.SetUVs(0, uvs);
+        mesh.SetTriangles(triangles, 0);
+        mesh.RecalculateBounds();
     }
 }
 

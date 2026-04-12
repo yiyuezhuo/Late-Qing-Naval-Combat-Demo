@@ -3169,6 +3169,10 @@ MonoBehaviour:
     m_Key: Enable Release Time
     m_Metadata:
       m_Items: []
+  - m_Id: -101
+    m_Key: Overwrite Camera State
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -350,6 +350,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         yield return EventState.Instance.SyncAndRegister();
 
         LoadViewState(fullState.viewState);
+        loadedViewState = fullState.viewState?.Clone();
         NavalGameState.UpdateInstance(fullState.navalGameState);
 
         NavalGameState.Instance.ResetAndRegisterAll();
@@ -511,6 +512,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     public void LoadViewState(ViewState viewState)
     {
+        if (viewState == null)
+            return;
+
         var c = CameraController2.Instance;
         foreach (var cam in c.cameras)
             cam.orthographicSize = viewState.orthographicSize;
@@ -519,6 +523,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
 
     public Dictionary<string, PortraitViewer> objectId2Viewer = new();
+    public ViewState loadedViewState;
     readonly Dictionary<string, int> processedMountFiringLogCount = new();
     readonly Dictionary<string, int> processedRapidFiringLogCount = new();
     readonly List<IPortraitViewerObservable> viewerObservablesBuffer = new();

@@ -3253,6 +3253,10 @@ MonoBehaviour:
     m_Localized: Enable Release Time
     m_Metadata:
       m_Items: []
+  - m_Id: -101
+    m_Localized: Overwrite Camera State
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

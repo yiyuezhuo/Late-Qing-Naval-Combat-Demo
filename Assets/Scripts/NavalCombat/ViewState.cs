@@ -9,6 +9,13 @@ public class ViewState // only viewpoint related view state is captured though
     // public float z; // -100
     public float orthographicSize;
 
+    public ViewState Clone() => new()
+    {
+        xRotation = xRotation,
+        yRotation = yRotation,
+        orthographicSize = orthographicSize
+    };
+
     public float GetCenterLatitude() => xRotation;
     public float GetCenterLongitude()
     {

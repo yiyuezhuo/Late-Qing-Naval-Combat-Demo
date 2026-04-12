@@ -115,6 +115,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
     public static StartupConfig startupConfig = new StartupConfig();
     public static StartupConfig restartConfig;
+    public StrategicViewState loadedViewState;
 
     public static void CaptureRestartConfig()
     {
@@ -676,6 +677,9 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         // HexMapShower.Instance.showSideFlag = false;
 
         ApplyViewState(fullState.viewState);
+        loadedViewState = fullState.viewState == null
+            ? null
+            : XmlUtils.FromXML<StrategicViewState>(XmlUtils.ToXML(fullState.viewState));
 
         // if(StrategicGameState.Instance.scenarioState.enableAreaSystem)
         // {
@@ -728,6 +732,9 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
     void ApplyViewState(StrategicViewState viewState)
     {
+        if (viewState == null)
+            return;
+
         // Update Camera according to the view state
         // var cam = Camera.main;
 

@@ -119,6 +119,11 @@
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(63872989564928)"/>
                         </Bindings>
                     </ui:Button>
+                    <ui:Toggle label="Overwrite Camera State" name="OverwriteCameraStateToggle" value="false">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-101)"/>
+                        </Bindings>
+                    </ui:Toggle>
                     <ui:Button text="Restart" name="RestartButton">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-23)"/>

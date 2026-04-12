@@ -27,6 +27,7 @@ public class TopTabs : SingletonDocument<TopTabs>
 
     DropdownField playerDropdownField;
     DropdownField autoPlaySpeedDropdownField;
+    Toggle overwriteCameraStateToggle;
     float lastSyncedAutoPlaySpeed = float.NaN;
 
     static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
@@ -91,6 +92,7 @@ public class TopTabs : SingletonDocument<TopTabs>
 
         saveButton.clicked += () => OnSaveButtonClicked(false);
 
+        overwriteCameraStateToggle = root.Q<Toggle>("OverwriteCameraStateToggle");
         root.Q<Button>("SaveEditButton").clicked += () => OnSaveButtonClicked(true);
 
         loadButton.clicked += () =>
@@ -354,7 +356,7 @@ public class TopTabs : SingletonDocument<TopTabs>
         }
     }
 
-    public static FullState CaptureFullState(bool detachGameState)
+    public static FullState CaptureFullState(bool detachGameState, bool overwriteCameraState = true)
     {
         var gameState = detachGameState ? 
             DetachGameState(NavalGameState.Instance, StreamingAssetReference.Instance) : 
@@ -368,7 +370,9 @@ public class TopTabs : SingletonDocument<TopTabs>
         {
             streamingAssetReference = StreamingAssetReference.Instance,
             navalGameState = gameState,
-            viewState = GameManager.Instance.CaptureViewState(),
+            viewState = overwriteCameraState || GameManager.Instance.loadedViewState == null
+                ? GameManager.Instance.CaptureViewState()
+                : GameManager.Instance.loadedViewState.Clone(),
             eventState = EventState.Instance
         };
 
@@ -377,7 +381,8 @@ public class TopTabs : SingletonDocument<TopTabs>
 
     void DoSave(bool editSave, bool detachGameState)
     {
-        var fullState = CaptureFullState(detachGameState);
+        var overwriteCameraState = !editSave || overwriteCameraStateToggle?.value == true;
+        var fullState = CaptureFullState(detachGameState, overwriteCameraState);
 
         if (editSave)
         {

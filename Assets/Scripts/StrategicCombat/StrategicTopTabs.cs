@@ -16,14 +16,19 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
 {
     Coroutine advanceCoroutine;
     bool isRealtimeAdvanceCoroutineRunning;
+    Toggle overwriteCameraStateToggle;
 
     void DoSave(bool editSave)
     {
         var gameState = DetachGameState(StrategicGameState.Instance, StreamingAssetReference.Instance);
+        var viewState = StrategicGameManager.Instance.CaptureViewState();
+        if (editSave && overwriteCameraStateToggle?.value != true)
+            viewState.CopyCameraStateFrom(StrategicGameManager.Instance.loadedViewState);
+
         var fullState = new StrategicFullState()
         {
             gameState = gameState,
-            viewState = StrategicGameManager.Instance.CaptureViewState()
+            viewState = viewState
         };
 
         if(editSave)
@@ -48,6 +53,7 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
 
         root.dataSource = StrategicGameManager.Instance;
         Utils.BindItemsSourceRecursive(root);
+        overwriteCameraStateToggle = root.Q<Toggle>("OverwriteCameraStateToggle");
 
         root.Q<Button>("SaveButton").clicked += () =>
         {

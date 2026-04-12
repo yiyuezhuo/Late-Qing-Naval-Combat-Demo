@@ -22,6 +22,16 @@ public class StrategicViewState
     public List<HitAreaMapRecord> hitAreaMapRecords = new();
 
     public string viewerSideId;
+
+    public void CopyCameraStateFrom(StrategicViewState other)
+    {
+        if (other == null)
+            return;
+
+        xPosition = other.xPosition;
+        yPosition = other.yPosition;
+        orthographicSize = other.orthographicSize;
+    }
 }
 
 public class StrategicFullState

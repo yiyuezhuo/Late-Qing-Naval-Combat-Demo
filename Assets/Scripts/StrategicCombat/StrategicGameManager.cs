@@ -1295,23 +1295,45 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
 
     void BindStrategicUnitIcons(Transform containerTransform, GameObject prefab, List<ILayableWorldSpaceGroupIconDataSource> strategicGroups)
     {
-        // Sync Views & create mapping
-        Utils.SyncTransformViewerLength(containerTransform, strategicGroups.Count, prefab);
+        var orderedStrategicGroups = strategicGroups
+            .Where(group => group != null)
+            .OrderBy(group => GetStrategicUnitIconStableKey(group), StringComparer.Ordinal)
+            .ToList();
 
-        var worldSpaceGroupIcons = containerTransform.GetComponentsInChildren<WorldSpaceGroupIcon>();
+        EnsureStrategicUnitIconViewCount(containerTransform, prefab, orderedStrategicGroups.Count);
+
+        var worldSpaceGroupIcons = containerTransform.GetComponentsInChildren<WorldSpaceGroupIcon>(true);
+        var reusableViewsByKey = worldSpaceGroupIcons
+            .Where(icon => icon?.currentDataSource is IObjectIdLabeled labeled && !string.IsNullOrWhiteSpace(labeled.objectId))
+            .GroupBy(icon => ((IObjectIdLabeled)icon.currentDataSource).objectId)
+            .ToDictionary(group => group.Key, group => group.First());
+        var unusedViews = new Queue<WorldSpaceGroupIcon>(
+            worldSpaceGroupIcons.Where(icon =>
+                icon != null &&
+                (icon.currentDataSource is not IObjectIdLabeled labeled ||
+                 string.IsNullOrWhiteSpace(labeled.objectId) ||
+                 !orderedStrategicGroups.Any(group => GetStrategicUnitIconStableKey(group) == labeled.objectId))));
+
         var groupToView = new Dictionary<IWorldSpaceGroupIconDataSource, WorldSpaceGroupIcon>();
-        for (int i = 0; i < strategicGroups.Count; i++)
+        for (int i = 0; i < orderedStrategicGroups.Count; i++)
         {
-            var strategicGroup = strategicGroups[i];
-            var worldSpaceGroupIcon = worldSpaceGroupIcons[i];
+            var strategicGroup = orderedStrategicGroups[i];
+            var stableKey = GetStrategicUnitIconStableKey(strategicGroup);
+            if (!reusableViewsByKey.TryGetValue(stableKey, out var worldSpaceGroupIcon))
+            {
+                worldSpaceGroupIcon = unusedViews.Count > 0 ? unusedViews.Dequeue() : worldSpaceGroupIcons[i];
+            }
+
+            worldSpaceGroupIcon.transform.SetSiblingIndex(i);
             worldSpaceGroupIcon.SetDataSource(strategicGroup);
 
             groupToView[strategicGroup] = worldSpaceGroupIcon;
         }
+        TrimExtraStrategicUnitIconViews(containerTransform, orderedStrategicGroups.Count);
 
         var hexMapShower = HexMapShower.Instance;
 
-        foreach(var g in strategicGroups.GroupBy(group => group.cell))
+        foreach(var g in orderedStrategicGroups.GroupBy(group => group.cell))
         {
             var cell = g.Key;
 
@@ -1353,6 +1375,31 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
                     0.05f
                 );
             }
+        }
+    }
+
+    static string GetStrategicUnitIconStableKey(ILayableWorldSpaceGroupIconDataSource dataSource)
+    {
+        return dataSource is IObjectIdLabeled labeled && !string.IsNullOrWhiteSpace(labeled.objectId)
+            ? labeled.objectId
+            : dataSource?.GetHashCode().ToString() ?? string.Empty;
+    }
+
+    static void EnsureStrategicUnitIconViewCount(Transform containerTransform, GameObject prefab, int requiredCount)
+    {
+        while (containerTransform.childCount < requiredCount)
+        {
+            GameObject.Instantiate(prefab, containerTransform);
+        }
+    }
+
+    static void TrimExtraStrategicUnitIconViews(Transform containerTransform, int requiredCount)
+    {
+        for (var i = containerTransform.childCount - 1; i >= requiredCount; i--)
+        {
+            var child = containerTransform.GetChild(i).gameObject;
+            child.SetActive(false);
+            GameObject.Destroy(child);
         }
     }
 

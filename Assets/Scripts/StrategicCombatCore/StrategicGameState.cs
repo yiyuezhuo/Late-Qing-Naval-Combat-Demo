@@ -45,6 +45,18 @@ namespace StrategicCombatCore
             public float standardDeviation;
         }
 
+        public sealed class LandOperationDailyResult
+        {
+            public HashSet<string> drivenGroupObjectIds = new();
+
+            public bool IsDriven(StrategicGroup group)
+            {
+                return group != null &&
+                    !string.IsNullOrWhiteSpace(group.objectId) &&
+                    drivenGroupObjectIds.Contains(group.objectId);
+            }
+        }
+
         [XmlIgnore]
         public Cell[,] cellMatrix;
 
@@ -102,6 +114,8 @@ namespace StrategicCombatCore
         public List<Theater> theaters = new();
         [XmlIgnore]
         Dictionary<(int x, int y), Theater> theaterByHex = new();
+        [XmlIgnore]
+        public LandOperationDailyResult landOperationDailyResult = new();
 
         public List<SidedLazyLocalizedString> logs = new();
         // public List<LazyLocalizedString> logs = new();
@@ -411,6 +425,7 @@ namespace StrategicCombatCore
             {
                 RefreshDailyPowerInfluenceMapCaches();
                 RefreshTheaters();
+                Advance1DayForLandOperations(viewerSide);
                 new StrategicTheaterAiPlanner(this).Advance1Day();
             }
         }
@@ -421,6 +436,177 @@ namespace StrategicCombatCore
             {
                 sideState.powerInfluenceMapCache = StrategicInfluenceMapUtility.BuildPowerCache(this, sideState);
             }
+        }
+
+        public void Advance1DayForLandOperations(SideState viewerSide = null)
+        {
+            var result = new LandOperationDailyResult();
+            var visitedRoots = new HashSet<string>();
+            foreach (var mission in missions
+                .OfType<LandOperationMission>()
+                .Where(mission => mission != null && mission.IsActiveFor(viewerSide))
+                .ToList())
+            {
+                foreach (var group in mission.IterAssignedStrategicGroups()
+                    .Where(group => group != null && group.deployState == StrategicGroup.DeployState.Independent))
+                {
+                    if (!visitedRoots.Add($"{mission.objectId}:{group.objectId}"))
+                        continue;
+
+                    Advance1DayForLandOperationGroupTree(group, mission, viewerSide, result, new HashSet<string>());
+                }
+            }
+
+            landOperationDailyResult = result;
+        }
+
+        void Advance1DayForLandOperationGroupTree(
+            StrategicGroup group,
+            LandOperationMission inheritedMission,
+            SideState viewerSide,
+            LandOperationDailyResult result,
+            HashSet<string> visitingGroupIds)
+        {
+            if (group == null || inheritedMission == null || result == null)
+                return;
+
+            if (!visitingGroupIds.Add(group.objectId))
+                return;
+
+            var mission = GetActiveLandOperationMissionForGroup(group, viewerSide) ?? inheritedMission;
+            if (IsEligibleLandOperationGroup(group, mission) &&
+                TryApplyLandOperationToGroup(group, mission))
+            {
+                result.drivenGroupObjectIds.Add(group.objectId);
+            }
+
+            foreach (var childGroup in group.WalkDirectMembers<StrategicGroup>().ToList())
+            {
+                Advance1DayForLandOperationGroupTree(
+                    childGroup,
+                    mission,
+                    viewerSide,
+                    result,
+                    new HashSet<string>(visitingGroupIds));
+            }
+        }
+
+        static LandOperationMission GetActiveLandOperationMissionForGroup(StrategicGroup group, SideState viewerSide)
+        {
+            return group?.GetAssignedMission() is LandOperationMission mission && mission.IsActiveFor(viewerSide)
+                ? mission
+                : null;
+        }
+
+        static bool IsEligibleLandOperationGroup(StrategicGroup group, LandOperationMission mission)
+        {
+            return group != null &&
+                mission != null &&
+                group.deployState == StrategicGroup.DeployState.Independent &&
+                group.IsArmy() &&
+                !group.IsBase() &&
+                group.CanActStrategically &&
+                group.side == mission.GetSide() &&
+                group.cell != null;
+        }
+
+        bool TryApplyLandOperationToGroup(StrategicGroup group, LandOperationMission mission)
+        {
+            var targetCell = mission.GetLandOperationCurrentTargetCell();
+            if (targetCell == null)
+                return false;
+
+            var frontierCell = mission.GetLandOperationFrontierCell() ?? group.cell;
+            if (frontierCell == null)
+                return false;
+
+            if (group.type == StrategicGroup.Type.HeadQuarter)
+            {
+                if (group.cell == frontierCell)
+                    return false;
+
+                return group.TryPlanArmyMixedPathTo(frontierCell, out _);
+            }
+
+            var frontierTheater = FindSameSideTheaterByCell(frontierCell, mission.GetSide());
+            if (!IsGroupInFrontierTheater(group, frontierCell, frontierTheater))
+            {
+                return group.TryPlanArmyMixedPathTo(frontierCell, out _);
+            }
+
+            if (!mission.allowNavalInvasion || !targetCell.IsCoast)
+                return false;
+
+            if (IsLandReachableWithinSteps(group, frontierCell, targetCell, 5))
+                return false;
+
+            if (!group.TryBuildArmyMixedPathTo(
+                targetCell,
+                out var pathCells,
+                out var embarkingLandingPairs,
+                out var hasNavalTransportSegment))
+                return false;
+
+            if (!hasNavalTransportSegment)
+                return false;
+
+            group.SetPlannedPath(pathCells.Select(cell => cell.ToXY()).ToList());
+            group.SetEmbarkingLandingPairs(embarkingLandingPairs);
+            return true;
+        }
+
+        Theater FindSameSideTheaterByCell(Cell cell, SideState side)
+        {
+            var theater = FindTheaterByCell(cell);
+            return theater?.side == side ? theater : null;
+        }
+
+        bool IsGroupInFrontierTheater(StrategicGroup group, Cell frontierCell, Theater frontierTheater)
+        {
+            if (group?.cell == null || frontierCell == null)
+                return false;
+
+            if (frontierTheater == null)
+                return group.cell == frontierCell;
+
+            return FindTheaterByCell(group.cell) == frontierTheater;
+        }
+
+        static bool IsLandReachableWithinSteps(StrategicGroup group, Cell srcCell, Cell dstCell, int maxSteps)
+        {
+            if (group == null || srcCell == null || dstCell == null || maxSteps < 0)
+                return false;
+
+            if (srcCell == dstCell)
+                return true;
+
+            var graph = new DynamicCellGraphArmy()
+            {
+                movingSide = group.side,
+            };
+            var visited = new HashSet<Cell>() { srcCell };
+            var queue = new Queue<(Cell cell, int steps)>();
+            queue.Enqueue((srcCell, 0));
+
+            while (queue.Count > 0)
+            {
+                var (cell, steps) = queue.Dequeue();
+                if (steps >= maxSteps)
+                    continue;
+
+                foreach (var neighbor in graph.Neighbors(cell))
+                {
+                    if (neighbor == null || !visited.Add(neighbor))
+                        continue;
+
+                    if (neighbor == dstCell)
+                        return true;
+
+                    queue.Enqueue((neighbor, steps + 1));
+                }
+            }
+
+            return false;
         }
 
 

@@ -206,12 +206,25 @@ namespace StrategicCombatCore
         {
             return group != null &&
                    group.LandCombatable() &&
-                   !group.IsBase();
+                   !group.IsBase() &&
+                   group.type != StrategicGroup.Type.HeadQuarter;
         }
 
-        static bool IsAiTheaterSourceGroup(StrategicGroup group, SideState side, HashSet<(int, int)> theaterCellSet)
+        bool IsExcludedFromTheaterAi(StrategicGroup group)
         {
-            return IsAiCombatableArmyGroup(group) &&
+            return group == null ||
+                group.type == StrategicGroup.Type.HeadQuarter ||
+                state.landOperationDailyResult?.IsDriven(group) == true;
+        }
+
+        bool IsAiTheaterAvailableArmyGroup(StrategicGroup group)
+        {
+            return IsAiCombatableArmyGroup(group) && !IsExcludedFromTheaterAi(group);
+        }
+
+        bool IsAiTheaterSourceGroup(StrategicGroup group, SideState side, HashSet<(int, int)> theaterCellSet)
+        {
+            return IsAiTheaterAvailableArmyGroup(group) &&
                    group.side == side &&
                    group.cell != null &&
                    theaterCellSet.Contains((group.cell.x, group.cell.y));
@@ -487,14 +500,14 @@ namespace StrategicCombatCore
             return GetAiPowerInCell(cell, group => IsHostile(side, group.side));
         }
 
-        static float GetAiPowerInCell(Cell cell, Func<StrategicGroup, bool> predicate)
+        float GetAiPowerInCell(Cell cell, Func<StrategicGroup, bool> predicate)
         {
             if (cell == null || predicate == null)
                 return 0f;
 
             return cell.StrategicGroupReferences
                 .Select(reference => reference.Get())
-                .Where(group => IsAiCombatableArmyGroup(group) && predicate(group))
+                .Where(group => IsAiTheaterAvailableArmyGroup(group) && predicate(group))
                 .Sum(group => group.WalkGroupMembers<LandUnit>().Sum(landUnit => landUnit?.GetCombinedPowerPoint(false) ?? 0f));
         }
 
@@ -620,7 +633,7 @@ namespace StrategicCombatCore
 
             foreach (var group in IterIndependentStrategicGroups())
             {
-                if (!IsAiCombatableArmyGroup(group) ||
+                if (!IsAiTheaterAvailableArmyGroup(group) ||
                     group.side != side ||
                     group.cell == null ||
                     group.plannedPath == null ||
@@ -1143,6 +1156,7 @@ namespace StrategicCombatCore
                    group.IsArmy() &&
                    group.type != StrategicGroup.Type.Base &&
                    group.type != StrategicGroup.Type.HeadQuarter &&
+                   !IsExcludedFromTheaterAi(group) &&
                    group.side == theater?.side &&
                    group.cell != null &&
                    theaterCellSet.Contains((group.cell.x, group.cell.y));

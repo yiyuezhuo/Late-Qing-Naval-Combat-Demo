@@ -1573,6 +1573,79 @@ namespace StrategicCombatCore
             SetPlannedPath(pathXY);
         }
 
+        public bool TryPlanArmyMixedPathTo(Cell dstCell, out bool hasNavalTransportSegment)
+        {
+            if (!TryBuildArmyMixedPathTo(dstCell, out var pathCells, out var embarkingLandingPairs, out hasNavalTransportSegment))
+                return false;
+
+            SetPlannedPath(pathCells.Select(c => c.ToXY()).ToList());
+            SetEmbarkingLandingPairs(embarkingLandingPairs);
+            return true;
+        }
+
+        public bool TryBuildArmyMixedPathTo(
+            Cell dstCell,
+            out List<Cell> pathCells,
+            out List<EmbarkingLandingPair> embarkingLandingPairs,
+            out bool hasNavalTransportSegment)
+        {
+            hasNavalTransportSegment = false;
+            pathCells = new();
+            embarkingLandingPairs = new();
+            if (!CanActStrategically ||
+                !IsArmy() ||
+                cell == null ||
+                dstCell == null ||
+                !dstCell.IsArmyPassable())
+            {
+                return false;
+            }
+
+            var graph = new DynamicCellGraphArmyWithNavalTransport()
+            {
+                movingSide = side,
+            };
+            var srcNode = new DynamicCellGraphArmyWithNavalTransport.Node(cell, false);
+            var dstNode = new DynamicCellGraphArmyWithNavalTransport.Node(dstCell, false);
+            var pathCost = PathFinding<DynamicCellGraphArmyWithNavalTransport.Node>.AStar2(graph, srcNode, dstNode, out var pathNodes);
+            if (pathNodes.Count < 2 || float.IsInfinity(pathCost))
+                return false;
+
+            Cell currentEmbarkingCell = null;
+            foreach (var node in pathNodes)
+            {
+                if (pathCells.Count == 0 || pathCells[^1] != node.cell)
+                {
+                    pathCells.Add(node.cell);
+                }
+            }
+
+            for (var idx = 1; idx < pathNodes.Count; idx++)
+            {
+                var prev = pathNodes[idx - 1];
+                var current = pathNodes[idx];
+                if (prev.cell != current.cell)
+                    continue;
+
+                if (!prev.navalTransportState && current.navalTransportState)
+                {
+                    currentEmbarkingCell = current.cell;
+                }
+                else if (prev.navalTransportState && !current.navalTransportState && currentEmbarkingCell != null)
+                {
+                    embarkingLandingPairs.Add(new()
+                    {
+                        embarking = currentEmbarkingCell.ToXY(),
+                        landing = current.cell.ToXY(),
+                    });
+                    currentEmbarkingCell = null;
+                }
+            }
+
+            hasNavalTransportSegment = embarkingLandingPairs.Count > 0;
+            return true;
+        }
+
         public bool IsFleetReadyForMissionDeparture()
         {
             var groupCell = cell;

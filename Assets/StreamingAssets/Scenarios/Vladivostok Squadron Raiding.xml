@@ -4802,7 +4802,7 @@
     <suppression>1</suppression>
     <morale>0</morale>
     <fatigue>1</fatigue>
-    <supplyTons>10000</supplyTons>
+    <supplyTons>15000</supplyTons>
     <supplyGeneratedTons>5000</supplyGeneratedTons>
     <landUnitTemplateId>f5b42971-fd6a-4e48-b6c1-33ffd39f5f4b</landUnitTemplateId>
     <supplyTransferState>
@@ -4835,7 +4835,7 @@
     <suppression>1</suppression>
     <morale>0</morale>
     <fatigue>1</fatigue>
-    <supplyTons>10000</supplyTons>
+    <supplyTons>15000</supplyTons>
     <supplyGeneratedTons>5000</supplyGeneratedTons>
     <landUnitTemplateId>f5b42971-fd6a-4e48-b6c1-33ffd39f5f4b</landUnitTemplateId>
     <supplyTransferState>
@@ -4869,7 +4869,7 @@
     <suppression>1</suppression>
     <morale>0</morale>
     <fatigue>1</fatigue>
-    <supplyTons>6000</supplyTons>
+    <supplyTons>9000</supplyTons>
     <supplyGeneratedTons>3000</supplyGeneratedTons>
     <landUnitTemplateId>f5b42971-fd6a-4e48-b6c1-33ffd39f5f4b</landUnitTemplateId>
     <supplyTransferState>
@@ -5033,7 +5033,7 @@
     <suppression>1</suppression>
     <morale>0</morale>
     <fatigue>1</fatigue>
-    <supplyTons>10000</supplyTons>
+    <supplyTons>15000</supplyTons>
     <supplyGeneratedTons>5000</supplyGeneratedTons>
     <landUnitTemplateId>f5b42971-fd6a-4e48-b6c1-33ffd39f5f4b</landUnitTemplateId>
     <supplyTransferState>
@@ -5084,6 +5084,7 @@
      </StrategicGroupMemberReference>
     </directMemberReferences>
     <navySubMission>General</navySubMission>
+    <embarkingLandingPairs />
     <moveProgressionKm>0</moveProgressionKm>
     <plannedPath />
     <posture>Active</posture>
@@ -5092,6 +5093,7 @@
     <stackPriority>0</stackPriority>
     <enableAutoReattachProp>false</enableAutoReattachProp>
     <enableArriveState>false</enableArriveState>
+    <enableFixedState>false</enableFixedState>
     <objectId>00552ba8-0962-43c1-9da7-31a07da39aaa</objectId>
     <parentGroupReference />
     <detachedFromGroupReference />
@@ -5124,6 +5126,7 @@
      </StrategicGroupMemberReference>
     </directMemberReferences>
     <navySubMission>General</navySubMission>
+    <embarkingLandingPairs />
     <moveProgressionKm>0</moveProgressionKm>
     <plannedPath />
     <posture>Active</posture>
@@ -5132,6 +5135,7 @@
     <stackPriority>0.333333343</stackPriority>
     <enableAutoReattachProp>false</enableAutoReattachProp>
     <enableArriveState>false</enableArriveState>
+    <enableFixedState>false</enableFixedState>
     <objectId>6a301c4b-f894-4223-a719-0831dc11c156</objectId>
     <parentGroupReference />
     <detachedFromGroupReference />
@@ -5174,6 +5178,7 @@
     <assignedMissionObjectId>7f99dd12-cdca-4a29-984c-ac1a1ee911c3</assignedMissionObjectId>
     <homeBaseObjectId>6a301c4b-f894-4223-a719-0831dc11c156</homeBaseObjectId>
     <navySubMission>General</navySubMission>
+    <embarkingLandingPairs />
     <moveProgressionKm>0</moveProgressionKm>
     <plannedPath />
     <posture>Passive</posture>
@@ -5182,6 +5187,7 @@
     <stackPriority>0.6666667</stackPriority>
     <enableAutoReattachProp>false</enableAutoReattachProp>
     <enableArriveState>false</enableArriveState>
+    <enableFixedState>false</enableFixedState>
     <objectId>f99477a6-49ae-4f0d-9f5b-09fc0543f47e</objectId>
     <parentGroupReference>
      <referenceId>00552ba8-0962-43c1-9da7-31a07da39aaa</referenceId>
@@ -5217,6 +5223,7 @@
     <assignedMissionObjectId>24f14b9b-d919-4df6-a4bb-66fb9165d2b1</assignedMissionObjectId>
     <homeBaseObjectId>d7239c1d-abdf-49fe-80bc-a2568d837526</homeBaseObjectId>
     <navySubMission>General</navySubMission>
+    <embarkingLandingPairs />
     <moveProgressionKm>0</moveProgressionKm>
     <plannedPath />
     <posture>Active</posture>
@@ -5225,6 +5232,7 @@
     <stackPriority>0.5</stackPriority>
     <enableAutoReattachProp>false</enableAutoReattachProp>
     <enableArriveState>false</enableArriveState>
+    <enableFixedState>false</enableFixedState>
     <objectId>4efd9eac-e7d0-4c88-8c33-8094b3c8d5cf</objectId>
     <parentGroupReference>
      <referenceId>7b01e810-a85c-4833-a283-de9529d45258</referenceId>
@@ -5272,6 +5280,7 @@
      </StrategicGroupMemberReference>
     </directMemberReferences>
     <navySubMission>General</navySubMission>
+    <embarkingLandingPairs />
     <moveProgressionKm>0</moveProgressionKm>
     <plannedPath />
     <posture>Active</posture>
@@ -5280,6 +5289,7 @@
     <stackPriority>0</stackPriority>
     <enableAutoReattachProp>false</enableAutoReattachProp>
     <enableArriveState>false</enableArriveState>
+    <enableFixedState>false</enableFixedState>
     <objectId>a65da163-4f17-4ab8-be8e-dd7d7389ee67</objectId>
     <parentGroupReference>
      <referenceId>4efd9eac-e7d0-4c88-8c33-8094b3c8d5cf</referenceId>
@@ -5316,6 +5326,7 @@
      </StrategicGroupMemberReference>
     </directMemberReferences>
     <navySubMission>General</navySubMission>
+    <embarkingLandingPairs />
     <moveProgressionKm>0</moveProgressionKm>
     <plannedPath />
     <posture>Active</posture>
@@ -5324,6 +5335,7 @@
     <stackPriority>0</stackPriority>
     <enableAutoReattachProp>false</enableAutoReattachProp>
     <enableArriveState>false</enableArriveState>
+    <enableFixedState>false</enableFixedState>
     <objectId>d7239c1d-abdf-49fe-80bc-a2568d837526</objectId>
     <parentGroupReference />
     <detachedFromGroupReference />
@@ -5358,6 +5370,7 @@
      </StrategicGroupMemberReference>
     </directMemberReferences>
     <navySubMission>General</navySubMission>
+    <embarkingLandingPairs />
     <moveProgressionKm>0</moveProgressionKm>
     <plannedPath />
     <posture>Active</posture>
@@ -5366,6 +5379,7 @@
     <stackPriority>0.5</stackPriority>
     <enableAutoReattachProp>false</enableAutoReattachProp>
     <enableArriveState>false</enableArriveState>
+    <enableFixedState>false</enableFixedState>
     <objectId>7cc10e6e-260c-4492-8f4c-304596825029</objectId>
     <parentGroupReference />
     <detachedFromGroupReference />
@@ -5400,6 +5414,7 @@
      </StrategicGroupMemberReference>
     </directMemberReferences>
     <navySubMission>General</navySubMission>
+    <embarkingLandingPairs />
     <moveProgressionKm>0</moveProgressionKm>
     <plannedPath />
     <posture>Active</posture>
@@ -5408,6 +5423,7 @@
     <stackPriority>0</stackPriority>
     <enableAutoReattachProp>false</enableAutoReattachProp>
     <enableArriveState>false</enableArriveState>
+    <enableFixedState>false</enableFixedState>
     <objectId>867755df-7de6-44a3-a0c1-c733bc0cfe9c</objectId>
     <parentGroupReference />
     <detachedFromGroupReference />
@@ -5439,6 +5455,7 @@
      </StrategicGroupMemberReference>
     </directMemberReferences>
     <navySubMission>General</navySubMission>
+    <embarkingLandingPairs />
     <moveProgressionKm>0</moveProgressionKm>
     <plannedPath />
     <posture>Active</posture>
@@ -5447,6 +5464,7 @@
     <stackPriority>0.5</stackPriority>
     <enableAutoReattachProp>false</enableAutoReattachProp>
     <enableArriveState>false</enableArriveState>
+    <enableFixedState>false</enableFixedState>
     <objectId>7b01e810-a85c-4833-a283-de9529d45258</objectId>
     <parentGroupReference />
     <detachedFromGroupReference />
@@ -5455,6 +5473,7 @@
   </strategicGroups>
   <scenarioState>
    <dateTime>1904-02-08T00:00:00Z</dateTime>
+   <endDateTime>1904-08-15T00:00:00Z</endDateTime>
    <enableGridSystem>false</enableGridSystem>
    <enableAreaSystem>true</enableAreaSystem>
    <areaSystem>
@@ -5485,10 +5504,18 @@
    <enableVladivostokSquadronScript>true</enableVladivostokSquadronScript>
    <enableStrategicDisengagementRoll>true</enableStrategicDisengagementRoll>
    <globalDescription>
-    <english>The campaign and strategic mode are not yet complete in the EA/Demo version and are still under development. You can preview part of them here.</english>
-    <japanese>戦役および戦略モードは、早期アクセス版／デモ版ではまだ未完成で、現在も開発中です。ここではその一部をプレビューできます。</japanese>
-    <chineseSimplified>战役与战略模式在EA/DEMO版中尚未完成仍在开发中，你可以在此预览它的一部分。</chineseSimplified>
-    <chineseTraditional>戰役與戰略模式在搶先體驗版／DEMO中尚未完成，仍在開發中。你可以在此預覽其中的一部分。</chineseTraditional>
+    <english>The Vladivostok commerce raiding operations were a series of raids conducted by the Vladivostok Cruiser Squadron during the Russo-Japanese War. They tied down part of the Combined Fleet’s combat strength and indirectly affected the main theater by disrupting maritime shipping.
+
+The campaign and strategic mode are not yet complete in the EA/Demo version and are still under development. You can preview part of them here.</english>
+    <japanese>ウラジオストク通商破壊戦は、日露戦争期にウラジオストク巡洋艦隊が実施した一連の通商破壊作戦であり、連合艦隊の一部戦力を拘束するとともに、海上輸送を妨害することで正面戦場に間接的な影響を与えた。
+
+戦役および戦略モードは、早期アクセス版／デモ版ではまだ未完成で、現在も開発中です。ここではその一部をプレビューできます。</japanese>
+    <chineseSimplified>海参崴破交战是日俄战争时期海参崴分舰队发起的一系列破交战，其牵制了联合舰队的部分战力，并通过干扰航运间接影响了正面战场。
+
+战役与战略模式在EA/DEMO版中尚未完成仍在开发中，你可以在此预览它的一部分。</chineseSimplified>
+    <chineseTraditional>海參崴破交戰是日俄戰爭期間海參崴分艦隊發起的一系列破交作戰，其牽制了聯合艦隊的部分戰力，並透過干擾航運間接影響了正面戰場。
+
+戰役與戰略模式在搶先體驗版／DEMO中尚未完成，仍在開發中。你可以在此預覽其中的一部分。</chineseTraditional>
    </globalDescription>
    <firstLoaded>false</firstLoaded>
    <estimationRuleMode>RussoJapaneseWar</estimationRuleMode>
@@ -5522,6 +5549,9 @@
     <victoryPoints>0</victoryPoints>
     <recommended>true</recommended>
     <supplyAutomation>true</supplyAutomation>
+    <automaticalTransportAssetBalance>true</automaticalTransportAssetBalance>
+    <automaticArmyOperation>false</automaticArmyOperation>
+    <automaticNavyOperation>false</automaticNavyOperation>
     <powerInfluenceMapCache>
      <generatedAtTicks>0</generatedAtTicks>
      <parameterSnapshot>
@@ -5565,6 +5595,9 @@
     <victoryPoints>2</victoryPoints>
     <recommended>true</recommended>
     <supplyAutomation>true</supplyAutomation>
+    <automaticalTransportAssetBalance>true</automaticalTransportAssetBalance>
+    <automaticArmyOperation>false</automaticArmyOperation>
+    <automaticNavyOperation>false</automaticNavyOperation>
     <powerInfluenceMapCache>
      <generatedAtTicks>0</generatedAtTicks>
      <parameterSnapshot>
@@ -5604,7 +5637,7 @@
     <parentMissionRef />
     <childrenMissionRefs />
     <sideObjectId>f781e78a-aaf5-411f-8f49-d1561e7949a2</sideObjectId>
-    <active>true</active>
+    <allowNavalInvasionProp>false</allowNavalInvasionProp>
     <objectId>7f99dd12-cdca-4a29-984c-ac1a1ee911c3</objectId>
    </StrategicMission>
    <StrategicMission xsi:type="GlobalTradeProtectionMission">
@@ -5620,7 +5653,7 @@
     <parentMissionRef />
     <childrenMissionRefs />
     <sideObjectId>ee8a123f-aed1-4cd2-b84d-b4b8b0d3a52b</sideObjectId>
-    <active>true</active>
+    <allowNavalInvasionProp>false</allowNavalInvasionProp>
     <objectId>24f14b9b-d919-4df6-a4bb-66fb9165d2b1</objectId>
    </StrategicMission>
   </missions>
@@ -5636,6 +5669,54 @@
     <observedSideId>f781e78a-aaf5-411f-8f49-d1561e7949a2</observedSideId>
     <estimation>
      <records>
+      <EsimationRecord>
+       <estimateCategory>BB</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>CA</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>CL</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>DD</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>TB</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>Other</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>BB</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>CA</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>CL</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>DD</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>TB</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>Other</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
       <EsimationRecord>
        <estimateCategory>BB</estimateCategory>
        <count>0</count>

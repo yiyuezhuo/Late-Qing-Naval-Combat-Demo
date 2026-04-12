@@ -4798,7 +4798,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>1.9073486328125E-06</supplyTons>
+    <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -5165,7 +5165,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>1.9073486328125E-06</supplyTons>
+    <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -5471,7 +5471,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>9.5367431640625E-07</supplyTons>
+    <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -5847,7 +5847,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>1.9073486328125E-06</supplyTons>
+    <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -8091,7 +8091,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>3.814697265625E-06</supplyTons>
+    <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -8379,7 +8379,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>3.814697265625E-06</supplyTons>
+    <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -12434,7 +12434,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>5.9604644775390625E-08</supplyTons>
+    <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -12623,7 +12623,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>5.9604644775390625E-08</supplyTons>
+    <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -12821,7 +12821,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>8.3446502685546875E-07</supplyTons>
+    <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -16590,7 +16590,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>1200</supplyTons>
+    <supplyTons>1160</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -16741,7 +16741,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>1200</supplyTons>
+    <supplyTons>1160</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -16892,7 +16892,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>1200</supplyTons>
+    <supplyTons>1160</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -17043,7 +17043,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>1200</supplyTons>
+    <supplyTons>1160</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -30025,7 +30025,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>1527.4500019550323</supplyTons>
+    <supplyTons>1718.3900020122528</supplyTons>
     <supplyGeneratedTons>100</supplyGeneratedTons>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
     <supplyTransferState>
@@ -30774,7 +30774,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>171784.01410400867</supplyTons>
+    <supplyTons>191630.34810531139</supplyTons>
     <supplyGeneratedTons>10000</supplyGeneratedTons>
     <remark>Generic Super Depot Supply Source.</remark>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
@@ -30998,7 +30998,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>190126.79726195335</supplyTons>
+    <supplyTons>210046.24125885963</supplyTons>
     <supplyGeneratedTons>10000</supplyGeneratedTons>
     <remark>Generic Super Depot Supply Source.</remark>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
@@ -31171,7 +31171,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>26210.573358058929</supplyTons>
+    <supplyTons>26177.207357883453</supplyTons>
     <supplyGeneratedTons>0</supplyGeneratedTons>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
     <supplyTransferState>
@@ -31262,7 +31262,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>206.32495361566544</supplyTons>
+    <supplyTons>178.8149523139</supplyTons>
     <supplyGeneratedTons>0</supplyGeneratedTons>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
     <supplyTransferState>
@@ -31353,7 +31353,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>275.40004436671734</supplyTons>
+    <supplyTons>238.68004377186298</supplyTons>
     <supplyGeneratedTons>0</supplyGeneratedTons>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
     <supplyTransferState>
@@ -31493,7 +31493,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>24306.009687185287</supplyTons>
+    <supplyTons>24303.009687185287</supplyTons>
     <supplyGeneratedTons>0</supplyGeneratedTons>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
     <supplyTransferState>
@@ -31830,7 +31830,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>94.5</supplyTons>
+    <supplyTons>91.5</supplyTons>
     <supplyGeneratedTons>0</supplyGeneratedTons>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
     <supplyTransferState>
@@ -39048,6 +39048,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
   </strategicGroups>
   <scenarioState>
    <dateTime>1894-07-25T00:00:00Z</dateTime>
+   <endDateTime>1895-04-17T00:00:00Z</endDateTime>
    <enableGridSystem>true</enableGridSystem>
    <enableAreaSystem>false</enableAreaSystem>
    <areaSystem>
@@ -39061,10 +39062,18 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
    <enableVladivostokSquadronScript>false</enableVladivostokSquadronScript>
    <enableStrategicDisengagementRoll>true</enableStrategicDisengagementRoll>
    <globalDescription>
-    <english>The campaign and strategic mode are not yet complete in the EA/Demo version and are still under development. You can preview part of them here.</english>
-    <japanese>戦役および戦略モードは、早期アクセス版／デモ版ではまだ未完成で、現在も開発中です。ここではその一部をプレビューできます。</japanese>
-    <chineseSimplified>战役与战略模式在EA/DEMO版中尚未完成仍在开发中，你可以在此预览它的一部分。</chineseSimplified>
-    <chineseTraditional>戰役與戰略模式在搶先體驗版／DEMO中尚未完成，仍在開發中。你可以在此預覽其中的一部分。</chineseTraditional>
+    <english>The First Sino-Japanese War (1894–1895) was a conflict between China (the Qing dynasty) and Japan over control of Korea. The Chinese navy was somewhat weaker than the Japanese navy, particularly lacking quick-firing guns and suitable ammunition. On land, China’s elite "modernized" troops were few in number and inferior in quality to Japan’s modern regular army, while the rest of its forces were numerous but poorly trained and ineffective. Meanwhile, internal factional struggles in China limited the mobilization of its full strength. In the end, Japan emerged victorious and seized control of Korea from China.
+
+The campaign and strategic mode are not yet complete in the EA/Demo version and are still under development. You can preview part of them here.</english>
+    <japanese>日清戦争（1894～1895年）は、朝鮮の支配権をめぐって中国（清）と日本の間で行われた戦争である。中国海軍は日本海軍よりやや劣っており、とりわけ速射砲や適切な弾薬を欠いていた。陸軍では、中国の精鋭である「新式」軍は数が少なく、その質も日本の近代化された正規軍に劣っていた。他の部隊は数こそ多いものの戦闘力は低かった。また、中国内部の派閥争いにより、動員できる戦力は一部に限られていた。最終的に日本が勝利し、中国から朝鮮の支配権を奪取した。
+
+戦役および戦略モードは、早期アクセス版／デモ版ではまだ未完成で、現在も開発中です。ここではその一部をプレビューできます。</japanese>
+    <chineseSimplified>甲午战争是1894-1895中国（清朝）与日本为争夺朝鲜霸权的战争。其中中国海军比日本海军稍弱，特别是缺乏速射炮和合适的弹药。陆军方面，中国的精锐“新式”军队数量不多，质量也劣于日军的近代化正规军，其他军队数量很多但战斗力很弱。同时中国内部因为派系斗争原因，只能动员部分力量投入战场。最终日本胜利，从中国处夺取了朝鲜的霸权。
+
+战役与战略模式在EA/DEMO版中尚未完成仍在开发中，你可以在此预览它的一部分。</chineseSimplified>
+    <chineseTraditional>甲午戰爭（1894－1895年）是中國（清朝）與日本為爭奪朝鮮霸權而進行的戰爭。其中中國海軍較日本海軍稍弱，特別是缺乏速射炮與合適的彈藥。陸軍方面，中國的精銳「新式」軍隊數量不多，質量也劣於日軍的近代化正規軍，其他軍隊雖然數量眾多但戰鬥力很弱。同時，中國內部因派系鬥爭，只能動員部分力量投入戰場。最終日本勝利，從中國手中奪取了朝鮮的霸權。
+
+戰役與戰略模式在搶先體驗版／DEMO中尚未完成，仍在開發中。你可以在此預覽其中的一部分。</chineseTraditional>
    </globalDescription>
    <firstLoaded>false</firstLoaded>
    <estimationRuleMode>SinoJapaneseWar</estimationRuleMode>
@@ -42193,6 +42202,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
      <XY x="34" y="39" />
      <XY x="34" y="38" />
      <XY x="34" y="37" />
+     <XY x="35" y="39" />
      <XY x="35" y="38" />
      <XY x="35" y="37" />
      <XY x="36" y="39" />
@@ -42214,7 +42224,6 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
      <FrontlineCellInfo x="31" y="35" weightRequested="4.17808877E-07" />
      <FrontlineCellInfo x="32" y="36" weightRequested="7.791562E-08" />
      <FrontlineCellInfo x="33" y="36" weightRequested="0.000512029568" />
-     <FrontlineCellInfo x="34" y="39" weightRequested="3.16818569E-06" />
      <FrontlineCellInfo x="34" y="37" weightRequested="2.05836415" />
      <FrontlineCellInfo x="35" y="38" weightRequested="0.007389307" />
      <FrontlineCellInfo x="35" y="37" weightRequested="2.05836415" />

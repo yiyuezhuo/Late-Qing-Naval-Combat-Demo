@@ -3782,6 +3782,10 @@ MonoBehaviour:
     m_Localized: "\u555F\u7528\u6D77\u904B"
     m_Metadata:
       m_Items: []
+  - m_Id: -176
+    m_Localized: "\u5DF2\u5230\u9054\u5287\u672C\u7D50\u675F\u6642\u9593\u3002\u73FE\u5728\u958B\u555F Loss Status \u55CE\uFF1F"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

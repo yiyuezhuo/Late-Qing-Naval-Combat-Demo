@@ -3759,6 +3759,10 @@ MonoBehaviour:
     m_Localized: Enable Naval Transport
     m_Metadata:
       m_Items: []
+  - m_Id: -176
+    m_Localized: Scenario end time is reached. Open Loss Status now?
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -309,6 +309,9 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
         if (advanceCoroutine != null)
             return isRealtimeAdvanceCoroutineRunning;
 
+        if (CheckHasReachedScenarioEndDateTimeAndPopup())
+            return false;
+
         if (CheckHasPendingNavalCombatAndPopupIfAny())
             return false;
 
@@ -334,6 +337,27 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
             if (CheckHasPendingNavalCombatAndPopupIfAny())
                 break;
 
+            var scenarioState = StrategicGameState.Instance.scenarioState;
+            var nextDateTime = scenarioState.dateTime.AddHours(1);
+            if (nextDateTime >= scenarioState.endDateTime)
+            {
+                if (nextDateTime == scenarioState.endDateTime)
+                {
+                    if (StrategicGameManager.Instance.currentLogOnly && advancedHours == 0)
+                        StrategicGameState.Instance.ClearLogs();
+
+                    StrategicGameState.Instance.Advance1Hour(StrategicGameManager.Instance.GetViewerSide());
+                    advancedHours++;
+                }
+                else
+                {
+                    scenarioState.dateTime = scenarioState.endDateTime;
+                }
+
+                PopupScenarioEndDateTimeConfirmDialog();
+                break;
+            }
+
             if (StrategicGameManager.Instance.currentLogOnly && advancedHours == 0)
                 StrategicGameState.Instance.ClearLogs();
 
@@ -349,6 +373,25 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
         }
 
         StopAdvanceCoroutine();
+    }
+
+    bool CheckHasReachedScenarioEndDateTimeAndPopup()
+    {
+        if (StrategicGameState.Instance.scenarioState.dateTime < StrategicGameState.Instance.scenarioState.endDateTime)
+            return false;
+
+        PopupScenarioEndDateTimeConfirmDialog();
+        return true;
+    }
+
+    void PopupScenarioEndDateTimeConfirmDialog()
+    {
+        DialogRoot.Instance.PopupConfirmDialog(Localize(
+            "Scenario end time is reached. Open Loss Status now?"
+        ), () =>
+        {
+            DialogRoot.Instance.PopupStrategicVictoryStatusDialog();
+        });
     }
 
     void StopAdvanceCoroutine()

@@ -1241,6 +1241,7 @@ namespace StrategicCombatCore
         public void SetDateTime(DateTime dt) => dateTime = dt;
 
         ScenarioStateDateTimeViewModel _dateTimeViewModel; // Note it's possible to initialize the view model attribute from empty constructor but this may break core's capabbility to leverage empty constructor
+        ScenarioStateDateTimeViewModel _endDateTimeViewModel;
 
         [CreateProperty]
         public ScenarioStateDateTimeViewModel dateTimeViewModel
@@ -1254,6 +1255,13 @@ namespace StrategicCombatCore
                 return _dateTimeViewModel;
             }
         }
+
+        [CreateProperty]
+        public ScenarioStateDateTimeViewModel endDateTimeViewModel => _endDateTimeViewModel ??= ScenarioStateDateTimeViewModel.GetDateTimeHolder
+        (
+            () => endDateTime,
+            dt => endDateTime = dt
+        );
 
         [CreateProperty]
         public string areaSystemSummary => $"({areaSystem.areaStates.Count}) {areaSystem.backgroundReference.isBuiltin}, {areaSystem.backgroundReference.path}";

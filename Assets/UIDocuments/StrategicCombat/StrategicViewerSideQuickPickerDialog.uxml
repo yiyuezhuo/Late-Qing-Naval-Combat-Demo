@@ -1,8 +1,16 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style"/>
     <ui:VisualElement class="panel-dialog" style="width: 600px; max-width: 96%; flex-grow: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 30px; height: auto;">
-        <ui:Label name="TitleLabel" text="Choose Viewer Side" class="title"/>
-        <ui:Label name="DescriptionLabel" text="Select one option to start." style="white-space: normal; margin-bottom: 10px;"/>
+        <ui:Label name="TitleLabel" text="Choose Viewer Side" class="title">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-103)"/>
+            </Bindings>
+        </ui:Label>
+        <ui:Label name="DescriptionLabel" text="Select one option to continue. The dialog closes immediately after you choose." style="white-space: normal; margin-bottom: 10px;">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-102)"/>
+            </Bindings>
+        </ui:Label>
         <ui:VisualElement name="OptionsContainer" style="flex-direction: row; flex-wrap: wrap; justify-content: center; align-items: stretch; gap: 10px;"/>
     </ui:VisualElement>
 </ui:UXML>

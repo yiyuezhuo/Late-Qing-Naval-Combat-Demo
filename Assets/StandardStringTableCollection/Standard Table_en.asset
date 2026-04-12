@@ -3257,6 +3257,23 @@ MonoBehaviour:
     m_Localized: Overwrite Camera State
     m_Metadata:
       m_Items: []
+  - m_Id: 80639515854278656
+    m_Localized: Replan Automatic Supply
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80640405877198848
+    m_Localized: Reset Strength & Supply
+    m_Metadata:
+      m_Items: []
+  - m_Id: -102
+    m_Localized: Select one option to continue. The dialog closes immediately after
+      you choose.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -103
+    m_Localized: Choose Player Side
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

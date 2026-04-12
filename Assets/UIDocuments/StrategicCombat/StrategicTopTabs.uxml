@@ -4,14 +4,60 @@
         <ui:TabView data-source-type="StrategicGameManager, Assembly-CSharp" class="hud-tabview">
             <ui:Tab label="Command">
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
-                    <ui:Button text="Resolve Turn" name="NextTurnButton" style="display: none;">
+                    <ui:Label text="Army Path Finding Mode">
                         <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(3470675827920896)"/>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-95)"/>
+                        </Bindings>
+                    </ui:Label>
+                    <LocalizedEnumField type-str="StrategicGameManager+ArmyPathFindingMode" style="min-width: 200px;">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="armyPathFindingMode" source-to-ui-converters="ArmyPathFindingMode =&gt; int" ui-to-source-converters="int =&gt; ArmyPathFindingMode" binding-mode="TwoWay"/>
+                        </Bindings>
+                    </LocalizedEnumField>
+                    <ui:Label text="Prevent Hostile Control">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-96)"/>
+                        </Bindings>
+                    </ui:Label>
+                    <ui:Toggle>
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="preventHostileControlInArmyPathFinding" binding-mode="TwoWay"/>
+                        </Bindings>
+                    </ui:Toggle>
+                    <ui:Button text="OOB Tree" name="OOBTreeButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(20022935840002048)"/>
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="Loss Status" name="LossStatusButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-78)"/>
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="Select Side" name="QuickViewerSideButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(79786762512797696)"/>
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="Group" name="StrategicGroupEditorButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(203935249502208)"/>
+                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                         </Bindings>
                     </ui:Button>
                     <ui:Button text="Pending Naval Combats" name="PendingNavalCombatsButton">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(20022621116207104)"/>
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="Side State" name="SideStateButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(357022840819712)"/>
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="Theater" name="TheaterButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-67)"/>
                         </Bindings>
                     </ui:Button>
                     <ui:Button text="Reinforcement" name="ReinforcementButton">
@@ -34,42 +80,9 @@
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11053886028288000)"/>
                         </Bindings>
                     </ui:Button>
-                    <ui:Button text="OOB Tree" name="OOBTreeButton">
-                        <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(20022935840002048)"/>
-                        </Bindings>
-                    </ui:Button>
-                    <ui:Button text="Loss Status" name="LossStatusButton">
-                        <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-78)"/>
-                        </Bindings>
-                    </ui:Button>
                     <ui:Button text="Influence Map" name="StrategicInfluenceMapButton">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000021)"/>
-                        </Bindings>
-                    </ui:Button>
-                    <ui:Button text="Select Side" name="QuickViewerSideButton">
-                        <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(79786762512797696)"/>
-                        </Bindings>
-                    </ui:Button>
-                    <LocalizedEnumField label="Army Path Finding Mode" type-str="StrategicGameManager+ArmyPathFindingMode" style="min-width: 190px;">
-                        <Bindings>
-                            <ui:DataBinding property="value" data-source-path="armyPathFindingMode" source-to-ui-converters="ArmyPathFindingMode =&gt; int" ui-to-source-converters="int =&gt; ArmyPathFindingMode" binding-mode="TwoWay"/>
-                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-95)"/>
-                        </Bindings>
-                    </LocalizedEnumField>
-                    <ui:Toggle label="Prevent Hostile Control">
-                        <Bindings>
-                            <ui:DataBinding property="value" data-source-path="preventHostileControlInArmyPathFinding" binding-mode="TwoWay"/>
-                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-96)"/>
-                        </Bindings>
-                    </ui:Toggle>
-                    <ui:Button text="Group" name="StrategicGroupEditorButton">
-                        <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(203935249502208)"/>
-                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                         </Bindings>
                     </ui:Button>
                     <ui:Label text="Edit Mode">
@@ -85,16 +98,6 @@
                     <ui:Button text="Run Debug Script" name="RunDebugScriptButton">
                         <Bindings>
                             <ui:DataBinding property="style.display" data-source-path="isInUnityEditor" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
-                        </Bindings>
-                    </ui:Button>
-                    <ui:Button text="Side State" name="SideStateButton">
-                        <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(357022840819712)"/>
-                        </Bindings>
-                    </ui:Button>
-                    <ui:Button text="Theater" name="TheaterButton">
-                        <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-67)"/>
                         </Bindings>
                     </ui:Button>
                 </ui:VisualElement>
@@ -150,6 +153,7 @@
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(356740144730112)"/>
                             <ui:DataBinding property="style.display" data-source-path="gameState.scenarioState.enableSinoJapaneseHighCommand" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
+                            <ui:DataBinding property="enabledSelf" data-source-path="isDebug" binding-mode="ToTarget"/>
                         </Bindings>
                     </ui:Button>
                     <ui:Button text="Weapon" name="WeaponEditorButton">
@@ -191,14 +195,26 @@
                             </Bindings>
                         </ui:Button>
                     </ui:VisualElement>
-                    <ui:Button text="Reset Strength &amp; Supply" name="ResetStrengthSupplyButton"/>
-                    <ui:Button text="Replan Auto Supply" name="ReplanAutoSupplyButton"/>
+                    <ui:Button text="Reset Strength &amp; Supply" name="ResetStrengthSupplyButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(80640405877198848)"/>
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="Replan Automatic Supply" name="ReplanAutoSupplyButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(80639515854278656)"/>
+                        </Bindings>
+                    </ui:Button>
                     <ui:Button text="Land Battle" name="LandBattleEditorButton">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(30245956232056832)"/>
                         </Bindings>
                     </ui:Button>
-                    <ui:Button text="Scenario State" name="StrategicScenarioStateButton"/>
+                    <ui:Button text="Scenario State" name="StrategicScenarioStateButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(63058589945856)"/>
+                        </Bindings>
+                    </ui:Button>
                 </ui:VisualElement>
                 <Bindings>
                     <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(61775904673792)"/>

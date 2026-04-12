@@ -3173,6 +3173,23 @@ MonoBehaviour:
     m_Key: Overwrite Camera State
     m_Metadata:
       m_Items: []
+  - m_Id: 80639515854278656
+    m_Key: Replan Automatic Supply
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80640405877198848
+    m_Key: Reset Strength & Supply
+    m_Metadata:
+      m_Items: []
+  - m_Id: -102
+    m_Key: Select one option to continue. The dialog closes immediately after you
+      choose.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -103
+    m_Key: Choose Player Side
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

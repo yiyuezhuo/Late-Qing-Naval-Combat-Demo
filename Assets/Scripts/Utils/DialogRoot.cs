@@ -3431,9 +3431,6 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
         tempDialog.onCreated += (sender, el) =>
         {
-            el.Q<Label>("TitleLabel").text = "Choose Viewer Side";
-            el.Q<Label>("DescriptionLabel").text = "Select one option to continue. The dialog closes immediately after you choose.";
-
             var optionsContainer = el.Q<VisualElement>("OptionsContainer");
             optionsContainer.Clear();
 

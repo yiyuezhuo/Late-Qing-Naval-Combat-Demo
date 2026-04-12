@@ -16590,7 +16590,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>1160</supplyTons>
+    <supplyTons>1140</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -16741,7 +16741,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>1160</supplyTons>
+    <supplyTons>1140</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -16892,7 +16892,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>1160</supplyTons>
+    <supplyTons>1140</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -17043,7 +17043,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>1160</supplyTons>
+    <supplyTons>1140</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -21763,11 +21763,12 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>0</supplyTons>
+    <supplyTons>126.80000305175781</supplyTons>
     <supplyTransferState>
      <requestRecord>
-      <targetSupplyTons>0</targetSupplyTons>
-      <flowSupplyTons>0</flowSupplyTons>
+      <otherObjectId>08cbd225-e688-4354-aaa2-9509a71af1e2</otherObjectId>
+      <targetSupplyTons>126.80000305175781</targetSupplyTons>
+      <flowSupplyTons>126.80000305175781</flowSupplyTons>
       <cost>0</cost>
       <pathCells />
      </requestRecord>
@@ -22483,11 +22484,12 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>0</supplyTons>
+    <supplyTons>100</supplyTons>
     <supplyTransferState>
      <requestRecord>
-      <targetSupplyTons>0</targetSupplyTons>
-      <flowSupplyTons>0</flowSupplyTons>
+      <otherObjectId>e44d9f9b-f6d1-4e29-9c58-c2c5e2cf3eb7</otherObjectId>
+      <targetSupplyTons>100</targetSupplyTons>
+      <flowSupplyTons>100</flowSupplyTons>
       <cost>0</cost>
       <pathCells />
      </requestRecord>
@@ -22902,7 +22904,8 @@
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
-      <targetSupplyTons>0</targetSupplyTons>
+      <otherObjectId>fb7b64ef-b35f-4c65-afba-134f6a28942c</otherObjectId>
+      <targetSupplyTons>967.20001220703125</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
       <pathCells />
@@ -23253,7 +23256,8 @@
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
-      <targetSupplyTons>0</targetSupplyTons>
+      <otherObjectId>fb7b64ef-b35f-4c65-afba-134f6a28942c</otherObjectId>
+      <targetSupplyTons>852.4000244140625</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
       <pathCells />
@@ -23622,7 +23626,8 @@
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
-      <targetSupplyTons>0</targetSupplyTons>
+      <otherObjectId>fb7b64ef-b35f-4c65-afba-134f6a28942c</otherObjectId>
+      <targetSupplyTons>667.4000244140625</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
       <pathCells />
@@ -24009,7 +24014,8 @@
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
-      <targetSupplyTons>0</targetSupplyTons>
+      <otherObjectId>fb7b64ef-b35f-4c65-afba-134f6a28942c</otherObjectId>
+      <targetSupplyTons>559.29998779296875</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
       <pathCells />
@@ -24390,7 +24396,8 @@
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
-      <targetSupplyTons>0</targetSupplyTons>
+      <otherObjectId>fb7b64ef-b35f-4c65-afba-134f6a28942c</otherObjectId>
+      <targetSupplyTons>586.29998779296875</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
       <pathCells />
@@ -25770,7 +25777,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
     <supplyTransferState>
      <requestRecord>
-      <otherObjectId>49888c20-7d72-4eae-ab87-02be51361b92</otherObjectId>
+      <otherObjectId>0bf1cf6a-c393-4085-ac93-2a3df16d797f</otherObjectId>
       <targetSupplyTons>1.5149999856948853</targetSupplyTons>
       <flowSupplyTons>1.5149999856948853</flowSupplyTons>
       <cost>3.5</cost>
@@ -25778,11 +25785,11 @@ Each cavalry battalion has 277 personnel (excluding laborers)
        <XY x="27" y="32" />
        <XY x="26" y="33" />
        <XY x="25" y="32" />
-       <XY x="24" y="32" />
-       <XY x="23" y="31" />
-       <XY x="22" y="32" />
-       <XY x="22" y="31" />
-       <XY x="21" y="30" />
+       <XY x="25" y="33" />
+       <XY x="24" y="34" />
+       <XY x="25" y="34" />
+       <XY x="25" y="35" />
+       <XY x="26" y="36" />
       </pathCells>
      </requestRecord>
      <requestedRecords />
@@ -25813,7 +25820,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
     <supplyTransferState>
      <requestRecord>
-      <otherObjectId>49888c20-7d72-4eae-ab87-02be51361b92</otherObjectId>
+      <otherObjectId>0bf1cf6a-c393-4085-ac93-2a3df16d797f</otherObjectId>
       <targetSupplyTons>1.5149999856948853</targetSupplyTons>
       <flowSupplyTons>1.5149999856948853</flowSupplyTons>
       <cost>3.5</cost>
@@ -25821,11 +25828,11 @@ Each cavalry battalion has 277 personnel (excluding laborers)
        <XY x="27" y="32" />
        <XY x="26" y="33" />
        <XY x="25" y="32" />
-       <XY x="24" y="32" />
-       <XY x="23" y="31" />
-       <XY x="22" y="32" />
-       <XY x="22" y="31" />
-       <XY x="21" y="30" />
+       <XY x="25" y="33" />
+       <XY x="24" y="34" />
+       <XY x="25" y="34" />
+       <XY x="25" y="35" />
+       <XY x="26" y="36" />
       </pathCells>
      </requestRecord>
      <requestedRecords />
@@ -25856,7 +25863,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
     <supplyTransferState>
      <requestRecord>
-      <otherObjectId>49888c20-7d72-4eae-ab87-02be51361b92</otherObjectId>
+      <otherObjectId>0bf1cf6a-c393-4085-ac93-2a3df16d797f</otherObjectId>
       <targetSupplyTons>1.5149999856948853</targetSupplyTons>
       <flowSupplyTons>1.5149999856948853</flowSupplyTons>
       <cost>3.5</cost>
@@ -25864,11 +25871,11 @@ Each cavalry battalion has 277 personnel (excluding laborers)
        <XY x="27" y="32" />
        <XY x="26" y="33" />
        <XY x="25" y="32" />
-       <XY x="24" y="32" />
-       <XY x="23" y="31" />
-       <XY x="22" y="32" />
-       <XY x="22" y="31" />
-       <XY x="21" y="30" />
+       <XY x="25" y="33" />
+       <XY x="24" y="34" />
+       <XY x="25" y="34" />
+       <XY x="25" y="35" />
+       <XY x="26" y="36" />
       </pathCells>
      </requestRecord>
      <requestedRecords />
@@ -25899,7 +25906,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
     <supplyTransferState>
      <requestRecord>
-      <otherObjectId>49888c20-7d72-4eae-ab87-02be51361b92</otherObjectId>
+      <otherObjectId>0bf1cf6a-c393-4085-ac93-2a3df16d797f</otherObjectId>
       <targetSupplyTons>1.5149999856948853</targetSupplyTons>
       <flowSupplyTons>1.5149999856948853</flowSupplyTons>
       <cost>3.5</cost>
@@ -25907,11 +25914,11 @@ Each cavalry battalion has 277 personnel (excluding laborers)
        <XY x="27" y="32" />
        <XY x="26" y="33" />
        <XY x="25" y="32" />
-       <XY x="24" y="32" />
-       <XY x="23" y="31" />
-       <XY x="22" y="32" />
-       <XY x="22" y="31" />
-       <XY x="21" y="30" />
+       <XY x="25" y="33" />
+       <XY x="24" y="34" />
+       <XY x="25" y="34" />
+       <XY x="25" y="35" />
+       <XY x="26" y="36" />
       </pathCells>
      </requestRecord>
      <requestedRecords />
@@ -25942,7 +25949,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
     <supplyTransferState>
      <requestRecord>
-      <otherObjectId>49888c20-7d72-4eae-ab87-02be51361b92</otherObjectId>
+      <otherObjectId>0bf1cf6a-c393-4085-ac93-2a3df16d797f</otherObjectId>
       <targetSupplyTons>1.5149999856948853</targetSupplyTons>
       <flowSupplyTons>1.5149999856948853</flowSupplyTons>
       <cost>3.5</cost>
@@ -25950,11 +25957,11 @@ Each cavalry battalion has 277 personnel (excluding laborers)
        <XY x="27" y="32" />
        <XY x="26" y="33" />
        <XY x="25" y="32" />
-       <XY x="24" y="32" />
-       <XY x="23" y="31" />
-       <XY x="22" y="32" />
-       <XY x="22" y="31" />
-       <XY x="21" y="30" />
+       <XY x="25" y="33" />
+       <XY x="24" y="34" />
+       <XY x="25" y="34" />
+       <XY x="25" y="35" />
+       <XY x="26" y="36" />
       </pathCells>
      </requestRecord>
      <requestedRecords />
@@ -29726,7 +29733,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
     <supplyTransferState>
      <requestRecord>
-      <otherObjectId>49888c20-7d72-4eae-ab87-02be51361b92</otherObjectId>
+      <otherObjectId>0bf1cf6a-c393-4085-ac93-2a3df16d797f</otherObjectId>
       <targetSupplyTons>1.5149999856948853</targetSupplyTons>
       <flowSupplyTons>1.5149999856948853</flowSupplyTons>
       <cost>3.5</cost>
@@ -29734,11 +29741,11 @@ Each cavalry battalion has 277 personnel (excluding laborers)
        <XY x="27" y="32" />
        <XY x="26" y="33" />
        <XY x="25" y="32" />
-       <XY x="24" y="32" />
-       <XY x="23" y="31" />
-       <XY x="22" y="32" />
-       <XY x="22" y="31" />
-       <XY x="21" y="30" />
+       <XY x="25" y="33" />
+       <XY x="24" y="34" />
+       <XY x="25" y="34" />
+       <XY x="25" y="35" />
+       <XY x="26" y="36" />
       </pathCells>
      </requestRecord>
      <requestedRecords />
@@ -29768,7 +29775,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
     <supplyTransferState>
      <requestRecord>
-      <otherObjectId>49888c20-7d72-4eae-ab87-02be51361b92</otherObjectId>
+      <otherObjectId>0bf1cf6a-c393-4085-ac93-2a3df16d797f</otherObjectId>
       <targetSupplyTons>1.5149999856948853</targetSupplyTons>
       <flowSupplyTons>1.5149999856948853</flowSupplyTons>
       <cost>3.5</cost>
@@ -29776,11 +29783,11 @@ Each cavalry battalion has 277 personnel (excluding laborers)
        <XY x="27" y="32" />
        <XY x="26" y="33" />
        <XY x="25" y="32" />
-       <XY x="24" y="32" />
-       <XY x="23" y="31" />
-       <XY x="22" y="32" />
-       <XY x="22" y="31" />
-       <XY x="21" y="30" />
+       <XY x="25" y="33" />
+       <XY x="24" y="34" />
+       <XY x="25" y="34" />
+       <XY x="25" y="35" />
+       <XY x="26" y="36" />
       </pathCells>
      </requestRecord>
      <requestedRecords />
@@ -29810,7 +29817,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
     <supplyTransferState>
      <requestRecord>
-      <otherObjectId>49888c20-7d72-4eae-ab87-02be51361b92</otherObjectId>
+      <otherObjectId>0bf1cf6a-c393-4085-ac93-2a3df16d797f</otherObjectId>
       <targetSupplyTons>1.5149999856948853</targetSupplyTons>
       <flowSupplyTons>1.5149999856948853</flowSupplyTons>
       <cost>3.5</cost>
@@ -29818,11 +29825,11 @@ Each cavalry battalion has 277 personnel (excluding laborers)
        <XY x="27" y="32" />
        <XY x="26" y="33" />
        <XY x="25" y="32" />
-       <XY x="24" y="32" />
-       <XY x="23" y="31" />
-       <XY x="22" y="32" />
-       <XY x="22" y="31" />
-       <XY x="21" y="30" />
+       <XY x="25" y="33" />
+       <XY x="24" y="34" />
+       <XY x="25" y="34" />
+       <XY x="25" y="35" />
+       <XY x="26" y="36" />
       </pathCells>
      </requestRecord>
      <requestedRecords />
@@ -29852,7 +29859,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <landUnitTemplateId>b2cbae67-61da-4561-aca8-729c8a291c85</landUnitTemplateId>
     <supplyTransferState>
      <requestRecord>
-      <otherObjectId>49888c20-7d72-4eae-ab87-02be51361b92</otherObjectId>
+      <otherObjectId>0bf1cf6a-c393-4085-ac93-2a3df16d797f</otherObjectId>
       <targetSupplyTons>1.5149999856948853</targetSupplyTons>
       <flowSupplyTons>1.5149999856948853</flowSupplyTons>
       <cost>3.5</cost>
@@ -29860,11 +29867,11 @@ Each cavalry battalion has 277 personnel (excluding laborers)
        <XY x="27" y="32" />
        <XY x="26" y="33" />
        <XY x="25" y="32" />
-       <XY x="24" y="32" />
-       <XY x="23" y="31" />
-       <XY x="22" y="32" />
-       <XY x="22" y="31" />
-       <XY x="21" y="30" />
+       <XY x="25" y="33" />
+       <XY x="24" y="34" />
+       <XY x="25" y="34" />
+       <XY x="25" y="35" />
+       <XY x="26" y="36" />
       </pathCells>
      </requestRecord>
      <requestedRecords />
@@ -30025,7 +30032,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>1718.3900020122528</supplyTons>
+    <supplyTons>1813.860002040863</supplyTons>
     <supplyGeneratedTons>100</supplyGeneratedTons>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
     <supplyTransferState>
@@ -30412,21 +30419,21 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>1261.89013671875</supplyTons>
+    <supplyTons>2079.990234375</supplyTons>
     <supplyGeneratedTons>0</supplyGeneratedTons>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
     <supplyTransferState>
      <requestRecord>
-      <otherObjectId>82e4ac06-f614-432e-a82f-c0c1dfc055df</otherObjectId>
-      <targetSupplyTons>42.062999606132507</targetSupplyTons>
-      <flowSupplyTons>42.062999606132507</flowSupplyTons>
-      <cost>7.5</cost>
+      <otherObjectId>f4d6ffd3-4566-46bb-a178-5811cf748be5</otherObjectId>
+      <targetSupplyTons>873.79809713363647</targetSupplyTons>
+      <flowSupplyTons>873.79809713363647</flowSupplyTons>
+      <cost>7</cost>
       <pathCells>
        <XY x="26" y="36" />
-       <XY x="25" y="35" />
-       <XY x="25" y="34" />
-       <XY x="24" y="34" />
-       <XY x="23" y="34" />
+       <XY x="25" y="36" />
+       <XY x="24" y="36" />
+       <XY x="23" y="36" />
+       <XY x="22" y="36" />
        <XY x="22" y="35" />
        <XY x="21" y="34" />
        <XY x="20" y="34" />
@@ -30435,12 +30442,154 @@ Each cavalry battalion has 277 personnel (excluding laborers)
        <XY x="17" y="33" />
        <XY x="16" y="33" />
        <XY x="15" y="32" />
-       <XY x="14" y="32" />
-       <XY x="14" y="33" />
-       <XY x="13" y="33" />
+       <XY x="15" y="31" />
       </pathCells>
      </requestRecord>
      <requestedRecords>
+      <SupplyFlowRecord>
+       <otherObjectId>1a224c7c-18cf-446f-90b3-551568f435b2</otherObjectId>
+       <targetSupplyTons>1.5149999856948853</targetSupplyTons>
+       <flowSupplyTons>1.5149999856948853</flowSupplyTons>
+       <cost>3.5</cost>
+       <pathCells>
+        <XY x="27" y="32" />
+        <XY x="26" y="33" />
+        <XY x="25" y="32" />
+        <XY x="25" y="33" />
+        <XY x="24" y="34" />
+        <XY x="25" y="34" />
+        <XY x="25" y="35" />
+        <XY x="26" y="36" />
+       </pathCells>
+      </SupplyFlowRecord>
+      <SupplyFlowRecord>
+       <otherObjectId>75dde615-d1a6-4440-8fe3-99de5c6f14c7</otherObjectId>
+       <targetSupplyTons>1.5149999856948853</targetSupplyTons>
+       <flowSupplyTons>1.5149999856948853</flowSupplyTons>
+       <cost>3.5</cost>
+       <pathCells>
+        <XY x="27" y="32" />
+        <XY x="26" y="33" />
+        <XY x="25" y="32" />
+        <XY x="25" y="33" />
+        <XY x="24" y="34" />
+        <XY x="25" y="34" />
+        <XY x="25" y="35" />
+        <XY x="26" y="36" />
+       </pathCells>
+      </SupplyFlowRecord>
+      <SupplyFlowRecord>
+       <otherObjectId>c62f419b-643c-44e6-a651-c807b19c3bf0</otherObjectId>
+       <targetSupplyTons>1.5149999856948853</targetSupplyTons>
+       <flowSupplyTons>1.5149999856948853</flowSupplyTons>
+       <cost>3.5</cost>
+       <pathCells>
+        <XY x="27" y="32" />
+        <XY x="26" y="33" />
+        <XY x="25" y="32" />
+        <XY x="25" y="33" />
+        <XY x="24" y="34" />
+        <XY x="25" y="34" />
+        <XY x="25" y="35" />
+        <XY x="26" y="36" />
+       </pathCells>
+      </SupplyFlowRecord>
+      <SupplyFlowRecord>
+       <otherObjectId>20979489-2a2f-4dbc-82e0-bc959243fdad</otherObjectId>
+       <targetSupplyTons>1.5149999856948853</targetSupplyTons>
+       <flowSupplyTons>1.5149999856948853</flowSupplyTons>
+       <cost>3.5</cost>
+       <pathCells>
+        <XY x="27" y="32" />
+        <XY x="26" y="33" />
+        <XY x="25" y="32" />
+        <XY x="25" y="33" />
+        <XY x="24" y="34" />
+        <XY x="25" y="34" />
+        <XY x="25" y="35" />
+        <XY x="26" y="36" />
+       </pathCells>
+      </SupplyFlowRecord>
+      <SupplyFlowRecord>
+       <otherObjectId>44acbf65-286d-44a8-b75e-b9e403ede455</otherObjectId>
+       <targetSupplyTons>1.5149999856948853</targetSupplyTons>
+       <flowSupplyTons>1.5149999856948853</flowSupplyTons>
+       <cost>3.5</cost>
+       <pathCells>
+        <XY x="27" y="32" />
+        <XY x="26" y="33" />
+        <XY x="25" y="32" />
+        <XY x="25" y="33" />
+        <XY x="24" y="34" />
+        <XY x="25" y="34" />
+        <XY x="25" y="35" />
+        <XY x="26" y="36" />
+       </pathCells>
+      </SupplyFlowRecord>
+      <SupplyFlowRecord>
+       <otherObjectId>11888857-f4d5-4240-a43d-ea18d17ac389</otherObjectId>
+       <targetSupplyTons>1.5149999856948853</targetSupplyTons>
+       <flowSupplyTons>1.5149999856948853</flowSupplyTons>
+       <cost>3.5</cost>
+       <pathCells>
+        <XY x="27" y="32" />
+        <XY x="26" y="33" />
+        <XY x="25" y="32" />
+        <XY x="25" y="33" />
+        <XY x="24" y="34" />
+        <XY x="25" y="34" />
+        <XY x="25" y="35" />
+        <XY x="26" y="36" />
+       </pathCells>
+      </SupplyFlowRecord>
+      <SupplyFlowRecord>
+       <otherObjectId>ac4d2790-5ef2-48c1-b301-912561c88438</otherObjectId>
+       <targetSupplyTons>1.5149999856948853</targetSupplyTons>
+       <flowSupplyTons>1.5149999856948853</flowSupplyTons>
+       <cost>3.5</cost>
+       <pathCells>
+        <XY x="27" y="32" />
+        <XY x="26" y="33" />
+        <XY x="25" y="32" />
+        <XY x="25" y="33" />
+        <XY x="24" y="34" />
+        <XY x="25" y="34" />
+        <XY x="25" y="35" />
+        <XY x="26" y="36" />
+       </pathCells>
+      </SupplyFlowRecord>
+      <SupplyFlowRecord>
+       <otherObjectId>c7b655f1-28f4-4ac4-8a39-94a6bec7b65c</otherObjectId>
+       <targetSupplyTons>1.5149999856948853</targetSupplyTons>
+       <flowSupplyTons>1.5149999856948853</flowSupplyTons>
+       <cost>3.5</cost>
+       <pathCells>
+        <XY x="27" y="32" />
+        <XY x="26" y="33" />
+        <XY x="25" y="32" />
+        <XY x="25" y="33" />
+        <XY x="24" y="34" />
+        <XY x="25" y="34" />
+        <XY x="25" y="35" />
+        <XY x="26" y="36" />
+       </pathCells>
+      </SupplyFlowRecord>
+      <SupplyFlowRecord>
+       <otherObjectId>bf325b20-bd37-4b2a-a8c2-ba3832fb249d</otherObjectId>
+       <targetSupplyTons>1.5149999856948853</targetSupplyTons>
+       <flowSupplyTons>1.5149999856948853</flowSupplyTons>
+       <cost>3.5</cost>
+       <pathCells>
+        <XY x="27" y="32" />
+        <XY x="26" y="33" />
+        <XY x="25" y="32" />
+        <XY x="25" y="33" />
+        <XY x="24" y="34" />
+        <XY x="25" y="34" />
+        <XY x="25" y="35" />
+        <XY x="26" y="36" />
+       </pathCells>
+      </SupplyFlowRecord>
       <SupplyFlowRecord>
        <otherObjectId>77b32998-03ab-4809-8c98-75b4072fca59</otherObjectId>
        <targetSupplyTons>2.492999792098999</targetSupplyTons>
@@ -30547,7 +30696,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
        <pathCells />
       </SupplyFlowRecord>
      </requestedRecords>
-     <resolvedSupplyCapTons>1261.89014</resolvedSupplyCapTons>
+     <resolvedSupplyCapTons>2079.99023</resolvedSupplyCapTons>
     </supplyTransferState>
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
@@ -30774,7 +30923,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>191630.34810531139</supplyTons>
+    <supplyTons>201628.84810531139</supplyTons>
     <supplyGeneratedTons>10000</supplyGeneratedTons>
     <remark>Generic Super Depot Supply Source.</remark>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
@@ -30787,192 +30936,11 @@ Each cavalry battalion has 277 personnel (excluding laborers)
      </requestRecord>
      <requestedRecords>
       <SupplyFlowRecord>
-       <otherObjectId>0a850198-2f79-4900-83bf-164a2a5c6435</otherObjectId>
-       <targetSupplyTons>0</targetSupplyTons>
-       <flowSupplyTons>0</flowSupplyTons>
-       <cost>8</cost>
-       <pathCells>
-        <XY x="21" y="30" />
-        <XY x="22" y="31" />
-        <XY x="22" y="32" />
-        <XY x="22" y="33" />
-        <XY x="23" y="33" />
-        <XY x="23" y="34" />
-        <XY x="22" y="35" />
-        <XY x="21" y="34" />
-        <XY x="20" y="34" />
-        <XY x="19" y="33" />
-        <XY x="18" y="33" />
-        <XY x="17" y="33" />
-        <XY x="16" y="33" />
-        <XY x="15" y="32" />
-        <XY x="14" y="32" />
-        <XY x="14" y="33" />
-        <XY x="13" y="33" />
-       </pathCells>
-      </SupplyFlowRecord>
-      <SupplyFlowRecord>
-       <otherObjectId>ce7d0d4f-d2f5-466a-ab8a-ef5736f8aef1</otherObjectId>
-       <targetSupplyTons>0</targetSupplyTons>
-       <flowSupplyTons>0</flowSupplyTons>
-       <cost>8</cost>
-       <pathCells>
-        <XY x="22" y="28" />
-        <XY x="21" y="27" />
-        <XY x="20" y="27" />
-        <XY x="19" y="27" />
-        <XY x="18" y="27" />
-        <XY x="17" y="27" />
-        <XY x="16" y="27" />
-        <XY x="15" y="27" />
-        <XY x="14" y="27" />
-        <XY x="13" y="27" />
-        <XY x="13" y="28" />
-        <XY x="13" y="29" />
-        <XY x="13" y="30" />
-        <XY x="14" y="31" />
-        <XY x="14" y="32" />
-        <XY x="14" y="33" />
-        <XY x="13" y="33" />
-       </pathCells>
-      </SupplyFlowRecord>
-      <SupplyFlowRecord>
-       <otherObjectId>49e370c7-a59d-4273-987b-5c65cc99a533</otherObjectId>
-       <targetSupplyTons>0</targetSupplyTons>
-       <flowSupplyTons>0</flowSupplyTons>
-       <cost>2</cost>
-       <pathCells>
-        <XY x="15" y="31" />
-        <XY x="14" y="32" />
-        <XY x="14" y="33" />
-        <XY x="13" y="33" />
-       </pathCells>
-      </SupplyFlowRecord>
-      <SupplyFlowRecord>
        <otherObjectId>abca7b83-2595-4f06-83f1-951865828481</otherObjectId>
        <targetSupplyTons>1.5</targetSupplyTons>
        <flowSupplyTons>1.5</flowSupplyTons>
        <cost>0</cost>
        <pathCells />
-      </SupplyFlowRecord>
-      <SupplyFlowRecord>
-       <otherObjectId>faa07458-7eb1-4c85-951b-d10b9c029f78</otherObjectId>
-       <targetSupplyTons>1.5</targetSupplyTons>
-       <flowSupplyTons>1.5</flowSupplyTons>
-       <cost>2</cost>
-       <pathCells>
-        <XY x="15" y="31" />
-        <XY x="14" y="32" />
-        <XY x="14" y="33" />
-        <XY x="13" y="33" />
-       </pathCells>
-      </SupplyFlowRecord>
-      <SupplyFlowRecord>
-       <otherObjectId>0bf1cf6a-c393-4085-ac93-2a3df16d797f</otherObjectId>
-       <targetSupplyTons>42.062999606132507</targetSupplyTons>
-       <flowSupplyTons>42.062999606132507</flowSupplyTons>
-       <cost>7.5</cost>
-       <pathCells>
-        <XY x="26" y="36" />
-        <XY x="25" y="35" />
-        <XY x="25" y="34" />
-        <XY x="24" y="34" />
-        <XY x="23" y="34" />
-        <XY x="22" y="35" />
-        <XY x="21" y="34" />
-        <XY x="20" y="34" />
-        <XY x="19" y="33" />
-        <XY x="18" y="33" />
-        <XY x="17" y="33" />
-        <XY x="16" y="33" />
-        <XY x="15" y="32" />
-        <XY x="14" y="32" />
-        <XY x="14" y="33" />
-        <XY x="13" y="33" />
-       </pathCells>
-      </SupplyFlowRecord>
-      <SupplyFlowRecord>
-       <otherObjectId>49888c20-7d72-4eae-ab87-02be51361b92</otherObjectId>
-       <targetSupplyTons>27.269999742507935</targetSupplyTons>
-       <flowSupplyTons>27.269999742507935</flowSupplyTons>
-       <cost>8</cost>
-       <pathCells>
-        <XY x="21" y="30" />
-        <XY x="22" y="31" />
-        <XY x="22" y="32" />
-        <XY x="22" y="33" />
-        <XY x="23" y="33" />
-        <XY x="23" y="34" />
-        <XY x="22" y="35" />
-        <XY x="21" y="34" />
-        <XY x="20" y="34" />
-        <XY x="19" y="33" />
-        <XY x="18" y="33" />
-        <XY x="17" y="33" />
-        <XY x="16" y="33" />
-        <XY x="15" y="32" />
-        <XY x="14" y="32" />
-        <XY x="14" y="33" />
-        <XY x="13" y="33" />
-       </pathCells>
-      </SupplyFlowRecord>
-      <SupplyFlowRecord>
-       <otherObjectId>08cbe575-e53a-4701-ae2c-38e39f5a39c9</otherObjectId>
-       <targetSupplyTons>3</targetSupplyTons>
-       <flowSupplyTons>3</flowSupplyTons>
-       <cost>9</cost>
-       <pathCells>
-        <XY x="16" y="18" />
-        <XY x="16" y="19" />
-        <XY x="15" y="19" />
-        <XY x="15" y="20" />
-        <XY x="14" y="21" />
-        <XY x="13" y="21" />
-        <XY x="13" y="22" />
-        <XY x="13" y="23" />
-        <XY x="13" y="24" />
-        <XY x="13" y="25" />
-        <XY x="13" y="26" />
-        <XY x="13" y="27" />
-        <XY x="13" y="28" />
-        <XY x="13" y="29" />
-        <XY x="13" y="30" />
-        <XY x="14" y="31" />
-        <XY x="14" y="32" />
-        <XY x="14" y="33" />
-        <XY x="13" y="33" />
-       </pathCells>
-      </SupplyFlowRecord>
-      <SupplyFlowRecord>
-       <otherObjectId>3ce0d26a-20a5-4a5e-b329-392b57e8048e</otherObjectId>
-       <targetSupplyTons>1.5</targetSupplyTons>
-       <flowSupplyTons>1.5</flowSupplyTons>
-       <cost>11</cost>
-       <pathCells>
-        <XY x="6" y="16" />
-        <XY x="6" y="17" />
-        <XY x="6" y="18" />
-        <XY x="7" y="18" />
-        <XY x="8" y="19" />
-        <XY x="9" y="19" />
-        <XY x="10" y="20" />
-        <XY x="11" y="20" />
-        <XY x="12" y="21" />
-        <XY x="13" y="21" />
-        <XY x="13" y="22" />
-        <XY x="13" y="23" />
-        <XY x="13" y="24" />
-        <XY x="13" y="25" />
-        <XY x="13" y="26" />
-        <XY x="13" y="27" />
-        <XY x="13" y="28" />
-        <XY x="13" y="29" />
-        <XY x="13" y="30" />
-        <XY x="14" y="31" />
-        <XY x="14" y="32" />
-        <XY x="14" y="33" />
-        <XY x="13" y="33" />
-       </pathCells>
       </SupplyFlowRecord>
      </requestedRecords>
      <resolvedSupplyCapTons>17348.3184</resolvedSupplyCapTons>
@@ -30998,7 +30966,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>210046.24125885963</supplyTons>
+    <supplyTons>220005.96325731277</supplyTons>
     <supplyGeneratedTons>10000</supplyGeneratedTons>
     <remark>Generic Super Depot Supply Source.</remark>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
@@ -31088,43 +31056,11 @@ Each cavalry battalion has 277 personnel (excluding laborers)
        <pathCells />
       </SupplyFlowRecord>
       <SupplyFlowRecord>
-       <otherObjectId>27fe9116-dd84-4921-82e1-78d0fabb70f5</otherObjectId>
+       <otherObjectId>599ecacd-043e-42d4-82eb-706740f55fc1</otherObjectId>
        <targetSupplyTons>0</targetSupplyTons>
        <flowSupplyTons>0</flowSupplyTons>
-       <cost>7.5</cost>
-       <pathCells>
-        <XY x="55" y="25" />
-        <XY x="54" y="25" />
-        <XY x="53" y="24" />
-        <XY x="52" y="24" />
-        <XY x="51" y="24" />
-        <XY x="50" y="25" />
-        <XY x="49" y="25" />
-        <XY x="48" y="25" />
-        <XY x="48" y="24" />
-        <XY x="47" y="23" />
-        <XY x="46" y="24" />
-        <XY x="45" y="23" />
-        <XY x="44" y="23" />
-        <XY x="43" y="22" />
-        <XY x="42" y="23" />
-       </pathCells>
-      </SupplyFlowRecord>
-      <SupplyFlowRecord>
-       <otherObjectId>e585da76-cd35-4b78-8b4c-486292fb55a5</otherObjectId>
-       <targetSupplyTons>0</targetSupplyTons>
-       <flowSupplyTons>0</flowSupplyTons>
-       <cost>4.72222233</cost>
-       <pathCells>
-        <XY x="37" y="19" />
-        <XY x="38" y="20" />
-        <XY x="38" y="21" />
-        <XY x="38" y="22" />
-        <XY x="39" y="22" />
-        <XY x="40" y="22" />
-        <XY x="41" y="22" />
-        <XY x="42" y="23" />
-       </pathCells>
+       <cost>0</cost>
+       <pathCells />
       </SupplyFlowRecord>
       <SupplyFlowRecord>
        <otherObjectId>c2c66b8c-5ecb-4dfd-92a7-f938836f5499</otherObjectId>
@@ -31171,7 +31107,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>26177.207357883453</supplyTons>
+    <supplyTons>22650.226260662079</supplyTons>
     <supplyGeneratedTons>0</supplyGeneratedTons>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
     <supplyTransferState>
@@ -31238,8 +31174,69 @@ Each cavalry battalion has 277 personnel (excluding laborers)
        <cost>0</cost>
        <pathCells />
       </SupplyFlowRecord>
+      <SupplyFlowRecord>
+       <otherObjectId>49e370c7-a59d-4273-987b-5c65cc99a533</otherObjectId>
+       <targetSupplyTons>0</targetSupplyTons>
+       <flowSupplyTons>0</flowSupplyTons>
+       <cost>0</cost>
+       <pathCells />
+      </SupplyFlowRecord>
+      <SupplyFlowRecord>
+       <otherObjectId>faa07458-7eb1-4c85-951b-d10b9c029f78</otherObjectId>
+       <targetSupplyTons>1.5</targetSupplyTons>
+       <flowSupplyTons>1.5</flowSupplyTons>
+       <cost>0</cost>
+       <pathCells />
+      </SupplyFlowRecord>
+      <SupplyFlowRecord>
+       <otherObjectId>0bf1cf6a-c393-4085-ac93-2a3df16d797f</otherObjectId>
+       <targetSupplyTons>873.79809713363647</targetSupplyTons>
+       <flowSupplyTons>873.79809713363647</flowSupplyTons>
+       <cost>7</cost>
+       <pathCells>
+        <XY x="26" y="36" />
+        <XY x="25" y="36" />
+        <XY x="24" y="36" />
+        <XY x="23" y="36" />
+        <XY x="22" y="36" />
+        <XY x="22" y="35" />
+        <XY x="21" y="34" />
+        <XY x="20" y="34" />
+        <XY x="19" y="33" />
+        <XY x="18" y="33" />
+        <XY x="17" y="33" />
+        <XY x="16" y="33" />
+        <XY x="15" y="32" />
+        <XY x="15" y="31" />
+       </pathCells>
+      </SupplyFlowRecord>
+      <SupplyFlowRecord>
+       <otherObjectId>08cbe575-e53a-4701-ae2c-38e39f5a39c9</otherObjectId>
+       <targetSupplyTons>2635</targetSupplyTons>
+       <flowSupplyTons>2635</flowSupplyTons>
+       <cost>8.5</cost>
+       <pathCells>
+        <XY x="16" y="18" />
+        <XY x="16" y="19" />
+        <XY x="15" y="19" />
+        <XY x="15" y="20" />
+        <XY x="14" y="21" />
+        <XY x="13" y="21" />
+        <XY x="13" y="22" />
+        <XY x="13" y="23" />
+        <XY x="13" y="24" />
+        <XY x="13" y="25" />
+        <XY x="13" y="26" />
+        <XY x="13" y="27" />
+        <XY x="13" y="28" />
+        <XY x="13" y="29" />
+        <XY x="13" y="30" />
+        <XY x="14" y="31" />
+        <XY x="15" y="31" />
+       </pathCells>
+      </SupplyFlowRecord>
      </requestedRecords>
-     <resolvedSupplyCapTons>500.490051</resolvedSupplyCapTons>
+     <resolvedSupplyCapTons>17303.3184</resolvedSupplyCapTons>
     </supplyTransferState>
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
@@ -31262,7 +31259,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>178.8149523139</supplyTons>
+    <supplyTons>165.05995166301727</supplyTons>
     <supplyGeneratedTons>0</supplyGeneratedTons>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
     <supplyTransferState>
@@ -31353,7 +31350,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>238.68004377186298</supplyTons>
+    <supplyTons>220.32004347443581</supplyTons>
     <supplyGeneratedTons>0</supplyGeneratedTons>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
     <supplyTransferState>
@@ -31493,7 +31490,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>24303.009687185287</supplyTons>
+    <supplyTons>24174.70968413353</supplyTons>
     <supplyGeneratedTons>0</supplyGeneratedTons>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
     <supplyTransferState>
@@ -31505,9 +31502,23 @@ Each cavalry battalion has 277 personnel (excluding laborers)
      </requestRecord>
      <requestedRecords>
       <SupplyFlowRecord>
+       <otherObjectId>ce7d0d4f-d2f5-466a-ab8a-ef5736f8aef1</otherObjectId>
+       <targetSupplyTons>0</targetSupplyTons>
+       <flowSupplyTons>0</flowSupplyTons>
+       <cost>0</cost>
+       <pathCells />
+      </SupplyFlowRecord>
+      <SupplyFlowRecord>
        <otherObjectId>bca60844-80bd-4d6f-a81a-3e2f8e3f3972</otherObjectId>
        <targetSupplyTons>1.5</targetSupplyTons>
        <flowSupplyTons>1.5</flowSupplyTons>
+       <cost>0</cost>
+       <pathCells />
+      </SupplyFlowRecord>
+      <SupplyFlowRecord>
+       <otherObjectId>5a336137-3fb9-47d9-8eba-1b2a1a7fc1b9</otherObjectId>
+       <targetSupplyTons>126.80000305175781</targetSupplyTons>
+       <flowSupplyTons>126.80000305175781</flowSupplyTons>
        <cost>0</cost>
        <pathCells />
       </SupplyFlowRecord>
@@ -31535,116 +31546,17 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>818.10015869140625</supplyTons>
+    <supplyTons>804.46515882015228</supplyTons>
     <supplyGeneratedTons>0</supplyGeneratedTons>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
     <supplyTransferState>
      <requestRecord>
-      <otherObjectId>82e4ac06-f614-432e-a82f-c0c1dfc055df</otherObjectId>
-      <targetSupplyTons>27.269999742507935</targetSupplyTons>
-      <flowSupplyTons>27.269999742507935</flowSupplyTons>
-      <cost>8</cost>
-      <pathCells>
-       <XY x="21" y="30" />
-       <XY x="22" y="31" />
-       <XY x="22" y="32" />
-       <XY x="22" y="33" />
-       <XY x="23" y="33" />
-       <XY x="23" y="34" />
-       <XY x="22" y="35" />
-       <XY x="21" y="34" />
-       <XY x="20" y="34" />
-       <XY x="19" y="33" />
-       <XY x="18" y="33" />
-       <XY x="17" y="33" />
-       <XY x="16" y="33" />
-       <XY x="15" y="32" />
-       <XY x="14" y="32" />
-       <XY x="14" y="33" />
-       <XY x="13" y="33" />
-      </pathCells>
+      <targetSupplyTons>0</targetSupplyTons>
+      <flowSupplyTons>0</flowSupplyTons>
+      <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords>
-      <SupplyFlowRecord>
-       <otherObjectId>1a224c7c-18cf-446f-90b3-551568f435b2</otherObjectId>
-       <targetSupplyTons>1.5149999856948853</targetSupplyTons>
-       <flowSupplyTons>1.5149999856948853</flowSupplyTons>
-       <cost>3.5</cost>
-       <pathCells>
-        <XY x="27" y="32" />
-        <XY x="26" y="33" />
-        <XY x="25" y="32" />
-        <XY x="24" y="32" />
-        <XY x="23" y="31" />
-        <XY x="22" y="32" />
-        <XY x="22" y="31" />
-        <XY x="21" y="30" />
-       </pathCells>
-      </SupplyFlowRecord>
-      <SupplyFlowRecord>
-       <otherObjectId>75dde615-d1a6-4440-8fe3-99de5c6f14c7</otherObjectId>
-       <targetSupplyTons>1.5149999856948853</targetSupplyTons>
-       <flowSupplyTons>1.5149999856948853</flowSupplyTons>
-       <cost>3.5</cost>
-       <pathCells>
-        <XY x="27" y="32" />
-        <XY x="26" y="33" />
-        <XY x="25" y="32" />
-        <XY x="24" y="32" />
-        <XY x="23" y="31" />
-        <XY x="22" y="32" />
-        <XY x="22" y="31" />
-        <XY x="21" y="30" />
-       </pathCells>
-      </SupplyFlowRecord>
-      <SupplyFlowRecord>
-       <otherObjectId>c62f419b-643c-44e6-a651-c807b19c3bf0</otherObjectId>
-       <targetSupplyTons>1.5149999856948853</targetSupplyTons>
-       <flowSupplyTons>1.5149999856948853</flowSupplyTons>
-       <cost>3.5</cost>
-       <pathCells>
-        <XY x="27" y="32" />
-        <XY x="26" y="33" />
-        <XY x="25" y="32" />
-        <XY x="24" y="32" />
-        <XY x="23" y="31" />
-        <XY x="22" y="32" />
-        <XY x="22" y="31" />
-        <XY x="21" y="30" />
-       </pathCells>
-      </SupplyFlowRecord>
-      <SupplyFlowRecord>
-       <otherObjectId>20979489-2a2f-4dbc-82e0-bc959243fdad</otherObjectId>
-       <targetSupplyTons>1.5149999856948853</targetSupplyTons>
-       <flowSupplyTons>1.5149999856948853</flowSupplyTons>
-       <cost>3.5</cost>
-       <pathCells>
-        <XY x="27" y="32" />
-        <XY x="26" y="33" />
-        <XY x="25" y="32" />
-        <XY x="24" y="32" />
-        <XY x="23" y="31" />
-        <XY x="22" y="32" />
-        <XY x="22" y="31" />
-        <XY x="21" y="30" />
-       </pathCells>
-      </SupplyFlowRecord>
-      <SupplyFlowRecord>
-       <otherObjectId>44acbf65-286d-44a8-b75e-b9e403ede455</otherObjectId>
-       <targetSupplyTons>1.5149999856948853</targetSupplyTons>
-       <flowSupplyTons>1.5149999856948853</flowSupplyTons>
-       <cost>3.5</cost>
-       <pathCells>
-        <XY x="27" y="32" />
-        <XY x="26" y="33" />
-        <XY x="25" y="32" />
-        <XY x="24" y="32" />
-        <XY x="23" y="31" />
-        <XY x="22" y="32" />
-        <XY x="22" y="31" />
-        <XY x="21" y="30" />
-       </pathCells>
-      </SupplyFlowRecord>
       <SupplyFlowRecord>
        <otherObjectId>6c050d18-d5f1-479c-a34f-d0163c377590</otherObjectId>
        <targetSupplyTons>1.5149999856948853</targetSupplyTons>
@@ -31681,70 +31593,6 @@ Each cavalry battalion has 277 personnel (excluding laborers)
        <pathCells />
       </SupplyFlowRecord>
       <SupplyFlowRecord>
-       <otherObjectId>11888857-f4d5-4240-a43d-ea18d17ac389</otherObjectId>
-       <targetSupplyTons>1.5149999856948853</targetSupplyTons>
-       <flowSupplyTons>1.5149999856948853</flowSupplyTons>
-       <cost>3.5</cost>
-       <pathCells>
-        <XY x="27" y="32" />
-        <XY x="26" y="33" />
-        <XY x="25" y="32" />
-        <XY x="24" y="32" />
-        <XY x="23" y="31" />
-        <XY x="22" y="32" />
-        <XY x="22" y="31" />
-        <XY x="21" y="30" />
-       </pathCells>
-      </SupplyFlowRecord>
-      <SupplyFlowRecord>
-       <otherObjectId>ac4d2790-5ef2-48c1-b301-912561c88438</otherObjectId>
-       <targetSupplyTons>1.5149999856948853</targetSupplyTons>
-       <flowSupplyTons>1.5149999856948853</flowSupplyTons>
-       <cost>3.5</cost>
-       <pathCells>
-        <XY x="27" y="32" />
-        <XY x="26" y="33" />
-        <XY x="25" y="32" />
-        <XY x="24" y="32" />
-        <XY x="23" y="31" />
-        <XY x="22" y="32" />
-        <XY x="22" y="31" />
-        <XY x="21" y="30" />
-       </pathCells>
-      </SupplyFlowRecord>
-      <SupplyFlowRecord>
-       <otherObjectId>c7b655f1-28f4-4ac4-8a39-94a6bec7b65c</otherObjectId>
-       <targetSupplyTons>1.5149999856948853</targetSupplyTons>
-       <flowSupplyTons>1.5149999856948853</flowSupplyTons>
-       <cost>3.5</cost>
-       <pathCells>
-        <XY x="27" y="32" />
-        <XY x="26" y="33" />
-        <XY x="25" y="32" />
-        <XY x="24" y="32" />
-        <XY x="23" y="31" />
-        <XY x="22" y="32" />
-        <XY x="22" y="31" />
-        <XY x="21" y="30" />
-       </pathCells>
-      </SupplyFlowRecord>
-      <SupplyFlowRecord>
-       <otherObjectId>bf325b20-bd37-4b2a-a8c2-ba3832fb249d</otherObjectId>
-       <targetSupplyTons>1.5149999856948853</targetSupplyTons>
-       <flowSupplyTons>1.5149999856948853</flowSupplyTons>
-       <cost>3.5</cost>
-       <pathCells>
-        <XY x="27" y="32" />
-        <XY x="26" y="33" />
-        <XY x="25" y="32" />
-        <XY x="24" y="32" />
-        <XY x="23" y="31" />
-        <XY x="22" y="32" />
-        <XY x="22" y="31" />
-        <XY x="21" y="30" />
-       </pathCells>
-      </SupplyFlowRecord>
-      <SupplyFlowRecord>
        <otherObjectId>228a782c-0855-431d-982b-d491daa9f777</otherObjectId>
        <targetSupplyTons>1.5149999856948853</targetSupplyTons>
        <flowSupplyTons>1.5149999856948853</flowSupplyTons>
@@ -31772,8 +31620,15 @@ Each cavalry battalion has 277 personnel (excluding laborers)
        <cost>0</cost>
        <pathCells />
       </SupplyFlowRecord>
+      <SupplyFlowRecord>
+       <otherObjectId>0a850198-2f79-4900-83bf-164a2a5c6435</otherObjectId>
+       <targetSupplyTons>0</targetSupplyTons>
+       <flowSupplyTons>0</flowSupplyTons>
+       <cost>0</cost>
+       <pathCells />
+      </SupplyFlowRecord>
      </requestedRecords>
-     <resolvedSupplyCapTons>818.100159</resolvedSupplyCapTons>
+     <resolvedSupplyCapTons>409.050049</resolvedSupplyCapTons>
     </supplyTransferState>
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
@@ -31796,7 +31651,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>2532</supplyTons>
+    <supplyTons>2530.5</supplyTons>
     <supplyGeneratedTons>0</supplyGeneratedTons>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
     <supplyTransferState>
@@ -31806,8 +31661,16 @@ Each cavalry battalion has 277 personnel (excluding laborers)
       <cost>0</cost>
       <pathCells />
      </requestRecord>
-     <requestedRecords />
-     <resolvedSupplyCapTons>2442</resolvedSupplyCapTons>
+     <requestedRecords>
+      <SupplyFlowRecord>
+       <otherObjectId>6367d078-9aad-4298-a099-ff4291d309c9</otherObjectId>
+       <targetSupplyTons>1.5</targetSupplyTons>
+       <flowSupplyTons>1.5</flowSupplyTons>
+       <cost>0</cost>
+       <pathCells />
+      </SupplyFlowRecord>
+     </requestedRecords>
+     <resolvedSupplyCapTons>2487</resolvedSupplyCapTons>
     </supplyTransferState>
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
@@ -31830,21 +31693,44 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>91.5</supplyTons>
+    <supplyTons>45</supplyTons>
     <supplyGeneratedTons>0</supplyGeneratedTons>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
     <supplyTransferState>
      <requestRecord>
-      <targetSupplyTons>0</targetSupplyTons>
-      <flowSupplyTons>0</flowSupplyTons>
-      <cost>0</cost>
-      <pathCells />
+      <otherObjectId>3ce0d26a-20a5-4a5e-b329-392b57e8048e</otherObjectId>
+      <targetSupplyTons>55</targetSupplyTons>
+      <flowSupplyTons>55</flowSupplyTons>
+      <cost>6.5</cost>
+      <pathCells>
+       <XY x="16" y="8" />
+       <XY x="16" y="9" />
+       <XY x="15" y="9" />
+       <XY x="14" y="10" />
+       <XY x="13" y="10" />
+       <XY x="12" y="11" />
+       <XY x="11" y="11" />
+       <XY x="10" y="12" />
+       <XY x="9" y="12" />
+       <XY x="9" y="13" />
+       <XY x="9" y="14" />
+       <XY x="8" y="15" />
+       <XY x="7" y="15" />
+       <XY x="6" y="16" />
+      </pathCells>
      </requestRecord>
      <requestedRecords>
       <SupplyFlowRecord>
        <otherObjectId>f1481957-d8b0-4751-a92c-418ddb3e2dfa</otherObjectId>
        <targetSupplyTons>1.5</targetSupplyTons>
        <flowSupplyTons>1.5</flowSupplyTons>
+       <cost>0</cost>
+       <pathCells />
+      </SupplyFlowRecord>
+      <SupplyFlowRecord>
+       <otherObjectId>f8cff217-d92a-4124-9c80-e76cde43c685</otherObjectId>
+       <targetSupplyTons>100</targetSupplyTons>
+       <flowSupplyTons>100</flowSupplyTons>
        <cost>0</cost>
        <pathCells />
       </SupplyFlowRecord>
@@ -31882,7 +31768,15 @@ Each cavalry battalion has 277 personnel (excluding laborers)
       <cost>0</cost>
       <pathCells />
      </requestRecord>
-     <requestedRecords />
+     <requestedRecords>
+      <SupplyFlowRecord>
+       <otherObjectId>27fe9116-dd84-4921-82e1-78d0fabb70f5</otherObjectId>
+       <targetSupplyTons>0</targetSupplyTons>
+       <flowSupplyTons>0</flowSupplyTons>
+       <cost>0</cost>
+       <pathCells />
+      </SupplyFlowRecord>
+     </requestedRecords>
     </supplyTransferState>
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
@@ -31946,7 +31840,15 @@ Each cavalry battalion has 277 personnel (excluding laborers)
       <cost>0</cost>
       <pathCells />
      </requestRecord>
-     <requestedRecords />
+     <requestedRecords>
+      <SupplyFlowRecord>
+       <otherObjectId>e585da76-cd35-4b78-8b4c-486292fb55a5</otherObjectId>
+       <targetSupplyTons>0</targetSupplyTons>
+       <flowSupplyTons>0</flowSupplyTons>
+       <cost>0</cost>
+       <pathCells />
+      </SupplyFlowRecord>
+     </requestedRecords>
      <resolvedSupplyCapTons>7868.79834</resolvedSupplyCapTons>
     </supplyTransferState>
     <portLevel>0</portLevel>
@@ -31975,29 +31877,11 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <landUnitTemplateId>e7e0b902-ce04-4f0b-987a-fe9576c2fd48</landUnitTemplateId>
     <supplyTransferState>
      <requestRecord>
-      <otherObjectId>82e4ac06-f614-432e-a82f-c0c1dfc055df</otherObjectId>
+      <otherObjectId>49888c20-7d72-4eae-ab87-02be51361b92</otherObjectId>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
-      <cost>8</cost>
-      <pathCells>
-       <XY x="21" y="30" />
-       <XY x="22" y="31" />
-       <XY x="22" y="32" />
-       <XY x="22" y="33" />
-       <XY x="23" y="33" />
-       <XY x="23" y="34" />
-       <XY x="22" y="35" />
-       <XY x="21" y="34" />
-       <XY x="20" y="34" />
-       <XY x="19" y="33" />
-       <XY x="18" y="33" />
-       <XY x="17" y="33" />
-       <XY x="16" y="33" />
-       <XY x="15" y="32" />
-       <XY x="14" y="32" />
-       <XY x="14" y="33" />
-       <XY x="13" y="33" />
-      </pathCells>
+      <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
@@ -32027,29 +31911,11 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <landUnitTemplateId>e7e0b902-ce04-4f0b-987a-fe9576c2fd48</landUnitTemplateId>
     <supplyTransferState>
      <requestRecord>
-      <otherObjectId>82e4ac06-f614-432e-a82f-c0c1dfc055df</otherObjectId>
+      <otherObjectId>08cbd225-e688-4354-aaa2-9509a71af1e2</otherObjectId>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
-      <cost>8</cost>
-      <pathCells>
-       <XY x="22" y="28" />
-       <XY x="21" y="27" />
-       <XY x="20" y="27" />
-       <XY x="19" y="27" />
-       <XY x="18" y="27" />
-       <XY x="17" y="27" />
-       <XY x="16" y="27" />
-       <XY x="15" y="27" />
-       <XY x="14" y="27" />
-       <XY x="13" y="27" />
-       <XY x="13" y="28" />
-       <XY x="13" y="29" />
-       <XY x="13" y="30" />
-       <XY x="14" y="31" />
-       <XY x="14" y="32" />
-       <XY x="14" y="33" />
-       <XY x="13" y="33" />
-      </pathCells>
+      <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
@@ -32079,27 +31945,11 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <landUnitTemplateId>e7e0b902-ce04-4f0b-987a-fe9576c2fd48</landUnitTemplateId>
     <supplyTransferState>
      <requestRecord>
-      <otherObjectId>4bed7260-ce35-4876-bc7f-ae025cec21b4</otherObjectId>
+      <otherObjectId>f2e89083-25ff-4e73-9470-e6b74fcbeb07</otherObjectId>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
-      <cost>7.5</cost>
-      <pathCells>
-       <XY x="55" y="25" />
-       <XY x="54" y="25" />
-       <XY x="53" y="24" />
-       <XY x="52" y="24" />
-       <XY x="51" y="24" />
-       <XY x="50" y="25" />
-       <XY x="49" y="25" />
-       <XY x="48" y="25" />
-       <XY x="48" y="24" />
-       <XY x="47" y="23" />
-       <XY x="46" y="24" />
-       <XY x="45" y="23" />
-       <XY x="44" y="23" />
-       <XY x="43" y="22" />
-       <XY x="42" y="23" />
-      </pathCells>
+      <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
@@ -32129,6 +31979,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <landUnitTemplateId>e7e0b902-ce04-4f0b-987a-fe9576c2fd48</landUnitTemplateId>
     <supplyTransferState>
      <requestRecord>
+      <otherObjectId>4bed7260-ce35-4876-bc7f-ae025cec21b4</otherObjectId>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
@@ -32162,20 +32013,11 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <landUnitTemplateId>e7e0b902-ce04-4f0b-987a-fe9576c2fd48</landUnitTemplateId>
     <supplyTransferState>
      <requestRecord>
-      <otherObjectId>4bed7260-ce35-4876-bc7f-ae025cec21b4</otherObjectId>
+      <otherObjectId>5d57c765-a31d-423e-8cd8-7064c565049c</otherObjectId>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
-      <cost>4.72222233</cost>
-      <pathCells>
-       <XY x="37" y="19" />
-       <XY x="38" y="20" />
-       <XY x="38" y="21" />
-       <XY x="38" y="22" />
-       <XY x="39" y="22" />
-       <XY x="40" y="22" />
-       <XY x="41" y="22" />
-       <XY x="42" y="23" />
-      </pathCells>
+      <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
@@ -32205,16 +32047,11 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <landUnitTemplateId>e7e0b902-ce04-4f0b-987a-fe9576c2fd48</landUnitTemplateId>
     <supplyTransferState>
      <requestRecord>
-      <otherObjectId>82e4ac06-f614-432e-a82f-c0c1dfc055df</otherObjectId>
+      <otherObjectId>f4d6ffd3-4566-46bb-a178-5811cf748be5</otherObjectId>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
-      <cost>2</cost>
-      <pathCells>
-       <XY x="15" y="31" />
-       <XY x="14" y="32" />
-       <XY x="14" y="33" />
-       <XY x="13" y="33" />
-      </pathCells>
+      <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
@@ -32279,7 +32116,43 @@ Each cavalry battalion has 277 personnel (excluding laborers)
       <cost>0</cost>
       <pathCells />
      </requestRecord>
-     <requestedRecords />
+     <requestedRecords>
+      <SupplyFlowRecord>
+       <otherObjectId>91a2dde3-b64f-48b5-bcb3-ddc951eee45d</otherObjectId>
+       <targetSupplyTons>967.20001220703125</targetSupplyTons>
+       <flowSupplyTons>0</flowSupplyTons>
+       <cost>0</cost>
+       <pathCells />
+      </SupplyFlowRecord>
+      <SupplyFlowRecord>
+       <otherObjectId>a01609c6-b86d-4253-9d90-3f921040b378</otherObjectId>
+       <targetSupplyTons>852.4000244140625</targetSupplyTons>
+       <flowSupplyTons>0</flowSupplyTons>
+       <cost>0</cost>
+       <pathCells />
+      </SupplyFlowRecord>
+      <SupplyFlowRecord>
+       <otherObjectId>bd422025-4f75-48b5-9738-9c7d617df906</otherObjectId>
+       <targetSupplyTons>667.4000244140625</targetSupplyTons>
+       <flowSupplyTons>0</flowSupplyTons>
+       <cost>0</cost>
+       <pathCells />
+      </SupplyFlowRecord>
+      <SupplyFlowRecord>
+       <otherObjectId>5d1e8c0c-4860-4604-b1e5-525700fa2d16</otherObjectId>
+       <targetSupplyTons>559.29998779296875</targetSupplyTons>
+       <flowSupplyTons>0</flowSupplyTons>
+       <cost>0</cost>
+       <pathCells />
+      </SupplyFlowRecord>
+      <SupplyFlowRecord>
+       <otherObjectId>f37fd43e-5248-4425-9be1-bafb904cf930</otherObjectId>
+       <targetSupplyTons>586.29998779296875</targetSupplyTons>
+       <flowSupplyTons>0</flowSupplyTons>
+       <cost>0</cost>
+       <pathCells />
+      </SupplyFlowRecord>
+     </requestedRecords>
     </supplyTransferState>
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
@@ -32341,16 +32214,11 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <landUnitTemplateId>ee4165dd-dfff-44ce-9438-7c499ea97f57</landUnitTemplateId>
     <supplyTransferState>
      <requestRecord>
-      <otherObjectId>82e4ac06-f614-432e-a82f-c0c1dfc055df</otherObjectId>
+      <otherObjectId>f4d6ffd3-4566-46bb-a178-5811cf748be5</otherObjectId>
       <targetSupplyTons>1.5</targetSupplyTons>
       <flowSupplyTons>1.5</flowSupplyTons>
-      <cost>2</cost>
-      <pathCells>
-       <XY x="15" y="31" />
-       <XY x="14" y="32" />
-       <XY x="14" y="33" />
-       <XY x="13" y="33" />
-      </pathCells>
+      <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
@@ -32482,18 +32350,11 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <landUnitTemplateId>ee4165dd-dfff-44ce-9438-7c499ea97f57</landUnitTemplateId>
     <supplyTransferState>
      <requestRecord>
-      <otherObjectId>08cbe575-e53a-4701-ae2c-38e39f5a39c9</otherObjectId>
+      <otherObjectId>7a652a81-3d4e-4caf-86a1-9ebfe5130b60</otherObjectId>
       <targetSupplyTons>1.5</targetSupplyTons>
       <flowSupplyTons>1.5</flowSupplyTons>
-      <cost>2.5</cost>
-      <pathCells>
-       <XY x="21" y="16" />
-       <XY x="20" y="17" />
-       <XY x="19" y="17" />
-       <XY x="18" y="17" />
-       <XY x="17" y="17" />
-       <XY x="16" y="18" />
-      </pathCells>
+      <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
@@ -32806,15 +32667,15 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>90</supplyTons>
+    <supplyTons>2622</supplyTons>
     <supplyGeneratedTons>0</supplyGeneratedTons>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
     <supplyTransferState>
      <requestRecord>
-      <otherObjectId>82e4ac06-f614-432e-a82f-c0c1dfc055df</otherObjectId>
-      <targetSupplyTons>3</targetSupplyTons>
-      <flowSupplyTons>3</flowSupplyTons>
-      <cost>9</cost>
+      <otherObjectId>f4d6ffd3-4566-46bb-a178-5811cf748be5</otherObjectId>
+      <targetSupplyTons>2635</targetSupplyTons>
+      <flowSupplyTons>2635</flowSupplyTons>
+      <cost>8.5</cost>
       <pathCells>
        <XY x="16" y="18" />
        <XY x="16" y="19" />
@@ -32832,9 +32693,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
        <XY x="13" y="29" />
        <XY x="13" y="30" />
        <XY x="14" y="31" />
-       <XY x="14" y="32" />
-       <XY x="14" y="33" />
-       <XY x="13" y="33" />
+       <XY x="15" y="31" />
       </pathCells>
      </requestRecord>
      <requestedRecords>
@@ -32846,21 +32705,30 @@ Each cavalry battalion has 277 personnel (excluding laborers)
        <pathCells />
       </SupplyFlowRecord>
       <SupplyFlowRecord>
-       <otherObjectId>6367d078-9aad-4298-a099-ff4291d309c9</otherObjectId>
-       <targetSupplyTons>1.5</targetSupplyTons>
-       <flowSupplyTons>1.5</flowSupplyTons>
-       <cost>2.5</cost>
+       <otherObjectId>3ce0d26a-20a5-4a5e-b329-392b57e8048e</otherObjectId>
+       <targetSupplyTons>101.5</targetSupplyTons>
+       <flowSupplyTons>101.5</flowSupplyTons>
+       <cost>7</cost>
        <pathCells>
-        <XY x="21" y="16" />
-        <XY x="20" y="17" />
-        <XY x="19" y="17" />
-        <XY x="18" y="17" />
-        <XY x="17" y="17" />
+        <XY x="6" y="16" />
+        <XY x="6" y="17" />
+        <XY x="6" y="18" />
+        <XY x="7" y="18" />
+        <XY x="8" y="19" />
+        <XY x="9" y="19" />
+        <XY x="10" y="20" />
+        <XY x="11" y="20" />
+        <XY x="12" y="21" />
+        <XY x="13" y="21" />
+        <XY x="14" y="21" />
+        <XY x="15" y="20" />
+        <XY x="15" y="19" />
+        <XY x="16" y="19" />
         <XY x="16" y="18" />
        </pathCells>
       </SupplyFlowRecord>
      </requestedRecords>
-     <resolvedSupplyCapTons>90</resolvedSupplyCapTons>
+     <resolvedSupplyCapTons>2622</resolvedSupplyCapTons>
     </supplyTransferState>
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
@@ -32883,15 +32751,15 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>45</supplyTons>
+    <supplyTons>90</supplyTons>
     <supplyGeneratedTons>0</supplyGeneratedTons>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
     <supplyTransferState>
      <requestRecord>
-      <otherObjectId>82e4ac06-f614-432e-a82f-c0c1dfc055df</otherObjectId>
-      <targetSupplyTons>1.5</targetSupplyTons>
-      <flowSupplyTons>1.5</flowSupplyTons>
-      <cost>11</cost>
+      <otherObjectId>08cbe575-e53a-4701-ae2c-38e39f5a39c9</otherObjectId>
+      <targetSupplyTons>101.5</targetSupplyTons>
+      <flowSupplyTons>101.5</flowSupplyTons>
+      <cost>7</cost>
       <pathCells>
        <XY x="6" y="16" />
        <XY x="6" y="17" />
@@ -32903,19 +32771,11 @@ Each cavalry battalion has 277 personnel (excluding laborers)
        <XY x="11" y="20" />
        <XY x="12" y="21" />
        <XY x="13" y="21" />
-       <XY x="13" y="22" />
-       <XY x="13" y="23" />
-       <XY x="13" y="24" />
-       <XY x="13" y="25" />
-       <XY x="13" y="26" />
-       <XY x="13" y="27" />
-       <XY x="13" y="28" />
-       <XY x="13" y="29" />
-       <XY x="13" y="30" />
-       <XY x="14" y="31" />
-       <XY x="14" y="32" />
-       <XY x="14" y="33" />
-       <XY x="13" y="33" />
+       <XY x="14" y="21" />
+       <XY x="15" y="20" />
+       <XY x="15" y="19" />
+       <XY x="16" y="19" />
+       <XY x="16" y="18" />
       </pathCells>
      </requestRecord>
      <requestedRecords>
@@ -32950,8 +32810,30 @@ Each cavalry battalion has 277 personnel (excluding laborers)
         <XY x="6" y="16" />
        </pathCells>
       </SupplyFlowRecord>
+      <SupplyFlowRecord>
+       <otherObjectId>e44d9f9b-f6d1-4e29-9c58-c2c5e2cf3eb7</otherObjectId>
+       <targetSupplyTons>55</targetSupplyTons>
+       <flowSupplyTons>55</flowSupplyTons>
+       <cost>6.5</cost>
+       <pathCells>
+        <XY x="16" y="8" />
+        <XY x="16" y="9" />
+        <XY x="15" y="9" />
+        <XY x="14" y="10" />
+        <XY x="13" y="10" />
+        <XY x="12" y="11" />
+        <XY x="11" y="11" />
+        <XY x="10" y="12" />
+        <XY x="9" y="12" />
+        <XY x="9" y="13" />
+        <XY x="9" y="14" />
+        <XY x="8" y="15" />
+        <XY x="7" y="15" />
+        <XY x="6" y="16" />
+       </pathCells>
+      </SupplyFlowRecord>
      </requestedRecords>
-     <resolvedSupplyCapTons>45</resolvedSupplyCapTons>
+     <resolvedSupplyCapTons>90</resolvedSupplyCapTons>
     </supplyTransferState>
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
@@ -33821,7 +33703,7 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <fixedState>
      <released>false</released>
     </fixedState>
-    <stackPriority>0.2</stackPriority>
+    <stackPriority>0.333333343</stackPriority>
     <enableAutoReattachProp>false</enableAutoReattachProp>
     <enableArriveState>false</enableArriveState>
     <enableFixedState>true</enableFixedState>
@@ -33870,7 +33752,7 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <posture>Active</posture>
     <restoredHours>0</restoredHours>
     <forcedReturningToBase>false</forcedReturningToBase>
-    <stackPriority>0.4</stackPriority>
+    <stackPriority>0.5</stackPriority>
     <enableAutoReattachProp>false</enableAutoReattachProp>
     <enableArriveState>false</enableArriveState>
     <enableFixedState>false</enableFixedState>
@@ -33968,7 +33850,7 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
     <posture>Active</posture>
     <restoredHours>0</restoredHours>
     <forcedReturningToBase>false</forcedReturningToBase>
-    <stackPriority>0.8</stackPriority>
+    <stackPriority>0.8333333</stackPriority>
     <enableAutoReattachProp>false</enableAutoReattachProp>
     <enableArriveState>false</enableArriveState>
     <enableFixedState>false</enableFixedState>
@@ -38755,13 +38637,13 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <type>Fleet</type>
     <size>Regiment</size>
     <country>China</country>
-    <deployState>Combined</deployState>
+    <deployState>Independent</deployState>
     <destroyed>false</destroyed>
     <autoCombinable>false</autoCombinable>
     <dissolvable>false</dissolvable>
     <nonHistorical>false</nonHistorical>
-    <independentX>-1</independentX>
-    <independentY>-1</independentY>
+    <independentX>22</independentX>
+    <independentY>28</independentY>
     <leaderReference />
     <directMemberReferences>
      <StrategicGroupMemberReference>
@@ -38790,7 +38672,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <posture>Active</posture>
     <restoredHours>0</restoredHours>
     <forcedReturningToBase>false</forcedReturningToBase>
-    <stackPriority>0</stackPriority>
+    <stackPriority>0.166666672</stackPriority>
     <enableAutoReattachProp>false</enableAutoReattachProp>
     <enableArriveState>false</enableArriveState>
     <enableFixedState>false</enableFixedState>
@@ -38829,7 +38711,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
     <posture>Active</posture>
     <restoredHours>0</restoredHours>
     <forcedReturningToBase>false</forcedReturningToBase>
-    <stackPriority>0.6</stackPriority>
+    <stackPriority>0.6666667</stackPriority>
     <enableAutoReattachProp>false</enableAutoReattachProp>
     <enableArriveState>false</enableArriveState>
     <enableFixedState>false</enableFixedState>
@@ -43802,6 +43684,9 @@ The campaign and strategic mode are not yet complete in the EA/Demo version and 
       </StrategicGroupReference>
       <StrategicGroupReference>
        <referenceId>64009a7e-d665-4c23-b499-56061a062a60</referenceId>
+      </StrategicGroupReference>
+      <StrategicGroupReference>
+       <referenceId>0c2e2e38-544a-4552-a149-4656e40e2239</referenceId>
       </StrategicGroupReference>
      </StrategicGroupReferences>
     </Cell>

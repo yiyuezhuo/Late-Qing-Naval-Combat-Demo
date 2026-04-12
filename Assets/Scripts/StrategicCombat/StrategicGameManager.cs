@@ -1586,6 +1586,12 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         StrategicInformationPanel.Instance?.ClearStack();
     }
 
+    void ClearCurrentSelection()
+    {
+        lastSelectedCell = null;
+        ClearSelectedUnitPresentation();
+    }
+
     void HandleInput()
     {
         var controlPressing = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
@@ -1656,7 +1662,11 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
                         }
                         else if (rightClicking && mapEditMode == StrategicMapEditMode.Select)
                         {
-                            if (shiftPressing)
+                            if (lastSelectedStrategicGroup != null && activeCell == lastSelectedStrategicGroup.cell)
+                            {
+                                lastSelectedStrategicGroup.ClearPlannedPath();
+                            }
+                            else if (shiftPressing)
                                 TryToAppendMove(lastSelectedStrategicGroup, activeCell);
                             else
                                 TryToSetNewMove(lastSelectedStrategicGroup, activeCell);
@@ -1701,6 +1711,7 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
             {
                 mapEditMode = StrategicMapEditMode.Select;
                 oneshotCellClickCallback = null;
+                ClearCurrentSelection();
             }
         }
     }
@@ -2323,6 +2334,9 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
             // rectAreaLineController.Sync()
         }
     }
+
+    [CreateProperty]
+    public bool isDebug => GamePreference.Instance.isDebug;
 }
 
 public class LandBattleMarker : MonoBehaviour

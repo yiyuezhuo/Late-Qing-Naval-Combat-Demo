@@ -92,6 +92,14 @@ namespace StrategicCombatCore
             if (!force && !self.IsOnSameCellWithDetachedFromGroup())
                 return false;
 
+            // A detached-from target below this group is stale; reattaching would create a cycle.
+            if (self is StrategicGroup selfGroup &&
+                (detachedFromGroup == selfGroup || detachedFromGroup.IsDescendantOf(selfGroup)))
+            {
+                ClearDetachedFromGroupState(self);
+                return false;
+            }
+
             var previousParentGroup = self.parentGroupReference.Get();
             StrategicGroup.ThrowIfInvalidParentAssignment(self, detachedFromGroup, "reattach detached member");
             StrategicGroup.ReassignMember(self, detachedFromGroup);

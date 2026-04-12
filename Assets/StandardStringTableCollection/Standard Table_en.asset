@@ -3237,6 +3237,22 @@ MonoBehaviour:
     m_Localized: Prevent Hostile Control
     m_Metadata:
       m_Items: []
+  - m_Id: -97
+    m_Localized: Release
+    m_Metadata:
+      m_Items: []
+  - m_Id: -98
+    m_Localized: Enable Fixed State
+    m_Metadata:
+      m_Items: []
+  - m_Id: -99
+    m_Localized: Released
+    m_Metadata:
+      m_Items: []
+  - m_Id: -100
+    m_Localized: Enable Release Time
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

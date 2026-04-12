@@ -3153,6 +3153,22 @@ MonoBehaviour:
     m_Key: Prevent Hostile Control
     m_Metadata:
       m_Items: []
+  - m_Id: -97
+    m_Key: Release
+    m_Metadata:
+      m_Items: []
+  - m_Id: -98
+    m_Key: Enable Fixed State
+    m_Metadata:
+      m_Items: []
+  - m_Id: -99
+    m_Key: Released
+    m_Metadata:
+      m_Items: []
+  - m_Id: -100
+    m_Key: Enable Release Time
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

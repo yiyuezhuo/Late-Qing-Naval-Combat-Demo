@@ -1704,6 +1704,9 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         {
             if (lastSelectedStrategicGroup != null)
             {
+                if (!lastSelectedStrategicGroup.CanActStrategically)
+                    return;
+
                 // lastSelectedStrategicGroup.MoveToXY(cell.x, cell.y, false);
                 if (lastSelectedStrategicGroup.MoveToCell(cell, false))
                 {
@@ -1895,6 +1898,9 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
         if (strategicGroup.deployState != StrategicGroup.DeployState.Independent)
             return false;
 
+        if (!strategicGroup.CanActStrategically)
+            return false;
+
         if (!TryBuildMovePath(strategicGroup, strategicGroup.cell, dstCell, out var pathCells, out var embarkingLandingPairs))
             return false;
 
@@ -1915,6 +1921,9 @@ public class StrategicGameManager : SingletonMonoBehaviour<StrategicGameManager>
             return false;
 
         if (strategicGroup.deployState != StrategicGroup.DeployState.Independent)
+            return false;
+
+        if (!strategicGroup.CanActStrategically)
             return false;
 
         var p = strategicGroup.plannedPath;

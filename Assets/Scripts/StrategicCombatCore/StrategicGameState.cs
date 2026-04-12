@@ -379,6 +379,7 @@ namespace StrategicCombatCore
             }
 
             Advance1HourForReinforcement();
+            Advance1HourForFixedRelease();
 
             Advance1HourForSupply(viewerSide);
             Advance1HourForMission(viewerSide);
@@ -439,6 +440,43 @@ namespace StrategicCombatCore
                 }
                 // if(group.arragroup.IsOnMap())
             }
+        }
+
+        void Advance1HourForFixedRelease()
+        {
+            foreach (var group in strategicGroups.ToList())
+            {
+                var fixedState = group?.fixedState;
+                if (fixedState == null || fixedState.released)
+                    continue;
+
+                var releaseByTime = fixedState.enableReleaseTime && fixedState.releaseTime <= scenarioState.dateTime;
+                var releaseByHostileContact = HasHostileStrategicGroupInSameCell(group);
+                if (!releaseByTime && !releaseByHostileContact)
+                    continue;
+
+                if (group.ReleaseFixed())
+                {
+                    var reason = releaseByTime ? "scheduled release time" : "hostile contact";
+                    AddLog($"{group.name.GetShortName()} released from Fixed state by {reason}", group.side);
+                }
+            }
+        }
+
+        bool HasHostileStrategicGroupInSameCell(StrategicGroup group)
+        {
+            var cell = group?.cell;
+            var side = group?.side;
+            if (cell == null || side == null)
+                return false;
+
+            return cell.StrategicGroupReferences
+                .Select(reference => reference.Get())
+                .Any(otherGroup =>
+                    otherGroup != null &&
+                    otherGroup != group &&
+                    !otherGroup.IsNavy() &&
+                    IsHostile(side, otherGroup.side));
         }
 
         void Advance1HourForScripts()

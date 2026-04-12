@@ -198,7 +198,8 @@ namespace StrategicCombatCore
 
         static bool ShouldIncludeMemberInAiFrontlineSplit(IStrategicGroupMemberReferenceable member)
         {
-            return member is not StrategicGroup group || group.deployState == StrategicGroup.DeployState.Combined;
+            return member is not StrategicGroup group ||
+                (!group.IsFixed && group.deployState == StrategicGroup.DeployState.Combined);
         }
 
         static bool IsAiCombatableArmyGroup(StrategicGroup group)
@@ -1138,6 +1139,7 @@ namespace StrategicCombatCore
         {
             return group != null &&
                    group.deployState == StrategicGroup.DeployState.Independent &&
+                   group.CanActStrategically &&
                    group.IsArmy() &&
                    group.type != StrategicGroup.Type.Base &&
                    group.type != StrategicGroup.Type.HeadQuarter &&

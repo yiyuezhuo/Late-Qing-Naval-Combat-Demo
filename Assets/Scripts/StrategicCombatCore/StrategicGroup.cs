@@ -616,6 +616,20 @@ namespace StrategicCombatCore
         // public bool ShouldSerializearriveTime() => enableArriveTime;
         // public bool ShouldSerializearrived() => enableArriveTime;
 
+        public partial class FixedState
+        {
+            public static DateTime defaultReleaseTime = ArriveState.defaultArriveTime;
+
+            public bool released;
+            public bool enableReleaseTime;
+            public DateTime releaseTime = defaultReleaseTime;
+
+            public bool ShouldSerializeenableReleaseTime() => enableReleaseTime;
+            public bool ShouldSerializereleaseTime() => enableReleaseTime;
+        }
+
+        public FixedState fixedState;
+
         public static Dictionary<StrategicUnitSize, string> sizeStrMap = new()
         {
             { StrategicUnitSize.Unspecified, "O" },
@@ -642,6 +656,17 @@ namespace StrategicCombatCore
         public bool IsBase() => type == Type.Base;
 
         public bool IsIndependent() => deployState == DeployState.Independent;
+        public bool IsFixed => fixedState != null && !fixedState.released;
+        public bool CanActStrategically => !IsFixed;
+
+        public bool ReleaseFixed()
+        {
+            if (fixedState == null || fixedState.released)
+                return false;
+
+            fixedState.released = true;
+            return true;
+        }
 
         /// <summary>
         /// Is On Map (Independent or as combined sub unit in the another independent group)
@@ -996,7 +1021,7 @@ namespace StrategicCombatCore
 
         public bool TryRelocateIndependentGroup(Cell toCell, bool moveThroughEdge = false)
         {
-            if (deployState != DeployState.Independent || toCell == null)
+            if (deployState != DeployState.Independent || toCell == null || !CanActStrategically)
                 return false;
 
             return MoveToCell(toCell, moveThroughEdge);
@@ -1032,6 +1057,9 @@ namespace StrategicCombatCore
 
             // var toCell = StrategicGameState.Instance.cellMatrix[toX, toY];
             var prevCell = cell;
+            if (IsFixed && deployState == DeployState.Independent && prevCell != null && prevCell != toCell)
+                return false;
+
             if (!CanEnterCell(toCell))
                 return false;
 
@@ -1170,7 +1198,7 @@ namespace StrategicCombatCore
 
         public float GetSpeedKmPerHour()
         {
-            if (IsBase())
+            if (!CanActStrategically || IsBase())
             {
                 return 0;
             }
@@ -1434,9 +1462,9 @@ namespace StrategicCombatCore
             MoveMemberToGroup(element, otherGroup);
         }
 
-        public bool Combatable() => deployState == DeployState.Independent && posture != GroupPostureType.Disengaged;
-        public bool NavalCombatable() => deployState == DeployState.Independent && posture != GroupPostureType.Disengaged && type == Type.Fleet;
-        public bool LandCombatable() => deployState == DeployState.Independent && posture != GroupPostureType.Disengaged && type != Type.Fleet;
+        public bool Combatable() => CanActStrategically && deployState == DeployState.Independent && posture != GroupPostureType.Disengaged;
+        public bool NavalCombatable() => CanActStrategically && deployState == DeployState.Independent && posture != GroupPostureType.Disengaged && type == Type.Fleet;
+        public bool LandCombatable() => CanActStrategically && deployState == DeployState.Independent && posture != GroupPostureType.Disengaged && type != Type.Fleet;
 
         /// <summary>
         /// Drive the group to its base, if disengagedHours == 0, it's a normal return, otherwise it's a retreat return.
@@ -1444,7 +1472,7 @@ namespace StrategicCombatCore
         /// <param name="disengagedHours"></param>
         public void StartReturnToBase(int disengagedHours)
         {
-            if (deployState != DeployState.Independent)
+            if (deployState != DeployState.Independent || !CanActStrategically)
                 return;
 
             if (disengagedHours > 0)
@@ -1474,6 +1502,9 @@ namespace StrategicCombatCore
 
         public bool StartMoveToARandomMovableNeighbor()
         {
+            if (!CanActStrategically)
+                return false;
+
             plannedPath.Clear();
             
             IGraphEnumerable<Cell> graph = IsNavy() ? new DynamicCellGraphNavy(){movingSide=side} : new DynamicLandRetreatGraph(){side=side};
@@ -1504,6 +1535,12 @@ namespace StrategicCombatCore
 
         public void SetPlannedPath(List<XY> newPlannedPath)
         {
+            if (!CanActStrategically)
+            {
+                ClearPlannedPath();
+                return;
+            }
+
             if(newPlannedPath.Count < 2)
             {
                 plannedPath.Clear();
@@ -1524,6 +1561,9 @@ namespace StrategicCombatCore
 
         public void TryPlanPathTo(Cell dstCell)
         {
+            if (!CanActStrategically)
+                return;
+
             plannedPath.Clear();
             
             IGraphEnumerable<Cell> graph = IsNavy() ? new DynamicCellGraphNavy(){movingSide=side} : new DynamicCellGraphArmy();
@@ -1590,6 +1630,9 @@ namespace StrategicCombatCore
 
         public void DoLandDisengage()
         {
+            if (!CanActStrategically)
+                return;
+
             var dstCell = GetDepotGroup()?.cell;
             if(dstCell != null)
             {
@@ -2132,6 +2175,12 @@ namespace StrategicCombatCore
 
         public void Advance1HourForMovement()
         {
+            if (!CanActStrategically)
+            {
+                ClearPlannedPath();
+                return;
+            }
+
             var completedStrategicPath = false;
             if (plannedPath.Count == 0)
             {

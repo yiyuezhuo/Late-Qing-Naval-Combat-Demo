@@ -947,6 +947,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset unbindHitAreaDialogDocument;
     public VisualTreeAsset strategicGroupDialogDocument;
     public VisualTreeAsset strategicReinforcementDialogDocument;
+    public VisualTreeAsset strategicReleaseDialogDocument;
     public VisualTreeAsset shipLogDialogDocument;
     public VisualTreeAsset landUnitDialogDocument;
     public VisualTreeAsset strategicMissionSelectorDialogDocument;
@@ -1861,6 +1862,88 @@ public class DialogRoot : SingletonDocument<DialogRoot>
                 if (nameLabel != null)
                 {
                     nameLabel.text = group.reinforcementDisplayText;
+                }
+            };
+        };
+
+        tempDialog.Popup();
+    }
+
+    public void PopupStrategicReleaseDialog()
+    {
+        var strategicReleases = StrategicGameState.Instance.strategicGroups
+            .Where(group => group.fixedState != null && !group.fixedState.released && group.fixedState.enableReleaseTime)
+            .OrderBy(group => group.fixedState.releaseTime)
+            .ThenBy(group => group.name.GetMergedName())
+            .ToList();
+
+        if (strategicReleaseDialogDocument == null)
+        {
+            PopupMessageDialog("ReleaseDialog is not configured.");
+            return;
+        }
+
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = strategicReleaseDialogDocument,
+            templateDataSource = StrategicGameState.Instance
+        };
+
+        tempDialog.onCreated += (sender, el) =>
+        {
+            var listView = el.Q<ListView>("ReleaseListView");
+            listView.selectionType = SelectionType.None;
+            listView.itemsSource = strategicReleases;
+            listView.fixedItemHeight = 28;
+
+            listView.makeItem = () =>
+            {
+                var row = new VisualElement();
+                row.style.flexDirection = FlexDirection.Row;
+                row.style.alignItems = Align.Center;
+                row.style.minHeight = 28;
+                row.style.paddingLeft = 0;
+                row.style.paddingRight = 0;
+                row.style.marginLeft = 0;
+                row.style.marginRight = 0;
+
+                var nameLabel = new Label
+                {
+                    name = "ReleaseGroupLabel",
+                };
+                nameLabel.style.flexGrow = 1;
+                nameLabel.style.minWidth = 0;
+                nameLabel.style.whiteSpace = WhiteSpace.Normal;
+                nameLabel.style.unityTextAlign = TextAnchor.MiddleLeft;
+
+                Utils.RegisterLinkTag(nameLabel, new()
+                {
+                    ["nameLink"] = () =>
+                    {
+                        if (Utils.TryResolveCurrentValueForBinding(row, out StrategicGroup group))
+                        {
+                            SwitchCenter.Instance.SwitchToStrategicGroupView(group);
+                        }
+                    }
+                });
+
+                row.Add(nameLabel);
+                return row;
+            };
+
+            listView.bindItem = (item, index) =>
+            {
+                if (index < 0 || index >= strategicReleases.Count)
+                    return;
+
+                var group = strategicReleases[index];
+                item.dataSource = group;
+
+                var nameLabel = item.Q<Label>("ReleaseGroupLabel");
+                if (nameLabel != null)
+                {
+                    nameLabel.text = group.releaseDisplayText;
                 }
             };
         };

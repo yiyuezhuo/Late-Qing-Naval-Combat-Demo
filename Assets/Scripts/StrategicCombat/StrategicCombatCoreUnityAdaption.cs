@@ -438,6 +438,57 @@ namespace StrategicCombatCore
         }
 
         [CreateProperty]
+        public bool isFixed => IsFixed;
+
+        [CreateProperty]
+        public bool isReleased => fixedState?.released ?? false;
+
+        public partial class FixedState
+        {
+            ScenarioStateDateTimeViewModel _releaseTimeViewModel;
+
+            [CreateProperty]
+            public ScenarioStateDateTimeViewModel releaseTimeViewModel
+            {
+                get => _releaseTimeViewModel ??= ScenarioStateDateTimeViewModel.GetDateTimeHolder
+                (
+                    () => releaseTime,
+                    dt => releaseTime = dt
+                );
+            }
+
+            [CreateProperty]
+            public string releaseTimeStr => CoreParameter.Instance.GetReferenceTimeZoneDateTimeOffsetString(releaseTime);
+
+            [CreateProperty]
+            public string releaseSummary => enableReleaseTime ? releaseTimeStr : "Hostile contact";
+        }
+
+        [CreateProperty]
+        public bool enableFixedState
+        {
+            get => fixedState != null;
+            set
+            {
+                if (value == enableFixedState)
+                    return;
+
+                if (value)
+                {
+                    fixedState = new FixedState();
+                    ClearPlannedPath();
+                }
+                else
+                {
+                    fixedState = null;
+                }
+            }
+        }
+
+        [CreateProperty]
+        public string releaseSummary => fixedState?.releaseSummary ?? "";
+
+        [CreateProperty]
         public string reinforcementSummary => arriveState?.reinforcementSummary ?? "";
 
         [CreateProperty]
@@ -461,6 +512,9 @@ namespace StrategicCombatCore
 
         [CreateProperty]
         public string reinforcementDisplayText => $"<link=\"nameLink\"><color=#40a0ff>{reinforcementShortNameChain}</color></link> -> {reinforcementSummary}";
+
+        [CreateProperty]
+        public string releaseDisplayText => $"<link=\"nameLink\"><color=#40a0ff>{reinforcementShortNameChain}</color></link> -> {releaseSummary}";
     }
 
     public partial class StrategicGroupReference

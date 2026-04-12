@@ -125,6 +125,7 @@ MonoBehaviour:
    unbindHitAreaDialogDocument: {fileID: 9197481963319205126, guid: db6d8eb8f2bdc7b449ae082e0d62e066, type: 3}
    strategicGroupDialogDocument: {fileID: 9197481963319205126, guid: 4c34913fadbc6eb47b251a649a573999, type: 3}
    strategicReinforcementDialogDocument: {fileID: 9197481963319205126, guid: 1007e65b87e84ed393b88bef2c79d072, type: 3}
+   strategicReleaseDialogDocument: {fileID: 9197481963319205126, guid: a8478e547d6340fdbb58314ea34eb9e2, type: 3}
    shipLogDialogDocument: {fileID: 9197481963319205126, guid: fbb7bc68864a13542896d5648dd9db76, type: 3}
   landUnitDialogDocument: {fileID: 9197481963319205126, guid: 27ccc255880ea2448b0325bec554f20c, type: 3}
   strategicMissionSelectorDialogDocument: {fileID: 9197481963319205126, guid: f97af49b76153054898291e9e2f0c8b2, type: 3}

@@ -230,6 +230,11 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
             DialogRoot.Instance.PopupStrategicReinforcementDialog();
         };
 
+        root.Q<Button>("ReleaseButton").clicked += () =>
+        {
+            DialogRoot.Instance.PopupStrategicReleaseDialog();
+        };
+
         root.Q<Button>("LossStatusButton").clicked += () =>
         {
             DialogRoot.Instance.PopupStrategicVictoryStatusDialog();

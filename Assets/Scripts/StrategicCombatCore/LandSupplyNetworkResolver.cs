@@ -359,6 +359,12 @@ namespace StrategicCombatCore
 
             if (srcCell != null && dstCell != null && sideState != null)
             {
+                if (requestedUnit is LandUnit requestedDepot &&
+                    cache.TryGetRoutedSupplyPath(requestUnit, requestedDepot, out var routedResult))
+                {
+                    return routedResult;
+                }
+
                 return cache.GetLandSupplyPath(sideState, srcCell, dstCell);
             }
             return new AStarResult<Cell>()
@@ -370,6 +376,9 @@ namespace StrategicCombatCore
 
         LandUnit GetCurrentSourceDepot(IStrategicGroupMemberReferenceable member)
         {
+            if (member is ISupplyNetworkNode supplyNode)
+                return cache.GetRoutedSourceDepot(supplyNode);
+
             if (member is StrategicGroup group)
                 return group.GetCurrentSourceDepot(cache);
 

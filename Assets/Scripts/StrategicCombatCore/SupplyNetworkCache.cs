@@ -10,6 +10,7 @@ namespace StrategicCombatCore
         readonly Dictionary<(SideState side, Cell src, Cell dst), AStarResult<Cell>> landSupplyPathfindingCache = new();
         readonly Dictionary<SideState, List<StrategicGroup>> friendlyBaseGroupsBySideCache = new();
         readonly Dictionary<SideState, NearestFriendlyBaseDepotCache> nearestFriendlyBaseDepotCacheBySide = new();
+        readonly Dictionary<SideState, RoutedSupplyNetworkCache> routedSupplyNetworkCacheBySide = new();
 
         public LandUnit GetNearestFriendlyBaseDepot(StrategicGroup group)
         {
@@ -40,6 +41,23 @@ namespace StrategicCombatCore
 
             var graph = new DynamicLandSupplyNetworkingGraph() { side = sideState };
             return GetLandSupplyPath(graph, sideState, srcCell, dstCell);
+        }
+
+        public LandUnit GetRoutedSourceDepot(ISupplyNetworkNode node)
+        {
+            if (node?.side == null || node.cell == null)
+                return null;
+
+            return GetRoutedSupplyNetworkCache(node.side).GetSourceDepot(node);
+        }
+
+        public bool TryGetRoutedSupplyPath(ISupplyNetworkNode requestUnit, LandUnit requestedDepot, out AStarResult<Cell> result)
+        {
+            result = default;
+            if (requestUnit?.side == null || requestUnit.cell == null || requestedDepot?.cell == null)
+                return false;
+
+            return GetRoutedSupplyNetworkCache(requestUnit.side).TryGetPathResult(requestUnit, requestedDepot, out result);
         }
 
         AStarResult<Cell> GetLandSupplyPath(DynamicLandSupplyNetworkingGraph graph, SideState sideState, Cell srcCell, Cell dstCell)
@@ -73,6 +91,21 @@ namespace StrategicCombatCore
                 nearestFriendlyBaseDepotCacheBySide[sideState] = depotCache;
             }
             return depotCache;
+        }
+
+        RoutedSupplyNetworkCache GetRoutedSupplyNetworkCache(SideState sideState)
+        {
+            if (!routedSupplyNetworkCacheBySide.TryGetValue(sideState, out var routeCache))
+            {
+                routeCache = BuildRoutedSupplyNetworkCache(sideState);
+                routedSupplyNetworkCacheBySide[sideState] = routeCache;
+            }
+            return routeCache;
+        }
+
+        RoutedSupplyNetworkCache BuildRoutedSupplyNetworkCache(SideState sideState)
+        {
+            return new RoutedSupplyNetworkCache(sideState, GetFriendlyBaseGroups(sideState));
         }
 
         NearestFriendlyBaseDepotCache BuildNearestFriendlyBaseDepotCache(SideState sideState)
@@ -176,6 +209,378 @@ namespace StrategicCombatCore
             public LandUnit depot;
             public Cell depotCell;
             public Cell nextCellTowardDepot;
+        }
+
+        enum SupplySourceKind
+        {
+            Land,
+            Coast
+        }
+
+        class RoutedSupplyNetworkCache
+        {
+            readonly SideState sideState;
+            readonly ReverseDynamicLandSupplyNetworkingGraph reverseGraph;
+            readonly Dictionary<Cell, List<LandUnit>> depotsByCell = new();
+            readonly Dictionary<Cell, RoutedCellState> cellStates = new();
+            readonly Dictionary<LandUnit, RoutedDepotState> depotStates = new();
+            readonly Dictionary<LandUnit, SupplySourceKind> rootDepotKinds = new();
+            readonly SortedSet<RoutedQueueNode> openSet = new(new RoutedQueueNodeComparer());
+            long nextOrder;
+
+            public RoutedSupplyNetworkCache(SideState sideState, IEnumerable<StrategicGroup> baseGroups)
+            {
+                this.sideState = sideState;
+                reverseGraph = new ReverseDynamicLandSupplyNetworkingGraph() { side = sideState };
+                BuildDepotIndex(baseGroups);
+                BuildRoutes();
+            }
+
+            public LandUnit GetSourceDepot(ISupplyNetworkNode node)
+            {
+                if (node is LandUnit landUnit && IsBaseDepot(landUnit))
+                {
+                    return depotStates.TryGetValue(landUnit, out var depotState)
+                        ? depotState.upstreamDepot
+                        : null;
+                }
+
+                return cellStates.TryGetValue(node.cell, out var cellState)
+                    ? cellState.depot
+                    : null;
+            }
+
+            public bool TryGetPathResult(ISupplyNetworkNode requestUnit, LandUnit requestedDepot, out AStarResult<Cell> result)
+            {
+                result = default;
+                if (requestUnit?.cell == null || requestedDepot?.cell == null)
+                    return false;
+
+                if (requestUnit.cell == requestedDepot.cell)
+                {
+                    result = new AStarResult<Cell>()
+                    {
+                        Cost = 0f,
+                        Path = new List<Cell>() { requestUnit.cell }
+                    };
+                    return true;
+                }
+
+                if (requestUnit is LandUnit requestDepot && IsBaseDepot(requestDepot))
+                {
+                    if (!depotStates.TryGetValue(requestDepot, out var depotState) ||
+                        depotState.upstreamDepot != requestedDepot)
+                    {
+                        return false;
+                    }
+
+                    result = new AStarResult<Cell>()
+                    {
+                        Cost = depotState.cost,
+                        Path = new List<Cell>(depotState.pathToUpstreamDepot)
+                    };
+                    return true;
+                }
+
+                if (!cellStates.TryGetValue(requestUnit.cell, out var cellState) ||
+                    cellState.depot != requestedDepot)
+                {
+                    return false;
+                }
+
+                return TryBuildCellPathResult(requestUnit.cell, requestedDepot.cell, cellState.cost, out result);
+            }
+
+            void BuildDepotIndex(IEnumerable<StrategicGroup> baseGroups)
+            {
+                foreach (var baseGroup in baseGroups ?? Enumerable.Empty<StrategicGroup>())
+                {
+                    var depot = baseGroup?.GetFirstDepot();
+                    var cell = baseGroup?.cell;
+                    if (depot == null || cell == null)
+                        continue;
+
+                    if (!depotsByCell.TryGetValue(cell, out var depots))
+                    {
+                        depots = new List<LandUnit>();
+                        depotsByCell[cell] = depots;
+                    }
+
+                    if (!depots.Contains(depot))
+                        depots.Add(depot);
+                }
+            }
+
+            void BuildRoutes()
+            {
+                var landSeeds = depotsByCell.Values
+                    .SelectMany(depots => depots)
+                    .Where(IsLandSourceDepot)
+                    .ToList();
+                RunPass(SupplySourceKind.Land, landSeeds);
+
+                var hasCoastDepot = depotsByCell.Values
+                    .SelectMany(depots => depots)
+                    .Any(IsCoastDepot);
+                if (!hasCoastDepot)
+                    return;
+
+                var coastSeeds = depotsByCell.Values
+                    .SelectMany(depots => depots)
+                    .Where(depot => IsCoastDepot(depot) && !HasLandRoute(depot))
+                    .ToList();
+                RunPass(SupplySourceKind.Coast, coastSeeds);
+            }
+
+            void RunPass(SupplySourceKind kind, List<LandUnit> seedDepots)
+            {
+                openSet.Clear();
+                foreach (var depot in seedDepots)
+                {
+                    if (depot?.cell == null)
+                        continue;
+
+                    if (kind == SupplySourceKind.Coast && HasLandRoute(depot))
+                        continue;
+
+                    rootDepotKinds.TryAdd(depot, kind);
+                    AddOpenNode(depot.cell, depot, 0f, null, kind);
+                }
+
+                while (openSet.Count > 0)
+                {
+                    var currentNode = openSet.Min;
+                    openSet.Remove(currentNode);
+
+                    if (!ShouldProcessNode(currentNode))
+                        continue;
+
+                    cellStates[currentNode.cell] = new RoutedCellState()
+                    {
+                        cost = currentNode.cost,
+                        depot = currentNode.sourceDepot,
+                        depotCell = currentNode.sourceDepot.cell,
+                        nextCellTowardDepot = currentNode.previous?.cell,
+                        sourceKind = currentNode.sourceKind
+                    };
+
+                    if (TryResetAtNewDepot(currentNode))
+                        continue;
+
+                    AddNeighborNodes(currentNode);
+                }
+            }
+
+            bool ShouldProcessNode(RoutedQueueNode node)
+            {
+                if (node?.cell == null || node.sourceDepot?.cell == null)
+                    return false;
+
+                if (!cellStates.TryGetValue(node.cell, out var currentState))
+                    return true;
+
+                if (currentState.sourceKind == SupplySourceKind.Land && node.sourceKind == SupplySourceKind.Coast)
+                    return false;
+
+                if (currentState.sourceKind == node.sourceKind && currentState.cost <= node.cost)
+                    return false;
+
+                return currentState.sourceKind != SupplySourceKind.Land || node.sourceKind == SupplySourceKind.Land;
+            }
+
+            bool TryResetAtNewDepot(RoutedQueueNode node)
+            {
+                if (!depotsByCell.TryGetValue(node.cell, out var depots))
+                    return false;
+
+                var resetAny = false;
+                foreach (var depot in depots)
+                {
+                    if (depot == node.sourceDepot)
+                        continue;
+
+                    if (HasRouteForPass(depot, node.sourceKind))
+                        continue;
+
+                    depotStates[depot] = new RoutedDepotState()
+                    {
+                        upstreamDepot = node.sourceDepot,
+                        cost = node.cost,
+                        pathToUpstreamDepot = BuildPathToSource(node),
+                        sourceKind = node.sourceKind
+                    };
+
+                    AddOpenNode(node.cell, depot, 0f, null, node.sourceKind);
+                    resetAny = true;
+                }
+
+                return resetAny;
+            }
+
+            void AddNeighborNodes(RoutedQueueNode currentNode)
+            {
+                foreach (var previousCell in reverseGraph.Neighbors(currentNode.cell))
+                {
+                    var nextCost = currentNode.cost + reverseGraph.MoveCost(currentNode.cell, previousCell);
+                    AddOpenNode(previousCell, currentNode.sourceDepot, nextCost, currentNode, currentNode.sourceKind);
+                }
+            }
+
+            void AddOpenNode(Cell cell, LandUnit sourceDepot, float cost, RoutedQueueNode previous, SupplySourceKind sourceKind)
+            {
+                if (cellStates.TryGetValue(cell, out var currentState))
+                {
+                    if (currentState.sourceKind == SupplySourceKind.Land && sourceKind == SupplySourceKind.Coast)
+                        return;
+
+                    if (currentState.sourceKind == sourceKind && currentState.cost <= cost)
+                        return;
+                }
+
+                openSet.Add(new RoutedQueueNode(cell, sourceDepot, cost, nextOrder++, previous, sourceKind));
+            }
+
+            bool TryBuildCellPathResult(Cell srcCell, Cell dstCell, float cost, out AStarResult<Cell> result)
+            {
+                result = default;
+                var path = new List<Cell>();
+                var currentCell = srcCell;
+                var maxSteps = cellStates.Count + 1;
+
+                for (var i = 0; i < maxSteps && currentCell != null; i++)
+                {
+                    path.Add(currentCell);
+                    if (currentCell == dstCell)
+                    {
+                        result = new AStarResult<Cell>()
+                        {
+                            Cost = cost,
+                            Path = path
+                        };
+                        return true;
+                    }
+
+                    if (!cellStates.TryGetValue(currentCell, out var state))
+                        return false;
+
+                    currentCell = state.nextCellTowardDepot;
+                }
+
+                return false;
+            }
+
+            static List<Cell> BuildPathToSource(RoutedQueueNode node)
+            {
+                var path = new List<Cell>();
+                while (node != null)
+                {
+                    path.Add(node.cell);
+                    node = node.previous;
+                }
+                return path;
+            }
+
+            bool HasRouteForPass(LandUnit depot, SupplySourceKind kind)
+            {
+                if (kind == SupplySourceKind.Coast && HasLandRoute(depot))
+                    return true;
+
+                if (rootDepotKinds.TryGetValue(depot, out var rootKind))
+                    return rootKind == kind || rootKind == SupplySourceKind.Land;
+
+                if (depotStates.TryGetValue(depot, out var depotState))
+                    return depotState.sourceKind == kind || depotState.sourceKind == SupplySourceKind.Land;
+
+                return false;
+            }
+
+            bool HasLandRoute(LandUnit depot)
+            {
+                if (rootDepotKinds.TryGetValue(depot, out var rootKind) && rootKind == SupplySourceKind.Land)
+                    return true;
+
+                return depotStates.TryGetValue(depot, out var depotState) &&
+                    depotState.sourceKind == SupplySourceKind.Land;
+            }
+
+            static bool IsLandSourceDepot(LandUnit depot)
+            {
+                return IsBaseDepot(depot) && depot.supplyGeneratedTons > 0;
+            }
+
+            static bool IsCoastDepot(LandUnit depot)
+            {
+                return IsBaseDepot(depot) && depot.cell?.IsCoast == true;
+            }
+
+            static bool IsBaseDepot(LandUnit depot)
+            {
+                var parentGroup = depot?.parentGroupReference.Get();
+                return parentGroup?.type == StrategicGroup.Type.Base &&
+                    parentGroup.GetFirstDepot() == depot;
+            }
+        }
+
+        class RoutedCellState
+        {
+            public float cost;
+            public LandUnit depot;
+            public Cell depotCell;
+            public Cell nextCellTowardDepot;
+            public SupplySourceKind sourceKind;
+        }
+
+        class RoutedDepotState
+        {
+            public LandUnit upstreamDepot;
+            public float cost;
+            public List<Cell> pathToUpstreamDepot = new();
+            public SupplySourceKind sourceKind;
+        }
+
+        class RoutedQueueNode
+        {
+            public RoutedQueueNode(
+                Cell cell,
+                LandUnit sourceDepot,
+                float cost,
+                long order,
+                RoutedQueueNode previous,
+                SupplySourceKind sourceKind)
+            {
+                this.cell = cell;
+                this.sourceDepot = sourceDepot;
+                this.cost = cost;
+                this.order = order;
+                this.previous = previous;
+                this.sourceKind = sourceKind;
+            }
+
+            public Cell cell;
+            public LandUnit sourceDepot;
+            public float cost;
+            public long order;
+            public RoutedQueueNode previous;
+            public SupplySourceKind sourceKind;
+        }
+
+        class RoutedQueueNodeComparer : IComparer<RoutedQueueNode>
+        {
+            public int Compare(RoutedQueueNode x, RoutedQueueNode y)
+            {
+                if (ReferenceEquals(x, y))
+                    return 0;
+                if (x is null)
+                    return -1;
+                if (y is null)
+                    return 1;
+
+                var costCmp = x.cost.CompareTo(y.cost);
+                if (costCmp != 0)
+                    return costCmp;
+
+                return x.order.CompareTo(y.order);
+            }
         }
 
         class NearestFriendlyBaseDepotCache

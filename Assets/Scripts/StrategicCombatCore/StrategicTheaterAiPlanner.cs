@@ -1230,16 +1230,19 @@ namespace StrategicCombatCore
                 else
                     poolMembers.Add(group);
 
-                foreach (var memberRef in group.directMemberReferences.ToList())
+                if (group.nonHistorical || group.deployState == StrategicGroup.DeployState.Combined)
                 {
-                    CollectTheaterMergePoolMember(
-                        memberRef.Get(),
-                        sourceRoot,
-                        poolMembers,
-                        nonHistoricalContainers,
-                        seenMemberIds,
-                        sourceRootByMemberId,
-                        originalDirectMemberOrders);
+                    foreach (var memberRef in group.directMemberReferences.ToList())
+                    {
+                        CollectTheaterMergePoolMember(
+                            memberRef.Get(),
+                            sourceRoot,
+                            poolMembers,
+                            nonHistoricalContainers,
+                            seenMemberIds,
+                            sourceRootByMemberId,
+                            originalDirectMemberOrders);
+                    }
                 }
 
                 return;
@@ -1486,6 +1489,22 @@ namespace StrategicCombatCore
                 .Where(group => !string.IsNullOrWhiteSpace(group.objectId))
                 .Select(group => group.objectId)
                 .ToHashSet();
+            var rewrittenMemberIds = plans
+                .Select(plan => plan.member?.objectId)
+                .Where(id => !string.IsNullOrWhiteSpace(id))
+                .Concat((nonHistoricalContainers ?? new List<StrategicGroup>())
+                    .Select(group => group?.objectId)
+                    .Where(id => !string.IsNullOrWhiteSpace(id)))
+                .ToHashSet();
+            var preservedDirectMemberReferences = affectedGroups
+                .ToDictionary(
+                    group => group,
+                    group => group.directMemberReferences
+                        .Where(reference => reference != null &&
+                            !string.IsNullOrWhiteSpace(reference.referenceId) &&
+                            !rewrittenMemberIds.Contains(reference.referenceId))
+                        .Select(reference => new StrategicGroupMemberReference() { referenceId = reference.referenceId })
+                        .ToList());
 
             if (mergeContainer != null)
             {
@@ -1506,7 +1525,10 @@ namespace StrategicCombatCore
             }
 
             foreach (var group in affectedGroups)
+            {
                 group.directMemberReferences.Clear();
+                group.directMemberReferences.AddRange(preservedDirectMemberReferences.GetValueOrDefault(group) ?? new List<StrategicGroupMemberReference>());
+            }
 
             foreach (var plan in plans)
             {

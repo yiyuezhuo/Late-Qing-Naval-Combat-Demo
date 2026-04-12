@@ -232,6 +232,8 @@ namespace StrategicCombatCore
 
         public LeaderReference leaderReference = new();
 
+        // Membership is organizational, not necessarily physical containment:
+        // Independent subgroups may still be direct members while moving separately from the parent counter.
         public List<StrategicGroupMemberReference> directMemberReferences = new();
         // public List<StrategicGroupMemberReference> subordinatesInCommandOfChain = new();
 
@@ -717,10 +719,14 @@ namespace StrategicCombatCore
                 return false;
 
             var current = parentGroupReference.Get();
+            var visitedGroupIds = new HashSet<string>();
             while (current != null)
             {
                 if (current == ancestorCandidate)
                     return true;
+                if (!visitedGroupIds.Add(current.objectId))
+                    throw new InvalidOperationException(
+                        $"Strategic group parent cycle while checking ancestry: group={objectId}, ancestorCandidate={ancestorCandidate.objectId}, repeated={current.objectId}");
                 current = current.parentGroupReference.Get();
             }
 
@@ -912,6 +918,8 @@ namespace StrategicCombatCore
             if (member == null)
                 return;
 
+            ThrowIfInvalidParentAssignment(member, newParentGroup, "reassign member");
+
             var oldParentGroup = member.parentGroupReference.Get();
             if (oldParentGroup == newParentGroup)
             {
@@ -926,6 +934,30 @@ namespace StrategicCombatCore
             member.parentGroupReference.referenceId = newParentGroup?.objectId;
             oldParentGroup?.SortDirectMemberReferencesByPower();
             newParentGroup?.SortDirectMemberReferencesByPower();
+        }
+
+        internal static void ThrowIfInvalidParentAssignment(
+            IStrategicGroupMemberReferenceable member,
+            StrategicGroup newParentGroup,
+            string operation)
+        {
+            if (member == null || newParentGroup == null)
+                return;
+
+            if (member is not StrategicGroup memberGroup)
+                return;
+
+            if (newParentGroup == memberGroup)
+            {
+                throw new InvalidOperationException(
+                    $"Invalid strategic group membership during {operation}: group {memberGroup.objectId} cannot be its own parent.");
+            }
+
+            if (newParentGroup.IsDescendantOf(memberGroup))
+            {
+                throw new InvalidOperationException(
+                    $"Invalid strategic group membership during {operation}: cannot assign group {memberGroup.objectId} under descendant {newParentGroup.objectId}.");
+            }
         }
 
         public void AttachMember(IStrategicGroupMemberReferenceable member) => ReassignMember(member, this);
@@ -1305,6 +1337,8 @@ namespace StrategicCombatCore
 
         public IEnumerable<T> WalkGroupMembers<T>(bool includeNotCombined=false) where T : IStrategicGroupMemberReferenceable
         {
+            // By default this walks members physically inside this counter (Combined groups).
+            // Pass includeNotCombined for the full organizational tree, including Independent subgroups.
             foreach (var subordinate in WalkDirectMembers())
             {
                 if (subordinate is T obj && obj != null)

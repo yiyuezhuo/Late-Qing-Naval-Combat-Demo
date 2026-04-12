@@ -132,6 +132,7 @@ namespace StrategicCombatCore
             if (sourceStates.Count == 0)
             {
                 TryAutoMergeIndependentLandGroupsInTheater(theater, theaterCellSet);
+                state.ValidateStrategicGroupMembership("after Theater AI merge without source assignments");
                 return;
             }
 
@@ -146,6 +147,7 @@ namespace StrategicCombatCore
 
             ApplyAiPlannedAssignments(frontlinePlan, consumedAtomIds, frontlineMovementGraph);
             TryAutoMergeIndependentLandGroupsInTheater(theater, theaterCellSet);
+            state.ValidateStrategicGroupMembership("after Theater AI split/merge assignments");
         }
 
         static bool IsBetterAiFrontlineCandidate(

@@ -1935,6 +1935,7 @@ namespace StrategicCombatCore
                 EntityManager.Instance.Register(theater, null);
 
             NormalizeStrategicGroupMembership();
+            ValidateStrategicGroupMembership("after NormalizeStrategicGroupMembership");
             RebuildCacheForSideStates();
             RebuildCellStrategicGroupReferences();
         }
@@ -2003,6 +2004,150 @@ namespace StrategicCombatCore
             {
                 list.RemoveAt(indices[idx]);
             }
+        }
+
+        [System.Diagnostics.Conditional("UNITY_EDITOR")]
+        [System.Diagnostics.Conditional("DEVELOPMENT_BUILD")]
+        public void ValidateStrategicGroupMembership(string context)
+        {
+            context ??= "strategic group membership validation";
+
+            var groupMap = strategicGroups
+                .Where(group => group != null && !string.IsNullOrWhiteSpace(group.objectId))
+                .GroupBy(group => group.objectId)
+                .ToDictionary(group => group.Key, group => group.First());
+
+            var memberMap = IterAllStrategicGroupMembers()
+                .Where(member => member != null && !string.IsNullOrWhiteSpace(member.objectId))
+                .GroupBy(member => member.objectId)
+                .ToDictionary(group => group.Key, group => group.First());
+
+            var claimedParentIds = new Dictionary<string, string>();
+            var groupChildIds = groupMap.ToDictionary(group => group.Key, _ => new List<string>());
+            foreach (var group in groupMap.Values)
+            {
+                if (group.directMemberReferences == null)
+                    throw new InvalidOperationException($"{context}: group {group.objectId} has null directMemberReferences.");
+
+                var seenMemberIds = new HashSet<string>();
+                foreach (var reference in group.directMemberReferences)
+                {
+                    var memberId = reference?.referenceId;
+                    if (string.IsNullOrWhiteSpace(memberId))
+                        throw new InvalidOperationException($"{context}: group {group.objectId} has an empty direct member reference.");
+                    if (memberId == group.objectId)
+                        throw new InvalidOperationException($"{context}: group {group.objectId} directly references itself.");
+                    if (!seenMemberIds.Add(memberId))
+                        throw new InvalidOperationException($"{context}: group {group.objectId} has duplicate direct member {memberId}.");
+                    if (!memberMap.TryGetValue(memberId, out var member))
+                        throw new InvalidOperationException($"{context}: group {group.objectId} references missing member {memberId}.");
+                    if (claimedParentIds.TryGetValue(memberId, out var claimedParentId))
+                    {
+                        throw new InvalidOperationException(
+                            $"{context}: member {memberId} is directly referenced by both {claimedParentId} and {group.objectId}.");
+                    }
+
+                    claimedParentIds.Add(memberId, group.objectId);
+                    if (member.parentGroupReference?.referenceId != group.objectId)
+                    {
+                        throw new InvalidOperationException(
+                            $"{context}: member {memberId} is in {group.objectId}.directMemberReferences but parentGroupReference is {member.parentGroupReference?.referenceId ?? "<null>"}.");
+                    }
+
+                    if (groupMap.ContainsKey(memberId))
+                        groupChildIds[group.objectId].Add(memberId);
+                }
+            }
+
+            foreach (var member in memberMap.Values)
+            {
+                var parentId = member.parentGroupReference?.referenceId;
+                if (string.IsNullOrWhiteSpace(parentId))
+                    continue;
+                if (!groupMap.TryGetValue(parentId, out var parentGroup))
+                {
+                    throw new InvalidOperationException(
+                        $"{context}: member {member.objectId} has missing parentGroupReference {parentId}.");
+                }
+                if (!parentGroup.directMemberReferences.Any(reference => reference?.referenceId == member.objectId))
+                {
+                    throw new InvalidOperationException(
+                        $"{context}: member {member.objectId} has parentGroupReference {parentId}, but parent does not directly reference it.");
+                }
+            }
+
+            foreach (var group in groupMap.Values)
+            {
+                ValidateStrategicGroupParentChain(group, groupMap, context);
+            }
+
+            var visitingGroupIds = new HashSet<string>();
+            var visitedGroupIds = new HashSet<string>();
+            var directPath = new List<string>();
+            foreach (var groupId in groupMap.Keys)
+            {
+                ValidateStrategicGroupDirectTree(groupId, groupChildIds, visitingGroupIds, visitedGroupIds, directPath, context);
+            }
+        }
+
+        static void ValidateStrategicGroupParentChain(
+            StrategicGroup group,
+            Dictionary<string, StrategicGroup> groupMap,
+            string context)
+        {
+            var path = new List<string>();
+            var seenGroupIds = new HashSet<string>();
+            var current = group;
+            while (current != null)
+            {
+                if (!seenGroupIds.Add(current.objectId))
+                {
+                    path.Add(current.objectId);
+                    throw new InvalidOperationException(
+                        $"{context}: strategic group parent chain cycle: {string.Join(" -> ", path)}");
+                }
+
+                path.Add(current.objectId);
+                var parentId = current.parentGroupReference?.referenceId;
+                if (string.IsNullOrWhiteSpace(parentId))
+                    return;
+                if (!groupMap.TryGetValue(parentId, out current))
+                {
+                    throw new InvalidOperationException(
+                        $"{context}: strategic group {path[0]} parent chain references missing group {parentId}.");
+                }
+            }
+        }
+
+        static void ValidateStrategicGroupDirectTree(
+            string groupId,
+            Dictionary<string, List<string>> groupChildIds,
+            HashSet<string> visitingGroupIds,
+            HashSet<string> visitedGroupIds,
+            List<string> path,
+            string context)
+        {
+            if (visitedGroupIds.Contains(groupId))
+                return;
+            if (!visitingGroupIds.Add(groupId))
+            {
+                var cycleStart = path.IndexOf(groupId);
+                var cyclePath = cycleStart >= 0
+                    ? path.Skip(cycleStart).Append(groupId)
+                    : path.Append(groupId);
+                throw new InvalidOperationException(
+                    $"{context}: strategic group direct member cycle: {string.Join(" -> ", cyclePath)}");
+            }
+
+            path.Add(groupId);
+            foreach (var childGroupId in groupChildIds.GetValueOrDefault(groupId) ?? new List<string>())
+            {
+                ValidateStrategicGroupDirectTree(childGroupId, groupChildIds, visitingGroupIds, visitedGroupIds, path, context);
+            }
+
+            path.RemoveAt(path.Count - 1);
+            visitingGroupIds.Remove(groupId);
+            visitedGroupIds.Add(groupId);
         }
 
         void NormalizeStrategicGroupMembership()

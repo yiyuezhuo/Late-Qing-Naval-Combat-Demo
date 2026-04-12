@@ -93,6 +93,7 @@ namespace StrategicCombatCore
                 return false;
 
             var previousParentGroup = self.parentGroupReference.Get();
+            StrategicGroup.ThrowIfInvalidParentAssignment(self, detachedFromGroup, "reattach detached member");
             StrategicGroup.ReassignMember(self, detachedFromGroup);
             ClearDetachedFromGroupState(self);
             // Reattach moves only this member back. If its temporary parent is empty afterwards

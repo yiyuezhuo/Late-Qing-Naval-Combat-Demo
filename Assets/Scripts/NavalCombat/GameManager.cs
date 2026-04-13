@@ -364,7 +364,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         if(startupConfig.autoDeployment != null)
         {
             // TODO: Process AutoDeployment
-            DialogRoot.Instance.PopupAutoDeploymentDialog();
+            DialogRoot.Instance.PopupAutoDeploymentDialog(cancelEnabled: !startupConfig.isFromStrategic);
         }
 
         Debug.Log("OnFullStateXMLLoadedCoroutine");

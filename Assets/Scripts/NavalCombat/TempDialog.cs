@@ -26,6 +26,7 @@ public class TempDialog: ISwitchable
     public bool fullScreen = false;
     // public bool draggable = false;
     public bool draggable = true;
+    public bool cancelEnabled = true;
 
     VisualElement el;
 
@@ -79,13 +80,18 @@ public class TempDialog: ISwitchable
 
         if (cancelButton != null)
         {
-            cancelButton.clicked += () =>
-            {
-                // root.Remove(el);
-                Close();
+            cancelButton.SetEnabled(cancelEnabled);
 
-                onCancelled?.Invoke(this, el);
-            };
+            if (cancelEnabled)
+            {
+                cancelButton.clicked += () =>
+                {
+                    // root.Remove(el);
+                    Close();
+
+                    onCancelled?.Invoke(this, el);
+                };
+            }
         }
 
         if (positionMode == PositionMode.Centering)

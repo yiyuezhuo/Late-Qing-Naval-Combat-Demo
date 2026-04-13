@@ -1555,7 +1555,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
     }
 
-    public void PopupAutoDeploymentDialog()
+    public void PopupAutoDeploymentDialog(bool cancelEnabled = true)
     {
         var autoDeploymentDialog = new AutoDeploymentDialog();
 
@@ -1563,7 +1563,8 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         {
             root=root,
             template=autoDeploymentDialogDocument,
-            templateDataSource=autoDeploymentDialog
+            templateDataSource=autoDeploymentDialog,
+            cancelEnabled=cancelEnabled
         };
 
         tempDialog.onCreated += autoDeploymentDialog.OnCreated;

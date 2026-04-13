@@ -300,8 +300,17 @@ namespace StrategicCombatCore
         }
 
         public IEnumerable<StrategicGroup> IterAssignedStrategicGroups() => groups.Select(r => r.Get() as StrategicGroup).Where(g => g is StrategicGroup).Where(g => g != null);
-        public IEnumerable<StrategicGroup> IterAssignedFleetGroups() => IterAssignedStrategicGroups().Where(g => g.type == StrategicGroup.Type.Fleet);
-        public IEnumerable<StrategicGroup> IterAssignedStationedAtBaseGroups() => IterAssignedFleetGroups().Where(g => g.cell == g.GetDepotGroup()?.cell && !g.IsMovingStrategically);
+        public IEnumerable<StrategicGroup> IterAssignedDeployedStrategicGroups() => IterAssignedStrategicGroups().Where(g => g.deployState != StrategicGroup.DeployState.NotDeployed);
+        public IEnumerable<StrategicGroup> IterAssignedFleetGroups() => IterAssignedDeployedStrategicGroups().Where(g => g.type == StrategicGroup.Type.Fleet);
+        public IEnumerable<StrategicGroup> IterAssignedStationedAtBaseGroups() => IterAssignedFleetGroups().Where(g =>
+        {
+            var groupCell = g.cell;
+            var depotCell = g.GetDepotGroup()?.cell;
+            return groupCell != null &&
+                depotCell != null &&
+                groupCell == depotCell &&
+                !g.IsMovingStrategically;
+        });
 
         public void UpdateStrategicGroups(SideState viewerSide)
         {
@@ -312,7 +321,7 @@ namespace StrategicCombatCore
 
             // Check supply condition
 
-            foreach (var g in IterAssignedStrategicGroups())
+            foreach (var g in IterAssignedDeployedStrategicGroups())
             {
                 UpdateStrategicGroup(g);
             }

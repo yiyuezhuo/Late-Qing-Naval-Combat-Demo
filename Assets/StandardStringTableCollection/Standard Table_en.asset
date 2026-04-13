@@ -3274,6 +3274,22 @@ MonoBehaviour:
     m_Localized: Choose Player Side
     m_Metadata:
       m_Items: []
+  - m_Id: 80809339372867584
+    m_Localized: Victory Points
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80809536882642944
+    m_Localized: Recommended
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80809752457285632
+    m_Localized: Automatic Naval Supply
+    m_Metadata:
+      m_Items: []
+  - m_Id: 80810006728577024
+    m_Localized: Automatic Transport Asset Balance
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

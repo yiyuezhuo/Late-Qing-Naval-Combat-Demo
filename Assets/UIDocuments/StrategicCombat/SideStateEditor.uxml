@@ -26,21 +26,25 @@
                             <ui:FloatField label="Victory Points" style="align-items: auto;">
                                 <Bindings>
                                     <ui:DataBinding property="value" data-source-path="victoryPoints" binding-mode="TwoWay"/>
+                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(80809339372867584)"/>
                                 </Bindings>
                             </ui:FloatField>
                             <ui:Toggle label="Recommended">
                                 <Bindings>
                                     <ui:DataBinding property="value" data-source-path="recommended" binding-mode="TwoWay"/>
+                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(80809536882642944)"/>
                                 </Bindings>
                             </ui:Toggle>
-                            <ui:Toggle label="Supply Automation">
+                            <ui:Toggle label="Automatic Naval Supply">
                                 <Bindings>
                                     <ui:DataBinding property="value" data-source-path="supplyAutomation" binding-mode="TwoWay"/>
+                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(80809752457285632)"/>
                                 </Bindings>
                             </ui:Toggle>
-                            <ui:Toggle label="Automatical Transport Asset Balance">
+                            <ui:Toggle label="Automatic Transport Asset Balance">
                                 <Bindings>
                                     <ui:DataBinding property="value" data-source-path="automaticalTransportAssetBalance" binding-mode="TwoWay"/>
+                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(80810006728577024)"/>
                                 </Bindings>
                             </ui:Toggle>
                             <ui:Toggle label="Automatic Army Operation">

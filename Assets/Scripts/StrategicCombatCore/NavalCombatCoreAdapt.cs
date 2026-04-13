@@ -128,6 +128,11 @@ namespace NavalCombatCore
                 rfStatus.ResetTargetting();
             }
 
+            controlMode = ControlMode.Independent;
+            followedTargetObjectId = null;
+            relativeTargetObjectId = null;
+            ClearAutomaticOperationalRouteState();
+
             TrimMissHitLogs();
 
             // Sub-states housekeeping

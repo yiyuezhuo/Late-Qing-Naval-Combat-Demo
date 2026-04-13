@@ -3206,6 +3206,14 @@ MonoBehaviour:
     m_Key: Automatic Transport Asset Balance
     m_Metadata:
       m_Items: []
+  - m_Id: -104
+    m_Key: Current Side Automation
+    m_Metadata:
+      m_Items: []
+  - m_Id: -105
+    m_Key: Automation
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

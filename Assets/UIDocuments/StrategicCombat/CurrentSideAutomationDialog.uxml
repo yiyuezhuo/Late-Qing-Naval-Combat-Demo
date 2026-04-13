@@ -1,0 +1,48 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style"/>
+    <ui:VisualElement data-source-type="StrategicCombatCore.SideState, Assembly-CSharp" class="panel-dialog" style="width: 420px; max-width: 96%; flex-grow: 0; height: auto;">
+        <ui:Label text="Current Side Automation" class="title">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-104)"/>
+            </Bindings>
+        </ui:Label>
+        <ui:VisualElement style="flex-grow: 1;">
+            <ui:Toggle label="Automatic Naval Supply">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="supplyAutomation" binding-mode="TwoWay"/>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(80809752457285632)"/>
+                </Bindings>
+            </ui:Toggle>
+            <ui:Toggle label="Automatic Transport Asset Balance">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="automaticalTransportAssetBalance" binding-mode="TwoWay"/>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(80810006728577024)"/>
+                </Bindings>
+            </ui:Toggle>
+            <ui:Toggle label="Automatic Army Operation">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="automaticArmyOperation" binding-mode="TwoWay"/>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-92)"/>
+                </Bindings>
+            </ui:Toggle>
+            <ui:Toggle label="Automatic Navy Operation">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="automaticNavyOperation" binding-mode="TwoWay"/>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-93)"/>
+                </Bindings>
+            </ui:Toggle>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 0; flex-direction: row; flex-shrink: 0;">
+            <ui:Button text="Confirm" name="ConfirmButton" style="flex-basis: 50px; flex-grow: 1;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66345015873536)"/>
+                </Bindings>
+            </ui:Button>
+            <ui:Button text="Cancel" name="CancelButton" style="flex-basis: 50px; flex-grow: 1;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66269346435072)"/>
+                </Bindings>
+            </ui:Button>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

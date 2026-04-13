@@ -1949,7 +1949,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1543969483427840
-    m_Localized: "\u640D\u50B7\u9EDE\u9032\u5EA6 {0} ({1}/{2}) \u640D\u50B7\u7B49\u7D1A: {3}"
+    m_Localized: "\u640D\u50B7\u9EDE\u9032\u5EA6 {0} ({1}/{2}) \u640D\u50B7\u7B49\u7D1A:
+      {3}"
     m_Metadata:
       m_Items: []
   - m_Id: 1547822383665152
@@ -3371,7 +3372,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -53
-    m_Localized: "\u822A\u8DEF\u9EDE\uFF1A{0}\uFF0C\u5269\u9918\u8DDD\u96E2\uFF1A{1:0.00} \u6D77\u91CC"
+    m_Localized: "\u822A\u8DEF\u9EDE\uFF1A{0}\uFF0C\u5269\u9918\u8DDD\u96E2\uFF1A{1:0.00}
+      \u6D77\u91CC"
     m_Metadata:
       m_Items: []
   - m_Id: -54
@@ -3419,11 +3421,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -65
-    m_Localized: "\u7761\u7720\u4E2D\uff08{0} \u5206\uff09"
+    m_Localized: "\u7761\u7720\u4E2D\uFF08{0} \u5206\uFF09"
     m_Metadata:
       m_Items: []
   - m_Id: -66
-    m_Localized: "\u89BA\u9192\u4E2D\uff08{0} \u5206\uff09"
+    m_Localized: "\u89BA\u9192\u4E2D\uFF08{0} \u5206\uFF09"
     m_Metadata:
       m_Items: []
   - m_Id: -67
@@ -3435,7 +3437,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -69
-    m_Localized: "\u706B\u63A7\u503C\uff08\u6700\u4F4E\u822A\u901F\u6BB5\u3001\u5BEC\u89D2\uff09"
+    m_Localized: "\u706B\u63A7\u503C\uFF08\u6700\u4F4E\u822A\u901F\u6BB5\u3001\u5BEC\u89D2\uFF09"
     m_Metadata:
       m_Items: []
   - m_Id: -70
@@ -3751,7 +3753,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -168
-    m_Localized: "\u57FA\u790E\u706B\u63A7\u503C\uFF08{0} \u8DDD\u96E2 / \u706B\u63A7\u640D\u50B7\u7B49\u7D1A {1}\uFF09=> {2}"
+    m_Localized: "\u57FA\u790E\u706B\u63A7\u503C\uFF08{0} \u8DDD\u96E2 / \u706B\u63A7\u640D\u50B7\u7B49\u7D1A
+      {1}\uFF09=> {2}"
     m_Metadata:
       m_Items: []
   - m_Id: -169
@@ -3767,7 +3770,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -172
-    m_Localized: "N/A"
+    m_Localized: N/A
     m_Metadata:
       m_Items: []
   - m_Id: -173
@@ -3783,7 +3786,14 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -176
-    m_Localized: "\u5DF2\u5230\u9054\u5287\u672C\u7D50\u675F\u6642\u9593\u3002\u73FE\u5728\u958B\u555F Loss Status \u55CE\uFF1F"
+    m_Localized: "\u5DF2\u5230\u9054\u5287\u672C\u7D50\u675F\u6642\u9593\u3002\u73FE\u5728\u958B\u555F\u640D\u5931\u72C0\u614B\u55CE\uFF1F"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -177
+    m_Localized: "\u672A\u8A2D\u5B9A\u73A9\u5BB6\u9663\u71DF\uFF0C\u7121\u6CD5\u5224\u5B9A\u8981\u5C0D\u54EA\u500B
+      Side \u9032\u884C\u8A2D\u5B9A\u3002\u82E5\u8981\u5728\u6C92\u6709 Viewer Side
+      \u7684\u60C5\u6CC1\u4E0B\u8A2D\u5B9A\u81EA\u52D5\u5316\uFF0C\u8ACB\u4F7F\u7528
+      Side State Editor\u3002"
     m_Metadata:
       m_Items: []
   references:

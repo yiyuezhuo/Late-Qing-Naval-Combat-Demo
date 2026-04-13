@@ -3754,6 +3754,11 @@ MonoBehaviour:
     m_Key: Scenario end time is reached. Open Loss Status now?
     m_Metadata:
       m_Items: []
+  - m_Id: -177
+    m_Key: No Viewer Side is set, so the side to configure cannot be determined.
+      To configure automation without a Viewer Side, use the Side State Editor.
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

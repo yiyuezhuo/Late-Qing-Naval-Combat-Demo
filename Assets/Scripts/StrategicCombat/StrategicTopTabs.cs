@@ -142,6 +142,20 @@ public class StrategicTopTabs : SingletonDocument<StrategicTopTabs>
 
         root.Q<Button>("SideStateButton").clicked += SideStateEditor.Instance.Show;
 
+        root.Q<Button>("CurrentSideAutomationButton").clicked += () =>
+        {
+            var viewerSide = StrategicGameManager.Instance.GetViewerSide();
+            if (viewerSide == null)
+            {
+                DialogRoot.Instance.PopupMessageDialog(Localize(
+                    "No Viewer Side is set, so the side to configure cannot be determined. To configure automation without a Viewer Side, use the Side State Editor."
+                ));
+                return;
+            }
+
+            DialogRoot.Instance.PopupCurrentSideAutomationDialog(viewerSide);
+        };
+
         root.Q<Button>("GamePreferenceButton").clicked += DialogRoot.Instance.PopupGamePreferenceDialog;
 
         root.Q<Button>("SubStrategicCombatResolverButton").clicked += () =>

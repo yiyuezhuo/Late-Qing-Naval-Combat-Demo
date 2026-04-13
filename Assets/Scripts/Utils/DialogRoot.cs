@@ -927,6 +927,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset sideStatePickerDialogDocument;
     public VisualTreeAsset strategicViewerSideQuickPickerDialogDocument;
     public VisualTreeAsset strategicViewerSideQuickPickerOptionDocument;
+    public VisualTreeAsset currentSideAutomationDialogDocument;
     public VisualTreeAsset landUnitTemplateDialogDocument;
     public VisualTreeAsset subStrategicCombatDialogDocument;
     public VisualTreeAsset cellEditorDialogDocument;
@@ -3470,11 +3471,27 @@ public class DialogRoot : SingletonDocument<DialogRoot>
                     {
                         StrategicGameManager.Instance.viewerSideId = option.sideObjectId;
                         StrategicGameManager.Instance.isInEditMode = false;
+                        PopupCurrentSideAutomationDialog(StrategicGameManager.Instance.GetViewerSide());
                     }
                 };
 
                 optionsContainer.Add(optionElement);
             }
+        };
+
+        tempDialog.Popup();
+    }
+
+    public void PopupCurrentSideAutomationDialog(SideState sideState)
+    {
+        if (sideState == null)
+            return;
+
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = currentSideAutomationDialogDocument,
+            templateDataSource = sideState,
         };
 
         tempDialog.Popup();

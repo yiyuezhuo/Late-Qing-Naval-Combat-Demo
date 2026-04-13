@@ -3290,6 +3290,14 @@ MonoBehaviour:
     m_Localized: Automatic Transport Asset Balance
     m_Metadata:
       m_Items: []
+  - m_Id: -104
+    m_Localized: Current Side Automation
+    m_Metadata:
+      m_Items: []
+  - m_Id: -105
+    m_Localized: Automation
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

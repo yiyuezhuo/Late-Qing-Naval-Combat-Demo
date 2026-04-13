@@ -105,6 +105,7 @@ MonoBehaviour:
   sideStatePickerDialogDocument: {fileID: 9197481963319205126, guid: ea9fb05e437108449aec64653e74825c, type: 3}
   strategicViewerSideQuickPickerDialogDocument: {fileID: 9197481963319205126, guid: 6c11cf48d8fa455f92309ea6d12f9558, type: 3}
   strategicViewerSideQuickPickerOptionDocument: {fileID: 9197481963319205126, guid: c8b4d0eb5b714155b6b91fefb5b9299f, type: 3}
+  currentSideAutomationDialogDocument: {fileID: 9197481963319205126, guid: b1d9f64b5d364dd6a1e2a64233a93a3a, type: 3}
   landUnitTemplateDialogDocument: {fileID: 9197481963319205126, guid: 1c4daf37e2bdf844f9c558239e91d91f, type: 3}
   subStrategicCombatDialogDocument: {fileID: 9197481963319205126, guid: c0c39b5062d9ced46adf159d65c4d5d6, type: 3}
   cellEditorDialogDocument: {fileID: 9197481963319205126, guid: e1f75737c8e5d784390dc4d69576f9e0, type: 3}

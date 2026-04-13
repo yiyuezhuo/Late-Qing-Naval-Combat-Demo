@@ -55,6 +55,11 @@
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(357022840819712)"/>
                         </Bindings>
                     </ui:Button>
+                    <ui:Button text="Automation" name="CurrentSideAutomationButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-105)"/>
+                        </Bindings>
+                    </ui:Button>
                     <ui:Button text="Theater" name="TheaterButton">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-67)"/>

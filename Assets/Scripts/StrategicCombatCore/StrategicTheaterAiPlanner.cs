@@ -124,13 +124,15 @@ namespace StrategicCombatCore
 
         public void Advance1Day()
         {
-            var viewerSideObjectId = StrategicGameManager.Instance?.GetViewerSide()?.objectId;
+            var viewerSide = StrategicGameManager.Instance?.GetViewerSide();
             foreach (var theater in theaters ?? Enumerable.Empty<Theater>())
             {
                 if (theater?.side == null)
                     continue;
 
-                if (!string.IsNullOrEmpty(viewerSideObjectId) && theater.side.objectId == viewerSideObjectId)
+                if (viewerSide != null &&
+                    theater.side.objectId == viewerSide.objectId &&
+                    !viewerSide.automaticArmyOperation)
                     continue;
 
                 Advance1DayForAiTheaterFrontlineAllocation(theater);

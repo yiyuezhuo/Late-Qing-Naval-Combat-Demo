@@ -833,7 +833,11 @@ namespace StrategicCombatCore
                     {
                         var hostileGroup = group.cell.StrategicGroupReferences
                             .Select(r => r.Get())
-                            .FirstOrDefault(g => g.side != group.side && g != null && g.IsArmy() && g.posture != StrategicGroup.GroupPostureType.Disengaged);
+                            .FirstOrDefault(g =>
+                                g != null &&
+                                g.side != group.side &&
+                                g.IsNavy() == group.IsNavy() &&
+                                g.posture != StrategicGroup.GroupPostureType.Disengaged);
                         if(hostileGroup == null)
                         {
                             group.posture = StrategicGroup.GroupPostureType.Active;
@@ -1222,7 +1226,7 @@ namespace StrategicCombatCore
             {
                 var side = group.side;
                 var oldHomeBase = group.GetHomeBaseGroup();
-                if (IsFriendlyControlledDepotBase(oldHomeBase, side))
+                if (IsUsableFriendlyDepotBase(oldHomeBase, side))
                     continue;
 
                 var oldHomeBaseCell = oldHomeBase?.cell;
@@ -1238,14 +1242,14 @@ namespace StrategicCombatCore
                     }
 
                     AddLog(
-                        $"{group.name.GetShortName()} changed home base to {newHomeBase.name.GetShortName()} because its previous home base is no longer friendly-controlled.",
+                        $"{group.name.GetShortName()} changed home base to {newHomeBase.name.GetShortName()} because its previous home base is no longer a usable friendly depot.",
                         side);
                 }
                 else
                 {
                     DestroyFleetForLostHomeBase(group);
                     AddLog(
-                        $"{group.name.GetShortName()} was destroyed because its home base is no longer friendly-controlled and no reachable friendly depot remains.",
+                        $"{group.name.GetShortName()} was destroyed because its home base is no longer a usable friendly depot and no reachable friendly depot remains.",
                         side);
                 }
             }
@@ -1262,7 +1266,7 @@ namespace StrategicCombatCore
             StrategicGroup bestBase = null;
             var bestCost = float.PositiveInfinity;
 
-            foreach (var baseGroup in strategicGroups.Where(group => IsFriendlyControlledDepotBase(group, side)))
+            foreach (var baseGroup in strategicGroups.Where(group => IsUsableFriendlyDepotBase(group, side)))
             {
                 var baseCell = baseGroup.cell;
                 if (baseCell == null)
@@ -1282,7 +1286,7 @@ namespace StrategicCombatCore
             return bestBase;
         }
 
-        static bool IsFriendlyControlledDepotBase(StrategicGroup baseGroup, SideState side)
+        static bool IsUsableFriendlyDepotBase(StrategicGroup baseGroup, SideState side)
         {
             return baseGroup != null &&
                 side != null &&
@@ -1290,8 +1294,7 @@ namespace StrategicCombatCore
                 baseGroup.deployState == StrategicGroup.DeployState.Independent &&
                 baseGroup.side == side &&
                 baseGroup.GetFirstDepot() != null &&
-                baseGroup.cell != null &&
-                baseGroup.cell.GetHexSide() == side;
+                baseGroup.cell != null;
         }
 
         static void DestroyFleetForLostHomeBase(StrategicGroup fleet)

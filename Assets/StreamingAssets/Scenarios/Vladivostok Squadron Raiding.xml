@@ -4471,7 +4471,7 @@
      </CellConnection>
     </CellConnections>
    </Cell>
-   <Cell x="-1" y="-1" terrain="ShallowWater" longitude="136.84" latitude="38" objectId="1f397e35-4cb6-4b87-9127-b35553ba3d5a">
+   <Cell x="-1" y="-1" terrain="ShallowWater" longitude="136.84" latitude="38" sideObjectIdHex="ee8a123f-aed1-4cd2-b84d-b4b8b0d3a52b" objectId="1f397e35-4cb6-4b87-9127-b35553ba3d5a">
     <Label>
      <english>Ishikawa</english>
      <japanese>石川</japanese>
@@ -4529,7 +4529,7 @@
      </CellConnection>
     </CellConnections>
    </Cell>
-   <Cell x="-1" y="-1" terrain="ShallowWater" longitude="139.563" latitude="34.963" objectId="a3f12676-afe1-4bee-92e1-7ca717938bd8">
+   <Cell x="-1" y="-1" terrain="ShallowWater" longitude="139.563" latitude="34.963" sideObjectIdHex="ee8a123f-aed1-4cd2-b84d-b4b8b0d3a52b" objectId="a3f12676-afe1-4bee-92e1-7ca717938bd8">
     <Label>
      <english>Tokyo Bay</english>
      <japanese>東京湾</japanese>
@@ -4612,7 +4612,7 @@
      </CellConnection>
     </CellConnections>
    </Cell>
-   <Cell x="-1" y="-1" terrain="ShallowWater" longitude="130.01" latitude="34.21" objectId="065a6098-b765-4a8b-bc41-b430c8efc50d">
+   <Cell x="-1" y="-1" terrain="ShallowWater" longitude="130.01" latitude="34.21" sideObjectIdHex="ee8a123f-aed1-4cd2-b84d-b4b8b0d3a52b" objectId="065a6098-b765-4a8b-bc41-b430c8efc50d">
     <Label>
      <english>Tsushima</english>
      <japanese>対馬</japanese>
@@ -4661,7 +4661,7 @@
      </CellConnection>
     </CellConnections>
    </Cell>
-   <Cell x="-1" y="-1" terrain="ShallowWater" longitude="134.81" latitude="33.44" objectId="832147e0-ad8a-469b-8a01-59558646f97d">
+   <Cell x="-1" y="-1" terrain="ShallowWater" longitude="134.81" latitude="33.44" sideObjectIdHex="ee8a123f-aed1-4cd2-b84d-b4b8b0d3a52b" objectId="832147e0-ad8a-469b-8a01-59558646f97d">
     <Label>
      <english>Kōchi</english>
      <japanese>高知</japanese>
@@ -4802,7 +4802,7 @@
     <suppression>1</suppression>
     <morale>0</morale>
     <fatigue>1</fatigue>
-    <supplyTons>15000</supplyTons>
+    <supplyTons>20000</supplyTons>
     <supplyGeneratedTons>5000</supplyGeneratedTons>
     <landUnitTemplateId>f5b42971-fd6a-4e48-b6c1-33ffd39f5f4b</landUnitTemplateId>
     <supplyTransferState>
@@ -4812,7 +4812,15 @@
       <cost>0</cost>
       <pathCells />
      </requestRecord>
-     <requestedRecords />
+     <requestedRecords>
+      <SupplyFlowRecord>
+       <otherObjectId>1b80c744-b892-41e1-96be-bd6e81aaf829</otherObjectId>
+       <targetSupplyTons>0</targetSupplyTons>
+       <flowSupplyTons>0</flowSupplyTons>
+       <cost>0</cost>
+       <pathCells />
+      </SupplyFlowRecord>
+     </requestedRecords>
     </supplyTransferState>
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
@@ -4835,7 +4843,7 @@
     <suppression>1</suppression>
     <morale>0</morale>
     <fatigue>1</fatigue>
-    <supplyTons>15000</supplyTons>
+    <supplyTons>20000</supplyTons>
     <supplyGeneratedTons>5000</supplyGeneratedTons>
     <landUnitTemplateId>f5b42971-fd6a-4e48-b6c1-33ffd39f5f4b</landUnitTemplateId>
     <supplyTransferState>
@@ -4845,7 +4853,15 @@
       <cost>0</cost>
       <pathCells />
      </requestRecord>
-     <requestedRecords />
+     <requestedRecords>
+      <SupplyFlowRecord>
+       <otherObjectId>f779b4c8-82c5-43ca-8024-4cf6c8adf778</otherObjectId>
+       <targetSupplyTons>0</targetSupplyTons>
+       <flowSupplyTons>0</flowSupplyTons>
+       <cost>0</cost>
+       <pathCells />
+      </SupplyFlowRecord>
+     </requestedRecords>
      <resolvedSupplyCapTons>11588.3994</resolvedSupplyCapTons>
     </supplyTransferState>
     <portLevel>0</portLevel>
@@ -4869,7 +4885,7 @@
     <suppression>1</suppression>
     <morale>0</morale>
     <fatigue>1</fatigue>
-    <supplyTons>9000</supplyTons>
+    <supplyTons>12000</supplyTons>
     <supplyGeneratedTons>3000</supplyGeneratedTons>
     <landUnitTemplateId>f5b42971-fd6a-4e48-b6c1-33ffd39f5f4b</landUnitTemplateId>
     <supplyTransferState>
@@ -4879,7 +4895,15 @@
       <cost>0</cost>
       <pathCells />
      </requestRecord>
-     <requestedRecords />
+     <requestedRecords>
+      <SupplyFlowRecord>
+       <otherObjectId>6d0989bf-ffa1-4103-9e0a-2d70e286734f</otherObjectId>
+       <targetSupplyTons>0</targetSupplyTons>
+       <flowSupplyTons>0</flowSupplyTons>
+       <cost>0</cost>
+       <pathCells />
+      </SupplyFlowRecord>
+     </requestedRecords>
      <resolvedSupplyCapTons>9046</resolvedSupplyCapTons>
     </supplyTransferState>
     <portLevel>0</portLevel>
@@ -4908,6 +4932,7 @@
     <landUnitTemplateId>9ac1399d-49f8-48ad-8bda-58ce3876fe86</landUnitTemplateId>
     <supplyTransferState>
      <requestRecord>
+      <otherObjectId>f1378a47-5c3b-4db1-b663-13efa30cc241</otherObjectId>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
@@ -4941,6 +4966,7 @@
     <landUnitTemplateId>9ac1399d-49f8-48ad-8bda-58ce3876fe86</landUnitTemplateId>
     <supplyTransferState>
      <requestRecord>
+      <otherObjectId>0341200d-9758-4163-91cf-41a6d1116bd3</otherObjectId>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
@@ -4974,6 +5000,7 @@
     <landUnitTemplateId>9ac1399d-49f8-48ad-8bda-58ce3876fe86</landUnitTemplateId>
     <supplyTransferState>
      <requestRecord>
+      <otherObjectId>03762cd1-571c-4b1a-bf0b-cdc6f9b7b856</otherObjectId>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
@@ -5007,6 +5034,7 @@
     <landUnitTemplateId>9ac1399d-49f8-48ad-8bda-58ce3876fe86</landUnitTemplateId>
     <supplyTransferState>
      <requestRecord>
+      <otherObjectId>85c6b847-efe0-4227-bde9-a2b82454188e</otherObjectId>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
@@ -5033,7 +5061,7 @@
     <suppression>1</suppression>
     <morale>0</morale>
     <fatigue>1</fatigue>
-    <supplyTons>15000</supplyTons>
+    <supplyTons>20000</supplyTons>
     <supplyGeneratedTons>5000</supplyGeneratedTons>
     <landUnitTemplateId>f5b42971-fd6a-4e48-b6c1-33ffd39f5f4b</landUnitTemplateId>
     <supplyTransferState>
@@ -5043,7 +5071,15 @@
       <cost>0</cost>
       <pathCells />
      </requestRecord>
-     <requestedRecords />
+     <requestedRecords>
+      <SupplyFlowRecord>
+       <otherObjectId>fedc9e74-2c1f-4ecc-9085-bdf1f5e97101</otherObjectId>
+       <targetSupplyTons>0</targetSupplyTons>
+       <flowSupplyTons>0</flowSupplyTons>
+       <cost>0</cost>
+       <pathCells />
+      </SupplyFlowRecord>
+     </requestedRecords>
     </supplyTransferState>
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
@@ -5669,6 +5705,54 @@ The campaign and strategic mode are not yet complete in the EA/Demo version and 
     <observedSideId>f781e78a-aaf5-411f-8f49-d1561e7949a2</observedSideId>
     <estimation>
      <records>
+      <EsimationRecord>
+       <estimateCategory>BB</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>CA</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>CL</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>DD</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>TB</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>Other</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>BB</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>CA</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>CL</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>DD</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>TB</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
+      <EsimationRecord>
+       <estimateCategory>Other</estimateCategory>
+       <count>0</count>
+      </EsimationRecord>
       <EsimationRecord>
        <estimateCategory>BB</estimateCategory>
        <count>0</count>

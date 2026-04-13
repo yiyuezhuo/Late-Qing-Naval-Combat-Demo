@@ -397,6 +397,7 @@ namespace StrategicCombatCore
 
             Advance1HourForSupply(viewerSide);
             Advance1HourForMission(viewerSide);
+            Advance1HourForFleetHomeBaseControl();
             Advance1HourForOutOfFuelFleetCheck();
             Advance1HourForIdleFleetReturnToBase();
             Advance1HourForMovement();
@@ -1210,6 +1211,112 @@ namespace StrategicCombatCore
             foreach(var mission in missions)
             {
                 mission.UpdateStrategicGroups(viewerSide);
+            }
+        }
+
+        public void Advance1HourForFleetHomeBaseControl()
+        {
+            foreach (var group in IterIndependentStrategicGroups()
+                .Where(group => group.type == StrategicGroup.Type.Fleet)
+                .ToList())
+            {
+                var side = group.side;
+                var oldHomeBase = group.GetHomeBaseGroup();
+                if (IsFriendlyControlledDepotBase(oldHomeBase, side))
+                    continue;
+
+                var oldHomeBaseCell = oldHomeBase?.cell;
+                var newHomeBase = FindNearestReachableFriendlyControlledDepotBase(group);
+                if (newHomeBase != null)
+                {
+                    group.homeBaseObjectId = newHomeBase.objectId;
+                    if (oldHomeBaseCell != null &&
+                        group.plannedPath.Count > 0 &&
+                        group.plannedPath[^1]?.GetCell() == oldHomeBaseCell)
+                    {
+                        group.StartReturnToBase(0);
+                    }
+
+                    AddLog(
+                        $"{group.name.GetShortName()} changed home base to {newHomeBase.name.GetShortName()} because its previous home base is no longer friendly-controlled.",
+                        side);
+                }
+                else
+                {
+                    DestroyFleetForLostHomeBase(group);
+                    AddLog(
+                        $"{group.name.GetShortName()} was destroyed because its home base is no longer friendly-controlled and no reachable friendly depot remains.",
+                        side);
+                }
+            }
+        }
+
+        StrategicGroup FindNearestReachableFriendlyControlledDepotBase(StrategicGroup fleet)
+        {
+            var fleetCell = fleet?.cell;
+            var side = fleet?.side;
+            if (fleetCell == null || side == null)
+                return null;
+
+            var graph = new DynamicCellGraphNavy() { movingSide = side };
+            StrategicGroup bestBase = null;
+            var bestCost = float.PositiveInfinity;
+
+            foreach (var baseGroup in strategicGroups.Where(group => IsFriendlyControlledDepotBase(group, side)))
+            {
+                var baseCell = baseGroup.cell;
+                if (baseCell == null)
+                    continue;
+
+                var result = PathFinding<Cell>.AStar3(graph, fleetCell, baseCell);
+                if (result.Path?.Count == 0 || float.IsInfinity(result.Cost))
+                    continue;
+
+                if (result.Cost < bestCost)
+                {
+                    bestCost = result.Cost;
+                    bestBase = baseGroup;
+                }
+            }
+
+            return bestBase;
+        }
+
+        static bool IsFriendlyControlledDepotBase(StrategicGroup baseGroup, SideState side)
+        {
+            return baseGroup != null &&
+                side != null &&
+                baseGroup.type == StrategicGroup.Type.Base &&
+                baseGroup.deployState == StrategicGroup.DeployState.Independent &&
+                baseGroup.side == side &&
+                baseGroup.GetFirstDepot() != null &&
+                baseGroup.cell != null &&
+                baseGroup.cell.GetHexSide() == side;
+        }
+
+        static void DestroyFleetForLostHomeBase(StrategicGroup fleet)
+        {
+            if (fleet == null)
+                return;
+
+            MarkCombinedFleetMembersDestroyed(fleet);
+            fleet.MarkAsDestroyed();
+        }
+
+        static void MarkCombinedFleetMembersDestroyed(StrategicGroup group)
+        {
+            foreach (var member in group.WalkDirectMembers().ToList())
+            {
+                if (member is ShipLog shipLog)
+                {
+                    shipLog.mapState = MapState.Destroyed;
+                }
+                else if (member is StrategicGroup subGroup &&
+                    subGroup.deployState == StrategicGroup.DeployState.Combined)
+                {
+                    MarkCombinedFleetMembersDestroyed(subGroup);
+                    subGroup.destroyed = true;
+                }
             }
         }
 

@@ -6791,4 +6791,92 @@ https://en.wikipedia.org/wiki/Russian_battleship_Sissoi_Veliky</remark>
 https://en.wikipedia.org/wiki/Russian_battleship_Navarin</remark>
   <objectId>5c5654d7-bfc8-4ece-b3b3-9c14c45fb6b0</objectId>
  </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>44f098b8-e441-47df-a2f8-1cdc0058d873</shipClassObjectId>
+  <name>
+   <english>Inflexible</english>
+   <japanese>インフレキシブル</japanese>
+   <chineseSimplified>英弗莱息白</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/HMS_Inflexible_(1876)</remark>
+  <objectId>b4e01edb-513c-400c-8e3e-703c4cfe8c4f</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>3882344c-6fd6-417e-b12e-6730c72593d9</shipClassObjectId>
+  <name>
+   <english>Centurion</english>
+   <japanese>バーフラー</japanese>
+   <chineseSimplified>百夫长</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/HMS_Centurion_(1892)</remark>
+  <objectId>79055f5c-3f73-4798-b5f1-195eeb404611</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>3882344c-6fd6-417e-b12e-6730c72593d9</shipClassObjectId>
+  <name>
+   <english>Barfleur</english>
+   <japanese>バーフラー</japanese>
+   <chineseSimplified>巴夫勒</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/HMS_Barfleur_(1892)</remark>
+  <objectId>162f0508-df37-4cdf-b967-c0710440306b</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>74a2ba20-9a85-40fe-a637-954cabb73171</shipClassObjectId>
+  <name>
+   <english>Dreadnought</english>
+   <japanese>ドレッド</japanese>
+   <chineseSimplified>无畏</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/HMS_Dreadnought_(1906)</remark>
+  <objectId>fbb4ec90-9eaf-40ad-9c50-677c33d7ecc2</objectId>
+ </NamedShip>
 </ArrayOfNamedShip>

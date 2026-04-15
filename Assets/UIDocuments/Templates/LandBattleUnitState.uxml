@@ -1,19 +1,19 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:VisualElement data-source-type="StrategicCombatCore.LandBattleUnitState, Assembly-CSharp" style="flex-direction: row; flex-basis: 45px; flex-shrink: 0;">
-        <ui:VisualElement style="flex-basis: 50px; flex-shrink: 0; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); margin-top: 1px; margin-right: 1px; margin-bottom: 1px; margin-left: 1px;">
+        <ui:VisualElement style="flex-basis: 50px; flex-shrink: 0; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); margin-top: 1px; margin-right: 1px; margin-bottom: 1px; margin-left: 1px; background-color: rgb(255, 255, 255);">
             <Bindings>
-                <ui:DataBinding property="style.backgroundImage" data-source-path="icon" binding-mode="ToTarget" />
+                <ui:DataBinding property="style.backgroundImage" data-source-path="icon" binding-mode="ToTarget"/>
             </Bindings>
         </ui:VisualElement>
         <ui:VisualElement style="flex-grow: 1;">
             <ui:Label text="name">
                 <Bindings>
-                    <ui:DataBinding property="text" data-source-path="name" binding-mode="ToTarget" />
+                    <ui:DataBinding property="text" data-source-path="name" binding-mode="ToTarget"/>
                 </Bindings>
             </ui:Label>
             <ui:Label text="desc">
                 <Bindings>
-                    <ui:DataBinding property="text" data-source-path="desc" binding-mode="ToTarget" />
+                    <ui:DataBinding property="text" data-source-path="desc" binding-mode="ToTarget"/>
                 </Bindings>
             </ui:Label>
         </ui:VisualElement>

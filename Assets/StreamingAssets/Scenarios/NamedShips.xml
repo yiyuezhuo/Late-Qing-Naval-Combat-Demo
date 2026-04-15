@@ -7038,4 +7038,75 @@ https://en.wikipedia.org/wiki/Russian_battleship_Navarin</remark>
   <remark>https://naval-encyclopedia.com/ww1/uk/apollo-class-cruisers.php</remark>
   <objectId>0e9f41fd-7e18-4b0a-beb3-bba8458a198d</objectId>
  </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>f832d2fb-1457-4cee-88f2-b531754e89bf</shipClassObjectId>
+  <name>
+   <english>Algerine</english>
+   <japanese>アルジェリン</japanese>
+   <chineseSimplified>阿尔及利亚</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>d9e56f2d-5e50-4538-8b11-a227331737ba</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/HMS_Algerine_(1895)
+
+</remark>
+  <objectId>45f5bb18-cce0-4bbe-8bdb-6a00c6ced733</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>48aab621-4a0d-4410-8018-1e9ec72f37ff</shipClassObjectId>
+  <name>
+   <english>Whiting</english>
+   <japanese>ホワイティング</japanese>
+   <chineseSimplified>惠廷</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/HMS_Whiting_(1896)</remark>
+  <objectId>fad7a6d7-6406-4b02-a8ec-161b147eef2b</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>d0a3b4bc-4e9b-4760-9e0e-f59e7cf6f1de</shipClassObjectId>
+  <name>
+   <english>Fame</english>
+   <japanese>フェイム</japanese>
+   <chineseSimplified>费姆</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/HMS_Fame_(1896)
+</remark>
+  <objectId>90432bfa-d2f4-4d4e-b3d0-1ba231dc9309</objectId>
+ </NamedShip>
 </ArrayOfNamedShip>

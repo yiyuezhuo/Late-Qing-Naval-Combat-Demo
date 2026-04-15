@@ -6879,4 +6879,163 @@ https://en.wikipedia.org/wiki/Russian_battleship_Navarin</remark>
   <remark>https://en.wikipedia.org/wiki/HMS_Dreadnought_(1906)</remark>
   <objectId>fbb4ec90-9eaf-40ad-9c50-677c33d7ecc2</objectId>
  </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>e8e3d736-0722-4555-8d8c-be030a9fcc0f</shipClassObjectId>
+  <name>
+   <english>Edgar</english>
+   <japanese>エドガー</japanese>
+   <chineseSimplified>埃德加</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/HMS_Edgar_(1890)</remark>
+  <objectId>aa593fcb-4a1c-41fe-8c75-f49ffea45d36</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>6dc9287c-60bb-472c-a554-b23613a85362</shipClassObjectId>
+  <name>
+   <english>Undaunted</english>
+   <japanese>アンドーンテッド</japanese>
+   <chineseSimplified>无惧</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/HMS_Undaunted
+</remark>
+  <objectId>1d01473c-c7c0-4a71-953c-dbb375dc7ded</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>f3dfc3de-39e9-4bd2-b702-4b4e81a61cad</shipClassObjectId>
+  <name>
+   <english>Mercury</english>
+   <japanese>マーキュリー</japanese>
+   <chineseSimplified>水星</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/HMS_Mercury_(1878)</remark>
+  <objectId>cc14e91d-809f-40ea-8a3b-40ea57f53ce3</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>491fa879-1707-4b57-b8cd-0b4e515f3819</shipClassObjectId>
+  <name>
+   <english>Aeolus</english>
+   <japanese>エオロス</japanese>
+   <chineseSimplified>埃俄洛斯</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://naval-encyclopedia.com/ww1/uk/apollo-class-cruisers.php
+</remark>
+  <objectId>d16b4168-9b26-489a-b649-9e39dfcf91d7</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>491fa879-1707-4b57-b8cd-0b4e515f3819</shipClassObjectId>
+  <name>
+   <english>Spartan</english>
+   <japanese>スパルタン</japanese>
+   <chineseSimplified>斯巴达</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/HMS_Spartan_(1891)
+</remark>
+  <objectId>17bcd1e2-b616-48e3-b2b6-8a67052a1843</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>491fa879-1707-4b57-b8cd-0b4e515f3819</shipClassObjectId>
+  <name>
+   <english>Rainbow</english>
+   <japanese>レインボウ</japanese>
+   <chineseSimplified>彩虹</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/HMCS_Rainbow_(1891)
+
+</remark>
+  <objectId>c9219d56-650f-49ce-9588-c832e3dcc8de</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>491fa879-1707-4b57-b8cd-0b4e515f3819</shipClassObjectId>
+  <name>
+   <english>Pique</english>
+   <japanese>ピーク</japanese>
+   <chineseSimplified>皮克</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://naval-encyclopedia.com/ww1/uk/apollo-class-cruisers.php</remark>
+  <objectId>0e9f41fd-7e18-4b0a-beb3-bba8458a198d</objectId>
+ </NamedShip>
 </ArrayOfNamedShip>

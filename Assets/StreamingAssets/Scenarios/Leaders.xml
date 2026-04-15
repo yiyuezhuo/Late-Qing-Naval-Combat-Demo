@@ -4359,4 +4359,25 @@ Richard Romanovich Dicker
 https://en.wikipedia.org/wiki/Russian_battleship_Imperator_Nikolai_I_(1889)</remark>
   <objectId>602a66da-963a-4c6a-97a0-b13c715bfc3c</objectId>
  </Leader>
+ <Leader>
+  <name>
+   <english>Edmund Fremantle</english>
+   <japanese>エドマンド・フリーマントル</japanese>
+   <chineseSimplified>埃德蒙·弗里曼特尔</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Edmund Fremantle.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Average</navalStrategic>
+  <navalOperational>Average</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Edmund_Fremantle
+</remark>
+  <objectId>0c4105ad-387d-483d-b8ea-f39d4e26f26d</objectId>
+ </Leader>
 </ArrayOfLeader>

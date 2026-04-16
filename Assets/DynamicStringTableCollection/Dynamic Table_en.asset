@@ -4095,6 +4095,26 @@ MonoBehaviour:
     m_Localized: No elevation angle is available.
     m_Metadata:
       m_Items: []
+  - m_Id: -260
+    m_Localized: Drag Input Mode
+    m_Metadata:
+      m_Items: []
+  - m_Id: -261
+    m_Localized: G Model BC
+    m_Metadata:
+      m_Items: []
+  - m_Id: -262
+    m_Localized: Physical Cd
+    m_Metadata:
+      m_Items: []
+  - m_Id: -263
+    m_Localized: Constant Cd
+    m_Metadata:
+      m_Items: []
+  - m_Id: -264
+    m_Localized: Drag coefficient must be greater than 0.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -387,8 +387,10 @@ public sealed class ExternalBallisticsCalculatorDialog
     FloatField elevationStepField;
     FloatField diameterInchField;
     FloatField massKgField;
+    DropdownField dragInputModeField;
     FloatField ballisticCoefficientField;
     DropdownField dragModelField;
+    FloatField constantDragCoefficientField;
     FloatField airDensityField;
     FloatField timeStepField;
     DropdownField xAxisField;
@@ -397,6 +399,8 @@ public sealed class ExternalBallisticsCalculatorDialog
     Label statusLabel;
     VisualElement singleAngleRow;
     VisualElement multipleAngleRows;
+    VisualElement gModelRows;
+    VisualElement physicalCdRows;
     VisualElement secondaryPlotContainer;
     MultiColumnListView resultListView;
     ExternalBallisticsTrajectoryChart trajectoryChart;
@@ -518,11 +522,22 @@ public sealed class ExternalBallisticsCalculatorDialog
         root.Add(massKgField);
         root.Add(massPoundsLabel);
 
+        dragInputModeField = new DropdownField(Localize("Drag Input Mode"), new List<string> { Localize("G Model BC"), Localize("Physical Cd") }, 0);
+        root.Add(dragInputModeField);
+
+        gModelRows = new VisualElement();
         ballisticCoefficientField = BuildFloatField(Localize("Ballistic Coefficient"), 0.5f);
         dragModelField = new DropdownField(Localize("Drag Model"), new List<string> { "G1", "G7" }, 0);
+        gModelRows.Add(ballisticCoefficientField);
+        gModelRows.Add(dragModelField);
+        root.Add(gModelRows);
+
+        physicalCdRows = new VisualElement();
+        constantDragCoefficientField = BuildFloatField(Localize("Constant Cd"), 0.3f);
+        physicalCdRows.Add(constantDragCoefficientField);
+        root.Add(physicalCdRows);
+
         airDensityField = BuildFloatField(Localize("Air Density (kg/m3)"), 1.225f);
-        root.Add(ballisticCoefficientField);
-        root.Add(dragModelField);
         root.Add(airDensityField);
 
         root.Add(BuildSectionLabel(Localize("Algorithm Parameters")));
@@ -547,6 +562,7 @@ public sealed class ExternalBallisticsCalculatorDialog
 
         RegisterInputCallbacks();
         UpdateModeVisibility();
+        UpdateDragInputModeVisibility();
         UpdateMassHelper();
     }
 
@@ -675,6 +691,7 @@ public sealed class ExternalBallisticsCalculatorDialog
             diameterInchField,
             massKgField,
             ballisticCoefficientField,
+            constantDragCoefficientField,
             airDensityField,
             timeStepField
         })
@@ -686,6 +703,11 @@ public sealed class ExternalBallisticsCalculatorDialog
             });
         }
 
+        dragInputModeField.RegisterValueChangedCallback(_ =>
+        {
+            UpdateDragInputModeVisibility();
+            Calculate();
+        });
         dragModelField.RegisterValueChangedCallback(_ => Calculate());
     }
 
@@ -728,12 +750,14 @@ public sealed class ExternalBallisticsCalculatorDialog
 
         if (muzzleVelocityField.value <= 0f)
             return Localize("Muzzle velocity must be greater than 0.");
-        if (diameterInchField.value <= 0f)
+        if (GetDragInputMode() == ExternalBallisticsDragInputMode.PhysicalCd && diameterInchField.value <= 0f)
             return Localize("Projectile diameter must be greater than 0.");
-        if (massKgField.value <= 0f)
+        if (GetDragInputMode() == ExternalBallisticsDragInputMode.PhysicalCd && massKgField.value <= 0f)
             return Localize("Projectile mass must be greater than 0.");
-        if (ballisticCoefficientField.value <= 0f)
+        if (GetDragInputMode() == ExternalBallisticsDragInputMode.GModelBallisticCoefficient && ballisticCoefficientField.value <= 0f)
             return Localize("Ballistic coefficient must be greater than 0.");
+        if (GetDragInputMode() == ExternalBallisticsDragInputMode.PhysicalCd && constantDragCoefficientField.value <= 0f)
+            return Localize("Drag coefficient must be greater than 0.");
         if (airDensityField.value <= 0f)
             return Localize("Air density must be greater than 0.");
         if (timeStepField.value <= 0f)
@@ -777,10 +801,12 @@ public sealed class ExternalBallisticsCalculatorDialog
         {
             muzzleVelocityMetersPerSecond = muzzleVelocityField.value,
             elevationAngleDeg = angleDeg,
+            dragInputMode = GetDragInputMode(),
             projectileDiameterMeters = ExternalBallisticsSolver.InchesToMeters(diameterInchField.value),
             projectileMassKg = massKgField.value,
             ballisticCoefficient = ballisticCoefficientField.value,
             dragModel = dragModelField.index == 1 ? ExternalBallisticsDragModel.G7 : ExternalBallisticsDragModel.G1,
+            constantDragCoefficient = constantDragCoefficientField.value,
             airDensityKgPerCubicMeter = airDensityField.value,
             timeStepSeconds = timeStepField.value
         };
@@ -856,6 +882,16 @@ public sealed class ExternalBallisticsCalculatorDialog
         multipleAngleRows.style.display = isSingle ? DisplayStyle.None : DisplayStyle.Flex;
     }
 
+    void UpdateDragInputModeVisibility()
+    {
+        if (gModelRows == null || physicalCdRows == null)
+            return;
+
+        var isPhysicalCd = GetDragInputMode() == ExternalBallisticsDragInputMode.PhysicalCd;
+        gModelRows.style.display = isPhysicalCd ? DisplayStyle.None : DisplayStyle.Flex;
+        physicalCdRows.style.display = isPhysicalCd ? DisplayStyle.Flex : DisplayStyle.None;
+    }
+
     void UpdateMassHelper()
     {
         if (massPoundsLabel == null)
@@ -869,6 +905,13 @@ public sealed class ExternalBallisticsCalculatorDialog
         return modeField != null && modeField.index == 1
             ? ExternalBallisticsCalculatorMode.Multiple
             : ExternalBallisticsCalculatorMode.Single;
+    }
+
+    ExternalBallisticsDragInputMode GetDragInputMode()
+    {
+        return dragInputModeField != null && dragInputModeField.index == 1
+            ? ExternalBallisticsDragInputMode.PhysicalCd
+            : ExternalBallisticsDragInputMode.GModelBallisticCoefficient;
     }
 
     static bool IsPracticalElevation(float angle) => angle > 0f && angle < 90f;

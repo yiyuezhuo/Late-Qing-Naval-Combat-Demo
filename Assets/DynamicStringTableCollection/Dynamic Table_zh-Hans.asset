@@ -4125,6 +4125,26 @@ MonoBehaviour:
     m_Localized: "\u6CA1\u6709\u53EF\u7528\u4EF0\u89D2\u3002"
     m_Metadata:
       m_Items: []
+  - m_Id: -260
+    m_Localized: "\u963B\u529B\u8F93\u5165\u6A21\u5F0F"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -261
+    m_Localized: "G \u6A21\u578B BC"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -262
+    m_Localized: "\u7269\u7406 Cd"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -263
+    m_Localized: "\u56FA\u5B9A Cd"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -264
+    m_Localized: "\u963B\u529B\u7CFB\u6570\u5FC5\u987B\u5927\u4E8E 0\u3002"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

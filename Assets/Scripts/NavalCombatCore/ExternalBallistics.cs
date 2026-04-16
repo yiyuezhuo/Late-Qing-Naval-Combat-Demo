@@ -9,14 +9,22 @@ namespace NavalCombatCore
         G7
     }
 
+    public enum ExternalBallisticsDragInputMode
+    {
+        GModelBallisticCoefficient,
+        PhysicalCd
+    }
+
     public sealed class ExternalBallisticsInput
     {
         public float muzzleVelocityMetersPerSecond = 730f;
         public float elevationAngleDeg = 15f;
+        public ExternalBallisticsDragInputMode dragInputMode = ExternalBallisticsDragInputMode.GModelBallisticCoefficient;
         public float projectileDiameterMeters = 0.3048f;
         public float projectileMassKg = 386f;
         public float ballisticCoefficient = 0.5f;
         public ExternalBallisticsDragModel dragModel = ExternalBallisticsDragModel.G1;
+        public float constantDragCoefficient = 0.3f;
         public float airDensityKgPerCubicMeter = 1.225f;
         public float speedOfSoundMetersPerSecond = 340.29f;
         public float timeStepSeconds = 0.02f;
@@ -53,6 +61,8 @@ namespace NavalCombatCore
     {
         const float InchesPerMeter = 39.3700787f;
         const float PoundsPerKilogram = 2.20462262f;
+        static readonly float GModelReferenceProjectileDiameterMeters = InchesToMeters(12f);
+        const float GModelReferenceProjectileMassKg = 386f;
 
         public static ExternalBallisticsResult Solve(ExternalBallisticsInput input)
         {
@@ -118,12 +128,14 @@ namespace NavalCombatCore
                 return "Input is missing.";
             if (!IsFinitePositive(input.muzzleVelocityMetersPerSecond))
                 return "Muzzle velocity must be greater than 0.";
-            if (!IsFinitePositive(input.projectileDiameterMeters))
+            if (input.dragInputMode == ExternalBallisticsDragInputMode.PhysicalCd && !IsFinitePositive(input.projectileDiameterMeters))
                 return "Projectile diameter must be greater than 0.";
-            if (!IsFinitePositive(input.projectileMassKg))
+            if (input.dragInputMode == ExternalBallisticsDragInputMode.PhysicalCd && !IsFinitePositive(input.projectileMassKg))
                 return "Projectile mass must be greater than 0.";
-            if (!IsFinitePositive(input.ballisticCoefficient))
+            if (input.dragInputMode == ExternalBallisticsDragInputMode.GModelBallisticCoefficient && !IsFinitePositive(input.ballisticCoefficient))
                 return "Ballistic coefficient must be greater than 0.";
+            if (input.dragInputMode == ExternalBallisticsDragInputMode.PhysicalCd && !IsFinitePositive(input.constantDragCoefficient))
+                return "Drag coefficient must be greater than 0.";
             if (!IsFinitePositive(input.airDensityKgPerCubicMeter))
                 return "Air density must be greater than 0.";
             if (!IsFinitePositive(input.speedOfSoundMetersPerSecond))
@@ -161,12 +173,19 @@ namespace NavalCombatCore
 
         static float GetDragAccelerationMetersPerSecondSquared(float speedMetersPerSecond, ExternalBallisticsInput input)
         {
+            if (input.dragInputMode == ExternalBallisticsDragInputMode.PhysicalCd)
+            {
+                var projectileArea = MathF.PI * input.projectileDiameterMeters * input.projectileDiameterMeters * 0.25f;
+                return 0.5f * input.airDensityKgPerCubicMeter * speedMetersPerSecond * speedMetersPerSecond *
+                    input.constantDragCoefficient * projectileArea / input.projectileMassKg;
+            }
+
             var mach = speedMetersPerSecond / input.speedOfSoundMetersPerSecond;
             var dragCoefficient = GetReferenceDragCoefficient(input.dragModel, mach);
-            var referenceArea = MathF.PI * input.projectileDiameterMeters * input.projectileDiameterMeters * 0.25f;
-            var effectiveCoefficient = dragCoefficient / MathF.Max(0.0001f, input.ballisticCoefficient);
+            var referenceArea = MathF.PI * GModelReferenceProjectileDiameterMeters * GModelReferenceProjectileDiameterMeters * 0.25f;
+            var effectiveCoefficient = dragCoefficient / input.ballisticCoefficient;
             return 0.5f * input.airDensityKgPerCubicMeter * speedMetersPerSecond * speedMetersPerSecond *
-                effectiveCoefficient * referenceArea / input.projectileMassKg;
+                effectiveCoefficient * referenceArea / GModelReferenceProjectileMassKg;
         }
 
         static float GetReferenceDragCoefficient(ExternalBallisticsDragModel dragModel, float mach)

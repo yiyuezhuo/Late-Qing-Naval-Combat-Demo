@@ -20,6 +20,7 @@ public class MainMenu : SingletonDocument<MainMenu>
         var selectScenarioButton = root.Q<Button>("SelectScenarioButton");
         var loadGameButton = root.Q<Button>("LoadGameButton");
         // var galleryButton = root.Q<Button>("GalleryButton");
+        var calculatorButton = root.Q<Button>("CalculatorButton");
         var onlineManualButton = root.Q<Button>("OnlineManualButton");
         var aboutButton = root.Q<Button>("AboutButton");
         var exitButton = root.Q<Button>("ExitButton");
@@ -55,6 +56,8 @@ public class MainMenu : SingletonDocument<MainMenu>
         // }
 
         root.Q<Button>("SettingButton").clicked += DialogRoot.Instance.PopupGamePreferenceDialog;
+        calculatorButton.text = MyLocale.Get("Calculator");
+        calculatorButton.clicked += () => DialogRoot.Instance.PopupExternalBallisticsCalculatorDialog();
 
         root.Q<Button>("ManualButton").text = MyLocale.Get("Manual");
         root.Q<Button>("ManualButton").clicked += () => {

@@ -3261,6 +3261,10 @@ MonoBehaviour:
     m_Localized: "\u8CAB\u901A\u529B\u8868\u3092\u30EA\u30BB\u30C3\u30C8"
     m_Metadata:
       m_Items: []
+  - m_Id: -108
+    m_Localized: "Calculator"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

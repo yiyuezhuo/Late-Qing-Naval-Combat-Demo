@@ -3915,6 +3915,186 @@ MonoBehaviour:
     m_Localized: Each cell is shown as current / model, then model-current delta.
     m_Metadata:
       m_Items: []
+  - m_Id: -215
+    m_Localized: Calculator
+    m_Metadata:
+      m_Items: []
+  - m_Id: -216
+    m_Localized: External Ballistics
+    m_Metadata:
+      m_Items: []
+  - m_Id: -217
+    m_Localized: Inputs
+    m_Metadata:
+      m_Items: []
+  - m_Id: -218
+    m_Localized: Mode
+    m_Metadata:
+      m_Items: []
+  - m_Id: -219
+    m_Localized: Single
+    m_Metadata:
+      m_Items: []
+  - m_Id: -220
+    m_Localized: Multiple
+    m_Metadata:
+      m_Items: []
+  - m_Id: -221
+    m_Localized: Muzzle Velocity (m/s)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -222
+    m_Localized: Elevation Angle (deg)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -223
+    m_Localized: Min Elevation (deg)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -224
+    m_Localized: Max Elevation (deg)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -225
+    m_Localized: Elevation Step (deg)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -226
+    m_Localized: Model Parameters
+    m_Metadata:
+      m_Items: []
+  - m_Id: -227
+    m_Localized: Projectile Diameter (inch)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -228
+    m_Localized: Projectile Mass (kg)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -229
+    m_Localized: Ballistic Coefficient
+    m_Metadata:
+      m_Items: []
+  - m_Id: -230
+    m_Localized: Drag Model
+    m_Metadata:
+      m_Items: []
+  - m_Id: -231
+    m_Localized: Air Density (kg/m3)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -232
+    m_Localized: Algorithm Parameters
+    m_Metadata:
+      m_Items: []
+  - m_Id: -233
+    m_Localized: Time Step (s)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -234
+    m_Localized: Calculate
+    m_Metadata:
+      m_Items: []
+  - m_Id: -235
+    m_Localized: X Axis
+    m_Metadata:
+      m_Items: []
+  - m_Id: -236
+    m_Localized: Y Axis
+    m_Metadata:
+      m_Items: []
+  - m_Id: -237
+    m_Localized: Elevation
+    m_Metadata:
+      m_Items: []
+  - m_Id: -238
+    m_Localized: Range
+    m_Metadata:
+      m_Items: []
+  - m_Id: -239
+    m_Localized: Time of Flight
+    m_Metadata:
+      m_Items: []
+  - m_Id: -240
+    m_Localized: Impact Velocity
+    m_Metadata:
+      m_Items: []
+  - m_Id: -241
+    m_Localized: Angle of Fall
+    m_Metadata:
+      m_Items: []
+  - m_Id: -242
+    m_Localized: Range (yd)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -243
+    m_Localized: Time of Flight (s)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -244
+    m_Localized: Impact Velocity (m/s)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -245
+    m_Localized: Angle of Fall (deg)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -246
+    m_Localized: 'Approx. {0:0} lb'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -247
+    m_Localized: '{0} result(s).'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -248
+    m_Localized: 'Calculation failed: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -249
+    m_Localized: Muzzle velocity must be greater than 0.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -250
+    m_Localized: Projectile diameter must be greater than 0.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -251
+    m_Localized: Projectile mass must be greater than 0.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -252
+    m_Localized: Ballistic coefficient must be greater than 0.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -253
+    m_Localized: Air density must be greater than 0.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -254
+    m_Localized: Time step must be greater than 0.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -255
+    m_Localized: Elevation angle must be greater than 0 and less than 90 degrees.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -256
+    m_Localized: Elevation step must be greater than 0.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -257
+    m_Localized: Min elevation must be less than or equal to max elevation.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -258
+    m_Localized: Too many elevation samples. Increase the step or narrow the range.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -259
+    m_Localized: No elevation angle is available.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

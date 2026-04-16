@@ -3907,6 +3907,186 @@ MonoBehaviour:
     m_Key: Each cell is shown as current / model, then model-current delta.
     m_Metadata:
       m_Items: []
+  - m_Id: -215
+    m_Key: Calculator
+    m_Metadata:
+      m_Items: []
+  - m_Id: -216
+    m_Key: External Ballistics (外弹道学)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -217
+    m_Key: Inputs
+    m_Metadata:
+      m_Items: []
+  - m_Id: -218
+    m_Key: Mode
+    m_Metadata:
+      m_Items: []
+  - m_Id: -219
+    m_Key: Single
+    m_Metadata:
+      m_Items: []
+  - m_Id: -220
+    m_Key: Multiple
+    m_Metadata:
+      m_Items: []
+  - m_Id: -221
+    m_Key: Muzzle Velocity (m/s)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -222
+    m_Key: Elevation Angle (deg)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -223
+    m_Key: Min Elevation (deg)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -224
+    m_Key: Max Elevation (deg)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -225
+    m_Key: Elevation Step (deg)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -226
+    m_Key: Model Parameters
+    m_Metadata:
+      m_Items: []
+  - m_Id: -227
+    m_Key: Projectile Diameter (inch)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -228
+    m_Key: Projectile Mass (kg)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -229
+    m_Key: Ballistic Coefficient
+    m_Metadata:
+      m_Items: []
+  - m_Id: -230
+    m_Key: Drag Model
+    m_Metadata:
+      m_Items: []
+  - m_Id: -231
+    m_Key: Air Density (kg/m3)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -232
+    m_Key: Algorithm Parameters
+    m_Metadata:
+      m_Items: []
+  - m_Id: -233
+    m_Key: Time Step (s)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -234
+    m_Key: Calculate
+    m_Metadata:
+      m_Items: []
+  - m_Id: -235
+    m_Key: X Axis
+    m_Metadata:
+      m_Items: []
+  - m_Id: -236
+    m_Key: Y Axis
+    m_Metadata:
+      m_Items: []
+  - m_Id: -237
+    m_Key: Elevation
+    m_Metadata:
+      m_Items: []
+  - m_Id: -238
+    m_Key: Range
+    m_Metadata:
+      m_Items: []
+  - m_Id: -239
+    m_Key: Time of Flight
+    m_Metadata:
+      m_Items: []
+  - m_Id: -240
+    m_Key: Impact Velocity
+    m_Metadata:
+      m_Items: []
+  - m_Id: -241
+    m_Key: Angle of Fall
+    m_Metadata:
+      m_Items: []
+  - m_Id: -242
+    m_Key: Range (yd)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -243
+    m_Key: Time of Flight (s)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -244
+    m_Key: Impact Velocity (m/s)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -245
+    m_Key: Angle of Fall (deg)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -246
+    m_Key: 'Approx. {0:0} lb'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -247
+    m_Key: '{0} result(s).'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -248
+    m_Key: 'Calculation failed: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -249
+    m_Key: Muzzle velocity must be greater than 0.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -250
+    m_Key: Projectile diameter must be greater than 0.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -251
+    m_Key: Projectile mass must be greater than 0.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -252
+    m_Key: Ballistic coefficient must be greater than 0.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -253
+    m_Key: Air density must be greater than 0.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -254
+    m_Key: Time step must be greater than 0.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -255
+    m_Key: Elevation angle must be greater than 0 and less than 90 degrees.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -256
+    m_Key: Elevation step must be greater than 0.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -257
+    m_Key: Min elevation must be less than or equal to max elevation.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -258
+    m_Key: Too many elevation samples. Increase the step or narrow the range.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -259
+    m_Key: No elevation angle is available.
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

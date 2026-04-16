@@ -375,7 +375,7 @@ public partial class ExternalBallisticsScatterChart : VisualElement
     static bool IsFinite(float value) => !float.IsNaN(value) && !float.IsInfinity(value);
 }
 
-public sealed class ExternalBallisticsCalculatorDialog
+public sealed partial class ExternalBallisticsCalculatorDialog
 {
     const int MaxMultipleAngles = 121;
 
@@ -434,7 +434,19 @@ public sealed class ExternalBallisticsCalculatorDialog
         tab.Add(BuildExternalBallisticsTab());
         tabView.Add(tab);
 
+        var terminalBallisticsTab = new Tab
+        {
+            label = Localize("Terminal Ballistics"),
+            style =
+            {
+                flexGrow = 1
+            }
+        };
+        terminalBallisticsTab.Add(BuildTerminalBallisticsTab());
+        tabView.Add(terminalBallisticsTab);
+
         Calculate();
+        CalculateTerminalBallistics();
         return tabView;
     }
 

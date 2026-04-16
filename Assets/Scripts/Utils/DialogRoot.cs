@@ -3766,11 +3766,13 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         tempDialog.Popup();
     }
 
-    public TempDialog PopupModelComparisonDialog(string title, Func<VisualElement> contentFactory, string confirmButtonText = null)
+    public TempDialog PopupCustomContentDialog(string title, Func<VisualElement> contentFactory, string confirmButtonText = null)
     {
         var tempDialog = new TempDialog()
         {
             root = root,
+            // Serialized as modelComparisonDialogDocument for existing scene compatibility,
+            // but this template is a generic title/content/confirm dialog shell.
             template = modelComparisonDialogDocument,
             templateDataSource = null,
         };
@@ -3809,10 +3811,15 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         return tempDialog;
     }
 
+    public TempDialog PopupModelComparisonDialog(string title, Func<VisualElement> contentFactory, string confirmButtonText = null)
+    {
+        return PopupCustomContentDialog(title, contentFactory, confirmButtonText);
+    }
+
     public TempDialog PopupExternalBallisticsCalculatorDialog()
     {
         var dialog = new ExternalBallisticsCalculatorDialog();
-        return PopupModelComparisonDialog(
+        return PopupCustomContentDialog(
             Localize("Calculator"),
             dialog.BuildContent,
             Localize("Close")

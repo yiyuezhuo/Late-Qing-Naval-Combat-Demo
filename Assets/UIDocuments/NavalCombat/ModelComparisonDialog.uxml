@@ -1,10 +1,6 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:VisualElement class="panel-dialog" style="flex-grow: 0; width: 1040px; height: 680px;">
-        <ui:Label text="Model Comparison" name="TitleLabel" class="title">
-            <Bindings>
-                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-106)" />
-            </Bindings>
-        </ui:Label>
+        <ui:Label name="TitleLabel" class="title" />
         <ui:VisualElement name="ContentContainer" style="flex-grow: 1; flex-shrink: 1;" />
         <ui:Button text="Close" name="ConfirmButton">
             <Bindings>

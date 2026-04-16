@@ -4115,6 +4115,126 @@ MonoBehaviour:
     m_Localized: Drag coefficient must be greater than 0.
     m_Metadata:
       m_Items: []
+  - m_Id: -265
+    m_Localized: Terminal Ballistics (终点弹道学)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -266
+    m_Localized: Combined
+    m_Metadata:
+      m_Items: []
+  - m_Id: -267
+    m_Localized: External Ballistics Inputs
+    m_Metadata:
+      m_Items: []
+  - m_Id: -268
+    m_Localized: Terminal Ballistics Formula
+    m_Metadata:
+      m_Items: []
+  - m_Id: -269
+    m_Localized: Formula Preset
+    m_Metadata:
+      m_Items: []
+  - m_Id: -270
+    m_Localized: Formula Constant
+    m_Metadata:
+      m_Items: []
+  - m_Id: -271
+    m_Localized: Projectile Diameter Exponent
+    m_Metadata:
+      m_Items: []
+  - m_Id: -272
+    m_Localized: Energy Density Exponent
+    m_Metadata:
+      m_Items: []
+  - m_Id: -273
+    m_Localized: Formula Coefficient C
+    m_Metadata:
+      m_Items: []
+  - m_Id: -274
+    m_Localized: Obliquity Cosine Exponent
+    m_Metadata:
+      m_Items: []
+  - m_Id: -275
+    m_Localized: Horizontal Pen
+    m_Metadata:
+      m_Items: []
+  - m_Id: -276
+    m_Localized: Vertical Pen
+    m_Metadata:
+      m_Items: []
+  - m_Id: -277
+    m_Localized: '{0} result(s), {1} external ballistic failure(s), {2} terminal ballistic failure(s).'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -278
+    m_Localized: Formula constant must be greater than 0.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -279
+    m_Localized: Projectile diameter exponent must be finite.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -280
+    m_Localized: Energy density exponent must be greater than 0.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -281
+    m_Localized: Formula coefficient must be greater than 0.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -282
+    m_Localized: Obliquity cosine exponent must be 0 or greater.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -283
+    m_Localized: Impact velocity must be greater than 0.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -284
+    m_Localized: Angle of fall must be between 0 and 90 degrees.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -285
+    m_Localized: 'Approx. {0:0.#} mm'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -286
+    m_Localized: De Marre Nickel-Steel
+    m_Metadata:
+      m_Items: []
+  - m_Id: -287
+    m_Localized: Krupp All-Purpose
+    m_Metadata:
+      m_Items: []
+  - m_Id: -288
+    m_Localized: Custom
+    m_Metadata:
+      m_Items: []
+  - m_Id: -289
+    m_Localized: Krupp All-Purpose is a normal-obliquity-oriented Okun formula. Its preset uses no cosine obliquity term.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -290
+    m_Localized: Custom edits all power-law coefficients. Okun units are ft/s, inches, and pounds internally.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -291
+    m_Localized: 'De Marre Nickel-Steel uses Okun''s cosine obliquity term. Vertical armor obliquity is angle of fall; horizontal armor obliquity is 90 minus angle of fall.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -292
+    m_Localized: Terminal Ballistics
+    m_Metadata:
+      m_Items: []
+  - m_Id: -293
+    m_Localized: Pen (in)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -294
+    m_Localized: Penetration by Range
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

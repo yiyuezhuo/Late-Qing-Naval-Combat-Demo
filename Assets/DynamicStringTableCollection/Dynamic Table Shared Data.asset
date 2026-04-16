@@ -3759,6 +3759,154 @@ MonoBehaviour:
       To configure automation without a Viewer Side, use the Side State Editor.
     m_Metadata:
       m_Items: []
+  - m_Id: -178
+    m_Key: No battery record is selected.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -179
+    m_Key: 'Penetration table reset from model with {0} rows.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -180
+    m_Key: Reset Penetration Table
+    m_Metadata:
+      m_Items: []
+  - m_Id: -181
+    m_Key: Fire control and penetration tables are empty.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -182
+    m_Key: Model Comparison
+    m_Metadata:
+      m_Items: []
+  - m_Id: -183
+    m_Key: Close
+    m_Metadata:
+      m_Items: []
+  - m_Id: -184
+    m_Key: Penetration
+    m_Metadata:
+      m_Items: []
+  - m_Id: -185
+    m_Key: Fire control table is empty.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -186
+    m_Key: Round predicted values
+    m_Metadata:
+      m_Items: []
+  - m_Id: -187
+    m_Key: No fitted Code coefficient is available for this fire-control code. The Code model uses the component fallback.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -188
+    m_Key: Overall Error
+    m_Metadata:
+      m_Items: []
+  - m_Id: -189
+    m_Key: Proportion table
+    m_Metadata:
+      m_Items: []
+  - m_Id: -190
+    m_Key: Code model table
+    m_Metadata:
+      m_Items: []
+  - m_Id: -191
+    m_Key: Proportion Check
+    m_Metadata:
+      m_Items: []
+  - m_Id: -192
+    m_Key: Uses the current left-top value, then applies the fitted Broad/Narrow, range-band, and speed ratios.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -193
+    m_Key: Code, Shell Size, Displacement Model
+    m_Metadata:
+      m_Items: []
+  - m_Id: -194
+    m_Key: Uses the fitted latent left-top value from Code, shell size, and displacement, then applies the same ratios.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -195
+    m_Key: Expected rows
+    m_Metadata:
+      m_Items: []
+  - m_Id: -196
+    m_Key: current rows
+    m_Metadata:
+      m_Items: []
+  - m_Id: -197
+    m_Key: missing
+    m_Metadata:
+      m_Items: []
+  - m_Id: -198
+    m_Key: extra
+    m_Metadata:
+      m_Items: []
+  - m_Id: -199
+    m_Key: Rate of Fire
+    m_Metadata:
+      m_Items: []
+  - m_Id: -200
+    m_Key: Vertical Penetration
+    m_Metadata:
+      m_Items: []
+  - m_Id: -201
+    m_Key: Horizontal Penetration
+    m_Metadata:
+      m_Items: []
+  - m_Id: -202
+    m_Key: Range Band
+    m_Metadata:
+      m_Items: []
+  - m_Id: -203
+    m_Key: Predictions use Battery-level fields and distance only. Expected penetration rows use fixed yard marks up to the first mark that covers the battery range.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -204
+    m_Key: ROF
+    m_Metadata:
+      m_Items: []
+  - m_Id: -205
+    m_Key: Band
+    m_Metadata:
+      m_Items: []
+  - m_Id: -206
+    m_Key: Vert Pen
+    m_Metadata:
+      m_Items: []
+  - m_Id: -207
+    m_Key: Hor Pen
+    m_Metadata:
+      m_Items: []
+  - m_Id: -208
+    m_Key: Status
+    m_Metadata:
+      m_Items: []
+  - m_Id: -209
+    m_Key: Current row
+    m_Metadata:
+      m_Items: []
+  - m_Id: -210
+    m_Key: Missing
+    m_Metadata:
+      m_Items: []
+  - m_Id: -211
+    m_Key: Expected by range coverage
+    m_Metadata:
+      m_Items: []
+  - m_Id: -212
+    m_Key: Each cell is shown as current / model, then model-current delta. Missing rows show only model values.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -213
+    m_Key: Tgt Spd
+    m_Metadata:
+      m_Items: []
+  - m_Id: -214
+    m_Key: Each cell is shown as current / model, then model-current delta.
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

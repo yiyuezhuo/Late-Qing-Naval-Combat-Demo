@@ -81,7 +81,16 @@
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="FireControlTableToolRow" style="flex-direction: row; flex-shrink: 0; margin-bottom: 4px;">
-            <ui:Button text="Model Comparison" name="FireControlModelComparisonButton" style="flex-shrink: 0;" />
+            <ui:Button text="Model Comparison" name="FireControlModelComparisonButton" style="flex-shrink: 0;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-106)" />
+                </Bindings>
+            </ui:Button>
+            <ui:Button text="Reset Penetration Table" name="ResetPenetrationTableButton" style="flex-shrink: 0; margin-left: 4px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-107)" />
+                </Bindings>
+            </ui:Button>
         </ui:VisualElement>
         <ui:MultiColumnListView data-source-path="fireControlTableRecords" binding-source-selection-mode="AutoAssign" header-title="Fire Control Table" show-foldout-header="true" show-add-remove-footer="true" name="FireControlTableMultiColumnListView">
             <ui:Columns>

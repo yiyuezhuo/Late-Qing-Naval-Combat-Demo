@@ -607,6 +607,26 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
                 };
             }
 
+            var resetPenetrationTableButton = el.Q<Button>("ResetPenetrationTableButton");
+            if (resetPenetrationTableButton != null)
+            {
+                resetPenetrationTableButton.clicked += () =>
+                {
+                    if (!Utils.TryResolveCurrentValueForBinding(resetPenetrationTableButton, out BatteryRecord batteryRecord))
+                    {
+                        DialogRoot.Instance.PopupMessageDialog(Localize("No battery record is selected."));
+                        return;
+                    }
+
+                    var rowCount = ResetPenetrationTableFromModel(batteryRecord);
+                    penetrationTableMultiColumnListView?.RefreshItems();
+                    RequestSectorArcRefresh(true);
+                    DialogRoot.Instance.PopupMessageDialog(
+                        Localize("Penetration table reset from model with {0} rows.", rowCount),
+                        Localize("Reset Penetration Table"));
+                };
+            }
+
             // fireControlTableMultiColumnListView.itemsAdded += Utils.MakeCallbackForItemsAdded<FireControlTableRecord>(fireControlTableMultiColumnListView);
             // penetrationTableMultiColumnListView.itemsAdded += Utils.MakeCallbackForItemsAdded<PenetrationTableRecord>(penetrationTableMultiColumnListView);
             // mountsListView.itemsAdded += Utils.MakeCallbackForItemsAdded<MountLocationRecord>(mountsListView);
@@ -1261,11 +1281,9 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
             return;
         }
 
-        DialogRoot.Instance.PopupCustomMessageContentDialog(
+        DialogRoot.Instance.PopupModelComparisonDialog(
             Localize("Model Comparison"),
             () => BuildModelComparisonContent(shipClass, batteryRecord),
-            1040f,
-            680f,
             Localize("Close")
         );
     }
@@ -1508,6 +1526,36 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
             verticalPenetrationInches = PredictVerticalPenetrationInches(batteryRecord, distanceYards),
             horizontalPenetrationInches = PredictHorizontalPenetrationInches(batteryRecord, distanceYards),
         };
+    }
+
+    static List<PenetrationTableRecord> BuildModelPenetrationTableRecords(BatteryRecord batteryRecord)
+    {
+        return GetExpectedPenetrationTableDistances(batteryRecord?.rangeYards ?? 0f)
+            .Select(distanceYards =>
+            {
+                var prediction = PredictPenetrationRecord(batteryRecord, distanceYards);
+                return new PenetrationTableRecord
+                {
+                    distanceYards = prediction.distanceYards,
+                    rateOfFire = prediction.rateOfFire,
+                    rangeBand = prediction.rangeBand,
+                    horizontalPenetrationInchs = prediction.horizontalPenetrationInches,
+                    verticalPenetrationInchs = prediction.verticalPenetrationInches,
+                };
+            })
+            .ToList();
+    }
+
+    static int ResetPenetrationTableFromModel(BatteryRecord batteryRecord)
+    {
+        if (batteryRecord == null)
+            return 0;
+
+        var modelRecords = BuildModelPenetrationTableRecords(batteryRecord);
+        batteryRecord.penetrationTableRecords ??= new List<PenetrationTableRecord>();
+        batteryRecord.penetrationTableRecords.Clear();
+        batteryRecord.penetrationTableRecords.AddRange(modelRecords);
+        return modelRecords.Count;
     }
 
     static float PredictPenetrationRateOfFire(BatteryRecord batteryRecord, float distanceYards)

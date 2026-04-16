@@ -3298,6 +3298,14 @@ MonoBehaviour:
     m_Localized: Automation
     m_Metadata:
       m_Items: []
+  - m_Id: -106
+    m_Localized: Model Comparison
+    m_Metadata:
+      m_Items: []
+  - m_Id: -107
+    m_Localized: Reset Penetration Table
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

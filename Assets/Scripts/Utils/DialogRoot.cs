@@ -895,6 +895,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset shipClassSelectorDocument;
     public VisualTreeAsset namedShipSelectorDocument;
     public VisualTreeAsset messageDialogDocument;
+    public VisualTreeAsset modelComparisonDialogDocument;
     public VisualTreeAsset confirmDialogDocument;
     public VisualTreeAsset followFormationDialogDocument;
     public VisualTreeAsset shipClassPlaceholderGeneratorDialogDocument;
@@ -3738,6 +3739,8 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         tempDialog.Popup();
     }
 
+    // Message Dialog is only for short, plain-text notifications. Do not reuse it for
+    // feature-specific workflows or rich/editor content; add a dedicated dialog instead.
     public void PopupMessageDialog(string message, string title = null)
     {
         var tempDialog = new TempDialog()
@@ -3763,6 +3766,51 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         tempDialog.Popup();
     }
 
+    public TempDialog PopupModelComparisonDialog(string title, Func<VisualElement> contentFactory, string confirmButtonText = null)
+    {
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = modelComparisonDialogDocument,
+            templateDataSource = null,
+        };
+
+        tempDialog.onCreated += (sender, el) =>
+        {
+            if (title != null)
+            {
+                var titleLabel = el.Q<Label>("TitleLabel");
+                if (titleLabel != null)
+                {
+                    titleLabel.text = title;
+                }
+            }
+
+            if (!string.IsNullOrEmpty(confirmButtonText))
+            {
+                var confirmButton = el.Q<Button>("ConfirmButton");
+                if (confirmButton != null)
+                {
+                    confirmButton.text = confirmButtonText;
+                }
+            }
+
+            var contentContainer = el.Q<VisualElement>("ContentContainer");
+            var customContent = contentFactory?.Invoke();
+            if (contentContainer != null && customContent != null)
+            {
+                customContent.style.flexGrow = 1;
+                customContent.style.flexShrink = 1;
+                contentContainer.Add(customContent);
+            }
+        };
+
+        tempDialog.Popup();
+        return tempDialog;
+    }
+
+    // Legacy helper for simple read-only custom content. New feature dialogs should use
+    // their own UXML and PopupXxxDialog entry point instead of extending Message Dialog.
     public TempDialog PopupCustomMessageContentDialog(string title, Func<VisualElement> contentFactory, float width = 900f, float height = 560f, string confirmButtonText = null)
     {
         var tempDialog = new TempDialog()

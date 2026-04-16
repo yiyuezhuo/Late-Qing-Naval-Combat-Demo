@@ -1254,23 +1254,62 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
         if (batteryRecord == null)
             return;
 
-        if (batteryRecord.fireControlTableRecords == null || batteryRecord.fireControlTableRecords.Count == 0)
+        if ((batteryRecord.fireControlTableRecords == null || batteryRecord.fireControlTableRecords.Count == 0) &&
+            (batteryRecord.penetrationTableRecords == null || batteryRecord.penetrationTableRecords.Count == 0))
         {
-            DialogRoot.Instance.PopupMessageDialog(Localize("Fire control table is empty."), Localize("Model Comparison"));
+            DialogRoot.Instance.PopupMessageDialog(Localize("Fire control and penetration tables are empty."), Localize("Model Comparison"));
             return;
         }
 
         DialogRoot.Instance.PopupCustomMessageContentDialog(
             Localize("Model Comparison"),
-            () => BuildFireControlModelComparisonContent(shipClass, batteryRecord),
+            () => BuildModelComparisonContent(shipClass, batteryRecord),
             1040f,
             680f,
             Localize("Close")
         );
     }
 
+    VisualElement BuildModelComparisonContent(ShipClass shipClass, BatteryRecord batteryRecord)
+    {
+        var tabView = new TabView
+        {
+            name = "ModelComparisonTabView",
+            style =
+            {
+                flexGrow = 1,
+                flexShrink = 1,
+            }
+        };
+
+        tabView.Add(BuildModelComparisonTab(Localize("Fire Control"), BuildFireControlModelComparisonContent(shipClass, batteryRecord)));
+        tabView.Add(BuildModelComparisonTab(Localize("Penetration"), BuildPenetrationModelComparisonContent(batteryRecord)));
+        return tabView;
+    }
+
+    Tab BuildModelComparisonTab(string label, VisualElement content)
+    {
+        var tab = new Tab
+        {
+            label = label,
+            style =
+            {
+                flexGrow = 1,
+            }
+        };
+        tab.Add(content);
+        return tab;
+    }
+
     VisualElement BuildFireControlModelComparisonContent(ShipClass shipClass, BatteryRecord batteryRecord)
     {
+        if (batteryRecord.fireControlTableRecords == null || batteryRecord.fireControlTableRecords.Count == 0)
+        {
+            var empty = new Label(Localize("Fire control table is empty."));
+            empty.style.whiteSpace = WhiteSpace.Normal;
+            return empty;
+        }
+
         var records = batteryRecord.fireControlTableRecords
             .OrderBy(record => record.speedThresholdKnot)
             .ToList();
@@ -1334,6 +1373,240 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
         RefreshComparison();
 
         return scrollView;
+    }
+
+    VisualElement BuildPenetrationModelComparisonContent(BatteryRecord batteryRecord)
+    {
+        var scrollView = new ScrollView(ScrollViewMode.Vertical);
+        scrollView.style.flexGrow = 1;
+        scrollView.style.flexShrink = 1;
+
+        var records = (batteryRecord.penetrationTableRecords ?? new List<PenetrationTableRecord>())
+            .GroupBy(record => record.distanceYards)
+            .ToDictionary(group => group.Key, group => group.OrderBy(record => record.distanceYards).First());
+        var expectedDistances = GetExpectedPenetrationTableDistances(batteryRecord.rangeYards).ToList();
+
+        var summary = new Label();
+        summary.style.whiteSpace = WhiteSpace.Normal;
+        summary.style.marginBottom = 10;
+        scrollView.Add(summary);
+
+        var stats = new PenetrationComparisonStats();
+        foreach (var distanceYards in expectedDistances)
+        {
+            if (!records.TryGetValue(distanceYards, out var record))
+            {
+                stats.missingRows++;
+                continue;
+            }
+
+            var prediction = PredictPenetrationRecord(batteryRecord, distanceYards);
+            stats.AddRateOfFire(record.rateOfFire, prediction.rateOfFire);
+            stats.AddVertical(record.verticalPenetrationInchs, prediction.verticalPenetrationInches);
+            stats.AddHorizontal(record.horizontalPenetrationInchs, prediction.horizontalPenetrationInches);
+            stats.AddRangeBand(record.rangeBand, prediction.rangeBand);
+        }
+
+        var extraRows = records.Keys.Count(distance => !expectedDistances.Contains(distance));
+        summary.text =
+            $"{Localize("Expected rows")}: {expectedDistances.Count}, {Localize("current rows")}: {records.Count}, {Localize("missing")}: {stats.missingRows}, {Localize("extra")}: {extraRows}\n" +
+            $"{Localize("Rate of Fire")}: {FormatFireControlErrorStats(stats.rateOfFire)}\n" +
+            $"{Localize("Vertical Penetration")}: {FormatFireControlErrorStats(stats.verticalPenetration)}\n" +
+            $"{Localize("Horizontal Penetration")}: {FormatFireControlErrorStats(stats.horizontalPenetration)}\n" +
+            $"{Localize("Range Band")}: exact {stats.rangeBandExact}/{stats.rangeBandCount} ({FormatPercent(stats.rangeBandCount == 0 ? 0f : (float)stats.rangeBandExact / stats.rangeBandCount)})";
+
+        var description = new Label(Localize("Predictions use Battery-level fields and distance only. Expected penetration rows use fixed yard marks up to the first mark that covers the battery range."));
+        description.style.whiteSpace = WhiteSpace.Normal;
+        description.style.marginBottom = 8;
+        scrollView.Add(description);
+
+        scrollView.Add(BuildPenetrationComparisonTable(batteryRecord, expectedDistances, records));
+        return scrollView;
+    }
+
+    VisualElement BuildPenetrationComparisonTable(BatteryRecord batteryRecord, List<float> expectedDistances, Dictionary<float, PenetrationTableRecord> records)
+    {
+        var section = new VisualElement();
+        section.style.minWidth = 900;
+
+        var table = new VisualElement();
+        table.style.flexDirection = FlexDirection.Column;
+        section.Add(table);
+
+        var header = BuildFireControlComparisonTableRow();
+        header.Add(BuildFireControlComparisonCell(Localize("Distance"), true, 82));
+        header.Add(BuildFireControlComparisonCell(Localize("ROF"), true, 120));
+        header.Add(BuildFireControlComparisonCell(Localize("Band"), true, 128));
+        header.Add(BuildFireControlComparisonCell(Localize("Vert Pen"), true, 128));
+        header.Add(BuildFireControlComparisonCell(Localize("Hor Pen"), true, 128));
+        header.Add(BuildFireControlComparisonCell(Localize("Status"), true, 160));
+        table.Add(header);
+
+        foreach (var distanceYards in expectedDistances)
+        {
+            var row = BuildFireControlComparisonTableRow();
+            var prediction = PredictPenetrationRecord(batteryRecord, distanceYards);
+            row.Add(BuildFireControlComparisonCell($"{distanceYards:0}", true, 82));
+
+            if (records.TryGetValue(distanceYards, out var record))
+            {
+                row.Add(BuildFireControlComparisonCell(FormatPenetrationActualPredicted(record.rateOfFire, prediction.rateOfFire), false, 120));
+                row.Add(BuildFireControlComparisonCell($"{record.rangeBand} / {prediction.rangeBand}\n{FormatRangeBandDiff(record.rangeBand, prediction.rangeBand)}", false, 128));
+                row.Add(BuildFireControlComparisonCell(FormatPenetrationActualPredicted(record.verticalPenetrationInchs, prediction.verticalPenetrationInches), false, 128));
+                row.Add(BuildFireControlComparisonCell(FormatPenetrationActualPredicted(record.horizontalPenetrationInchs, prediction.horizontalPenetrationInches), false, 128));
+                row.Add(BuildFireControlComparisonCell(Localize("Current row"), false, 160));
+            }
+            else
+            {
+                row.Add(BuildFireControlComparisonCell($"{Localize("Missing")} / {prediction.rateOfFire:0.0}", false, 120));
+                row.Add(BuildFireControlComparisonCell($"{Localize("Missing")} / {prediction.rangeBand}", false, 128));
+                row.Add(BuildFireControlComparisonCell($"{Localize("Missing")} / {prediction.verticalPenetrationInches:0.0}", false, 128));
+                row.Add(BuildFireControlComparisonCell($"{Localize("Missing")} / {prediction.horizontalPenetrationInches:0.0}", false, 128));
+                row.Add(BuildFireControlComparisonCell(Localize("Expected by range coverage"), false, 160));
+            }
+
+            table.Add(row);
+        }
+
+        var legend = new Label(Localize("Each cell is shown as current / model, then model-current delta. Missing rows show only model values."));
+        legend.style.whiteSpace = WhiteSpace.Normal;
+        legend.style.marginTop = 4;
+        section.Add(legend);
+
+        return section;
+    }
+
+    static readonly float[] PenetrationTableDistanceYards =
+    {
+        2000f, 4000f, 6000f, 8000f, 10000f, 12000f, 15000f,
+        18000f, 21000f, 24000f, 27000f, 30000f, 33000f, 36000f
+    };
+
+    static IEnumerable<float> GetExpectedPenetrationTableDistances(float rangeYards)
+    {
+        if (rangeYards <= 0f)
+        {
+            yield return PenetrationTableDistanceYards[0];
+            yield break;
+        }
+
+        foreach (var distance in PenetrationTableDistanceYards)
+        {
+            yield return distance;
+            if (distance >= rangeYards)
+                yield break;
+        }
+    }
+
+    static PenetrationPrediction PredictPenetrationRecord(BatteryRecord batteryRecord, float distanceYards)
+    {
+        return new PenetrationPrediction
+        {
+            distanceYards = distanceYards,
+            rateOfFire = PredictPenetrationRateOfFire(batteryRecord, distanceYards),
+            rangeBand = PredictPenetrationRangeBand(batteryRecord, distanceYards),
+            verticalPenetrationInches = PredictVerticalPenetrationInches(batteryRecord, distanceYards),
+            horizontalPenetrationInches = PredictHorizontalPenetrationInches(batteryRecord, distanceYards),
+        };
+    }
+
+    static float PredictPenetrationRateOfFire(BatteryRecord batteryRecord, float distanceYards)
+    {
+        const float fixedProcessSeconds = 9.090133f;
+        const float equivalentVelocityYardsPerSecond = 371.07068f;
+        var cap = 120f / (fixedProcessSeconds + distanceYards / equivalentVelocityYardsPerSecond);
+        var inherent = Mathf.Max(0f, (batteryRecord?.maxRateOfFireShootPerMin ?? 0f) * 2f);
+        return RoundTenth(Mathf.Min(inherent, cap));
+    }
+
+    static RangeBand PredictPenetrationRangeBand(BatteryRecord batteryRecord, float distanceYards)
+    {
+        var rangeYards = batteryRecord?.rangeYards ?? 0f;
+        if (rangeYards <= 0f)
+            return RangeBand.Short;
+
+        var rel = distanceYards / rangeYards;
+        var shellSize = batteryRecord?.shellSizeInch ?? 0f;
+
+        var shortToMedium = 0.56f;
+        var mediumToLong = 0.90f;
+        var longToExtreme = 1.05f;
+
+        if (rangeYards <= 5900f)
+        {
+            shortToMedium -= 0.08f;
+            mediumToLong -= 0.10f;
+        }
+
+        if (shellSize >= 12f)
+        {
+            shortToMedium += 0.08f;
+            mediumToLong += 0.08f;
+            longToExtreme += 0.08f;
+        }
+
+        if (rel < shortToMedium)
+            return RangeBand.Short;
+        if (rel < mediumToLong)
+            return RangeBand.Medium;
+        if (rel < longToExtreme)
+            return RangeBand.Long;
+        return RangeBand.Extreme;
+    }
+
+    static float PredictVerticalPenetrationInches(BatteryRecord batteryRecord, float distanceYards)
+    {
+        var shellSize = Mathf.Max(0.1f, batteryRecord?.shellSizeInch ?? 0f);
+        var shellWeight = Mathf.Max(0.1f, batteryRecord?.shellWeightPounds ?? 0f);
+        var rangeYards = Mathf.Max(1f, batteryRecord?.rangeYards ?? 0f);
+        var maxRof = batteryRecord?.maxRateOfFireShootPerMin ?? 0f;
+        var distanceKyd = distanceYards / 1000f;
+        var logShellSize = Mathf.Log(shellSize);
+        var logRange = Mathf.Log(rangeYards);
+        var logValue = -7.19567f
+            - 0.596694f * logShellSize
+            + 0.702142f * Mathf.Log(shellWeight)
+            + 0.733421f * logRange
+            + 0.0331102f * maxRof
+            + 0.402345f * distanceKyd
+            + 0.00675885f * distanceKyd * distanceKyd
+            + 0.0367314f * logShellSize * distanceKyd
+            - 0.0718001f * logRange * distanceKyd;
+
+        return RoundTenth(Mathf.Exp(logValue));
+    }
+
+    static float PredictHorizontalPenetrationInches(BatteryRecord batteryRecord, float distanceYards)
+    {
+        var shellSize = Mathf.Max(0.1f, batteryRecord?.shellSizeInch ?? 0f);
+        var shellWeight = Mathf.Max(0.1f, batteryRecord?.shellWeightPounds ?? 0f);
+        var rangeYards = Mathf.Max(1f, batteryRecord?.rangeYards ?? 0f);
+        var maxRof = batteryRecord?.maxRateOfFireShootPerMin ?? 0f;
+        var rel = distanceYards / rangeYards;
+        var logValue = -13.5807f
+            - 0.404477f * Mathf.Log(shellSize)
+            + 0.492548f * Mathf.Log(shellWeight)
+            + 1.01641f * Mathf.Log(rangeYards)
+            - 0.0211344f * maxRof
+            + 3.84280f * rel
+            - 1.27663f * rel * rel;
+
+        return RoundTenth(Mathf.Exp(logValue));
+    }
+
+    static string FormatPenetrationActualPredicted(float actual, float predicted)
+    {
+        return $"{actual:0.0} / {predicted:0.0}\n{FormatFireControlDiff(predicted - actual, true)}";
+    }
+
+    static string FormatRangeBandDiff(RangeBand actual, RangeBand predicted)
+    {
+        return actual == predicted ? "0" : $"{(int)predicted - (int)actual:+0;-0;0}";
+    }
+
+    static string FormatPercent(float value)
+    {
+        return $"{100f * value:0.#}%";
     }
 
     VisualElement BuildFireControlComparisonTable(string title, string description, List<FireControlTableRecord> records, float leftTop, bool roundPredictions)
@@ -1571,6 +1844,11 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
         return Mathf.Floor(value + 0.5f);
     }
 
+    static float RoundTenth(float value)
+    {
+        return Mathf.Floor(value * 10f + 0.5f) / 10f;
+    }
+
     readonly struct FireControlComparisonColumn
     {
         public readonly string label;
@@ -1618,6 +1896,36 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
             sumSquared += abs * abs;
             maxAbs = Mathf.Max(maxAbs, abs);
         }
+    }
+
+    class PenetrationComparisonStats
+    {
+        public readonly FireControlErrorStats rateOfFire = new();
+        public readonly FireControlErrorStats verticalPenetration = new();
+        public readonly FireControlErrorStats horizontalPenetration = new();
+        public int rangeBandCount;
+        public int rangeBandExact;
+        public int missingRows;
+
+        public void AddRateOfFire(float actual, float predicted) => rateOfFire.Add(actual, predicted);
+        public void AddVertical(float actual, float predicted) => verticalPenetration.Add(actual, predicted);
+        public void AddHorizontal(float actual, float predicted) => horizontalPenetration.Add(actual, predicted);
+
+        public void AddRangeBand(RangeBand actual, RangeBand predicted)
+        {
+            rangeBandCount++;
+            if (actual == predicted)
+                rangeBandExact++;
+        }
+    }
+
+    class PenetrationPrediction
+    {
+        public float distanceYards;
+        public float rateOfFire;
+        public RangeBand rangeBand;
+        public float verticalPenetrationInches;
+        public float horizontalPenetrationInches;
     }
 
     static string BuildFireControlSignature(IEnumerable<FireControlTableRecord> fireControlTableRecords)

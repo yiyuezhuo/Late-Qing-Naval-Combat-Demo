@@ -573,6 +573,20 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
             var fireControlTableMultiColumnListView = el.Q<MultiColumnListView>("FireControlTableMultiColumnListView");
             var penetrationTableMultiColumnListView = el.Q<MultiColumnListView>("PenetrationTableMultiColumnListView");
             var mountsListView = el.Q<ListView>("MountsListView");
+            var fireControlModelComparisonButton = el.Q<Button>("FireControlModelComparisonButton");
+            if (fireControlModelComparisonButton != null)
+            {
+                fireControlModelComparisonButton.clicked += () =>
+                {
+                    if (!Utils.TryResolveCurrentValueForBinding(fireControlModelComparisonButton, out BatteryRecord batteryRecord))
+                    {
+                        DialogRoot.Instance.PopupMessageDialog(Localize("No battery record is selected."));
+                        return;
+                    }
+
+                    PopupFireControlModelComparisonDialog(selectedShipClass, batteryRecord);
+                };
+            }
 
             // fireControlTableMultiColumnListView.itemsAdded += Utils.MakeCallbackForItemsAdded<FireControlTableRecord>(fireControlTableMultiColumnListView);
             // penetrationTableMultiColumnListView.itemsAdded += Utils.MakeCallbackForItemsAdded<PenetrationTableRecord>(penetrationTableMultiColumnListView);
@@ -1176,6 +1190,384 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
         return string.Join(",",
             (penetrationTableRecords ?? Enumerable.Empty<PenetrationTableRecord>())
                 .Select(record => $"{record.distanceYards:0.###}:{record.verticalPenetrationInchs:0.###}:{record.horizontalPenetrationInchs:0.###}:{record.rateOfFire:0.###}:{record.rangeBand}"));
+    }
+
+    static readonly FireControlComparisonColumn[] FireControlComparisonColumns =
+    {
+        new("S/B", RangeBand.Short, TargetAspect.Broad),
+        new("S/N", RangeBand.Short, TargetAspect.Narrow),
+        new("M/B", RangeBand.Medium, TargetAspect.Broad),
+        new("M/N", RangeBand.Medium, TargetAspect.Narrow),
+        new("L/B", RangeBand.Long, TargetAspect.Broad),
+        new("L/N", RangeBand.Long, TargetAspect.Narrow),
+        new("E/B", RangeBand.Extreme, TargetAspect.Broad),
+        new("E/N", RangeBand.Extreme, TargetAspect.Narrow),
+    };
+
+    static readonly FireControlSpeedFactor[] FireControlSpeedFactors =
+    {
+        new(9f, 1f),
+        new(18f, 0.6710f),
+        new(27f, 0.5265f),
+        new(36f, 0.4393f),
+        new(45f, 0.3758f),
+    };
+
+    static readonly Dictionary<FCSCode, float> FireControlCodeLatentOffsets = new()
+    {
+        { FCSCode.Z, 0f },
+        { FCSCode.Y, 2.1829f },
+        { FCSCode.X, 4.2304f },
+        { FCSCode.W, 4.1718f },
+        { FCSCode.U, 2.4735f },
+        { FCSCode.T, 4.0784f },
+        { FCSCode.S, 5.2111f },
+        { FCSCode.R, 6.0497f },
+        { FCSCode.Q, 7.4472f },
+    };
+
+    const float FireControlCodeLatentIntercept = 4.5261f;
+    const float FireControlCodeShellSizeCoef = 0.2334f;
+    const float FireControlCodeDisplacement1000Coef = -0.0823f;
+
+    void PopupFireControlModelComparisonDialog(ShipClass shipClass, BatteryRecord batteryRecord)
+    {
+        if (batteryRecord == null)
+            return;
+
+        if (batteryRecord.fireControlTableRecords == null || batteryRecord.fireControlTableRecords.Count == 0)
+        {
+            DialogRoot.Instance.PopupMessageDialog(Localize("Fire control table is empty."), Localize("Model Comparison"));
+            return;
+        }
+
+        DialogRoot.Instance.PopupCustomMessageContentDialog(
+            Localize("Model Comparison"),
+            () => BuildFireControlModelComparisonContent(shipClass, batteryRecord),
+            1040f,
+            680f,
+            Localize("Close")
+        );
+    }
+
+    VisualElement BuildFireControlModelComparisonContent(ShipClass shipClass, BatteryRecord batteryRecord)
+    {
+        var records = batteryRecord.fireControlTableRecords
+            .OrderBy(record => record.speedThresholdKnot)
+            .ToList();
+        var observedLeftTop = records[0].shortBroad;
+        var codeLatent = PredictFireControlLatentFromCode(shipClass, batteryRecord, out var usedCodeCoefficient);
+
+        var scrollView = new ScrollView(ScrollViewMode.Vertical);
+        scrollView.style.flexGrow = 1;
+        scrollView.style.flexShrink = 1;
+
+        var roundPredictionToggle = new Toggle(Localize("Round predicted values"));
+        roundPredictionToggle.value = true;
+        roundPredictionToggle.style.marginBottom = 8;
+        scrollView.Add(roundPredictionToggle);
+
+        var summary = new Label();
+        summary.style.whiteSpace = WhiteSpace.Normal;
+        summary.style.marginBottom = 10;
+        scrollView.Add(summary);
+
+        if (!usedCodeCoefficient)
+        {
+            var warning = new Label(Localize("No fitted Code coefficient is available for this fire-control code. The Code model uses the component fallback."));
+            warning.style.whiteSpace = WhiteSpace.Normal;
+            warning.style.marginBottom = 10;
+            scrollView.Add(warning);
+        }
+
+        var tablesContainer = new VisualElement();
+        scrollView.Add(tablesContainer);
+
+        void RefreshComparison()
+        {
+            var roundPredictions = roundPredictionToggle.value;
+            var proportionStats = CalculateFireControlComparisonStats(records, observedLeftTop, roundPredictions);
+            var codeStats = CalculateFireControlComparisonStats(records, codeLatent, roundPredictions);
+
+            summary.text =
+                $"{Localize("Overall Error")}\n" +
+                $"{Localize("Proportion table")} (left-top={observedLeftTop:0.###}): {FormatFireControlErrorStats(proportionStats)}\n" +
+                $"{Localize("Code model table")} (latent={codeLatent:0.###}): {FormatFireControlErrorStats(codeStats)}";
+
+            tablesContainer.Clear();
+            tablesContainer.Add(BuildFireControlComparisonTable(
+                Localize("Proportion Check"),
+                Localize("Uses the current left-top value, then applies the fitted Broad/Narrow, range-band, and speed ratios."),
+                records,
+                observedLeftTop,
+                roundPredictions
+            ));
+            tablesContainer.Add(BuildFireControlComparisonTable(
+                Localize("Code, Shell Size, Displacement Model"),
+                Localize("Uses the fitted latent left-top value from Code, shell size, and displacement, then applies the same ratios."),
+                records,
+                codeLatent,
+                roundPredictions
+            ));
+        }
+
+        roundPredictionToggle.RegisterValueChangedCallback(_ => RefreshComparison());
+        RefreshComparison();
+
+        return scrollView;
+    }
+
+    VisualElement BuildFireControlComparisonTable(string title, string description, List<FireControlTableRecord> records, float leftTop, bool roundPredictions)
+    {
+        var section = new VisualElement();
+        section.style.marginTop = 10;
+        section.style.marginBottom = 12;
+
+        var titleLabel = new Label(title);
+        titleLabel.style.unityFontStyleAndWeight = FontStyle.Bold;
+        titleLabel.style.marginBottom = 2;
+        section.Add(titleLabel);
+
+        var descriptionLabel = new Label(description);
+        descriptionLabel.style.whiteSpace = WhiteSpace.Normal;
+        descriptionLabel.style.marginBottom = 6;
+        section.Add(descriptionLabel);
+
+        var table = new VisualElement();
+        table.style.flexDirection = FlexDirection.Column;
+        table.style.minWidth = 920;
+        section.Add(table);
+
+        var header = BuildFireControlComparisonTableRow();
+        header.Add(BuildFireControlComparisonCell(Localize("Tgt Spd"), true, 74));
+        foreach (var column in FireControlComparisonColumns)
+        {
+            header.Add(BuildFireControlComparisonCell(column.label, true));
+        }
+        table.Add(header);
+
+        foreach (var record in records)
+        {
+            var row = BuildFireControlComparisonTableRow();
+            row.Add(BuildFireControlComparisonCell($"{record.speedThresholdKnot:0.#} kt", true, 74));
+            foreach (var column in FireControlComparisonColumns)
+            {
+                var actual = record.GetValue(column.rangeBand, column.targetAspect);
+                var predicted = PredictFireControlCell(leftTop, record.speedThresholdKnot, column.rangeBand, column.targetAspect, roundPredictions);
+                var diff = predicted - actual;
+                row.Add(BuildFireControlComparisonCell($"{actual:0.#} / {FormatFireControlPredictedValue(predicted, roundPredictions)}\n{FormatFireControlDiff(diff, roundPredictions)}", false));
+            }
+            table.Add(row);
+        }
+
+        var legend = new Label(Localize("Each cell is shown as current / model, then model-current delta."));
+        legend.style.whiteSpace = WhiteSpace.Normal;
+        legend.style.marginTop = 4;
+        section.Add(legend);
+
+        return section;
+    }
+
+    static VisualElement BuildFireControlComparisonTableRow()
+    {
+        var row = new VisualElement();
+        row.style.flexDirection = FlexDirection.Row;
+        row.style.flexShrink = 0;
+        return row;
+    }
+
+    static Label BuildFireControlComparisonCell(string text, bool isHeader, int width = 96)
+    {
+        var cell = new Label(text);
+        cell.style.width = width;
+        cell.style.minHeight = isHeader ? 24 : 40;
+        cell.style.paddingLeft = 4;
+        cell.style.paddingRight = 4;
+        cell.style.paddingTop = 3;
+        cell.style.paddingBottom = 3;
+        cell.style.marginRight = 1;
+        cell.style.marginBottom = 1;
+        cell.style.unityTextAlign = TextAnchor.MiddleCenter;
+        cell.style.whiteSpace = WhiteSpace.Normal;
+        cell.style.backgroundColor = isHeader ? new Color(0.16f, 0.16f, 0.16f, 0.18f) : new Color(0.16f, 0.16f, 0.16f, 0.08f);
+        if (isHeader)
+            cell.style.unityFontStyleAndWeight = FontStyle.Bold;
+        return cell;
+    }
+
+    static FireControlErrorStats CalculateFireControlComparisonStats(List<FireControlTableRecord> records, float leftTop, bool roundPredictions)
+    {
+        var stats = new FireControlErrorStats();
+        foreach (var record in records)
+        {
+            foreach (var column in FireControlComparisonColumns)
+            {
+                var actual = record.GetValue(column.rangeBand, column.targetAspect);
+                var predicted = PredictFireControlCell(leftTop, record.speedThresholdKnot, column.rangeBand, column.targetAspect, roundPredictions);
+                stats.Add(actual, predicted);
+            }
+        }
+        return stats;
+    }
+
+    static string FormatFireControlErrorStats(FireControlErrorStats stats)
+    {
+        if (stats.count == 0)
+            return "n/a";
+
+        return $"exact {stats.exact}/{stats.count} ({(100f * stats.exact / stats.count):0.#}%), MAE {stats.MAE:0.###}, RMSE {stats.RMSE:0.###}, max {stats.maxAbs:0.###}";
+    }
+
+    static float PredictFireControlLatentFromCode(ShipClass shipClass, BatteryRecord batteryRecord, out bool usedCodeCoefficient)
+    {
+        var fcs = batteryRecord?.fireControlType;
+        if (fcs != null && FireControlCodeLatentOffsets.TryGetValue(fcs.code, out var codeOffset))
+        {
+            usedCodeCoefficient = true;
+            return FireControlCodeLatentIntercept
+                + codeOffset
+                + FireControlCodeShellSizeCoef * (batteryRecord?.shellSizeInch ?? 0f)
+                + FireControlCodeDisplacement1000Coef * ((shipClass?.displacementTons ?? 0f) / 1000f);
+        }
+
+        usedCodeCoefficient = false;
+        return PredictFireControlLatentFromComponents(shipClass, batteryRecord);
+    }
+
+    static float PredictFireControlLatentFromComponents(ShipClass shipClass, BatteryRecord batteryRecord)
+    {
+        var fcs = batteryRecord?.fireControlType;
+        var latent = 4.7316f
+            + 0.2128f * (batteryRecord?.shellSizeInch ?? 0f)
+            - 0.0893f * ((shipClass?.displacementTons ?? 0f) / 1000f);
+
+        if (fcs == null)
+            return latent;
+
+        if (fcs.gunSight == GunSightType.Telescope)
+            latent += 1.8941f;
+        if (fcs.fireControlInstrument == FireControlInstrumentType.Basic)
+            latent += 2.1650f;
+        if (fcs.rangeFinder == RangeFinderType.Optical)
+            latent += 1.5337f;
+        if (fcs.directorControl == DirectorControlType.FollowThePointer)
+            latent += 1.9988f;
+
+        return latent;
+    }
+
+    static string FormatFireControlPredictedValue(float value, bool roundPredictions)
+    {
+        return roundPredictions ? $"{value:0.#}" : $"{value:0.00}";
+    }
+
+    static string FormatFireControlDiff(float value, bool roundPredictions)
+    {
+        return roundPredictions ? $"{value:+0.#;-0.#;0}" : $"{value:+0.00;-0.00;0.00}";
+    }
+
+    static float PredictFireControlCell(float leftTop, float speedThresholdKnot, RangeBand rangeBand, TargetAspect targetAspect, bool roundPrediction)
+    {
+        var predicted = leftTop * GetFireControlSpeedFactor(speedThresholdKnot) * GetFireControlRangeBandFactor(rangeBand) * GetFireControlAspectFactor(targetAspect);
+        return roundPrediction ? RoundHalfUp(predicted) : predicted;
+    }
+
+    static float GetFireControlAspectFactor(TargetAspect targetAspect)
+    {
+        return targetAspect == TargetAspect.Narrow ? 0.6005f : 1f;
+    }
+
+    static float GetFireControlRangeBandFactor(RangeBand rangeBand)
+    {
+        return rangeBand switch
+        {
+            RangeBand.Medium => 0.6010f,
+            RangeBand.Long => 0.4165f,
+            RangeBand.Extreme => 0.3567f,
+            _ => 1f
+        };
+    }
+
+    static float GetFireControlSpeedFactor(float speedThresholdKnot)
+    {
+        const float tolerance = 0.01f;
+        foreach (var speedFactor in FireControlSpeedFactors)
+        {
+            if (Mathf.Abs(speedThresholdKnot - speedFactor.speedThresholdKnot) <= tolerance)
+                return speedFactor.factor;
+        }
+
+        if (speedThresholdKnot <= FireControlSpeedFactors[0].speedThresholdKnot)
+            return FireControlSpeedFactors[0].factor;
+        if (speedThresholdKnot >= FireControlSpeedFactors[^1].speedThresholdKnot)
+            return FireControlSpeedFactors[^1].factor;
+
+        for (var i = 1; i < FireControlSpeedFactors.Length; i++)
+        {
+            var previous = FireControlSpeedFactors[i - 1];
+            var next = FireControlSpeedFactors[i];
+            if (speedThresholdKnot <= next.speedThresholdKnot)
+            {
+                var t = Mathf.InverseLerp(previous.speedThresholdKnot, next.speedThresholdKnot, speedThresholdKnot);
+                return Mathf.Lerp(previous.factor, next.factor, t);
+            }
+        }
+
+        return 1f;
+    }
+
+    static float RoundHalfUp(float value)
+    {
+        return Mathf.Floor(value + 0.5f);
+    }
+
+    readonly struct FireControlComparisonColumn
+    {
+        public readonly string label;
+        public readonly RangeBand rangeBand;
+        public readonly TargetAspect targetAspect;
+
+        public FireControlComparisonColumn(string label, RangeBand rangeBand, TargetAspect targetAspect)
+        {
+            this.label = label;
+            this.rangeBand = rangeBand;
+            this.targetAspect = targetAspect;
+        }
+    }
+
+    readonly struct FireControlSpeedFactor
+    {
+        public readonly float speedThresholdKnot;
+        public readonly float factor;
+
+        public FireControlSpeedFactor(float speedThresholdKnot, float factor)
+        {
+            this.speedThresholdKnot = speedThresholdKnot;
+            this.factor = factor;
+        }
+    }
+
+    class FireControlErrorStats
+    {
+        public int count;
+        public int exact;
+        public float sumAbs;
+        public float sumSquared;
+        public float maxAbs;
+
+        public float MAE => count == 0 ? 0f : sumAbs / count;
+        public float RMSE => count == 0 ? 0f : Mathf.Sqrt(sumSquared / count);
+
+        public void Add(float actual, float predicted)
+        {
+            var abs = Mathf.Abs(predicted - actual);
+            count++;
+            if (abs <= 0.001f)
+                exact++;
+            sumAbs += abs;
+            sumSquared += abs * abs;
+            maxAbs = Mathf.Max(maxAbs, abs);
+        }
     }
 
     static string BuildFireControlSignature(IEnumerable<FireControlTableRecord> fireControlTableRecords)

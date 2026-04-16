@@ -80,6 +80,9 @@
                 </ui:FloatField>
             </ui:VisualElement>
         </ui:VisualElement>
+        <ui:VisualElement name="FireControlTableToolRow" style="flex-direction: row; flex-shrink: 0; margin-bottom: 4px;">
+            <ui:Button text="Model Comparison" name="FireControlModelComparisonButton" style="flex-shrink: 0;" />
+        </ui:VisualElement>
         <ui:MultiColumnListView data-source-path="fireControlTableRecords" binding-source-selection-mode="AutoAssign" header-title="Fire Control Table" show-foldout-header="true" show-add-remove-footer="true" name="FireControlTableMultiColumnListView">
             <ui:Columns>
                 <ui:Column name="targetSpeed" title="Tgt Spd" width="11%" cell-template="project://database/Assets/UIDocuments/Templates/FireControlTableRecord/FireControlTableRecordSpeedThreshold.uxml?fileID=9197481963319205126&amp;guid=f7187544acb99c54b9385828709cbf5f&amp;type=3#FireControlTableRecordSpeedThreshold" header-template="project://database/Assets/UIDocuments/Templates/FireControlTableRecord/FireControlTableRecordSpeedThresholdHeader.uxml?fileID=9197481963319205126&amp;guid=83325986dbd92c54b90693113ee53950&amp;type=3#FireControlTableRecordSpeedThresholdHeader"/>

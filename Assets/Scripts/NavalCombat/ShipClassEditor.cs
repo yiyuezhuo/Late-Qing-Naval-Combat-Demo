@@ -573,6 +573,25 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
             var fireControlTableMultiColumnListView = el.Q<MultiColumnListView>("FireControlTableMultiColumnListView");
             var penetrationTableMultiColumnListView = el.Q<MultiColumnListView>("PenetrationTableMultiColumnListView");
             var mountsListView = el.Q<ListView>("MountsListView");
+            var fireControlCodeField = el.Q<EnumField>("FireControlCodeField");
+            if (fireControlCodeField != null)
+            {
+                fireControlCodeField.RegisterValueChangedCallback(evt =>
+                {
+                    if (Equals(evt.previousValue, evt.newValue))
+                        return;
+
+                    if (!Utils.TryResolveCurrentValueForBinding(el, out BatteryRecord batteryRecord))
+                        return;
+
+                    if (evt.newValue is FCSCode code)
+                    {
+                        batteryRecord.fireControlType.codeProp = code;
+                        UpdateFireControlTableFromCodeModel(selectedShipClass, batteryRecord);
+                        fireControlTableMultiColumnListView?.RefreshItems();
+                    }
+                });
+            }
             var fireControlModelComparisonButton = el.Q<Button>("FireControlModelComparisonButton");
             if (fireControlModelComparisonButton != null)
             {
@@ -1464,6 +1483,37 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
     static string FormatFireControlDiff(float value, bool roundPredictions)
     {
         return roundPredictions ? $"{value:+0.#;-0.#;0}" : $"{value:+0.00;-0.00;0.00}";
+    }
+
+    static void UpdateFireControlTableFromCodeModel(ShipClass shipClass, BatteryRecord batteryRecord)
+    {
+        if (batteryRecord == null)
+            return;
+
+        batteryRecord.fireControlTableRecords ??= new List<FireControlTableRecord>();
+        if (batteryRecord.fireControlTableRecords.Count == 0)
+        {
+            foreach (var speedFactor in FireControlSpeedFactors)
+            {
+                batteryRecord.fireControlTableRecords.Add(new FireControlTableRecord
+                {
+                    speedThresholdKnot = speedFactor.speedThresholdKnot
+                });
+            }
+        }
+
+        var latent = PredictFireControlLatentFromCode(shipClass, batteryRecord, out _);
+        foreach (var record in batteryRecord.fireControlTableRecords)
+        {
+            record.shortBroad = PredictFireControlCell(latent, record.speedThresholdKnot, RangeBand.Short, TargetAspect.Broad, true);
+            record.shortNarrow = PredictFireControlCell(latent, record.speedThresholdKnot, RangeBand.Short, TargetAspect.Narrow, true);
+            record.mediumBroad = PredictFireControlCell(latent, record.speedThresholdKnot, RangeBand.Medium, TargetAspect.Broad, true);
+            record.mediumNarrow = PredictFireControlCell(latent, record.speedThresholdKnot, RangeBand.Medium, TargetAspect.Narrow, true);
+            record.longBroad = PredictFireControlCell(latent, record.speedThresholdKnot, RangeBand.Long, TargetAspect.Broad, true);
+            record.longNarrow = PredictFireControlCell(latent, record.speedThresholdKnot, RangeBand.Long, TargetAspect.Narrow, true);
+            record.extremeBroad = PredictFireControlCell(latent, record.speedThresholdKnot, RangeBand.Extreme, TargetAspect.Broad, true);
+            record.extremeNarrow = PredictFireControlCell(latent, record.speedThresholdKnot, RangeBand.Extreme, TargetAspect.Narrow, true);
+        }
     }
 
     static float PredictFireControlCell(float leftTop, float speedThresholdKnot, RangeBand rangeBand, TargetAspect targetAspect, bool roundPrediction)

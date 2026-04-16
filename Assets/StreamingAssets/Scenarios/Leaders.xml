@@ -4401,4 +4401,27 @@ https://en.wikipedia.org/wiki/Russian_battleship_Imperator_Nikolai_I_(1889)</rem
 </remark>
   <objectId>d9e56f2d-5e50-4538-8b11-a227331737ba</objectId>
  </Leader>
+ <Leader>
+  <name>
+   <english>Fyodor Silman</english>
+   <japanese>フョードル・シルマン</japanese>
+   <chineseSimplified>费奥多尔·西尔曼</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Fyodor Silman.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://ru.wikipedia.org/wiki/%D0%A1%D0%B8%D0%BB%D1%8C%D0%BC%D0%B0%D0%BD,_%D0%A4%D1%91%D0%B4%D0%BE%D1%80_%D0%A4%D1%91%D0%B4%D0%BE%D1%80%D0%BE%D0%B2%D0%B8%D1%87
+
+https://kraeved-gatchina.de/ocherki/vydayushchiesya-zhiteli/silman-fedor/
+</remark>
+  <objectId>b72d1d3b-0ea7-4603-b6c2-a23d1bf363fc</objectId>
+ </Leader>
 </ArrayOfLeader>

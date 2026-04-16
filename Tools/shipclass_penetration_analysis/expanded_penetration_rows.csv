@@ -1,0 +1,1043 @@
+﻿battery_id,ship_name,ship_type,country,battery_name,shell_size_inch,shell_weight_pounds,max_rate_of_fire_shoot_per_min,max_rate_of_fire_per_2_min,range_yards,damage_rating,caliber_length,distance_yards,distance_kyd,rate_of_fire,range_band,horizontal_penetration_inch,vertical_penetration_inch
+0,Yoshino,LightCruiser,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,2000.0,2.0,7.8,Short,0.2,4.8
+0,Yoshino,LightCruiser,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,4000.0,4.0,6.5,Short,0.3,3.5
+0,Yoshino,LightCruiser,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,6000.0,6.0,5.3,Short,0.4,2.5
+0,Yoshino,LightCruiser,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,8000.0,8.0,4.3,Medium,0.5,2.0
+0,Yoshino,LightCruiser,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,10000.0,10.0,3.5,Medium,0.6,1.7
+0,Yoshino,LightCruiser,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,12000.0,12.0,2.9,Long,0.9,1.6
+0,Yoshino,LightCruiser,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,15000.0,15.0,2.8,Long,1.0,1.6
+1,Yoshino,LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,2000.0,2.0,7.4,Short,0.0,3.3
+1,Yoshino,LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,4000.0,4.0,5.7,Short,0.2,2.1
+1,Yoshino,LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,6000.0,6.0,4.4,Medium,0.2,1.6
+1,Yoshino,LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,8000.0,8.0,3.5,Long,0.4,1.4
+1,Yoshino,LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,10000.0,10.0,2.8,Long,0.7,1.2
+2,Yoshino (1901),LightCruiser,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,2000.0,2.0,7.8,Short,0.2,4.8
+2,Yoshino (1901),LightCruiser,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,4000.0,4.0,6.5,Short,0.3,3.5
+2,Yoshino (1901),LightCruiser,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,6000.0,6.0,5.3,Short,0.4,2.5
+2,Yoshino (1901),LightCruiser,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,8000.0,8.0,4.3,Medium,0.5,2.0
+2,Yoshino (1901),LightCruiser,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,10000.0,10.0,3.5,Medium,0.6,1.7
+2,Yoshino (1901),LightCruiser,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,12000.0,12.0,2.9,Long,0.9,1.6
+2,Yoshino (1901),LightCruiser,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,15000.0,15.0,2.8,Long,1.0,1.6
+3,Yoshino (1901),LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,2000.0,2.0,7.4,Short,0.0,3.3
+3,Yoshino (1901),LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,4000.0,4.0,5.7,Short,0.2,2.1
+3,Yoshino (1901),LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,6000.0,6.0,4.4,Medium,0.2,1.6
+3,Yoshino (1901),LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,8000.0,8.0,3.5,Long,0.4,1.4
+3,Yoshino (1901),LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,10000.0,10.0,2.8,Long,0.7,1.2
+4,Akitsushima,LightCruiser,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,2000.0,2.0,7.8,Short,0.2,4.8
+4,Akitsushima,LightCruiser,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,4000.0,4.0,6.5,Short,0.3,3.5
+4,Akitsushima,LightCruiser,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,6000.0,6.0,5.3,Short,0.4,2.5
+4,Akitsushima,LightCruiser,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,8000.0,8.0,4.3,Medium,0.5,2.0
+4,Akitsushima,LightCruiser,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,10000.0,10.0,3.5,Medium,0.6,1.7
+4,Akitsushima,LightCruiser,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,12000.0,12.0,2.9,Long,0.9,1.6
+4,Akitsushima,LightCruiser,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,15000.0,15.0,2.8,Long,1.0,1.6
+5,Akitsushima,LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,2000.0,2.0,7.4,Short,0.0,3.3
+5,Akitsushima,LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,4000.0,4.0,5.7,Short,0.2,2.1
+5,Akitsushima,LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,6000.0,6.0,4.4,Medium,0.2,1.6
+5,Akitsushima,LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,8000.0,8.0,3.5,Long,0.4,1.4
+5,Akitsushima,LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,10000.0,10.0,2.8,Long,0.7,1.2
+6,Akitsushima (1902),LightCruiser,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,2000.0,2.0,7.8,Short,0.2,4.8
+6,Akitsushima (1902),LightCruiser,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,4000.0,4.0,6.5,Short,0.3,3.5
+6,Akitsushima (1902),LightCruiser,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,6000.0,6.0,5.3,Short,0.4,2.5
+6,Akitsushima (1902),LightCruiser,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,8000.0,8.0,4.3,Medium,0.5,2.0
+6,Akitsushima (1902),LightCruiser,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,10000.0,10.0,3.5,Medium,0.6,1.7
+6,Akitsushima (1902),LightCruiser,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,12000.0,12.0,2.9,Long,0.9,1.6
+6,Akitsushima (1902),LightCruiser,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,15000.0,15.0,2.8,Long,1.0,1.6
+7,Akitsushima (1902),LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,2000.0,2.0,7.4,Short,0.0,3.3
+7,Akitsushima (1902),LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,4000.0,4.0,5.7,Short,0.2,2.1
+7,Akitsushima (1902),LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,6000.0,6.0,4.4,Medium,0.2,1.6
+7,Akitsushima (1902),LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,8000.0,8.0,3.5,Long,0.4,1.4
+7,Akitsushima (1902),LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,10000.0,10.0,2.8,Long,0.7,1.2
+8,Naniwa,LightCruiser,Japan,26cm RKL/35 C/83,10.2,606.3,0.4,0.8,8968.0,34.0,35.0,2000.0,2.0,0.8,Short,0.3,8.8
+8,Naniwa,LightCruiser,Japan,26cm RKL/35 C/83,10.2,606.3,0.4,0.8,8968.0,34.0,35.0,4000.0,4.0,0.8,Short,0.6,7.3
+8,Naniwa,LightCruiser,Japan,26cm RKL/35 C/83,10.2,606.3,0.4,0.8,8968.0,34.0,35.0,6000.0,6.0,0.8,Medium,0.9,6.1
+8,Naniwa,LightCruiser,Japan,26cm RKL/35 C/83,10.2,606.3,0.4,0.8,8968.0,34.0,35.0,8000.0,8.0,0.8,Medium,1.2,5.3
+8,Naniwa,LightCruiser,Japan,26cm RKL/35 C/83,10.2,606.3,0.4,0.8,8968.0,34.0,35.0,10000.0,10.0,0.8,Medium,1.3,5.0
+9,Naniwa,LightCruiser,Japan,15cm RKL/35 C/80,5.9,112.4,5.0,10.0,7869.0,17.0,35.0,2000.0,2.0,7.2,Short,0.1,4.7
+9,Naniwa,LightCruiser,Japan,15cm RKL/35 C/80,5.9,112.4,5.0,10.0,7869.0,17.0,35.0,4000.0,4.0,5.6,Short,0.2,3.5
+9,Naniwa,LightCruiser,Japan,15cm RKL/35 C/80,5.9,112.4,5.0,10.0,7869.0,17.0,35.0,6000.0,6.0,4.4,Medium,0.4,2.8
+9,Naniwa,LightCruiser,Japan,15cm RKL/35 C/80,5.9,112.4,5.0,10.0,7869.0,17.0,35.0,8000.0,8.0,3.6,Medium,0.6,2.4
+10,Naniwa (1903),LightCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,2000.0,2.0,7.6,Short,0.1,6.5
+10,Naniwa (1903),LightCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,4000.0,4.0,6.2,Short,0.2,4.6
+10,Naniwa (1903),LightCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,6000.0,6.0,5.0,Medium,0.4,3.3
+10,Naniwa (1903),LightCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,8000.0,8.0,4.0,Medium,0.6,2.6
+10,Naniwa (1903),LightCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,10000.0,10.0,3.3,Long,0.9,2.2
+10,Naniwa (1903),LightCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,12000.0,12.0,3.0,Long,1.0,2.1
+11,Chi Yuan,LightCruiser,China,21cm RKL/22,8.2,217.2,0.8,1.6,6124.0,23.0,22.0,2000.0,2.0,1.6,Short,0.2,4.5
+11,Chi Yuan,LightCruiser,China,21cm RKL/22,8.2,217.2,0.8,1.6,6124.0,23.0,22.0,4000.0,4.0,1.6,Medium,0.3,3.5
+11,Chi Yuan,LightCruiser,China,21cm RKL/22,8.2,217.2,0.8,1.6,6124.0,23.0,22.0,6000.0,6.0,1.6,Medium,0.5,3.0
+11,Chi Yuan,LightCruiser,China,21cm RKL/22,8.2,217.2,0.8,1.6,6124.0,23.0,22.0,8000.0,8.0,1.6,Medium,0.5,2.9
+12,Chi Yuan,LightCruiser,China,15cm RKL/35 C/80,5.9,112.4,4.0,8.0,7818.0,17.0,35.0,2000.0,2.0,7.2,Short,0.1,4.5
+12,Chi Yuan,LightCruiser,China,15cm RKL/35 C/80,5.9,112.4,4.0,8.0,7818.0,17.0,35.0,4000.0,4.0,5.6,Medium,0.3,3.3
+12,Chi Yuan,LightCruiser,China,15cm RKL/35 C/80,5.9,112.4,4.0,8.0,7818.0,17.0,35.0,6000.0,6.0,4.4,Medium,0.4,2.6
+12,Chi Yuan,LightCruiser,China,15cm RKL/35 C/80,5.9,112.4,4.0,8.0,7818.0,17.0,35.0,8000.0,8.0,3.6,Medium,0.6,2.2
+13,Kuang Yi,PatrolGunboat,China,12cm SKL/40 C/88,4.7,52.5,5.0,10.0,11833.0,13.0,40.0,2000.0,2.0,7.4,Short,0.1,4.2
+13,Kuang Yi,PatrolGunboat,China,12cm SKL/40 C/88,4.7,52.5,5.0,10.0,11833.0,13.0,40.0,4000.0,4.0,5.9,Short,0.2,2.7
+13,Kuang Yi,PatrolGunboat,China,12cm SKL/40 C/88,4.7,52.5,5.0,10.0,11833.0,13.0,40.0,6000.0,6.0,4.6,Medium,0.3,2.0
+13,Kuang Yi,PatrolGunboat,China,12cm SKL/40 C/88,4.7,52.5,5.0,10.0,11833.0,13.0,40.0,8000.0,8.0,3.6,Long,0.4,1.7
+13,Kuang Yi,PatrolGunboat,China,12cm SKL/40 C/88,4.7,52.5,5.0,10.0,11833.0,13.0,40.0,10000.0,10.0,2.9,Long,0.7,1.4
+13,Kuang Yi,PatrolGunboat,China,12cm SKL/40 C/88,4.7,52.5,5.0,10.0,11833.0,13.0,40.0,12000.0,12.0,2.4,Extreme,1.1,1.2
+14,Ting Yuen,Battleship,China,30.5cm RKL/25 C/80,12.0,725.3,0.6,1.2,7904.0,38.0,25.0,2000.0,2.0,1.2,Short,0.2,8.4
+14,Ting Yuen,Battleship,China,30.5cm RKL/25 C/80,12.0,725.3,0.6,1.2,7904.0,38.0,25.0,4000.0,4.0,1.2,Short,0.5,6.8
+14,Ting Yuen,Battleship,China,30.5cm RKL/25 C/80,12.0,725.3,0.6,1.2,7904.0,38.0,25.0,6000.0,6.0,1.2,Medium,0.9,5.7
+14,Ting Yuen,Battleship,China,30.5cm RKL/25 C/80,12.0,725.3,0.6,1.2,7904.0,38.0,25.0,8000.0,8.0,1.2,Medium,1.2,5.0
+15,Ting Yuen,Battleship,China,15cm RKL/35 C/80,5.9,112.4,4.0,8.0,7818.0,17.0,35.0,2000.0,2.0,7.2,Short,0.1,4.5
+15,Ting Yuen,Battleship,China,15cm RKL/35 C/80,5.9,112.4,4.0,8.0,7818.0,17.0,35.0,4000.0,4.0,5.6,Medium,0.3,3.3
+15,Ting Yuen,Battleship,China,15cm RKL/35 C/80,5.9,112.4,4.0,8.0,7818.0,17.0,35.0,6000.0,6.0,4.4,Medium,0.4,2.6
+15,Ting Yuen,Battleship,China,15cm RKL/35 C/80,5.9,112.4,4.0,8.0,7818.0,17.0,35.0,8000.0,8.0,3.6,Medium,0.6,2.2
+16,Chin Yen (1896),Battleship,Japan,30.5cm RKL/25 C/80,12.0,725.0,0.6,1.2,7940.0,38.0,25.0,2000.0,2.0,0.8,Short,0.5,8.9
+16,Chin Yen (1896),Battleship,Japan,30.5cm RKL/25 C/80,12.0,725.0,0.6,1.2,7940.0,38.0,25.0,4000.0,4.0,0.8,Short,1.0,7.2
+16,Chin Yen (1896),Battleship,Japan,30.5cm RKL/25 C/80,12.0,725.0,0.6,1.2,7940.0,38.0,25.0,6000.0,6.0,0.8,Medium,1.5,6.0
+16,Chin Yen (1896),Battleship,Japan,30.5cm RKL/25 C/80,12.0,725.0,0.6,1.2,7940.0,38.0,25.0,8000.0,8.0,0.8,Medium,1.9,5.3
+17,Chin Yen (1896),Battleship,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,2000.0,2.0,7.8,Short,0.2,4.8
+17,Chin Yen (1896),Battleship,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,4000.0,4.0,6.5,Short,0.3,3.5
+17,Chin Yen (1896),Battleship,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,6000.0,6.0,5.3,Short,0.4,2.5
+17,Chin Yen (1896),Battleship,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,8000.0,8.0,4.3,Medium,0.5,2.0
+17,Chin Yen (1896),Battleship,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,10000.0,10.0,3.5,Medium,0.6,1.7
+17,Chin Yen (1896),Battleship,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,12000.0,12.0,2.9,Long,0.9,1.6
+17,Chin Yen (1896),Battleship,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,15000.0,15.0,2.9,Long,1.0,1.6
+18,Chao Yung,LightCruiser,China,10''/26 25-Ton BLR,10.0,400.0,0.8,1.6,7999.0,30.0,26.0,2000.0,2.0,1.6,Short,0.3,6.7
+18,Chao Yung,LightCruiser,China,10''/26 25-Ton BLR,10.0,400.0,0.8,1.6,7999.0,30.0,26.0,4000.0,4.0,1.6,Short,0.5,5.2
+18,Chao Yung,LightCruiser,China,10''/26 25-Ton BLR,10.0,400.0,0.8,1.6,7999.0,30.0,26.0,6000.0,6.0,1.6,Medium,0.6,4.2
+18,Chao Yung,LightCruiser,China,10''/26 25-Ton BLR,10.0,400.0,0.8,1.6,7999.0,30.0,26.0,8000.0,8.0,1.6,Medium,0.9,3.5
+19,Chao Yung,LightCruiser,China,4.75''/22 40-pdr 1.32-Ton BLR,4.8,40.5,3.0,6.0,5198.0,12.0,22.0,2000.0,2.0,6.0,Short,0.0,2.0
+19,Chao Yung,LightCruiser,China,4.75''/22 40-pdr 1.32-Ton BLR,4.8,40.5,3.0,6.0,5198.0,12.0,22.0,4000.0,4.0,5.0,Medium,0.1,1.5
+19,Chao Yung,LightCruiser,China,4.75''/22 40-pdr 1.32-Ton BLR,4.8,40.5,3.0,6.0,5198.0,12.0,22.0,6000.0,6.0,4.2,Medium,0.2,1.3
+20,Chih Yuan,LightCruiser,China,21cm RKL/30 C/84,8.2,308.6,1.0,2.0,8228.0,26.0,30.0,2000.0,2.0,2.0,Short,0.2,6.4
+20,Chih Yuan,LightCruiser,China,21cm RKL/30 C/84,8.2,308.6,1.0,2.0,8228.0,26.0,30.0,4000.0,4.0,2.0,Short,0.4,5.0
+20,Chih Yuan,LightCruiser,China,21cm RKL/30 C/84,8.2,308.6,1.0,2.0,8228.0,26.0,30.0,6000.0,6.0,2.0,Medium,0.6,4.2
+20,Chih Yuan,LightCruiser,China,21cm RKL/30 C/84,8.2,308.6,1.0,2.0,8228.0,26.0,30.0,8000.0,8.0,2.0,Medium,0.9,3.5
+20,Chih Yuan,LightCruiser,China,21cm RKL/30 C/84,8.2,308.6,1.0,2.0,8228.0,26.0,30.0,10000.0,10.0,2.0,Medium,0.9,3.5
+21,Chih Yuan,LightCruiser,China,15cm RKL/35 C/80,5.9,112.4,4.0,8.0,7818.0,17.0,35.0,2000.0,2.0,7.2,Short,0.1,4.5
+21,Chih Yuan,LightCruiser,China,15cm RKL/35 C/80,5.9,112.4,4.0,8.0,7818.0,17.0,35.0,4000.0,4.0,5.6,Medium,0.3,3.3
+21,Chih Yuan,LightCruiser,China,15cm RKL/35 C/80,5.9,112.4,4.0,8.0,7818.0,17.0,35.0,6000.0,6.0,4.4,Medium,0.4,2.6
+21,Chih Yuan,LightCruiser,China,15cm RKL/35 C/80,5.9,112.4,4.0,8.0,7818.0,17.0,35.0,8000.0,8.0,3.6,Medium,0.6,2.2
+22,King Yuan,ArmoredCruiser,China,21cm RKL/22,8.2,217.2,0.8,1.6,6124.0,23.0,22.0,2000.0,2.0,1.6,Short,0.2,4.5
+22,King Yuan,ArmoredCruiser,China,21cm RKL/22,8.2,217.2,0.8,1.6,6124.0,23.0,22.0,4000.0,4.0,1.6,Medium,0.3,3.5
+22,King Yuan,ArmoredCruiser,China,21cm RKL/22,8.2,217.2,0.8,1.6,6124.0,23.0,22.0,6000.0,6.0,1.6,Medium,0.5,3.0
+22,King Yuan,ArmoredCruiser,China,21cm RKL/22,8.2,217.2,0.8,1.6,6124.0,23.0,22.0,8000.0,8.0,1.6,Medium,0.5,2.9
+23,King Yuan,ArmoredCruiser,China,15cm RKL/35 C/80,5.9,112.4,4.0,8.0,7818.0,17.0,35.0,2000.0,2.0,7.2,Short,0.1,4.5
+23,King Yuan,ArmoredCruiser,China,15cm RKL/35 C/80,5.9,112.4,4.0,8.0,7818.0,17.0,35.0,4000.0,4.0,5.6,Medium,0.3,3.3
+23,King Yuan,ArmoredCruiser,China,15cm RKL/35 C/80,5.9,112.4,4.0,8.0,7818.0,17.0,35.0,6000.0,6.0,4.4,Medium,0.4,2.6
+23,King Yuan,ArmoredCruiser,China,15cm RKL/35 C/80,5.9,112.4,4.0,8.0,7818.0,17.0,35.0,8000.0,8.0,3.6,Medium,0.6,2.2
+24,Ping Yuen,ArmoredCruiser,China,26cm RKL C/83,10.4,606.3,0.5,1.0,9590.0,34.0,83.0,2000.0,2.0,1.0,Short,0.4,8.9
+24,Ping Yuen,ArmoredCruiser,China,26cm RKL C/83,10.4,606.3,0.5,1.0,9590.0,34.0,83.0,4000.0,4.0,1.0,Short,0.7,7.3
+24,Ping Yuen,ArmoredCruiser,China,26cm RKL C/83,10.4,606.3,0.5,1.0,9590.0,34.0,83.0,6000.0,6.0,1.0,Medium,1.0,6.1
+24,Ping Yuen,ArmoredCruiser,China,26cm RKL C/83,10.4,606.3,0.5,1.0,9590.0,34.0,83.0,8000.0,8.0,1.0,Medium,1.2,5.2
+24,Ping Yuen,ArmoredCruiser,China,26cm RKL C/83,10.4,606.3,0.5,1.0,9590.0,34.0,83.0,10000.0,10.0,1.0,Medium,1.4,4.6
+25,Ping Yuen,ArmoredCruiser,China,15cm RKL/35 C/80,5.9,112.4,4.0,8.0,7818.0,17.0,35.0,2000.0,2.0,7.2,Short,0.1,4.5
+25,Ping Yuen,ArmoredCruiser,China,15cm RKL/35 C/80,5.9,112.4,4.0,8.0,7818.0,17.0,35.0,4000.0,4.0,5.6,Medium,0.3,3.3
+25,Ping Yuen,ArmoredCruiser,China,15cm RKL/35 C/80,5.9,112.4,4.0,8.0,7818.0,17.0,35.0,6000.0,6.0,4.4,Medium,0.4,2.6
+25,Ping Yuen,ArmoredCruiser,China,15cm RKL/35 C/80,5.9,112.4,4.0,8.0,7818.0,17.0,35.0,8000.0,8.0,3.6,Medium,0.6,2.2
+26,Kuang Chia,LightCruiser,China,15cm RKL/35 C/80,5.9,112.4,4.0,8.0,7818.0,17.0,35.0,2000.0,2.0,7.2,Short,0.1,4.5
+26,Kuang Chia,LightCruiser,China,15cm RKL/35 C/80,5.9,112.4,4.0,8.0,7818.0,17.0,35.0,4000.0,4.0,5.6,Medium,0.3,3.3
+26,Kuang Chia,LightCruiser,China,15cm RKL/35 C/80,5.9,112.4,4.0,8.0,7818.0,17.0,35.0,6000.0,6.0,4.4,Medium,0.4,2.6
+26,Kuang Chia,LightCruiser,China,15cm RKL/35 C/80,5.9,112.4,4.0,8.0,7818.0,17.0,35.0,8000.0,8.0,3.6,Medium,0.6,2.2
+27,Kuang Chia,LightCruiser,China,12cm RKL/35 C/80,4.7,57.3,4.0,8.0,8797.0,13.0,35.0,2000.0,2.0,7.0,Short,0.0,3.1
+27,Kuang Chia,LightCruiser,China,12cm RKL/35 C/80,4.7,57.3,4.0,8.0,8797.0,13.0,35.0,4000.0,4.0,5.4,Medium,0.1,2.2
+27,Kuang Chia,LightCruiser,China,12cm RKL/35 C/80,4.7,57.3,4.0,8.0,8797.0,13.0,35.0,6000.0,6.0,4.1,Medium,0.3,1.8
+27,Kuang Chia,LightCruiser,China,12cm RKL/35 C/80,4.7,57.3,4.0,8.0,8797.0,13.0,35.0,8000.0,8.0,3.3,Long,0.5,1.5
+27,Kuang Chia,LightCruiser,China,12cm RKL/35 C/80,4.7,57.3,4.0,8.0,8797.0,13.0,35.0,10000.0,10.0,3.0,Long,0.7,1.4
+28,Wei Yuen,PatrolGunboat,China,Armstrong 7'' Gun,7.0,112.4,4.0,8.0,7818.0,20.0,,2000.0,2.0,7.2,Short,0.1,4.5
+28,Wei Yuen,PatrolGunboat,China,Armstrong 7'' Gun,7.0,112.4,4.0,8.0,7818.0,20.0,,4000.0,4.0,5.6,Medium,0.3,3.3
+28,Wei Yuen,PatrolGunboat,China,Armstrong 7'' Gun,7.0,112.4,4.0,8.0,7818.0,20.0,,6000.0,6.0,4.4,Medium,0.4,2.6
+28,Wei Yuen,PatrolGunboat,China,Armstrong 7'' Gun,7.0,112.4,4.0,8.0,7818.0,20.0,,8000.0,8.0,3.6,Medium,0.6,2.2
+29,Wei Yuen,PatrolGunboat,China,Armstrong 4.7'' Gun,4.7,57.3,4.0,8.0,8797.0,13.0,,2000.0,2.0,7.0,Short,0.0,3.1
+29,Wei Yuen,PatrolGunboat,China,Armstrong 4.7'' Gun,4.7,57.3,4.0,8.0,8797.0,13.0,,4000.0,4.0,5.4,Medium,0.1,2.2
+29,Wei Yuen,PatrolGunboat,China,Armstrong 4.7'' Gun,4.7,57.3,4.0,8.0,8797.0,13.0,,6000.0,6.0,4.1,Medium,0.3,1.8
+29,Wei Yuen,PatrolGunboat,China,Armstrong 4.7'' Gun,4.7,57.3,4.0,8.0,8797.0,13.0,,8000.0,8.0,3.3,Long,0.5,1.5
+29,Wei Yuen,PatrolGunboat,China,Armstrong 4.7'' Gun,4.7,57.3,4.0,8.0,8797.0,13.0,,10000.0,10.0,3.0,Long,0.7,1.4
+30,Fuso,Battleship,Japan,24cm RKL/20 C/67,9.5,306.4,0.8,1.6,8475.0,27.0,20.0,2000.0,2.0,1.6,Short,0.1,5.5
+30,Fuso,Battleship,Japan,24cm RKL/20 C/67,9.5,306.4,0.8,1.6,8475.0,27.0,20.0,4000.0,4.0,1.6,Medium,0.3,4.4
+30,Fuso,Battleship,Japan,24cm RKL/20 C/67,9.5,306.4,0.8,1.6,8475.0,27.0,20.0,6000.0,6.0,1.6,Medium,0.6,3.7
+30,Fuso,Battleship,Japan,24cm RKL/20 C/67,9.5,306.4,0.8,1.6,8475.0,27.0,20.0,8000.0,8.0,1.6,Long,1.0,3.3
+30,Fuso,Battleship,Japan,24cm RKL/20 C/67,9.5,306.4,0.8,1.6,8475.0,27.0,20.0,10000.0,10.0,1.6,Long,1.1,3.2
+31,Fuso,Battleship,Japan,15cm/35 EOC,6.0,100.0,5.0,10.0,8828.0,16.0,35.0,2000.0,2.0,7.3,Short,0.1,4.7
+31,Fuso,Battleship,Japan,15cm/35 EOC,6.0,100.0,5.0,10.0,8828.0,16.0,35.0,4000.0,4.0,5.7,Short,0.2,3.3
+31,Fuso,Battleship,Japan,15cm/35 EOC,6.0,100.0,5.0,10.0,8828.0,16.0,35.0,6000.0,6.0,4.5,Medium,0.4,2.6
+31,Fuso,Battleship,Japan,15cm/35 EOC,6.0,100.0,5.0,10.0,8828.0,16.0,35.0,8000.0,8.0,3.6,Long,0.6,2.2
+31,Fuso,Battleship,Japan,15cm/35 EOC,6.0,100.0,5.0,10.0,8828.0,16.0,35.0,10000.0,10.0,3.3,Long,0.7,2.1
+32,Itsukushima,LightCruiser,Japan,32cm/38 M1887,12.6,992.0,0.3,0.6,11390.0,42.0,38.0,2000.0,2.0,0.6,Short,0.3,13.3
+32,Itsukushima,LightCruiser,Japan,32cm/38 M1887,12.6,992.0,0.3,0.6,11390.0,42.0,38.0,4000.0,4.0,0.6,Short,0.6,11.3
+32,Itsukushima,LightCruiser,Japan,32cm/38 M1887,12.6,992.0,0.3,0.6,11390.0,42.0,38.0,6000.0,6.0,0.6,Short,0.9,9.5
+32,Itsukushima,LightCruiser,Japan,32cm/38 M1887,12.6,992.0,0.3,0.6,11390.0,42.0,38.0,8000.0,8.0,0.6,Medium,1.2,8.0
+32,Itsukushima,LightCruiser,Japan,32cm/38 M1887,12.6,992.0,0.3,0.6,11390.0,42.0,38.0,10000.0,10.0,0.6,Medium,1.5,6.8
+32,Itsukushima,LightCruiser,Japan,32cm/38 M1887,12.6,992.0,0.3,0.6,11390.0,42.0,38.0,12000.0,12.0,0.6,Medium,1.7,6.2
+33,Itsukushima,LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,4.5,9.0,8412.0,12.0,40.0,2000.0,2.0,7.0,Short,0.0,2.6
+33,Itsukushima,LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,4.5,9.0,8412.0,12.0,40.0,4000.0,4.0,5.3,Medium,0.1,1.8
+33,Itsukushima,LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,4.5,9.0,8412.0,12.0,40.0,6000.0,6.0,4.1,Medium,0.3,1.5
+33,Itsukushima,LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,4.5,9.0,8412.0,12.0,40.0,8000.0,8.0,3.2,Long,0.5,1.2
+33,Itsukushima,LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,4.5,9.0,8412.0,12.0,40.0,10000.0,10.0,3.0,Long,0.6,1.2
+34,Itsukushima (1902),LightCruiser,Japan,32cm/38 M1887,12.6,992.0,0.3,0.6,11390.0,42.0,38.0,2000.0,2.0,0.6,Short,0.3,13.3
+34,Itsukushima (1902),LightCruiser,Japan,32cm/38 M1887,12.6,992.0,0.3,0.6,11390.0,42.0,38.0,4000.0,4.0,0.6,Short,0.6,11.3
+34,Itsukushima (1902),LightCruiser,Japan,32cm/38 M1887,12.6,992.0,0.3,0.6,11390.0,42.0,38.0,6000.0,6.0,0.6,Short,0.9,9.5
+34,Itsukushima (1902),LightCruiser,Japan,32cm/38 M1887,12.6,992.0,0.3,0.6,11390.0,42.0,38.0,8000.0,8.0,0.6,Medium,1.2,8.0
+34,Itsukushima (1902),LightCruiser,Japan,32cm/38 M1887,12.6,992.0,0.3,0.6,11390.0,42.0,38.0,10000.0,10.0,0.6,Medium,1.5,6.8
+34,Itsukushima (1902),LightCruiser,Japan,32cm/38 M1887,12.6,992.0,0.3,0.6,11390.0,42.0,38.0,12000.0,12.0,0.6,Medium,1.7,6.2
+35,Itsukushima (1902),LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,2000.0,2.0,7.4,Short,0.0,3.3
+35,Itsukushima (1902),LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,4000.0,4.0,5.7,Short,0.2,2.1
+35,Itsukushima (1902),LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,6000.0,6.0,4.4,Medium,0.2,1.6
+35,Itsukushima (1902),LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,8000.0,8.0,3.5,Long,0.4,1.4
+35,Itsukushima (1902),LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,10000.0,10.0,2.8,Long,0.7,1.2
+36,Matsushima,LightCruiser,Japan,32cm/38 M1887,12.6,992.0,0.3,0.6,11390.0,42.0,38.0,2000.0,2.0,0.6,Short,0.3,13.3
+36,Matsushima,LightCruiser,Japan,32cm/38 M1887,12.6,992.0,0.3,0.6,11390.0,42.0,38.0,4000.0,4.0,0.6,Short,0.6,11.3
+36,Matsushima,LightCruiser,Japan,32cm/38 M1887,12.6,992.0,0.3,0.6,11390.0,42.0,38.0,6000.0,6.0,0.6,Short,0.9,9.5
+36,Matsushima,LightCruiser,Japan,32cm/38 M1887,12.6,992.0,0.3,0.6,11390.0,42.0,38.0,8000.0,8.0,0.6,Medium,1.2,8.0
+36,Matsushima,LightCruiser,Japan,32cm/38 M1887,12.6,992.0,0.3,0.6,11390.0,42.0,38.0,10000.0,10.0,0.6,Medium,1.5,6.8
+36,Matsushima,LightCruiser,Japan,32cm/38 M1887,12.6,992.0,0.3,0.6,11390.0,42.0,38.0,12000.0,12.0,0.6,Medium,1.7,6.2
+37,Matsushima,LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,4.5,9.0,8412.0,12.0,40.0,2000.0,2.0,7.0,Short,0.0,2.6
+37,Matsushima,LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,4.5,9.0,8412.0,12.0,40.0,4000.0,4.0,5.3,Medium,0.1,1.8
+37,Matsushima,LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,4.5,9.0,8412.0,12.0,40.0,6000.0,6.0,4.1,Medium,0.3,1.5
+37,Matsushima,LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,4.5,9.0,8412.0,12.0,40.0,8000.0,8.0,3.2,Long,0.5,1.2
+37,Matsushima,LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,4.5,9.0,8412.0,12.0,40.0,10000.0,10.0,3.0,Long,0.6,1.2
+38,Matsushima (1902),LightCruiser,Japan,32cm/38 M1887,12.6,992.0,0.3,0.6,11390.0,42.0,38.0,2000.0,2.0,0.6,Short,0.3,13.3
+38,Matsushima (1902),LightCruiser,Japan,32cm/38 M1887,12.6,992.0,0.3,0.6,11390.0,42.0,38.0,4000.0,4.0,0.6,Short,0.6,11.3
+38,Matsushima (1902),LightCruiser,Japan,32cm/38 M1887,12.6,992.0,0.3,0.6,11390.0,42.0,38.0,6000.0,6.0,0.6,Short,0.9,9.5
+38,Matsushima (1902),LightCruiser,Japan,32cm/38 M1887,12.6,992.0,0.3,0.6,11390.0,42.0,38.0,8000.0,8.0,0.6,Medium,1.2,8.0
+38,Matsushima (1902),LightCruiser,Japan,32cm/38 M1887,12.6,992.0,0.3,0.6,11390.0,42.0,38.0,10000.0,10.0,0.6,Medium,1.5,6.8
+38,Matsushima (1902),LightCruiser,Japan,32cm/38 M1887,12.6,992.0,0.3,0.6,11390.0,42.0,38.0,12000.0,12.0,0.6,Medium,1.7,6.2
+39,Matsushima (1902),LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,4.5,9.0,9899.0,12.0,40.0,2000.0,2.0,7.4,Short,0.0,3.3
+39,Matsushima (1902),LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,4.5,9.0,9899.0,12.0,40.0,4000.0,4.0,5.7,Short,0.2,2.1
+39,Matsushima (1902),LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,4.5,9.0,9899.0,12.0,40.0,6000.0,6.0,4.4,Medium,0.2,1.6
+39,Matsushima (1902),LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,4.5,9.0,9899.0,12.0,40.0,8000.0,8.0,3.5,Medium,0.4,1.4
+39,Matsushima (1902),LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,4.5,9.0,9899.0,12.0,40.0,10000.0,10.0,2.8,Long,0.7,1.2
+40,Kongo,ArmoredCruiser,Japan,17cm RKL/25 C/74,6.7,118.0,3.5,7.0,6294.0,18.0,25.0,2000.0,2.0,6.9,Short,0.1,3.9
+40,Kongo,ArmoredCruiser,Japan,17cm RKL/25 C/74,6.7,118.0,3.5,7.0,6294.0,18.0,25.0,4000.0,4.0,5.2,Medium,0.2,3.0
+40,Kongo,ArmoredCruiser,Japan,17cm RKL/25 C/74,6.7,118.0,3.5,7.0,6294.0,18.0,25.0,6000.0,6.0,4.0,Medium,0.4,2.5
+40,Kongo,ArmoredCruiser,Japan,17cm RKL/25 C/74,6.7,118.0,3.5,7.0,6294.0,18.0,25.0,8000.0,8.0,3.9,Medium,0.5,2.4
+41,Kongo,ArmoredCruiser,Japan,15cm RKL/25 C/75,5.9,86.0,4.5,9.0,6110.0,16.0,25.0,2000.0,2.0,6.9,Short,0.1,3.4
+41,Kongo,ArmoredCruiser,Japan,15cm RKL/25 C/75,5.9,86.0,4.5,9.0,6110.0,16.0,25.0,4000.0,4.0,5.1,Medium,0.2,2.6
+41,Kongo,ArmoredCruiser,Japan,15cm RKL/25 C/75,5.9,86.0,4.5,9.0,6110.0,16.0,25.0,6000.0,6.0,4.0,Medium,0.4,2.1
+41,Kongo,ArmoredCruiser,Japan,15cm RKL/25 C/75,5.9,86.0,4.5,9.0,6110.0,16.0,25.0,8000.0,8.0,3.9,Medium,0.4,2.1
+42,Chiyoda,ArmoredCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,2000.0,2.0,7.4,Short,0.0,3.3
+42,Chiyoda,ArmoredCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,4000.0,4.0,5.7,Short,0.2,2.1
+42,Chiyoda,ArmoredCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,6000.0,6.0,4.4,Medium,0.2,1.6
+42,Chiyoda,ArmoredCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,8000.0,8.0,3.5,Long,0.4,1.4
+42,Chiyoda,ArmoredCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,10000.0,10.0,2.8,Long,0.7,1.2
+43,Maya,PatrolGunboat,Japan,21cm RKL/22 C/67,8.3,217.2,0.8,1.6,6124.0,23.0,22.0,2000.0,2.0,1.6,Short,0.4,4.7
+43,Maya,PatrolGunboat,Japan,21cm RKL/22 C/67,8.3,217.2,0.8,1.6,6124.0,23.0,22.0,4000.0,4.0,1.6,Medium,0.7,3.7
+43,Maya,PatrolGunboat,Japan,21cm RKL/22 C/67,8.3,217.2,0.8,1.6,6124.0,23.0,22.0,6000.0,6.0,1.6,Medium,0.8,3.2
+43,Maya,PatrolGunboat,Japan,21cm RKL/22 C/67,8.3,217.2,0.8,1.6,6124.0,23.0,22.0,8000.0,8.0,1.6,Medium,0.8,3.1
+44,Maya,PatrolGunboat,Japan,12cm/25 Krupp C/78,4.7,44.1,3.0,6.0,5711.0,12.0,25.0,2000.0,2.0,6.0,Medium,0.1,1.3
+44,Maya,PatrolGunboat,Japan,12cm/25 Krupp C/78,4.7,44.1,3.0,6.0,5711.0,12.0,25.0,4000.0,4.0,4.1,Long,0.2,1.0
+44,Maya,PatrolGunboat,Japan,12cm/25 Krupp C/78,4.7,44.1,3.0,6.0,5711.0,12.0,25.0,6000.0,6.0,2.4,Extreme,0.8,0.9
+45,Saikyo Maru,ArmedMerchantCruiser,Japan,4.7in/40 EOC Pattern P,4.7,45.0,4.5,9.0,8412.0,12.0,40.0,2000.0,2.0,7.0,Short,0.0,2.6
+45,Saikyo Maru,ArmedMerchantCruiser,Japan,4.7in/40 EOC Pattern P,4.7,45.0,4.5,9.0,8412.0,12.0,40.0,4000.0,4.0,5.3,Medium,0.1,1.8
+45,Saikyo Maru,ArmedMerchantCruiser,Japan,4.7in/40 EOC Pattern P,4.7,45.0,4.5,9.0,8412.0,12.0,40.0,6000.0,6.0,4.1,Medium,0.3,1.5
+45,Saikyo Maru,ArmedMerchantCruiser,Japan,4.7in/40 EOC Pattern P,4.7,45.0,4.5,9.0,8412.0,12.0,40.0,8000.0,8.0,3.2,Long,0.5,1.2
+45,Saikyo Maru,ArmedMerchantCruiser,Japan,4.7in/40 EOC Pattern P,4.7,45.0,4.5,9.0,8412.0,12.0,40.0,10000.0,10.0,3.0,Long,0.6,1.2
+46,Katsuragi,LightCruiser,Japan,17cm RKL/25 C/74,6.7,118.0,3.5,7.0,6294.0,18.0,25.0,2000.0,2.0,6.9,Short,0.1,3.9
+46,Katsuragi,LightCruiser,Japan,17cm RKL/25 C/74,6.7,118.0,3.5,7.0,6294.0,18.0,25.0,4000.0,4.0,5.2,Medium,0.2,3.0
+46,Katsuragi,LightCruiser,Japan,17cm RKL/25 C/74,6.7,118.0,3.5,7.0,6294.0,18.0,25.0,6000.0,6.0,4.0,Medium,0.4,2.5
+46,Katsuragi,LightCruiser,Japan,17cm RKL/25 C/74,6.7,118.0,3.5,7.0,6294.0,18.0,25.0,8000.0,8.0,3.9,Medium,0.5,2.4
+47,Katsuragi,LightCruiser,Japan,12cm/25 Krupp C/78,4.7,44.1,3.0,6.0,5711.0,12.0,25.0,2000.0,2.0,6.0,Medium,0.1,1.3
+47,Katsuragi,LightCruiser,Japan,12cm/25 Krupp C/78,4.7,44.1,3.0,6.0,5711.0,12.0,25.0,4000.0,4.0,4.1,Long,0.2,0.8
+47,Katsuragi,LightCruiser,Japan,12cm/25 Krupp C/78,4.7,44.1,3.0,6.0,5711.0,12.0,25.0,6000.0,6.0,2.4,Extreme,0.8,0.9
+48,Tenryu,LightCruiser,Japan,15cm RKL L/25 C/75,5.9,86.0,4.5,9.0,6110.0,16.0,25.0,2000.0,2.0,6.9,Short,0.1,3.4
+48,Tenryu,LightCruiser,Japan,15cm RKL L/25 C/75,5.9,86.0,4.5,9.0,6110.0,16.0,25.0,4000.0,4.0,5.1,Medium,0.2,2.6
+48,Tenryu,LightCruiser,Japan,15cm RKL L/25 C/75,5.9,86.0,4.5,9.0,6110.0,16.0,25.0,6000.0,6.0,4.0,Medium,0.4,2.1
+48,Tenryu,LightCruiser,Japan,15cm RKL L/25 C/75,5.9,86.0,4.5,9.0,6110.0,16.0,25.0,8000.0,8.0,3.9,Medium,0.4,2.1
+49,Tenryu,LightCruiser,Japan,12cm/25 Krupp C/78,4.7,44.1,3.0,6.0,5711.0,12.0,25.0,2000.0,2.0,6.0,Medium,0.1,1.3
+49,Tenryu,LightCruiser,Japan,12cm/25 Krupp C/78,4.7,44.1,3.0,6.0,5711.0,12.0,25.0,4000.0,4.0,4.1,Long,0.2,1.0
+49,Tenryu,LightCruiser,Japan,12cm/25 Krupp C/78,4.7,44.1,3.0,6.0,5711.0,12.0,25.0,6000.0,6.0,2.4,Extreme,0.8,0.9
+50,Takao,LightCruiser,Japan,15cm RKL/25 C/75,5.9,86.0,4.5,9.0,6110.0,16.0,25.0,2000.0,2.0,6.9,Short,0.1,3.4
+50,Takao,LightCruiser,Japan,15cm RKL/25 C/75,5.9,86.0,4.5,9.0,6110.0,16.0,25.0,4000.0,4.0,5.1,Medium,0.2,2.6
+50,Takao,LightCruiser,Japan,15cm RKL/25 C/75,5.9,86.0,4.5,9.0,6110.0,16.0,25.0,6000.0,6.0,4.0,Medium,0.4,2.1
+50,Takao,LightCruiser,Japan,15cm RKL/25 C/75,5.9,86.0,4.5,9.0,6110.0,16.0,25.0,8000.0,8.0,3.9,Medium,0.4,2.1
+51,Takao,LightCruiser,Japan,12cm/25 Krupp C/78,4.7,44.1,3.0,6.0,5711.0,12.0,25.0,2000.0,2.0,6.0,Medium,0.1,1.3
+51,Takao,LightCruiser,Japan,12cm/25 Krupp C/78,4.7,44.1,3.0,6.0,5711.0,12.0,25.0,4000.0,4.0,4.1,Long,0.2,1.0
+51,Takao,LightCruiser,Japan,12cm/25 Krupp C/78,4.7,44.1,3.0,6.0,5711.0,12.0,25.0,6000.0,6.0,2.4,Extreme,0.8,0.9
+52,Fuji,Battleship,Japan,30cm/40.4 EOC,12.0,850.0,1.0,2.0,16371.0,40.0,40.4,2000.0,2.0,2.0,Short,0.3,14.7
+52,Fuji,Battleship,Japan,30cm/40.4 EOC,12.0,850.0,1.0,2.0,16371.0,40.0,40.4,4000.0,4.0,2.0,Short,0.6,12.4
+52,Fuji,Battleship,Japan,30cm/40.4 EOC,12.0,850.0,1.0,2.0,16371.0,40.0,40.4,6000.0,6.0,2.0,Short,0.9,10.4
+52,Fuji,Battleship,Japan,30cm/40.4 EOC,12.0,850.0,1.0,2.0,16371.0,40.0,40.4,8000.0,8.0,2.0,Medium,1.1,8.6
+52,Fuji,Battleship,Japan,30cm/40.4 EOC,12.0,850.0,1.0,2.0,16371.0,40.0,40.4,10000.0,10.0,2.0,Medium,1.4,7.3
+52,Fuji,Battleship,Japan,30cm/40.4 EOC,12.0,850.0,1.0,2.0,16371.0,40.0,40.4,12000.0,12.0,2.0,Medium,1.6,6.3
+52,Fuji,Battleship,Japan,30cm/40.4 EOC,12.0,850.0,1.0,2.0,16371.0,40.0,40.4,15000.0,15.0,2.0,Long,2.3,5.3
+52,Fuji,Battleship,Japan,30cm/40.4 EOC,12.0,850.0,1.0,2.0,16371.0,40.0,40.4,18000.0,18.0,2.0,Long,2.7,4.9
+53,Fuji,Battleship,Japan,15cm/40 EOC,6.0,100.0,6.0,12.0,10241.0,16.0,40.0,2000.0,2.0,7.5,Short,0.1,5.8
+53,Fuji,Battleship,Japan,15cm/40 EOC,6.0,100.0,6.0,12.0,10241.0,16.0,40.0,4000.0,4.0,6.0,Short,0.3,4.0
+53,Fuji,Battleship,Japan,15cm/40 EOC,6.0,100.0,6.0,12.0,10241.0,16.0,40.0,6000.0,6.0,4.8,Medium,0.5,3.0
+53,Fuji,Battleship,Japan,15cm/40 EOC,6.0,100.0,6.0,12.0,10241.0,16.0,40.0,8000.0,8.0,3.9,Medium,0.7,2.4
+53,Fuji,Battleship,Japan,15cm/40 EOC,6.0,100.0,6.0,12.0,10241.0,16.0,40.0,10000.0,10.0,3.2,Long,0.9,2.1
+53,Fuji,Battleship,Japan,15cm/40 EOC,6.0,100.0,6.0,12.0,10241.0,16.0,40.0,12000.0,12.0,3.1,Long,1.0,2.1
+54,Fuji (1902),Battleship,Japan,30cm/40.4 EOC,12.0,850.0,1.0,2.0,16371.0,40.0,40.4,2000.0,2.0,2.0,Short,0.3,14.7
+54,Fuji (1902),Battleship,Japan,30cm/40.4 EOC,12.0,850.0,1.0,2.0,16371.0,40.0,40.4,4000.0,4.0,2.0,Short,0.6,12.4
+54,Fuji (1902),Battleship,Japan,30cm/40.4 EOC,12.0,850.0,1.0,2.0,16371.0,40.0,40.4,6000.0,6.0,2.0,Short,0.9,10.4
+54,Fuji (1902),Battleship,Japan,30cm/40.4 EOC,12.0,850.0,1.0,2.0,16371.0,40.0,40.4,8000.0,8.0,2.0,Medium,1.1,8.6
+54,Fuji (1902),Battleship,Japan,30cm/40.4 EOC,12.0,850.0,1.0,2.0,16371.0,40.0,40.4,10000.0,10.0,2.0,Medium,1.4,7.3
+54,Fuji (1902),Battleship,Japan,30cm/40.4 EOC,12.0,850.0,1.0,2.0,16371.0,40.0,40.4,12000.0,12.0,2.0,Medium,1.6,6.3
+54,Fuji (1902),Battleship,Japan,30cm/40.4 EOC,12.0,850.0,1.0,2.0,16371.0,40.0,40.4,15000.0,15.0,2.0,Long,2.3,5.3
+54,Fuji (1902),Battleship,Japan,30cm/40.4 EOC,12.0,850.0,1.0,2.0,16371.0,40.0,40.4,18000.0,18.0,2.0,Long,2.7,4.9
+55,Fuji (1902),Battleship,Japan,15cm/40 EOC,6.0,100.0,6.0,12.0,10241.0,16.0,40.0,2000.0,2.0,7.5,Short,0.1,5.8
+55,Fuji (1902),Battleship,Japan,15cm/40 EOC,6.0,100.0,6.0,12.0,10241.0,16.0,40.0,4000.0,4.0,6.0,Short,0.3,4.0
+55,Fuji (1902),Battleship,Japan,15cm/40 EOC,6.0,100.0,6.0,12.0,10241.0,16.0,40.0,6000.0,6.0,4.8,Medium,0.5,3.0
+55,Fuji (1902),Battleship,Japan,15cm/40 EOC,6.0,100.0,6.0,12.0,10241.0,16.0,40.0,8000.0,8.0,3.9,Medium,0.7,2.4
+55,Fuji (1902),Battleship,Japan,15cm/40 EOC,6.0,100.0,6.0,12.0,10241.0,16.0,40.0,10000.0,10.0,3.2,Long,0.9,2.1
+55,Fuji (1902),Battleship,Japan,15cm/40 EOC,6.0,100.0,6.0,12.0,10241.0,16.0,40.0,12000.0,12.0,3.1,Long,1.0,2.1
+56,Rossiya,ArmoredCruiser,Russia,203mm/45 M1892,8.0,193.6,1.5,3.0,14199.0,22.0,45.0,2000.0,2.0,3.0,Short,0.1,6.9
+56,Rossiya,ArmoredCruiser,Russia,203mm/45 M1892,8.0,193.6,1.5,3.0,14199.0,22.0,45.0,4000.0,4.0,3.0,Short,0.2,5.0
+56,Rossiya,ArmoredCruiser,Russia,203mm/45 M1892,8.0,193.6,1.5,3.0,14199.0,22.0,45.0,6000.0,6.0,3.0,Short,0.3,3.5
+56,Rossiya,ArmoredCruiser,Russia,203mm/45 M1892,8.0,193.6,1.5,3.0,14199.0,22.0,45.0,8000.0,8.0,3.0,Medium,0.5,2.5
+56,Rossiya,ArmoredCruiser,Russia,203mm/45 M1892,8.0,193.6,1.5,3.0,14199.0,22.0,45.0,10000.0,10.0,3.0,Medium,0.7,2.1
+56,Rossiya,ArmoredCruiser,Russia,203mm/45 M1892,8.0,193.6,1.5,3.0,14199.0,22.0,45.0,12000.0,12.0,3.0,Long,1.0,1.7
+56,Rossiya,ArmoredCruiser,Russia,203mm/45 M1892,8.0,193.6,1.5,3.0,14199.0,22.0,45.0,15000.0,15.0,2.5,Long,1.5,1.6
+57,Rossiya,ArmoredCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,2000.0,2.0,7.7,Short,0.1,4.1
+57,Rossiya,ArmoredCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,4000.0,4.0,6.2,Short,0.2,2.8
+57,Rossiya,ArmoredCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,6000.0,6.0,5.0,Medium,0.4,2.0
+57,Rossiya,ArmoredCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,8000.0,8.0,4.0,Medium,0.6,1.7
+57,Rossiya,ArmoredCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,10000.0,10.0,3.2,Long,0.9,1.5
+57,Rossiya,ArmoredCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,12000.0,12.0,2.6,Long,1.3,1.4
+57,Rossiya,ArmoredCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,15000.0,15.0,2.6,Long,1.4,1.4
+58,Gromoboi,ArmoredCruiser,Russia,203mm/45 M1892,8.0,193.6,1.5,3.0,14199.0,22.0,45.0,2000.0,2.0,3.0,Short,0.1,6.9
+58,Gromoboi,ArmoredCruiser,Russia,203mm/45 M1892,8.0,193.6,1.5,3.0,14199.0,22.0,45.0,4000.0,4.0,3.0,Short,0.2,5.0
+58,Gromoboi,ArmoredCruiser,Russia,203mm/45 M1892,8.0,193.6,1.5,3.0,14199.0,22.0,45.0,6000.0,6.0,3.0,Short,0.3,3.5
+58,Gromoboi,ArmoredCruiser,Russia,203mm/45 M1892,8.0,193.6,1.5,3.0,14199.0,22.0,45.0,8000.0,8.0,3.0,Medium,0.5,2.5
+58,Gromoboi,ArmoredCruiser,Russia,203mm/45 M1892,8.0,193.6,1.5,3.0,14199.0,22.0,45.0,10000.0,10.0,3.0,Medium,0.7,2.1
+58,Gromoboi,ArmoredCruiser,Russia,203mm/45 M1892,8.0,193.6,1.5,3.0,14199.0,22.0,45.0,12000.0,12.0,3.0,Long,1.0,1.7
+58,Gromoboi,ArmoredCruiser,Russia,203mm/45 M1892,8.0,193.6,1.5,3.0,14199.0,22.0,45.0,15000.0,15.0,2.5,Long,1.5,1.6
+59,Gromoboi,ArmoredCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,2000.0,2.0,7.7,Short,0.1,4.1
+59,Gromoboi,ArmoredCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,4000.0,4.0,6.2,Short,0.2,2.8
+59,Gromoboi,ArmoredCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,6000.0,6.0,5.0,Medium,0.4,2.0
+59,Gromoboi,ArmoredCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,8000.0,8.0,4.0,Medium,0.6,1.7
+59,Gromoboi,ArmoredCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,10000.0,10.0,3.2,Long,0.9,1.5
+59,Gromoboi,ArmoredCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,12000.0,12.0,2.6,Long,1.3,1.4
+59,Gromoboi,ArmoredCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,15000.0,15.0,2.6,Long,1.4,1.4
+60,Rurik,ArmoredCruiser,Russia,203mm/35 M1877,8.0,293.2,0.6,1.2,9209.0,25.0,35.0,2000.0,2.0,1.2,Short,0.3,5.7
+60,Rurik,ArmoredCruiser,Russia,203mm/35 M1877,8.0,293.2,0.6,1.2,9209.0,25.0,35.0,4000.0,4.0,1.2,Short,0.6,4.5
+60,Rurik,ArmoredCruiser,Russia,203mm/35 M1877,8.0,293.2,0.6,1.2,9209.0,25.0,35.0,6000.0,6.0,1.2,Medium,0.9,3.7
+60,Rurik,ArmoredCruiser,Russia,203mm/35 M1877,8.0,293.2,0.6,1.2,9209.0,25.0,35.0,8000.0,8.0,1.2,Medium,1.1,3.2
+60,Rurik,ArmoredCruiser,Russia,203mm/35 M1877,8.0,293.2,0.6,1.2,9209.0,25.0,35.0,10000.0,10.0,1.2,Long,1.3,3.0
+61,Rurik,ArmoredCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,2000.0,2.0,7.7,Short,0.1,4.1
+61,Rurik,ArmoredCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,4000.0,4.0,6.2,Short,0.2,2.8
+61,Rurik,ArmoredCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,6000.0,6.0,5.0,Medium,0.4,2.0
+61,Rurik,ArmoredCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,8000.0,8.0,4.0,Medium,0.6,1.7
+61,Rurik,ArmoredCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,10000.0,10.0,3.2,Long,0.9,1.5
+61,Rurik,ArmoredCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,12000.0,12.0,2.6,Long,1.3,1.4
+61,Rurik,ArmoredCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,15000.0,15.0,2.6,Long,1.4,1.4
+62,Rurik,ArmoredCruiser,Russia,120mm/45 M1891,4.7,45.1,5.0,10.0,10800.0,12.0,45.0,2000.0,2.0,7.4,Short,0.1,4.2
+62,Rurik,ArmoredCruiser,Russia,120mm/45 M1891,4.7,45.1,5.0,10.0,10800.0,12.0,45.0,4000.0,4.0,6.1,Short,0.2,2.5
+62,Rurik,ArmoredCruiser,Russia,120mm/45 M1891,4.7,45.1,5.0,10.0,10800.0,12.0,45.0,6000.0,6.0,4.7,Medium,0.3,1.7
+62,Rurik,ArmoredCruiser,Russia,120mm/45 M1891,4.7,45.1,5.0,10.0,10800.0,12.0,45.0,8000.0,8.0,3.7,Long,0.5,1.4
+62,Rurik,ArmoredCruiser,Russia,120mm/45 M1891,4.7,45.1,5.0,10.0,10800.0,12.0,45.0,10000.0,10.0,2.9,Long,0.9,1.2
+62,Rurik,ArmoredCruiser,Russia,120mm/45 M1891,4.7,45.1,5.0,10.0,10800.0,12.0,45.0,12000.0,12.0,2.7,Long,1.0,1.1
+63,Idzumo,ArmoredCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,2000.0,2.0,4.0,Short,0.9,8.9
+63,Idzumo,ArmoredCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,4000.0,4.0,4.0,Short,0.2,6.9
+63,Idzumo,ArmoredCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,6000.0,6.0,4.0,Short,0.4,5.3
+63,Idzumo,ArmoredCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,8000.0,8.0,4.0,Medium,0.6,4.1
+63,Idzumo,ArmoredCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,10000.0,10.0,3.7,Medium,1.0,3.3
+63,Idzumo,ArmoredCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,12000.0,12.0,3.1,Long,1.3,2.9
+63,Idzumo,ArmoredCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,15000.0,15.0,2.5,Long,2.0,2.5
+64,Idzumo,ArmoredCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,2000.0,2.0,7.6,Short,0.1,6.5
+64,Idzumo,ArmoredCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,4000.0,4.0,6.2,Short,0.2,4.6
+64,Idzumo,ArmoredCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,6000.0,6.0,5.0,Medium,0.4,3.3
+64,Idzumo,ArmoredCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,8000.0,8.0,4.0,Medium,0.6,2.6
+64,Idzumo,ArmoredCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,10000.0,10.0,3.3,Long,0.9,2.2
+64,Idzumo,ArmoredCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,12000.0,12.0,3.0,Long,1.0,2.1
+65,Azuma,ArmoredCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,2000.0,2.0,4.0,Short,0.9,8.9
+65,Azuma,ArmoredCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,4000.0,4.0,4.0,Short,0.2,6.9
+65,Azuma,ArmoredCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,6000.0,6.0,4.0,Short,0.4,5.3
+65,Azuma,ArmoredCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,8000.0,8.0,4.0,Medium,0.6,4.1
+65,Azuma,ArmoredCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,10000.0,10.0,3.7,Medium,1.0,3.3
+65,Azuma,ArmoredCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,12000.0,12.0,3.1,Long,1.3,2.9
+65,Azuma,ArmoredCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,15000.0,15.0,2.5,Long,2.0,2.5
+66,Azuma,ArmoredCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,2000.0,2.0,7.6,Short,0.1,6.5
+66,Azuma,ArmoredCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,4000.0,4.0,6.2,Short,0.2,4.6
+66,Azuma,ArmoredCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,6000.0,6.0,5.0,Medium,0.4,3.3
+66,Azuma,ArmoredCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,8000.0,8.0,4.0,Medium,0.6,2.6
+66,Azuma,ArmoredCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,10000.0,10.0,3.3,Long,0.9,2.2
+66,Azuma,ArmoredCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,12000.0,12.0,3.0,Long,1.0,2.1
+67,Asama,ArmoredCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,2000.0,2.0,4.0,Short,0.9,8.9
+67,Asama,ArmoredCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,4000.0,4.0,4.0,Short,0.2,6.9
+67,Asama,ArmoredCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,6000.0,6.0,4.0,Short,0.4,5.3
+67,Asama,ArmoredCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,8000.0,8.0,4.0,Medium,0.6,4.1
+67,Asama,ArmoredCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,10000.0,10.0,3.7,Medium,1.0,3.3
+67,Asama,ArmoredCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,12000.0,12.0,3.1,Long,1.3,2.9
+67,Asama,ArmoredCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,15000.0,15.0,2.5,Long,2.0,2.5
+68,Asama,ArmoredCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,2000.0,2.0,7.6,Short,0.1,6.5
+68,Asama,ArmoredCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,4000.0,4.0,6.2,Short,0.2,4.6
+68,Asama,ArmoredCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,6000.0,6.0,5.0,Medium,0.4,3.3
+68,Asama,ArmoredCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,8000.0,8.0,4.0,Medium,0.6,2.6
+68,Asama,ArmoredCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,10000.0,10.0,3.3,Long,0.9,2.2
+68,Asama,ArmoredCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,12000.0,12.0,3.0,Long,1.0,2.1
+69,Tsushima,LightCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,2000.0,2.0,7.6,Short,0.1,6.5
+69,Tsushima,LightCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,4000.0,4.0,6.2,Short,0.2,4.6
+69,Tsushima,LightCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,6000.0,6.0,5.0,Medium,0.4,3.3
+69,Tsushima,LightCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,8000.0,8.0,4.0,Medium,0.6,2.6
+69,Tsushima,LightCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,10000.0,10.0,3.3,Long,0.9,2.2
+69,Tsushima,LightCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,12000.0,12.0,3.0,Long,1.0,2.1
+70,Bogatry,LightCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,2000.0,2.0,7.7,Short,0.1,4.1
+70,Bogatry,LightCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,4000.0,4.0,6.2,Short,0.2,2.8
+70,Bogatry,LightCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,6000.0,6.0,5.0,Medium,0.4,2.0
+70,Bogatry,LightCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,8000.0,8.0,4.0,Medium,0.6,1.7
+70,Bogatry,LightCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,10000.0,10.0,3.2,Long,0.9,1.5
+70,Bogatry,LightCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,12000.0,12.0,2.6,Long,1.3,1.4
+70,Bogatry,LightCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,15000.0,15.0,2.6,Long,1.4,1.4
+71,Yakumo,ArmoredCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,2000.0,2.0,4.0,Short,0.9,8.9
+71,Yakumo,ArmoredCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,4000.0,4.0,4.0,Short,0.2,6.9
+71,Yakumo,ArmoredCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,6000.0,6.0,4.0,Short,0.4,5.3
+71,Yakumo,ArmoredCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,8000.0,8.0,4.0,Medium,0.6,4.1
+71,Yakumo,ArmoredCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,10000.0,10.0,3.7,Medium,1.0,3.3
+71,Yakumo,ArmoredCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,12000.0,12.0,3.1,Long,1.3,2.9
+71,Yakumo,ArmoredCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,15000.0,15.0,2.5,Long,2.0,2.5
+72,Yakumo,ArmoredCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,2000.0,2.0,7.6,Short,0.1,6.5
+72,Yakumo,ArmoredCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,4000.0,4.0,6.2,Short,0.2,4.6
+72,Yakumo,ArmoredCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,6000.0,6.0,5.0,Medium,0.4,3.3
+72,Yakumo,ArmoredCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,8000.0,8.0,4.0,Medium,0.6,2.6
+72,Yakumo,ArmoredCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,10000.0,10.0,3.3,Long,0.9,2.2
+72,Yakumo,ArmoredCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,12000.0,12.0,3.0,Long,1.0,2.1
+73,Suma,LightCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,2000.0,2.0,7.6,Short,0.1,6.5
+73,Suma,LightCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,4000.0,4.0,6.2,Short,0.2,4.6
+73,Suma,LightCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,6000.0,6.0,5.0,Medium,0.4,3.3
+73,Suma,LightCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,8000.0,8.0,4.0,Medium,0.6,2.6
+73,Suma,LightCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,10000.0,10.0,3.3,Long,0.9,2.2
+73,Suma,LightCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,12000.0,12.0,3.0,Long,1.0,2.1
+74,Suma,LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,2000.0,2.0,7.4,Short,0.0,3.3
+74,Suma,LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,4000.0,4.0,5.7,Short,0.2,2.1
+74,Suma,LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,6000.0,6.0,4.4,Medium,0.2,1.6
+74,Suma,LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,8000.0,8.0,3.5,Long,0.4,1.4
+74,Suma,LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,10000.0,10.0,2.8,Long,0.7,1.2
+75,Variag,LightCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,2000.0,2.0,7.7,Short,0.1,4.1
+75,Variag,LightCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,4000.0,4.0,6.2,Short,0.2,2.8
+75,Variag,LightCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,6000.0,6.0,5.0,Medium,0.4,2.0
+75,Variag,LightCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,8000.0,8.0,4.0,Medium,0.6,1.7
+75,Variag,LightCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,10000.0,10.0,3.2,Long,0.9,1.5
+75,Variag,LightCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,12000.0,12.0,2.6,Long,1.3,1.4
+75,Variag,LightCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,15000.0,15.0,2.6,Long,1.4,1.4
+76,Korietz,PatrolGunboat,Russia,203mm/35 M1877,8.0,293.2,0.6,1.2,9209.0,25.0,35.0,2000.0,2.0,1.2,Short,0.3,5.7
+76,Korietz,PatrolGunboat,Russia,203mm/35 M1877,8.0,293.2,0.6,1.2,9209.0,25.0,35.0,4000.0,4.0,1.2,Short,0.6,4.5
+76,Korietz,PatrolGunboat,Russia,203mm/35 M1877,8.0,293.2,0.6,1.2,9209.0,25.0,35.0,6000.0,6.0,1.2,Medium,0.9,3.7
+76,Korietz,PatrolGunboat,Russia,203mm/35 M1877,8.0,293.2,0.6,1.2,9209.0,25.0,35.0,8000.0,8.0,1.2,Medium,1.1,3.2
+76,Korietz,PatrolGunboat,Russia,203mm/35 M1877,8.0,293.2,0.6,1.2,9209.0,25.0,35.0,10000.0,10.0,1.2,Long,1.3,3.0
+77,Korietz,PatrolGunboat,Russia,152mm/35 M1887,6.0,91.5,1.5,3.0,8170.0,16.0,35.0,2000.0,2.0,3.0,Short,0.1,4.8
+77,Korietz,PatrolGunboat,Russia,152mm/35 M1887,6.0,91.5,1.5,3.0,8170.0,16.0,35.0,4000.0,4.0,3.0,Short,0.2,3.0
+77,Korietz,PatrolGunboat,Russia,152mm/35 M1887,6.0,91.5,1.5,3.0,8170.0,16.0,35.0,6000.0,6.0,3.0,Medium,0.4,2.2
+77,Korietz,PatrolGunboat,Russia,152mm/35 M1887,6.0,91.5,1.5,3.0,8170.0,16.0,35.0,8000.0,8.0,3.0,Long,0.7,1.8
+77,Korietz,PatrolGunboat,Russia,152mm/35 M1887,6.0,91.5,1.5,3.0,8170.0,16.0,35.0,10000.0,10.0,3.0,Long,0.7,1.8
+78,Korietz,PatrolGunboat,Russia,4.2''/20 9pdr M1879,4.2,27.3,4.0,8.0,5079.0,10.0,20.0,2000.0,2.0,6.3,Short,0.1,1.6
+78,Korietz,PatrolGunboat,Russia,4.2''/20 9pdr M1879,4.2,27.3,4.0,8.0,5079.0,10.0,20.0,4000.0,4.0,4.4,Medium,0.2,1.1
+78,Korietz,PatrolGunboat,Russia,4.2''/20 9pdr M1879,4.2,27.3,4.0,8.0,5079.0,10.0,20.0,6000.0,6.0,3.6,Long,0.4,0.9
+79,Poltava,Battleship,Russia,305mm/40 M1892,12.0,731.3,1.0,2.0,14845.0,38.0,40.0,2000.0,2.0,2.0,Short,0.3,13.7
+79,Poltava,Battleship,Russia,305mm/40 M1892,12.0,731.3,1.0,2.0,14845.0,38.0,40.0,4000.0,4.0,2.0,Short,0.6,11.2
+79,Poltava,Battleship,Russia,305mm/40 M1892,12.0,731.3,1.0,2.0,14845.0,38.0,40.0,6000.0,6.0,2.0,Short,0.9,9.1
+79,Poltava,Battleship,Russia,305mm/40 M1892,12.0,731.3,1.0,2.0,14845.0,38.0,40.0,8000.0,8.0,2.0,Medium,1.3,7.3
+79,Poltava,Battleship,Russia,305mm/40 M1892,12.0,731.3,1.0,2.0,14845.0,38.0,40.0,10000.0,10.0,2.0,Medium,1.8,5.9
+79,Poltava,Battleship,Russia,305mm/40 M1892,12.0,731.3,1.0,2.0,14845.0,38.0,40.0,12000.0,12.0,2.0,Medium,2.1,5.0
+79,Poltava,Battleship,Russia,305mm/40 M1892,12.0,731.3,1.0,2.0,14845.0,38.0,40.0,15000.0,15.0,2.0,Long,2.9,4.3
+80,Poltava,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,2000.0,2.0,6.0,Short,0.1,4.1
+80,Poltava,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,4000.0,4.0,6.0,Short,0.2,2.8
+80,Poltava,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,6000.0,6.0,5.0,Medium,0.4,2.0
+80,Poltava,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,8000.0,8.0,4.0,Medium,0.6,1.7
+80,Poltava,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,10000.0,10.0,3.2,Long,0.9,1.5
+80,Poltava,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,12000.0,12.0,2.6,Long,1.3,1.4
+80,Poltava,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,15000.0,15.0,2.6,Long,1.4,1.4
+81,Poltava,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,2000.0,2.0,7.7,Short,0.1,4.1
+81,Poltava,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,4000.0,4.0,6.2,Short,0.2,2.8
+81,Poltava,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,6000.0,6.0,5.0,Medium,0.4,2.0
+81,Poltava,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,8000.0,8.0,4.0,Medium,0.6,1.7
+81,Poltava,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,10000.0,10.0,3.2,Long,0.9,1.5
+81,Poltava,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,12000.0,12.0,2.6,Long,1.3,1.4
+81,Poltava,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,15000.0,15.0,2.6,Long,1.4,1.4
+82,Tsessarevitch,Battleship,Russia,305mm/40 M1892,12.0,731.3,1.0,2.0,14845.0,38.0,40.0,2000.0,2.0,2.0,Short,0.3,13.7
+82,Tsessarevitch,Battleship,Russia,305mm/40 M1892,12.0,731.3,1.0,2.0,14845.0,38.0,40.0,4000.0,4.0,2.0,Short,0.6,11.2
+82,Tsessarevitch,Battleship,Russia,305mm/40 M1892,12.0,731.3,1.0,2.0,14845.0,38.0,40.0,6000.0,6.0,2.0,Short,0.9,9.1
+82,Tsessarevitch,Battleship,Russia,305mm/40 M1892,12.0,731.3,1.0,2.0,14845.0,38.0,40.0,8000.0,8.0,2.0,Medium,1.3,7.3
+82,Tsessarevitch,Battleship,Russia,305mm/40 M1892,12.0,731.3,1.0,2.0,14845.0,38.0,40.0,10000.0,10.0,2.0,Medium,1.8,5.9
+82,Tsessarevitch,Battleship,Russia,305mm/40 M1892,12.0,731.3,1.0,2.0,14845.0,38.0,40.0,12000.0,12.0,2.0,Medium,2.1,5.0
+82,Tsessarevitch,Battleship,Russia,305mm/40 M1892,12.0,731.3,1.0,2.0,14845.0,38.0,40.0,15000.0,15.0,2.0,Long,2.9,4.3
+83,Tsessarevitch,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,2000.0,2.0,7.7,Short,0.1,4.1
+83,Tsessarevitch,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,4000.0,4.0,6.2,Short,0.2,2.8
+83,Tsessarevitch,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,6000.0,6.0,5.0,Medium,0.4,2.0
+83,Tsessarevitch,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,8000.0,8.0,4.0,Medium,0.6,1.7
+83,Tsessarevitch,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,10000.0,10.0,3.2,Long,0.9,1.5
+83,Tsessarevitch,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,12000.0,12.0,2.6,Long,1.3,1.4
+83,Tsessarevitch,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,15000.0,15.0,2.6,Long,1.4,1.4
+84,Peresviet,Battleship,Russia,254mm/45 M1891,10.0,496.5,0.8,1.6,18983.0,32.0,45.0,2000.0,2.0,1.6,Short,0.3,10.8
+84,Peresviet,Battleship,Russia,254mm/45 M1891,10.0,496.5,0.8,1.6,18983.0,32.0,45.0,4000.0,4.0,1.6,Short,0.6,8.6
+84,Peresviet,Battleship,Russia,254mm/45 M1891,10.0,496.5,0.8,1.6,18983.0,32.0,45.0,6000.0,6.0,1.6,Short,0.8,6.9
+84,Peresviet,Battleship,Russia,254mm/45 M1891,10.0,496.5,0.8,1.6,18983.0,32.0,45.0,8000.0,8.0,1.6,Medium,1.0,5.6
+84,Peresviet,Battleship,Russia,254mm/45 M1891,10.0,496.5,0.8,1.6,18983.0,32.0,45.0,10000.0,10.0,1.6,Medium,1.2,4.8
+84,Peresviet,Battleship,Russia,254mm/45 M1891,10.0,496.5,0.8,1.6,18983.0,32.0,45.0,12000.0,12.0,1.6,Long,1.5,4.3
+84,Peresviet,Battleship,Russia,254mm/45 M1891,10.0,496.5,0.8,1.6,18983.0,32.0,45.0,15000.0,15.0,1.6,Long,2.4,4.0
+84,Peresviet,Battleship,Russia,254mm/45 M1891,10.0,496.5,0.8,1.6,18983.0,32.0,45.0,18000.0,18.0,1.6,Extreme,3.8,3.9
+84,Peresviet,Battleship,Russia,254mm/45 M1891,10.0,496.5,0.8,1.6,18983.0,32.0,45.0,21000.0,21.0,1.6,Extreme,4.3,3.9
+85,Peresviet,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,2000.0,2.0,6.0,Short,0.1,4.1
+85,Peresviet,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,4000.0,4.0,6.0,Short,0.2,2.8
+85,Peresviet,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,6000.0,6.0,5.0,Medium,0.4,2.0
+85,Peresviet,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,8000.0,8.0,4.0,Medium,0.6,1.7
+85,Peresviet,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,10000.0,10.0,3.2,Long,0.9,1.5
+85,Peresviet,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,12000.0,12.0,2.6,Long,1.3,1.4
+85,Peresviet,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,15000.0,15.0,2.6,Long,1.4,1.4
+86,Peresviet (1905),Battleship,Russia,254mm/45 M1891,10.0,496.5,0.8,1.6,18983.0,32.0,45.0,2000.0,2.0,1.6,Short,0.3,10.8
+86,Peresviet (1905),Battleship,Russia,254mm/45 M1891,10.0,496.5,0.8,1.6,18983.0,32.0,45.0,4000.0,4.0,1.6,Short,0.6,8.6
+86,Peresviet (1905),Battleship,Russia,254mm/45 M1891,10.0,496.5,0.8,1.6,18983.0,32.0,45.0,6000.0,6.0,1.6,Short,0.8,6.9
+86,Peresviet (1905),Battleship,Russia,254mm/45 M1891,10.0,496.5,0.8,1.6,18983.0,32.0,45.0,8000.0,8.0,1.6,Medium,1.0,5.6
+86,Peresviet (1905),Battleship,Russia,254mm/45 M1891,10.0,496.5,0.8,1.6,18983.0,32.0,45.0,10000.0,10.0,1.6,Medium,1.2,4.8
+86,Peresviet (1905),Battleship,Russia,254mm/45 M1891,10.0,496.5,0.8,1.6,18983.0,32.0,45.0,12000.0,12.0,1.6,Long,1.5,4.3
+86,Peresviet (1905),Battleship,Russia,254mm/45 M1891,10.0,496.5,0.8,1.6,18983.0,32.0,45.0,15000.0,15.0,1.6,Long,2.4,4.0
+86,Peresviet (1905),Battleship,Russia,254mm/45 M1891,10.0,496.5,0.8,1.6,18983.0,32.0,45.0,18000.0,18.0,1.6,Extreme,3.8,3.9
+86,Peresviet (1905),Battleship,Russia,254mm/45 M1891,10.0,496.5,0.8,1.6,18983.0,32.0,45.0,21000.0,21.0,1.6,Extreme,4.3,3.9
+87,Peresviet (1905),Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,2000.0,2.0,6.0,Short,0.1,4.1
+87,Peresviet (1905),Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,4000.0,4.0,6.0,Short,0.2,2.8
+87,Peresviet (1905),Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,6000.0,6.0,5.0,Medium,0.4,2.0
+87,Peresviet (1905),Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,8000.0,8.0,4.0,Medium,0.6,1.7
+87,Peresviet (1905),Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,10000.0,10.0,3.2,Long,0.9,1.5
+87,Peresviet (1905),Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,12000.0,12.0,2.6,Long,1.3,1.4
+87,Peresviet (1905),Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,15000.0,15.0,2.6,Long,1.4,1.4
+88,Retvizan,Battleship,Russia,305mm/40 M1892,12.0,731.3,1.0,2.0,14845.0,38.0,40.0,2000.0,2.0,2.0,Short,0.3,13.7
+88,Retvizan,Battleship,Russia,305mm/40 M1892,12.0,731.3,1.0,2.0,14845.0,38.0,40.0,4000.0,4.0,2.0,Short,0.6,11.2
+88,Retvizan,Battleship,Russia,305mm/40 M1892,12.0,731.3,1.0,2.0,14845.0,38.0,40.0,6000.0,6.0,2.0,Short,0.9,9.1
+88,Retvizan,Battleship,Russia,305mm/40 M1892,12.0,731.3,1.0,2.0,14845.0,38.0,40.0,8000.0,8.0,2.0,Medium,1.3,7.3
+88,Retvizan,Battleship,Russia,305mm/40 M1892,12.0,731.3,1.0,2.0,14845.0,38.0,40.0,10000.0,10.0,2.0,Medium,1.8,5.9
+88,Retvizan,Battleship,Russia,305mm/40 M1892,12.0,731.3,1.0,2.0,14845.0,38.0,40.0,12000.0,12.0,2.0,Medium,2.1,5.0
+88,Retvizan,Battleship,Russia,305mm/40 M1892,12.0,731.3,1.0,2.0,14845.0,38.0,40.0,15000.0,15.0,2.0,Long,2.9,4.3
+89,Retvizan,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,2000.0,2.0,6.0,Short,0.1,4.1
+89,Retvizan,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,4000.0,4.0,6.0,Short,0.2,2.8
+89,Retvizan,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,6000.0,6.0,5.0,Medium,0.4,2.0
+89,Retvizan,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,8000.0,8.0,4.0,Medium,0.6,1.7
+89,Retvizan,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,10000.0,10.0,3.2,Long,0.9,1.5
+89,Retvizan,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,12000.0,12.0,2.6,Long,1.3,1.4
+89,Retvizan,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,15000.0,15.0,2.6,Long,1.4,1.4
+90,Retvizan,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,2000.0,2.0,7.7,Short,0.1,4.1
+90,Retvizan,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,4000.0,4.0,6.2,Short,0.2,2.8
+90,Retvizan,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,6000.0,6.0,5.0,Medium,0.4,2.0
+90,Retvizan,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,8000.0,8.0,4.0,Medium,0.6,1.7
+90,Retvizan,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,10000.0,10.0,3.2,Long,0.9,1.5
+90,Retvizan,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,12000.0,12.0,2.6,Long,1.3,1.4
+90,Retvizan,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,15000.0,15.0,2.6,Long,1.4,1.4
+91,Bayan,ArmoredCruiser,Russia,203mm/45 M1892,8.0,193.6,1.5,3.0,14199.0,22.0,45.0,2000.0,2.0,3.0,Short,0.1,6.9
+91,Bayan,ArmoredCruiser,Russia,203mm/45 M1892,8.0,193.6,1.5,3.0,14199.0,22.0,45.0,4000.0,4.0,3.0,Short,0.2,5.0
+91,Bayan,ArmoredCruiser,Russia,203mm/45 M1892,8.0,193.6,1.5,3.0,14199.0,22.0,45.0,6000.0,6.0,3.0,Short,0.3,3.5
+91,Bayan,ArmoredCruiser,Russia,203mm/45 M1892,8.0,193.6,1.5,3.0,14199.0,22.0,45.0,8000.0,8.0,3.0,Medium,0.5,2.5
+91,Bayan,ArmoredCruiser,Russia,203mm/45 M1892,8.0,193.6,1.5,3.0,14199.0,22.0,45.0,10000.0,10.0,3.0,Medium,0.7,2.1
+91,Bayan,ArmoredCruiser,Russia,203mm/45 M1892,8.0,193.6,1.5,3.0,14199.0,22.0,45.0,12000.0,12.0,3.0,Short,1.0,1.7
+91,Bayan,ArmoredCruiser,Russia,203mm/45 M1892,8.0,193.6,1.5,3.0,14199.0,22.0,45.0,15000.0,15.0,2.5,Short,1.5,1.6
+92,Bayan,ArmoredCruiser,Russia,152mm/45 M1892,6.0,91.5,7.0,14.0,13453.0,16.0,45.0,2000.0,2.0,7.7,Short,0.1,4.1
+92,Bayan,ArmoredCruiser,Russia,152mm/45 M1892,6.0,91.5,7.0,14.0,13453.0,16.0,45.0,4000.0,4.0,6.2,Short,0.2,2.8
+92,Bayan,ArmoredCruiser,Russia,152mm/45 M1892,6.0,91.5,7.0,14.0,13453.0,16.0,45.0,6000.0,6.0,5.0,Medium,0.4,2.0
+92,Bayan,ArmoredCruiser,Russia,152mm/45 M1892,6.0,91.5,7.0,14.0,13453.0,16.0,45.0,8000.0,8.0,4.0,Medium,0.6,1.7
+92,Bayan,ArmoredCruiser,Russia,152mm/45 M1892,6.0,91.5,7.0,14.0,13453.0,16.0,45.0,10000.0,10.0,3.2,Long,0.9,1.5
+92,Bayan,ArmoredCruiser,Russia,152mm/45 M1892,6.0,91.5,7.0,14.0,13453.0,16.0,45.0,12000.0,12.0,2.6,Long,1.3,1.4
+92,Bayan,ArmoredCruiser,Russia,152mm/45 M1892,6.0,91.5,7.0,14.0,13453.0,16.0,45.0,15000.0,15.0,2.3,Extreme,1.7,1.4
+93,Askold,LightCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,2000.0,2.0,7.7,Short,0.1,4.1
+93,Askold,LightCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,4000.0,4.0,6.2,Short,0.2,2.8
+93,Askold,LightCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,6000.0,6.0,5.0,Medium,0.4,2.0
+93,Askold,LightCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,8000.0,8.0,4.0,Medium,0.6,1.7
+93,Askold,LightCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,10000.0,10.0,3.2,Long,0.9,1.5
+93,Askold,LightCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,12000.0,12.0,2.6,Long,1.3,1.4
+93,Askold,LightCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,15000.0,15.0,2.6,Long,1.4,1.4
+94,Pallada,LightCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,2000.0,2.0,7.7,Short,0.1,4.1
+94,Pallada,LightCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,4000.0,4.0,6.2,Short,0.2,2.8
+94,Pallada,LightCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,6000.0,6.0,5.0,Medium,0.4,2.0
+94,Pallada,LightCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,8000.0,8.0,4.0,Medium,0.6,1.7
+94,Pallada,LightCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,10000.0,10.0,3.2,Long,0.9,1.5
+94,Pallada,LightCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,12000.0,12.0,2.6,Long,1.3,1.4
+94,Pallada,LightCruiser,Russia,152mm/45 M1892,6.0,91.5,5.0,10.0,12199.0,16.0,45.0,15000.0,15.0,2.3,Long,1.4,1.4
+95,Boyarin,LightCruiser,Russia,120mm/45 M1891,4.7,45.1,5.0,10.0,10800.0,12.0,45.0,2000.0,2.0,7.6,Short,0.1,4.2
+95,Boyarin,LightCruiser,Russia,120mm/45 M1891,4.7,45.1,5.0,10.0,10800.0,12.0,45.0,4000.0,4.0,6.1,Short,0.2,2.5
+95,Boyarin,LightCruiser,Russia,120mm/45 M1891,4.7,45.1,5.0,10.0,10800.0,12.0,45.0,6000.0,6.0,4.7,Medium,0.3,1.7
+95,Boyarin,LightCruiser,Russia,120mm/45 M1891,4.7,45.1,5.0,10.0,10800.0,12.0,45.0,8000.0,8.0,3.7,Long,0.5,1.4
+95,Boyarin,LightCruiser,Russia,120mm/45 M1891,4.7,45.1,5.0,10.0,10800.0,12.0,45.0,10000.0,10.0,2.9,Long,0.9,1.2
+95,Boyarin,LightCruiser,Russia,120mm/45 M1891,4.7,45.1,5.0,10.0,10800.0,12.0,45.0,12000.0,12.0,2.7,Long,1.0,1.1
+96,Novik,LightCruiser,Russia,120mm/45 M1891,4.7,45.1,5.0,10.0,10800.0,12.0,45.0,2000.0,2.0,7.6,Short,0.1,4.2
+96,Novik,LightCruiser,Russia,120mm/45 M1891,4.7,45.1,5.0,10.0,10800.0,12.0,45.0,4000.0,4.0,6.1,Short,0.2,2.5
+96,Novik,LightCruiser,Russia,120mm/45 M1891,4.7,45.1,5.0,10.0,10800.0,12.0,45.0,6000.0,6.0,4.7,Medium,0.3,1.7
+96,Novik,LightCruiser,Russia,120mm/45 M1891,4.7,45.1,5.0,10.0,10800.0,12.0,45.0,8000.0,8.0,3.7,Long,0.5,1.4
+96,Novik,LightCruiser,Russia,120mm/45 M1891,4.7,45.1,5.0,10.0,10800.0,12.0,45.0,10000.0,10.0,2.9,Long,0.9,1.2
+96,Novik,LightCruiser,Russia,120mm/45 M1891,4.7,45.1,5.0,10.0,10800.0,12.0,45.0,12000.0,12.0,2.7,Long,1.0,1.1
+97,Mikasa,Battleship,Japan,30cm/40.4 EOC,12.0,850.0,1.0,2.0,16371.0,40.0,40.4,2000.0,2.0,2.0,Short,0.3,14.7
+97,Mikasa,Battleship,Japan,30cm/40.4 EOC,12.0,850.0,1.0,2.0,16371.0,40.0,40.4,4000.0,4.0,2.0,Short,0.6,12.4
+97,Mikasa,Battleship,Japan,30cm/40.4 EOC,12.0,850.0,1.0,2.0,16371.0,40.0,40.4,6000.0,6.0,2.0,Short,0.9,10.4
+97,Mikasa,Battleship,Japan,30cm/40.4 EOC,12.0,850.0,1.0,2.0,16371.0,40.0,40.4,8000.0,8.0,2.0,Medium,1.1,8.6
+97,Mikasa,Battleship,Japan,30cm/40.4 EOC,12.0,850.0,1.0,2.0,16371.0,40.0,40.4,10000.0,10.0,2.0,Medium,1.4,7.3
+97,Mikasa,Battleship,Japan,30cm/40.4 EOC,12.0,850.0,1.0,2.0,16371.0,40.0,40.4,12000.0,12.0,2.0,Medium,1.6,6.3
+97,Mikasa,Battleship,Japan,30cm/40.4 EOC,12.0,850.0,1.0,2.0,16371.0,40.0,40.4,15000.0,15.0,2.0,Long,2.3,5.3
+97,Mikasa,Battleship,Japan,30cm/40.4 EOC,12.0,850.0,1.0,2.0,16371.0,40.0,40.4,18000.0,18.0,2.0,Long,2.7,4.9
+98,Mikasa,Battleship,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,2000.0,2.0,7.8,Short,0.2,4.8
+98,Mikasa,Battleship,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,4000.0,4.0,6.5,Short,0.3,3.5
+98,Mikasa,Battleship,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,6000.0,6.0,5.3,Short,0.4,2.5
+98,Mikasa,Battleship,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,8000.0,8.0,4.3,Medium,0.5,2.0
+98,Mikasa,Battleship,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,10000.0,10.0,3.5,Medium,0.6,1.7
+98,Mikasa,Battleship,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,12000.0,12.0,2.9,Long,0.9,1.6
+98,Mikasa,Battleship,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,15000.0,15.0,2.8,Long,1.0,1.6
+99,Asahi,Battleship,Japan,30cm/40.4 EOC,12.0,850.0,1.0,2.0,16371.0,40.0,40.4,2000.0,2.0,2.0,Short,0.3,14.7
+99,Asahi,Battleship,Japan,30cm/40.4 EOC,12.0,850.0,1.0,2.0,16371.0,40.0,40.4,4000.0,4.0,2.0,Short,0.6,12.4
+99,Asahi,Battleship,Japan,30cm/40.4 EOC,12.0,850.0,1.0,2.0,16371.0,40.0,40.4,6000.0,6.0,2.0,Short,0.9,10.4
+99,Asahi,Battleship,Japan,30cm/40.4 EOC,12.0,850.0,1.0,2.0,16371.0,40.0,40.4,8000.0,8.0,2.0,Medium,1.1,8.6
+99,Asahi,Battleship,Japan,30cm/40.4 EOC,12.0,850.0,1.0,2.0,16371.0,40.0,40.4,10000.0,10.0,2.0,Medium,1.4,7.3
+99,Asahi,Battleship,Japan,30cm/40.4 EOC,12.0,850.0,1.0,2.0,16371.0,40.0,40.4,12000.0,12.0,2.0,Medium,1.6,6.3
+99,Asahi,Battleship,Japan,30cm/40.4 EOC,12.0,850.0,1.0,2.0,16371.0,40.0,40.4,15000.0,15.0,2.0,Long,2.3,5.3
+99,Asahi,Battleship,Japan,30cm/40.4 EOC,12.0,850.0,1.0,2.0,16371.0,40.0,40.4,18000.0,18.0,2.0,Long,2.7,4.9
+100,Asahi,Battleship,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,2000.0,2.0,7.8,Short,0.2,4.8
+100,Asahi,Battleship,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,4000.0,4.0,6.5,Short,0.3,3.5
+100,Asahi,Battleship,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,6000.0,6.0,5.3,Short,0.4,2.5
+100,Asahi,Battleship,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,8000.0,8.0,4.3,Medium,0.5,2.0
+100,Asahi,Battleship,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,10000.0,10.0,3.5,Medium,0.6,1.7
+100,Asahi,Battleship,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,12000.0,12.0,2.9,Long,0.9,1.6
+100,Asahi,Battleship,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,15000.0,15.0,2.8,Long,1.0,1.6
+101,Shikishima,Battleship,Japan,30cm/40.4 EOC,12.0,850.0,1.0,2.0,16371.0,40.0,40.4,2000.0,2.0,2.0,Short,0.3,14.7
+101,Shikishima,Battleship,Japan,30cm/40.4 EOC,12.0,850.0,1.0,2.0,16371.0,40.0,40.4,4000.0,4.0,2.0,Short,0.6,12.4
+101,Shikishima,Battleship,Japan,30cm/40.4 EOC,12.0,850.0,1.0,2.0,16371.0,40.0,40.4,6000.0,6.0,2.0,Short,0.9,10.4
+101,Shikishima,Battleship,Japan,30cm/40.4 EOC,12.0,850.0,1.0,2.0,16371.0,40.0,40.4,8000.0,8.0,2.0,Medium,1.1,8.6
+101,Shikishima,Battleship,Japan,30cm/40.4 EOC,12.0,850.0,1.0,2.0,16371.0,40.0,40.4,10000.0,10.0,2.0,Medium,1.4,7.3
+101,Shikishima,Battleship,Japan,30cm/40.4 EOC,12.0,850.0,1.0,2.0,16371.0,40.0,40.4,12000.0,12.0,2.0,Medium,1.6,6.3
+101,Shikishima,Battleship,Japan,30cm/40.4 EOC,12.0,850.0,1.0,2.0,16371.0,40.0,40.4,15000.0,15.0,2.0,Long,2.3,5.3
+101,Shikishima,Battleship,Japan,30cm/40.4 EOC,12.0,850.0,1.0,2.0,16371.0,40.0,40.4,18000.0,18.0,2.0,Long,2.7,4.9
+102,Shikishima,Battleship,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,2000.0,2.0,7.8,Short,0.2,4.8
+102,Shikishima,Battleship,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,4000.0,4.0,6.5,Short,0.3,3.5
+102,Shikishima,Battleship,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,6000.0,6.0,5.3,Short,0.4,2.5
+102,Shikishima,Battleship,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,8000.0,8.0,4.3,Medium,0.5,2.0
+102,Shikishima,Battleship,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,10000.0,10.0,3.5,Medium,0.6,1.7
+102,Shikishima,Battleship,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,12000.0,12.0,2.9,Long,0.9,1.6
+102,Shikishima,Battleship,Japan,15cm/45 EOC/VSM,6.0,100.0,6.0,12.0,12282.0,16.0,45.0,15000.0,15.0,2.8,Long,1.0,1.6
+103,Kasagi,LightCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,2000.0,2.0,4.0,Short,0.9,8.9
+103,Kasagi,LightCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,4000.0,4.0,4.0,Short,0.2,6.9
+103,Kasagi,LightCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,6000.0,6.0,4.0,Short,0.4,5.3
+103,Kasagi,LightCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,8000.0,8.0,4.0,Medium,0.6,4.1
+103,Kasagi,LightCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,10000.0,10.0,3.7,Medium,1.0,3.3
+103,Kasagi,LightCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,12000.0,12.0,3.1,Long,1.3,2.9
+103,Kasagi,LightCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,15000.0,15.0,2.5,Long,2.0,2.5
+104,Kasagi,LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,2000.0,2.0,7.4,Short,0.0,3.3
+104,Kasagi,LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,4000.0,4.0,5.7,Short,0.2,2.1
+104,Kasagi,LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,6000.0,6.0,4.4,Medium,0.2,1.6
+104,Kasagi,LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,8000.0,8.0,3.5,Long,0.4,1.4
+104,Kasagi,LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,10000.0,10.0,2.8,Long,0.7,1.2
+105,Takasago,LightCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,2000.0,2.0,4.0,Short,0.9,8.9
+105,Takasago,LightCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,4000.0,4.0,4.0,Short,0.2,6.9
+105,Takasago,LightCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,6000.0,6.0,4.0,Short,0.4,5.3
+105,Takasago,LightCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,8000.0,8.0,4.0,Medium,0.6,4.1
+105,Takasago,LightCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,10000.0,10.0,3.7,Medium,1.0,3.3
+105,Takasago,LightCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,12000.0,12.0,3.1,Long,1.3,2.9
+105,Takasago,LightCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,15000.0,15.0,2.5,Long,2.0,2.5
+106,Takasago,LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,2000.0,2.0,7.4,Short,0.0,3.3
+106,Takasago,LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,4000.0,4.0,5.7,Short,0.2,2.1
+106,Takasago,LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,6000.0,6.0,4.4,Medium,0.2,1.6
+106,Takasago,LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,8000.0,8.0,3.5,Long,0.4,1.4
+106,Takasago,LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,10000.0,10.0,2.8,Long,0.7,1.2
+107,Battery Number 9,LandBattery,Russia,152mm/45 Pattern 1892,6.0,100.0,6.0,12.0,11082.0,16.0,45.0,2000.0,2.0,7.6,Short,0.1,6.5
+107,Battery Number 9,LandBattery,Russia,152mm/45 Pattern 1892,6.0,100.0,6.0,12.0,11082.0,16.0,45.0,4000.0,4.0,6.2,Short,0.2,4.6
+107,Battery Number 9,LandBattery,Russia,152mm/45 Pattern 1892,6.0,100.0,6.0,12.0,11082.0,16.0,45.0,6000.0,6.0,5.0,Medium,0.4,3.3
+107,Battery Number 9,LandBattery,Russia,152mm/45 Pattern 1892,6.0,100.0,6.0,12.0,11082.0,16.0,45.0,8000.0,8.0,4.0,Medium,0.6,2.6
+107,Battery Number 9,LandBattery,Russia,152mm/45 Pattern 1892,6.0,100.0,6.0,12.0,11082.0,16.0,45.0,10000.0,10.0,3.3,Long,0.9,2.2
+107,Battery Number 9,LandBattery,Russia,152mm/45 Pattern 1892,6.0,100.0,6.0,12.0,11082.0,16.0,45.0,12000.0,12.0,3.0,Long,1.0,2.1
+108,Battery Number 15 (Electric Cliff),LandBattery,Russia,254mm/40 Pattern 1892 (Low Elev),10.0,496.5,0.8,1.6,18983.0,32.0,40.0,2000.0,2.0,1.6,Short,0.3,10.8
+108,Battery Number 15 (Electric Cliff),LandBattery,Russia,254mm/40 Pattern 1892 (Low Elev),10.0,496.5,0.8,1.6,18983.0,32.0,40.0,4000.0,4.0,1.6,Short,0.6,8.6
+108,Battery Number 15 (Electric Cliff),LandBattery,Russia,254mm/40 Pattern 1892 (Low Elev),10.0,496.5,0.8,1.6,18983.0,32.0,40.0,6000.0,6.0,1.6,Short,0.8,6.9
+108,Battery Number 15 (Electric Cliff),LandBattery,Russia,254mm/40 Pattern 1892 (Low Elev),10.0,496.5,0.8,1.6,18983.0,32.0,40.0,8000.0,8.0,1.6,Medium,1.0,5.6
+108,Battery Number 15 (Electric Cliff),LandBattery,Russia,254mm/40 Pattern 1892 (Low Elev),10.0,496.5,0.8,1.6,18983.0,32.0,40.0,10000.0,10.0,1.6,Medium,1.2,4.8
+108,Battery Number 15 (Electric Cliff),LandBattery,Russia,254mm/40 Pattern 1892 (Low Elev),10.0,496.5,0.8,1.6,18983.0,32.0,40.0,12000.0,12.0,1.6,Long,1.5,4.3
+108,Battery Number 15 (Electric Cliff),LandBattery,Russia,254mm/40 Pattern 1892 (Low Elev),10.0,496.5,0.8,1.6,18983.0,32.0,40.0,15000.0,15.0,1.6,Long,2.4,4.0
+108,Battery Number 15 (Electric Cliff),LandBattery,Russia,254mm/40 Pattern 1892 (Low Elev),10.0,496.5,0.8,1.6,18983.0,32.0,40.0,18000.0,18.0,1.6,Extreme,3.8,3.9
+108,Battery Number 15 (Electric Cliff),LandBattery,Russia,254mm/40 Pattern 1892 (Low Elev),10.0,496.5,0.8,1.6,18983.0,32.0,40.0,21000.0,21.0,1.6,Extreme,4.3,3.9
+109,Battery Number 17,LandBattery,Russia,229mm/9 Mortar Pattern 1877,9.0,306.4,0.8,1.6,8475.0,27.0,9.0,2000.0,2.0,1.6,Short,0.1,5.5
+109,Battery Number 17,LandBattery,Russia,229mm/9 Mortar Pattern 1877,9.0,306.4,0.8,1.6,8475.0,27.0,9.0,4000.0,4.0,1.6,Medium,0.3,4.4
+109,Battery Number 17,LandBattery,Russia,229mm/9 Mortar Pattern 1877,9.0,306.4,0.8,1.6,8475.0,27.0,9.0,6000.0,6.0,1.6,Medium,0.6,3.7
+109,Battery Number 17,LandBattery,Russia,229mm/9 Mortar Pattern 1877,9.0,306.4,0.8,1.6,8475.0,27.0,9.0,8000.0,8.0,1.6,Long,1.0,3.3
+109,Battery Number 17,LandBattery,Russia,229mm/9 Mortar Pattern 1877,9.0,306.4,0.8,1.6,8475.0,27.0,9.0,10000.0,10.0,1.6,Long,1.1,3.2
+110,Tsukushi,LightCruiser,Japan,10''/26 25-Ton BLR,10.0,450.0,0.5,1.0,8713.0,31.0,26.0,2000.0,2.0,1.0,Short,0.3,8.8
+110,Tsukushi,LightCruiser,Japan,10''/26 25-Ton BLR,10.0,450.0,0.5,1.0,8713.0,31.0,26.0,4000.0,4.0,1.0,Short,0.7,6.9
+110,Tsukushi,LightCruiser,Japan,10''/26 25-Ton BLR,10.0,450.0,0.5,1.0,8713.0,31.0,26.0,6000.0,6.0,1.0,Medium,1.0,5.5
+110,Tsukushi,LightCruiser,Japan,10''/26 25-Ton BLR,10.0,450.0,0.5,1.0,8713.0,31.0,26.0,8000.0,8.0,1.0,Medium,1.3,4.7
+110,Tsukushi,LightCruiser,Japan,10''/26 25-Ton BLR,10.0,450.0,0.5,1.0,8713.0,31.0,26.0,10000.0,10.0,1.0,Medium,1.4,4.5
+111,Tsukushi,LightCruiser,Japan,12cm/32 EOC M,4.7,36.0,4.0,8.0,6743.0,11.0,32.0,2000.0,2.0,7.1,Short,0.1,2.3
+111,Tsukushi,LightCruiser,Japan,12cm/32 EOC M,4.7,36.0,4.0,8.0,6743.0,11.0,32.0,4000.0,4.0,5.2,Medium,0.2,1.6
+111,Tsukushi,LightCruiser,Japan,12cm/32 EOC M,4.7,36.0,4.0,8.0,6743.0,11.0,32.0,6000.0,6.0,3.9,Long,0.4,1.2
+111,Tsukushi,LightCruiser,Japan,12cm/32 EOC M,4.7,36.0,4.0,8.0,6743.0,11.0,32.0,8000.0,8.0,3.6,Long,0.5,1.1
+112,Oshima,PatrolGunboat,Japan,4.7''/40 QF Type 41,4.7,45.0,4.5,9.0,8412.0,12.0,40.0,2000.0,2.0,7.0,Short,0.0,2.6
+112,Oshima,PatrolGunboat,Japan,4.7''/40 QF Type 41,4.7,45.0,4.5,9.0,8412.0,12.0,40.0,4000.0,4.0,5.3,Short,0.1,1.8
+112,Oshima,PatrolGunboat,Japan,4.7''/40 QF Type 41,4.7,45.0,4.5,9.0,8412.0,12.0,40.0,6000.0,6.0,4.1,Medium,0.3,1.5
+112,Oshima,PatrolGunboat,Japan,4.7''/40 QF Type 41,4.7,45.0,4.5,9.0,8412.0,12.0,40.0,8000.0,8.0,3.2,Long,0.5,1.2
+112,Oshima,PatrolGunboat,Japan,4.7''/40 QF Type 41,4.7,45.0,4.5,9.0,8412.0,12.0,40.0,10000.0,10.0,3.0,Long,0.6,1.2
+113,Old Donkey Mouth Battery,LandBattery,China,24cm Cannon,10.2,606.3,0.4,0.8,8968.0,34.0,,2000.0,2.0,0.8,Short,0.3,8.8
+113,Old Donkey Mouth Battery,LandBattery,China,24cm Cannon,10.2,606.3,0.4,0.8,8968.0,34.0,,4000.0,4.0,0.8,Short,0.6,7.3
+113,Old Donkey Mouth Battery,LandBattery,China,24cm Cannon,10.2,606.3,0.4,0.8,8968.0,34.0,,6000.0,6.0,0.8,Medium,0.9,6.1
+113,Old Donkey Mouth Battery,LandBattery,China,24cm Cannon,10.2,606.3,0.4,0.8,8968.0,34.0,,8000.0,8.0,0.8,Medium,1.2,5.3
+113,Old Donkey Mouth Battery,LandBattery,China,24cm Cannon,10.2,606.3,0.4,0.8,8968.0,34.0,,10000.0,10.0,0.8,Medium,1.3,5.0
+114,Old Donkey Mouth Battery,LandBattery,China,12cm Cannon,4.7,45.0,6.0,12.0,9899.0,12.0,,2000.0,2.0,7.4,Short,0.0,3.3
+114,Old Donkey Mouth Battery,LandBattery,China,12cm Cannon,4.7,45.0,6.0,12.0,9899.0,12.0,,4000.0,4.0,5.7,Short,0.2,2.1
+114,Old Donkey Mouth Battery,LandBattery,China,12cm Cannon,4.7,45.0,6.0,12.0,9899.0,12.0,,6000.0,6.0,4.4,Medium,0.2,1.6
+114,Old Donkey Mouth Battery,LandBattery,China,12cm Cannon,4.7,45.0,6.0,12.0,9899.0,12.0,,8000.0,8.0,3.5,Long,0.4,1.4
+114,Old Donkey Mouth Battery,LandBattery,China,12cm Cannon,4.7,45.0,6.0,12.0,9899.0,12.0,,10000.0,10.0,2.8,Long,0.7,1.2
+115,Golden Hill Battery,LandBattery,China,24cm Cannon,10.2,606.3,0.4,0.8,8968.0,34.0,,2000.0,2.0,0.8,Short,0.3,8.8
+115,Golden Hill Battery,LandBattery,China,24cm Cannon,10.2,606.3,0.4,0.8,8968.0,34.0,,4000.0,4.0,0.8,Short,0.6,7.3
+115,Golden Hill Battery,LandBattery,China,24cm Cannon,10.2,606.3,0.4,0.8,8968.0,34.0,,6000.0,6.0,0.8,Medium,0.9,6.1
+115,Golden Hill Battery,LandBattery,China,24cm Cannon,10.2,606.3,0.4,0.8,8968.0,34.0,,8000.0,8.0,0.8,Medium,1.2,5.3
+115,Golden Hill Battery,LandBattery,China,24cm Cannon,10.2,606.3,0.4,0.8,8968.0,34.0,,10000.0,10.0,0.8,Medium,1.3,5.0
+116,Golden Hill Battery,LandBattery,China,15cm Mortar,6.0,100.0,6.0,12.0,12282.0,16.0,,2000.0,2.0,7.8,Short,0.2,4.8
+116,Golden Hill Battery,LandBattery,China,15cm Mortar,6.0,100.0,6.0,12.0,12282.0,16.0,,4000.0,4.0,6.5,Short,0.3,3.5
+116,Golden Hill Battery,LandBattery,China,15cm Mortar,6.0,100.0,6.0,12.0,12282.0,16.0,,6000.0,6.0,5.3,Short,0.4,2.5
+116,Golden Hill Battery,LandBattery,China,15cm Mortar,6.0,100.0,6.0,12.0,12282.0,16.0,,8000.0,8.0,4.3,Medium,0.5,2.0
+116,Golden Hill Battery,LandBattery,China,15cm Mortar,6.0,100.0,6.0,12.0,12282.0,16.0,,10000.0,10.0,3.5,Medium,0.6,1.7
+116,Golden Hill Battery,LandBattery,China,15cm Mortar,6.0,100.0,6.0,12.0,12282.0,16.0,,12000.0,12.0,2.9,Long,0.9,1.6
+116,Golden Hill Battery,LandBattery,China,15cm Mortar,6.0,100.0,6.0,12.0,12282.0,16.0,,15000.0,15.0,2.8,Long,1.0,1.6
+117,Golden Hill Battery,LandBattery,China,12cm Cannon,4.7,45.0,6.0,12.0,9899.0,12.0,,2000.0,2.0,7.4,Short,0.0,3.3
+117,Golden Hill Battery,LandBattery,China,12cm Cannon,4.7,45.0,6.0,12.0,9899.0,12.0,,4000.0,4.0,5.7,Short,0.2,2.1
+117,Golden Hill Battery,LandBattery,China,12cm Cannon,4.7,45.0,6.0,12.0,9899.0,12.0,,6000.0,6.0,4.4,Medium,0.2,1.6
+117,Golden Hill Battery,LandBattery,China,12cm Cannon,4.7,45.0,6.0,12.0,9899.0,12.0,,8000.0,8.0,3.5,Long,0.4,1.4
+117,Golden Hill Battery,LandBattery,China,12cm Cannon,4.7,45.0,6.0,12.0,9899.0,12.0,,10000.0,10.0,2.8,Long,0.7,1.2
+118,Mozhu Reef Battery,LandBattery,China,21cm Cannon,8.2,217.2,0.8,1.6,6124.0,23.0,,2000.0,2.0,1.6,Short,0.2,4.5
+118,Mozhu Reef Battery,LandBattery,China,21cm Cannon,8.2,217.2,0.8,1.6,6124.0,23.0,,4000.0,4.0,1.6,Medium,0.3,3.5
+118,Mozhu Reef Battery,LandBattery,China,21cm Cannon,8.2,217.2,0.8,1.6,6124.0,23.0,,6000.0,6.0,1.6,Medium,0.5,3.0
+118,Mozhu Reef Battery,LandBattery,China,21cm Cannon,8.2,217.2,0.8,1.6,6124.0,23.0,,8000.0,8.0,1.6,Medium,0.5,2.9
+119,Mozhu Reef Battery,LandBattery,China,15cm Cannon,6.0,100.0,6.0,12.0,12282.0,16.0,,2000.0,2.0,7.8,Short,0.2,4.8
+119,Mozhu Reef Battery,LandBattery,China,15cm Cannon,6.0,100.0,6.0,12.0,12282.0,16.0,,4000.0,4.0,6.5,Short,0.3,3.5
+119,Mozhu Reef Battery,LandBattery,China,15cm Cannon,6.0,100.0,6.0,12.0,12282.0,16.0,,6000.0,6.0,5.3,Short,0.4,2.5
+119,Mozhu Reef Battery,LandBattery,China,15cm Cannon,6.0,100.0,6.0,12.0,12282.0,16.0,,8000.0,8.0,4.3,Medium,0.5,2.0
+119,Mozhu Reef Battery,LandBattery,China,15cm Cannon,6.0,100.0,6.0,12.0,12282.0,16.0,,10000.0,10.0,3.5,Medium,0.6,1.7
+119,Mozhu Reef Battery,LandBattery,China,15cm Cannon,6.0,100.0,6.0,12.0,12282.0,16.0,,12000.0,12.0,2.9,Long,0.9,1.6
+119,Mozhu Reef Battery,LandBattery,China,15cm Cannon,6.0,100.0,6.0,12.0,12282.0,16.0,,15000.0,15.0,2.8,Long,1.0,1.6
+120,Kasuga,ArmoredCruiser,Japan,25cm/40.3,10.0,500.0,2.0,4.0,14485.0,32.0,40.3,2000.0,2.0,4.0,Short,0.2,11.9
+120,Kasuga,ArmoredCruiser,Japan,25cm/40.3,10.0,500.0,2.0,4.0,14485.0,32.0,40.3,4000.0,4.0,4.0,Short,0.5,9.7
+120,Kasuga,ArmoredCruiser,Japan,25cm/40.3,10.0,500.0,2.0,4.0,14485.0,32.0,40.3,6000.0,6.0,4.0,Short,0.8,7.8
+120,Kasuga,ArmoredCruiser,Japan,25cm/40.3,10.0,500.0,2.0,4.0,14485.0,32.0,40.3,8000.0,8.0,4.0,Medium,1.1,6.4
+120,Kasuga,ArmoredCruiser,Japan,25cm/40.3,10.0,500.0,2.0,4.0,14485.0,32.0,40.3,10000.0,10.0,3.7,Medium,1.5,5.3
+120,Kasuga,ArmoredCruiser,Japan,25cm/40.3,10.0,500.0,2.0,4.0,14485.0,32.0,40.3,12000.0,12.0,3.1,Long,1.8,4.7
+120,Kasuga,ArmoredCruiser,Japan,25cm/40.3,10.0,500.0,2.0,4.0,14485.0,32.0,40.3,15000.0,15.0,2.6,Long,2.5,4.1
+121,Kasuga,ArmoredCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,2000.0,2.0,4.0,Short,0.9,8.9
+121,Kasuga,ArmoredCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,4000.0,4.0,4.0,Short,0.2,6.9
+121,Kasuga,ArmoredCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,6000.0,6.0,4.0,Short,0.4,5.3
+121,Kasuga,ArmoredCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,8000.0,8.0,4.0,Medium,0.6,4.1
+121,Kasuga,ArmoredCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,10000.0,10.0,3.7,Medium,1.0,3.3
+121,Kasuga,ArmoredCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,12000.0,12.0,3.1,Long,1.3,2.9
+121,Kasuga,ArmoredCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,15000.0,15.0,2.5,Long,2.0,2.5
+122,Kasuga,ArmoredCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,2000.0,2.0,7.6,Short,0.1,6.5
+122,Kasuga,ArmoredCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,4000.0,4.0,6.2,Short,0.2,4.6
+122,Kasuga,ArmoredCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,6000.0,6.0,5.0,Medium,0.4,3.3
+122,Kasuga,ArmoredCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,8000.0,8.0,4.0,Medium,0.6,2.6
+122,Kasuga,ArmoredCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,10000.0,10.0,3.3,Long,0.9,2.2
+122,Kasuga,ArmoredCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,12000.0,12.0,3.0,Long,1.0,2.1
+123,Nisshin,ArmoredCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,2000.0,2.0,4.0,Short,0.9,8.9
+123,Nisshin,ArmoredCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,4000.0,4.0,4.0,Short,0.2,6.9
+123,Nisshin,ArmoredCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,6000.0,6.0,4.0,Short,0.4,5.3
+123,Nisshin,ArmoredCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,8000.0,8.0,4.0,Medium,0.6,4.1
+123,Nisshin,ArmoredCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,10000.0,10.0,3.7,Medium,1.0,3.3
+123,Nisshin,ArmoredCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,12000.0,12.0,3.1,Long,1.3,2.9
+123,Nisshin,ArmoredCruiser,Japan,20cm/45 No. 2 EOC,8.0,250.0,2.0,4.0,14505.0,24.0,45.0,15000.0,15.0,2.5,Long,2.0,2.5
+124,Nisshin,ArmoredCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,2000.0,2.0,7.6,Short,0.1,6.5
+124,Nisshin,ArmoredCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,4000.0,4.0,6.2,Short,0.2,4.6
+124,Nisshin,ArmoredCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,6000.0,6.0,5.0,Medium,0.4,3.3
+124,Nisshin,ArmoredCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,8000.0,8.0,4.0,Medium,0.6,2.6
+124,Nisshin,ArmoredCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,10000.0,10.0,3.3,Long,0.9,2.2
+124,Nisshin,ArmoredCruiser,Japan,15cm/40 EOC Z,6.0,100.0,6.0,12.0,11082.0,16.0,40.0,12000.0,12.0,3.0,Long,1.0,2.1
+125,Yaeyama,LightCruiser,Japan,12cm/25 Krupp C/78,4.7,44.1,3.0,6.0,5711.0,12.0,25.0,2000.0,2.0,6.0,Medium,0.1,1.3
+125,Yaeyama,LightCruiser,Japan,12cm/25 Krupp C/78,4.7,44.1,3.0,6.0,5711.0,12.0,25.0,4000.0,4.0,4.1,Long,0.2,1.0
+125,Yaeyama,LightCruiser,Japan,12cm/25 Krupp C/78,4.7,44.1,3.0,6.0,5711.0,12.0,25.0,6000.0,6.0,2.4,Long,0.8,0.9
+126,Idzumi (1900),LightCruiser,Japan,"10''/30 Patterns F, G",10.0,450.0,0.8,1.6,9544.0,31.0,30.0,2000.0,2.0,1.6,Short,0.3,9.2
+126,Idzumi (1900),LightCruiser,Japan,"10''/30 Patterns F, G",10.0,450.0,0.8,1.6,9544.0,31.0,30.0,4000.0,4.0,1.6,Short,0.6,7.2
+126,Idzumi (1900),LightCruiser,Japan,"10''/30 Patterns F, G",10.0,450.0,0.8,1.6,9544.0,31.0,30.0,6000.0,6.0,1.6,Medium,0.9,5.7
+126,Idzumi (1900),LightCruiser,Japan,"10''/30 Patterns F, G",10.0,450.0,0.8,1.6,9544.0,31.0,30.0,8000.0,8.0,1.6,Medium,1.2,4.7
+126,Idzumi (1900),LightCruiser,Japan,"10''/30 Patterns F, G",10.0,450.0,0.8,1.6,9544.0,31.0,30.0,10000.0,10.0,1.6,Medium,1.5,4.2
+127,Idzumi (1900),LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9877.0,12.0,40.0,2000.0,2.0,7.4,Short,0.0,3.3
+127,Idzumi (1900),LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9877.0,12.0,40.0,4000.0,4.0,5.7,Short,0.2,2.1
+127,Idzumi (1900),LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9877.0,12.0,40.0,6000.0,6.0,4.4,Medium,0.2,1.6
+127,Idzumi (1900),LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9877.0,12.0,40.0,8000.0,8.0,3.5,Long,0.4,1.4
+127,Idzumi (1900),LightCruiser,Japan,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9877.0,12.0,40.0,10000.0,10.0,2.8,Long,0.7,1.2
+128,Hai Chi,LightCruiser,China,8''/45 Pattern S,8.0,210.0,1.6,3.2,13501.0,23.0,45.0,2000.0,2.0,3.2,Short,0.1,9.3
+128,Hai Chi,LightCruiser,China,8''/45 Pattern S,8.0,210.0,1.6,3.2,13501.0,23.0,45.0,4000.0,4.0,3.2,Short,0.2,7.0
+128,Hai Chi,LightCruiser,China,8''/45 Pattern S,8.0,210.0,1.6,3.2,13501.0,23.0,45.0,6000.0,6.0,3.2,Short,0.4,5.2
+128,Hai Chi,LightCruiser,China,8''/45 Pattern S,8.0,210.0,1.6,3.2,13501.0,23.0,45.0,8000.0,8.0,3.2,Medium,0.6,3.9
+128,Hai Chi,LightCruiser,China,8''/45 Pattern S,8.0,210.0,1.6,3.2,13501.0,23.0,45.0,10000.0,10.0,3.2,Medium,0.9,3.1
+128,Hai Chi,LightCruiser,China,8''/45 Pattern S,8.0,210.0,1.6,3.2,13501.0,23.0,45.0,12000.0,12.0,3.1,Long,1.2,2.7
+128,Hai Chi,LightCruiser,China,8''/45 Pattern S,8.0,210.0,1.6,3.2,13501.0,23.0,45.0,15000.0,15.0,2.7,Long,1.5,2.5
+129,Hai Chi,LightCruiser,China,4.7''/45 QF Pattern Y,4.7,45.0,8.0,16.0,10943.0,12.0,45.0,2000.0,2.0,7.6,Short,0.1,4.1
+129,Hai Chi,LightCruiser,China,4.7''/45 QF Pattern Y,4.7,45.0,8.0,16.0,10943.0,12.0,45.0,4000.0,4.0,6.0,Short,0.2,2.5
+129,Hai Chi,LightCruiser,China,4.7''/45 QF Pattern Y,4.7,45.0,8.0,16.0,10943.0,12.0,45.0,6000.0,6.0,4.7,Medium,0.3,1.8
+129,Hai Chi,LightCruiser,China,4.7''/45 QF Pattern Y,4.7,45.0,8.0,16.0,10943.0,12.0,45.0,8000.0,8.0,3.7,Long,0.5,1.5
+129,Hai Chi,LightCruiser,China,4.7''/45 QF Pattern Y,4.7,45.0,8.0,16.0,10943.0,12.0,45.0,10000.0,10.0,3.0,Long,0.8,1.2
+129,Hai Chi,LightCruiser,China,4.7''/45 QF Pattern Y,4.7,45.0,8.0,16.0,10943.0,12.0,45.0,12000.0,12.0,2.7,Long,1.0,1.1
+130,Hai Yung,LightCruiser,China,15cm RKL/40 C/97,5.9,100.3,5.0,10.0,16390.0,16.0,40.0,2000.0,2.0,7.8,Short,0.1,7.7
+130,Hai Yung,LightCruiser,China,15cm RKL/40 C/97,5.9,100.3,5.0,10.0,16390.0,16.0,40.0,4000.0,4.0,6.4,Short,0.2,5.5
+130,Hai Yung,LightCruiser,China,15cm RKL/40 C/97,5.9,100.3,5.0,10.0,16390.0,16.0,40.0,6000.0,6.0,5.3,Short,0.4,3.8
+130,Hai Yung,LightCruiser,China,15cm RKL/40 C/97,5.9,100.3,5.0,10.0,16390.0,16.0,40.0,8000.0,8.0,4.3,Medium,0.6,2.9
+130,Hai Yung,LightCruiser,China,15cm RKL/40 C/97,5.9,100.3,5.0,10.0,16390.0,16.0,40.0,10000.0,10.0,3.5,Long,0.8,2.4
+130,Hai Yung,LightCruiser,China,15cm RKL/40 C/97,5.9,100.3,5.0,10.0,16390.0,16.0,40.0,12000.0,12.0,2.9,Long,1.1,2.1
+130,Hai Yung,LightCruiser,China,15cm RKL/40 C/97,5.9,100.3,5.0,10.0,16390.0,16.0,40.0,15000.0,15.0,2.2,Extreme,1.9,1.7
+130,Hai Yung,LightCruiser,China,15cm RKL/40 C/97,5.9,100.3,5.0,10.0,16390.0,16.0,40.0,18000.0,18.0,1.9,Extreme,2.4,1.6
+131,Hai Yung,LightCruiser,China,10.5 cm SKL/40,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,2000.0,2.0,7.7,Short,0.1,4.7
+131,Hai Yung,LightCruiser,China,10.5 cm SKL/40,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,4000.0,4.0,6.3,Short,0.1,3.1
+131,Hai Yung,LightCruiser,China,10.5 cm SKL/40,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,6000.0,6.0,5.0,Medium,0.2,2.1
+131,Hai Yung,LightCruiser,China,10.5 cm SKL/40,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,8000.0,8.0,4.0,Medium,0.4,1.7
+131,Hai Yung,LightCruiser,China,10.5 cm SKL/40,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,10000.0,10.0,3.3,Long,0.5,1.5
+131,Hai Yung,LightCruiser,China,10.5 cm SKL/40,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,12000.0,12.0,2.7,Long,0.8,1.4
+131,Hai Yung,LightCruiser,China,10.5 cm SKL/40,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,15000.0,15.0,2.0,Extreme,1.4,1.3
+132,Blanco Encalada,LightCruiser,China,8''/39.9 Pattern P,8.0,250.0,1.8,3.6,12107.0,24.0,39.9,2000.0,2.0,3.6,Short,0.3,8.6
+132,Blanco Encalada,LightCruiser,China,8''/39.9 Pattern P,8.0,250.0,1.8,3.6,12107.0,24.0,39.9,4000.0,4.0,3.6,Short,0.5,6.8
+132,Blanco Encalada,LightCruiser,China,8''/39.9 Pattern P,8.0,250.0,1.8,3.6,12107.0,24.0,39.9,6000.0,6.0,3.6,Medium,0.7,5.2
+132,Blanco Encalada,LightCruiser,China,8''/39.9 Pattern P,8.0,250.0,1.8,3.6,12107.0,24.0,39.9,8000.0,8.0,3.6,Medium,0.9,4.1
+132,Blanco Encalada,LightCruiser,China,8''/39.9 Pattern P,8.0,250.0,1.8,3.6,12107.0,24.0,39.9,10000.0,10.0,3.5,Medium,1.1,3.5
+132,Blanco Encalada,LightCruiser,China,8''/39.9 Pattern P,8.0,250.0,1.8,3.6,12107.0,24.0,39.9,12000.0,12.0,2.9,Long,1.4,3.1
+132,Blanco Encalada,LightCruiser,China,8''/39.9 Pattern P,8.0,250.0,1.8,3.6,12107.0,24.0,39.9,15000.0,15.0,2.9,Long,1.5,3.1
+133,Blanco Encalada,LightCruiser,China,"6''/40 Patterns W,Z",6.0,100.0,6.0,12.0,10995.0,16.0,40.0,2000.0,2.0,7.6,Short,0.1,6.4
+133,Blanco Encalada,LightCruiser,China,"6''/40 Patterns W,Z",6.0,100.0,6.0,12.0,10995.0,16.0,40.0,4000.0,4.0,6.2,Short,0.2,4.5
+133,Blanco Encalada,LightCruiser,China,"6''/40 Patterns W,Z",6.0,100.0,6.0,12.0,10995.0,16.0,40.0,6000.0,6.0,5.0,Medium,0.4,3.2
+133,Blanco Encalada,LightCruiser,China,"6''/40 Patterns W,Z",6.0,100.0,6.0,12.0,10995.0,16.0,40.0,8000.0,8.0,4.0,Medium,0.6,2.5
+133,Blanco Encalada,LightCruiser,China,"6''/40 Patterns W,Z",6.0,100.0,6.0,12.0,10995.0,16.0,40.0,10000.0,10.0,3.3,Long,0.9,2.2
+133,Blanco Encalada,LightCruiser,China,"6''/40 Patterns W,Z",6.0,100.0,6.0,12.0,10995.0,16.0,40.0,12000.0,12.0,3.0,Long,1.0,2.0
+134,Capitan Prat,Battleship,China,240mm/36 M1887,9.5,317.5,1.0,2.0,11059.0,27.0,36.0,2000.0,2.0,2.0,Short,0.2,10.4
+134,Capitan Prat,Battleship,China,240mm/36 M1887,9.5,317.5,1.0,2.0,11059.0,27.0,36.0,4000.0,4.0,2.0,Short,0.4,7.9
+134,Capitan Prat,Battleship,China,240mm/36 M1887,9.5,317.5,1.0,2.0,11059.0,27.0,36.0,6000.0,6.0,2.0,Short,0.6,6.0
+134,Capitan Prat,Battleship,China,240mm/36 M1887,9.5,317.5,1.0,2.0,11059.0,27.0,36.0,8000.0,8.0,2.0,Medium,0.9,4.6
+134,Capitan Prat,Battleship,China,240mm/36 M1887,9.5,317.5,1.0,2.0,11059.0,27.0,36.0,10000.0,10.0,2.0,Medium,1.1,3.9
+134,Capitan Prat,Battleship,China,240mm/36 M1887,9.5,317.5,1.0,2.0,11059.0,27.0,36.0,12000.0,12.0,2.0,Long,1.3,3.6
+135,Capitan Prat,Battleship,China,120mm/45 M1891,4.7,48.5,6.0,12.0,10363.0,12.0,45.0,2000.0,2.0,7.7,Short,0.0,5.2
+135,Capitan Prat,Battleship,China,120mm/45 M1891,4.7,48.5,6.0,12.0,10363.0,12.0,45.0,4000.0,4.0,6.3,Short,0.1,3.3
+135,Capitan Prat,Battleship,China,120mm/45 M1891,4.7,48.5,6.0,12.0,10363.0,12.0,45.0,6000.0,6.0,4.9,Medium,0.2,2.2
+135,Capitan Prat,Battleship,China,120mm/45 M1891,4.7,48.5,6.0,12.0,10363.0,12.0,45.0,8000.0,8.0,3.9,Medium,0.4,1.8
+135,Capitan Prat,Battleship,China,120mm/45 M1891,4.7,48.5,6.0,12.0,10363.0,12.0,45.0,10000.0,10.0,3.1,Long,0.7,1.5
+135,Capitan Prat,Battleship,China,120mm/45 M1891,4.7,48.5,6.0,12.0,10363.0,12.0,45.0,12000.0,12.0,3.0,Long,0.8,1.4
+136,Esmeralda,LightCruiser,China,"10''/30 Patterns F, G",10.0,450.0,0.8,1.6,9544.0,31.0,30.0,2000.0,2.0,1.6,Short,0.3,9.2
+136,Esmeralda,LightCruiser,China,"10''/30 Patterns F, G",10.0,450.0,0.8,1.6,9544.0,31.0,30.0,4000.0,4.0,1.6,Short,0.6,7.2
+136,Esmeralda,LightCruiser,China,"10''/30 Patterns F, G",10.0,450.0,0.8,1.6,9544.0,31.0,30.0,6000.0,6.0,1.6,Medium,0.9,5.7
+136,Esmeralda,LightCruiser,China,"10''/30 Patterns F, G",10.0,450.0,0.8,1.6,9544.0,31.0,30.0,8000.0,8.0,1.6,Medium,1.2,4.7
+136,Esmeralda,LightCruiser,China,"10''/30 Patterns F, G",10.0,450.0,0.8,1.6,9544.0,31.0,30.0,10000.0,10.0,1.6,Medium,1.5,4.2
+137,Esmeralda,LightCruiser,China,6''/30 Pattern I,6.0,80.0,3.0,6.0,8279.0,15.0,30.0,2000.0,2.0,6.0,Short,0.1,4.9
+137,Esmeralda,LightCruiser,China,6''/30 Pattern I,6.0,80.0,3.0,6.0,8279.0,15.0,30.0,4000.0,4.0,5.8,Short,0.2,3.1
+137,Esmeralda,LightCruiser,China,6''/30 Pattern I,6.0,80.0,3.0,6.0,8279.0,15.0,30.0,6000.0,6.0,4.5,Medium,0.4,2.3
+137,Esmeralda,LightCruiser,China,6''/30 Pattern I,6.0,80.0,3.0,6.0,8279.0,15.0,30.0,8000.0,8.0,3.6,Long,0.6,2.0
+137,Esmeralda,LightCruiser,China,6''/30 Pattern I,6.0,80.0,3.0,6.0,8279.0,15.0,30.0,10000.0,10.0,3.5,Long,0.7,1.9
+138,Presidente Errazuriz,LightCruiser,China,150mm/36 M1884,5.9,88.2,4.0,8.0,10750.0,16.0,36.0,2000.0,2.0,7.6,Short,0.2,6.2
+138,Presidente Errazuriz,LightCruiser,China,150mm/36 M1884,5.9,88.2,4.0,8.0,10750.0,16.0,36.0,4000.0,4.0,6.2,Short,0.3,4.2
+138,Presidente Errazuriz,LightCruiser,China,150mm/36 M1884,5.9,88.2,4.0,8.0,10750.0,16.0,36.0,6000.0,6.0,5.0,Medium,0.5,3.0
+138,Presidente Errazuriz,LightCruiser,China,150mm/36 M1884,5.9,88.2,4.0,8.0,10750.0,16.0,36.0,8000.0,8.0,4.0,Medium,0.6,2.4
+138,Presidente Errazuriz,LightCruiser,China,150mm/36 M1884,5.9,88.2,4.0,8.0,10750.0,16.0,36.0,10000.0,10.0,3.2,Long,0.8,2.0
+138,Presidente Errazuriz,LightCruiser,China,150mm/36 M1884,5.9,88.2,4.0,8.0,10750.0,16.0,36.0,12000.0,12.0,3.0,Long,1.0,1.9
+139,Presidente Errazuriz,LightCruiser,China,120mm/36 M1884,4.7,48.5,5.0,10.0,9201.0,12.0,36.0,2000.0,2.0,7.5,Short,0.1,4.2
+139,Presidente Errazuriz,LightCruiser,China,120mm/36 M1884,4.7,48.5,5.0,10.0,9201.0,12.0,36.0,4000.0,4.0,5.9,Short,0.1,2.7
+139,Presidente Errazuriz,LightCruiser,China,120mm/36 M1884,4.7,48.5,5.0,10.0,9201.0,12.0,36.0,6000.0,6.0,4.6,Medium,0.3,2.0
+139,Presidente Errazuriz,LightCruiser,China,120mm/36 M1884,4.7,48.5,5.0,10.0,9201.0,12.0,36.0,8000.0,8.0,3.6,Long,0.5,1.7
+139,Presidente Errazuriz,LightCruiser,China,120mm/36 M1884,4.7,48.5,5.0,10.0,9201.0,12.0,36.0,10000.0,10.0,3.2,Long,0.7,1.5
+140,Veinticinco de Mayo,LightCruiser,China,21cm MRKL/35 C/86,8.2,217.2,1.5,3.0,12656.0,23.0,35.0,2000.0,2.0,3.0,Short,0.2,7.3
+140,Veinticinco de Mayo,LightCruiser,China,21cm MRKL/35 C/86,8.2,217.2,1.5,3.0,12656.0,23.0,35.0,4000.0,4.0,3.0,Short,0.4,5.2
+140,Veinticinco de Mayo,LightCruiser,China,21cm MRKL/35 C/86,8.2,217.2,1.5,3.0,12656.0,23.0,35.0,6000.0,6.0,3.0,Medium,0.6,4.0
+140,Veinticinco de Mayo,LightCruiser,China,21cm MRKL/35 C/86,8.2,217.2,1.5,3.0,12656.0,23.0,35.0,8000.0,8.0,3.0,Medium,0.9,3.3
+140,Veinticinco de Mayo,LightCruiser,China,21cm MRKL/35 C/86,8.2,217.2,1.5,3.0,12656.0,23.0,35.0,10000.0,10.0,3.0,Long,1.2,2.9
+140,Veinticinco de Mayo,LightCruiser,China,21cm MRKL/35 C/86,8.2,217.2,1.5,3.0,12656.0,23.0,35.0,12000.0,12.0,2.5,Long,1.9,2.6
+140,Veinticinco de Mayo,LightCruiser,China,21cm MRKL/35 C/86,8.2,217.2,1.5,3.0,12656.0,23.0,35.0,15000.0,15.0,2.4,Long,2.1,2.4
+141,Veinticinco de Mayo,LightCruiser,China,12cm SKL/40 C/88,4.7,52.5,5.0,10.0,11833.0,13.0,40.0,2000.0,2.0,7.4,Short,0.1,4.3
+141,Veinticinco de Mayo,LightCruiser,China,12cm SKL/40 C/88,4.7,52.5,5.0,10.0,11833.0,13.0,40.0,4000.0,4.0,5.9,Short,0.3,2.9
+141,Veinticinco de Mayo,LightCruiser,China,12cm SKL/40 C/88,4.7,52.5,5.0,10.0,11833.0,13.0,40.0,6000.0,6.0,4.6,Medium,0.4,2.2
+141,Veinticinco de Mayo,LightCruiser,China,12cm SKL/40 C/88,4.7,52.5,5.0,10.0,11833.0,13.0,40.0,8000.0,8.0,3.6,Long,0.6,1.8
+141,Veinticinco de Mayo,LightCruiser,China,12cm SKL/40 C/88,4.7,52.5,5.0,10.0,11833.0,13.0,40.0,10000.0,10.0,2.9,Long,0.9,1.6
+141,Veinticinco de Mayo,LightCruiser,China,12cm SKL/40 C/88,4.7,52.5,5.0,10.0,11833.0,13.0,40.0,12000.0,12.0,2.4,Extreme,1.3,1.3
+142,Nueve de Julio,LightCruiser,China,6''/40,6.0,100.0,6.0,12.0,9555.0,16.0,40.0,2000.0,2.0,7.4,Short,0.2,5.3
+142,Nueve de Julio,LightCruiser,China,6''/40,6.0,100.0,6.0,12.0,9555.0,16.0,40.0,4000.0,4.0,5.9,Short,0.3,3.7
+142,Nueve de Julio,LightCruiser,China,6''/40,6.0,100.0,6.0,12.0,9555.0,16.0,40.0,6000.0,6.0,4.7,Medium,0.5,2.7
+142,Nueve de Julio,LightCruiser,China,6''/40,6.0,100.0,6.0,12.0,9555.0,16.0,40.0,8000.0,8.0,3.7,Medium,0.7,2.3
+142,Nueve de Julio,LightCruiser,China,6''/40,6.0,100.0,6.0,12.0,9555.0,16.0,40.0,10000.0,10.0,3.2,Long,0.9,2.0
+143,Nueve de Julio,LightCruiser,China,4.7''/40 Pattern P,4.7,45.0,5.0,10.0,7497.0,12.0,40.0,2000.0,2.0,7.1,Short,0.1,3.0
+143,Nueve de Julio,LightCruiser,China,4.7''/40 Pattern P,4.7,45.0,5.0,10.0,7497.0,12.0,40.0,4000.0,4.0,5.4,Medium,0.2,2.1
+143,Nueve de Julio,LightCruiser,China,4.7''/40 Pattern P,4.7,45.0,5.0,10.0,7497.0,12.0,40.0,6000.0,6.0,4.1,Medium,0.4,1.7
+143,Nueve de Julio,LightCruiser,China,4.7''/40 Pattern P,4.7,45.0,5.0,10.0,7497.0,12.0,40.0,8000.0,8.0,3.4,Long,0.6,1.5
+144,Almirante Brown,ArmoredCruiser,China,8''/26.1 11.5-Ton BLR Pattern A,8.0,180.0,0.8,1.6,6874.0,22.0,26.1,2000.0,2.0,1.6,Short,0.1,5.5
+144,Almirante Brown,ArmoredCruiser,China,8''/26.1 11.5-Ton BLR Pattern A,8.0,180.0,0.8,1.6,6874.0,22.0,26.1,4000.0,4.0,1.6,Medium,0.3,3.9
+144,Almirante Brown,ArmoredCruiser,China,8''/26.1 11.5-Ton BLR Pattern A,8.0,180.0,0.8,1.6,6874.0,22.0,26.1,6000.0,6.0,1.6,Medium,0.6,3.1
+144,Almirante Brown,ArmoredCruiser,China,8''/26.1 11.5-Ton BLR Pattern A,8.0,180.0,0.8,1.6,6874.0,22.0,26.1,8000.0,8.0,1.6,Medium,0.7,2.9
+145,Almirante Brown,ArmoredCruiser,China,4.7''/23.5 BLR,4.7,36.8,3.0,6.0,5260.0,11.0,23.5,2000.0,2.0,6.0,Short,0.1,2.2
+145,Almirante Brown,ArmoredCruiser,China,4.7''/23.5 BLR,4.7,36.8,3.0,6.0,5260.0,11.0,23.5,4000.0,4.0,5.0,Medium,0.2,1.6
+145,Almirante Brown,ArmoredCruiser,China,4.7''/23.5 BLR,4.7,36.8,3.0,6.0,5260.0,11.0,23.5,6000.0,6.0,4.1,Medium,0.3,1.4
+146,Chen Tung,PatrolGunboat,China,11''/23 35-Ton MLR,11.0,536.0,0.5,1.0,8031.0,33.0,23.0,2000.0,2.0,1.0,Short,0.4,8.3
+146,Chen Tung,PatrolGunboat,China,11''/23 35-Ton MLR,11.0,536.0,0.5,1.0,8031.0,33.0,23.0,4000.0,4.0,1.0,Short,0.8,6.5
+146,Chen Tung,PatrolGunboat,China,11''/23 35-Ton MLR,11.0,536.0,0.5,1.0,8031.0,33.0,23.0,6000.0,6.0,1.0,Medium,1.2,5.2
+146,Chen Tung,PatrolGunboat,China,11''/23 35-Ton MLR,11.0,536.0,0.5,1.0,8031.0,33.0,23.0,8000.0,8.0,1.0,Medium,1.5,4.5
+146,Chen Tung,PatrolGunboat,China,11''/23 35-Ton MLR,11.0,536.0,0.5,1.0,8031.0,33.0,23.0,10000.0,10.0,1.0,Medium,1.5,4.5
+147,Kai Che,LightCruiser,China,21cm RKL/22,8.2,174.2,0.8,1.6,6398.0,22.0,22.0,2000.0,2.0,1.6,Short,0.1,4.7
+147,Kai Che,LightCruiser,China,21cm RKL/22,8.2,174.2,0.8,1.6,6398.0,22.0,22.0,4000.0,4.0,1.6,Medium,0.3,3.5
+147,Kai Che,LightCruiser,China,21cm RKL/22,8.2,174.2,0.8,1.6,6398.0,22.0,22.0,6000.0,6.0,1.6,Medium,0.6,2.9
+147,Kai Che,LightCruiser,China,21cm RKL/22,8.2,174.2,0.8,1.6,6398.0,22.0,22.0,8000.0,8.0,1.6,Medium,0.7,2.8
+148,Kai Che,LightCruiser,China,12cm RKL/35 C/80,4.7,57.3,4.0,8.0,8797.0,13.0,35.0,2000.0,2.0,7.0,Short,0.0,3.1
+148,Kai Che,LightCruiser,China,12cm RKL/35 C/80,4.7,57.3,4.0,8.0,8797.0,13.0,35.0,4000.0,4.0,5.4,Medium,0.1,2.3
+148,Kai Che,LightCruiser,China,12cm RKL/35 C/80,4.7,57.3,4.0,8.0,8797.0,13.0,35.0,6000.0,6.0,4.1,Medium,0.3,1.8
+148,Kai Che,LightCruiser,China,12cm RKL/35 C/80,4.7,57.3,4.0,8.0,8797.0,13.0,35.0,8000.0,8.0,3.3,Long,0.5,1.6
+148,Kai Che,LightCruiser,China,12cm RKL/35 C/80,4.7,57.3,4.0,8.0,8797.0,13.0,35.0,10000.0,10.0,3.0,Long,0.7,1.5
+149,King Ch'ing,LightCruiser,China,7''/26 120-pdr-7-Ton RBL,7.0,120.0,1.5,3.0,6741.0,18.0,26.0,2000.0,2.0,3.0,Short,0.1,4.4
+149,King Ch'ing,LightCruiser,China,7''/26 120-pdr-7-Ton RBL,7.0,120.0,1.5,3.0,6741.0,18.0,26.0,4000.0,4.0,3.0,Medium,0.3,3.1
+149,King Ch'ing,LightCruiser,China,7''/26 120-pdr-7-Ton RBL,7.0,120.0,1.5,3.0,6741.0,18.0,26.0,6000.0,6.0,3.0,Medium,0.5,2.5
+149,King Ch'ing,LightCruiser,China,7''/26 120-pdr-7-Ton RBL,7.0,120.0,1.5,3.0,6741.0,18.0,26.0,8000.0,8.0,3.0,Medium,0.6,2.4
+150,King Ch'ing,LightCruiser,China,4.75''/22 40-pdr 1.32-Ton BLR,4.8,40.5,3.0,6.0,5198.0,12.0,22.0,2000.0,2.0,6.0,Short,1.0,2.0
+150,King Ch'ing,LightCruiser,China,4.75''/22 40-pdr 1.32-Ton BLR,4.8,40.5,3.0,6.0,5198.0,12.0,22.0,4000.0,4.0,5.0,Medium,0.3,1.5
+150,King Ch'ing,LightCruiser,China,4.75''/22 40-pdr 1.32-Ton BLR,4.8,40.5,3.0,6.0,5198.0,12.0,22.0,6000.0,6.0,4.2,Medium,0.4,1.3
+151,Nan Thin,LightCruiser,China,21cm RKL/22,8.2,174.2,0.8,1.6,6398.0,22.0,22.0,2000.0,2.0,1.6,Short,0.1,4.7
+151,Nan Thin,LightCruiser,China,21cm RKL/22,8.2,174.2,0.8,1.6,6398.0,22.0,22.0,4000.0,4.0,1.6,Medium,0.3,3.5
+151,Nan Thin,LightCruiser,China,21cm RKL/22,8.2,174.2,0.8,1.6,6398.0,22.0,22.0,6000.0,6.0,1.6,Medium,0.6,2.9
+151,Nan Thin,LightCruiser,China,21cm RKL/22,8.2,174.2,0.8,1.6,6398.0,22.0,22.0,8000.0,8.0,1.6,Medium,0.7,2.8
+152,Nan Thin,LightCruiser,China,12cm RKL/35 C/80,4.7,57.3,4.0,8.0,8797.0,13.0,35.0,2000.0,2.0,7.0,Short,0.0,3.1
+152,Nan Thin,LightCruiser,China,12cm RKL/35 C/80,4.7,57.3,4.0,8.0,8797.0,13.0,35.0,4000.0,4.0,5.4,Medium,0.1,2.3
+152,Nan Thin,LightCruiser,China,12cm RKL/35 C/80,4.7,57.3,4.0,8.0,8797.0,13.0,35.0,6000.0,6.0,4.1,Medium,0.3,1.8
+152,Nan Thin,LightCruiser,China,12cm RKL/35 C/80,4.7,57.3,4.0,8.0,8797.0,13.0,35.0,8000.0,8.0,3.3,Long,0.5,1.6
+152,Nan Thin,LightCruiser,China,12cm RKL/35 C/80,4.7,57.3,4.0,8.0,8797.0,13.0,35.0,10000.0,10.0,3.0,Long,0.7,1.5
+153,Pao Min,LightCruiser,China,15cm RKL/35 C/80,5.9,112.4,4.0,8.0,7818.0,17.0,35.0,2000.0,2.0,7.2,Short,0.2,4.7
+153,Pao Min,LightCruiser,China,15cm RKL/35 C/80,5.9,112.4,4.0,8.0,7818.0,17.0,35.0,4000.0,4.0,5.6,Medium,0.4,3.4
+153,Pao Min,LightCruiser,China,15cm RKL/35 C/80,5.9,112.4,4.0,8.0,7818.0,17.0,35.0,6000.0,6.0,4.4,Medium,0.6,2.8
+153,Pao Min,LightCruiser,China,15cm RKL/35 C/80,5.9,112.4,4.0,8.0,7818.0,17.0,35.0,8000.0,8.0,3.6,Medium,0.8,2.4
+154,Pao Min,LightCruiser,China,12cm RKL/35 C/80,4.7,57.3,4.0,8.0,8797.0,13.0,35.0,2000.0,2.0,7.0,Short,0.0,3.1
+154,Pao Min,LightCruiser,China,12cm RKL/35 C/80,4.7,57.3,4.0,8.0,8797.0,13.0,35.0,4000.0,4.0,5.4,Medium,0.1,2.3
+154,Pao Min,LightCruiser,China,12cm RKL/35 C/80,4.7,57.3,4.0,8.0,8797.0,13.0,35.0,6000.0,6.0,4.1,Medium,0.3,1.8
+154,Pao Min,LightCruiser,China,12cm RKL/35 C/80,4.7,57.3,4.0,8.0,8797.0,13.0,35.0,8000.0,8.0,3.3,Long,0.5,1.6
+154,Pao Min,LightCruiser,China,12cm RKL/35 C/80,4.7,57.3,4.0,8.0,8797.0,13.0,35.0,10000.0,10.0,3.0,Long,0.7,1.5
+155,Imperator Nicolai I,Battleship,Russia,305mm/30 M1877,12.0,731.3,0.3,0.6,10474.0,38.0,30.0,2000.0,2.0,0.6,Short,0.4,10.2
+155,Imperator Nicolai I,Battleship,Russia,305mm/30 M1877,12.0,731.3,0.3,0.6,10474.0,38.0,30.0,4000.0,4.0,0.6,Short,0.9,8.3
+155,Imperator Nicolai I,Battleship,Russia,305mm/30 M1877,12.0,731.3,0.3,0.6,10474.0,38.0,30.0,6000.0,6.0,0.6,Medium,1.3,6.8
+155,Imperator Nicolai I,Battleship,Russia,305mm/30 M1877,12.0,731.3,0.3,0.6,10474.0,38.0,30.0,8000.0,8.0,0.6,Medium,1.8,5.8
+155,Imperator Nicolai I,Battleship,Russia,305mm/30 M1877,12.0,731.3,0.3,0.6,10474.0,38.0,30.0,10000.0,10.0,0.6,Medium,2.2,5.1
+155,Imperator Nicolai I,Battleship,Russia,305mm/30 M1877,12.0,731.3,0.3,0.6,10474.0,38.0,30.0,12000.0,12.0,0.6,Long,2.3,5.0
+156,Imperator Nicolai I,Battleship,Russia,230mm/35 M1887,9.0,278.0,0.6,1.2,10075.0,26.0,35.0,2000.0,2.0,1.2,Short,0.2,7.1
+156,Imperator Nicolai I,Battleship,Russia,230mm/35 M1887,9.0,278.0,0.6,1.2,10075.0,26.0,35.0,4000.0,4.0,1.2,Short,0.4,5.1
+156,Imperator Nicolai I,Battleship,Russia,230mm/35 M1887,9.0,278.0,0.6,1.2,10075.0,26.0,35.0,6000.0,6.0,1.2,Medium,0.7,3.9
+156,Imperator Nicolai I,Battleship,Russia,230mm/35 M1887,9.0,278.0,0.6,1.2,10075.0,26.0,35.0,8000.0,8.0,1.2,Medium,1.0,3.2
+156,Imperator Nicolai I,Battleship,Russia,230mm/35 M1887,9.0,278.0,0.6,1.2,10075.0,26.0,35.0,10000.0,10.0,1.2,Long,1.3,2.8
+156,Imperator Nicolai I,Battleship,Russia,230mm/35 M1887,9.0,278.0,0.6,1.2,10075.0,26.0,35.0,12000.0,12.0,1.2,Long,1.4,2.8
+157,Imperator Nicolai I,Battleship,Russia,152mm/35 M1887,6.0,91.5,1.5,3.0,8170.0,16.0,35.0,2000.0,2.0,3.0,Short,0.1,4.8
+157,Imperator Nicolai I,Battleship,Russia,152mm/35 M1887,6.0,91.5,1.5,3.0,8170.0,16.0,35.0,4000.0,4.0,3.0,Short,0.2,3.0
+157,Imperator Nicolai I,Battleship,Russia,152mm/35 M1887,6.0,91.5,1.5,3.0,8170.0,16.0,35.0,6000.0,6.0,3.0,Medium,0.4,2.2
+157,Imperator Nicolai I,Battleship,Russia,152mm/35 M1887,6.0,91.5,1.5,3.0,8170.0,16.0,35.0,8000.0,8.0,3.0,Long,0.7,1.8
+157,Imperator Nicolai I,Battleship,Russia,152mm/35 M1887,6.0,91.5,1.5,3.0,8170.0,16.0,35.0,10000.0,10.0,3.0,Long,0.7,1.8
+158,Admiral Nakhimov (1887),ArmoredCruiser,Russia,203mm/35 M1877,8.0,293.2,0.6,1.2,9209.0,25.0,35.0,2000.0,2.0,1.2,Short,0.3,5.7
+158,Admiral Nakhimov (1887),ArmoredCruiser,Russia,203mm/35 M1877,8.0,293.2,0.6,1.2,9209.0,25.0,35.0,4000.0,4.0,1.2,Short,0.6,4.5
+158,Admiral Nakhimov (1887),ArmoredCruiser,Russia,203mm/35 M1877,8.0,293.2,0.6,1.2,9209.0,25.0,35.0,6000.0,6.0,1.2,Medium,0.9,3.7
+158,Admiral Nakhimov (1887),ArmoredCruiser,Russia,203mm/35 M1877,8.0,293.2,0.6,1.2,9209.0,25.0,35.0,8000.0,8.0,1.2,Medium,1.1,3.2
+158,Admiral Nakhimov (1887),ArmoredCruiser,Russia,203mm/35 M1877,8.0,293.2,0.6,1.2,9209.0,25.0,35.0,10000.0,10.0,1.2,Long,1.3,3.0
+159,Admiral Nakhimov (1887),ArmoredCruiser,Russia,152mm/35 M1887,6.0,91.5,1.5,3.0,8170.0,16.0,35.0,2000.0,2.0,3.0,Short,0.1,4.8
+159,Admiral Nakhimov (1887),ArmoredCruiser,Russia,152mm/35 M1887,6.0,91.5,1.5,3.0,8170.0,16.0,35.0,4000.0,4.0,3.0,Short,0.2,3.0
+159,Admiral Nakhimov (1887),ArmoredCruiser,Russia,152mm/35 M1887,6.0,91.5,1.5,3.0,8170.0,16.0,35.0,6000.0,6.0,3.0,Medium,0.4,2.2
+159,Admiral Nakhimov (1887),ArmoredCruiser,Russia,152mm/35 M1887,6.0,91.5,1.5,3.0,8170.0,16.0,35.0,8000.0,8.0,3.0,Long,0.7,1.8
+159,Admiral Nakhimov (1887),ArmoredCruiser,Russia,152mm/35 M1887,6.0,91.5,1.5,3.0,8170.0,16.0,35.0,10000.0,10.0,3.0,Long,0.7,1.8
+160,Admiral Nakhimov (1900),ArmoredCruiser,Russia,203mm/35 M1877,8.0,293.2,0.6,1.2,9209.0,25.0,35.0,2000.0,2.0,1.2,Short,0.3,5.7
+160,Admiral Nakhimov (1900),ArmoredCruiser,Russia,203mm/35 M1877,8.0,293.2,0.6,1.2,9209.0,25.0,35.0,4000.0,4.0,1.2,Short,0.6,4.5
+160,Admiral Nakhimov (1900),ArmoredCruiser,Russia,203mm/35 M1877,8.0,293.2,0.6,1.2,9209.0,25.0,35.0,6000.0,6.0,1.2,Medium,0.9,3.7
+160,Admiral Nakhimov (1900),ArmoredCruiser,Russia,203mm/35 M1877,8.0,293.2,0.6,1.2,9209.0,25.0,35.0,8000.0,8.0,1.2,Medium,1.1,3.2
+160,Admiral Nakhimov (1900),ArmoredCruiser,Russia,203mm/35 M1877,8.0,293.2,0.6,1.2,9209.0,25.0,35.0,10000.0,10.0,1.2,Long,1.3,3.0
+161,Pamiat Azova,ArmoredCruiser,Russia,203mm/35 M1877,8.0,293.2,0.6,1.2,9209.0,25.0,35.0,2000.0,2.0,1.2,Short,0.3,5.7
+161,Pamiat Azova,ArmoredCruiser,Russia,203mm/35 M1877,8.0,293.2,0.6,1.2,9209.0,25.0,35.0,4000.0,4.0,1.2,Short,0.6,4.5
+161,Pamiat Azova,ArmoredCruiser,Russia,203mm/35 M1877,8.0,293.2,0.6,1.2,9209.0,25.0,35.0,6000.0,6.0,1.2,Medium,0.9,3.7
+161,Pamiat Azova,ArmoredCruiser,Russia,203mm/35 M1877,8.0,293.2,0.6,1.2,9209.0,25.0,35.0,8000.0,8.0,1.2,Medium,1.1,3.2
+161,Pamiat Azova,ArmoredCruiser,Russia,203mm/35 M1877,8.0,293.2,0.6,1.2,9209.0,25.0,35.0,10000.0,10.0,1.2,Long,1.3,3.0
+162,Pamiat Azova,ArmoredCruiser,Russia,152mm/35 M1887,6.0,91.5,1.5,3.0,8170.0,16.0,35.0,2000.0,2.0,3.0,Short,0.1,4.8
+162,Pamiat Azova,ArmoredCruiser,Russia,152mm/35 M1887,6.0,91.5,1.5,3.0,8170.0,16.0,35.0,4000.0,4.0,3.0,Short,0.2,3.0
+162,Pamiat Azova,ArmoredCruiser,Russia,152mm/35 M1887,6.0,91.5,1.5,3.0,8170.0,16.0,35.0,6000.0,6.0,3.0,Medium,0.4,2.2
+162,Pamiat Azova,ArmoredCruiser,Russia,152mm/35 M1887,6.0,91.5,1.5,3.0,8170.0,16.0,35.0,8000.0,8.0,3.0,Long,0.7,1.8
+162,Pamiat Azova,ArmoredCruiser,Russia,152mm/35 M1887,6.0,91.5,1.5,3.0,8170.0,16.0,35.0,10000.0,10.0,3.0,Long,0.7,1.8
+163,Vladimir Monomakh,ArmoredCruiser,Russia,203mm/22 M1877,8.0,178.4,0.3,0.6,6043.0,22.0,22.0,2000.0,2.0,0.6,Short,0.2,3.4
+163,Vladimir Monomakh,ArmoredCruiser,Russia,203mm/22 M1877,8.0,178.4,0.3,0.6,6043.0,22.0,22.0,4000.0,4.0,0.6,Medium,0.4,2.8
+163,Vladimir Monomakh,ArmoredCruiser,Russia,203mm/22 M1877,8.0,178.4,0.3,0.6,6043.0,22.0,22.0,6000.0,6.0,0.6,Medium,0.7,2.3
+163,Vladimir Monomakh,ArmoredCruiser,Russia,203mm/22 M1877,8.0,178.4,0.3,0.6,6043.0,22.0,22.0,8000.0,8.0,0.6,Medium,0.7,2.3
+164,Vladimir Monomakh,ArmoredCruiser,Russia,152mm/28 M1887,6.0,82.1,2.0,4.0,7149.0,15.0,28.0,2000.0,2.0,4.0,Short,0.1,3.2
+164,Vladimir Monomakh,ArmoredCruiser,Russia,152mm/28 M1887,6.0,82.1,2.0,4.0,7149.0,15.0,28.0,4000.0,4.0,4.0,Medium,0.3,2.3
+164,Vladimir Monomakh,ArmoredCruiser,Russia,152mm/28 M1887,6.0,82.1,2.0,4.0,7149.0,15.0,28.0,6000.0,6.0,4.0,Medium,0.5,1.8
+164,Vladimir Monomakh,ArmoredCruiser,Russia,152mm/28 M1887,6.0,82.1,2.0,4.0,7149.0,15.0,28.0,8000.0,8.0,3.5,Long,0.7,1.7
+165,Admiral Kornilov,LightCruiser,Russia,152mm/35 M1887,6.0,91.5,2.0,4.0,8170.0,16.0,35.0,2000.0,2.0,4.0,Short,0.1,4.8
+165,Admiral Kornilov,LightCruiser,Russia,152mm/35 M1887,6.0,91.5,2.0,4.0,8170.0,16.0,35.0,4000.0,4.0,4.0,Short,0.2,3.0
+165,Admiral Kornilov,LightCruiser,Russia,152mm/35 M1887,6.0,91.5,2.0,4.0,8170.0,16.0,35.0,6000.0,6.0,4.0,Medium,0.4,2.2
+165,Admiral Kornilov,LightCruiser,Russia,152mm/35 M1887,6.0,91.5,2.0,4.0,8170.0,16.0,35.0,8000.0,8.0,3.6,Long,0.7,1.8
+165,Admiral Kornilov,LightCruiser,Russia,152mm/35 M1887,6.0,91.5,2.0,4.0,8170.0,16.0,35.0,10000.0,10.0,2.9,Long,1.1,1.5
+165,Admiral Kornilov,LightCruiser,Russia,152mm/35 M1887,6.0,91.5,2.0,4.0,8170.0,16.0,35.0,12000.0,12.0,2.7,Long,1.3,1.5
+166,Borodino,Battleship,Russia,305mm/40 M1892,12.0,731.3,1.0,2.0,14845.0,38.0,40.0,2000.0,2.0,2.0,Short,0.3,13.7
+166,Borodino,Battleship,Russia,305mm/40 M1892,12.0,731.3,1.0,2.0,14845.0,38.0,40.0,4000.0,4.0,2.0,Short,0.6,11.2
+166,Borodino,Battleship,Russia,305mm/40 M1892,12.0,731.3,1.0,2.0,14845.0,38.0,40.0,6000.0,6.0,2.0,Short,0.9,9.1
+166,Borodino,Battleship,Russia,305mm/40 M1892,12.0,731.3,1.0,2.0,14845.0,38.0,40.0,8000.0,8.0,2.0,Medium,1.3,7.3
+166,Borodino,Battleship,Russia,305mm/40 M1892,12.0,731.3,1.0,2.0,14845.0,38.0,40.0,10000.0,10.0,2.0,Medium,1.8,5.9
+166,Borodino,Battleship,Russia,305mm/40 M1892,12.0,731.3,1.0,2.0,14845.0,38.0,40.0,12000.0,12.0,2.0,Medium,2.1,5.0
+166,Borodino,Battleship,Russia,305mm/40 M1892,12.0,731.3,1.0,2.0,14845.0,38.0,40.0,15000.0,15.0,2.0,Long,2.9,4.3
+167,Borodino,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,2000.0,2.0,6.0,Short,0.1,4.1
+167,Borodino,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,4000.0,4.0,6.0,Short,0.2,2.8
+167,Borodino,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,6000.0,6.0,5.0,Medium,0.4,2.0
+167,Borodino,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,8000.0,8.0,4.0,Medium,0.6,1.7
+167,Borodino,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,10000.0,10.0,3.2,Long,0.9,1.5
+167,Borodino,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,12000.0,12.0,2.6,Long,1.3,1.4
+167,Borodino,Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,15000.0,15.0,2.6,Long,1.4,1.4
+168,Sissoi Veliki (1905),Battleship,Russia,305mm/40 M1892,12.0,731.3,1.0,2.0,14845.0,38.0,40.0,2000.0,2.0,2.0,Short,0.3,13.7
+168,Sissoi Veliki (1905),Battleship,Russia,305mm/40 M1892,12.0,731.3,1.0,2.0,14845.0,38.0,40.0,4000.0,4.0,2.0,Short,0.6,11.2
+168,Sissoi Veliki (1905),Battleship,Russia,305mm/40 M1892,12.0,731.3,1.0,2.0,14845.0,38.0,40.0,6000.0,6.0,2.0,Short,0.9,9.1
+168,Sissoi Veliki (1905),Battleship,Russia,305mm/40 M1892,12.0,731.3,1.0,2.0,14845.0,38.0,40.0,8000.0,8.0,2.0,Medium,1.3,7.3
+168,Sissoi Veliki (1905),Battleship,Russia,305mm/40 M1892,12.0,731.3,1.0,2.0,14845.0,38.0,40.0,10000.0,10.0,2.0,Medium,1.8,5.9
+168,Sissoi Veliki (1905),Battleship,Russia,305mm/40 M1892,12.0,731.3,1.0,2.0,14845.0,38.0,40.0,12000.0,12.0,2.0,Medium,2.1,5.0
+168,Sissoi Veliki (1905),Battleship,Russia,305mm/40 M1892,12.0,731.3,1.0,2.0,14845.0,38.0,40.0,15000.0,15.0,2.0,Long,2.9,4.3
+169,Sissoi Veliki (1905),Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,2000.0,2.0,7.7,Short,0.1,4.1
+169,Sissoi Veliki (1905),Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,4000.0,4.0,6.2,Short,0.2,2.8
+169,Sissoi Veliki (1905),Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,6000.0,6.0,5.0,Medium,0.4,2.0
+169,Sissoi Veliki (1905),Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,8000.0,8.0,4.0,Medium,0.6,1.7
+169,Sissoi Veliki (1905),Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,10000.0,10.0,3.2,Long,0.9,1.5
+169,Sissoi Veliki (1905),Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,12000.0,12.0,2.6,Long,1.3,1.4
+169,Sissoi Veliki (1905),Battleship,Russia,152mm/45 M1892,6.0,91.5,3.0,6.0,12199.0,16.0,45.0,15000.0,15.0,2.6,Long,1.4,1.4
+170,Sissoi Veliki (1905),Battleship,Russia,120mm/45 M1891,4.7,45.1,5.0,10.0,10800.0,12.0,45.0,2000.0,2.0,7.6,Short,0.1,4.2
+170,Sissoi Veliki (1905),Battleship,Russia,120mm/45 M1891,4.7,45.1,5.0,10.0,10800.0,12.0,45.0,4000.0,4.0,6.1,Short,0.2,2.5
+170,Sissoi Veliki (1905),Battleship,Russia,120mm/45 M1891,4.7,45.1,5.0,10.0,10800.0,12.0,45.0,6000.0,6.0,4.7,Medium,0.3,1.7
+170,Sissoi Veliki (1905),Battleship,Russia,120mm/45 M1891,4.7,45.1,5.0,10.0,10800.0,12.0,45.0,8000.0,8.0,3.7,Long,0.5,1.4
+170,Sissoi Veliki (1905),Battleship,Russia,120mm/45 M1891,4.7,45.1,5.0,10.0,10800.0,12.0,45.0,10000.0,10.0,2.9,Long,0.9,1.2
+170,Sissoi Veliki (1905),Battleship,Russia,120mm/45 M1891,4.7,45.1,5.0,10.0,10800.0,12.0,45.0,12000.0,12.0,2.7,Long,1.0,1.1
+171,Navarin(1905),Battleship,Russia,305mm/35 M1885,12.0,731.3,0.4,0.8,10678.0,38.0,35.0,2000.0,2.0,0.8,Short,0.4,11.7
+171,Navarin(1905),Battleship,Russia,305mm/35 M1885,12.0,731.3,0.4,0.8,10678.0,38.0,35.0,4000.0,4.0,0.8,Short,0.8,9.6
+171,Navarin(1905),Battleship,Russia,305mm/35 M1885,12.0,731.3,0.4,0.8,10678.0,38.0,35.0,6000.0,6.0,0.8,Medium,1.2,7.8
+171,Navarin(1905),Battleship,Russia,305mm/35 M1885,12.0,731.3,0.4,0.8,10678.0,38.0,35.0,8000.0,8.0,0.8,Medium,1.7,6.4
+171,Navarin(1905),Battleship,Russia,305mm/35 M1885,12.0,731.3,0.4,0.8,10678.0,38.0,35.0,10000.0,10.0,0.8,Medium,2.0,5.5
+171,Navarin(1905),Battleship,Russia,305mm/35 M1885,12.0,731.3,0.4,0.8,10678.0,38.0,35.0,12000.0,12.0,0.8,Medium,2.2,5.3
+172,Navarin(1905),Battleship,Russia,152mm/35 M1887,6.0,91.5,1.5,3.0,8170.0,16.0,35.0,2000.0,2.0,3.0,Short,0.1,4.8
+172,Navarin(1905),Battleship,Russia,152mm/35 M1887,6.0,91.5,1.5,3.0,8170.0,16.0,35.0,4000.0,4.0,3.0,Short,0.2,3.0
+172,Navarin(1905),Battleship,Russia,152mm/35 M1887,6.0,91.5,1.5,3.0,8170.0,16.0,35.0,6000.0,6.0,3.0,Medium,0.4,2.2
+172,Navarin(1905),Battleship,Russia,152mm/35 M1887,6.0,91.5,1.5,3.0,8170.0,16.0,35.0,8000.0,8.0,3.0,Long,0.7,1.8
+172,Navarin(1905),Battleship,Russia,152mm/35 M1887,6.0,91.5,1.5,3.0,8170.0,16.0,35.0,10000.0,10.0,3.0,Long,0.7,1.8
+173,Inflexible,Battleship,Britain,16''/18 RML Mk 1,16.0,1700.0,0.5,1.0,6379.0,54.0,18.0,2000.0,2.0,1.0,Short,1.1,11.5
+173,Inflexible,Battleship,Britain,16''/18 RML Mk 1,16.0,1700.0,0.5,1.0,6379.0,54.0,18.0,4000.0,4.0,1.0,Short,2.0,9.7
+173,Inflexible,Battleship,Britain,16''/18 RML Mk 1,16.0,1700.0,0.5,1.0,6379.0,54.0,18.0,6000.0,6.0,1.0,Medium,2.7,8.3
+173,Inflexible,Battleship,Britain,16''/18 RML Mk 1,16.0,1700.0,0.5,1.0,6379.0,54.0,18.0,8000.0,8.0,1.0,Medium,2.9,7.9
+174,Centurion,Battleship,Britain,10''/32 BL Mks II-IV,10.0,500.0,0.6,1.2,11532.0,32.0,32.0,2000.0,2.0,1.2,Short,0.2,9.6
+174,Centurion,Battleship,Britain,10''/32 BL Mks II-IV,10.0,500.0,0.6,1.2,11532.0,32.0,32.0,4000.0,4.0,1.2,Short,0.4,7.7
+174,Centurion,Battleship,Britain,10''/32 BL Mks II-IV,10.0,500.0,0.6,1.2,11532.0,32.0,32.0,6000.0,6.0,1.2,Medium,0.6,6.2
+174,Centurion,Battleship,Britain,10''/32 BL Mks II-IV,10.0,500.0,0.6,1.2,11532.0,32.0,32.0,8000.0,8.0,1.2,Medium,0.9,5.2
+174,Centurion,Battleship,Britain,10''/32 BL Mks II-IV,10.0,500.0,0.6,1.2,11532.0,32.0,32.0,10000.0,10.0,1.2,Medium,1.1,4.6
+174,Centurion,Battleship,Britain,10''/32 BL Mks II-IV,10.0,500.0,0.6,1.2,11532.0,32.0,32.0,12000.0,12.0,1.2,Long,1.3,4.2
+175,Centurion,Battleship,Britain,4.7''/40 Mk I - IV,4.7,45.0,4.5,9.0,7152.0,12.0,40.0,2000.0,2.0,7.0,Short,0.1,2.6
+175,Centurion,Battleship,Britain,4.7''/40 Mk I - IV,4.7,45.0,4.5,9.0,7152.0,12.0,40.0,4000.0,4.0,5.3,Medium,0.2,1.8
+175,Centurion,Battleship,Britain,4.7''/40 Mk I - IV,4.7,45.0,4.5,9.0,7152.0,12.0,40.0,6000.0,6.0,4.1,Medium,0.4,1.5
+175,Centurion,Battleship,Britain,4.7''/40 Mk I - IV,4.7,45.0,4.5,9.0,7152.0,12.0,40.0,8000.0,8.0,3.5,Long,0.5,1.3
+176,Dreadnought,Battleship,Britain,12.0''/45 BL Mk X,12.0,850.0,2.0,4.0,16450.0,40.0,45.0,2000.0,2.0,4.0,Short,0.4,16.8
+176,Dreadnought,Battleship,Britain,12.0''/45 BL Mk X,12.0,850.0,2.0,4.0,16450.0,40.0,45.0,4000.0,4.0,4.0,Short,0.7,14.1
+176,Dreadnought,Battleship,Britain,12.0''/45 BL Mk X,12.0,850.0,2.0,4.0,16450.0,40.0,45.0,6000.0,6.0,4.0,Short,0.9,11.7
+176,Dreadnought,Battleship,Britain,12.0''/45 BL Mk X,12.0,850.0,2.0,4.0,16450.0,40.0,45.0,8000.0,8.0,4.0,Short,1.1,9.7
+176,Dreadnought,Battleship,Britain,12.0''/45 BL Mk X,12.0,850.0,2.0,4.0,16450.0,40.0,45.0,10000.0,10.0,4.0,Medium,1.3,8.1
+176,Dreadnought,Battleship,Britain,12.0''/45 BL Mk X,12.0,850.0,2.0,4.0,16450.0,40.0,45.0,12000.0,12.0,3.7,Medium,1.5,6.9
+176,Dreadnought,Battleship,Britain,12.0''/45 BL Mk X,12.0,850.0,2.0,4.0,16450.0,40.0,45.0,15000.0,15.0,3.0,Long,1.8,5.9
+176,Dreadnought,Battleship,Britain,12.0''/45 BL Mk X,12.0,850.0,2.0,4.0,16450.0,40.0,45.0,18000.0,18.0,2.7,Long,2.1,5.6
+177,Edgar,LightCruiser,Britain,9.2''/32 BL Mk VI,9.2,380.0,1.2,2.4,11400.0,28.0,32.0,2000.0,2.0,2.4,Short,0.2,8.0
+177,Edgar,LightCruiser,Britain,9.2''/32 BL Mk VI,9.2,380.0,1.2,2.4,11400.0,28.0,32.0,4000.0,4.0,2.4,Short,0.4,6.3
+177,Edgar,LightCruiser,Britain,9.2''/32 BL Mk VI,9.2,380.0,1.2,2.4,11400.0,28.0,32.0,6000.0,6.0,2.4,Medium,0.5,5.1
+177,Edgar,LightCruiser,Britain,9.2''/32 BL Mk VI,9.2,380.0,1.2,2.4,11400.0,28.0,32.0,8000.0,8.0,2.4,Medium,0.8,4.2
+177,Edgar,LightCruiser,Britain,9.2''/32 BL Mk VI,9.2,380.0,1.2,2.4,11400.0,28.0,32.0,10000.0,10.0,2.4,Medium,1.0,3.6
+177,Edgar,LightCruiser,Britain,9.2''/32 BL Mk VI,9.2,380.0,1.2,2.4,11400.0,28.0,32.0,12000.0,12.0,2.4,Long,1.3,3.4
+178,Edgar,LightCruiser,Britain,"6''/40 QF Mk I,II,III",6.0,100.0,6.0,12.0,11413.0,16.0,40.0,2000.0,2.0,7.5,Short,0.1,3.4
+178,Edgar,LightCruiser,Britain,"6''/40 QF Mk I,II,III",6.0,100.0,6.0,12.0,11413.0,16.0,40.0,4000.0,4.0,6.0,Short,0.1,2.5
+178,Edgar,LightCruiser,Britain,"6''/40 QF Mk I,II,III",6.0,100.0,6.0,12.0,11413.0,16.0,40.0,6000.0,6.0,4.7,Medium,0.2,1.9
+178,Edgar,LightCruiser,Britain,"6''/40 QF Mk I,II,III",6.0,100.0,6.0,12.0,11413.0,16.0,40.0,8000.0,8.0,3.8,Medium,0.3,1.6
+178,Edgar,LightCruiser,Britain,"6''/40 QF Mk I,II,III",6.0,100.0,6.0,12.0,11413.0,16.0,40.0,10000.0,10.0,3.1,Long,0.4,1.5
+178,Edgar,LightCruiser,Britain,"6''/40 QF Mk I,II,III",6.0,100.0,6.0,12.0,11413.0,16.0,40.0,12000.0,12.0,2.7,Long,0.6,1.4
+179,Edgar,LightCruiser,Britain,"6''/40 QF Mk I,II,III",6.0,100.0,6.0,12.0,9848.0,16.0,40.0,2000.0,2.0,7.5,Short,0.1,3.1
+179,Edgar,LightCruiser,Britain,"6''/40 QF Mk I,II,III",6.0,100.0,6.0,12.0,9848.0,16.0,40.0,4000.0,4.0,6.0,Short,0.1,2.5
+179,Edgar,LightCruiser,Britain,"6''/40 QF Mk I,II,III",6.0,100.0,6.0,12.0,9848.0,16.0,40.0,6000.0,6.0,4.7,Medium,0.2,1.9
+179,Edgar,LightCruiser,Britain,"6''/40 QF Mk I,II,III",6.0,100.0,6.0,12.0,9848.0,16.0,40.0,8000.0,8.0,3.8,Medium,0.3,1.6
+179,Edgar,LightCruiser,Britain,"6''/40 QF Mk I,II,III",6.0,100.0,6.0,12.0,9848.0,16.0,40.0,10000.0,10.0,3.1,Long,0.4,1.5
+180,Orlando,ArmoredCruiser,Britain,"9.2''/32 BL Mk V, VI",9.2,380.0,1.0,2.0,10000.0,28.0,32.0,2000.0,2.0,2.0,Short,0.2,7.9
+180,Orlando,ArmoredCruiser,Britain,"9.2''/32 BL Mk V, VI",9.2,380.0,1.0,2.0,10000.0,28.0,32.0,4000.0,4.0,2.0,Short,0.4,6.3
+180,Orlando,ArmoredCruiser,Britain,"9.2''/32 BL Mk V, VI",9.2,380.0,1.0,2.0,10000.0,28.0,32.0,6000.0,6.0,2.0,Medium,0.6,5.1
+180,Orlando,ArmoredCruiser,Britain,"9.2''/32 BL Mk V, VI",9.2,380.0,1.0,2.0,10000.0,28.0,32.0,8000.0,8.0,2.0,Medium,0.8,4.2
+180,Orlando,ArmoredCruiser,Britain,"9.2''/32 BL Mk V, VI",9.2,380.0,1.0,2.0,10000.0,28.0,32.0,10000.0,10.0,2.0,Medium,1.0,3.7
+181,Orlando,ArmoredCruiser,Britain,"6''/26 BL Mk III, IV, VI",6.0,100.0,4.0,8.0,8830.0,16.0,26.0,2000.0,2.0,7.3,Short,0.1,4.2
+181,Orlando,ArmoredCruiser,Britain,"6''/26 BL Mk III, IV, VI",6.0,100.0,4.0,8.0,8830.0,16.0,26.0,4000.0,4.0,5.7,Short,0.3,3.0
+181,Orlando,ArmoredCruiser,Britain,"6''/26 BL Mk III, IV, VI",6.0,100.0,4.0,8.0,8830.0,16.0,26.0,6000.0,6.0,4.5,Medium,0.5,2.4
+181,Orlando,ArmoredCruiser,Britain,"6''/26 BL Mk III, IV, VI",6.0,100.0,4.0,8.0,8830.0,16.0,26.0,8000.0,8.0,3.6,Long,0.7,2.0
+181,Orlando,ArmoredCruiser,Britain,"6''/26 BL Mk III, IV, VI",6.0,100.0,4.0,8.0,8830.0,16.0,26.0,10000.0,10.0,3.3,Long,0.8,1.9
+182,Iris,LightCruiser,Britain,6'' RML 64pdr MK III,6.0,64.5,2.5,5.0,5276.0,14.0,,2000.0,2.0,5.0,Short,0.1,2.2
+182,Iris,LightCruiser,Britain,6'' RML 64pdr MK III,6.0,64.5,2.5,5.0,5276.0,14.0,,4000.0,4.0,4.7,Medium,0.2,1.7
+182,Iris,LightCruiser,Britain,6'' RML 64pdr MK III,6.0,64.5,2.5,5.0,5276.0,14.0,,6000.0,6.0,3.9,Long,0.3,1.4
+183,Apollo,LightCruiser,Britain,"6''/40 QF Mk I,II,III",6.0,100.0,6.0,12.0,11921.0,16.0,40.0,2000.0,2.0,7.5,Short,0.1,3.6
+183,Apollo,LightCruiser,Britain,"6''/40 QF Mk I,II,III",6.0,100.0,6.0,12.0,11921.0,16.0,40.0,4000.0,4.0,6.0,Short,0.1,2.5
+183,Apollo,LightCruiser,Britain,"6''/40 QF Mk I,II,III",6.0,100.0,6.0,12.0,11921.0,16.0,40.0,6000.0,6.0,4.8,Medium,0.2,1.9
+183,Apollo,LightCruiser,Britain,"6''/40 QF Mk I,II,III",6.0,100.0,6.0,12.0,11921.0,16.0,40.0,8000.0,8.0,3.9,Medium,0.3,1.6
+183,Apollo,LightCruiser,Britain,"6''/40 QF Mk I,II,III",6.0,100.0,6.0,12.0,11921.0,16.0,40.0,10000.0,10.0,3.2,Long,0.4,1.5
+183,Apollo,LightCruiser,Britain,"6''/40 QF Mk I,II,III",6.0,100.0,6.0,12.0,11921.0,16.0,40.0,12000.0,12.0,2.6,Long,0.6,1.5
+184,Apollo,LightCruiser,Britain,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,2000.0,2.0,7.4,Short,0.1,3.1
+184,Apollo,LightCruiser,Britain,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,4000.0,4.0,5.7,Short,0.2,2.0
+184,Apollo,LightCruiser,Britain,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,6000.0,6.0,4.4,Medium,0.3,1.5
+184,Apollo,LightCruiser,Britain,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,8000.0,8.0,3.5,Long,0.5,1.3
+184,Apollo,LightCruiser,Britain,4.7''/40 QF Type 41,4.7,45.0,6.0,12.0,9899.0,12.0,40.0,10000.0,10.0,2.8,Long,0.9,1.1
+185,Phoenix,LightCruiser,Britain,4''/27 BL Mk II-VI,4.0,25.0,6.0,12.0,7691.0,9.0,27.0,2000.0,2.0,7.0,Short,0.0,1.7
+185,Phoenix,LightCruiser,Britain,4''/27 BL Mk II-VI,4.0,25.0,6.0,12.0,7691.0,9.0,27.0,4000.0,4.0,5.2,Medium,0.1,1.1
+185,Phoenix,LightCruiser,Britain,4''/27 BL Mk II-VI,4.0,25.0,6.0,12.0,7691.0,9.0,27.0,6000.0,6.0,3.9,Long,0.3,0.9
+185,Phoenix,LightCruiser,Britain,4''/27 BL Mk II-VI,4.0,25.0,6.0,12.0,7691.0,9.0,27.0,8000.0,8.0,3.1,Long,0.6,0.7

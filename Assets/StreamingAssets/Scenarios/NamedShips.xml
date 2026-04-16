@@ -4051,6 +4051,30 @@ Generic Placeholder class</remark>
  <NamedShip>
   <shipClassObjectId>655676cb-88bd-4f22-b93b-8624c1200343</shipClassObjectId>
   <name>
+   <english>Korietz (1898/12/6)</english>
+   <japanese>コレーエツ (1898/12/6)</japanese>
+   <chineseSimplified>高丽人 (1898/12/6)</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>b72d1d3b-0ea7-4603-b6c2-a23d1bf363fc</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>For Taku Fort</remark>
+  <objectId>cc5593db-fb51-4c8c-bff5-f9584f70b4c3</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>655676cb-88bd-4f22-b93b-8624c1200343</shipClassObjectId>
+  <name>
    <english>Korietz</english>
    <japanese>コレーエツ</japanese>
    <chineseSimplified>高丽人</chineseSimplified>
@@ -4069,6 +4093,7 @@ Generic Placeholder class</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Russo-Japanese War</remark>
   <objectId>74138eaa-5f95-4aae-a9df-f0be719db548</objectId>
  </NamedShip>
  <NamedShip>

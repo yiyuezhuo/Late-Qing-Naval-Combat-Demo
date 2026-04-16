@@ -1,0 +1,12 @@
+﻿dimension,level,factor
+aspect,Broad,1.0
+aspect,Narrow,0.6004651312153622
+range_band,Short,1.0
+range_band,Medium,0.6010494979955461
+range_band,Long,0.41648764158041224
+range_band,Extreme,0.35667819280184954
+speed,9.0,1.0
+speed,18.0,0.6709528543980405
+speed,27.0,0.5265259171208168
+speed,36.0,0.4393302455031049
+speed,45.0,0.3757980050931462

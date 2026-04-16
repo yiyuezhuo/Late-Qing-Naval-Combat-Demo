@@ -1,0 +1,187 @@
+﻿battery_id,ship_name,battery_name,rows,rate_of_fire_nonincreasing,horizontal_penetration_nondecreasing,vertical_penetration_nonincreasing
+0,Yoshino,15cm/45 EOC/VSM,7,True,True,True
+1,Yoshino,4.7''/40 QF Type 41,5,True,True,True
+2,Yoshino (1901),15cm/45 EOC/VSM,7,True,True,True
+3,Yoshino (1901),4.7''/40 QF Type 41,5,True,True,True
+4,Akitsushima,15cm/45 EOC/VSM,7,True,True,True
+5,Akitsushima,4.7''/40 QF Type 41,5,True,True,True
+6,Akitsushima (1902),15cm/45 EOC/VSM,7,True,True,True
+7,Akitsushima (1902),4.7''/40 QF Type 41,5,True,True,True
+8,Naniwa,26cm RKL/35 C/83,5,True,True,True
+9,Naniwa,15cm RKL/35 C/80,4,True,True,True
+10,Naniwa (1903),15cm/40 EOC Z,6,True,True,True
+11,Chi Yuan,21cm RKL/22,4,True,True,True
+12,Chi Yuan,15cm RKL/35 C/80,4,True,True,True
+13,Kuang Yi,12cm SKL/40 C/88,6,True,True,True
+14,Ting Yuen,30.5cm RKL/25 C/80,4,True,True,True
+15,Ting Yuen,15cm RKL/35 C/80,4,True,True,True
+16,Chin Yen (1896),30.5cm RKL/25 C/80,4,True,True,True
+17,Chin Yen (1896),15cm/45 EOC/VSM,7,True,True,True
+18,Chao Yung,10''/26 25-Ton BLR,4,True,True,True
+19,Chao Yung,4.75''/22 40-pdr 1.32-Ton BLR,3,True,True,True
+20,Chih Yuan,21cm RKL/30 C/84,5,True,True,True
+21,Chih Yuan,15cm RKL/35 C/80,4,True,True,True
+22,King Yuan,21cm RKL/22,4,True,True,True
+23,King Yuan,15cm RKL/35 C/80,4,True,True,True
+24,Ping Yuen,26cm RKL C/83,5,True,True,True
+25,Ping Yuen,15cm RKL/35 C/80,4,True,True,True
+26,Kuang Chia,15cm RKL/35 C/80,4,True,True,True
+27,Kuang Chia,12cm RKL/35 C/80,5,True,True,True
+28,Wei Yuen,Armstrong 7'' Gun,4,True,True,True
+29,Wei Yuen,Armstrong 4.7'' Gun,5,True,True,True
+30,Fuso,24cm RKL/20 C/67,5,True,True,True
+31,Fuso,15cm/35 EOC,5,True,True,True
+32,Itsukushima,32cm/38 M1887,6,True,True,True
+33,Itsukushima,4.7''/40 QF Type 41,5,True,True,True
+34,Itsukushima (1902),32cm/38 M1887,6,True,True,True
+35,Itsukushima (1902),4.7''/40 QF Type 41,5,True,True,True
+36,Matsushima,32cm/38 M1887,6,True,True,True
+37,Matsushima,4.7''/40 QF Type 41,5,True,True,True
+38,Matsushima (1902),32cm/38 M1887,6,True,True,True
+39,Matsushima (1902),4.7''/40 QF Type 41,5,True,True,True
+40,Kongo,17cm RKL/25 C/74,4,True,True,True
+41,Kongo,15cm RKL/25 C/75,4,True,True,True
+42,Chiyoda,4.7''/40 QF Type 41,5,True,True,True
+43,Maya,21cm RKL/22 C/67,4,True,True,True
+44,Maya,12cm/25 Krupp C/78,3,True,True,True
+45,Saikyo Maru,4.7in/40 EOC Pattern P,5,True,True,True
+46,Katsuragi,17cm RKL/25 C/74,4,True,True,True
+47,Katsuragi,12cm/25 Krupp C/78,3,True,True,False
+48,Tenryu,15cm RKL L/25 C/75,4,True,True,True
+49,Tenryu,12cm/25 Krupp C/78,3,True,True,True
+50,Takao,15cm RKL/25 C/75,4,True,True,True
+51,Takao,12cm/25 Krupp C/78,3,True,True,True
+52,Fuji,30cm/40.4 EOC,8,True,True,True
+53,Fuji,15cm/40 EOC,6,True,True,True
+54,Fuji (1902),30cm/40.4 EOC,8,True,True,True
+55,Fuji (1902),15cm/40 EOC,6,True,True,True
+56,Rossiya,203mm/45 M1892,7,True,True,True
+57,Rossiya,152mm/45 M1892,7,True,True,True
+58,Gromoboi,203mm/45 M1892,7,True,True,True
+59,Gromoboi,152mm/45 M1892,7,True,True,True
+60,Rurik,203mm/35 M1877,5,True,True,True
+61,Rurik,152mm/45 M1892,7,True,True,True
+62,Rurik,120mm/45 M1891,6,True,True,True
+63,Idzumo,20cm/45 No. 2 EOC,7,True,False,True
+64,Idzumo,15cm/40 EOC Z,6,True,True,True
+65,Azuma,20cm/45 No. 2 EOC,7,True,False,True
+66,Azuma,15cm/40 EOC Z,6,True,True,True
+67,Asama,20cm/45 No. 2 EOC,7,True,False,True
+68,Asama,15cm/40 EOC Z,6,True,True,True
+69,Tsushima,15cm/40 EOC Z,6,True,True,True
+70,Bogatry,152mm/45 M1892,7,True,True,True
+71,Yakumo,20cm/45 No. 2 EOC,7,True,False,True
+72,Yakumo,15cm/40 EOC Z,6,True,True,True
+73,Suma,15cm/40 EOC Z,6,True,True,True
+74,Suma,4.7''/40 QF Type 41,5,True,True,True
+75,Variag,152mm/45 M1892,7,True,True,True
+76,Korietz,203mm/35 M1877,5,True,True,True
+77,Korietz,152mm/35 M1887,5,True,True,True
+78,Korietz,4.2''/20 9pdr M1879,3,True,True,True
+79,Poltava,305mm/40 M1892,7,True,True,True
+80,Poltava,152mm/45 M1892,7,True,True,True
+81,Poltava,152mm/45 M1892,7,True,True,True
+82,Tsessarevitch,305mm/40 M1892,7,True,True,True
+83,Tsessarevitch,152mm/45 M1892,7,True,True,True
+84,Peresviet,254mm/45 M1891,9,True,True,True
+85,Peresviet,152mm/45 M1892,7,True,True,True
+86,Peresviet (1905),254mm/45 M1891,9,True,True,True
+87,Peresviet (1905),152mm/45 M1892,7,True,True,True
+88,Retvizan,305mm/40 M1892,7,True,True,True
+89,Retvizan,152mm/45 M1892,7,True,True,True
+90,Retvizan,152mm/45 M1892,7,True,True,True
+91,Bayan,203mm/45 M1892,7,True,True,True
+92,Bayan,152mm/45 M1892,7,True,True,True
+93,Askold,152mm/45 M1892,7,True,True,True
+94,Pallada,152mm/45 M1892,7,True,True,True
+95,Boyarin,120mm/45 M1891,6,True,True,True
+96,Novik,120mm/45 M1891,6,True,True,True
+97,Mikasa,30cm/40.4 EOC,8,True,True,True
+98,Mikasa,15cm/45 EOC/VSM,7,True,True,True
+99,Asahi,30cm/40.4 EOC,8,True,True,True
+100,Asahi,15cm/45 EOC/VSM,7,True,True,True
+101,Shikishima,30cm/40.4 EOC,8,True,True,True
+102,Shikishima,15cm/45 EOC/VSM,7,True,True,True
+103,Kasagi,20cm/45 No. 2 EOC,7,True,False,True
+104,Kasagi,4.7''/40 QF Type 41,5,True,True,True
+105,Takasago,20cm/45 No. 2 EOC,7,True,False,True
+106,Takasago,4.7''/40 QF Type 41,5,True,True,True
+107,Battery Number 9,152mm/45 Pattern 1892,6,True,True,True
+108,Battery Number 15 (Electric Cliff),254mm/40 Pattern 1892 (Low Elev),9,True,True,True
+109,Battery Number 17,229mm/9 Mortar Pattern 1877,5,True,True,True
+110,Tsukushi,10''/26 25-Ton BLR,5,True,True,True
+111,Tsukushi,12cm/32 EOC M,4,True,True,True
+112,Oshima,4.7''/40 QF Type 41,5,True,True,True
+113,Old Donkey Mouth Battery,24cm Cannon,5,True,True,True
+114,Old Donkey Mouth Battery,12cm Cannon,5,True,True,True
+115,Golden Hill Battery,24cm Cannon,5,True,True,True
+116,Golden Hill Battery,15cm Mortar,7,True,True,True
+117,Golden Hill Battery,12cm Cannon,5,True,True,True
+118,Mozhu Reef Battery,21cm Cannon,4,True,True,True
+119,Mozhu Reef Battery,15cm Cannon,7,True,True,True
+120,Kasuga,25cm/40.3,7,True,True,True
+121,Kasuga,20cm/45 No. 2 EOC,7,True,False,True
+122,Kasuga,15cm/40 EOC Z,6,True,True,True
+123,Nisshin,20cm/45 No. 2 EOC,7,True,False,True
+124,Nisshin,15cm/40 EOC Z,6,True,True,True
+125,Yaeyama,12cm/25 Krupp C/78,3,True,True,True
+126,Idzumi (1900),"10''/30 Patterns F, G",5,True,True,True
+127,Idzumi (1900),4.7''/40 QF Type 41,5,True,True,True
+128,Hai Chi,8''/45 Pattern S,7,True,True,True
+129,Hai Chi,4.7''/45 QF Pattern Y,6,True,True,True
+130,Hai Yung,15cm RKL/40 C/97,8,True,True,True
+131,Hai Yung,10.5 cm SKL/40,7,True,True,True
+132,Blanco Encalada,8''/39.9 Pattern P,7,True,True,True
+133,Blanco Encalada,"6''/40 Patterns W,Z",6,True,True,True
+134,Capitan Prat,240mm/36 M1887,6,True,True,True
+135,Capitan Prat,120mm/45 M1891,6,True,True,True
+136,Esmeralda,"10''/30 Patterns F, G",5,True,True,True
+137,Esmeralda,6''/30 Pattern I,5,True,True,True
+138,Presidente Errazuriz,150mm/36 M1884,6,True,True,True
+139,Presidente Errazuriz,120mm/36 M1884,5,True,True,True
+140,Veinticinco de Mayo,21cm MRKL/35 C/86,7,True,True,True
+141,Veinticinco de Mayo,12cm SKL/40 C/88,6,True,True,True
+142,Nueve de Julio,6''/40,5,True,True,True
+143,Nueve de Julio,4.7''/40 Pattern P,4,True,True,True
+144,Almirante Brown,8''/26.1 11.5-Ton BLR Pattern A,4,True,True,True
+145,Almirante Brown,4.7''/23.5 BLR,3,True,True,True
+146,Chen Tung,11''/23 35-Ton MLR,5,True,True,True
+147,Kai Che,21cm RKL/22,4,True,True,True
+148,Kai Che,12cm RKL/35 C/80,5,True,True,True
+149,King Ch'ing,7''/26 120-pdr-7-Ton RBL,4,True,True,True
+150,King Ch'ing,4.75''/22 40-pdr 1.32-Ton BLR,3,True,False,True
+151,Nan Thin,21cm RKL/22,4,True,True,True
+152,Nan Thin,12cm RKL/35 C/80,5,True,True,True
+153,Pao Min,15cm RKL/35 C/80,4,True,True,True
+154,Pao Min,12cm RKL/35 C/80,5,True,True,True
+155,Imperator Nicolai I,305mm/30 M1877,6,True,True,True
+156,Imperator Nicolai I,230mm/35 M1887,6,True,True,True
+157,Imperator Nicolai I,152mm/35 M1887,5,True,True,True
+158,Admiral Nakhimov (1887),203mm/35 M1877,5,True,True,True
+159,Admiral Nakhimov (1887),152mm/35 M1887,5,True,True,True
+160,Admiral Nakhimov (1900),203mm/35 M1877,5,True,True,True
+161,Pamiat Azova,203mm/35 M1877,5,True,True,True
+162,Pamiat Azova,152mm/35 M1887,5,True,True,True
+163,Vladimir Monomakh,203mm/22 M1877,4,True,True,True
+164,Vladimir Monomakh,152mm/28 M1887,4,True,True,True
+165,Admiral Kornilov,152mm/35 M1887,6,True,True,True
+166,Borodino,305mm/40 M1892,7,True,True,True
+167,Borodino,152mm/45 M1892,7,True,True,True
+168,Sissoi Veliki (1905),305mm/40 M1892,7,True,True,True
+169,Sissoi Veliki (1905),152mm/45 M1892,7,True,True,True
+170,Sissoi Veliki (1905),120mm/45 M1891,6,True,True,True
+171,Navarin(1905),305mm/35 M1885,6,True,True,True
+172,Navarin(1905),152mm/35 M1887,5,True,True,True
+173,Inflexible,16''/18 RML Mk 1,4,True,True,True
+174,Centurion,10''/32 BL Mks II-IV,6,True,True,True
+175,Centurion,4.7''/40 Mk I - IV,4,True,True,True
+176,Dreadnought,12.0''/45 BL Mk X,8,True,True,True
+177,Edgar,9.2''/32 BL Mk VI,6,True,True,True
+178,Edgar,"6''/40 QF Mk I,II,III",6,True,True,True
+179,Edgar,"6''/40 QF Mk I,II,III",5,True,True,True
+180,Orlando,"9.2''/32 BL Mk V, VI",5,True,True,True
+181,Orlando,"6''/26 BL Mk III, IV, VI",5,True,True,True
+182,Iris,6'' RML 64pdr MK III,3,True,True,True
+183,Apollo,"6''/40 QF Mk I,II,III",6,True,True,True
+184,Apollo,4.7''/40 QF Type 41,5,True,True,True
+185,Phoenix,4''/27 BL Mk II-VI,4,True,True,True

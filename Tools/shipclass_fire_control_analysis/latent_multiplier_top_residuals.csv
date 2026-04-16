@@ -1,0 +1,31 @@
+﻿battery_id,ship_name,ship_type,country,battery_name,code,left_top_value,range_band,range_band_index,aspect,aspect_index,speed_threshold_knot,speed_index,fire_control_value,range_yards,shell_size_inch,rate_of_fire,damage_rating,latent_fire_control_value,predicted_fire_control_value,residual,absolute_residual
+56,Rossiya,ArmoredCruiser,Russia,203mm/45 M1892,Q,11.0,Short,0,Broad,0,18.0,1,8.0,14199.0,8.0,1.5,22.0,7.380481398378446,7.0,-1.0,1.0
+56,Rossiya,ArmoredCruiser,Russia,203mm/45 M1892,Q,11.0,Short,0,Narrow,1,18.0,1,5.0,14199.0,8.0,1.5,22.0,4.431721731309853,4.0,-1.0,1.0
+56,Rossiya,ArmoredCruiser,Russia,203mm/45 M1892,Q,11.0,Medium,1,Broad,0,18.0,1,5.0,14199.0,8.0,1.5,22.0,4.436034639460831,4.0,-1.0,1.0
+56,Rossiya,ArmoredCruiser,Russia,203mm/45 M1892,Q,11.0,Short,0,Narrow,1,27.0,2,4.0,14199.0,8.0,1.5,22.0,3.4777649930346417,3.0,-1.0,1.0
+56,Rossiya,ArmoredCruiser,Russia,203mm/45 M1892,Q,11.0,Medium,1,Broad,0,27.0,2,4.0,14199.0,8.0,1.5,22.0,3.4811495198382256,3.0,-1.0,1.0
+56,Rossiya,ArmoredCruiser,Russia,203mm/45 M1892,Q,11.0,Long,2,Broad,0,27.0,2,3.0,14199.0,8.0,1.5,22.0,2.412206911978738,2.0,-1.0,1.0
+56,Rossiya,ArmoredCruiser,Russia,203mm/45 M1892,Q,11.0,Long,2,Narrow,1,27.0,2,2.0,14199.0,8.0,1.5,22.0,1.4484461399199167,1.0,-1.0,1.0
+56,Rossiya,ArmoredCruiser,Russia,203mm/45 M1892,Q,11.0,Short,0,Narrow,1,45.0,4,3.0,14199.0,8.0,1.5,22.0,2.482189582826001,2.0,-1.0,1.0
+56,Rossiya,ArmoredCruiser,Russia,203mm/45 M1892,Q,11.0,Medium,1,Broad,0,45.0,4,3.0,14199.0,8.0,1.5,22.0,2.484605225398595,2.0,-1.0,1.0
+56,Rossiya,ArmoredCruiser,Russia,203mm/45 M1892,Q,11.0,Medium,1,Narrow,1,45.0,4,2.0,14199.0,8.0,1.5,22.0,1.4919188026873418,1.0,-1.0,1.0
+160,Admiral Nakhimov (1900),ArmoredCruiser,Russia,203mm/35 M1877,R,11.0,Short,0,Broad,0,18.0,1,8.0,9209.0,8.0,0.6,25.0,7.380481398378446,7.0,-1.0,1.0
+160,Admiral Nakhimov (1900),ArmoredCruiser,Russia,203mm/35 M1877,R,11.0,Short,0,Narrow,1,18.0,1,5.0,9209.0,8.0,0.6,25.0,4.431721731309853,4.0,-1.0,1.0
+160,Admiral Nakhimov (1900),ArmoredCruiser,Russia,203mm/35 M1877,R,11.0,Medium,1,Broad,0,18.0,1,5.0,9209.0,8.0,0.6,25.0,4.436034639460831,4.0,-1.0,1.0
+160,Admiral Nakhimov (1900),ArmoredCruiser,Russia,203mm/35 M1877,R,11.0,Short,0,Narrow,1,27.0,2,4.0,9209.0,8.0,0.6,25.0,3.4777649930346417,3.0,-1.0,1.0
+160,Admiral Nakhimov (1900),ArmoredCruiser,Russia,203mm/35 M1877,R,11.0,Medium,1,Broad,0,27.0,2,4.0,9209.0,8.0,0.6,25.0,3.4811495198382256,3.0,-1.0,1.0
+160,Admiral Nakhimov (1900),ArmoredCruiser,Russia,203mm/35 M1877,R,11.0,Long,2,Broad,0,27.0,2,3.0,9209.0,8.0,0.6,25.0,2.412206911978738,2.0,-1.0,1.0
+160,Admiral Nakhimov (1900),ArmoredCruiser,Russia,203mm/35 M1877,R,11.0,Long,2,Narrow,1,27.0,2,2.0,9209.0,8.0,0.6,25.0,1.4484461399199167,1.0,-1.0,1.0
+160,Admiral Nakhimov (1900),ArmoredCruiser,Russia,203mm/35 M1877,R,11.0,Short,0,Narrow,1,45.0,4,3.0,9209.0,8.0,0.6,25.0,2.482189582826001,2.0,-1.0,1.0
+160,Admiral Nakhimov (1900),ArmoredCruiser,Russia,203mm/35 M1877,R,11.0,Medium,1,Broad,0,45.0,4,3.0,9209.0,8.0,0.6,25.0,2.484605225398595,2.0,-1.0,1.0
+160,Admiral Nakhimov (1900),ArmoredCruiser,Russia,203mm/35 M1877,R,11.0,Medium,1,Narrow,1,45.0,4,2.0,9209.0,8.0,0.6,25.0,1.4919188026873418,1.0,-1.0,1.0
+91,Bayan,ArmoredCruiser,Russia,203mm/45 M1892,R,11.0,Short,0,Broad,0,18.0,1,8.0,14199.0,8.0,1.5,22.0,7.380481398378446,7.0,-1.0,1.0
+91,Bayan,ArmoredCruiser,Russia,203mm/45 M1892,R,11.0,Short,0,Narrow,1,18.0,1,5.0,14199.0,8.0,1.5,22.0,4.431721731309853,4.0,-1.0,1.0
+91,Bayan,ArmoredCruiser,Russia,203mm/45 M1892,R,11.0,Medium,1,Broad,0,18.0,1,5.0,14199.0,8.0,1.5,22.0,4.436034639460831,4.0,-1.0,1.0
+91,Bayan,ArmoredCruiser,Russia,203mm/45 M1892,R,11.0,Short,0,Narrow,1,27.0,2,4.0,14199.0,8.0,1.5,22.0,3.4777649930346417,3.0,-1.0,1.0
+91,Bayan,ArmoredCruiser,Russia,203mm/45 M1892,R,11.0,Medium,1,Broad,0,27.0,2,4.0,14199.0,8.0,1.5,22.0,3.4811495198382256,3.0,-1.0,1.0
+91,Bayan,ArmoredCruiser,Russia,203mm/45 M1892,R,11.0,Long,2,Broad,0,27.0,2,3.0,14199.0,8.0,1.5,22.0,2.412206911978738,2.0,-1.0,1.0
+91,Bayan,ArmoredCruiser,Russia,203mm/45 M1892,R,11.0,Long,2,Narrow,1,27.0,2,2.0,14199.0,8.0,1.5,22.0,1.4484461399199167,1.0,-1.0,1.0
+91,Bayan,ArmoredCruiser,Russia,203mm/45 M1892,R,11.0,Short,0,Narrow,1,45.0,4,3.0,14199.0,8.0,1.5,22.0,2.482189582826001,2.0,-1.0,1.0
+91,Bayan,ArmoredCruiser,Russia,203mm/45 M1892,R,11.0,Medium,1,Broad,0,45.0,4,3.0,14199.0,8.0,1.5,22.0,2.484605225398595,2.0,-1.0,1.0
+91,Bayan,ArmoredCruiser,Russia,203mm/45 M1892,R,11.0,Medium,1,Narrow,1,45.0,4,2.0,14199.0,8.0,1.5,22.0,1.4919188026873418,1.0,-1.0,1.0

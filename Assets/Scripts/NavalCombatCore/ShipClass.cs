@@ -1058,6 +1058,7 @@ namespace NavalCombatCore
 
         public string portraitUrl;
         public string remark;
+        public bool isPoorlySupported; // So this data point should not used in the SK5 model fitting
         // public string portraitCode;
         // public string portraitTopCode;
         public PictureReference portraitReference = new();
@@ -1112,6 +1113,71 @@ namespace NavalCombatCore
         public static float rapidFiringGunAmmoCapacityTacticalTurns = 15; // SK5 default rule: RF Gun can fire for 15 tactical turns (30 min)
         public static float rapidFiringGunAmmoWeightPoundsPerRound = 50; // 50 pounds, (47mm Hotchkiss)
         public static float rapidFiringGunAverageRoundPerMin = 10; // 10 round/min (47mm Hotchkiss)
+
+        public static float CalculateDamagePointFromDisplacement(float displacementTons)
+        {
+            return MathF.Round(100f * (float)Math.Sqrt(Math.Max(0f, displacementTons) * 0.033f));
+        }
+
+        public static int CalculateTargetSizeModifierFromDisplacement(float displacementTons)
+        {
+            if (displacementTons <= 671.5f)
+            {
+                return -1;
+            }
+
+            if (displacementTons <= 3110f)
+            {
+                return 0;
+            }
+
+            if (displacementTons <= 16660f)
+            {
+                return 1;
+            }
+
+            return 2;
+        }
+
+        public static int CalculateDamageControlRatingFromDisplacement(float displacementTons)
+        {
+            if (displacementTons <= 111f)
+            {
+                return 0;
+            }
+
+            if (displacementTons <= 1092f)
+            {
+                return 1;
+            }
+
+            if (displacementTons <= 2975f)
+            {
+                return 2;
+            }
+
+            if (displacementTons <= 3040f)
+            {
+                return 1;
+            }
+
+            if (displacementTons <= 6202.5f)
+            {
+                return 3;
+            }
+
+            if (displacementTons <= 9978f)
+            {
+                return 4;
+            }
+
+            if (displacementTons <= 14262.5f)
+            {
+                return 5;
+            }
+
+            return 6;
+        }
 
         // Move to ShipClass
         public float GetMaxAmmoWeightPounds()

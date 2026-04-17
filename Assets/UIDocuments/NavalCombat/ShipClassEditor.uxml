@@ -92,18 +92,48 @@
                                             </Bindings>
                                         </ui:VisualElement>
                                     </ui:VisualElement>
-                                    <ui:IntegerField label="Target Size">
+                                    <ui:FloatField label="Displacement (tons)">
                                         <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="targetSizeModifier" binding-mode="TwoWay"/>
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69380098134016)"/>
+                                            <ui:DataBinding property="value" data-source-path="displacementTonsProp" binding-mode="TwoWay"/>
+                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(85386828877824)"/>
                                         </Bindings>
-                                    </ui:IntegerField>
+                                    </ui:FloatField>
                                     <ui:FloatField label="Damage Point">
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="damagePoint" binding-mode="TwoWay"/>
                                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69481491238912)"/>
                                         </Bindings>
                                     </ui:FloatField>
+                                    <ui:IntegerField label="Target Size">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="targetSizeModifier" binding-mode="TwoWay"/>
+                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69380098134016)"/>
+                                        </Bindings>
+                                    </ui:IntegerField>
+                                    <ui:FloatField label="Length (foot)">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="lengthFoot" binding-mode="TwoWay"/>
+                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(86174229762048)"/>
+                                        </Bindings>
+                                    </ui:FloatField>
+                                    <ui:FloatField label="Beam (foot)">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="beamFoot" binding-mode="TwoWay"/>
+                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(86429511880704)"/>
+                                        </Bindings>
+                                    </ui:FloatField>
+                                    <ui:FloatField label="Draft (foot)">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="draftFoot" binding-mode="TwoWay"/>
+                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(86574546718720)"/>
+                                        </Bindings>
+                                    </ui:FloatField>
+                                    <ui:IntegerField label="Complement (men)">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="complementMen" binding-mode="TwoWay"/>
+                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(85458081714176)"/>
+                                        </Bindings>
+                                    </ui:IntegerField>
                                     <ui:IntegerField label="Dmg Ctrl Rating">
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="damageControlRatingUnmodified" binding-mode="TwoWay"/>
@@ -315,43 +345,19 @@
                         <ui:Tab label="Remark">
                             <ui:ScrollView>
                                 <ui:VisualElement>
+                                    <ui:Toggle label="Is Poorly Supported">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="isPoorlySupported" binding-mode="TwoWay"/>
+                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(82428130313801728)"/>
+                                        </Bindings>
+                                    </ui:Toggle>
                                     <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                                        <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
-                                            <ui:FloatField label="Displacement (tons)">
-                                                <Bindings>
-                                                    <ui:DataBinding property="value" data-source-path="displacementTons" binding-mode="TwoWay"/>
-                                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(85386828877824)"/>
-                                                </Bindings>
-                                            </ui:FloatField>
-                                            <ui:IntegerField label="Complement (men)">
-                                                <Bindings>
-                                                    <ui:DataBinding property="value" data-source-path="complementMen" binding-mode="TwoWay"/>
-                                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(85458081714176)"/>
-                                                </Bindings>
-                                            </ui:IntegerField>
-                                            <ui:FloatField label="Length (foot)">
-                                                <Bindings>
-                                                    <ui:DataBinding property="value" data-source-path="lengthFoot" binding-mode="TwoWay"/>
-                                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(86174229762048)"/>
-                                                </Bindings>
-                                            </ui:FloatField>
-                                            <ui:FloatField label="Beam (foot)">
-                                                <Bindings>
-                                                    <ui:DataBinding property="value" data-source-path="beamFoot" binding-mode="TwoWay"/>
-                                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(86429511880704)"/>
-                                                </Bindings>
-                                            </ui:FloatField>
-                                            <ui:FloatField label="Draft (foot)">
-                                                <Bindings>
-                                                    <ui:DataBinding property="value" data-source-path="draftFoot" binding-mode="TwoWay"/>
-                                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(86574546718720)"/>
-                                                </Bindings>
-                                            </ui:FloatField>
-                                        </ui:VisualElement>
-                                        <ui:VisualElement style="flex-grow: 1; flex-basis: 100px; padding-left: 1px; padding-bottom: 1px; padding-right: 1px; padding-top: 1px;">
+                                        <ui:VisualElement style="flex-grow: 1; flex-basis: 100px; padding-left: 1px; padding-bottom: 1px; padding-right: 1px; padding-top: 1px; flex-shrink: 0;">
                                             <ui:Instance template="GlobalStringEditor" data-source-path="engineDesc">
                                                 <AttributeOverrides element-name="GlobalStringLabel" text="Engines"/>
                                             </ui:Instance>
+                                        </ui:VisualElement>
+                                        <ui:VisualElement style="flex-basis: 100px; flex-grow: 1; flex-shrink: 0;">
                                             <ui:Instance template="GlobalStringEditor" data-source-path="boilersDesc">
                                                 <AttributeOverrides element-name="GlobalStringLabel" text="Boilers"/>
                                             </ui:Instance>
@@ -546,16 +552,16 @@
                                             <ui:VisualElement name="BatterySectorArcsContainer" style="flex-grow: 1; flex-direction: row; flex-wrap: wrap; align-content: flex-start; margin-top: 8px;"/>
                                         </ui:VisualElement>
                                         <ui:VisualElement style="width: 220px; flex-shrink: 0;">
-                                        <ui:Label text="Torpedo Sector Arcs" style="-unity-text-align: upper-center;">
-                                            <Bindings>
-                                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(91572517113856)"/>
-                                            </Bindings>
-                                        </ui:Label>
-                                        <ui:VisualElement style="width: 220px; min-width: 220px; margin-top: 8px; padding-top: 6px; padding-right: 6px; padding-bottom: 6px; padding-left: 6px; align-items: center; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
-                                            <ui:Label name="TorpedoSectorTitleLabel" style="width: 100%; -unity-text-align: upper-center; -unity-font-style: bold; white-space: normal; margin-bottom: 6px;"/>
-                                            <ui:Instance template="SectorArcIndicator" name="TorpedoSectorArcIndicator"/>
+                                            <ui:Label text="Torpedo Sector Arcs" style="-unity-text-align: upper-center;">
+                                                <Bindings>
+                                                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(91572517113856)"/>
+                                                </Bindings>
+                                            </ui:Label>
+                                            <ui:VisualElement style="width: 220px; min-width: 220px; margin-top: 8px; padding-top: 6px; padding-right: 6px; padding-bottom: 6px; padding-left: 6px; align-items: center; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+                                                <ui:Label name="TorpedoSectorTitleLabel" style="width: 100%; -unity-text-align: upper-center; -unity-font-style: bold; white-space: normal; margin-bottom: 6px;"/>
+                                                <ui:Instance template="SectorArcIndicator" name="TorpedoSectorArcIndicator"/>
+                                            </ui:VisualElement>
                                         </ui:VisualElement>
-                                    </ui:VisualElement>
                                     </ui:VisualElement>
                                     <ui:VisualElement name="BatteryFigureChartsContainer" style="flex-grow: 1; flex-direction: column; align-items: stretch; margin-top: 8px;"/>
                                 </ui:VisualElement>

@@ -61,6 +61,20 @@ namespace NavalCombatCore
 
     public partial class ShipClass : INamed
     {
+        [XmlIgnore]
+        [CreateProperty]
+        public float displacementTonsProp
+        {
+            get => displacementTons;
+            set
+            {
+                displacementTons = value;
+                damagePoint = CalculateDamagePointFromDisplacement(value);
+                targetSizeModifier = CalculateTargetSizeModifierFromDisplacement(value);
+                damageControlRatingUnmodified = CalculateDamageControlRatingFromDisplacement(value);
+            }
+        }
+
         [CreateProperty]
         public float armorScoreProp => EvaluateArmorScore();
 

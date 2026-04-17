@@ -20,6 +20,11 @@ This is a Unity 6 project (`6000.3.2f1`) for tactical/strategic naval warfare sc
 - Keep scripts in the closest domain folder (for example, naval tactical code under `Assets/Scripts/NavalCombat/`).
 - Prefer small, composable MonoBehaviours; avoid hardcoding asset paths outside `StreamingAssets` conventions.
 
+## UI Binding & Model Adaptation
+- For UI Toolkit binding-only properties marked with `[CreateProperty]`, put them in the relevant `*Adapt.cs` partial/adaptation file, not in the core model file.
+- Keep gameplay/domain formulas and invariants in the core model layer; adaptation properties may call core helpers but should not own the rule.
+- Prefer binding through a small property with a setter for derived side effects instead of registering UI callbacks in editor scripts.
+
 ## Commit & Pull Request Guidelines
 - Follow current history style: short, imperative commit subjects (for example, `Fix mount target setting soft close bugs`).
 - Keep commits focused by feature/fix area; avoid mixing refactors with gameplay changes.
@@ -37,6 +42,9 @@ Check UI_Toolkit_AI_Guide.md for making style-related modifications in UI Toolki
 Check Localization_AI_Guide.md for making localization modifications in UI Toolkit.
 Use `python Tools/add_localization.py` to add Dynamic Table entries (handles YAML quoting and ID assignment automatically).
 Use `python Tools/normalize_localization_ids.py --apply` to re-normalize IDs after bulk edits.
+
+## Data analysis related thing
+Check Data_Analysis_AI_Guide.md before running ad hoc analysis over project data files, especially scenario XML.
 
 ## Local command guardrails
 - Only build this repo’s solution: `Late-Qing-Naval-Combat-Demo.slnx`.

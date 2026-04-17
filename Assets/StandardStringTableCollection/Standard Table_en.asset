@@ -3310,6 +3310,14 @@ MonoBehaviour:
     m_Localized: Calculator
     m_Metadata:
       m_Items: []
+  - m_Id: -109
+    m_Localized: Reset Fire Control Table
+    m_Metadata:
+      m_Items: []
+  - m_Id: -110
+    m_Localized: Is Poorly Supported
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

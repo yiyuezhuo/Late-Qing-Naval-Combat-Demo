@@ -573,25 +573,6 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
             var fireControlTableMultiColumnListView = el.Q<MultiColumnListView>("FireControlTableMultiColumnListView");
             var penetrationTableMultiColumnListView = el.Q<MultiColumnListView>("PenetrationTableMultiColumnListView");
             var mountsListView = el.Q<ListView>("MountsListView");
-            var fireControlCodeField = el.Q<EnumField>("FireControlCodeField");
-            if (fireControlCodeField != null)
-            {
-                fireControlCodeField.RegisterValueChangedCallback(evt =>
-                {
-                    if (Equals(evt.previousValue, evt.newValue))
-                        return;
-
-                    if (!Utils.TryResolveCurrentValueForBinding(el, out BatteryRecord batteryRecord))
-                        return;
-
-                    if (evt.newValue is FCSCode code)
-                    {
-                        batteryRecord.fireControlType.codeProp = code;
-                        UpdateFireControlTableFromCodeModel(selectedShipClass, batteryRecord);
-                        fireControlTableMultiColumnListView?.RefreshItems();
-                    }
-                });
-            }
             var fireControlModelComparisonButton = el.Q<Button>("FireControlModelComparisonButton");
             if (fireControlModelComparisonButton != null)
             {
@@ -604,6 +585,25 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
                     }
 
                     PopupFireControlModelComparisonDialog(selectedShipClass, batteryRecord);
+                };
+            }
+
+            var resetFireControlTableButton = el.Q<Button>("ResetFireControlTableButton");
+            if (resetFireControlTableButton != null)
+            {
+                resetFireControlTableButton.clicked += () =>
+                {
+                    if (!Utils.TryResolveCurrentValueForBinding(resetFireControlTableButton, out BatteryRecord batteryRecord))
+                    {
+                        DialogRoot.Instance.PopupMessageDialog(Localize("No battery record is selected."));
+                        return;
+                    }
+
+                    UpdateFireControlTableFromCodeModel(selectedShipClass, batteryRecord);
+                    fireControlTableMultiColumnListView?.RefreshItems();
+                    DialogRoot.Instance.PopupMessageDialog(
+                        Localize("Fire control table reset from code model."),
+                        Localize("Reset Fire Control Table"));
                 };
             }
 

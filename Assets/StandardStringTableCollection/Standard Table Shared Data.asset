@@ -3226,6 +3226,14 @@ MonoBehaviour:
     m_Key: Calculator
     m_Metadata:
       m_Items: []
+  - m_Id: -109
+    m_Key: Reset Fire Control Table
+    m_Metadata:
+      m_Items: []
+  - m_Id: -110
+    m_Key: Is Poorly Supported
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

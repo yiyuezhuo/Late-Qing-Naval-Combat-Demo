@@ -4247,6 +4247,14 @@ MonoBehaviour:
     m_Localized: Penetration by Range
     m_Metadata:
       m_Items: []
+  - m_Id: -295
+    m_Localized: Fire control table reset from code model.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -296
+    m_Localized: Reset Fire Control Table
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

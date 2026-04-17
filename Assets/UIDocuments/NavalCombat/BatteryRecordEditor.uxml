@@ -86,6 +86,11 @@
                     <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-106)" />
                 </Bindings>
             </ui:Button>
+            <ui:Button text="Reset Fire Control Table" name="ResetFireControlTableButton" style="flex-shrink: 0; margin-left: 4px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-109)" />
+                </Bindings>
+            </ui:Button>
             <ui:Button text="Reset Penetration Table" name="ResetPenetrationTableButton" style="flex-shrink: 0; margin-left: 4px;">
                 <Bindings>
                     <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-107)" />

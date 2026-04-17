@@ -51849,9 +51849,9 @@ Complement 50 is inferred.
       <speedThresholdKnot>9</speedThresholdKnot>
       <shortBroad>11</shortBroad>
       <shortNarrow>6</shortNarrow>
-      <mediumBroad>6</mediumBroad>
+      <mediumBroad>7</mediumBroad>
       <mediumNarrow>4</mediumNarrow>
-      <longBroad>4</longBroad>
+      <longBroad>5</longBroad>
       <longNarrow>3</longNarrow>
       <extremeBroad>4</extremeBroad>
       <extremeNarrow>2</extremeNarrow>
@@ -51864,8 +51864,8 @@ Complement 50 is inferred.
       <mediumNarrow>3</mediumNarrow>
       <longBroad>3</longBroad>
       <longNarrow>2</longNarrow>
-      <extremeBroad>3</extremeBroad>
-      <extremeNarrow>2</extremeNarrow>
+      <extremeBroad>2</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
      <FireControlTableRecord>
       <speedThresholdKnot>27</speedThresholdKnot>
@@ -51985,14 +51985,14 @@ Complement 50 is inferred.
     <fireControlTableRecords>
      <FireControlTableRecord>
       <speedThresholdKnot>9</speedThresholdKnot>
-      <shortBroad>8</shortBroad>
-      <shortNarrow>5</shortNarrow>
-      <mediumBroad>5</mediumBroad>
+      <shortBroad>7</shortBroad>
+      <shortNarrow>4</shortNarrow>
+      <mediumBroad>4</mediumBroad>
       <mediumNarrow>3</mediumNarrow>
       <longBroad>3</longBroad>
       <longNarrow>2</longNarrow>
-      <extremeBroad>3</extremeBroad>
-      <extremeNarrow>2</extremeNarrow>
+      <extremeBroad>2</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
      <FireControlTableRecord>
       <speedThresholdKnot>18</speedThresholdKnot>
@@ -52008,17 +52008,17 @@ Complement 50 is inferred.
      <FireControlTableRecord>
       <speedThresholdKnot>27</speedThresholdKnot>
       <shortBroad>4</shortBroad>
-      <shortNarrow>3</shortNarrow>
-      <mediumBroad>3</mediumBroad>
-      <mediumNarrow>2</mediumNarrow>
+      <shortNarrow>2</shortNarrow>
+      <mediumBroad>2</mediumBroad>
+      <mediumNarrow>1</mediumNarrow>
       <longBroad>2</longBroad>
       <longNarrow>1</longNarrow>
-      <extremeBroad>2</extremeBroad>
+      <extremeBroad>1</extremeBroad>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
      <FireControlTableRecord>
       <speedThresholdKnot>36</speedThresholdKnot>
-      <shortBroad>4</shortBroad>
+      <shortBroad>3</shortBroad>
       <shortNarrow>2</shortNarrow>
       <mediumBroad>2</mediumBroad>
       <mediumNarrow>1</mediumNarrow>
@@ -52448,7 +52448,7 @@ https://rjw.narod.ru/1tihook/sivuch.htm
   <batteryRecords>
    <BatteryRecord>
     <name>
-     <english>138.6mm</english>
+     <english>138.6mm/21 Mle 1870</english>
     </name>
     <damageRating>17</damageRating>
     <maxRateOfFireShootPerMin>5</maxRateOfFireShootPerMin>
@@ -52561,31 +52561,163 @@ https://rjw.narod.ru/1tihook/sivuch.htm
     </penetrationTableRecords>
     <mountLocationRecords>
      <MountLocationRecord>
-      <mountLocation>StarboardMidship</mountLocation>
+      <mountLocation>Midship</mountLocation>
       <barrels>1</barrels>
-      <mounts>3</mounts>
+      <mounts>2</mounts>
       <mountArcs>
        <MountArcRecord startDeg="30" CoverageDeg="120" isCrossDeckFire="false" />
+       <MountArcRecord startDeg="210" CoverageDeg="120" isCrossDeckFire="false" />
       </mountArcs>
       <trainable>false</trainable>
       <reloadLimit>0</reloadLimit>
       <mountArcsPattern>Normal</mountArcsPattern>
       <objectId>35519cce-24e1-40b3-b587-f32120658301</objectId>
      </MountLocationRecord>
+    </mountLocationRecords>
+    <objectId>b74b42f9-975c-47d2-bb69-c2d8b6145db4</objectId>
+   </BatteryRecord>
+   <BatteryRecord>
+    <name>
+     <english>100mm/27 Mle 1875</english>
+     <japanese />
+     <chineseSimplified />
+    </name>
+    <damageRating>9</damageRating>
+    <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
+    <fireControlPositions>1</fireControlPositions>
+    <fireControlType>
+     <code>Z</code>
+     <gunSight>Basic</gunSight>
+     <fireControlInstrument>None</fireControlInstrument>
+     <rangeFinder>None</rangeFinder>
+     <directorControl>None</directorControl>
+     <stabilization>Manual</stabilization>
+     <powerRemoteControl>None</powerRemoteControl>
+    </fireControlType>
+    <rangeYards>7691</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
+    <fireControlRadarModifier>0</fireControlRadarModifier>
+    <fireControlRadarName>
+     <english>None</english>
+    </fireControlRadarName>
+    <shellSizeInch>4</shellSizeInch>
+    <shellWeightPounds>25</shellWeightPounds>
+    <ammunitionCapacity>540</ammunitionCapacity>
+    <fireControlTableRecords>
+     <FireControlTableRecord>
+      <speedThresholdKnot>9</speedThresholdKnot>
+      <shortBroad>5</shortBroad>
+      <shortNarrow>3</shortNarrow>
+      <mediumBroad>3</mediumBroad>
+      <mediumNarrow>2</mediumNarrow>
+      <longBroad>2</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>2</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>18</speedThresholdKnot>
+      <shortBroad>4</shortBroad>
+      <shortNarrow>2</shortNarrow>
+      <mediumBroad>2</mediumBroad>
+      <mediumNarrow>1</mediumNarrow>
+      <longBroad>2</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>1</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>27</speedThresholdKnot>
+      <shortBroad>3</shortBroad>
+      <shortNarrow>2</shortNarrow>
+      <mediumBroad>2</mediumBroad>
+      <mediumNarrow>1</mediumNarrow>
+      <longBroad>1</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>1</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>36</speedThresholdKnot>
+      <shortBroad>2</shortBroad>
+      <shortNarrow>1</shortNarrow>
+      <mediumBroad>1</mediumBroad>
+      <mediumNarrow>1</mediumNarrow>
+      <longBroad>1</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>1</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>45</speedThresholdKnot>
+      <shortBroad>2</shortBroad>
+      <shortNarrow>1</shortNarrow>
+      <mediumBroad>1</mediumBroad>
+      <mediumNarrow>1</mediumNarrow>
+      <longBroad>1</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>1</extremeBroad>
+      <extremeNarrow>0</extremeNarrow>
+     </FireControlTableRecord>
+    </fireControlTableRecords>
+    <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
+    <penetrationTableRecords>
+     <PenetrationTableRecord>
+      <distanceYards>2000</distanceYards>
+      <rateOfFire>8.3</rateOfFire>
+      <rangeBand>Short</rangeBand>
+      <horizontalPenetrationInchs>0.1</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>1.9</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+     <PenetrationTableRecord>
+      <distanceYards>4000</distanceYards>
+      <rateOfFire>6</rateOfFire>
+      <rangeBand>Short</rangeBand>
+      <horizontalPenetrationInchs>0.1</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>1.4</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+     <PenetrationTableRecord>
+      <distanceYards>6000</distanceYards>
+      <rateOfFire>4.8</rateOfFire>
+      <rangeBand>Medium</rangeBand>
+      <horizontalPenetrationInchs>0.3</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>1.1</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+     <PenetrationTableRecord>
+      <distanceYards>8000</distanceYards>
+      <rateOfFire>3.9</rateOfFire>
+      <rangeBand>Long</rangeBand>
+      <horizontalPenetrationInchs>0.4</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>0.9</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+    </penetrationTableRecords>
+    <mountLocationRecords>
      <MountLocationRecord>
-      <mountLocation>PortMidship</mountLocation>
+      <mountLocation>Forward</mountLocation>
       <barrels>1</barrels>
-      <mounts>3</mounts>
+      <mounts>1</mounts>
       <mountArcs>
-       <MountArcRecord startDeg="210" CoverageDeg="120" isCrossDeckFire="false" />
+       <MountArcRecord startDeg="240" CoverageDeg="240" isCrossDeckFire="false" />
       </mountArcs>
       <trainable>false</trainable>
       <reloadLimit>0</reloadLimit>
       <mountArcsPattern>Normal</mountArcsPattern>
-      <objectId>47787917-9de5-4f18-8aad-0fc84cbc810f</objectId>
+      <objectId>3de7ebd9-2612-440d-9a43-9df281251991</objectId>
+     </MountLocationRecord>
+     <MountLocationRecord>
+      <mountLocation>After</mountLocation>
+      <barrels>1</barrels>
+      <mounts>1</mounts>
+      <mountArcs>
+       <MountArcRecord startDeg="60" CoverageDeg="240" isCrossDeckFire="false" />
+      </mountArcs>
+      <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
+      <mountArcsPattern>Normal</mountArcsPattern>
+      <objectId>29243bc6-0656-4e13-bd35-f02d2c8b8697</objectId>
      </MountLocationRecord>
     </mountLocationRecords>
-    <objectId>b74b42f9-975c-47d2-bb69-c2d8b6145db4</objectId>
+    <objectId>26da60f8-6460-43b4-b84d-c2cce0dd99c2</objectId>
    </BatteryRecord>
   </batteryRecords>
   <torpedoSector>
@@ -52599,7 +52731,28 @@ https://rjw.narod.ru/1tihook/sivuch.htm
    <dudProbability>0.5</dudProbability>
    <pistolType>Contact</pistolType>
   </torpedoSector>
-  <rapidFireBatteryRecords />
+  <rapidFireBatteryRecords>
+   <RapidFireBatteryRecord>
+    <name>
+     <english>1pdr revolver</english>
+     <japanese />
+     <chineseSimplified />
+    </name>
+    <maxRangeYards>7000</maxRangeYards>
+    <effectiveRangeYards>3150</effectiveRangeYards>
+    <fireControlRecords>
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="4" fireControlEffectiveRange="7" />
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="3" fireControlEffectiveRange="5" />
+    </fireControlRecords>
+    <damageFactor>7</damageFactor>
+    <barrelsLevelPort>
+     <int>1</int>
+    </barrelsLevelPort>
+    <barrelsLevelStarboard>
+     <int>1</int>
+    </barrelsLevelStarboard>
+   </RapidFireBatteryRecord>
+  </rapidFireBatteryRecords>
   <targetSizeModifier>-1</targetSizeModifier>
   <damagePoint>407</damagePoint>
   <speedKnots>11</speedKnots>
@@ -52639,7 +52792,9 @@ https://rjw.narod.ru/1tihook/sivuch.htm
   <remark>https://fr.wikipedia.org/wiki/Liste_des_canonni%C3%A8res_fran%C3%A7aises
 
 Source: In Mahan's Wake
-Length, beam and draft, turn speed are from Maya since I can't find data for it</remark>
+Length, beam and draft, turn speed are from Maya since I can't find data for it
+
+Battery select a closer historical battery.</remark>
   <isPoorlySupported>true</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Comète.jpg</path>

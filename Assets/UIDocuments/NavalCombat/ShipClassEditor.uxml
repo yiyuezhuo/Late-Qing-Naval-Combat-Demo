@@ -110,6 +110,12 @@
                                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69380098134016)"/>
                                         </Bindings>
                                     </ui:IntegerField>
+                                    <ui:IntegerField label="Dmg Ctrl Rating">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="damageControlRatingUnmodified" binding-mode="TwoWay"/>
+                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69540668674048)"/>
+                                        </Bindings>
+                                    </ui:IntegerField>
                                     <ui:FloatField label="Length (foot)">
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="lengthFoot" binding-mode="TwoWay"/>
@@ -132,12 +138,6 @@
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="complementMen" binding-mode="TwoWay"/>
                                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(85458081714176)"/>
-                                        </Bindings>
-                                    </ui:IntegerField>
-                                    <ui:IntegerField label="Dmg Ctrl Rating">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="damageControlRatingUnmodified" binding-mode="TwoWay"/>
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69540668674048)"/>
                                         </Bindings>
                                     </ui:IntegerField>
                                     <LocalizedEnumField label="Ram" type-str="NavalCombatCore.RamType">

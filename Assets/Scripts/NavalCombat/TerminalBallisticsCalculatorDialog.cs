@@ -300,7 +300,7 @@ public sealed partial class ExternalBallisticsCalculatorDialog
         };
         BuildTerminalInputPanel(inputScroll);
 
-        var outputPanel = new VisualElement
+        var outputScroll = new ScrollView(ScrollViewMode.Vertical)
         {
             style =
             {
@@ -308,10 +308,10 @@ public sealed partial class ExternalBallisticsCalculatorDialog
                 flexShrink = 1
             }
         };
-        BuildTerminalOutputPanel(outputPanel);
+        BuildTerminalOutputPanel(outputScroll);
 
         mainRow.Add(inputScroll);
-        mainRow.Add(outputPanel);
+        mainRow.Add(outputScroll);
         root.Add(mainRow);
 
         return root;
@@ -530,9 +530,8 @@ public sealed partial class ExternalBallisticsCalculatorDialog
             virtualizationMethod = CollectionVirtualizationMethod.DynamicHeight,
             style =
             {
-                flexGrow = 1,
-                flexShrink = 1,
-                minHeight = 170
+                height = 170,
+                flexShrink = 0
             }
         };
 

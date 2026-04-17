@@ -7,13 +7,14 @@ namespace CoreUtils
         Japan,
         Russia,
         Britain,
-        Portugal,
-        // France,
-        // UnitedState,
+        France,
+        Germany,
+        UnitedStates,
         // Spain,
+        Italy,
+        AustriaHungary, // Austria-Hungary 
+        Portugal,
         // Germany,
-        // Italy,
-        // AustriaHugary, // Austria-Hugary
         // Turkey, // Ottoman
         // Holland,
         // Korea

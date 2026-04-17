@@ -107,13 +107,13 @@ namespace StrategicCombatCore
             {Country.Japan, Color.white},
             {Country.Russia, Color.darkGreen},
             {Country.Britain, Color.red},
-            {Country.Portugal, Color.blue},
-            // {Country.France, Color.purple},
-            // {Country.UnitedState, Color.blue},
+            {Country.France, Color.purple},
+            {Country.Germany, Color.black},
+            {Country.UnitedStates, Color.blue},
             // {Country.Spain, Color.darkOrange},
-            // {Country.Germany, Color.black},
-            // {Country.Italy, Color.greenYellow},
-            // {Country.AustriaHugary, Color.silver},
+            {Country.Italy, Color.greenYellow},
+            {Country.AustriaHungary, Color.silver},
+            {Country.Portugal, Color.lightBlue},
         };
     }
 

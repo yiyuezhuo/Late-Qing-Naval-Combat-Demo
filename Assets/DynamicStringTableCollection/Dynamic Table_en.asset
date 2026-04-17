@@ -1549,7 +1549,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1352304126758912
-    m_Localized: Austria Hugary
+    m_Localized: Austria-Hungary
     m_Metadata:
       m_Items: []
   - m_Id: 1352287185965056
@@ -1565,7 +1565,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1352256957616128
-    m_Localized: United State
+    m_Localized: United States
     m_Metadata:
       m_Items: []
   - m_Id: 1352238360072192
@@ -1689,7 +1689,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1354083539259392
-    m_Localized: Patrol Gunboat (PG)
+    m_Localized: Gunboat (PG)
     m_Metadata:
       m_Items: []
   - m_Id: 1354094775799808
@@ -3196,7 +3196,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -15
-    m_Localized: 'Azimuth {0} deg, Distance {1} yd, Time {2}s @ {3} kts'
+    m_Localized: Azimuth {0} deg, Distance {1} yd, Time {2}s @ {3} kts
     m_Metadata:
       m_Items: []
   - m_Id: -16
@@ -3552,7 +3552,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -124
-    m_Localized: 'Target is outside this mount''s firing arc.'
+    m_Localized: Target is outside this mount's firing arc.
     m_Metadata:
       m_Items: []
   - m_Id: -125
@@ -3612,7 +3612,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -139
-    m_Localized: 'Final Hit Probability => {0}%'
+    m_Localized: Final Hit Probability => {0}%
     m_Metadata:
       m_Items: []
   - m_Id: -140
@@ -3620,7 +3620,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -141
-    m_Localized: 'Base Fire Control Value ({0}/{1}/{2}) => {3}'
+    m_Localized: Base Fire Control Value ({0}/{1}/{2}) => {3}
     m_Metadata:
       m_Items: []
   - m_Id: -142
@@ -3696,15 +3696,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -160
-    m_Localized: 'Final Fire Control Score => {0}'
+    m_Localized: Final Fire Control Score => {0}
     m_Metadata:
       m_Items: []
   - m_Id: -161
-    m_Localized: 'Hit Probability Table => {0}%'
+    m_Localized: Hit Probability Table => {0}%
     m_Metadata:
       m_Items: []
   - m_Id: -162
-    m_Localized: 'Global Hit Coef => x{0}'
+    m_Localized: Global Hit Coef => x{0}
     m_Metadata:
       m_Items: []
   - m_Id: -163
@@ -3728,7 +3728,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -168
-    m_Localized: 'Base Fire Control Value ({0} Range / FC Damage Level {1}) => {2}'
+    m_Localized: Base Fire Control Value ({0} Range / FC Damage Level {1}) => {2}
     m_Metadata:
       m_Items: []
   - m_Id: -169
@@ -3740,7 +3740,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -171
-    m_Localized: [No Target]
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: -172
@@ -3764,7 +3764,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -177
-    m_Localized: No Viewer Side is set, so the side to configure cannot be determined. To configure automation without a Viewer Side, use the Side State Editor.
+    m_Localized: No Viewer Side is set, so the side to configure cannot be determined.
+      To configure automation without a Viewer Side, use the Side State Editor.
     m_Metadata:
       m_Items: []
   - m_Id: -178
@@ -3772,7 +3773,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -179
-    m_Localized: 'Penetration table reset from model with {0} rows.'
+    m_Localized: Penetration table reset from model with {0} rows.
     m_Metadata:
       m_Items: []
   - m_Id: -180
@@ -3804,7 +3805,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -187
-    m_Localized: No fitted Code coefficient is available for this fire-control code. The Code model uses the component fallback.
+    m_Localized: No fitted Code coefficient is available for this fire-control code.
+      The Code model uses the component fallback.
     m_Metadata:
       m_Items: []
   - m_Id: -188
@@ -3824,7 +3826,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -192
-    m_Localized: Uses the current left-top value, then applies the fitted Broad/Narrow, range-band, and speed ratios.
+    m_Localized: Uses the current left-top value, then applies the fitted Broad/Narrow,
+      range-band, and speed ratios.
     m_Metadata:
       m_Items: []
   - m_Id: -193
@@ -3832,7 +3835,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -194
-    m_Localized: Uses the fitted latent left-top value from Code, shell size, and displacement, then applies the same ratios.
+    m_Localized: Uses the fitted latent left-top value from Code, shell size, and
+      displacement, then applies the same ratios.
     m_Metadata:
       m_Items: []
   - m_Id: -195
@@ -3868,7 +3872,9 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -203
-    m_Localized: Predictions use Battery-level fields and distance only. Expected penetration rows use fixed yard marks up to the first mark that covers the battery range.
+    m_Localized: Predictions use Battery-level fields and distance only. Expected
+      penetration rows use fixed yard marks up to the first mark that covers the
+      battery range.
     m_Metadata:
       m_Items: []
   - m_Id: -204
@@ -3904,7 +3910,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -212
-    m_Localized: Each cell is shown as current / model, then model-current delta. Missing rows show only model values.
+    m_Localized: Each cell is shown as current / model, then model-current delta.
+      Missing rows show only model values.
     m_Metadata:
       m_Items: []
   - m_Id: -213
@@ -4040,7 +4047,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -246
-    m_Localized: 'Approx. {0:0} lb'
+    m_Localized: Approx. {0:0} lb
     m_Metadata:
       m_Items: []
   - m_Id: -247
@@ -4116,7 +4123,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -265
-    m_Localized: Terminal Ballistics (终点弹道学)
+    m_Localized: "Terminal Ballistics (\u7EC8\u70B9\u5F39\u9053\u5B66)"
     m_Metadata:
       m_Items: []
   - m_Id: -266
@@ -4164,7 +4171,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -277
-    m_Localized: '{0} result(s), {1} external ballistic failure(s), {2} terminal ballistic failure(s).'
+    m_Localized: '{0} result(s), {1} external ballistic failure(s), {2} terminal
+      ballistic failure(s).'
     m_Metadata:
       m_Items: []
   - m_Id: -278
@@ -4196,7 +4204,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -285
-    m_Localized: 'Approx. {0:0.#} mm'
+    m_Localized: Approx. {0:0.#} mm
     m_Metadata:
       m_Items: []
   - m_Id: -286
@@ -4212,15 +4220,19 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -289
-    m_Localized: Krupp All-Purpose is a normal-obliquity-oriented Okun formula. Its preset uses no cosine obliquity term.
+    m_Localized: Krupp All-Purpose is a normal-obliquity-oriented Okun formula. Its
+      preset uses no cosine obliquity term.
     m_Metadata:
       m_Items: []
   - m_Id: -290
-    m_Localized: Custom edits all power-law coefficients. Okun units are ft/s, inches, and pounds internally.
+    m_Localized: Custom edits all power-law coefficients. Okun units are ft/s, inches,
+      and pounds internally.
     m_Metadata:
       m_Items: []
   - m_Id: -291
-    m_Localized: 'De Marre Nickel-Steel uses Okun''s cosine obliquity term. Vertical armor obliquity is angle of fall; horizontal armor obliquity is 90 minus angle of fall.'
+    m_Localized: De Marre Nickel-Steel uses Okun's cosine obliquity term. Vertical
+      armor obliquity is angle of fall; horizontal armor obliquity is 90 minus angle
+      of fall.
     m_Metadata:
       m_Items: []
   - m_Id: -292

@@ -1548,7 +1548,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1352256957616128
-    m_Key: Country.UnitedState
+    m_Key: Country.UnitedStates
     m_Metadata:
       m_Items: []
   - m_Id: 1352266638069760
@@ -1564,7 +1564,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1352304126758912
-    m_Key: Country.AustriaHugary
+    m_Key: Country.AustriaHungary
     m_Metadata:
       m_Items: []
   - m_Id: 1352327539363840
@@ -3764,7 +3764,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -179
-    m_Key: 'Penetration table reset from model with {0} rows.'
+    m_Key: Penetration table reset from model with {0} rows.
     m_Metadata:
       m_Items: []
   - m_Id: -180
@@ -3796,7 +3796,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -187
-    m_Key: No fitted Code coefficient is available for this fire-control code. The Code model uses the component fallback.
+    m_Key: No fitted Code coefficient is available for this fire-control code. The
+      Code model uses the component fallback.
     m_Metadata:
       m_Items: []
   - m_Id: -188
@@ -3816,7 +3817,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -192
-    m_Key: Uses the current left-top value, then applies the fitted Broad/Narrow, range-band, and speed ratios.
+    m_Key: Uses the current left-top value, then applies the fitted Broad/Narrow,
+      range-band, and speed ratios.
     m_Metadata:
       m_Items: []
   - m_Id: -193
@@ -3824,7 +3826,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -194
-    m_Key: Uses the fitted latent left-top value from Code, shell size, and displacement, then applies the same ratios.
+    m_Key: Uses the fitted latent left-top value from Code, shell size, and displacement,
+      then applies the same ratios.
     m_Metadata:
       m_Items: []
   - m_Id: -195
@@ -3860,7 +3863,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -203
-    m_Key: Predictions use Battery-level fields and distance only. Expected penetration rows use fixed yard marks up to the first mark that covers the battery range.
+    m_Key: Predictions use Battery-level fields and distance only. Expected penetration
+      rows use fixed yard marks up to the first mark that covers the battery range.
     m_Metadata:
       m_Items: []
   - m_Id: -204
@@ -3896,7 +3900,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -212
-    m_Key: Each cell is shown as current / model, then model-current delta. Missing rows show only model values.
+    m_Key: Each cell is shown as current / model, then model-current delta. Missing
+      rows show only model values.
     m_Metadata:
       m_Items: []
   - m_Id: -213
@@ -3912,7 +3917,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -216
-    m_Key: External Ballistics (外弹道学)
+    m_Key: "External Ballistics (\u5916\u5F39\u9053\u5B66)"
     m_Metadata:
       m_Items: []
   - m_Id: -217
@@ -4032,7 +4037,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -246
-    m_Key: 'Approx. {0:0} lb'
+    m_Key: Approx. {0:0} lb
     m_Metadata:
       m_Items: []
   - m_Id: -247
@@ -4108,7 +4113,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -265
-    m_Key: Terminal Ballistics (终点弹道学)
+    m_Key: "Terminal Ballistics (\u7EC8\u70B9\u5F39\u9053\u5B66)"
     m_Metadata:
       m_Items: []
   - m_Id: -266
@@ -4156,7 +4161,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -277
-    m_Key: '{0} result(s), {1} external ballistic failure(s), {2} terminal ballistic failure(s).'
+    m_Key: '{0} result(s), {1} external ballistic failure(s), {2} terminal ballistic
+      failure(s).'
     m_Metadata:
       m_Items: []
   - m_Id: -278
@@ -4188,7 +4194,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -285
-    m_Key: 'Approx. {0:0.#} mm'
+    m_Key: Approx. {0:0.#} mm
     m_Metadata:
       m_Items: []
   - m_Id: -286
@@ -4204,15 +4210,19 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -289
-    m_Key: Krupp All-Purpose is a normal-obliquity-oriented Okun formula. Its preset uses no cosine obliquity term.
+    m_Key: Krupp All-Purpose is a normal-obliquity-oriented Okun formula. Its preset
+      uses no cosine obliquity term.
     m_Metadata:
       m_Items: []
   - m_Id: -290
-    m_Key: Custom edits all power-law coefficients. Okun units are ft/s, inches, and pounds internally.
+    m_Key: Custom edits all power-law coefficients. Okun units are ft/s, inches,
+      and pounds internally.
     m_Metadata:
       m_Items: []
   - m_Id: -291
-    m_Key: 'De Marre Nickel-Steel uses Okun''s cosine obliquity term. Vertical armor obliquity is angle of fall; horizontal armor obliquity is 90 minus angle of fall.'
+    m_Key: De Marre Nickel-Steel uses Okun's cosine obliquity term. Vertical armor
+      obliquity is angle of fall; horizontal armor obliquity is 90 minus angle of
+      fall.
     m_Metadata:
       m_Items: []
   - m_Id: -292

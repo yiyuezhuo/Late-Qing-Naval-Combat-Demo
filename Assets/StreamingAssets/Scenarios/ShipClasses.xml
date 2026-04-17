@@ -506,6 +506,7 @@
   </armorRating>
   <portraitUrl>https://upload.wikimedia.org/wikipedia/commons/2/24/Yoshino_The-Naval-Annual1897.jpg</portraitUrl>
   <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Yoshino</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Yoshino.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -1025,6 +1026,9 @@
    <armorType>HarveyNickelSteel</armorType>
   </armorRating>
   <portraitUrl>https://upload.wikimedia.org/wikipedia/commons/2/24/Yoshino_The-Naval-Annual1897.jpg</portraitUrl>
+  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Yoshino
+</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Yoshino.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -1535,6 +1539,7 @@
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/Japanese_cruiser_Akitsushima#/media/File:Akitsushima_plan_1904.png</portraitUrl>
   <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Akitsushima</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Akitsushima.png</path>
    <isBuiltin>true</isBuiltin>
@@ -2045,6 +2050,7 @@
   <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Akitsushima
 
 SK5 data book seems to forget to update Akitsushima's fire control table to reflect its fire control code's upgrade.</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Akitsushima.png</path>
    <isBuiltin>true</isBuiltin>
@@ -2510,6 +2516,7 @@ SK5 data book seems to forget to update Akitsushima's fire control table to refl
 
 Though Naniwa is usually classified as a protected cruiser (designated CL in the SK5 taxonomy), for some reason SK5 lists it as a CA, so I use CA as well. (Note JTS Naval Campaign does this as well).
 Of course, these two classifications make no practical difference aside from the type symbol displayed next to the ship's name.</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Naniwa.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -2865,6 +2872,7 @@ The graphic is the version of the earlier version, which is not a accurate repre
 Though Naniwa is usually classified as a protected cruiser (designated CL in the SK5 taxonomy), for some reason SK5 lists it as a CA, so I use CA as well. (Note JTS Naval Campaign does this as well).
 Of course, these two classifications make no practical difference aside from the type symbol displayed next to the ship's name.
 </remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Naniwa.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -3293,6 +3301,7 @@ Of course, these two classifications make no practical difference aside from the
   <remark>https://en.wikipedia.org/wiki/Chinese_cruiser_Jiyuan
 
 Chi Yuan or Jiyuan</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Chi Yuan.png</path>
    <isBuiltin>true</isBuiltin>
@@ -3619,6 +3628,7 @@ Chi Yuan or Jiyuan</remark>
   </armorRating>
   <portraitUrl>Illustrated History of Chinese Warships 1855–1911 (by Chen Yue)  中国军舰图志 1855-1911 （陈悦）</portraitUrl>
   <remark>https://zh.wikipedia.org/wiki/%E5%B9%BF%E4%B9%99%E5%8F%B7%E9%98%B2%E6%8A%A4%E5%B7%A1%E6%B4%8B%E8%88%B0</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Kuang Yi.png</path>
    <isBuiltin>true</isBuiltin>
@@ -4072,6 +4082,7 @@ Chi Yuan or Jiyuan</remark>
   <remark>https://en.wikipedia.org/wiki/Dingyuan-class_ironclad
 
 Ting Yuen or Dingyuan</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Ting Yuen.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -4547,6 +4558,7 @@ Ting Yuen or Dingyuan</remark>
   <remark>https://en.wikipedia.org/wiki/Chinese_ironclad_Zhenyuan
 
 Acquisition &amp; modified by Japan in 1895</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Ting Yuen.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -4964,6 +4976,7 @@ Acquisition &amp; modified by Japan in 1895</remark>
 Chao Yung or Chao Yong
 
 I can't see why SK5 classify a Unprotected Cruiser to CA though.</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Chao Yong.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -5432,6 +5445,7 @@ I can't see why SK5 classify a Unprotected Cruiser to CA though.</remark>
   <remark>https://en.wikipedia.org/wiki/Chinese_cruiser_Zhiyuan
 
 For some reason, SK5 classify it to CA</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Chih Yuan.jpeg</path>
    <isBuiltin>true</isBuiltin>
@@ -5846,6 +5860,7 @@ For some reason, SK5 classify it to CA</remark>
   <remark>https://en.wikipedia.org/wiki/Chinese_cruiser_Jingyuan_(1887)
 
 King Yuan or Jingyuan</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/King Yuan.png</path>
    <isBuiltin>true</isBuiltin>
@@ -6266,6 +6281,7 @@ King Yuan or Jingyuan</remark>
 
 Ping Yuen or Pingyuan
 </remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Ping Yuen.png</path>
    <isBuiltin>true</isBuiltin>
@@ -6658,6 +6674,7 @@ Ping Yuen or Pingyuan
   <remark>https://en.wikipedia.org/wiki/Chinese_corvette_Kwan_Chia
 
 </remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Kuang Chia.png</path>
    <isBuiltin>true</isBuiltin>
@@ -7053,6 +7070,7 @@ Ping Yuen or Pingyuan
   <remark>https://capitancreative.com/cwm/chin/%E5%A8%81%E9%81%A0%E5%BA%B7%E6%BF%9F.html
 https://baike.baidu.com/item/%E5%A8%81%E8%BF%9C%E5%8F%B7%E7%BB%83%E4%B9%A0%E8%88%B0/9147946
 </remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Wei Yuan.png</path>
    <isBuiltin>true</isBuiltin>
@@ -7190,6 +7208,7 @@ https://baike.baidu.com/item/%E5%A8%81%E8%BF%9C%E5%8F%B7%E7%BB%83%E4%B9%A0%E8%88
 
 Fu Lung or Fulong
 </remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Fu Lung.png</path>
    <isBuiltin>true</isBuiltin>
@@ -7652,6 +7671,7 @@ Fu Lung or Fulong
   </armorRating>
   <portraitUrl>https://combrig-models.com/index.php/1700/65-japanese-navy-1860-1918/518-fuso1900</portraitUrl>
   <remark>https://en.wikipedia.org/wiki/Japanese_ironclad_Fus%C5%8D</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Fuso.png</path>
    <isBuiltin>true</isBuiltin>
@@ -8183,6 +8203,7 @@ Itsukushima (厳島, 1891)
 
 (Though Itsukushima is similar to 2 other ships, the main gun make significant variance)
 </remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Itsukushima.png</path>
    <isBuiltin>true</isBuiltin>
@@ -8705,6 +8726,7 @@ Itsukushima (厳島, 1891)
   </armorRating>
   <portraitUrl>https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:Itsukushima_Brasseys1902.png</portraitUrl>
   <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Itsukushima</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Itsukushima.png</path>
    <isBuiltin>true</isBuiltin>
@@ -9225,6 +9247,7 @@ Hashidate ((橋立, 1894)
 
 For reason, it's classified as CA in SK5.
 </remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Matsushima.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -9732,6 +9755,7 @@ For reason, it's classified as CA in SK5.
   </armorRating>
   <portraitUrl>https://naval-encyclopedia.com/industrial-era/1890-fleets/japan/matsushima-class_cruiser.php</portraitUrl>
   <remark>https://en.wikipedia.org/wiki/Matsushima-class_cruiser</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Matsushima.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -10170,6 +10194,7 @@ For reason, it's classified as CA in SK5.
 
 Kongō (金剛, 1878)
 Hiei (比叡, 1878)</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Kongo(1878).jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -10551,6 +10576,7 @@ Hiei (比叡, 1878)</remark>
   </armorRating>
   <portraitUrl>https://zh.wikipedia.org/wiki/%E5%8D%83%E4%BB%A3%E7%94%B0%E8%99%9F%E9%98%B2%E8%AD%B7%E5%B7%A1%E6%B4%8B%E8%89%A6#/media/File:Chiyoda_plan_1904.png</portraitUrl>
   <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Chiyoda</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Chiyoda.png</path>
    <isBuiltin>true</isBuiltin>
@@ -10915,6 +10941,7 @@ Hiei (比叡, 1878)</remark>
   <portraitUrl>https://en.wikipedia.org/wiki/File:Japanese_Gunboat_Maya.jpg</portraitUrl>
   <remark>https://en.wikipedia.org/wiki/Japanese_gunboat_Maya
 </remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Maya.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -11160,6 +11187,7 @@ Hiei (比叡, 1878)</remark>
   <portraitUrl>https://nntmodell.com/en/Ships/Merchant-Cruiser-Saikyomaru.html</portraitUrl>
   <remark>https://en.wikipedia.org/wiki/Saiky%C5%8D_Maru
 </remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Saikyo_Maru.png</path>
    <isBuiltin>true</isBuiltin>
@@ -11598,6 +11626,7 @@ Yamato (大和, 1883)
 Musashi (武蔵, 1884)
 
 Cancel Armor Type Factor</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Katsuragi.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -11982,6 +12011,7 @@ Japanese wiki don't mention 75mm gun.
 4x 25mm guns are ignored.
 
 Cancel Armor Type Factor</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Tenryu.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -12422,6 +12452,7 @@ Takao (Takao, old kana: Takao) was a cruiser of the Imperial Japanese Navy. The 
 In SK5 data, RF gun seeme come from QF 6-pounder Hotchkiss gun, but the Japanese wiki doesn't mension it.
 
 Cancel Armor Type Factor</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Takao.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -12565,6 +12596,7 @@ Cancel Armor Type Factor</remark>
 
 TB 5 Class
 TB 5,6,7,8,9,10,11,12,13,14,16,17,18,19</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\TB5.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -12706,6 +12738,7 @@ TB 5,6,7,8,9,10,11,12,13,14,16,17,18,19</remark>
 - 第20号
 
 </remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/TB 15_Top.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -12852,6 +12885,7 @@ TB 5,6,7,8,9,10,11,12,13,14,16,17,18,19</remark>
 Class II Torpedo Boats - TB 21 Class
 
 TB 21, TB 24</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\TB21.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -12993,6 +13027,7 @@ TB 21, TB 24</remark>
 TB 22, 23, 25, 31, 32, 33, 34, 35, 36, 37, 38, 44, 45, 46, 47, 48, 49, 60, 61
 
 </remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\TB22.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -13137,6 +13172,7 @@ TB 22, 23, 25, 31, 32, 33, 34, 35, 36, 37, 38, 44, 45, 46, 47, 48, 49, 60, 61
   <remark>https://en.wikipedia.org/wiki/Japanese_torpedo_boat_Kotaka
 
 Complement is inferred</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Kotaka.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -13272,6 +13308,7 @@ Complement is inferred</remark>
   </armorRating>
   <portraitUrl>Illustrated History of Chinese Warships 1855–1911 (by Chen Yue)  中国军舰图志 1855-1911 （陈悦）</portraitUrl>
   <remark>https://baike.baidu.com/item/%E2%80%9C%E5%B7%A6%E9%98%9F%E4%B8%80%E5%8F%B7%E2%80%9D%E9%B1%BC%E9%9B%B7%E8%89%87/8273053</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Tso I.png</path>
    <isBuiltin>true</isBuiltin>
@@ -13408,6 +13445,7 @@ Complement is inferred</remark>
   <remark>Not supported by SK5 data. Very poorly supported by fact.
 
 https://baike.baidu.com/item/%E2%80%9C%E5%B7%A6%E4%BA%8C%E2%80%9D%E5%8F%B7%E9%B1%BC%E9%9B%B7%E8%89%87/15701446?fr=aladdin</remark>
+  <isPoorlySupported>true</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Right I.png</path>
    <isBuiltin>true</isBuiltin>
@@ -13511,6 +13549,7 @@ https://baike.baidu.com/item/%E2%80%9C%E5%B7%A6%E4%BA%8C%E2%80%9D%E5%8F%B7%E9%B1
 2 torpedo boats carried by Ting Yuen class. 
 
 Complement is placeholder</remark>
+  <isPoorlySupported>true</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Ting I.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -13635,6 +13674,7 @@ Torpedo boats carried by Chi Yuan
 Draft &amp; Complement is placeholder.
 
 </remark>
+  <isPoorlySupported>true</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Chong Chia_Top.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -14173,6 +14213,7 @@ Draft &amp; Complement is placeholder.
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/Japanese_battleship_Yashima</portraitUrl>
   <remark>https://en.wikipedia.org/wiki/Fuji-class_battleship</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Yashima.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -14733,6 +14774,7 @@ Draft &amp; Complement is placeholder.
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/Japanese_battleship_Yashima</portraitUrl>
   <remark>https://en.wikipedia.org/wiki/Fuji-class_battleship</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Yashima.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -14820,6 +14862,7 @@ Draft &amp; Complement is placeholder.
   <remark>Generic Placeholder IJN Transport
 
 Portrait is taken from Saikyō Maru (西京丸)</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Saikyo_Maru.png</path>
    <isBuiltin>true</isBuiltin>
@@ -14907,6 +14950,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
   <remark>Generic Placeholder China Transport
 
 Portrait is taken from Saikyō Maru (西京丸)</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Saikyo_Maru.png</path>
    <isBuiltin>true</isBuiltin>
@@ -14997,6 +15041,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
 総トン数2,198GT 長さ99.7m、幅10.26m、深さ3.22m、主機140馬力、速力9ノット 
 
 日清戦争の頃の工作船とはスパイ船ではなく、艦艇に附随して戦闘後、船體水線以下の修理で入渠を要する艦艇以外の船を迅速に応急修理をする船のことを言う。 日清戦争では元山丸、品川丸の二隻が工作船として徴用された。</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\genzan maru.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -15638,6 +15683,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
   <remark>https://en.wikipedia.org/wiki/Russian_cruiser_Rossia
 
 </remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Rossiya.png</path>
    <isBuiltin>true</isBuiltin>
@@ -16261,6 +16307,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
   </armorRating>
   <portraitUrl>https://naval-encyclopedia.com/ww1/russia/rossiya-class-cruisers-1896.php</portraitUrl>
   <remark>https://en.wikipedia.org/wiki/Russian_cruiser_Gromoboi</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Gromoboy.png</path>
    <isBuiltin>true</isBuiltin>
@@ -16998,6 +17045,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
   </armorRating>
   <portraitUrl>https://military-history.fandom.com/wiki/Russian_cruiser_Rurik_(1892)</portraitUrl>
   <remark>https://en.wikipedia.org/wiki/Russian_cruiser_Rurik_(1892)</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Rurik.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -17529,6 +17577,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:Izumo-class_armored_cruiser_left_elevation_plan.jpg</portraitUrl>
   <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Izumo</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Izumo.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -18109,6 +18158,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
   <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Azuma
 
 Azuma or Adzuma (SK5 name)</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Azuma.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -18638,6 +18688,7 @@ Azuma or Adzuma (SK5 name)</remark>
    <armorType>HarveyNickelSteel</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:Asama_Brassey%27s.jpg</portraitUrl>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Asama.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -18966,6 +19017,7 @@ Sometime called Niitaka class.
 
 - Tsushima (対馬)
 - Niitaka (新高)</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Tsushima.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -19404,6 +19456,7 @@ Sometime called Niitaka class.
 
 Богатырь
 </remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Bogatyr.png</path>
    <isBuiltin>true</isBuiltin>
@@ -19569,6 +19622,7 @@ Sometime called Niitaka class.
 - Kamome 鴎
 - Hashitaka 鷂
 - Ootori 鴻</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Hayabusa.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -19719,6 +19773,7 @@ Sometime called Niitaka class.
    <armorType>NotSpecified</armorType>
   </armorRating>
   <remark>https://ja.wikipedia.org/wiki/%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%BA%8C%E5%8F%B7%E5%9E%8B%E6%B0%B4%E9%9B%B7%E8%89%87</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\TB21.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -19880,6 +19935,7 @@ Sometime called Niitaka class.
 - TB 64
 - TB 65
 - TB 66 </remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\TB 42.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -19996,7 +20052,7 @@ Sometime called Niitaka class.
    </RapidFireBatteryRecord>
   </rapidFireBatteryRecords>
   <targetSizeModifier>-1</targetSizeModifier>
-  <damagePoint>0</damagePoint>
+  <damagePoint>169</damagePoint>
   <speedKnots>23</speedKnots>
   <damageControlRatingUnmodified>0</damageControlRatingUnmodified>
   <speedKnotsEngineRoomsLevels>
@@ -20040,6 +20096,7 @@ Sometime called Niitaka class.
 - TB 73
 - TB 74
 - TB 75</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\TB 68.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -20590,6 +20647,7 @@ Sometime called Niitaka class.
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:Japanese_armored_cruiser_Yakumo_left_elevation_plan.jpg</portraitUrl>
   <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Yakumo</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Yakumo.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -21049,6 +21107,7 @@ Sometime called Niitaka class.
 - Akashi 明石
 
 Correction: SK5 length 37 -&gt; 307</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Suma.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -21536,6 +21595,7 @@ Correction: SK5 length 37 -&gt; 307</remark>
 Варя́г
 
 SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 1440 -&gt; 1680</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Varyag.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -22114,6 +22174,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
   <remark>https://en.wikipedia.org/wiki/Russian_gunboat_Korietz
 
 Кореец</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Koreets.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -22787,6 +22848,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
 - Poltava (Полтава)
 - Sevastopol (Севастополь)
 </remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Poltava.png</path>
    <isBuiltin>true</isBuiltin>
@@ -22960,6 +23022,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
 
 
 </remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Shirakumo.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -23132,6 +23195,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
 
 - Akatsuki 暁
 - Kasumi 霞</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Shirakumo.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -23308,6 +23372,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
 - Sazanami 漣
 - Niji 霓
 - Oboro 朧</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Shirakumo.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -23482,6 +23547,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
 - Shiranui 不知火
 - Kagero 陽炎
 - Usugumo 薄雲</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Shinonome.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -23659,6 +23725,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
 - Ariake 有明
 - Fubuki 吹雪
 - Arare 霰</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Harusame.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -24260,6 +24327,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
   <remark>https://en.wikipedia.org/wiki/Russian_battleship_Tsesarevich
 
 https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\tsesarevich.png</path>
    <isBuiltin>true</isBuiltin>
@@ -24832,6 +24900,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
 - Peresvet Пересвет
 - Oslyabya Ослябя
 - Pobeda Победа</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Peresvet.png</path>
    <isBuiltin>true</isBuiltin>
@@ -25404,6 +25473,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
 - Peresvet Пересвет
 - Oslyabya Ослябя
 - Pobeda Победа</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Peresvet.png</path>
    <isBuiltin>true</isBuiltin>
@@ -26119,6 +26189,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
   <remark>https://en.wikipedia.org/wiki/Russian_battleship_Retvizan
 
 Ретвизан</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Retvizan.png</path>
    <isBuiltin>true</isBuiltin>
@@ -26696,6 +26767,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
   <portraitUrl>https://en.wikipedia.org/wiki/Bayan-class_cruiser#/media/File:Brasseys_Bayan_2.jpg</portraitUrl>
   <remark>https://en.wikipedia.org/wiki/Bayan-class_cruiser
 </remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Bayan.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -27162,6 +27234,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
 https://naval-encyclopedia.com/ww1/russia/askold-1900.php
 
 Аскольд</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Askold.png</path>
    <isBuiltin>true</isBuiltin>
@@ -27565,6 +27638,7 @@ https://naval-encyclopedia.com/ww1/russia/askold-1900.php
   <remark>https://en.wikipedia.org/wiki/Pallada-class_cruiser
 
 </remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Pallada.png</path>
    <isBuiltin>true</isBuiltin>
@@ -27958,6 +28032,7 @@ https://naval-encyclopedia.com/ww1/russia/askold-1900.php
 https://naval-encyclopedia.com/ww1/russia/boyarin.php
 
 Боярин</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Boyarin.png</path>
    <isBuiltin>true</isBuiltin>
@@ -28283,7 +28358,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
   <targetSizeModifier>1</targetSizeModifier>
   <damagePoint>1008</damagePoint>
   <speedKnots>25</speedKnots>
-  <damageControlRatingUnmodified>0</damageControlRatingUnmodified>
+  <damageControlRatingUnmodified>3</damageControlRatingUnmodified>
   <speedKnotsEngineRoomsLevels>
    <float>25</float>
    <float>20</float>
@@ -28326,6 +28401,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
 https://naval-encyclopedia.com/ww1/russia/cruiser-novik-1898.php
 
 Новик</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Novik.png</path>
    <isBuiltin>true</isBuiltin>
@@ -28495,6 +28571,7 @@ https://en.wikipedia.org/wiki/List_of_destroyers_of_the_Imperial_Russian_Navy
 
 https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%D0%BA%D0%B0%D0%B4%D1%80%D0%B5%D0%BD%D0%BD%D1%8B%D1%85_%D0%BC%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D1%86%D0%B5%D0%B2_%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D0%B8_%D0%B8_%D0%A1%D0%A1%D0%A1%D0%A0_%D0%BF%D0%BE_%D1%82%D0%B8%D0%BF%D0%B0%D0%BC#%D0%A2%D0%B8%D0%BF_%C2%AB%D0%91%D1%83%D0%B9%D0%BD%D1%8B%D0%B9%C2%BB
 </remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Puilki.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -28670,6 +28747,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
   <remark>This is derived from DoB and SK5 data, but it looks like it's inconsistent with
 
 https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%D0%BA%D0%B0%D0%B4%D1%80%D0%B5%D0%BD%D0%BD%D1%8B%D1%85_%D0%BC%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D1%86%D0%B5%D0%B2_%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D0%B8_%D0%B8_%D0%A1%D0%A1%D0%A1%D0%A0_%D0%BF%D0%BE_%D1%82%D0%B8%D0%BF%D0%B0%D0%BC#%D0%A2%D0%B8%D0%BF_%C2%AB%D0%91%D1%83%D0%B9%D0%BD%D1%8B%D0%B9%C2%BB</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Bezstrashni_Top.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -29228,6 +29306,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
   <remark>https://en.wikipedia.org/wiki/Japanese_battleship_Mikasa
 
 </remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Mikasa.png</path>
    <isBuiltin>true</isBuiltin>
@@ -29784,6 +29863,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
   <remark>https://en.wikipedia.org/wiki/Japanese_battleship_Asahi
 
 </remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Asahi.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -30350,6 +30430,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:Shikishimas.png</portraitUrl>
   <remark>https://en.wikipedia.org/wiki/Shikishima-class_battleship</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Shikishimas.png</path>
    <isBuiltin>true</isBuiltin>
@@ -30894,6 +30975,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
   </armorRating>
   <portraitUrl>https://commons.wikimedia.org/wiki/File:Kasagi_class_-_Brassey%27s_Naval_Annual_1898.png</portraitUrl>
   <remark>https://en.wikipedia.org/wiki/Kasagi-class_cruiser</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Kasagi.png</path>
    <isBuiltin>true</isBuiltin>
@@ -31440,6 +31522,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
   <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Takasago
 
 Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the SK5 taxology), but SK5 list it as a CA for some reason.</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Takasago.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -31659,6 +31742,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <armorType>NotSpecified</armorType>
   </armorRating>
   <remark>Dawn of the Battle scenario book Dawn of the Rising Sun</remark>
+  <isPoorlySupported>true</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\fort.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -31900,6 +31984,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
   </armorRating>
   <portraitUrl>https://besour.livejournal.com/181387.html?es=1</portraitUrl>
   <remark>Dawn of the Battle scenario book Dawn of the Rising Sun</remark>
+  <isPoorlySupported>true</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Port_Arthur_no_15_battery_444px.png</path>
    <isBuiltin>true</isBuiltin>
@@ -32110,6 +32195,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <armorType>NotSpecified</armorType>
   </armorRating>
   <remark>Dawn of the Battle scenario book Dawn of the Rising Sun</remark>
+  <isPoorlySupported>true</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\fort.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -32538,6 +32624,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
   </armorRating>
   <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Tsukushi
 </remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Yang Wei.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -32825,6 +32912,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
   </armorRating>
   <portraitUrl>https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:Japanese_gunboat_Oshima_off_Kobe_1897.jpg</portraitUrl>
   <remark>https://en.wikipedia.org/wiki/Japanese_gunboat_%C5%8Cshima</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Oshima.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -33173,6 +33261,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <superStructureVertical effectInch="0" actualInch="0" />
    <armorType>NotSpecified</armorType>
   </armorRating>
+  <isPoorlySupported>true</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\fort.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -33673,6 +33762,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <superStructureVertical effectInch="0" actualInch="0" />
    <armorType>NotSpecified</armorType>
   </armorRating>
+  <isPoorlySupported>true</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\fort.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -34028,6 +34118,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <superStructureVertical effectInch="0" actualInch="0" />
    <armorType>NotSpecified</armorType>
   </armorRating>
+  <isPoorlySupported>true</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\fort.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -34662,6 +34753,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
   <portraitUrl>https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:Kasuga_plan.jpg</portraitUrl>
   <remark>https://en.wikipedia.org/wiki/Kasuga-class_cruiser
 </remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Kasuga.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -35203,6 +35295,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
   </armorRating>
   <portraitUrl>Adaption of Kasuga</portraitUrl>
   <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Nisshin</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Nisshin_Icon.png</path>
    <isBuiltin>true</isBuiltin>
@@ -35484,6 +35577,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <armorType>NotSpecified</armorType>
   </armorRating>
   <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Yaeyama</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Yaeyama_Top.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -35938,6 +36032,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
   <remark>https://en.wikipedia.org/wiki/Chilean_cruiser_Esmeralda_(1883)
 
 Esmeralda or Idzumi (Izumi)</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Esmeralda.png</path>
    <isBuiltin>true</isBuiltin>
@@ -36118,6 +36213,7 @@ Esmeralda or Idzumi (Izumi)</remark>
 https://ru.wikipedia.org/wiki/%D0%9C%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D1%86%D1%8B_%D1%82%D0%B8%D0%BF%D0%B0_%C2%AB%D0%91%D1%83%D0%B9%D0%BD%D1%8B%D0%B9%C2%BB
 
 </remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Boiki.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -36273,6 +36369,7 @@ https://ru.wikipedia.org/wiki/%D0%9C%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D1%86%D
 Форель (с 9 марта 1902 г. — «Внимательный».)
 
 https://ru.wikipedia.org/wiki/%D0%9C%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D1%86%D1%8B_%D1%82%D0%B8%D0%BF%D0%B0_%C2%AB%D0%A4%D0%BE%D1%80%D0%B5%D0%BB%D1%8C%C2%BB</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Vnimatelni_Top.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -36802,6 +36899,7 @@ https://ru.wikipedia.org/wiki/%D0%9C%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D1%86%D
 
 Hai Qi (Hai Chi, 海圻) and Hai Tien (Hai Tian, 海天)
 </remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Hai Chi.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -37314,6 +37412,7 @@ Hai Qi (Hai Chi, 海圻) and Hai Tien (Hai Tian, 海天)
 
 https://naval-encyclopedia.com/ww1/china/hai-yung-class-cruisers.php
 </remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Hai Yung.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -37868,6 +37967,7 @@ https://naval-encyclopedia.com/ww1/china/hai-yung-class-cruisers.php
 
 Alternate history: Suppose the China had purchased this ship from Chile.
 </remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Blanco_Encalada.png</path>
    <isBuiltin>true</isBuiltin>
@@ -38398,6 +38498,7 @@ Alternate history: Suppose the China had purchased this ship from Chile.
 
 Alternate history: Suppose the China had purchased this ship from Chile.
 </remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Capitan_Prat.png</path>
    <isBuiltin>true</isBuiltin>
@@ -38852,6 +38953,7 @@ Alternate history: Suppose the China had purchased this ship from Chile.
   <remark>https://en.wikipedia.org/wiki/Chilean_cruiser_Esmeralda_(1883)
 
 Alternate history: Suppose the China had purchased this ship from Chile. (In true history, it's purchased by Japan).</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Esmeralda.png</path>
    <isBuiltin>true</isBuiltin>
@@ -39276,7 +39378,7 @@ Alternate history: Suppose the China had purchased this ship from Chile. (In tru
   <targetSizeModifier>0</targetSizeModifier>
   <damagePoint>822</damagePoint>
   <speedKnots>18</speedKnots>
-  <damageControlRatingUnmodified>18</damageControlRatingUnmodified>
+  <damageControlRatingUnmodified>2</damageControlRatingUnmodified>
   <speedKnotsEngineRoomsLevels>
    <float>18</float>
    <float>10</float>
@@ -39313,6 +39415,7 @@ Alternate history: Suppose the China had purchased this ship from Chile. (In tru
   <remark>https://naval-encyclopedia.com/ww1/chile/presidente-pinto-class-cruisers.php
 
 Alternate history: Suppose the China had purchased this ship from Chile.</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Presidente Errazuriz.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -39492,6 +39595,7 @@ Alternate history: Suppose the China had purchased this ship from Chile.</remark
   <remark>https://en.wikipedia.org/wiki/Almirante_Lynch-class_torpedo_gunboat
 
 Alternate history: Suppose the China had purchased this ship from Chile.</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Almirante Lynch.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -40016,6 +40120,7 @@ Alternate history: Suppose the China had purchased this ship from Chile.</remark
   <remark>https://en.wikipedia.org/wiki/ARA_Veinticinco_de_Mayo_(1890)
 
 Alternate history: Suppose the China had purchased this ship from Argentina.</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Veinticinco de Mayo.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -40514,6 +40619,7 @@ Alternate history: Suppose the China had purchased this ship from Argentina.</re
   <remark>https://en.wikipedia.org/wiki/ARA_Nueve_de_Julio_(1892)
 
 https://naval-encyclopedia.com/ww1/argentina/9-de-julio.php</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Nueve_de_Julio.png</path>
    <isBuiltin>true</isBuiltin>
@@ -40999,6 +41105,7 @@ https://naval-encyclopedia.com/ww1/argentina/9-de-julio.php</remark>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/ARA_Almirante_Brown_(1880)</portraitUrl>
   <remark>https://en.wikipedia.org/wiki/ARA_Almirante_Brown_(1880)</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Almirante_Brown.png</path>
    <isBuiltin>true</isBuiltin>
@@ -41250,6 +41357,7 @@ https://naval-encyclopedia.com/ww1/argentina/9-de-julio.php</remark>
 
 https://zh.wikipedia.org/wiki/Epsilon%E7%B4%9A%E7%A0%B2%E8%89%87
 </remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Zhen Bei.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -41687,6 +41795,7 @@ https://zh.wikipedia.org/wiki/Epsilon%E7%B4%9A%E7%A0%B2%E8%89%87
   <remark>Kaiji, Kai Che, or Kai Chi (开济)
 
 https://www.historyofwar.org/articles/weapons_kai_che.html</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Kai Che_Top.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -42121,6 +42230,7 @@ https://www.historyofwar.org/articles/weapons_kai_che.html</remark>
    <armorType>NotSpecified</armorType>
   </armorRating>
   <remark>https://tieba.baidu.com/p/6156678705</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Ching Ching.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -42585,6 +42695,7 @@ https://www.historyofwar.org/articles/weapons_kai_che.html</remark>
   </armorRating>
   <portraitUrl>Illustrated History of Chinese Warships 1855–1911 (by Chen Yue)  中国军舰图志 1855-1911 （陈悦）</portraitUrl>
   <remark>https://en.wikipedia.org/wiki/Chinese_cruiser_Nan_Chen</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Nan Chen.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -43036,6 +43147,7 @@ https://www.historyofwar.org/articles/weapons_kai_che.html</remark>
   </armorRating>
   <portraitUrl>Illustrated History of Chinese Warships 1855–1911 (by Chen Yue)  中国军舰图志 1855-1911 （陈悦）</portraitUrl>
   <remark>https://naval-encyclopedia.com/ww1/china/pao-min-1885.php</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Pao Min.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -43733,6 +43845,7 @@ https://www.historyofwar.org/articles/weapons_kai_che.html</remark>
   <remark>Император Николай I
 
 https://en.wikipedia.org/wiki/Russian_battleship_Imperator_Nikolai_I_(1889)</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Imperator Nikolai I.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -44285,6 +44398,7 @@ https://en.wikipedia.org/wiki/Russian_battleship_Imperator_Nikolai_I_(1889)</rem
 https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Nakhimov_(1885)
 
 </remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Admiral Nakhimov.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -44642,6 +44756,7 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Nakhimov_(1885)
   <remark>Адмирал Нахимов
 
 https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Nakhimov_(1885)</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Admiral Nakhimov.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -45177,6 +45292,7 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Nakhimov_(1885)</remark>
 
 https://en.wikipedia.org/wiki/Russian_cruiser_Pamiat_Azova
 </remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Pamyat_Azova.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -45716,6 +45832,7 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Vladimir_Monomakh
 
 Strange FC Code given by SK5 datasheet, which may overestimate its fire control level.
 </remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Vladimir_Monomakh.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -46095,6 +46212,7 @@ Strange FC Code given by SK5 datasheet, which may overestimate its fire control 
   <remark>Адмирал Корнилов
 
 https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Kornilov</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\admiral-kornilov.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -46690,6 +46808,7 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Kornilov</remark>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/Borodino-class_battleship</portraitUrl>
   <remark>https://en.wikipedia.org/wiki/Borodino-class_battleship</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Borodino.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -47375,6 +47494,7 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Kornilov</remark>
   <remark>Сисой Великий
 
 https://en.wikipedia.org/wiki/Russian_battleship_Sissoi_Veliky</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Sissoi_Veliky.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -47907,6 +48027,7 @@ https://en.wikipedia.org/wiki/Russian_battleship_Sissoi_Veliky</remark>
   <remark>Наварин
 
 https://en.wikipedia.org/wiki/Russian_battleship_Navarin</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Navarin.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -48209,6 +48330,7 @@ https://en.wikipedia.org/wiki/Russian_battleship_Navarin</remark>
 One of reference ship class of Ding Yuan
 
 </remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Inflexible.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -48707,6 +48829,7 @@ One of reference ship class of Ding Yuan
   <remark>https://en.wikipedia.org/wiki/Centurion-class_battleship
 
 </remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Centurion.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -49076,6 +49199,7 @@ One of reference ship class of Ding Yuan
   <portraitUrl>https://en.wikipedia.org/wiki/File:HMS_Dreadnought_(1911)_profile_drawing.png</portraitUrl>
   <remark>https://en.wikipedia.org/wiki/HMS_Dreadnought_(1906)
 </remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Dreadnought.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -49667,10 +49791,10 @@ One of reference ship class of Ding Yuan
     </barrelsLevelStarboard>
    </RapidFireBatteryRecord>
   </rapidFireBatteryRecords>
-  <targetSizeModifier>0</targetSizeModifier>
-  <damagePoint>0</damagePoint>
+  <targetSizeModifier>1</targetSizeModifier>
+  <damagePoint>1557</damagePoint>
   <speedKnots>18</speedKnots>
-  <damageControlRatingUnmodified>0</damageControlRatingUnmodified>
+  <damageControlRatingUnmodified>4</damageControlRatingUnmodified>
   <speedKnotsEngineRoomsLevels>
    <float>18</float>
    <float>10</float>
@@ -49706,6 +49830,7 @@ One of reference ship class of Ding Yuan
   <portraitUrl>https://en.wikipedia.org/wiki/File:Edgar_class_cruiser_diagram_Brasseys_1897.jpg</portraitUrl>
   <remark>https://en.wikipedia.org/wiki/Edgar-class_cruiser
 </remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Edgar.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -50158,10 +50283,10 @@ One of reference ship class of Ding Yuan
     </barrelsLevelStarboard>
    </RapidFireBatteryRecord>
   </rapidFireBatteryRecords>
-  <targetSizeModifier>0</targetSizeModifier>
-  <damagePoint>0</damagePoint>
+  <targetSizeModifier>1</targetSizeModifier>
+  <damagePoint>1359</damagePoint>
   <speedKnots>18</speedKnots>
-  <damageControlRatingUnmodified>0</damageControlRatingUnmodified>
+  <damageControlRatingUnmodified>3</damageControlRatingUnmodified>
   <speedKnotsEngineRoomsLevels>
    <float>18</float>
    <float>10</float>
@@ -50198,6 +50323,7 @@ One of reference ship class of Ding Yuan
   <remark>https://en.wikipedia.org/wiki/Orlando-class_cruiser
 
 </remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Orlando.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -50523,6 +50649,7 @@ One of reference ship class of Ding Yuan
   <portraitUrl>https://en.wikipedia.org/wiki/File:HMS_Mercury_(1878).jpg</portraitUrl>
   <remark>https://en.wikipedia.org/wiki/Iris-class_cruiser
 </remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Mercury.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -51018,6 +51145,7 @@ One of reference ship class of Ding Yuan
   <remark>https://en.wikipedia.org/wiki/Apollo-class_cruiser
 
 </remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Apollo.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -51325,6 +51453,7 @@ One of reference ship class of Ding Yuan
   <remark>https://en.wikipedia.org/wiki/Phoenix-class_sloop
 
 Sloop</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Algerine.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -51350,7 +51479,7 @@ Sloop</remark>
   <type>Destroyer</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Britain</country>
-  <displacementTons>390</displacementTons>
+  <displacementTons>310</displacementTons>
   <complementMen>50</complementMen>
   <lengthFoot>220</lengthFoot>
   <beamFoot>21</beamFoot>
@@ -51447,7 +51576,7 @@ Sloop</remark>
    </RapidFireBatteryRecord>
   </rapidFireBatteryRecords>
   <targetSizeModifier>-1</targetSizeModifier>
-  <damagePoint>390</damagePoint>
+  <damagePoint>320</damagePoint>
   <speedKnots>30</speedKnots>
   <damageControlRatingUnmodified>1</damageControlRatingUnmodified>
   <speedKnotsEngineRoomsLevels>
@@ -51487,6 +51616,7 @@ Sloop</remark>
   <remark>https://en.wikipedia.org/wiki/C-class_destroyer_(1913)
 
 Complement 50 is inferred.</remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Whiting.png</path>
    <isBuiltin>true</isBuiltin>
@@ -51651,6 +51781,7 @@ Complement 50 is inferred.</remark>
 Complement 50 is inferred.
 
 </remark>
+  <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Fame.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -51666,5 +51797,864 @@ Complement 50 is inferred.
   <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>d0a3b4bc-4e9b-4760-9e0e-f59e7cf6f1de</objectId>
+ </ShipClass>
+ <ShipClass>
+  <name>
+   <english>Sivuch</english>
+   <japanese>シヴチ</japanese>
+   <chineseSimplified>西武奇</chineseSimplified>
+  </name>
+  <type>PatrolGunboat</type>
+  <extraShipType>NotSpecified</extraShipType>
+  <country>Russia</country>
+  <displacementTons>1134</displacementTons>
+  <complementMen>170</complementMen>
+  <lengthFoot>188</lengthFoot>
+  <beamFoot>35</beamFoot>
+  <draftFoot>9.5</draftFoot>
+  <engineDesc>
+   <english>HC</english>
+  </engineDesc>
+  <boilersDesc>
+   <english>2 Cylindrical</english>
+  </boilersDesc>
+  <batteryRecords>
+   <BatteryRecord>
+    <name>
+     <english>230mm/30 M1877</english>
+    </name>
+    <damageRating>26</damageRating>
+    <maxRateOfFireShootPerMin>0.5</maxRateOfFireShootPerMin>
+    <fireControlPositions>1</fireControlPositions>
+    <fireControlType>
+     <code>W</code>
+     <gunSight>Basic</gunSight>
+     <fireControlInstrument>Basic</fireControlInstrument>
+     <rangeFinder>None</rangeFinder>
+     <directorControl>FollowThePointer</directorControl>
+     <stabilization>Manual</stabilization>
+     <powerRemoteControl>None</powerRemoteControl>
+    </fireControlType>
+    <rangeYards>8100</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
+    <fireControlRadarModifier>0</fireControlRadarModifier>
+    <fireControlRadarName>
+     <english>None</english>
+    </fireControlRadarName>
+    <shellSizeInch>9</shellSizeInch>
+    <shellWeightPounds>278</shellWeightPounds>
+    <ammunitionCapacity>50</ammunitionCapacity>
+    <fireControlTableRecords>
+     <FireControlTableRecord>
+      <speedThresholdKnot>9</speedThresholdKnot>
+      <shortBroad>11</shortBroad>
+      <shortNarrow>6</shortNarrow>
+      <mediumBroad>6</mediumBroad>
+      <mediumNarrow>4</mediumNarrow>
+      <longBroad>4</longBroad>
+      <longNarrow>3</longNarrow>
+      <extremeBroad>4</extremeBroad>
+      <extremeNarrow>2</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>18</speedThresholdKnot>
+      <shortBroad>7</shortBroad>
+      <shortNarrow>4</shortNarrow>
+      <mediumBroad>4</mediumBroad>
+      <mediumNarrow>3</mediumNarrow>
+      <longBroad>3</longBroad>
+      <longNarrow>2</longNarrow>
+      <extremeBroad>3</extremeBroad>
+      <extremeNarrow>2</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>27</speedThresholdKnot>
+      <shortBroad>6</shortBroad>
+      <shortNarrow>3</shortNarrow>
+      <mediumBroad>3</mediumBroad>
+      <mediumNarrow>2</mediumNarrow>
+      <longBroad>2</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>2</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>36</speedThresholdKnot>
+      <shortBroad>5</shortBroad>
+      <shortNarrow>3</shortNarrow>
+      <mediumBroad>3</mediumBroad>
+      <mediumNarrow>2</mediumNarrow>
+      <longBroad>2</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>2</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>45</speedThresholdKnot>
+      <shortBroad>4</shortBroad>
+      <shortNarrow>2</shortNarrow>
+      <mediumBroad>2</mediumBroad>
+      <mediumNarrow>1</mediumNarrow>
+      <longBroad>2</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>1</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+    </fireControlTableRecords>
+    <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
+    <penetrationTableRecords>
+     <PenetrationTableRecord>
+      <distanceYards>2000</distanceYards>
+      <rateOfFire>1</rateOfFire>
+      <rangeBand>Short</rangeBand>
+      <horizontalPenetrationInchs>0.2</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>6.3</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+     <PenetrationTableRecord>
+      <distanceYards>4000</distanceYards>
+      <rateOfFire>1</rateOfFire>
+      <rangeBand>Short</rangeBand>
+      <horizontalPenetrationInchs>0.4</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>4.6</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+     <PenetrationTableRecord>
+      <distanceYards>6000</distanceYards>
+      <rateOfFire>1</rateOfFire>
+      <rangeBand>Medium</rangeBand>
+      <horizontalPenetrationInchs>0.7</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>3.6</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+     <PenetrationTableRecord>
+      <distanceYards>8000</distanceYards>
+      <rateOfFire>1</rateOfFire>
+      <rangeBand>Medium</rangeBand>
+      <horizontalPenetrationInchs>1</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>3.1</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+     <PenetrationTableRecord>
+      <distanceYards>10000</distanceYards>
+      <rateOfFire>1</rateOfFire>
+      <rangeBand>Medium</rangeBand>
+      <horizontalPenetrationInchs>1</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>3</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+    </penetrationTableRecords>
+    <mountLocationRecords>
+     <MountLocationRecord>
+      <mountLocation>Forward</mountLocation>
+      <barrels>1</barrels>
+      <mounts>1</mounts>
+      <mountArcs>
+       <MountArcRecord startDeg="240" CoverageDeg="240" isCrossDeckFire="false" />
+      </mountArcs>
+      <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
+      <mountArcsPattern>Normal</mountArcsPattern>
+      <objectId>495b409d-225e-421d-864a-d2cb838d32b1</objectId>
+     </MountLocationRecord>
+    </mountLocationRecords>
+    <objectId>2099e8d0-e9e7-431e-95ea-0d64f3cdd3b9</objectId>
+   </BatteryRecord>
+   <BatteryRecord>
+    <name>
+     <english>152mm/28 M1880</english>
+     <japanese />
+     <chineseSimplified />
+    </name>
+    <damageRating>15</damageRating>
+    <maxRateOfFireShootPerMin>0.4</maxRateOfFireShootPerMin>
+    <fireControlPositions>1</fireControlPositions>
+    <fireControlType>
+     <code>Y</code>
+     <gunSight>Basic</gunSight>
+     <fireControlInstrument>Basic</fireControlInstrument>
+     <rangeFinder>None</rangeFinder>
+     <directorControl>None</directorControl>
+     <stabilization>Manual</stabilization>
+     <powerRemoteControl>None</powerRemoteControl>
+    </fireControlType>
+    <rangeYards>4221</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
+    <fireControlRadarModifier>0</fireControlRadarModifier>
+    <fireControlRadarName>
+     <english>None</english>
+    </fireControlRadarName>
+    <shellSizeInch>6</shellSizeInch>
+    <shellWeightPounds>73.6</shellWeightPounds>
+    <ammunitionCapacity>75</ammunitionCapacity>
+    <fireControlTableRecords>
+     <FireControlTableRecord>
+      <speedThresholdKnot>9</speedThresholdKnot>
+      <shortBroad>8</shortBroad>
+      <shortNarrow>5</shortNarrow>
+      <mediumBroad>5</mediumBroad>
+      <mediumNarrow>3</mediumNarrow>
+      <longBroad>3</longBroad>
+      <longNarrow>2</longNarrow>
+      <extremeBroad>3</extremeBroad>
+      <extremeNarrow>2</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>18</speedThresholdKnot>
+      <shortBroad>5</shortBroad>
+      <shortNarrow>3</shortNarrow>
+      <mediumBroad>3</mediumBroad>
+      <mediumNarrow>2</mediumNarrow>
+      <longBroad>2</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>2</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>27</speedThresholdKnot>
+      <shortBroad>4</shortBroad>
+      <shortNarrow>3</shortNarrow>
+      <mediumBroad>3</mediumBroad>
+      <mediumNarrow>2</mediumNarrow>
+      <longBroad>2</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>2</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>36</speedThresholdKnot>
+      <shortBroad>4</shortBroad>
+      <shortNarrow>2</shortNarrow>
+      <mediumBroad>2</mediumBroad>
+      <mediumNarrow>1</mediumNarrow>
+      <longBroad>1</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>1</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>45</speedThresholdKnot>
+      <shortBroad>3</shortBroad>
+      <shortNarrow>2</shortNarrow>
+      <mediumBroad>2</mediumBroad>
+      <mediumNarrow>1</mediumNarrow>
+      <longBroad>1</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>1</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+    </fireControlTableRecords>
+    <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
+    <penetrationTableRecords>
+     <PenetrationTableRecord>
+      <distanceYards>2000</distanceYards>
+      <rateOfFire>0.8</rateOfFire>
+      <rangeBand>Short</rangeBand>
+      <horizontalPenetrationInchs>0.1</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>3.3</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+     <PenetrationTableRecord>
+      <distanceYards>4000</distanceYards>
+      <rateOfFire>0.8</rateOfFire>
+      <rangeBand>Medium</rangeBand>
+      <horizontalPenetrationInchs>0.2</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>2.3</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+     <PenetrationTableRecord>
+      <distanceYards>6000</distanceYards>
+      <rateOfFire>0.8</rateOfFire>
+      <rangeBand>Medium</rangeBand>
+      <horizontalPenetrationInchs>0.3</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>2.2</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+    </penetrationTableRecords>
+    <mountLocationRecords>
+     <MountLocationRecord>
+      <mountLocation>After</mountLocation>
+      <barrels>1</barrels>
+      <mounts>1</mounts>
+      <mountArcs>
+       <MountArcRecord startDeg="60" CoverageDeg="240" isCrossDeckFire="false" />
+      </mountArcs>
+      <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
+      <mountArcsPattern>Normal</mountArcsPattern>
+      <objectId>a4062b3d-24bb-4fbf-abaa-2026b6bf5245</objectId>
+     </MountLocationRecord>
+    </mountLocationRecords>
+    <objectId>5e640b70-df7b-444f-b391-93fb72589ad2</objectId>
+   </BatteryRecord>
+   <BatteryRecord>
+    <name>
+     <english>4.2''/20 9pdr M1879</english>
+    </name>
+    <damageRating>10</damageRating>
+    <maxRateOfFireShootPerMin>4</maxRateOfFireShootPerMin>
+    <fireControlPositions>2</fireControlPositions>
+    <fireControlType>
+     <code>Y</code>
+     <gunSight>Basic</gunSight>
+     <fireControlInstrument>Basic</fireControlInstrument>
+     <rangeFinder>None</rangeFinder>
+     <directorControl>None</directorControl>
+     <stabilization>Manual</stabilization>
+     <powerRemoteControl>None</powerRemoteControl>
+    </fireControlType>
+    <rangeYards>5079</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
+    <fireControlRadarModifier>0</fireControlRadarModifier>
+    <fireControlRadarName>
+     <english>None</english>
+    </fireControlRadarName>
+    <shellSizeInch>4.2</shellSizeInch>
+    <shellWeightPounds>27.3</shellWeightPounds>
+    <ammunitionCapacity>600</ammunitionCapacity>
+    <fireControlTableRecords>
+     <FireControlTableRecord>
+      <speedThresholdKnot>9</speedThresholdKnot>
+      <shortBroad>7</shortBroad>
+      <shortNarrow>4</shortNarrow>
+      <mediumBroad>4</mediumBroad>
+      <mediumNarrow>3</mediumNarrow>
+      <longBroad>3</longBroad>
+      <longNarrow>2</longNarrow>
+      <extremeBroad>2</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>18</speedThresholdKnot>
+      <shortBroad>5</shortBroad>
+      <shortNarrow>3</shortNarrow>
+      <mediumBroad>3</mediumBroad>
+      <mediumNarrow>2</mediumNarrow>
+      <longBroad>2</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>2</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>27</speedThresholdKnot>
+      <shortBroad>4</shortBroad>
+      <shortNarrow>2</shortNarrow>
+      <mediumBroad>2</mediumBroad>
+      <mediumNarrow>1</mediumNarrow>
+      <longBroad>2</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>1</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>36</speedThresholdKnot>
+      <shortBroad>3</shortBroad>
+      <shortNarrow>2</shortNarrow>
+      <mediumBroad>2</mediumBroad>
+      <mediumNarrow>1</mediumNarrow>
+      <longBroad>1</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>1</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>45</speedThresholdKnot>
+      <shortBroad>3</shortBroad>
+      <shortNarrow>2</shortNarrow>
+      <mediumBroad>2</mediumBroad>
+      <mediumNarrow>1</mediumNarrow>
+      <longBroad>1</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>1</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+    </fireControlTableRecords>
+    <penetrationTableBaseType>Common</penetrationTableBaseType>
+    <penetrationTableRecords>
+     <PenetrationTableRecord>
+      <distanceYards>2000</distanceYards>
+      <rateOfFire>6.3</rateOfFire>
+      <rangeBand>Short</rangeBand>
+      <horizontalPenetrationInchs>0.1</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>1.6</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+     <PenetrationTableRecord>
+      <distanceYards>4000</distanceYards>
+      <rateOfFire>4.4</rateOfFire>
+      <rangeBand>Medium</rangeBand>
+      <horizontalPenetrationInchs>0.2</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>1.1</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+     <PenetrationTableRecord>
+      <distanceYards>6000</distanceYards>
+      <rateOfFire>3.6</rateOfFire>
+      <rangeBand>Long</rangeBand>
+      <horizontalPenetrationInchs>0.4</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>0.9</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+    </penetrationTableRecords>
+    <mountLocationRecords>
+     <MountLocationRecord>
+      <mountLocation>StarboardMidship</mountLocation>
+      <barrels>1</barrels>
+      <mounts>3</mounts>
+      <mountArcs>
+       <MountArcRecord startDeg="75" CoverageDeg="30" isCrossDeckFire="false" />
+      </mountArcs>
+      <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
+      <mountArcsPattern>Normal</mountArcsPattern>
+      <objectId>5e7a59c6-d0ba-47b4-b6b5-a46891645922</objectId>
+     </MountLocationRecord>
+     <MountLocationRecord>
+      <mountLocation>PortMidship</mountLocation>
+      <barrels>1</barrels>
+      <mounts>3</mounts>
+      <mountArcs>
+       <MountArcRecord startDeg="255" CoverageDeg="30" isCrossDeckFire="false" />
+      </mountArcs>
+      <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
+      <mountArcsPattern>Normal</mountArcsPattern>
+      <objectId>a5e53739-d073-4f1c-b768-cf711f9e13f1</objectId>
+     </MountLocationRecord>
+    </mountLocationRecords>
+    <objectId>49d09fe6-f3c3-4e2e-81d0-29882c3d6f19</objectId>
+   </BatteryRecord>
+  </batteryRecords>
+  <torpedoSector>
+   <name>
+    <english>none</english>
+   </name>
+   <mountLocationRecords />
+   <torpedoSettings />
+   <ammunitionCapacity>0</ammunitionCapacity>
+   <damageClass>A</damageClass>
+   <dudProbability>0.5</dudProbability>
+   <pistolType>Contact</pistolType>
+  </torpedoSector>
+  <rapidFireBatteryRecords>
+   <RapidFireBatteryRecord>
+    <name>
+     <english>37mm/20</english>
+     <chineseSimplified />
+    </name>
+    <maxRangeYards>2200</maxRangeYards>
+    <effectiveRangeYards>990</effectiveRangeYards>
+    <fireControlRecords>
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="4" fireControlEffectiveRange="6" />
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="3" fireControlEffectiveRange="5" />
+    </fireControlRecords>
+    <damageFactor>5</damageFactor>
+    <barrelsLevelPort>
+     <int>2</int>
+     <int>2</int>
+     <int>2</int>
+     <int>1</int>
+    </barrelsLevelPort>
+    <barrelsLevelStarboard>
+     <int>2</int>
+     <int>2</int>
+     <int>2</int>
+     <int>1</int>
+    </barrelsLevelStarboard>
+   </RapidFireBatteryRecord>
+  </rapidFireBatteryRecords>
+  <targetSizeModifier>0</targetSizeModifier>
+  <damagePoint>612</damagePoint>
+  <speedKnots>11</speedKnots>
+  <damageControlRatingUnmodified>2</damageControlRatingUnmodified>
+  <speedKnotsEngineRoomsLevels>
+   <float>11</float>
+   <float>6</float>
+  </speedKnotsEngineRoomsLevels>
+  <speedKnotsPropulsionShaftLevels>
+   <float>11</float>
+   <float>6</float>
+  </speedKnotsPropulsionShaftLevels>
+  <speedKnotsBoilerRooms>
+   <float>11</float>
+   <float>7</float>
+  </speedKnotsBoilerRooms>
+  <speedIncreaseRecord>
+   <SpeedIncreaseRecord thresholdSpeedKnots="0" increaseSpeedKnots="3" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="3" increaseSpeedKnots="2" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="6" increaseSpeedKnots="1" />
+  </speedIncreaseRecord>
+  <standardTurnDegPer2Min>120</standardTurnDegPer2Min>
+  <emergencyTurnDegPer2Min>150</emergencyTurnDegPer2Min>
+  <armorRating>
+   <armorTypeFactor>0</armorTypeFactor>
+   <deck effectInch="0" actualInch="0" />
+   <turretHorizontal effectInch="0" actualInch="0" />
+   <superStructureHorizontal effectInch="0" actualInch="0" />
+   <conningTower effectInch="0" actualInch="0" />
+   <mainBelt effectInch="0" actualInch="0" />
+   <beltEnd effectInch="0" actualInch="0" />
+   <barbette effectInch="0" actualInch="0" />
+   <turretVertical effectInch="0" actualInch="0" />
+   <superStructureVertical effectInch="0" actualInch="0" />
+   <armorType>NotSpecified</armorType>
+  </armorRating>
+  <portraitUrl>https://rjw.narod.ru/1tihook/sivuch.htm</portraitUrl>
+  <remark>Сивуч (канонерская лодка)
+
+https://ru.wikipedia.org/wiki/%D0%A1%D0%B8%D0%B2%D1%83%D1%87_(%D0%BA%D0%B0%D0%BD%D0%BE%D0%BD%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F_%D0%BB%D0%BE%D0%B4%D0%BA%D0%B0)
+
+https://rjw.narod.ru/1tihook/sivuch.htm
+</remark>
+  <isPoorlySupported>false</isPoorlySupported>
+  <portraitReference>
+   <path>Pictures\Ships\Sivuch.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <portraitTopReference>
+   <path>Pictures\Ships\Sivuch_Top.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitTopReference>
+  <portraitIconReference>
+   <path>Pictures\Ships\Sivuch_Icon.png</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
+  <ram>Ram</ram>
+  <objectId>2822fe12-a31a-44ee-a8ba-9c08b0f8d630</objectId>
+ </ShipClass>
+ <ShipClass>
+  <name>
+   <english>Iltis</english>
+   <japanese>イルティス</japanese>
+   <chineseSimplified>伊尔蒂斯</chineseSimplified>
+  </name>
+  <type>PatrolGunboat</type>
+  <extraShipType>NotSpecified</extraShipType>
+  <country>Germany</country>
+  <displacementTons>1000</displacementTons>
+  <complementMen>130</complementMen>
+  <lengthFoot>210</lengthFoot>
+  <beamFoot>30</beamFoot>
+  <draftFoot>11.8</draftFoot>
+  <engineDesc>
+   <english>2 3-cylinder HTE</english>
+  </engineDesc>
+  <boilersDesc>
+   <english>4 Marine</english>
+  </boilersDesc>
+  <batteryRecords />
+  <torpedoSector>
+   <name>
+    <english>none</english>
+   </name>
+   <mountLocationRecords />
+   <torpedoSettings />
+   <ammunitionCapacity>0</ammunitionCapacity>
+   <damageClass>A</damageClass>
+   <dudProbability>0.5</dudProbability>
+   <pistolType>Contact</pistolType>
+  </torpedoSector>
+  <rapidFireBatteryRecords>
+   <RapidFireBatteryRecord>
+    <name>
+     <english>8.8cm SKL30 C/86</english>
+    </name>
+    <maxRangeYards>7633</maxRangeYards>
+    <effectiveRangeYards>3435</effectiveRangeYards>
+    <fireControlRecords>
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="5" fireControlEffectiveRange="8" />
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="4" fireControlEffectiveRange="6" />
+    </fireControlRecords>
+    <damageFactor>18</damageFactor>
+    <barrelsLevelPort>
+     <int>2</int>
+     <int>2</int>
+     <int>1</int>
+     <int>1</int>
+    </barrelsLevelPort>
+    <barrelsLevelStarboard>
+     <int>2</int>
+     <int>2</int>
+     <int>1</int>
+     <int>1</int>
+    </barrelsLevelStarboard>
+   </RapidFireBatteryRecord>
+  </rapidFireBatteryRecords>
+  <targetSizeModifier>0</targetSizeModifier>
+  <damagePoint>574</damagePoint>
+  <speedKnots>14</speedKnots>
+  <damageControlRatingUnmodified>1</damageControlRatingUnmodified>
+  <speedKnotsEngineRoomsLevels>
+   <float>14</float>
+  </speedKnotsEngineRoomsLevels>
+  <speedKnotsPropulsionShaftLevels>
+   <float>14</float>
+   <float>7</float>
+  </speedKnotsPropulsionShaftLevels>
+  <speedKnotsBoilerRooms>
+   <float>14</float>
+  </speedKnotsBoilerRooms>
+  <speedIncreaseRecord>
+   <SpeedIncreaseRecord thresholdSpeedKnots="0" increaseSpeedKnots="3" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="4" increaseSpeedKnots="2" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="7" increaseSpeedKnots="1" />
+  </speedIncreaseRecord>
+  <standardTurnDegPer2Min>120</standardTurnDegPer2Min>
+  <emergencyTurnDegPer2Min>150</emergencyTurnDegPer2Min>
+  <armorRating>
+   <armorTypeFactor>0</armorTypeFactor>
+   <deck effectInch="0" actualInch="0" />
+   <turretHorizontal effectInch="0" actualInch="0" />
+   <superStructureHorizontal effectInch="0" actualInch="0" />
+   <conningTower effectInch="0" actualInch="0" />
+   <mainBelt effectInch="0" actualInch="0" />
+   <beltEnd effectInch="0" actualInch="0" />
+   <barbette effectInch="0" actualInch="0" />
+   <turretVertical effectInch="0" actualInch="0" />
+   <superStructureVertical effectInch="0" actualInch="0" />
+   <armorType>NotSpecified</armorType>
+  </armorRating>
+  <portraitUrl>https://en.wikipedia.org/wiki/File:Iltis-class_gunboat_plan_and_profile.png</portraitUrl>
+  <remark>https://en.wikipedia.org/wiki/Iltis-class_gunboat
+
+</remark>
+  <isPoorlySupported>false</isPoorlySupported>
+  <portraitReference>
+   <path>Pictures\Ships\Iltis.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <portraitTopReference>
+   <path>Pictures\Ships\Iltis_Top.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitTopReference>
+  <portraitIconReference>
+   <path>Pictures\Ships\Iltis_Icon.png</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
+  <ram>None</ram>
+  <objectId>f2959740-a7dc-49a9-bf2c-d133c3f31394</objectId>
+ </ShipClass>
+ <ShipClass>
+  <name>
+   <english>Comète</english>
+   <japanese>コメット</japanese>
+   <chineseSimplified>彗星</chineseSimplified>
+  </name>
+  <type>PatrolGunboat</type>
+  <extraShipType>NotSpecified</extraShipType>
+  <country>France</country>
+  <displacementTons>503</displacementTons>
+  <complementMen>78</complementMen>
+  <lengthFoot>154</lengthFoot>
+  <beamFoot>28</beamFoot>
+  <draftFoot>9.8</draftFoot>
+  <engineDesc>
+   <english>none</english>
+  </engineDesc>
+  <boilersDesc>
+   <english>none</english>
+  </boilersDesc>
+  <batteryRecords>
+   <BatteryRecord>
+    <name>
+     <english>138.6mm</english>
+    </name>
+    <damageRating>17</damageRating>
+    <maxRateOfFireShootPerMin>5</maxRateOfFireShootPerMin>
+    <fireControlPositions>2</fireControlPositions>
+    <fireControlType>
+     <code>Z</code>
+     <gunSight>Basic</gunSight>
+     <fireControlInstrument>None</fireControlInstrument>
+     <rangeFinder>None</rangeFinder>
+     <directorControl>None</directorControl>
+     <stabilization>Manual</stabilization>
+     <powerRemoteControl>None</powerRemoteControl>
+    </fireControlType>
+    <rangeYards>7869</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
+    <fireControlRadarModifier>0</fireControlRadarModifier>
+    <fireControlRadarName>
+     <english>None</english>
+    </fireControlRadarName>
+    <shellSizeInch>5.9</shellSizeInch>
+    <shellWeightPounds>112.4</shellWeightPounds>
+    <ammunitionCapacity>450</ammunitionCapacity>
+    <fireControlTableRecords>
+     <FireControlTableRecord>
+      <speedThresholdKnot>9</speedThresholdKnot>
+      <shortBroad>6</shortBroad>
+      <shortNarrow>4</shortNarrow>
+      <mediumBroad>4</mediumBroad>
+      <mediumNarrow>2</mediumNarrow>
+      <longBroad>2</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>2</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>18</speedThresholdKnot>
+      <shortBroad>4</shortBroad>
+      <shortNarrow>2</shortNarrow>
+      <mediumBroad>2</mediumBroad>
+      <mediumNarrow>1</mediumNarrow>
+      <longBroad>2</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>1</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>27</speedThresholdKnot>
+      <shortBroad>3</shortBroad>
+      <shortNarrow>2</shortNarrow>
+      <mediumBroad>2</mediumBroad>
+      <mediumNarrow>1</mediumNarrow>
+      <longBroad>1</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>1</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>36</speedThresholdKnot>
+      <shortBroad>3</shortBroad>
+      <shortNarrow>2</shortNarrow>
+      <mediumBroad>2</mediumBroad>
+      <mediumNarrow>1</mediumNarrow>
+      <longBroad>1</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>1</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>45</speedThresholdKnot>
+      <shortBroad>2</shortBroad>
+      <shortNarrow>1</shortNarrow>
+      <mediumBroad>1</mediumBroad>
+      <mediumNarrow>1</mediumNarrow>
+      <longBroad>1</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>1</extremeBroad>
+      <extremeNarrow>0</extremeNarrow>
+     </FireControlTableRecord>
+    </fireControlTableRecords>
+    <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
+    <penetrationTableRecords>
+     <PenetrationTableRecord>
+      <distanceYards>2000</distanceYards>
+      <rateOfFire>7.2</rateOfFire>
+      <rangeBand>Short</rangeBand>
+      <horizontalPenetrationInchs>0.1</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>4.7</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+     <PenetrationTableRecord>
+      <distanceYards>4000</distanceYards>
+      <rateOfFire>5.6</rateOfFire>
+      <rangeBand>Short</rangeBand>
+      <horizontalPenetrationInchs>0.2</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>3.5</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+     <PenetrationTableRecord>
+      <distanceYards>6000</distanceYards>
+      <rateOfFire>4.4</rateOfFire>
+      <rangeBand>Medium</rangeBand>
+      <horizontalPenetrationInchs>0.4</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>2.8</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+     <PenetrationTableRecord>
+      <distanceYards>8000</distanceYards>
+      <rateOfFire>3.6</rateOfFire>
+      <rangeBand>Medium</rangeBand>
+      <horizontalPenetrationInchs>0.6</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>2.4</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+    </penetrationTableRecords>
+    <mountLocationRecords>
+     <MountLocationRecord>
+      <mountLocation>StarboardMidship</mountLocation>
+      <barrels>1</barrels>
+      <mounts>3</mounts>
+      <mountArcs>
+       <MountArcRecord startDeg="30" CoverageDeg="120" isCrossDeckFire="false" />
+      </mountArcs>
+      <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
+      <mountArcsPattern>Normal</mountArcsPattern>
+      <objectId>35519cce-24e1-40b3-b587-f32120658301</objectId>
+     </MountLocationRecord>
+     <MountLocationRecord>
+      <mountLocation>PortMidship</mountLocation>
+      <barrels>1</barrels>
+      <mounts>3</mounts>
+      <mountArcs>
+       <MountArcRecord startDeg="210" CoverageDeg="120" isCrossDeckFire="false" />
+      </mountArcs>
+      <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
+      <mountArcsPattern>Normal</mountArcsPattern>
+      <objectId>47787917-9de5-4f18-8aad-0fc84cbc810f</objectId>
+     </MountLocationRecord>
+    </mountLocationRecords>
+    <objectId>b74b42f9-975c-47d2-bb69-c2d8b6145db4</objectId>
+   </BatteryRecord>
+  </batteryRecords>
+  <torpedoSector>
+   <name>
+    <english>none</english>
+   </name>
+   <mountLocationRecords />
+   <torpedoSettings />
+   <ammunitionCapacity>0</ammunitionCapacity>
+   <damageClass>A</damageClass>
+   <dudProbability>0.5</dudProbability>
+   <pistolType>Contact</pistolType>
+  </torpedoSector>
+  <rapidFireBatteryRecords />
+  <targetSizeModifier>-1</targetSizeModifier>
+  <damagePoint>407</damagePoint>
+  <speedKnots>11</speedKnots>
+  <damageControlRatingUnmodified>1</damageControlRatingUnmodified>
+  <speedKnotsEngineRoomsLevels>
+   <float>11</float>
+  </speedKnotsEngineRoomsLevels>
+  <speedKnotsPropulsionShaftLevels>
+   <float>11</float>
+   <float>6</float>
+  </speedKnotsPropulsionShaftLevels>
+  <speedKnotsBoilerRooms>
+   <float>11</float>
+   <float>6</float>
+  </speedKnotsBoilerRooms>
+  <speedIncreaseRecord>
+   <SpeedIncreaseRecord thresholdSpeedKnots="0" increaseSpeedKnots="3" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="4" increaseSpeedKnots="2" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="7" increaseSpeedKnots="1" />
+  </speedIncreaseRecord>
+  <standardTurnDegPer2Min>180</standardTurnDegPer2Min>
+  <emergencyTurnDegPer2Min>225</emergencyTurnDegPer2Min>
+  <armorRating>
+   <armorTypeFactor>0</armorTypeFactor>
+   <deck effectInch="0" actualInch="0" />
+   <turretHorizontal effectInch="0" actualInch="0" />
+   <superStructureHorizontal effectInch="0" actualInch="0" />
+   <conningTower effectInch="0" actualInch="0" />
+   <mainBelt effectInch="0" actualInch="0" />
+   <beltEnd effectInch="0" actualInch="0" />
+   <barbette effectInch="0" actualInch="0" />
+   <turretVertical effectInch="0" actualInch="0" />
+   <superStructureVertical effectInch="0" actualInch="0" />
+   <armorType>NotSpecified</armorType>
+  </armorRating>
+  <portraitUrl>https://commons.wikimedia.org/wiki/Category:Com%C3%A8te_class_gunboat</portraitUrl>
+  <remark>https://fr.wikipedia.org/wiki/Liste_des_canonni%C3%A8res_fran%C3%A7aises
+
+Source: In Mahan's Wake
+Length, beam and draft, turn speed are from Maya since I can't find data for it</remark>
+  <isPoorlySupported>true</isPoorlySupported>
+  <portraitReference>
+   <path>Pictures\Ships\Comète.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <portraitTopReference>
+   <path>Pictures\Ships\Comète_Top.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitTopReference>
+  <portraitIconReference>
+   <path>Pictures\Ships\Comète_Icon.png</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
+  <ram>None</ram>
+  <objectId>a7d24c60-af2b-4a1c-ac2e-18dc3fc182da</objectId>
  </ShipClass>
 </ArrayOfShipClass>

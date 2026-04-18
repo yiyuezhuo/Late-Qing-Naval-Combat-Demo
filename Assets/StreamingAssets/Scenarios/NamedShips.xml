@@ -2486,6 +2486,30 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
  <NamedShip>
   <shipClassObjectId>367ee244-2115-4cc0-ace1-9d619f74bf1a</shipClassObjectId>
   <name>
+   <english>Rossiya (1900/3/27)</english>
+   <japanese>ロシア</japanese>
+   <chineseSimplified>俄罗斯</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>4fd0ae80-1b57-48ef-9df3-272ab5117950</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Russian_cruiser_Rossia</remark>
+  <objectId>ccfbb84c-983d-4bfc-a279-47b6206f1bcb</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>367ee244-2115-4cc0-ace1-9d619f74bf1a</shipClassObjectId>
+  <name>
    <english>Rossiya</english>
    <japanese>ロシア</japanese>
    <chineseSimplified>俄罗斯</chineseSimplified>
@@ -2504,6 +2528,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Russian_cruiser_Rossia</remark>
   <objectId>0ffd3749-6e49-42c8-a76b-9205bd4b1c8c</objectId>
  </NamedShip>
  <NamedShip>
@@ -6765,6 +6790,32 @@ https://en.wikipedia.org/wiki/Russian_battleship_Oslyabya</remark>
   <objectId>6086a75d-86dd-484f-bd45-9dccc479ee86</objectId>
  </NamedShip>
  <NamedShip>
+  <shipClassObjectId>1ef7b167-a724-4d35-bf66-dbb7fc485db5</shipClassObjectId>
+  <name>
+   <english>Sissoi Veliki (1898/9/24)</english>
+   <japanese>シソイ・ヴェリキィー (1898/9/24)</japanese>
+   <chineseSimplified>西索伊·维利基 (1898/9/24)</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>b63031ae-5494-4d53-a7d6-2649dfed6400</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Сисой Великий
+
+https://en.wikipedia.org/wiki/Russian_battleship_Sissoi_Veliky</remark>
+  <objectId>f2dc9b34-1177-421b-b053-42cb5e9f7af6</objectId>
+ </NamedShip>
+ <NamedShip>
   <shipClassObjectId>0063382d-2b69-44cf-a252-1103ba061669</shipClassObjectId>
   <name>
    <english>Sissoi Veliki (1905)</english>
@@ -7423,5 +7474,154 @@ https://en.wikipedia.org/wiki/Surprise-class_cruiser#HMS_Alacrity
 
 </remark>
   <objectId>8f436daf-7efd-4f81-a0d7-8c30e1bbad91</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>d75b5e07-1645-48cd-b58c-cf134d8f0021</shipClassObjectId>
+  <name>
+   <english>Gaidamak</english>
+   <japanese>ガイダマク</japanese>
+   <chineseSimplified>盖达马克</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://commons.wikimedia.org/wiki/Category:Gaydamak_(ship,_1892)
+</remark>
+  <objectId>0f39018f-f2f5-4e21-a841-b06bdd3fa005</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>93ba7ce1-d563-4b61-b81b-aa68f897be86</shipClassObjectId>
+  <name>
+   <english>Hertha</english>
+   <japanese>ヘルタ</japanese>
+   <chineseSimplified>赫塔</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>65dd453b-d514-4aee-8e40-f6edacfabb1e</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/SMS_Hertha_(1897)
+</remark>
+  <objectId>5d8cec48-5268-4e3b-82e5-0243d56c5178</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>93ba7ce1-d563-4b61-b81b-aa68f897be86</shipClassObjectId>
+  <name>
+   <english>Hansa</english>
+   <japanese>ハンザ</japanese>
+   <chineseSimplified>汉萨</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>3ed189f4-d9a8-407d-b717-a5e33ad06cb6</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/SMS_Hansa_(1898)
+</remark>
+  <objectId>3d81678d-1825-4f9f-bd2a-20a77bcc7de2</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>974805a9-8e85-4c6a-8f1f-abebaca946c8</shipClassObjectId>
+  <name>
+   <english>Kaiserin Augusta</english>
+   <japanese>カイゼリン・アウグスタ</japanese>
+   <chineseSimplified>奥古斯塔皇后</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>a51613ff-003a-40f4-b2c4-551102a244a0</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/SMS_Kaiserin_Augusta
+</remark>
+  <objectId>54da6ecc-5f49-4691-9d21-19948e6df831</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>fa3c0818-12c5-4ef8-b6ba-f6b91770c85a</shipClassObjectId>
+  <name>
+   <english>Gefion</english>
+   <japanese>ゲフィオン</japanese>
+   <chineseSimplified>葛冯</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>167b971e-5ed3-4f5d-8a0f-c2d25358d800</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/SMS_Gefion
+
+</remark>
+  <objectId>cf31755a-7ad0-4294-8421-339b36bcbd0b</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>75ec10b4-6ccf-4a19-aaaf-ad5878a8dab2</shipClassObjectId>
+  <name>
+   <english>D'Entrecasteaux</english>
+   <japanese>ダントルカストー</japanese>
+   <chineseSimplified>当特尔卡斯托</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>649c3866-4c54-401b-a27f-e6b9744ee122</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/French_cruiser_D%27Entrecasteaux
+</remark>
+  <objectId>2bb51d30-db7f-4505-a01b-d716237769a4</objectId>
  </NamedShip>
 </ArrayOfNamedShip>

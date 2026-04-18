@@ -4631,4 +4631,135 @@ https://www.dreadnoughtproject.org/tfs/index.php/Christopher_George_Francis_Maur
 </remark>
   <objectId>cff1551f-76ab-4b74-bd10-b9b88d74783e</objectId>
  </Leader>
+ <Leader>
+  <name>
+   <english>Michael Molas</english>
+   <japanese>ミハイル・モラス</japanese>
+   <chineseSimplified>米哈伊尔·莫拉斯</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Michael Molas.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>Михаил Павлович Молас
+
+As Chief of Staff, he went down with Stepan Makarov aboard the Petropavlovsk. He had previously taken part in the Boxer Rebellion.
+
+https://www.geni.com/people/Michael-Pavlovich-Molas/6000000020501371061</remark>
+  <objectId>b63031ae-5494-4d53-a7d6-2649dfed6400</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Guido von Usedom</english>
+   <japanese>グイド・フォン・ウーゼドム</japanese>
+   <chineseSimplified>圭多·冯·乌泽多姆</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Guido von Usedom.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>AboveAverage</navalStrategic>
+  <navalOperational>AboveAverage</navalOperational>
+  <navalTactical>AboveAverage</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Guido_von_Usedom
+</remark>
+  <objectId>65dd453b-d514-4aee-8e40-f6edacfabb1e</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Hugo von Pohl</english>
+   <japanese>フーゴ・フォン・ポール</japanese>
+   <chineseSimplified>胡戈·冯·波尔</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Hugo_von_Pohl.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>AboveAverage</navalStrategic>
+  <navalOperational>AboveAverage</navalOperational>
+  <navalTactical>AboveAverage</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Hugo_von_Pohl
+
+Commanding the German High Seas Fleet from February 1915 until January 1916</remark>
+  <objectId>3ed189f4-d9a8-407d-b717-a5e33ad06cb6</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Oltmann Buchholz</english>
+   <japanese>オルトマン・ブッフホルツ</japanese>
+   <chineseSimplified>奥尔特曼·布赫霍尔茨</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Oltmann Buchholz.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://warshipsresearch.blogspot.com/2024/10/commanding-officers-of-german-cruisers.html
+https://commons.wikimedia.org/wiki/File:Korvettenkapit%C3%A4n_Buchholz.png
+</remark>
+  <objectId>a51613ff-003a-40f4-b2c4-551102a244a0</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Max Rollmann</english>
+   <japanese>マックス・ロルマンは</japanese>
+   <chineseSimplified>马克斯·罗尔曼</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Max Rollmann.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>Max Heinrich Ludwig Rollmann
+
+https://de.wikipedia.org/wiki/Max_Rollmann</remark>
+  <objectId>167b971e-5ed3-4f5d-8a0f-c2d25358d800</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Louis de Marolles</english>
+   <japanese>ルイ・ド・マロール</japanese>
+   <chineseSimplified>路易·德·马罗勒</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Louis de Marolles.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Average</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://fr.wikipedia.org/wiki/Louis_de_Marolles</remark>
+  <objectId>649c3866-4c54-401b-a27f-e6b9744ee122</objectId>
+ </Leader>
 </ArrayOfLeader>

@@ -4512,4 +4512,76 @@ https://sammler.ru/index.php?/topic/49303-%D0%BD%D0%B0%D0%B3%D1%80%D0%B0%D0%B4%D
 </remark>
   <objectId>69f602f2-c155-4475-ac4c-18fd838a1432</objectId>
  </Leader>
+ <Leader>
+  <name>
+   <english>George Warrender</english>
+   <japanese>ジョージ・ウォーレンダー</japanese>
+   <chineseSimplified>乔治·沃伦德</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\George Warrender.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>George John Scott Warrender
+
+https://www.dreadnoughtproject.org/tfs/index.php/George_John_Scott_Warrender,_Seventh_Baronet</remark>
+  <objectId>79ccb7e1-de6b-4923-8518-228c7bafde2e</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>John Jellicoe</english>
+   <japanese>ジョン・ジェリコー</japanese>
+   <chineseSimplified>约翰·杰利科</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\John Jellicoe.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Outstanding</navalStrategic>
+  <navalOperational>AboveAverage</navalOperational>
+  <navalTactical>AboveAverage</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>Admiral of the Fleet John Rushworth Jellicoe, 1st Earl Jellicoe
+
+Commanded the British Grand Fleet at the Battle of Jutland
+
+https://en.wikipedia.org/wiki/John_Jellicoe,_1st_Earl_Jellicoe
+https://dreadnoughtproject.org/tfs/index.php/John_Rushworth_Jellicoe,_First_Earl_Jellicoe
+
+</remark>
+  <objectId>8855438c-0e11-4c35-848c-677e189e3a53</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>John McQuhae</english>
+   <japanese>ジョン・マックウェイ</japanese>
+   <chineseSimplified>约翰·麦奎</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Britain_Generic_Leader.png</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>John Mackenzie McQuhae
+
+https://dreadnoughtproject.org/tfs/index.php/John_Mackenzie_McQuhae
+</remark>
+  <objectId>9a90fb53-5170-4513-885c-af512541fa70</objectId>
+ </Leader>
 </ArrayOfLeader>

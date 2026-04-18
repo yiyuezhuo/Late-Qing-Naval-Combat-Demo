@@ -17,6 +17,7 @@ namespace NavalCombatCore
     {
         NotSpecified,
         Battleship, // BB, ironclad, pre-dreadnought, dreadnought, post-dreadnought
+        Battlecruiser, // BC, Battle Cruiser
         LightCruiser, // CL
         // Cruiser, // CR, CC
         ArmoredCruiser, // CA
@@ -1083,6 +1084,7 @@ namespace NavalCombatCore
         public static Dictionary<ShipType, string> acronymForShipType = new()
         {
             {ShipType.Battleship, "BB"},
+            {ShipType.Battlecruiser, "CB"},
             {ShipType.LightCruiser, "CL"},
             // {ShipType.Cruiser, "CC"},
             {ShipType.ArmoredCruiser, "CA"},

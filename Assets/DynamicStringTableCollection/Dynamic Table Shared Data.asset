@@ -4245,6 +4245,10 @@ MonoBehaviour:
     m_Key: Reset Fire Control Table
     m_Metadata:
       m_Items: []
+  - m_Id: 68071232722604032
+    m_Key: ShipType.Battlecruiser
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -168,17 +168,19 @@ public class ForceBuilder
         }
 
         static HashSet<ShipType> battleshipTypes = new(){
-            ShipType.Battleship
+            ShipType.Battleship,
+            ShipType.Battlecruiser
         };
 
         static HashSet<ShipType> cruiserTypes = new(){
             // ShipType.Cruiser,
             ShipType.ArmoredCruiser,
             ShipType.LightCruiser,
-            ShipType.PatrolGunboat // TODO: Well, is it a proper location, anyway the current PG is classified to cruiser in some reference though.
+            ShipType.PatrolGunboat // TODO: Well, is it a proper location? Anyway the current PG is classified to cruiser in some reference though.
         };
 
         static HashSet<ShipType> torpedoBoatTypes = new(){
+            ShipType.Destroyer,
             ShipType.TorpedoBoat
         };
 

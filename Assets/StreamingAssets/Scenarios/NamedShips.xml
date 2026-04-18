@@ -6853,12 +6853,40 @@ https://en.wikipedia.org/wiki/Russian_battleship_Navarin</remark>
   </fateDesc>
   <applicableYearBegin>1900</applicableYearBegin>
   <applicableYearEnd>1900</applicableYearEnd>
-  <defaultLeaderReference />
+  <defaultLeaderReference>
+   <referenceObjectId>9a90fb53-5170-4513-885c-af512541fa70</referenceObjectId>
+  </defaultLeaderReference>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/HMS_Centurion_(1892)</remark>
+  <remark>https://en.wikipedia.org/wiki/HMS_Centurion_(1892)
+https://dreadnoughtproject.org/tfs/index.php/H.M.S._Centurion_(1892)</remark>
   <objectId>79055f5c-3f73-4798-b5f1-195eeb404611</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>3882344c-6fd6-417e-b12e-6730c72593d9</shipClassObjectId>
+  <name>
+   <english>Centurion (1897/12/31)</english>
+   <japanese>バーフラー (1897/12/31)</japanese>
+   <chineseSimplified>百夫长 (1897/12/31)</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>8855438c-0e11-4c35-848c-677e189e3a53</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/HMS_Centurion_(1892)
+https://dreadnoughtproject.org/tfs/index.php/H.M.S._Centurion_(1892)</remark>
+  <objectId>ce1ceaf5-99f0-473f-9a31-6df438daa588</objectId>
  </NamedShip>
  <NamedShip>
   <shipClassObjectId>3882344c-6fd6-417e-b12e-6730c72593d9</shipClassObjectId>
@@ -6875,11 +6903,15 @@ https://en.wikipedia.org/wiki/Russian_battleship_Navarin</remark>
   </fateDesc>
   <applicableYearBegin>1900</applicableYearBegin>
   <applicableYearEnd>1900</applicableYearEnd>
-  <defaultLeaderReference />
+  <defaultLeaderReference>
+   <referenceObjectId>79ccb7e1-de6b-4923-8518-228c7bafde2e</referenceObjectId>
+  </defaultLeaderReference>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/HMS_Barfleur_(1892)</remark>
+  <remark>https://en.wikipedia.org/wiki/HMS_Barfleur_(1892)
+
+https://www.dreadnoughtproject.org/tfs/index.php/H.M.S._Barfleur_(1892)</remark>
   <objectId>162f0508-df37-4cdf-b967-c0710440306b</objectId>
  </NamedShip>
  <NamedShip>
@@ -6903,6 +6935,29 @@ https://en.wikipedia.org/wiki/Russian_battleship_Navarin</remark>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
   <remark>https://en.wikipedia.org/wiki/HMS_Dreadnought_(1906)</remark>
   <objectId>fbb4ec90-9eaf-40ad-9c50-677c33d7ecc2</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>567a9cab-56d6-4f5a-8c9c-0c27d08fdb6c</shipClassObjectId>
+  <name>
+   <english>Invincible</english>
+   <japanese>インヴィンシブル</japanese>
+   <chineseSimplified>无敌</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/HMS_Invincible_(1907)
+</remark>
+  <objectId>b31a2d7f-8e2d-42cc-8b60-0f7d4353718b</objectId>
  </NamedShip>
  <NamedShip>
   <shipClassObjectId>e8e3d736-0722-4555-8d8c-be030a9fcc0f</shipClassObjectId>

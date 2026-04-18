@@ -595,6 +595,7 @@ public static class ShipClassPlaceholderImageRenderer
     static readonly Dictionary<ShipType, HullProfile> HullProfiles = new()
     {
         { ShipType.Battleship, new HullProfile { bowSection = 0.22f, sternSection = 0.70f, maxBeamScale = 1f, sternTipScale = 0.18f, bridgeCenter = 0.31f, superstructureLength = 0.19f, deckhouseCenter = 0.73f } },
+        { ShipType.Battlecruiser, new HullProfile { bowSection = 0.22f, sternSection = 0.70f, maxBeamScale = 1f, sternTipScale = 0.18f, bridgeCenter = 0.31f, superstructureLength = 0.19f, deckhouseCenter = 0.73f } }, // TODO: It's copied from battleship now, use a more specific value. 
         { ShipType.ArmoredCruiser, new HullProfile { bowSection = 0.23f, sternSection = 0.70f, maxBeamScale = 1f, sternTipScale = 0.16f, bridgeCenter = 0.32f, superstructureLength = 0.17f, deckhouseCenter = 0.72f } },
         // { ShipType.Cruiser, new HullProfile { bowSection = 0.26f, sternSection = 0.68f, maxBeamScale = 1f, sternTipScale = 0.12f, bridgeCenter = 0.33f, superstructureLength = 0.15f, deckhouseCenter = 0.70f } },
         { ShipType.LightCruiser, new HullProfile { bowSection = 0.27f, sternSection = 0.67f, maxBeamScale = 1f, sternTipScale = 0.10f, bridgeCenter = 0.34f, superstructureLength = 0.14f, deckhouseCenter = 0.70f } },

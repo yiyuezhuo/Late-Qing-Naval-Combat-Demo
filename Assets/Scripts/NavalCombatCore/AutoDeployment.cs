@@ -67,7 +67,9 @@ namespace NavalCombatCore
             static List<HashSet<ShipType>> shipTypeSets = new()
             {
                 // new(){ShipType.Battleship, ShipType.Cruiser, ShipType.ArmoredCruiser, ShipType.LightCruiser, ShipType.Cruiser, ShipType.PatrolGunboat},
-                new(){ShipType.Battleship, ShipType.ArmoredCruiser, ShipType.LightCruiser, ShipType.PatrolGunboat},
+                // new(){ShipType.Battleship, ShipType.ArmoredCruiser, ShipType.LightCruiser, ShipType.PatrolGunboat},
+                new(){ShipType.Battleship, ShipType.Battlecruiser, ShipType.ArmoredCruiser, ShipType.LightCruiser, ShipType.PatrolGunboat},
+                new(){ShipType.Destroyer},
                 new(){ShipType.TorpedoBoat},
                 // Other is treated as an independent category (aux.)
             };

@@ -50,7 +50,7 @@
             </ui:VisualElement>
             <ui:VisualElement data-source-path="selectedObject" style="flex-grow: 1;">
                 <ui:VisualElement style="flex-grow: 0; flex-shrink: 0; flex-direction: row;">
-                    <ui:TextField label="Ship Class" readonly="true" style="flex-grow: 1;">
+                    <ui:TextField label="Ship Class" readonly="true" style="flex-grow: 1; flex-shrink: 1;">
                         <Bindings>
                             <ui:DataBinding property="value" data-source-path="shipClassDesc" binding-mode="ToTarget"/>
                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(62707518312448)"/>

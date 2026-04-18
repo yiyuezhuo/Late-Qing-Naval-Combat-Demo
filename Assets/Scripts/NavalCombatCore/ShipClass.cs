@@ -1181,6 +1181,125 @@ namespace NavalCombatCore
             return 6;
         }
 
+        public static float CalculateLengthFootFromDisplacementAndType(float displacementTons, ShipType shipType)
+        {
+            return MathF.Round(PredictDefaultFromDisplacementAndType(
+                displacementTons,
+                shipType,
+                2.5669774f,
+                0.3904741f,
+                GetLengthTypeOffset(shipType)));
+        }
+
+        public static float CalculateBeamFootFromDisplacementAndType(float displacementTons, ShipType shipType)
+        {
+            return MathF.Round(PredictDefaultFromDisplacementAndType(
+                displacementTons,
+                shipType,
+                1.1975496f,
+                0.3171914f,
+                GetBeamTypeOffset(shipType)));
+        }
+
+        public static float CalculateDraftFootFromDisplacementAndType(float displacementTons, ShipType shipType)
+        {
+            return MathF.Round(PredictDefaultFromDisplacementAndType(
+                displacementTons,
+                shipType,
+                0.4707447f,
+                0.2975393f,
+                GetDraftTypeOffset(shipType)) * 10f) / 10f;
+        }
+
+        public static int CalculateComplementMenFromDisplacementAndType(float displacementTons, ShipType shipType)
+        {
+            return Math.Max(1, (int)MathF.Round(PredictDefaultFromDisplacementAndType(
+                displacementTons,
+                shipType,
+                0.1084306f,
+                0.6979308f,
+                GetComplementTypeOffset(shipType))));
+        }
+
+        static float PredictDefaultFromDisplacementAndType(
+            float displacementTons,
+            ShipType shipType,
+            float intercept,
+            float logDisplacementCoefficient,
+            float typeOffset)
+        {
+            var logDisplacement = MathF.Log(Math.Max(1f, displacementTons));
+            return MathF.Exp(intercept + logDisplacementCoefficient * logDisplacement + typeOffset);
+        }
+
+        static float GetLengthTypeOffset(ShipType shipType)
+        {
+            return shipType switch
+            {
+                ShipType.Battleship => -0.2935404f,
+                ShipType.ArmoredCruiser => -0.1377085f,
+                ShipType.TorpedoBoat => 0.5236686f,
+                ShipType.Destroyer => 0.5377667f,
+                ShipType.PatrolGunboat => 0.0132753f,
+                ShipType.Transport => 0.0905690f,
+                ShipType.ArmedMerchantCruiser => 0.1020602f,
+                ShipType.Repair => 0.2181666f,
+                ShipType.Battlecruiser => -0.0521659f,
+                _ => 0f
+            };
+        }
+
+        static float GetBeamTypeOffset(ShipType shipType)
+        {
+            return shipType switch
+            {
+                ShipType.Battleship => 0.0903524f,
+                ShipType.ArmoredCruiser => 0.0465869f,
+                ShipType.TorpedoBoat => 0.0391832f,
+                ShipType.Destroyer => -0.0055650f,
+                ShipType.PatrolGunboat => 0.0545587f,
+                ShipType.Transport => 0.0005691f,
+                ShipType.ArmedMerchantCruiser => 0.0099036f,
+                ShipType.Repair => -0.1220814f,
+                ShipType.Battlecruiser => 0.0744055f,
+                _ => 0f
+            };
+        }
+
+        static float GetDraftTypeOffset(ShipType shipType)
+        {
+            return shipType switch
+            {
+                ShipType.Battleship => -0.0231818f,
+                ShipType.ArmoredCruiser => 0.0322265f,
+                ShipType.TorpedoBoat => -0.4071087f,
+                ShipType.Destroyer => -0.1104536f,
+                ShipType.PatrolGunboat => -0.1003142f,
+                ShipType.Transport => 0.5143422f,
+                ShipType.ArmedMerchantCruiser => 0.5230984f,
+                ShipType.Repair => -0.4029193f,
+                ShipType.Battlecruiser => -0.1574514f,
+                _ => 0f
+            };
+        }
+
+        static float GetComplementTypeOffset(ShipType shipType)
+        {
+            return shipType switch
+            {
+                ShipType.Battleship => -0.2131911f,
+                ShipType.ArmoredCruiser => 0.0607233f,
+                ShipType.TorpedoBoat => -0.2046980f,
+                ShipType.Destroyer => -0.0844927f,
+                ShipType.PatrolGunboat => -0.1349758f,
+                ShipType.Transport => -0.6856862f,
+                ShipType.ArmedMerchantCruiser => -0.6651469f,
+                ShipType.Repair => -0.4685847f,
+                ShipType.Battlecruiser => -0.3309420f,
+                _ => 0f
+            };
+        }
+
         // Move to ShipClass
         public float GetMaxAmmoWeightPounds()
         {

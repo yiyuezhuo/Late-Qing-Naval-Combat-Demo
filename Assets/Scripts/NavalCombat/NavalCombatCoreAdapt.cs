@@ -72,7 +72,28 @@ namespace NavalCombatCore
                 damagePoint = CalculateDamagePointFromDisplacement(value);
                 targetSizeModifier = CalculateTargetSizeModifierFromDisplacement(value);
                 damageControlRatingUnmodified = CalculateDamageControlRatingFromDisplacement(value);
+                ApplyDisplacementTypeDefaults();
             }
+        }
+
+        [XmlIgnore]
+        [CreateProperty]
+        public ShipType typeProp
+        {
+            get => type;
+            set
+            {
+                type = value;
+                ApplyDisplacementTypeDefaults();
+            }
+        }
+
+        void ApplyDisplacementTypeDefaults()
+        {
+            lengthFoot = CalculateLengthFootFromDisplacementAndType(displacementTons, type);
+            beamFoot = CalculateBeamFootFromDisplacementAndType(displacementTons, type);
+            draftFoot = CalculateDraftFootFromDisplacementAndType(displacementTons, type);
+            complementMen = CalculateComplementMenFromDisplacementAndType(displacementTons, type);
         }
 
         [CreateProperty]

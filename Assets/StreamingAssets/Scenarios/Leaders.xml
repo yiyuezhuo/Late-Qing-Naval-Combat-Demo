@@ -4545,7 +4545,7 @@ https://www.dreadnoughtproject.org/tfs/index.php/George_John_Scott_Warrender,_Se
    <isBuiltin>true</isBuiltin>
   </portraitReference>
   <navalStrategic>Outstanding</navalStrategic>
-  <navalOperational>AboveAverage</navalOperational>
+  <navalOperational>Outstanding</navalOperational>
   <navalTactical>AboveAverage</navalTactical>
   <landStrategic>Unknown</landStrategic>
   <landOperational>Unknown</landOperational>
@@ -4583,5 +4583,52 @@ https://dreadnoughtproject.org/tfs/index.php/John_Rushworth_Jellicoe,_First_Earl
 https://dreadnoughtproject.org/tfs/index.php/John_Mackenzie_McQuhae
 </remark>
   <objectId>9a90fb53-5170-4513-885c-af512541fa70</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>George Callaghan</english>
+   <japanese>ジョージ・キャラハン</japanese>
+   <chineseSimplified>乔治·卡拉汉</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\George Callaghan.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>AboveAverage</navalStrategic>
+  <navalOperational>AboveAverage</navalOperational>
+  <navalTactical>AboveAverage</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>Admiral of the Fleet SIR George Astley Callaghan
+
+https://en.wikipedia.org/wiki/George_Callaghan
+https://www.dreadnoughtproject.org/tfs/index.php/George_Astley_Callaghan</remark>
+  <objectId>b701e81e-7d35-4764-8d2c-49ee9da6861d</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Christopher Cradock</english>
+   <japanese>クリストファー・クラドック</japanese>
+   <chineseSimplified>克里斯托弗·克拉多克</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Christopher Cradock.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Average</navalStrategic>
+  <navalOperational>Average</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>Christopher George Francis Maurice Cradock
+
+https://en.wikipedia.org/wiki/Christopher_Cradock
+https://www.dreadnoughtproject.org/tfs/index.php/Christopher_George_Francis_Maurice_Cradock
+</remark>
+  <objectId>cff1551f-76ab-4b74-bd10-b9b88d74783e</objectId>
  </Leader>
 </ArrayOfLeader>

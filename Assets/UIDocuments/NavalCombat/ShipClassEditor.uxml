@@ -69,7 +69,7 @@
                                     </ui:Instance>
                                     <LocalizedEnumField type-str="NavalCombatCore.ShipType" label="Type">
                                         <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="type" source-to-ui-converters="ShipType =&gt; int" ui-to-source-converters="int =&gt; ShipType" binding-mode="TwoWay"/>
+                                            <ui:DataBinding property="value" data-source-path="typeProp" source-to-ui-converters="ShipType =&gt; int" ui-to-source-converters="int =&gt; ShipType" binding-mode="TwoWay"/>
                                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69223554125824)"/>
                                         </Bindings>
                                     </LocalizedEnumField>

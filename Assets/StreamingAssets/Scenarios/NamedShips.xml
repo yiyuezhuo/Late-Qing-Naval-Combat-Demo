@@ -7321,4 +7321,107 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%B8%D0%B2%D1%83%D1%87_(%D0%BA%D0%B0%D0%BD
 </remark>
   <objectId>6b515ed4-d9de-4cc1-8f35-f59e6cc13813</objectId>
  </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>e8e3d736-0722-4555-8d8c-be030a9fcc0f</shipClassObjectId>
+  <name>
+   <english>Endymion</english>
+   <japanese>エンディミオン</japanese>
+   <chineseSimplified>恩底弥翁</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>b701e81e-7d35-4764-8d2c-49ee9da6861d</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/HMS_Endymion_(1891)
+https://www.dreadnoughtproject.org/tfs/index.php/H.M.S._Endymion_(1891)
+</remark>
+  <objectId>95929e8b-aa21-4c16-818e-ea7c933c770e</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>6dc9287c-60bb-472c-a554-b23613a85362</shipClassObjectId>
+  <name>
+   <english>HMS Aurora</english>
+   <japanese>HMS オーロラ</japanese>
+   <chineseSimplified>奥罗拉</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/HMS_Aurora_(1887)
+https://www.dreadnoughtproject.org/tfs/index.php/H.M.S._Aurora_(1887)
+
+The British Aurora (1887), not the well-known Russian one.
+</remark>
+  <objectId>5540858f-5cfe-4e2b-9c42-1750fba18794</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>6dc9287c-60bb-472c-a554-b23613a85362</shipClassObjectId>
+  <name>
+   <english>Orlando</english>
+   <japanese>オーラン</japanese>
+   <chineseSimplified>奥兰多</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/HMS_Orlando_(1886)
+https://www.dreadnoughtproject.org/tfs/index.php/H.M.S._Orlando_(1886)
+</remark>
+  <objectId>11b93d3d-1c85-47b1-8997-c2bb1e30288c</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>0586c4ab-2588-42e5-b3e6-e66d42564a80</shipClassObjectId>
+  <name>
+   <english>Alacrity (1898)</english>
+   <japanese>アラクリティ (1898)</japanese>
+   <chineseSimplified>敏捷 (1898)</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>cff1551f-76ab-4b74-bd10-b9b88d74783e</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://www.dreadnoughtproject.org/tfs/index.php/H.M.S._Alacrity_(1885)
+https://en.wikipedia.org/wiki/Surprise-class_cruiser#HMS_Alacrity
+
+</remark>
+  <objectId>8f436daf-7efd-4f81-a0d7-8c30e1bbad91</objectId>
+ </NamedShip>
 </ArrayOfNamedShip>

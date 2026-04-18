@@ -51192,7 +51192,7 @@ One of reference ship class of Ding Yuan
    <path>Pictures\Ships\Iris_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
-  <isGraphicPlaceholder>false</isGraphicPlaceholder>
+  <isGraphicPlaceholder>true</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>f3dfc3de-39e9-4bd2-b702-4b4e81a61cad</objectId>
  </ShipClass>
@@ -51996,7 +51996,7 @@ Sloop</remark>
    <path>Pictures\Ships\Phoenix_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
-  <isGraphicPlaceholder>false</isGraphicPlaceholder>
+  <isGraphicPlaceholder>true</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>f832d2fb-1457-4cee-88f2-b531754e89bf</objectId>
  </ShipClass>
@@ -52159,7 +52159,7 @@ Complement 50 is inferred.</remark>
    <path>Pictures\Ships\30-Knotters 1895-96_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
-  <isGraphicPlaceholder>false</isGraphicPlaceholder>
+  <isGraphicPlaceholder>true</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>48aab621-4a0d-4410-8018-1e9ec72f37ff</objectId>
  </ShipClass>
@@ -52324,7 +52324,7 @@ Complement 50 is inferred.
    <path>Pictures\Ships\30-Knotters 1894-95 Class_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
-  <isGraphicPlaceholder>false</isGraphicPlaceholder>
+  <isGraphicPlaceholder>true</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>d0a3b4bc-4e9b-4760-9e0e-f59e7cf6f1de</objectId>
  </ShipClass>
@@ -52838,7 +52838,7 @@ https://rjw.narod.ru/1tihook/sivuch.htm
    <path>Pictures\Ships\Sivuch_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
-  <isGraphicPlaceholder>false</isGraphicPlaceholder>
+  <isGraphicPlaceholder>true</isGraphicPlaceholder>
   <ram>Ram</ram>
   <objectId>2822fe12-a31a-44ee-a8ba-9c08b0f8d630</objectId>
  </ShipClass>
@@ -53341,5 +53341,123 @@ Battery select a closer historical battery.</remark>
   <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>a7d24c60-af2b-4a1c-ac2e-18dc3fc182da</objectId>
+ </ShipClass>
+ <ShipClass>
+  <name>
+   <english>Alacrity (1898)</english>
+   <japanese>アラクリティ (1898)</japanese>
+   <chineseSimplified>敏捷 (1898)</chineseSimplified>
+  </name>
+  <type>LightCruiser</type>
+  <extraShipType>NotSpecified</extraShipType>
+  <country>Britain</country>
+  <displacementTons>1580</displacementTons>
+  <complementMen>93</complementMen>
+  <lengthFoot>250</lengthFoot>
+  <beamFoot>32</beamFoot>
+  <draftFoot>13</draftFoot>
+  <engineDesc>
+   <english>HDAC</english>
+  </engineDesc>
+  <boilersDesc>
+   <english>none</english>
+  </boilersDesc>
+  <batteryRecords />
+  <torpedoSector>
+   <name>
+    <english>none</english>
+   </name>
+   <mountLocationRecords />
+   <torpedoSettings />
+   <ammunitionCapacity>0</ammunitionCapacity>
+   <damageClass>A</damageClass>
+   <dudProbability>0.5</dudProbability>
+   <pistolType>Contact</pistolType>
+  </torpedoSector>
+  <rapidFireBatteryRecords>
+   <RapidFireBatteryRecord>
+    <name>
+     <english>6pdr 8cwt QF Mk I,II</english>
+     <japanese />
+     <chineseSimplified />
+    </name>
+    <maxRangeYards>9400</maxRangeYards>
+    <effectiveRangeYards>4230</effectiveRangeYards>
+    <fireControlRecords>
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="6" fireControlEffectiveRange="8" />
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="4" fireControlEffectiveRange="6" />
+    </fireControlRecords>
+    <damageFactor>12</damageFactor>
+    <barrelsLevelPort>
+     <int>5</int>
+     <int>4</int>
+     <int>3</int>
+     <int>2</int>
+     <int>1</int>
+    </barrelsLevelPort>
+    <barrelsLevelStarboard>
+     <int>5</int>
+     <int>4</int>
+     <int>3</int>
+     <int>2</int>
+     <int>1</int>
+    </barrelsLevelStarboard>
+   </RapidFireBatteryRecord>
+  </rapidFireBatteryRecords>
+  <targetSizeModifier>0</targetSizeModifier>
+  <damagePoint>722</damagePoint>
+  <speedKnots>17</speedKnots>
+  <damageControlRatingUnmodified>2</damageControlRatingUnmodified>
+  <speedKnotsEngineRoomsLevels>
+   <float>17</float>
+  </speedKnotsEngineRoomsLevels>
+  <speedKnotsPropulsionShaftLevels>
+   <float>17</float>
+   <float>9</float>
+  </speedKnotsPropulsionShaftLevels>
+  <speedKnotsBoilerRooms>
+   <float>17</float>
+   <float>10</float>
+  </speedKnotsBoilerRooms>
+  <speedIncreaseRecord>
+   <SpeedIncreaseRecord thresholdSpeedKnots="0" increaseSpeedKnots="4" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="4" increaseSpeedKnots="3" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="7" increaseSpeedKnots="2" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="10" increaseSpeedKnots="1" />
+  </speedIncreaseRecord>
+  <standardTurnDegPer2Min>90</standardTurnDegPer2Min>
+  <emergencyTurnDegPer2Min>120</emergencyTurnDegPer2Min>
+  <armorRating>
+   <armorTypeFactor>0</armorTypeFactor>
+   <deck effectInch="0" actualInch="0" />
+   <turretHorizontal effectInch="0" actualInch="0" />
+   <superStructureHorizontal effectInch="0" actualInch="0" />
+   <conningTower effectInch="0" actualInch="0" />
+   <mainBelt effectInch="0" actualInch="0" />
+   <beltEnd effectInch="0" actualInch="0" />
+   <barbette effectInch="0" actualInch="0" />
+   <turretVertical effectInch="0" actualInch="0" />
+   <superStructureVertical effectInch="0" actualInch="0" />
+   <armorType>NotSpecified</armorType>
+  </armorRating>
+  <portraitUrl>https://www.worldnavalships.com/surprise_class.htm</portraitUrl>
+  <remark>https://en.wikipedia.org/wiki/Surprise-class_cruiser#HMS_Alacrity
+</remark>
+  <isPoorlySupported>false</isPoorlySupported>
+  <portraitReference>
+   <path>Pictures\Ships\Alacrity (1898).jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <portraitTopReference>
+   <path>Pictures\Ships\Alacrity (1898)_Top.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitTopReference>
+  <portraitIconReference>
+   <path>Pictures\Ships\Alacrity (1898)_Icon.png</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
+  <ram>None</ram>
+  <objectId>0586c4ab-2588-42e5-b3e6-e66d42564a80</objectId>
  </ShipClass>
 </ArrayOfShipClass>

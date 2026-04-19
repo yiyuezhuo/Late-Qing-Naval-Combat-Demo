@@ -4824,4 +4824,47 @@ https://en.wikipedia.org/wiki/Bowman_H._McCalla</remark>
 </remark>
   <objectId>f5d2dd6e-cbc5-4c0c-95b9-e575a058ae70</objectId>
  </Leader>
+ <Leader>
+  <name>
+   <english>Luo Rongguang</english>
+   <japanese>羅栄光</japanese>
+   <chineseSimplified>罗荣光</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Luo Rongguang.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <remark>https://baike.baidu.com/item/%E7%BD%97%E8%8D%A3%E5%85%89/7026836
+
+</remark>
+  <objectId>61b49e4e-3b83-42bf-aa11-f1d1f0b60f08</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Feng Desheng</english>
+   <japanese>封得勝</japanese>
+   <chineseSimplified>封得胜</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\China_Generic_Leader.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Unknown</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <remark>https://baike.baidu.com/item/%E5%A4%A7%E6%B2%BD%E5%8F%A3%E6%88%98%E5%BD%B9/5301127
+</remark>
+  <objectId>88f747c9-1de2-48e0-82ce-2b90a9eedd63</objectId>
+ </Leader>
 </ArrayOfLeader>

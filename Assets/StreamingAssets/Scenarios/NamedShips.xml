@@ -7956,4 +7956,93 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
 </remark>
   <objectId>a890eacb-ed71-4140-b67d-5cd36d854c58</objectId>
  </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>39e22164-924a-45d2-8386-86e843b7fac5</shipClassObjectId>
+  <name>
+   <english>Northwest Fort</english>
+   <japanese>西北砲台</japanese>
+   <chineseSimplified>西北炮台</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>61b49e4e-3b83-42bf-aa11-f1d1f0b60f08</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>-3</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>b8e0a7a9-adb3-4918-a33e-2f40343678e0</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>80a98d78-6891-4add-85b7-1c7f2a89f7f0</shipClassObjectId>
+  <name>
+   <english>North Fort</english>
+   <japanese>北砲台</japanese>
+   <chineseSimplified>北炮台</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>-3</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>7aaa9276-e319-473c-b4eb-720d0ac5f6f4</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>d239293a-64f2-44ab-a775-ad988dd221e3</shipClassObjectId>
+  <name>
+   <english>South Fort</english>
+   <japanese>南岸砲台</japanese>
+   <chineseSimplified>南岸炮台</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>61b49e4e-3b83-42bf-aa11-f1d1f0b60f08</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>-3</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <objectId>7aa277da-5c43-4005-b99b-d3d38dc461fc</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>a7d24c60-af2b-4a1c-ac2e-18dc3fc182da</shipClassObjectId>
+  <name>
+   <english>Lion</english>
+   <japanese>ライオン</japanese>
+   <chineseSimplified>里昂</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://fr.wikipedia.org/wiki/Liste_des_canonni%C3%A8res_fran%C3%A7aises</remark>
+  <objectId>5e6268f2-81c8-4801-9d64-039fb754e709</objectId>
+ </NamedShip>
 </ArrayOfNamedShip>

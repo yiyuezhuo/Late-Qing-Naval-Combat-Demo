@@ -120,6 +120,31 @@ public static class RegisteredConverters
             return obj?.GetMemberName() ?? "[Not Specified SGM]";
         });
 
+        Register("IShipGroupMember'object ID => OOB tree label", (ref string objectId) =>
+        {
+            var obj = EntityManager.Instance.Get<IShipGroupMember>(objectId);
+            if (obj == null)
+                return "[Not Specified SGM]";
+
+            var name = obj switch
+            {
+                ShipGroup shipGroup => shipGroup.name?.GetShortName(),
+                ShipLog shipLog => shipLog.namedShip?.name?.GetShortName(),
+                _ => obj.GetMemberName()
+            };
+
+            var leaderName = obj switch
+            {
+                ShipGroup shipGroup => shipGroup.leader?.name?.GetShortName(),
+                ShipLog shipLog => shipLog.leader?.name?.GetShortName(),
+                _ => null
+            };
+
+            return string.IsNullOrWhiteSpace(leaderName)
+                ? name ?? "[Not Specified SGM]"
+                : $"{name ?? "[Not Specified SGM]"} ({leaderName})";
+        });
+
         Register("Country => StyleBackground", (ref Country country) =>
         {
             // return ResourceManager.GetFlagSB(country.ToString());

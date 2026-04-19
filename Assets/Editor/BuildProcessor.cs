@@ -78,9 +78,11 @@ public class BuildProcessor : IPreprocessBuildWithReport
     {
         "TT", // Tutorial
         "SJH", // Historical scenarios of Sino-Japanese War
+        "BRH", // Historical scenarios of Boxer Rebellion
         "RJH", // Historical scenario of Russo-Japanese War
-        "SJS", // Sino-Japanese small/skirmish scenario (for test, quick battle or local scenario)
-        "RJS", // Russo-Japanese War small/skirmish scenario
+        "SJS", // Sino-Japanese small/skirmish/hypothetic/test scenarios
+        "BRS", // Boxer Rebellion small/skirmish/hypothetic/test scenarios
+        "RJS", // Russo-Japanese War small/skirmish/hypothetic/test scenarios
     };
 
     static int GetTagIndex(string path)

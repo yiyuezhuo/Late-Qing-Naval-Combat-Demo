@@ -7832,7 +7832,7 @@ https://en.wikipedia.org/wiki/Surprise-class_cruiser#HMS_Alacrity
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Hai Hua or Hai Hola
+  <remark>Hai Hua, Hai Hola or Haihola
 
 https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%88%B0</remark>
   <objectId>d54c9f4c-77d4-46ea-a72f-7673bf004bb9</objectId>
@@ -7856,7 +7856,9 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%88%B0</remark>
+  <remark>Hai Lung or Hailong
+
+https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%88%B0</remark>
   <objectId>6d16fd22-94d9-4830-bf66-23d0a6f991f5</objectId>
  </NamedShip>
  <NamedShip>
@@ -7878,7 +7880,9 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%88%B0</remark>
+  <remark>Hai Hse or Haixi
+
+https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%88%B0</remark>
   <objectId>2bae4033-4714-43d6-9e37-f15d0658f2cd</objectId>
  </NamedShip>
  <NamedShip>
@@ -7900,7 +7904,56 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%88%B0</remark>
+  <remark>Hai Ching, Hai Ying or Haiying
+
+https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%88%B0</remark>
   <objectId>17ecfb43-914e-44cd-bba8-7ad86cffcfd1</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>539689bb-c183-4fa7-99c7-287eb1512a5e</shipClassObjectId>
+  <name>
+   <english>Fei Ting</english>
+   <japanese>飛霆</japanese>
+   <chineseSimplified>飞霆</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://baike.baidu.com/item/%E9%A3%9E%E9%9C%86%E5%8F%B7%E7%82%AE%E8%88%B0/9031261
+</remark>
+  <objectId>3af3b617-2f36-4945-9423-ae77d0d4b474</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>f96b0ec5-4d35-4f61-afe0-691f90317978</shipClassObjectId>
+  <name>
+   <english>Fei Ying</english>
+   <japanese>飛鷹</japanese>
+   <chineseSimplified>飞鹰</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://zh.wikipedia.org/wiki/%E9%A3%9E%E9%B9%B0%E5%8F%B7%E9%B1%BC%E9%9B%B7%E7%82%AE%E8%88%B0
+
+</remark>
+  <objectId>a890eacb-ed71-4140-b67d-5cd36d854c58</objectId>
  </NamedShip>
 </ArrayOfNamedShip>

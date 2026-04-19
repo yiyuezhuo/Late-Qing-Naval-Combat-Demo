@@ -5030,6 +5030,32 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
  <NamedShip>
   <shipClassObjectId>a93b6888-fb63-4f58-85a3-30289f2dbb9f</shipClassObjectId>
   <name>
+   <english>Kasagi (1900)</english>
+   <japanese>笠置 (1900)</japanese>
+   <chineseSimplified>笠置 (1900)</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>0e6978df-61db-41ad-a3e3-a7236d312d06</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Kasagi
+
+</remark>
+  <objectId>3eaec09b-4b74-4529-a6cc-c3cbe29f98fd</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>a93b6888-fb63-4f58-85a3-30289f2dbb9f</shipClassObjectId>
+  <name>
    <english>Kasagi</english>
    <japanese>笠置</japanese>
    <chineseSimplified>笠置</chineseSimplified>
@@ -7623,5 +7649,258 @@ https://en.wikipedia.org/wiki/Surprise-class_cruiser#HMS_Alacrity
   <remark>https://en.wikipedia.org/wiki/French_cruiser_D%27Entrecasteaux
 </remark>
   <objectId>2bb51d30-db7f-4505-a01b-d716237769a4</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>a85242b6-1d0c-4b78-84fd-d513df406733</shipClassObjectId>
+  <name>
+   <english>Descartes</english>
+   <japanese>デカルト</japanese>
+   <chineseSimplified>笛卡尔</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/French_cruiser_Descartes
+</remark>
+  <objectId>dbec9840-c62a-44b6-b220-231a25dbd70c</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>a85242b6-1d0c-4b78-84fd-d513df406733</shipClassObjectId>
+  <name>
+   <english>Pascal</english>
+   <japanese>パスカ</japanese>
+   <chineseSimplified>帕斯卡</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/French_cruiser_Pascal
+</remark>
+  <objectId>79f1364a-76d0-40c9-9007-5a69d36c42e9</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>874bc00a-05fb-4815-b0e9-9dfbc5728515</shipClassObjectId>
+  <name>
+   <english>Surprise</english>
+   <japanese>サプライズ</japanese>
+   <chineseSimplified>惊奇</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://laststandonzombieisland.com/tag/canonniere-la-zelee/
+</remark>
+  <objectId>f4adff63-c9f7-49de-bf28-2b69be46b8c7</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>3893d400-21ee-4946-8ec9-1abf29c82bee</shipClassObjectId>
+  <name>
+   <english>Calabria</english>
+   <japanese>カラブリア</japanese>
+   <chineseSimplified>卡拉布里亚</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Italian_cruiser_Calabria
+</remark>
+  <objectId>b977cf9d-0869-4f8a-9613-3b6e146531e1</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>046e65b0-92c9-4010-aa51-96f7eddff357</shipClassObjectId>
+  <name>
+   <english>Elba</english>
+   <japanese>エルバ</japanese>
+   <chineseSimplified>厄尔巴</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Italian_cruiser_Elba
+</remark>
+  <objectId>d3f91676-7ebb-458e-858c-26fa90018dee</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>d099b061-ae05-4521-af0b-634e5ea2385c</shipClassObjectId>
+  <name>
+   <english>Zenta</english>
+   <japanese>ゼント</japanese>
+   <chineseSimplified>森塔</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>f5d2dd6e-cbc5-4c0c-95b9-e575a058ae70</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/SMS_Zenta</remark>
+  <objectId>d823d2a5-18fd-4361-9293-5b9116485111</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>84b26a6d-15f9-493f-9601-de3806ea5c84</shipClassObjectId>
+  <name>
+   <english>Newark (C1)</english>
+   <japanese>ニューアーク</japanese>
+   <chineseSimplified>纽瓦克</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>208db209-893e-492a-9335-05db60d4e3ef</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/USS_Newark_(C-1)</remark>
+  <objectId>5a814b5a-f80d-4f66-a009-b08cfee1c332</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>6bc5d17c-e840-4816-9583-1edc0fd2d5b9</shipClassObjectId>
+  <name>
+   <english>Hai Hua</english>
+   <japanese>海華</japanese>
+   <chineseSimplified>海华</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>Hai Hua or Hai Hola
+
+https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%88%B0</remark>
+  <objectId>d54c9f4c-77d4-46ea-a72f-7673bf004bb9</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>6bc5d17c-e840-4816-9583-1edc0fd2d5b9</shipClassObjectId>
+  <name>
+   <english>Hai Lung</english>
+   <japanese>海龍</japanese>
+   <chineseSimplified>海龙</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%88%B0</remark>
+  <objectId>6d16fd22-94d9-4830-bf66-23d0a6f991f5</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>6bc5d17c-e840-4816-9583-1edc0fd2d5b9</shipClassObjectId>
+  <name>
+   <english>Hai Hse</english>
+   <japanese>海犀</japanese>
+   <chineseSimplified>海犀</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%88%B0</remark>
+  <objectId>2bae4033-4714-43d6-9e37-f15d0658f2cd</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>6bc5d17c-e840-4816-9583-1edc0fd2d5b9</shipClassObjectId>
+  <name>
+   <english>Hai Ching</english>
+   <japanese>海青</japanese>
+   <chineseSimplified>海青</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%88%B0</remark>
+  <objectId>17ecfb43-914e-44cd-bba8-7ad86cffcfd1</objectId>
  </NamedShip>
 </ArrayOfNamedShip>

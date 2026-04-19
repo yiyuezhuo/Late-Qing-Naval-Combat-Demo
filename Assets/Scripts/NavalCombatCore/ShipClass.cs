@@ -1084,7 +1084,7 @@ namespace NavalCombatCore
         public static Dictionary<ShipType, string> acronymForShipType = new()
         {
             {ShipType.Battleship, "BB"},
-            {ShipType.Battlecruiser, "CB"},
+            {ShipType.Battlecruiser, "BC"},
             {ShipType.LightCruiser, "CL"},
             // {ShipType.Cruiser, "CC"},
             {ShipType.ArmoredCruiser, "CA"},

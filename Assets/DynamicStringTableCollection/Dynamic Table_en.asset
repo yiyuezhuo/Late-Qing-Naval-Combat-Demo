@@ -4259,6 +4259,10 @@ MonoBehaviour:
     m_Localized: Battlecruiser (BC)
     m_Metadata:
       m_Items: []
+  - m_Id: -297
+    m_Localized: No ship class is selected.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

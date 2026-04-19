@@ -1181,6 +1181,480 @@ namespace NavalCombatCore
             return 6;
         }
 
+        public void InferSpeedIncreaseRecord()
+        {
+            if (speedIncreaseRecord == null)
+            {
+                speedIncreaseRecord = new List<SpeedIncreaseRecord>();
+            }
+
+            speedIncreaseRecord.Clear();
+
+            var speed = MathF.Max(0f, speedKnots);
+            if (speed <= 0f)
+            {
+                return;
+            }
+
+            var segmentCount = InferSpeedIncreaseSegmentCount(speed, displacementTons, type, extraShipType);
+            var increases = InferSpeedIncreaseValues(segmentCount, speed, displacementTons, type);
+            var thresholdRatios = GetSpeedIncreaseThresholdRatios(segmentCount);
+
+            var previousThreshold = -1f;
+            for (var i = 0; i < increases.Length; i++)
+            {
+                var threshold = i == 0 ? 0f : RoundSpeedIncreaseThreshold(speed * thresholdRatios[i]);
+                if (i > 0)
+                {
+                    threshold = MathF.Max(previousThreshold + 1f, threshold);
+                    threshold = MathF.Min(threshold, MathF.Max(previousThreshold + 1f, MathF.Floor(speed)));
+                }
+
+                speedIncreaseRecord.Add(new SpeedIncreaseRecord
+                {
+                    thresholdSpeedKnots = threshold,
+                    increaseSpeedKnots = increases[i],
+                });
+
+                previousThreshold = threshold;
+            }
+        }
+
+        public void InferTurnRate()
+        {
+            standardTurnDegPer2Min = InferStandardTurnDegPer2Min(speedKnots, displacementTons, type, extraShipType);
+            emergencyTurnDegPer2Min = InferEmergencyTurnDegPer2Min(
+                standardTurnDegPer2Min,
+                speedKnots,
+                displacementTons,
+                type,
+                extraShipType);
+        }
+
+        public void InferMachineryHitSpeedLimits()
+        {
+            var speed = MathF.Max(0f, speedKnots);
+
+            speedKnotsEngineRoomsLevels = BuildSpeedLimitLevels(speed, InferEngineRoomSpeedLimitDrops(speed, displacementTons, type, extraShipType));
+            speedKnotsPropulsionShaftLevels = BuildSpeedLimitLevels(speed, InferPropulsionShaftSpeedLimitDrops(speed, displacementTons, type, extraShipType));
+            speedKnotsBoilerRooms = BuildSpeedLimitLevels(speed, InferBoilerRoomSpeedLimitDrops(speed, displacementTons, type, extraShipType));
+        }
+
+        static int InferSpeedIncreaseSegmentCount(float speedKnots, float displacementTons, ShipType shipType, ExtraShipType extraShipType)
+        {
+            var isCapitalShip =
+                shipType == ShipType.Battleship ||
+                shipType == ShipType.Battlecruiser ||
+                extraShipType == ExtraShipType.Ironclad ||
+                extraShipType == ExtraShipType.Predreatought ||
+                extraShipType == ExtraShipType.Dreadnought;
+            var isCruiser =
+                shipType == ShipType.LightCruiser ||
+                shipType == ShipType.ArmoredCruiser ||
+                shipType == ShipType.ArmedMerchantCruiser ||
+                extraShipType == ExtraShipType.UnprotectedCruiser ||
+                extraShipType == ExtraShipType.ProtectedCruiser ||
+                extraShipType == ExtraShipType.ArmoredCruiser ||
+                extraShipType == ExtraShipType.TorpedoCruiser;
+            var isSmallFastShip =
+                shipType == ShipType.Destroyer ||
+                shipType == ShipType.TorpedoBoat ||
+                shipType == ShipType.PatrolGunboat ||
+                extraShipType == ExtraShipType.TorpedoCruiser ||
+                displacementTons > 0f && displacementTons <= 3500f;
+
+            if (speedKnots >= 27f)
+            {
+                return 5;
+            }
+
+            if (speedKnots >= 24f)
+            {
+                return isCapitalShip && displacementTons >= 7000f ? 4 : 5;
+            }
+
+            if (speedKnots >= 18f)
+            {
+                return 4;
+            }
+
+            if (speedKnots >= 16f)
+            {
+                return isCapitalShip || displacementTons >= 7000f ? 2 : 3;
+            }
+
+            if (speedKnots >= 12f)
+            {
+                return !isCapitalShip && isCruiser && displacementTons > 0f && displacementTons < 5000f ? 3 : 2;
+            }
+
+            return isSmallFastShip && !isCapitalShip ? 3 : 2;
+        }
+
+        static float[] InferSpeedIncreaseValues(int segmentCount, float speedKnots, float displacementTons, ShipType shipType)
+        {
+            switch (segmentCount)
+            {
+                case 2:
+                    return new[] { 2f, 1f };
+                case 3:
+                    return new[] { 3f, 2f, 1f };
+                case 4:
+                    if (shipType == ShipType.TorpedoBoat && displacementTons > 0f && displacementTons <= 200f)
+                    {
+                        return new[] { 5f, 3f, 2f, 1f };
+                    }
+
+                    return speedKnots >= 18.5f && (displacementTons <= 0f || displacementTons < 7000f)
+                        ? new[] { 5f, 4f, 2f, 1f }
+                        : new[] { 4f, 3f, 2f, 1f };
+                default:
+                    if (speedKnots >= 30f)
+                    {
+                        return new[] { 8f, 6f, 4f, 2f, 1f };
+                    }
+
+                    if (speedKnots >= 27f)
+                    {
+                        return new[] { 7f, 5f, 3f, 2f, 1f };
+                    }
+
+                    if (speedKnots >= 25.5f && (shipType == ShipType.Destroyer || shipType == ShipType.TorpedoBoat))
+                    {
+                        return new[] { 6f, 5f, 2f, 2f, 1f };
+                    }
+
+                    return new[] { 6f, 5f, 3f, 2f, 1f };
+            }
+        }
+
+        static float[] GetSpeedIncreaseThresholdRatios(int segmentCount)
+        {
+            return segmentCount switch
+            {
+                2 => new[] { 0f, 0.60f },
+                3 => new[] { 0f, 0.405f, 0.60f },
+                4 => new[] { 0f, 0.238f, 0.435f, 0.611f },
+                _ => new[] { 0f, 0.258f, 0.429f, 0.548f, 0.645f },
+            };
+        }
+
+        static float RoundSpeedIncreaseThreshold(float value)
+        {
+            return MathF.Round(value, MidpointRounding.AwayFromZero);
+        }
+
+        static float InferStandardTurnDegPer2Min(float speedKnots, float displacementTons, ShipType shipType, ExtraShipType extraShipType)
+        {
+            var isCapitalShip =
+                shipType == ShipType.Battleship ||
+                shipType == ShipType.Battlecruiser ||
+                extraShipType == ExtraShipType.Ironclad ||
+                extraShipType == ExtraShipType.Predreatought ||
+                extraShipType == ExtraShipType.Dreadnought;
+            var isCruiser =
+                shipType == ShipType.LightCruiser ||
+                shipType == ShipType.ArmoredCruiser ||
+                shipType == ShipType.ArmedMerchantCruiser ||
+                extraShipType == ExtraShipType.UnprotectedCruiser ||
+                extraShipType == ExtraShipType.ProtectedCruiser ||
+                extraShipType == ExtraShipType.ArmoredCruiser ||
+                extraShipType == ExtraShipType.TorpedoCruiser;
+
+            if (shipType == ShipType.Destroyer)
+            {
+                return 120f;
+            }
+
+            if (shipType == ShipType.TorpedoBoat)
+            {
+                return displacementTons >= 90f && displacementTons <= 130f && speedKnots >= 23f
+                    ? 180f
+                    : 120f;
+            }
+
+            if (shipType == ShipType.PatrolGunboat)
+            {
+                return displacementTons > 0f && displacementTons <= 700f && speedKnots <= 13f ? 180f : 120f;
+            }
+
+            if (displacementTons > 0f && displacementTons <= 1500f)
+            {
+                return 120f;
+            }
+
+            if (shipType == ShipType.Transport || shipType == ShipType.Repair || shipType == ShipType.ArmedMerchantCruiser)
+            {
+                return 90f;
+            }
+
+            if (isCapitalShip)
+            {
+                if (speedKnots >= 20.5f)
+                {
+                    return 90f;
+                }
+
+                if (displacementTons >= 10000f && speedKnots < 18.5f)
+                {
+                    return 45f;
+                }
+
+                return displacementTons >= 7000f ? 60f : 90f;
+            }
+
+            if (shipType == ShipType.ArmoredCruiser || extraShipType == ExtraShipType.ArmoredCruiser)
+            {
+                if (displacementTons >= 12000f || speedKnots >= 21f && displacementTons >= 7000f)
+                {
+                    return 45f;
+                }
+
+                return displacementTons >= 3500f ? 60f : 90f;
+            }
+
+            if (isCruiser)
+            {
+                if (displacementTons >= 5800f && speedKnots >= 19f)
+                {
+                    return 45f;
+                }
+
+                if (displacementTons >= 3500f || speedKnots >= 22f)
+                {
+                    return 60f;
+                }
+
+                return 90f;
+            }
+
+            if (displacementTons > 0f && displacementTons <= 3500f)
+            {
+                return 90f;
+            }
+
+            return 60f;
+        }
+
+        static float InferEmergencyTurnDegPer2Min(
+            float standardTurnDegPer2Min,
+            float speedKnots,
+            float displacementTons,
+            ShipType shipType,
+            ExtraShipType extraShipType)
+        {
+            return standardTurnDegPer2Min switch
+            {
+                45f => displacementTons >= 12000f || shipType == ShipType.Battleship || shipType == ShipType.Battlecruiser
+                    ? 90f
+                    : 60f,
+                60f => 90f,
+                90f => 120f,
+                120f => 150f,
+                180f => 225f,
+                _ => MathF.Round(standardTurnDegPer2Min * 4f / 3f),
+            };
+        }
+
+        static List<float> BuildSpeedLimitLevels(float speedKnots, float[] drops)
+        {
+            return drops
+                .Select(drop => MathF.Max(0f, MathF.Round(speedKnots - drop)))
+                .ToList();
+        }
+
+        static float[] InferEngineRoomSpeedLimitDrops(float speedKnots, float displacementTons, ShipType shipType, ExtraShipType extraShipType)
+        {
+            var count = InferEngineRoomSpeedLimitCount(speedKnots, displacementTons, shipType, extraShipType);
+            return count switch
+            {
+                1 => new[] { 0f },
+                3 => new[] { 0f, 4f, speedKnots >= 22f ? 17f : 13f },
+                _ => new[] { 0f, InferEngineRoomSecondDrop(speedKnots) },
+            };
+        }
+
+        static float[] InferPropulsionShaftSpeedLimitDrops(float speedKnots, float displacementTons, ShipType shipType, ExtraShipType extraShipType)
+        {
+            var count = InferPropulsionShaftSpeedLimitCount(speedKnots, displacementTons, shipType, extraShipType);
+            return count switch
+            {
+                1 => new[] { 0f },
+                3 => new[] { 0f, speedKnots >= 22f ? 6f : 4f, speedKnots >= 22f ? 18f : 14f },
+                4 => new[] { 0f, 3f, 12f, speedKnots >= 24f ? 23f : 18f },
+                _ => new[] { 0f, InferPropulsionShaftSecondDrop(speedKnots) },
+            };
+        }
+
+        static float[] InferBoilerRoomSpeedLimitDrops(float speedKnots, float displacementTons, ShipType shipType, ExtraShipType extraShipType)
+        {
+            var count = InferBoilerRoomSpeedLimitCount(speedKnots, displacementTons, shipType, extraShipType);
+            return count switch
+            {
+                1 => new[] { 0f },
+                3 => new[] { 0f, speedKnots >= 22f ? 4f : 3f, speedKnots >= 22f ? 16f : 13f },
+                4 => new[] { 0f, speedKnots >= 27f ? 3f : 2f, speedKnots >= 27f ? 12f : 8f, speedKnots >= 27f ? 24f : 15f },
+                5 => new[] { 0f, 1f, speedKnots >= 22f ? 6f : 5f, speedKnots >= 22f ? 13f : 10f, speedKnots >= 22f ? 20f : 16f },
+                _ => new[] { 0f, InferBoilerRoomSecondDrop(speedKnots) },
+            };
+        }
+
+        static int InferEngineRoomSpeedLimitCount(float speedKnots, float displacementTons, ShipType shipType, ExtraShipType extraShipType)
+        {
+            if (shipType == ShipType.TorpedoBoat)
+            {
+                return 1;
+            }
+
+            if (shipType == ShipType.Destroyer)
+            {
+                return speedKnots >= 26f && speedKnots < 29f ? 2 : 1;
+            }
+
+            if (displacementTons > 0f && displacementTons <= 1500f)
+            {
+                return 1;
+            }
+
+            if (displacementTons >= 12600f && displacementTons <= 14270f)
+            {
+                return 3;
+            }
+
+            if (shipType == ShipType.LightCruiser && displacementTons >= 3500f && displacementTons < 7000f && speedKnots >= 17f)
+            {
+                return 3;
+            }
+
+            return 2;
+        }
+
+        static int InferPropulsionShaftSpeedLimitCount(float speedKnots, float displacementTons, ShipType shipType, ExtraShipType extraShipType)
+        {
+            if (shipType == ShipType.TorpedoBoat && displacementTons <= 136f)
+            {
+                return 1;
+            }
+
+            if (shipType == ShipType.Battleship && displacementTons >= 18000f ||
+                shipType == ShipType.Battlecruiser && displacementTons >= 17000f)
+            {
+                return 4;
+            }
+
+            if (displacementTons >= 12600f && displacementTons <= 14270f)
+            {
+                return 3;
+            }
+
+            if (shipType == ShipType.LightCruiser && displacementTons >= 3500f && displacementTons < 7000f && speedKnots >= 17f)
+            {
+                return 3;
+            }
+
+            if (displacementTons > 0f && displacementTons <= 136f)
+            {
+                return 1;
+            }
+
+            return 2;
+        }
+
+        static int InferBoilerRoomSpeedLimitCount(float speedKnots, float displacementTons, ShipType shipType, ExtraShipType extraShipType)
+        {
+            if (shipType == ShipType.TorpedoBoat && displacementTons <= 136f)
+            {
+                return 1;
+            }
+
+            if (displacementTons > 0f && displacementTons <= 1500f)
+            {
+                return speedKnots >= 20f ? 2 : 1;
+            }
+
+            if (shipType == ShipType.LightCruiser && displacementTons >= 5800f && displacementTons <= 8000f && speedKnots >= 19f)
+            {
+                return 5;
+            }
+
+            if (shipType == ShipType.Destroyer && speedKnots >= 30f)
+            {
+                return 4;
+            }
+
+            if (displacementTons >= 7000f && displacementTons <= 14270f)
+            {
+                return 4;
+            }
+
+            if (displacementTons >= 12000f || speedKnots >= 24f && displacementTons >= 3000f)
+            {
+                return 3;
+            }
+
+            return 2;
+        }
+
+        static float InferEngineRoomSecondDrop(float speedKnots)
+        {
+            if (speedKnots >= 23f)
+            {
+                return 10f;
+            }
+
+            if (speedKnots >= 18f)
+            {
+                return 8f;
+            }
+
+            if (speedKnots >= 15f)
+            {
+                return 7f;
+            }
+
+            return 5f;
+        }
+
+        static float InferPropulsionShaftSecondDrop(float speedKnots)
+        {
+            if (speedKnots >= 24f)
+            {
+                return 15f;
+            }
+
+            if (speedKnots >= 20f)
+            {
+                return 10f;
+            }
+
+            if (speedKnots >= 16f)
+            {
+                return 8f;
+            }
+
+            return 6f;
+        }
+
+        static float InferBoilerRoomSecondDrop(float speedKnots)
+        {
+            if (speedKnots >= 22f)
+            {
+                return 9f;
+            }
+
+            if (speedKnots >= 18f)
+            {
+                return 7f;
+            }
+
+            if (speedKnots >= 15f)
+            {
+                return 6f;
+            }
+
+            return 5f;
+        }
+
         public static float CalculateLengthFootFromDisplacementAndType(float displacementTons, ShipType shipType)
         {
             return MathF.Round(PredictDefaultFromDisplacementAndType(

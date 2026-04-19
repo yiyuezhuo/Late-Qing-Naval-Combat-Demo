@@ -4299,6 +4299,10 @@ MonoBehaviour:
     m_Localized: "\u5DE1\u6D0B\u6226\u8266 (BC)"
     m_Metadata:
       m_Items: []
+  - m_Id: -297
+    m_Localized: "\u8266\u7D1A\u304C\u9078\u629E\u3055\u308C\u3066\u3044\u307E\u305B\u3093\u3002"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

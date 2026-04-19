@@ -562,6 +562,24 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
         // speedIncreaseMultiColumnListView.itemsAdded += Utils.MakeCallbackForItemsAdded<SpeedIncreaseRecord>(speedIncreaseMultiColumnListView);
         Utils.BindItemsAddedRemoved<SpeedIncreaseRecord>(speedIncreaseMultiColumnListView, SelectedShipClassProvider);
 
+        var inferSpeedIncreaseButton = root.Q<Button>("InferSpeedIncreaseButton");
+        if (inferSpeedIncreaseButton != null)
+        {
+            inferSpeedIncreaseButton.clicked += () =>
+            {
+                var shipClass = selectedShipClass;
+                if (shipClass == null)
+                {
+                    DialogRoot.Instance.PopupMessageDialog(Localize("No ship class is selected."));
+                    return;
+                }
+
+                shipClass.InferSpeedIncreaseRecord();
+                shipClass.InferTurnRate();
+                shipClass.InferMachineryHitSpeedLimits();
+            };
+        }
+
         batteryRecordsListView = root.Q<ListView>("BatteryRecordsListView");
         // batteryRecordsListView.itemsAdded += Utils.MakeCallbackForItemsAdded<BatteryRecord>(batteryRecordsListView);
         Utils.BindItemsAddedRemoved<BatteryRecord>(batteryRecordsListView, SelectedShipClassProvider);

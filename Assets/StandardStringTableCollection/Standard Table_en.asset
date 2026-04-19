@@ -3318,6 +3318,10 @@ MonoBehaviour:
     m_Localized: Is Poorly Supported
     m_Metadata:
       m_Items: []
+  - m_Id: -111
+    m_Localized: Infer Other
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -4249,6 +4249,10 @@ MonoBehaviour:
     m_Key: ShipType.Battlecruiser
     m_Metadata:
       m_Items: []
+  - m_Id: -297
+    m_Key: No ship class is selected.
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

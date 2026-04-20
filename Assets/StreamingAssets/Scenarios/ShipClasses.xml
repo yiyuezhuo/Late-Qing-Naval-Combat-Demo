@@ -49726,6 +49726,8 @@ One of reference ship class of Ding Yuan
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:HMS_Dreadnought_(1911)_profile_drawing.png</portraitUrl>
   <remark>https://en.wikipedia.org/wiki/HMS_Dreadnought_(1906)
+
+Reference only, a new damage schema is required to work properly.
 </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
@@ -50256,6 +50258,7 @@ One of reference ship class of Ding Yuan
   <portraitUrl>https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:Invincible&amp;IndefatigableSketch.jpg</portraitUrl>
   <remark>https://en.wikipedia.org/wiki/Invincible-class_battlecruiser
 
+Reference only, a new damage schema is required to work properly.
 </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
@@ -58912,6 +58915,8 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
   </armorRating>
   <portraitUrl>Illustrated History of Chinese Warships 1855–1911 (by Chen Yue)  中国军舰图志 1855-1911 （陈悦）</portraitUrl>
   <remark>https://baike.baidu.com/item/%E9%A3%9E%E9%9C%86%E5%8F%B7%E7%82%AE%E8%88%B0/9031261
+
+
 </remark>
   <isPoorlySupported>true</isPoorlySupported>
   <portraitReference>
@@ -61072,5 +61077,317 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
   <isGraphicPlaceholder>false</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>d239293a-64f2-44ab-a775-ad988dd221e3</objectId>
+ </ShipClass>
+ <ShipClass>
+  <name>
+   <english>Gilyak (1898)</english>
+   <japanese>ギリャーク (1898)</japanese>
+   <chineseSimplified>吉利亚克 (1898)</chineseSimplified>
+  </name>
+  <type>PatrolGunboat</type>
+  <extraShipType>NotSpecified</extraShipType>
+  <country>Russia</country>
+  <displacementTons>1239</displacementTons>
+  <complementMen>159</complementMen>
+  <lengthFoot>207</lengthFoot>
+  <beamFoot>37</beamFoot>
+  <draftFoot>10.3</draftFoot>
+  <engineDesc>
+   <english>none</english>
+  </engineDesc>
+  <boilersDesc>
+   <english>none</english>
+  </boilersDesc>
+  <batteryRecords>
+   <BatteryRecord>
+    <name>
+     <english>120mm/45 Canet Mle 1891</english>
+     <japanese />
+     <chineseSimplified />
+    </name>
+    <damageRating>12</damageRating>
+    <maxRateOfFireShootPerMin>5</maxRateOfFireShootPerMin>
+    <fireControlPositions>2</fireControlPositions>
+    <fireControlType>
+     <code>W</code>
+     <gunSight>Basic</gunSight>
+     <fireControlInstrument>Basic</fireControlInstrument>
+     <rangeFinder>None</rangeFinder>
+     <directorControl>FollowThePointer</directorControl>
+     <stabilization>Manual</stabilization>
+     <powerRemoteControl>None</powerRemoteControl>
+    </fireControlType>
+    <rangeYards>10800</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
+    <fireControlRadarModifier>0</fireControlRadarModifier>
+    <fireControlRadarName>
+     <english>None</english>
+    </fireControlRadarName>
+    <shellSizeInch>4.7</shellSizeInch>
+    <shellWeightPounds>45.1</shellWeightPounds>
+    <ammunitionCapacity>720</ammunitionCapacity>
+    <fireControlTableRecords>
+     <FireControlTableRecord>
+      <speedThresholdKnot>9</speedThresholdKnot>
+      <shortBroad>11</shortBroad>
+      <shortNarrow>6</shortNarrow>
+      <mediumBroad>7</mediumBroad>
+      <mediumNarrow>4</mediumNarrow>
+      <longBroad>5</longBroad>
+      <longNarrow>3</longNarrow>
+      <extremeBroad>4</extremeBroad>
+      <extremeNarrow>2</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>18</speedThresholdKnot>
+      <shortBroad>7</shortBroad>
+      <shortNarrow>4</shortNarrow>
+      <mediumBroad>4</mediumBroad>
+      <mediumNarrow>3</mediumNarrow>
+      <longBroad>3</longBroad>
+      <longNarrow>2</longNarrow>
+      <extremeBroad>2</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>27</speedThresholdKnot>
+      <shortBroad>6</shortBroad>
+      <shortNarrow>3</shortNarrow>
+      <mediumBroad>3</mediumBroad>
+      <mediumNarrow>2</mediumNarrow>
+      <longBroad>2</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>2</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>36</speedThresholdKnot>
+      <shortBroad>5</shortBroad>
+      <shortNarrow>3</shortNarrow>
+      <mediumBroad>3</mediumBroad>
+      <mediumNarrow>2</mediumNarrow>
+      <longBroad>2</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>2</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>45</speedThresholdKnot>
+      <shortBroad>4</shortBroad>
+      <shortNarrow>2</shortNarrow>
+      <mediumBroad>2</mediumBroad>
+      <mediumNarrow>1</mediumNarrow>
+      <longBroad>2</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>1</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+    </fireControlTableRecords>
+    <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
+    <penetrationTableRecords>
+     <PenetrationTableRecord>
+      <distanceYards>2000</distanceYards>
+      <rateOfFire>7.6</rateOfFire>
+      <rangeBand>Short</rangeBand>
+      <horizontalPenetrationInchs>0.1</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>4.2</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+     <PenetrationTableRecord>
+      <distanceYards>4000</distanceYards>
+      <rateOfFire>6.1</rateOfFire>
+      <rangeBand>Short</rangeBand>
+      <horizontalPenetrationInchs>0.2</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>2.5</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+     <PenetrationTableRecord>
+      <distanceYards>6000</distanceYards>
+      <rateOfFire>4.7</rateOfFire>
+      <rangeBand>Medium</rangeBand>
+      <horizontalPenetrationInchs>0.3</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>1.7</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+     <PenetrationTableRecord>
+      <distanceYards>8000</distanceYards>
+      <rateOfFire>3.7</rateOfFire>
+      <rangeBand>Long</rangeBand>
+      <horizontalPenetrationInchs>0.5</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>1.4</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+     <PenetrationTableRecord>
+      <distanceYards>10000</distanceYards>
+      <rateOfFire>2.9</rateOfFire>
+      <rangeBand>Long</rangeBand>
+      <horizontalPenetrationInchs>0.9</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>1.2</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+     <PenetrationTableRecord>
+      <distanceYards>12000</distanceYards>
+      <rateOfFire>2.7</rateOfFire>
+      <rangeBand>Long</rangeBand>
+      <horizontalPenetrationInchs>1</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>1.1</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+    </penetrationTableRecords>
+    <mountLocationRecords>
+     <MountLocationRecord>
+      <mountLocation>Forward</mountLocation>
+      <barrels>1</barrels>
+      <mounts>1</mounts>
+      <mountArcs>
+       <MountArcRecord startDeg="240" CoverageDeg="240" isCrossDeckFire="false" />
+      </mountArcs>
+      <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
+      <mountArcsPattern>Normal</mountArcsPattern>
+      <objectId>f20ea556-3fca-434b-bede-dbc022713b24</objectId>
+     </MountLocationRecord>
+    </mountLocationRecords>
+    <objectId>32fb4d98-7028-4eaf-bf9c-29bda652434e</objectId>
+   </BatteryRecord>
+  </batteryRecords>
+  <torpedoSector>
+   <name>
+    <english>381mm</english>
+    <chineseSimplified />
+   </name>
+   <mountLocationRecords>
+    <MountLocationRecord>
+     <mountLocation>Forward</mountLocation>
+     <barrels>1</barrels>
+     <mounts>1</mounts>
+     <mountArcs>
+      <MountArcRecord startDeg="345" CoverageDeg="30" isCrossDeckFire="false" />
+     </mountArcs>
+     <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
+     <mountArcsPattern>Narrow</mountArcsPattern>
+     <objectId>95413980-949c-4f0c-8c37-ed18240e93cf</objectId>
+    </MountLocationRecord>
+   </mountLocationRecords>
+   <torpedoSettings>
+    <TorpedoSetting rangeYards="440" speedKnots="28" />
+    <TorpedoSetting rangeYards="660" speedKnots="27" />
+   </torpedoSettings>
+   <ammunitionCapacity>2</ammunitionCapacity>
+   <damageClass>I</damageClass>
+   <dudProbability>0.5</dudProbability>
+   <pistolType>Contact</pistolType>
+  </torpedoSector>
+  <rapidFireBatteryRecords>
+   <RapidFireBatteryRecord>
+    <name>
+     <english>75mm/50 M1891</english>
+     <japanese />
+    </name>
+    <maxRangeYards>8500</maxRangeYards>
+    <effectiveRangeYards>3825</effectiveRangeYards>
+    <fireControlRecords>
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="5" fireControlEffectiveRange="8" />
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="4" fireControlEffectiveRange="6" />
+    </fireControlRecords>
+    <damageFactor>12</damageFactor>
+    <barrelsLevelPort>
+     <int>3</int>
+     <int>2</int>
+     <int>1</int>
+    </barrelsLevelPort>
+    <barrelsLevelStarboard>
+     <int>3</int>
+     <int>2</int>
+     <int>1</int>
+    </barrelsLevelStarboard>
+   </RapidFireBatteryRecord>
+   <RapidFireBatteryRecord>
+    <name>
+     <english>3pdr</english>
+     <japanese />
+     <chineseTraditional />
+    </name>
+    <maxRangeYards>7000</maxRangeYards>
+    <effectiveRangeYards>3150</effectiveRangeYards>
+    <fireControlRecords>
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="4" fireControlEffectiveRange="6" />
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="3" fireControlEffectiveRange="5" />
+    </fireControlRecords>
+    <damageFactor>7</damageFactor>
+    <barrelsLevelPort>
+     <int>2</int>
+     <int>1</int>
+    </barrelsLevelPort>
+    <barrelsLevelStarboard>
+     <int>2</int>
+     <int>1</int>
+    </barrelsLevelStarboard>
+   </RapidFireBatteryRecord>
+   <RapidFireBatteryRecord>
+    <name>
+     <english>1pdr</english>
+    </name>
+    <maxRangeYards>3000</maxRangeYards>
+    <effectiveRangeYards>1350</effectiveRangeYards>
+    <fireControlRecords>
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="4" fireControlEffectiveRange="6" />
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="3" fireControlEffectiveRange="5" />
+    </fireControlRecords>
+    <damageFactor>4</damageFactor>
+    <barrelsLevelPort>
+     <int>1</int>
+    </barrelsLevelPort>
+    <barrelsLevelStarboard>
+     <int>1</int>
+    </barrelsLevelStarboard>
+   </RapidFireBatteryRecord>
+  </rapidFireBatteryRecords>
+  <targetSizeModifier>0</targetSizeModifier>
+  <damagePoint>639</damagePoint>
+  <speedKnots>12</speedKnots>
+  <damageControlRatingUnmodified>2</damageControlRatingUnmodified>
+  <speedKnotsEngineRoomsLevels>
+   <float>12</float>
+  </speedKnotsEngineRoomsLevels>
+  <speedKnotsPropulsionShaftLevels>
+   <float>12</float>
+   <float>6</float>
+  </speedKnotsPropulsionShaftLevels>
+  <speedKnotsBoilerRooms>
+   <float>12</float>
+  </speedKnotsBoilerRooms>
+  <speedIncreaseRecord>
+   <SpeedIncreaseRecord thresholdSpeedKnots="0" increaseSpeedKnots="2" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="7" increaseSpeedKnots="1" />
+  </speedIncreaseRecord>
+  <standardTurnDegPer2Min>120</standardTurnDegPer2Min>
+  <emergencyTurnDegPer2Min>150</emergencyTurnDegPer2Min>
+  <armorRating>
+   <armorTypeFactor>0</armorTypeFactor>
+   <deck effectInch="0" actualInch="0" />
+   <turretHorizontal effectInch="0" actualInch="0" />
+   <superStructureHorizontal effectInch="0" actualInch="0" />
+   <conningTower effectInch="0" actualInch="0" />
+   <mainBelt effectInch="0" actualInch="0" />
+   <beltEnd effectInch="0" actualInch="0" />
+   <barbette effectInch="0" actualInch="0" />
+   <turretVertical effectInch="0" actualInch="0" />
+   <superStructureVertical effectInch="0" actualInch="0" />
+   <armorType>NotSpecified</armorType>
+  </armorRating>
+  <remark>https://ru.wikipedia.org/wiki/%D0%93%D0%B8%D0%BB%D1%8F%D0%BA_(%D0%BA%D0%B0%D0%BD%D0%BE%D0%BD%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F_%D0%BB%D0%BE%D0%B4%D0%BA%D0%B0)
+</remark>
+  <isPoorlySupported>true</isPoorlySupported>
+  <portraitReference>
+   <path>Pictures\Ships\Gilyak_1898.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <portraitTopReference>
+   <path>Pictures\Ships\Gilyak (1898)_Top.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitTopReference>
+  <portraitIconReference>
+   <path>Pictures\Ships\Gilyak (1898)_Icon.png</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
+  <ram>None</ram>
+  <objectId>db248dda-a65a-48f3-b5c8-6904346b2782</objectId>
  </ShipClass>
 </ArrayOfShipClass>

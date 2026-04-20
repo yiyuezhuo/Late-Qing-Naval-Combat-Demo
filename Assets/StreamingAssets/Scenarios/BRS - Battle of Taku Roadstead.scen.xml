@@ -71,7 +71,7 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
     <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
     <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
@@ -105,7 +105,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>8a581934-723b-4a02-bf78-3b8ef446c8f7</parentObjectId>
+    <parentObjectId>bf3842a1-e9e7-4574-871f-f6154110e304</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -455,7 +455,7 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
     <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
     <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
@@ -489,7 +489,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>8a581934-723b-4a02-bf78-3b8ef446c8f7</parentObjectId>
+    <parentObjectId>bf3842a1-e9e7-4574-871f-f6154110e304</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -848,7 +848,7 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
     <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
     <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
@@ -882,7 +882,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>8a581934-723b-4a02-bf78-3b8ef446c8f7</parentObjectId>
+    <parentObjectId>bf3842a1-e9e7-4574-871f-f6154110e304</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -1210,7 +1210,7 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
     <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
     <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
@@ -1244,7 +1244,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>8a581934-723b-4a02-bf78-3b8ef446c8f7</parentObjectId>
+    <parentObjectId>c3943198-66b6-4d70-be17-a89f25a15b72</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -1594,7 +1594,7 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
     <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
     <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
@@ -1628,7 +1628,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>8a581934-723b-4a02-bf78-3b8ef446c8f7</parentObjectId>
+    <parentObjectId>bf3842a1-e9e7-4574-871f-f6154110e304</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -1886,7 +1886,7 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
     <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
     <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
@@ -1920,7 +1920,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>8a581934-723b-4a02-bf78-3b8ef446c8f7</parentObjectId>
+    <parentObjectId>7954933b-c4c7-483a-9f3b-a6a02a5c8421</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -2279,7 +2279,7 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
     <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
     <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
@@ -2313,7 +2313,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>8a581934-723b-4a02-bf78-3b8ef446c8f7</parentObjectId>
+    <parentObjectId>bf3842a1-e9e7-4574-871f-f6154110e304</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -2667,7 +2667,7 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
     <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
     <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
@@ -2701,7 +2701,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>8a581934-723b-4a02-bf78-3b8ef446c8f7</parentObjectId>
+    <parentObjectId>bf3842a1-e9e7-4574-871f-f6154110e304</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -2997,7 +2997,7 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
     <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
     <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
@@ -3031,7 +3031,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>8a581934-723b-4a02-bf78-3b8ef446c8f7</parentObjectId>
+    <parentObjectId>7954933b-c4c7-483a-9f3b-a6a02a5c8421</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -3287,7 +3287,7 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
     <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
     <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
@@ -3321,7 +3321,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>8a581934-723b-4a02-bf78-3b8ef446c8f7</parentObjectId>
+    <parentObjectId>a76c8dc6-b2b5-48b6-aa21-f0004ea7d5a5</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -3624,7 +3624,7 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
     <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
     <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
@@ -3658,7 +3658,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>8a581934-723b-4a02-bf78-3b8ef446c8f7</parentObjectId>
+    <parentObjectId>18d5aebb-0cde-4596-b1dd-95030a8b3ec9</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -3943,7 +3943,7 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
     <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
     <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
@@ -3977,7 +3977,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>8a581934-723b-4a02-bf78-3b8ef446c8f7</parentObjectId>
+    <parentObjectId>6b8ea0ec-c908-4409-a9ea-66da4922d8c5</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -4271,7 +4271,7 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
     <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
     <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
@@ -4305,7 +4305,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>8a581934-723b-4a02-bf78-3b8ef446c8f7</parentObjectId>
+    <parentObjectId>6b8ea0ec-c908-4409-a9ea-66da4922d8c5</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -4459,7 +4459,7 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
     <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
     <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
@@ -4493,7 +4493,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>8a581934-723b-4a02-bf78-3b8ef446c8f7</parentObjectId>
+    <parentObjectId>18d5aebb-0cde-4596-b1dd-95030a8b3ec9</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -4922,7 +4922,7 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
     <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
     <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
@@ -4956,7 +4956,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>8a581934-723b-4a02-bf78-3b8ef446c8f7</parentObjectId>
+    <parentObjectId>18d5aebb-0cde-4596-b1dd-95030a8b3ec9</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -5252,7 +5252,7 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
     <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
     <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
@@ -5286,7 +5286,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>8a581934-723b-4a02-bf78-3b8ef446c8f7</parentObjectId>
+    <parentObjectId>7954933b-c4c7-483a-9f3b-a6a02a5c8421</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -5589,7 +5589,7 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
     <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
     <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
@@ -5623,7 +5623,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>8a581934-723b-4a02-bf78-3b8ef446c8f7</parentObjectId>
+    <parentObjectId>7954933b-c4c7-483a-9f3b-a6a02a5c8421</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -5964,7 +5964,7 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
     <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
     <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
@@ -5998,7 +5998,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>8a581934-723b-4a02-bf78-3b8ef446c8f7</parentObjectId>
+    <parentObjectId>544f2588-329f-4cf8-94e9-888fddce3bfe</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -6165,7 +6165,7 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
     <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
     <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
@@ -6199,7 +6199,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>8a581934-723b-4a02-bf78-3b8ef446c8f7</parentObjectId>
+    <parentObjectId>1bb19191-d15d-47a0-93fe-7366e2f7e287</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -6522,7 +6522,7 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
     <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
     <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
@@ -6556,7 +6556,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>8a581934-723b-4a02-bf78-3b8ef446c8f7</parentObjectId>
+    <parentObjectId>1bb19191-d15d-47a0-93fe-7366e2f7e287</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -6904,7 +6904,7 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
     <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
     <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
@@ -6938,7 +6938,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>8a581934-723b-4a02-bf78-3b8ef446c8f7</parentObjectId>
+    <parentObjectId>1bb19191-d15d-47a0-93fe-7366e2f7e287</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -7286,7 +7286,7 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
     <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
     <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
@@ -7320,7 +7320,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>8a581934-723b-4a02-bf78-3b8ef446c8f7</parentObjectId>
+    <parentObjectId>1bb19191-d15d-47a0-93fe-7366e2f7e287</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -7645,9 +7645,9 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
-    <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
-    <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>10</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>315</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -8005,9 +8005,9 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
-    <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
-    <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>10</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>315</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -8344,9 +8344,9 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
-    <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
-    <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>10</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>315</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -8378,7 +8378,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>8124d990-5dd7-4370-8b53-005d004ce55f</parentObjectId>
+    <parentObjectId>97d4a6fd-46bd-4572-a35b-3052641b85b9</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -8684,9 +8684,9 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
-    <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
-    <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>10</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>315</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -8718,7 +8718,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>8124d990-5dd7-4370-8b53-005d004ce55f</parentObjectId>
+    <parentObjectId>97d4a6fd-46bd-4572-a35b-3052641b85b9</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -9024,9 +9024,9 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
-    <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
-    <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>10</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>315</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -9058,7 +9058,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>8124d990-5dd7-4370-8b53-005d004ce55f</parentObjectId>
+    <parentObjectId>97d4a6fd-46bd-4572-a35b-3052641b85b9</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -9203,9 +9203,9 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
-    <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
-    <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>10</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>315</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -9237,7 +9237,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>8124d990-5dd7-4370-8b53-005d004ce55f</parentObjectId>
+    <parentObjectId>860047ed-81a8-47b8-8126-8c306f309d7d</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -9383,9 +9383,9 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
-    <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
-    <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>10</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>315</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -9417,7 +9417,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>8124d990-5dd7-4370-8b53-005d004ce55f</parentObjectId>
+    <parentObjectId>860047ed-81a8-47b8-8126-8c306f309d7d</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -9563,9 +9563,9 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
-    <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
-    <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>10</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>315</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -9597,7 +9597,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>8124d990-5dd7-4370-8b53-005d004ce55f</parentObjectId>
+    <parentObjectId>860047ed-81a8-47b8-8126-8c306f309d7d</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -9743,9 +9743,9 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
-    <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
-    <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>10</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>315</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -9777,7 +9777,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>8124d990-5dd7-4370-8b53-005d004ce55f</parentObjectId>
+    <parentObjectId>860047ed-81a8-47b8-8126-8c306f309d7d</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -9972,9 +9972,9 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
-    <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
-    <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>10</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>315</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -10006,7 +10006,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>8124d990-5dd7-4370-8b53-005d004ce55f</parentObjectId>
+    <parentObjectId>988e3feb-f438-43ec-920d-ecc42e44004d</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -10209,9 +10209,9 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
-    <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
-    <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>10</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>315</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -10243,7 +10243,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>8124d990-5dd7-4370-8b53-005d004ce55f</parentObjectId>
+    <parentObjectId>988e3feb-f438-43ec-920d-ecc42e44004d</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -10317,20 +10317,11 @@
      <string>97d4a6fd-46bd-4572-a35b-3052641b85b9</string>
      <string>860047ed-81a8-47b8-8126-8c306f309d7d</string>
      <string>988e3feb-f438-43ec-920d-ecc42e44004d</string>
-     <string>45009ca3-40a7-4f85-9181-062483a3dd8f</string>
-     <string>1a54e852-45ff-4199-acf6-9ac171f4613f</string>
-     <string>9aba27ad-faa1-4f18-9f2b-95971c45d5d4</string>
-     <string>d49f5669-bfd0-4798-b874-a817c18fa2b0</string>
-     <string>4f52ae8d-f8ff-42d4-9330-7272471d4ea4</string>
-     <string>372b73d0-ac5b-4454-959c-21f4fcae28f2</string>
-     <string>b3c4f53c-89eb-4504-96df-8221f92f4afe</string>
-     <string>87adb642-c192-4e65-be9d-886f1f0fb303</string>
-     <string>28a008e7-ea79-4565-a685-b96f86343a58</string>
     </childrenObjectIds>
     <name>
      <english>Beiyang Fleet</english>
-     <japanese />
-     <chineseSimplified />
+     <japanese>北洋艦隊</japanese>
+     <chineseSimplified>北洋水师</chineseSimplified>
      <chineseTraditional />
     </name>
     <remark>
@@ -10404,39 +10395,27 @@
    </ShipGroup>
    <ShipGroup>
     <childrenObjectIds>
-     <string>380fcf8e-8e35-438e-a3bf-ab46760a7460</string>
-     <string>fe973abe-ee13-4be6-aecc-f83b4b5351ea</string>
-     <string>992b4579-615d-416d-8a30-7bba56f3cfff</string>
-     <string>79d197e6-98c3-480d-b533-ad0c3ea785e3</string>
-     <string>df541375-dc46-4c48-8a58-a2b172231c45</string>
-     <string>46f6a687-e566-4080-bb49-c2f0f3688a63</string>
-     <string>5a3a0b02-cb07-4840-826f-19a455f049ed</string>
-     <string>9748e266-ed0b-4801-9b8c-e41132789fa8</string>
-     <string>46b6e0c7-0778-4d12-96be-a3975a8515c7</string>
-     <string>d5d86d3d-d45c-4fbe-9d74-713ed306c528</string>
-     <string>9485df63-8d22-46ed-a908-14f94f045fe7</string>
-     <string>93b1278e-ada9-4d7c-abac-b9553a648f34</string>
-     <string>b1bb9813-dd54-43f9-8d6f-6504250850ce</string>
-     <string>a44f39d8-84da-427a-9cd6-23e4e0293743</string>
-     <string>2c340e67-396d-4dee-bf6f-a6ffd0e4ce8d</string>
-     <string>b9885b6d-90cd-45ff-b4da-60ad6d009f08</string>
-     <string>4e6164db-cfe7-4682-af06-27922cce954f</string>
-     <string>69cfe838-4676-464c-baf1-68414b7a1357</string>
-     <string>4b780065-35cd-448d-b091-1188de63a0b0</string>
-     <string>93ae6151-f0c7-43cd-a2c2-14c0db050e84</string>
-     <string>485dc3d6-dadd-4bf3-ad9c-4db8f861e181</string>
-     <string>527dcaa8-c11f-4552-9011-b539073b926e</string>
+     <string>bf3842a1-e9e7-4574-871f-f6154110e304</string>
+     <string>18d5aebb-0cde-4596-b1dd-95030a8b3ec9</string>
+     <string>7954933b-c4c7-483a-9f3b-a6a02a5c8421</string>
+     <string>1bb19191-d15d-47a0-93fe-7366e2f7e287</string>
+     <string>6b8ea0ec-c908-4409-a9ea-66da4922d8c5</string>
+     <string>a76c8dc6-b2b5-48b6-aa21-f0004ea7d5a5</string>
+     <string>544f2588-329f-4cf8-94e9-888fddce3bfe</string>
+     <string>c3943198-66b6-4d70-be17-a89f25a15b72</string>
     </childrenObjectIds>
     <name>
-     <english>Allied</english>
-     <japanese />
-     <chineseSimplified />
+     <english>Eight-Nation Alliance</english>
+     <japanese>八カ国連合軍</japanese>
+     <chineseSimplified>八国联军</chineseSimplified>
      <chineseTraditional />
     </name>
     <remark>
      <english>none</english>
     </remark>
-    <leaderReference />
+    <leaderReference>
+     <referenceObjectId>7ace35ae-2ffa-4e58-adbd-4d0cca9ed8d3</referenceObjectId>
+    </leaderReference>
     <type>General</type>
     <formation>General</formation>
     <objectId>8a581934-723b-4a02-bf78-3b8ef446c8f7</objectId>
@@ -10462,12 +10441,12 @@
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
      <awakeCountdownMinutes>
-      <isInherited>true</isInherited>
-      <value>0</value>
+      <isInherited>false</isInherited>
+      <value>15</value>
      </awakeCountdownMinutes>
      <awaking>
-      <isInherited>true</isInherited>
-      <value>true</value>
+      <isInherited>false</isInherited>
+      <value>false</value>
      </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
@@ -10507,6 +10486,8 @@
     </childrenObjectIds>
     <name>
      <english>Cruiser Division 1</english>
+     <japanese>巡洋艦第1分隊</japanese>
+     <chineseSimplified>巡洋舰第一分队</chineseSimplified>
     </name>
     <remark>
      <english>none</english>
@@ -10577,9 +10558,15 @@
     </doctrine>
    </ShipGroup>
    <ShipGroup>
-    <childrenObjectIds />
+    <childrenObjectIds>
+     <string>45009ca3-40a7-4f85-9181-062483a3dd8f</string>
+     <string>1a54e852-45ff-4199-acf6-9ac171f4613f</string>
+     <string>9aba27ad-faa1-4f18-9f2b-95971c45d5d4</string>
+    </childrenObjectIds>
     <name>
      <english>Cruiser Division 2</english>
+     <japanese>巡洋艦第2分隊</japanese>
+     <chineseSimplified>巡洋舰第二分队</chineseSimplified>
     </name>
     <remark>
      <english>none</english>
@@ -10650,9 +10637,16 @@
     </doctrine>
    </ShipGroup>
    <ShipGroup>
-    <childrenObjectIds />
+    <childrenObjectIds>
+     <string>d49f5669-bfd0-4798-b874-a817c18fa2b0</string>
+     <string>4f52ae8d-f8ff-42d4-9330-7272471d4ea4</string>
+     <string>372b73d0-ac5b-4454-959c-21f4fcae28f2</string>
+     <string>b3c4f53c-89eb-4504-96df-8221f92f4afe</string>
+    </childrenObjectIds>
     <name>
      <english>Destroyer Division</english>
+     <japanese>駆逐艦分隊</japanese>
+     <chineseSimplified>驱逐舰分队</chineseSimplified>
     </name>
     <remark>
      <english>none</english>
@@ -10723,9 +10717,14 @@
     </doctrine>
    </ShipGroup>
    <ShipGroup>
-    <childrenObjectIds />
+    <childrenObjectIds>
+     <string>87adb642-c192-4e65-be9d-886f1f0fb303</string>
+     <string>28a008e7-ea79-4565-a685-b96f86343a58</string>
+    </childrenObjectIds>
     <name>
      <english>Gunboat Division</english>
+     <japanese>砲艦分隊</japanese>
+     <chineseSimplified>炮舰分队</chineseSimplified>
     </name>
     <remark>
      <english>none</english>
@@ -10795,6 +10794,620 @@
      <objectId>ca4a1175-0e93-4c20-b47c-a7ea89dbe78c</objectId>
     </doctrine>
    </ShipGroup>
+   <ShipGroup>
+    <childrenObjectIds>
+     <string>992b4579-615d-416d-8a30-7bba56f3cfff</string>
+     <string>5a3a0b02-cb07-4840-826f-19a455f049ed</string>
+     <string>9748e266-ed0b-4801-9b8c-e41132789fa8</string>
+     <string>fe973abe-ee13-4be6-aecc-f83b4b5351ea</string>
+     <string>df541375-dc46-4c48-8a58-a2b172231c45</string>
+     <string>380fcf8e-8e35-438e-a3bf-ab46760a7460</string>
+    </childrenObjectIds>
+    <name>
+     <english>British</english>
+    </name>
+    <remark>
+     <english>none</english>
+    </remark>
+    <leaderReference />
+    <type>General</type>
+    <formation>General</formation>
+    <objectId>bf3842a1-e9e7-4574-871f-f6154110e304</objectId>
+    <parentObjectId>8a581934-723b-4a02-bf78-3b8ef446c8f7</parentObjectId>
+    <doctrine>
+     <maneuverAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Manual</value>
+     </maneuverAutomaticType>
+     <fireAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
+     <ammunitionFallbackable>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </ammunitionFallbackable>
+     <ammunitionSwitchAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
+     <maximumFiringDistanceYardsFor200mmPlus>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsFor200mmPlus>
+     <maximumFiringDistanceYardsFor100mmTo200mm>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsFor100mmTo200mm>
+     <maximumFiringDistanceYardsFor100mmLess>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsFor100mmLess>
+     <maximumFiringDistanceYardsForTorpedo>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsForTorpedo>
+     <objectId>11c11dae-691e-473f-bfdc-2d1497324882</objectId>
+    </doctrine>
+   </ShipGroup>
+   <ShipGroup>
+    <childrenObjectIds>
+     <string>9485df63-8d22-46ed-a908-14f94f045fe7</string>
+     <string>2c340e67-396d-4dee-bf6f-a6ffd0e4ce8d</string>
+     <string>a44f39d8-84da-427a-9cd6-23e4e0293743</string>
+    </childrenObjectIds>
+    <name>
+     <english>Russian</english>
+    </name>
+    <remark>
+     <english>none</english>
+    </remark>
+    <leaderReference />
+    <type>General</type>
+    <formation>General</formation>
+    <objectId>18d5aebb-0cde-4596-b1dd-95030a8b3ec9</objectId>
+    <parentObjectId>8a581934-723b-4a02-bf78-3b8ef446c8f7</parentObjectId>
+    <doctrine>
+     <maneuverAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Manual</value>
+     </maneuverAutomaticType>
+     <fireAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
+     <ammunitionFallbackable>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </ammunitionFallbackable>
+     <ammunitionSwitchAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
+     <maximumFiringDistanceYardsFor200mmPlus>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsFor200mmPlus>
+     <maximumFiringDistanceYardsFor100mmTo200mm>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsFor100mmTo200mm>
+     <maximumFiringDistanceYardsFor100mmLess>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsFor100mmLess>
+     <maximumFiringDistanceYardsForTorpedo>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsForTorpedo>
+     <objectId>526ea311-e835-4ff8-8499-c1705dba463e</objectId>
+    </doctrine>
+   </ShipGroup>
+   <ShipGroup>
+    <childrenObjectIds>
+     <string>b9885b6d-90cd-45ff-b4da-60ad6d009f08</string>
+     <string>46b6e0c7-0778-4d12-96be-a3975a8515c7</string>
+     <string>4e6164db-cfe7-4682-af06-27922cce954f</string>
+     <string>46f6a687-e566-4080-bb49-c2f0f3688a63</string>
+    </childrenObjectIds>
+    <name>
+     <english>German</english>
+    </name>
+    <remark>
+     <english>none</english>
+    </remark>
+    <leaderReference />
+    <type>General</type>
+    <formation>General</formation>
+    <objectId>7954933b-c4c7-483a-9f3b-a6a02a5c8421</objectId>
+    <parentObjectId>8a581934-723b-4a02-bf78-3b8ef446c8f7</parentObjectId>
+    <doctrine>
+     <maneuverAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Manual</value>
+     </maneuverAutomaticType>
+     <fireAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
+     <ammunitionFallbackable>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </ammunitionFallbackable>
+     <ammunitionSwitchAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
+     <maximumFiringDistanceYardsFor200mmPlus>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsFor200mmPlus>
+     <maximumFiringDistanceYardsFor100mmTo200mm>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsFor100mmTo200mm>
+     <maximumFiringDistanceYardsFor100mmLess>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsFor100mmLess>
+     <maximumFiringDistanceYardsForTorpedo>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsForTorpedo>
+     <objectId>76c47caa-1f12-4cfd-be8b-c8114ededfdf</objectId>
+    </doctrine>
+   </ShipGroup>
+   <ShipGroup>
+    <childrenObjectIds>
+     <string>93ae6151-f0c7-43cd-a2c2-14c0db050e84</string>
+     <string>527dcaa8-c11f-4552-9011-b539073b926e</string>
+     <string>485dc3d6-dadd-4bf3-ad9c-4db8f861e181</string>
+     <string>4b780065-35cd-448d-b091-1188de63a0b0</string>
+    </childrenObjectIds>
+    <name>
+     <english>French</english>
+    </name>
+    <remark>
+     <english>none</english>
+    </remark>
+    <leaderReference />
+    <type>General</type>
+    <formation>General</formation>
+    <objectId>1bb19191-d15d-47a0-93fe-7366e2f7e287</objectId>
+    <parentObjectId>8a581934-723b-4a02-bf78-3b8ef446c8f7</parentObjectId>
+    <doctrine>
+     <maneuverAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Manual</value>
+     </maneuverAutomaticType>
+     <fireAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
+     <ammunitionFallbackable>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </ammunitionFallbackable>
+     <ammunitionSwitchAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
+     <maximumFiringDistanceYardsFor200mmPlus>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsFor200mmPlus>
+     <maximumFiringDistanceYardsFor100mmTo200mm>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsFor100mmTo200mm>
+     <maximumFiringDistanceYardsFor100mmLess>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsFor100mmLess>
+     <maximumFiringDistanceYardsForTorpedo>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsForTorpedo>
+     <objectId>ccc14030-9b4b-4d69-a0b6-13f088466fb2</objectId>
+    </doctrine>
+   </ShipGroup>
+   <ShipGroup>
+    <childrenObjectIds>
+     <string>93b1278e-ada9-4d7c-abac-b9553a648f34</string>
+     <string>b1bb9813-dd54-43f9-8d6f-6504250850ce</string>
+    </childrenObjectIds>
+    <name>
+     <english>Italian</english>
+    </name>
+    <remark>
+     <english>none</english>
+    </remark>
+    <leaderReference />
+    <type>General</type>
+    <formation>General</formation>
+    <objectId>6b8ea0ec-c908-4409-a9ea-66da4922d8c5</objectId>
+    <parentObjectId>8a581934-723b-4a02-bf78-3b8ef446c8f7</parentObjectId>
+    <doctrine>
+     <maneuverAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Manual</value>
+     </maneuverAutomaticType>
+     <fireAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
+     <ammunitionFallbackable>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </ammunitionFallbackable>
+     <ammunitionSwitchAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
+     <maximumFiringDistanceYardsFor200mmPlus>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsFor200mmPlus>
+     <maximumFiringDistanceYardsFor100mmTo200mm>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsFor100mmTo200mm>
+     <maximumFiringDistanceYardsFor100mmLess>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsFor100mmLess>
+     <maximumFiringDistanceYardsForTorpedo>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsForTorpedo>
+     <objectId>0605efe7-a539-4a5d-9221-31e7eb78af34</objectId>
+    </doctrine>
+   </ShipGroup>
+   <ShipGroup>
+    <childrenObjectIds>
+     <string>d5d86d3d-d45c-4fbe-9d74-713ed306c528</string>
+    </childrenObjectIds>
+    <name>
+     <english>Austrian</english>
+    </name>
+    <remark>
+     <english>none</english>
+    </remark>
+    <leaderReference />
+    <type>General</type>
+    <formation>General</formation>
+    <objectId>a76c8dc6-b2b5-48b6-aa21-f0004ea7d5a5</objectId>
+    <parentObjectId>8a581934-723b-4a02-bf78-3b8ef446c8f7</parentObjectId>
+    <doctrine>
+     <maneuverAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Manual</value>
+     </maneuverAutomaticType>
+     <fireAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
+     <ammunitionFallbackable>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </ammunitionFallbackable>
+     <ammunitionSwitchAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
+     <maximumFiringDistanceYardsFor200mmPlus>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsFor200mmPlus>
+     <maximumFiringDistanceYardsFor100mmTo200mm>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsFor100mmTo200mm>
+     <maximumFiringDistanceYardsFor100mmLess>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsFor100mmLess>
+     <maximumFiringDistanceYardsForTorpedo>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsForTorpedo>
+     <objectId>f6e8a4dd-6c19-481c-905c-300c529d6ae0</objectId>
+    </doctrine>
+   </ShipGroup>
+   <ShipGroup>
+    <childrenObjectIds>
+     <string>69cfe838-4676-464c-baf1-68414b7a1357</string>
+    </childrenObjectIds>
+    <name>
+     <english>Japanese</english>
+    </name>
+    <remark>
+     <english>none</english>
+    </remark>
+    <leaderReference />
+    <type>General</type>
+    <formation>General</formation>
+    <objectId>544f2588-329f-4cf8-94e9-888fddce3bfe</objectId>
+    <parentObjectId>8a581934-723b-4a02-bf78-3b8ef446c8f7</parentObjectId>
+    <doctrine>
+     <maneuverAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Manual</value>
+     </maneuverAutomaticType>
+     <fireAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
+     <ammunitionFallbackable>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </ammunitionFallbackable>
+     <ammunitionSwitchAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
+     <maximumFiringDistanceYardsFor200mmPlus>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsFor200mmPlus>
+     <maximumFiringDistanceYardsFor100mmTo200mm>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsFor100mmTo200mm>
+     <maximumFiringDistanceYardsFor100mmLess>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsFor100mmLess>
+     <maximumFiringDistanceYardsForTorpedo>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsForTorpedo>
+     <objectId>e5ad396a-c145-467d-b8f6-9592e14f2c21</objectId>
+    </doctrine>
+   </ShipGroup>
+   <ShipGroup>
+    <childrenObjectIds>
+     <string>79d197e6-98c3-480d-b533-ad0c3ea785e3</string>
+    </childrenObjectIds>
+    <name>
+     <english>American</english>
+    </name>
+    <remark>
+     <english>none</english>
+    </remark>
+    <leaderReference />
+    <type>General</type>
+    <formation>General</formation>
+    <objectId>c3943198-66b6-4d70-be17-a89f25a15b72</objectId>
+    <parentObjectId>8a581934-723b-4a02-bf78-3b8ef446c8f7</parentObjectId>
+    <doctrine>
+     <maneuverAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Manual</value>
+     </maneuverAutomaticType>
+     <fireAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
+     <ammunitionFallbackable>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </ammunitionFallbackable>
+     <ammunitionSwitchAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
+     <maximumFiringDistanceYardsFor200mmPlus>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsFor200mmPlus>
+     <maximumFiringDistanceYardsFor100mmTo200mm>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsFor100mmTo200mm>
+     <maximumFiringDistanceYardsFor100mmLess>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsFor100mmLess>
+     <maximumFiringDistanceYardsForTorpedo>
+      <isInherited>true</isInherited>
+      <value>
+       <isSpecified>false</isSpecified>
+       <value>0</value>
+      </value>
+     </maximumFiringDistanceYardsForTorpedo>
+     <objectId>83f5ea5d-6d16-4958-8a99-bed6b2241102</objectId>
+    </doctrine>
+   </ShipGroup>
   </shipGroups>
   <scenarioState>
    <locationLabels>
@@ -10812,7 +11425,34 @@
    <surpriseAttack>true</surpriseAttack>
    <awakeDistanceYards>0</awakeDistanceYards>
    <globalDescription>
-    <english>none</english>
+    <english>Hypothetical scenario 
+
+What if the Beiyang Fleet had not avoided battle to preserve its ships, but instead launched a surprise attack on the main force of the Eight-Nation Alliance fleet anchored in the roadstead of Taku? 
+
+Note: Some commanders and captains of the Eight-Nation Alliance were historically leading marines in the Seymour Expedition (such as Jellicoe, Callaghan, Seymour, etc.), and were not aboard their ships at the time. 
+
+Adaptation of a scenario of In Mahan's Wake.</english>
+    <japanese>仮想シナリオ
+
+もし北洋艦隊が艦艇温存のために戦闘を回避せず、代わりに大沽沖の泊地に停泊している八カ国連合艦隊主力に対して奇襲攻撃を仕掛けていたら、どうなっていただろうか？
+
+注：八カ国連合の一部の司令官および艦長は、歴史的にはシーモア遠征において海兵隊を率いており（ジェリコー、キャラハン、シーモアなど）、当時は艦上にいなかった。
+
+In Mahan's Wake のシナリオを基にした改編。</japanese>
+    <chineseSimplified>假想剧本
+
+如果北洋水师当时没有为了保存舰队而回避战斗，而是对停泊在大沽外锚地的八国联军舰队主力发动突然袭击，会发生什么？
+
+注：八国联军中的部分指挥官和舰长在历史上正率领海军陆战队参加西摩尔远征（如杰利科、卡拉汉、西摩等），当时并不在各自舰上。
+
+改编自 In Mahan's Wake 中的一个剧本。</chineseSimplified>
+    <chineseTraditional>假想劇本
+
+如果北洋艦隊當時沒有為了保存艦隊而避免戰鬥，而是對停泊在大沽外錨地的八國聯軍艦隊主力發動一次突襲，結果會如何？
+
+註：八國聯軍中的部分指揮官與艦長在歷史上正率領海軍陸戰隊參加西摩遠征（如傑利科、卡拉漢、西摩等），當時並不在其所屬艦艇上。
+
+改編自 In Mahan's Wake 中的一個劇本。</chineseTraditional>
    </globalDescription>
    <weaponSimulationAssignmentClock>
     <intervalSeconds>120</intervalSeconds>
@@ -10830,7 +11470,7 @@
    <firstDisengaged>false</firstDisengaged>
    <firstReachEndDateTime>false</firstReachEndDateTime>
    <hasEndDateTime>true</hasEndDateTime>
-   <endDateTime>1900-06-17T18:50:00Z</endDateTime>
+   <endDateTime>1900-06-16T18:50:00Z</endDateTime>
    <backgroundPictureReference>
     <isBuiltin>false</isBuiltin>
    </backgroundPictureReference>

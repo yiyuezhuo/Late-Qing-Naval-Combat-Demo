@@ -4867,4 +4867,199 @@ https://en.wikipedia.org/wiki/Bowman_H._McCalla</remark>
 </remark>
   <objectId>88f747c9-1de2-48e0-82ce-2b90a9eedd63</objectId>
  </Leader>
+ <Leader>
+  <name>
+   <english>Vladimir Sarychev</english>
+   <japanese>ウラジーミル・サリチェフ</japanese>
+   <chineseSimplified>弗拉基米尔·萨雷切夫</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Vladimir Sarychev.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>Сарычев, Владимир Фёдорович
+
+https://ru.wikipedia.org/wiki/%D0%A1%D0%B0%D1%80%D1%8B%D1%87%D0%B5%D0%B2,_%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BC%D0%B8%D1%80_%D0%A4%D1%91%D0%B4%D0%BE%D1%80%D0%BE%D0%B2%D0%B8%D1%87
+</remark>
+  <objectId>9161152b-cb63-465a-8f83-9fea0b1ea743</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Roger Keyes</english>
+   <japanese>ロジャー・キーズ</japanese>
+   <chineseSimplified>罗杰·基斯</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Roger_Keyes.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>AboveAverage</navalStrategic>
+  <navalOperational>AboveAverage</navalOperational>
+  <navalTactical>AboveAverage</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <remark>Admiral of the Fleet Roger John Brownlow Keyes, 1st Baron Keyes
+
+https://en.wikipedia.org/wiki/Roger_Keyes,_1st_Baron_Keyes
+</remark>
+  <objectId>cef5855d-b252-403b-b6d8-30850fda7c05</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Colin Mackenzie</english>
+   <japanese>コリン・マッケンジー</japanese>
+   <chineseSimplified>科林·麦肯齐</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Britain_Generic_Leader.png</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://www.dreadnoughtproject.org/tfs/index.php/Colin_Mackenzie</remark>
+  <objectId>be456c2c-0e51-473f-8272-f822cb2b6298</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Jean-François-Charles Amet</english>
+   <japanese>ジャン＝フランソワ＝シャルル・アメ</japanese>
+   <chineseSimplified>让-弗朗索瓦-夏尔·阿梅</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Jean-François-Charles Amet.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Average</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://fr.wikipedia.org/wiki/Jean-Fran%C3%A7ois-Charles_Amet</remark>
+  <objectId>dcdacc45-28db-4941-a14b-3e4fde90dc2a</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Yakov Hildebrandt</english>
+   <japanese>ヤーコフ・ヒルデブラント</japanese>
+   <chineseSimplified>雅科夫·希尔德布兰特</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Yakov Hildebrandt.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Average</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>Яков Апполонович Гильтебрандт
+
+https://en.wikipedia.org/wiki/Yakov_Hildebrandt
+</remark>
+  <objectId>68103d70-ce29-4022-a090-3268ea2c6356</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Rao Mingqu</english>
+   <japanese>饒鳴衢</japanese>
+   <chineseSimplified>饶鸣衢</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\China_Generic_Leader.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://baike.baidu.com/item/%E9%A5%B6%E9%B8%A3%E8%A1%A2/2266975
+</remark>
+  <objectId>43196154-3a3b-47b1-b366-20a0f3f9c5fa</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Edward Seymour</english>
+   <japanese>エドワード・シーモア</japanese>
+   <chineseSimplified>爱德华·西摩尔</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Edward Seymour.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Average</navalStrategic>
+  <navalOperational>Average</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Average</landOperational>
+  <landTactical>Average</landTactical>
+  <traits />
+  <remark>Admiral of the Fleet Sir Edward Hobart Seymour
+
+https://en.wikipedia.org/wiki/Edward_Seymour_(Royal_Navy_officer)
+</remark>
+  <objectId>7ace35ae-2ffa-4e58-adbd-4d0cca9ed8d3</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Sa Zhenbing</english>
+   <japanese>薩鎮氷</japanese>
+   <chineseSimplified>萨镇冰</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Sa Zhenbing.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>AboveAverage</navalStrategic>
+  <navalOperational>AboveAverage</navalOperational>
+  <navalTactical>AboveAverage</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Sa_Zhenbing
+</remark>
+  <objectId>bc4e9164-8784-40e2-85f8-62a837ae3b06</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Liu Guanxiong</english>
+   <japanese>劉冠雄</japanese>
+   <chineseSimplified>刘冠雄</chineseSimplified>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Liu_Guanxiong.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Liu_Guanxiong
+</remark>
+  <objectId>aa4fdb8c-0888-41f3-afe6-4cee0293f72a</objectId>
+ </Leader>
 </ArrayOfLeader>

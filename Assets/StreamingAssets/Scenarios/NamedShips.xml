@@ -5881,10 +5881,14 @@ https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%81%D0%BF%D0%BE%D1%89%D0%B0%D0%B4%D
   </fateDesc>
   <applicableYearBegin>1900</applicableYearBegin>
   <applicableYearEnd>1900</applicableYearEnd>
-  <defaultLeaderReference />
+  <defaultLeaderReference>
+   <referenceObjectId>bc4e9164-8784-40e2-85f8-62a837ae3b06</referenceObjectId>
+  </defaultLeaderReference>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Chinese_cruiser_Hai_Chi
+</remark>
   <objectId>1a88e426-09c2-40b3-9df1-00d583e1ef16</objectId>
  </NamedShip>
  <NamedShip>
@@ -5902,10 +5906,14 @@ https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%81%D0%BF%D0%BE%D1%89%D0%B0%D0%B4%D
   </fateDesc>
   <applicableYearBegin>1900</applicableYearBegin>
   <applicableYearEnd>1900</applicableYearEnd>
-  <defaultLeaderReference />
+  <defaultLeaderReference>
+   <referenceObjectId>aa4fdb8c-0888-41f3-afe6-4cee0293f72a</referenceObjectId>
+  </defaultLeaderReference>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://en.wikipedia.org/wiki/Chinese_cruiser_Hai_Tien
+</remark>
   <objectId>2f29c316-7ca5-4dea-9ba3-d76f056c4a90</objectId>
  </NamedShip>
  <NamedShip>
@@ -7226,7 +7234,7 @@ https://www.dreadnoughtproject.org/tfs/index.php/H.M.S._Barfleur_(1892)</remark>
   <name>
    <english>Whiting</english>
    <japanese>ホワイティング</japanese>
-   <chineseSimplified>惠廷</chineseSimplified>
+   <chineseSimplified>鳕鱼</chineseSimplified>
   </name>
   <builderDesc>
    <english>none</english>
@@ -7236,7 +7244,9 @@ https://www.dreadnoughtproject.org/tfs/index.php/H.M.S._Barfleur_(1892)</remark>
   </fateDesc>
   <applicableYearBegin>1900</applicableYearBegin>
   <applicableYearEnd>1900</applicableYearEnd>
-  <defaultLeaderReference />
+  <defaultLeaderReference>
+   <referenceObjectId>be456c2c-0e51-473f-8272-f822cb2b6298</referenceObjectId>
+  </defaultLeaderReference>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
@@ -7248,7 +7258,7 @@ https://www.dreadnoughtproject.org/tfs/index.php/H.M.S._Barfleur_(1892)</remark>
   <name>
    <english>Fame</english>
    <japanese>フェイム</japanese>
-   <chineseSimplified>费姆</chineseSimplified>
+   <chineseSimplified>名誉</chineseSimplified>
   </name>
   <builderDesc>
    <english>none</english>
@@ -7258,7 +7268,9 @@ https://www.dreadnoughtproject.org/tfs/index.php/H.M.S._Barfleur_(1892)</remark>
   </fateDesc>
   <applicableYearBegin>1900</applicableYearBegin>
   <applicableYearEnd>1900</applicableYearEnd>
-  <defaultLeaderReference />
+  <defaultLeaderReference>
+   <referenceObjectId>cef5855d-b252-403b-b6d8-30850fda7c05</referenceObjectId>
+  </defaultLeaderReference>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
@@ -7324,8 +7336,8 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%B8%D0%B2%D1%83%D1%87_(%D0%BA%D0%B0%D0%BD
   <shipClassObjectId>f2959740-a7dc-49a9-bf2c-d133c3f31394</shipClassObjectId>
   <name>
    <english>Iltis</english>
-   <japanese>イルティス/</japanese>
-   <chineseSimplified>伊尔蒂斯</chineseSimplified>
+   <japanese>イルティス</japanese>
+   <chineseSimplified>鸡貂</chineseSimplified>
   </name>
   <builderDesc>
    <english>none</english>
@@ -7828,7 +7840,9 @@ https://en.wikipedia.org/wiki/Surprise-class_cruiser#HMS_Alacrity
   </fateDesc>
   <applicableYearBegin>1900</applicableYearBegin>
   <applicableYearEnd>1900</applicableYearEnd>
-  <defaultLeaderReference />
+  <defaultLeaderReference>
+   <referenceObjectId>43196154-3a3b-47b1-b366-20a0f3f9c5fa</referenceObjectId>
+  </defaultLeaderReference>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
@@ -7972,7 +7986,7 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
   <applicableYearBegin>1900</applicableYearBegin>
   <applicableYearEnd>1900</applicableYearEnd>
   <defaultLeaderReference>
-   <referenceObjectId>61b49e4e-3b83-42bf-aa11-f1d1f0b60f08</referenceObjectId>
+   <referenceObjectId>88f747c9-1de2-48e0-82ce-2b90a9eedd63</referenceObjectId>
   </defaultLeaderReference>
   <crewRating>-3</crewRating>
   <speedModifier>0</speedModifier>
@@ -8028,7 +8042,7 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
   <name>
    <english>Lion</english>
    <japanese>ライオン</japanese>
-   <chineseSimplified>里昂</chineseSimplified>
+   <chineseSimplified>狮子</chineseSimplified>
   </name>
   <builderDesc>
    <english>none</english>
@@ -8038,11 +8052,38 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
   </fateDesc>
   <applicableYearBegin>1900</applicableYearBegin>
   <applicableYearEnd>1900</applicableYearEnd>
-  <defaultLeaderReference />
+  <defaultLeaderReference>
+   <referenceObjectId>dcdacc45-28db-4941-a14b-3e4fde90dc2a</referenceObjectId>
+  </defaultLeaderReference>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
   <remark>https://fr.wikipedia.org/wiki/Liste_des_canonni%C3%A8res_fran%C3%A7aises</remark>
   <objectId>5e6268f2-81c8-4801-9d64-039fb754e709</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>db248dda-a65a-48f3-b5c8-6904346b2782</shipClassObjectId>
+  <name>
+   <english>Gilyak</english>
+   <japanese>ギリャーク</japanese>
+   <chineseSimplified>吉利亚克</chineseSimplified>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>9161152b-cb63-465a-8f83-9fea0b1ea743</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>https://ru.wikipedia.org/wiki/%D0%93%D0%B8%D0%BB%D1%8F%D0%BA_(%D0%BA%D0%B0%D0%BD%D0%BE%D0%BD%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F_%D0%BB%D0%BE%D0%B4%D0%BA%D0%B0)
+</remark>
+  <objectId>1747168c-86cd-446f-a51f-e0de0328ab4c</objectId>
  </NamedShip>
 </ArrayOfNamedShip>

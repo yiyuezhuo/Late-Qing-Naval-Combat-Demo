@@ -4253,6 +4253,14 @@ MonoBehaviour:
     m_Key: No ship class is selected.
     m_Metadata:
       m_Items: []
+  - m_Id: 68749144731848704
+    m_Key: BRH - Battle of the Taku Forts.scen.xml
+    m_Metadata:
+      m_Items: []
+  - m_Id: 68749153867042816
+    m_Key: BRS - Battle of Taku Roadstead.scen.xml
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

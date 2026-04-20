@@ -4263,6 +4263,14 @@ MonoBehaviour:
     m_Localized: No ship class is selected.
     m_Metadata:
       m_Items: []
+  - m_Id: 68749144731848704
+    m_Localized: BRH - Battle of the Taku Forts
+    m_Metadata:
+      m_Items: []
+  - m_Id: 68749153867042816
+    m_Localized: BRS - Battle of Taku Roadstead
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

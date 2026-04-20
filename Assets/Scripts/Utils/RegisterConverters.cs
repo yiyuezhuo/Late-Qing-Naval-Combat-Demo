@@ -142,7 +142,7 @@ public static class RegisteredConverters
 
             return string.IsNullOrWhiteSpace(leaderName)
                 ? name ?? "[Not Specified SGM]"
-                : $"{name ?? "[Not Specified SGM]"} ({leaderName})";
+                : $"{name ?? "[Not Specified SGM]"}   [{leaderName}]";
         });
 
         Register("Country => StyleBackground", (ref Country country) =>

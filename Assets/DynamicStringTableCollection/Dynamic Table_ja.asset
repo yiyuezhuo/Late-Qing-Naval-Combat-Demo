@@ -4303,6 +4303,14 @@ MonoBehaviour:
     m_Localized: "\u8266\u7D1A\u304C\u9078\u629E\u3055\u308C\u3066\u3044\u307E\u305B\u3093\u3002"
     m_Metadata:
       m_Items: []
+  - m_Id: 68749144731848704
+    m_Localized: "BRH - \u5927\u6CBD\u7832\u53F0\u306E\u6226\u3044"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 68749153867042816
+    m_Localized: "BRS - \u5927\u6CBD\u6CCA\u5730\u306E\u6226\u3044"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

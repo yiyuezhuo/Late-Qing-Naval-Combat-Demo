@@ -68,6 +68,7 @@ namespace NavalCombatCore
         public float projectileDiameterInches = 12f;
         public float impactVelocityMetersPerSecond = 500f;
         public float angleOfFallDeg = 10f;
+        public float projectileQualityFactor = 1f;
         public TerminalBallisticsFormulaParameters formulaParameters = TerminalBallisticsFormulaParameters.ForPreset(TerminalBallisticsFormulaPreset.DeMarreNickelSteel);
     }
 
@@ -130,6 +131,8 @@ namespace NavalCombatCore
                 return "Impact velocity must be greater than 0.";
             if (!float.IsFinite(input.angleOfFallDeg) || input.angleOfFallDeg < 0f || input.angleOfFallDeg > 90f)
                 return "Angle of fall must be between 0 and 90 degrees.";
+            if (!IsFinitePositive(input.projectileQualityFactor))
+                return "Projectile quality factor must be greater than 0.";
 
             var parameters = input.formulaParameters;
             if (parameters == null)
@@ -157,7 +160,7 @@ namespace NavalCombatCore
             var energyDensity = weightPounds / Math.Pow(diameterInches, 3d);
             var velocityRatio = velocityFeetPerSecond / parameters.coefficient;
             var obliquityMultiplier = GetObliquityMultiplier(obliquityDeg, parameters.obliquityCosineExponent);
-            var innerTerm = energyDensity * velocityRatio * velocityRatio * obliquityMultiplier;
+            var innerTerm = energyDensity * velocityRatio * velocityRatio * obliquityMultiplier * input.projectileQualityFactor;
             if (innerTerm <= 0d)
                 return 0f;
 

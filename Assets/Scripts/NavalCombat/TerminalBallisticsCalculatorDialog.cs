@@ -245,8 +245,10 @@ public sealed partial class ExternalBallisticsCalculatorDialog
     FloatField terminalEnergyDensityExponentField;
     FloatField terminalFormulaCoefficientField;
     FloatField terminalObliquityCosineExponentField;
+    FloatField terminalProjectileQualityField;
     Label terminalProjectileDiameterMmLabel;
     Label terminalMassPoundsLabel;
+    Label terminalMuzzleVelocityPreviewLabel;
     Label terminalFormulaHelpLabel;
     Label terminalStatusLabel;
     VisualElement terminalSingleRows;
@@ -320,15 +322,16 @@ public sealed partial class ExternalBallisticsCalculatorDialog
     void BuildTerminalInputPanel(VisualElement root)
     {
         root.Add(BuildSectionLabel(Localize("Inputs")));
+        root.Add(BuildPresetButton(PopupTerminalPresetDialog));
 
-        terminalModeField = new DropdownField(Localize("Mode"), new List<string> { Localize("Single"), Localize("Combined") }, 0);
+        terminalModeField = new DropdownField(Localize("Mode"), new List<string> { Localize("Single"), Localize("Combined") }, 1);
         root.Add(terminalModeField);
 
         terminalProjectileDiameterInchField = BuildFloatField(Localize("Projectile Diameter (inch)"), 12f);
         terminalProjectileDiameterMmLabel = new Label();
         terminalProjectileDiameterMmLabel.style.marginLeft = 3;
         terminalProjectileDiameterMmLabel.style.marginBottom = 4;
-        terminalProjectileMassKgField = BuildFloatField(Localize("Projectile Mass (kg)"), 386f);
+        terminalProjectileMassKgField = BuildFloatField(Localize("Projectile Mass (lb)"), DefaultBallisticsPreset.projectileMassPounds);
         terminalMassPoundsLabel = new Label();
         terminalMassPoundsLabel.style.marginLeft = 3;
         terminalMassPoundsLabel.style.marginBottom = 4;
@@ -346,11 +349,15 @@ public sealed partial class ExternalBallisticsCalculatorDialog
 
         terminalCombinedRows = new VisualElement();
         terminalCombinedRows.Add(BuildSectionLabel(Localize("External Ballistics Inputs")));
-        terminalMuzzleVelocityField = BuildFloatField(Localize("Muzzle Velocity (m/s)"), 730f);
+        terminalMuzzleVelocityField = BuildFloatField(Localize("Muzzle Velocity (fps)"), ExternalBallisticsSolver.MetersPerSecondToFeetPerSecond(730f));
+        terminalMuzzleVelocityPreviewLabel = new Label();
+        terminalMuzzleVelocityPreviewLabel.style.marginLeft = 3;
+        terminalMuzzleVelocityPreviewLabel.style.marginBottom = 4;
         terminalMinElevationField = BuildFloatField(Localize("Min Elevation (deg)"), 1f);
         terminalMaxElevationField = BuildFloatField(Localize("Max Elevation (deg)"), 20f);
         terminalElevationStepField = BuildFloatField(Localize("Elevation Step (deg)"), 1f);
         terminalCombinedRows.Add(terminalMuzzleVelocityField);
+        terminalCombinedRows.Add(terminalMuzzleVelocityPreviewLabel);
         terminalCombinedRows.Add(terminalMinElevationField);
         terminalCombinedRows.Add(terminalMaxElevationField);
         terminalCombinedRows.Add(terminalElevationStepField);
@@ -386,11 +393,13 @@ public sealed partial class ExternalBallisticsCalculatorDialog
         terminalEnergyDensityExponentField = BuildFloatField(Localize("Energy Density Exponent"), 0.71429f);
         terminalFormulaCoefficientField = BuildFloatField(Localize("Formula Coefficient C"), 1f);
         terminalObliquityCosineExponentField = BuildFloatField(Localize("Obliquity Cosine Exponent"), 3f);
+        terminalProjectileQualityField = BuildFloatField(Localize("Projectile Quality Factor"), 1f);
         root.Add(terminalFormulaConstantField);
         root.Add(terminalProjectileDiameterExponentField);
         root.Add(terminalEnergyDensityExponentField);
         root.Add(terminalFormulaCoefficientField);
         root.Add(terminalObliquityCosineExponentField);
+        root.Add(terminalProjectileQualityField);
 
         terminalFormulaHelpLabel = new Label();
         terminalFormulaHelpLabel.style.whiteSpace = WhiteSpace.Normal;
@@ -418,6 +427,7 @@ public sealed partial class ExternalBallisticsCalculatorDialog
         UpdateTerminalDragInputModeVisibility();
         UpdateTerminalHelpers();
         UpdateTerminalFormulaParameterState();
+        ApplyTerminalPreset(DefaultBallisticsPreset);
     }
 
     void BuildTerminalOutputPanel(VisualElement root)
@@ -609,7 +619,8 @@ public sealed partial class ExternalBallisticsCalculatorDialog
             terminalProjectileDiameterExponentField,
             terminalEnergyDensityExponentField,
             terminalFormulaCoefficientField,
-            terminalObliquityCosineExponentField
+            terminalObliquityCosineExponentField,
+            terminalProjectileQualityField
         })
         {
             field.RegisterValueChangedCallback(_ =>
@@ -631,6 +642,33 @@ public sealed partial class ExternalBallisticsCalculatorDialog
             UpdateTerminalFormulaParameterState();
             CalculateTerminalBallistics();
         });
+    }
+
+    void PopupTerminalPresetDialog()
+    {
+        PopupBallisticsPresetDialog(ApplyTerminalPreset);
+    }
+
+    void ApplyTerminalPreset(BallisticsPresetOption preset)
+    {
+        if (preset == null)
+            return;
+
+        terminalModeField?.SetValueWithoutNotify(Localize("Combined"));
+        terminalProjectileDiameterInchField?.SetValueWithoutNotify(preset.caliberInches);
+        terminalProjectileMassKgField?.SetValueWithoutNotify(preset.projectileMassPounds);
+        terminalMuzzleVelocityField?.SetValueWithoutNotify(preset.muzzleVelocityFeetPerSecond);
+        terminalDragInputModeField?.SetValueWithoutNotify(Localize("G Model BC"));
+        terminalBallisticCoefficientField?.SetValueWithoutNotify(preset.ballisticCoefficient);
+        terminalMaxElevationField?.SetValueWithoutNotify(preset.maxElevationDeg);
+
+        if (terminalMinElevationField != null && terminalMinElevationField.value > preset.maxElevationDeg)
+            terminalMinElevationField.SetValueWithoutNotify(Mathf.Min(1f, preset.maxElevationDeg));
+
+        UpdateTerminalModeVisibility();
+        UpdateTerminalDragInputModeVisibility();
+        UpdateTerminalHelpers();
+        CalculateTerminalBallistics();
     }
 
     void CalculateTerminalBallistics()
@@ -719,6 +757,8 @@ public sealed partial class ExternalBallisticsCalculatorDialog
             return Localize("Formula coefficient must be greater than 0.");
         if (!float.IsFinite(terminalObliquityCosineExponentField.value) || terminalObliquityCosineExponentField.value < 0f)
             return Localize("Obliquity cosine exponent must be 0 or greater.");
+        if (!TerminalIsFinitePositive(terminalProjectileQualityField.value))
+            return Localize("Projectile quality factor must be greater than 0.");
 
         if (GetTerminalMode() == TerminalBallisticsCalculatorMode.Single)
         {
@@ -768,10 +808,11 @@ public sealed partial class ExternalBallisticsCalculatorDialog
     {
         return new TerminalBallisticsInput
         {
-            projectileMassKg = terminalProjectileMassKgField.value,
+            projectileMassKg = ExternalBallisticsSolver.PoundsToKilograms(terminalProjectileMassKgField.value),
             projectileDiameterInches = terminalProjectileDiameterInchField.value,
             impactVelocityMetersPerSecond = impactVelocityMetersPerSecond,
             angleOfFallDeg = angleOfFallDeg,
+            projectileQualityFactor = terminalProjectileQualityField.value,
             formulaParameters = BuildTerminalFormulaParameters()
         };
     }
@@ -780,11 +821,11 @@ public sealed partial class ExternalBallisticsCalculatorDialog
     {
         return new ExternalBallisticsInput
         {
-            muzzleVelocityMetersPerSecond = terminalMuzzleVelocityField.value,
+            muzzleVelocityMetersPerSecond = ExternalBallisticsSolver.FeetPerSecondToMetersPerSecond(terminalMuzzleVelocityField.value),
             elevationAngleDeg = angleDeg,
             dragInputMode = GetTerminalDragInputMode(),
             projectileDiameterMeters = ExternalBallisticsSolver.InchesToMeters(terminalProjectileDiameterInchField.value),
-            projectileMassKg = terminalProjectileMassKgField.value,
+            projectileMassKg = ExternalBallisticsSolver.PoundsToKilograms(terminalProjectileMassKgField.value),
             ballisticCoefficient = terminalBallisticCoefficientField.value,
             dragModel = terminalDragModelField.index == 1 ? ExternalBallisticsDragModel.G7 : ExternalBallisticsDragModel.G1,
             constantDragCoefficient = terminalConstantDragCoefficientField.value,
@@ -851,15 +892,10 @@ public sealed partial class ExternalBallisticsCalculatorDialog
             return;
 
         var sourceRows = GetLowTrajectoryTerminalRowsForInterpolation();
-        if (sourceRows.Count < 2)
+        if (sourceRows.Count == 0)
             return;
 
-        var maxRange = sourceRows.Max(row => row.rangeYardsValue.Value);
-        var maxTableRange = TerminalPenetrationTableRangesYards.FirstOrDefault(range => range >= maxRange);
-        if (maxTableRange <= 0f)
-            maxTableRange = TerminalPenetrationTableRangesYards[^1];
-
-        foreach (var rangeYards in TerminalPenetrationTableRangesYards.Where(range => range <= maxTableRange + 0.001f))
+        foreach (var rangeYards in GetTerminalPenetrationTableDisplayRanges(sourceRows))
         {
             var sample = InterpolateTerminalPenetrationTableSample(sourceRows, rangeYards);
             terminalPenetrationTableRows.Add(new TerminalBallisticsPenetrationTableRow
@@ -902,15 +938,56 @@ public sealed partial class ExternalBallisticsCalculatorDialog
             .ToList();
     }
 
+    static List<float> GetTerminalPenetrationTableDisplayRanges(List<TerminalBallisticsTableRow> sourceRows)
+    {
+        var minRange = sourceRows.Min(row => row.rangeYardsValue.Value);
+        var maxRange = sourceRows.Max(row => row.rangeYardsValue.Value);
+        var displayRanges = new List<float>();
+
+        displayRanges.Add(minRange);
+        displayRanges.AddRange(TerminalPenetrationTableRangesYards.Where(range => range > minRange + 0.001f && range < maxRange - 0.001f));
+        if (maxRange > minRange + 0.001f)
+            displayRanges.Add(maxRange);
+
+        return displayRanges
+            .Distinct()
+            .OrderBy(range => range)
+            .ToList();
+    }
+
     static (float angleOfFallDeg, float timeOfFlightSeconds, float horizontalPenetrationInches, float verticalPenetrationInches) InterpolateTerminalPenetrationTableSample(
         List<TerminalBallisticsTableRow> sourceRows,
         float rangeYards)
     {
+        if (sourceRows.Count == 1)
+        {
+            var row = sourceRows[0];
+            return (
+                row.result.angleOfFallDeg,
+                row.timeOfFlightSecondsValue ?? 0f,
+                row.result.horizontalPenetrationInches,
+                row.result.verticalPenetrationInches);
+        }
+
         var upperIndex = sourceRows.FindIndex(row => row.rangeYardsValue.Value >= rangeYards);
+        if (upperIndex == 0)
+        {
+            var row = sourceRows[0];
+            return (
+                row.result.angleOfFallDeg,
+                row.timeOfFlightSecondsValue ?? 0f,
+                row.result.horizontalPenetrationInches,
+                row.result.verticalPenetrationInches);
+        }
         if (upperIndex < 0)
-            upperIndex = sourceRows.Count - 1;
-        else if (upperIndex == 0)
-            upperIndex = 1;
+        {
+            var row = sourceRows[^1];
+            return (
+                row.result.angleOfFallDeg,
+                row.timeOfFlightSecondsValue ?? 0f,
+                row.result.horizontalPenetrationInches,
+                row.result.verticalPenetrationInches);
+        }
 
         TerminalBallisticsTableRow lower;
         TerminalBallisticsTableRow upper;
@@ -990,17 +1067,16 @@ public sealed partial class ExternalBallisticsCalculatorDialog
     {
         if (terminalProjectileDiameterMmLabel != null)
         {
-            terminalProjectileDiameterMmLabel.text = Localize(
-                "Approx. {0:0.#} mm",
-                TerminalBallisticsSolver.InchesToMillimeters(terminalProjectileDiameterInchField.value));
+            terminalProjectileDiameterMmLabel.text = $"{Localize("Approx.")} {TerminalBallisticsSolver.InchesToMillimeters(terminalProjectileDiameterInchField.value):0.#} mm";
         }
 
         if (terminalMassPoundsLabel != null)
         {
-            terminalMassPoundsLabel.text = Localize(
-                "Approx. {0:0} lb",
-                TerminalBallisticsSolver.KilogramsToPounds(terminalProjectileMassKgField.value));
+            terminalMassPoundsLabel.text = $"{Localize("Approx.")} {ExternalBallisticsSolver.PoundsToKilograms(terminalProjectileMassKgField.value):0.#} kg";
         }
+
+        if (terminalMuzzleVelocityPreviewLabel != null)
+            terminalMuzzleVelocityPreviewLabel.text = $"{Localize("Approx.")} {ExternalBallisticsSolver.FeetPerSecondToMetersPerSecond(terminalMuzzleVelocityField.value):0.#} m/s";
     }
 
     void ApplyTerminalFormulaPreset()
@@ -1056,8 +1132,8 @@ public sealed partial class ExternalBallisticsCalculatorDialog
         return preset switch
         {
             TerminalBallisticsFormulaPreset.KruppAllPurpose => Localize("Krupp All-Purpose is a normal-obliquity-oriented Okun formula. Its preset uses no cosine obliquity term."),
-            TerminalBallisticsFormulaPreset.Custom => Localize("Custom edits all power-law coefficients. Okun units are ft/s, inches, and pounds internally."),
-            _ => Localize("De Marre Nickel-Steel uses Okun's cosine obliquity term. Vertical armor obliquity is angle of fall; horizontal armor obliquity is 90 minus angle of fall.")
+            TerminalBallisticsFormulaPreset.Custom => Localize("Custom edits all power-law coefficients. Okun units are ft/s, inches, and pounds internally. Projectile quality factor multiplies the inner term before the penetration power law."),
+            _ => Localize("De Marre Nickel-Steel uses Okun's cosine obliquity term. Vertical armor obliquity is angle of fall; horizontal armor obliquity is 90 minus angle of fall. Projectile quality factor multiplies the inner term before the penetration power law.")
         };
     }
 

@@ -3828,7 +3828,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
     // Legacy helper for simple read-only custom content. New feature dialogs should use
     // their own UXML and PopupXxxDialog entry point instead of extending Message Dialog.
-    public TempDialog PopupCustomMessageContentDialog(string title, Func<VisualElement> contentFactory, float width = 900f, float height = 560f, string confirmButtonText = null)
+    public TempDialog PopupCustomMessageContentDialog(string title, Func<VisualElement> contentFactory, float width = 900f, float height = 560f, string confirmButtonText = null, string cancelButtonText = null)
     {
         var tempDialog = new TempDialog()
         {
@@ -3862,6 +3862,15 @@ public class DialogRoot : SingletonDocument<DialogRoot>
                 }
             }
 
+            if (!string.IsNullOrEmpty(cancelButtonText))
+            {
+                var cancelButton = el.Q<Button>("CancelButton");
+                if (cancelButton != null)
+                {
+                    cancelButton.text = cancelButtonText;
+                }
+            }
+
             var customContent = contentFactory?.Invoke();
             if (contentTextField != null && customContent != null)
             {
@@ -3876,6 +3885,94 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
         tempDialog.Popup();
         return tempDialog;
+    }
+
+    public void PopupBallisticsPresetPickerDialog(string title, Func<VisualElement> contentFactory, Func<bool> confirmCheck, Action onConfirm, string confirmButtonText = null, string closeButtonText = null)
+    {
+        var overlay = new VisualElement
+        {
+            style =
+            {
+                position = Position.Absolute,
+                left = 0,
+                top = 0,
+                right = 0,
+                bottom = 0,
+                alignItems = Align.Center,
+                justifyContent = Justify.Center
+            }
+        };
+
+        var panel = new VisualElement();
+        panel.AddToClassList("panel");
+        panel.style.width = 640f;
+        panel.style.height = 320f;
+        panel.style.flexGrow = 0;
+        panel.style.flexShrink = 0;
+
+        var titleLabel = new Label(title ?? "")
+        {
+            name = "TitleLabel"
+        };
+        titleLabel.AddToClassList("title");
+        panel.Add(titleLabel);
+
+        var contentContainer = new VisualElement
+        {
+            name = "ContentContainer",
+            style =
+            {
+                flexGrow = 1,
+                flexShrink = 1,
+                minHeight = 0
+            }
+        };
+        var customContent = contentFactory?.Invoke();
+        if (customContent != null)
+        {
+            customContent.style.flexGrow = 1;
+            customContent.style.flexShrink = 1;
+            contentContainer.Add(customContent);
+        }
+        panel.Add(contentContainer);
+
+        var buttonRow = new VisualElement
+        {
+            style =
+            {
+                flexDirection = FlexDirection.Row,
+                flexShrink = 0
+            }
+        };
+
+        var confirmButton = new Button();
+        confirmButton.name = "ConfirmButton";
+        confirmButton.text = string.IsNullOrEmpty(confirmButtonText) ? "Confirm" : confirmButtonText;
+        confirmButton.style.flexGrow = 1;
+        confirmButton.style.flexBasis = 50f;
+        confirmButton.clicked += () =>
+        {
+            if (confirmCheck == null || confirmCheck())
+            {
+                overlay.RemoveFromHierarchy();
+                onConfirm?.Invoke();
+            }
+        };
+        buttonRow.Add(confirmButton);
+
+        var closeButton = new Button();
+        closeButton.name = "CancelButton";
+        closeButton.text = string.IsNullOrEmpty(closeButtonText) ? "Close" : closeButtonText;
+        closeButton.style.flexGrow = 1;
+        closeButton.style.flexBasis = 50f;
+        closeButton.clicked += () => overlay.RemoveFromHierarchy();
+        buttonRow.Add(closeButton);
+
+        panel.Add(buttonRow);
+        overlay.Add(panel);
+
+        titleLabel.AddManipulator(new DragManipulator(panel));
+        root.Add(overlay);
     }
 
     public void PopupConfirmDialog(string message, Action confirmCallback, string title = null)

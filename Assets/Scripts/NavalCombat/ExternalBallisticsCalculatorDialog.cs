@@ -32,6 +32,30 @@ sealed class ExternalBallisticsTableRow
     public string angleOfFall;
 }
 
+sealed class BallisticsPresetOption
+{
+    public string name;
+    public float muzzleVelocityFeetPerSecond;
+    public float ballisticCoefficient;
+    public float maxElevationDeg;
+    public float caliberMillimeters;
+    public float projectileMassPounds;
+
+    public float caliberInches => caliberMillimeters / 25.4f;
+    public float muzzleVelocityMetersPerSecond => ExternalBallisticsSolver.FeetPerSecondToMetersPerSecond(muzzleVelocityFeetPerSecond);
+}
+
+sealed class BallisticsPresetRow
+{
+    public BallisticsPresetOption preset;
+    public string name;
+    public string caliber;
+    public string projectileMass;
+    public string muzzleVelocity;
+    public string ballisticCoefficient;
+    public string maxElevation;
+}
+
 [UxmlElement]
 public partial class ExternalBallisticsTrajectoryChart : VisualElement
 {
@@ -378,6 +402,28 @@ public partial class ExternalBallisticsScatterChart : VisualElement
 public sealed partial class ExternalBallisticsCalculatorDialog
 {
     const int MaxMultipleAngles = 121;
+    static readonly List<BallisticsPresetOption> BallisticsPresets = new()
+    {
+        new BallisticsPresetOption
+        {
+            name = "10,5cm SKL/35 C/91#",
+            muzzleVelocityFeetPerSecond = 1969f,
+            ballisticCoefficient = 2.651f,
+            maxElevationDeg = 30f,
+            caliberMillimeters = 105f,
+            projectileMassPounds = 38.58f
+        },
+        new BallisticsPresetOption
+        {
+            name = "24cm SKL/35 C/80",
+            muzzleVelocityFeetPerSecond = 1903f,
+            ballisticCoefficient = 3.538f,
+            maxElevationDeg = 30f,
+            caliberMillimeters = 240f,
+            projectileMassPounds = 474f
+        }
+    };
+    static BallisticsPresetOption DefaultBallisticsPreset => BallisticsPresets.Last();
 
     DropdownField modeField;
     FloatField muzzleVelocityField;
@@ -503,6 +549,7 @@ public sealed partial class ExternalBallisticsCalculatorDialog
     void BuildInputPanel(VisualElement root)
     {
         root.Add(BuildSectionLabel(Localize("Inputs")));
+        root.Add(BuildPresetButton(PopupExternalPresetDialog));
 
         modeField = new DropdownField(Localize("Mode"), new List<string> { Localize("Single"), Localize("Multiple") }, 1);
         root.Add(modeField);
@@ -531,7 +578,7 @@ public sealed partial class ExternalBallisticsCalculatorDialog
         root.Add(BuildSectionLabel(Localize("Model Parameters")));
 
         diameterInchField = BuildFloatField(Localize("Projectile Diameter (inch)"), 12f);
-        massKgField = BuildFloatField(Localize("Projectile Mass (lb)"), ExternalBallisticsSolver.KilogramsToPounds(386f));
+        massKgField = BuildFloatField(Localize("Projectile Mass (lb)"), DefaultBallisticsPreset.projectileMassPounds);
         massPoundsLabel = new Label();
         massPoundsLabel.style.marginLeft = 3;
         massPoundsLabel.style.marginBottom = 4;
@@ -581,6 +628,7 @@ public sealed partial class ExternalBallisticsCalculatorDialog
         UpdateModeVisibility();
         UpdateDragInputModeVisibility();
         UpdateInputHelpers();
+        ApplyExternalPreset(DefaultBallisticsPreset);
     }
 
     void BuildOutputPanel(VisualElement root)
@@ -726,6 +774,139 @@ public sealed partial class ExternalBallisticsCalculatorDialog
             Calculate();
         });
         dragModelField.RegisterValueChangedCallback(_ => Calculate());
+    }
+
+    Button BuildPresetButton(Action onClick)
+    {
+        var button = new Button(() => onClick?.Invoke())
+        {
+            text = Localize("Preset"),
+            style =
+            {
+                marginBottom = 6
+            }
+        };
+        return button;
+    }
+
+    void PopupExternalPresetDialog()
+    {
+        PopupBallisticsPresetDialog(ApplyExternalPreset);
+    }
+
+    void PopupBallisticsPresetDialog(Action<BallisticsPresetOption> onConfirm)
+    {
+        BallisticsPresetOption selectedPreset = null;
+        var rows = BallisticsPresets.Select(preset => new BallisticsPresetRow
+        {
+            preset = preset,
+            name = preset.name,
+            caliber = $"{preset.caliberMillimeters:0.#} mm / {preset.caliberInches:0.###} in",
+            projectileMass = $"{preset.projectileMassPounds:0.##} lb / {ExternalBallisticsSolver.PoundsToKilograms(preset.projectileMassPounds):0.#} kg",
+            muzzleVelocity = $"{preset.muzzleVelocityFeetPerSecond:0} f/s / {preset.muzzleVelocityMetersPerSecond:0} m/s",
+            ballisticCoefficient = $"{preset.ballisticCoefficient:0.###}",
+            maxElevation = $"{preset.maxElevationDeg:0.#} deg"
+        }).ToList();
+
+        DialogRoot.Instance.PopupBallisticsPresetPickerDialog(
+            Localize("Preset"),
+            () => BuildBallisticsPresetPickerContent(rows, preset => selectedPreset = preset),
+            () => selectedPreset != null,
+            () => onConfirm?.Invoke(selectedPreset),
+            confirmButtonText: Localize("Confirm"),
+            closeButtonText: Localize("Close"));
+    }
+
+    VisualElement BuildBallisticsPresetPickerContent(List<BallisticsPresetRow> rows, Action<BallisticsPresetOption> onSelectionChanged)
+    {
+        var root = new VisualElement
+        {
+            style =
+            {
+                flexGrow = 1,
+                flexShrink = 1,
+                minHeight = 220
+            }
+        };
+
+        var listView = new MultiColumnListView
+        {
+            selectionType = SelectionType.Single,
+            virtualizationMethod = CollectionVirtualizationMethod.DynamicHeight,
+            style =
+            {
+                flexGrow = 1,
+                flexShrink = 1,
+                minHeight = 180
+            }
+        };
+
+        void AddColumn(string name, string title, int width, Func<BallisticsPresetRow, string> selector)
+        {
+            listView.columns.Add(new Column
+            {
+                name = name,
+                title = title,
+                width = width,
+                minWidth = Math.Min(width, 80),
+                stretchable = false,
+                makeCell = () => new Label
+                {
+                    style =
+                    {
+                        whiteSpace = WhiteSpace.Normal
+                    }
+                },
+                bindCell = (element, index) =>
+                {
+                    if (element is not Label label)
+                        return;
+                    var row = index >= 0 && index < rows.Count ? rows[index] : null;
+                    label.text = row == null ? "" : selector(row);
+                }
+            });
+        }
+
+        AddColumn("name", Localize("Name"), 220, row => row.name);
+        AddColumn("caliber", Localize("Caliber"), 150, row => row.caliber);
+        AddColumn("projectileMass", Localize("Projectile Mass"), 150, row => row.projectileMass);
+        AddColumn("velocity", Localize("Muzzle Velocity"), 170, row => row.muzzleVelocity);
+        AddColumn("bc", Localize("Ballistic Coefficient"), 120, row => row.ballisticCoefficient);
+        AddColumn("maxElevation", Localize("Max Elevation"), 110, row => row.maxElevation);
+
+        listView.itemsSource = rows;
+        listView.selectionChanged += selectedItems =>
+        {
+            var selectedRow = selectedItems?.OfType<BallisticsPresetRow>().FirstOrDefault();
+            onSelectionChanged?.Invoke(selectedRow?.preset);
+        };
+
+        root.Add(listView);
+        return root;
+    }
+
+    void ApplyExternalPreset(BallisticsPresetOption preset)
+    {
+        if (preset == null)
+            return;
+
+        modeField?.SetValueWithoutNotify(Localize("Multiple"));
+        muzzleVelocityField?.SetValueWithoutNotify(preset.muzzleVelocityFeetPerSecond);
+        maxElevationField?.SetValueWithoutNotify(preset.maxElevationDeg);
+        diameterInchField?.SetValueWithoutNotify(preset.caliberInches);
+        massKgField?.SetValueWithoutNotify(preset.projectileMassPounds);
+        dragInputModeField?.SetValueWithoutNotify(Localize("G Model BC"));
+        ballisticCoefficientField?.SetValueWithoutNotify(preset.ballisticCoefficient);
+
+        if (minElevationField != null && minElevationField.value > preset.maxElevationDeg)
+            minElevationField.SetValueWithoutNotify(Mathf.Min(1f, preset.maxElevationDeg));
+        if (singleElevationField != null && singleElevationField.value > preset.maxElevationDeg)
+            singleElevationField.SetValueWithoutNotify(preset.maxElevationDeg);
+
+        UpdateModeVisibility();
+        UpdateDragInputModeVisibility();
+        UpdateInputHelpers();
+        Calculate();
     }
 
     void Calculate()

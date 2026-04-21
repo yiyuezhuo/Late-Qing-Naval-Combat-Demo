@@ -60,6 +60,7 @@ namespace NavalCombatCore
     public static class ExternalBallisticsSolver
     {
         const float InchesPerMeter = 39.3700787f;
+        const float FeetPerMeter = 3.2808399f;
         const float PoundsPerKilogram = 2.20462262f;
         static readonly float GModelReferenceProjectileDiameterMeters = InchesToMeters(12f);
         const float GModelReferenceProjectileMassKg = 386f;
@@ -251,6 +252,8 @@ namespace NavalCombatCore
         public static float YardsToMeters(float yards) => yards / 1.0936133f;
         public static float InchesToMeters(float inches) => inches / InchesPerMeter;
         public static float MetersToInches(float meters) => meters * InchesPerMeter;
+        public static float MetersPerSecondToFeetPerSecond(float metersPerSecond) => metersPerSecond * FeetPerMeter;
+        public static float FeetPerSecondToMetersPerSecond(float feetPerSecond) => feetPerSecond / FeetPerMeter;
         public static float KilogramsToPounds(float kilograms) => kilograms * PoundsPerKilogram;
         public static float PoundsToKilograms(float pounds) => pounds / PoundsPerKilogram;
 

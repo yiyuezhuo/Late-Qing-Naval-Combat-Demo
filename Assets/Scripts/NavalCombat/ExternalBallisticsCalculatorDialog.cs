@@ -396,6 +396,7 @@ public sealed partial class ExternalBallisticsCalculatorDialog
     DropdownField xAxisField;
     DropdownField yAxisField;
     Label massPoundsLabel;
+    Label muzzleVelocityPreviewLabel;
     Label statusLabel;
     VisualElement singleAngleRow;
     VisualElement multipleAngleRows;
@@ -503,11 +504,15 @@ public sealed partial class ExternalBallisticsCalculatorDialog
     {
         root.Add(BuildSectionLabel(Localize("Inputs")));
 
-        modeField = new DropdownField(Localize("Mode"), new List<string> { Localize("Single"), Localize("Multiple") }, 0);
+        modeField = new DropdownField(Localize("Mode"), new List<string> { Localize("Single"), Localize("Multiple") }, 1);
         root.Add(modeField);
 
-        muzzleVelocityField = BuildFloatField(Localize("Muzzle Velocity (m/s)"), 730f);
+        muzzleVelocityField = BuildFloatField(Localize("Muzzle Velocity (fps)"), ExternalBallisticsSolver.MetersPerSecondToFeetPerSecond(730f));
+        muzzleVelocityPreviewLabel = new Label();
+        muzzleVelocityPreviewLabel.style.marginLeft = 3;
+        muzzleVelocityPreviewLabel.style.marginBottom = 4;
         root.Add(muzzleVelocityField);
+        root.Add(muzzleVelocityPreviewLabel);
 
         singleAngleRow = new VisualElement();
         singleElevationField = BuildFloatField(Localize("Elevation Angle (deg)"), 15f);
@@ -515,9 +520,9 @@ public sealed partial class ExternalBallisticsCalculatorDialog
         root.Add(singleAngleRow);
 
         multipleAngleRows = new VisualElement();
-        minElevationField = BuildFloatField(Localize("Min Elevation (deg)"), 5f);
+        minElevationField = BuildFloatField(Localize("Min Elevation (deg)"), 1f);
         maxElevationField = BuildFloatField(Localize("Max Elevation (deg)"), 20f);
-        elevationStepField = BuildFloatField(Localize("Elevation Step (deg)"), 5f);
+        elevationStepField = BuildFloatField(Localize("Elevation Step (deg)"), 1f);
         multipleAngleRows.Add(minElevationField);
         multipleAngleRows.Add(maxElevationField);
         multipleAngleRows.Add(elevationStepField);
@@ -526,7 +531,7 @@ public sealed partial class ExternalBallisticsCalculatorDialog
         root.Add(BuildSectionLabel(Localize("Model Parameters")));
 
         diameterInchField = BuildFloatField(Localize("Projectile Diameter (inch)"), 12f);
-        massKgField = BuildFloatField(Localize("Projectile Mass (kg)"), 386f);
+        massKgField = BuildFloatField(Localize("Projectile Mass (lb)"), ExternalBallisticsSolver.KilogramsToPounds(386f));
         massPoundsLabel = new Label();
         massPoundsLabel.style.marginLeft = 3;
         massPoundsLabel.style.marginBottom = 4;
@@ -575,7 +580,7 @@ public sealed partial class ExternalBallisticsCalculatorDialog
         RegisterInputCallbacks();
         UpdateModeVisibility();
         UpdateDragInputModeVisibility();
-        UpdateMassHelper();
+        UpdateInputHelpers();
     }
 
     void BuildOutputPanel(VisualElement root)
@@ -710,7 +715,7 @@ public sealed partial class ExternalBallisticsCalculatorDialog
         {
             field.RegisterValueChangedCallback(_ =>
             {
-                UpdateMassHelper();
+                UpdateInputHelpers();
                 Calculate();
             });
         }
@@ -811,11 +816,11 @@ public sealed partial class ExternalBallisticsCalculatorDialog
     {
         return new ExternalBallisticsInput
         {
-            muzzleVelocityMetersPerSecond = muzzleVelocityField.value,
+            muzzleVelocityMetersPerSecond = ExternalBallisticsSolver.FeetPerSecondToMetersPerSecond(muzzleVelocityField.value),
             elevationAngleDeg = angleDeg,
             dragInputMode = GetDragInputMode(),
             projectileDiameterMeters = ExternalBallisticsSolver.InchesToMeters(diameterInchField.value),
-            projectileMassKg = massKgField.value,
+            projectileMassKg = ExternalBallisticsSolver.PoundsToKilograms(massKgField.value),
             ballisticCoefficient = ballisticCoefficientField.value,
             dragModel = dragModelField.index == 1 ? ExternalBallisticsDragModel.G7 : ExternalBallisticsDragModel.G1,
             constantDragCoefficient = constantDragCoefficientField.value,
@@ -832,7 +837,7 @@ public sealed partial class ExternalBallisticsCalculatorDialog
             elevationAngle = $"{result.elevationAngleDeg:0.###} deg",
             range = $"{ExternalBallisticsSolver.MetersToYards(result.rangeMeters):0} yd / {result.rangeMeters:0} m",
             timeOfFlight = $"{result.timeOfFlightSeconds:0.00} s",
-            impactVelocity = $"{result.impactVelocityMetersPerSecond:0.0} m/s",
+            impactVelocity = $"{ExternalBallisticsSolver.MetersPerSecondToFeetPerSecond(result.impactVelocityMetersPerSecond):0.0} f/s",
             angleOfFall = $"{result.angleOfFallDeg:0.00} deg"
         };
     }
@@ -904,12 +909,12 @@ public sealed partial class ExternalBallisticsCalculatorDialog
         physicalCdRows.style.display = isPhysicalCd ? DisplayStyle.Flex : DisplayStyle.None;
     }
 
-    void UpdateMassHelper()
+    void UpdateInputHelpers()
     {
-        if (massPoundsLabel == null)
-            return;
-
-        massPoundsLabel.text = Localize("Approx. {0:0} lb", ExternalBallisticsSolver.KilogramsToPounds(massKgField.value));
+        if (massPoundsLabel != null)
+            massPoundsLabel.text = $"{Localize("Approx.")} {ExternalBallisticsSolver.PoundsToKilograms(massKgField.value):0.#} kg";
+        if (muzzleVelocityPreviewLabel != null)
+            muzzleVelocityPreviewLabel.text = $"{Localize("Approx.")} {ExternalBallisticsSolver.FeetPerSecondToMetersPerSecond(muzzleVelocityField.value):0.#} m/s";
     }
 
     ExternalBallisticsCalculatorMode GetMode()
@@ -979,7 +984,7 @@ public sealed partial class ExternalBallisticsCalculatorDialog
         {
             ExternalBallisticsPlotAxis.Range => Localize("Range (yd)"),
             ExternalBallisticsPlotAxis.TimeOfFlight => Localize("Time of Flight (s)"),
-            ExternalBallisticsPlotAxis.ImpactVelocity => Localize("Impact Velocity (m/s)"),
+            ExternalBallisticsPlotAxis.ImpactVelocity => Localize("Impact Velocity (f/s)"),
             ExternalBallisticsPlotAxis.AngleOfFall => Localize("Angle of Fall (deg)"),
             _ => Localize("Elevation Angle (deg)")
         };
@@ -991,7 +996,7 @@ public sealed partial class ExternalBallisticsCalculatorDialog
         {
             ExternalBallisticsPlotAxis.Range => ExternalBallisticsSolver.MetersToYards(result.rangeMeters),
             ExternalBallisticsPlotAxis.TimeOfFlight => result.timeOfFlightSeconds,
-            ExternalBallisticsPlotAxis.ImpactVelocity => result.impactVelocityMetersPerSecond,
+            ExternalBallisticsPlotAxis.ImpactVelocity => ExternalBallisticsSolver.MetersPerSecondToFeetPerSecond(result.impactVelocityMetersPerSecond),
             ExternalBallisticsPlotAxis.AngleOfFall => result.angleOfFallDeg,
             _ => result.elevationAngleDeg
         };

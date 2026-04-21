@@ -767,9 +767,9 @@ public sealed partial class ExternalBallisticsCalculatorDialog
 
         if (muzzleVelocityField.value <= 0f)
             return Localize("Muzzle velocity must be greater than 0.");
-        if (GetDragInputMode() == ExternalBallisticsDragInputMode.PhysicalCd && diameterInchField.value <= 0f)
+        if (diameterInchField.value <= 0f)
             return Localize("Projectile diameter must be greater than 0.");
-        if (GetDragInputMode() == ExternalBallisticsDragInputMode.PhysicalCd && massKgField.value <= 0f)
+        if (massKgField.value <= 0f)
             return Localize("Projectile mass must be greater than 0.");
         if (GetDragInputMode() == ExternalBallisticsDragInputMode.GModelBallisticCoefficient && ballisticCoefficientField.value <= 0f)
             return Localize("Ballistic coefficient must be greater than 0.");

@@ -62,8 +62,6 @@ namespace NavalCombatCore
         const float InchesPerMeter = 39.3700787f;
         const float FeetPerMeter = 3.2808399f;
         const float PoundsPerKilogram = 2.20462262f;
-        static readonly float GModelReferenceProjectileDiameterMeters = InchesToMeters(12f);
-        const float GModelReferenceProjectileMassKg = 386f;
 
         public static ExternalBallisticsResult Solve(ExternalBallisticsInput input)
         {
@@ -129,9 +127,9 @@ namespace NavalCombatCore
                 return "Input is missing.";
             if (!IsFinitePositive(input.muzzleVelocityMetersPerSecond))
                 return "Muzzle velocity must be greater than 0.";
-            if (input.dragInputMode == ExternalBallisticsDragInputMode.PhysicalCd && !IsFinitePositive(input.projectileDiameterMeters))
+            if (!IsFinitePositive(input.projectileDiameterMeters))
                 return "Projectile diameter must be greater than 0.";
-            if (input.dragInputMode == ExternalBallisticsDragInputMode.PhysicalCd && !IsFinitePositive(input.projectileMassKg))
+            if (!IsFinitePositive(input.projectileMassKg))
                 return "Projectile mass must be greater than 0.";
             if (input.dragInputMode == ExternalBallisticsDragInputMode.GModelBallisticCoefficient && !IsFinitePositive(input.ballisticCoefficient))
                 return "Ballistic coefficient must be greater than 0.";
@@ -183,10 +181,13 @@ namespace NavalCombatCore
 
             var mach = speedMetersPerSecond / input.speedOfSoundMetersPerSecond;
             var dragCoefficient = GetReferenceDragCoefficient(input.dragModel, mach);
-            var referenceArea = MathF.PI * GModelReferenceProjectileDiameterMeters * GModelReferenceProjectileDiameterMeters * 0.25f;
-            var effectiveCoefficient = dragCoefficient / input.ballisticCoefficient;
+            var sectionalDensity = KilogramsToPounds(input.projectileMassKg) /
+                (MetersToInches(input.projectileDiameterMeters) * MetersToInches(input.projectileDiameterMeters));
+            var formFactor = sectionalDensity / input.ballisticCoefficient;
+            var effectiveCoefficient = dragCoefficient * formFactor;
+            var gModelProjectileArea = MathF.PI * input.projectileDiameterMeters * input.projectileDiameterMeters * 0.25f;
             return 0.5f * input.airDensityKgPerCubicMeter * speedMetersPerSecond * speedMetersPerSecond *
-                effectiveCoefficient * referenceArea / GModelReferenceProjectileMassKg;
+                effectiveCoefficient * gModelProjectileArea / input.projectileMassKg;
         }
 
         static float GetReferenceDragCoefficient(ExternalBallisticsDragModel dragModel, float mach)

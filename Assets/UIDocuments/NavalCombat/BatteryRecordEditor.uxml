@@ -35,35 +35,28 @@
                         <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(73674033631232)"/>
                     </Bindings>
                 </ui:FloatField>
-                <ui:FloatField label="Damage Rating">
-                    <Bindings>
-                        <ui:DataBinding property="value" data-source-path="damageRating" binding-mode="TwoWay"/>
-                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(73757923905536)"/>
-                    </Bindings>
-                </ui:FloatField>
                 <ui:FloatField label="Max ROF">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="maxRateOfFireShootPerMin" binding-mode="TwoWay"/>
                         <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(73929584185344)"/>
                     </Bindings>
                 </ui:FloatField>
-                <ui:IntegerField label="Fire Control Positions">
-                    <Bindings>
-                        <ui:DataBinding property="value" data-source-path="fireControlPositions" binding-mode="TwoWay"/>
-                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(73982021373952)"/>
-                    </Bindings>
-                </ui:IntegerField>
-                <ui:Instance template="FireControlSystemEditor" data-source-path="fireControlType"/>
                 <ui:FloatField label="Shell Size (Inch)">
                     <Bindings>
-                        <ui:DataBinding property="value" data-source-path="shellSizeInch" binding-mode="TwoWay"/>
+                        <ui:DataBinding property="value" data-source-path="shellSizeInchProp" binding-mode="TwoWay"/>
                         <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(74151416729600)"/>
                     </Bindings>
                 </ui:FloatField>
                 <ui:FloatField label="Shell Weight (pounds)">
                     <Bindings>
-                        <ui:DataBinding property="value" data-source-path="shellWeightPounds" binding-mode="TwoWay"/>
+                        <ui:DataBinding property="value" data-source-path="shellWeightPoundsProp" binding-mode="TwoWay"/>
                         <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(74227052613632)"/>
+                    </Bindings>
+                </ui:FloatField>
+                <ui:FloatField label="Damage Rating">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="damageRating" binding-mode="TwoWay"/>
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(73757923905536)"/>
                     </Bindings>
                 </ui:FloatField>
                 <ui:IntegerField label="Ammunition Capacity">
@@ -78,22 +71,29 @@
                         <ui:DataBinding property="value" data-source-path="roundsPerGun" binding-mode="ToTarget"/>
                     </Bindings>
                 </ui:FloatField>
+                <ui:IntegerField label="Fire Control Positions">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="fireControlPositions" binding-mode="TwoWay"/>
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(73982021373952)"/>
+                    </Bindings>
+                </ui:IntegerField>
+                <ui:Instance template="FireControlSystemEditor" data-source-path="fireControlType"/>
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="FireControlTableToolRow" style="flex-direction: row; flex-shrink: 0; margin-bottom: 4px;">
             <ui:Button text="Model Comparison" name="FireControlModelComparisonButton" style="flex-shrink: 0;">
                 <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-106)" />
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-106)"/>
                 </Bindings>
             </ui:Button>
             <ui:Button text="Reset Fire Control Table" name="ResetFireControlTableButton" style="flex-shrink: 0; margin-left: 4px;">
                 <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-109)" />
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-109)"/>
                 </Bindings>
             </ui:Button>
             <ui:Button text="Reset Penetration Table" name="ResetPenetrationTableButton" style="flex-shrink: 0; margin-left: 4px;">
                 <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-107)" />
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-107)"/>
                 </Bindings>
             </ui:Button>
         </ui:VisualElement>

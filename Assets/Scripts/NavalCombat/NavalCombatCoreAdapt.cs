@@ -721,6 +721,10 @@ namespace NavalCombatCore
 
     public partial class BatteryRecord
     {
+        const float DamageRatingShellSizeCoef = 1.30f;
+        const float DamageRatingShellWeightSqrtCoef = 0.82f;
+        const float DamageRatingIntercept = 0.4f;
+
         [CreateProperty]
         public string labelName
         {
@@ -734,6 +738,66 @@ namespace NavalCombatCore
 
         [CreateProperty]
         public float roundsPerGun => GetRoundsPerGun();
+
+        [XmlIgnore]
+        [CreateProperty]
+        public float shellSizeInchProp
+        {
+            get => shellSizeInch;
+            set
+            {
+                shellSizeInch = value;
+                UpdateDamageRatingDefault();
+            }
+        }
+
+        [XmlIgnore]
+        [CreateProperty]
+        public float shellWeightPoundsProp
+        {
+            get => shellWeightPounds;
+            set
+            {
+                shellWeightPounds = value;
+                UpdateDamageRatingDefault();
+            }
+        }
+
+        void UpdateDamageRatingDefault()
+        {
+            var shellSize = Math.Max(0f, shellSizeInch);
+            var shellWeight = Math.Max(0f, shellWeightPounds);
+            damageRating = RoundHalfUp(DamageRatingIntercept
+                + DamageRatingShellSizeCoef * shellSize
+                + DamageRatingShellWeightSqrtCoef * Mathf.Sqrt(shellWeight));
+        }
+
+        static float RoundHalfUp(float value)
+        {
+            return Mathf.Floor(value + 0.5f);
+        }
+    }
+
+    public partial class RapidFireBatteryRecord
+    {
+        const float EffectiveRangeToMaxRangeCoef = 0.45f;
+
+        [XmlIgnore]
+        [CreateProperty]
+        public float maxRangeYardsProp
+        {
+            get => maxRangeYards;
+            set
+            {
+                maxRangeYards = value;
+                effectiveRangeYards = RoundHalfUp(Math.Max(0f, maxRangeYards) * EffectiveRangeToMaxRangeCoef);
+            }
+        }
+
+        static float RoundHalfUp(float value)
+        {
+            return Mathf.Floor(value + 0.5f);
+        }
     }
 
     public partial class AbstractMountStatusRecord

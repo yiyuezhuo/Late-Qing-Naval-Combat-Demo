@@ -701,7 +701,7 @@ namespace NavalCombatCore
         public float fireControlEffectiveRange; // FC value for [0, eff]
     }
 
-    public class RapidFireBatteryRecord
+    public partial class RapidFireBatteryRecord
     {
         public GlobalString name = new();
         public float maxRangeYards;

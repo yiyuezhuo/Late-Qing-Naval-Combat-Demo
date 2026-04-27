@@ -791,8 +791,35 @@ namespace NavalCombatCore
                 if (metaInfo == null)
                     return "Meta: None";
 
-                return $"Meta Info: {metaInfo.shellSizeInch.ToString("0.###", CultureInfo.InvariantCulture)}'' ";
+                var parts = new List<string>();
+                if (metaInfo.shellSizeInch > 0f)
+                    parts.Add($"{metaInfo.shellSizeInch.ToString("0.###", CultureInfo.InvariantCulture)}''");
+                if (metaInfo.shellWeightPounds > 0f)
+                    parts.Add($"{metaInfo.shellWeightPounds.ToString("0.###", CultureInfo.InvariantCulture)} lb");
+
+                return parts.Count > 0 ? $"Meta Info: {string.Join(", ", parts)}" : "Meta Info";
             }
+        }
+
+        public bool InferDamageFactorFromMetaInfo()
+        {
+            if (metaInfo == null)
+                return false;
+
+            if (metaInfo.shellSizeInch > 0f)
+            {
+                damageFactor = RoundHalfUp(-0.7518f + 4.9134f * metaInfo.shellSizeInch);
+                return true;
+            }
+
+            if (metaInfo.shellWeightPounds > 0f)
+            {
+                var shellWeightPounds = metaInfo.shellWeightPounds;
+                damageFactor = RoundHalfUp(4.1853f + 1.4080f * shellWeightPounds - 0.04657f * shellWeightPounds * shellWeightPounds);
+                return true;
+            }
+
+            return false;
         }
 
         [XmlIgnore]

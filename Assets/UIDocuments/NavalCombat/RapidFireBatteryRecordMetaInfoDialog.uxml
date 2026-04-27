@@ -9,9 +9,18 @@
         <ui:VisualElement name="MetaInfoContainer" style="margin-top: 6px; margin-bottom: 6px;">
             <ui:FloatField label="Shell Size (Inch)" name="ShellSizeInchField">
                 <Bindings>
-                    <ui:DataBinding property="value" data-source-path="shellSizeInch" binding-mode="TwoWay"/>
+                    <ui:DataBinding property="value" data-source-path="rapidFireBatteryRecord.metaInfo.shellSizeInch" binding-mode="TwoWay"/>
                 </Bindings>
             </ui:FloatField>
+            <ui:FloatField label="Shell Weight (pounds)" name="ShellWeightPoundsField">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="rapidFireBatteryRecord.metaInfo.shellWeightPounds" binding-mode="TwoWay"/>
+                </Bindings>
+            </ui:FloatField>
+            <ui:Button text="Infer Other" name="InferOtherButton" style="margin-top: 4px;"/>
+            <Bindings>
+                <ui:DataBinding property="style.display" data-source-path="hasMetaInfo" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
+            </Bindings>
         </ui:VisualElement>
         <ui:VisualElement style="flex-direction: row; flex-shrink: 0;">
             <ui:Button text="Confirm" name="ConfirmButton" style="flex-grow: 1;"/>

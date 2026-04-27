@@ -704,6 +704,7 @@ namespace NavalCombatCore
     public class RapidFireBatteryRecordMetaInfo
     {
         public float shellSizeInch = RapidFireBatteryRecord.defaultShellSizeInch;
+        public float shellWeightPounds = 0f;
     }
 
     public partial class RapidFireBatteryRecord

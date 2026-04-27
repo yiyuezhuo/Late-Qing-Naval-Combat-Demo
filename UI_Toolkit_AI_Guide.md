@@ -266,3 +266,11 @@ If shadow or glow is needed, use **background images or gradients instead**.
 - For bindable model state, prefer `public` fields.
 - If a type must expose an auto-property for interface/API reasons, add a separate `[CreateProperty]` wrapper in the adaption layer and bind UXML to that wrapper instead of the auto-property itself.
 - When adding or reviewing bindings, always verify the `data-source-path` points to either a field or a `[CreateProperty]` property.
+
+### Prefer UXML Binding Over Manual Sync
+
+- If a UI value can be expressed as a `DataBinding`, bind it in UXML instead of syncing it from C# with `SetValueWithoutNotify`, `RegisterValueChangedCallback`, or `RegisterCallback<ChangeEvent<T>>`.
+- Bind field visibility in UXML with `style.display` and converters such as `Bool to DisplayStyle` when the visibility depends on bindable state.
+- For nullable nested data, prefer binding to the owning dialog/model path when needed, for example `rapidFireBatteryRecord.metaInfo.shellSizeInch`, instead of changing child `dataSource` manually and then pushing values into fields.
+- Keep C# callbacks for command-style actions that UXML binding cannot express cleanly, such as button clicks that call a method (`Infer Other`, selector popups, export/import actions).
+- A concrete pattern is the rapid-fire meta-info dialog: `Toggle.value` binds to `hasMetaInfo`, the meta-info container binds `style.display` to `hasMetaInfo`, the shell fields bind directly to `rapidFireBatteryRecord.metaInfo.*`, and C# only wires `InferOtherButton.clicked`.

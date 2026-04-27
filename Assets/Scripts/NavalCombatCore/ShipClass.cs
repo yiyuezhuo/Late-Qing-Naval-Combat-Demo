@@ -701,6 +701,11 @@ namespace NavalCombatCore
         public float fireControlEffectiveRange; // FC value for [0, eff]
     }
 
+    public class RapidFireBatteryRecordMetaInfo
+    {
+        public float shellSizeInch = RapidFireBatteryRecord.defaultShellSizeInch;
+    }
+
     public partial class RapidFireBatteryRecord
     {
         public GlobalString name = new();
@@ -708,12 +713,18 @@ namespace NavalCombatCore
         public float effectiveRangeYards;
         // public List<RapidFireBatteryFireControlLevelRecord> fireControlRecords = new() { new() };
         public List<RapidFireBatteryFireControlLevelRecord> fireControlRecords = new();
-        public static float shellSizeInch = 1.85f; // 47mm Hotchkiss default
+        public static float defaultShellSizeInch = 1.85f; // 47mm Hotchkiss default
+        public RapidFireBatteryRecordMetaInfo metaInfo = null;
         public float damageFactor; // RF
         // public List<int> barrelsLevelPort = new() { 0 };
         // public List<int> barrelsLevelStarboard = new() { 0 };
         public List<int> barrelsLevelPort = new();
         public List<int> barrelsLevelStarboard = new();
+
+        public float GetShellSizeInch()
+        {
+            return metaInfo?.shellSizeInch ?? defaultShellSizeInch;
+        }
 
         public float EvaluateFirepowerPerBarrel()
         {

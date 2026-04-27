@@ -942,6 +942,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset autoDeploymentDialogDocument;
     public VisualTreeAsset batteryRecordSelectorDialogDocument;
     public VisualTreeAsset rapidFireBatteryRecordSelectorDialogDocument;
+    public VisualTreeAsset rapidFireBatteryRecordMetaInfoDialogDocument;
     public VisualTreeAsset torpedoSectorSelectorDialogDocument;
     public VisualTreeAsset scenarioStateEditorDialogDocument;
     public VisualTreeAsset vladivostokSquadronRaidingSideSelectorDialogDocument;
@@ -1512,6 +1513,27 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
         tempDialog.onCreated += rapidFireBatteryRecordSelectorDialog.OnCreated;
         tempDialog.onConfirmed += rapidFireBatteryRecordSelectorDialog.OnConfirm;
+
+        tempDialog.Popup();
+    }
+
+    public void PopupRapidFireBatteryRecordMetaInfoDialog(RapidFireBatteryRecord rapidFireBatteryRecord, Action callback)
+    {
+        var model = new RapidFireBatteryRecordMetaInfoDialog()
+        {
+            rapidFireBatteryRecord = rapidFireBatteryRecord,
+            callback = callback
+        };
+
+        var tempDialog = new TempDialog()
+        {
+            root=root,
+            template=rapidFireBatteryRecordMetaInfoDialogDocument,
+            templateDataSource=model
+        };
+
+        tempDialog.onCreated += model.OnCreated;
+        tempDialog.onConfirmed += model.OnConfirm;
 
         tempDialog.Popup();
     }

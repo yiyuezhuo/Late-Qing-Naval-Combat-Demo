@@ -2288,8 +2288,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
                 for (var i = beginIdx; i < logCount; i++)
                 {
-                    // var shellDiameterInch = rapidFiringStatus.GetRapidFireBatteryRecord()?.shellSizeInch ?? 0f;
-                    var shellDiameterInch = RapidFireBatteryRecord.shellSizeInch;
+                    var shellDiameterInch = rapidFiringStatus.GetRapidFireBatteryRecord()?.GetShellSizeInch()
+                        ?? RapidFireBatteryRecord.defaultShellSizeInch;
                     var log = rapidFiringStatus.logs[i];
                     TrySpawnGunneryShellVisual(shooter, log.firingTargetObjectId, shellDiameterInch, log.hit);
                 }

@@ -784,6 +784,19 @@ namespace NavalCombatCore
 
         [XmlIgnore]
         [CreateProperty]
+        public string metaInfoLabel
+        {
+            get
+            {
+                if (metaInfo == null)
+                    return "Meta: None";
+
+                return $"Meta Info: {metaInfo.shellSizeInch.ToString("0.###", CultureInfo.InvariantCulture)}'' ";
+            }
+        }
+
+        [XmlIgnore]
+        [CreateProperty]
         public float maxRangeYardsProp
         {
             get => maxRangeYards;

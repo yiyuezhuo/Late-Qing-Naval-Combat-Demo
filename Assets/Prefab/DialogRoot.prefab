@@ -120,6 +120,7 @@ MonoBehaviour:
   autoDeploymentDialogDocument: {fileID: 9197481963319205126, guid: c66cde8d44211424c8bb7863f3e34683, type: 3}
   batteryRecordSelectorDialogDocument: {fileID: 9197481963319205126, guid: 6dd880859ca130a4280536833db99551, type: 3}
   rapidFireBatteryRecordSelectorDialogDocument: {fileID: 9197481963319205126, guid: b6c5450149a0a0c4e92018b24f6363c0, type: 3}
+  rapidFireBatteryRecordMetaInfoDialogDocument: {fileID: 9197481963319205126, guid: 78f412b6ecbd4509863f74f16f318a79, type: 3}
   torpedoSectorSelectorDialogDocument: {fileID: 9197481963319205126, guid: 857c986f3a3113844bc4353301e19d90, type: 3}
    scenarioStateEditorDialogDocument: {fileID: 9197481963319205126, guid: c53a0e617faa1ee4e9c818383e818a19, type: 3}
    vladivostokSquadronRaidingSideSelectorDialogDocument: {fileID: 9197481963319205126, guid: 45585b82f85a8214cb7bdea298f0a9c1, type: 3}

@@ -700,6 +700,15 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
             // fireControlLevelMultiColumnListView.itemsAdded += Utils.MakeCallbackForItemsAdded<RapidFireBatteryFireControlLevelRecord>(fireControlLevelMultiColumnListView);
             Utils.BindItemsAddedRemoved<RapidFireBatteryFireControlLevelRecord>(fireControlLevelMultiColumnListView, SelectedShipClassProvider);
 
+            var metaInfoButton = el.Q<Button>("RapidFireBatteryMetaInfoSetButton");
+            metaInfoButton.clicked += () =>
+            {
+                if (!Utils.TryResolveCurrentValueForBinding(metaInfoButton, out RapidFireBatteryRecord rapidFireBatteryRecord))
+                    return;
+
+                DialogRoot.Instance.PopupRapidFireBatteryRecordMetaInfoDialog(rapidFireBatteryRecord, null);
+            };
+
             return el;
         };
 

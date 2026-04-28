@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Assets\Scripts\NavalCombatCore\NaabLikeEmbeddedData.cs" Link="NaabLikeEmbeddedData.cs" />
+    <Compile Include="..\..\Assets\Scripts\NavalCombatCore\NaabLikeBallistics.cs" Link="NaabLikeBallistics.cs" />
+  </ItemGroup>
+</Project>

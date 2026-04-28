@@ -3277,6 +3277,10 @@ MonoBehaviour:
     m_Localized: "\u4ED6\u3092\u63A8\u5B9A"
     m_Metadata:
       m_Items: []
+  - m_Id: -112
+    m_Localized: "NAAB-like Calculator"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

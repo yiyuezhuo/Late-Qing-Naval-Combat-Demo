@@ -4261,6 +4261,198 @@ MonoBehaviour:
     m_Key: BRS - Battle of Taku Roadstead.scen.xml
     m_Metadata:
       m_Items: []
+  - m_Id: -298
+    m_Key: NAAB-like Calculator
+    m_Metadata:
+      m_Items: []
+  - m_Id: -299
+    m_Key: Armor Parameters
+    m_Metadata:
+      m_Items: []
+  - m_Id: -300
+    m_Key: Armor Preset
+    m_Metadata:
+      m_Items: []
+  - m_Id: -301
+    m_Key: Quality
+    m_Metadata:
+      m_Items: []
+  - m_Id: -302
+    m_Key: 'Elongation (%)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -303
+    m_Key: BNH
+    m_Metadata:
+      m_Items: []
+  - m_Id: -304
+    m_Key: Inclined (deg)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -305
+    m_Key: Projectile Parameters
+    m_Metadata:
+      m_Items: []
+  - m_Id: -306
+    m_Key: Projectile Preset
+    m_Metadata:
+      m_Items: []
+  - m_Id: -307
+    m_Key: Diameter (inch)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -308
+    m_Key: Total Weight (lb)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -309
+    m_Key: Body Weight (lb)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -310
+    m_Key: Windscreen (lb)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -311
+    m_Key: Cap Type
+    m_Metadata:
+      m_Items: []
+  - m_Id: -312
+    m_Key: Hard Cap
+    m_Metadata:
+      m_Items: []
+  - m_Id: -313
+    m_Key: Muzzle Velocity (fps)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -314
+    m_Key: Max Range (yards)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -315
+    m_Key: Drag Function
+    m_Metadata:
+      m_Items: []
+  - m_Id: -316
+    m_Key: Drag Coefficient
+    m_Metadata:
+      m_Items: []
+  - m_Id: -317
+    m_Key: Elevation Deg
+    m_Metadata:
+      m_Items: []
+  - m_Id: -318
+    m_Key: Shell Quality
+    m_Metadata:
+      m_Items: []
+  - m_Id: -319
+    m_Key: Plot Parameters
+    m_Metadata:
+      m_Items: []
+  - m_Id: -320
+    m_Key: Elevation Mode
+    m_Metadata:
+      m_Items: []
+  - m_Id: -321
+    m_Key: Search Fix
+    m_Metadata:
+      m_Items: []
+  - m_Id: -322
+    m_Key: Search SK5
+    m_Metadata:
+      m_Items: []
+  - m_Id: -323
+    m_Key: Plot Mode
+    m_Metadata:
+      m_Items: []
+  - m_Id: -324
+    m_Key: Trajectories
+    m_Metadata:
+      m_Items: []
+  - m_Id: -325
+    m_Key: Start Elevation (deg)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -326
+    m_Key: End Elevation (deg)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -327
+    m_Key: Range Step (yards)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -328
+    m_Key: '{0} result(s), {1} external ballistic failure(s).'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -329
+    m_Key: Quality must be greater than 0.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -330
+    m_Key: Elongation must be greater than 0.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -331
+    m_Key: BNH must be greater than 0.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -332
+    m_Key: Projectile component weights must be 0 or greater.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -333
+    m_Key: Projectile component weights must not exceed total weight.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -334
+    m_Key: Max range must be greater than 0.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -335
+    m_Key: Shell quality must be greater than 0.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -336
+    m_Key: Start elevation must be less than or equal to end elevation.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -337
+    m_Key: Range step must be greater than 0.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -338
+    m_Key: 'Failed to load NAAB-like data: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -339
+    m_Key: Calculating...
+    m_Metadata:
+      m_Items: []
+  - m_Id: -340
+    m_Key: '{0}/{1} rows'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -341
+    m_Key: AP Cap Weight (lb)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -342
+    m_Key: Integration Step (ft)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -343
+    m_Key: Hard Cap Type 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: -344
+    m_Key: Hard Cap Type 2
+    m_Metadata:
+      m_Items: []
+  - m_Id: -345
+    m_Key: Integration step must be greater than 0.
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

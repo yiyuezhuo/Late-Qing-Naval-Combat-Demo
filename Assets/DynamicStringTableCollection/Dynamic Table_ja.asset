@@ -4311,6 +4311,198 @@ MonoBehaviour:
     m_Localized: "BRS - \u5927\u6CBD\u6CCA\u5730\u306E\u6226\u3044"
     m_Metadata:
       m_Items: []
+  - m_Id: -298
+    m_Localized: "NAAB-like Calculator"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -299
+    m_Localized: "Armor Parameters"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -300
+    m_Localized: "Armor Preset"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -301
+    m_Localized: "Quality"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -302
+    m_Localized: "Elongation (%)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -303
+    m_Localized: "BNH"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -304
+    m_Localized: "Inclined (deg)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -305
+    m_Localized: "Projectile Parameters"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -306
+    m_Localized: "Projectile Preset"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -307
+    m_Localized: "Diameter (inch)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -308
+    m_Localized: "Total Weight (lb)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -309
+    m_Localized: "Body Weight (lb)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -310
+    m_Localized: "Windscreen (lb)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -311
+    m_Localized: "Cap Type"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -312
+    m_Localized: "Hard Cap"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -313
+    m_Localized: "Muzzle Velocity (fps)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -314
+    m_Localized: "Max Range (yards)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -315
+    m_Localized: "Drag Function"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -316
+    m_Localized: "Drag Coefficient"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -317
+    m_Localized: "Elevation Deg"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -318
+    m_Localized: "Shell Quality"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -319
+    m_Localized: "Plot Parameters"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -320
+    m_Localized: "Elevation Mode"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -321
+    m_Localized: "Search Fix"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -322
+    m_Localized: "Search SK5"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -323
+    m_Localized: "Plot Mode"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -324
+    m_Localized: "Trajectories"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -325
+    m_Localized: "Start Elevation (deg)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -326
+    m_Localized: "End Elevation (deg)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -327
+    m_Localized: "Range Step (yards)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -328
+    m_Localized: "{0} result(s), {1} external ballistic failure(s)."
+    m_Metadata:
+      m_Items: []
+  - m_Id: -329
+    m_Localized: "Quality must be greater than 0."
+    m_Metadata:
+      m_Items: []
+  - m_Id: -330
+    m_Localized: "Elongation must be greater than 0."
+    m_Metadata:
+      m_Items: []
+  - m_Id: -331
+    m_Localized: "BNH must be greater than 0."
+    m_Metadata:
+      m_Items: []
+  - m_Id: -332
+    m_Localized: "Projectile component weights must be 0 or greater."
+    m_Metadata:
+      m_Items: []
+  - m_Id: -333
+    m_Localized: "Projectile component weights must not exceed total weight."
+    m_Metadata:
+      m_Items: []
+  - m_Id: -334
+    m_Localized: "Max range must be greater than 0."
+    m_Metadata:
+      m_Items: []
+  - m_Id: -335
+    m_Localized: "Shell quality must be greater than 0."
+    m_Metadata:
+      m_Items: []
+  - m_Id: -336
+    m_Localized: "Start elevation must be less than or equal to end elevation."
+    m_Metadata:
+      m_Items: []
+  - m_Id: -337
+    m_Localized: "Range step must be greater than 0."
+    m_Metadata:
+      m_Items: []
+  - m_Id: -338
+    m_Localized: "Failed to load NAAB-like data: {0}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -339
+    m_Localized: "\u8A08\u7B97\u4E2D..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: -340
+    m_Localized: "{0}/{1} \u884C"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -341
+    m_Localized: "AP Cap Weight (lb)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -342
+    m_Localized: "Integration Step (ft)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -343
+    m_Localized: "Hard Cap Type 1"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -344
+    m_Localized: "Hard Cap Type 2"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -345
+    m_Localized: "Integration step must be greater than 0."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

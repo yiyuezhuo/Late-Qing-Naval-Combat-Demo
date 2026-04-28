@@ -35,6 +35,7 @@
 ExportedObj/
 .consulo/
 *.csproj
+!Tools/NaabLikeCheck/NaabLikeCheck.csproj
 *.unityproj
 *.sln
 *.suo
@@ -86,3 +87,6 @@ Assets/AddressableAssetsData/link.xml.meta
 
 Assets/Textures/NavalCombat/GIS/full_uint16_16384x8192_shoreField.*
 *.pyc
+
+Tools/NaabLikeCheck/bin/
+Tools/NaabLikeCheck/obj/

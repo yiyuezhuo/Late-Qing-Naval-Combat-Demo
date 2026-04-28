@@ -274,3 +274,4 @@ If shadow or glow is needed, use **background images or gradients instead**.
 - For nullable nested data, prefer binding to the owning dialog/model path when needed, for example `rapidFireBatteryRecord.metaInfo.shellSizeInch`, instead of changing child `dataSource` manually and then pushing values into fields.
 - Keep C# callbacks for command-style actions that UXML binding cannot express cleanly, such as button clicks that call a method (`Infer Other`, selector popups, export/import actions).
 - A concrete pattern is the rapid-fire meta-info dialog: `Toggle.value` binds to `hasMetaInfo`, the meta-info container binds `style.display` to `hasMetaInfo`, the shell fields bind directly to `rapidFireBatteryRecord.metaInfo.*`, and C# only wires `InferOtherButton.clicked`.
+- A `[CreateProperty]` property with setter and getter that adapt a model field/property to support data binding usually need `[XmlIgnore]` to prevent it being serialized by XML Serializer.

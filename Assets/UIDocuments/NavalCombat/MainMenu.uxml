@@ -77,6 +77,11 @@
                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-108)"/>
                             </Bindings>
                         </ui:Button>
+                        <ui:Button text="NAAB-like Calculator" name="NaabLikeCalculatorButton" class="verylarge">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-112)"/>
+                            </Bindings>
+                        </ui:Button>
                         <ui:Button text="Manual" name="ManualButton" class="verylarge">
                             <Bindings>
                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(33508883324112896)"/>

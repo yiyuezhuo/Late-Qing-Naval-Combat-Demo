@@ -4278,7 +4278,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -302
-    m_Key: 'Elongation (%)'
+    m_Key: Elongation (%)
     m_Metadata:
       m_Items: []
   - m_Id: -303

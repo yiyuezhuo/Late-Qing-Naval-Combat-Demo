@@ -417,7 +417,6 @@ public sealed class NaabLikeCalculatorDialog
                 bodyWeightPounds = 50f,
                 windscreenWeightPounds = 0f,
                 apCapWeightPounds = 0f,
-                capType = NaabLikeCapType.None,
                 hcwclcrCapType = 0,
                 muzzleVelocityFeetPerSecond = 3000f,
                 maxRangeYards = 22600f,
@@ -443,7 +442,6 @@ public sealed class NaabLikeCalculatorDialog
                 bodyWeightPounds = 1552.05f,
                 windscreenWeightPounds = 52.91f,
                 apCapWeightPounds = 158.74f,
-                capType = NaabLikeCapType.HardCap,
                 hcwclcrCapType = 1,
                 muzzleVelocityFeetPerSecond = 2690f,
                 maxRangeYards = 38870f,
@@ -1046,7 +1044,6 @@ public sealed class NaabLikeCalculatorDialog
         projectile.windscreenWeightPounds = windscreenField.value;
         projectile.apCapWeightPounds = apCapWeightField.value;
         projectile.hcwclcrCapType = GetHcwclcrCapType();
-        projectile.capType = projectile.hcwclcrCapType > 0 ? NaabLikeCapType.HardCap : NaabLikeCapType.None;
         projectile.muzzleVelocityFeetPerSecond = muzzleVelocityField.value;
         projectile.maxRangeYards = maxRangeField.value;
         projectile.dragFunction = GetDragFunction();
@@ -1179,25 +1176,22 @@ public sealed class NaabLikeCalculatorDialog
 
     int GetHcwclcrCapType()
     {
-        return capTypeField.index switch
-        {
-            1 => 1,
-            2 => 2,
-            _ => 0
-        };
+        return Math.Clamp(capTypeField.index, 0, 4);
     }
 
     static List<string> GetCapTypeLabels()
     {
-        return new List<string> { Localize("None"), Localize("Hard Cap Type 1"), Localize("Hard Cap Type 2") };
+        return new List<string> { Localize("None"), Localize("Hard Cap"), Localize("Medium Cap"), Localize("Soft Cap"), Localize("Hood") };
     }
 
     static string GetCapTypeLabel(int hcwclcrCapType)
     {
         return hcwclcrCapType switch
         {
-            1 => Localize("Hard Cap Type 1"),
-            2 => Localize("Hard Cap Type 2"),
+            1 => Localize("Hard Cap"),
+            2 => Localize("Medium Cap"),
+            3 => Localize("Soft Cap"),
+            4 => Localize("Hood"),
             _ => Localize("None")
         };
     }

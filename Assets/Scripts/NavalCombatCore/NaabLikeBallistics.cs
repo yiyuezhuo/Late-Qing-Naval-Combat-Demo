@@ -16,12 +16,6 @@ namespace NavalCombatCore
         GL
     }
 
-    public enum NaabLikeCapType
-    {
-        None,
-        HardCap
-    }
-
     public sealed class NaabLikeProjectile
     {
         public string name = "";
@@ -32,7 +26,7 @@ namespace NavalCombatCore
         public float bodyWeightPounds = 50f;
         public float windscreenWeightPounds;
         public float apCapWeightPounds;
-        public NaabLikeCapType capType = NaabLikeCapType.None;
+        // ProjInfo cap family selector: 0 none, 1 hard cap, 2 medium cap, 3 soft cap, 4 hood.
         public int hcwclcrCapType;
         public float muzzleVelocityFeetPerSecond = 3000f;
         public float maxRangeYards = 22600f;

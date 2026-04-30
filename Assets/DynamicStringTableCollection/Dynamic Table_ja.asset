@@ -4511,6 +4511,18 @@ MonoBehaviour:
     m_Localized: "BHN\u306F0\u3088\u308A\u5927\u304D\u304F\u3059\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\u3002"
     m_Metadata:
       m_Items: []
+  - m_Id: -348
+    m_Localized: "Medium Cap"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -349
+    m_Localized: "Soft Cap"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -350
+    m_Localized: "Hood"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

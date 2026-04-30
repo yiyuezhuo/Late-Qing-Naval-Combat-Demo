@@ -11,7 +11,6 @@ var bismarck = new NaabLikeProjectile
     bodyWeightPounds = 1552.05f,
     windscreenWeightPounds = 52.91f,
     apCapWeightPounds = 158.74f,
-    capType = NaabLikeCapType.HardCap,
     hcwclcrCapType = 1,
     muzzleVelocityFeetPerSecond = 2690f,
     maxRangeYards = 38870f,

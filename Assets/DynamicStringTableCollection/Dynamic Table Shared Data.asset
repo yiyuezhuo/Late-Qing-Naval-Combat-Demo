@@ -4461,6 +4461,18 @@ MonoBehaviour:
     m_Key: BHN must be greater than 0.
     m_Metadata:
       m_Items: []
+  - m_Id: -348
+    m_Key: Medium Cap
+    m_Metadata:
+      m_Items: []
+  - m_Id: -349
+    m_Key: Soft Cap
+    m_Metadata:
+      m_Items: []
+  - m_Id: -350
+    m_Key: Hood
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

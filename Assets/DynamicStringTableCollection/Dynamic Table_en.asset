@@ -4471,6 +4471,18 @@ MonoBehaviour:
     m_Localized: BHN must be greater than 0.
     m_Metadata:
       m_Items: []
+  - m_Id: -348
+    m_Localized: Medium Cap
+    m_Metadata:
+      m_Items: []
+  - m_Id: -349
+    m_Localized: Soft Cap
+    m_Metadata:
+      m_Items: []
+  - m_Id: -350
+    m_Localized: Hood
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

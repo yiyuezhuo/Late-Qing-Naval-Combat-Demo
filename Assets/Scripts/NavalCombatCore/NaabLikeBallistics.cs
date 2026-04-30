@@ -55,7 +55,7 @@ namespace NavalCombatCore
     {
         public float quality = 0.95f;
         public float elongationPercent = 22f;
-        public float bnh = 235f;
+        public float bhn = 235f;
         public float inclinedDeg;
     }
 
@@ -108,11 +108,11 @@ namespace NavalCombatCore
                 obliquityReferenceVector = NaabLikeEmbeddedData.ObliquityReferenceVector,
                 highObliquityReferenceMatrix = NaabLikeEmbeddedData.HighObliquityReferenceMatrix,
                 tdDecisionBreaks = NaabLikeEmbeddedData.TdDecisionBreaks,
-                tdDecisionParamA = NaabLikeEmbeddedData.TdDecisionParamA,
-                tdDecisionParamB = NaabLikeEmbeddedData.TdDecisionParamB,
-                tdDecisionParamC = NaabLikeEmbeddedData.TdDecisionParamC,
-                tdDecisionParamD = NaabLikeEmbeddedData.TdDecisionParamD,
-                tdDecisionParamE = NaabLikeEmbeddedData.TdDecisionParamE,
+                tdBaseVelocityCoefficients = NaabLikeEmbeddedData.TdDecisionParamA,
+                tdThicknessPowerExponents = NaabLikeEmbeddedData.TdDecisionParamB,
+                tdShapeSineAmplitudes = NaabLikeEmbeddedData.TdDecisionParamC,
+                tdShapeSineFrequencies = NaabLikeEmbeddedData.TdDecisionParamD,
+                tdShapeSinePhaseDegs = NaabLikeEmbeddedData.TdDecisionParamE,
                 modeSharedMidOb = NaabLikeEmbeddedData.ModeSharedMidOb,
                 mode1LowOb = NaabLikeEmbeddedData.Mode1LowOb,
                 mode2LowOb = NaabLikeEmbeddedData.Mode2LowOb,
@@ -220,11 +220,11 @@ namespace NavalCombatCore
         public float[] obliquityReferenceVector;
         public float[][] highObliquityReferenceMatrix;
         public float[] tdDecisionBreaks;
-        public float[] tdDecisionParamA;
-        public float[] tdDecisionParamB;
-        public float[] tdDecisionParamC;
-        public float[] tdDecisionParamD;
-        public float[] tdDecisionParamE;
+        public float[] tdBaseVelocityCoefficients;
+        public float[] tdThicknessPowerExponents;
+        public float[] tdShapeSineAmplitudes;
+        public float[] tdShapeSineFrequencies;
+        public float[] tdShapeSinePhaseDegs;
         public float[] modeSharedMidOb;
         public float[] mode1LowOb;
         public float[] mode2LowOb;
@@ -611,6 +611,29 @@ namespace NavalCombatCore
 
     public sealed class NaabLikeTerminalBallisticsSolver
     {
+        const float MinScannedThicknessInches = 0.1f;
+        const float ThicknessScanStepInches = 0.02f;
+        const float MaxThicknessByDiameterMultiplier = 6f;
+        const float MaxThicknessDiameterClearanceInches = 0.1f;
+        const float MaxScannedThicknessInches = 199f;
+        const float PartialPenetrationVelocityMarginFeetPerSecond = 60f;
+        const float NoHolingVelocityMarginFeetPerSecond = 120f;
+        const float HighObliquityStartDeg = 45f;
+        const float ExtremeObliquityStartDeg = 80f;
+        const float RightAngleObliquityDeg = 90f;
+        const float LowObliquityReferenceStepDeg = 2.5f;
+        const float HighObliquityReferenceStepDeg = 2.5f;
+        const float ComponentObliquityTableStepDeg = 5f;
+        const float SharedCapObliquityStartDeg = 40f;
+        const float SharedCapObliquityEndDeg = 75f;
+        const float SharedCapObliquityStepDeg = 2.5f;
+        const float ApCapThresholdReferenceObliquityDeg = 45f;
+        const float TdTableStep = 0.05f;
+        const float HighObliquityTdSaturation = 0.9f;
+        const int MaxTdDecisionSegmentIndex = 11;
+        const int ComponentTdTailBucket = 16;
+        const int HighObliquityTdSaturatedBucket = 17;
+
         readonly NaabLikeTerminalTables tables;
         readonly NaabLikeProjectile projectile;
         readonly NaabLikeArmorInput armor;
@@ -629,22 +652,24 @@ namespace NavalCombatCore
 
         public (float full, float partial, float noHoling) ScanBallisticLimitThicknesses(float strikingVelocityFeetPerSecond, float obliquityDeg)
         {
-            var upper = MathF.Min(6f * projectile.diameterInches - 0.1f, 199f);
+            var upper = MathF.Min(
+                MaxThicknessByDiameterMultiplier * projectile.diameterInches - MaxThicknessDiameterClearanceInches,
+                MaxScannedThicknessInches);
             var actual = MathF.Max(strikingVelocityFeetPerSecond, 0f);
             var full = 0f;
             var partial = 0f;
             var noHoling = 0f;
 
-            for (var thickness = 0.1f; thickness <= upper + 1e-6f; thickness += 0.02f)
+            for (var thickness = MinScannedThicknessInches; thickness <= upper + 1e-6f; thickness += ThicknessScanStepInches)
             {
                 var trueNbl = TrueNblVelocityFeetPerSecond(thickness, obliquityDeg);
                 var actualRounded = MathF.Round(actual);
                 var trueRounded = MathF.Round(trueNbl);
                 if (full == 0f && actual <= trueNbl)
                     full = thickness;
-                if (partial == 0f && actualRounded + 60f <= trueRounded)
+                if (partial == 0f && actualRounded + PartialPenetrationVelocityMarginFeetPerSecond <= trueRounded)
                     partial = thickness;
-                if (actualRounded + 120f < trueRounded)
+                if (actualRounded + NoHolingVelocityMarginFeetPerSecond < trueRounded)
                 {
                     noHoling = thickness;
                     break;
@@ -659,10 +684,10 @@ namespace NavalCombatCore
         {
             var diameter = MathF.Max(projectile.diameterInches, 0.1f);
             var td = ClampTd(thicknessInches / diameter);
-            var (paramA, paramB, _, _, _) = TdSegmentParameters(td);
+            var (baseVelocityCoefficient, thicknessPowerExponent, _, _, _) = TdSegmentParameters(td);
             var weightOverD3 = MathF.Max(projectile.totalWeightPounds / (diameter * diameter * diameter), 1e-9f);
             var powerBase = MathF.Max(EffectivePlateQualityFactor(), 0.01f) * td;
-            var baseNbl = paramA * MathF.Pow(powerBase, paramB);
+            var baseNbl = baseVelocityCoefficient * MathF.Pow(powerBase, thicknessPowerExponent);
             baseNbl *= TdShapeMultiplier(td);
             baseNbl *= ScaleFactor();
             baseNbl /= MathF.Sqrt(weightOverD3);
@@ -681,7 +706,7 @@ namespace NavalCombatCore
         float EffectivePlateQualityFactor()
         {
             var baseline = ArmorHardnessProfile(235f);
-            var current = ArmorHardnessProfile(armor.bnh);
+            var current = ArmorHardnessProfile(armor.bhn);
             if (MathF.Abs(current) < 1e-12f)
                 return armor.quality;
             return Math.Clamp(armor.quality * baseline / current, 0.5f, 1.1f);
@@ -703,7 +728,7 @@ namespace NavalCombatCore
         float ObliquityMultiplier(float obliquityDeg, float td)
         {
             var ob = ClampObliquity(obliquityDeg);
-            if (ob < 45f)
+            if (ob < HighObliquityStartDeg)
                 return LowObliquityMultiplier(ob);
             var reference = HighObReference(td, ob);
             return reference / MathF.Max(MathF.Cos(DegreesToRadians(ob)), 1e-9f);
@@ -714,7 +739,7 @@ namespace NavalCombatCore
             var values = tables.obliquityReferenceVector;
             if (values == null || values.Length == 0)
                 return 1f;
-            var step = 2.5f;
+            var step = LowObliquityReferenceStepDeg;
             var ob = Math.Clamp(obliquityDeg, 0f, (values.Length - 1) * step);
             var scaled = ob / step;
             var idx = Math.Min(TruncatePositiveIndex(scaled), values.Length - 2);
@@ -726,21 +751,21 @@ namespace NavalCombatCore
         float HighObReference(float td, float obliquityDeg)
         {
             var matrix = tables.highObliquityReferenceMatrix;
-            var obScaled = MathF.Max(0f, (obliquityDeg - 45f) / 2.5f);
+            var obScaled = MathF.Max(0f, (obliquityDeg - HighObliquityStartDeg) / HighObliquityReferenceStepDeg);
             var obBucket = Math.Min(TruncatePositiveIndex(obScaled), matrix.Length - 2);
-            var obFrac = (obliquityDeg - 45f - obBucket * 2.5f) / 2.5f;
+            var obFrac = (obliquityDeg - HighObliquityStartDeg - obBucket * HighObliquityReferenceStepDeg) / HighObliquityReferenceStepDeg;
             int tdBucket;
             float tdFrac;
-            if (td >= 0.9f)
+            if (td >= HighObliquityTdSaturation)
             {
-                tdBucket = 17;
+                tdBucket = HighObliquityTdSaturatedBucket;
                 tdFrac = 1f;
             }
             else
             {
-                var tdScaled = MathF.Max(0f, td / 0.05f);
+                var tdScaled = MathF.Max(0f, td / TdTableStep);
                 tdBucket = Math.Min(TruncatePositiveIndex(tdScaled), matrix[0].Length - 2);
-                tdFrac = (td - tdBucket * 0.05f) / 0.05f;
+                tdFrac = (td - tdBucket * TdTableStep) / TdTableStep;
             }
 
             var row0 = matrix[obBucket];
@@ -750,27 +775,27 @@ namespace NavalCombatCore
             return Lerp(ref0, ref1, obFrac);
         }
 
-        (float a, float b, float c, float d, float e) TdSegmentParameters(float td)
+        (float baseVelocityCoefficient, float thicknessPowerExponent, float shapeSineAmplitude, float shapeSineFrequency, float shapeSinePhaseDeg) TdSegmentParameters(float td)
         {
             var idx = 1;
             var breaks = tables.tdDecisionBreaks;
-            while (idx < breaks.Length - 1 && breaks[idx] < td && idx < 0xB)
+            while (idx < breaks.Length - 1 && breaks[idx] < td && idx < MaxTdDecisionSegmentIndex)
                 idx++;
             return (
-                tables.tdDecisionParamA[idx],
-                tables.tdDecisionParamB[idx],
-                tables.tdDecisionParamC[idx],
-                tables.tdDecisionParamD[idx],
-                tables.tdDecisionParamE[idx]);
+                tables.tdBaseVelocityCoefficients[idx],
+                tables.tdThicknessPowerExponents[idx],
+                tables.tdShapeSineAmplitudes[idx],
+                tables.tdShapeSineFrequencies[idx],
+                tables.tdShapeSinePhaseDegs[idx]);
         }
 
         float TdShapeMultiplier(float td)
         {
-            var (_, _, c, d, e) = TdSegmentParameters(td);
-            if (MathF.Abs(c) < 1e-12f)
+            var (_, _, shapeSineAmplitude, shapeSineFrequency, shapeSinePhaseDeg) = TdSegmentParameters(td);
+            if (MathF.Abs(shapeSineAmplitude) < 1e-12f)
                 return 1f;
-            var shaped = MathF.Sin(DegreesToRadians(td * d - e));
-            return 1f + c * MathF.Max(shaped, 0f);
+            var shaped = MathF.Sin(DegreesToRadians(td * shapeSineFrequency - shapeSinePhaseDeg));
+            return 1f + shapeSineAmplitude * MathF.Max(shaped, 0f);
         }
 
         float ArmorHardnessProfile(float bhn)
@@ -829,8 +854,8 @@ namespace NavalCombatCore
                 return tableValue * (1f + 0.6f * (capRatio - 1f));
             }
 
-            if (ob > 40f && ob < 75f)
-                return InterpVectorByStep(tables.modeSharedMidOb, ob, 40f, 2.5f) * capRatio;
+            if (ob > SharedCapObliquityStartDeg && ob < SharedCapObliquityEndDeg)
+                return InterpVectorByStep(tables.modeSharedMidOb, ob, SharedCapObliquityStartDeg, SharedCapObliquityStepDeg) * capRatio;
             return 0f;
         }
 
@@ -845,7 +870,7 @@ namespace NavalCombatCore
                 3 => shellClass >= 13 && shellClass <= 16 ? 0.33f : 1f,
                 4 => shellClass == 8 ? 0.33f : 1f,
                 5 => shellClass >= 7 && shellClass <= 12 ? 0.33f : 1f,
-                6 => shellClass is 8 or 9 && obliquityDeg > 45f ? 0.1f : 1f,
+                6 => shellClass is 8 or 9 && obliquityDeg > HighObliquityStartDeg ? 0.1f : 1f,
                 _ => 1f
             };
         }
@@ -867,7 +892,7 @@ namespace NavalCombatCore
                 return 0.42f;
             if (ob > 55f)
                 return 0.44f - 0.002f * (ob - 55f);
-            return 0.66f - 0.18f * (ob / 45f);
+            return 0.66f - 0.18f * (ob / ApCapThresholdReferenceObliquityDeg);
         }
 
         float InterpMatrixComponent(float[][] matrix, float[] tail, float td, float obliquityDeg)
@@ -875,7 +900,7 @@ namespace NavalCombatCore
             var obBucket = ObBucket(obliquityDeg, out var obLerp);
             var tdBucket = TdBucket(td);
             var tdLerp = TdLerp(td, tdBucket);
-            if (tdBucket == 16)
+            if (tdBucket == ComponentTdTailBucket)
                 return Lerp(tail[0], tail[1], obLerp);
 
             var row0 = matrix[tdBucket];
@@ -898,14 +923,14 @@ namespace NavalCombatCore
         {
             var bucket = 0;
             var upper = tables.tdUpperBounds;
-            while (bucket < 16 && upper[bucket] < td)
+            while (bucket < ComponentTdTailBucket && upper[bucket] < td)
                 bucket++;
             return bucket;
         }
 
         float TdLerp(float td, int bucket)
         {
-            if (bucket >= 16)
+            if (bucket >= ComponentTdTailBucket)
                 return 0f;
             var lo = tables.tdLowerBounds[bucket];
             var hi = tables.tdUpperBounds[bucket];
@@ -915,8 +940,8 @@ namespace NavalCombatCore
         static int ObBucket(float obliquityDeg, out float fraction)
         {
             var ob = ClampObliquity(obliquityDeg);
-            var bucket = Math.Clamp((int)(ob / 5f), 0, 16);
-            fraction = bucket < 16 ? (ob - bucket * 5f) / 5f : 0f;
+            var bucket = Math.Clamp((int)(ob / ComponentObliquityTableStepDeg), 0, ComponentTdTailBucket);
+            fraction = bucket < ComponentTdTailBucket ? (ob - bucket * ComponentObliquityTableStepDeg) / ComponentObliquityTableStepDeg : 0f;
             return bucket;
         }
 
@@ -934,14 +959,14 @@ namespace NavalCombatCore
 
         float PenetrationTripletPostScale(float obliquityDeg)
         {
-            var local44 = 1f;
-            if (obliquityDeg >= 80f && obliquityDeg < 90f)
+            var extremeObliquityScale = 1f;
+            if (obliquityDeg >= ExtremeObliquityStartDeg && obliquityDeg < RightAngleObliquityDeg)
             {
                 var cosOb = MathF.Max(MathF.Cos(DegreesToRadians(obliquityDeg)), 0f);
-                var cosRef = MathF.Max(MathF.Cos(DegreesToRadians(80f)), 1e-9f);
-                local44 = MathF.Pow(cosOb / cosRef, 1.1f);
+                var cosRef = MathF.Max(MathF.Cos(DegreesToRadians(ExtremeObliquityStartDeg)), 1e-9f);
+                extremeObliquityScale = MathF.Pow(cosOb / cosRef, 1.1f);
             }
-            return local44 * Math.Clamp(ShellQualityFactor(), 0.2f, 1.2f);
+            return extremeObliquityScale * Math.Clamp(ShellQualityFactor(), 0.2f, 1.2f);
         }
 
         float ShellQualityFactor()

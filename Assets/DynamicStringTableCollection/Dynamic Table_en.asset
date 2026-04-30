@@ -4463,6 +4463,14 @@ MonoBehaviour:
     m_Localized: Integration step must be greater than 0.
     m_Metadata:
       m_Items: []
+  - m_Id: -346
+    m_Localized: BHN
+    m_Metadata:
+      m_Items: []
+  - m_Id: -347
+    m_Localized: BHN must be greater than 0.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

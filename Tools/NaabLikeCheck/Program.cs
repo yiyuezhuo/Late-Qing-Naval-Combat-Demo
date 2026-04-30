@@ -44,7 +44,7 @@ void Run(NaabLikeProjectile projectile, float rangeYards, ref float? angleHintDe
     {
         quality = 0.95f,
         elongationPercent = 22f,
-        bnh = 235f,
+        bhn = 235f,
         inclinedDeg = 0f
     };
     var terminal = new NaabLikeTerminalBallisticsSolver(data.terminalTables, projectile, armor);

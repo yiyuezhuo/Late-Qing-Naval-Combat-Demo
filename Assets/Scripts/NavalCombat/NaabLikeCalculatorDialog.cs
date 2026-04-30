@@ -27,7 +27,7 @@ sealed class NaabLikeArmorPreset
     public string name;
     public float quality;
     public float elongationPercent;
-    public float bnh;
+    public float bhn;
 }
 
 sealed class NaabLikeProjectilePreset
@@ -398,9 +398,9 @@ public sealed class NaabLikeCalculatorDialog
 
     static readonly List<NaabLikeArmorPreset> ArmorPresets = new()
     {
-        new NaabLikeArmorPreset { name = "Avg. wrought iron construction and armor material", quality = 0.6f, elongationPercent = 22f, bnh = 235f },
-        new NaabLikeArmorPreset { name = "Avg. \"mild/medium\" construction steel. (1890-on)", quality = 0.75f, elongationPercent = 24f, bnh = 235f },
-        new NaabLikeArmorPreset { name = "Avg. U.S WWI-era class \"B\" armor", quality = 0.95f, elongationPercent = 22f, bnh = 235f }
+        new NaabLikeArmorPreset { name = "Avg. wrought iron construction and armor material", quality = 0.6f, elongationPercent = 22f, bhn = 235f },
+        new NaabLikeArmorPreset { name = "Avg. \"mild/medium\" construction steel. (1890-on)", quality = 0.75f, elongationPercent = 24f, bhn = 235f },
+        new NaabLikeArmorPreset { name = "Avg. U.S WWI-era class \"B\" armor", quality = 0.95f, elongationPercent = 22f, bhn = 235f }
     };
 
     static readonly List<NaabLikeProjectilePreset> ProjectilePresets = new()
@@ -480,7 +480,7 @@ public sealed class NaabLikeCalculatorDialog
     DropdownField armorPresetField;
     FloatField armorQualityField;
     FloatField armorElongationField;
-    FloatField armorBnhField;
+    FloatField armorBhnField;
     FloatField armorInclinedField;
     DropdownField projectilePresetField;
     FloatField diameterField;
@@ -580,12 +580,12 @@ public sealed class NaabLikeCalculatorDialog
         armorPresetField = new DropdownField(Localize("Armor Preset"), ArmorPresets.Select(preset => preset.name).ToList(), 2);
         armorQualityField = BuildFloatField(Localize("Quality"), 0.95f);
         armorElongationField = BuildFloatField(Localize("Elongation (%)"), 22f);
-        armorBnhField = BuildFloatField(Localize("BNH"), 235f);
+        armorBhnField = BuildFloatField(Localize("BHN"), 235f);
         armorInclinedField = BuildFloatField(Localize("Inclined (deg)"), 0f);
         root.Add(armorPresetField);
         root.Add(armorQualityField);
         root.Add(armorElongationField);
-        root.Add(armorBnhField);
+        root.Add(armorBhnField);
         root.Add(armorInclinedField);
 
         root.Add(BuildSectionLabel(Localize("Projectile Parameters")));
@@ -770,7 +770,7 @@ public sealed class NaabLikeCalculatorDialog
             return;
         armorQualityField?.SetValueWithoutNotify(preset.quality);
         armorElongationField?.SetValueWithoutNotify(preset.elongationPercent);
-        armorBnhField?.SetValueWithoutNotify(preset.bnh);
+        armorBhnField?.SetValueWithoutNotify(preset.bhn);
     }
 
     void ApplyProjectilePreset(NaabLikeProjectile preset)
@@ -999,8 +999,8 @@ public sealed class NaabLikeCalculatorDialog
             return Localize("Quality must be greater than 0.");
         if (armorElongationField.value <= 0f)
             return Localize("Elongation must be greater than 0.");
-        if (armorBnhField.value <= 0f)
-            return Localize("BNH must be greater than 0.");
+        if (armorBhnField.value <= 0f)
+            return Localize("BHN must be greater than 0.");
         if (diameterField.value <= 0f)
             return Localize("Projectile diameter must be greater than 0.");
         if (totalWeightField.value <= 0f)
@@ -1059,7 +1059,7 @@ public sealed class NaabLikeCalculatorDialog
         {
             quality = armorQualityField.value,
             elongationPercent = armorElongationField.value,
-            bnh = armorBnhField.value,
+            bhn = armorBhnField.value,
             inclinedDeg = armorInclinedField.value
         };
         return null;

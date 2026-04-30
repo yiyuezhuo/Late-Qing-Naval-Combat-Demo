@@ -4453,6 +4453,14 @@ MonoBehaviour:
     m_Key: Integration step must be greater than 0.
     m_Metadata:
       m_Items: []
+  - m_Id: -346
+    m_Key: BHN
+    m_Metadata:
+      m_Items: []
+  - m_Id: -347
+    m_Key: BHN must be greater than 0.
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -4490,6 +4490,14 @@ MonoBehaviour:
     m_Localized: "\u7A4D\u5206\u6B65\u9577\u5FC5\u9808\u5927\u65BC 0\u3002"
     m_Metadata:
       m_Items: []
+  - m_Id: -346
+    m_Localized: "BHN"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -347
+    m_Localized: "BHN \u5FC5\u9808\u5927\u65BC 0\u3002"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

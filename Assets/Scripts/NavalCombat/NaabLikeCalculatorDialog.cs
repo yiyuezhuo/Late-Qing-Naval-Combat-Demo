@@ -410,24 +410,22 @@ public sealed class NaabLikeCalculatorDialog
             projectile = new NaabLikeProjectile
             {
                 name = "5''/50 Mk. 5 CM",
-                nation = 1,
-                shellClass = 1,
                 diameterInches = 5f,
                 totalWeightPounds = 50f,
                 bodyWeightPounds = 50f,
                 windscreenWeightPounds = 0f,
                 apCapWeightPounds = 0f,
                 hcwclcrCapType = 0,
+                windscreenNblAddendMultiplier = 0.75f,
+                highObliquityWindscreenNblAddendMultiplier = 0.1f,
+                highObliquityThresholdDeg = 0f,
                 muzzleVelocityFeetPerSecond = 3000f,
                 maxRangeYards = 22600f,
                 dragFunction = NaabLikeDragFunction.G5,
                 ballisticCoefficient = 1.9307f,
                 dragCoefficientAdjust = 14f,
                 maxElevationDeg = 20f,
-                shellQuality = 0.575f,
-                defaultShellQuality = 0.575f,
-                shellPlim = 0.6f,
-                shellPdam = 0.5f
+                effectiveShellQuality = 0.575f
             }
         },
         new NaabLikeProjectilePreset
@@ -435,24 +433,22 @@ public sealed class NaabLikeCalculatorDialog
             projectile = new NaabLikeProjectile
             {
                 name = "38cm/47 SK C/34 APC (Bismarck)",
-                nation = 3,
-                shellClass = 15,
                 diameterInches = 14.96f,
                 totalWeightPounds = 1763.70f,
                 bodyWeightPounds = 1552.05f,
                 windscreenWeightPounds = 52.91f,
                 apCapWeightPounds = 158.74f,
                 hcwclcrCapType = 1,
+                windscreenNblAddendMultiplier = 0.33f,
+                highObliquityWindscreenNblAddendMultiplier = 0.1f,
+                highObliquityThresholdDeg = 0f,
                 muzzleVelocityFeetPerSecond = 2690f,
                 maxRangeYards = 38870f,
                 dragFunction = NaabLikeDragFunction.G7,
                 ballisticCoefficient = 7.7734f,
                 dragCoefficientAdjust = 0f,
                 maxElevationDeg = 30f,
-                shellQuality = 0.985f,
-                defaultShellQuality = 0.985f,
-                shellPlim = 0.988f,
-                shellPdam = 0.977f
+                effectiveShellQuality = 0.985f
             }
         }
     };
@@ -487,13 +483,16 @@ public sealed class NaabLikeCalculatorDialog
     FloatField windscreenField;
     FloatField apCapWeightField;
     DropdownField capTypeField;
+    FloatField windscreenNblAddendMultiplierField;
+    FloatField highObliquityWindscreenNblAddendMultiplierField;
+    FloatField highObliquityThresholdField;
     FloatField muzzleVelocityField;
     FloatField maxRangeField;
     DropdownField dragFunctionField;
     FloatField ballisticCoefficientField;
     FloatField dragCoefficientField;
     FloatField projectileMaxElevationField;
-    FloatField shellQualityField;
+    FloatField effectiveShellQualityField;
     FloatField integrationStepField;
     DropdownField elevationModeField;
     FloatField startElevationField;
@@ -594,19 +593,23 @@ public sealed class NaabLikeCalculatorDialog
         windscreenField = BuildFloatField(Localize("Windscreen (lb)"), 0f);
         apCapWeightField = BuildFloatField(Localize("AP Cap Weight (lb)"), 0f);
         capTypeField = new DropdownField(Localize("Cap Type"), GetCapTypeLabels(), 0);
+        windscreenNblAddendMultiplierField = BuildFloatField(Localize("Windscreen NBL Addend Multiplier"), 0.75f);
+        highObliquityWindscreenNblAddendMultiplierField = BuildFloatField(Localize("Hi-Obl Windscreen NBL Addend Mult."), 0.1f);
+        highObliquityThresholdField = BuildFloatField(Localize("High-Obliquity Threshold (deg)"), 0f);
         muzzleVelocityField = BuildFloatField(Localize("Muzzle Velocity (fps)"), 3000f);
         maxRangeField = BuildFloatField(Localize("Max Range (yards)"), 22600f);
         dragFunctionField = new DropdownField(Localize("Drag Function"), GetDragFunctionLabels(), 2);
         ballisticCoefficientField = BuildFloatField(Localize("Ballistic Coefficient"), 1.9307f);
         dragCoefficientField = BuildFloatField(Localize("Drag Coefficient"), 14f);
         projectileMaxElevationField = BuildFloatField(Localize("Elevation Deg"), 20f);
-        shellQualityField = BuildFloatField(Localize("Shell Quality"), 0.575f);
+        effectiveShellQualityField = BuildFloatField(Localize("Effective Shell Quality"), 0.575f);
         integrationStepField = BuildFloatField(Localize("Integration Step (ft)"), 3f);
         foreach (var element in new VisualElement[]
         {
             projectilePresetField, diameterField, totalWeightField, bodyWeightField, windscreenField, apCapWeightField,
-            capTypeField, muzzleVelocityField, maxRangeField, dragFunctionField, ballisticCoefficientField,
-            dragCoefficientField, projectileMaxElevationField, shellQualityField, integrationStepField
+            capTypeField, windscreenNblAddendMultiplierField, highObliquityWindscreenNblAddendMultiplierField,
+            highObliquityThresholdField, muzzleVelocityField, maxRangeField, dragFunctionField, ballisticCoefficientField,
+            dragCoefficientField, projectileMaxElevationField, effectiveShellQualityField, integrationStepField
         })
         {
             root.Add(element);
@@ -781,6 +784,9 @@ public sealed class NaabLikeCalculatorDialog
         windscreenField?.SetValueWithoutNotify(preset.windscreenWeightPounds);
         apCapWeightField?.SetValueWithoutNotify(preset.apCapWeightPounds);
         capTypeField?.SetValueWithoutNotify(GetCapTypeLabel(preset.hcwclcrCapType));
+        windscreenNblAddendMultiplierField?.SetValueWithoutNotify(preset.windscreenNblAddendMultiplier);
+        highObliquityWindscreenNblAddendMultiplierField?.SetValueWithoutNotify(preset.highObliquityWindscreenNblAddendMultiplier);
+        highObliquityThresholdField?.SetValueWithoutNotify(preset.highObliquityThresholdDeg);
         muzzleVelocityField?.SetValueWithoutNotify(preset.muzzleVelocityFeetPerSecond);
         maxRangeField?.SetValueWithoutNotify(preset.maxRangeYards);
         dragFunctionField?.SetValueWithoutNotify(preset.dragFunction.ToString());
@@ -788,7 +794,7 @@ public sealed class NaabLikeCalculatorDialog
         dragCoefficientField?.SetValueWithoutNotify(preset.dragCoefficientAdjust);
         projectileMaxElevationField?.SetValueWithoutNotify(preset.maxElevationDeg);
         endElevationField?.SetValueWithoutNotify(preset.maxElevationDeg);
-        shellQualityField?.SetValueWithoutNotify(preset.shellQuality);
+        effectiveShellQualityField?.SetValueWithoutNotify(preset.effectiveShellQuality);
     }
 
     void Calculate()
@@ -1007,6 +1013,10 @@ public sealed class NaabLikeCalculatorDialog
             return Localize("Projectile component weights must be 0 or greater.");
         if (bodyWeightField.value + windscreenField.value + apCapWeightField.value > totalWeightField.value + 0.001f)
             return Localize("Projectile component weights must not exceed total weight.");
+        if (windscreenNblAddendMultiplierField.value < 0f || highObliquityWindscreenNblAddendMultiplierField.value < 0f)
+            return Localize("Windscreen NBL addend multipliers must be 0 or greater.");
+        if (highObliquityThresholdField.value < 0f)
+            return Localize("High-obliquity threshold must be 0 or greater.");
         if (muzzleVelocityField.value <= 0f)
             return Localize("Muzzle velocity must be greater than 0.");
         if (maxRangeField.value <= 0f)
@@ -1015,8 +1025,8 @@ public sealed class NaabLikeCalculatorDialog
             return Localize("Ballistic coefficient must be greater than 0.");
         if (projectileMaxElevationField.value <= 0f)
             return Localize("Elevation angle must be greater than 0 and less than 90 degrees.");
-        if (shellQualityField.value <= 0f)
-            return Localize("Shell quality must be greater than 0.");
+        if (effectiveShellQualityField.value <= 0f)
+            return Localize("Effective shell quality must be greater than 0.");
         if (integrationStepField.value <= 0f)
             return Localize("Integration step must be greater than 0.");
 
@@ -1044,13 +1054,16 @@ public sealed class NaabLikeCalculatorDialog
         projectile.windscreenWeightPounds = windscreenField.value;
         projectile.apCapWeightPounds = apCapWeightField.value;
         projectile.hcwclcrCapType = GetHcwclcrCapType();
+        projectile.windscreenNblAddendMultiplier = windscreenNblAddendMultiplierField.value;
+        projectile.highObliquityWindscreenNblAddendMultiplier = highObliquityWindscreenNblAddendMultiplierField.value;
+        projectile.highObliquityThresholdDeg = highObliquityThresholdField.value;
         projectile.muzzleVelocityFeetPerSecond = muzzleVelocityField.value;
         projectile.maxRangeYards = maxRangeField.value;
         projectile.dragFunction = GetDragFunction();
         projectile.ballisticCoefficient = ballisticCoefficientField.value;
         projectile.dragCoefficientAdjust = dragCoefficientField.value;
         projectile.maxElevationDeg = projectileMaxElevationField.value;
-        projectile.shellQuality = shellQualityField.value;
+        projectile.effectiveShellQuality = effectiveShellQualityField.value;
 
         armor = new NaabLikeArmorInput
         {

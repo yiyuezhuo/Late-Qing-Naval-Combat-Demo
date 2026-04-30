@@ -19,25 +19,29 @@ namespace NavalCombatCore
     public sealed class NaabLikeProjectile
     {
         public string name = "";
-        public int nation = 1;
-        public int shellClass = 1;
         public float diameterInches = 5f;
         public float totalWeightPounds = 50f;
         public float bodyWeightPounds = 50f;
         public float windscreenWeightPounds;
         public float apCapWeightPounds;
+
         // ProjInfo cap family selector: 0 none, 1 hard cap, 2 medium cap, 3 soft cap, 4 hood.
         public int hcwclcrCapType;
+
+        // Former nation/shellClass selector for windscreen/AP-cap NBL addends: <=3in -> 1;
+        // nation 1 -> 0.75; nation 2 class 16 -> 0.05; nation 3 class 13-16,
+        // nation 4 class 8, and nation 5 class 7-12 -> 0.33; otherwise -> 1.
+        public float windscreenNblAddendMultiplier = 1f;
+        public float highObliquityWindscreenNblAddendMultiplier = 0.1f; // Former nation 6 class 8/9 branch above 45 deg.
+        public float highObliquityThresholdDeg;
+
         public float muzzleVelocityFeetPerSecond = 3000f;
         public float maxRangeYards = 22600f;
         public float maxElevationDeg = 20f;
         public NaabLikeDragFunction dragFunction = NaabLikeDragFunction.G5;
         public float ballisticCoefficient = 1.9307f;
         public float dragCoefficientAdjust = 14f;
-        public float shellQuality = 0.575f;
-        public float defaultShellQuality;
-        public float shellPlim;
-        public float shellPdam;
+        public float effectiveShellQuality = 0.575f;
 
         public NaabLikeProjectile Clone()
         {
@@ -804,7 +808,7 @@ namespace NavalCombatCore
 
         float WindscreenSelectorAddend(float td, float obliquityDeg)
         {
-            var selectorMultiplier = ProjectileSelectorMultiplier(projectile.nation, projectile.shellClass, obliquityDeg);
+            var selectorMultiplier = WindscreenNblAddendMultiplier(obliquityDeg);
             var windscreenPercent = 100f * MathF.Max(projectile.windscreenWeightPounds, 0f) / MathF.Max(projectile.totalWeightPounds, 1e-9f);
             if (windscreenPercent <= 0.1f)
                 return 0f;
@@ -831,7 +835,7 @@ namespace NavalCombatCore
 
             var ob = ClampObliquity(obliquityDeg);
             var clampedTd = ClampTd(td);
-            if (SuppressProjectileAddendForThinPlate(clampedTd, ProjectileSelectorMultiplier(projectile.nation, projectile.shellClass, ob)))
+            if (SuppressProjectileAddendForThinPlate(clampedTd, WindscreenNblAddendMultiplier(ob)))
                 return 0f;
 
             var divisor = mode == 2 ? 10f : 20f;
@@ -853,20 +857,11 @@ namespace NavalCombatCore
             return 0f;
         }
 
-        float ProjectileSelectorMultiplier(int nation, int shellClass, float obliquityDeg)
+        float WindscreenNblAddendMultiplier(float obliquityDeg)
         {
-            if (projectile.diameterInches <= 3f)
-                return 1f;
-            return nation switch
-            {
-                1 => 0.75f,
-                2 => shellClass == 16 ? 0.05f : 1f,
-                3 => shellClass >= 13 && shellClass <= 16 ? 0.33f : 1f,
-                4 => shellClass == 8 ? 0.33f : 1f,
-                5 => shellClass >= 7 && shellClass <= 12 ? 0.33f : 1f,
-                6 => shellClass is 8 or 9 && obliquityDeg > HighObliquityStartDeg ? 0.1f : 1f,
-                _ => 1f
-            };
+            return projectile.highObliquityThresholdDeg > 0f && obliquityDeg > projectile.highObliquityThresholdDeg
+                ? projectile.highObliquityWindscreenNblAddendMultiplier
+                : projectile.windscreenNblAddendMultiplier;
         }
 
         static bool SuppressProjectileAddendForThinPlate(float td, float selectorMultiplier)
@@ -960,29 +955,7 @@ namespace NavalCombatCore
                 var cosRef = MathF.Max(MathF.Cos(DegreesToRadians(ExtremeObliquityStartDeg)), 1e-9f);
                 extremeObliquityScale = MathF.Pow(cosOb / cosRef, 1.1f);
             }
-            return extremeObliquityScale * Math.Clamp(ShellQualityFactor(), 0.2f, 1.2f);
-        }
-
-        float ShellQualityFactor()
-        {
-            var defaults = DefaultShellQualityLimits(projectile.nation, projectile.shellClass);
-            var plim = projectile.shellPlim > 0f ? projectile.shellPlim : defaults.plim;
-            var pdam = projectile.shellPdam > 0f ? projectile.shellPdam : defaults.pdam;
-            if (pdam <= 0f && projectile.shellPlim <= 0f)
-                plim = projectile.shellQuality;
-            if (projectile.defaultShellQuality > 0f && MathF.Abs(projectile.shellQuality - projectile.defaultShellQuality) > 1e-6f)
-                plim = projectile.shellQuality;
-            return pdam <= 0f ? plim : 0.75f * plim + 0.25f * pdam;
-        }
-
-        static (float plim, float pdam) DefaultShellQualityLimits(int nation, int shellClass)
-        {
-            return (nation, shellClass) switch
-            {
-                (1, 1) => (0.6f, 0.5f),
-                (3, 15) => (0.988f, 0.977f),
-                _ => (1f, -1f)
-            };
+            return extremeObliquityScale * Math.Clamp(projectile.effectiveShellQuality, 0.2f, 1.2f);
         }
 
         static float ClampTd(float td) => Math.Clamp(td, 0.001f, 5.99999f);

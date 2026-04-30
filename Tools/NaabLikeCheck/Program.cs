@@ -4,24 +4,22 @@ var data = NaabLikeBallisticsData.LoadEmbedded();
 var bismarck = new NaabLikeProjectile
 {
     name = "38cm/47 SK C/34 APC#",
-    nation = 3,
-    shellClass = 15,
     diameterInches = 14.96f,
     totalWeightPounds = 1763.70f,
     bodyWeightPounds = 1552.05f,
     windscreenWeightPounds = 52.91f,
     apCapWeightPounds = 158.74f,
     hcwclcrCapType = 1,
+    windscreenNblAddendMultiplier = 0.33f,
+    highObliquityWindscreenNblAddendMultiplier = 0.1f,
+    highObliquityThresholdDeg = 0f,
     muzzleVelocityFeetPerSecond = 2690f,
     maxRangeYards = 38870f,
     dragFunction = NaabLikeDragFunction.G7,
     ballisticCoefficient = 7.7734f,
     dragCoefficientAdjust = 0f,
     maxElevationDeg = 30f,
-    shellQuality = 0.985f,
-    defaultShellQuality = 0.985f,
-    shellPlim = 0.988f,
-    shellPdam = 0.977f
+    effectiveShellQuality = 0.985f
 };
 
 float? angleHint = null;

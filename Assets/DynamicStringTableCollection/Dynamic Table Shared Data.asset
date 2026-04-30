@@ -4473,6 +4473,34 @@ MonoBehaviour:
     m_Key: Hood
     m_Metadata:
       m_Items: []
+  - m_Id: -351
+    m_Key: Effective Shell Quality
+    m_Metadata:
+      m_Items: []
+  - m_Id: -352
+    m_Key: Effective shell quality must be greater than 0.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -353
+    m_Key: Windscreen NBL Addend Multiplier
+    m_Metadata:
+      m_Items: []
+  - m_Id: -354
+    m_Key: Hi-Obl Windscreen NBL Addend Mult.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -355
+    m_Key: High-Obliquity Threshold (deg)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -356
+    m_Key: Windscreen NBL addend multipliers must be 0 or greater.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -357
+    m_Key: High-obliquity threshold must be 0 or greater.
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

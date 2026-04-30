@@ -4511,6 +4511,34 @@ MonoBehaviour:
     m_Localized: "Hood"
     m_Metadata:
       m_Items: []
+  - m_Id: -351
+    m_Localized: "Effective Shell Quality"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -352
+    m_Localized: "Effective shell quality \u5FC5\u987B\u5927\u4E8E 0\u3002"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -353
+    m_Localized: "Windscreen NBL Addend Multiplier"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -354
+    m_Localized: "Hi-Obl Windscreen NBL Addend Mult."
+    m_Metadata:
+      m_Items: []
+  - m_Id: -355
+    m_Localized: "High-Obliquity Threshold (deg)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -356
+    m_Localized: "Windscreen NBL addend multipliers \u5FC5\u987B\u5927\u4E8E\u6216\u7B49\u4E8E 0\u3002"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -357
+    m_Localized: "High-obliquity threshold \u5FC5\u987B\u5927\u4E8E\u6216\u7B49\u4E8E 0\u3002"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -887,7 +887,6 @@ public sealed class NaabLikeCalculatorDialog
     sealed class NaabLikeFitCandidate
     {
         public float ballisticCoefficient;
-        public float dragCoefficient;
         public float shellQuality;
     }
 
@@ -917,17 +916,14 @@ public sealed class NaabLikeCalculatorDialog
         public float originalShellQuality;
 
         public float bestBallisticCoefficient;
-        public float bestDragCoefficient;
         public float bestShellQuality;
         public float bestScore = float.PositiveInfinity;
         public float currentScore = float.PositiveInfinity;
         public float currentBallisticCoefficient;
-        public float currentDragCoefficient;
         public float currentShellQuality;
         public string currentDetail = "";
 
         public float bcSpan = 0.75f;
-        public float dragSpan = 20f;
         public float qualitySpan = 0.5f;
     }
 
@@ -1721,13 +1717,11 @@ public sealed class NaabLikeCalculatorDialog
             originalMaxRange = viewModel.maxRange,
             originalShellQuality = viewModel.effectiveShellQuality,
             bestBallisticCoefficient = MathF.Max(projectile.ballisticCoefficient, 0.01f),
-            bestDragCoefficient = projectile.dragCoefficientAdjust,
             bestShellQuality = Math.Clamp(projectile.effectiveShellQuality, 0.2f, 1.2f),
             currentBallisticCoefficient = projectile.ballisticCoefficient,
-            currentDragCoefficient = projectile.dragCoefficientAdjust,
             currentShellQuality = projectile.effectiveShellQuality,
             totalCandidates = mode == NaabLikeFitMode.ExternalBallistic
-                ? 1 + 4 * 9 * 9
+                ? 4 * 9
                 : fitRecords.Count + 1 + 4 * 13,
             buildingImpacts = mode == NaabLikeFitMode.TerminalBallistic
         };
@@ -1775,7 +1769,6 @@ public sealed class NaabLikeCalculatorDialog
         {
             job.pass++;
             job.bcSpan *= 0.42f;
-            job.dragSpan *= 0.42f;
             if (job.pass >= 4)
             {
                 FinishFitJob(true, "Completed");
@@ -1786,8 +1779,7 @@ public sealed class NaabLikeCalculatorDialog
 
         var candidate = job.candidates[job.candidateIndex++];
         job.currentBallisticCoefficient = candidate.ballisticCoefficient;
-        job.currentDragCoefficient = candidate.dragCoefficient;
-        var detail = ScoreExterior(job.data, job.projectile, candidate.ballisticCoefficient, candidate.dragCoefficient, job.records);
+        var detail = ScoreExterior(job.data, job.projectile, candidate.ballisticCoefficient, job.records);
         job.currentScore = detail.score;
         job.currentDetail = $"mismatch {detail.rangeBandMismatchCount}, max range error {detail.maxRangeErrorYards:0} yd";
         job.processedCandidates++;
@@ -1795,7 +1787,6 @@ public sealed class NaabLikeCalculatorDialog
         {
             job.bestScore = detail.score;
             job.bestBallisticCoefficient = candidate.ballisticCoefficient;
-            job.bestDragCoefficient = candidate.dragCoefficient;
         }
         UpdateFitProgress(job, BuildExternalDiagnostic(job));
     }
@@ -1874,14 +1865,10 @@ public sealed class NaabLikeCalculatorDialog
             for (int bi = -4; bi <= 4; bi++)
             {
                 var bc = MathF.Max(0.01f, job.bestBallisticCoefficient * MathF.Pow(1f + job.bcSpan, bi / 4f));
-                for (int di = -4; di <= 4; di++)
+                job.candidates.Add(new NaabLikeFitCandidate
                 {
-                    job.candidates.Add(new NaabLikeFitCandidate
-                    {
-                        ballisticCoefficient = bc,
-                        dragCoefficient = job.bestDragCoefficient + job.dragSpan * di / 4f
-                    });
-                }
+                    ballisticCoefficient = bc
+                });
             }
         }
         else if (!job.buildingImpacts)
@@ -1922,7 +1909,6 @@ public sealed class NaabLikeCalculatorDialog
                 if (job.mode == NaabLikeFitMode.ExternalBallistic)
                 {
                     viewModel.ballisticCoefficient = job.bestBallisticCoefficient;
-                    viewModel.dragCoefficient = job.bestDragCoefficient;
                     viewModel.maxRange = viewModel.sk5RangeYards;
                 }
                 else
@@ -1964,8 +1950,8 @@ public sealed class NaabLikeCalculatorDialog
         {
             "External ballistic fit",
             $"pass {job.pass + 1}/4, candidate {job.candidateIndex}/{job.candidates.Count}",
-            $"current BC {job.currentBallisticCoefficient:0.####}, Drag {job.currentDragCoefficient:0.####}, score {job.currentScore:0.####}",
-            $"best BC {job.bestBallisticCoefficient:0.####}, Drag {job.bestDragCoefficient:0.####}, score {job.bestScore:0.####}",
+            $"current BC {job.currentBallisticCoefficient:0.####}, score {job.currentScore:0.####}",
+            $"best BC {job.bestBallisticCoefficient:0.####}, fixed Drag {job.projectile.dragCoefficientAdjust:0.####}, score {job.bestScore:0.####}",
             job.currentDetail
         });
     }
@@ -1982,11 +1968,10 @@ public sealed class NaabLikeCalculatorDialog
         });
     }
 
-    ExteriorScore ScoreExterior(NaabLikeBallisticsData data, NaabLikeProjectile seed, float ballisticCoefficient, float dragCoefficient, List<PenetrationTableRecord> records)
+    ExteriorScore ScoreExterior(NaabLikeBallisticsData data, NaabLikeProjectile seed, float ballisticCoefficient, List<PenetrationTableRecord> records)
     {
         var projectile = seed.Clone();
         projectile.ballisticCoefficient = ballisticCoefficient;
-        projectile.dragCoefficientAdjust = dragCoefficient;
         var exterior = new NaabLikeExteriorBallisticsSolver(data.dragTables[projectile.dragFunction], projectile, viewModel.integrationStep);
         var score = 0f;
         var mismatchCount = 0;

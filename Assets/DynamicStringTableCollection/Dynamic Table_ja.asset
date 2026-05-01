@@ -4332,7 +4332,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -303
-    m_Localized: "BNH"
+    m_Localized: BNH
     m_Metadata:
       m_Items: []
   - m_Id: -304
@@ -4472,7 +4472,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -338
-    m_Localized: "NAAB-like \u30C7\u30FC\u30BF\u306E\u8AAD\u307F\u8FBC\u307F\u306B\u5931\u6557\u3057\u307E\u3057\u305F: {0}"
+    m_Localized: "NAAB-like \u30C7\u30FC\u30BF\u306E\u8AAD\u307F\u8FBC\u307F\u306B\u5931\u6557\u3057\u307E\u3057\u305F:
+      {0}"
     m_Metadata:
       m_Items: []
   - m_Id: -339
@@ -4484,27 +4485,19 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -341
-    m_Localized: "AP Cap Weight (lb)"
+    m_Localized: AP Cap Weight (lb)
     m_Metadata:
       m_Items: []
   - m_Id: -342
-    m_Localized: "Integration Step (ft)"
-    m_Metadata:
-      m_Items: []
-  - m_Id: -343
-    m_Localized: "Hard Cap Type 1"
-    m_Metadata:
-      m_Items: []
-  - m_Id: -344
-    m_Localized: "Hard Cap Type 2"
+    m_Localized: Integration Step (ft)
     m_Metadata:
       m_Items: []
   - m_Id: -345
-    m_Localized: "Integration step must be greater than 0."
+    m_Localized: Integration step must be greater than 0.
     m_Metadata:
       m_Items: []
   - m_Id: -346
-    m_Localized: "BHN"
+    m_Localized: BHN
     m_Metadata:
       m_Items: []
   - m_Id: -347

@@ -4288,7 +4288,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -302
-    m_Localized: 'Elongation (%)'
+    m_Localized: Elongation (%)
     m_Metadata:
       m_Items: []
   - m_Id: -303
@@ -4451,14 +4451,6 @@ MonoBehaviour:
     m_Localized: Integration Step (ft)
     m_Metadata:
       m_Items: []
-  - m_Id: -343
-    m_Localized: Hard Cap Type 1
-    m_Metadata:
-      m_Items: []
-  - m_Id: -344
-    m_Localized: Hard Cap Type 2
-    m_Metadata:
-      m_Items: []
   - m_Id: -345
     m_Localized: Integration step must be greater than 0.
     m_Metadata:
@@ -4516,11 +4508,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -359
-    m_Localized: 'Avg. "mild/medium" construction steel. (1890-on)'
+    m_Localized: Avg. "mild/medium" construction steel. (1890-on)
     m_Metadata:
       m_Items: []
   - m_Id: -360
-    m_Localized: 'Avg. U.S WWI-era class "B" armor'
+    m_Localized: Avg. U.S WWI-era class "B" armor
     m_Metadata:
       m_Items: []
   references:

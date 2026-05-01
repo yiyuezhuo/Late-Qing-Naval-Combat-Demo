@@ -1,0 +1,213 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="NaabLikeCalculatorRoot" data-source-type="NaabLikeCalculatorViewModel, Assembly-CSharp" style="position: relative; flex-grow: 1; flex-shrink: 1;">
+        <ui:VisualElement style="flex-direction: row; flex-grow: 1; flex-shrink: 1;">
+            <ui:ScrollView name="InputScroll" mode="Vertical" style="flex-basis: 380px; flex-shrink: 0; margin-right: 8px;">
+                <ui:Label text="Plot Parameters" style="-unity-font-style: bold; margin-top: 6px; margin-bottom: 3px;" />
+                <ui:DropdownField name="ElevationModeField" label="Elevation Mode">
+                    <Bindings>
+                        <ui:DataBinding property="index" data-source-path="elevationModeIndex" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:DropdownField>
+                <ui:VisualElement name="RangeElevationRows">
+                    <Bindings>
+                        <ui:DataBinding property="style.display" data-source-path="rangeElevationDisplay" binding-mode="ToTarget" />
+                    </Bindings>
+                    <ui:FloatField name="StartElevationField" label="Start Elevation (deg)">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="startElevation" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="EndElevationField" label="End Elevation (deg)">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="endElevation" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="ElevationStepField" label="Elevation Step (deg)">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="elevationStep" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:FloatField>
+                </ui:VisualElement>
+                <ui:VisualElement name="SearchFixRows" style="display: none;">
+                    <Bindings>
+                        <ui:DataBinding property="style.display" data-source-path="searchFixDisplay" binding-mode="ToTarget" />
+                    </Bindings>
+                    <ui:FloatField name="SearchRangeStepField" label="Range Step (yards)">
+                        <Bindings>
+                            <ui:DataBinding property="value" data-source-path="searchRangeStep" binding-mode="TwoWay" />
+                        </Bindings>
+                    </ui:FloatField>
+                </ui:VisualElement>
+                <ui:DropdownField name="PlotModeField" label="Plot Mode">
+                    <Bindings>
+                        <ui:DataBinding property="index" data-source-path="plotModeIndex" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:DropdownField>
+                <ui:Button name="CalculateButton" text="Calculate" style="margin-top: 8px;" />
+                <ui:Label name="StatusLabel" style="white-space: normal; margin-top: 6px;">
+                    <Bindings>
+                        <ui:DataBinding property="text" data-source-path="statusText" binding-mode="ToTarget" />
+                    </Bindings>
+                </ui:Label>
+
+                <ui:Label text="Armor Parameters" style="-unity-font-style: bold; margin-top: 6px; margin-bottom: 3px;" />
+                <ui:DropdownField name="ArmorPresetField" label="Armor Preset">
+                    <Bindings>
+                        <ui:DataBinding property="index" data-source-path="armorPresetIndex" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:DropdownField>
+                <ui:FloatField name="ArmorQualityField" label="Quality">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="armorQuality" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:FloatField>
+                <ui:FloatField name="ArmorElongationField" label="Elongation (%)">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="armorElongation" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:FloatField>
+                <ui:FloatField name="ArmorBhnField" label="BHN">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="armorBhn" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:FloatField>
+                <ui:FloatField name="ArmorInclinedField" label="Inclined (deg)">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="armorInclined" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:FloatField>
+
+                <ui:Label text="Projectile Parameters" style="-unity-font-style: bold; margin-top: 6px; margin-bottom: 3px;" />
+                <ui:DropdownField name="ProjectilePresetField" label="Projectile Preset">
+                    <Bindings>
+                        <ui:DataBinding property="index" data-source-path="projectilePresetIndex" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:DropdownField>
+                <ui:FloatField name="DiameterField" label="Diameter (inch)">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="diameter" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:FloatField>
+                <ui:FloatField name="TotalWeightField" label="Total Weight (lb)">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="totalWeight" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:FloatField>
+                <ui:FloatField name="BodyWeightField" label="Body Weight (lb)">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="bodyWeight" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:FloatField>
+                <ui:FloatField name="WindscreenField" label="Windscreen (lb)">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="windscreen" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:FloatField>
+                <ui:FloatField name="ApCapWeightField" label="AP Cap Weight (lb)">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="apCapWeight" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:FloatField>
+                <ui:DropdownField name="CapTypeField" label="Cap Type">
+                    <Bindings>
+                        <ui:DataBinding property="index" data-source-path="capTypeIndex" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:DropdownField>
+                <ui:FloatField name="WindscreenNblAddendMultiplierField" label="Windscreen NBL Addend Multiplier">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="windscreenNblAddendMultiplier" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:FloatField>
+                <ui:FloatField name="HighObliquityWindscreenNblAddendMultiplierField" label="Hi-Obl Windscreen NBL Addend Mult.">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="highObliquityWindscreenNblAddendMultiplier" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:FloatField>
+                <ui:FloatField name="HighObliquityThresholdField" label="High-Obliquity Threshold (deg)">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="highObliquityThreshold" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:FloatField>
+                <ui:FloatField name="MuzzleVelocityField" label="Muzzle Velocity (fps)">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="muzzleVelocity" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:FloatField>
+                <ui:FloatField name="MaxRangeField" label="Max Range (yards)">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="maxRange" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:FloatField>
+                <ui:DropdownField name="DragFunctionField" label="Drag Function">
+                    <Bindings>
+                        <ui:DataBinding property="index" data-source-path="dragFunctionIndex" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:DropdownField>
+                <ui:FloatField name="BallisticCoefficientField" label="Ballistic Coefficient">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="ballisticCoefficient" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:FloatField>
+                <ui:FloatField name="DragCoefficientField" label="Drag Coefficient">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="dragCoefficient" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:FloatField>
+                <ui:FloatField name="ProjectileMaxElevationField" label="Elevation Deg">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="projectileMaxElevation" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:FloatField>
+                <ui:FloatField name="EffectiveShellQualityField" label="Effective Shell Quality">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="effectiveShellQuality" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:FloatField>
+                <ui:FloatField name="IntegrationStepField" label="Integration Step (ft)">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="integrationStep" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:FloatField>
+            </ui:ScrollView>
+
+            <ui:VisualElement name="OutputPanel" style="flex-grow: 1; flex-shrink: 1;">
+                <ui:VisualElement name="ChartContainer" style="flex-basis: 240px; flex-shrink: 0; margin-bottom: 6px; display: none;">
+                    <Bindings>
+                        <ui:DataBinding property="style.display" data-source-path="chartDisplay" binding-mode="ToTarget" />
+                    </Bindings>
+                    <NaabLikeTrajectoryChart name="TrajectoryChart" style="height: 230px;">
+                        <Bindings>
+                            <ui:DataBinding property="style.display" data-source-path="trajectoryChartDisplay" binding-mode="ToTarget" />
+                        </Bindings>
+                    </NaabLikeTrajectoryChart>
+                    <NaabLikePenetrationChart name="PenetrationChart" style="height: 230px; display: none;">
+                        <Bindings>
+                            <ui:DataBinding property="style.display" data-source-path="penetrationChartDisplay" binding-mode="ToTarget" />
+                        </Bindings>
+                    </NaabLikePenetrationChart>
+                </ui:VisualElement>
+                <ui:MultiColumnListView name="NaabLikeCalculatorResultListView" style="flex-grow: 1; flex-shrink: 1; min-height: 170px;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="ProgressOverlay" style="display: none; position: absolute; left: 0; right: 0; top: 0; bottom: 0; align-items: center; justify-content: center; background-color: rgba(0, 0, 0, 0.35);">
+            <Bindings>
+                <ui:DataBinding property="style.display" data-source-path="progressOverlayDisplay" binding-mode="ToTarget" />
+            </Bindings>
+            <ui:VisualElement class="panel" style="width: 320px; height: 132px; flex-grow: 0; flex-shrink: 0; padding-left: 12px; padding-right: 12px; padding-top: 10px; padding-bottom: 10px;">
+                <ui:Label text="Calculating..." style="-unity-font-style: bold; margin-bottom: 8px;" />
+                <ui:ProgressBar name="ProgressBar" low-value="0" high-value="1">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="progressValue" binding-mode="ToTarget" />
+                        <ui:DataBinding property="title" data-source-path="progressTitle" binding-mode="ToTarget" />
+                    </Bindings>
+                </ui:ProgressBar>
+                <ui:Label name="ProgressLabel" style="-unity-text-align: middle-center; margin-top: 6px;">
+                    <Bindings>
+                        <ui:DataBinding property="text" data-source-path="progressText" binding-mode="ToTarget" />
+                    </Bindings>
+                </ui:Label>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

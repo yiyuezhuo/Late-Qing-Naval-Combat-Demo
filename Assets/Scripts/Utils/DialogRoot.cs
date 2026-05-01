@@ -920,6 +920,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset plotTrajectoryDialogDocument;
     public VisualTreeAsset influenceMapDialogDocument;
     public VisualTreeAsset wtaSolverInspectorDialogDocument;
+    public VisualTreeAsset naabLikeCalculatorDialogDocument;
     public VisualTreeAsset torpedoInterceptSolutionVisualizerDialogDocument;
     public VisualTreeAsset strategicInfluenceMapDialogDocument;
     public VisualTreeAsset shipTimeLocDialogDocument;
@@ -3853,7 +3854,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         var dialog = new NaabLikeCalculatorDialog();
         return PopupCustomContentDialog(
             Localize("NAAB-like Calculator"),
-            dialog.BuildContent,
+            () => dialog.BuildContent(naabLikeCalculatorDialogDocument),
             Localize("Close")
         );
     }

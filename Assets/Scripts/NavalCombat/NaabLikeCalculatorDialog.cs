@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using UnityEngine;
+using Unity.Properties;
 using UnityEngine.UIElements;
 
 using NavalCombatCore;
@@ -22,7 +23,7 @@ public enum NaabLikePlotMode
     Penetration
 }
 
-sealed class NaabLikeArmorPreset
+public sealed class NaabLikeArmorPreset
 {
     public string name;
     public float quality;
@@ -30,7 +31,7 @@ sealed class NaabLikeArmorPreset
     public float bhn;
 }
 
-sealed class NaabLikeProjectilePreset
+public sealed class NaabLikeProjectilePreset
 {
     public NaabLikeProjectile projectile;
 }
@@ -420,6 +421,193 @@ public partial class NaabLikePenetrationChart : VisualElement
     }
 }
 
+public sealed class NaabLikeCalculatorViewModel : INotifyBindablePropertyChanged
+{
+    readonly List<NaabLikeArmorPreset> armorPresets;
+    readonly List<NaabLikeProjectilePreset> projectilePresets;
+
+    int _armorPresetIndex = 2;
+    int _projectilePresetIndex;
+    int _elevationModeIndex = 2;
+    int _plotModeIndex = 1;
+    int _capTypeIndex;
+    int _dragFunctionIndex = 2;
+    string _statusText = "";
+    bool _progressVisible;
+    bool _calculateEnabled = true;
+    float _progressValue;
+    string _progressTitle = "0%";
+    string _progressText = "";
+    bool _chartVisible;
+    bool _trajectoryChartVisible;
+    bool _penetrationChartVisible;
+
+    float _armorQuality = 0.95f;
+    float _armorElongation = 22f;
+    float _armorBhn = 235f;
+    float _armorInclined;
+    float _diameter = 5f;
+    float _totalWeight = 50f;
+    float _bodyWeight = 50f;
+    float _windscreen;
+    float _apCapWeight;
+    float _windscreenNblAddendMultiplier = 0.75f;
+    float _highObliquityWindscreenNblAddendMultiplier = 0.1f;
+    float _highObliquityThreshold;
+    float _muzzleVelocity = 3000f;
+    float _maxRange = 22600f;
+    float _ballisticCoefficient = 1.9307f;
+    float _dragCoefficient = 14f;
+    float _projectileMaxElevation = 20f;
+    float _effectiveShellQuality = 0.575f;
+    float _integrationStep = 3f;
+    float _startElevation = 1f;
+    float _endElevation = 20f;
+    float _elevationStep = 1f;
+    float _searchRangeStep = 1000f;
+
+    public event EventHandler<BindablePropertyChangedEventArgs> propertyChanged;
+
+    public NaabLikeCalculatorViewModel(List<NaabLikeArmorPreset> armorPresets, List<NaabLikeProjectilePreset> projectilePresets)
+    {
+        this.armorPresets = armorPresets;
+        this.projectilePresets = projectilePresets;
+        ApplyArmorPreset(armorPresets[Math.Clamp(_armorPresetIndex, 0, armorPresets.Count - 1)]);
+        ApplyProjectilePreset(projectilePresets[Math.Clamp(_projectilePresetIndex, 0, projectilePresets.Count - 1)].projectile);
+    }
+
+    [CreateProperty]
+    public int armorPresetIndex
+    {
+        get => _armorPresetIndex;
+        set
+        {
+            if (!SetProperty(ref _armorPresetIndex, value, nameof(armorPresetIndex)))
+                return;
+            if (value >= 0 && value < armorPresets.Count)
+                ApplyArmorPreset(armorPresets[value]);
+        }
+    }
+
+    [CreateProperty]
+    public int projectilePresetIndex
+    {
+        get => _projectilePresetIndex;
+        set
+        {
+            if (!SetProperty(ref _projectilePresetIndex, value, nameof(projectilePresetIndex)))
+                return;
+            if (value >= 0 && value < projectilePresets.Count)
+                ApplyProjectilePreset(projectilePresets[value].projectile);
+        }
+    }
+
+    [CreateProperty]
+    public int elevationModeIndex
+    {
+        get => _elevationModeIndex;
+        set
+        {
+            if (!SetProperty(ref _elevationModeIndex, value, nameof(elevationModeIndex)))
+                return;
+            Notify(nameof(rangeElevationDisplay));
+            Notify(nameof(searchFixDisplay));
+        }
+    }
+
+    [CreateProperty] public int plotModeIndex { get => _plotModeIndex; set => SetProperty(ref _plotModeIndex, value, nameof(plotModeIndex)); }
+    [CreateProperty] public int capTypeIndex { get => _capTypeIndex; set => SetProperty(ref _capTypeIndex, value, nameof(capTypeIndex)); }
+    [CreateProperty] public int dragFunctionIndex { get => _dragFunctionIndex; set => SetProperty(ref _dragFunctionIndex, value, nameof(dragFunctionIndex)); }
+
+    [CreateProperty] public float armorQuality { get => _armorQuality; set => SetProperty(ref _armorQuality, value, nameof(armorQuality)); }
+    [CreateProperty] public float armorElongation { get => _armorElongation; set => SetProperty(ref _armorElongation, value, nameof(armorElongation)); }
+    [CreateProperty] public float armorBhn { get => _armorBhn; set => SetProperty(ref _armorBhn, value, nameof(armorBhn)); }
+    [CreateProperty] public float armorInclined { get => _armorInclined; set => SetProperty(ref _armorInclined, value, nameof(armorInclined)); }
+    [CreateProperty] public float diameter { get => _diameter; set => SetProperty(ref _diameter, value, nameof(diameter)); }
+    [CreateProperty] public float totalWeight { get => _totalWeight; set => SetProperty(ref _totalWeight, value, nameof(totalWeight)); }
+    [CreateProperty] public float bodyWeight { get => _bodyWeight; set => SetProperty(ref _bodyWeight, value, nameof(bodyWeight)); }
+    [CreateProperty] public float windscreen { get => _windscreen; set => SetProperty(ref _windscreen, value, nameof(windscreen)); }
+    [CreateProperty] public float apCapWeight { get => _apCapWeight; set => SetProperty(ref _apCapWeight, value, nameof(apCapWeight)); }
+    [CreateProperty] public float windscreenNblAddendMultiplier { get => _windscreenNblAddendMultiplier; set => SetProperty(ref _windscreenNblAddendMultiplier, value, nameof(windscreenNblAddendMultiplier)); }
+    [CreateProperty] public float highObliquityWindscreenNblAddendMultiplier { get => _highObliquityWindscreenNblAddendMultiplier; set => SetProperty(ref _highObliquityWindscreenNblAddendMultiplier, value, nameof(highObliquityWindscreenNblAddendMultiplier)); }
+    [CreateProperty] public float highObliquityThreshold { get => _highObliquityThreshold; set => SetProperty(ref _highObliquityThreshold, value, nameof(highObliquityThreshold)); }
+    [CreateProperty] public float muzzleVelocity { get => _muzzleVelocity; set => SetProperty(ref _muzzleVelocity, value, nameof(muzzleVelocity)); }
+    [CreateProperty] public float maxRange { get => _maxRange; set => SetProperty(ref _maxRange, value, nameof(maxRange)); }
+    [CreateProperty] public float ballisticCoefficient { get => _ballisticCoefficient; set => SetProperty(ref _ballisticCoefficient, value, nameof(ballisticCoefficient)); }
+    [CreateProperty] public float dragCoefficient { get => _dragCoefficient; set => SetProperty(ref _dragCoefficient, value, nameof(dragCoefficient)); }
+    [CreateProperty] public float projectileMaxElevation { get => _projectileMaxElevation; set => SetProperty(ref _projectileMaxElevation, value, nameof(projectileMaxElevation)); }
+    [CreateProperty] public float effectiveShellQuality { get => _effectiveShellQuality; set => SetProperty(ref _effectiveShellQuality, value, nameof(effectiveShellQuality)); }
+    [CreateProperty] public float integrationStep { get => _integrationStep; set => SetProperty(ref _integrationStep, value, nameof(integrationStep)); }
+    [CreateProperty] public float startElevation { get => _startElevation; set => SetProperty(ref _startElevation, value, nameof(startElevation)); }
+    [CreateProperty] public float endElevation { get => _endElevation; set => SetProperty(ref _endElevation, value, nameof(endElevation)); }
+    [CreateProperty] public float elevationStep { get => _elevationStep; set => SetProperty(ref _elevationStep, value, nameof(elevationStep)); }
+    [CreateProperty] public float searchRangeStep { get => _searchRangeStep; set => SetProperty(ref _searchRangeStep, value, nameof(searchRangeStep)); }
+
+    [CreateProperty] public string statusText { get => _statusText; set => SetProperty(ref _statusText, value, nameof(statusText)); }
+    [CreateProperty] public bool calculateEnabled { get => _calculateEnabled; set => SetProperty(ref _calculateEnabled, value, nameof(calculateEnabled)); }
+    [CreateProperty] public bool progressVisible { get => _progressVisible; set { if (SetProperty(ref _progressVisible, value, nameof(progressVisible))) Notify(nameof(progressOverlayDisplay)); } }
+    [CreateProperty] public float progressValue { get => _progressValue; set => SetProperty(ref _progressValue, value, nameof(progressValue)); }
+    [CreateProperty] public string progressTitle { get => _progressTitle; set => SetProperty(ref _progressTitle, value, nameof(progressTitle)); }
+    [CreateProperty] public string progressText { get => _progressText; set => SetProperty(ref _progressText, value, nameof(progressText)); }
+    [CreateProperty] public bool chartVisible { get => _chartVisible; set { if (SetProperty(ref _chartVisible, value, nameof(chartVisible))) Notify(nameof(chartDisplay)); } }
+    [CreateProperty] public bool trajectoryChartVisible { get => _trajectoryChartVisible; set { if (SetProperty(ref _trajectoryChartVisible, value, nameof(trajectoryChartVisible))) Notify(nameof(trajectoryChartDisplay)); } }
+    [CreateProperty] public bool penetrationChartVisible { get => _penetrationChartVisible; set { if (SetProperty(ref _penetrationChartVisible, value, nameof(penetrationChartVisible))) Notify(nameof(penetrationChartDisplay)); } }
+
+    [CreateProperty] public DisplayStyle rangeElevationDisplay => elevationModeIndex == (int)NaabLikeElevationMode.Range ? DisplayStyle.Flex : DisplayStyle.None;
+    [CreateProperty] public DisplayStyle searchFixDisplay => elevationModeIndex == (int)NaabLikeElevationMode.SearchFix ? DisplayStyle.Flex : DisplayStyle.None;
+    [CreateProperty] public DisplayStyle progressOverlayDisplay => progressVisible ? DisplayStyle.Flex : DisplayStyle.None;
+    [CreateProperty] public DisplayStyle chartDisplay => chartVisible ? DisplayStyle.Flex : DisplayStyle.None;
+    [CreateProperty] public DisplayStyle trajectoryChartDisplay => trajectoryChartVisible ? DisplayStyle.Flex : DisplayStyle.None;
+    [CreateProperty] public DisplayStyle penetrationChartDisplay => penetrationChartVisible ? DisplayStyle.Flex : DisplayStyle.None;
+
+    void ApplyArmorPreset(NaabLikeArmorPreset preset)
+    {
+        if (preset == null)
+            return;
+        armorQuality = preset.quality;
+        armorElongation = preset.elongationPercent;
+        armorBhn = preset.bhn;
+    }
+
+    void ApplyProjectilePreset(NaabLikeProjectile preset)
+    {
+        if (preset == null)
+            return;
+        diameter = preset.diameterInches;
+        totalWeight = preset.totalWeightPounds;
+        bodyWeight = preset.bodyWeightPounds;
+        windscreen = preset.windscreenWeightPounds;
+        apCapWeight = preset.apCapWeightPounds;
+        capTypeIndex = Math.Clamp(preset.hcwclcrCapType, 0, 4);
+        windscreenNblAddendMultiplier = preset.windscreenNblAddendMultiplier;
+        highObliquityWindscreenNblAddendMultiplier = preset.highObliquityWindscreenNblAddendMultiplier;
+        highObliquityThreshold = preset.highObliquityThresholdDeg;
+        muzzleVelocity = preset.muzzleVelocityFeetPerSecond;
+        maxRange = preset.maxRangeYards;
+        dragFunctionIndex = NaabLikeCalculatorDialog.GetDragFunctionIndex(preset.dragFunction);
+        ballisticCoefficient = preset.ballisticCoefficient;
+        dragCoefficient = preset.dragCoefficientAdjust;
+        projectileMaxElevation = preset.maxElevationDeg;
+        endElevation = preset.maxElevationDeg;
+        effectiveShellQuality = preset.effectiveShellQuality;
+    }
+
+    bool SetProperty<T>(ref T field, T value, string propertyName)
+    {
+        if (EqualityComparer<T>.Default.Equals(field, value))
+            return false;
+        field = value;
+        Notify(propertyName);
+        return true;
+    }
+
+    void Notify(string propertyName)
+    {
+        var bindingId = new BindingId(propertyName);
+        propertyChanged?.Invoke(this, new BindablePropertyChangedEventArgs(in bindingId));
+    }
+}
+
 public sealed class NaabLikeCalculatorDialog
 {
     const int MaxElevationSamples = 121;
@@ -505,35 +693,6 @@ public sealed class NaabLikeCalculatorDialog
     static NaabLikeBallisticsData cachedData;
     static string cachedDataError;
 
-    DropdownField armorPresetField;
-    FloatField armorQualityField;
-    FloatField armorElongationField;
-    FloatField armorBhnField;
-    FloatField armorInclinedField;
-    DropdownField projectilePresetField;
-    FloatField diameterField;
-    FloatField totalWeightField;
-    FloatField bodyWeightField;
-    FloatField windscreenField;
-    FloatField apCapWeightField;
-    DropdownField capTypeField;
-    FloatField windscreenNblAddendMultiplierField;
-    FloatField highObliquityWindscreenNblAddendMultiplierField;
-    FloatField highObliquityThresholdField;
-    FloatField muzzleVelocityField;
-    FloatField maxRangeField;
-    DropdownField dragFunctionField;
-    FloatField ballisticCoefficientField;
-    FloatField dragCoefficientField;
-    FloatField projectileMaxElevationField;
-    FloatField effectiveShellQualityField;
-    FloatField integrationStepField;
-    DropdownField elevationModeField;
-    FloatField startElevationField;
-    FloatField endElevationField;
-    FloatField elevationStepField;
-    FloatField searchRangeStepField;
-    DropdownField plotModeField;
     VisualElement rangeElevationRows;
     VisualElement searchFixRows;
     VisualElement contentRoot;
@@ -548,200 +707,92 @@ public sealed class NaabLikeCalculatorDialog
     MultiColumnListView resultListView;
     IVisualElementScheduledItem calculationSchedule;
     NaabLikeCalculationJob currentJob;
+    NaabLikeCalculatorViewModel viewModel;
 
     readonly List<NaabLikeBallisticsResult> results = new();
     readonly List<NaabLikeResultRow> tableRows = new();
 
     static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
 
-    public VisualElement BuildContent()
+    public VisualElement BuildContent(VisualTreeAsset template = null)
+    {
+        viewModel = new NaabLikeCalculatorViewModel(ArmorPresets, ProjectilePresets);
+#if UNITY_EDITOR
+        template ??= UnityEditor.AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/UIDocuments/NavalCombat/NaabLikeCalculatorDialog.uxml");
+#endif
+        var root = template != null ? template.CloneTree() : BuildMissingTemplateContent();
+        root.dataSource = viewModel;
+        var calculatorRoot = root.Q<VisualElement>("NaabLikeCalculatorRoot");
+        if (calculatorRoot != null)
+            calculatorRoot.dataSource = viewModel;
+        root.style.position = Position.Relative;
+        root.style.flexGrow = 1;
+        root.style.flexShrink = 1;
+        contentRoot = root;
+
+        ConfigureDropdown(root.Q<DropdownField>("ElevationModeField"), new List<string> { Localize("Range"), Localize("Search Fix"), Localize("Search SK5") }, viewModel.elevationModeIndex);
+        ConfigureDropdown(root.Q<DropdownField>("PlotModeField"), new List<string> { Localize("None"), Localize("Trajectories"), Localize("Penetration") }, viewModel.plotModeIndex);
+        ConfigureDropdown(root.Q<DropdownField>("ArmorPresetField"), ArmorPresets.Select(preset => Localize(preset.name)).ToList(), viewModel.armorPresetIndex);
+        ConfigureDropdown(root.Q<DropdownField>("ProjectilePresetField"), ProjectilePresets.Select(preset => preset.projectile.name).ToList(), viewModel.projectilePresetIndex);
+        ConfigureDropdown(root.Q<DropdownField>("CapTypeField"), GetCapTypeLabels(), viewModel.capTypeIndex);
+        ConfigureDropdown(root.Q<DropdownField>("DragFunctionField"), GetDragFunctionLabels(), viewModel.dragFunctionIndex);
+
+        rangeElevationRows = root.Q<VisualElement>("RangeElevationRows");
+        searchFixRows = root.Q<VisualElement>("SearchFixRows");
+        progressOverlay = root.Q<VisualElement>("ProgressOverlay");
+        progressBar = root.Q<ProgressBar>("ProgressBar");
+        progressLabel = root.Q<Label>("ProgressLabel");
+        calculateButton = root.Q<Button>("CalculateButton");
+        statusLabel = root.Q<Label>("StatusLabel");
+        chartContainer = root.Q<VisualElement>("ChartContainer");
+        trajectoryChart = root.Q<NaabLikeTrajectoryChart>("TrajectoryChart");
+        penetrationChart = root.Q<NaabLikePenetrationChart>("PenetrationChart");
+        resultListView = root.Q<MultiColumnListView>("NaabLikeCalculatorResultListView");
+
+        if (calculateButton != null)
+            calculateButton.clicked += Calculate;
+        ConfigureResultListView();
+        viewModel.propertyChanged += OnViewModelPropertyChanged;
+        ApplyViewState();
+        RefreshOutputs();
+        return root;
+    }
+
+    static VisualElement BuildMissingTemplateContent()
     {
         var root = new VisualElement
         {
             style =
             {
-                position = Position.Relative,
                 flexGrow = 1,
-                flexShrink = 1
+                flexShrink = 1,
+                minHeight = 160
             }
         };
-        contentRoot = root;
-
-        var mainRow = new VisualElement
-        {
-            style =
-            {
-                flexDirection = FlexDirection.Row,
-                flexGrow = 1,
-                flexShrink = 1
-            }
-        };
-
-        var inputScroll = new ScrollView(ScrollViewMode.Vertical)
-        {
-            style =
-            {
-                flexBasis = 380,
-                flexShrink = 0,
-                marginRight = 8
-            }
-        };
-        BuildInputPanel(inputScroll);
-
-        var outputPanel = new VisualElement
-        {
-            style =
-            {
-                flexGrow = 1,
-                flexShrink = 1
-            }
-        };
-        BuildOutputPanel(outputPanel);
-
-        mainRow.Add(inputScroll);
-        mainRow.Add(outputPanel);
-        root.Add(mainRow);
-
+        root.Add(new Label(Localize("NAAB-like Calculator UXML is not configured.")));
         return root;
     }
 
-    void BuildInputPanel(VisualElement root)
+    static void ConfigureDropdown(DropdownField field, List<string> choices, int index)
     {
-        root.Add(BuildSectionLabel(Localize("Plot Parameters")));
-        elevationModeField = new DropdownField(Localize("Elevation Mode"), new List<string> { Localize("Range"), Localize("Search Fix"), Localize("Search SK5") }, 2);
-        plotModeField = new DropdownField(Localize("Plot Mode"), new List<string> { Localize("None"), Localize("Trajectories"), Localize("Penetration") }, 1);
-        root.Add(elevationModeField);
-
-        rangeElevationRows = new VisualElement();
-        startElevationField = BuildFloatField(Localize("Start Elevation (deg)"), 1f);
-        endElevationField = BuildFloatField(Localize("End Elevation (deg)"), 20f);
-        elevationStepField = BuildFloatField(Localize("Elevation Step (deg)"), 1f);
-        rangeElevationRows.Add(startElevationField);
-        rangeElevationRows.Add(endElevationField);
-        rangeElevationRows.Add(elevationStepField);
-        root.Add(rangeElevationRows);
-
-        searchFixRows = new VisualElement();
-        searchRangeStepField = BuildFloatField(Localize("Range Step (yards)"), 1000f);
-        searchFixRows.Add(searchRangeStepField);
-        root.Add(searchFixRows);
-
-        root.Add(plotModeField);
-        calculateButton = new Button(Calculate)
-        {
-            text = Localize("Calculate"),
-            style =
-            {
-                marginTop = 8
-            }
-        };
-        root.Add(calculateButton);
-
-        statusLabel = new Label();
-        statusLabel.style.whiteSpace = WhiteSpace.Normal;
-        statusLabel.style.marginTop = 6;
-        root.Add(statusLabel);
-
-        root.Add(BuildSectionLabel(Localize("Armor Parameters")));
-        armorPresetField = new DropdownField(Localize("Armor Preset"), ArmorPresets.Select(preset => Localize(preset.name)).ToList(), 2);
-        armorQualityField = BuildFloatField(Localize("Quality"), 0.95f);
-        armorElongationField = BuildFloatField(Localize("Elongation (%)"), 22f);
-        armorBhnField = BuildFloatField(Localize("BHN"), 235f);
-        armorInclinedField = BuildFloatField(Localize("Inclined (deg)"), 0f);
-        root.Add(armorPresetField);
-        root.Add(armorQualityField);
-        root.Add(armorElongationField);
-        root.Add(armorBhnField);
-        root.Add(armorInclinedField);
-
-        root.Add(BuildSectionLabel(Localize("Projectile Parameters")));
-        projectilePresetField = new DropdownField(Localize("Projectile Preset"), ProjectilePresets.Select(preset => preset.projectile.name).ToList(), 0);
-        diameterField = BuildFloatField(Localize("Diameter (inch)"), 5f);
-        totalWeightField = BuildFloatField(Localize("Total Weight (lb)"), 50f);
-        bodyWeightField = BuildFloatField(Localize("Body Weight (lb)"), 50f);
-        windscreenField = BuildFloatField(Localize("Windscreen (lb)"), 0f);
-        apCapWeightField = BuildFloatField(Localize("AP Cap Weight (lb)"), 0f);
-        capTypeField = new DropdownField(Localize("Cap Type"), GetCapTypeLabels(), 0);
-        windscreenNblAddendMultiplierField = BuildFloatField(Localize("Windscreen NBL Addend Multiplier"), 0.75f);
-        highObliquityWindscreenNblAddendMultiplierField = BuildFloatField(Localize("Hi-Obl Windscreen NBL Addend Mult."), 0.1f);
-        highObliquityThresholdField = BuildFloatField(Localize("High-Obliquity Threshold (deg)"), 0f);
-        muzzleVelocityField = BuildFloatField(Localize("Muzzle Velocity (fps)"), 3000f);
-        maxRangeField = BuildFloatField(Localize("Max Range (yards)"), 22600f);
-        dragFunctionField = new DropdownField(Localize("Drag Function"), GetDragFunctionLabels(), 2);
-        ballisticCoefficientField = BuildFloatField(Localize("Ballistic Coefficient"), 1.9307f);
-        dragCoefficientField = BuildFloatField(Localize("Drag Coefficient"), 14f);
-        projectileMaxElevationField = BuildFloatField(Localize("Elevation Deg"), 20f);
-        effectiveShellQualityField = BuildFloatField(Localize("Effective Shell Quality"), 0.575f);
-        integrationStepField = BuildFloatField(Localize("Integration Step (ft)"), 3f);
-        foreach (var element in new VisualElement[]
-        {
-            projectilePresetField, diameterField, totalWeightField, bodyWeightField, windscreenField, apCapWeightField,
-            capTypeField, windscreenNblAddendMultiplierField, highObliquityWindscreenNblAddendMultiplierField,
-            highObliquityThresholdField, muzzleVelocityField, maxRangeField, dragFunctionField, ballisticCoefficientField,
-            dragCoefficientField, projectileMaxElevationField, effectiveShellQualityField, integrationStepField
-        })
-        {
-            root.Add(element);
-        }
-
-        RegisterInputCallbacks();
-        ApplyArmorPreset(ArmorPresets[2]);
-        ApplyProjectilePreset(ProjectilePresets[0].projectile);
-        UpdateElevationModeVisibility();
+        if (field == null)
+            return;
+        field.choices = choices;
+        field.index = Math.Clamp(index, choices.Count > 0 ? 0 : -1, choices.Count - 1);
     }
 
-    void BuildOutputPanel(VisualElement root)
+    void ConfigureResultListView()
     {
-        chartContainer = new VisualElement
-        {
-            style =
-            {
-                flexBasis = 240,
-                flexShrink = 0,
-                marginBottom = 6,
-                display = DisplayStyle.None
-            }
-        };
-        trajectoryChart = new NaabLikeTrajectoryChart
-        {
-            style =
-            {
-                height = 230
-            }
-        };
-        penetrationChart = new NaabLikePenetrationChart
-        {
-            style =
-            {
-                height = 230
-            }
-        };
-        chartContainer.Add(trajectoryChart);
-        chartContainer.Add(penetrationChart);
-        root.Add(chartContainer);
+        if (resultListView == null)
+            return;
 
-        resultListView = BuildResultListView();
-        root.Add(resultListView);
-    }
-
-    MultiColumnListView BuildResultListView()
-    {
-        var listView = new MultiColumnListView
-        {
-            name = "NaabLikeCalculatorResultListView",
-            selectionType = SelectionType.None,
-            virtualizationMethod = CollectionVirtualizationMethod.DynamicHeight,
-            style =
-            {
-                flexGrow = 1,
-                flexShrink = 1,
-                minHeight = 170
-            }
-        };
+        resultListView.selectionType = SelectionType.None;
+        resultListView.virtualizationMethod = CollectionVirtualizationMethod.DynamicHeight;
+        resultListView.columns.Clear();
 
         void AddColumn(string name, string title, int width, Func<NaabLikeResultRow, string> selector)
         {
-            listView.columns.Add(new Column
+            resultListView.columns.Add(new Column
             {
                 name = name,
                 title = title,
@@ -772,63 +823,42 @@ public sealed class NaabLikeCalculatorDialog
         AddColumn("fall", Localize("Angle of Fall"), 120, row => row.angleOfFall);
         AddColumn("time", Localize("Time of Flight"), 120, row => row.timeOfFlight);
         AddColumn("elevation", Localize("Elevation"), 90, row => row.elevation);
-
-        return listView;
     }
 
-    void RegisterInputCallbacks()
+    void ApplyViewState()
     {
-        armorPresetField.RegisterValueChangedCallback(evt =>
-        {
-            var index = armorPresetField.index;
-            if (index >= 0 && index < ArmorPresets.Count)
-                ApplyArmorPreset(ArmorPresets[index]);
-        });
-
-        projectilePresetField.RegisterValueChangedCallback(evt =>
-        {
-            var index = projectilePresetField.index;
-            if (index >= 0 && index < ProjectilePresets.Count)
-                ApplyProjectilePreset(ProjectilePresets[index].projectile);
-        });
-
-        elevationModeField.RegisterValueChangedCallback(_ =>
-        {
-            UpdateElevationModeVisibility();
-        });
-        plotModeField.RegisterValueChangedCallback(_ => RefreshOutputs());
-    }
-
-    void ApplyArmorPreset(NaabLikeArmorPreset preset)
-    {
-        if (preset == null)
+        if (viewModel == null)
             return;
-        armorQualityField?.SetValueWithoutNotify(preset.quality);
-        armorElongationField?.SetValueWithoutNotify(preset.elongationPercent);
-        armorBhnField?.SetValueWithoutNotify(preset.bhn);
+        if (rangeElevationRows != null)
+            rangeElevationRows.style.display = viewModel.rangeElevationDisplay;
+        if (searchFixRows != null)
+            searchFixRows.style.display = viewModel.searchFixDisplay;
+        if (progressOverlay != null)
+            progressOverlay.style.display = viewModel.progressOverlayDisplay;
+        if (chartContainer != null)
+            chartContainer.style.display = viewModel.chartDisplay;
+        if (trajectoryChart != null)
+            trajectoryChart.style.display = viewModel.trajectoryChartDisplay;
+        if (penetrationChart != null)
+            penetrationChart.style.display = viewModel.penetrationChartDisplay;
+        if (calculateButton != null)
+            calculateButton.SetEnabled(viewModel.calculateEnabled);
+        if (statusLabel != null)
+            statusLabel.text = viewModel.statusText;
+        if (progressBar != null)
+        {
+            progressBar.value = viewModel.progressValue;
+            progressBar.title = viewModel.progressTitle;
+        }
+        if (progressLabel != null)
+            progressLabel.text = viewModel.progressText;
     }
 
-    void ApplyProjectilePreset(NaabLikeProjectile preset)
+    void OnViewModelPropertyChanged(object sender, BindablePropertyChangedEventArgs args)
     {
-        if (preset == null)
-            return;
-        diameterField?.SetValueWithoutNotify(preset.diameterInches);
-        totalWeightField?.SetValueWithoutNotify(preset.totalWeightPounds);
-        bodyWeightField?.SetValueWithoutNotify(preset.bodyWeightPounds);
-        windscreenField?.SetValueWithoutNotify(preset.windscreenWeightPounds);
-        apCapWeightField?.SetValueWithoutNotify(preset.apCapWeightPounds);
-        capTypeField?.SetValueWithoutNotify(GetCapTypeLabel(preset.hcwclcrCapType));
-        windscreenNblAddendMultiplierField?.SetValueWithoutNotify(preset.windscreenNblAddendMultiplier);
-        highObliquityWindscreenNblAddendMultiplierField?.SetValueWithoutNotify(preset.highObliquityWindscreenNblAddendMultiplier);
-        highObliquityThresholdField?.SetValueWithoutNotify(preset.highObliquityThresholdDeg);
-        muzzleVelocityField?.SetValueWithoutNotify(preset.muzzleVelocityFeetPerSecond);
-        maxRangeField?.SetValueWithoutNotify(preset.maxRangeYards);
-        dragFunctionField?.SetValueWithoutNotify(preset.dragFunction.ToString());
-        ballisticCoefficientField?.SetValueWithoutNotify(preset.ballisticCoefficient);
-        dragCoefficientField?.SetValueWithoutNotify(preset.dragCoefficientAdjust);
-        projectileMaxElevationField?.SetValueWithoutNotify(preset.maxElevationDeg);
-        endElevationField?.SetValueWithoutNotify(preset.maxElevationDeg);
-        effectiveShellQualityField?.SetValueWithoutNotify(preset.effectiveShellQuality);
+        ApplyViewState();
+        if (args.propertyName.ToString() == nameof(NaabLikeCalculatorViewModel.plotModeIndex))
+            RefreshOutputs();
     }
 
     void Calculate()
@@ -842,7 +872,7 @@ public sealed class NaabLikeCalculatorDialog
         var data = LoadData();
         if (data == null)
         {
-            statusLabel.text = cachedDataError;
+            viewModel.statusText = cachedDataError;
             RefreshOutputs();
             return;
         }
@@ -850,13 +880,13 @@ public sealed class NaabLikeCalculatorDialog
         var validationError = ValidateInputs(out var projectile, out var armor);
         if (validationError != null)
         {
-            statusLabel.text = validationError;
+            viewModel.statusText = validationError;
             RefreshOutputs();
             return;
         }
 
         var dragTable = data.dragTables[projectile.dragFunction];
-        var dxFeet = integrationStepField.value;
+        var dxFeet = viewModel.integrationStep;
         var exterior = new NaabLikeExteriorBallisticsSolver(dragTable, projectile, dxFeet);
         var terminal = new NaabLikeTerminalBallisticsSolver(data.terminalTables, projectile, armor);
         var elevationMode = GetElevationMode();
@@ -866,7 +896,7 @@ public sealed class NaabLikeCalculatorDialog
 
         if (totalRows <= 0)
         {
-            statusLabel.text = Localize("{0} result(s).", 0);
+            viewModel.statusText = Localize("{0} result(s).", 0);
             RefreshOutputs();
             return;
         }
@@ -902,7 +932,7 @@ public sealed class NaabLikeCalculatorDialog
             calculationSchedule = null;
             currentJob = null;
             HideProgressDialog();
-            statusLabel.text = job.externalFailures > 0
+            viewModel.statusText = job.externalFailures > 0
                 ? Localize("{0} result(s), {1} external ballistic failure(s).", tableRows.Count, job.externalFailures)
                 : Localize("{0} result(s).", tableRows.Count);
             RefreshOutputs();
@@ -930,86 +960,23 @@ public sealed class NaabLikeCalculatorDialog
 
     void ShowProgressDialog(int completedRows, int totalRows)
     {
-        progressOverlay?.RemoveFromHierarchy();
-        progressBar = new ProgressBar
-        {
-            lowValue = 0f,
-            highValue = 1f
-        };
-        progressLabel = new Label
-        {
-            style =
-            {
-                unityTextAlign = TextAnchor.MiddleCenter,
-                marginTop = 6
-            }
-        };
-
-        var panel = new VisualElement
-        {
-            style =
-            {
-                width = 320,
-                height = 132,
-                flexGrow = 0,
-                flexShrink = 0,
-                paddingLeft = 12,
-                paddingRight = 12,
-                paddingTop = 10,
-                paddingBottom = 10
-            }
-        };
-        panel.AddToClassList("panel");
-        panel.Add(new Label(Localize("Calculating..."))
-        {
-            style =
-            {
-                unityFontStyleAndWeight = FontStyle.Bold,
-                marginBottom = 8
-            }
-        });
-        panel.Add(progressBar);
-        panel.Add(progressLabel);
-
-        progressOverlay = new VisualElement
-        {
-            style =
-            {
-                position = Position.Absolute,
-                left = 0,
-                right = 0,
-                top = 0,
-                bottom = 0,
-                alignItems = Align.Center,
-                justifyContent = Justify.Center,
-                backgroundColor = new Color(0f, 0f, 0f, 0.35f)
-            }
-        };
-        progressOverlay.Add(panel);
-        contentRoot.Add(progressOverlay);
-        calculateButton?.SetEnabled(false);
+        viewModel.progressVisible = true;
+        viewModel.calculateEnabled = false;
         UpdateProgressDialog(completedRows, totalRows);
     }
 
     void UpdateProgressDialog(int completedRows, int totalRows)
     {
         var progress = totalRows <= 0 ? 1f : Mathf.Clamp01((float)completedRows / totalRows);
-        if (progressBar != null)
-        {
-            progressBar.value = progress;
-            progressBar.title = $"{progress:P0}";
-        }
-        if (progressLabel != null)
-            progressLabel.text = Localize("{0}/{1} rows", completedRows, totalRows);
+        viewModel.progressValue = progress;
+        viewModel.progressTitle = $"{progress:P0}";
+        viewModel.progressText = Localize("{0}/{1} rows", completedRows, totalRows);
     }
 
     void HideProgressDialog()
     {
-        progressOverlay?.RemoveFromHierarchy();
-        progressOverlay = null;
-        progressBar = null;
-        progressLabel = null;
-        calculateButton?.SetEnabled(true);
+        viewModel.progressVisible = false;
+        viewModel.calculateEnabled = true;
     }
 
     void AddResult(NaabLikeBallisticsResult result, NaabLikeTerminalBallisticsSolver terminal, NaabLikeArmorInput armor, ref int externalFailures)
@@ -1033,78 +1000,78 @@ public sealed class NaabLikeCalculatorDialog
         projectile = null;
         armor = null;
 
-        if (armorQualityField.value <= 0f)
+        if (viewModel.armorQuality <= 0f)
             return Localize("Quality must be greater than 0.");
-        if (armorElongationField.value <= 0f)
+        if (viewModel.armorElongation <= 0f)
             return Localize("Elongation must be greater than 0.");
-        if (armorBhnField.value <= 0f)
+        if (viewModel.armorBhn <= 0f)
             return Localize("BHN must be greater than 0.");
-        if (diameterField.value <= 0f)
+        if (viewModel.diameter <= 0f)
             return Localize("Projectile diameter must be greater than 0.");
-        if (totalWeightField.value <= 0f)
+        if (viewModel.totalWeight <= 0f)
             return Localize("Projectile mass must be greater than 0.");
-        if (bodyWeightField.value < 0f || windscreenField.value < 0f || apCapWeightField.value < 0f)
+        if (viewModel.bodyWeight < 0f || viewModel.windscreen < 0f || viewModel.apCapWeight < 0f)
             return Localize("Projectile component weights must be 0 or greater.");
-        if (bodyWeightField.value + windscreenField.value + apCapWeightField.value > totalWeightField.value + 0.001f)
+        if (viewModel.bodyWeight + viewModel.windscreen + viewModel.apCapWeight > viewModel.totalWeight + 0.001f)
             return Localize("Projectile component weights must not exceed total weight.");
-        if (windscreenNblAddendMultiplierField.value < 0f || highObliquityWindscreenNblAddendMultiplierField.value < 0f)
+        if (viewModel.windscreenNblAddendMultiplier < 0f || viewModel.highObliquityWindscreenNblAddendMultiplier < 0f)
             return Localize("Windscreen NBL addend multipliers must be 0 or greater.");
-        if (highObliquityThresholdField.value < 0f)
+        if (viewModel.highObliquityThreshold < 0f)
             return Localize("High-obliquity threshold must be 0 or greater.");
-        if (muzzleVelocityField.value <= 0f)
+        if (viewModel.muzzleVelocity <= 0f)
             return Localize("Muzzle velocity must be greater than 0.");
-        if (maxRangeField.value <= 0f)
+        if (viewModel.maxRange <= 0f)
             return Localize("Max range must be greater than 0.");
-        if (ballisticCoefficientField.value <= 0f)
+        if (viewModel.ballisticCoefficient <= 0f)
             return Localize("Ballistic coefficient must be greater than 0.");
-        if (projectileMaxElevationField.value <= 0f)
+        if (viewModel.projectileMaxElevation <= 0f)
             return Localize("Elevation angle must be greater than 0 and less than 90 degrees.");
-        if (effectiveShellQualityField.value <= 0f)
+        if (viewModel.effectiveShellQuality <= 0f)
             return Localize("Effective shell quality must be greater than 0.");
-        if (integrationStepField.value <= 0f)
+        if (viewModel.integrationStep <= 0f)
             return Localize("Integration step must be greater than 0.");
 
         if (GetElevationMode() == NaabLikeElevationMode.Range)
         {
-            if (startElevationField.value <= 0f || startElevationField.value >= 90f || endElevationField.value <= 0f || endElevationField.value >= 90f)
+            if (viewModel.startElevation <= 0f || viewModel.startElevation >= 90f || viewModel.endElevation <= 0f || viewModel.endElevation >= 90f)
                 return Localize("Elevation angle must be greater than 0 and less than 90 degrees.");
-            if (elevationStepField.value <= 0f)
+            if (viewModel.elevationStep <= 0f)
                 return Localize("Elevation step must be greater than 0.");
-            if (startElevationField.value > endElevationField.value)
+            if (viewModel.startElevation > viewModel.endElevation)
                 return Localize("Start elevation must be less than or equal to end elevation.");
             if (GetElevationSamples().Count > MaxElevationSamples)
                 return Localize("Too many elevation samples. Increase the step or narrow the range.");
         }
-        else if (GetElevationMode() == NaabLikeElevationMode.SearchFix && searchRangeStepField.value <= 0f)
+        else if (GetElevationMode() == NaabLikeElevationMode.SearchFix && viewModel.searchRangeStep <= 0f)
         {
             return Localize("Range step must be greater than 0.");
         }
 
-        var preset = ProjectilePresets[Math.Clamp(projectilePresetField.index, 0, ProjectilePresets.Count - 1)].projectile;
+        var preset = ProjectilePresets[Math.Clamp(viewModel.projectilePresetIndex, 0, ProjectilePresets.Count - 1)].projectile;
         projectile = preset.Clone();
-        projectile.diameterInches = diameterField.value;
-        projectile.totalWeightPounds = totalWeightField.value;
-        projectile.bodyWeightPounds = bodyWeightField.value;
-        projectile.windscreenWeightPounds = windscreenField.value;
-        projectile.apCapWeightPounds = apCapWeightField.value;
+        projectile.diameterInches = viewModel.diameter;
+        projectile.totalWeightPounds = viewModel.totalWeight;
+        projectile.bodyWeightPounds = viewModel.bodyWeight;
+        projectile.windscreenWeightPounds = viewModel.windscreen;
+        projectile.apCapWeightPounds = viewModel.apCapWeight;
         projectile.hcwclcrCapType = GetHcwclcrCapType();
-        projectile.windscreenNblAddendMultiplier = windscreenNblAddendMultiplierField.value;
-        projectile.highObliquityWindscreenNblAddendMultiplier = highObliquityWindscreenNblAddendMultiplierField.value;
-        projectile.highObliquityThresholdDeg = highObliquityThresholdField.value;
-        projectile.muzzleVelocityFeetPerSecond = muzzleVelocityField.value;
-        projectile.maxRangeYards = maxRangeField.value;
+        projectile.windscreenNblAddendMultiplier = viewModel.windscreenNblAddendMultiplier;
+        projectile.highObliquityWindscreenNblAddendMultiplier = viewModel.highObliquityWindscreenNblAddendMultiplier;
+        projectile.highObliquityThresholdDeg = viewModel.highObliquityThreshold;
+        projectile.muzzleVelocityFeetPerSecond = viewModel.muzzleVelocity;
+        projectile.maxRangeYards = viewModel.maxRange;
         projectile.dragFunction = GetDragFunction();
-        projectile.ballisticCoefficient = ballisticCoefficientField.value;
-        projectile.dragCoefficientAdjust = dragCoefficientField.value;
-        projectile.maxElevationDeg = projectileMaxElevationField.value;
-        projectile.effectiveShellQuality = effectiveShellQualityField.value;
+        projectile.ballisticCoefficient = viewModel.ballisticCoefficient;
+        projectile.dragCoefficientAdjust = viewModel.dragCoefficient;
+        projectile.maxElevationDeg = viewModel.projectileMaxElevation;
+        projectile.effectiveShellQuality = viewModel.effectiveShellQuality;
 
         armor = new NaabLikeArmorInput
         {
-            quality = armorQualityField.value,
-            elongationPercent = armorElongationField.value,
-            bhn = armorBhnField.value,
-            inclinedDeg = armorInclinedField.value
+            quality = viewModel.armorQuality,
+            elongationPercent = viewModel.armorElongation,
+            bhn = viewModel.armorBhn,
+            inclinedDeg = viewModel.armorInclined
         };
         return null;
     }
@@ -1112,9 +1079,9 @@ public sealed class NaabLikeCalculatorDialog
     List<float> GetElevationSamples()
     {
         var samples = new List<float>();
-        var start = startElevationField.value;
-        var end = endElevationField.value;
-        var step = elevationStepField.value;
+        var start = viewModel.startElevation;
+        var end = viewModel.endElevation;
+        var step = viewModel.elevationStep;
         if (step <= 0f)
             return samples;
         var count = Mathf.FloorToInt((end - start) / step) + 1;
@@ -1133,7 +1100,7 @@ public sealed class NaabLikeCalculatorDialog
             return Sk5RangesYards.Where(range => range <= projectile.maxRangeYards + 0.001f).ToList();
 
         var ranges = new List<float>();
-        var step = searchRangeStepField.value;
+        var step = viewModel.searchRangeStep;
         for (var range = step; range <= projectile.maxRangeYards + 0.001f; range += step)
             ranges.Add(range);
         return ranges;
@@ -1165,11 +1132,11 @@ public sealed class NaabLikeCalculatorDialog
         var successful = results.Where(result => result.success).ToList();
         var plotMode = GetPlotMode();
         var hasChartData = successful.Count > 0 && plotMode != NaabLikePlotMode.None;
-        chartContainer.style.display = hasChartData ? DisplayStyle.Flex : DisplayStyle.None;
-        trajectoryChart.style.display = hasChartData && plotMode == NaabLikePlotMode.Trajectories ? DisplayStyle.Flex : DisplayStyle.None;
-        penetrationChart.style.display = hasChartData && plotMode == NaabLikePlotMode.Penetration ? DisplayStyle.Flex : DisplayStyle.None;
-        trajectoryChart.SetResults(hasChartData && plotMode == NaabLikePlotMode.Trajectories ? SelectTrajectoryResults(successful) : Enumerable.Empty<NaabLikeBallisticsResult>());
-        penetrationChart.SetRows(hasChartData && plotMode == NaabLikePlotMode.Penetration ? successful : Enumerable.Empty<NaabLikeBallisticsResult>());
+        viewModel.chartVisible = hasChartData;
+        viewModel.trajectoryChartVisible = hasChartData && plotMode == NaabLikePlotMode.Trajectories;
+        viewModel.penetrationChartVisible = hasChartData && plotMode == NaabLikePlotMode.Penetration;
+        trajectoryChart?.SetResults(hasChartData && plotMode == NaabLikePlotMode.Trajectories ? SelectTrajectoryResults(successful) : Enumerable.Empty<NaabLikeBallisticsResult>());
+        penetrationChart?.SetRows(hasChartData && plotMode == NaabLikePlotMode.Penetration ? successful : Enumerable.Empty<NaabLikeBallisticsResult>());
     }
 
     IEnumerable<NaabLikeBallisticsResult> SelectTrajectoryResults(List<NaabLikeBallisticsResult> successful)
@@ -1177,13 +1144,6 @@ public sealed class NaabLikeCalculatorDialog
         if (successful.Count <= 3)
             return successful;
         return new[] { successful.First(), successful[successful.Count / 2], successful.Last() }.Distinct().ToList();
-    }
-
-    void UpdateElevationModeVisibility()
-    {
-        var mode = GetElevationMode();
-        rangeElevationRows.style.display = mode == NaabLikeElevationMode.Range ? DisplayStyle.Flex : DisplayStyle.None;
-        searchFixRows.style.display = mode == NaabLikeElevationMode.SearchFix ? DisplayStyle.Flex : DisplayStyle.None;
     }
 
     static NaabLikeBallisticsData LoadData()
@@ -1203,7 +1163,7 @@ public sealed class NaabLikeCalculatorDialog
 
     NaabLikeElevationMode GetElevationMode()
     {
-        return elevationModeField.index switch
+        return viewModel.elevationModeIndex switch
         {
             0 => NaabLikeElevationMode.Range,
             1 => NaabLikeElevationMode.SearchFix,
@@ -1213,7 +1173,7 @@ public sealed class NaabLikeCalculatorDialog
 
     NaabLikePlotMode GetPlotMode()
     {
-        return plotModeField.index switch
+        return viewModel.plotModeIndex switch
         {
             0 => NaabLikePlotMode.None,
             2 => NaabLikePlotMode.Penetration,
@@ -1223,7 +1183,7 @@ public sealed class NaabLikeCalculatorDialog
 
     int GetHcwclcrCapType()
     {
-        return Math.Clamp(capTypeField.index, 0, 4);
+        return Math.Clamp(viewModel.capTypeIndex, 0, 4);
     }
 
     static List<string> GetCapTypeLabels()
@@ -1245,17 +1205,33 @@ public sealed class NaabLikeCalculatorDialog
 
     NaabLikeDragFunction GetDragFunction()
     {
-        return dragFunctionField.value switch
+        return viewModel.dragFunctionIndex switch
         {
-            "G1" => NaabLikeDragFunction.G1,
-            "G2" => NaabLikeDragFunction.G2,
-            "G6" => NaabLikeDragFunction.G6,
-            "G7" => NaabLikeDragFunction.G7,
-            "G8" => NaabLikeDragFunction.G8,
-            "G9" => NaabLikeDragFunction.G9,
-            "GS" => NaabLikeDragFunction.GS,
-            "GL" => NaabLikeDragFunction.GL,
+            0 => NaabLikeDragFunction.G1,
+            1 => NaabLikeDragFunction.G2,
+            3 => NaabLikeDragFunction.G6,
+            4 => NaabLikeDragFunction.G7,
+            5 => NaabLikeDragFunction.G8,
+            6 => NaabLikeDragFunction.G9,
+            7 => NaabLikeDragFunction.GS,
+            8 => NaabLikeDragFunction.GL,
             _ => NaabLikeDragFunction.G5
+        };
+    }
+
+    public static int GetDragFunctionIndex(NaabLikeDragFunction dragFunction)
+    {
+        return dragFunction switch
+        {
+            NaabLikeDragFunction.G1 => 0,
+            NaabLikeDragFunction.G2 => 1,
+            NaabLikeDragFunction.G6 => 3,
+            NaabLikeDragFunction.G7 => 4,
+            NaabLikeDragFunction.G8 => 5,
+            NaabLikeDragFunction.G9 => 6,
+            NaabLikeDragFunction.GS => 7,
+            NaabLikeDragFunction.GL => 8,
+            _ => 2,
         };
     }
 
@@ -1269,24 +1245,4 @@ public sealed class NaabLikeCalculatorDialog
         return inches > 0f ? $"{inches:0.00} in" : "n/a";
     }
 
-    static Label BuildSectionLabel(string text)
-    {
-        return new Label(text)
-        {
-            style =
-            {
-                unityFontStyleAndWeight = FontStyle.Bold,
-                marginTop = 6,
-                marginBottom = 3
-            }
-        };
-    }
-
-    static FloatField BuildFloatField(string label, float value)
-    {
-        var field = new FloatField(label);
-        field.SetValueWithoutNotify(value);
-        field.style.marginBottom = 2;
-        return field;
-    }
 }

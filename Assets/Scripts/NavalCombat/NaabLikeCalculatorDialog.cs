@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 using UnityEngine;
 using Unity.Properties;
@@ -718,33 +720,126 @@ public sealed class NaabLikeCalculatorDialog
     {
         new NaabLikeArmorPreset { name = "Avg. wrought iron construction and armor material", quality = 0.6f, elongationPercent = 22f, bhn = 235f },
         new NaabLikeArmorPreset { name = "Avg. \"mild/medium\" construction steel. (1890-on)", quality = 0.75f, elongationPercent = 24f, bhn = 235f },
-        new NaabLikeArmorPreset { name = "Avg. U.S WWI-era class \"B\" armor", quality = 0.95f, elongationPercent = 22f, bhn = 235f }
+        new NaabLikeArmorPreset { name = "Avg. U.S WWI-era class \"B\" armor", quality = 0.95f, elongationPercent = 22f, bhn = 235f },
+        new NaabLikeArmorPreset { name = "Avg. U.S WWII-era class \"B\" armor", quality = 1f, elongationPercent = 25f, bhn = 235f },
     };
 
     static readonly List<NaabLikeProjectilePreset> ProjectilePresets = new()
     {
+        // new NaabLikeProjectilePreset
+        // {
+        //     projectile = new NaabLikeProjectile
+        //     {
+        //         name = "Chilled Cast Iron Shot (US) 5''",
+        //         diameterInches = 5f,
+        //         totalWeightPounds = 50f,
+        //         bodyWeightPounds = 50f,
+        //         windscreenWeightPounds = 0f,
+        //         apCapWeightPounds = 0f,
+        //         hcwclcrCapType = 0,
+        //         windscreenNblAddendMultiplier = 0.75f,
+        //         highObliquityWindscreenNblAddendMultiplier = 0.1f,
+        //         highObliquityThresholdDeg = 0f,
+        //         muzzleVelocityFeetPerSecond = 3000f,
+        //         maxRangeYards = 22600f,
+        //         dragFunction = NaabLikeDragFunction.G5,
+        //         ballisticCoefficient = 1.9307f,
+        //         dragCoefficientAdjust = 14f,
+        //         maxElevationDeg = 20f,
+        //         effectiveShellQuality = 0.575f
+        //     },
+        // },
         new NaabLikeProjectilePreset
         {
             projectile = new NaabLikeProjectile
             {
-                name = "5''/50 Mk. 5 CM",
-                diameterInches = 5f,
-                totalWeightPounds = 50f,
-                bodyWeightPounds = 50f,
+                name = "Palliser Chilled Cast Iron Shot (GB) 6''",
+                diameterInches = 6f,
+                totalWeightPounds = 100f,
+                bodyWeightPounds = 100f,
                 windscreenWeightPounds = 0f,
                 apCapWeightPounds = 0f,
                 hcwclcrCapType = 0,
                 windscreenNblAddendMultiplier = 0.75f,
                 highObliquityWindscreenNblAddendMultiplier = 0.1f,
                 highObliquityThresholdDeg = 0f,
-                muzzleVelocityFeetPerSecond = 3000f,
-                maxRangeYards = 22600f,
-                dragFunction = NaabLikeDragFunction.G5,
-                ballisticCoefficient = 1.9307f,
-                dragCoefficientAdjust = 14f,
+                muzzleVelocityFeetPerSecond = 2230f,
+                maxRangeYards = 14600f,
+                dragFunction = NaabLikeDragFunction.G1,
+                ballisticCoefficient = 2.9727f,
+                dragCoefficientAdjust = 0f,
                 maxElevationDeg = 20f,
                 effectiveShellQuality = 0.575f
-            }
+            },
+        },
+        new NaabLikeProjectilePreset
+        {
+            projectile = new NaabLikeProjectile
+            {
+                name = "Palliser Chilled Cast Iron Shot (GB) 10''",
+                diameterInches = 10f,
+                totalWeightPounds = 500f,
+                bodyWeightPounds = 500f,
+                windscreenWeightPounds = 0f,
+                apCapWeightPounds = 0f,
+                hcwclcrCapType = 0,
+                windscreenNblAddendMultiplier = 0.75f,
+                highObliquityWindscreenNblAddendMultiplier = 0.1f,
+                highObliquityThresholdDeg = 0f,
+                muzzleVelocityFeetPerSecond = 2040f,
+                maxRangeYards = 11000f,
+                dragFunction = NaabLikeDragFunction.G1,
+                ballisticCoefficient = 5.1846f,
+                dragCoefficientAdjust = 0f,
+                maxElevationDeg = 12.1f,
+                effectiveShellQuality = 0.575f
+            },
+        },
+        new NaabLikeProjectilePreset
+        {
+            projectile = new NaabLikeProjectile
+            {
+                name = "Steel AP Shot/Shell (GB) 7.5''",
+                diameterInches = 7.5f,
+                totalWeightPounds = 200f,
+                bodyWeightPounds = 200f,
+                windscreenWeightPounds = 0f,
+                apCapWeightPounds = 0f,
+                hcwclcrCapType = 0,
+                windscreenNblAddendMultiplier = 0.75f,
+                highObliquityWindscreenNblAddendMultiplier = 0.1f,
+                highObliquityThresholdDeg = 0f,
+                muzzleVelocityFeetPerSecond = 2827f,
+                maxRangeYards = 14328f,
+                dragFunction = NaabLikeDragFunction.G1,
+                ballisticCoefficient = 2.489f,
+                dragCoefficientAdjust = 0f,
+                maxElevationDeg = 15f,
+                effectiveShellQuality = 0.679f
+            },
+        },
+        new NaabLikeProjectilePreset
+        {
+            projectile = new NaabLikeProjectile
+            {
+                name = "Steel AP Shot/Shell (GB) 12''",
+                diameterInches = 12f,
+                totalWeightPounds = 714f,
+                bodyWeightPounds = 714f,
+                windscreenWeightPounds = 0f,
+                apCapWeightPounds = 0f,
+                hcwclcrCapType = 0,
+                windscreenNblAddendMultiplier = 0.75f,
+                highObliquityWindscreenNblAddendMultiplier = 0.1f,
+                highObliquityThresholdDeg = 0f,
+                muzzleVelocityFeetPerSecond = 1914f,
+                maxRangeYards = 9450f,
+                dragFunction = NaabLikeDragFunction.G1,
+                ballisticCoefficient = 5.0293f,
+                dragCoefficientAdjust = 0f,
+                maxElevationDeg = 12.5f,
+                effectiveShellQuality = 0.679f
+            },
         },
         new NaabLikeProjectilePreset
         {
@@ -784,6 +879,9 @@ public sealed class NaabLikeCalculatorDialog
         public int totalRows;
         public int externalFailures;
         public float? angleHint;
+        public Task<List<NaabLikeBallisticsResult>> parallelTargetTask;
+        public List<NaabLikeBallisticsResult> parallelTargetResults;
+        public int parallelCompletedRows;
     }
 
     sealed class NaabLikeFitCandidate
@@ -906,7 +1004,7 @@ public sealed class NaabLikeCalculatorDialog
 
         ConfigureDropdown(root.Q<DropdownField>("ElevationModeField"), new List<string> { Localize("Range"), Localize("Search Fix"), Localize("Search SK5") }, viewModel.elevationModeIndex);
         ConfigureDropdown(root.Q<DropdownField>("PlotModeField"), new List<string> { Localize("None"), Localize("Trajectories"), Localize("Penetration") }, viewModel.plotModeIndex);
-        ConfigureDropdown(root.Q<DropdownField>("ArmorPresetField"), ArmorPresets.Select(preset => Localize(preset.name)).ToList(), viewModel.armorPresetIndex);
+        ConfigureDropdown(root.Q<DropdownField>("ArmorPresetField"), ArmorPresets.Select(preset => preset.name).ToList(), viewModel.armorPresetIndex);
         ConfigureDropdown(root.Q<DropdownField>("ProjectilePresetField"), ProjectilePresets.Select(preset => preset.projectile.name).ToList(), viewModel.projectilePresetIndex);
         ConfigureDropdown(root.Q<DropdownField>("CapTypeField"), GetCapTypeLabels(), viewModel.capTypeIndex);
         ConfigureDropdown(root.Q<DropdownField>("DragFunctionField"), GetDragFunctionLabels(), viewModel.dragFunctionIndex);
@@ -1210,6 +1308,14 @@ public sealed class NaabLikeCalculatorDialog
             targetRanges = targetRanges,
             totalRows = totalRows
         };
+        if (elevationMode != NaabLikeElevationMode.Range)
+        {
+            currentJob.parallelTargetTask = Task.Run(() => exterior.SolveForTargetRangesParallel(
+                targetRanges,
+                MathF.Max(projectile.maxElevationDeg, 45f),
+                8,
+                (completed, _) => Volatile.Write(ref currentJob.parallelCompletedRows, completed)));
+        }
         ShowProgressDialog(0, totalRows);
         calculationSchedule = contentRoot.schedule.Execute(ProcessCalculationStep).Every(1);
     }
@@ -1224,6 +1330,12 @@ public sealed class NaabLikeCalculatorDialog
         }
 
         var job = currentJob;
+        if (job.elevationMode != NaabLikeElevationMode.Range)
+        {
+            ProcessParallelTargetCalculationStep(job);
+            return;
+        }
+
         if (job.completedRows >= job.totalRows)
         {
             calculationSchedule?.Pause();
@@ -1254,6 +1366,56 @@ public sealed class NaabLikeCalculatorDialog
         AddResult(result, job.terminal, job.armor, ref job.externalFailures);
         job.completedRows++;
         UpdateProgressDialog(job.completedRows, job.totalRows);
+    }
+
+    void ProcessParallelTargetCalculationStep(NaabLikeCalculationJob job)
+    {
+        if (job.parallelTargetResults == null)
+        {
+            if (job.parallelTargetTask == null)
+            {
+                FinishCalculationJob();
+                return;
+            }
+
+            if (!job.parallelTargetTask.IsCompleted)
+            {
+                UpdateProgressDialog(Volatile.Read(ref job.parallelCompletedRows), job.totalRows);
+                return;
+            }
+
+            if (job.parallelTargetTask.IsFaulted)
+            {
+                calculationSchedule?.Pause();
+                calculationSchedule = null;
+                currentJob = null;
+                HideProgressDialog();
+                viewModel.statusText = job.parallelTargetTask.Exception?.GetBaseException().Message ?? "Parallel target range calculation failed.";
+                RefreshOutputs();
+                return;
+            }
+
+            job.parallelTargetResults = job.parallelTargetTask.Result;
+            for (int i = 0; i < job.parallelTargetResults.Count; i++)
+                AddResult(job.parallelTargetResults[i], job.terminal, job.armor, ref job.externalFailures);
+            job.completedRows = job.totalRows;
+            UpdateProgressDialog(job.completedRows, job.totalRows);
+            FinishCalculationJob();
+            return;
+        }
+    }
+
+    void FinishCalculationJob()
+    {
+        var job = currentJob;
+        calculationSchedule?.Pause();
+        calculationSchedule = null;
+        currentJob = null;
+        HideProgressDialog();
+        viewModel.statusText = job != null && job.externalFailures > 0
+            ? Localize("{0} result(s), {1} external ballistic failure(s).", tableRows.Count, job.externalFailures)
+            : Localize("{0} result(s).", tableRows.Count);
+        RefreshOutputs();
     }
 
     void ShowProgressDialog(int completedRows, int totalRows)
@@ -1828,15 +1990,19 @@ public sealed class NaabLikeCalculatorDialog
         var exterior = new NaabLikeExteriorBallisticsSolver(data.dragTables[projectile.dragFunction], projectile, viewModel.integrationStep);
         var score = 0f;
         var mismatchCount = 0;
-        var angleHint = (float?)null;
+        var targetRanges = new List<float>(records.Count);
+        for (int i = 0; i < records.Count; i++)
+            targetRanges.Add(i == records.Count - 1 ? viewModel.sk5RangeYards : records[i].distanceYards);
+        var rangeResults = exterior.SolveForTargetRangesParallel(
+            targetRanges,
+            MathF.Max(projectile.maxElevationDeg, 45f),
+            8);
 
         for (int i = 0; i < records.Count; i++)
         {
-            var targetRange = i == records.Count - 1 ? viewModel.sk5RangeYards : records[i].distanceYards;
-            var result = exterior.SolveForTargetRange(targetRange, MathF.Max(projectile.maxElevationDeg, 45f), angleHint);
-            if (result.success)
+            var result = i >= 0 && i < rangeResults.Count ? rangeResults[i] : null;
+            if (result?.success == true)
             {
-                angleHint = result.elevationDeg;
                 var predicted = Sk5RangeBandRules.FromAngleOfFallDeg(result.angleOfFallDeg);
                 var bandDelta = Math.Abs((int)predicted - (int)records[i].rangeBand);
                 if (bandDelta > 0)

@@ -1,5 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace NavalCombatCore
 {
@@ -25,9 +28,16 @@ namespace NavalCombatCore
         public float windscreenWeightPounds;
         public float apCapWeightPounds;
 
-        // ProjInfo cap family selector: 0 none, 1 hard cap, 2 medium cap, 3 soft cap, 4 hood.
+        /// <summary>
+        /// ProjInfo cap family selector:
+        /// 0 - None
+        /// 1 - Hard cap
+        /// 2 - Medium cap
+        /// 3 - Soft cap
+        /// 4 - Hood
+        /// </summary>
         public int hcwclcrCapType;
-
+        
         // Former nation/shellClass selector for windscreen/AP-cap NBL addends: <=3in -> 1;
         // nation 1 -> 0.75; nation 2 class 16 -> 0.05; nation 3 class 13-16,
         // nation 4 class 8, and nation 5 class 7-12 -> 0.33; otherwise -> 1.
@@ -324,6 +334,344 @@ namespace NavalCombatCore
                 angleOfFallDeg = hit.descentDeg,
                 trajectory = { }
             }.WithTrajectory(trajectory);
+        }
+
+        public List<NaabLikeBallisticsResult> SolveForTargetRangesParallel(
+            IReadOnlyList<float> targetRangeYards,
+            float maxElevationDeg,
+            int workerCount = 8,
+            Action<int, int> progressCallback = null,
+            CancellationToken cancellationToken = default)
+        {
+            if (targetRangeYards == null || targetRangeYards.Count == 0)
+                return new List<NaabLikeBallisticsResult>();
+
+            var maxTargetRange = targetRangeYards.Where(range => range > 0f).DefaultIfEmpty(projectile.maxRangeYards).Max();
+            var simulationLimitYards = MathF.Max(projectile.maxRangeYards, maxTargetRange * 1.35f + 1000f);
+            var sampleStepYards = MathF.Max(simulationLimitYards / 120f, 100f);
+            var rangeToleranceYards = MathF.Max(0.5f, maxTargetRange * 0.0001f);
+            var maxElevation = Math.Clamp(maxElevationDeg, 0.1f, 89.9f);
+            var workers = Math.Clamp(workerCount, 1, 64);
+            var cache = new SharedElevationRangeCache();
+
+            var seedCount = Math.Clamp(workers, 2, 16);
+            var seedElevations = new List<float>(seedCount);
+            for (int i = 0; i < seedCount; i++)
+            {
+                var t = seedCount == 1 ? 1f : (float)i / (seedCount - 1);
+                seedElevations.Add(Lerp(MathF.Min(0.5f, maxElevation), maxElevation, t));
+            }
+
+            Parallel.ForEach(seedElevations, new ParallelOptions
+            {
+                MaxDegreeOfParallelism = workers,
+                CancellationToken = cancellationToken
+            }, elevation =>
+            {
+                cache.GetOrAdd(elevation, angle => SolveGroundSample(angle, simulationLimitYards, sampleStepYards));
+            });
+
+            var results = new NaabLikeBallisticsResult[targetRangeYards.Count];
+            var order = BuildRangeDistributedOrder(targetRangeYards, workers);
+            var completed = 0;
+
+            Parallel.ForEach(order, new ParallelOptions
+            {
+                MaxDegreeOfParallelism = workers,
+                CancellationToken = cancellationToken
+            }, index =>
+            {
+                var targetRange = targetRangeYards[index];
+                results[index] = SolveTargetRangeFromSharedCache(
+                    cache,
+                    targetRange,
+                    maxElevation,
+                    simulationLimitYards,
+                    sampleStepYards,
+                    rangeToleranceYards,
+                    cancellationToken);
+                progressCallback?.Invoke(Interlocked.Increment(ref completed), targetRangeYards.Count);
+            });
+
+            return results.ToList();
+        }
+
+        NaabLikeBallisticsResult SolveTargetRangeFromSharedCache(
+            SharedElevationRangeCache cache,
+            float targetRangeYards,
+            float maxElevationDeg,
+            float simulationLimitYards,
+            float sampleStepYards,
+            float rangeToleranceYards,
+            CancellationToken cancellationToken)
+        {
+            if (targetRangeYards <= 0f)
+            {
+                return new NaabLikeBallisticsResult
+                {
+                    success = false,
+                    failureReason = "Target range must be greater than 0.",
+                    rangeYards = targetRangeYards
+                };
+            }
+
+            GroundSample bestSample = null;
+            for (int iteration = 0; iteration < 48; iteration++)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                var lowBranch = cache.GetLowAngleBranch();
+                if (lowBranch.Count == 0)
+                {
+                    cache.GetOrAdd(MathF.Min(0.5f, maxElevationDeg), angle => SolveGroundSample(angle, simulationLimitYards, sampleStepYards));
+                    continue;
+                }
+
+                bestSample = FindNearestRangeSample(lowBranch, targetRangeYards, bestSample);
+                if (bestSample?.success == true && MathF.Abs(bestSample.rangeYards - targetRangeYards) <= rangeToleranceYards)
+                    return BuildTargetRangeResult(bestSample, targetRangeYards);
+
+                if (TryFindRangeBracket(lowBranch, targetRangeYards, out var lo, out var hi))
+                {
+                    var span = hi.rangeYards - lo.rangeYards;
+                    var t = MathF.Abs(span) < 1e-6f ? 0.5f : (targetRangeYards - lo.rangeYards) / span;
+                    var nextElevation = Lerp(lo.elevationDeg, hi.elevationDeg, Math.Clamp(t, 0.05f, 0.95f));
+                    if (MathF.Abs(hi.elevationDeg - lo.elevationDeg) <= 1e-5f)
+                        break;
+                    cache.GetOrAdd(nextElevation, angle => SolveGroundSample(angle, simulationLimitYards, sampleStepYards));
+                    continue;
+                }
+
+                var first = lowBranch[0];
+                var last = lowBranch[^1];
+                if (targetRangeYards < first.rangeYards && first.elevationDeg > 1e-4f)
+                {
+                    cache.GetOrAdd(first.elevationDeg * 0.5f, angle => SolveGroundSample(angle, simulationLimitYards, sampleStepYards));
+                    continue;
+                }
+
+                if (targetRangeYards > last.rangeYards && last.elevationDeg < maxElevationDeg - 1e-4f)
+                {
+                    var nextHigher = cache.GetNextHigherElevationSample(last.elevationDeg);
+                    var upperElevation = nextHigher?.elevationDeg ?? maxElevationDeg;
+                    if (upperElevation <= last.elevationDeg + 1e-4f)
+                        break;
+                    cache.GetOrAdd((last.elevationDeg + upperElevation) * 0.5f, angle => SolveGroundSample(angle, simulationLimitYards, sampleStepYards));
+                    continue;
+                }
+
+                break;
+            }
+
+            var fallback = NewSolver().SolveForTargetRange(targetRangeYards, maxElevationDeg);
+            if (fallback.success)
+                return fallback;
+
+            return bestSample?.success == true
+                ? new NaabLikeBallisticsResult
+                {
+                    success = false,
+                    failureReason = $"No low-angle firing solution was found. Nearest cached range: {bestSample.rangeYards:0} yd.",
+                    rangeYards = targetRangeYards
+                }
+                : fallback;
+        }
+
+        GroundSample SolveGroundSample(float elevationDeg, float simulationLimitYards, float sampleStepYards)
+        {
+            var solver = NewSolver();
+            var result = solver.SolveToGround(elevationDeg, simulationLimitYards, sampleStepYards);
+            return new GroundSample
+            {
+                success = result.success,
+                failureReason = result.failureReason,
+                elevationDeg = elevationDeg,
+                rangeYards = result.rangeYards,
+                timeOfFlightSeconds = result.timeOfFlightSeconds,
+                impactVelocityFeetPerSecond = result.impactVelocityFeetPerSecond,
+                angleOfFallDeg = result.angleOfFallDeg
+            };
+        }
+
+        NaabLikeBallisticsResult BuildTargetRangeResult(GroundSample sample, float targetRangeYards)
+        {
+            var trajectory = NewSolver().SolveTrajectoryToRange(sample.elevationDeg, targetRangeYards, MathF.Max(targetRangeYards / 80f, 100f));
+            return new NaabLikeBallisticsResult
+            {
+                success = true,
+                elevationDeg = sample.elevationDeg,
+                rangeYards = targetRangeYards,
+                timeOfFlightSeconds = sample.timeOfFlightSeconds,
+                impactVelocityFeetPerSecond = sample.impactVelocityFeetPerSecond,
+                angleOfFallDeg = sample.angleOfFallDeg
+            }.WithTrajectory(trajectory);
+        }
+
+        NaabLikeExteriorBallisticsSolver NewSolver()
+        {
+            return new NaabLikeExteriorBallisticsSolver(dragTable, projectile.Clone(), dxFeet);
+        }
+
+        static GroundSample FindNearestRangeSample(List<GroundSample> samples, float targetRangeYards, GroundSample currentBest)
+        {
+            var best = currentBest;
+            var bestError = best == null ? float.PositiveInfinity : MathF.Abs(best.rangeYards - targetRangeYards);
+            foreach (var sample in samples)
+            {
+                var error = MathF.Abs(sample.rangeYards - targetRangeYards);
+                if (error < bestError)
+                {
+                    best = sample;
+                    bestError = error;
+                }
+            }
+            return best;
+        }
+
+        static bool TryFindRangeBracket(List<GroundSample> lowBranch, float targetRangeYards, out GroundSample lo, out GroundSample hi)
+        {
+            lo = null;
+            hi = null;
+            for (int i = 1; i < lowBranch.Count; i++)
+            {
+                var a = lowBranch[i - 1];
+                var b = lowBranch[i];
+                if (a.rangeYards <= targetRangeYards && targetRangeYards <= b.rangeYards)
+                {
+                    lo = a;
+                    hi = b;
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        static List<int> BuildRangeDistributedOrder(IReadOnlyList<float> targetRanges, int workerCount)
+        {
+            var sorted = Enumerable.Range(0, targetRanges.Count)
+                .OrderBy(index => targetRanges[index])
+                .ToList();
+            var output = new List<int>(targetRanges.Count);
+            var used = new HashSet<int>();
+            var initialCount = Math.Min(workerCount, sorted.Count);
+            for (int i = 0; i < initialCount; i++)
+            {
+                var t = initialCount == 1 ? 0f : (float)i / (initialCount - 1);
+                var sortedIndex = Math.Clamp((int)MathF.Round(t * (sorted.Count - 1)), 0, sorted.Count - 1);
+                var index = sorted[sortedIndex];
+                if (used.Add(index))
+                    output.Add(index);
+            }
+            foreach (var index in sorted)
+            {
+                if (used.Add(index))
+                    output.Add(index);
+            }
+            return output;
+        }
+
+        sealed class GroundSample
+        {
+            public bool success;
+            public string failureReason;
+            public float elevationDeg;
+            public float rangeYards;
+            public float timeOfFlightSeconds;
+            public float impactVelocityFeetPerSecond;
+            public float angleOfFallDeg;
+        }
+
+        sealed class SharedElevationRangeCache
+        {
+            readonly object gate = new();
+            readonly List<GroundSample> samples = new();
+            readonly HashSet<int> inFlightKeys = new();
+
+            public GroundSample GetOrAdd(float elevationDeg, Func<float, GroundSample> factory)
+            {
+                var normalizedElevation = Math.Clamp(elevationDeg, 0f, 89.9f);
+                var key = ElevationKey(normalizedElevation);
+                lock (gate)
+                {
+                    while (inFlightKeys.Contains(key))
+                        Monitor.Wait(gate, 10);
+
+                    var existing = FindByKey(key);
+                    if (existing != null)
+                        return existing;
+
+                    inFlightKeys.Add(key);
+                }
+
+                GroundSample created = null;
+                try
+                {
+                    created = factory(normalizedElevation) ?? new GroundSample
+                    {
+                        success = false,
+                        failureReason = "Sampling failed.",
+                        elevationDeg = normalizedElevation
+                    };
+                }
+                finally
+                {
+                    lock (gate)
+                    {
+                        inFlightKeys.Remove(key);
+                        if (created != null && FindByKey(key) == null)
+                        {
+                            samples.Add(created);
+                            samples.Sort((a, b) => a.elevationDeg.CompareTo(b.elevationDeg));
+                        }
+                        Monitor.PulseAll(gate);
+                    }
+                }
+
+                return created;
+            }
+
+            public List<GroundSample> GetLowAngleBranch()
+            {
+                lock (gate)
+                {
+                    var output = new List<GroundSample>();
+                    var previousRange = float.NegativeInfinity;
+                    foreach (var sample in samples)
+                    {
+                        if (!sample.success)
+                            continue;
+                        if (sample.rangeYards <= previousRange + 0.01f)
+                            break;
+                        output.Add(sample);
+                        previousRange = sample.rangeYards;
+                    }
+                    return output;
+                }
+            }
+
+            public GroundSample GetNextHigherElevationSample(float elevationDeg)
+            {
+                lock (gate)
+                {
+                    foreach (var sample in samples)
+                    {
+                        if (sample.success && sample.elevationDeg > elevationDeg + 1e-4f)
+                            return sample;
+                    }
+                    return null;
+                }
+            }
+
+            GroundSample FindByKey(int key)
+            {
+                foreach (var sample in samples)
+                {
+                    if (ElevationKey(sample.elevationDeg) == key)
+                        return sample;
+                }
+                return null;
+            }
+
+            static int ElevationKey(float elevationDeg) => (int)MathF.Round(elevationDeg * 1000000f);
         }
 
         public List<NaabLikeTrajectoryPoint> SolveTrajectoryToRange(float elevationDeg, float targetRangeYards, float sampleStepYards)

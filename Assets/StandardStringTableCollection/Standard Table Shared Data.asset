@@ -3242,6 +3242,22 @@ MonoBehaviour:
     m_Key: NAAB-like Calculator
     m_Metadata:
       m_Items: []
+  - m_Id: -113
+    m_Key: Include English In Merged Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: -114
+    m_Key: Include Japanese In Merged Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: -115
+    m_Key: Include Simplified Chinese In Merged Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: -116
+    m_Key: Include Traditional Chinese In Merged Name
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -189,6 +189,34 @@ public class GamePreference
     }
 
     [CreateProperty]
+    public bool includeEnglishInMergedName
+    {
+        get => GlobalString.includeEnglishInMergedName;
+        set => GlobalString.includeEnglishInMergedName = value;
+    }
+
+    [CreateProperty]
+    public bool includeJapaneseInMergedName
+    {
+        get => GlobalString.includeJapaneseInMergedName;
+        set => GlobalString.includeJapaneseInMergedName = value;
+    }
+
+    [CreateProperty]
+    public bool includeSimplifiedChineseInMergedName
+    {
+        get => GlobalString.includeSimplifiedChineseInMergedName;
+        set => GlobalString.includeSimplifiedChineseInMergedName = value;
+    }
+
+    [CreateProperty]
+    public bool includeTraditionalChineseInMergedName
+    {
+        get => GlobalString.includeTraditionalChineseInMergedName;
+        set => GlobalString.includeTraditionalChineseInMergedName = value;
+    }
+
+    [CreateProperty]
     public float fetchInfoDisplayAccSecondsThreshold
     {
         get => UnityWebRequestImageReaderShower.displaybusyAccSecondsThreshold;
@@ -325,7 +353,8 @@ public class GamePreference
 
     public void SetShortLabelLanguageTypeByLocale(Locale locale)
     {
-        shortLabelLanguageType = locale.Identifier.CultureInfo.Name switch
+        var localeName = locale.Identifier.CultureInfo.Name;
+        shortLabelLanguageType = localeName switch
         {
             "en" => LanguageType.English,
             "ja" => LanguageType.Japanese,
@@ -333,6 +362,9 @@ public class GamePreference
             "zh-Hant" => LanguageType.ChineseTraditional,
             _ => LanguageType.English
         };
+
+        includeSimplifiedChineseInMergedName = localeName == "zh-Hans";
+        includeTraditionalChineseInMergedName = localeName != "zh-Hans";
     }
 
     public void SwitchToLocaleByName(string s)
@@ -406,6 +438,10 @@ public class GamePreference
         p.enable3DBase = PlayerPrefs.GetInt("enable3DBase", 1) == 1;
         p.enableGunneryShellVisual = PlayerPrefs.GetInt("enableGunneryShellVisual", 1) == 1;
         p.gunneryShellRadiusScaleCoef = PlayerPrefs.GetFloat("gunneryShellRadiusScaleCoef", 12f);
+        p.includeEnglishInMergedName = PlayerPrefs.GetInt("includeEnglishInMergedName", 1) == 1;
+        p.includeJapaneseInMergedName = PlayerPrefs.GetInt("includeJapaneseInMergedName", 1) == 1;
+        p.includeSimplifiedChineseInMergedName = PlayerPrefs.GetInt("includeSimplifiedChineseInMergedName", 0) == 1;
+        p.includeTraditionalChineseInMergedName = PlayerPrefs.GetInt("includeTraditionalChineseInMergedName", 1) == 1;
         if (PlayerPrefs.HasKey(playerControlObstacleAvoidanceModeKey))
         {
             var rawMode = PlayerPrefs.GetInt(playerControlObstacleAvoidanceModeKey, (int)ObstacleAvoidanceMode.Weak);
@@ -442,6 +478,10 @@ public class GamePreference
         PlayerPrefs.SetInt("enable3DBase", enable3DBase ? 1 : 0);
         PlayerPrefs.SetInt("enableGunneryShellVisual", enableGunneryShellVisual ? 1 : 0);
         PlayerPrefs.SetFloat("gunneryShellRadiusScaleCoef", gunneryShellRadiusScaleCoef);
+        PlayerPrefs.SetInt("includeEnglishInMergedName", includeEnglishInMergedName ? 1 : 0);
+        PlayerPrefs.SetInt("includeJapaneseInMergedName", includeJapaneseInMergedName ? 1 : 0);
+        PlayerPrefs.SetInt("includeSimplifiedChineseInMergedName", includeSimplifiedChineseInMergedName ? 1 : 0);
+        PlayerPrefs.SetInt("includeTraditionalChineseInMergedName", includeTraditionalChineseInMergedName ? 1 : 0);
         PlayerPrefs.SetInt("playerControlObstacleAvoidanceMode", (int)CoreParameter.Instance.playerControlObstacleAvoidanceMode);
         PlayerPrefs.SetInt("enableROIShoreFieldAvoidance", CoreParameter.Instance.enableROIShoreFieldAvoidance ? 1 : 0);
         // PlayerPrefs.SetFloat("noPenetrationDamageCoef", Mathf.Clamp01(CoreParameter.Instance.noPenetrationDamageCoef));

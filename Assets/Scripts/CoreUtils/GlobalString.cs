@@ -23,9 +23,21 @@ namespace CoreUtils
         public string chineseTraditional;
         public static LanguageType mergeMode = LanguageType.All;
         public static LanguageType shortMode = LanguageType.English;
+        public static bool includeEnglishInMergedName = true;
+        public static bool includeJapaneseInMergedName = true;
+        public static bool includeSimplifiedChineseInMergedName = false;
+        public static bool includeTraditionalChineseInMergedName = true;
         public string GetMergedNamePure()
         {
-            var names = new List<string>() { english, japanese, chineseSimplified, chineseTraditional };
+            var names = new List<string>();
+            if (includeEnglishInMergedName)
+                names.Add(english);
+            if (includeJapaneseInMergedName)
+                names.Add(japanese);
+            if (includeSimplifiedChineseInMergedName)
+                names.Add(chineseSimplified);
+            if (includeTraditionalChineseInMergedName)
+                names.Add(chineseTraditional);
             return string.Join("/", names.Where(n => n != null && n.Length > 0));
         }
         public string GetMergedName()

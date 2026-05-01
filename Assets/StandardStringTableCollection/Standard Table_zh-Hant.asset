@@ -3275,6 +3275,22 @@ MonoBehaviour:
     m_Localized: "NAAB-like Calculator"
     m_Metadata:
       m_Items: []
+  - m_Id: -113
+    m_Localized: "\u5408\u4F75\u540D\u7A31\u5305\u542B\u82F1\u8A9E"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -114
+    m_Localized: "\u5408\u4F75\u540D\u7A31\u5305\u542B\u65E5\u8A9E"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -115
+    m_Localized: "\u5408\u4F75\u540D\u7A31\u5305\u542B\u7C21\u9AD4\u4E2D\u6587"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -116
+    m_Localized: "\u5408\u4F75\u540D\u7A31\u5305\u542B\u7E41\u9AD4\u4E2D\u6587"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

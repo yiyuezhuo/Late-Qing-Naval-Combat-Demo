@@ -869,7 +869,8 @@ public class PortraitViewer : MonoBehaviour, IDataSourceViewHashProvider
 
     static string ResolveLocalizedName(GlobalString name)
     {
-        return name?.GetNameFromType(GamePreference.Instance.shortLabelLanguageType) ?? string.Empty;
+        // return name?.GetNameFromType(GamePreference.Instance.shortLabelLanguageType) ?? string.Empty;
+        return name?.GetShortName() ?? string.Empty;
     }
 
     bool TryResolveLabelText(out string labelText)

@@ -3326,6 +3326,22 @@ MonoBehaviour:
     m_Localized: NAAB-like Calculator
     m_Metadata:
       m_Items: []
+  - m_Id: -113
+    m_Localized: Include English In Merged Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: -114
+    m_Localized: Include Japanese In Merged Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: -115
+    m_Localized: Include Simplified Chinese In Merged Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: -116
+    m_Localized: Include Traditional Chinese In Merged Name
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

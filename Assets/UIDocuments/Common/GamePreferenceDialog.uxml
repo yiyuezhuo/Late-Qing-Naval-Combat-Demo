@@ -27,6 +27,30 @@
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(183326205448192)"/>
                             </Bindings>
                         </ui:EnumField>
+                        <ui:Toggle label="Include English In Merged Name">
+                            <Bindings>
+                                <ui:DataBinding property="value" data-source-path="includeEnglishInMergedName" binding-mode="TwoWay"/>
+                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-113)"/>
+                            </Bindings>
+                        </ui:Toggle>
+                        <ui:Toggle label="Include Japanese In Merged Name">
+                            <Bindings>
+                                <ui:DataBinding property="value" data-source-path="includeJapaneseInMergedName" binding-mode="TwoWay"/>
+                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-114)"/>
+                            </Bindings>
+                        </ui:Toggle>
+                        <ui:Toggle label="Include Simplified Chinese In Merged Name">
+                            <Bindings>
+                                <ui:DataBinding property="value" data-source-path="includeSimplifiedChineseInMergedName" binding-mode="TwoWay"/>
+                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-115)"/>
+                            </Bindings>
+                        </ui:Toggle>
+                        <ui:Toggle label="Include Traditional Chinese In Merged Name">
+                            <Bindings>
+                                <ui:DataBinding property="value" data-source-path="includeTraditionalChineseInMergedName" binding-mode="TwoWay"/>
+                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-116)"/>
+                            </Bindings>
+                        </ui:Toggle>
                         <LocalizedEnumField type-str="GamePreference+FiringLineDisplayMode" label="Firing Line Display">
                             <Bindings>
                                 <ui:DataBinding property="value" data-source-path="firingLineDisplayMode" source-to-ui-converters="FiringLineDisplayMode =&gt; int" ui-to-source-converters="int =&gt; FiringLineDisplayMode" binding-mode="TwoWay"/>

@@ -6,6 +6,7 @@
    <english>Yoshino</english>
    <japanese>吉野</japanese>
    <chineseSimplified>吉野</chineseSimplified>
+   <chineseTraditional>吉野</chineseTraditional>
   </name>
   <builderDesc>
    <english>Amstrong, Elswick</english>
@@ -33,6 +34,7 @@
    <english>Yoshino (1903)</english>
    <japanese>吉野 (1903)</japanese>
    <chineseSimplified>吉野 (1903)</chineseSimplified>
+   <chineseTraditional>吉野 (1903)</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -59,11 +61,13 @@
    <english>Akitsushima</english>
    <japanese>秋津洲</japanese>
    <chineseSimplified>秋津洲</chineseSimplified>
+   <chineseTraditional>秋津洲</chineseTraditional>
   </name>
   <builderDesc>
    <english>Yokosuka Navy Yard</english>
    <japanese>日本横須賀造船所</japanese>
    <chineseSimplified>日本横须贺海军造船厂</chineseSimplified>
+   <chineseTraditional>日本橫須賀海軍造船廠</chineseTraditional>
   </builderDesc>
   <fateDesc>
    <english>unnamed</english>
@@ -85,6 +89,7 @@
    <english>Akitsushima (1903/10/2)</english>
    <japanese>秋津洲 (1903/10/2)</japanese>
    <chineseSimplified>秋津洲 (1903/10/2)</chineseSimplified>
+   <chineseTraditional>秋津洲 (1903/10/2)</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -109,11 +114,13 @@
    <english>Naniwa</english>
    <japanese>浪速</japanese>
    <chineseSimplified>浪速</chineseSimplified>
+   <chineseTraditional>浪速</chineseTraditional>
   </name>
   <builderDesc>
    <english>Armstong, Elswick</english>
    <japanese>アームストロング社ロー・ウォーカー造船所</japanese>
    <chineseSimplified>英国阿姆斯特朗船厂</chineseSimplified>
+   <chineseTraditional>英國阿姆斯特朗船廠</chineseTraditional>
   </builderDesc>
   <fateDesc>
    <english>unnamed</english>
@@ -135,6 +142,7 @@
    <english>Naniwa (1903)</english>
    <japanese>浪速 (1903)</japanese>
    <chineseSimplified>浪速 (1903)</chineseSimplified>
+   <chineseTraditional>浪速 (1903)</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -159,6 +167,7 @@
    <english>Chi Yuan</english>
    <japanese>済遠</japanese>
    <chineseSimplified>济远</chineseSimplified>
+   <chineseTraditional>濟遠</chineseTraditional>
   </name>
   <builderDesc>
    <english>Vulcan</english>
@@ -186,6 +195,7 @@
    <english>Chi Yuan (1894/9/24)</english>
    <japanese>済遠 (1894/9/24)</japanese>
    <chineseSimplified>济远 (1894/9/24)</chineseSimplified>
+   <chineseTraditional>濟遠 (1894/9/24)</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -213,11 +223,13 @@ After Fang was executed, Lin took command of the ship.
    <english>Kuang Yi</english>
    <japanese>広乙</japanese>
    <chineseSimplified>广乙</chineseSimplified>
+   <chineseTraditional>廣乙</chineseTraditional>
   </name>
   <builderDesc>
    <english>Foochow</english>
    <japanese>福州船政局</japanese>
    <chineseSimplified>福州船政局马尾造船所</chineseSimplified>
+   <chineseTraditional>福州船政局馬尾造船所</chineseTraditional>
   </builderDesc>
   <fateDesc>
    <english>Sunk 07/24/1894</english>
@@ -239,6 +251,7 @@ After Fang was executed, Lin took command of the ship.
    <english>Ting Yuen</english>
    <japanese>定遠</japanese>
    <chineseSimplified>定远</chineseSimplified>
+   <chineseTraditional>定遠</chineseTraditional>
   </name>
   <builderDesc>
    <english>Vulcan, Stettin</english>
@@ -268,6 +281,7 @@ After Fang was executed, Lin took command of the ship.
    <english>Chen Yuan</english>
    <japanese>鎮遠</japanese>
    <chineseSimplified>镇远</chineseSimplified>
+   <chineseTraditional>鎮遠</chineseTraditional>
   </name>
   <builderDesc>
    <english>Vulcan, Stettin</english>
@@ -297,6 +311,7 @@ After Fang was executed, Lin took command of the ship.
    <english>Chen Yuan (1894/10/9)</english>
    <japanese>鎮遠 (1894/10/9)</japanese>
    <chineseSimplified>镇远 (1894/10/9)</chineseSimplified>
+   <chineseTraditional>鎮遠 (1894/10/9)</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -323,6 +338,7 @@ After Lin commited suicide, Lin took command of the ship.</remark>
    <english>Chen Yuan (1903/8/1)</english>
    <japanese>鎮遠 (1903/8/1)</japanese>
    <chineseSimplified>镇远 (1903/8/1)</chineseSimplified>
+   <chineseTraditional>鎮遠 (1903/8/1)</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -347,6 +363,7 @@ After Lin commited suicide, Lin took command of the ship.</remark>
    <english>Yang Wei</english>
    <japanese>揚威</japanese>
    <chineseSimplified>扬威</chineseSimplified>
+   <chineseTraditional>揚威</chineseTraditional>
   </name>
   <builderDesc>
    <english>Mitchell</english>
@@ -373,6 +390,7 @@ After Lin commited suicide, Lin took command of the ship.</remark>
    <english>Chao Yung</english>
    <japanese>超勇</japanese>
    <chineseSimplified>超勇</chineseSimplified>
+   <chineseTraditional>超勇</chineseTraditional>
   </name>
   <builderDesc>
    <english>Mitchell</english>
@@ -399,11 +417,13 @@ After Lin commited suicide, Lin took command of the ship.</remark>
    <english>Ching Yuan</english>
    <japanese>靖遠</japanese>
    <chineseSimplified>靖远</chineseSimplified>
+   <chineseTraditional>靖遠</chineseTraditional>
   </name>
   <builderDesc>
    <english>Amstrong</english>
    <japanese>イギリスのアームストロング社</japanese>
    <chineseSimplified>阿姆斯特朗-惠特沃斯公司埃尔斯维克造船厂</chineseSimplified>
+   <chineseTraditional>阿姆斯特朗-惠特沃斯公司埃爾斯維克造船廠</chineseTraditional>
   </builderDesc>
   <launchedDate>12/14/1886</launchedDate>
   <completedDate>07/09/1887</completedDate>
@@ -427,11 +447,13 @@ After Lin commited suicide, Lin took command of the ship.</remark>
    <english>Chih Yuan</english>
    <japanese>致遠</japanese>
    <chineseSimplified>致远</chineseSimplified>
+   <chineseTraditional>致遠</chineseTraditional>
   </name>
   <builderDesc>
    <english>Amstrong</english>
    <japanese>イギリスのアームストロング社</japanese>
    <chineseSimplified>阿姆斯特朗-惠特沃斯公司埃尔斯维克造船厂</chineseSimplified>
+   <chineseTraditional>阿姆斯特朗-惠特沃斯公司埃爾斯維克造船廠</chineseTraditional>
   </builderDesc>
   <launchedDate>09/29/1886</launchedDate>
   <completedDate>07/29/1887</completedDate>
@@ -455,6 +477,7 @@ After Lin commited suicide, Lin took command of the ship.</remark>
    <english>King Yuan</english>
    <japanese>経遠</japanese>
    <chineseSimplified>经远</chineseSimplified>
+   <chineseTraditional>經遠</chineseTraditional>
   </name>
   <builderDesc>
    <english>Vulcan, Stettin</english>
@@ -481,6 +504,7 @@ After Lin commited suicide, Lin took command of the ship.</remark>
    <english>Lai Yuan</english>
    <japanese>来遠</japanese>
    <chineseSimplified>来远</chineseSimplified>
+   <chineseTraditional>來遠</chineseTraditional>
   </name>
   <builderDesc>
    <english>Vulcan, Stettin</english>
@@ -507,6 +531,7 @@ After Lin commited suicide, Lin took command of the ship.</remark>
    <english>Ping Yuen</english>
    <japanese>平遠</japanese>
    <chineseSimplified>平远</chineseSimplified>
+   <chineseTraditional>平遠</chineseTraditional>
   </name>
   <builderDesc>
    <english>Foochow</english>
@@ -533,6 +558,7 @@ After Lin commited suicide, Lin took command of the ship.</remark>
    <english>Kuang Chia</english>
    <japanese>広甲</japanese>
    <chineseSimplified>广甲</chineseSimplified>
+   <chineseTraditional>廣甲</chineseTraditional>
   </name>
   <builderDesc>
    <english>Foochow</english>
@@ -559,6 +585,7 @@ After Lin commited suicide, Lin took command of the ship.</remark>
    <english>Wei Yuen</english>
    <japanese>威遠</japanese>
    <chineseSimplified>威远</chineseSimplified>
+   <chineseTraditional>威遠</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -582,11 +609,13 @@ After Lin commited suicide, Lin took command of the ship.</remark>
    <english>Kuang P'ing</english>
    <japanese>広丙</japanese>
    <chineseSimplified>广丙</chineseSimplified>
+   <chineseTraditional>廣丙</chineseTraditional>
   </name>
   <builderDesc>
    <english>Foochow</english>
    <japanese>福州船政局</japanese>
    <chineseSimplified>福州船政局马尾造船所</chineseSimplified>
+   <chineseTraditional>福州船政局馬尾造船所</chineseTraditional>
   </builderDesc>
   <launchedDate>00/00/1890</launchedDate>
   <completedDate>00/00/1891</completedDate>
@@ -610,11 +639,13 @@ After Lin commited suicide, Lin took command of the ship.</remark>
    <english>Fu Lung</english>
    <japanese>福龍</japanese>
    <chineseSimplified>福龙</chineseSimplified>
+   <chineseTraditional>福龍</chineseTraditional>
   </name>
   <builderDesc>
    <english>Schichau，Elbing</english>
    <japanese>ドイツ・シーシャウ社</japanese>
    <chineseSimplified>德国希肖船厂</chineseSimplified>
+   <chineseTraditional>德國希肖船廠</chineseTraditional>
   </builderDesc>
   <fateDesc>
    <english>unnamed</english>
@@ -636,6 +667,7 @@ After Lin commited suicide, Lin took command of the ship.</remark>
    <english>Fuso</english>
    <japanese>扶桑</japanese>
    <chineseSimplified>扶桑</chineseSimplified>
+   <chineseTraditional>扶桑</chineseTraditional>
   </name>
   <builderDesc>
    <english>Samuda, Poplar</english>
@@ -662,6 +694,7 @@ After Lin commited suicide, Lin took command of the ship.</remark>
    <english>Hashidate</english>
    <japanese>橋立</japanese>
    <chineseSimplified>桥立</chineseSimplified>
+   <chineseTraditional>橋立</chineseTraditional>
   </name>
   <builderDesc>
    <english>Yokosuka</english>
@@ -688,6 +721,7 @@ After Lin commited suicide, Lin took command of the ship.</remark>
    <english>Hashidate (1903/10/12)</english>
    <japanese>厳島 (1903/10/12)</japanese>
    <chineseSimplified>严岛 (1903/10/12)</chineseSimplified>
+   <chineseTraditional>嚴島 (1903/10/12)</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -712,6 +746,7 @@ After Lin commited suicide, Lin took command of the ship.</remark>
    <english>Itsukushima</english>
    <japanese>厳島</japanese>
    <chineseSimplified>严岛</chineseSimplified>
+   <chineseTraditional>嚴島</chineseTraditional>
   </name>
   <builderDesc>
    <english>La Seyne</english>
@@ -739,6 +774,7 @@ After Lin commited suicide, Lin took command of the ship.</remark>
    <english>Hiei</english>
    <japanese>比叡</japanese>
    <chineseSimplified>比睿</chineseSimplified>
+   <chineseTraditional>比睿</chineseTraditional>
   </name>
   <builderDesc>
    <english>Milford Haven, Pembroke</english>
@@ -765,6 +801,7 @@ After Lin commited suicide, Lin took command of the ship.</remark>
    <english>Matsushima</english>
    <japanese>松島</japanese>
    <chineseSimplified>松岛</chineseSimplified>
+   <chineseTraditional>松島</chineseTraditional>
   </name>
   <builderDesc>
    <english>La Seyne</english>
@@ -791,6 +828,7 @@ After Lin commited suicide, Lin took command of the ship.</remark>
    <english>Matsushima (1903/9/26)</english>
    <japanese>松島 (1903/9/26)</japanese>
    <chineseSimplified>松岛 (1903/9/26)</chineseSimplified>
+   <chineseTraditional>松島 (1903/9/26)</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -815,11 +853,13 @@ After Lin commited suicide, Lin took command of the ship.</remark>
    <english>Takachiho</english>
    <japanese>高千穂</japanese>
    <chineseSimplified>高千穗</chineseSimplified>
+   <chineseTraditional>高千穗</chineseTraditional>
   </name>
   <builderDesc>
    <english>Armstong, Elswick</english>
    <japanese>アームストロング社ロー・ウォーカー造船所</japanese>
    <chineseSimplified>英国阿姆斯特朗船厂</chineseSimplified>
+   <chineseTraditional>英國阿姆斯特朗船廠</chineseTraditional>
   </builderDesc>
   <launchedDate>05/16/1885</launchedDate>
   <completedDate>03/26/1886</completedDate>
@@ -843,6 +883,7 @@ After Lin commited suicide, Lin took command of the ship.</remark>
    <english>Takachiho (1900)</english>
    <japanese>高千穂 (1900)</japanese>
    <chineseSimplified>高千穗 (1900)</chineseSimplified>
+   <chineseTraditional>高千穗 (1900)</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -866,11 +907,13 @@ After Lin commited suicide, Lin took command of the ship.</remark>
    <english>Chiyoda</english>
    <japanese>千代田</japanese>
    <chineseSimplified>千代田</chineseSimplified>
+   <chineseTraditional>千代田</chineseTraditional>
   </name>
   <builderDesc>
    <english>Clydebank</english>
    <japanese>トムソン社(スコットランド・クライドバンク)</japanese>
    <chineseSimplified>苏格兰詹姆斯-乔治·汤姆森公司格拉斯哥造船厂</chineseSimplified>
+   <chineseTraditional>蘇格蘭詹姆斯-喬治·湯姆森公司格拉斯哥造船廠</chineseTraditional>
   </builderDesc>
   <launchedDate>06/03/1890</launchedDate>
   <completedDate>12/00/1890</completedDate>
@@ -894,6 +937,7 @@ After Lin commited suicide, Lin took command of the ship.</remark>
    <english>Chiyoda (1904)</english>
    <japanese>千代田 (1904)</japanese>
    <chineseSimplified>千代田 (1904)</chineseSimplified>
+   <chineseTraditional>千代田 (1904)</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -920,6 +964,7 @@ No class update from 1894 to 1904</remark>
    <english>Akagi</english>
    <japanese>赤城</japanese>
    <chineseSimplified>赤城</chineseSimplified>
+   <chineseTraditional>赤城</chineseTraditional>
   </name>
   <builderDesc>
    <english>Onohama, Boke</english>
@@ -944,6 +989,7 @@ No class update from 1894 to 1904</remark>
    <english>Akagi (1894/9/21)</english>
    <japanese>赤城 (1894/9/21)</japanese>
    <chineseSimplified>赤城 (1894/9/21)</chineseSimplified>
+   <chineseTraditional>赤城 (1894/9/21)</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -968,11 +1014,13 @@ No class update from 1894 to 1904</remark>
    <english>Saikyo Maru</english>
    <japanese>西京丸</japanese>
    <chineseSimplified>西京丸</chineseSimplified>
+   <chineseTraditional>西京丸</chineseTraditional>
   </name>
   <builderDesc>
    <english>London &amp; Glasgow Shipbuilding Company</english>
    <japanese> ロンドン＆グラスゴー造船所</japanese>
    <chineseSimplified>伦敦与格拉斯哥造船厂</chineseSimplified>
+   <chineseTraditional>倫敦與格拉斯哥造船廠</chineseTraditional>
   </builderDesc>
   <fateDesc>
    <english>unnamed</english>
@@ -994,11 +1042,13 @@ No class update from 1894 to 1904</remark>
    <english>Kongo</english>
    <japanese>金剛</japanese>
    <chineseSimplified>金刚</chineseSimplified>
+   <chineseTraditional>金剛</chineseTraditional>
   </name>
   <builderDesc>
    <english>Earle's Shipbuilding &amp; Engineering Co.</english>
    <japanese>アールス造船会社</japanese>
    <chineseSimplified>厄尔造船与工程公司</chineseSimplified>
+   <chineseTraditional>厄爾造船與工程公司</chineseTraditional>
   </builderDesc>
   <fateDesc>
    <english>Sold for scrap, 1909</english>
@@ -1021,6 +1071,7 @@ No class update from 1894 to 1904</remark>
    <english>Katsuragi</english>
    <japanese>葛城</japanese>
    <chineseSimplified>葛城</chineseSimplified>
+   <chineseTraditional>葛城</chineseTraditional>
   </name>
   <builderDesc>
    <english />
@@ -1046,6 +1097,7 @@ No class update from 1894 to 1904</remark>
    <english>Yamato</english>
    <japanese>大和</japanese>
    <chineseSimplified>大和</chineseSimplified>
+   <chineseTraditional>大和</chineseTraditional>
   </name>
   <builderDesc>
    <english />
@@ -1069,6 +1121,7 @@ No class update from 1894 to 1904</remark>
    <english>Musashi</english>
    <japanese>武蔵</japanese>
    <chineseSimplified>武藏</chineseSimplified>
+   <chineseTraditional>武藏</chineseTraditional>
   </name>
   <builderDesc>
    <english />
@@ -1092,11 +1145,13 @@ No class update from 1894 to 1904</remark>
    <english>Tenryu</english>
    <japanese>天龍</japanese>
    <chineseSimplified>天龙</chineseSimplified>
+   <chineseTraditional>天龍</chineseTraditional>
   </name>
   <builderDesc>
    <english>Yokosuka Navy Yard</english>
    <japanese>横須賀造船所</japanese>
    <chineseSimplified>横须贺造船厂</chineseSimplified>
+   <chineseTraditional>橫須賀造船廠</chineseTraditional>
   </builderDesc>
   <launchedDate>1883/09</launchedDate>
   <completedDate>1885/03</completedDate>
@@ -1120,11 +1175,13 @@ No class update from 1894 to 1904</remark>
    <english>Takao</english>
    <japanese>高雄</japanese>
    <chineseSimplified>高雄</chineseSimplified>
+   <chineseTraditional>高雄</chineseTraditional>
   </name>
   <builderDesc>
    <english>Yokosuka Navy Yard</english>
    <japanese>横須賀造船所</japanese>
    <chineseSimplified>横须贺造船厂</chineseSimplified>
+   <chineseTraditional>橫須賀造船廠</chineseTraditional>
   </builderDesc>
   <launchedDate>1886/10</launchedDate>
   <completedDate>1888/10/15</completedDate>
@@ -1146,6 +1203,7 @@ No class update from 1894 to 1904</remark>
    <english>TB 15</english>
    <japanese>第15号</japanese>
    <chineseSimplified>第15号</chineseSimplified>
+   <chineseTraditional>第15號</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -1167,6 +1225,7 @@ No class update from 1894 to 1904</remark>
    <english>TB20</english>
    <japanese>第20号</japanese>
    <chineseSimplified>第20号</chineseSimplified>
+   <chineseTraditional>第20號</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -1188,6 +1247,7 @@ No class update from 1894 to 1904</remark>
    <english>TB 5</english>
    <japanese>第5号</japanese>
    <chineseSimplified>第5号</chineseSimplified>
+   <chineseTraditional>第5號</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -1211,6 +1271,7 @@ No class update from 1894 to 1904</remark>
    <english>TB 6</english>
    <japanese>第6号</japanese>
    <chineseSimplified>第6号</chineseSimplified>
+   <chineseTraditional>第6號</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -1234,6 +1295,7 @@ No class update from 1894 to 1904</remark>
    <english>TB 7</english>
    <japanese>第7号</japanese>
    <chineseSimplified>第7号</chineseSimplified>
+   <chineseTraditional>第7號</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -1255,6 +1317,7 @@ No class update from 1894 to 1904</remark>
    <english>TB 8</english>
    <japanese>第8号</japanese>
    <chineseSimplified>第8号</chineseSimplified>
+   <chineseTraditional>第8號</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -1276,6 +1339,7 @@ No class update from 1894 to 1904</remark>
    <english>TB 9</english>
    <japanese>第9号</japanese>
    <chineseSimplified>第9号</chineseSimplified>
+   <chineseTraditional>第9號</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -1297,6 +1361,7 @@ No class update from 1894 to 1904</remark>
    <english>TB 10</english>
    <japanese>第10号</japanese>
    <chineseSimplified>第10号</chineseSimplified>
+   <chineseTraditional>第10號</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -1318,6 +1383,7 @@ No class update from 1894 to 1904</remark>
    <english>TB 11</english>
    <japanese>第11号</japanese>
    <chineseSimplified>第11号</chineseSimplified>
+   <chineseTraditional>第11號</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -1339,6 +1405,7 @@ No class update from 1894 to 1904</remark>
    <english>TB 12</english>
    <japanese>第12号</japanese>
    <chineseSimplified>第12号</chineseSimplified>
+   <chineseTraditional>第12號</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -1360,6 +1427,7 @@ No class update from 1894 to 1904</remark>
    <english>TB 13</english>
    <japanese>第13号</japanese>
    <chineseSimplified>第13号</chineseSimplified>
+   <chineseTraditional>第13號</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -1381,6 +1449,7 @@ No class update from 1894 to 1904</remark>
    <english>TB 14</english>
    <japanese>第14号</japanese>
    <chineseSimplified>第14号</chineseSimplified>
+   <chineseTraditional>第14號</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -1402,6 +1471,7 @@ No class update from 1894 to 1904</remark>
    <english>TB 16</english>
    <japanese>第16号</japanese>
    <chineseSimplified>第16号</chineseSimplified>
+   <chineseTraditional>第16號</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -1423,6 +1493,7 @@ No class update from 1894 to 1904</remark>
    <english>TB 17</english>
    <japanese>第17号</japanese>
    <chineseSimplified>第17号</chineseSimplified>
+   <chineseTraditional>第17號</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -1444,6 +1515,7 @@ No class update from 1894 to 1904</remark>
    <english>TB 18</english>
    <japanese>第18号</japanese>
    <chineseSimplified>第18号</chineseSimplified>
+   <chineseTraditional>第18號</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -1465,6 +1537,7 @@ No class update from 1894 to 1904</remark>
    <english>TB 19</english>
    <japanese>第19号</japanese>
    <chineseSimplified>第19号</chineseSimplified>
+   <chineseTraditional>第19號</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -1486,6 +1559,7 @@ No class update from 1894 to 1904</remark>
    <english>TB 21</english>
    <japanese>第21号</japanese>
    <chineseSimplified>第21号</chineseSimplified>
+   <chineseTraditional>第21號</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -1507,6 +1581,7 @@ No class update from 1894 to 1904</remark>
    <english>TB 24</english>
    <japanese>第24号</japanese>
    <chineseSimplified>第24号</chineseSimplified>
+   <chineseTraditional>第24號</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -1528,6 +1603,7 @@ No class update from 1894 to 1904</remark>
    <english>TB 22</english>
    <japanese>第22号</japanese>
    <chineseSimplified>第22号</chineseSimplified>
+   <chineseTraditional>第22號</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -1549,6 +1625,7 @@ No class update from 1894 to 1904</remark>
    <english>TB 23</english>
    <japanese>第23号</japanese>
    <chineseSimplified>第23号</chineseSimplified>
+   <chineseTraditional>第23號</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -1572,6 +1649,7 @@ No class update from 1894 to 1904</remark>
    <english>TB 25</english>
    <japanese>第25号</japanese>
    <chineseSimplified>第25号</chineseSimplified>
+   <chineseTraditional>第25號</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -1593,11 +1671,13 @@ No class update from 1894 to 1904</remark>
    <english>Kotaka</english>
    <japanese>小鷹</japanese>
    <chineseSimplified>小鹰</chineseSimplified>
+   <chineseTraditional>小鷹</chineseTraditional>
   </name>
   <builderDesc>
    <english>Yarrow &amp; Co., Popar</english>
    <japanese>ヤーロウ社</japanese>
    <chineseSimplified>亚罗造船厂</chineseSimplified>
+   <chineseTraditional>亞羅造船廠</chineseTraditional>
   </builderDesc>
   <fateDesc>
    <english>unnamed</english>
@@ -1617,10 +1697,12 @@ No class update from 1894 to 1904</remark>
    <english>Tso I</english>
    <japanese>第一号</japanese>
    <chineseSimplified>左一</chineseSimplified>
+   <chineseTraditional>左一</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
    <chineseSimplified>英国亚罗船厂</chineseSimplified>
+   <chineseTraditional>英國亞羅船廠</chineseTraditional>
   </builderDesc>
   <fateDesc>
    <english>unnamed</english>
@@ -1641,6 +1723,7 @@ No class update from 1894 to 1904</remark>
    <english>You I</english>
    <japanese>右一</japanese>
    <chineseSimplified>右一</chineseSimplified>
+   <chineseTraditional>右一</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -1662,6 +1745,7 @@ No class update from 1894 to 1904</remark>
    <english>You II</english>
    <japanese>右二</japanese>
    <chineseSimplified>右二</chineseSimplified>
+   <chineseTraditional>右二</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -1683,6 +1767,7 @@ No class update from 1894 to 1904</remark>
    <english>You III</english>
    <japanese>右三</japanese>
    <chineseSimplified>右三</chineseSimplified>
+   <chineseTraditional>右三</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -1704,6 +1789,7 @@ No class update from 1894 to 1904</remark>
    <english>Tso II</english>
    <japanese>左二</japanese>
    <chineseSimplified>左二</chineseSimplified>
+   <chineseTraditional>左二</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -1725,6 +1811,7 @@ No class update from 1894 to 1904</remark>
    <english>Tso III</english>
    <japanese>左三</japanese>
    <chineseSimplified>左三</chineseSimplified>
+   <chineseTraditional>左三</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -1746,6 +1833,7 @@ No class update from 1894 to 1904</remark>
    <english>Fuji</english>
    <japanese>富士</japanese>
    <chineseSimplified>富士</chineseSimplified>
+   <chineseTraditional>富士</chineseTraditional>
   </name>
   <builderDesc>
    <english>Armstrong, Whitworth</english>
@@ -1770,6 +1858,7 @@ No class update from 1894 to 1904</remark>
    <english>Fuji (26.9.1903)</english>
    <japanese>富士 (26.9.1903)</japanese>
    <chineseSimplified>富士 (26.9.1903)</chineseSimplified>
+   <chineseTraditional>富士 (26.9.1903)</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -1794,6 +1883,7 @@ No class update from 1894 to 1904</remark>
    <english>Yashima</english>
    <japanese>八島</japanese>
    <chineseSimplified>八岛</chineseSimplified>
+   <chineseTraditional>八島</chineseTraditional>
   </name>
   <builderDesc>
    <english>Armstrong Whitworth, Elswick </english>
@@ -1818,6 +1908,7 @@ No class update from 1894 to 1904</remark>
    <english>Yashima (27.10.1903)</english>
    <japanese>八島 (27.10.1903)</japanese>
    <chineseSimplified>八岛 (27.10.1903)</chineseSimplified>
+   <chineseTraditional>八島 (27.10.1903)</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -1842,6 +1933,7 @@ No class update from 1894 to 1904</remark>
    <english>Enshū Maru</english>
    <japanese>遠江丸</japanese>
    <chineseSimplified>远江丸</chineseSimplified>
+   <chineseTraditional>遠江丸</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -1864,6 +1956,7 @@ No class update from 1894 to 1904</remark>
    <english>Kagoshima Maru</english>
    <japanese>鹿兒島丸</japanese>
    <chineseSimplified>鹿儿岛丸</chineseSimplified>
+   <chineseTraditional>鹿兒島丸</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -1886,6 +1979,7 @@ No class update from 1894 to 1904</remark>
    <english>Yamaguchi Maru</english>
    <japanese>山口丸</japanese>
    <chineseSimplified>山口丸</chineseSimplified>
+   <chineseTraditional>山口丸</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -1908,6 +2002,7 @@ No class update from 1894 to 1904</remark>
    <english>Kinshū Maru</english>
    <japanese>金州丸</japanese>
    <chineseSimplified>金州丸</chineseSimplified>
+   <chineseTraditional>金州丸</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -1930,6 +2025,7 @@ No class update from 1894 to 1904</remark>
    <english>Miki Maru</english>
    <japanese>三池丸</japanese>
    <chineseSimplified>三池丸</chineseSimplified>
+   <chineseTraditional>三池丸</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -1952,6 +2048,7 @@ No class update from 1894 to 1904</remark>
    <english>Toyohashi Maru</english>
    <japanese>豐橋丸</japanese>
    <chineseSimplified>丰桥丸</chineseSimplified>
+   <chineseTraditional>豐橋丸</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -1974,6 +2071,7 @@ No class update from 1894 to 1904</remark>
    <english>Shibata Maru</english>
    <japanese>新發田丸</japanese>
    <chineseSimplified>新发田丸</chineseSimplified>
+   <chineseTraditional>新發田丸</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -1996,6 +2094,7 @@ No class update from 1894 to 1904</remark>
    <english>Ariake Maru</english>
    <japanese>有明丸</japanese>
    <chineseSimplified>有明丸</chineseSimplified>
+   <chineseTraditional>有明丸</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -2018,6 +2117,7 @@ No class update from 1894 to 1904</remark>
    <english>Sōya Maru</english>
    <japanese>宗谷丸</japanese>
    <chineseSimplified>宗谷丸</chineseSimplified>
+   <chineseTraditional>宗谷丸</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -2040,6 +2140,7 @@ No class update from 1894 to 1904</remark>
    <english>Hyōgo Maru</english>
    <japanese>兵庫丸</japanese>
    <chineseSimplified>兵库丸</chineseSimplified>
+   <chineseTraditional>兵庫丸</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -2062,6 +2163,7 @@ No class update from 1894 to 1904</remark>
    <english>Kokura Maru</english>
    <japanese>小倉丸</japanese>
    <chineseSimplified>小仓丸</chineseSimplified>
+   <chineseTraditional>小倉丸</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -2084,6 +2186,7 @@ No class update from 1894 to 1904</remark>
    <english>Tateyama Maru</english>
    <japanese>立山丸</japanese>
    <chineseSimplified>立山丸</chineseSimplified>
+   <chineseTraditional>立山丸</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -2106,6 +2209,7 @@ No class update from 1894 to 1904</remark>
    <english>Sakata Maru</english>
    <japanese>酒田丸</japanese>
    <chineseSimplified>酒田丸</chineseSimplified>
+   <chineseTraditional>酒田丸</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -2128,6 +2232,7 @@ No class update from 1894 to 1904</remark>
    <english>Nagoya Maru</english>
    <japanese>名古屋丸</japanese>
    <chineseSimplified>名古屋丸</chineseSimplified>
+   <chineseTraditional>名古屋丸</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -2150,6 +2255,7 @@ No class update from 1894 to 1904</remark>
    <english>Hiroshima Maru</english>
    <japanese>廣島丸</japanese>
    <chineseSimplified>广岛丸</chineseSimplified>
+   <chineseTraditional>廣島丸</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -2172,6 +2278,7 @@ No class update from 1894 to 1904</remark>
    <english>Satsuma Maru</english>
    <japanese>薩摩丸</japanese>
    <chineseSimplified>萨摩丸</chineseSimplified>
+   <chineseTraditional>薩摩丸</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -2194,6 +2301,7 @@ No class update from 1894 to 1904</remark>
    <english>Sorachi Maru</english>
    <japanese>空知丸</japanese>
    <chineseSimplified>空知丸</chineseSimplified>
+   <chineseTraditional>空知丸</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -2216,6 +2324,7 @@ No class update from 1894 to 1904</remark>
    <english>Wakanoura Maru</english>
    <japanese>和歌浦丸</japanese>
    <chineseSimplified>和歌浦丸</chineseSimplified>
+   <chineseTraditional>和歌浦丸</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -2238,6 +2347,7 @@ No class update from 1894 to 1904</remark>
    <english>Ai Ren</english>
    <japanese>愛仁</japanese>
    <chineseSimplified>爱仁</chineseSimplified>
+   <chineseTraditional>愛仁</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -2260,6 +2370,7 @@ No class update from 1894 to 1904</remark>
    <english>Fei Jing</english>
    <japanese>飛鯨</japanese>
    <chineseSimplified>飞鲸</chineseSimplified>
+   <chineseTraditional>飛鯨</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -2282,6 +2393,7 @@ No class update from 1894 to 1904</remark>
    <english>Kowshing</english>
    <japanese>高陞</japanese>
    <chineseSimplified>高升</chineseSimplified>
+   <chineseTraditional>高升</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -2304,6 +2416,7 @@ No class update from 1894 to 1904</remark>
    <english>Cao Jiang</english>
    <japanese>操江</japanese>
    <chineseSimplified>操江</chineseSimplified>
+   <chineseTraditional>操江</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -2326,6 +2439,7 @@ No class update from 1894 to 1904</remark>
    <english>Li Yun</english>
    <japanese>利運</japanese>
    <chineseSimplified>利运</chineseSimplified>
+   <chineseTraditional>利運</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -2366,6 +2480,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>Hai Jing</english>
    <japanese>海鏡</japanese>
    <chineseSimplified>海镜</chineseSimplified>
+   <chineseTraditional>海鏡</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -2406,6 +2521,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>Tai An</english>
    <japanese>泰安</japanese>
    <chineseSimplified>泰安</chineseSimplified>
+   <chineseTraditional>泰安</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -2446,6 +2562,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>Genzan Maru</english>
    <japanese>元山丸</japanese>
    <chineseSimplified>元山丸</chineseSimplified>
+   <chineseTraditional>元山丸</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -2467,6 +2584,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>Shinagawa Maru</english>
    <japanese>品川丸</japanese>
    <chineseSimplified>品川丸</chineseSimplified>
+   <chineseTraditional>品川丸</chineseTraditional>
   </name>
   <builderDesc>
    <english>unnamed</english>
@@ -2489,6 +2607,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>Rossiya (1900/3/27)</english>
    <japanese>ロシア</japanese>
    <chineseSimplified>俄罗斯</chineseSimplified>
+   <chineseTraditional>俄羅斯</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -2513,6 +2632,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>Rossiya</english>
    <japanese>ロシア</japanese>
    <chineseSimplified>俄罗斯</chineseSimplified>
+   <chineseTraditional>俄羅斯</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -2537,6 +2657,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>Gromoboi</english>
    <japanese>グロモボーイ</japanese>
    <chineseSimplified>格罗姆鲍伊</chineseSimplified>
+   <chineseTraditional>格羅姆鮑伊</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -2560,6 +2681,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>Rurik</english>
    <japanese>リューリク</japanese>
    <chineseSimplified>留里克</chineseSimplified>
+   <chineseTraditional>留裏克</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -2583,6 +2705,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>Idzumo</english>
    <japanese>出雲</japanese>
    <chineseSimplified>出云</chineseSimplified>
+   <chineseTraditional>出雲</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -2606,6 +2729,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>Azuma</english>
    <japanese>吾妻</japanese>
    <chineseSimplified>吾妻</chineseSimplified>
+   <chineseTraditional>吾妻</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -2629,6 +2753,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>Tokiwa</english>
    <japanese>常磐</japanese>
    <chineseSimplified>常磐</chineseSimplified>
+   <chineseTraditional>常磐</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -2653,6 +2778,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>Iwate</english>
    <japanese>磐手</japanese>
    <chineseSimplified>磐手</chineseSimplified>
+   <chineseTraditional>磐手</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -2677,6 +2803,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>Tsushima</english>
    <japanese>対馬</japanese>
    <chineseSimplified>对马</chineseSimplified>
+   <chineseTraditional>對馬</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -2700,6 +2827,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>Bogatry</english>
    <japanese>ボガツイリ</japanese>
    <chineseSimplified>博加特里</chineseSimplified>
+   <chineseTraditional>博加特里</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -2724,6 +2852,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>Niitaka</english>
    <japanese>新高</japanese>
    <chineseSimplified>新高</chineseSimplified>
+   <chineseTraditional>新高</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -2750,6 +2879,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>TB 31</english>
    <japanese>第31号</japanese>
    <chineseSimplified>第31号</chineseSimplified>
+   <chineseTraditional>第31號</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -2771,6 +2901,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>TB 32</english>
    <japanese>第32号</japanese>
    <chineseSimplified>第32号</chineseSimplified>
+   <chineseTraditional>第32號</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -2792,6 +2923,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>TB 33</english>
    <japanese>第33号</japanese>
    <chineseSimplified>第33号</chineseSimplified>
+   <chineseTraditional>第33號</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -2813,6 +2945,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>TB 34</english>
    <japanese>第34号</japanese>
    <chineseSimplified>第34号</chineseSimplified>
+   <chineseTraditional>第34號</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -2834,6 +2967,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>TB 35</english>
    <japanese>第35号</japanese>
    <chineseSimplified>第35号</chineseSimplified>
+   <chineseTraditional>第35號</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -2855,6 +2989,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>TB 36</english>
    <japanese>第36号</japanese>
    <chineseSimplified>第36号</chineseSimplified>
+   <chineseTraditional>第36號</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -2876,6 +3011,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>TB 37</english>
    <japanese>第37号</japanese>
    <chineseSimplified>第37号</chineseSimplified>
+   <chineseTraditional>第37號</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -2897,6 +3033,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>TB 38</english>
    <japanese>第38号</japanese>
    <chineseSimplified>第38号</chineseSimplified>
+   <chineseTraditional>第38號</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -2918,6 +3055,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>TB 44</english>
    <japanese>第44号</japanese>
    <chineseSimplified>第44号</chineseSimplified>
+   <chineseTraditional>第44號</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -2939,6 +3077,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>TB 45</english>
    <japanese>第45号</japanese>
    <chineseSimplified>第45号</chineseSimplified>
+   <chineseTraditional>第45號</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -2960,6 +3099,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>TB 46</english>
    <japanese>第46号</japanese>
    <chineseSimplified>第46号</chineseSimplified>
+   <chineseTraditional>第46號</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -2981,6 +3121,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>TB 47</english>
    <japanese>第47号</japanese>
    <chineseSimplified>第47号</chineseSimplified>
+   <chineseTraditional>第47號</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3002,6 +3143,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>TB 48</english>
    <japanese>第48号</japanese>
    <chineseSimplified>第48号</chineseSimplified>
+   <chineseTraditional>第48號</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3023,6 +3165,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>TB 49</english>
    <japanese>第49号</japanese>
    <chineseSimplified>第49号</chineseSimplified>
+   <chineseTraditional>第49號</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3044,6 +3187,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>TB 60</english>
    <japanese>第60号</japanese>
    <chineseSimplified>第60号</chineseSimplified>
+   <chineseTraditional>第60號</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3065,6 +3209,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>TB 61</english>
    <japanese>第61号</japanese>
    <chineseSimplified>第61号</chineseSimplified>
+   <chineseTraditional>第61號</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3086,6 +3231,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>TB 39</english>
    <japanese>第39号</japanese>
    <chineseSimplified>第39号</chineseSimplified>
+   <chineseTraditional>第39號</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3107,6 +3253,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>TB 40</english>
    <japanese>第40号</japanese>
    <chineseSimplified>第40号</chineseSimplified>
+   <chineseTraditional>第40號</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3128,6 +3275,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>TB 41</english>
    <japanese>第41号</japanese>
    <chineseSimplified>第41号</chineseSimplified>
+   <chineseTraditional>第41號</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3149,6 +3297,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>TB 42</english>
    <japanese>第42号</japanese>
    <chineseSimplified>第42号</chineseSimplified>
+   <chineseTraditional>第42號</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3170,6 +3319,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>TB 43</english>
    <japanese>第43号</japanese>
    <chineseSimplified>第43号</chineseSimplified>
+   <chineseTraditional>第43號</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3191,6 +3341,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>TB 50</english>
    <japanese>第50号</japanese>
    <chineseSimplified>第50号</chineseSimplified>
+   <chineseTraditional>第50號</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3212,6 +3363,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>TB 51</english>
    <japanese>第51号</japanese>
    <chineseSimplified>第51号</chineseSimplified>
+   <chineseTraditional>第51號</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3233,6 +3385,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>TB 52</english>
    <japanese>第52号</japanese>
    <chineseSimplified>第52号</chineseSimplified>
+   <chineseTraditional>第52號</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3254,6 +3407,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>TB 53</english>
    <japanese>第53号</japanese>
    <chineseSimplified>第53号</chineseSimplified>
+   <chineseTraditional>第53號</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3275,6 +3429,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>TB 54</english>
    <japanese>第54号</japanese>
    <chineseSimplified>第54号</chineseSimplified>
+   <chineseTraditional>第54號</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3296,6 +3451,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>TB 55</english>
    <japanese>第55号</japanese>
    <chineseSimplified>第55号</chineseSimplified>
+   <chineseTraditional>第55號</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3317,6 +3473,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>TB 56</english>
    <japanese>第56号</japanese>
    <chineseSimplified>第56号</chineseSimplified>
+   <chineseTraditional>第56號</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3338,6 +3495,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>TB 57</english>
    <japanese>第57号</japanese>
    <chineseSimplified>第57号</chineseSimplified>
+   <chineseTraditional>第57號</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3359,6 +3517,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>TB 58</english>
    <japanese>第58号</japanese>
    <chineseSimplified>第58号</chineseSimplified>
+   <chineseTraditional>第58號</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3380,6 +3539,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>TB 59</english>
    <japanese>第59号</japanese>
    <chineseSimplified>第59号</chineseSimplified>
+   <chineseTraditional>第59號</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3401,6 +3561,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>TB 62</english>
    <japanese>第62号</japanese>
    <chineseSimplified>第62号</chineseSimplified>
+   <chineseTraditional>第62號</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3422,6 +3583,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>TB 63</english>
    <japanese>第63号</japanese>
    <chineseSimplified>第63号</chineseSimplified>
+   <chineseTraditional>第63號</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3443,6 +3605,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>TB 64</english>
    <japanese>第64号</japanese>
    <chineseSimplified>第64号</chineseSimplified>
+   <chineseTraditional>第64號</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3464,6 +3627,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>TB 65</english>
    <japanese>第65号</japanese>
    <chineseSimplified>第65号</chineseSimplified>
+   <chineseTraditional>第65號</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3485,6 +3649,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>TB 73</english>
    <japanese>第73号</japanese>
    <chineseSimplified>第73号</chineseSimplified>
+   <chineseTraditional>第73號</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3506,6 +3671,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>TB 72</english>
    <japanese>第72号</japanese>
    <chineseSimplified>第72号</chineseSimplified>
+   <chineseTraditional>第72號</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3527,6 +3693,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>TB 74</english>
    <japanese>第74号</japanese>
    <chineseSimplified>第74号</chineseSimplified>
+   <chineseTraditional>第74號</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3548,6 +3715,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>TB 75</english>
    <japanese>第75号</japanese>
    <chineseSimplified>第75号</chineseSimplified>
+   <chineseTraditional>第75號</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3569,6 +3737,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
    <english>Hitachi Maru</english>
    <japanese>常陸丸</japanese>
    <chineseSimplified>常陆丸</chineseSimplified>
+   <chineseTraditional>常陸丸</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3593,6 +3762,7 @@ Generic Placeholder class</remark>
    <english>Sado Maru</english>
    <japanese>佐渡丸</japanese>
    <chineseSimplified>佐渡丸</chineseSimplified>
+   <chineseTraditional>佐渡丸</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3615,6 +3785,7 @@ Generic Placeholder class</remark>
    <english>Izumi Maru</english>
    <japanese>和泉丸</japanese>
    <chineseSimplified>和泉丸</chineseSimplified>
+   <chineseTraditional>和泉丸</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3637,6 +3808,7 @@ Generic Placeholder class</remark>
    <english>Asama</english>
    <japanese>淺間</japanese>
    <chineseSimplified>浅间</chineseSimplified>
+   <chineseTraditional>淺間</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3661,6 +3833,7 @@ Generic Placeholder class</remark>
    <english>Yakumo</english>
    <japanese>八雲</japanese>
    <chineseSimplified>八云</chineseSimplified>
+   <chineseTraditional>八雲</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3685,6 +3858,7 @@ Generic Placeholder class</remark>
    <english>Akashi</english>
    <japanese>明石</japanese>
    <chineseSimplified>明石</chineseSimplified>
+   <chineseTraditional>明石</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3709,6 +3883,7 @@ Generic Placeholder class</remark>
    <english>Suma</english>
    <japanese>須磨</japanese>
    <chineseSimplified>须磨</chineseSimplified>
+   <chineseTraditional>須磨</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3733,6 +3908,7 @@ Generic Placeholder class</remark>
    <english>Hayabusa</english>
    <japanese>隼</japanese>
    <chineseSimplified>隼</chineseSimplified>
+   <chineseTraditional>隼</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3755,6 +3931,7 @@ Generic Placeholder class</remark>
    <english>Kasasagi</english>
    <japanese>鵲</japanese>
    <chineseSimplified>鹊</chineseSimplified>
+   <chineseTraditional>鵲</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3777,6 +3954,7 @@ Generic Placeholder class</remark>
    <english>Manazuru</english>
    <japanese>真鶴</japanese>
    <chineseSimplified>真鹤</chineseSimplified>
+   <chineseTraditional>真鶴</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3798,6 +3976,7 @@ Generic Placeholder class</remark>
    <english>Chidori</english>
    <japanese>千鳥</japanese>
    <chineseSimplified>千鸟</chineseSimplified>
+   <chineseTraditional>千鳥</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3820,6 +3999,7 @@ Generic Placeholder class</remark>
    <english>Kari</english>
    <japanese>雁</japanese>
    <chineseSimplified>雁</chineseSimplified>
+   <chineseTraditional>雁</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3842,6 +4022,7 @@ Generic Placeholder class</remark>
    <english>Aotaka</english>
    <japanese>蒼鷹</japanese>
    <chineseSimplified>苍鹰</chineseSimplified>
+   <chineseTraditional>蒼鷹</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3864,6 +4045,7 @@ Generic Placeholder class</remark>
    <english>Hato</english>
    <japanese>鴿</japanese>
    <chineseSimplified>鸽</chineseSimplified>
+   <chineseTraditional>鴿</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3886,6 +4068,7 @@ Generic Placeholder class</remark>
    <english>Tsubame</english>
    <japanese>燕</japanese>
    <chineseSimplified>燕</chineseSimplified>
+   <chineseTraditional>燕</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3908,6 +4091,7 @@ Generic Placeholder class</remark>
    <english>Hibari</english>
    <japanese>雲雀</japanese>
    <chineseSimplified>云雀</chineseSimplified>
+   <chineseTraditional>雲雀</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3929,6 +4113,7 @@ Generic Placeholder class</remark>
    <english>Kiji</english>
    <japanese>雉</japanese>
    <chineseSimplified>雉</chineseSimplified>
+   <chineseTraditional>雉</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3950,6 +4135,7 @@ Generic Placeholder class</remark>
    <english>Sagi</english>
    <japanese>鷺</japanese>
    <chineseSimplified>鹭</chineseSimplified>
+   <chineseTraditional>鷺</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3971,6 +4157,7 @@ Generic Placeholder class</remark>
    <english>Uzura</english>
    <japanese>鶉</japanese>
    <chineseSimplified>鹑</chineseSimplified>
+   <chineseTraditional>鶉</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -3992,6 +4179,7 @@ Generic Placeholder class</remark>
    <english>Kamome</english>
    <japanese>鴎</japanese>
    <chineseSimplified>鸥</chineseSimplified>
+   <chineseTraditional>鷗</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -4013,6 +4201,7 @@ Generic Placeholder class</remark>
    <english>Hashitaka</english>
    <japanese>鷂</japanese>
    <chineseSimplified>雀</chineseSimplified>
+   <chineseTraditional>雀</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -4034,6 +4223,7 @@ Generic Placeholder class</remark>
    <english>Ootori</english>
    <japanese>鴻</japanese>
    <chineseSimplified>鸿</chineseSimplified>
+   <chineseTraditional>鴻</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -4055,6 +4245,7 @@ Generic Placeholder class</remark>
    <english>Variag</english>
    <japanese>ヴァリャーグ</japanese>
    <chineseSimplified>瓦良格</chineseSimplified>
+   <chineseTraditional>瓦良格</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -4079,6 +4270,7 @@ Generic Placeholder class</remark>
    <english>Korietz (1898/12/6)</english>
    <japanese>コレーエツ (1898/12/6)</japanese>
    <chineseSimplified>高丽人 (1898/12/6)</chineseSimplified>
+   <chineseTraditional>高麗人 (1898/12/6)</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -4103,6 +4295,7 @@ Generic Placeholder class</remark>
    <english>Korietz</english>
    <japanese>コレーエツ</japanese>
    <chineseSimplified>高丽人</chineseSimplified>
+   <chineseTraditional>高麗人</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -4127,6 +4320,7 @@ Generic Placeholder class</remark>
    <english>Petropavlovsk</english>
    <japanese>ペトロパヴロフスク</japanese>
    <chineseSimplified>彼得罗巴甫洛夫斯克</chineseSimplified>
+   <chineseTraditional>彼得羅巴甫洛夫斯克</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -4151,6 +4345,7 @@ Generic Placeholder class</remark>
    <english>Poltava</english>
    <japanese>ポルタワ</japanese>
    <chineseSimplified>波尔塔瓦</chineseSimplified>
+   <chineseTraditional>波爾塔瓦</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -4177,6 +4372,7 @@ Generic Placeholder class</remark>
    <english>Sevastopol</english>
    <japanese>セヴァストーポリ</japanese>
    <chineseSimplified>塞瓦斯托波尔</chineseSimplified>
+   <chineseTraditional>塞瓦斯托波爾</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -4201,6 +4397,7 @@ Generic Placeholder class</remark>
    <english>Sevastopol (17.03.1904)</english>
    <japanese>セヴァストーポリ</japanese>
    <chineseSimplified>塞瓦斯托波尔</chineseSimplified>
+   <chineseTraditional>塞瓦斯托波爾</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -4227,6 +4424,7 @@ Generic Placeholder class</remark>
    <english>Shirakumo</english>
    <japanese>白雲</japanese>
    <chineseSimplified>白云</chineseSimplified>
+   <chineseTraditional>白雲</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -4249,6 +4447,7 @@ Generic Placeholder class</remark>
    <english>Asashio</english>
    <japanese>朝潮</japanese>
    <chineseSimplified>朝潮</chineseSimplified>
+   <chineseTraditional>朝潮</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -4271,6 +4470,7 @@ Generic Placeholder class</remark>
    <english>Kasumi</english>
    <japanese>霞</japanese>
    <chineseSimplified>霞</chineseSimplified>
+   <chineseTraditional>霞</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -4293,6 +4493,7 @@ Generic Placeholder class</remark>
    <english>Akatsuki</english>
    <japanese>暁</japanese>
    <chineseSimplified>晓</chineseSimplified>
+   <chineseTraditional>曉</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -4315,6 +4516,7 @@ Generic Placeholder class</remark>
    <english>Ikazuchi</english>
    <japanese>雷</japanese>
    <chineseSimplified>雷</chineseSimplified>
+   <chineseTraditional>雷</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -4338,6 +4540,7 @@ Generic Placeholder class</remark>
    <english>Inazuma</english>
    <japanese>電</japanese>
    <chineseSimplified>电</chineseSimplified>
+   <chineseTraditional>電</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -4361,6 +4564,7 @@ Generic Placeholder class</remark>
    <english>Akebono</english>
    <japanese>曙</japanese>
    <chineseSimplified>曙</chineseSimplified>
+   <chineseTraditional>曙</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -4383,6 +4587,7 @@ Generic Placeholder class</remark>
    <english>Sazanami</english>
    <japanese>漣</japanese>
    <chineseSimplified>涟</chineseSimplified>
+   <chineseTraditional>漣</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -4406,6 +4611,7 @@ Generic Placeholder class</remark>
    <english>Oboro</english>
    <japanese>朧</japanese>
    <chineseSimplified>胧</chineseSimplified>
+   <chineseTraditional>朧</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -4429,6 +4635,7 @@ Generic Placeholder class</remark>
    <english>Murakumo</english>
    <japanese>叢雲</japanese>
    <chineseSimplified>从云</chineseSimplified>
+   <chineseTraditional>從雲</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -4450,6 +4657,7 @@ Generic Placeholder class</remark>
    <english>Shinonome</english>
    <japanese>東雲</japanese>
    <chineseSimplified>东云</chineseSimplified>
+   <chineseTraditional>東雲</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -4472,6 +4680,7 @@ Generic Placeholder class</remark>
    <english>Yugiri</english>
    <japanese>夕霧</japanese>
    <chineseSimplified>夕雾</chineseSimplified>
+   <chineseTraditional>夕霧</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -4493,6 +4702,7 @@ Generic Placeholder class</remark>
    <english>Shiranui</english>
    <japanese>不知火</japanese>
    <chineseSimplified>不知火</chineseSimplified>
+   <chineseTraditional>不知火</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -4514,6 +4724,7 @@ Generic Placeholder class</remark>
    <english>Kagero</english>
    <japanese>陽炎</japanese>
    <chineseSimplified>阳炎</chineseSimplified>
+   <chineseTraditional>陽炎</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -4535,6 +4746,7 @@ Generic Placeholder class</remark>
    <english>Usugumo</english>
    <japanese>薄雲</japanese>
    <chineseSimplified>薄云</chineseSimplified>
+   <chineseTraditional>薄雲</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -4557,6 +4769,7 @@ Generic Placeholder class</remark>
    <english>Tsessarevitch</english>
    <japanese>ツェサレーヴィチ</japanese>
    <chineseSimplified>皇太子</chineseSimplified>
+   <chineseTraditional>皇太子</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -4589,6 +4802,7 @@ Questionable leadership records:
    <english>Peresviet</english>
    <japanese>ペレスヴェート</japanese>
    <chineseSimplified>佩列斯韦特</chineseSimplified>
+   <chineseTraditional>佩列斯韋特</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -4617,6 +4831,7 @@ Peresviet or Peresvet</remark>
    <english>Pobyeda</english>
    <japanese>ポベーダ</japanese>
    <chineseSimplified>胜利</chineseSimplified>
+   <chineseTraditional>勝利</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -4643,6 +4858,7 @@ Peresviet or Peresvet</remark>
    <english>Bayan</english>
    <japanese>バヤーン</japanese>
    <chineseSimplified>巴扬</chineseSimplified>
+   <chineseTraditional>巴揚</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -4669,6 +4885,7 @@ Peresviet or Peresvet</remark>
    <english>Bayan (15.08.1904)</english>
    <japanese>バヤーン (15.08.1904)</japanese>
    <chineseSimplified>巴扬 (15.08.1904)</chineseSimplified>
+   <chineseTraditional>巴揚 (15.08.1904)</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -4692,6 +4909,7 @@ Peresviet or Peresvet</remark>
    <english>Askold</english>
    <japanese>アスコリド</japanese>
    <chineseSimplified>阿斯科尔德</chineseSimplified>
+   <chineseTraditional>阿斯科爾德</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -4716,6 +4934,7 @@ Peresviet or Peresvet</remark>
    <english>Diana</english>
    <japanese>ヂアーナ</japanese>
    <chineseSimplified>戴安娜</chineseSimplified>
+   <chineseTraditional>戴安娜</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -4740,6 +4959,7 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Diana</remark>
    <english>Pallada</english>
    <japanese>パルラーダ</japanese>
    <chineseSimplified>帕拉达</chineseSimplified>
+   <chineseTraditional>帕拉達</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -4764,6 +4984,7 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Diana</remark>
    <english>Boyarin</english>
    <japanese>ボヤーリン</japanese>
    <chineseSimplified>博雅林</chineseSimplified>
+   <chineseTraditional>博雅林</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -4789,6 +5010,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
    <english>Aurora</english>
    <japanese>アヴローラ</japanese>
    <chineseSimplified>阿芙乐尔</chineseSimplified>
+   <chineseTraditional>阿芙樂爾</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -4813,6 +5035,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
    <english>Novik</english>
    <japanese>ヴィーク</japanese>
    <chineseSimplified>诺维克</chineseSimplified>
+   <chineseTraditional>諾維克</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -4836,6 +5059,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
    <english>Novik (16.03.1904)</english>
    <japanese>ヴィーク(16.03.1904)</japanese>
    <chineseSimplified>诺维克 (16.03.1904)</chineseSimplified>
+   <chineseTraditional>諾維克 (16.03.1904)</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -4862,6 +5086,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
    <english>Rastoropni</english>
    <japanese>ブイヌイ</japanese>
    <chineseSimplified>布伊内</chineseSimplified>
+   <chineseTraditional>布伊內</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -4883,6 +5108,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
    <english>Retvizan</english>
    <japanese>レトヴィザン</japanese>
    <chineseSimplified>列特维赞</chineseSimplified>
+   <chineseTraditional>列特維贊</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -4909,6 +5135,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
    <english>Mikasa</english>
    <japanese>三笠</japanese>
    <chineseSimplified>三笠</chineseSimplified>
+   <chineseTraditional>三笠</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -4935,6 +5162,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
    <english>Asahi</english>
    <japanese>朝日</japanese>
    <chineseSimplified>朝日</chineseSimplified>
+   <chineseTraditional>朝日</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -4960,6 +5188,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
    <english>Asahi (6.6.1904)</english>
    <japanese>朝日 (6.6.1904)</japanese>
    <chineseSimplified>朝日 (6.6.1904)</chineseSimplified>
+   <chineseTraditional>朝日 (6.6.1904)</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -4985,6 +5214,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
    <english>Shikishima</english>
    <japanese>敷島</japanese>
    <chineseSimplified>敷岛</chineseSimplified>
+   <chineseTraditional>敷島</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -5009,6 +5239,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
    <english>Hatsuse</english>
    <japanese>初瀬</japanese>
    <chineseSimplified>初濑</chineseSimplified>
+   <chineseTraditional>初瀨</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -5033,6 +5264,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
    <english>Kasagi (1900)</english>
    <japanese>笠置 (1900)</japanese>
    <chineseSimplified>笠置 (1900)</chineseSimplified>
+   <chineseTraditional>笠置 (1900)</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -5059,6 +5291,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
    <english>Kasagi</english>
    <japanese>笠置</japanese>
    <chineseSimplified>笠置</chineseSimplified>
+   <chineseTraditional>笠置</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -5085,6 +5318,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
    <english>Chitose</english>
    <japanese>千歳</japanese>
    <chineseSimplified>千岁</chineseSimplified>
+   <chineseTraditional>千歲</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -5111,6 +5345,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
    <english>Takasago</english>
    <japanese>高砂</japanese>
    <chineseSimplified>高砂</chineseSimplified>
+   <chineseTraditional>高砂</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -5135,6 +5370,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
    <english>Tsukushi</english>
    <japanese>筑紫</japanese>
    <chineseSimplified>筑紫</chineseSimplified>
+   <chineseTraditional>筑紫</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -5159,6 +5395,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
    <english>Chokai</english>
    <japanese>鳥海</japanese>
    <chineseSimplified>鸟海</chineseSimplified>
+   <chineseTraditional>鳥海</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -5183,6 +5420,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
    <english>Oshima</english>
    <japanese>大島</japanese>
    <chineseSimplified>大岛</chineseSimplified>
+   <chineseTraditional>大島</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -5207,6 +5445,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
    <english>Old Donkey Mouth Battery</english>
    <japanese>崂嵂嘴砲台</japanese>
    <chineseSimplified>崂嵂嘴 (老驴嘴) 炮台</chineseSimplified>
+   <chineseTraditional>嶗嵂嘴 (老驢嘴) 炮臺</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -5228,6 +5467,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
    <english>Golden Hill Battery</english>
    <japanese>黄金山砲台</japanese>
    <chineseSimplified>黄金山炮台</chineseSimplified>
+   <chineseTraditional>黃金山炮臺</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -5249,6 +5489,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
    <english>Mozhu Reef Battery</english>
    <japanese>摸珠礁砲台</japanese>
    <chineseSimplified>摸珠礁炮台</chineseSimplified>
+   <chineseTraditional>摸珠礁炮臺</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -5270,6 +5511,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
    <english>Battery Number 9</english>
    <japanese>9号砲台</japanese>
    <chineseSimplified>9号炮台</chineseSimplified>
+   <chineseTraditional>9號炮臺</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -5291,6 +5533,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
    <english>Battery Number 15 (Electric Cliff)</english>
    <japanese>15号砲台（電岩）</japanese>
    <chineseSimplified>15号炮台 (电岩)</chineseSimplified>
+   <chineseTraditional>15號炮臺 (電巖)</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -5312,6 +5555,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
    <english>Battery Number 17</english>
    <japanese>17号砲台</japanese>
    <chineseSimplified>17号炮台</chineseSimplified>
+   <chineseTraditional>17號炮臺</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -5333,6 +5577,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
    <english>Ting I</english>
    <japanese>定一</japanese>
    <chineseSimplified>定一</chineseSimplified>
+   <chineseTraditional>定一</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -5354,6 +5599,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
    <english>Ting II</english>
    <japanese>定二</japanese>
    <chineseSimplified>定二</chineseSimplified>
+   <chineseTraditional>定二</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -5375,6 +5621,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
    <english>Chen I</english>
    <japanese>鎮一</japanese>
    <chineseSimplified>镇一</chineseSimplified>
+   <chineseTraditional>鎮一</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -5396,6 +5643,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
    <english>Chen II</english>
    <japanese>鎮二</japanese>
    <chineseSimplified>镇二</chineseSimplified>
+   <chineseTraditional>鎮二</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -5417,6 +5665,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
    <english>Flying Thunder</english>
    <japanese>飞霆</japanese>
    <chineseSimplified>飞霆</chineseSimplified>
+   <chineseTraditional>飛霆</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -5438,6 +5687,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
    <english>Li Shun</english>
    <japanese>利順</japanese>
    <chineseSimplified>利顺</chineseSimplified>
+   <chineseTraditional>利順</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -5459,6 +5709,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
    <english>Chong Chia</english>
    <japanese>中甲</japanese>
    <chineseSimplified>中甲</chineseSimplified>
+   <chineseTraditional>中甲</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -5480,6 +5731,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
    <english>Chong Yi</english>
    <japanese>中乙</japanese>
    <chineseSimplified>中乙</chineseSimplified>
+   <chineseTraditional>中乙</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -5501,6 +5753,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
    <english>Hayatori</english>
    <japanese>速鳥</japanese>
    <chineseSimplified>速鸟</chineseSimplified>
+   <chineseTraditional>速鳥</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -5523,6 +5776,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
    <english>Harusame</english>
    <japanese>春雨</japanese>
    <chineseSimplified>春雨</chineseSimplified>
+   <chineseTraditional>春雨</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -5545,6 +5799,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
    <english>Asagiri</english>
    <japanese>朝霧</japanese>
    <chineseSimplified>朝雾</chineseSimplified>
+   <chineseTraditional>朝霧</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -5567,6 +5822,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
    <english>Murasame</english>
    <japanese>村雨</japanese>
    <chineseSimplified>村雨</chineseSimplified>
+   <chineseTraditional>村雨</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -5589,6 +5845,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
    <english>Kasuga</english>
    <japanese>春日</japanese>
    <chineseSimplified>春日</chineseSimplified>
+   <chineseTraditional>春日</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -5613,6 +5870,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
    <english>Nisshin</english>
    <japanese>日進</japanese>
    <chineseSimplified>日进</chineseSimplified>
+   <chineseTraditional>日進</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -5636,6 +5894,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
    <english>Yaeyama</english>
    <japanese>八重山</japanese>
    <chineseSimplified>八重山</chineseSimplified>
+   <chineseTraditional>八重山</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -5658,6 +5917,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
    <english>Idzumi</english>
    <japanese>和泉</japanese>
    <chineseSimplified>和泉</chineseSimplified>
+   <chineseTraditional>和泉</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -5680,6 +5940,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
    <english>Boiki</english>
    <japanese>ボイキー</japanese>
    <chineseSimplified>博伊基</chineseSimplified>
+   <chineseTraditional>博伊基</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -5704,6 +5965,7 @@ https://ru.wikipedia.org/wiki/%D0%91%D0%BE%D0%B9%D0%BA%D0%B8%D0%B9_(%D0%BC%D0%B8
    <english>Burni</english>
    <japanese>ブールヌイ</japanese>
    <chineseSimplified>布尔尼</chineseSimplified>
+   <chineseTraditional>布爾尼</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -5728,6 +5990,7 @@ https://ru.wikipedia.org/wiki/%D0%91%D1%83%D0%B9%D0%BD%D1%8B%D0%B9_(%D0%BC%D0%B8
    <english>Vinoslivi</english>
    <japanese>ウイノスリーウィ</japanese>
    <chineseSimplified>维诺斯拉维</chineseSimplified>
+   <chineseTraditional>維諾斯拉維</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -5752,6 +6015,7 @@ https://ru.wikipedia.org/wiki/%D0%92%D1%8B%D0%BD%D0%BE%D1%81%D0%BB%D0%B8%D0%B2%D
    <english>Vlastni</english>
    <japanese>ウラースツヌイ</japanese>
    <chineseSimplified>弗拉斯特尼</chineseSimplified>
+   <chineseTraditional>弗拉斯特尼</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -5776,6 +6040,7 @@ https://ru.wikipedia.org/wiki/%D0%92%D0%BB%D0%B0%D1%81%D1%82%D0%BD%D1%8B%D0%B9_(
    <english>Grozovoi</english>
    <japanese>グロゾウォイ</japanese>
    <chineseSimplified>格罗佐沃伊</chineseSimplified>
+   <chineseTraditional>格羅佐沃伊</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -5800,6 +6065,7 @@ https://ru.wikipedia.org/wiki/%D0%93%D1%80%D0%BE%D0%B7%D0%BE%D0%B2%D0%BE%D0%B9_(
    <english>Bezstrashni</english>
    <japanese>ベズストラーシヌイ</japanese>
    <chineseSimplified>别斯特拉什尼</chineseSimplified>
+   <chineseTraditional>別斯特拉什尼</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -5824,6 +6090,7 @@ https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%81%D1%81%D1%82%D1%80%D0%B0%D1%88%D
    <english>Bezshumni</english>
    <japanese>ベズシームヌイ</japanese>
    <chineseSimplified>别什舒姆尼</chineseSimplified>
+   <chineseTraditional>別什舒姆尼</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -5848,6 +6115,7 @@ https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%81%D1%88%D1%83%D0%BC%D0%BD%D1%8B%D
    <english>Bezposhtchadni</english>
    <japanese>ベスポシチャーズヌイ</japanese>
    <chineseSimplified>别兹波什恰德尼</chineseSimplified>
+   <chineseTraditional>別茲波什恰德尼</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -5872,6 +6140,7 @@ https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%81%D0%BF%D0%BE%D1%89%D0%B0%D0%B4%D
    <english>Hai Chi</english>
    <japanese>海圻</japanese>
    <chineseSimplified>海圻</chineseSimplified>
+   <chineseTraditional>海圻</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -5897,6 +6166,7 @@ https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%81%D0%BF%D0%BE%D1%89%D0%B0%D0%B4%D
    <english>Hai Tien</english>
    <japanese>海天</japanese>
    <chineseSimplified>海天</chineseSimplified>
+   <chineseTraditional>海天</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -5922,6 +6192,7 @@ https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%81%D0%BF%D0%BE%D1%89%D0%B0%D0%B4%D
    <english>Hai Yung</english>
    <japanese>海容</japanese>
    <chineseSimplified>海容</chineseSimplified>
+   <chineseTraditional>海容</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -5944,6 +6215,7 @@ https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%81%D0%BF%D0%BE%D1%89%D0%B0%D0%B4%D
    <english>Hai Shew</english>
    <japanese>海籌</japanese>
    <chineseSimplified>海筹</chineseSimplified>
+   <chineseTraditional>海籌</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -5966,6 +6238,7 @@ https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%81%D0%BF%D0%BE%D1%89%D0%B0%D0%B4%D
    <english>Hai Chen</english>
    <japanese>海琛</japanese>
    <chineseSimplified>海琛</chineseSimplified>
+   <chineseTraditional>海琛</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -5988,6 +6261,7 @@ https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%81%D0%BF%D0%BE%D1%89%D0%B0%D0%B4%D
    <english>Blanco Encalada</english>
    <japanese>ブランコ・エンカラーダ</japanese>
    <chineseSimplified>白朗古·恩卡拉达</chineseSimplified>
+   <chineseTraditional>白朗古·恩卡拉達</chineseTraditional>
   </name>
   <builderDesc>
    <english>Armstrong, Newcastle</english>
@@ -6012,6 +6286,7 @@ https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%81%D0%BF%D0%BE%D1%89%D0%B0%D0%B4%D
    <english>Capitan Prat</english>
    <japanese>プラット</japanese>
    <chineseSimplified>卜拉德</chineseSimplified>
+   <chineseTraditional>卜拉德</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -6034,6 +6309,7 @@ https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%81%D0%BF%D0%BE%D1%89%D0%B0%D0%B4%D
    <english>Esmeralda</english>
    <japanese>エスメラルダ</japanese>
    <chineseSimplified>埃斯梅拉达</chineseSimplified>
+   <chineseTraditional>埃斯梅拉達</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -6055,6 +6331,7 @@ https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%81%D0%BF%D0%BE%D1%89%D0%B0%D0%B4%D
    <english>Presidente Errazuriz</english>
    <japanese>エラスリス</japanese>
    <chineseSimplified>额拉粗力士</chineseSimplified>
+   <chineseTraditional>額拉粗力士</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -6077,6 +6354,7 @@ https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%81%D0%BF%D0%BE%D1%89%D0%B0%D0%B4%D
    <english>Presidente Pinto</english>
    <japanese>ピント</japanese>
    <chineseSimplified>平度</chineseSimplified>
+   <chineseTraditional>平度</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -6099,6 +6377,7 @@ https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%81%D0%BF%D0%BE%D1%89%D0%B0%D0%B4%D
    <english>Almirante Lynch</english>
    <japanese>リンチ</japanese>
    <chineseSimplified>林则</chineseSimplified>
+   <chineseTraditional>林則</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -6121,6 +6400,7 @@ https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%81%D0%BF%D0%BE%D1%89%D0%B0%D0%B4%D
    <english>Almirante Condell</english>
    <japanese>コンデル </japanese>
    <chineseSimplified>康德尔</chineseSimplified>
+   <chineseTraditional>康德爾</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -6145,6 +6425,7 @@ https://dawlishchronicles.blogspot.com/2014/01/almirante-lynch-first-sinking-by.
    <english>Veinticinco de Mayo</english>
    <japanese>5月25日</japanese>
    <chineseSimplified>5月25日</chineseSimplified>
+   <chineseTraditional>5月25日</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -6167,6 +6448,7 @@ https://dawlishchronicles.blogspot.com/2014/01/almirante-lynch-first-sinking-by.
    <english>Nueve de Julio</english>
    <japanese>7月9日</japanese>
    <chineseSimplified>7月9日</chineseSimplified>
+   <chineseTraditional>7月9日</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -6188,6 +6470,7 @@ https://dawlishchronicles.blogspot.com/2014/01/almirante-lynch-first-sinking-by.
    <english>Almirante Brown</english>
    <japanese>ブラウン</japanese>
    <chineseSimplified>勃兰</chineseSimplified>
+   <chineseTraditional>勃蘭</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -6209,6 +6492,7 @@ https://dawlishchronicles.blogspot.com/2014/01/almirante-lynch-first-sinking-by.
    <english>Zhenbei</english>
    <japanese>鎮北</japanese>
    <chineseSimplified>镇北</chineseSimplified>
+   <chineseTraditional>鎮北</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -6234,6 +6518,7 @@ https://baike.baidu.com/item/%E9%95%87%E5%8C%97%E5%8F%B7%E7%82%AE%E8%88%B0/90243
    <english>Zhendong</english>
    <japanese>鎮東</japanese>
    <chineseSimplified>镇东</chineseSimplified>
+   <chineseTraditional>鎮東</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -6258,6 +6543,7 @@ https://baike.baidu.com/item/%E9%95%87%E4%B8%9C%E5%8F%B7%E7%82%AE%E8%88%B0/90247
    <english>Zhennan</english>
    <japanese>鎮南</japanese>
    <chineseSimplified>镇南</chineseSimplified>
+   <chineseTraditional>鎮南</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -6283,6 +6569,7 @@ https://baike.baidu.com/item/%E9%95%87%E5%8D%97%E5%8F%B7%E7%82%AE%E8%88%B0/90245
    <english>Zhenxi</english>
    <japanese>鎮西</japanese>
    <chineseSimplified>镇西</chineseSimplified>
+   <chineseTraditional>鎮西</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -6308,6 +6595,7 @@ https://baijiahao.baidu.com/s?id=1811274115024645871
    <english>Zhenbian</english>
    <japanese>鎮辺</japanese>
    <chineseSimplified>镇边</chineseSimplified>
+   <chineseTraditional>鎮邊</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -6334,6 +6622,7 @@ https://baike.baidu.com/item/%E9%95%87%E8%BE%B9%E5%8F%B7%E7%82%AE%E8%88%B0/90232
    <english>Zhenzhong</english>
    <japanese>鎮中</japanese>
    <chineseSimplified>镇中</chineseSimplified>
+   <chineseTraditional>鎮中</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -6360,6 +6649,7 @@ https://baike.baidu.com/item/%E9%95%87%E4%B8%AD%E5%8F%B7%E7%82%AE%E8%88%B0/90242
    <english>Hai Tng Ching</english>
    <japanese>海镜清</japanese>
    <chineseSimplified>海镜清</chineseSimplified>
+   <chineseTraditional>海鏡清</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -6385,6 +6675,7 @@ https://baike.baidu.com/item/%E6%B5%B7%E9%95%9C%E6%B8%85%E5%8F%B7%E7%82%AE%E8%89
    <english>Kai Che</english>
    <japanese>開濟</japanese>
    <chineseSimplified>开济</chineseSimplified>
+   <chineseTraditional>開濟</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -6410,6 +6701,7 @@ https://baike.baidu.com/item/%E6%B5%B7%E9%95%9C%E6%B8%85%E5%8F%B7%E7%82%AE%E8%89
    <english>Ching Ching</english>
    <japanese>鏡清</japanese>
    <chineseSimplified>镜清</chineseSimplified>
+   <chineseTraditional>鏡清</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -6437,6 +6729,7 @@ https://baike.baidu.com/item/%E9%95%9C%E6%B8%85%E5%8F%B7/9669520
    <english>Huan Tai</english>
    <japanese>寰泰</japanese>
    <chineseSimplified>寰泰</chineseSimplified>
+   <chineseTraditional>寰泰</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -6461,6 +6754,7 @@ https://baike.baidu.com/item/%E9%95%9C%E6%B8%85%E5%8F%B7/9669520
    <english>Nan Thin</english>
    <japanese>南琛</japanese>
    <chineseSimplified>南琛</chineseSimplified>
+   <chineseTraditional>南琛</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -6486,6 +6780,7 @@ https://baike.baidu.com/item/%E9%95%9C%E6%B8%85%E5%8F%B7/9669520
    <english>Nan Shui</english>
    <japanese>南瑞</japanese>
    <chineseSimplified>南瑞</chineseSimplified>
+   <chineseTraditional>南瑞</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -6510,6 +6805,7 @@ https://baike.baidu.com/item/%E9%95%9C%E6%B8%85%E5%8F%B7/9669520
    <english>Pao Min</english>
    <japanese>保民</japanese>
    <chineseSimplified>保民</chineseSimplified>
+   <chineseTraditional>保民</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -6534,6 +6830,7 @@ https://baike.baidu.com/item/%E9%95%9C%E6%B8%85%E5%8F%B7/9669520
    <english>Fu Ching</english>
    <japanese>福靖</japanese>
    <chineseSimplified>福靖</chineseSimplified>
+   <chineseTraditional>福靖</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -6557,6 +6854,7 @@ https://baike.baidu.com/item/%E9%95%9C%E6%B8%85%E5%8F%B7/9669520
    <english>Imperator Nicolai I</english>
    <japanese>インペラートル・ニコライ1世</japanese>
    <chineseSimplified>尼古拉一世</chineseSimplified>
+   <chineseTraditional>尼古拉一世</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -6581,6 +6879,7 @@ https://baike.baidu.com/item/%E9%95%9C%E6%B8%85%E5%8F%B7/9669520
    <english>Admiral Nakhimov</english>
    <japanese>アドミラル・ナヒーモフ</japanese>
    <chineseSimplified>纳希莫夫</chineseSimplified>
+   <chineseTraditional>納希莫夫</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -6605,6 +6904,7 @@ https://baike.baidu.com/item/%E9%95%9C%E6%B8%85%E5%8F%B7/9669520
    <english>Admiral Nakhimov (1903)</english>
    <japanese>アドミラル・ナヒーモフ</japanese>
    <chineseSimplified>纳希莫夫</chineseSimplified>
+   <chineseTraditional>納希莫夫</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -6629,6 +6929,7 @@ https://baike.baidu.com/item/%E9%95%9C%E6%B8%85%E5%8F%B7/9669520
    <english>Pamiat Azova</english>
    <japanese>パーミャチ・アゾーヴァ</japanese>
    <chineseSimplified>帕米亚特·阿佐瓦</chineseSimplified>
+   <chineseTraditional>帕米亞特·阿佐瓦</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -6653,6 +6954,7 @@ https://baike.baidu.com/item/%E9%95%9C%E6%B8%85%E5%8F%B7/9669520
    <english>Vladimir Monomakh</english>
    <japanese>ヴラジーミル・モノマフ</japanese>
    <chineseSimplified>弗拉基米尔·莫诺马赫</chineseSimplified>
+   <chineseTraditional>弗拉基米爾·莫諾馬赫</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -6675,6 +6977,7 @@ https://baike.baidu.com/item/%E9%95%9C%E6%B8%85%E5%8F%B7/9669520
    <english>Admiral Kornilov</english>
    <japanese>コルニロフ</japanese>
    <chineseSimplified>科尔尼洛夫</chineseSimplified>
+   <chineseTraditional>科爾尼洛夫</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -6697,6 +7000,7 @@ https://baike.baidu.com/item/%E9%95%9C%E6%B8%85%E5%8F%B7/9669520
    <english>Borodino</english>
    <japanese>ボロジノ</japanese>
    <chineseSimplified>博罗季诺</chineseSimplified>
+   <chineseTraditional>博羅季諾</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -6724,6 +7028,7 @@ https://en.wikipedia.org/wiki/Russian_battleship_Borodino
    <english>Imperator Alekasandr III</english>
    <japanese>インペラートル・アレクサンドル3世</japanese>
    <chineseSimplified>亚历山大三世</chineseSimplified>
+   <chineseTraditional>亞歷山大三世</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -6750,6 +7055,7 @@ https://en.wikipedia.org/wiki/Russian_battleship_Imperator_Aleksandr_III_(1901)<
    <english>Kniaz Suvarov</english>
    <japanese>クニャージ・スヴォーロフ</japanese>
    <chineseSimplified>苏沃洛夫公爵</chineseSimplified>
+   <chineseTraditional>蘇沃洛夫公爵</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -6776,6 +7082,7 @@ https://en.wikipedia.org/wiki/Russian_battleship_Knyaz_Suvorov</remark>
    <english>Orel</english>
    <japanese>オリョール</japanese>
    <chineseSimplified>鹰</chineseSimplified>
+   <chineseTraditional>鷹</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -6803,6 +7110,7 @@ https://en.wikipedia.org/wiki/Russian_battleship_Oryol
    <english>Oslyabya</english>
    <japanese>オスリャービャ</japanese>
    <chineseSimplified>奥斯利雅维亚</chineseSimplified>
+   <chineseTraditional>奧斯利雅維亞</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -6829,6 +7137,7 @@ https://en.wikipedia.org/wiki/Russian_battleship_Oslyabya</remark>
    <english>Sissoi Veliki (1898/9/24)</english>
    <japanese>シソイ・ヴェリキィー (1898/9/24)</japanese>
    <chineseSimplified>西索伊·维利基 (1898/9/24)</chineseSimplified>
+   <chineseTraditional>西索伊·維利基 (1898/9/24)</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -6855,6 +7164,7 @@ https://en.wikipedia.org/wiki/Russian_battleship_Sissoi_Veliky</remark>
    <english>Sissoi Veliki (1905)</english>
    <japanese>シソイ・ヴェリキィー (1905)</japanese>
    <chineseSimplified>西索伊·维利基 (1905)</chineseSimplified>
+   <chineseTraditional>西索伊·維利基 (1905)</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -6881,6 +7191,7 @@ https://en.wikipedia.org/wiki/Russian_battleship_Sissoi_Veliky</remark>
    <english>Navarin(1905)</english>
    <japanese>ナヴァリン(1905)</japanese>
    <chineseSimplified>纳瓦林(1905)</chineseSimplified>
+   <chineseTraditional>納瓦林(1905)</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -6907,6 +7218,7 @@ https://en.wikipedia.org/wiki/Russian_battleship_Navarin</remark>
    <english>Inflexible</english>
    <japanese>インフレキシブル</japanese>
    <chineseSimplified>英弗莱息白</chineseSimplified>
+   <chineseTraditional>英弗萊息白</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -6929,6 +7241,7 @@ https://en.wikipedia.org/wiki/Russian_battleship_Navarin</remark>
    <english>Centurion</english>
    <japanese>バーフラー</japanese>
    <chineseSimplified>百夫长</chineseSimplified>
+   <chineseTraditional>百夫長</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -6954,6 +7267,7 @@ https://dreadnoughtproject.org/tfs/index.php/H.M.S._Centurion_(1892)</remark>
    <english>Centurion (1897/12/31)</english>
    <japanese>バーフラー (1897/12/31)</japanese>
    <chineseSimplified>百夫长 (1897/12/31)</chineseSimplified>
+   <chineseTraditional>百夫長 (1897/12/31)</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -6979,6 +7293,7 @@ https://dreadnoughtproject.org/tfs/index.php/H.M.S._Centurion_(1892)</remark>
    <english>Barfleur</english>
    <japanese>バーフラー</japanese>
    <chineseSimplified>巴夫勒</chineseSimplified>
+   <chineseTraditional>巴夫勒</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -7005,6 +7320,7 @@ https://www.dreadnoughtproject.org/tfs/index.php/H.M.S._Barfleur_(1892)</remark>
    <english>Dreadnought</english>
    <japanese>ドレッド</japanese>
    <chineseSimplified>无畏</chineseSimplified>
+   <chineseTraditional>無畏</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -7027,6 +7343,7 @@ https://www.dreadnoughtproject.org/tfs/index.php/H.M.S._Barfleur_(1892)</remark>
    <english>Invincible</english>
    <japanese>インヴィンシブル</japanese>
    <chineseSimplified>无敌</chineseSimplified>
+   <chineseTraditional>無敵</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -7050,6 +7367,7 @@ https://www.dreadnoughtproject.org/tfs/index.php/H.M.S._Barfleur_(1892)</remark>
    <english>Edgar</english>
    <japanese>エドガー</japanese>
    <chineseSimplified>埃德加</chineseSimplified>
+   <chineseTraditional>埃德加</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -7072,6 +7390,7 @@ https://www.dreadnoughtproject.org/tfs/index.php/H.M.S._Barfleur_(1892)</remark>
    <english>Undaunted</english>
    <japanese>アンドーンテッド</japanese>
    <chineseSimplified>无惧</chineseSimplified>
+   <chineseTraditional>無懼</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -7095,6 +7414,7 @@ https://www.dreadnoughtproject.org/tfs/index.php/H.M.S._Barfleur_(1892)</remark>
    <english>Mercury</english>
    <japanese>マーキュリー</japanese>
    <chineseSimplified>水星</chineseSimplified>
+   <chineseTraditional>水星</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -7117,6 +7437,7 @@ https://www.dreadnoughtproject.org/tfs/index.php/H.M.S._Barfleur_(1892)</remark>
    <english>Aeolus</english>
    <japanese>エオロス</japanese>
    <chineseSimplified>埃俄洛斯</chineseSimplified>
+   <chineseTraditional>埃俄洛斯</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -7140,6 +7461,7 @@ https://www.dreadnoughtproject.org/tfs/index.php/H.M.S._Barfleur_(1892)</remark>
    <english>Spartan</english>
    <japanese>スパルタン</japanese>
    <chineseSimplified>斯巴达</chineseSimplified>
+   <chineseTraditional>斯巴達</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -7163,6 +7485,7 @@ https://www.dreadnoughtproject.org/tfs/index.php/H.M.S._Barfleur_(1892)</remark>
    <english>Rainbow</english>
    <japanese>レインボウ</japanese>
    <chineseSimplified>彩虹</chineseSimplified>
+   <chineseTraditional>彩虹</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -7187,6 +7510,7 @@ https://www.dreadnoughtproject.org/tfs/index.php/H.M.S._Barfleur_(1892)</remark>
    <english>Pique</english>
    <japanese>ピーク</japanese>
    <chineseSimplified>皮克</chineseSimplified>
+   <chineseTraditional>皮克</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -7209,6 +7533,7 @@ https://www.dreadnoughtproject.org/tfs/index.php/H.M.S._Barfleur_(1892)</remark>
    <english>Algerine</english>
    <japanese>アルジェリン</japanese>
    <chineseSimplified>阿尔及利亚</chineseSimplified>
+   <chineseTraditional>阿爾及利亞</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -7235,6 +7560,7 @@ https://www.dreadnoughtproject.org/tfs/index.php/H.M.S._Barfleur_(1892)</remark>
    <english>Whiting</english>
    <japanese>ホワイティング</japanese>
    <chineseSimplified>鳕鱼</chineseSimplified>
+   <chineseTraditional>鱈魚</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -7259,6 +7585,7 @@ https://www.dreadnoughtproject.org/tfs/index.php/H.M.S._Barfleur_(1892)</remark>
    <english>Fame</english>
    <japanese>フェイム</japanese>
    <chineseSimplified>名誉</chineseSimplified>
+   <chineseTraditional>名譽</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -7284,6 +7611,7 @@ https://www.dreadnoughtproject.org/tfs/index.php/H.M.S._Barfleur_(1892)</remark>
    <english>Bobr</english>
    <japanese>ボーブル</japanese>
    <chineseSimplified>海狸</chineseSimplified>
+   <chineseTraditional>海狸</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -7311,6 +7639,7 @@ https://ru.wikipedia.org/wiki/%D0%91%D0%BE%D0%B1%D1%80_(%D0%BA%D0%B0%D0%BD%D0%BE
    <english>Sivuch</english>
    <japanese>シヴチ</japanese>
    <chineseSimplified>西武奇</chineseSimplified>
+   <chineseTraditional>西武奇</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -7338,6 +7667,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%B8%D0%B2%D1%83%D1%87_(%D0%BA%D0%B0%D0%BD
    <english>Iltis</english>
    <japanese>イルティス</japanese>
    <chineseSimplified>鸡貂</chineseSimplified>
+   <chineseTraditional>雞貂</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -7364,6 +7694,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%B8%D0%B2%D1%83%D1%87_(%D0%BA%D0%B0%D0%BD
    <english>Atago</english>
    <japanese>愛宕</japanese>
    <chineseSimplified>爱宕</chineseSimplified>
+   <chineseTraditional>愛宕</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -7390,6 +7721,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%B8%D0%B2%D1%83%D1%87_(%D0%BA%D0%B0%D0%BD
    <english>Atago (1899/9/29)</english>
    <japanese>愛宕 (1899/9/29)</japanese>
    <chineseSimplified>愛宕 (1899/9/29)</chineseSimplified>
+   <chineseTraditional>愛宕 (1899/9/29)</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -7416,6 +7748,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%B8%D0%B2%D1%83%D1%87_(%D0%BA%D0%B0%D0%BD
    <english>Endymion</english>
    <japanese>エンディミオン</japanese>
    <chineseSimplified>恩底弥翁</chineseSimplified>
+   <chineseTraditional>恩底彌翁</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -7442,6 +7775,7 @@ https://www.dreadnoughtproject.org/tfs/index.php/H.M.S._Endymion_(1891)
    <english>HMS Aurora</english>
    <japanese>HMS オーロラ</japanese>
    <chineseSimplified>奥罗拉</chineseSimplified>
+   <chineseTraditional>奧羅拉</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -7468,6 +7802,7 @@ The British Aurora (1887), not the well-known Russian one.
    <english>Orlando</english>
    <japanese>オーラン</japanese>
    <chineseSimplified>奥兰多</chineseSimplified>
+   <chineseTraditional>奧蘭多</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -7492,6 +7827,7 @@ https://www.dreadnoughtproject.org/tfs/index.php/H.M.S._Orlando_(1886)
    <english>Alacrity (1898)</english>
    <japanese>アラクリティ (1898)</japanese>
    <chineseSimplified>敏捷 (1898)</chineseSimplified>
+   <chineseTraditional>敏捷 (1898)</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -7519,6 +7855,7 @@ https://en.wikipedia.org/wiki/Surprise-class_cruiser#HMS_Alacrity
    <english>Gaidamak</english>
    <japanese>ガイダマク</japanese>
    <chineseSimplified>盖达马克</chineseSimplified>
+   <chineseTraditional>蓋達馬克</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -7542,6 +7879,7 @@ https://en.wikipedia.org/wiki/Surprise-class_cruiser#HMS_Alacrity
    <english>Hertha</english>
    <japanese>ヘルタ</japanese>
    <chineseSimplified>赫塔</chineseSimplified>
+   <chineseTraditional>赫塔</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -7567,6 +7905,7 @@ https://en.wikipedia.org/wiki/Surprise-class_cruiser#HMS_Alacrity
    <english>Hansa</english>
    <japanese>ハンザ</japanese>
    <chineseSimplified>汉萨</chineseSimplified>
+   <chineseTraditional>漢薩</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -7592,6 +7931,7 @@ https://en.wikipedia.org/wiki/Surprise-class_cruiser#HMS_Alacrity
    <english>Kaiserin Augusta</english>
    <japanese>カイゼリン・アウグスタ</japanese>
    <chineseSimplified>奥古斯塔皇后</chineseSimplified>
+   <chineseTraditional>奧古斯塔皇后</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -7617,6 +7957,7 @@ https://en.wikipedia.org/wiki/Surprise-class_cruiser#HMS_Alacrity
    <english>Gefion</english>
    <japanese>ゲフィオン</japanese>
    <chineseSimplified>葛冯</chineseSimplified>
+   <chineseTraditional>葛馮</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -7643,6 +7984,7 @@ https://en.wikipedia.org/wiki/Surprise-class_cruiser#HMS_Alacrity
    <english>D'Entrecasteaux</english>
    <japanese>ダントルカストー</japanese>
    <chineseSimplified>当特尔卡斯托</chineseSimplified>
+   <chineseTraditional>當特爾卡斯托</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -7668,6 +8010,7 @@ https://en.wikipedia.org/wiki/Surprise-class_cruiser#HMS_Alacrity
    <english>Descartes</english>
    <japanese>デカルト</japanese>
    <chineseSimplified>笛卡尔</chineseSimplified>
+   <chineseTraditional>笛卡爾</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -7691,6 +8034,7 @@ https://en.wikipedia.org/wiki/Surprise-class_cruiser#HMS_Alacrity
    <english>Pascal</english>
    <japanese>パスカ</japanese>
    <chineseSimplified>帕斯卡</chineseSimplified>
+   <chineseTraditional>帕斯卡</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -7714,6 +8058,7 @@ https://en.wikipedia.org/wiki/Surprise-class_cruiser#HMS_Alacrity
    <english>Surprise</english>
    <japanese>サプライズ</japanese>
    <chineseSimplified>惊奇</chineseSimplified>
+   <chineseTraditional>驚奇</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -7737,6 +8082,7 @@ https://en.wikipedia.org/wiki/Surprise-class_cruiser#HMS_Alacrity
    <english>Calabria</english>
    <japanese>カラブリア</japanese>
    <chineseSimplified>卡拉布里亚</chineseSimplified>
+   <chineseTraditional>卡拉布里亞</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -7760,6 +8106,7 @@ https://en.wikipedia.org/wiki/Surprise-class_cruiser#HMS_Alacrity
    <english>Elba</english>
    <japanese>エルバ</japanese>
    <chineseSimplified>厄尔巴</chineseSimplified>
+   <chineseTraditional>厄爾巴</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -7783,6 +8130,7 @@ https://en.wikipedia.org/wiki/Surprise-class_cruiser#HMS_Alacrity
    <english>Zenta</english>
    <japanese>ゼント</japanese>
    <chineseSimplified>森塔</chineseSimplified>
+   <chineseTraditional>森塔</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -7807,6 +8155,7 @@ https://en.wikipedia.org/wiki/Surprise-class_cruiser#HMS_Alacrity
    <english>Newark (C1)</english>
    <japanese>ニューアーク</japanese>
    <chineseSimplified>纽瓦克</chineseSimplified>
+   <chineseTraditional>紐瓦克</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -7831,6 +8180,7 @@ https://en.wikipedia.org/wiki/Surprise-class_cruiser#HMS_Alacrity
    <english>Hai Hua</english>
    <japanese>海華</japanese>
    <chineseSimplified>海华</chineseSimplified>
+   <chineseTraditional>海華</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -7857,6 +8207,7 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
    <english>Hai Lung</english>
    <japanese>海龍</japanese>
    <chineseSimplified>海龙</chineseSimplified>
+   <chineseTraditional>海龍</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -7881,6 +8232,7 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
    <english>Hai Hse</english>
    <japanese>海犀</japanese>
    <chineseSimplified>海犀</chineseSimplified>
+   <chineseTraditional>海犀</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -7905,6 +8257,7 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
    <english>Hai Ching</english>
    <japanese>海青</japanese>
    <chineseSimplified>海青</chineseSimplified>
+   <chineseTraditional>海青</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -7929,6 +8282,7 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
    <english>Fei Ting</english>
    <japanese>飛霆</japanese>
    <chineseSimplified>飞霆</chineseSimplified>
+   <chineseTraditional>飛霆</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -7952,6 +8306,7 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
    <english>Fei Ying</english>
    <japanese>飛鷹</japanese>
    <chineseSimplified>飞鹰</chineseSimplified>
+   <chineseTraditional>飛鷹</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -7976,6 +8331,7 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
    <english>Northwest Fort</english>
    <japanese>西北砲台</japanese>
    <chineseSimplified>西北炮台</chineseSimplified>
+   <chineseTraditional>西北炮臺</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -7999,6 +8355,7 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
    <english>North Fort</english>
    <japanese>北砲台</japanese>
    <chineseSimplified>北炮台</chineseSimplified>
+   <chineseTraditional>北炮臺</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -8020,6 +8377,7 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
    <english>South Fort</english>
    <japanese>南岸砲台</japanese>
    <chineseSimplified>南岸炮台</chineseSimplified>
+   <chineseTraditional>南岸炮臺</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -8043,6 +8401,7 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
    <english>Lion</english>
    <japanese>ライオン</japanese>
    <chineseSimplified>狮子</chineseSimplified>
+   <chineseTraditional>獅子</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>
@@ -8067,6 +8426,7 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
    <english>Gilyak</english>
    <japanese>ギリャーク</japanese>
    <chineseSimplified>吉利亚克</chineseSimplified>
+   <chineseTraditional>吉利亞克</chineseTraditional>
   </name>
   <builderDesc>
    <english>none</english>

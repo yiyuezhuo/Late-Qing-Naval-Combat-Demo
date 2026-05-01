@@ -9353,6 +9353,7 @@
      <english>Beiyang Fleet</english>
      <japanese>北洋艦隊</japanese>
      <chineseSimplified>北洋水师</chineseSimplified>
+     <chineseTraditional>北洋水師</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
@@ -9430,6 +9431,7 @@
      <english>Pricipal Squadron</english>
      <japanese>本隊</japanese>
      <chineseSimplified>主队</chineseSimplified>
+     <chineseTraditional>主隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
@@ -9567,6 +9569,7 @@
      <english>Combined Fleet</english>
      <japanese>連合艦隊</japanese>
      <chineseSimplified>联合舰队</chineseSimplified>
+     <chineseTraditional>聯合艦隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
@@ -9638,6 +9641,7 @@
      <english>Battle Squadron</english>
      <japanese>連合艦隊本隊</japanese>
      <chineseSimplified>联合舰队本队</chineseSimplified>
+     <chineseTraditional>聯合艦隊本隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
@@ -9708,6 +9712,7 @@
      <english>Flying Squadron</english>
      <japanese>第一遊撃隊</japanese>
      <chineseSimplified>第一游击队</chineseSimplified>
+     <chineseTraditional>第一游擊隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
@@ -9776,6 +9781,7 @@
      <english>Observers</english>
      <japanese>観察隊</japanese>
      <chineseSimplified>观察队</chineseSimplified>
+     <chineseTraditional>觀察隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>

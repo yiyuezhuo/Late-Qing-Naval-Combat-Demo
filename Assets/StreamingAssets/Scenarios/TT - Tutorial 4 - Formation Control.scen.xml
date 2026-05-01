@@ -2284,7 +2284,7 @@
      <english>1st Fleet</english>
      <japanese>第1艦隊</japanese>
      <chineseSimplified>第1舰队</chineseSimplified>
-     <chineseTraditional />
+     <chineseTraditional>第1艦隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
@@ -2356,6 +2356,7 @@
      <english>1st Division</english>
      <japanese>第1戦隊</japanese>
      <chineseSimplified>第1战队</chineseSimplified>
+     <chineseTraditional>第1戰隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
@@ -2453,6 +2454,7 @@
       <english>Encounter Rock</english>
       <japanese>過岩</japanese>
       <chineseSimplified>过岩</chineseSimplified>
+      <chineseTraditional>過巖</chineseTraditional>
      </name>
     </LocationLabel>
    </locationLabels>

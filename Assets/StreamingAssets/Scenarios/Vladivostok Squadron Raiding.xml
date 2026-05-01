@@ -4270,6 +4270,7 @@
      <english>Sōya Strait</english>
      <japanese>宗谷海峡</japanese>
      <chineseSimplified>宗谷海峡</chineseSimplified>
+     <chineseTraditional>宗谷海峽</chineseTraditional>
     </Label>
     <CellConnections>
      <CellConnection cost="407.8352" costCoef="1">
@@ -4291,6 +4292,7 @@
      <english>Hokkaidō (E)</english>
      <japanese>北海道 (东)</japanese>
      <chineseSimplified>北海道 (东)</chineseSimplified>
+     <chineseTraditional>北海道 (東)</chineseTraditional>
     </Label>
     <CellConnections>
      <CellConnection cost="407.8352" costCoef="1">
@@ -4308,6 +4310,7 @@
      <english>Tsugaru Strait</english>
      <japanese>津軽海峡</japanese>
      <chineseSimplified>津轻海峡</chineseSimplified>
+     <chineseTraditional>津輕海峽</chineseTraditional>
     </Label>
     <CellSideInfos>
      <CellSideInfo>
@@ -4345,6 +4348,7 @@
      <english>Japan Sea (N)</english>
      <japanese>日本海 (北)</japanese>
      <chineseSimplified>日本海 (北)</chineseSimplified>
+     <chineseTraditional>日本海 (北)</chineseTraditional>
     </Label>
     <CellConnections>
      <CellConnection cost="406.435242" costCoef="1">
@@ -4374,6 +4378,7 @@
      <english>Vladivostok</english>
      <japanese>ウラジオストク</japanese>
      <chineseSimplified>海参崴</chineseSimplified>
+     <chineseTraditional>海參崴</chineseTraditional>
     </Label>
     <CellSideInfos>
      <CellSideInfo>
@@ -4414,6 +4419,7 @@
      <english>Wonsan</english>
      <japanese>元山</japanese>
      <chineseSimplified>元山</chineseSimplified>
+     <chineseTraditional>元山</chineseTraditional>
     </Label>
     <CellSideInfos>
      <CellSideInfo>
@@ -4443,6 +4449,7 @@
      <english>Japan Sea (S)</english>
      <japanese>日本海(南)</japanese>
      <chineseSimplified>日本海(南)</chineseSimplified>
+     <chineseTraditional>日本海(南)</chineseTraditional>
     </Label>
     <CellConnections>
      <CellConnection cost="417.219971" costCoef="1">
@@ -4476,6 +4483,7 @@
      <english>Ishikawa</english>
      <japanese>石川</japanese>
      <chineseSimplified>石川</chineseSimplified>
+     <chineseTraditional>石川</chineseTraditional>
     </Label>
     <CellSideInfos>
      <CellSideInfo>
@@ -4509,6 +4517,7 @@
      <english>Miyagi</english>
      <japanese>宮城</japanese>
      <chineseSimplified>宫城</chineseSimplified>
+     <chineseTraditional>宮城</chineseTraditional>
     </Label>
     <CellSideInfos>
      <CellSideInfo>
@@ -4534,6 +4543,7 @@
      <english>Tokyo Bay</english>
      <japanese>東京湾</japanese>
      <chineseSimplified>东京湾</chineseSimplified>
+     <chineseTraditional>東京灣</chineseTraditional>
     </Label>
     <CellSideInfos>
      <CellSideInfo>
@@ -4567,6 +4577,7 @@
      <english>Shimane</english>
      <japanese>島根</japanese>
      <chineseSimplified>岛根</chineseSimplified>
+     <chineseTraditional>島根</chineseTraditional>
     </Label>
     <CellSideInfos>
      <CellSideInfo>
@@ -4596,6 +4607,7 @@
      <english>Yellow Sea</english>
      <japanese>黄海</japanese>
      <chineseSimplified>黄海</chineseSimplified>
+     <chineseTraditional>黃海</chineseTraditional>
     </Label>
     <CellSideInfos>
      <CellSideInfo>
@@ -4617,6 +4629,7 @@
      <english>Tsushima</english>
      <japanese>対馬</japanese>
      <chineseSimplified>对马</chineseSimplified>
+     <chineseTraditional>對馬</chineseTraditional>
     </Label>
     <CellSideInfos>
      <CellSideInfo>
@@ -4666,6 +4679,7 @@
      <english>Kōchi</english>
      <japanese>高知</japanese>
      <chineseSimplified>高知</chineseSimplified>
+     <chineseTraditional>高知</chineseTraditional>
     </Label>
     <CellSideInfos>
      <CellSideInfo>
@@ -4700,6 +4714,7 @@
      <english>Ōsumi Strait</english>
      <japanese>大隅海峡</japanese>
      <chineseSimplified>大隅海峡</chineseSimplified>
+     <chineseTraditional>大隅海峽</chineseTraditional>
     </Label>
     <CellSideInfos>
      <CellSideInfo>
@@ -4796,6 +4811,7 @@
      <english>Kure Depot</english>
      <japanese>呉倉庫</japanese>
      <chineseSimplified>吴仓库</chineseSimplified>
+     <chineseTraditional>吳倉庫</chineseTraditional>
     </name>
     <strength>0</strength>
     <strengthManualOverride>false</strengthManualOverride>
@@ -4837,6 +4853,7 @@
      <english>Sasebo Depot</english>
      <japanese>佐世保倉庫</japanese>
      <chineseSimplified>佐世保仓库</chineseSimplified>
+     <chineseTraditional>佐世保倉庫</chineseTraditional>
     </name>
     <strength>0</strength>
     <strengthManualOverride>false</strengthManualOverride>
@@ -4879,6 +4896,7 @@
      <english>Vladivostok Depot</english>
      <japanese>ウラジオストク倉庫</japanese>
      <chineseSimplified>海参崴仓库</chineseSimplified>
+     <chineseTraditional>海參崴倉庫</chineseTraditional>
     </name>
     <strength>0</strength>
     <strengthManualOverride>false</strengthManualOverride>
@@ -4921,6 +4939,7 @@
      <english>Yokosuka Port</english>
      <japanese>横須賀ポート</japanese>
      <chineseSimplified>横须贺港口</chineseSimplified>
+     <chineseTraditional>橫須賀港口</chineseTraditional>
     </name>
     <strength>0</strength>
     <strengthManualOverride>false</strengthManualOverride>
@@ -4955,6 +4974,7 @@
      <english>Kure Port</english>
      <japanese>呉ポート</japanese>
      <chineseSimplified>吴港口</chineseSimplified>
+     <chineseTraditional>吳港口</chineseTraditional>
     </name>
     <strength>0</strength>
     <strengthManualOverride>false</strengthManualOverride>
@@ -4989,6 +5009,7 @@
      <english>Sasebo Port</english>
      <japanese>佐世保ポート</japanese>
      <chineseSimplified>佐世保港口</chineseSimplified>
+     <chineseTraditional>佐世保港口</chineseTraditional>
     </name>
     <strength>0</strength>
     <strengthManualOverride>false</strengthManualOverride>
@@ -5023,6 +5044,7 @@
      <english>Vladivostok Port</english>
      <japanese>ウラジオストクポート</japanese>
      <chineseSimplified>海参崴港口</chineseSimplified>
+     <chineseTraditional>海參崴港口</chineseTraditional>
     </name>
     <strength>0</strength>
     <strengthManualOverride>false</strengthManualOverride>
@@ -5099,6 +5121,7 @@
      <english>Vladivostok Squadron HQ</english>
      <japanese>ウラジオストク分隊司令部</japanese>
      <chineseSimplified>海参崴分队总部</chineseSimplified>
+     <chineseTraditional>海參崴分隊總部</chineseTraditional>
     </name>
     <type>HeadQuarter</type>
     <size>Division</size>
@@ -5140,6 +5163,7 @@
      <english>Vladivostok Base</english>
      <japanese>ウラジオストク基地</japanese>
      <chineseSimplified>海参崴基地</chineseSimplified>
+     <chineseTraditional>海參崴基地</chineseTraditional>
     </name>
     <type>Base</type>
     <size>Unspecified</size>
@@ -5182,6 +5206,7 @@
      <english>Vladivostok Squadron</english>
      <japanese>浦塩艦隊</japanese>
      <chineseSimplified>海参崴分队</chineseSimplified>
+     <chineseTraditional>海參崴分隊</chineseTraditional>
     </name>
     <type>Fleet</type>
     <size>Bridge</size>
@@ -5236,6 +5261,7 @@
      <english>2nd Fleet</english>
      <japanese>第二艦隊</japanese>
      <chineseSimplified>第二舰队</chineseSimplified>
+     <chineseTraditional>第二艦隊</chineseTraditional>
     </name>
     <type>Fleet</type>
     <size>Division</size>
@@ -5281,6 +5307,7 @@
      <english>2nd Division</english>
      <japanese>第二戦隊</japanese>
      <chineseSimplified>第二战队</chineseSimplified>
+     <chineseTraditional>第二戰隊</chineseTraditional>
     </name>
     <type>Fleet</type>
     <size>Bridge</size>
@@ -5338,6 +5365,7 @@
      <english>Sasebo Naval District</english>
      <japanese>佐世保鎮守府</japanese>
      <chineseSimplified>佐世保镇守府</chineseSimplified>
+     <chineseTraditional>佐世保鎮守府</chineseTraditional>
     </name>
     <type>Base</type>
     <size>Unspecified</size>
@@ -5382,6 +5410,7 @@
      <english>Kure Naval District</english>
      <japanese>呉鎮守府</japanese>
      <chineseSimplified>吴镇守府</chineseSimplified>
+     <chineseTraditional>吳鎮守府</chineseTraditional>
     </name>
     <type>Base</type>
     <size>Unspecified</size>
@@ -5426,6 +5455,7 @@
      <english>Yokosuka Naval District</english>
      <japanese>横須賀鎮守府</japanese>
      <chineseSimplified>横须贺镇守府</chineseSimplified>
+     <chineseTraditional>橫須賀鎮守府</chineseTraditional>
     </name>
     <type>Base</type>
     <size>Unspecified</size>
@@ -5470,6 +5500,7 @@
      <english>Imperial Japanese Navy General Staff</english>
      <japanese>軍令部</japanese>
      <chineseSimplified>军令部</chineseSimplified>
+     <chineseTraditional>軍令部</chineseTraditional>
     </name>
     <type>HeadQuarter</type>
     <size>Corp</size>
@@ -5572,6 +5603,7 @@ The campaign and strategic mode are not yet complete in the EA/Demo version and 
      <english>Japan</english>
      <japanese>日本</japanese>
      <chineseSimplified>日本</chineseSimplified>
+     <chineseTraditional>日本</chineseTraditional>
     </name>
     <countries>
      <Country>Japan</Country>
@@ -5617,6 +5649,7 @@ The campaign and strategic mode are not yet complete in the EA/Demo version and 
      <english>Russia</english>
      <japanese>ロシア</japanese>
      <chineseSimplified>俄罗斯</chineseSimplified>
+     <chineseTraditional>俄羅斯</chineseTraditional>
     </name>
     <countries>
      <Country>Russia</Country>

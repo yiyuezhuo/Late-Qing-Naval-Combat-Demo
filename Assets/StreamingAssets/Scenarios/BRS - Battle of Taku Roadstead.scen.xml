@@ -10322,7 +10322,7 @@
      <english>Beiyang Fleet</english>
      <japanese>北洋艦隊</japanese>
      <chineseSimplified>北洋水师</chineseSimplified>
-     <chineseTraditional />
+     <chineseTraditional>北洋水師</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
@@ -10408,7 +10408,7 @@
      <english>Eight-Nation Alliance</english>
      <japanese>八カ国連合軍</japanese>
      <chineseSimplified>八国联军</chineseSimplified>
-     <chineseTraditional />
+     <chineseTraditional>八國聯軍</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
@@ -10488,6 +10488,7 @@
      <english>Cruiser Division 1</english>
      <japanese>巡洋艦第1分隊</japanese>
      <chineseSimplified>巡洋舰第一分队</chineseSimplified>
+     <chineseTraditional>巡洋艦第一分隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
@@ -10567,6 +10568,7 @@
      <english>Cruiser Division 2</english>
      <japanese>巡洋艦第2分隊</japanese>
      <chineseSimplified>巡洋舰第二分队</chineseSimplified>
+     <chineseTraditional>巡洋艦第二分隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
@@ -10647,6 +10649,7 @@
      <english>Destroyer Division</english>
      <japanese>駆逐艦分隊</japanese>
      <chineseSimplified>驱逐舰分队</chineseSimplified>
+     <chineseTraditional>驅逐艦分隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
@@ -10725,6 +10728,7 @@
      <english>Gunboat Division</english>
      <japanese>砲艦分隊</japanese>
      <chineseSimplified>炮舰分队</chineseSimplified>
+     <chineseTraditional>炮艦分隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>

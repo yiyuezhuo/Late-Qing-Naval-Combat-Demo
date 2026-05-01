@@ -1172,7 +1172,8 @@
     <name>
      <english>Beiyang Fleet</english>
      <japanese>北洋艦隊</japanese>
-     <chineseSimplified>北洋舰队</chineseSimplified>
+     <chineseSimplified>北洋水师</chineseSimplified>
+     <chineseTraditional>北洋水師</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
@@ -1252,6 +1253,7 @@
      <english>Combined Fleet</english>
      <japanese>連合艦隊</japanese>
      <chineseSimplified>联合舰队</chineseSimplified>
+     <chineseTraditional>聯合艦隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>

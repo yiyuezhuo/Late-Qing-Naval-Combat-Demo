@@ -5,6 +5,7 @@
    <english>Yoshino</english>
    <japanese>吉野</japanese>
    <chineseSimplified>吉野</chineseSimplified>
+   <chineseTraditional>吉野</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
@@ -17,10 +18,12 @@
   <engineDesc>
    <english>2-shaft RC</english>
    <chineseSimplified>2台立式4汽缸往复式蒸汽机</chineseSimplified>
+   <chineseTraditional>2臺立式4汽缸往復式蒸汽機</chineseTraditional>
   </engineDesc>
   <boilersDesc>
    <english>12 cylindrical</english>
    <chineseSimplified>12座高式燃煤锅炉</chineseSimplified>
+   <chineseTraditional>12座高式燃煤鍋爐</chineseTraditional>
   </boilersDesc>
   <batteryRecords>
    <BatteryRecord>
@@ -28,6 +31,7 @@
      <english>15cm/45 EOC/VSM</english>
      <japanese>6インチ速射砲</japanese>
      <chineseSimplified>6英寸速射炮</chineseSimplified>
+     <chineseTraditional>6英寸速射炮</chineseTraditional>
     </name>
     <damageRating>16</damageRating>
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
@@ -216,6 +220,7 @@
      <english>4.7''/40 QF Type 41</english>
      <japanese>4.7インチ速射砲</japanese>
      <chineseSimplified>4.7英寸速射炮</chineseSimplified>
+     <chineseTraditional>4.7英寸速射炮</chineseTraditional>
     </name>
     <damageRating>12</damageRating>
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
@@ -528,6 +533,7 @@
    <english>Yoshino (1901)</english>
    <japanese>吉野 (1901)</japanese>
    <chineseSimplified>吉野 (1901)</chineseSimplified>
+   <chineseTraditional>吉野 (1901)</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
@@ -549,6 +555,7 @@
      <english>15cm/45 EOC/VSM</english>
      <japanese>6インチ速射砲</japanese>
      <chineseSimplified>6英寸速射炮</chineseSimplified>
+     <chineseTraditional>6英寸速射炮</chineseTraditional>
     </name>
     <damageRating>16</damageRating>
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
@@ -737,6 +744,7 @@
      <english>4.7''/40 QF Type 41</english>
      <japanese>4.7インチ速射砲</japanese>
      <chineseSimplified>4.7英寸速射炮</chineseSimplified>
+     <chineseTraditional>4.7英寸速射炮</chineseTraditional>
     </name>
     <damageRating>12</damageRating>
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
@@ -1050,6 +1058,7 @@
    <english>Akitsushima</english>
    <japanese>秋津洲</japanese>
    <chineseSimplified>秋津洲</chineseSimplified>
+   <chineseTraditional>秋津洲</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
@@ -1062,10 +1071,12 @@
   <engineDesc>
    <english>2-shaft HTE</english>
    <chineseSimplified>2座水平式三气筒三段鼓胀式蒸汽机</chineseSimplified>
+   <chineseTraditional>2座水平式三氣筒三段鼓脹式蒸汽機</chineseTraditional>
   </engineDesc>
   <boilersDesc>
    <english>6 cylindrical</english>
    <chineseSimplified>6台燃煤锅炉</chineseSimplified>
+   <chineseTraditional>6臺燃煤鍋爐</chineseTraditional>
   </boilersDesc>
   <batteryRecords>
    <BatteryRecord>
@@ -1073,6 +1084,7 @@
      <english>15cm/45 EOC/VSM</english>
      <japanese>6インチ速射砲</japanese>
      <chineseSimplified>6英寸速射炮</chineseSimplified>
+     <chineseTraditional>6英寸速射炮</chineseTraditional>
     </name>
     <damageRating>16</damageRating>
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
@@ -1261,6 +1273,7 @@
      <english>4.7''/40 QF Type 41</english>
      <japanese>4.7インチ速射砲</japanese>
      <chineseSimplified>4.7英寸速射炮</chineseSimplified>
+     <chineseTraditional>4.7英寸速射炮</chineseTraditional>
     </name>
     <damageRating>12</damageRating>
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
@@ -1476,6 +1489,7 @@
      <english>3pdr 5cwt Mk I,II</english>
      <japanese>オチキス 4.7cm(40口径)機砲</japanese>
      <chineseSimplified>哈奇开斯47毫米单装3磅速射炮</chineseSimplified>
+     <chineseTraditional>哈奇開斯47毫米單裝3磅速射炮</chineseTraditional>
     </name>
     <maxRangeYards>7000</maxRangeYards>
     <effectiveRangeYards>3150</effectiveRangeYards>
@@ -1561,6 +1575,7 @@
    <english>Akitsushima (1902)</english>
    <japanese>秋津洲 (1902)</japanese>
    <chineseSimplified>秋津洲 (1902)</chineseSimplified>
+   <chineseTraditional>秋津洲 (1902)</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -1582,6 +1597,7 @@
      <english>15cm/45 EOC/VSM</english>
      <japanese>6インチ速射砲</japanese>
      <chineseSimplified>6英寸速射炮</chineseSimplified>
+     <chineseTraditional>6英寸速射炮</chineseTraditional>
     </name>
     <damageRating>16</damageRating>
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
@@ -1770,6 +1786,7 @@
      <english>4.7''/40 QF Type 41</english>
      <japanese>4.7インチ速射砲</japanese>
      <chineseSimplified>4.7英寸速射炮</chineseSimplified>
+     <chineseTraditional>4.7英寸速射炮</chineseTraditional>
     </name>
     <damageRating>12</damageRating>
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
@@ -1985,6 +2002,7 @@
      <english>3pdr 5cwt Mk I,II</english>
      <japanese>オチキス 4.7cm(40口径)機砲</japanese>
      <chineseSimplified>哈奇开斯47毫米单装3磅速射炮</chineseSimplified>
+     <chineseTraditional>哈奇開斯47毫米單裝3磅速射炮</chineseTraditional>
     </name>
     <maxRangeYards>7000</maxRangeYards>
     <effectiveRangeYards>3150</effectiveRangeYards>
@@ -2072,6 +2090,7 @@ SK5 data book seems to forget to update Akitsushima's fire control table to refl
    <english>Naniwa</english>
    <japanese>浪速</japanese>
    <chineseSimplified>浪速</chineseSimplified>
+   <chineseTraditional>浪速</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
@@ -2085,11 +2104,13 @@ SK5 data book seems to forget to update Akitsushima's fire control table to refl
    <english>2-shaft HTE</english>
    <japanese>横置2段2気筒レシプロ 2基</japanese>
    <chineseSimplified>2座往复式蒸汽机</chineseSimplified>
+   <chineseTraditional>2座往復式蒸汽機</chineseTraditional>
   </engineDesc>
   <boilersDesc>
    <english>6 cylindrical</english>
    <japanese>低円缶 片面3基、両面3基</japanese>
    <chineseSimplified>6座燃煤锅炉</chineseSimplified>
+   <chineseTraditional>6座燃煤鍋爐</chineseTraditional>
   </boilersDesc>
   <batteryRecords>
    <BatteryRecord>
@@ -2538,6 +2559,7 @@ Of course, these two classifications make no practical difference aside from the
    <english>Naniwa (1903)</english>
    <japanese>浪速 (1903)</japanese>
    <chineseSimplified>浪速 (1903)</chineseSimplified>
+   <chineseTraditional>浪速 (1903)</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -2894,6 +2916,7 @@ Of course, these two classifications make no practical difference aside from the
    <english>Chi Yuan</english>
    <japanese>済遠</japanese>
    <chineseSimplified>济远</chineseSimplified>
+   <chineseTraditional>濟遠</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
@@ -3323,6 +3346,7 @@ Chi Yuan or Jiyuan</remark>
    <english>Kuang Yi</english>
    <japanese>広乙</japanese>
    <chineseSimplified>广乙</chineseSimplified>
+   <chineseTraditional>廣乙</chineseTraditional>
   </name>
   <type>PatrolGunboat</type>
   <extraShipType>TorpedoCruiser</extraShipType>
@@ -3342,6 +3366,7 @@ Chi Yuan or Jiyuan</remark>
    <english>cylindrical</english>
    <japanese>主缶1基</japanese>
    <chineseSimplified>1座圆式燃煤锅炉</chineseSimplified>
+   <chineseTraditional>1座圓式燃煤鍋爐</chineseTraditional>
   </boilersDesc>
   <batteryRecords>
    <BatteryRecord>
@@ -3568,6 +3593,7 @@ Chi Yuan or Jiyuan</remark>
      <english>3pdr 5cwt Mk I,II</english>
      <japanese>3.7cm5連装回転式機砲</japanese>
      <chineseSimplified>57毫米单装速射炮</chineseSimplified>
+     <chineseTraditional>57毫米單裝速射炮</chineseTraditional>
     </name>
     <maxRangeYards>7000</maxRangeYards>
     <effectiveRangeYards>3150</effectiveRangeYards>
@@ -3650,6 +3676,7 @@ Chi Yuan or Jiyuan</remark>
    <english>Ting Yuen</english>
    <japanese>定遠</japanese>
    <chineseSimplified>定远</chineseSimplified>
+   <chineseTraditional>定遠</chineseTraditional>
   </name>
   <type>Battleship</type>
   <extraShipType>Ironclad</extraShipType>
@@ -3677,7 +3704,7 @@ Chi Yuan or Jiyuan</remark>
      <english>30.5cm RKL/25 C/80</english>
      <japanese>クルップ 30.5cm（25口径）後装填式ライフル砲</japanese>
      <chineseSimplified>克虏伯305毫米口径大炮</chineseSimplified>
-     <chineseTraditional />
+     <chineseTraditional>克虜伯305毫米口徑大炮</chineseTraditional>
     </name>
     <damageRating>38</damageRating>
     <maxRateOfFireShootPerMin>0.6</maxRateOfFireShootPerMin>
@@ -3823,7 +3850,7 @@ Chi Yuan or Jiyuan</remark>
      <english>15cm RKL/35 C/80</english>
      <japanese>クルップ 15cm（35口径）単装砲</japanese>
      <chineseSimplified>克虏伯150毫米钢箍套炮</chineseSimplified>
-     <chineseTraditional />
+     <chineseTraditional>克虜伯150毫米鋼箍套炮</chineseTraditional>
     </name>
     <damageRating>17</damageRating>
     <maxRateOfFireShootPerMin>4</maxRateOfFireShootPerMin>
@@ -4104,6 +4131,7 @@ Ting Yuen or Dingyuan</remark>
    <english>Chin Yen (1896)</english>
    <japanese>鎮遠 (1896)</japanese>
    <chineseSimplified>镇远 (1896)</chineseSimplified>
+   <chineseTraditional>鎮遠 (1896)</chineseTraditional>
   </name>
   <type>Battleship</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -4125,7 +4153,7 @@ Ting Yuen or Dingyuan</remark>
      <english>30.5cm RKL/25 C/80</english>
      <japanese>クルップ 30.5cm（25口径）後装填式ライフル砲</japanese>
      <chineseSimplified>克虏伯305毫米口径大炮</chineseSimplified>
-     <chineseTraditional />
+     <chineseTraditional>克虜伯305毫米口徑大炮</chineseTraditional>
     </name>
     <damageRating>38</damageRating>
     <maxRateOfFireShootPerMin>0.6</maxRateOfFireShootPerMin>
@@ -4602,6 +4630,7 @@ Acquisition &amp; modified by Japan in 1895</remark>
      <english>10''/26 25-Ton BLR</english>
      <japanese>25口径25.4cm単装砲</japanese>
      <chineseSimplified>阿姆斯特朗26倍径10英寸（254毫米）后膛炮</chineseSimplified>
+     <chineseTraditional>阿姆斯特朗26倍徑10英寸（254毫米）後膛炮</chineseTraditional>
     </name>
     <damageRating>30</damageRating>
     <maxRateOfFireShootPerMin>0.8</maxRateOfFireShootPerMin>
@@ -4745,6 +4774,7 @@ Acquisition &amp; modified by Japan in 1895</remark>
      <english>4.75''/22 40-pdr 1.32-Ton BLR</english>
      <japanese>20口径12cm単装砲</japanese>
      <chineseSimplified>22倍径4.7英寸（119毫米）炮</chineseSimplified>
+     <chineseTraditional>22倍徑4.7英寸（119毫米）炮</chineseTraditional>
     </name>
     <damageRating>12</damageRating>
     <maxRateOfFireShootPerMin>3</maxRateOfFireShootPerMin>
@@ -4998,6 +5028,7 @@ I can't see why SK5 classify a Unprotected Cruiser to CA though.</remark>
    <english>Chih Yuan</english>
    <japanese>致遠</japanese>
    <chineseSimplified>致远</chineseSimplified>
+   <chineseTraditional>致遠</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
@@ -5173,7 +5204,7 @@ I can't see why SK5 classify a Unprotected Cruiser to CA though.</remark>
      <english>15cm RKL/35 C/80</english>
      <japanese>クルップ 15cm（35口径）単装砲</japanese>
      <chineseSimplified>克虏伯150毫米钢箍套炮</chineseSimplified>
-     <chineseTraditional />
+     <chineseTraditional>克虜伯150毫米鋼箍套炮</chineseTraditional>
     </name>
     <damageRating>17</damageRating>
     <maxRateOfFireShootPerMin>4</maxRateOfFireShootPerMin>
@@ -5381,6 +5412,7 @@ I can't see why SK5 classify a Unprotected Cruiser to CA though.</remark>
      <english>2.2'' 6pdr 8cwt QF</english>
      <japanese>アームストロング 5.7cm（40口径）単装速射砲</japanese>
      <chineseSimplified>哈乞开斯57毫米6磅单装速射炮</chineseSimplified>
+     <chineseTraditional>哈乞開斯57毫米6磅單裝速射炮</chineseTraditional>
     </name>
     <maxRangeYards>7500</maxRangeYards>
     <effectiveRangeYards>3375</effectiveRangeYards>
@@ -5467,6 +5499,7 @@ For some reason, SK5 classify it to CA</remark>
    <english>King Yuan</english>
    <japanese>経遠</japanese>
    <chineseSimplified>经远</chineseSimplified>
+   <chineseTraditional>經遠</chineseTraditional>
   </name>
   <type>ArmoredCruiser</type>
   <extraShipType>ArmoredCruiser</extraShipType>
@@ -5617,7 +5650,7 @@ For some reason, SK5 classify it to CA</remark>
      <english>15cm RKL/35 C/80</english>
      <japanese>クルップ 15cm（35口径）単装砲</japanese>
      <chineseSimplified>克虏伯150毫米钢箍套炮</chineseSimplified>
-     <chineseTraditional />
+     <chineseTraditional>克虜伯150毫米鋼箍套炮</chineseTraditional>
     </name>
     <damageRating>17</damageRating>
     <maxRateOfFireShootPerMin>4</maxRateOfFireShootPerMin>
@@ -5882,6 +5915,7 @@ King Yuan or Jingyuan</remark>
    <english>Ping Yuen</english>
    <japanese>平遠</japanese>
    <chineseSimplified>平远</chineseSimplified>
+   <chineseTraditional>平遠</chineseTraditional>
   </name>
   <type>ArmoredCruiser</type>
   <extraShipType>ArmoredCruiser</extraShipType>
@@ -6039,7 +6073,7 @@ King Yuan or Jingyuan</remark>
      <english>15cm RKL/35 C/80</english>
      <japanese>クルップ 15cm（35口径）単装砲</japanese>
      <chineseSimplified>克虏伯150毫米钢箍套炮</chineseSimplified>
-     <chineseTraditional />
+     <chineseTraditional>克虜伯150毫米鋼箍套炮</chineseTraditional>
     </name>
     <damageRating>17</damageRating>
     <maxRateOfFireShootPerMin>4</maxRateOfFireShootPerMin>
@@ -6303,6 +6337,7 @@ Ping Yuen or Pingyuan
    <english>Kuang Chia</english>
    <japanese>広甲</japanese>
    <chineseSimplified>广甲</chineseSimplified>
+   <chineseTraditional>廣甲</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -6324,7 +6359,7 @@ Ping Yuen or Pingyuan
      <english>15cm RKL/35 C/80</english>
      <japanese>クルップ 15cm（35口径）単装砲</japanese>
      <chineseSimplified>克虏伯150毫米钢箍套炮</chineseSimplified>
-     <chineseTraditional />
+     <chineseTraditional>克虜伯150毫米鋼箍套炮</chineseTraditional>
     </name>
     <damageRating>17</damageRating>
     <maxRateOfFireShootPerMin>4</maxRateOfFireShootPerMin>
@@ -6696,6 +6731,7 @@ Ping Yuen or Pingyuan
    <english>Wei Yuen</english>
    <japanese>威遠</japanese>
    <chineseSimplified>威远</chineseSimplified>
+   <chineseTraditional>威遠</chineseTraditional>
   </name>
   <type>PatrolGunboat</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -6708,10 +6744,12 @@ Ping Yuen or Pingyuan
   <engineDesc>
    <english>Compound horizontal two-cylinder steam engine</english>
    <chineseSimplified>康邦卧式2汽缸蒸汽机</chineseSimplified>
+   <chineseTraditional>康邦臥式2汽缸蒸汽機</chineseTraditional>
   </engineDesc>
   <boilersDesc>
    <english>Four cylindrical boilers</english>
    <chineseSimplified>4座圆式锅炉</chineseSimplified>
+   <chineseTraditional>4座圓式鍋爐</chineseTraditional>
   </boilersDesc>
   <batteryRecords>
    <BatteryRecord>
@@ -6719,7 +6757,7 @@ Ping Yuen or Pingyuan
      <english>Armstrong 7'' Gun</english>
      <japanese>7インチアームストロング式前装砲</japanese>
      <chineseSimplified>7英寸阿式前膛炮</chineseSimplified>
-     <chineseTraditional />
+     <chineseTraditional>7英寸阿式前膛炮</chineseTraditional>
     </name>
     <damageRating>20</damageRating>
     <maxRateOfFireShootPerMin>4</maxRateOfFireShootPerMin>
@@ -6851,6 +6889,7 @@ Ping Yuen or Pingyuan
      <english>Armstrong 4.7'' Gun</english>
      <japanese>4.7インチアームストロング式前装砲</japanese>
      <chineseSimplified>4.7英寸阿炮</chineseSimplified>
+     <chineseTraditional>4.7英寸阿炮</chineseTraditional>
     </name>
     <damageRating>13</damageRating>
     <maxRateOfFireShootPerMin>4</maxRateOfFireShootPerMin>
@@ -7092,6 +7131,7 @@ https://baike.baidu.com/item/%E5%A8%81%E8%BF%9C%E5%8F%B7%E7%BB%83%E4%B9%A0%E8%88
    <english>Fu Lung</english>
    <japanese>福龍</japanese>
    <chineseSimplified>福龙</chineseSimplified>
+   <chineseTraditional>福龍</chineseTraditional>
   </name>
   <type>TorpedoBoat</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -7153,6 +7193,7 @@ https://baike.baidu.com/item/%E5%A8%81%E8%BF%9C%E5%8F%B7%E7%BB%83%E4%B9%A0%E8%88
      <english>1pdr revolver Mle 1877-79</english>
      <japanese>4.7cm保式単装軽速射砲</japanese>
      <chineseSimplified>37毫米速射炮</chineseSimplified>
+     <chineseTraditional>37毫米速射炮</chineseTraditional>
     </name>
     <maxRangeYards>7000</maxRangeYards>
     <effectiveRangeYards>3150</effectiveRangeYards>
@@ -7230,6 +7271,7 @@ Fu Lung or Fulong
    <english>Fuso</english>
    <japanese>扶桑</japanese>
    <chineseSimplified>扶桑</chineseSimplified>
+   <chineseTraditional>扶桑</chineseTraditional>
   </name>
   <type>Battleship</type>
   <extraShipType>Ironclad</extraShipType>
@@ -7693,6 +7735,7 @@ Fu Lung or Fulong
    <english>Itsukushima</english>
    <japanese>厳島</japanese>
    <chineseSimplified>严岛</chineseSimplified>
+   <chineseTraditional>嚴島</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
@@ -7714,6 +7757,7 @@ Fu Lung or Fulong
      <english>32cm/38 M1887</english>
      <japanese>32cm(38口径)単装砲（カネー砲）</japanese>
      <chineseSimplified>加奈式320毫米后膛炮</chineseSimplified>
+     <chineseTraditional>加奈式320毫米後膛炮</chineseTraditional>
     </name>
     <damageRating>42</damageRating>
     <maxRateOfFireShootPerMin>0.3</maxRateOfFireShootPerMin>
@@ -8107,6 +8151,7 @@ Fu Lung or Fulong
      <english>2.2'' 6pdr 8cwt QF</english>
      <japanese>47mm砲</japanese>
      <chineseSimplified>哈奇开斯47毫米单装重型速射炮</chineseSimplified>
+     <chineseTraditional>哈奇開斯47毫米單裝重型速射炮</chineseTraditional>
     </name>
     <maxRangeYards>7500</maxRangeYards>
     <effectiveRangeYards>3375</effectiveRangeYards>
@@ -8132,6 +8177,7 @@ Fu Lung or Fulong
     <name>
      <english>3pdr 5cwt Mk I,II</english>
      <chineseSimplified>哈奇开斯47毫米轻型速射炮</chineseSimplified>
+     <chineseTraditional>哈奇開斯47毫米輕型速射炮</chineseTraditional>
     </name>
     <maxRangeYards>7000</maxRangeYards>
     <effectiveRangeYards>3150</effectiveRangeYards>
@@ -8225,6 +8271,7 @@ Itsukushima (厳島, 1891)
    <english>Itsukushima (1902)</english>
    <japanese>厳島 (1902)</japanese>
    <chineseSimplified>严岛 (1902)</chineseSimplified>
+   <chineseTraditional>嚴島 (1902)</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
@@ -8246,6 +8293,7 @@ Itsukushima (厳島, 1891)
      <english>32cm/38 M1887</english>
      <japanese>32cm(38口径)単装砲（カネー砲）</japanese>
      <chineseSimplified>加奈式320毫米后膛炮</chineseSimplified>
+     <chineseTraditional>加奈式320毫米後膛炮</chineseTraditional>
     </name>
     <damageRating>42</damageRating>
     <maxRateOfFireShootPerMin>0.3</maxRateOfFireShootPerMin>
@@ -8639,6 +8687,7 @@ Itsukushima (厳島, 1891)
      <english>2.2'' 6pdr 8cwt QF</english>
      <japanese>47mm砲</japanese>
      <chineseSimplified>哈奇开斯47毫米单装重型速射炮</chineseSimplified>
+     <chineseTraditional>哈奇開斯47毫米單裝重型速射炮</chineseTraditional>
     </name>
     <maxRangeYards>7500</maxRangeYards>
     <effectiveRangeYards>3375</effectiveRangeYards>
@@ -8664,6 +8713,7 @@ Itsukushima (厳島, 1891)
     <name>
      <english>3pdr 5cwt Mk I,II</english>
      <chineseSimplified>哈奇开斯47毫米轻型速射炮</chineseSimplified>
+     <chineseTraditional>哈奇開斯47毫米輕型速射炮</chineseTraditional>
     </name>
     <maxRangeYards>7000</maxRangeYards>
     <effectiveRangeYards>3150</effectiveRangeYards>
@@ -8748,7 +8798,7 @@ Itsukushima (厳島, 1891)
    <english>Matsushima</english>
    <japanese>松島</japanese>
    <chineseSimplified>松岛</chineseSimplified>
-   <chineseTraditional />
+   <chineseTraditional>松島</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
@@ -8770,6 +8820,7 @@ Itsukushima (厳島, 1891)
      <english>32cm/38 M1887</english>
      <japanese>32cm(38口径)単装砲（カネー砲）</japanese>
      <chineseSimplified>加奈式320毫米后膛炮</chineseSimplified>
+     <chineseTraditional>加奈式320毫米後膛炮</chineseTraditional>
     </name>
     <damageRating>42</damageRating>
     <maxRateOfFireShootPerMin>0.3</maxRateOfFireShootPerMin>
@@ -9269,6 +9320,7 @@ For reason, it's classified as CA in SK5.
    <english>Matsushima (1902)</english>
    <japanese>松島 (1902)</japanese>
    <chineseSimplified>松岛 (1902)</chineseSimplified>
+   <chineseTraditional>松島 (1902)</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
@@ -9290,6 +9342,7 @@ For reason, it's classified as CA in SK5.
      <english>32cm/38 M1887</english>
      <japanese>32cm(38口径)単装砲（カネー砲）</japanese>
      <chineseSimplified>加奈式320毫米后膛炮</chineseSimplified>
+     <chineseTraditional>加奈式320毫米後膛炮</chineseTraditional>
     </name>
     <damageRating>42</damageRating>
     <maxRateOfFireShootPerMin>0.3</maxRateOfFireShootPerMin>
@@ -9777,6 +9830,7 @@ For reason, it's classified as CA in SK5.
    <english>Kongo</english>
    <japanese>金剛</japanese>
    <chineseSimplified>金刚</chineseSimplified>
+   <chineseTraditional>金剛</chineseTraditional>
   </name>
   <type>ArmoredCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -9790,11 +9844,13 @@ For reason, it's classified as CA in SK5.
    <english>1-shaft HC</english>
    <japanese>横置還働式2段2気筒レシプロ 1基</japanese>
    <chineseSimplified>横置复胀式双缸两级膨胀往复发动机1台</chineseSimplified>
+   <chineseTraditional>橫置復脹式雙缸兩級膨脹往復發動機1臺</chineseTraditional>
   </engineDesc>
   <boilersDesc>
    <english>cylindrical</english>
    <japanese>高円缶 6基</japanese>
    <chineseSimplified>高圆筒锅炉6台</chineseSimplified>
+   <chineseTraditional>高圓筒鍋爐6臺</chineseTraditional>
   </boilersDesc>
   <batteryRecords>
    <BatteryRecord>
@@ -10216,6 +10272,7 @@ Hiei (比叡, 1878)</remark>
    <english>Chiyoda</english>
    <japanese>千代田</japanese>
    <chineseSimplified>千代田</chineseSimplified>
+   <chineseTraditional>千代田</chineseTraditional>
   </name>
   <type>ArmoredCruiser</type>
   <extraShipType>ArmoredCruiser</extraShipType>
@@ -10514,6 +10571,7 @@ Hiei (比叡, 1878)</remark>
     <name>
      <english>3pdr 5cwt Mk I,II</english>
      <chineseSimplified>哈奇开斯47毫米单装3磅速射炮</chineseSimplified>
+     <chineseTraditional>哈奇開斯47毫米單裝3磅速射炮</chineseTraditional>
     </name>
     <maxRangeYards>7000</maxRangeYards>
     <effectiveRangeYards>3150</effectiveRangeYards>
@@ -10598,6 +10656,7 @@ Hiei (比叡, 1878)</remark>
    <english>Maya</english>
    <japanese>摩耶</japanese>
    <chineseSimplified>摩耶</chineseSimplified>
+   <chineseTraditional>摩耶</chineseTraditional>
   </name>
   <type>PatrolGunboat</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -10963,6 +11022,7 @@ Hiei (比叡, 1878)</remark>
    <english>Saikyo Maru</english>
    <japanese>西京丸</japanese>
    <chineseSimplified>西京丸</chineseSimplified>
+   <chineseTraditional>西京丸</chineseTraditional>
   </name>
   <type>ArmedMerchantCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -11209,6 +11269,7 @@ Hiei (比叡, 1878)</remark>
    <english>Katsuragi</english>
    <japanese>葛城</japanese>
    <chineseSimplified>葛城</chineseSimplified>
+   <chineseTraditional>葛城</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -11222,11 +11283,13 @@ Hiei (比叡, 1878)</remark>
    <english>HC</english>
    <japanese>横置式2気筒2段膨張レシプロ1基</japanese>
    <chineseSimplified>横置式双缸两级膨胀往复式发动机1台</chineseSimplified>
+   <chineseTraditional>橫置式雙缸兩級膨脹往復式發動機1臺</chineseTraditional>
   </engineDesc>
   <boilersDesc>
    <english>6 Cylindrical</english>
    <japanese>円缶6基</japanese>
    <chineseSimplified>圆筒形锅炉6台</chineseSimplified>
+   <chineseTraditional>圓筒形鍋爐6臺</chineseTraditional>
   </boilersDesc>
   <batteryRecords>
    <BatteryRecord>
@@ -11234,6 +11297,7 @@ Hiei (比叡, 1878)</remark>
      <english>17cm RKL/25 C/74</english>
      <japanese>17cn克砲</japanese>
      <chineseSimplified>17厘米克虏伯炮</chineseSimplified>
+     <chineseTraditional>17釐米克虜伯炮</chineseTraditional>
     </name>
     <damageRating>18</damageRating>
     <maxRateOfFireShootPerMin>3.5</maxRateOfFireShootPerMin>
@@ -11377,6 +11441,7 @@ Hiei (比叡, 1878)</remark>
      <english>12cm/25 Krupp C/78</english>
      <japanese>12cm克砲</japanese>
      <chineseSimplified>120毫米克虏伯炮</chineseSimplified>
+     <chineseTraditional>120毫米克虜伯炮</chineseTraditional>
     </name>
     <damageRating>12</damageRating>
     <maxRateOfFireShootPerMin>3</maxRateOfFireShootPerMin>
@@ -11566,6 +11631,7 @@ Hiei (比叡, 1878)</remark>
      <english>3''/40 12pdr QF</english>
      <japanese>7.5cm砲1門</japanese>
      <chineseSimplified>75mm炮1门</chineseSimplified>
+     <chineseTraditional>75mm炮1門</chineseTraditional>
     </name>
     <maxRangeYards>7990</maxRangeYards>
     <effectiveRangeYards>3596</effectiveRangeYards>
@@ -11648,6 +11714,7 @@ Cancel Armor Type Factor</remark>
    <english>Tenryu</english>
    <japanese>天龍</japanese>
    <chineseSimplified>天龙</chineseSimplified>
+   <chineseTraditional>天龍</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -11661,11 +11728,13 @@ Cancel Armor Type Factor</remark>
    <english>HC</english>
    <japanese>横置還働式2段2気筒レシプロ 1基</japanese>
    <chineseSimplified>横置回动式双缸往复机 1台</chineseSimplified>
+   <chineseTraditional>橫置回動式雙缸往復機 1臺</chineseTraditional>
   </engineDesc>
   <boilersDesc>
    <english>4 Cylindrical</english>
    <japanese>高円缶片面戻火式 4基</japanese>
    <chineseSimplified>高圆罐单面回火式 4台</chineseSimplified>
+   <chineseTraditional>高圓罐單面回火式 4臺</chineseTraditional>
   </boilersDesc>
   <batteryRecords>
    <BatteryRecord>
@@ -11673,6 +11742,7 @@ Cancel Armor Type Factor</remark>
      <english>15cm RKL L/25 C/75</english>
      <japanese>15cmクルップ旋回砲</japanese>
      <chineseSimplified>15cm克虏伯回旋炮</chineseSimplified>
+     <chineseTraditional>15cm克虜伯迴旋炮</chineseTraditional>
     </name>
     <damageRating>16</damageRating>
     <maxRateOfFireShootPerMin>4.5</maxRateOfFireShootPerMin>
@@ -11804,6 +11874,7 @@ Cancel Armor Type Factor</remark>
      <english>12cm/25 Krupp C/78</english>
      <japanese>12cmクルップ砲</japanese>
      <chineseSimplified>12cm克虏伯炮</chineseSimplified>
+     <chineseTraditional>12cm克虜伯炮</chineseTraditional>
     </name>
     <damageRating>12</damageRating>
     <maxRateOfFireShootPerMin>3</maxRateOfFireShootPerMin>
@@ -11952,6 +12023,7 @@ Cancel Armor Type Factor</remark>
     <name>
      <english>3''/28 12pdr BLR</english>
      <chineseSimplified>1门75毫米（3英寸）火炮</chineseSimplified>
+     <chineseTraditional>1門75毫米（3英寸）火炮</chineseTraditional>
     </name>
     <maxRangeYards>5744</maxRangeYards>
     <effectiveRangeYards>2585</effectiveRangeYards>
@@ -12033,6 +12105,7 @@ Cancel Armor Type Factor</remark>
    <english>Takao</english>
    <japanese>高雄</japanese>
    <chineseSimplified>高雄</chineseSimplified>
+   <chineseTraditional>高雄</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>UnprotectedCruiser</extraShipType>
@@ -12046,11 +12119,13 @@ Cancel Armor Type Factor</remark>
    <english>HC</english>
    <japanese>横置直接合2段2気筒レシプロ 2基</japanese>
    <chineseSimplified>横置直接合2段2气缸往复式发动机2台</chineseSimplified>
+   <chineseTraditional>橫置直接合2段2氣缸往復式發動機2臺</chineseTraditional>
   </engineDesc>
   <boilersDesc>
    <english>5 Cylindrical</english>
    <japanese>低円缶 5基</japanese>
    <chineseSimplified>低压锅炉5台</chineseSimplified>
+   <chineseTraditional>低壓鍋爐5臺</chineseTraditional>
   </boilersDesc>
   <batteryRecords>
    <BatteryRecord>
@@ -12058,6 +12133,7 @@ Cancel Armor Type Factor</remark>
      <english>15cm RKL/25 C/75</english>
      <japanese>35口径15cm克(クルップ)砲</japanese>
      <chineseSimplified>35倍径15厘米克虏伯炮  </chineseSimplified>
+     <chineseTraditional>35倍徑15釐米克虜伯炮  </chineseTraditional>
     </name>
     <damageRating>16</damageRating>
     <maxRateOfFireShootPerMin>4.5</maxRateOfFireShootPerMin>
@@ -12225,6 +12301,7 @@ Cancel Armor Type Factor</remark>
      <english>12cm/25 Krupp C/78</english>
      <japanese>12cm克(クルップ)砲</japanese>
      <chineseSimplified>12厘米克虏伯炮</chineseSimplified>
+     <chineseTraditional>12釐米克虜伯炮</chineseTraditional>
     </name>
     <damageRating>12</damageRating>
     <maxRateOfFireShootPerMin>3</maxRateOfFireShootPerMin>
@@ -12474,6 +12551,7 @@ Cancel Armor Type Factor</remark>
    <english>TB 5</english>
    <japanese>第五号型水雷艇</japanese>
    <chineseSimplified>第五号型鱼雷艇</chineseSimplified>
+   <chineseTraditional>第五號型魚雷艇</chineseTraditional>
   </name>
   <type>TorpedoBoat</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -12618,6 +12696,7 @@ TB 5,6,7,8,9,10,11,12,13,14,16,17,18,19</remark>
    <english>TB 15</english>
    <japanese>第十五号型水雷艇</japanese>
    <chineseSimplified>第十五号型鱼雷艇</chineseSimplified>
+   <chineseTraditional>第十五號型魚雷艇</chineseTraditional>
   </name>
   <type>TorpedoBoat</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -12760,6 +12839,7 @@ TB 5,6,7,8,9,10,11,12,13,14,16,17,18,19</remark>
    <english>TB 21</english>
    <japanese>第二十一号型水雷艇</japanese>
    <chineseSimplified>第二十一号鱼雷艇</chineseSimplified>
+   <chineseTraditional>第二十一號魚雷艇</chineseTraditional>
   </name>
   <type>TorpedoBoat</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -12773,11 +12853,13 @@ TB 5,6,7,8,9,10,11,12,13,14,16,17,18,19</remark>
    <english>HC</english>
    <japanese>直立式3気筒3段膨張レシプロ1基 1軸</japanese>
    <chineseSimplified>立式三缸三段膨胀往复式发动机1台</chineseSimplified>
+   <chineseTraditional>立式三缸三段膨脹往復式發動機1臺</chineseTraditional>
   </engineDesc>
   <boilersDesc>
    <english>1 Nomand</english>
    <japanese>ノルマン式水管缶1基</japanese>
    <chineseSimplified>诺尔曼式水管锅炉1台</chineseSimplified>
+   <chineseTraditional>諾爾曼式水管鍋爐1臺</chineseTraditional>
   </boilersDesc>
   <batteryRecords />
   <torpedoSector>
@@ -12907,6 +12989,7 @@ TB 21, TB 24</remark>
    <english>TB 22</english>
    <japanese>第二十二号型水雷艇</japanese>
    <chineseSimplified>第二十二型鱼雷艇</chineseSimplified>
+   <chineseTraditional>第二十二型魚雷艇</chineseTraditional>
   </name>
   <type>TorpedoBoat</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -13049,6 +13132,7 @@ TB 22, 23, 25, 31, 32, 33, 34, 35, 36, 37, 38, 44, 45, 46, 47, 48, 49, 60, 61
    <english>Kotaka</english>
    <japanese>小鷹</japanese>
    <chineseSimplified>小鹰</chineseSimplified>
+   <chineseTraditional>小鷹</chineseTraditional>
   </name>
   <type>TorpedoBoat</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -13062,11 +13146,13 @@ TB 22, 23, 25, 31, 32, 33, 34, 35, 36, 37, 38, 44, 45, 46, 47, 48, 49, 60, 61
    <english>HC</english>
    <japanese>直立2気筒2段膨張レシプロ 2基</japanese>
    <chineseSimplified>直立双缸双胀往复式发动机2台</chineseSimplified>
+   <chineseTraditional>直立雙缸雙脹往復式發動機2臺</chineseTraditional>
   </engineDesc>
   <boilersDesc>
    <english>2 Iocomotive </english>
    <japanese>汽車缶 2基</japanese>
    <chineseSimplified>蒸汽机车锅炉2个</chineseSimplified>
+   <chineseTraditional>蒸汽機車鍋爐2個</chineseTraditional>
   </boilersDesc>
   <batteryRecords />
   <torpedoSector>
@@ -13194,6 +13280,7 @@ Complement is inferred</remark>
    <english>Tso I</english>
    <japanese>第一号</japanese>
    <chineseSimplified>左一</chineseSimplified>
+   <chineseTraditional>左一</chineseTraditional>
   </name>
   <type>TorpedoBoat</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -13254,6 +13341,7 @@ Complement is inferred</remark>
     <name>
      <english>1pdr revolver Mle 1877-79</english>
      <chineseSimplified>3门哈乞开斯47毫米重型速射炮以及4门10管11毫米格林炮</chineseSimplified>
+     <chineseTraditional>3門哈乞開斯47毫米重型速射炮以及4門10管11毫米格林炮</chineseTraditional>
     </name>
     <maxRangeYards>7000</maxRangeYards>
     <effectiveRangeYards>3150</effectiveRangeYards>
@@ -13330,6 +13418,7 @@ Complement is inferred</remark>
    <english>Right I</english>
    <japanese>右一</japanese>
    <chineseSimplified>右一</chineseSimplified>
+   <chineseTraditional>右一</chineseTraditional>
   </name>
   <type>TorpedoBoat</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -13392,6 +13481,7 @@ Complement is inferred</remark>
     <name>
      <english>37mm RF Gun</english>
      <chineseSimplified>一门37毫米口径的哈乞开斯五管速射炮</chineseSimplified>
+     <chineseTraditional>一門37毫米口徑的哈乞開斯五管速射炮</chineseTraditional>
     </name>
     <maxRangeYards>7000</maxRangeYards>
     <effectiveRangeYards>3150</effectiveRangeYards>
@@ -13467,6 +13557,7 @@ https://baike.baidu.com/item/%E2%80%9C%E5%B7%A6%E4%BA%8C%E2%80%9D%E5%8F%B7%E9%B1
    <english>Ting I</english>
    <japanese>定一</japanese>
    <chineseSimplified>定一</chineseSimplified>
+   <chineseTraditional>定一</chineseTraditional>
   </name>
   <type>TorpedoBoat</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -13571,6 +13662,7 @@ Complement is placeholder</remark>
    <english>Chong Chia</english>
    <japanese>中甲</japanese>
    <chineseSimplified>中甲</chineseSimplified>
+   <chineseTraditional>中甲</chineseTraditional>
   </name>
   <type>TorpedoBoat</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -13618,6 +13710,7 @@ Complement is placeholder</remark>
     <name>
      <english>37mm RF Gun</english>
      <chineseSimplified>37mm机关炮1门</chineseSimplified>
+     <chineseTraditional>37mm機關炮1門</chineseTraditional>
     </name>
     <maxRangeYards>7000</maxRangeYards>
     <effectiveRangeYards>3150</effectiveRangeYards>
@@ -13696,6 +13789,7 @@ Draft &amp; Complement is placeholder.
    <english>Fuji</english>
    <japanese>富士</japanese>
    <chineseSimplified>富士</chineseSimplified>
+   <chineseTraditional>富士</chineseTraditional>
   </name>
   <type>Battleship</type>
   <extraShipType>Predreatought</extraShipType>
@@ -13709,11 +13803,13 @@ Draft &amp; Complement is placeholder.
    <english>VTE</english>
    <japanese>直立型三段膨張式三気筒レシプロ機関2基2軸推進 </japanese>
    <chineseSimplified>双传动轴，两台三胀往复式蒸汽机</chineseSimplified>
+   <chineseTraditional>雙傳動軸，兩臺三脹往復式蒸汽機</chineseTraditional>
   </engineDesc>
   <boilersDesc>
    <english>10 Cylindrical</english>
    <japanese>形式不明石炭専焼円缶10基</japanese>
    <chineseSimplified>十台圆柱形锅炉</chineseSimplified>
+   <chineseTraditional>十臺圓柱形鍋爐</chineseTraditional>
   </boilersDesc>
   <batteryRecords>
    <BatteryRecord>
@@ -13721,6 +13817,7 @@ Draft &amp; Complement is placeholder.
      <english>30cm/40.4 EOC</english>
      <japanese>アームストロング 30.5cm（40口径）連装砲</japanese>
      <chineseSimplified>双联装 12 英寸（305 毫米）火炮</chineseSimplified>
+     <chineseTraditional>雙聯裝 12 英寸（305 毫米）火炮</chineseTraditional>
     </name>
     <damageRating>40</damageRating>
     <maxRateOfFireShootPerMin>1</maxRateOfFireShootPerMin>
@@ -13892,6 +13989,7 @@ Draft &amp; Complement is placeholder.
      <english>15cm/40 EOC</english>
      <japanese>アームストロング 15.2cm（40口径）単装速射砲</japanese>
      <chineseSimplified>单装 6 英寸（152 毫米）QF 火炮</chineseSimplified>
+     <chineseTraditional>單裝 6 英寸（152 毫米）QF 火炮</chineseTraditional>
     </name>
     <damageRating>16</damageRating>
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
@@ -14150,6 +14248,7 @@ Draft &amp; Complement is placeholder.
      <english>3pdr 5cwt Mk I,II</english>
      <japanese>オチキス 4.7cm（43口径）単装機砲20基,オチキス 4.7cm（33口径）単装機砲4基</japanese>
      <chineseSimplified>14门单装47毫米3磅舰炮,十门单装47毫米2.5磅舰炮</chineseSimplified>
+     <chineseTraditional>14門單裝47毫米3磅艦炮,十門單裝47毫米2.5磅艦炮</chineseTraditional>
     </name>
     <maxRangeYards>7000</maxRangeYards>
     <effectiveRangeYards>3150</effectiveRangeYards>
@@ -14235,6 +14334,7 @@ Draft &amp; Complement is placeholder.
    <english>Fuji (1902)</english>
    <japanese>富士 (1902)</japanese>
    <chineseSimplified>富士 (1902)</chineseSimplified>
+   <chineseTraditional>富士 (1902)</chineseTraditional>
   </name>
   <type>Battleship</type>
   <extraShipType>Predreatought</extraShipType>
@@ -14256,6 +14356,7 @@ Draft &amp; Complement is placeholder.
      <english>30cm/40.4 EOC</english>
      <japanese>アームストロング 30.5cm（40口径）連装砲</japanese>
      <chineseSimplified>双联装 12 英寸（305 毫米）火炮</chineseSimplified>
+     <chineseTraditional>雙聯裝 12 英寸（305 毫米）火炮</chineseTraditional>
     </name>
     <damageRating>40</damageRating>
     <maxRateOfFireShootPerMin>1</maxRateOfFireShootPerMin>
@@ -14427,6 +14528,7 @@ Draft &amp; Complement is placeholder.
      <english>15cm/40 EOC</english>
      <japanese>アームストロング 15.2cm（40口径）単装速射砲</japanese>
      <chineseSimplified>单装 6 英寸（152 毫米）QF 火炮</chineseSimplified>
+     <chineseTraditional>單裝 6 英寸（152 毫米）QF 火炮</chineseTraditional>
     </name>
     <damageRating>16</damageRating>
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
@@ -14796,6 +14898,7 @@ Draft &amp; Complement is placeholder.
    <english>Generic IJN Transport</english>
    <japanese>日本軍の汎用輸送船</japanese>
    <chineseSimplified>通用日军运输船</chineseSimplified>
+   <chineseTraditional>通用日軍運輸船</chineseTraditional>
   </name>
   <type>Transport</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -14884,6 +14987,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
    <english>Generic China Transport</english>
    <japanese>通用の清軍輸送船</japanese>
    <chineseSimplified>通用清军运输船</chineseSimplified>
+   <chineseTraditional>通用清軍運輸船</chineseTraditional>
   </name>
   <type>Transport</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -14972,6 +15076,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
    <english>Genzan Maru</english>
    <japanese>元山丸</japanese>
    <chineseSimplified>元山丸</chineseSimplified>
+   <chineseTraditional>元山丸</chineseTraditional>
   </name>
   <type>Repair</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -15063,6 +15168,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
    <english>Rossiya</english>
    <japanese>ロシア</japanese>
    <chineseSimplified>俄罗斯</chineseSimplified>
+   <chineseTraditional>俄羅斯</chineseTraditional>
   </name>
   <type>ArmoredCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -15705,6 +15811,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
    <english>Gromoboi</english>
    <japanese>グロモボーイ</japanese>
    <chineseSimplified>格罗姆鲍伊</chineseSimplified>
+   <chineseTraditional>格羅姆鮑伊</chineseTraditional>
   </name>
   <type>ArmoredCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -16329,6 +16436,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
    <english>Rurik</english>
    <japanese>リューリク</japanese>
    <chineseSimplified>留里克</chineseSimplified>
+   <chineseTraditional>留裏克</chineseTraditional>
   </name>
   <type>ArmoredCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -17067,6 +17175,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
    <english>Idzumo</english>
    <japanese>出雲</japanese>
    <chineseSimplified>出云</chineseSimplified>
+   <chineseTraditional>出雲</chineseTraditional>
   </name>
   <type>ArmoredCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -17599,6 +17708,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
    <english>Azuma</english>
    <japanese>吾妻</japanese>
    <chineseSimplified>吾妻</chineseSimplified>
+   <chineseTraditional>吾妻</chineseTraditional>
   </name>
   <type>ArmoredCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -18180,6 +18290,7 @@ Azuma or Adzuma (SK5 name)</remark>
    <english>Asama</english>
    <japanese>淺間</japanese>
    <chineseSimplified>浅间</chineseSimplified>
+   <chineseTraditional>淺間</chineseTraditional>
   </name>
   <type>ArmoredCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -18710,6 +18821,7 @@ Azuma or Adzuma (SK5 name)</remark>
    <english>Tsushima</english>
    <japanese>対馬</japanese>
    <chineseSimplified>对马</chineseSimplified>
+   <chineseTraditional>對馬</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -19039,6 +19151,7 @@ Sometime called Niitaka class.
    <english>Bogatry</english>
    <japanese>ボガツイリ</japanese>
    <chineseSimplified>博加特里</chineseSimplified>
+   <chineseTraditional>博加特里</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -19478,6 +19591,7 @@ Sometime called Niitaka class.
    <english>Hayabusa</english>
    <japanese>隼型水雷艇</japanese>
    <chineseSimplified>隼型鱼雷艇</chineseSimplified>
+   <chineseTraditional>隼型魚雷艇</chineseTraditional>
   </name>
   <type>TorpedoBoat</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -19644,6 +19758,7 @@ Sometime called Niitaka class.
    <english>TB31</english>
    <japanese>第三十一号型水雷艇</japanese>
    <chineseSimplified>第31号型鱼雷艇</chineseSimplified>
+   <chineseTraditional>第31號型魚雷艇</chineseTraditional>
   </name>
   <type>TorpedoBoat</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -19795,6 +19910,7 @@ Sometime called Niitaka class.
    <english>TB39</english>
    <japanese>第三十九号型水雷艇</japanese>
    <chineseSimplified>第39号型鱼雷艇</chineseSimplified>
+   <chineseTraditional>第39號型魚雷艇</chineseTraditional>
   </name>
   <type>TorpedoBoat</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -19957,6 +20073,7 @@ Sometime called Niitaka class.
    <english>TB67</english>
    <japanese>第六十七号型水雷艇</japanese>
    <chineseSimplified>第67型鱼雷艇</chineseSimplified>
+   <chineseTraditional>第67型魚雷艇</chineseTraditional>
   </name>
   <type>TorpedoBoat</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -20118,6 +20235,7 @@ Sometime called Niitaka class.
    <english>Yakumo</english>
    <japanese>八雲</japanese>
    <chineseSimplified>八云</chineseSimplified>
+   <chineseTraditional>八雲</chineseTraditional>
   </name>
   <type>ArmoredCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -20669,6 +20787,7 @@ Sometime called Niitaka class.
    <english>Suma</english>
    <japanese>須磨</japanese>
    <chineseSimplified>须磨</chineseSimplified>
+   <chineseTraditional>須磨</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -21129,6 +21248,7 @@ Correction: SK5 length 37 -&gt; 307</remark>
    <english>Variag</english>
    <japanese>ヴァリャーグ</japanese>
    <chineseSimplified>瓦良格</chineseSimplified>
+   <chineseTraditional>瓦良格</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -21617,6 +21737,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
    <english>Korietz</english>
    <japanese>コレーエツ</japanese>
    <chineseSimplified>高丽人</chineseSimplified>
+   <chineseTraditional>高麗人</chineseTraditional>
   </name>
   <type>PatrolGunboat</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -22196,6 +22317,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
    <english>Poltava</english>
    <japanese>ポルターヴァ</japanese>
    <chineseSimplified>波尔塔瓦</chineseSimplified>
+   <chineseTraditional>波爾塔瓦</chineseTraditional>
   </name>
   <type>Battleship</type>
   <extraShipType>Predreatought</extraShipType>
@@ -22870,6 +22992,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
    <english>Shirakumo</english>
    <japanese>白雲</japanese>
    <chineseSimplified>白云</chineseSimplified>
+   <chineseTraditional>白雲</chineseTraditional>
   </name>
   <type>Destroyer</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -23044,6 +23167,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
    <english>Akatsuki</english>
    <japanese>暁</japanese>
    <chineseSimplified>晓</chineseSimplified>
+   <chineseTraditional>曉</chineseTraditional>
   </name>
   <type>Destroyer</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -23217,6 +23341,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
    <english>Ikazuchi</english>
    <japanese>雷</japanese>
    <chineseSimplified>雷</chineseSimplified>
+   <chineseTraditional>雷</chineseTraditional>
   </name>
   <type>Destroyer</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -23394,6 +23519,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
    <english>Murakumo</english>
    <japanese>叢雲</japanese>
    <chineseSimplified>从云</chineseSimplified>
+   <chineseTraditional>從雲</chineseTraditional>
   </name>
   <type>Destroyer</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -23569,6 +23695,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
    <english>Harusame</english>
    <japanese>春雨</japanese>
    <chineseSimplified>春雨</chineseSimplified>
+   <chineseTraditional>春雨</chineseTraditional>
   </name>
   <type>Destroyer</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -23747,6 +23874,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
    <english>Tsessarevitch</english>
    <japanese>ツェサレーヴィチ</japanese>
    <chineseSimplified>皇太子</chineseSimplified>
+   <chineseTraditional>皇太子</chineseTraditional>
   </name>
   <type>Battleship</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -24349,6 +24477,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
    <english>Peresviet</english>
    <japanese>ペレスヴェート</japanese>
    <chineseSimplified>佩列斯韦特</chineseSimplified>
+   <chineseTraditional>佩列斯韋特</chineseTraditional>
   </name>
   <type>Battleship</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -24922,6 +25051,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
    <english>Peresviet (1905)</english>
    <japanese>ペレスヴェート</japanese>
    <chineseSimplified>佩列斯韦特</chineseSimplified>
+   <chineseTraditional>佩列斯韋特</chineseTraditional>
   </name>
   <type>Battleship</type>
   <extraShipType>Predreatought</extraShipType>
@@ -25495,6 +25625,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
    <english>Retvizan</english>
    <japanese>レトヴィザン</japanese>
    <chineseSimplified>列特维赞</chineseSimplified>
+   <chineseTraditional>列特維贊</chineseTraditional>
   </name>
   <type>Battleship</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -26211,6 +26342,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
    <english>Bayan</english>
    <japanese>バヤーン</japanese>
    <chineseSimplified>巴扬</chineseSimplified>
+   <chineseTraditional>巴揚</chineseTraditional>
   </name>
   <type>ArmoredCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -26789,6 +26921,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
    <english>Askold</english>
    <japanese>アスコリド</japanese>
    <chineseSimplified>阿斯科尔德</chineseSimplified>
+   <chineseTraditional>阿斯科爾德</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -27256,6 +27389,7 @@ https://naval-encyclopedia.com/ww1/russia/askold-1900.php
    <english>Pallada</english>
    <japanese>ヂアーナ</japanese>
    <chineseSimplified>帕拉达</chineseSimplified>
+   <chineseTraditional>帕拉達</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -27660,6 +27794,7 @@ https://naval-encyclopedia.com/ww1/russia/askold-1900.php
    <english>Boyarin</english>
    <japanese>ボヤーリン</japanese>
    <chineseSimplified>博雅林</chineseSimplified>
+   <chineseTraditional>博雅林</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -28054,6 +28189,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
    <english>Novik</english>
    <japanese>ノヴィーク</japanese>
    <chineseSimplified>诺维克</chineseSimplified>
+   <chineseTraditional>諾維克</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -28423,6 +28559,7 @@ https://naval-encyclopedia.com/ww1/russia/cruiser-novik-1898.php
    <english>Puilki</english>
    <japanese>ブイヌイ</japanese>
    <chineseSimplified>布伊内</chineseSimplified>
+   <chineseTraditional>布伊內</chineseTraditional>
   </name>
   <type>Destroyer</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -28593,6 +28730,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
    <english>Bezstrashni</english>
    <japanese>ベズストラーシヌイ</japanese>
    <chineseSimplified>别斯特拉什尼</chineseSimplified>
+   <chineseTraditional>別斯特拉什尼</chineseTraditional>
   </name>
   <type>Destroyer</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -28769,6 +28907,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
    <english>Mikasa</english>
    <japanese>三笠</japanese>
    <chineseSimplified>三笠</chineseSimplified>
+   <chineseTraditional>三笠</chineseTraditional>
   </name>
   <type>Battleship</type>
   <extraShipType>Predreatought</extraShipType>
@@ -29328,6 +29467,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
    <english>Asahi</english>
    <japanese>朝日</japanese>
    <chineseSimplified>朝日</chineseSimplified>
+   <chineseTraditional>朝日</chineseTraditional>
   </name>
   <type>Battleship</type>
   <extraShipType>Predreatought</extraShipType>
@@ -29885,6 +30025,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
    <english>Shikishima</english>
    <japanese>敷島</japanese>
    <chineseSimplified>敷岛</chineseSimplified>
+   <chineseTraditional>敷島</chineseTraditional>
   </name>
   <type>Battleship</type>
   <extraShipType>Predreatought</extraShipType>
@@ -30452,6 +30593,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
    <english>Kasagi</english>
    <japanese>笠置</japanese>
    <chineseSimplified>笠置</chineseSimplified>
+   <chineseTraditional>笠置</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
@@ -30997,6 +31139,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
    <english>Takasago</english>
    <japanese>高砂</japanese>
    <chineseSimplified>高砂</chineseSimplified>
+   <chineseTraditional>高砂</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
@@ -31544,6 +31687,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <english>Battery Number 9</english>
    <japanese>9号砲台</japanese>
    <chineseSimplified>9号炮台</chineseSimplified>
+   <chineseTraditional>9號炮臺</chineseTraditional>
   </name>
   <type>LandBattery</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -31764,6 +31908,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <english>Battery Number 15 (Electric Cliff)</english>
    <japanese>15号砲台（電岩）</japanese>
    <chineseSimplified>15号炮台 (电岩)</chineseSimplified>
+   <chineseTraditional>15號炮臺 (電巖)</chineseTraditional>
   </name>
   <type>LandBattery</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -32006,6 +32151,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <english>Battery Number 17</english>
    <japanese>17号砲台</japanese>
    <chineseSimplified>17号炮台</chineseSimplified>
+   <chineseTraditional>17號炮臺</chineseTraditional>
   </name>
   <type>LandBattery</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -32217,6 +32363,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <english>Tsukushi</english>
    <japanese>筑紫</japanese>
    <chineseSimplified>筑紫</chineseSimplified>
+   <chineseTraditional>筑紫</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>UnprotectedCruiser</extraShipType>
@@ -32646,6 +32793,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <english>Oshima</english>
    <japanese>大島</japanese>
    <chineseSimplified>大岛</chineseSimplified>
+   <chineseTraditional>大島</chineseTraditional>
   </name>
   <type>PatrolGunboat</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -32934,6 +33082,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <english>Old Donkey Mouth Battery</english>
    <japanese>崂嵂嘴砲台</japanese>
    <chineseSimplified>崂嵂嘴 (老驴嘴) 炮台</chineseSimplified>
+   <chineseTraditional>嶗嵂嘴 (老驢嘴) 炮臺</chineseTraditional>
   </name>
   <type>LandBattery</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -32954,6 +33103,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
     <name>
      <english>24cm Cannon</english>
      <chineseSimplified>24厘米加农炮</chineseSimplified>
+     <chineseTraditional>24釐米加農炮</chineseTraditional>
     </name>
     <damageRating>34</damageRating>
     <maxRateOfFireShootPerMin>0.4</maxRateOfFireShootPerMin>
@@ -33092,6 +33242,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
      <english>12cm Cannon</english>
      <japanese />
      <chineseSimplified>12厘米加农炮</chineseSimplified>
+     <chineseTraditional>12釐米加農炮</chineseTraditional>
     </name>
     <damageRating>12</damageRating>
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
@@ -33283,6 +33434,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <english>Golden Hill Battery</english>
    <japanese>黄金山砲台</japanese>
    <chineseSimplified>黄金山炮台</chineseSimplified>
+   <chineseTraditional>黃金山炮臺</chineseTraditional>
   </name>
   <type>LandBattery</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -33303,6 +33455,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
     <name>
      <english>24cm Cannon</english>
      <chineseSimplified>24厘米加农炮</chineseSimplified>
+     <chineseTraditional>24釐米加農炮</chineseTraditional>
     </name>
     <damageRating>34</damageRating>
     <maxRateOfFireShootPerMin>0.4</maxRateOfFireShootPerMin>
@@ -33441,6 +33594,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
      <english>15cm Mortar</english>
      <japanese />
      <chineseSimplified>15厘米臼炮</chineseSimplified>
+     <chineseTraditional>15釐米臼炮</chineseTraditional>
     </name>
     <damageRating>16</damageRating>
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
@@ -33593,6 +33747,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
      <english>12cm Cannon</english>
      <japanese />
      <chineseSimplified>12厘米加农炮</chineseSimplified>
+     <chineseTraditional>12釐米加農炮</chineseTraditional>
     </name>
     <damageRating>12</damageRating>
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
@@ -33784,6 +33939,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <english>Mozhu Reef Battery</english>
    <japanese>摸珠礁砲台</japanese>
    <chineseSimplified>摸珠礁炮台</chineseSimplified>
+   <chineseTraditional>摸珠礁炮臺</chineseTraditional>
   </name>
   <type>LandBattery</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -33804,6 +33960,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
     <name>
      <english>21cm Cannon</english>
      <chineseSimplified>21厘米加农炮</chineseSimplified>
+     <chineseTraditional>21釐米加農炮</chineseTraditional>
     </name>
     <damageRating>23</damageRating>
     <maxRateOfFireShootPerMin>0.8</maxRateOfFireShootPerMin>
@@ -33935,6 +34092,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
      <english>15cm Cannon</english>
      <japanese />
      <chineseSimplified>15厘米加农炮</chineseSimplified>
+     <chineseTraditional>15釐米加農炮</chineseTraditional>
     </name>
     <damageRating>16</damageRating>
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
@@ -34140,6 +34298,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <english>Kasuga</english>
    <japanese>春日</japanese>
    <chineseSimplified>春日</chineseSimplified>
+   <chineseTraditional>春日</chineseTraditional>
   </name>
   <type>ArmoredCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -34775,6 +34934,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <english>Nisshin</english>
    <japanese>日進</japanese>
    <chineseSimplified>日进</chineseSimplified>
+   <chineseTraditional>日進</chineseTraditional>
   </name>
   <type>ArmoredCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -35317,6 +35477,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <english>Yaeyama</english>
    <japanese>八重山</japanese>
    <chineseSimplified>八重山</chineseSimplified>
+   <chineseTraditional>八重山</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>UnprotectedCruiser</extraShipType>
@@ -35599,6 +35760,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <english>Idzumi (1900)</english>
    <japanese>和泉 (1900)</japanese>
    <chineseSimplified>和泉 (1900)</chineseSimplified>
+   <chineseTraditional>和泉 (1900)</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
@@ -36054,6 +36216,7 @@ Esmeralda or Idzumi (Izumi)</remark>
    <english>Boiki</english>
    <japanese>ボイキー</japanese>
    <chineseSimplified>博伊基</chineseSimplified>
+   <chineseTraditional>博伊基</chineseTraditional>
   </name>
   <type>Destroyer</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -36235,6 +36398,7 @@ https://ru.wikipedia.org/wiki/%D0%9C%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D1%86%D
    <english>Vnimatelni</english>
    <japanese>ウラースツヌイ</japanese>
    <chineseSimplified>弗尼马捷利尼</chineseSimplified>
+   <chineseTraditional>弗尼馬捷利尼</chineseTraditional>
   </name>
   <type>Destroyer</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -36391,6 +36555,7 @@ https://ru.wikipedia.org/wiki/%D0%9C%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D1%86%D
    <english>Hai Chi</english>
    <japanese>海圻</japanese>
    <chineseSimplified>海圻</chineseSimplified>
+   <chineseTraditional>海圻</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
@@ -36921,6 +37086,7 @@ Hai Qi (Hai Chi, 海圻) and Hai Tien (Hai Tian, 海天)
    <english>Hai Yung</english>
    <japanese>海容</japanese>
    <chineseSimplified>海荣</chineseSimplified>
+   <chineseTraditional>海榮</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
@@ -37434,6 +37600,7 @@ https://naval-encyclopedia.com/ww1/china/hai-yung-class-cruisers.php
    <english>Blanco Encalada</english>
    <japanese>ブランコ・エンカラーダ</japanese>
    <chineseSimplified>白朗古·恩卡拉达</chineseSimplified>
+   <chineseTraditional>白朗古·恩卡拉達</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
@@ -37454,6 +37621,7 @@ https://naval-encyclopedia.com/ww1/china/hai-yung-class-cruisers.php
     <name>
      <english>8''/39.9 Pattern P</english>
      <chineseSimplified>203/40 阿姆斯特朗P</chineseSimplified>
+     <chineseTraditional>203/40 阿姆斯特朗P</chineseTraditional>
     </name>
     <damageRating>24</damageRating>
     <maxRateOfFireShootPerMin>1.8</maxRateOfFireShootPerMin>
@@ -37617,6 +37785,7 @@ https://naval-encyclopedia.com/ww1/china/hai-yung-class-cruisers.php
     <name>
      <english>6''/40 Patterns W,Z</english>
      <chineseSimplified>152/40 阿姆斯特朗 W</chineseSimplified>
+     <chineseTraditional>152/40 阿姆斯特朗 W</chineseTraditional>
     </name>
     <damageRating>16</damageRating>
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
@@ -37874,6 +38043,7 @@ https://naval-encyclopedia.com/ww1/china/hai-yung-class-cruisers.php
     <name>
      <english>3''/40 12-pr/12cwt QF</english>
      <chineseSimplified>76/40 阿姆斯特朗</chineseSimplified>
+     <chineseTraditional>76/40 阿姆斯特朗</chineseTraditional>
     </name>
     <maxRangeYards>8112</maxRangeYards>
     <effectiveRangeYards>3650</effectiveRangeYards>
@@ -37901,6 +38071,7 @@ https://naval-encyclopedia.com/ww1/china/hai-yung-class-cruisers.php
     <name>
      <english>37mm/20</english>
      <chineseSimplified>37/23 哈奇开斯</chineseSimplified>
+     <chineseTraditional>37/23 哈奇開斯</chineseTraditional>
     </name>
     <maxRangeYards>2200</maxRangeYards>
     <effectiveRangeYards>990</effectiveRangeYards>
@@ -37989,6 +38160,7 @@ Alternate history: Suppose the China had purchased this ship from Chile.
    <english>Capitan Prat</english>
    <japanese>プラット</japanese>
    <chineseSimplified>卜拉德</chineseSimplified>
+   <chineseTraditional>卜拉德</chineseTraditional>
   </name>
   <type>Battleship</type>
   <extraShipType>Ironclad</extraShipType>
@@ -38520,6 +38692,7 @@ Alternate history: Suppose the China had purchased this ship from Chile.
    <english>Esmeralda</english>
    <japanese>エスメラルダ</japanese>
    <chineseSimplified>埃斯梅拉达</chineseSimplified>
+   <chineseTraditional>埃斯梅拉達</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
@@ -38975,6 +39148,7 @@ Alternate history: Suppose the China had purchased this ship from Chile. (In tru
    <english>Presidente Errazuriz</english>
    <japanese>エラスリス</japanese>
    <chineseSimplified>额拉粗力士</chineseSimplified>
+   <chineseTraditional>額拉粗力士</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
@@ -39353,6 +39527,7 @@ Alternate history: Suppose the China had purchased this ship from Chile. (In tru
      <english>2.2'' 6pdr 8cwt QF</english>
      <japanese>47mm砲</japanese>
      <chineseSimplified>哈奇开斯47毫米单装重型速射炮</chineseSimplified>
+     <chineseTraditional>哈奇開斯47毫米單裝重型速射炮</chineseTraditional>
     </name>
     <maxRangeYards>7500</maxRangeYards>
     <effectiveRangeYards>3375</effectiveRangeYards>
@@ -39437,6 +39612,7 @@ Alternate history: Suppose the China had purchased this ship from Chile.</remark
    <english>Almirante Lynch</english>
    <japanese>リンチ</japanese>
    <chineseSimplified>林奇</chineseSimplified>
+   <chineseTraditional>林奇</chineseTraditional>
   </name>
   <type>TorpedoBoat</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -39509,6 +39685,7 @@ Alternate history: Suppose the China had purchased this ship from Chile.</remark
      <english>3''/40 12pdr QF</english>
      <japanese>7.5cm砲1門</japanese>
      <chineseSimplified>75mm炮1门</chineseSimplified>
+     <chineseTraditional>75mm炮1門</chineseTraditional>
     </name>
     <maxRangeYards>7923</maxRangeYards>
     <effectiveRangeYards>3565</effectiveRangeYards>
@@ -39617,6 +39794,7 @@ Alternate history: Suppose the China had purchased this ship from Chile.</remark
    <english>Veinticinco de Mayo</english>
    <japanese>5月25日</japanese>
    <chineseSimplified>5月25日</chineseSimplified>
+   <chineseTraditional>5月25日</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
@@ -40142,6 +40320,7 @@ Alternate history: Suppose the China had purchased this ship from Argentina.</re
    <english>Nueve de Julio</english>
    <japanese>7月9日</japanese>
    <chineseSimplified>7月9日</chineseSimplified>
+   <chineseTraditional>7月9日</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
@@ -40641,6 +40820,7 @@ https://naval-encyclopedia.com/ww1/argentina/9-de-julio.php</remark>
    <english>Almirante Brown</english>
    <japanese>ブラウン</japanese>
    <chineseSimplified>勃兰</chineseSimplified>
+   <chineseTraditional>勃蘭</chineseTraditional>
   </name>
   <type>ArmoredCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -41127,6 +41307,7 @@ https://naval-encyclopedia.com/ww1/argentina/9-de-julio.php</remark>
    <english>Chen Tung</english>
    <japanese>鎮東</japanese>
    <chineseSimplified>镇东</chineseSimplified>
+   <chineseTraditional>鎮東</chineseTraditional>
   </name>
   <type>PatrolGunboat</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -41379,6 +41560,7 @@ https://zh.wikipedia.org/wiki/Epsilon%E7%B4%9A%E7%A0%B2%E8%89%87
    <english>Kai Che</english>
    <japanese>開濟</japanese>
    <chineseSimplified>开济</chineseSimplified>
+   <chineseTraditional>開濟</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>UnprotectedCruiser</extraShipType>
@@ -41817,6 +41999,7 @@ https://www.historyofwar.org/articles/weapons_kai_che.html</remark>
    <english>King Ch'ing</english>
    <japanese>鏡清</japanese>
    <chineseSimplified>镜清</chineseSimplified>
+   <chineseTraditional>鏡清</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>UnprotectedCruiser</extraShipType>
@@ -42252,6 +42435,7 @@ https://www.historyofwar.org/articles/weapons_kai_che.html</remark>
    <english>Nan Thin</english>
    <japanese>南琛</japanese>
    <chineseSimplified>南琛</chineseSimplified>
+   <chineseTraditional>南琛</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>UnprotectedCruiser</extraShipType>
@@ -42717,6 +42901,7 @@ https://www.historyofwar.org/articles/weapons_kai_che.html</remark>
    <english>Pao Min</english>
    <japanese>保民</japanese>
    <chineseSimplified>保民</chineseSimplified>
+   <chineseTraditional>保民</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>UnprotectedCruiser</extraShipType>
@@ -43169,6 +43354,7 @@ https://www.historyofwar.org/articles/weapons_kai_che.html</remark>
    <english>Imperator Nicolai I</english>
    <japanese>インペラートル・ニコライ1世</japanese>
    <chineseSimplified>尼古拉一世</chineseSimplified>
+   <chineseTraditional>尼古拉一世</chineseTraditional>
   </name>
   <type>Battleship</type>
   <extraShipType>Predreatought</extraShipType>
@@ -43867,6 +44053,7 @@ https://en.wikipedia.org/wiki/Russian_battleship_Imperator_Nikolai_I_(1889)</rem
    <english>Admiral Nakhimov (1887)</english>
    <japanese>アドミラル・ナヒーモフ (1887)</japanese>
    <chineseSimplified>纳希莫夫 (1887)</chineseSimplified>
+   <chineseTraditional>納希莫夫 (1887)</chineseTraditional>
   </name>
   <type>ArmoredCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -44420,6 +44607,7 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Nakhimov_(1885)
    <english>Admiral Nakhimov (1900)</english>
    <japanese>アドミラル・ナヒーモフ (1900)</japanese>
    <chineseSimplified>纳希莫夫 (1900)</chineseSimplified>
+   <chineseTraditional>納希莫夫 (1900)</chineseTraditional>
   </name>
   <type>ArmoredCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -44778,6 +44966,7 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Nakhimov_(1885)</remark>
    <english>Pamiat Azova</english>
    <japanese>パーミャチ・アゾーヴァ</japanese>
    <chineseSimplified>帕米亚特·阿佐瓦</chineseSimplified>
+   <chineseTraditional>帕米亞特·阿佐瓦</chineseTraditional>
   </name>
   <type>ArmoredCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -45314,6 +45503,7 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Pamiat_Azova
    <english>Vladimir Monomakh</english>
    <japanese>ヴラジーミル・モノマフ</japanese>
    <chineseSimplified>弗拉基米尔·莫诺马赫</chineseSimplified>
+   <chineseTraditional>弗拉基米爾·莫諾馬赫</chineseTraditional>
   </name>
   <type>ArmoredCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -45854,6 +46044,7 @@ Strange FC Code given by SK5 datasheet, which may overestimate its fire control 
    <english>Admiral Kornilov</english>
    <japanese>コルニロフ</japanese>
    <chineseSimplified>科尔尼洛夫</chineseSimplified>
+   <chineseTraditional>科爾尼洛夫</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
@@ -46234,6 +46425,7 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Kornilov</remark>
    <english>Borodino</english>
    <japanese>ボロジノ</japanese>
    <chineseSimplified>博罗季诺</chineseSimplified>
+   <chineseTraditional>博羅季諾</chineseTraditional>
   </name>
   <type>Battleship</type>
   <extraShipType>Predreatought</extraShipType>
@@ -46830,6 +47022,7 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Kornilov</remark>
    <english>Sissoi Veliki</english>
    <japanese>シソイ・ヴェリキィー</japanese>
    <chineseSimplified>西索伊·维利基</chineseSimplified>
+   <chineseTraditional>西索伊·維利基</chineseTraditional>
   </name>
   <type>Battleship</type>
   <extraShipType>Predreatought</extraShipType>
@@ -47358,6 +47551,7 @@ https://en.wikipedia.org/wiki/Russian_battleship_Sissoi_Veliky</remark>
    <english>Sissoi Veliki (1905)</english>
    <japanese>シソイ・ヴェリキィー (1905)</japanese>
    <chineseSimplified>西索伊·维利基 (1905)</chineseSimplified>
+   <chineseTraditional>西索伊·維利基 (1905)</chineseTraditional>
   </name>
   <type>Battleship</type>
   <extraShipType>Predreatought</extraShipType>
@@ -48044,6 +48238,7 @@ https://en.wikipedia.org/wiki/Russian_battleship_Sissoi_Veliky</remark>
    <english>Navarin(1905)</english>
    <japanese>ナヴァリン(1905)</japanese>
    <chineseSimplified>纳瓦林(1905)</chineseSimplified>
+   <chineseTraditional>納瓦林(1905)</chineseTraditional>
   </name>
   <type>Battleship</type>
   <extraShipType>Predreatought</extraShipType>
@@ -48577,6 +48772,7 @@ https://en.wikipedia.org/wiki/Russian_battleship_Navarin</remark>
    <english>Inflexible</english>
    <japanese> インフレキシブル</japanese>
    <chineseSimplified>英弗莱息白</chineseSimplified>
+   <chineseTraditional>英弗萊息白</chineseTraditional>
   </name>
   <type>Battleship</type>
   <extraShipType>Ironclad</extraShipType>
@@ -48880,6 +49076,7 @@ One of reference ship class of Ding Yuan
    <english>Centurion</english>
    <japanese>バーフラー</japanese>
    <chineseSimplified>百夫长</chineseSimplified>
+   <chineseTraditional>百夫長</chineseTraditional>
   </name>
   <type>Battleship</type>
   <extraShipType>Predreatought</extraShipType>
@@ -49379,6 +49576,7 @@ One of reference ship class of Ding Yuan
    <english>Dreadnought</english>
    <japanese>ドレッドノート</japanese>
    <chineseSimplified>无畏</chineseSimplified>
+   <chineseTraditional>無畏</chineseTraditional>
   </name>
   <type>Battleship</type>
   <extraShipType>Dreadnought</extraShipType>
@@ -49751,6 +49949,7 @@ Reference only, a new damage schema is required to work properly.
    <english>Invincible</english>
    <japanese>インヴィンシブル</japanese>
    <chineseSimplified>无敌</chineseSimplified>
+   <chineseTraditional>無敵</chineseTraditional>
   </name>
   <type>Battlecruiser</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -50282,6 +50481,7 @@ Reference only, a new damage schema is required to work properly.
    <english>Edgar</english>
    <japanese>エドガー</japanese>
    <chineseSimplified>埃德加</chineseSimplified>
+   <chineseTraditional>埃德加</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
@@ -50913,6 +51113,7 @@ Reference only, a new damage schema is required to work properly.
    <english>Orlando</english>
    <japanese>オーランド</japanese>
    <chineseSimplified>奥兰多</chineseSimplified>
+   <chineseTraditional>奧蘭多</chineseTraditional>
   </name>
   <type>ArmoredCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -51406,6 +51607,7 @@ Reference only, a new damage schema is required to work properly.
    <english>Iris</english>
    <japanese>アイリス</japanese>
    <chineseSimplified>鸢尾花</chineseSimplified>
+   <chineseTraditional>鳶尾花</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
@@ -51732,6 +51934,7 @@ Reference only, a new damage schema is required to work properly.
    <english>Apollo</english>
    <japanese>アポロ</japanese>
    <chineseSimplified>阿波罗</chineseSimplified>
+   <chineseTraditional>阿波羅</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
@@ -52228,6 +52431,7 @@ Reference only, a new damage schema is required to work properly.
    <english>Phoenix</english>
    <japanese>フェニックス</japanese>
    <chineseSimplified>凤凰</chineseSimplified>
+   <chineseTraditional>鳳凰</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -52536,6 +52740,7 @@ Sloop</remark>
    <english>30-Knotters 1895-96 Class</english>
    <japanese>30ノッター型（1895〜1896年）</japanese>
    <chineseSimplified>30节级（1895—1896年）</chineseSimplified>
+   <chineseTraditional>30節級（1895—1896年）</chineseTraditional>
   </name>
   <type>Destroyer</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -52699,6 +52904,7 @@ Complement 50 is inferred.</remark>
    <english>30-Knotters 1894-95 Class</english>
    <japanese>30ノッター型（1894〜1895年）</japanese>
    <chineseSimplified>30节级（1894—1895年）</chineseSimplified>
+   <chineseTraditional>30節級（1894—1895年）</chineseTraditional>
   </name>
   <type>Destroyer</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -52864,6 +53070,7 @@ Complement 50 is inferred.
    <english>Sivuch</english>
    <japanese>シヴチ</japanese>
    <chineseSimplified>西武奇</chineseSimplified>
+   <chineseTraditional>西武奇</chineseTraditional>
   </name>
   <type>PatrolGunboat</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -53379,6 +53586,7 @@ Sivuch or Gilyak</remark>
    <english>Iltis</english>
    <japanese>イルティス</japanese>
    <chineseSimplified>伊尔蒂斯</chineseSimplified>
+   <chineseTraditional>伊爾蒂斯</chineseTraditional>
   </name>
   <type>PatrolGunboat</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -53492,6 +53700,7 @@ Sivuch or Gilyak</remark>
    <english>Comète</english>
    <japanese>コメット</japanese>
    <chineseSimplified>彗星</chineseSimplified>
+   <chineseTraditional>彗星</chineseTraditional>
   </name>
   <type>PatrolGunboat</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -53879,6 +54088,7 @@ Battery select a closer historical battery.</remark>
    <english>Alacrity (1898)</english>
    <japanese>アラクリティ (1898)</japanese>
    <chineseSimplified>敏捷 (1898)</chineseSimplified>
+   <chineseTraditional>敏捷 (1898)</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -53997,6 +54207,7 @@ Battery select a closer historical battery.</remark>
    <english>Kazarski</english>
    <japanese>カザルスキー</japanese>
    <chineseSimplified>卡扎尔斯基</chineseSimplified>
+   <chineseTraditional>卡扎爾斯基</chineseTraditional>
   </name>
   <type>PatrolGunboat</type>
   <extraShipType>TorpedoCruiser</extraShipType>
@@ -54166,6 +54377,7 @@ https://www.history.navy.mil/our-collections/photography/numerical-list-of-image
    <english>Sachsen</english>
    <japanese>ザクセン</japanese>
    <chineseSimplified>萨克森</chineseSimplified>
+   <chineseTraditional>薩克森</chineseTraditional>
   </name>
   <type>Battleship</type>
   <extraShipType>Ironclad</extraShipType>
@@ -54471,6 +54683,7 @@ One of Ting Yuen's Reference class
    <english>Hertha</english>
    <japanese>ヘルタ</japanese>
    <chineseSimplified>赫塔</chineseSimplified>
+   <chineseTraditional>赫塔</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
@@ -55019,6 +55232,7 @@ One of Ting Yuen's Reference class
    <english>Kaiserin Augusta (1897)</english>
    <japanese>カイゼリン・アウグスタ (1897)</japanese>
    <chineseSimplified>奥古斯塔皇后 (1897)</chineseSimplified>
+   <chineseTraditional>奧古斯塔皇后 (1897)</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
@@ -55393,6 +55607,7 @@ One of Ting Yuen's Reference class
    <english>Gefion</english>
    <japanese>ゲフィオン</japanese>
    <chineseSimplified>葛冯</chineseSimplified>
+   <chineseTraditional>葛馮</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>UnprotectedCruiser</extraShipType>
@@ -55720,6 +55935,7 @@ One of Ting Yuen's Reference class
    <english>D'Entrecasteaux</english>
    <japanese>ダントルカストー</japanese>
    <chineseSimplified>当特尔卡斯托</chineseSimplified>
+   <chineseTraditional>當特爾卡斯托</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
@@ -56243,6 +56459,7 @@ One of Ting Yuen's Reference class
    <english>Descartes</english>
    <japanese>デカルト</japanese>
    <chineseSimplified>笛卡尔</chineseSimplified>
+   <chineseTraditional>笛卡爾</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
@@ -56740,6 +56957,7 @@ One of Ting Yuen's Reference class
    <english>Surprise</english>
    <japanese>サプライズ</japanese>
    <chineseSimplified>惊奇</chineseSimplified>
+   <chineseTraditional>驚奇</chineseTraditional>
   </name>
   <type>PatrolGunboat</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -57002,6 +57220,7 @@ One of Ting Yuen's Reference class
    <english>Calabria</english>
    <japanese>カラブリア</japanese>
    <chineseSimplified>卡拉布里亚</chineseSimplified>
+   <chineseTraditional>卡拉布里亞</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
@@ -57521,6 +57740,7 @@ One of Ting Yuen's Reference class
    <english>Lombardia</english>
    <japanese>ロンバルディア</japanese>
    <chineseSimplified>伦巴底</chineseSimplified>
+   <chineseTraditional>倫巴底</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
@@ -58026,6 +58246,7 @@ One of Ting Yuen's Reference class
    <english>Zenta</english>
    <japanese>ゼント</japanese>
    <chineseSimplified>森塔</chineseSimplified>
+   <chineseTraditional>森塔</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
@@ -58429,6 +58650,7 @@ One of Ting Yuen's Reference class
    <english>Newark (C1)</english>
    <japanese>ニューアーク</japanese>
    <chineseSimplified>纽瓦克</chineseSimplified>
+   <chineseTraditional>紐瓦克</chineseTraditional>
   </name>
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
@@ -58801,6 +59023,7 @@ One of Ting Yuen's Reference class
    <english>Hai Hua</english>
    <japanese>海華</japanese>
    <chineseSimplified>海华</chineseSimplified>
+   <chineseTraditional>海華</chineseTraditional>
   </name>
   <type>Destroyer</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -58936,6 +59159,7 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
    <english>Fei Ting</english>
    <japanese>飛霆</japanese>
    <chineseSimplified>飞霆</chineseSimplified>
+   <chineseTraditional>飛霆</chineseTraditional>
   </name>
   <type>PatrolGunboat</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -58957,6 +59181,7 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
      <english>4.7''</english>
      <japanese />
      <chineseSimplified>4.7英寸阿炮</chineseSimplified>
+     <chineseTraditional>4.7英寸阿炮</chineseTraditional>
     </name>
     <damageRating>12</damageRating>
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
@@ -59160,6 +59385,7 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
      <english>47mm</english>
      <japanese />
      <chineseSimplified>47mm 哈炮</chineseSimplified>
+     <chineseTraditional>47mm 哈炮</chineseTraditional>
     </name>
     <maxRangeYards>6800</maxRangeYards>
     <effectiveRangeYards>3060</effectiveRangeYards>
@@ -59245,6 +59471,7 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
    <english>Fei Ying</english>
    <japanese>飛鷹</japanese>
    <chineseSimplified>飞鹰</chineseSimplified>
+   <chineseTraditional>飛鷹</chineseTraditional>
   </name>
   <type>PatrolGunboat</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -59266,6 +59493,7 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
      <english>105mm</english>
      <japanese />
      <chineseSimplified>105mm 克炮</chineseSimplified>
+     <chineseTraditional>105mm 克炮</chineseTraditional>
     </name>
     <damageRating>11</damageRating>
     <maxRateOfFireShootPerMin>11</maxRateOfFireShootPerMin>
@@ -59475,6 +59703,7 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
     <name>
      <english>37mm</english>
      <chineseSimplified>37mm 哈炮</chineseSimplified>
+     <chineseTraditional>37mm 哈炮</chineseTraditional>
     </name>
     <maxRangeYards>7000</maxRangeYards>
     <effectiveRangeYards>3150</effectiveRangeYards>
@@ -59557,6 +59786,7 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
    <english>Northwest Fort</english>
    <japanese>西北砲台</japanese>
    <chineseSimplified>西北炮台</chineseSimplified>
+   <chineseTraditional>西北炮臺</chineseTraditional>
   </name>
   <type>LandBattery</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -60032,6 +60262,7 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
    <english>North Fort</english>
    <japanese>北砲台</japanese>
    <chineseSimplified>北炮台</chineseSimplified>
+   <chineseTraditional>北炮臺</chineseTraditional>
   </name>
   <type>LandBattery</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -60548,6 +60779,7 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
    <english>South Fort</english>
    <japanese>南岸砲台</japanese>
    <chineseSimplified>南岸炮台</chineseSimplified>
+   <chineseTraditional>南岸炮臺</chineseTraditional>
   </name>
   <type>LandBattery</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -61388,6 +61620,7 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
    <english>Gilyak (1898)</english>
    <japanese>ギリャーク (1898)</japanese>
    <chineseSimplified>吉利亚克 (1898)</chineseSimplified>
+   <chineseTraditional>吉利亞克 (1898)</chineseTraditional>
   </name>
   <type>PatrolGunboat</type>
   <extraShipType>NotSpecified</extraShipType>
@@ -61699,7 +61932,8 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
   <name>
    <english>Royal Sovereign</english>
    <japanese>ロイヤル・サブリン</japanese>
-   <chineseSimplified>皇权</chineseSimplified>
+   <chineseSimplified>君权</chineseSimplified>
+   <chineseTraditional>君權</chineseTraditional>
   </name>
   <type>Battleship</type>
   <extraShipType>Predreatought</extraShipType>

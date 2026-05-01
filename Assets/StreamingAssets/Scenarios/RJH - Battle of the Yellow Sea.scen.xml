@@ -16123,7 +16123,7 @@
      <english>1st Pacific Fleet</english>
      <japanese>第一太平洋艦隊</japanese>
      <chineseSimplified>第一太平洋舰队</chineseSimplified>
-     <chineseTraditional />
+     <chineseTraditional>第一太平洋艦隊</chineseTraditional>
     </name>
     <leaderReference>
      <referenceObjectId>3d11e780-0830-40f4-b6c5-1fec1ebdccda</referenceObjectId>
@@ -16192,6 +16192,7 @@
      <english>Battleship Division</english>
      <japanese>戦列艦隊</japanese>
      <chineseSimplified>战列舰队</chineseSimplified>
+     <chineseTraditional>戰列艦隊</chineseTraditional>
     </name>
     <leaderReference>
      <referenceObjectId>3d11e780-0830-40f4-b6c5-1fec1ebdccda</referenceObjectId>
@@ -16257,7 +16258,7 @@
      <english>Combined Fleet</english>
      <japanese>連合艦隊</japanese>
      <chineseSimplified>联合舰队</chineseSimplified>
-     <chineseTraditional />
+     <chineseTraditional>聯合艦隊</chineseTraditional>
     </name>
     <leaderReference>
      <referenceObjectId>bbdc13c1-a909-411c-b949-ad82485ab108</referenceObjectId>
@@ -16327,6 +16328,7 @@
      <english>First Division</english>
      <japanese>第1戦隊</japanese>
      <chineseSimplified>第1战队</chineseSimplified>
+     <chineseTraditional>第1戰隊</chineseTraditional>
     </name>
     <leaderReference>
      <referenceObjectId>3e4ba392-54f1-4199-b23a-c8e6cc67ac92</referenceObjectId>
@@ -16393,6 +16395,7 @@
      <english>Division of Long-distance Scouts</english>
      <japanese>遠距離偵察隊</japanese>
      <chineseSimplified>远距离侦察队</chineseSimplified>
+     <chineseTraditional>遠距離偵察隊</chineseTraditional>
     </name>
     <leaderReference>
      <referenceObjectId>de5c3853-f922-47fa-81d3-31564419f71c</referenceObjectId>
@@ -16461,6 +16464,7 @@
      <english>R 1st Destroyer Division</english>
      <japanese>第1駆逐隊</japanese>
      <chineseSimplified>第1驱逐队</chineseSimplified>
+     <chineseTraditional>第1驅逐隊</chineseTraditional>
     </name>
     <leaderReference />
     <type>General</type>
@@ -16527,6 +16531,7 @@
      <english>Third Division</english>
      <japanese>第3戦隊</japanese>
      <chineseSimplified>第3战队</chineseSimplified>
+     <chineseTraditional>第3戰隊</chineseTraditional>
     </name>
     <leaderReference>
      <referenceObjectId>d7303b6c-feef-4a49-8613-dc89cc9b029e</referenceObjectId>
@@ -16593,6 +16598,7 @@
      <english>Fifth Division</english>
      <japanese>第5戦隊</japanese>
      <chineseSimplified>第5战队</chineseSimplified>
+     <chineseTraditional>第5戰隊</chineseTraditional>
     </name>
     <leaderReference>
      <referenceObjectId>00bdf5bb-818b-47df-90ff-72522a3f7bb0</referenceObjectId>
@@ -16660,6 +16666,7 @@
      <english>Sixth Division</english>
      <japanese>第6戦隊</japanese>
      <chineseSimplified>第6战队</chineseSimplified>
+     <chineseTraditional>第6戰隊</chineseTraditional>
     </name>
     <leaderReference>
      <referenceObjectId>ecbffe12-5f10-47d8-8001-7474333d70a5</referenceObjectId>
@@ -16726,6 +16733,7 @@
      <english>1st Destroyer Division</english>
      <japanese>第1駆逐隊</japanese>
      <chineseSimplified>第1驱逐队</chineseSimplified>
+     <chineseTraditional>第1驅逐隊</chineseTraditional>
     </name>
     <leaderReference>
      <referenceObjectId>9120649a-1ee1-414d-bb7b-bbc0434ba974</referenceObjectId>
@@ -16793,6 +16801,7 @@
      <english>2nd Destroyer Division</english>
      <japanese>第2駆逐隊</japanese>
      <chineseSimplified>第2驱逐队</chineseSimplified>
+     <chineseTraditional>第2驅逐隊</chineseTraditional>
     </name>
     <leaderReference>
      <referenceObjectId>fcf4725b-4de5-4040-a7a5-1d7ef84a1b45</referenceObjectId>
@@ -16859,6 +16868,7 @@
      <english>3rd Destroyer Division</english>
      <japanese>第3駆逐隊</japanese>
      <chineseSimplified>第3驱逐队</chineseSimplified>
+     <chineseTraditional>第3驅逐隊</chineseTraditional>
     </name>
     <leaderReference>
      <referenceObjectId>2cacc5b2-1c2d-44c4-b9e5-84eacb65b117</referenceObjectId>
@@ -16926,6 +16936,7 @@
      <english>4th Destroyer Division</english>
      <japanese>第4駆逐隊</japanese>
      <chineseSimplified>第4驱逐队</chineseSimplified>
+     <chineseTraditional>第4驅逐隊</chineseTraditional>
     </name>
     <leaderReference />
     <type>General</type>
@@ -16991,6 +17002,7 @@
      <english>5th Destroyer Division</english>
      <japanese>第5駆逐隊</japanese>
      <chineseSimplified>第5驱逐队</chineseSimplified>
+     <chineseTraditional>第5驅逐隊</chineseTraditional>
     </name>
     <leaderReference />
     <type>General</type>
@@ -17056,6 +17068,7 @@
      <english>2nd Topredo Boat Division</english>
      <japanese>第2艇隊</japanese>
      <chineseSimplified>第2艇队</chineseSimplified>
+     <chineseTraditional>第2艇隊</chineseTraditional>
     </name>
     <leaderReference />
     <type>General</type>
@@ -17121,6 +17134,7 @@
      <english>10th Torpedo Boat Division</english>
      <japanese>第10艇隊</japanese>
      <chineseSimplified>第10艇队</chineseSimplified>
+     <chineseTraditional>第10艇隊</chineseTraditional>
     </name>
     <leaderReference />
     <type>General</type>
@@ -17186,6 +17200,7 @@
      <english>14th Torpedo Boat Division</english>
      <japanese>第14艇隊</japanese>
      <chineseSimplified>第14艇队</chineseSimplified>
+     <chineseTraditional>第14艇隊</chineseTraditional>
     </name>
     <leaderReference />
     <type>General</type>
@@ -17250,6 +17265,7 @@
      <english>21st Torpedo Boat Division</english>
      <japanese>第21艇隊</japanese>
      <chineseSimplified>第21艇队</chineseSimplified>
+     <chineseTraditional>第21艇隊</chineseTraditional>
     </name>
     <leaderReference />
     <type>General</type>
@@ -17315,6 +17331,7 @@
      <english>R 2nd Destroyer Division</english>
      <japanese>第2駆逐隊</japanese>
      <chineseSimplified>第2驱逐队</chineseSimplified>
+     <chineseTraditional>第2驅逐隊</chineseTraditional>
     </name>
     <leaderReference />
     <type>General</type>
@@ -17384,6 +17401,7 @@
      <english>1st Fleet</english>
      <japanese>第1艦隊 </japanese>
      <chineseSimplified>第1舰队</chineseSimplified>
+     <chineseTraditional>第1艦隊</chineseTraditional>
     </name>
     <leaderReference>
      <referenceObjectId>bbdc13c1-a909-411c-b949-ad82485ab108</referenceObjectId>
@@ -17452,6 +17470,7 @@
      <english>3rd Fleet</english>
      <japanese>第3艦隊</japanese>
      <chineseSimplified>第3舰队</chineseSimplified>
+     <chineseTraditional>第3艦隊</chineseTraditional>
     </name>
     <leaderReference>
      <referenceObjectId>96e917d5-4465-4c27-b0db-2fde75bd1073</referenceObjectId>
@@ -17575,6 +17594,7 @@ https://www.jacar.archives.go.jp/das/image/C09050270200</chineseTraditional>
       <english>Encounter Rock</english>
       <japanese>過岩</japanese>
       <chineseSimplified>过岩</chineseSimplified>
+      <chineseTraditional>過巖</chineseTraditional>
      </name>
     </LocationLabel>
    </locationLabels>

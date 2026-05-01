@@ -3988,7 +3988,7 @@
      <english>Beiyang Fleet</english>
      <japanese>北洋艦隊</japanese>
      <chineseSimplified>北洋水师</chineseSimplified>
-     <chineseTraditional />
+     <chineseTraditional>北洋水師</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
@@ -4068,7 +4068,7 @@
      <english>Torpedo Boats</english>
      <japanese>水雷艇隊</japanese>
      <chineseSimplified>鱼雷艇队</chineseSimplified>
-     <chineseTraditional />
+     <chineseTraditional>魚雷艇隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
@@ -4150,6 +4150,7 @@
      <english>2nd Torpedo Boat Squadron</english>
      <japanese>第2水雷艇隊</japanese>
      <chineseSimplified>第2鱼雷艇队</chineseSimplified>
+     <chineseTraditional>第2魚雷艇隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
@@ -4230,6 +4231,7 @@
      <english>3rd Torpedo Boat Squadron</english>
      <japanese>第3水雷艇隊</japanese>
      <chineseSimplified>第3鱼雷艇队</chineseSimplified>
+     <chineseTraditional>第3魚雷艇隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>

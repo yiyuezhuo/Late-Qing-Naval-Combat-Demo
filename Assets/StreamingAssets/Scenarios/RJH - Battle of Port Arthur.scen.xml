@@ -10473,7 +10473,7 @@
      <english>Combined Fleet</english>
      <japanese>連合艦隊</japanese>
      <chineseSimplified>联合舰队</chineseSimplified>
-     <chineseTraditional />
+     <chineseTraditional>聯合艦隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
@@ -10545,6 +10545,7 @@
      <english>First Division</english>
      <japanese>第1戦隊</japanese>
      <chineseSimplified>第1战队</chineseSimplified>
+     <chineseTraditional>第1戰隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
@@ -10616,6 +10617,7 @@
      <english>Second Division</english>
      <japanese>第2戦隊</japanese>
      <chineseSimplified>第2战队</chineseSimplified>
+     <chineseTraditional>第2戰隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
@@ -10686,6 +10688,7 @@
      <english>Third Division</english>
      <japanese>第3戦隊</japanese>
      <chineseSimplified>第3战队</chineseSimplified>
+     <chineseTraditional>第3戰隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>

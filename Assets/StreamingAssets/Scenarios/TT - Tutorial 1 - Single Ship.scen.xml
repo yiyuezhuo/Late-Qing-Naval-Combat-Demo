@@ -259,7 +259,8 @@
     <name>
      <english>Beiyang Fleet</english>
      <japanese>北洋艦隊</japanese>
-     <chineseSimplified>北洋舰队</chineseSimplified>
+     <chineseSimplified>北洋水师</chineseSimplified>
+     <chineseTraditional>北洋水師</chineseTraditional>
     </name>
     <leaderReference>
      <referenceObjectId>18963af7-1163-4323-9421-9f2421c9fee1</referenceObjectId>

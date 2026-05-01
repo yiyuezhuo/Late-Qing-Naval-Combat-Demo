@@ -1635,6 +1635,7 @@
      <english>First Flying Squadron</english>
      <japanese>第一遊撃隊</japanese>
      <chineseSimplified>第一游击队</chineseSimplified>
+     <chineseTraditional>第一游擊隊</chineseTraditional>
     </name>
     <leaderReference>
      <referenceObjectId>0e0b574a-a1a6-45f0-aaa4-42cf2b2afc52</referenceObjectId>
@@ -1701,6 +1702,7 @@
      <english>Escort Group</english>
      <japanese>護衛隊</japanese>
      <chineseSimplified>护航队</chineseSimplified>
+     <chineseTraditional>護航隊</chineseTraditional>
     </name>
     <leaderReference>
      <referenceObjectId>7fd0a036-e488-4d20-9660-b2a8c2af4658</referenceObjectId>

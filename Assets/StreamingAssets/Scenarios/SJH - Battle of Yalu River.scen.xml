@@ -6538,6 +6538,7 @@
      <english>Beiyang Fleet</english>
      <japanese>北洋艦隊</japanese>
      <chineseSimplified>北洋水师</chineseSimplified>
+     <chineseTraditional>北洋水師</chineseTraditional>
     </name>
     <leaderReference>
      <referenceObjectId>18963af7-1163-4323-9421-9f2421c9fee1</referenceObjectId>
@@ -6610,6 +6611,7 @@
      <english>Pricipal Squadron</english>
      <japanese>本隊</japanese>
      <chineseSimplified>主队</chineseSimplified>
+     <chineseTraditional>主隊</chineseTraditional>
     </name>
     <leaderReference>
      <referenceObjectId>18963af7-1163-4323-9421-9f2421c9fee1</referenceObjectId>
@@ -6677,6 +6679,7 @@
      <english>Inshore Squadron</english>
      <japanese>別働隊</japanese>
      <chineseSimplified>增援</chineseSimplified>
+     <chineseTraditional>增援</chineseTraditional>
     </name>
     <leaderReference>
      <referenceObjectId>a30c7e56-bf11-44b2-8f99-febd99701a42</referenceObjectId>
@@ -6743,6 +6746,7 @@
      <english>Combined Fleet</english>
      <japanese>連合艦隊</japanese>
      <chineseSimplified>联合舰队</chineseSimplified>
+     <chineseTraditional>聯合艦隊</chineseTraditional>
     </name>
     <leaderReference>
      <referenceObjectId>a77bd722-8233-4d1c-a65c-b712c07297d0</referenceObjectId>
@@ -6811,6 +6815,7 @@
      <english>Battle Squadron</english>
      <japanese>連合艦隊本隊</japanese>
      <chineseSimplified>联合舰队本队</chineseSimplified>
+     <chineseTraditional>聯合艦隊本隊</chineseTraditional>
     </name>
     <leaderReference>
      <referenceObjectId>a77bd722-8233-4d1c-a65c-b712c07297d0</referenceObjectId>
@@ -6878,6 +6883,7 @@
      <english>Flying Squadron</english>
      <japanese>第一遊撃隊</japanese>
      <chineseSimplified>第一游击队</chineseSimplified>
+     <chineseTraditional>第一游擊隊</chineseTraditional>
     </name>
     <leaderReference>
      <referenceObjectId>0e0b574a-a1a6-45f0-aaa4-42cf2b2afc52</referenceObjectId>
@@ -6943,6 +6949,7 @@
      <english>Observers</english>
      <japanese>観察隊</japanese>
      <chineseSimplified>观察队</chineseSimplified>
+     <chineseTraditional>觀察隊</chineseTraditional>
     </name>
     <leaderReference />
     <type>General</type>

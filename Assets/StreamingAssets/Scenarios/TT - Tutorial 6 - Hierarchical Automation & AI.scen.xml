@@ -2322,7 +2322,7 @@
      <english>Beiyang Fleet</english>
      <japanese>北洋艦隊</japanese>
      <chineseSimplified>北洋水师</chineseSimplified>
-     <chineseTraditional />
+     <chineseTraditional>北洋水師</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
@@ -2391,7 +2391,7 @@
      <english>Combined Fleet</english>
      <japanese>連合艦隊</japanese>
      <chineseSimplified>联合舰队</chineseSimplified>
-     <chineseTraditional />
+     <chineseTraditional>聯合艦隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
@@ -2459,6 +2459,7 @@
      <english>Ting Yuen Squadron</english>
      <japanese>定遠隊</japanese>
      <chineseSimplified>定远队</chineseSimplified>
+     <chineseTraditional>定遠隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
@@ -2527,6 +2528,7 @@
      <english>Chin Yuan Squadron</english>
      <japanese>致遠隊</japanese>
      <chineseSimplified>致远队</chineseSimplified>
+     <chineseTraditional>致遠隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
@@ -2595,6 +2597,7 @@
      <english>Torpedo Boat Squadron</english>
      <japanese>魚雷艇隊</japanese>
      <chineseSimplified>鱼雷艇队</chineseSimplified>
+     <chineseTraditional>魚雷艇隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>

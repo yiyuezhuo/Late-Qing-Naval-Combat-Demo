@@ -54,6 +54,7 @@ public partial class NaabLikeTrajectoryChart : VisualElement
     const float RightPadding = 18f;
     const float TopPadding = 18f;
     const float BottomPadding = 34f;
+    const float FeetPerYard = 3f;
 
     readonly VisualElement labelLayer = new();
     List<NaabLikeBallisticsResult> results = new();
@@ -104,10 +105,9 @@ public partial class NaabLikeTrajectoryChart : VisualElement
         if (results.Count == 0)
             return;
 
-        var maxRange = Mathf.Max(1f, results.SelectMany(result => result.trajectory).Max(point => point.rangeYards));
-        var maxHeight = Mathf.Max(1f, results.SelectMany(result => result.trajectory).Max(point => point.heightFeet));
+        var scale = CalculateScale(chartRect);
         for (int i = 0; i < results.Count; i++)
-            DrawTrajectory(painter, chartRect, results[i], maxRange, maxHeight, SeriesColors[i % SeriesColors.Length]);
+            DrawTrajectory(painter, chartRect, results[i], scale, SeriesColors[i % SeriesColors.Length]);
     }
 
     void DrawAxes(Painter2D painter, Rect chartRect)
@@ -130,7 +130,7 @@ public partial class NaabLikeTrajectoryChart : VisualElement
         }
     }
 
-    void DrawTrajectory(Painter2D painter, Rect chartRect, NaabLikeBallisticsResult result, float maxRange, float maxHeight, Color color)
+    void DrawTrajectory(Painter2D painter, Rect chartRect, NaabLikeBallisticsResult result, ChartScale scale, Color color)
     {
         painter.strokeColor = color;
         painter.lineWidth = 2f;
@@ -138,7 +138,7 @@ public partial class NaabLikeTrajectoryChart : VisualElement
         var started = false;
         foreach (var point in result.trajectory)
         {
-            var mapped = MapPoint(chartRect, point.rangeYards, point.heightFeet, maxRange, maxHeight);
+            var mapped = MapPoint(chartRect, point.rangeYards, point.heightFeet, scale);
             if (!started)
             {
                 painter.MoveTo(mapped);
@@ -159,13 +159,12 @@ public partial class NaabLikeTrajectoryChart : VisualElement
         if (chartRect.width <= 0 || chartRect.height <= 0)
             return;
 
-        var maxRange = results.Count > 0 ? Mathf.Max(1f, results.SelectMany(result => result.trajectory).Max(point => point.rangeYards)) : 1f;
-        var maxHeight = results.Count > 0 ? Mathf.Max(1f, results.SelectMany(result => result.trajectory).Max(point => point.heightFeet)) : 1f;
+        var scale = CalculateScale(chartRect);
 
         labelLayer.Add(BuildLabel("y ft", 2f, chartRect.yMin - 6f, LeftPadding - 8f, 18f, TextAnchor.MiddleRight));
         labelLayer.Add(BuildLabel("x yd", chartRect.xMax - 52f, chartRect.yMax + 8f, 70f, 18f, TextAnchor.UpperLeft));
-        labelLayer.Add(BuildLabel(maxRange.ToString("0"), chartRect.xMax - 45f, chartRect.yMax + 8f, 50f, 18f, TextAnchor.UpperRight));
-        labelLayer.Add(BuildLabel(maxHeight.ToString("0"), 2f, chartRect.yMin + 10f, LeftPadding - 8f, 18f, TextAnchor.MiddleRight));
+        labelLayer.Add(BuildLabel(scale.xAxisMaxYards.ToString("0"), chartRect.xMax - 45f, chartRect.yMax + 8f, 50f, 18f, TextAnchor.UpperRight));
+        labelLayer.Add(BuildLabel(scale.yAxisMaxFeet.ToString("0"), 2f, chartRect.yMin + 10f, LeftPadding - 8f, 18f, TextAnchor.MiddleRight));
 
         for (int i = 0; i < results.Count; i++)
         {
@@ -189,11 +188,46 @@ public partial class NaabLikeTrajectoryChart : VisualElement
             Mathf.Max(0f, contentRect.height - TopPadding - BottomPadding));
     }
 
-    static Vector2 MapPoint(Rect chartRect, float rangeYards, float heightFeet, float maxRange, float maxHeight)
+    ChartScale CalculateScale(Rect chartRect)
+    {
+        if (results.Count == 0)
+            return ChartScale.Create(chartRect, FeetPerYard, 1f);
+
+        var maxRangeFeet = Mathf.Max(FeetPerYard, results.SelectMany(result => result.trajectory).Max(point => point.rangeYards) * FeetPerYard);
+        var maxHeightFeet = Mathf.Max(1f, results.SelectMany(result => result.trajectory).Max(point => point.heightFeet));
+        return ChartScale.Create(chartRect, maxRangeFeet, maxHeightFeet);
+    }
+
+    static Vector2 MapPoint(Rect chartRect, float rangeYards, float heightFeet, ChartScale scale)
     {
         return new Vector2(
-            Mathf.Lerp(chartRect.xMin, chartRect.xMax, Mathf.InverseLerp(0f, maxRange, rangeYards)),
-            Mathf.Lerp(chartRect.yMax, chartRect.yMin, Mathf.InverseLerp(0f, maxHeight, heightFeet)));
+            chartRect.xMin + rangeYards * FeetPerYard / scale.feetPerPixel,
+            chartRect.yMax - heightFeet / scale.feetPerPixel);
+    }
+
+    readonly struct ChartScale
+    {
+        public readonly float feetPerPixel;
+        public readonly float xAxisMaxYards;
+        public readonly float yAxisMaxFeet;
+
+        ChartScale(float feetPerPixel, float xAxisMaxYards, float yAxisMaxFeet)
+        {
+            this.feetPerPixel = feetPerPixel;
+            this.xAxisMaxYards = xAxisMaxYards;
+            this.yAxisMaxFeet = yAxisMaxFeet;
+        }
+
+        public static ChartScale Create(Rect chartRect, float maxRangeFeet, float maxHeightFeet)
+        {
+            var feetPerPixel = Mathf.Max(
+                maxRangeFeet / Mathf.Max(1f, chartRect.width),
+                maxHeightFeet / Mathf.Max(1f, chartRect.height));
+            return new ChartScale(
+                feetPerPixel,
+                chartRect.width * feetPerPixel / FeetPerYard,
+                chartRect.height * feetPerPixel);
+        }
     }
 
     static Label BuildLabel(string text, float left, float top, float width, float height, TextAnchor align, Color? color = null)
@@ -573,8 +607,43 @@ public sealed class NaabLikeCalculatorDialog
 
     void BuildInputPanel(VisualElement root)
     {
+        root.Add(BuildSectionLabel(Localize("Plot Parameters")));
+        elevationModeField = new DropdownField(Localize("Elevation Mode"), new List<string> { Localize("Range"), Localize("Search Fix"), Localize("Search SK5") }, 2);
+        plotModeField = new DropdownField(Localize("Plot Mode"), new List<string> { Localize("None"), Localize("Trajectories"), Localize("Penetration") }, 1);
+        root.Add(elevationModeField);
+
+        rangeElevationRows = new VisualElement();
+        startElevationField = BuildFloatField(Localize("Start Elevation (deg)"), 1f);
+        endElevationField = BuildFloatField(Localize("End Elevation (deg)"), 20f);
+        elevationStepField = BuildFloatField(Localize("Elevation Step (deg)"), 1f);
+        rangeElevationRows.Add(startElevationField);
+        rangeElevationRows.Add(endElevationField);
+        rangeElevationRows.Add(elevationStepField);
+        root.Add(rangeElevationRows);
+
+        searchFixRows = new VisualElement();
+        searchRangeStepField = BuildFloatField(Localize("Range Step (yards)"), 1000f);
+        searchFixRows.Add(searchRangeStepField);
+        root.Add(searchFixRows);
+
+        root.Add(plotModeField);
+        calculateButton = new Button(Calculate)
+        {
+            text = Localize("Calculate"),
+            style =
+            {
+                marginTop = 8
+            }
+        };
+        root.Add(calculateButton);
+
+        statusLabel = new Label();
+        statusLabel.style.whiteSpace = WhiteSpace.Normal;
+        statusLabel.style.marginTop = 6;
+        root.Add(statusLabel);
+
         root.Add(BuildSectionLabel(Localize("Armor Parameters")));
-        armorPresetField = new DropdownField(Localize("Armor Preset"), ArmorPresets.Select(preset => preset.name).ToList(), 2);
+        armorPresetField = new DropdownField(Localize("Armor Preset"), ArmorPresets.Select(preset => Localize(preset.name)).ToList(), 2);
         armorQualityField = BuildFloatField(Localize("Quality"), 0.95f);
         armorElongationField = BuildFloatField(Localize("Elongation (%)"), 22f);
         armorBhnField = BuildFloatField(Localize("BHN"), 235f);
@@ -614,41 +683,6 @@ public sealed class NaabLikeCalculatorDialog
         {
             root.Add(element);
         }
-
-        root.Add(BuildSectionLabel(Localize("Plot Parameters")));
-        elevationModeField = new DropdownField(Localize("Elevation Mode"), new List<string> { Localize("Range"), Localize("Search Fix"), Localize("Search SK5") }, 2);
-        plotModeField = new DropdownField(Localize("Plot Mode"), new List<string> { Localize("None"), Localize("Trajectories"), Localize("Penetration") }, 1);
-        root.Add(elevationModeField);
-
-        rangeElevationRows = new VisualElement();
-        startElevationField = BuildFloatField(Localize("Start Elevation (deg)"), 1f);
-        endElevationField = BuildFloatField(Localize("End Elevation (deg)"), 20f);
-        elevationStepField = BuildFloatField(Localize("Elevation Step (deg)"), 1f);
-        rangeElevationRows.Add(startElevationField);
-        rangeElevationRows.Add(endElevationField);
-        rangeElevationRows.Add(elevationStepField);
-        root.Add(rangeElevationRows);
-
-        searchFixRows = new VisualElement();
-        searchRangeStepField = BuildFloatField(Localize("Range Step (yards)"), 1000f);
-        searchFixRows.Add(searchRangeStepField);
-        root.Add(searchFixRows);
-
-        root.Add(plotModeField);
-        calculateButton = new Button(Calculate)
-        {
-            text = Localize("Calculate"),
-            style =
-            {
-                marginTop = 8
-            }
-        };
-        root.Add(calculateButton);
-
-        statusLabel = new Label();
-        statusLabel.style.whiteSpace = WhiteSpace.Normal;
-        statusLabel.style.marginTop = 6;
-        root.Add(statusLabel);
 
         RegisterInputCallbacks();
         ApplyArmorPreset(ArmorPresets[2]);

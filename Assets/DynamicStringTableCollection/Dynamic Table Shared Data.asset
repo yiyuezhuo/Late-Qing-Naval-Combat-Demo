@@ -4501,6 +4501,18 @@ MonoBehaviour:
     m_Key: High-obliquity threshold must be 0 or greater.
     m_Metadata:
       m_Items: []
+  - m_Id: -358
+    m_Key: Avg. wrought iron construction and armor material
+    m_Metadata:
+      m_Items: []
+  - m_Id: -359
+    m_Key: 'Avg. "mild/medium" construction steel. (1890-on)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -360
+    m_Key: 'Avg. U.S WWI-era class "B" armor'
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

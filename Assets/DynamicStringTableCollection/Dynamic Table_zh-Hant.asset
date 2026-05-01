@@ -4299,167 +4299,167 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -298
-    m_Localized: "NAAB-like Calculator"
+    m_Localized: "NAAB-like \u8A08\u7B97\u5668"
     m_Metadata:
       m_Items: []
   - m_Id: -299
-    m_Localized: "Armor Parameters"
+    m_Localized: "\u88DD\u7532\u53C3\u6578"
     m_Metadata:
       m_Items: []
   - m_Id: -300
-    m_Localized: "Armor Preset"
+    m_Localized: "\u88DD\u7532\u9810\u8A2D"
     m_Metadata:
       m_Items: []
   - m_Id: -301
-    m_Localized: "Quality"
+    m_Localized: "\u54C1\u8CEA"
     m_Metadata:
       m_Items: []
   - m_Id: -302
-    m_Localized: "Elongation (%)"
+    m_Localized: "\u5EF6\u4F38\u7387 (%)"
     m_Metadata:
       m_Items: []
   - m_Id: -303
-    m_Localized: "BNH"
+    m_Localized: "BHN"
     m_Metadata:
       m_Items: []
   - m_Id: -304
-    m_Localized: "Inclined (deg)"
+    m_Localized: "\u50BE\u659C\u89D2 (deg)"
     m_Metadata:
       m_Items: []
   - m_Id: -305
-    m_Localized: "Projectile Parameters"
+    m_Localized: "\u5F48\u4E38\u53C3\u6578"
     m_Metadata:
       m_Items: []
   - m_Id: -306
-    m_Localized: "Projectile Preset"
+    m_Localized: "\u5F48\u4E38\u9810\u8A2D"
     m_Metadata:
       m_Items: []
   - m_Id: -307
-    m_Localized: "Diameter (inch)"
+    m_Localized: "\u76F4\u5F91 (inch)"
     m_Metadata:
       m_Items: []
   - m_Id: -308
-    m_Localized: "Total Weight (lb)"
+    m_Localized: "\u7E3D\u91CD\u91CF (lb)"
     m_Metadata:
       m_Items: []
   - m_Id: -309
-    m_Localized: "Body Weight (lb)"
+    m_Localized: "\u5F48\u9AD4\u91CD\u91CF (lb)"
     m_Metadata:
       m_Items: []
   - m_Id: -310
-    m_Localized: "Windscreen (lb)"
+    m_Localized: "\u98A8\u5E3D\u91CD\u91CF (lb)"
     m_Metadata:
       m_Items: []
   - m_Id: -311
-    m_Localized: "Cap Type"
+    m_Localized: "\u88AB\u5E3D\u985E\u578B"
     m_Metadata:
       m_Items: []
   - m_Id: -312
-    m_Localized: "Hard Cap"
+    m_Localized: "\u786C\u88AB\u5E3D"
     m_Metadata:
       m_Items: []
   - m_Id: -313
-    m_Localized: "Muzzle Velocity (fps)"
+    m_Localized: "\u70AE\u53E3\u521D\u901F (fps)"
     m_Metadata:
       m_Items: []
   - m_Id: -314
-    m_Localized: "Max Range (yards)"
+    m_Localized: "\u6700\u5927\u5C04\u7A0B (yards)"
     m_Metadata:
       m_Items: []
   - m_Id: -315
-    m_Localized: "Drag Function"
+    m_Localized: "\u963B\u529B\u51FD\u6578"
     m_Metadata:
       m_Items: []
   - m_Id: -316
-    m_Localized: "Drag Coefficient"
+    m_Localized: "\u963B\u529B\u4FC2\u6578"
     m_Metadata:
       m_Items: []
   - m_Id: -317
-    m_Localized: "Elevation Deg"
+    m_Localized: "\u4EF0\u89D2 (deg)"
     m_Metadata:
       m_Items: []
   - m_Id: -318
-    m_Localized: "Shell Quality"
+    m_Localized: "\u5F48\u9AD4\u54C1\u8CEA"
     m_Metadata:
       m_Items: []
   - m_Id: -319
-    m_Localized: "Plot Parameters"
+    m_Localized: "\u7E6A\u5716\u53C3\u6578"
     m_Metadata:
       m_Items: []
   - m_Id: -320
-    m_Localized: "Elevation Mode"
+    m_Localized: "\u4EF0\u89D2\u6A21\u5F0F"
     m_Metadata:
       m_Items: []
   - m_Id: -321
-    m_Localized: "Search Fix"
+    m_Localized: "\u641C\u5C0B\u4FEE\u6B63"
     m_Metadata:
       m_Items: []
   - m_Id: -322
-    m_Localized: "Search SK5"
+    m_Localized: "\u641C\u5C0B SK5"
     m_Metadata:
       m_Items: []
   - m_Id: -323
-    m_Localized: "Plot Mode"
+    m_Localized: "\u7E6A\u5716\u6A21\u5F0F"
     m_Metadata:
       m_Items: []
   - m_Id: -324
-    m_Localized: "Trajectories"
+    m_Localized: "\u5F48\u9053\u66F2\u7DDA"
     m_Metadata:
       m_Items: []
   - m_Id: -325
-    m_Localized: "Start Elevation (deg)"
+    m_Localized: "\u8D77\u59CB\u4EF0\u89D2 (deg)"
     m_Metadata:
       m_Items: []
   - m_Id: -326
-    m_Localized: "End Elevation (deg)"
+    m_Localized: "\u7D50\u675F\u4EF0\u89D2 (deg)"
     m_Metadata:
       m_Items: []
   - m_Id: -327
-    m_Localized: "Range Step (yards)"
+    m_Localized: "\u5C04\u7A0B\u6B65\u9577 (yards)"
     m_Metadata:
       m_Items: []
   - m_Id: -328
-    m_Localized: "{0} result(s), {1} external ballistic failure(s)."
+    m_Localized: "{0} \u500B\u7D50\u679C\uFF0C{1} \u500B\u5916\u5F48\u9053\u5931\u6557\u3002"
     m_Metadata:
       m_Items: []
   - m_Id: -329
-    m_Localized: "Quality must be greater than 0."
+    m_Localized: "\u54C1\u8CEA\u5FC5\u9808\u5927\u65BC 0\u3002"
     m_Metadata:
       m_Items: []
   - m_Id: -330
-    m_Localized: "Elongation must be greater than 0."
+    m_Localized: "\u5EF6\u4F38\u7387\u5FC5\u9808\u5927\u65BC 0\u3002"
     m_Metadata:
       m_Items: []
   - m_Id: -331
-    m_Localized: "BNH must be greater than 0."
+    m_Localized: "BNH \u5FC5\u9808\u5927\u65BC 0\u3002"
     m_Metadata:
       m_Items: []
   - m_Id: -332
-    m_Localized: "Projectile component weights must be 0 or greater."
+    m_Localized: "\u5F48\u4E38\u90E8\u4EF6\u91CD\u91CF\u5FC5\u9808\u5927\u65BC\u6216\u7B49\u65BC 0\u3002"
     m_Metadata:
       m_Items: []
   - m_Id: -333
-    m_Localized: "Projectile component weights must not exceed total weight."
+    m_Localized: "\u5F48\u4E38\u90E8\u4EF6\u91CD\u91CF\u4E0D\u5F97\u8D85\u904E\u7E3D\u91CD\u91CF\u3002"
     m_Metadata:
       m_Items: []
   - m_Id: -334
-    m_Localized: "Max range must be greater than 0."
+    m_Localized: "\u6700\u5927\u5C04\u7A0B\u5FC5\u9808\u5927\u65BC 0\u3002"
     m_Metadata:
       m_Items: []
   - m_Id: -335
-    m_Localized: "Shell quality must be greater than 0."
+    m_Localized: "\u5F48\u9AD4\u54C1\u8CEA\u5FC5\u9808\u5927\u65BC 0\u3002"
     m_Metadata:
       m_Items: []
   - m_Id: -336
-    m_Localized: "Start elevation must be less than or equal to end elevation."
+    m_Localized: "\u8D77\u59CB\u4EF0\u89D2\u5FC5\u9808\u5C0F\u65BC\u6216\u7B49\u65BC\u7D50\u675F\u4EF0\u89D2\u3002"
     m_Metadata:
       m_Items: []
   - m_Id: -337
-    m_Localized: "Range step must be greater than 0."
+    m_Localized: "\u5C04\u7A0B\u6B65\u9577\u5FC5\u9808\u5927\u65BC 0\u3002"
     m_Metadata:
       m_Items: []
   - m_Id: -338
-    m_Localized: "Failed to load NAAB-like data: {0}"
+    m_Localized: "NAAB-like \u8CC7\u6599\u8F09\u5165\u5931\u6557\uFF1A{0}"
     m_Metadata:
       m_Items: []
   - m_Id: -339
@@ -4499,43 +4499,55 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -348
-    m_Localized: "Medium Cap"
+    m_Localized: "\u4E2D\u786C\u88AB\u5E3D"
     m_Metadata:
       m_Items: []
   - m_Id: -349
-    m_Localized: "Soft Cap"
+    m_Localized: "\u8EDF\u88AB\u5E3D"
     m_Metadata:
       m_Items: []
   - m_Id: -350
-    m_Localized: "Hood"
+    m_Localized: "\u7F69\u5E3D"
     m_Metadata:
       m_Items: []
   - m_Id: -351
-    m_Localized: "Effective Shell Quality"
+    m_Localized: "\u6709\u6548\u5F48\u9AD4\u54C1\u8CEA"
     m_Metadata:
       m_Items: []
   - m_Id: -352
-    m_Localized: "Effective shell quality \u5FC5\u9808\u5927\u65BC 0\u3002"
+    m_Localized: "\u6709\u6548\u5F48\u9AD4\u54C1\u8CEA\u5FC5\u9808\u5927\u65BC 0\u3002"
     m_Metadata:
       m_Items: []
   - m_Id: -353
-    m_Localized: "Windscreen NBL Addend Multiplier"
+    m_Localized: "\u98A8\u5E3D NBL \u52A0\u503C\u4E58\u6578"
     m_Metadata:
       m_Items: []
   - m_Id: -354
-    m_Localized: "Hi-Obl Windscreen NBL Addend Mult."
+    m_Localized: "\u5927\u659C\u89D2\u98A8\u5E3D NBL \u52A0\u503C\u4E58\u6578"
     m_Metadata:
       m_Items: []
   - m_Id: -355
-    m_Localized: "High-Obliquity Threshold (deg)"
+    m_Localized: "\u5927\u659C\u89D2\u95BE\u503C (deg)"
     m_Metadata:
       m_Items: []
   - m_Id: -356
-    m_Localized: "Windscreen NBL addend multipliers \u5FC5\u9808\u5927\u65BC\u6216\u7B49\u65BC 0\u3002"
+    m_Localized: "\u98A8\u5E3D NBL \u52A0\u503C\u4E58\u6578\u5FC5\u9808\u5927\u65BC\u6216\u7B49\u65BC 0\u3002"
     m_Metadata:
       m_Items: []
   - m_Id: -357
-    m_Localized: "High-obliquity threshold \u5FC5\u9808\u5927\u65BC\u6216\u7B49\u65BC 0\u3002"
+    m_Localized: "\u5927\u659C\u89D2\u95BE\u503C\u5FC5\u9808\u5927\u65BC\u6216\u7B49\u65BC 0\u3002"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -358
+    m_Localized: "\u5E73\u5747\u719F\u9435\u7D50\u69CB\u8207\u88DD\u7532\u6750\u6599"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -359
+    m_Localized: "\u5E73\u5747\u300C\u8EDF/\u4E2D\u7B49\u300D\u7D50\u69CB\u92FC\uFF081890 \u5E74\u4EE5\u5F8C\uFF09"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -360
+    m_Localized: "\u5E73\u5747\u7F8E\u570B\u4E00\u6230\u6642\u671F B \u7D1A\u88DD\u7532"
     m_Metadata:
       m_Items: []
   references:

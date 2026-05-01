@@ -592,6 +592,25 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
             var penetrationTableMultiColumnListView = el.Q<MultiColumnListView>("PenetrationTableMultiColumnListView");
             var mountsListView = el.Q<ListView>("MountsListView");
             var fireControlModelComparisonButton = el.Q<Button>("FireControlModelComparisonButton");
+            var batteryRecordMetaInfoButton = el.Q<Button>("BatteryRecordMetaInfoButton");
+            if (batteryRecordMetaInfoButton != null)
+            {
+                batteryRecordMetaInfoButton.clicked += () =>
+                {
+                    if (!Utils.TryResolveCurrentValueForBinding(batteryRecordMetaInfoButton, out BatteryRecord batteryRecord))
+                    {
+                        DialogRoot.Instance.PopupMessageDialog(Localize("No battery record is selected."));
+                        return;
+                    }
+
+                    DialogRoot.Instance.PopupBatteryRecordMetaInfoDialog(batteryRecord, () =>
+                    {
+                        penetrationTableMultiColumnListView?.RefreshItems();
+                        RequestSectorArcRefresh(true);
+                    });
+                };
+            }
+
             if (fireControlModelComparisonButton != null)
             {
                 fireControlModelComparisonButton.clicked += () =>

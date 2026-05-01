@@ -1,7 +1,9 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:VisualElement name="NaabLikeCalculatorRoot" data-source-type="NaabLikeCalculatorViewModel, Assembly-CSharp" style="position: relative; flex-grow: 1; flex-shrink: 1;">
         <ui:VisualElement style="flex-direction: row; flex-grow: 1; flex-shrink: 1;">
-            <ui:ScrollView name="InputScroll" mode="Vertical" style="flex-basis: 380px; flex-shrink: 0; margin-right: 8px;">
+            <ui:TabView name="NaabLikeInputTabView" style="flex-basis: 410px; flex-shrink: 0; margin-right: 8px;">
+                <ui:Tab label="Ballistic">
+            <ui:ScrollView name="InputScroll" mode="Vertical" style="flex-grow: 1; flex-shrink: 1;">
                 <ui:Label text="Plot Parameters" style="-unity-font-style: bold; margin-top: 6px; margin-bottom: 3px;" />
                 <ui:DropdownField name="ElevationModeField" label="Elevation Mode">
                     <Bindings>
@@ -169,6 +171,39 @@
                     </Bindings>
                 </ui:FloatField>
             </ui:ScrollView>
+                </ui:Tab>
+                <ui:Tab label="SK5 Data">
+                    <ui:ScrollView mode="Vertical" style="flex-grow: 1; flex-shrink: 1;">
+                        <ui:Label text="SK5 Data" style="-unity-font-style: bold; margin-top: 6px; margin-bottom: 3px;" />
+                        <ui:FloatField name="Sk5RangeYardsField" label="Range">
+                            <Bindings>
+                                <ui:DataBinding property="value" data-source-path="sk5RangeYards" binding-mode="TwoWay" />
+                            </Bindings>
+                        </ui:FloatField>
+                        <ui:FloatField name="Sk5MaxRateOfFireField" label="Max ROF">
+                            <Bindings>
+                                <ui:DataBinding property="value" data-source-path="sk5MaxRateOfFireShootPerMin" binding-mode="TwoWay" />
+                            </Bindings>
+                        </ui:FloatField>
+                        <ui:FloatField name="Sk5ShellSizeField" label="Shell Size">
+                            <Bindings>
+                                <ui:DataBinding property="value" data-source-path="sk5ShellSizeInch" binding-mode="TwoWay" />
+                            </Bindings>
+                        </ui:FloatField>
+                        <ui:FloatField name="Sk5ShellWeightField" label="Shell Weight">
+                            <Bindings>
+                                <ui:DataBinding property="value" data-source-path="sk5ShellWeightPounds" binding-mode="TwoWay" />
+                            </Bindings>
+                        </ui:FloatField>
+                        <ui:VisualElement style="flex-direction: row; flex-shrink: 0; margin-top: 6px; margin-bottom: 6px;">
+                            <ui:Button name="Sk5FitExternalBallisticButton" text="Fit External Ballistic" style="flex-grow: 1;" />
+                            <ui:Button name="Sk5FitTerminalBallisticButton" text="Fit Terminal Ballistic" style="flex-grow: 1; margin-left: 4px;" />
+                            <ui:Button name="Sk5SyncBackButton" text="Sync Back" style="flex-grow: 1; margin-left: 4px;" />
+                        </ui:VisualElement>
+                        <ui:MultiColumnListView name="Sk5PenetrationTableListView" header-title="Penetration Table" show-foldout-header="true" show-add-remove-footer="true" style="min-height: 260px; flex-grow: 1; flex-shrink: 1;" />
+                    </ui:ScrollView>
+                </ui:Tab>
+            </ui:TabView>
 
             <ui:VisualElement name="OutputPanel" style="flex-grow: 1; flex-shrink: 1;">
                 <ui:VisualElement name="ChartContainer" style="flex-basis: 240px; flex-shrink: 0; margin-bottom: 6px; display: none;">
@@ -194,19 +229,26 @@
             <Bindings>
                 <ui:DataBinding property="style.display" data-source-path="progressOverlayDisplay" binding-mode="ToTarget" />
             </Bindings>
-            <ui:VisualElement class="panel" style="width: 320px; height: 132px; flex-grow: 0; flex-shrink: 0; padding-left: 12px; padding-right: 12px; padding-top: 10px; padding-bottom: 10px;">
-                <ui:Label text="Calculating..." style="-unity-font-style: bold; margin-bottom: 8px;" />
+            <ui:VisualElement class="panel" style="width: 460px; height: auto; min-height: 132px; flex-grow: 0; flex-shrink: 0; padding-left: 12px; padding-right: 12px; padding-top: 10px; padding-bottom: 10px;">
+                <ui:Label name="ProgressTitleLabel" text="Calculating..." style="-unity-font-style: bold; margin-bottom: 8px;" />
                 <ui:ProgressBar name="ProgressBar" low-value="0" high-value="1">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="progressValue" binding-mode="ToTarget" />
                         <ui:DataBinding property="title" data-source-path="progressTitle" binding-mode="ToTarget" />
                     </Bindings>
                 </ui:ProgressBar>
-                <ui:Label name="ProgressLabel" style="-unity-text-align: middle-center; margin-top: 6px;">
+                <ui:Label name="ProgressLabel" style="-unity-text-align: middle-center; margin-top: 6px; white-space: normal;">
                     <Bindings>
                         <ui:DataBinding property="text" data-source-path="progressText" binding-mode="ToTarget" />
                     </Bindings>
                 </ui:Label>
+                <ui:VisualElement name="FitProgressControls" style="display: none; flex-direction: row; margin-top: 8px;">
+                    <Bindings>
+                        <ui:DataBinding property="style.display" data-source-path="fitControlsDisplay" binding-mode="ToTarget" />
+                    </Bindings>
+                    <ui:Button name="FitPauseButton" text="Pause" style="flex-grow: 1;" />
+                    <ui:Button name="FitCancelButton" text="Cancel" style="flex-grow: 1; margin-left: 6px;" />
+                </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

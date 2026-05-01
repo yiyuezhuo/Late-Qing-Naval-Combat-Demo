@@ -23,6 +23,12 @@ public enum NaabLikePlotMode
     Penetration
 }
 
+public enum NaabLikeFitMode
+{
+    ExternalBallistic,
+    TerminalBallistic
+}
+
 public sealed class NaabLikeArmorPreset
 {
     public string name;
@@ -46,6 +52,48 @@ sealed class NaabLikeResultRow
     public string timeOfFlight;
     public string impactVelocity;
     public string angleOfFall;
+    public string rangeBandComparison;
+}
+
+public sealed class NaabLikeCalculatorLaunchContext
+{
+    public BatteryRecord sourceBatteryRecord;
+    public bool applyProjectileToBallistic;
+    public float rangeYards;
+    public float maxRateOfFireShootPerMin;
+    public float shellSizeInch;
+    public float shellWeightPounds;
+    public List<PenetrationTableRecord> penetrationTableRecords = new();
+    public NaabLikeProjectile projectile;
+
+    public static NaabLikeCalculatorLaunchContext FromBatteryRecord(BatteryRecord batteryRecord, bool applyProjectileToBallistic)
+    {
+        return new NaabLikeCalculatorLaunchContext
+        {
+            sourceBatteryRecord = batteryRecord,
+            applyProjectileToBallistic = applyProjectileToBallistic,
+            rangeYards = batteryRecord?.rangeYards ?? 0f,
+            maxRateOfFireShootPerMin = batteryRecord?.maxRateOfFireShootPerMin ?? 0f,
+            shellSizeInch = batteryRecord?.shellSizeInch ?? 0f,
+            shellWeightPounds = batteryRecord?.shellWeightPounds ?? 0f,
+            penetrationTableRecords = ClonePenetrationTableRecords(batteryRecord?.penetrationTableRecords),
+            projectile = batteryRecord?.metaInfo?.naabLikeProjectile?.Clone()
+        };
+    }
+
+    static List<PenetrationTableRecord> ClonePenetrationTableRecords(IEnumerable<PenetrationTableRecord> records)
+    {
+        return (records ?? Enumerable.Empty<PenetrationTableRecord>())
+            .Select(record => new PenetrationTableRecord
+            {
+                distanceYards = record.distanceYards,
+                rateOfFire = record.rateOfFire,
+                rangeBand = record.rangeBand,
+                horizontalPenetrationInchs = record.horizontalPenetrationInchs,
+                verticalPenetrationInchs = record.verticalPenetrationInchs
+            })
+            .ToList();
+    }
 }
 
 [UxmlElement]
@@ -441,6 +489,7 @@ public sealed class NaabLikeCalculatorViewModel : INotifyBindablePropertyChanged
     bool _chartVisible;
     bool _trajectoryChartVisible;
     bool _penetrationChartVisible;
+    bool _fitControlsVisible;
 
     float _armorQuality = 0.95f;
     float _armorElongation = 22f;
@@ -465,8 +514,13 @@ public sealed class NaabLikeCalculatorViewModel : INotifyBindablePropertyChanged
     float _endElevation = 20f;
     float _elevationStep = 1f;
     float _searchRangeStep = 1000f;
+    float _sk5RangeYards;
+    float _sk5MaxRateOfFireShootPerMin;
+    float _sk5ShellSizeInch;
+    float _sk5ShellWeightPounds;
 
     public event EventHandler<BindablePropertyChangedEventArgs> propertyChanged;
+    [CreateProperty] public List<PenetrationTableRecord> sk5PenetrationTableRecords { get; } = new();
 
     public NaabLikeCalculatorViewModel(List<NaabLikeArmorPreset> armorPresets, List<NaabLikeProjectilePreset> projectilePresets)
     {
@@ -542,6 +596,10 @@ public sealed class NaabLikeCalculatorViewModel : INotifyBindablePropertyChanged
     [CreateProperty] public float endElevation { get => _endElevation; set => SetProperty(ref _endElevation, value, nameof(endElevation)); }
     [CreateProperty] public float elevationStep { get => _elevationStep; set => SetProperty(ref _elevationStep, value, nameof(elevationStep)); }
     [CreateProperty] public float searchRangeStep { get => _searchRangeStep; set => SetProperty(ref _searchRangeStep, value, nameof(searchRangeStep)); }
+    [CreateProperty] public float sk5RangeYards { get => _sk5RangeYards; set => SetProperty(ref _sk5RangeYards, value, nameof(sk5RangeYards)); }
+    [CreateProperty] public float sk5MaxRateOfFireShootPerMin { get => _sk5MaxRateOfFireShootPerMin; set => SetProperty(ref _sk5MaxRateOfFireShootPerMin, value, nameof(sk5MaxRateOfFireShootPerMin)); }
+    [CreateProperty] public float sk5ShellSizeInch { get => _sk5ShellSizeInch; set => SetProperty(ref _sk5ShellSizeInch, value, nameof(sk5ShellSizeInch)); }
+    [CreateProperty] public float sk5ShellWeightPounds { get => _sk5ShellWeightPounds; set => SetProperty(ref _sk5ShellWeightPounds, value, nameof(sk5ShellWeightPounds)); }
 
     [CreateProperty] public string statusText { get => _statusText; set => SetProperty(ref _statusText, value, nameof(statusText)); }
     [CreateProperty] public bool calculateEnabled { get => _calculateEnabled; set => SetProperty(ref _calculateEnabled, value, nameof(calculateEnabled)); }
@@ -552,6 +610,7 @@ public sealed class NaabLikeCalculatorViewModel : INotifyBindablePropertyChanged
     [CreateProperty] public bool chartVisible { get => _chartVisible; set { if (SetProperty(ref _chartVisible, value, nameof(chartVisible))) Notify(nameof(chartDisplay)); } }
     [CreateProperty] public bool trajectoryChartVisible { get => _trajectoryChartVisible; set { if (SetProperty(ref _trajectoryChartVisible, value, nameof(trajectoryChartVisible))) Notify(nameof(trajectoryChartDisplay)); } }
     [CreateProperty] public bool penetrationChartVisible { get => _penetrationChartVisible; set { if (SetProperty(ref _penetrationChartVisible, value, nameof(penetrationChartVisible))) Notify(nameof(penetrationChartDisplay)); } }
+    [CreateProperty] public bool fitControlsVisible { get => _fitControlsVisible; set { if (SetProperty(ref _fitControlsVisible, value, nameof(fitControlsVisible))) Notify(nameof(fitControlsDisplay)); } }
 
     [CreateProperty] public DisplayStyle rangeElevationDisplay => elevationModeIndex == (int)NaabLikeElevationMode.Range ? DisplayStyle.Flex : DisplayStyle.None;
     [CreateProperty] public DisplayStyle searchFixDisplay => elevationModeIndex == (int)NaabLikeElevationMode.SearchFix ? DisplayStyle.Flex : DisplayStyle.None;
@@ -559,6 +618,7 @@ public sealed class NaabLikeCalculatorViewModel : INotifyBindablePropertyChanged
     [CreateProperty] public DisplayStyle chartDisplay => chartVisible ? DisplayStyle.Flex : DisplayStyle.None;
     [CreateProperty] public DisplayStyle trajectoryChartDisplay => trajectoryChartVisible ? DisplayStyle.Flex : DisplayStyle.None;
     [CreateProperty] public DisplayStyle penetrationChartDisplay => penetrationChartVisible ? DisplayStyle.Flex : DisplayStyle.None;
+    [CreateProperty] public DisplayStyle fitControlsDisplay => fitControlsVisible ? DisplayStyle.Flex : DisplayStyle.None;
 
     void ApplyArmorPreset(NaabLikeArmorPreset preset)
     {
@@ -569,7 +629,7 @@ public sealed class NaabLikeCalculatorViewModel : INotifyBindablePropertyChanged
         armorBhn = preset.bhn;
     }
 
-    void ApplyProjectilePreset(NaabLikeProjectile preset)
+    public void ApplyProjectilePreset(NaabLikeProjectile preset)
     {
         if (preset == null)
             return;
@@ -590,6 +650,42 @@ public sealed class NaabLikeCalculatorViewModel : INotifyBindablePropertyChanged
         projectileMaxElevation = preset.maxElevationDeg;
         endElevation = preset.maxElevationDeg;
         effectiveShellQuality = preset.effectiveShellQuality;
+    }
+
+    public void ApplySk5Data(NaabLikeCalculatorLaunchContext context)
+    {
+        if (context == null)
+            return;
+        sk5RangeYards = context.rangeYards;
+        sk5MaxRateOfFireShootPerMin = context.maxRateOfFireShootPerMin;
+        sk5ShellSizeInch = context.shellSizeInch;
+        sk5ShellWeightPounds = context.shellWeightPounds;
+        sk5PenetrationTableRecords.Clear();
+        sk5PenetrationTableRecords.AddRange(context.penetrationTableRecords ?? new());
+        if (context.applyProjectileToBallistic && context.projectile != null)
+            ApplyProjectilePreset(context.projectile);
+    }
+
+    public NaabLikeProjectile BuildProjectile(NaabLikeProjectile preset, NaabLikeDragFunction dragFunction, int capType)
+    {
+        var projectile = (preset ?? new NaabLikeProjectile()).Clone();
+        projectile.diameterInches = diameter;
+        projectile.totalWeightPounds = totalWeight;
+        projectile.bodyWeightPounds = bodyWeight;
+        projectile.windscreenWeightPounds = windscreen;
+        projectile.apCapWeightPounds = apCapWeight;
+        projectile.hcwclcrCapType = capType;
+        projectile.windscreenNblAddendMultiplier = windscreenNblAddendMultiplier;
+        projectile.highObliquityWindscreenNblAddendMultiplier = highObliquityWindscreenNblAddendMultiplier;
+        projectile.highObliquityThresholdDeg = highObliquityThreshold;
+        projectile.muzzleVelocityFeetPerSecond = muzzleVelocity;
+        projectile.maxRangeYards = maxRange;
+        projectile.dragFunction = dragFunction;
+        projectile.ballisticCoefficient = ballisticCoefficient;
+        projectile.dragCoefficientAdjust = dragCoefficient;
+        projectile.maxElevationDeg = projectileMaxElevation;
+        projectile.effectiveShellQuality = effectiveShellQuality;
+        return projectile;
     }
 
     bool SetProperty<T>(ref T field, T value, string propertyName)
@@ -690,6 +786,67 @@ public sealed class NaabLikeCalculatorDialog
         public float? angleHint;
     }
 
+    sealed class NaabLikeFitCandidate
+    {
+        public float ballisticCoefficient;
+        public float dragCoefficient;
+        public float shellQuality;
+    }
+
+    sealed class NaabLikeFitJob
+    {
+        public NaabLikeFitMode mode;
+        public NaabLikeBallisticsData data;
+        public NaabLikeProjectile projectile;
+        public NaabLikeArmorInput armor;
+        public List<PenetrationTableRecord> records = new();
+        public readonly List<(PenetrationTableRecord record, NaabLikeBallisticsResult result)> impacts = new();
+        public readonly List<NaabLikeFitCandidate> candidates = new();
+
+        public int pass;
+        public int candidateIndex;
+        public int processedCandidates;
+        public int totalCandidates;
+        public int impactIndex;
+        public float? impactAngleHint;
+        public bool buildingImpacts;
+        public bool pauseRequested;
+        public bool cancelRequested;
+
+        public float originalBallisticCoefficient;
+        public float originalDragCoefficient;
+        public float originalMaxRange;
+        public float originalShellQuality;
+
+        public float bestBallisticCoefficient;
+        public float bestDragCoefficient;
+        public float bestShellQuality;
+        public float bestScore = float.PositiveInfinity;
+        public float currentScore = float.PositiveInfinity;
+        public float currentBallisticCoefficient;
+        public float currentDragCoefficient;
+        public float currentShellQuality;
+        public string currentDetail = "";
+
+        public float bcSpan = 0.75f;
+        public float dragSpan = 20f;
+        public float qualitySpan = 0.5f;
+    }
+
+    readonly struct ExteriorScore
+    {
+        public readonly float score;
+        public readonly int rangeBandMismatchCount;
+        public readonly float maxRangeErrorYards;
+
+        public ExteriorScore(float score, int rangeBandMismatchCount, float maxRangeErrorYards)
+        {
+            this.score = score;
+            this.rangeBandMismatchCount = rangeBandMismatchCount;
+            this.maxRangeErrorYards = maxRangeErrorYards;
+        }
+    }
+
     static NaabLikeBallisticsData cachedData;
     static string cachedDataError;
 
@@ -697,26 +854,43 @@ public sealed class NaabLikeCalculatorDialog
     VisualElement searchFixRows;
     VisualElement contentRoot;
     VisualElement progressOverlay;
+    VisualElement fitProgressControls;
     ProgressBar progressBar;
     Label progressLabel;
+    Label progressTitleLabel;
     Button calculateButton;
+    Button fitExternalButton;
+    Button fitTerminalButton;
+    Button fitPauseButton;
+    Button fitCancelButton;
+    Button syncBackButton;
     Label statusLabel;
     VisualElement chartContainer;
     NaabLikeTrajectoryChart trajectoryChart;
     NaabLikePenetrationChart penetrationChart;
     MultiColumnListView resultListView;
+    MultiColumnListView sk5DataListView;
     IVisualElementScheduledItem calculationSchedule;
+    IVisualElementScheduledItem fitSchedule;
     NaabLikeCalculationJob currentJob;
+    NaabLikeFitJob currentFitJob;
     NaabLikeCalculatorViewModel viewModel;
+    NaabLikeCalculatorLaunchContext launchContext;
 
     readonly List<NaabLikeBallisticsResult> results = new();
     readonly List<NaabLikeResultRow> tableRows = new();
 
     static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
 
+    public NaabLikeCalculatorDialog(NaabLikeCalculatorLaunchContext launchContext = null)
+    {
+        this.launchContext = launchContext;
+    }
+
     public VisualElement BuildContent(VisualTreeAsset template = null)
     {
         viewModel = new NaabLikeCalculatorViewModel(ArmorPresets, ProjectilePresets);
+        viewModel.ApplySk5Data(launchContext);
 #if UNITY_EDITOR
         template ??= UnityEditor.AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/UIDocuments/NavalCombat/NaabLikeCalculatorDialog.uxml");
 #endif
@@ -740,18 +914,37 @@ public sealed class NaabLikeCalculatorDialog
         rangeElevationRows = root.Q<VisualElement>("RangeElevationRows");
         searchFixRows = root.Q<VisualElement>("SearchFixRows");
         progressOverlay = root.Q<VisualElement>("ProgressOverlay");
+        fitProgressControls = root.Q<VisualElement>("FitProgressControls");
         progressBar = root.Q<ProgressBar>("ProgressBar");
         progressLabel = root.Q<Label>("ProgressLabel");
+        progressTitleLabel = root.Q<Label>("ProgressTitleLabel");
         calculateButton = root.Q<Button>("CalculateButton");
+        fitExternalButton = root.Q<Button>("Sk5FitExternalBallisticButton");
+        fitTerminalButton = root.Q<Button>("Sk5FitTerminalBallisticButton");
+        fitPauseButton = root.Q<Button>("FitPauseButton");
+        fitCancelButton = root.Q<Button>("FitCancelButton");
+        syncBackButton = root.Q<Button>("Sk5SyncBackButton");
         statusLabel = root.Q<Label>("StatusLabel");
         chartContainer = root.Q<VisualElement>("ChartContainer");
         trajectoryChart = root.Q<NaabLikeTrajectoryChart>("TrajectoryChart");
         penetrationChart = root.Q<NaabLikePenetrationChart>("PenetrationChart");
         resultListView = root.Q<MultiColumnListView>("NaabLikeCalculatorResultListView");
+        sk5DataListView = root.Q<MultiColumnListView>("Sk5PenetrationTableListView");
 
         if (calculateButton != null)
             calculateButton.clicked += Calculate;
+        if (fitExternalButton != null)
+            fitExternalButton.clicked += StartExternalFit;
+        if (fitTerminalButton != null)
+            fitTerminalButton.clicked += StartTerminalFit;
+        if (fitPauseButton != null)
+            fitPauseButton.clicked += PauseCurrentFit;
+        if (fitCancelButton != null)
+            fitCancelButton.clicked += CancelCurrentFit;
+        if (syncBackButton != null)
+            syncBackButton.clicked += SyncBackSk5Data;
         ConfigureResultListView();
+        ConfigureSk5DataListView();
         viewModel.propertyChanged += OnViewModelPropertyChanged;
         ApplyViewState();
         RefreshOutputs();
@@ -819,10 +1012,105 @@ public sealed class NaabLikeCalculatorDialog
         AddColumn("range", Localize("Range"), 110, row => row.range);
         AddColumn("horizontalPenetration", Localize("Horizontal Pen"), 140, row => row.horizontalPenetration);
         AddColumn("verticalPenetration", Localize("Vertical Pen"), 130, row => row.verticalPenetration);
+        AddColumn("rangeBand", Localize("Range Band"), 130, row => row.rangeBandComparison);
         AddColumn("velocity", Localize("Impact Velocity"), 130, row => row.impactVelocity);
         AddColumn("fall", Localize("Angle of Fall"), 120, row => row.angleOfFall);
         AddColumn("time", Localize("Time of Flight"), 120, row => row.timeOfFlight);
         AddColumn("elevation", Localize("Elevation"), 90, row => row.elevation);
+    }
+
+    void ConfigureSk5DataListView()
+    {
+        if (sk5DataListView == null)
+            return;
+
+        sk5DataListView.itemsSource = viewModel.sk5PenetrationTableRecords;
+        sk5DataListView.selectionType = SelectionType.Single;
+        sk5DataListView.virtualizationMethod = CollectionVirtualizationMethod.DynamicHeight;
+        sk5DataListView.showAddRemoveFooter = true;
+        sk5DataListView.columns.Clear();
+
+        void AddFloatColumn(string name, string title, int width, Func<PenetrationTableRecord, float> getter, Action<PenetrationTableRecord, float> setter)
+        {
+            sk5DataListView.columns.Add(new Column
+            {
+                name = name,
+                title = title,
+                width = width,
+                minWidth = Math.Min(width, 80),
+                stretchable = false,
+                makeCell = () =>
+                {
+                    var field = new FloatField();
+                    field.RegisterValueChangedCallback(evt =>
+                    {
+                        if (field.userData is PenetrationTableRecord record)
+                            setter(record, evt.newValue);
+                    });
+                    return field;
+                },
+                bindCell = (element, index) =>
+                {
+                    if (element is not FloatField field)
+                        return;
+                    var row = GetSk5Row(index);
+                    field.userData = row;
+                    field.SetValueWithoutNotify(row == null ? 0f : getter(row));
+                }
+            });
+        }
+
+        sk5DataListView.columns.Add(new Column
+        {
+            name = "rangeBand",
+            title = Localize("Range Band"),
+            width = 120,
+            minWidth = 90,
+            stretchable = false,
+            makeCell = () =>
+            {
+                var field = new EnumField(RangeBand.Short);
+                field.RegisterValueChangedCallback(evt =>
+                {
+                    if (field.userData is PenetrationTableRecord record && evt.newValue is RangeBand rangeBand)
+                        record.rangeBand = rangeBand;
+                });
+                return field;
+            },
+            bindCell = (element, index) =>
+            {
+                if (element is not EnumField field)
+                    return;
+                var row = GetSk5Row(index);
+                field.userData = row;
+                field.SetValueWithoutNotify(row?.rangeBand ?? RangeBand.Short);
+            }
+        });
+
+        AddFloatColumn("distanceYards", Localize("Distance Yards"), 130, row => row.distanceYards, (row, value) => row.distanceYards = value);
+        AddFloatColumn("rateOfFire", Localize("Rate of Fire"), 120, row => row.rateOfFire, (row, value) => row.rateOfFire = value);
+        AddFloatColumn("horizontalPenetration", Localize("Hor Pen"), 110, row => row.horizontalPenetrationInchs, (row, value) => row.horizontalPenetrationInchs = value);
+        AddFloatColumn("verticalPenetration", Localize("Vert Pen"), 110, row => row.verticalPenetrationInchs, (row, value) => row.verticalPenetrationInchs = value);
+
+        sk5DataListView.itemsAdded += indexes =>
+        {
+            foreach (var index in indexes)
+            {
+                if (index >= 0 && index < viewModel.sk5PenetrationTableRecords.Count && viewModel.sk5PenetrationTableRecords[index] == null)
+                    viewModel.sk5PenetrationTableRecords[index] = new PenetrationTableRecord();
+            }
+            sk5DataListView.Rebuild();
+        };
+
+        sk5DataListView.itemsRemoved += _ => sk5DataListView.Rebuild();
+        sk5DataListView.Rebuild();
+    }
+
+    PenetrationTableRecord GetSk5Row(int index)
+    {
+        return index >= 0 && index < viewModel.sk5PenetrationTableRecords.Count
+            ? viewModel.sk5PenetrationTableRecords[index]
+            : null;
     }
 
     void ApplyViewState()
@@ -842,7 +1130,17 @@ public sealed class NaabLikeCalculatorDialog
         if (penetrationChart != null)
             penetrationChart.style.display = viewModel.penetrationChartDisplay;
         if (calculateButton != null)
-            calculateButton.SetEnabled(viewModel.calculateEnabled);
+            calculateButton.SetEnabled(viewModel.calculateEnabled && currentFitJob == null);
+        if (fitExternalButton != null)
+            fitExternalButton.SetEnabled(currentJob == null && currentFitJob == null);
+        if (fitTerminalButton != null)
+            fitTerminalButton.SetEnabled(currentJob == null && currentFitJob == null);
+        if (syncBackButton != null)
+            syncBackButton.SetEnabled(launchContext?.sourceBatteryRecord != null && currentJob == null && currentFitJob == null);
+        if (fitProgressControls != null)
+            fitProgressControls.style.display = viewModel.fitControlsDisplay;
+        if (progressTitleLabel != null)
+            progressTitleLabel.text = viewModel.fitControlsVisible ? "Fitting..." : Localize("Calculating...");
         if (statusLabel != null)
             statusLabel.text = viewModel.statusText;
         if (progressBar != null)
@@ -863,7 +1161,7 @@ public sealed class NaabLikeCalculatorDialog
 
     void Calculate()
     {
-        if (resultListView == null || currentJob != null)
+        if (resultListView == null || currentJob != null || currentFitJob != null)
             return;
 
         results.Clear();
@@ -932,9 +1230,9 @@ public sealed class NaabLikeCalculatorDialog
             calculationSchedule = null;
             currentJob = null;
             HideProgressDialog();
-            viewModel.statusText = job.externalFailures > 0
-                ? Localize("{0} result(s), {1} external ballistic failure(s).", tableRows.Count, job.externalFailures)
-                : Localize("{0} result(s).", tableRows.Count);
+        viewModel.statusText = job.externalFailures > 0
+            ? Localize("{0} result(s), {1} external ballistic failure(s).", tableRows.Count, job.externalFailures)
+            : Localize("{0} result(s).", tableRows.Count);
             RefreshOutputs();
             return;
         }
@@ -961,6 +1259,7 @@ public sealed class NaabLikeCalculatorDialog
     void ShowProgressDialog(int completedRows, int totalRows)
     {
         viewModel.progressVisible = true;
+        viewModel.fitControlsVisible = false;
         viewModel.calculateEnabled = false;
         UpdateProgressDialog(completedRows, totalRows);
     }
@@ -976,6 +1275,7 @@ public sealed class NaabLikeCalculatorDialog
     void HideProgressDialog()
     {
         viewModel.progressVisible = false;
+        viewModel.fitControlsVisible = false;
         viewModel.calculateEnabled = true;
     }
 
@@ -1048,23 +1348,7 @@ public sealed class NaabLikeCalculatorDialog
         }
 
         var preset = ProjectilePresets[Math.Clamp(viewModel.projectilePresetIndex, 0, ProjectilePresets.Count - 1)].projectile;
-        projectile = preset.Clone();
-        projectile.diameterInches = viewModel.diameter;
-        projectile.totalWeightPounds = viewModel.totalWeight;
-        projectile.bodyWeightPounds = viewModel.bodyWeight;
-        projectile.windscreenWeightPounds = viewModel.windscreen;
-        projectile.apCapWeightPounds = viewModel.apCapWeight;
-        projectile.hcwclcrCapType = GetHcwclcrCapType();
-        projectile.windscreenNblAddendMultiplier = viewModel.windscreenNblAddendMultiplier;
-        projectile.highObliquityWindscreenNblAddendMultiplier = viewModel.highObliquityWindscreenNblAddendMultiplier;
-        projectile.highObliquityThresholdDeg = viewModel.highObliquityThreshold;
-        projectile.muzzleVelocityFeetPerSecond = viewModel.muzzleVelocity;
-        projectile.maxRangeYards = viewModel.maxRange;
-        projectile.dragFunction = GetDragFunction();
-        projectile.ballisticCoefficient = viewModel.ballisticCoefficient;
-        projectile.dragCoefficientAdjust = viewModel.dragCoefficient;
-        projectile.maxElevationDeg = viewModel.projectileMaxElevation;
-        projectile.effectiveShellQuality = viewModel.effectiveShellQuality;
+        projectile = viewModel.BuildProjectile(preset, GetDragFunction(), GetHcwclcrCapType());
 
         armor = new NaabLikeArmorInput
         {
@@ -1097,7 +1381,17 @@ public sealed class NaabLikeCalculatorDialog
     List<float> GetTargetRanges(NaabLikeProjectile projectile)
     {
         if (GetElevationMode() == NaabLikeElevationMode.SearchSk5)
-            return Sk5RangesYards.Where(range => range <= projectile.maxRangeYards + 0.001f).ToList();
+        {
+            var sk5Ranges = viewModel.sk5PenetrationTableRecords
+                .Where(record => record.distanceYards > 0f && record.distanceYards <= projectile.maxRangeYards + 0.001f)
+                .Select(record => record.distanceYards)
+                .Distinct()
+                .OrderBy(range => range)
+                .ToList();
+            return sk5Ranges.Count > 0
+                ? sk5Ranges
+                : Sk5RangesYards.Where(range => range <= projectile.maxRangeYards + 0.001f).ToList();
+        }
 
         var ranges = new List<float>();
         var step = viewModel.searchRangeStep;
@@ -1108,17 +1402,30 @@ public sealed class NaabLikeCalculatorDialog
 
     NaabLikeResultRow BuildRow(NaabLikeBallisticsResult result)
     {
+        var sk5Record = FindSk5Record(result.rangeYards);
+        var simulatedBand = Sk5RangeBandRules.FromAngleOfFallDeg(result.angleOfFallDeg);
         return new NaabLikeResultRow
         {
             result = result,
             elevation = $"{result.elevationDeg:0.###} deg",
             range = $"{result.rangeYards:0} yd",
-            horizontalPenetration = FormatPenetration(result.horizontalPenetrationInches),
-            verticalPenetration = FormatPenetration(result.verticalPenetrationInches),
+            horizontalPenetration = FormatPenetrationComparison(result.horizontalPenetrationInches, sk5Record?.horizontalPenetrationInchs),
+            verticalPenetration = FormatPenetrationComparison(result.verticalPenetrationInches, sk5Record?.verticalPenetrationInchs),
             timeOfFlight = $"{result.timeOfFlightSeconds:0.00} s",
             impactVelocity = $"{result.impactVelocityFeetPerSecond:0} ft/s",
-            angleOfFall = $"{result.angleOfFallDeg:0.00} deg"
+            angleOfFall = $"{result.angleOfFallDeg:0.00} deg",
+            rangeBandComparison = sk5Record == null ? simulatedBand.ToString() : $"{simulatedBand}/{sk5Record.rangeBand}"
         };
+    }
+
+    PenetrationTableRecord FindSk5Record(float rangeYards)
+    {
+        if (GetElevationMode() != NaabLikeElevationMode.SearchSk5 || viewModel.sk5PenetrationTableRecords.Count == 0)
+            return null;
+        return viewModel.sk5PenetrationTableRecords
+            .Where(record => record.distanceYards > 0f)
+            .OrderBy(record => MathF.Abs(record.distanceYards - rangeYards))
+            .FirstOrDefault(record => MathF.Abs(record.distanceYards - rangeYards) <= 0.5f);
     }
 
     void RefreshOutputs()
@@ -1159,6 +1466,456 @@ public sealed class NaabLikeCalculatorDialog
             cachedDataError = Localize("Failed to load NAAB-like data: {0}", ex.Message);
         }
         return cachedData;
+    }
+
+    void SyncBackSk5Data()
+    {
+        var batteryRecord = launchContext?.sourceBatteryRecord;
+        if (batteryRecord == null)
+        {
+            viewModel.statusText = Localize("No source Battery Record is attached.");
+            return;
+        }
+
+        batteryRecord.rangeYards = viewModel.sk5RangeYards;
+        batteryRecord.maxRateOfFireShootPerMin = viewModel.sk5MaxRateOfFireShootPerMin;
+        batteryRecord.shellSizeInch = viewModel.sk5ShellSizeInch;
+        batteryRecord.shellWeightPounds = viewModel.sk5ShellWeightPounds;
+        batteryRecord.penetrationTableRecords ??= new List<PenetrationTableRecord>();
+        batteryRecord.penetrationTableRecords.Clear();
+        batteryRecord.penetrationTableRecords.AddRange(ClonePenetrationRecords(viewModel.sk5PenetrationTableRecords));
+        batteryRecord.metaInfo ??= new BatteryRecordMetaInfo();
+        batteryRecord.metaInfo.naabLikeProjectile = BuildProjectileFromViewModel();
+        viewModel.statusText = Localize("Synced SK5 data back to Battery Record.");
+    }
+
+    void StartExternalFit()
+    {
+        StartFit(NaabLikeFitMode.ExternalBallistic);
+    }
+
+    void StartTerminalFit()
+    {
+        StartFit(NaabLikeFitMode.TerminalBallistic);
+    }
+
+    void StartFit(NaabLikeFitMode mode)
+    {
+        if (currentJob != null || currentFitJob != null)
+            return;
+
+        var setupError = CreateFitJob(mode, out var job);
+        if (setupError != null)
+        {
+            viewModel.statusText = setupError;
+            return;
+        }
+
+        currentFitJob = job;
+        viewModel.progressVisible = true;
+        viewModel.fitControlsVisible = true;
+        viewModel.calculateEnabled = false;
+        PrepareFitPass(job);
+        UpdateFitProgress(job, mode == NaabLikeFitMode.ExternalBallistic
+            ? "External ballistic fit started."
+            : "Terminal ballistic fit started.");
+        fitSchedule = contentRoot.schedule.Execute(ProcessFitStep).Every(1);
+    }
+
+    string CreateFitJob(NaabLikeFitMode mode, out NaabLikeFitJob job)
+    {
+        job = null;
+        if (viewModel.sk5PenetrationTableRecords.Count == 0)
+            return "No valid SK5 rows.";
+
+        var data = LoadData();
+        if (data == null)
+            return cachedDataError;
+
+        var validationError = ValidateInputs(out var projectile, out var armor);
+        if (validationError != null)
+            return validationError;
+
+        var fitRecords = viewModel.sk5PenetrationTableRecords
+            .Where(record => record.distanceYards > 0f)
+            .OrderBy(record => record.distanceYards)
+            .ToList();
+        if (fitRecords.Count == 0 || viewModel.sk5RangeYards <= 0f)
+            return "No valid SK5 rows.";
+
+        projectile.maxRangeYards = mode == NaabLikeFitMode.ExternalBallistic
+            ? MathF.Max(viewModel.sk5RangeYards, fitRecords.Max(record => record.distanceYards))
+            : viewModel.maxRange;
+
+        job = new NaabLikeFitJob
+        {
+            mode = mode,
+            data = data,
+            projectile = projectile,
+            armor = armor,
+            records = fitRecords,
+            originalBallisticCoefficient = viewModel.ballisticCoefficient,
+            originalDragCoefficient = viewModel.dragCoefficient,
+            originalMaxRange = viewModel.maxRange,
+            originalShellQuality = viewModel.effectiveShellQuality,
+            bestBallisticCoefficient = MathF.Max(projectile.ballisticCoefficient, 0.01f),
+            bestDragCoefficient = projectile.dragCoefficientAdjust,
+            bestShellQuality = Math.Clamp(projectile.effectiveShellQuality, 0.2f, 1.2f),
+            currentBallisticCoefficient = projectile.ballisticCoefficient,
+            currentDragCoefficient = projectile.dragCoefficientAdjust,
+            currentShellQuality = projectile.effectiveShellQuality,
+            totalCandidates = mode == NaabLikeFitMode.ExternalBallistic
+                ? 1 + 4 * 9 * 9
+                : fitRecords.Count + 1 + 4 * 13,
+            buildingImpacts = mode == NaabLikeFitMode.TerminalBallistic
+        };
+
+        return null;
+    }
+
+    void ProcessFitStep()
+    {
+        var job = currentFitJob;
+        if (job == null)
+        {
+            fitSchedule?.Pause();
+            fitSchedule = null;
+            return;
+        }
+
+        if (job.cancelRequested)
+        {
+            FinishFitJob(false, "Cancelled by user");
+            return;
+        }
+
+        if (job.pauseRequested)
+        {
+            FinishFitJob(true, "Paused by user");
+            return;
+        }
+
+        if (job.mode == NaabLikeFitMode.ExternalBallistic)
+            ProcessExternalFitStep(job);
+        else
+            ProcessTerminalFitStep(job);
+    }
+
+    void ProcessExternalFitStep(NaabLikeFitJob job)
+    {
+        if (job.pass >= 4 && job.candidateIndex >= job.candidates.Count)
+        {
+            FinishFitJob(true, "Completed");
+            return;
+        }
+
+        if (job.candidateIndex >= job.candidates.Count)
+        {
+            job.pass++;
+            job.bcSpan *= 0.42f;
+            job.dragSpan *= 0.42f;
+            if (job.pass >= 4)
+            {
+                FinishFitJob(true, "Completed");
+                return;
+            }
+            PrepareFitPass(job);
+        }
+
+        var candidate = job.candidates[job.candidateIndex++];
+        job.currentBallisticCoefficient = candidate.ballisticCoefficient;
+        job.currentDragCoefficient = candidate.dragCoefficient;
+        var detail = ScoreExterior(job.data, job.projectile, candidate.ballisticCoefficient, candidate.dragCoefficient, job.records);
+        job.currentScore = detail.score;
+        job.currentDetail = $"mismatch {detail.rangeBandMismatchCount}, max range error {detail.maxRangeErrorYards:0} yd";
+        job.processedCandidates++;
+        if (detail.score < job.bestScore)
+        {
+            job.bestScore = detail.score;
+            job.bestBallisticCoefficient = candidate.ballisticCoefficient;
+            job.bestDragCoefficient = candidate.dragCoefficient;
+        }
+        UpdateFitProgress(job, BuildExternalDiagnostic(job));
+    }
+
+    void ProcessTerminalFitStep(NaabLikeFitJob job)
+    {
+        if (job.buildingImpacts)
+        {
+            if (job.impactIndex < job.records.Count)
+            {
+                var exterior = new NaabLikeExteriorBallisticsSolver(job.data.dragTables[job.projectile.dragFunction], job.projectile, viewModel.integrationStep);
+                var record = job.records[job.impactIndex];
+                var result = exterior.SolveForTargetRange(record.distanceYards, MathF.Max(job.projectile.maxElevationDeg, 45f), job.impactAngleHint);
+                if (result.success)
+                {
+                    job.impactAngleHint = result.elevationDeg;
+                    job.impacts.Add((record, result));
+                }
+                job.impactIndex++;
+                job.processedCandidates++;
+                UpdateFitProgress(job, $"Building impact rows: {job.impactIndex}/{job.records.Count}, valid {job.impacts.Count}");
+                return;
+            }
+
+            if (job.impacts.Count == 0)
+            {
+                FinishFitJob(false, "No valid impact rows");
+                return;
+            }
+
+            job.buildingImpacts = false;
+            job.bestScore = ScoreShellQuality(job.data, job.projectile, job.armor, job.impacts, job.bestShellQuality);
+            PrepareFitPass(job);
+            UpdateFitProgress(job, $"Impact rows ready: {job.impacts.Count}");
+            return;
+        }
+
+        if (job.pass >= 4 && job.candidateIndex >= job.candidates.Count)
+        {
+            FinishFitJob(true, "Completed");
+            return;
+        }
+
+        if (job.candidateIndex >= job.candidates.Count)
+        {
+            job.pass++;
+            job.qualitySpan *= 0.35f;
+            if (job.pass >= 4)
+            {
+                FinishFitJob(true, "Completed");
+                return;
+            }
+            PrepareFitPass(job);
+        }
+
+        var candidate = job.candidates[job.candidateIndex++];
+        job.currentShellQuality = candidate.shellQuality;
+        var score = ScoreShellQuality(job.data, job.projectile, job.armor, job.impacts, candidate.shellQuality);
+        job.currentScore = score;
+        job.currentDetail = $"valid impacts {job.impacts.Count}";
+        job.processedCandidates++;
+        if (score < job.bestScore)
+        {
+            job.bestScore = score;
+            job.bestShellQuality = candidate.shellQuality;
+        }
+        UpdateFitProgress(job, BuildTerminalDiagnostic(job));
+    }
+
+    void PrepareFitPass(NaabLikeFitJob job)
+    {
+        job.candidates.Clear();
+        job.candidateIndex = 0;
+        if (job.mode == NaabLikeFitMode.ExternalBallistic)
+        {
+            for (int bi = -4; bi <= 4; bi++)
+            {
+                var bc = MathF.Max(0.01f, job.bestBallisticCoefficient * MathF.Pow(1f + job.bcSpan, bi / 4f));
+                for (int di = -4; di <= 4; di++)
+                {
+                    job.candidates.Add(new NaabLikeFitCandidate
+                    {
+                        ballisticCoefficient = bc,
+                        dragCoefficient = job.bestDragCoefficient + job.dragSpan * di / 4f
+                    });
+                }
+            }
+        }
+        else if (!job.buildingImpacts)
+        {
+            for (int i = -6; i <= 6; i++)
+            {
+                job.candidates.Add(new NaabLikeFitCandidate
+                {
+                    shellQuality = Math.Clamp(job.bestShellQuality + job.qualitySpan * i / 6f, 0.2f, 1.2f)
+                });
+            }
+        }
+    }
+
+    void PauseCurrentFit()
+    {
+        if (currentFitJob != null)
+            currentFitJob.pauseRequested = true;
+    }
+
+    void CancelCurrentFit()
+    {
+        if (currentFitJob != null)
+            currentFitJob.cancelRequested = true;
+    }
+
+    void FinishFitJob(bool applyBest, string reason)
+    {
+        var job = currentFitJob;
+        fitSchedule?.Pause();
+        fitSchedule = null;
+        currentFitJob = null;
+
+        if (job != null)
+        {
+            if (applyBest)
+            {
+                if (job.mode == NaabLikeFitMode.ExternalBallistic)
+                {
+                    viewModel.ballisticCoefficient = job.bestBallisticCoefficient;
+                    viewModel.dragCoefficient = job.bestDragCoefficient;
+                    viewModel.maxRange = viewModel.sk5RangeYards;
+                }
+                else
+                {
+                    viewModel.effectiveShellQuality = job.bestShellQuality;
+                }
+            }
+            else
+            {
+                viewModel.ballisticCoefficient = job.originalBallisticCoefficient;
+                viewModel.dragCoefficient = job.originalDragCoefficient;
+                viewModel.maxRange = job.originalMaxRange;
+                viewModel.effectiveShellQuality = job.originalShellQuality;
+            }
+        }
+
+        viewModel.progressText = reason;
+        viewModel.statusText = reason;
+        HideProgressDialog();
+        ApplyViewState();
+        if (applyBest && reason != "No valid impact rows")
+            Calculate();
+    }
+
+    void UpdateFitProgress(NaabLikeFitJob job, string diagnostic)
+    {
+        viewModel.progressVisible = true;
+        viewModel.fitControlsVisible = true;
+        viewModel.calculateEnabled = false;
+        var progress = job.totalCandidates <= 0 ? 0f : Mathf.Clamp01((float)job.processedCandidates / job.totalCandidates);
+        viewModel.progressValue = progress;
+        viewModel.progressTitle = $"{progress:P0}";
+        viewModel.progressText = diagnostic;
+    }
+
+    string BuildExternalDiagnostic(NaabLikeFitJob job)
+    {
+        return string.Join("\n", new[]
+        {
+            "External ballistic fit",
+            $"pass {job.pass + 1}/4, candidate {job.candidateIndex}/{job.candidates.Count}",
+            $"current BC {job.currentBallisticCoefficient:0.####}, Drag {job.currentDragCoefficient:0.####}, score {job.currentScore:0.####}",
+            $"best BC {job.bestBallisticCoefficient:0.####}, Drag {job.bestDragCoefficient:0.####}, score {job.bestScore:0.####}",
+            job.currentDetail
+        });
+    }
+
+    string BuildTerminalDiagnostic(NaabLikeFitJob job)
+    {
+        return string.Join("\n", new[]
+        {
+            "Terminal ballistic fit",
+            $"pass {job.pass + 1}/4, candidate {job.candidateIndex}/{job.candidates.Count}",
+            $"current shell quality {job.currentShellQuality:0.####}, score {job.currentScore:0.####}",
+            $"best shell quality {job.bestShellQuality:0.####}, score {job.bestScore:0.####}",
+            job.currentDetail
+        });
+    }
+
+    ExteriorScore ScoreExterior(NaabLikeBallisticsData data, NaabLikeProjectile seed, float ballisticCoefficient, float dragCoefficient, List<PenetrationTableRecord> records)
+    {
+        var projectile = seed.Clone();
+        projectile.ballisticCoefficient = ballisticCoefficient;
+        projectile.dragCoefficientAdjust = dragCoefficient;
+        var exterior = new NaabLikeExteriorBallisticsSolver(data.dragTables[projectile.dragFunction], projectile, viewModel.integrationStep);
+        var score = 0f;
+        var mismatchCount = 0;
+        var angleHint = (float?)null;
+
+        for (int i = 0; i < records.Count; i++)
+        {
+            var targetRange = i == records.Count - 1 ? viewModel.sk5RangeYards : records[i].distanceYards;
+            var result = exterior.SolveForTargetRange(targetRange, MathF.Max(projectile.maxElevationDeg, 45f), angleHint);
+            if (result.success)
+            {
+                angleHint = result.elevationDeg;
+                var predicted = Sk5RangeBandRules.FromAngleOfFallDeg(result.angleOfFallDeg);
+                var bandDelta = Math.Abs((int)predicted - (int)records[i].rangeBand);
+                if (bandDelta > 0)
+                    mismatchCount++;
+                score += bandDelta * bandDelta * 10f;
+            }
+            else
+            {
+                mismatchCount++;
+                score += 100f;
+            }
+        }
+
+        var maxRangeErrorYards = 0f;
+        var maxRangeResult = exterior.SolveToGround(projectile.maxElevationDeg, MathF.Max(viewModel.sk5RangeYards * 2f, viewModel.sk5RangeYards + 1000f), MathF.Max(viewModel.sk5RangeYards / 120f, 100f));
+        if (maxRangeResult.success)
+        {
+            maxRangeErrorYards = maxRangeResult.rangeYards - viewModel.sk5RangeYards;
+            var rangeError = maxRangeErrorYards / MathF.Max(viewModel.sk5RangeYards, 1f);
+            score += rangeError * rangeError * 250f;
+        }
+        else
+        {
+            maxRangeErrorYards = float.PositiveInfinity;
+            score += 250f;
+        }
+
+        return new ExteriorScore(score, mismatchCount, maxRangeErrorYards);
+    }
+
+    float ScoreShellQuality(
+        NaabLikeBallisticsData data,
+        NaabLikeProjectile seed,
+        NaabLikeArmorInput armor,
+        List<(PenetrationTableRecord record, NaabLikeBallisticsResult result)> impacts,
+        float shellQuality)
+    {
+        var projectile = seed.Clone();
+        projectile.effectiveShellQuality = shellQuality;
+        var terminal = new NaabLikeTerminalBallisticsSolver(data.terminalTables, projectile, armor);
+        var score = 0f;
+        foreach (var impact in impacts)
+        {
+            var sideObliquityDeg = armor.inclinedDeg + impact.result.angleOfFallDeg;
+            var deckObliquityDeg = armor.inclinedDeg + MathF.Max(90f - impact.result.angleOfFallDeg, 0f);
+            var vertical = terminal.CompletePenetrationInches(impact.result.impactVelocityFeetPerSecond, sideObliquityDeg);
+            var horizontal = terminal.CompletePenetrationInches(impact.result.impactVelocityFeetPerSecond, deckObliquityDeg);
+            score += SquaredRelativeError(vertical, impact.record.verticalPenetrationInchs);
+            score += SquaredRelativeError(horizontal, impact.record.horizontalPenetrationInchs);
+        }
+        return score;
+    }
+
+    static float SquaredRelativeError(float actual, float expected)
+    {
+        if (expected <= 0f)
+            return actual <= 0f ? 0f : 1f;
+        var error = (actual - expected) / expected;
+        return error * error;
+    }
+
+    NaabLikeProjectile BuildProjectileFromViewModel()
+    {
+        var preset = ProjectilePresets[Math.Clamp(viewModel.projectilePresetIndex, 0, ProjectilePresets.Count - 1)].projectile;
+        return viewModel.BuildProjectile(preset, GetDragFunction(), GetHcwclcrCapType());
+    }
+
+    static List<PenetrationTableRecord> ClonePenetrationRecords(IEnumerable<PenetrationTableRecord> records)
+    {
+        return (records ?? Enumerable.Empty<PenetrationTableRecord>())
+            .Select(record => new PenetrationTableRecord
+            {
+                distanceYards = record.distanceYards,
+                rateOfFire = record.rateOfFire,
+                rangeBand = record.rangeBand,
+                horizontalPenetrationInchs = record.horizontalPenetrationInchs,
+                verticalPenetrationInchs = record.verticalPenetrationInchs
+            })
+            .ToList();
     }
 
     NaabLikeElevationMode GetElevationMode()
@@ -1243,6 +2000,15 @@ public sealed class NaabLikeCalculatorDialog
     static string FormatPenetration(float inches)
     {
         return inches > 0f ? $"{inches:0.00} in" : "n/a";
+    }
+
+    static string FormatPenetrationComparison(float simulatedInches, float? sk5Inches)
+    {
+        if (!sk5Inches.HasValue)
+            return FormatPenetration(simulatedInches);
+        var simulated = simulatedInches > 0f ? $"{simulatedInches:0.00}" : "n/a";
+        var sk5 = sk5Inches.Value > 0f ? $"{sk5Inches.Value:0.00}" : "n/a";
+        return $"{simulated}/{sk5} in";
     }
 
 }

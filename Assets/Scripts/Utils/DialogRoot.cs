@@ -944,6 +944,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset batteryRecordSelectorDialogDocument;
     public VisualTreeAsset rapidFireBatteryRecordSelectorDialogDocument;
     public VisualTreeAsset rapidFireBatteryRecordMetaInfoDialogDocument;
+    public VisualTreeAsset batteryRecordMetaInfoDialogDocument;
     public VisualTreeAsset torpedoSectorSelectorDialogDocument;
     public VisualTreeAsset scenarioStateEditorDialogDocument;
     public VisualTreeAsset vladivostokSquadronRaidingSideSelectorDialogDocument;
@@ -1530,6 +1531,31 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         {
             root=root,
             template=rapidFireBatteryRecordMetaInfoDialogDocument,
+            templateDataSource=model
+        };
+
+        tempDialog.onCreated += model.OnCreated;
+        tempDialog.onConfirmed += model.OnConfirm;
+
+        tempDialog.Popup();
+    }
+
+    public void PopupBatteryRecordMetaInfoDialog(BatteryRecord batteryRecord, Action callback)
+    {
+        var model = new BatteryRecordMetaInfoDialog()
+        {
+            batteryRecord = batteryRecord,
+            callback = callback
+        };
+
+#if UNITY_EDITOR
+        batteryRecordMetaInfoDialogDocument ??= UnityEditor.AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/UIDocuments/NavalCombat/BatteryRecordMetaInfoDialog.uxml");
+#endif
+
+        var tempDialog = new TempDialog()
+        {
+            root=root,
+            template=batteryRecordMetaInfoDialogDocument,
             templateDataSource=model
         };
 
@@ -3849,9 +3875,9 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         );
     }
 
-    public TempDialog PopupNaabLikeCalculatorDialog()
+    public TempDialog PopupNaabLikeCalculatorDialog(NaabLikeCalculatorLaunchContext launchContext = null)
     {
-        var dialog = new NaabLikeCalculatorDialog();
+        var dialog = new NaabLikeCalculatorDialog(launchContext);
         return PopupCustomContentDialog(
             Localize("NAAB-like Calculator"),
             () => dialog.BuildContent(naabLikeCalculatorDialogDocument),

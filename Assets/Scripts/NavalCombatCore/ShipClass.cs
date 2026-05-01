@@ -234,6 +234,20 @@ namespace NavalCombatCore
         Extreme
     }
 
+    public static class Sk5RangeBandRules
+    {
+        public static RangeBand FromAngleOfFallDeg(float angleOfFallDeg)
+        {
+            if (angleOfFallDeg < 7f)
+                return RangeBand.Short;
+            if (angleOfFallDeg <= 20f)
+                return RangeBand.Medium;
+            if (angleOfFallDeg <= 40f)
+                return RangeBand.Long;
+            return RangeBand.Extreme;
+        }
+    }
+
     public class FireControlTableRecord
     {
         public float speedThresholdKnot;
@@ -540,6 +554,7 @@ namespace NavalCombatCore
         public float shellSizeInch;
         public float shellWeightPounds; // lb
         public int ammunitionCapacity;
+        public BatteryRecordMetaInfo metaInfo = null;
 
         public List<FireControlTableRecord> fireControlTableRecords = new();
         public AmmunitionType penetrationTableBaseType;
@@ -690,6 +705,11 @@ namespace NavalCombatCore
             var barrels = mountLocationRecords.Where(m => m.IsInArc(bearingRelativeToBowDeg)).Sum(m => m.mounts * m.barrels);
             return barrels * EvaluateTorpedoThreatPerBarrel();
         }
+    }
+
+    public class BatteryRecordMetaInfo
+    {
+        public NaabLikeProjectile naabLikeProjectile = new();
     }
 
     public class RapidFireBatteryFireControlLevelRecord

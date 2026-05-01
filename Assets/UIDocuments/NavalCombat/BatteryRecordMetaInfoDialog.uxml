@@ -1,0 +1,103 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement data-source-type="BatteryRecordMetaInfoDialog, Assembly-CSharp" class="panel-dialog" style="width: 420px; height: auto; max-height: 90%;">
+        <ui:Label text="Battery Record Meta Info" class="title" />
+        <ui:Toggle label="Has Meta Info" name="HasMetaInfoToggle">
+            <Bindings>
+                <ui:DataBinding property="value" data-source-path="hasMetaInfo" binding-mode="TwoWay" />
+            </Bindings>
+        </ui:Toggle>
+        <ui:ScrollView name="MetaInfoContainer" mode="Vertical" style="margin-top: 6px; margin-bottom: 6px; max-height: 620px;">
+            <Bindings>
+                <ui:DataBinding property="style.display" data-source-path="metaInfoDisplay" binding-mode="ToTarget" />
+            </Bindings>
+            <ui:Label text="NAAB-like Projectile" style="-unity-font-style: bold; margin-top: 6px; margin-bottom: 3px;" />
+            <ui:FloatField label="Diameter (inch)">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="batteryRecord.metaInfo.naabLikeProjectile.diameterInches" binding-mode="TwoWay" />
+                </Bindings>
+            </ui:FloatField>
+            <ui:FloatField label="Total Weight (lb)">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="batteryRecord.metaInfo.naabLikeProjectile.totalWeightPounds" binding-mode="TwoWay" />
+                </Bindings>
+            </ui:FloatField>
+            <ui:FloatField label="Body Weight (lb)">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="batteryRecord.metaInfo.naabLikeProjectile.bodyWeightPounds" binding-mode="TwoWay" />
+                </Bindings>
+            </ui:FloatField>
+            <ui:FloatField label="Windscreen (lb)">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="batteryRecord.metaInfo.naabLikeProjectile.windscreenWeightPounds" binding-mode="TwoWay" />
+                </Bindings>
+            </ui:FloatField>
+            <ui:FloatField label="AP Cap Weight (lb)">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="batteryRecord.metaInfo.naabLikeProjectile.apCapWeightPounds" binding-mode="TwoWay" />
+                </Bindings>
+            </ui:FloatField>
+            <ui:DropdownField name="CapTypeField" label="Cap Type">
+                <Bindings>
+                    <ui:DataBinding property="index" data-source-path="capTypeIndex" binding-mode="TwoWay" />
+                </Bindings>
+            </ui:DropdownField>
+            <ui:FloatField label="Windscreen NBL Addend Multiplier">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="batteryRecord.metaInfo.naabLikeProjectile.windscreenNblAddendMultiplier" binding-mode="TwoWay" />
+                </Bindings>
+            </ui:FloatField>
+            <ui:FloatField label="Hi-Obl Windscreen NBL Addend Mult.">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="batteryRecord.metaInfo.naabLikeProjectile.highObliquityWindscreenNblAddendMultiplier" binding-mode="TwoWay" />
+                </Bindings>
+            </ui:FloatField>
+            <ui:FloatField label="High-Obliquity Threshold (deg)">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="batteryRecord.metaInfo.naabLikeProjectile.highObliquityThresholdDeg" binding-mode="TwoWay" />
+                </Bindings>
+            </ui:FloatField>
+            <ui:FloatField label="Muzzle Velocity (fps)">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="batteryRecord.metaInfo.naabLikeProjectile.muzzleVelocityFeetPerSecond" binding-mode="TwoWay" />
+                </Bindings>
+            </ui:FloatField>
+            <ui:FloatField label="Max Range (yards)">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="batteryRecord.metaInfo.naabLikeProjectile.maxRangeYards" binding-mode="TwoWay" />
+                </Bindings>
+            </ui:FloatField>
+            <ui:DropdownField name="DragFunctionField" label="Drag Function">
+                <Bindings>
+                    <ui:DataBinding property="index" data-source-path="dragFunctionIndex" binding-mode="TwoWay" />
+                </Bindings>
+            </ui:DropdownField>
+            <ui:FloatField label="Ballistic Coefficient">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="batteryRecord.metaInfo.naabLikeProjectile.ballisticCoefficient" binding-mode="TwoWay" />
+                </Bindings>
+            </ui:FloatField>
+            <ui:FloatField label="Drag Coefficient">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="batteryRecord.metaInfo.naabLikeProjectile.dragCoefficientAdjust" binding-mode="TwoWay" />
+                </Bindings>
+            </ui:FloatField>
+            <ui:FloatField label="Elevation Deg">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="batteryRecord.metaInfo.naabLikeProjectile.maxElevationDeg" binding-mode="TwoWay" />
+                </Bindings>
+            </ui:FloatField>
+            <ui:FloatField label="Effective Shell Quality">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="batteryRecord.metaInfo.naabLikeProjectile.effectiveShellQuality" binding-mode="TwoWay" />
+                </Bindings>
+            </ui:FloatField>
+            <ui:VisualElement style="flex-direction: row; flex-shrink: 0; margin-top: 6px;">
+                <ui:Button text="Fit" name="FitButton" style="flex-grow: 1;" />
+                <ui:Button text="Display" name="DisplayButton" style="flex-grow: 1; margin-left: 4px;" />
+            </ui:VisualElement>
+        </ui:ScrollView>
+        <ui:VisualElement style="flex-direction: row; flex-shrink: 0;">
+            <ui:Button text="Confirm" name="ConfirmButton" style="flex-grow: 1;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

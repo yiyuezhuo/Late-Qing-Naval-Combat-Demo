@@ -189,6 +189,11 @@
                             <ui:Button name="Sk5FitExternalBallisticButton" text="Fit External Ballistic" style="flex-grow: 1;" />
                             <ui:Button name="Sk5FitTerminalBallisticButton" text="Fit Terminal Ballistic" style="flex-grow: 1; margin-left: 4px;" />
                         </ui:VisualElement>
+                        <ui:Toggle name="RoundSyncBackValuesToggle" label="Round Sync Back Values To 1 Decimal" style="margin-bottom: 4px;">
+                            <Bindings>
+                                <ui:DataBinding property="value" data-source-path="roundSyncBackValuesToOneDecimal" binding-mode="TwoWay" />
+                            </Bindings>
+                        </ui:Toggle>
                         <ui:Button name="Sk5SyncBackButton" text="Sync Back" style="margin-bottom: 6px;" />
                         <ui:MultiColumnListView name="Sk5PenetrationTableListView" header-title="Penetration Table" show-foldout-header="true" show-add-remove-footer="true" style="min-height: 260px; flex-grow: 1; flex-shrink: 1;" />
                     </ui:ScrollView>

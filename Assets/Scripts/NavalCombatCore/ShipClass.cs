@@ -308,6 +308,7 @@ namespace NavalCombatCore
 
     public class PenetrationTableRecord
     {
+        // Threshold distance; for the final row this may be the next SK5 threshold, while BatteryRecord.rangeYards is the actual max range.
         public float distanceYards;
         public float rateOfFire; // Rounds per 2 minutes (1 SK game turn = 2 min)
         public RangeBand rangeBand;

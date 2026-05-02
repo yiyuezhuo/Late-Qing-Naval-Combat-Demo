@@ -1540,7 +1540,7 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
         return section;
     }
 
-    static readonly float[] PenetrationTableDistanceYards =
+    public static readonly float[] PenetrationTableDistanceYards =
     {
         2000f, 4000f, 6000f, 8000f, 10000f, 12000f, 15000f,
         18000f, 21000f, 24000f, 27000f, 30000f, 33000f, 36000f

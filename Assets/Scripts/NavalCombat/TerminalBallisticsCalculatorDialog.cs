@@ -264,11 +264,7 @@ public sealed partial class ExternalBallisticsCalculatorDialog
     readonly List<TerminalBallisticsResult> terminalResults = new();
     readonly List<TerminalBallisticsTableRow> terminalTableRows = new();
     readonly List<TerminalBallisticsPenetrationTableRow> terminalPenetrationTableRows = new();
-    static readonly float[] TerminalPenetrationTableRangesYards =
-    {
-        2000f, 4000f, 6000f, 8000f, 10000f, 12000f, 15000f,
-        18000f, 21000f, 24000f, 27000f, 30000f, 33000f, 36000f
-    };
+    static float[] TerminalPenetrationTableRangesYards => ShipClassEditor.PenetrationTableDistanceYards;
 
     VisualElement BuildTerminalBallisticsTab()
     {

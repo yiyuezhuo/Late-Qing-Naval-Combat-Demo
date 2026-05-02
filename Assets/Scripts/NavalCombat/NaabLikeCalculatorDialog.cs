@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -65,7 +66,7 @@ public sealed class NaabLikeCalculatorLaunchContext
     public BatteryRecord sourceBatteryRecord;
     public bool applyProjectileToBallistic;
     public float maxRateOfFireShootPerMin;
-    public float fallToNextFireSeconds = 15f;
+    public float fallToNextFireSeconds = 12f;
     public List<PenetrationTableRecord> penetrationTableRecords = new();
     public NaabLikeProjectile projectile;
 
@@ -76,7 +77,7 @@ public sealed class NaabLikeCalculatorLaunchContext
             sourceBatteryRecord = batteryRecord,
             applyProjectileToBallistic = applyProjectileToBallistic,
             maxRateOfFireShootPerMin = batteryRecord?.maxRateOfFireShootPerMin ?? 0f,
-            fallToNextFireSeconds = batteryRecord?.metaInfo?.fallToNextFireSeconds ?? 15f,
+            fallToNextFireSeconds = batteryRecord?.metaInfo?.fallToNextFireSeconds ?? 12f,
             penetrationTableRecords = ClonePenetrationTableRecords(batteryRecord?.penetrationTableRecords),
             projectile = batteryRecord?.metaInfo?.naabLikeProjectile?.Clone()
         };
@@ -517,6 +518,7 @@ public sealed class NaabLikeCalculatorViewModel : INotifyBindablePropertyChanged
     float _searchRangeStep = 1000f;
     float _sk5MaxRateOfFireShootPerMin;
     float _fallToNextFireSeconds = 15f;
+    bool _roundSyncBackValuesToOneDecimal = true;
 
     public event EventHandler<BindablePropertyChangedEventArgs> propertyChanged;
     [CreateProperty] public List<PenetrationTableRecord> sk5PenetrationTableRecords { get; } = new();
@@ -597,6 +599,7 @@ public sealed class NaabLikeCalculatorViewModel : INotifyBindablePropertyChanged
     [CreateProperty] public float searchRangeStep { get => _searchRangeStep; set => SetProperty(ref _searchRangeStep, value, nameof(searchRangeStep)); }
     [CreateProperty] public float sk5MaxRateOfFireShootPerMin { get => _sk5MaxRateOfFireShootPerMin; set => SetProperty(ref _sk5MaxRateOfFireShootPerMin, value, nameof(sk5MaxRateOfFireShootPerMin)); }
     [CreateProperty] public float fallToNextFireSeconds { get => _fallToNextFireSeconds; set => SetProperty(ref _fallToNextFireSeconds, value, nameof(fallToNextFireSeconds)); }
+    [CreateProperty] public bool roundSyncBackValuesToOneDecimal { get => _roundSyncBackValuesToOneDecimal; set => SetProperty(ref _roundSyncBackValuesToOneDecimal, value, nameof(roundSyncBackValuesToOneDecimal)); }
 
     [CreateProperty] public string statusText { get => _statusText; set => SetProperty(ref _statusText, value, nameof(statusText)); }
     [CreateProperty] public bool calculateEnabled { get => _calculateEnabled; set => SetProperty(ref _calculateEnabled, value, nameof(calculateEnabled)); }
@@ -702,12 +705,7 @@ public sealed class NaabLikeCalculatorViewModel : INotifyBindablePropertyChanged
 public sealed class NaabLikeCalculatorDialog
 {
     const int MaxElevationSamples = 121;
-    static readonly float[] Sk5RangesYards =
-    {
-        2000f, 4000f, 6000f, 8000f, 10000f, 12000f, 14000f, 16000f,
-        18000f, 20000f, 22000f, 24000f, 26000f, 28000f, 30000f, 32000f,
-        34000f, 36000f
-    };
+    static float[] Sk5RangesYards => ShipClassEditor.PenetrationTableDistanceYards;
 
     static readonly List<NaabLikeArmorPreset> ArmorPresets = new()
     {
@@ -1519,21 +1517,37 @@ public sealed class NaabLikeCalculatorDialog
     {
         if (GetElevationMode() == NaabLikeElevationMode.SearchSk5)
         {
-            var sk5Ranges = viewModel.sk5PenetrationTableRecords
-                .Where(record => record.distanceYards > 0f && record.distanceYards <= projectile.maxRangeYards + 0.001f)
-                .Select(record => record.distanceYards)
-                .Distinct()
-                .OrderBy(range => range)
-                .ToList();
-            return sk5Ranges.Count > 0
-                ? sk5Ranges
-                : Sk5RangesYards.Where(range => range <= projectile.maxRangeYards + 0.001f).ToList();
+            var sourceRanges = HasSk5ComparisonData()
+                ? viewModel.sk5PenetrationTableRecords
+                    .Where(record => record.distanceYards > 0f)
+                    .Select(record => record.distanceYards)
+                    .Distinct()
+                    .OrderBy(range => range)
+                    .ToList()
+                : Sk5RangesYards.ToList();
+
+            return BuildSearchSk5TargetRanges(sourceRanges, projectile.maxRangeYards);
         }
 
         var ranges = new List<float>();
         var step = viewModel.searchRangeStep;
         for (var range = step; range <= projectile.maxRangeYards + 0.001f; range += step)
             ranges.Add(range);
+        return ranges;
+    }
+
+    static List<float> BuildSearchSk5TargetRanges(List<float> sourceRanges, float maxRangeYards)
+    {
+        var maxRange = MathF.Max(maxRangeYards, 0f);
+        var ranges = (sourceRanges ?? new List<float>())
+            .Where(range => range > 0f && range < maxRange - 0.5f)
+            .Distinct()
+            .OrderBy(range => range)
+            .ToList();
+
+        if (maxRange > 0f && !ranges.Any(range => MathF.Abs(range - maxRange) <= 0.5f))
+            ranges.Add(maxRange);
+
         return ranges;
     }
 
@@ -1573,10 +1587,15 @@ public sealed class NaabLikeCalculatorDialog
     {
         if (GetElevationMode() != NaabLikeElevationMode.SearchSk5 || viewModel.sk5PenetrationTableRecords.Count == 0)
             return null;
-        return viewModel.sk5PenetrationTableRecords
+        var records = viewModel.sk5PenetrationTableRecords
             .Where(record => record.distanceYards > 0f)
             .OrderBy(record => MathF.Abs(record.distanceYards - rangeYards))
-            .FirstOrDefault(record => MathF.Abs(record.distanceYards - rangeYards) <= 0.5f);
+            .ToList();
+        var exact = records.FirstOrDefault(record => MathF.Abs(record.distanceYards - rangeYards) <= 0.5f);
+        if (exact != null)
+            return exact;
+        var last = records.OrderBy(record => record.distanceYards).LastOrDefault();
+        return last != null && MathF.Abs(rangeYards - viewModel.maxRange) <= 0.5f ? last : null;
     }
 
     bool HasSk5ComparisonData()
@@ -1640,13 +1659,28 @@ public sealed class NaabLikeCalculatorDialog
         }
 
         var projectile = BuildProjectileFromViewModel();
+        var oldRecords = ClonePenetrationRecords(batteryRecord.penetrationTableRecords);
+        var newRecords = BuildCalculatedPenetrationRecords();
+        var summary = BuildSyncBackSummary(oldRecords, newRecords);
+
+        DialogRoot.Instance.PopupConfirmDialog(
+            summary,
+            () => ApplySyncBack(batteryRecord, projectile, newRecords),
+            Localize("Confirm Sync Back"));
+    }
+
+    void ApplySyncBack(BatteryRecord batteryRecord, NaabLikeProjectile projectile, List<PenetrationTableRecord> newRecords)
+    {
+        if (batteryRecord == null || projectile == null)
+            return;
+
         batteryRecord.rangeYards = projectile.maxRangeYards;
         batteryRecord.maxRateOfFireShootPerMin = viewModel.sk5MaxRateOfFireShootPerMin;
         batteryRecord.shellSizeInch = projectile.diameterInches;
         batteryRecord.shellWeightPounds = projectile.totalWeightPounds;
         batteryRecord.penetrationTableRecords ??= new List<PenetrationTableRecord>();
         batteryRecord.penetrationTableRecords.Clear();
-        batteryRecord.penetrationTableRecords.AddRange(BuildCalculatedPenetrationRecords());
+        batteryRecord.penetrationTableRecords.AddRange(newRecords);
         batteryRecord.metaInfo ??= new BatteryRecordMetaInfo();
         batteryRecord.metaInfo.naabLikeProjectile = projectile;
         batteryRecord.metaInfo.fallToNextFireSeconds = viewModel.fallToNextFireSeconds;
@@ -1805,7 +1839,8 @@ public sealed class NaabLikeCalculatorDialog
             {
                 var exterior = new NaabLikeExteriorBallisticsSolver(job.data.dragTables[job.projectile.dragFunction], job.projectile, viewModel.integrationStep);
                 var record = job.records[job.impactIndex];
-                var result = exterior.SolveForTargetRange(record.distanceYards, MathF.Max(job.projectile.maxElevationDeg, 45f), job.impactAngleHint);
+                var targetRangeYards = GetFitRecordTargetRange(job.records, job.impactIndex);
+                var result = exterior.SolveForTargetRange(targetRangeYards, MathF.Max(job.projectile.maxElevationDeg, 45f), job.impactAngleHint);
                 if (result.success)
                 {
                     job.impactAngleHint = result.elevationDeg;
@@ -1982,7 +2017,7 @@ public sealed class NaabLikeCalculatorDialog
         var mismatchCount = 0;
         var targetRanges = new List<float>(records.Count);
         for (int i = 0; i < records.Count; i++)
-            targetRanges.Add(i == records.Count - 1 ? viewModel.maxRange : records[i].distanceYards);
+            targetRanges.Add(GetFitRecordTargetRange(records, i));
         var rangeResults = exterior.SolveForTargetRangesParallel(
             targetRanges,
             MathF.Max(projectile.maxElevationDeg, 45f),
@@ -2021,6 +2056,13 @@ public sealed class NaabLikeCalculatorDialog
         }
 
         return new ExteriorScore(score, mismatchCount, maxRangeErrorYards);
+    }
+
+    float GetFitRecordTargetRange(IReadOnlyList<PenetrationTableRecord> records, int index)
+    {
+        if (records == null || index < 0 || index >= records.Count)
+            return 0f;
+        return index == records.Count - 1 ? viewModel.maxRange : records[index].distanceYards;
     }
 
     float ScoreShellQuality(
@@ -2066,13 +2108,129 @@ public sealed class NaabLikeCalculatorDialog
             .Where(row => row?.result?.success == true)
             .Select(row => new PenetrationTableRecord
             {
-                distanceYards = row.result.rangeYards,
-                rateOfFire = CalculateRateOfFirePerTwoMinutes(row.result.timeOfFlightSeconds),
+                distanceYards = GetBatteryRecordPenetrationTableRange(row.result.rangeYards),
+                rateOfFire = RoundSyncBackValue(CalculateRateOfFirePerTwoMinutes(row.result.timeOfFlightSeconds)),
                 rangeBand = row.simulatedRangeBand,
-                horizontalPenetrationInchs = row.result.horizontalPenetrationInches,
-                verticalPenetrationInchs = row.result.verticalPenetrationInches
+                horizontalPenetrationInchs = RoundSyncBackValue(row.result.horizontalPenetrationInches),
+                verticalPenetrationInchs = RoundSyncBackValue(row.result.verticalPenetrationInches)
             })
             .ToList();
+    }
+
+    float GetBatteryRecordPenetrationTableRange(float resultRangeYards)
+    {
+        if (MathF.Abs(resultRangeYards - viewModel.maxRange) > 0.5f)
+            return resultRangeYards;
+
+        // Battery Record penetration rows are threshold rows: the last row's distance is the next SK5 threshold,
+        // while the actual maximum range is stored on BatteryRecord.rangeYards.
+        return GetNextSk5RangeThreshold(viewModel.maxRange);
+    }
+
+    static float GetNextSk5RangeThreshold(float rangeYards)
+    {
+        var threshold = Sk5RangesYards.FirstOrDefault(range => range >= rangeYards - 0.5f);
+        return threshold > 0f ? threshold : rangeYards;
+    }
+
+    float RoundSyncBackValue(float value)
+    {
+        // SK5 source penetration data is recorded to one decimal place, so Sync Back defaults to the same precision.
+        return viewModel.roundSyncBackValuesToOneDecimal
+            ? MathF.Round(value, 1, MidpointRounding.AwayFromZero)
+            : value;
+    }
+
+    string BuildSyncBackSummary(List<PenetrationTableRecord> oldRecords, List<PenetrationTableRecord> newRecords)
+    {
+        var oldByRange = BuildRecordMap(oldRecords);
+        var newByRange = BuildRecordMap(newRecords);
+        var added = newByRange.Keys.Except(oldByRange.Keys).OrderBy(range => range).ToList();
+        var deleted = oldByRange.Keys.Except(newByRange.Keys).OrderBy(range => range).ToList();
+        var changed = newByRange.Keys
+            .Intersect(oldByRange.Keys)
+            .OrderBy(range => range)
+            .Select(range => (range, changes: DescribeRecordChanges(oldByRange[range], newByRange[range])))
+            .Where(item => item.changes.Count > 0)
+            .ToList();
+
+        var builder = new StringBuilder();
+        builder.AppendLine(Localize("Sync Back completed."));
+        builder.AppendLine(Localize("Rows are indexed by range."));
+        builder.AppendLine();
+
+        AppendSummarySection(builder, Localize("Added"), added.Select(range => $"+ {FormatRangeKey(range)}: {FormatRecord(newByRange[range])}"));
+        AppendSummarySection(builder, Localize("Deleted"), deleted.Select(range => $"- {FormatRangeKey(range)}: {FormatRecord(oldByRange[range])}"));
+        AppendSummarySection(builder, Localize("Changed"), changed.Select(item => $"~ {FormatRangeKey(item.range)}: {string.Join("; ", item.changes)}"));
+
+        if (added.Count == 0 && deleted.Count == 0 && changed.Count == 0)
+            builder.AppendLine(Localize("No penetration table row values changed."));
+
+        return builder.ToString().TrimEnd();
+    }
+
+    static Dictionary<float, PenetrationTableRecord> BuildRecordMap(IEnumerable<PenetrationTableRecord> records)
+    {
+        return (records ?? Enumerable.Empty<PenetrationTableRecord>())
+            .Where(record => record != null && record.distanceYards > 0f)
+            .GroupBy(record => NormalizeRangeKey(record.distanceYards))
+            .ToDictionary(group => group.Key, group => group.Last());
+    }
+
+    static float NormalizeRangeKey(float rangeYards)
+    {
+        return MathF.Round(rangeYards, 3, MidpointRounding.AwayFromZero);
+    }
+
+    static List<string> DescribeRecordChanges(PenetrationTableRecord oldRecord, PenetrationTableRecord newRecord)
+    {
+        var changes = new List<string>();
+        AddFloatChange(changes, "ROF", oldRecord.rateOfFire, newRecord.rateOfFire);
+        AddEnumChange(changes, "Band", oldRecord.rangeBand, newRecord.rangeBand);
+        AddFloatChange(changes, "H", oldRecord.horizontalPenetrationInchs, newRecord.horizontalPenetrationInchs);
+        AddFloatChange(changes, "V", oldRecord.verticalPenetrationInchs, newRecord.verticalPenetrationInchs);
+        return changes;
+    }
+
+    static void AddFloatChange(List<string> changes, string label, float oldValue, float newValue)
+    {
+        if (MathF.Abs(oldValue - newValue) <= 0.0005f)
+            return;
+        changes.Add($"{label} {FormatValue(oldValue)} -> {FormatValue(newValue)}");
+    }
+
+    static void AddEnumChange<T>(List<string> changes, string label, T oldValue, T newValue)
+    {
+        if (EqualityComparer<T>.Default.Equals(oldValue, newValue))
+            return;
+        changes.Add($"{label} {oldValue} -> {newValue}");
+    }
+
+    static void AppendSummarySection(StringBuilder builder, string title, IEnumerable<string> lines)
+    {
+        var lineList = lines.ToList();
+        if (lineList.Count == 0)
+            return;
+
+        builder.AppendLine(title + ":");
+        foreach (var line in lineList)
+            builder.AppendLine(line);
+        builder.AppendLine();
+    }
+
+    static string FormatRecord(PenetrationTableRecord record)
+    {
+        return $"ROF {FormatValue(record.rateOfFire)}, Band {record.rangeBand}, H {FormatValue(record.horizontalPenetrationInchs)}, V {FormatValue(record.verticalPenetrationInchs)}";
+    }
+
+    static string FormatRangeKey(float rangeYards)
+    {
+        return $"{rangeYards:0.###} yd";
+    }
+
+    static string FormatValue(float value)
+    {
+        return $"{value:0.###}";
     }
 
     static List<PenetrationTableRecord> ClonePenetrationRecords(IEnumerable<PenetrationTableRecord> records)

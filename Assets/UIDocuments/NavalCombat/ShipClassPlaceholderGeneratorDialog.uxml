@@ -2,7 +2,7 @@
     <Style src="project://database/Assets/UIDocuments/styles/style.uss?fileID=7433441132597879392&amp;guid=2bc9a89e260078e449dd456da4bfcf64&amp;type=3#style"/>
     <ui:VisualElement data-source-type="ShipClassPlaceholderGeneratorDialogModel, Assembly-CSharp" class="panel-dialog" style="width: 980px; height: auto; max-height: 90%;">
         <ui:Label text="Generate Placeholder Image" name="TitleLabel" class="title"/>
-        <ui:ScrollView mode="Vertical" style="max-height: 700px;">
+        <ui:ScrollView mode="Vertical" style="max-height: 620px;">
             <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
                 <ui:VisualElement style="flex-grow: 1; flex-basis: 300px; padding-right: 8px;">
                     <ui:IntegerField label="Canvas Width">

@@ -25,6 +25,7 @@ This is a Unity 6 project for tactical/strategic naval warfare scenarios.
 
 ## Unity UI-Toolkit styling related thing
 Check UI_Toolkit_AI_Guide.md for making style-related modifications in UI Toolkit.
+With the current Panel Settings (`Scale With Screen Size`, reference resolution 1200x800, match width), 16:9 builds have about 1200x675 UI units available, so keep centered dialog outer heights at or below 620px.
 
 ## Unity Localization related thing
 Check Localization_AI_Guide.md for making localization modifications in UI Toolkit.

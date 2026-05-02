@@ -981,14 +981,11 @@ public sealed class NaabLikeCalculatorDialog
         this.launchContext = launchContext;
     }
 
-    public VisualElement BuildContent(VisualTreeAsset template = null)
+    public VisualElement BuildContent(VisualTreeAsset template)
     {
         viewModel = new NaabLikeCalculatorViewModel(ArmorPresets, ProjectilePresets);
         viewModel.ApplySk5Data(launchContext);
-#if UNITY_EDITOR
-        template ??= UnityEditor.AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/UIDocuments/NavalCombat/NaabLikeCalculatorDialog.uxml");
-#endif
-        var root = template != null ? template.CloneTree() : BuildMissingTemplateContent();
+        var root = template.CloneTree();
         root.dataSource = viewModel;
         var calculatorRoot = root.Q<VisualElement>("NaabLikeCalculatorRoot");
         if (calculatorRoot != null)
@@ -1042,21 +1039,6 @@ public sealed class NaabLikeCalculatorDialog
         viewModel.propertyChanged += OnViewModelPropertyChanged;
         ApplyViewState();
         RefreshOutputs();
-        return root;
-    }
-
-    static VisualElement BuildMissingTemplateContent()
-    {
-        var root = new VisualElement
-        {
-            style =
-            {
-                flexGrow = 1,
-                flexShrink = 1,
-                minHeight = 160
-            }
-        };
-        root.Add(new Label(Localize("NAAB-like Calculator UXML is not configured.")));
         return root;
     }
 

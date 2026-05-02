@@ -98,6 +98,7 @@ MonoBehaviour:
   plotTrajectoryDialogDocument: {fileID: 9197481963319205126, guid: 373ff4ebd81384941b066769b9c05f8b, type: 3}
   influenceMapDialogDocument: {fileID: 9197481963319205126, guid: d6f1b25bc38d454b91a148d3648da462, type: 3}
   wtaSolverInspectorDialogDocument: {fileID: 9197481963319205126, guid: c2c6f09c90e14c9080e0ce5f1f966a40, type: 3}
+  naabLikeCalculatorDialogDocument: {fileID: 9197481963319205126, guid: 3bfbcb25fe45e0c49a08e95ffe79ffed, type: 3}
   torpedoInterceptSolutionVisualizerDialogDocument: {fileID: 9197481963319205126, guid: 34c3ca9783dc4f3ca4f7a5374e6b3945, type: 3}
   strategicInfluenceMapDialogDocument: {fileID: 9197481963319205126, guid: 7e9e1a90d21d4ac18d25acde0f135e77, type: 3}
   shipTimeLocDialogDocument: {fileID: 9197481963319205126, guid: 2dc95f1d0f1a4cc88f5834f2d42f6b6d, type: 3}
@@ -121,6 +122,7 @@ MonoBehaviour:
   batteryRecordSelectorDialogDocument: {fileID: 9197481963319205126, guid: 6dd880859ca130a4280536833db99551, type: 3}
   rapidFireBatteryRecordSelectorDialogDocument: {fileID: 9197481963319205126, guid: b6c5450149a0a0c4e92018b24f6363c0, type: 3}
   rapidFireBatteryRecordMetaInfoDialogDocument: {fileID: 9197481963319205126, guid: 78f412b6ecbd4509863f74f16f318a79, type: 3}
+  batteryRecordMetaInfoDialogDocument: {fileID: 9197481963319205126, guid: 6c2981377e7f4efcb2e47f8e3cba62ad, type: 3}
   torpedoSectorSelectorDialogDocument: {fileID: 9197481963319205126, guid: 857c986f3a3113844bc4353301e19d90, type: 3}
    scenarioStateEditorDialogDocument: {fileID: 9197481963319205126, guid: c53a0e617faa1ee4e9c818383e818a19, type: 3}
    vladivostokSquadronRaidingSideSelectorDialogDocument: {fileID: 9197481963319205126, guid: 45585b82f85a8214cb7bdea298f0a9c1, type: 3}

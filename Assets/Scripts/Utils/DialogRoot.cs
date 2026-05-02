@@ -1287,12 +1287,6 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
     public void PopupTheaterSelectorDialog()
     {
-        if (theaterSelectorDialogDocument == null)
-        {
-            PopupMessageDialog("TheaterSelectorDialog is not configured.");
-            return;
-        }
-
         var state = StrategicGameState.Instance;
         state.RefreshTheaters();
 
@@ -1439,12 +1433,6 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
     public void PopupTheaterDetailDialog(Theater theater)
     {
-        if (theaterDetailDialogDocument == null)
-        {
-            PopupMessageDialog("TheaterDetailDialog is not configured.");
-            return;
-        }
-
         var tempDialog = new TempDialog()
         {
             root = root,
@@ -1547,10 +1535,6 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             batteryRecord = batteryRecord,
             callback = callback
         };
-
-#if UNITY_EDITOR
-        batteryRecordMetaInfoDialogDocument ??= UnityEditor.AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/UIDocuments/NavalCombat/BatteryRecordMetaInfoDialog.uxml");
-#endif
 
         var tempDialog = new TempDialog()
         {
@@ -1847,12 +1831,6 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             .ThenBy(group => group.name.GetMergedName())
             .ToList();
 
-        if (strategicReinforcementDialogDocument == null)
-        {
-            PopupMessageDialog("ReinforcementDialog is not configured.");
-            return;
-        }
-
         var tempDialog = new TempDialog()
         {
             root = root,
@@ -1928,12 +1906,6 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             .OrderBy(group => group.fixedState.releaseTime)
             .ThenBy(group => group.name.GetMergedName())
             .ToList();
-
-        if (strategicReleaseDialogDocument == null)
-        {
-            PopupMessageDialog("ReleaseDialog is not configured.");
-            return;
-        }
 
         var tempDialog = new TempDialog()
         {
@@ -2264,12 +2236,6 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
     public void PopupInfluenceMapDialog()
     {
-        if (influenceMapDialogDocument == null)
-        {
-            PopupMessageDialog("InfluenceMapDialog is not configured.");
-            return;
-        }
-
         var model = new InfluenceMapDialogModel();
         var tempDialog = new TempDialog()
         {
@@ -2422,12 +2388,6 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
     public void PopupTorpedoInterceptSolutionVisualizerDialog()
     {
-        if (torpedoInterceptSolutionVisualizerDialogDocument == null)
-        {
-            PopupMessageDialog("TorpedoInterceptSolutionVisualizerDialog is not configured.");
-            return;
-        }
-
         var selectedShipLog = GameManager.Instance.selectedShipLog;
         if (selectedShipLog != null && !selectedShipLog.IsOnMap())
             selectedShipLog = null;
@@ -2990,12 +2950,6 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
     public void PopupWtaSolverInspectorDialog()
     {
-        if (wtaSolverInspectorDialogDocument == null)
-        {
-            PopupMessageDialog("WtaSolverInspectorDialog is not configured.");
-            return;
-        }
-
         var tempDialog = new TempDialog()
         {
             root = root,
@@ -3012,11 +2966,6 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         var template = strategicInfluenceMapDialogDocument != null
             ? strategicInfluenceMapDialogDocument
             : influenceMapDialogDocument;
-        if (template == null)
-        {
-            PopupMessageDialog("StrategicInfluenceMapDialog is not configured.");
-            return;
-        }
 
         var scenarioState = StrategicGameState.Instance.scenarioState;
         var model = new StrategicInfluenceMapDialogModel
@@ -3323,12 +3272,6 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
     public void PopupShipTimeLocDialog(ShipLog shipLog)
     {
-        if (shipTimeLocDialogDocument == null)
-        {
-            PopupMessageDialog("ShipTimeLocDialog is not configured.");
-            return;
-        }
-
         var tempDialog = new TempDialog()
         {
             root = root,
@@ -3573,12 +3516,6 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         if (initialGroup == null)
         {
             PopupMessageDialog("No strategic group is selected.");
-            return;
-        }
-
-        if (strategicGroupTransferDialogDocument == null)
-        {
-            PopupMessageDialog("StrategicGroupTransferDialog is not configured.");
             return;
         }
 
@@ -4063,12 +4000,6 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
     public void PopupFollowFormationDialog(Action<float> confirmCallback, float initialFollowDistanceYards = 500f)
     {
-        if (followFormationDialogDocument == null)
-        {
-            PopupMessageDialog("FollowFormationDialog is not configured.");
-            return;
-        }
-
         var model = new FollowFormationDialogModel()
         {
             followDistanceYards = initialFollowDistanceYards
@@ -4101,12 +4032,6 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
     public void PopupShipClassPlaceholderGeneratorDialog(ShipClass shipClass)
     {
-        if (shipClassPlaceholderGeneratorDialogDocument == null)
-        {
-            PopupMessageDialog("ShipClassPlaceholderGeneratorDialog is not configured.");
-            return;
-        }
-
         var model = ShipClassPlaceholderImageGenerator.CreateDefaultDialogModel(shipClass);
 
         var tempDialog = new TempDialog()
@@ -4187,12 +4112,6 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
     public void PopupRelativeFormationDialog(Action<RelativeFormationDialogModel> confirmCallback)
     {
-        if (relativeFormationDialogDocument == null)
-        {
-            PopupMessageDialog("RelativeFormationDialog is not configured.");
-            return;
-        }
-
         var model = new RelativeFormationDialogModel();
 
         var tempDialog = new TempDialog()
@@ -4249,12 +4168,6 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
     public void PopupPreScenarioDamageDialog(float initialDamageRatioPercent, Action<float> confirmCallback)
     {
-        if (preScenarioDamageDialogDocument == null)
-        {
-            PopupMessageDialog("PreScenarioDamageDialog is not configured.");
-            return;
-        }
-
         var tempDialog = new TempDialog()
         {
             root = root,
@@ -4616,12 +4529,6 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
     public void PopupStrategicVictoryStatusDialog()
     {
-        if (strategicVictoryStatusDialogDocument == null)
-        {
-            PopupMessageDialog("StrategicVictoryStatusDialog is not configured.");
-            return;
-        }
-
         var model = StrategicVictoryStatusDialogModel.Generate(StrategicGameState.Instance);
         var tempDialog = new TempDialog()
         {

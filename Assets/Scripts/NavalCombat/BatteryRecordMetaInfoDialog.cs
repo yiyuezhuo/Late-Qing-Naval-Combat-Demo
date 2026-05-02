@@ -3,12 +3,10 @@ using NavalCombatCore;
 using Unity.Properties;
 using UnityEngine.UIElements;
 
-public class BatteryRecordMetaInfoDialog : INotifyBindablePropertyChanged
+public class BatteryRecordMetaInfoDialog
 {
     public BatteryRecord batteryRecord;
     public Action callback;
-
-    public event EventHandler<BindablePropertyChangedEventArgs> propertyChanged;
 
     [CreateProperty]
     public bool hasMetaInfo
@@ -28,10 +26,6 @@ public class BatteryRecordMetaInfoDialog : INotifyBindablePropertyChanged
                 batteryRecord.metaInfo = null;
             }
 
-            Notify(nameof(hasMetaInfo));
-            Notify(nameof(metaInfoDisplay));
-            Notify(nameof(capTypeIndex));
-            Notify(nameof(dragFunctionIndex));
         }
     }
 
@@ -48,7 +42,6 @@ public class BatteryRecordMetaInfoDialog : INotifyBindablePropertyChanged
             if (batteryRecord?.metaInfo?.naabLikeProjectile == null)
                 return;
             batteryRecord.metaInfo.naabLikeProjectile.hcwclcrCapType = Math.Clamp(value, 0, 4);
-            Notify(nameof(capTypeIndex));
         }
     }
 
@@ -73,7 +66,6 @@ public class BatteryRecordMetaInfoDialog : INotifyBindablePropertyChanged
                 8 => NaabLikeDragFunction.GL,
                 _ => NaabLikeDragFunction.G5
             };
-            Notify(nameof(dragFunctionIndex));
         }
     }
 
@@ -134,11 +126,5 @@ public class BatteryRecordMetaInfoDialog : INotifyBindablePropertyChanged
             return;
         field.choices = choices;
         field.index = Math.Clamp(index, choices.Count > 0 ? 0 : -1, choices.Count - 1);
-    }
-
-    void Notify(string propertyName)
-    {
-        var bindingId = new BindingId(propertyName);
-        propertyChanged?.Invoke(this, new BindablePropertyChangedEventArgs(in bindingId));
     }
 }

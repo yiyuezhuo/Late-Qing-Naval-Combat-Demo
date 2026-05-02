@@ -86,3 +86,4 @@ Desktop is the major platform, WebGL will work but the huge file size will not d
 
 - SK5 Rulebook: https://www.wargamevault.com/en/product/303736/seekrieg-5-rulebook
 - SK5 forum: https://groups.io/g/SEEKRIEG/topics?sidebar=true
+- Naval Armor and Ballistics program (Game's NAAB-like calculator emulate it and use some data from it): http://www.panzer-war.com/Naab/NAaB.html

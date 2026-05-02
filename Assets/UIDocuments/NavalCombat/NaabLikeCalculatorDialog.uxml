@@ -175,31 +175,21 @@
                 <ui:Tab label="SK5 Data">
                     <ui:ScrollView mode="Vertical" style="flex-grow: 1; flex-shrink: 1;">
                         <ui:Label text="SK5 Data" style="-unity-font-style: bold; margin-top: 6px; margin-bottom: 3px;" />
-                        <ui:FloatField name="Sk5RangeYardsField" label="Range">
-                            <Bindings>
-                                <ui:DataBinding property="value" data-source-path="sk5RangeYards" binding-mode="TwoWay" />
-                            </Bindings>
-                        </ui:FloatField>
                         <ui:FloatField name="Sk5MaxRateOfFireField" label="Max ROF">
                             <Bindings>
                                 <ui:DataBinding property="value" data-source-path="sk5MaxRateOfFireShootPerMin" binding-mode="TwoWay" />
                             </Bindings>
                         </ui:FloatField>
-                        <ui:FloatField name="Sk5ShellSizeField" label="Shell Size">
+                        <ui:FloatField name="FallToNextFireSecondsField" label="Fall To Next Fire (s)">
                             <Bindings>
-                                <ui:DataBinding property="value" data-source-path="sk5ShellSizeInch" binding-mode="TwoWay" />
-                            </Bindings>
-                        </ui:FloatField>
-                        <ui:FloatField name="Sk5ShellWeightField" label="Shell Weight">
-                            <Bindings>
-                                <ui:DataBinding property="value" data-source-path="sk5ShellWeightPounds" binding-mode="TwoWay" />
+                                <ui:DataBinding property="value" data-source-path="fallToNextFireSeconds" binding-mode="TwoWay" />
                             </Bindings>
                         </ui:FloatField>
                         <ui:VisualElement style="flex-direction: row; flex-shrink: 0; margin-top: 6px; margin-bottom: 6px;">
                             <ui:Button name="Sk5FitExternalBallisticButton" text="Fit External Ballistic" style="flex-grow: 1;" />
                             <ui:Button name="Sk5FitTerminalBallisticButton" text="Fit Terminal Ballistic" style="flex-grow: 1; margin-left: 4px;" />
-                            <ui:Button name="Sk5SyncBackButton" text="Sync Back" style="flex-grow: 1; margin-left: 4px;" />
                         </ui:VisualElement>
+                        <ui:Button name="Sk5SyncBackButton" text="Sync Back" style="margin-bottom: 6px;" />
                         <ui:MultiColumnListView name="Sk5PenetrationTableListView" header-title="Penetration Table" show-foldout-header="true" show-add-remove-footer="true" style="min-height: 260px; flex-grow: 1; flex-shrink: 1;" />
                     </ui:ScrollView>
                 </ui:Tab>

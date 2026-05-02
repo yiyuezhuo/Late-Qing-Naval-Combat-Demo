@@ -21,8 +21,7 @@ public class BatteryRecordMetaInfoDialog : INotifyBindablePropertyChanged
 
             if (value)
             {
-                batteryRecord.metaInfo ??= new BatteryRecordMetaInfo();
-                batteryRecord.metaInfo.naabLikeProjectile ??= new NaabLikeProjectile();
+                EnsureMetaInfo();
             }
             else
             {
@@ -31,6 +30,8 @@ public class BatteryRecordMetaInfoDialog : INotifyBindablePropertyChanged
 
             Notify(nameof(hasMetaInfo));
             Notify(nameof(metaInfoDisplay));
+            Notify(nameof(capTypeIndex));
+            Notify(nameof(dragFunctionIndex));
         }
     }
 
@@ -82,12 +83,9 @@ public class BatteryRecordMetaInfoDialog : INotifyBindablePropertyChanged
         ConfigureDropdown(root.Q<DropdownField>("CapTypeField"), new() { "None", "Hard Cap", "Medium Cap", "Soft Cap", "Hood" }, capTypeIndex);
         ConfigureDropdown(root.Q<DropdownField>("DragFunctionField"), new() { "G1", "G2", "G5", "G6", "G7", "G8", "G9", "GS", "GL" }, dragFunctionIndex);
 
-        var fitButton = root.Q<Button>("FitButton");
         var displayButton = root.Q<Button>("DisplayButton");
-        if (fitButton != null)
-            fitButton.clicked += () => OpenCalculator(false);
         if (displayButton != null)
-            displayButton.clicked += () => OpenCalculator(true);
+            displayButton.clicked += OpenCalculator;
     }
 
     public void OnConfirm(object sender, VisualElement root)
@@ -95,25 +93,39 @@ public class BatteryRecordMetaInfoDialog : INotifyBindablePropertyChanged
         callback?.Invoke();
     }
 
-    void OpenCalculator(bool displayProjectile)
+    void OpenCalculator()
     {
         if (batteryRecord == null)
             return;
-        if (displayProjectile)
-        {
-            batteryRecord.metaInfo ??= new BatteryRecordMetaInfo();
-            batteryRecord.metaInfo.naabLikeProjectile ??= new NaabLikeProjectile();
-        }
+        EnsureMetaInfo();
         DialogRoot.Instance.PopupNaabLikeCalculatorDialog(
-            NaabLikeCalculatorLaunchContext.FromBatteryRecord(batteryRecord, displayProjectile));
+            NaabLikeCalculatorLaunchContext.FromBatteryRecord(batteryRecord, true));
     }
 
     void EnsureMetaInfo()
     {
         if (batteryRecord == null)
             return;
+        var createdMeta = batteryRecord.metaInfo == null;
         batteryRecord.metaInfo ??= new BatteryRecordMetaInfo();
-        batteryRecord.metaInfo.naabLikeProjectile ??= new NaabLikeProjectile();
+
+        if (batteryRecord.metaInfo.naabLikeProjectile == null || createdMeta)
+            batteryRecord.metaInfo.naabLikeProjectile = CreateProjectileFromBatteryRecord();
+    }
+
+    NaabLikeProjectile CreateProjectileFromBatteryRecord()
+    {
+        var projectile = NaabLikeProjectile.CreateDefaultMetaProjectile();
+        if (batteryRecord.shellSizeInch > 0f)
+            projectile.diameterInches = batteryRecord.shellSizeInch;
+        if (batteryRecord.shellWeightPounds > 0f)
+        {
+            projectile.totalWeightPounds = batteryRecord.shellWeightPounds;
+            projectile.bodyWeightPounds = batteryRecord.shellWeightPounds;
+        }
+        if (batteryRecord.rangeYards > 0f)
+            projectile.maxRangeYards = batteryRecord.rangeYards;
+        return projectile;
     }
 
     static void ConfigureDropdown(DropdownField field, System.Collections.Generic.List<string> choices, int index)

@@ -53,6 +53,30 @@ namespace NavalCombatCore
         public float dragCoefficientAdjust = 14f;
         public float effectiveShellQuality = 0.575f;
 
+        public static NaabLikeProjectile CreateDefaultMetaProjectile()
+        {
+            return new NaabLikeProjectile
+            {
+                name = "Palliser Chilled Cast Iron Shot (GB) 6''",
+                diameterInches = 6f,
+                totalWeightPounds = 100f,
+                bodyWeightPounds = 100f,
+                windscreenWeightPounds = 0f,
+                apCapWeightPounds = 0f,
+                hcwclcrCapType = 0,
+                windscreenNblAddendMultiplier = 0.75f,
+                highObliquityWindscreenNblAddendMultiplier = 0.1f,
+                highObliquityThresholdDeg = 0f,
+                muzzleVelocityFeetPerSecond = 2230f,
+                maxRangeYards = 14600f,
+                maxElevationDeg = 20f,
+                dragFunction = NaabLikeDragFunction.G1,
+                ballisticCoefficient = 2.9727f,
+                dragCoefficientAdjust = 0f,
+                effectiveShellQuality = 0.575f
+            };
+        }
+
         public NaabLikeProjectile Clone()
         {
             return (NaabLikeProjectile)MemberwiseClone();

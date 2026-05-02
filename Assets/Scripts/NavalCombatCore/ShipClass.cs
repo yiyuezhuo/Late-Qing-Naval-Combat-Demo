@@ -709,7 +709,8 @@ namespace NavalCombatCore
 
     public class BatteryRecordMetaInfo
     {
-        public NaabLikeProjectile naabLikeProjectile = new();
+        public NaabLikeProjectile naabLikeProjectile = NaabLikeProjectile.CreateDefaultMetaProjectile();
+        public float fallToNextFireSeconds = 15f;
     }
 
     public class RapidFireBatteryFireControlLevelRecord

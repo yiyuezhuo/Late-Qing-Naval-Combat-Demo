@@ -47,10 +47,13 @@ public sealed class NaabLikeProjectilePreset
 sealed class NaabLikeResultRow
 {
     public NaabLikeBallisticsResult result;
+    public float calculatedRateOfFire;
+    public RangeBand simulatedRangeBand;
     public string elevation;
     public string range;
     public string horizontalPenetration;
     public string verticalPenetration;
+    public string rateOfFire;
     public string timeOfFlight;
     public string impactVelocity;
     public string angleOfFall;
@@ -61,10 +64,8 @@ public sealed class NaabLikeCalculatorLaunchContext
 {
     public BatteryRecord sourceBatteryRecord;
     public bool applyProjectileToBallistic;
-    public float rangeYards;
     public float maxRateOfFireShootPerMin;
-    public float shellSizeInch;
-    public float shellWeightPounds;
+    public float fallToNextFireSeconds = 15f;
     public List<PenetrationTableRecord> penetrationTableRecords = new();
     public NaabLikeProjectile projectile;
 
@@ -74,10 +75,8 @@ public sealed class NaabLikeCalculatorLaunchContext
         {
             sourceBatteryRecord = batteryRecord,
             applyProjectileToBallistic = applyProjectileToBallistic,
-            rangeYards = batteryRecord?.rangeYards ?? 0f,
             maxRateOfFireShootPerMin = batteryRecord?.maxRateOfFireShootPerMin ?? 0f,
-            shellSizeInch = batteryRecord?.shellSizeInch ?? 0f,
-            shellWeightPounds = batteryRecord?.shellWeightPounds ?? 0f,
+            fallToNextFireSeconds = batteryRecord?.metaInfo?.fallToNextFireSeconds ?? 15f,
             penetrationTableRecords = ClonePenetrationTableRecords(batteryRecord?.penetrationTableRecords),
             projectile = batteryRecord?.metaInfo?.naabLikeProjectile?.Clone()
         };
@@ -516,10 +515,8 @@ public sealed class NaabLikeCalculatorViewModel : INotifyBindablePropertyChanged
     float _endElevation = 20f;
     float _elevationStep = 1f;
     float _searchRangeStep = 1000f;
-    float _sk5RangeYards;
     float _sk5MaxRateOfFireShootPerMin;
-    float _sk5ShellSizeInch;
-    float _sk5ShellWeightPounds;
+    float _fallToNextFireSeconds = 15f;
 
     public event EventHandler<BindablePropertyChangedEventArgs> propertyChanged;
     [CreateProperty] public List<PenetrationTableRecord> sk5PenetrationTableRecords { get; } = new();
@@ -598,10 +595,8 @@ public sealed class NaabLikeCalculatorViewModel : INotifyBindablePropertyChanged
     [CreateProperty] public float endElevation { get => _endElevation; set => SetProperty(ref _endElevation, value, nameof(endElevation)); }
     [CreateProperty] public float elevationStep { get => _elevationStep; set => SetProperty(ref _elevationStep, value, nameof(elevationStep)); }
     [CreateProperty] public float searchRangeStep { get => _searchRangeStep; set => SetProperty(ref _searchRangeStep, value, nameof(searchRangeStep)); }
-    [CreateProperty] public float sk5RangeYards { get => _sk5RangeYards; set => SetProperty(ref _sk5RangeYards, value, nameof(sk5RangeYards)); }
     [CreateProperty] public float sk5MaxRateOfFireShootPerMin { get => _sk5MaxRateOfFireShootPerMin; set => SetProperty(ref _sk5MaxRateOfFireShootPerMin, value, nameof(sk5MaxRateOfFireShootPerMin)); }
-    [CreateProperty] public float sk5ShellSizeInch { get => _sk5ShellSizeInch; set => SetProperty(ref _sk5ShellSizeInch, value, nameof(sk5ShellSizeInch)); }
-    [CreateProperty] public float sk5ShellWeightPounds { get => _sk5ShellWeightPounds; set => SetProperty(ref _sk5ShellWeightPounds, value, nameof(sk5ShellWeightPounds)); }
+    [CreateProperty] public float fallToNextFireSeconds { get => _fallToNextFireSeconds; set => SetProperty(ref _fallToNextFireSeconds, value, nameof(fallToNextFireSeconds)); }
 
     [CreateProperty] public string statusText { get => _statusText; set => SetProperty(ref _statusText, value, nameof(statusText)); }
     [CreateProperty] public bool calculateEnabled { get => _calculateEnabled; set => SetProperty(ref _calculateEnabled, value, nameof(calculateEnabled)); }
@@ -658,10 +653,8 @@ public sealed class NaabLikeCalculatorViewModel : INotifyBindablePropertyChanged
     {
         if (context == null)
             return;
-        sk5RangeYards = context.rangeYards;
         sk5MaxRateOfFireShootPerMin = context.maxRateOfFireShootPerMin;
-        sk5ShellSizeInch = context.shellSizeInch;
-        sk5ShellWeightPounds = context.shellWeightPounds;
+        fallToNextFireSeconds = context.fallToNextFireSeconds;
         sk5PenetrationTableRecords.Clear();
         sk5PenetrationTableRecords.AddRange(context.penetrationTableRecords ?? new());
         if (context.applyProjectileToBallistic && context.projectile != null)
@@ -1088,6 +1081,8 @@ public sealed class NaabLikeCalculatorDialog
         AddColumn("range", Localize("Range"), 110, row => row.range);
         AddColumn("horizontalPenetration", Localize("Horizontal Pen"), 140, row => row.horizontalPenetration);
         AddColumn("verticalPenetration", Localize("Vertical Pen"), 130, row => row.verticalPenetration);
+        if (HasSk5ComparisonData())
+            AddColumn("rateOfFire", Localize("ROF"), 90, row => row.rateOfFire);
         AddColumn("rangeBand", Localize("Range Band"), 130, row => row.rangeBandComparison);
         AddColumn("velocity", Localize("Impact Velocity"), 130, row => row.impactVelocity);
         AddColumn("fall", Localize("Angle of Fall"), 120, row => row.angleOfFall);
@@ -1462,6 +1457,8 @@ public sealed class NaabLikeCalculatorDialog
             return Localize("Muzzle velocity must be greater than 0.");
         if (viewModel.maxRange <= 0f)
             return Localize("Max range must be greater than 0.");
+        if (viewModel.fallToNextFireSeconds < 0f)
+            return Localize("Fall to next fire must be 0 or greater.");
         if (viewModel.ballisticCoefficient <= 0f)
             return Localize("Ballistic coefficient must be greater than 0.");
         if (viewModel.projectileMaxElevation <= 0f)
@@ -1544,18 +1541,32 @@ public sealed class NaabLikeCalculatorDialog
     {
         var sk5Record = FindSk5Record(result.rangeYards);
         var simulatedBand = Sk5RangeBandRules.FromAngleOfFallDeg(result.angleOfFallDeg);
+        var calculatedRateOfFire = CalculateRateOfFirePerTwoMinutes(result.timeOfFlightSeconds);
         return new NaabLikeResultRow
         {
             result = result,
+            calculatedRateOfFire = calculatedRateOfFire,
+            simulatedRangeBand = simulatedBand,
             elevation = $"{result.elevationDeg:0.###} deg",
             range = $"{result.rangeYards:0} yd",
             horizontalPenetration = FormatPenetrationComparison(result.horizontalPenetrationInches, sk5Record?.horizontalPenetrationInchs),
             verticalPenetration = FormatPenetrationComparison(result.verticalPenetrationInches, sk5Record?.verticalPenetrationInchs),
+            rateOfFire = FormatRateOfFireComparison(calculatedRateOfFire, sk5Record?.rateOfFire),
             timeOfFlight = $"{result.timeOfFlightSeconds:0.00} s",
             impactVelocity = $"{result.impactVelocityFeetPerSecond:0} ft/s",
             angleOfFall = $"{result.angleOfFallDeg:0.00} deg",
             rangeBandComparison = sk5Record == null ? simulatedBand.ToString() : $"{simulatedBand}/{sk5Record.rangeBand}"
         };
+    }
+
+    float CalculateRateOfFirePerTwoMinutes(float timeOfFlightSeconds)
+    {
+        var firingCycleSeconds = timeOfFlightSeconds + viewModel.fallToNextFireSeconds;
+        if (firingCycleSeconds <= 0f)
+            return 0f;
+        var flightLimitedRate = 120f / firingCycleSeconds;
+        var gunLimitedRate = MathF.Max(viewModel.sk5MaxRateOfFireShootPerMin, 0f) * 2f;
+        return MathF.Min(flightLimitedRate, gunLimitedRate);
     }
 
     PenetrationTableRecord FindSk5Record(float rangeYards)
@@ -1566,6 +1577,11 @@ public sealed class NaabLikeCalculatorDialog
             .Where(record => record.distanceYards > 0f)
             .OrderBy(record => MathF.Abs(record.distanceYards - rangeYards))
             .FirstOrDefault(record => MathF.Abs(record.distanceYards - rangeYards) <= 0.5f);
+    }
+
+    bool HasSk5ComparisonData()
+    {
+        return viewModel?.sk5PenetrationTableRecords.Any(record => record.distanceYards > 0f) == true;
     }
 
     void RefreshOutputs()
@@ -1617,15 +1633,23 @@ public sealed class NaabLikeCalculatorDialog
             return;
         }
 
-        batteryRecord.rangeYards = viewModel.sk5RangeYards;
+        if (tableRows.Count == 0)
+        {
+            viewModel.statusText = Localize("Calculate successful rows before syncing back.");
+            return;
+        }
+
+        var projectile = BuildProjectileFromViewModel();
+        batteryRecord.rangeYards = projectile.maxRangeYards;
         batteryRecord.maxRateOfFireShootPerMin = viewModel.sk5MaxRateOfFireShootPerMin;
-        batteryRecord.shellSizeInch = viewModel.sk5ShellSizeInch;
-        batteryRecord.shellWeightPounds = viewModel.sk5ShellWeightPounds;
+        batteryRecord.shellSizeInch = projectile.diameterInches;
+        batteryRecord.shellWeightPounds = projectile.totalWeightPounds;
         batteryRecord.penetrationTableRecords ??= new List<PenetrationTableRecord>();
         batteryRecord.penetrationTableRecords.Clear();
-        batteryRecord.penetrationTableRecords.AddRange(ClonePenetrationRecords(viewModel.sk5PenetrationTableRecords));
+        batteryRecord.penetrationTableRecords.AddRange(BuildCalculatedPenetrationRecords());
         batteryRecord.metaInfo ??= new BatteryRecordMetaInfo();
-        batteryRecord.metaInfo.naabLikeProjectile = BuildProjectileFromViewModel();
+        batteryRecord.metaInfo.naabLikeProjectile = projectile;
+        batteryRecord.metaInfo.fallToNextFireSeconds = viewModel.fallToNextFireSeconds;
         viewModel.statusText = Localize("Synced SK5 data back to Battery Record.");
     }
 
@@ -1680,11 +1704,11 @@ public sealed class NaabLikeCalculatorDialog
             .Where(record => record.distanceYards > 0f)
             .OrderBy(record => record.distanceYards)
             .ToList();
-        if (fitRecords.Count == 0 || viewModel.sk5RangeYards <= 0f)
+        if (fitRecords.Count == 0 || viewModel.maxRange <= 0f)
             return "No valid SK5 rows.";
 
         projectile.maxRangeYards = mode == NaabLikeFitMode.ExternalBallistic
-            ? MathF.Max(viewModel.sk5RangeYards, fitRecords.Max(record => record.distanceYards))
+            ? MathF.Max(viewModel.maxRange, fitRecords.Max(record => record.distanceYards))
             : viewModel.maxRange;
 
         job = new NaabLikeFitJob
@@ -1891,7 +1915,6 @@ public sealed class NaabLikeCalculatorDialog
                 if (job.mode == NaabLikeFitMode.ExternalBallistic)
                 {
                     viewModel.ballisticCoefficient = job.bestBallisticCoefficient;
-                    viewModel.maxRange = viewModel.sk5RangeYards;
                 }
                 else
                 {
@@ -1959,7 +1982,7 @@ public sealed class NaabLikeCalculatorDialog
         var mismatchCount = 0;
         var targetRanges = new List<float>(records.Count);
         for (int i = 0; i < records.Count; i++)
-            targetRanges.Add(i == records.Count - 1 ? viewModel.sk5RangeYards : records[i].distanceYards);
+            targetRanges.Add(i == records.Count - 1 ? viewModel.maxRange : records[i].distanceYards);
         var rangeResults = exterior.SolveForTargetRangesParallel(
             targetRanges,
             MathF.Max(projectile.maxElevationDeg, 45f),
@@ -1984,11 +2007,11 @@ public sealed class NaabLikeCalculatorDialog
         }
 
         var maxRangeErrorYards = 0f;
-        var maxRangeResult = exterior.SolveToGround(projectile.maxElevationDeg, MathF.Max(viewModel.sk5RangeYards * 2f, viewModel.sk5RangeYards + 1000f), MathF.Max(viewModel.sk5RangeYards / 120f, 100f));
+        var maxRangeResult = exterior.SolveToGround(projectile.maxElevationDeg, MathF.Max(viewModel.maxRange * 2f, viewModel.maxRange + 1000f), MathF.Max(viewModel.maxRange / 120f, 100f));
         if (maxRangeResult.success)
         {
-            maxRangeErrorYards = maxRangeResult.rangeYards - viewModel.sk5RangeYards;
-            var rangeError = maxRangeErrorYards / MathF.Max(viewModel.sk5RangeYards, 1f);
+            maxRangeErrorYards = maxRangeResult.rangeYards - viewModel.maxRange;
+            var rangeError = maxRangeErrorYards / MathF.Max(viewModel.maxRange, 1f);
             score += rangeError * rangeError * 250f;
         }
         else
@@ -2035,6 +2058,21 @@ public sealed class NaabLikeCalculatorDialog
     {
         var preset = ProjectilePresets[Math.Clamp(viewModel.projectilePresetIndex, 0, ProjectilePresets.Count - 1)].projectile;
         return viewModel.BuildProjectile(preset, GetDragFunction(), GetHcwclcrCapType());
+    }
+
+    List<PenetrationTableRecord> BuildCalculatedPenetrationRecords()
+    {
+        return tableRows
+            .Where(row => row?.result?.success == true)
+            .Select(row => new PenetrationTableRecord
+            {
+                distanceYards = row.result.rangeYards,
+                rateOfFire = CalculateRateOfFirePerTwoMinutes(row.result.timeOfFlightSeconds),
+                rangeBand = row.simulatedRangeBand,
+                horizontalPenetrationInchs = row.result.horizontalPenetrationInches,
+                verticalPenetrationInchs = row.result.verticalPenetrationInches
+            })
+            .ToList();
     }
 
     static List<PenetrationTableRecord> ClonePenetrationRecords(IEnumerable<PenetrationTableRecord> records)
@@ -2142,6 +2180,15 @@ public sealed class NaabLikeCalculatorDialog
         var simulated = simulatedInches > 0f ? $"{simulatedInches:0.00}" : "n/a";
         var sk5 = sk5Inches.Value > 0f ? $"{sk5Inches.Value:0.00}" : "n/a";
         return $"{simulated}/{sk5} in";
+    }
+
+    static string FormatRateOfFireComparison(float calculatedRateOfFire, float? sk5RateOfFire)
+    {
+        var calculated = calculatedRateOfFire > 0f ? $"{calculatedRateOfFire:0.00}" : "n/a";
+        if (!sk5RateOfFire.HasValue)
+            return calculated;
+        var sk5 = sk5RateOfFire.Value > 0f ? $"{sk5RateOfFire.Value:0.00}" : "n/a";
+        return $"{calculated}/{sk5}";
     }
 
 }

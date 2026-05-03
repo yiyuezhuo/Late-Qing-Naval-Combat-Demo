@@ -82,8 +82,13 @@ Desktop is the major platform, WebGL will work but the huge file size will not d
     - Splash Rock In Lake (Ploor, Public Domain): https://soundbible.com/2100-Splash-Rock-In-Lake.html
     - Explosion (SoundReality, Pixabay Content License): https://pixabay.com/sound-effects/explosion-fx-343683/
 
+### References:
+
+- Naval Armor and Ballistics program (Game's NAAB-like calculator emulate it and use some data from it): http://www.panzer-war.com/Naab/NAaB.html
+- McCoy's Modern Exterior Ballistics: https://www.mori.bz.it/Balistica/Mc%20Coy%20Modern%20Exterior%20Ballistic.pdf
+- Homogeneous Armor Penetration Computer Program M79APCLC: http://www.navweaps.com/index_nathan/M79apdoc.php
+
 ### Related Wargame material
 
 - SK5 Rulebook: https://www.wargamevault.com/en/product/303736/seekrieg-5-rulebook
 - SK5 forum: https://groups.io/g/SEEKRIEG/topics?sidebar=true
-- Naval Armor and Ballistics program (Game's NAAB-like calculator emulate it and use some data from it): http://www.panzer-war.com/Naab/NAaB.html

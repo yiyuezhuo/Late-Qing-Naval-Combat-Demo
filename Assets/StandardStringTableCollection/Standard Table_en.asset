@@ -3342,6 +3342,10 @@ MonoBehaviour:
     m_Localized: Include Traditional Chinese In Merged Name
     m_Metadata:
       m_Items: []
+  - m_Id: -117
+    m_Localized: Clean Broken Links
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

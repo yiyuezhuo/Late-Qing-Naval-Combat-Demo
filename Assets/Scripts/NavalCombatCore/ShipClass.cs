@@ -832,7 +832,7 @@ namespace NavalCombatCore
         SpecialTreatmentSteel, // 15, Special Treatment Steel (STS), 1910-1960 (USA) vertical hull armor under 5''. amounred decks, lower belts 2'' to 12'', 1.0
         ClassAArmor1911, // 31, Class A Armor, 1911-1923 (USA) Vertical armor 4'' and up, 0.89
         KruppCementedWW1Era1911, // 26, Krupp Cemented WW1 Era, 1911-1936 (Britain/Italy/Japan) Vertical armor over 4'', 0.85
-        KruppWolanHardNickelSteel, // 11, Krupp Wolan Hard Nickel Steel, 1925-1945 (Germany) horizontal and vertical armor (to 4.72''), 1.0
+        KruppWotanHardNickelSteel, // 11, Krupp Wotan Hard Nickel Steel, 1925-1945 (Germany) horizontal and vertical armor (to 4.72''), 1.0
         DSiliconManganeseHTSteel, // 8, D Silicon-Manganese HT Steel, 1925-1945 light armor (to 2'') and bulkheads, 0.90
         NewVickersNonCemented, // 18, New Vickers Non-Cemented (NVNC), 1926-1945 (Japan), 0.95
         NonCementedArmor, // 13, Non Cemented Armor (NCA), 1926-1945 (Great Britain) turret and CT roofs, armored decks and vertical armor less than 4'', 1.0
@@ -884,7 +884,7 @@ namespace NavalCombatCore
             { ArmorType.SpecialTreatmentSteel, 1f },
             { ArmorType.ClassAArmor1911, 0.89f },
             { ArmorType.KruppCementedWW1Era1911, 0.85f },
-            { ArmorType.KruppWolanHardNickelSteel, 1f },
+            { ArmorType.KruppWotanHardNickelSteel, 1f },
             { ArmorType.DSiliconManganeseHTSteel, 0.9f },
             { ArmorType.NewVickersNonCemented, 0.95f },
             { ArmorType.NonCementedArmor, 1f },

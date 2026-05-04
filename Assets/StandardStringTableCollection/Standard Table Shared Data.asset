@@ -3258,6 +3258,10 @@ MonoBehaviour:
     m_Key: Include Traditional Chinese In Merged Name
     m_Metadata:
       m_Items: []
+  - m_Id: -117
+    m_Key: Clean Broken Links
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -53,9 +53,9 @@
                                 <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                             </Bindings>
                         </ui:Button>
-                        <ui:Button text="Repair" name="RepairButton">
+                        <ui:Button text="Clean Broken Links" name="RepairButton">
                             <Bindings>
-                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(174328152494080)"/>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-117)"/>
                                 <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                             </Bindings>
                         </ui:Button>

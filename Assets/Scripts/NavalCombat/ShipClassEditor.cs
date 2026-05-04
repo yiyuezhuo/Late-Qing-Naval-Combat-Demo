@@ -580,6 +580,15 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
             };
         }
 
+        var armorTypeHelpButton = root.Q<Button>("ArmorTypeHelpButton");
+        if (armorTypeHelpButton != null)
+        {
+            armorTypeHelpButton.clicked += () =>
+            {
+                DialogRoot.Instance.PopupConfirmOpenURLDialog(ArmorRating.ArmorTypeReferenceUrl);
+            };
+        }
+
         batteryRecordsListView = root.Q<ListView>("BatteryRecordsListView");
         // batteryRecordsListView.itemsAdded += Utils.MakeCallbackForItemsAdded<BatteryRecord>(batteryRecordsListView);
         Utils.BindItemsAddedRemoved<BatteryRecord>(batteryRecordsListView, SelectedShipClassProvider);

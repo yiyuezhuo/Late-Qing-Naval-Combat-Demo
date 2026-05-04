@@ -861,6 +861,9 @@ namespace NavalCombatCore
 
         public ArmorType armorType;
 
+        public const string ArmorTypeReferenceUrl = "http://www.navweaps.com/index_nathan/metalprpsept2009.php";
+
+        // This data comes from SK5 A14, which in turn is derived from Okun's work "Table of Metallurgical Properties of Naval Armor and Construction Materials" ( http://www.navweaps.com/index_nathan/metalprpsept2009.php )
         static Dictionary<ArmorType, float> armorTypeToFactor = new()
         {
             // { ArmorType.NotSpecified, 1 },

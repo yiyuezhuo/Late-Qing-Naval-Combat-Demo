@@ -63,13 +63,6 @@ public class OOBEditor : HideableDocument<OOBEditor>
     [CreateProperty]
     public bool currentSelectedAny => currentSelectedObjectId != null;
 
-    public enum State
-    {
-        Idle,
-        Attaching
-    }
-    public State state = State.Idle;
-
     Dictionary<int, string> treeViewIdxToObjectId = new();
     Dictionary<string, int> objectidToTreeViewIdx = new();
 
@@ -152,37 +145,12 @@ public class OOBEditor : HideableDocument<OOBEditor>
         {
             var newSelectedObjectId = selectedItems.FirstOrDefault() as string;
 
-            if (state == State.Attaching)
-            {
-                state = State.Idle;
-
-                if (currentSelectedObjectId != null && newSelectedObjectId != null)
-                {
-                    var currentSelectedGroupMember = EntityManager.Instance.Get<IShipGroupMember>(currentSelectedObjectId);
-                    var newSelectedGroupMember = EntityManager.Instance.Get<ShipGroup>(newSelectedObjectId);
-
-                    if (newSelectedGroupMember != null && currentSelectedGroupMember != null)
-                    {
-                        if (currentSelectedGroupMember.TryAttachTo(newSelectedGroupMember))
-                        {
-                            Sync();
-                        }
-                        else
-                        {
-                            Debug.LogWarning("Not attachable"); // TODO: raise notification?
-                        }
-                    }
-
-                }
-            }
-
             currentSelectedObjectId = newSelectedObjectId;
             RefreshSelectedGroupRemarkPreview();
         };
 
         var createGroupButton = root.Q<Button>("CreateGroupButton");
         var deleteGroupButton = root.Q<Button>("DeleteGroupButton");
-        var attachButton = root.Q<Button>("AttachButton");
         var confirmButton = root.Q<Button>("ConfirmButton");
         var expandButton = root.Q<Button>("ExpandButton");
         var collapseButton = root.Q<Button>("CollapseButton");
@@ -232,11 +200,6 @@ public class OOBEditor : HideableDocument<OOBEditor>
                 Debug.LogWarning("Not deletable");
             }
             Sync();
-        };
-
-        attachButton.clicked += () =>
-        {
-            state = State.Attaching;
         };
 
         addShipButton.clicked += () =>
@@ -410,14 +373,6 @@ public class OOBEditor : HideableDocument<OOBEditor>
 
     [CreateProperty]
     public bool isInEditMode => GamePreference.Instance.isInEditMode;
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            state = State.Idle;
-        }
-    }
 
     bool OnTreeCanStartDrag(CanStartDragArgs args)
     {

@@ -1,0 +1,127 @@
+MCTRAJ book pages 183-186 / PDF pages 181-184
+================================================
+
+Extraction note
+---------------
+
+The PDF pages are scanned images and do not contain an embedded text layer.
+Direct PDF text extraction therefore returned blank page bodies. The page images
+used for manual comparison are in:
+
+  References/McCoy/extracted_pages/mccoy_pdf_page_181.png
+  References/McCoy/extracted_pages/mccoy_pdf_page_182.png
+  References/McCoy/extracted_pages/mccoy_pdf_page_183.png
+  References/McCoy/extracted_pages/mccoy_pdf_page_184.png
+
+The manually transcribed BASIC code from those images is in:
+
+  References/McCoy/MCTRAJ_book_pages_183_186.bas
+
+A readable Python reference port of the transcribed BASIC listing is in:
+
+  References/McCoy/mctraj_reference.py
+
+Known transcription caveat: line 400 is a PRINT USING format string and its
+field spacing is hard to read from the scan.
+
+Key MCTRAJ structure visible on these pages
+-------------------------------------------
+
+1. Inputs and drag table
+
+MCTRAJ asks for a drag coefficient table as Mach number versus CD. The last
+Mach entry is entered as a negative sentinel, then converted back to a positive
+Mach value. The table is later interpolated by a small subroutine.
+
+2. Atmosphere selection
+
+MCTRAJ supports two atmosphere coefficient sets:
+
+  Army Standard Metro:
+    RH1 = -0.00003158
+    RH2 = 0
+    TK1 = -0.000006015
+    TK2 = 0
+    PIR = 0.0002048757
+    VV1 = 49.19
+
+  ICAO Standard Atmosphere:
+    RH1 = -0.00002926
+    RH2 = -0.0000000001
+    TK1 = -0.000006858
+    TK2 = -0.000000000002776
+    PIR = 0.000208551
+    VV1 = 49.0223
+
+3. Initial state and wind
+
+MCTRAJ converts elevation minutes to radians using 3437.74677 minutes per
+radian, then initializes downrange, vertical, and crossrange velocity
+components. Range wind and crosswind are converted from mph to ft/s by
+multiplying by 22/15.
+
+4. Point-mass integration
+
+The program uses range as the independent variable. For each range step it
+computes:
+
+  relative speed against wind,
+  local temperature,
+  local speed of sound,
+  Mach number,
+  interpolated drag coefficient,
+  drag/gravity slopes,
+  Euler predictor values,
+  iterative Heun corrector values until the velocity change is below E1.
+
+5. Elevation match loop
+
+If a match range/height is requested, MCTRAJ reruns trajectories while adjusting
+the elevation angle. The visible code uses height error at the match point and a
+secant-like update, with a limit of 20 iterations.
+
+6. Drag table interpolation
+
+The interpolation subroutine searches the Mach table interval and returns a
+linearly interpolated CD:
+
+  CD = CD_i + (CD_{i+1} - CD_i) / (M_{i+1} - M_i) * (Mach - M_i)
+
+Comparison with NaabLikeExteriorBallisticsSolver
+------------------------------------------------
+
+Current implementation:
+
+  Assets/Scripts/NavalCombatCore/NaabLikeBallistics.cs
+
+Close matches:
+
+  - It is still a point-mass exterior trajectory model.
+  - It uses range as the independent integration variable.
+  - Its drag scale constant 0.0002048757 matches MCTRAJ's Army Standard Metro
+    PIR value.
+  - Its Army Standard density, temperature, and sound-speed coefficients match
+    the MCTRAJ Army Standard Metro branch.
+  - It applies a predictor-corrector step in the same general Heun family.
+
+Differences:
+
+  - MCTRAJ accepts an arbitrary Mach-CD drag table. The calculator chooses one
+    embedded table from G1, G2, G5, G6, G7, G8, G9, GS, or GL.
+  - MCTRAJ linearly interpolates the drag table. The calculator uses its
+    NaabLikeDragTable interpolation, which includes a curved interpolation path
+    for most interior points.
+  - MCTRAJ is a 3D model with range wind and crosswind. The calculator is a 2D
+    vertical-plane model.
+  - MCTRAJ supports both Army Standard Metro and ICAO atmosphere. The calculator
+    hardcodes the Army Standard-style constants.
+  - MCTRAJ uses a fixed gravity constant visible as G = 32.174. The calculator
+    computes gravity from Earth radius and Earth mu at the current height.
+  - MCTRAJ iterates the Heun corrector until convergence. The calculator takes
+    one Euler predictor and one averaged corrector pass per range step.
+  - MCTRAJ has an explicit match-range/match-height elevation iteration. The
+    calculator solves low-angle target-range hits by scanning/bracketing
+    elevation and refining the target height crossing.
+  - The calculator adds the NAAB-like dragCoefficientAdjust term to modify the
+    effective ballistic coefficient with range/Mach state. That term is not part
+    of the visible MCTRAJ code.

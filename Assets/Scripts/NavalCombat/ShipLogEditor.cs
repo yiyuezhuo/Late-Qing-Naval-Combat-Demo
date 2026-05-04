@@ -2151,22 +2151,6 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
         var confirmButton = root.Q<Button>("ConfirmButton");
         confirmButton.clicked += Hide;
 
-        var exportButton = root.Q<Button>("ExportButton");
-        exportButton.clicked += () =>
-        {
-            var gameState = SuperGameState.Instance.GetCurrentGameState();
-            var content = gameState.ShipLogsToXML();
-            // IOManager.Instance.SaveTextFile(content, "ShipLogs" + GameManager.scenarioSuffix, "xml");
-            IOManager.Instance.SaveTextFile(content, "ShipLogs.xml", "xml");
-        };
-
-        var importButton = root.Q<Button>("ImportButton");
-        importButton.clicked += () =>
-        {
-            // IOManager.Instance.textLoaded += OnShipLogsXmlLoaded;
-            IOManager.Instance.LoadTextFile(OnShipLogsXmlLoaded, "xml");
-        };
-
         var resetAllStatesButton = root.Q<Button>("ResetAllStatesButton");
         resetAllStatesButton.clicked += () =>
         {
@@ -2180,15 +2164,6 @@ public class ShipLogEditor : HideableDocument<ShipLogEditor>
     }
 
     static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
-
-    void OnShipLogsXmlLoaded(string text)
-    {
-        // IOManager.Instance.textLoaded -= OnShipLogsXmlLoaded;
-
-        var gameState = SuperGameState.Instance.GetCurrentGameState();
-        gameState.ShipLogsFromXML(text);
-        gameState.ResetAndRegisterAll();
-    }
 
     // public void PopupWithSelection(ShipLog shipLog)
     // {

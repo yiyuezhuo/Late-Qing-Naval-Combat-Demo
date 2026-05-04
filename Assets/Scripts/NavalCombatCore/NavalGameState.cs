@@ -768,31 +768,31 @@ namespace NavalCombatCore
             }
         }
 
-        public string ShipGroupsToXML()
-        {
-            return XmlUtils.ToXML(shipGroups);
-        }
+        // public string ShipGroupsToXML()
+        // {
+        //     return XmlUtils.ToXML(shipGroups);
+        // }
 
-        public void ShipGroupsFromXML(string xml)
-        {
-            shipGroups = XmlUtils.FromXML<List<ShipGroup>>(xml);
+        // public void ShipGroupsFromXML(string xml)
+        // {
+        //     shipGroups = XmlUtils.FromXML<List<ShipGroup>>(xml);
 
-            ResetAndRegisterAll();
-            SyncShipLogParentWithGroupHierarchy();
+        //     ResetAndRegisterAll();
+        //     SyncShipLogParentWithGroupHierarchy();
 
-            shipGroupsChanged?.Invoke(this, shipGroups);
-        }
+        //     shipGroupsChanged?.Invoke(this, shipGroups);
+        // }
 
-        public void ScenarioStateFromXML(string xml)
-        {
-            scenarioState = XmlUtils.FromXML<ScenarioState>(xml);
-            scenarioState?.FillBeginDateTimeIfMissing();
-        }
+        // public void ScenarioStateFromXML(string xml)
+        // {
+        //     scenarioState = XmlUtils.FromXML<ScenarioState>(xml);
+        //     scenarioState?.FillBeginDateTimeIfMissing();
+        // }
 
-        public string ScenarioStateToXML()
-        {
-            return XmlUtils.ToXML(scenarioState);
-        }
+        // public string ScenarioStateToXML()
+        // {
+        //     return XmlUtils.ToXML(scenarioState);
+        // }
 
         public void SyncShipLogParentWithGroupHierarchy()
         {

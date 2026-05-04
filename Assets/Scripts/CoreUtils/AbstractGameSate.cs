@@ -109,17 +109,17 @@ namespace CoreUtils
             // ResetAndRegisterAll();
         }
 
-        public string ShipLogsToXML()
-        {
-            return XmlUtils.ToXML(shipLogs);
-        }
+        // public string ShipLogsToXML()
+        // {
+        //     return XmlUtils.ToXML(shipLogs);
+        // }
 
-        public void ShipLogsFromXML(string xml)
-        {
-            shipLogs = XmlUtils.FromXML<List<ShipLog>>(xml);
+        // public void ShipLogsFromXML(string xml)
+        // {
+        //     shipLogs = XmlUtils.FromXML<List<ShipLog>>(xml);
 
-            // ResetAndRegisterAll();
-        }
+        //     // ResetAndRegisterAll();
+        // }
 
         public virtual void ResetAndRegisterAll()
         {

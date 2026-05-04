@@ -184,8 +184,6 @@ public class OOBEditor : HideableDocument<OOBEditor>
         var deleteGroupButton = root.Q<Button>("DeleteGroupButton");
         var attachButton = root.Q<Button>("AttachButton");
         var confirmButton = root.Q<Button>("ConfirmButton");
-        var importButton = root.Q<Button>("ImportButton");
-        var exportButton = root.Q<Button>("ExportButton");
         var expandButton = root.Q<Button>("ExpandButton");
         var collapseButton = root.Q<Button>("CollapseButton");
         var addShipButton = root.Q<Button>("AddShipButton");
@@ -195,20 +193,6 @@ public class OOBEditor : HideableDocument<OOBEditor>
 
         expandButton.clicked += () => oobTreeView.ExpandAll();
         collapseButton.clicked += () => oobTreeView.CollapseAll();
-
-        exportButton.clicked += () =>
-        {
-            // var content = GameManager.Instance.navalGameState.ShipGroupsToXML();
-            var content = NavalGameState.Instance.ShipGroupsToXML();
-            // IOManager.Instance.SaveTextFile(content, "ShipGroups" + GameManager.scenarioSuffix, "xml");
-            IOManager.Instance.SaveTextFile(content, "ShipGroups.xml", "xml");
-        };
-
-        importButton.clicked += () =>
-        {
-            // IOManager.Instance.textLoaded += OnRootShipGroupsXmlLoaded;
-            IOManager.Instance.LoadTextFile(OnRootShipGroupsXmlLoaded, "xml");
-        };
 
         confirmButton.clicked += Hide;
         createGroupButton.clicked += () =>
@@ -337,17 +321,6 @@ public class OOBEditor : HideableDocument<OOBEditor>
 
         var value = currentSelectedShipGroup?.remark?.shortName ?? string.Empty;
         remarkTextField.SetValueWithoutNotify(value);
-    }
-
-    public void OnRootShipGroupsXmlLoaded(string text)
-    {
-        // IOManager.Instance.textLoaded -= OnRootShipGroupsXmlLoaded;
-
-        // GameManager.Instance.navalGameState.ShipGroupsFromXML(text);
-        NavalGameState.Instance.ShipGroupsFromXML(text);
-
-        // oobTreeView.ExpandAll();
-        // oobTreeView.CollapseAll();
     }
 
     public void OnShipGroupsChanged(object sender, List<ShipGroup> rootShipGroups)

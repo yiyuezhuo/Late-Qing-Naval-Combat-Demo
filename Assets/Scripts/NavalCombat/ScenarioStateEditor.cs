@@ -302,26 +302,5 @@ public class ScenarioStateEditor
 
         PathReferenceBinder.BindPictureReference(root.Q<VisualElement>("BackgroundPictureField"));
 
-        var exportButton = root.Q<Button>("ExportButton");
-        exportButton.clicked += () =>
-        {
-            // var content = GameManager.Instance.navalGameState.ScenarioStateToXML();
-            var content = NavalGameState.Instance.ScenarioStateToXML();
-            // IOManager.Instance.SaveTextFile(content, "ScenarioState" + GameManager.scenarioSuffix, "xml");
-            IOManager.Instance.SaveTextFile(content, "ScenarioState.xml", "xml");
-        };
-
-        var importButton = root.Q<Button>("ImportButton");
-        importButton.clicked += () =>
-        {
-            // IOManager.Instance.textLoaded += OnImportXmlLoaded;
-            IOManager.Instance.LoadTextFile(OnImportXmlLoaded, "xml");
-        };
-    }
-
-    void OnImportXmlLoaded(string text)
-    {
-        // IOManager.Instance.textLoaded -= OnImportXmlLoaded;
-        NavalGameState.Instance.ScenarioStateFromXML(text);
     }
 }

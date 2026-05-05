@@ -45,6 +45,11 @@
                         <ui:DataBinding property="index" data-source-path="plotModeIndex" binding-mode="TwoWay" />
                     </Bindings>
                 </ui:DropdownField>
+                <ui:Toggle name="EnableNaabLikeAdaptationToggle" label="Enable NAAB-like Adaptation" style="margin-top: 4px; margin-bottom: 4px;">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="enableNaabLikeAdaptation" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:Toggle>
                 <ui:Button name="CalculateButton" text="Calculate" style="margin-top: 8px;" />
                 <ui:Label name="StatusLabel" style="white-space: normal; margin-top: 6px;">
                     <Bindings>
@@ -71,6 +76,7 @@
                 <ui:FloatField name="ArmorBhnField" label="BHN">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="armorBhn" binding-mode="TwoWay" />
+                        <ui:DataBinding property="style.display" data-source-path="naabLikeAdaptationControlsDisplay" binding-mode="ToTarget" />
                     </Bindings>
                 </ui:FloatField>
                 <ui:FloatField name="ArmorInclinedField" label="Inclined (deg)">
@@ -98,36 +104,43 @@
                 <ui:FloatField name="BodyWeightField" label="Body Weight (lb)">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="bodyWeight" binding-mode="TwoWay" />
+                        <ui:DataBinding property="style.display" data-source-path="naabLikeAdaptationControlsDisplay" binding-mode="ToTarget" />
                     </Bindings>
                 </ui:FloatField>
                 <ui:FloatField name="WindscreenField" label="Windscreen (lb)">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="windscreen" binding-mode="TwoWay" />
+                        <ui:DataBinding property="style.display" data-source-path="naabLikeAdaptationControlsDisplay" binding-mode="ToTarget" />
                     </Bindings>
                 </ui:FloatField>
                 <ui:FloatField name="ApCapWeightField" label="AP Cap Weight (lb)">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="apCapWeight" binding-mode="TwoWay" />
+                        <ui:DataBinding property="style.display" data-source-path="naabLikeAdaptationControlsDisplay" binding-mode="ToTarget" />
                     </Bindings>
                 </ui:FloatField>
                 <ui:DropdownField name="CapTypeField" label="Cap Type">
                     <Bindings>
                         <ui:DataBinding property="index" data-source-path="capTypeIndex" binding-mode="TwoWay" />
+                        <ui:DataBinding property="style.display" data-source-path="naabLikeAdaptationControlsDisplay" binding-mode="ToTarget" />
                     </Bindings>
                 </ui:DropdownField>
                 <ui:FloatField name="WindscreenNblAddendMultiplierField" label="Windscreen NBL Addend Multiplier">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="windscreenNblAddendMultiplier" binding-mode="TwoWay" />
+                        <ui:DataBinding property="style.display" data-source-path="naabLikeAdaptationControlsDisplay" binding-mode="ToTarget" />
                     </Bindings>
                 </ui:FloatField>
                 <ui:FloatField name="HighObliquityWindscreenNblAddendMultiplierField" label="Hi-Obl Windscreen NBL Addend Mult.">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="highObliquityWindscreenNblAddendMultiplier" binding-mode="TwoWay" />
+                        <ui:DataBinding property="style.display" data-source-path="naabLikeAdaptationControlsDisplay" binding-mode="ToTarget" />
                     </Bindings>
                 </ui:FloatField>
                 <ui:FloatField name="HighObliquityThresholdField" label="High-Obliquity Threshold (deg)">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="highObliquityThreshold" binding-mode="TwoWay" />
+                        <ui:DataBinding property="style.display" data-source-path="naabLikeAdaptationControlsDisplay" binding-mode="ToTarget" />
                     </Bindings>
                 </ui:FloatField>
                 <ui:FloatField name="MuzzleVelocityField" label="Muzzle Velocity (fps)">
@@ -153,6 +166,7 @@
                 <ui:FloatField name="DragCoefficientField" label="Drag Coefficient">
                     <Bindings>
                         <ui:DataBinding property="value" data-source-path="dragCoefficient" binding-mode="TwoWay" />
+                        <ui:DataBinding property="style.display" data-source-path="naabLikeAdaptationControlsDisplay" binding-mode="ToTarget" />
                     </Bindings>
                 </ui:FloatField>
                 <ui:FloatField name="ProjectileMaxElevationField" label="Elevation Deg">

@@ -4441,68 +4441,72 @@ MonoBehaviour:
     m_Key: Integration Step (ft)
     m_Metadata:
       m_Items: []
-  - m_Id: -345
+  - m_Id: -343
     m_Key: Integration step must be greater than 0.
     m_Metadata:
       m_Items: []
-  - m_Id: -346
+  - m_Id: -344
     m_Key: BHN
     m_Metadata:
       m_Items: []
-  - m_Id: -347
+  - m_Id: -345
     m_Key: BHN must be greater than 0.
     m_Metadata:
       m_Items: []
-  - m_Id: -348
+  - m_Id: -346
     m_Key: Medium Cap
     m_Metadata:
       m_Items: []
-  - m_Id: -349
+  - m_Id: -347
     m_Key: Soft Cap
     m_Metadata:
       m_Items: []
-  - m_Id: -350
+  - m_Id: -348
     m_Key: Hood
     m_Metadata:
       m_Items: []
-  - m_Id: -351
+  - m_Id: -349
     m_Key: Effective Shell Quality
     m_Metadata:
       m_Items: []
-  - m_Id: -352
+  - m_Id: -350
     m_Key: Effective shell quality must be greater than 0.
     m_Metadata:
       m_Items: []
-  - m_Id: -353
+  - m_Id: -351
     m_Key: Windscreen NBL Addend Multiplier
     m_Metadata:
       m_Items: []
-  - m_Id: -354
+  - m_Id: -352
     m_Key: Hi-Obl Windscreen NBL Addend Mult.
     m_Metadata:
       m_Items: []
-  - m_Id: -355
+  - m_Id: -353
     m_Key: High-Obliquity Threshold (deg)
     m_Metadata:
       m_Items: []
-  - m_Id: -356
+  - m_Id: -354
     m_Key: Windscreen NBL addend multipliers must be 0 or greater.
     m_Metadata:
       m_Items: []
-  - m_Id: -357
+  - m_Id: -355
     m_Key: High-obliquity threshold must be 0 or greater.
     m_Metadata:
       m_Items: []
-  - m_Id: -358
+  - m_Id: -356
     m_Key: Avg. wrought iron construction and armor material
     m_Metadata:
       m_Items: []
-  - m_Id: -359
+  - m_Id: -357
     m_Key: Avg. "mild/medium" construction steel. (1890-on)
     m_Metadata:
       m_Items: []
-  - m_Id: -360
+  - m_Id: -358
     m_Key: Avg. U.S WWI-era class "B" armor
+    m_Metadata:
+      m_Items: []
+  - m_Id: -359
+    m_Key: Enable NAAB-like Adaptation
     m_Metadata:
       m_Items: []
   m_Metadata:

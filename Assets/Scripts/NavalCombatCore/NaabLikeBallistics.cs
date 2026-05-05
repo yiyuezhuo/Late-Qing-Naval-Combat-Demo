@@ -83,6 +83,16 @@ namespace NavalCombatCore
         }
     }
 
+    public sealed class NaabLikeModelOptions
+    {
+        public bool enableNaabLikeAdaptation = true;
+
+        public NaabLikeModelOptions Clone()
+        {
+            return (NaabLikeModelOptions)MemberwiseClone();
+        }
+    }
+
     public sealed class NaabLikeArmorInput
     {
         public float quality = 0.95f;
@@ -178,7 +188,7 @@ namespace NavalCombatCore
             this.cd = cd;
         }
 
-        public float CoefficientFromMach(float value)
+        public float CoefficientFromMach(float value, bool useCurvedInterpolation = true)
         {
             if (mach.Length == 0)
                 return 0f;
@@ -191,7 +201,9 @@ namespace NavalCombatCore
             if (idx >= 0)
                 return cd[idx];
             var lower = ~idx - 1;
-            return CurvedInterpolate(mach, cd, lower, value);
+            return useCurvedInterpolation
+                ? CurvedInterpolate(mach, cd, lower, value)
+                : LinearInterpolate(mach, cd, lower, value);
         }
 
         static float CurvedInterpolate(float[] xs, float[] ys, int lower, float x)
@@ -281,15 +293,21 @@ namespace NavalCombatCore
 
         readonly NaabLikeDragTable dragTable;
         readonly NaabLikeProjectile projectile;
+        readonly NaabLikeModelOptions options;
         readonly float dxFeet;
         float dragAdjustMachLeOneRangeFeet;
         float dragAdjustMachGtOneRangeFeet;
 
-        public NaabLikeExteriorBallisticsSolver(NaabLikeDragTable dragTable, NaabLikeProjectile projectile, float dxFeet = 3f)
+        public NaabLikeExteriorBallisticsSolver(
+            NaabLikeDragTable dragTable,
+            NaabLikeProjectile projectile,
+            float dxFeet = 3f,
+            NaabLikeModelOptions options = null)
         {
             this.dragTable = dragTable;
             this.projectile = projectile;
             this.dxFeet = dxFeet;
+            this.options = options?.Clone() ?? new NaabLikeModelOptions();
         }
 
         public NaabLikeBallisticsResult SolveToGround(float elevationDeg, float maxRangeYards, float sampleStepYards)
@@ -532,7 +550,7 @@ namespace NavalCombatCore
 
         NaabLikeExteriorBallisticsSolver NewSolver()
         {
-            return new NaabLikeExteriorBallisticsSolver(dragTable, projectile.Clone(), dxFeet);
+            return new NaabLikeExteriorBallisticsSolver(dragTable, projectile.Clone(), dxFeet, options);
         }
 
         static GroundSample FindNearestRangeSample(List<GroundSample> samples, float targetRangeYards, GroundSample currentBest)
@@ -871,7 +889,7 @@ namespace NavalCombatCore
 
             var atmosphere = AtmosphereAtHeight(point.yFeet);
             var mach = speed / atmosphere.soundFeetPerSecond;
-            var cdRef = dragTable.CoefficientFromMach(mach);
+            var cdRef = dragTable.CoefficientFromMach(mach, options.enableNaabLikeAdaptation);
             var bcEff = EffectiveBallisticCoefficient(point.xFeet, mach);
             var dragSlope = Pre1962DragScaleFeet * atmosphere.densityRatio * cdRef * speed / bcEff;
             var dvxDx = -dragSlope;
@@ -882,6 +900,9 @@ namespace NavalCombatCore
         float EffectiveBallisticCoefficient(float rangeFeet, float mach)
         {
             var bc = projectile.ballisticCoefficient;
+            if (!options.enableNaabLikeAdaptation)
+                return bc;
+
             var adjust = projectile.dragCoefficientAdjust;
             if (MathF.Abs(adjust) < 1e-9f)
                 return bc;
@@ -1007,12 +1028,18 @@ namespace NavalCombatCore
         readonly NaabLikeTerminalTables tables;
         readonly NaabLikeProjectile projectile;
         readonly NaabLikeArmorInput armor;
+        readonly NaabLikeModelOptions options;
 
-        public NaabLikeTerminalBallisticsSolver(NaabLikeTerminalTables tables, NaabLikeProjectile projectile, NaabLikeArmorInput armor)
+        public NaabLikeTerminalBallisticsSolver(
+            NaabLikeTerminalTables tables,
+            NaabLikeProjectile projectile,
+            NaabLikeArmorInput armor,
+            NaabLikeModelOptions options = null)
         {
             this.tables = tables;
             this.projectile = projectile;
             this.armor = armor;
+            this.options = options?.Clone() ?? new NaabLikeModelOptions();
         }
 
         public float CompletePenetrationInches(float strikingVelocityFeetPerSecond, float obliquityDeg)
@@ -1056,7 +1083,10 @@ namespace NavalCombatCore
             var td = ClampTd(thicknessInches / diameter);
             var (baseVelocityCoefficient, thicknessPowerExponent, _, _, _) = TdSegmentParameters(td);
             var weightOverD3 = MathF.Max(projectile.totalWeightPounds / (diameter * diameter * diameter), 1e-9f);
-            var powerBase = MathF.Max(EffectivePlateQualityFactor(), 0.01f) * td;
+            var plateQuality = options.enableNaabLikeAdaptation
+                ? EffectivePlateQualityFactor()
+                : armor.quality;
+            var powerBase = MathF.Max(plateQuality, 0.01f) * td;
             var baseNbl = baseVelocityCoefficient * MathF.Pow(powerBase, thicknessPowerExponent);
             baseNbl *= TdShapeMultiplier(td);
             baseNbl *= ScaleFactor();
@@ -1067,9 +1097,12 @@ namespace NavalCombatCore
                 baseNbl *= ObliquityMultiplier(ob, td);
 
             baseNbl *= ElongationFactor();
-            baseNbl *= 1f +
-                WindscreenSelectorAddend(td, ob) +
-                ApCapObliquityAddend(td, ob);
+            if (options.enableNaabLikeAdaptation)
+            {
+                baseNbl *= 1f +
+                    WindscreenSelectorAddend(td, ob) +
+                    ApCapObliquityAddend(td, ob);
+            }
             return baseNbl;
         }
 
@@ -1321,7 +1354,9 @@ namespace NavalCombatCore
         float PenetrationTripletPostScale(float obliquityDeg)
         {
             var extremeObliquityScale = 1f;
-            if (obliquityDeg >= ExtremeObliquityStartDeg && obliquityDeg < RightAngleObliquityDeg)
+            if (options.enableNaabLikeAdaptation &&
+                obliquityDeg >= ExtremeObliquityStartDeg &&
+                obliquityDeg < RightAngleObliquityDeg)
             {
                 var cosOb = MathF.Max(MathF.Cos(DegreesToRadians(obliquityDeg)), 0f);
                 var cosRef = MathF.Max(MathF.Cos(DegreesToRadians(ExtremeObliquityStartDeg)), 1e-9f);

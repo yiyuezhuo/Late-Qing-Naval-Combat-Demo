@@ -492,6 +492,7 @@ public sealed class NaabLikeCalculatorViewModel : INotifyBindablePropertyChanged
     bool _trajectoryChartVisible;
     bool _penetrationChartVisible;
     bool _fitControlsVisible;
+    bool _enableNaabLikeAdaptation = true;
 
     float _armorQuality = 0.95f;
     float _armorElongation = 22f;
@@ -600,6 +601,17 @@ public sealed class NaabLikeCalculatorViewModel : INotifyBindablePropertyChanged
     [CreateProperty] public float sk5MaxRateOfFireShootPerMin { get => _sk5MaxRateOfFireShootPerMin; set => SetProperty(ref _sk5MaxRateOfFireShootPerMin, value, nameof(sk5MaxRateOfFireShootPerMin)); }
     [CreateProperty] public float fallToNextFireSeconds { get => _fallToNextFireSeconds; set => SetProperty(ref _fallToNextFireSeconds, value, nameof(fallToNextFireSeconds)); }
     [CreateProperty] public bool roundSyncBackValuesToOneDecimal { get => _roundSyncBackValuesToOneDecimal; set => SetProperty(ref _roundSyncBackValuesToOneDecimal, value, nameof(roundSyncBackValuesToOneDecimal)); }
+    [CreateProperty]
+    public bool enableNaabLikeAdaptation
+    {
+        get => _enableNaabLikeAdaptation;
+        set
+        {
+            if (!SetProperty(ref _enableNaabLikeAdaptation, value, nameof(enableNaabLikeAdaptation)))
+                return;
+            Notify(nameof(naabLikeAdaptationControlsDisplay));
+        }
+    }
 
     [CreateProperty] public string statusText { get => _statusText; set => SetProperty(ref _statusText, value, nameof(statusText)); }
     [CreateProperty] public bool calculateEnabled { get => _calculateEnabled; set => SetProperty(ref _calculateEnabled, value, nameof(calculateEnabled)); }
@@ -619,6 +631,7 @@ public sealed class NaabLikeCalculatorViewModel : INotifyBindablePropertyChanged
     [CreateProperty] public DisplayStyle trajectoryChartDisplay => trajectoryChartVisible ? DisplayStyle.Flex : DisplayStyle.None;
     [CreateProperty] public DisplayStyle penetrationChartDisplay => penetrationChartVisible ? DisplayStyle.Flex : DisplayStyle.None;
     [CreateProperty] public DisplayStyle fitControlsDisplay => fitControlsVisible ? DisplayStyle.Flex : DisplayStyle.None;
+    [CreateProperty] public DisplayStyle naabLikeAdaptationControlsDisplay => enableNaabLikeAdaptation ? DisplayStyle.Flex : DisplayStyle.None;
 
     void ApplyArmorPreset(NaabLikeArmorPreset preset)
     {
@@ -861,6 +874,7 @@ public sealed class NaabLikeCalculatorDialog
     {
         public NaabLikeProjectile projectile;
         public NaabLikeArmorInput armor;
+        public NaabLikeModelOptions options;
         public NaabLikeExteriorBallisticsSolver exterior;
         public NaabLikeTerminalBallisticsSolver terminal;
         public NaabLikeElevationMode elevationMode;
@@ -887,6 +901,7 @@ public sealed class NaabLikeCalculatorDialog
         public NaabLikeBallisticsData data;
         public NaabLikeProjectile projectile;
         public NaabLikeArmorInput armor;
+        public NaabLikeModelOptions options;
         public List<PenetrationTableRecord> records = new();
         public readonly List<(PenetrationTableRecord record, NaabLikeBallisticsResult result)> impacts = new();
         public readonly List<NaabLikeFitCandidate> candidates = new();
@@ -992,6 +1007,9 @@ public sealed class NaabLikeCalculatorDialog
         ConfigureDropdown(root.Q<DropdownField>("ProjectilePresetField"), ProjectilePresets.Select(preset => preset.projectile.name).ToList(), viewModel.projectilePresetIndex);
         ConfigureDropdown(root.Q<DropdownField>("CapTypeField"), GetCapTypeLabels(), viewModel.capTypeIndex);
         ConfigureDropdown(root.Q<DropdownField>("DragFunctionField"), GetDragFunctionLabels(), viewModel.dragFunctionIndex);
+        var adaptationToggle = root.Q<Toggle>("EnableNaabLikeAdaptationToggle");
+        if (adaptationToggle != null)
+            adaptationToggle.label = Localize("Enable NAAB-like Adaptation");
 
         rangeElevationRows = root.Q<VisualElement>("RangeElevationRows");
         searchFixRows = root.Q<VisualElement>("SearchFixRows");
@@ -1254,8 +1272,9 @@ public sealed class NaabLikeCalculatorDialog
 
         var dragTable = data.dragTables[projectile.dragFunction];
         var dxFeet = viewModel.integrationStep;
-        var exterior = new NaabLikeExteriorBallisticsSolver(dragTable, projectile, dxFeet);
-        var terminal = new NaabLikeTerminalBallisticsSolver(data.terminalTables, projectile, armor);
+        var options = BuildModelOptions();
+        var exterior = new NaabLikeExteriorBallisticsSolver(dragTable, projectile, dxFeet, options);
+        var terminal = new NaabLikeTerminalBallisticsSolver(data.terminalTables, projectile, armor, options);
         var elevationMode = GetElevationMode();
         var elevationSamples = elevationMode == NaabLikeElevationMode.Range ? GetElevationSamples() : null;
         var targetRanges = elevationMode == NaabLikeElevationMode.Range ? null : GetTargetRanges(projectile);
@@ -1272,6 +1291,7 @@ public sealed class NaabLikeCalculatorDialog
         {
             projectile = projectile,
             armor = armor,
+            options = options,
             exterior = exterior,
             terminal = terminal,
             elevationMode = elevationMode,
@@ -1437,20 +1457,23 @@ public sealed class NaabLikeCalculatorDialog
             return Localize("Quality must be greater than 0.");
         if (viewModel.armorElongation <= 0f)
             return Localize("Elongation must be greater than 0.");
-        if (viewModel.armorBhn <= 0f)
+        if (viewModel.enableNaabLikeAdaptation && viewModel.armorBhn <= 0f)
             return Localize("BHN must be greater than 0.");
         if (viewModel.diameter <= 0f)
             return Localize("Projectile diameter must be greater than 0.");
         if (viewModel.totalWeight <= 0f)
             return Localize("Projectile mass must be greater than 0.");
-        if (viewModel.bodyWeight < 0f || viewModel.windscreen < 0f || viewModel.apCapWeight < 0f)
-            return Localize("Projectile component weights must be 0 or greater.");
-        if (viewModel.bodyWeight + viewModel.windscreen + viewModel.apCapWeight > viewModel.totalWeight + 0.001f)
-            return Localize("Projectile component weights must not exceed total weight.");
-        if (viewModel.windscreenNblAddendMultiplier < 0f || viewModel.highObliquityWindscreenNblAddendMultiplier < 0f)
-            return Localize("Windscreen NBL addend multipliers must be 0 or greater.");
-        if (viewModel.highObliquityThreshold < 0f)
-            return Localize("High-obliquity threshold must be 0 or greater.");
+        if (viewModel.enableNaabLikeAdaptation)
+        {
+            if (viewModel.bodyWeight < 0f || viewModel.windscreen < 0f || viewModel.apCapWeight < 0f)
+                return Localize("Projectile component weights must be 0 or greater.");
+            if (viewModel.bodyWeight + viewModel.windscreen + viewModel.apCapWeight > viewModel.totalWeight + 0.001f)
+                return Localize("Projectile component weights must not exceed total weight.");
+            if (viewModel.windscreenNblAddendMultiplier < 0f || viewModel.highObliquityWindscreenNblAddendMultiplier < 0f)
+                return Localize("Windscreen NBL addend multipliers must be 0 or greater.");
+            if (viewModel.highObliquityThreshold < 0f)
+                return Localize("High-obliquity threshold must be 0 or greater.");
+        }
         if (viewModel.muzzleVelocity <= 0f)
             return Localize("Muzzle velocity must be greater than 0.");
         if (viewModel.maxRange <= 0f)
@@ -1493,6 +1516,14 @@ public sealed class NaabLikeCalculatorDialog
             inclinedDeg = viewModel.armorInclined
         };
         return null;
+    }
+
+    NaabLikeModelOptions BuildModelOptions()
+    {
+        return new NaabLikeModelOptions
+        {
+            enableNaabLikeAdaptation = viewModel.enableNaabLikeAdaptation
+        };
     }
 
     List<float> GetElevationSamples()
@@ -1751,6 +1782,7 @@ public sealed class NaabLikeCalculatorDialog
             data = data,
             projectile = projectile,
             armor = armor,
+            options = BuildModelOptions(),
             records = fitRecords,
             originalBallisticCoefficient = viewModel.ballisticCoefficient,
             originalDragCoefficient = viewModel.dragCoefficient,
@@ -1819,7 +1851,7 @@ public sealed class NaabLikeCalculatorDialog
 
         var candidate = job.candidates[job.candidateIndex++];
         job.currentBallisticCoefficient = candidate.ballisticCoefficient;
-        var detail = ScoreExterior(job.data, job.projectile, candidate.ballisticCoefficient, job.records);
+        var detail = ScoreExterior(job.data, job.projectile, candidate.ballisticCoefficient, job.records, job.options);
         job.currentScore = detail.score;
         job.currentDetail = $"mismatch {detail.rangeBandMismatchCount}, max range error {detail.maxRangeErrorYards:0} yd";
         job.processedCandidates++;
@@ -1837,7 +1869,7 @@ public sealed class NaabLikeCalculatorDialog
         {
             if (job.impactIndex < job.records.Count)
             {
-                var exterior = new NaabLikeExteriorBallisticsSolver(job.data.dragTables[job.projectile.dragFunction], job.projectile, viewModel.integrationStep);
+                var exterior = new NaabLikeExteriorBallisticsSolver(job.data.dragTables[job.projectile.dragFunction], job.projectile, viewModel.integrationStep, job.options);
                 var record = job.records[job.impactIndex];
                 var targetRangeYards = GetFitRecordTargetRange(job.records, job.impactIndex);
                 var result = exterior.SolveForTargetRange(targetRangeYards, MathF.Max(job.projectile.maxElevationDeg, 45f), job.impactAngleHint);
@@ -1859,7 +1891,7 @@ public sealed class NaabLikeCalculatorDialog
             }
 
             job.buildingImpacts = false;
-            job.bestScore = ScoreShellQuality(job.data, job.projectile, job.armor, job.impacts, job.bestShellQuality);
+            job.bestScore = ScoreShellQuality(job.data, job.projectile, job.armor, job.impacts, job.bestShellQuality, job.options);
             PrepareFitPass(job);
             UpdateFitProgress(job, $"Impact rows ready: {job.impacts.Count}");
             return;
@@ -1885,7 +1917,7 @@ public sealed class NaabLikeCalculatorDialog
 
         var candidate = job.candidates[job.candidateIndex++];
         job.currentShellQuality = candidate.shellQuality;
-        var score = ScoreShellQuality(job.data, job.projectile, job.armor, job.impacts, candidate.shellQuality);
+        var score = ScoreShellQuality(job.data, job.projectile, job.armor, job.impacts, candidate.shellQuality, job.options);
         job.currentScore = score;
         job.currentDetail = $"valid impacts {job.impacts.Count}";
         job.processedCandidates++;
@@ -2008,11 +2040,16 @@ public sealed class NaabLikeCalculatorDialog
         });
     }
 
-    ExteriorScore ScoreExterior(NaabLikeBallisticsData data, NaabLikeProjectile seed, float ballisticCoefficient, List<PenetrationTableRecord> records)
+    ExteriorScore ScoreExterior(
+        NaabLikeBallisticsData data,
+        NaabLikeProjectile seed,
+        float ballisticCoefficient,
+        List<PenetrationTableRecord> records,
+        NaabLikeModelOptions options)
     {
         var projectile = seed.Clone();
         projectile.ballisticCoefficient = ballisticCoefficient;
-        var exterior = new NaabLikeExteriorBallisticsSolver(data.dragTables[projectile.dragFunction], projectile, viewModel.integrationStep);
+        var exterior = new NaabLikeExteriorBallisticsSolver(data.dragTables[projectile.dragFunction], projectile, viewModel.integrationStep, options);
         var score = 0f;
         var mismatchCount = 0;
         var targetRanges = new List<float>(records.Count);
@@ -2070,11 +2107,12 @@ public sealed class NaabLikeCalculatorDialog
         NaabLikeProjectile seed,
         NaabLikeArmorInput armor,
         List<(PenetrationTableRecord record, NaabLikeBallisticsResult result)> impacts,
-        float shellQuality)
+        float shellQuality,
+        NaabLikeModelOptions options)
     {
         var projectile = seed.Clone();
         projectile.effectiveShellQuality = shellQuality;
-        var terminal = new NaabLikeTerminalBallisticsSolver(data.terminalTables, projectile, armor);
+        var terminal = new NaabLikeTerminalBallisticsSolver(data.terminalTables, projectile, armor, options);
         var score = 0f;
         foreach (var impact in impacts)
         {

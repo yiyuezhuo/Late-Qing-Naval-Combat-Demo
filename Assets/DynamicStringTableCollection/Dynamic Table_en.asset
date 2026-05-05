@@ -4451,68 +4451,72 @@ MonoBehaviour:
     m_Localized: Integration Step (ft)
     m_Metadata:
       m_Items: []
-  - m_Id: -345
+  - m_Id: -343
     m_Localized: Integration step must be greater than 0.
     m_Metadata:
       m_Items: []
-  - m_Id: -346
+  - m_Id: -344
     m_Localized: BHN
     m_Metadata:
       m_Items: []
-  - m_Id: -347
+  - m_Id: -345
     m_Localized: BHN must be greater than 0.
     m_Metadata:
       m_Items: []
-  - m_Id: -348
+  - m_Id: -346
     m_Localized: Medium Cap
     m_Metadata:
       m_Items: []
-  - m_Id: -349
+  - m_Id: -347
     m_Localized: Soft Cap
     m_Metadata:
       m_Items: []
-  - m_Id: -350
+  - m_Id: -348
     m_Localized: Hood
     m_Metadata:
       m_Items: []
-  - m_Id: -351
+  - m_Id: -349
     m_Localized: Effective Shell Quality
     m_Metadata:
       m_Items: []
-  - m_Id: -352
+  - m_Id: -350
     m_Localized: Effective shell quality must be greater than 0.
     m_Metadata:
       m_Items: []
-  - m_Id: -353
+  - m_Id: -351
     m_Localized: Windscreen NBL Addend Multiplier
     m_Metadata:
       m_Items: []
-  - m_Id: -354
+  - m_Id: -352
     m_Localized: Hi-Obl Windscreen NBL Addend Mult.
     m_Metadata:
       m_Items: []
-  - m_Id: -355
+  - m_Id: -353
     m_Localized: High-Obliquity Threshold (deg)
     m_Metadata:
       m_Items: []
-  - m_Id: -356
+  - m_Id: -354
     m_Localized: Windscreen NBL addend multipliers must be 0 or greater.
     m_Metadata:
       m_Items: []
-  - m_Id: -357
+  - m_Id: -355
     m_Localized: High-obliquity threshold must be 0 or greater.
     m_Metadata:
       m_Items: []
-  - m_Id: -358
+  - m_Id: -356
     m_Localized: Avg. wrought iron construction and armor material
     m_Metadata:
       m_Items: []
-  - m_Id: -359
+  - m_Id: -357
     m_Localized: Avg. "mild/medium" construction steel. (1890-on)
     m_Metadata:
       m_Items: []
-  - m_Id: -360
+  - m_Id: -358
     m_Localized: Avg. U.S WWI-era class "B" armor
+    m_Metadata:
+      m_Items: []
+  - m_Id: -359
+    m_Localized: Enable NAAB-like Adaptation
     m_Metadata:
       m_Items: []
   references:

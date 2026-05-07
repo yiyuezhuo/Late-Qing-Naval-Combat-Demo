@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Assets\Scripts\YYZLib\Ballistic\BallisticCommon.cs" Link="BallisticCommon.cs" />
+    <Compile Include="..\..\Assets\Scripts\YYZLib\Ballistic\McCoy.cs" Link="McCoy.cs" />
+  </ItemGroup>
+</Project>

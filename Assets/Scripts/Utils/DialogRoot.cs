@@ -3822,6 +3822,16 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         );
     }
 
+    public TempDialog PopupMcCoyOkunCalculatorDialog()
+    {
+        var dialog = new McCoyOkunCalculatorDialog();
+        return PopupCustomContentDialog(
+            "McCoy Okun Calculator",
+            dialog.BuildContent,
+            Localize("Close")
+        );
+    }
+
     // Legacy helper for simple read-only custom content. New feature dialogs should use
     // their own UXML and PopupXxxDialog entry point instead of extending Message Dialog.
     public TempDialog PopupCustomMessageContentDialog(string title, Func<VisualElement> contentFactory, float width = 900f, float height = 560f, string confirmButtonText = null, string cancelButtonText = null)

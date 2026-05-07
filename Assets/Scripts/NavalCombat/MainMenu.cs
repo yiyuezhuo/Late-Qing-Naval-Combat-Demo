@@ -22,6 +22,7 @@ public class MainMenu : SingletonDocument<MainMenu>
         // var galleryButton = root.Q<Button>("GalleryButton");
         var calculatorButton = root.Q<Button>("CalculatorButton");
         var naabLikeCalculatorButton = root.Q<Button>("NaabLikeCalculatorButton");
+        var mccoyOkunCalculatorButton = root.Q<Button>("McCoyOkunCalculatorButton");
         var onlineManualButton = root.Q<Button>("OnlineManualButton");
         var aboutButton = root.Q<Button>("AboutButton");
         var exitButton = root.Q<Button>("ExitButton");
@@ -61,6 +62,8 @@ public class MainMenu : SingletonDocument<MainMenu>
         calculatorButton.clicked += () => DialogRoot.Instance.PopupExternalBallisticsCalculatorDialog();
         naabLikeCalculatorButton.text = MyLocale.Get("NAAB-like Calculator");
         naabLikeCalculatorButton.clicked += () => DialogRoot.Instance.PopupNaabLikeCalculatorDialog();
+        mccoyOkunCalculatorButton.text = "McCoy Okun Calculator";
+        mccoyOkunCalculatorButton.clicked += () => DialogRoot.Instance.PopupMcCoyOkunCalculatorDialog();
 
         root.Q<Button>("ManualButton").text = MyLocale.Get("Manual");
         root.Q<Button>("ManualButton").clicked += () => {

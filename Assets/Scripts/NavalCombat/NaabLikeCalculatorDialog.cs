@@ -493,6 +493,8 @@ public sealed class NaabLikeCalculatorViewModel : INotifyBindablePropertyChanged
     bool _penetrationChartVisible;
     bool _fitControlsVisible;
     bool _enableNaabLikeAdaptation = true;
+    bool _enableShellQualityPostScale = true;
+    bool _enableExtremeObliquityScale = true;
 
     float _armorQuality = 0.95f;
     float _armorElongation = 22f;
@@ -610,8 +612,11 @@ public sealed class NaabLikeCalculatorViewModel : INotifyBindablePropertyChanged
             if (!SetProperty(ref _enableNaabLikeAdaptation, value, nameof(enableNaabLikeAdaptation)))
                 return;
             Notify(nameof(naabLikeAdaptationControlsDisplay));
+            Notify(nameof(nonNaabLikeOptionsDisplay));
         }
     }
+    [CreateProperty] public bool enableShellQualityPostScale { get => _enableShellQualityPostScale; set => SetProperty(ref _enableShellQualityPostScale, value, nameof(enableShellQualityPostScale)); }
+    [CreateProperty] public bool enableExtremeObliquityScale { get => _enableExtremeObliquityScale; set => SetProperty(ref _enableExtremeObliquityScale, value, nameof(enableExtremeObliquityScale)); }
 
     [CreateProperty] public string statusText { get => _statusText; set => SetProperty(ref _statusText, value, nameof(statusText)); }
     [CreateProperty] public bool calculateEnabled { get => _calculateEnabled; set => SetProperty(ref _calculateEnabled, value, nameof(calculateEnabled)); }
@@ -632,6 +637,7 @@ public sealed class NaabLikeCalculatorViewModel : INotifyBindablePropertyChanged
     [CreateProperty] public DisplayStyle penetrationChartDisplay => penetrationChartVisible ? DisplayStyle.Flex : DisplayStyle.None;
     [CreateProperty] public DisplayStyle fitControlsDisplay => fitControlsVisible ? DisplayStyle.Flex : DisplayStyle.None;
     [CreateProperty] public DisplayStyle naabLikeAdaptationControlsDisplay => enableNaabLikeAdaptation ? DisplayStyle.Flex : DisplayStyle.None;
+    [CreateProperty] public DisplayStyle nonNaabLikeOptionsDisplay => enableNaabLikeAdaptation ? DisplayStyle.None : DisplayStyle.Flex;
 
     void ApplyArmorPreset(NaabLikeArmorPreset preset)
     {
@@ -1010,6 +1016,12 @@ public sealed class NaabLikeCalculatorDialog
         var adaptationToggle = root.Q<Toggle>("EnableNaabLikeAdaptationToggle");
         if (adaptationToggle != null)
             adaptationToggle.label = Localize("Enable NAAB-like Adaptation");
+        var shellQualityToggle = root.Q<Toggle>("EnableShellQualityPostScaleToggle");
+        if (shellQualityToggle != null)
+            shellQualityToggle.label = Localize("Enable Shell Quality");
+        var extremeObliquityToggle = root.Q<Toggle>("EnableExtremeObliquityScaleToggle");
+        if (extremeObliquityToggle != null)
+            extremeObliquityToggle.label = Localize("Enable Extreme Obliquity Correction");
 
         rangeElevationRows = root.Q<VisualElement>("RangeElevationRows");
         searchFixRows = root.Q<VisualElement>("SearchFixRows");
@@ -1484,7 +1496,7 @@ public sealed class NaabLikeCalculatorDialog
             return Localize("Ballistic coefficient must be greater than 0.");
         if (viewModel.projectileMaxElevation <= 0f)
             return Localize("Elevation angle must be greater than 0 and less than 90 degrees.");
-        if (viewModel.effectiveShellQuality <= 0f)
+        if ((viewModel.enableNaabLikeAdaptation || viewModel.enableShellQualityPostScale) && viewModel.effectiveShellQuality <= 0f)
             return Localize("Effective shell quality must be greater than 0.");
         if (viewModel.integrationStep <= 0f)
             return Localize("Integration step must be greater than 0.");
@@ -1522,7 +1534,9 @@ public sealed class NaabLikeCalculatorDialog
     {
         return new NaabLikeModelOptions
         {
-            enableNaabLikeAdaptation = viewModel.enableNaabLikeAdaptation
+            enableNaabLikeAdaptation = viewModel.enableNaabLikeAdaptation,
+            enableShellQualityPostScale = viewModel.enableShellQualityPostScale,
+            enableExtremeObliquityScale = viewModel.enableExtremeObliquityScale
         };
     }
 

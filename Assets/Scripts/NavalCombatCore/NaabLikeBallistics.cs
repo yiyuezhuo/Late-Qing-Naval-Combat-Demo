@@ -86,6 +86,8 @@ namespace NavalCombatCore
     public sealed class NaabLikeModelOptions
     {
         public bool enableNaabLikeAdaptation = true;
+        public bool enableShellQualityPostScale = true;
+        public bool enableExtremeObliquityScale = true;
 
         public NaabLikeModelOptions Clone()
         {
@@ -1354,7 +1356,8 @@ namespace NavalCombatCore
         float PenetrationTripletPostScale(float obliquityDeg)
         {
             var extremeObliquityScale = 1f;
-            if (options.enableNaabLikeAdaptation &&
+            var useExtremeObliquityScale = options.enableNaabLikeAdaptation || options.enableExtremeObliquityScale;
+            if (useExtremeObliquityScale &&
                 obliquityDeg >= ExtremeObliquityStartDeg &&
                 obliquityDeg < RightAngleObliquityDeg)
             {
@@ -1362,7 +1365,12 @@ namespace NavalCombatCore
                 var cosRef = MathF.Max(MathF.Cos(DegreesToRadians(ExtremeObliquityStartDeg)), 1e-9f);
                 extremeObliquityScale = MathF.Pow(cosOb / cosRef, 1.1f);
             }
-            return extremeObliquityScale * Math.Clamp(projectile.effectiveShellQuality, 0.2f, 1.2f);
+
+            var useShellQuality = options.enableNaabLikeAdaptation || options.enableShellQualityPostScale;
+            var shellQualityScale = useShellQuality
+                ? Math.Clamp(projectile.effectiveShellQuality, 0.2f, 1.2f)
+                : 1f;
+            return extremeObliquityScale * shellQualityScale;
         }
 
         static float ClampTd(float td) => Math.Clamp(td, 0.001f, 5.99999f);

@@ -4509,6 +4509,14 @@ MonoBehaviour:
     m_Key: Enable NAAB-like Adaptation
     m_Metadata:
       m_Items: []
+  - m_Id: -360
+    m_Key: Enable Shell Quality
+    m_Metadata:
+      m_Items: []
+  - m_Id: -361
+    m_Key: Enable Extreme Obliquity Correction
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

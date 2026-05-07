@@ -4519,6 +4519,14 @@ MonoBehaviour:
     m_Localized: Enable NAAB-like Adaptation
     m_Metadata:
       m_Items: []
+  - m_Id: -360
+    m_Localized: Enable Shell Quality
+    m_Metadata:
+      m_Items: []
+  - m_Id: -361
+    m_Localized: Enable Extreme Obliquity Correction
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

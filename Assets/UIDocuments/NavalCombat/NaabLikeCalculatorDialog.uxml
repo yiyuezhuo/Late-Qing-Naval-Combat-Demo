@@ -50,6 +50,18 @@
                         <ui:DataBinding property="value" data-source-path="enableNaabLikeAdaptation" binding-mode="TwoWay" />
                     </Bindings>
                 </ui:Toggle>
+                <ui:Toggle name="EnableShellQualityPostScaleToggle" label="Enable Shell Quality" style="margin-top: 2px; margin-bottom: 2px;">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="enableShellQualityPostScale" binding-mode="TwoWay" />
+                        <ui:DataBinding property="style.display" data-source-path="nonNaabLikeOptionsDisplay" binding-mode="ToTarget" />
+                    </Bindings>
+                </ui:Toggle>
+                <ui:Toggle name="EnableExtremeObliquityScaleToggle" label="Enable Extreme Obliquity Correction" style="margin-top: 2px; margin-bottom: 4px;">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="enableExtremeObliquityScale" binding-mode="TwoWay" />
+                        <ui:DataBinding property="style.display" data-source-path="nonNaabLikeOptionsDisplay" binding-mode="ToTarget" />
+                    </Bindings>
+                </ui:Toggle>
                 <ui:Button name="CalculateButton" text="Calculate" style="margin-top: 8px;" />
                 <ui:Label name="StatusLabel" style="white-space: normal; margin-top: 6px;">
                     <Bindings>

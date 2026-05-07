@@ -87,7 +87,7 @@ namespace YYZ.Ballistic
             }
 
             var source = input ?? new McCoyPlusFacehardInput();
-            var trajectory = McCoyPlus.Calculate(source.McCoy);
+            var trajectory = McCoyPlus.CalculateParallel(source.McCoy);
             var warnings = new List<string>(trajectory.Warnings);
             var rows = new List<McCoyPlusFacehardRow>();
             foreach (var row in trajectory.Rows)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace YYZ.Ballistic
 {
@@ -96,41 +97,51 @@ namespace YYZ.Ballistic
 
             foreach (var targetRange in SweepTargets(source.MaxRange))
             {
-                var printInterval = Math.Max(1, Math.Floor(targetRange / 100));
-                var targetInput = ToMcCoyInput(source, dragTable, targetRange, printInterval);
-                var result = McCoy.Calculate(targetInput);
-                var point = LastPointAtRange(result.Points, targetRange);
-                var angle = point != null ? FallAngleDegrees(point) : double.NaN;
-                McCoyPlusRow row = null;
+                var solved = SolveRow(source, dragTable, targetRange);
 
-                if (point != null &&
-                    result.Warnings.Count == 0 &&
-                    BallisticMath.IsFinite(result.AdjustedElevationMinutes) &&
-                    BallisticMath.IsFinite(point.Time) &&
-                    BallisticMath.IsFinite(point.Velocity) &&
-                    BallisticMath.IsFinite(angle))
+                if (solved.Row == null)
                 {
-                    row = new McCoyPlusRow
-                    {
-                        Range = targetRange,
-                        Time = point.Time,
-                        ElevationDegrees = result.AdjustedElevationMinutes / 60,
-                        Velocity = point.Velocity,
-                        FallAngleDegrees = angle,
-                        Trajectory = result.Points,
-                    };
-                }
-
-                if (row == null)
-                {
-                    var reason = result.Warnings.Count > 0 ? string.Join("; ", result.Warnings) : "solver did not return a finite target-range solution";
-                    warnings.Add($"Stopped at {BallisticText.ToJsString(targetRange)} {source.RangeUnit}: {reason}.");
+                    warnings.Add(solved.Warning);
                     break;
                 }
 
-                rows.Add(row);
+                rows.Add(solved.Row);
             }
 
+            return BuildResult(source, rows, warnings);
+        }
+
+        public static McCoyPlusResult CalculateParallel(McCoyPlusInput input, int workerCount = 8)
+        {
+            var source = input ?? new McCoyPlusInput();
+            var targetRanges = SweepTargets(source.MaxRange).ToList();
+            var dragTable = source.DragTable != null && source.DragTable.Count >= 2 ? source.DragTable : Presets.Value[0].Points;
+            var solvedRows = new SolvedRow[targetRanges.Count];
+            var workers = Math.Max(1, Math.Min(workerCount, 64));
+
+            Parallel.For(0, targetRanges.Count, new ParallelOptions { MaxDegreeOfParallelism = workers }, index =>
+            {
+                solvedRows[index] = SolveRow(source, dragTable, targetRanges[index]);
+            });
+
+            var rows = new List<McCoyPlusRow>();
+            var warnings = new List<string>();
+            foreach (var solved in solvedRows)
+            {
+                if (solved.Row == null)
+                {
+                    warnings.Add(solved.Warning);
+                    break;
+                }
+
+                rows.Add(solved.Row);
+            }
+
+            return BuildResult(source, rows, warnings);
+        }
+
+        static McCoyPlusResult BuildResult(McCoyPlusInput source, List<McCoyPlusRow> rows, List<string> warnings)
+        {
             if (rows.Count > 0 && rows[rows.Count - 1].Range >= SweepLimit)
             {
                 warnings.Add($"Stopped at {BallisticText.ToJsString(SweepLimit)} {source.RangeUnit}: safety sweep limit reached.");
@@ -141,6 +152,48 @@ namespace YYZ.Ballistic
                 Rows = rows,
                 ChartRows = ChartRows(rows),
                 Warnings = BallisticCollections.DistinctStrings(warnings),
+            };
+        }
+
+        sealed class SolvedRow
+        {
+            public McCoyPlusRow Row;
+            public string Warning;
+        }
+
+        static SolvedRow SolveRow(McCoyPlusInput source, List<DragPoint> dragTable, double targetRange)
+        {
+            var printInterval = Math.Max(1, Math.Floor(targetRange / 100));
+            var targetInput = ToMcCoyInput(source, dragTable, targetRange, printInterval);
+            var result = McCoy.Calculate(targetInput, false);
+            var point = LastPointAtRange(result.Points, targetRange);
+            var angle = point != null ? FallAngleDegrees(point) : double.NaN;
+
+            if (point != null &&
+                result.Warnings.Count == 0 &&
+                BallisticMath.IsFinite(result.AdjustedElevationMinutes) &&
+                BallisticMath.IsFinite(point.Time) &&
+                BallisticMath.IsFinite(point.Velocity) &&
+                BallisticMath.IsFinite(angle))
+            {
+                return new SolvedRow
+                {
+                    Row = new McCoyPlusRow
+                    {
+                        Range = targetRange,
+                        Time = point.Time,
+                        ElevationDegrees = result.AdjustedElevationMinutes / 60,
+                        Velocity = point.Velocity,
+                        FallAngleDegrees = angle,
+                        Trajectory = result.Points,
+                    },
+                };
+            }
+
+            var reason = result.Warnings.Count > 0 ? string.Join("; ", result.Warnings) : "solver did not return a finite target-range solution";
+            return new SolvedRow
+            {
+                Warning = $"Stopped at {BallisticText.ToJsString(targetRange)} {source.RangeUnit}: {reason}.",
             };
         }
 

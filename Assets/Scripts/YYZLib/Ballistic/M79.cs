@@ -184,6 +184,11 @@ namespace YYZ.Ballistic
 
         public static M79Result Calculate(M79Input rawInput)
         {
+            return Calculate(rawInput, true);
+        }
+
+        public static M79Result Calculate(M79Input rawInput, bool includeReports)
+        {
             var input = ClampInput(rawInput ?? new M79Input());
             var tSlashD = input.PlateThickness / input.ProjectileDiameter;
             var projectileDensity = input.ProjectileWeight / Math.Pow(input.ProjectileDiameter, 3);
@@ -260,7 +265,11 @@ namespace YYZ.Ballistic
                 DeflectionAngle = deflection,
                 RemainingVelocity = remaining,
             };
-            result.LegacyReport = RenderLegacyReport(input, result);
+            if (includeReports)
+            {
+                result.LegacyReport = RenderLegacyReport(input, result);
+            }
+
             return result;
         }
 

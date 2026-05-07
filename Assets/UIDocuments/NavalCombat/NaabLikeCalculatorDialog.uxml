@@ -242,6 +242,7 @@
                         </Bindings>
                     </NaabLikePenetrationChart>
                 </ui:VisualElement>
+                <ui:Label name="CalculationTimeLabel" text="Calculation time: -" style="font-size: 11px; color: rgb(140, 140, 140); margin-bottom: 4px;" />
                 <ui:MultiColumnListView name="NaabLikeCalculatorResultListView" style="flex-grow: 1; flex-shrink: 1; min-height: 170px;" />
             </ui:VisualElement>
         </ui:VisualElement>

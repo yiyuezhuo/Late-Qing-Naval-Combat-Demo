@@ -155,6 +155,11 @@ namespace YYZ.Ballistic
 
         public static McCoyResult Calculate(McCoyInput input)
         {
+            return Calculate(input, true);
+        }
+
+        public static McCoyResult Calculate(McCoyInput input, bool includeReports)
+        {
             var normalized = Normalize(input);
             var wantsMatch = normalized.MatchRange > 0 || normalized.MatchHeight != 0;
             var elevation = normalized.ElevationMinutes;
@@ -206,7 +211,11 @@ namespace YYZ.Ballistic
                 DidAdjustElevation = wantsMatch,
                 Warnings = BallisticCollections.DistinctStrings(warnings),
             };
-            result.LegacyReport = RenderLegacyReport(normalized, result);
+            if (includeReports)
+            {
+                result.LegacyReport = RenderLegacyReport(normalized, result);
+            }
+
             return result;
         }
 

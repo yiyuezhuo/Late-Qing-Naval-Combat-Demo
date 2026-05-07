@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 
@@ -268,7 +269,10 @@ public sealed class McCoyOkunCalculatorDialog
     VisualElement BuildMcCoyPage()
     {
         mccoyInput.DragTable = McCoy.NormalizeDragTable(mccoyDragText);
+        var stopwatch = Stopwatch.StartNew();
         var result = McCoy.Calculate(mccoyInput);
+        stopwatch.Stop();
+        var calculationElapsed = stopwatch.Elapsed;
         var last = result.Points.LastOrDefault();
         var root = PageRoot(out var input, out var output);
         input.Add(Header("McCoy Point-Mass Trajectory", () =>
@@ -300,6 +304,7 @@ public sealed class McCoyOkunCalculatorDialog
         output.Add(Chart("Height Curve", result.Points.Select(point => new Vector2((float)point.Range, (float)point.HeightInches))));
         output.Add(Chart("Velocity Curve", result.Points.Select(point => new Vector2((float)point.Range, (float)point.Velocity))));
         output.Add(Pre("McCoy Legacy BASIC Report", result.LegacyReport));
+        output.Add(CalculationTime(calculationElapsed));
         output.Add(Table("Trajectory Points", result.Points.Take(80).ToList(),
             Col<TrajectoryPoint>("range", "Range", 90, point => F(point.Range, 0)),
             Col<TrajectoryPoint>("height", "Height", 90, point => F(point.HeightInches, 1)),
@@ -315,7 +320,10 @@ public sealed class McCoyOkunCalculatorDialog
     VisualElement BuildMcCoyPlusPage()
     {
         mccoyPlusInput.DragTable = McCoy.NormalizeDragTable(mccoyPlusDragText);
-        var result = McCoyPlus.Calculate(mccoyPlusInput);
+        var stopwatch = Stopwatch.StartNew();
+        var result = McCoyPlus.CalculateParallel(mccoyPlusInput);
+        stopwatch.Stop();
+        var calculationElapsed = stopwatch.Elapsed;
         var last = result.Rows.LastOrDefault();
         var root = PageRoot(out var input, out var output);
         BuildMcCoyPlusInputs(input, mccoyPlusInput, () =>
@@ -330,6 +338,7 @@ public sealed class McCoyOkunCalculatorDialog
             ("Last Velocity", F(last?.Velocity), "ft/s")));
         output.Add(Warnings(result.Warnings));
         output.Add(ChartSeries("Matched Trajectories", TrajectorySeries(result.ChartRows, mccoyPlusInput.RangeUnit)));
+        output.Add(CalculationTime(calculationElapsed));
         output.Add(Table("Range Sweep", result.Rows,
             Col<McCoyPlusRow>("range", "Range", 90, row => F(row.Range, 0)),
             Col<McCoyPlusRow>("time", "Time", 90, row => F(row.Time, 3)),
@@ -344,7 +353,10 @@ public sealed class McCoyOkunCalculatorDialog
         SyncComboMcCoy(mccoyPlusFacehardInput.McCoy, mccoyPlusFacehardDragText);
         SyncFacehardBridge();
         McCoyPlusFacehard.FacehardCalculator = bridge => FacehardBridgeCalculate(bridge, mccoyPlusFacehardDetails);
+        var stopwatch = Stopwatch.StartNew();
         var result = McCoyPlusFacehard.Calculate(mccoyPlusFacehardInput);
+        stopwatch.Stop();
+        var calculationElapsed = stopwatch.Elapsed;
         var root = PageRoot(out var input, out var output);
         input.Add(Header("McCoy Plus Facehard", () =>
         {
@@ -377,6 +389,7 @@ public sealed class McCoyOkunCalculatorDialog
         output.Add(mccoyPlusFacehardChartMode == "trajectory"
             ? ChartSeries("Matched Trajectories", TrajectorySeries(result.ChartRows, mccoyPlusFacehardInput.McCoy.RangeUnit))
             : Chart("Facehard Penetration", result.Rows.Where(row => row.PenetrationInches.HasValue).Select(row => new Vector2((float)row.Range, (float)row.PenetrationInches.Value))));
+        output.Add(CalculationTime(calculationElapsed));
         output.Add(Table("Rows", result.Rows,
             Col<McCoyPlusFacehardRow>("range", "Range", 90, row => F(row.Range, 0)),
             Col<McCoyPlusFacehardRow>("time", "Time", 90, row => F(row.Time, 3)),
@@ -391,7 +404,10 @@ public sealed class McCoyOkunCalculatorDialog
     VisualElement BuildMcCoyPlusM79Page()
     {
         SyncComboMcCoy(mccoyPlusM79Input.McCoy, mccoyPlusM79DragText);
+        var stopwatch = Stopwatch.StartNew();
         var result = McCoyPlusM79.Calculate(mccoyPlusM79Input);
+        stopwatch.Stop();
+        var calculationElapsed = stopwatch.Elapsed;
         var root = PageRoot(out var input, out var output);
         input.Add(Header("McCoy Plus M79 APCLC", () =>
         {
@@ -421,6 +437,7 @@ public sealed class McCoyOkunCalculatorDialog
         output.Add(mccoyPlusM79ChartMode == "trajectory"
             ? ChartSeries("Matched Trajectories", TrajectorySeries(result.ChartRows, mccoyPlusM79Input.McCoy.RangeUnit))
             : Chart("M79 Penetration", result.Rows.Where(row => row.PenetrationInches.HasValue).Select(row => new Vector2((float)row.Range, (float)row.PenetrationInches.Value))));
+        output.Add(CalculationTime(calculationElapsed));
         output.Add(Table("Rows", result.Rows,
             Col<McCoyPlusM79Row>("range", "Range", 90, row => F(row.Range, 0)),
             Col<McCoyPlusM79Row>("time", "Time", 90, row => F(row.Time, 3)),
@@ -943,6 +960,20 @@ public sealed class McCoyOkunCalculatorDialog
         label.style.marginTop = 8;
         label.style.marginBottom = 4;
         return label;
+    }
+
+    static Label CalculationTime(TimeSpan elapsed)
+    {
+        return new Label($"Calculation time: {elapsed.TotalMilliseconds.ToString("0.##", CultureInfo.InvariantCulture)} ms")
+        {
+            style =
+            {
+                marginTop = 6,
+                marginBottom = 4,
+                fontSize = 11,
+                color = new StyleColor(new Color(0.55f, 0.55f, 0.55f))
+            }
+        };
     }
 
     VisualElement NumberField(string label, double value, string unit, Action<double> setter, double? min = null, bool enabled = true)

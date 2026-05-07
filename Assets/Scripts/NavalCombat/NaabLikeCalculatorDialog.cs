@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -890,9 +892,16 @@ public sealed class NaabLikeCalculatorDialog
         public int totalRows;
         public int externalFailures;
         public float? angleHint;
-        public Task<List<NaabLikeBallisticsResult>> parallelTargetTask;
+        public Task<NaabLikeParallelTargetCalculation> parallelTargetTask;
         public List<NaabLikeBallisticsResult> parallelTargetResults;
         public int parallelCompletedRows;
+        public double calculationMilliseconds;
+    }
+
+    sealed class NaabLikeParallelTargetCalculation
+    {
+        public List<NaabLikeBallisticsResult> results;
+        public double calculationMilliseconds;
     }
 
     sealed class NaabLikeFitCandidate
@@ -964,6 +973,7 @@ public sealed class NaabLikeCalculatorDialog
     ProgressBar progressBar;
     Label progressLabel;
     Label progressTitleLabel;
+    Label calculationTimeLabel;
     Button calculateButton;
     Button fitExternalButton;
     Button fitTerminalButton;
@@ -1030,6 +1040,7 @@ public sealed class NaabLikeCalculatorDialog
         progressBar = root.Q<ProgressBar>("ProgressBar");
         progressLabel = root.Q<Label>("ProgressLabel");
         progressTitleLabel = root.Q<Label>("ProgressTitleLabel");
+        calculationTimeLabel = root.Q<Label>("CalculationTimeLabel");
         calculateButton = root.Q<Button>("CalculateButton");
         fitExternalButton = root.Q<Button>("Sk5FitExternalBallisticButton");
         fitTerminalButton = root.Q<Button>("Sk5FitTerminalBallisticButton");
@@ -1265,6 +1276,7 @@ public sealed class NaabLikeCalculatorDialog
 
         results.Clear();
         tableRows.Clear();
+        SetCalculationTime(null, true);
 
         var data = LoadData();
         if (data == null)
@@ -1313,11 +1325,21 @@ public sealed class NaabLikeCalculatorDialog
         };
         if (elevationMode != NaabLikeElevationMode.Range)
         {
-            currentJob.parallelTargetTask = Task.Run(() => exterior.SolveForTargetRangesParallel(
-                targetRanges,
-                MathF.Max(projectile.maxElevationDeg, 45f),
-                8,
-                (completed, _) => Volatile.Write(ref currentJob.parallelCompletedRows, completed)));
+            currentJob.parallelTargetTask = Task.Run(() =>
+            {
+                var stopwatch = Stopwatch.StartNew();
+                var targetResults = exterior.SolveForTargetRangesParallel(
+                    targetRanges,
+                    MathF.Max(projectile.maxElevationDeg, 45f),
+                    8,
+                    (completed, _) => Volatile.Write(ref currentJob.parallelCompletedRows, completed));
+                stopwatch.Stop();
+                return new NaabLikeParallelTargetCalculation
+                {
+                    results = targetResults,
+                    calculationMilliseconds = stopwatch.Elapsed.TotalMilliseconds
+                };
+            });
         }
         ShowProgressDialog(0, totalRows);
         calculationSchedule = contentRoot.schedule.Execute(ProcessCalculationStep).Every(1);
@@ -1345,6 +1367,7 @@ public sealed class NaabLikeCalculatorDialog
             calculationSchedule = null;
             currentJob = null;
             HideProgressDialog();
+            SetCalculationTime(job.calculationMilliseconds);
         viewModel.statusText = job.externalFailures > 0
             ? Localize("{0} result(s), {1} external ballistic failure(s).", tableRows.Count, job.externalFailures)
             : Localize("{0} result(s).", tableRows.Count);
@@ -1352,6 +1375,7 @@ public sealed class NaabLikeCalculatorDialog
             return;
         }
 
+        var stopwatch = Stopwatch.StartNew();
         NaabLikeBallisticsResult result;
         if (job.elevationMode == NaabLikeElevationMode.Range)
         {
@@ -1367,6 +1391,8 @@ public sealed class NaabLikeCalculatorDialog
         }
 
         AddResult(result, job.terminal, job.armor, ref job.externalFailures);
+        stopwatch.Stop();
+        job.calculationMilliseconds += stopwatch.Elapsed.TotalMilliseconds;
         job.completedRows++;
         UpdateProgressDialog(job.completedRows, job.totalRows);
     }
@@ -1398,9 +1424,14 @@ public sealed class NaabLikeCalculatorDialog
                 return;
             }
 
-            job.parallelTargetResults = job.parallelTargetTask.Result;
+            var parallelResult = job.parallelTargetTask.Result;
+            job.parallelTargetResults = parallelResult.results;
+            job.calculationMilliseconds += parallelResult.calculationMilliseconds;
+            var stopwatch = Stopwatch.StartNew();
             for (int i = 0; i < job.parallelTargetResults.Count; i++)
                 AddResult(job.parallelTargetResults[i], job.terminal, job.armor, ref job.externalFailures);
+            stopwatch.Stop();
+            job.calculationMilliseconds += stopwatch.Elapsed.TotalMilliseconds;
             job.completedRows = job.totalRows;
             UpdateProgressDialog(job.completedRows, job.totalRows);
             FinishCalculationJob();
@@ -1415,10 +1446,27 @@ public sealed class NaabLikeCalculatorDialog
         calculationSchedule = null;
         currentJob = null;
         HideProgressDialog();
+        SetCalculationTime(job?.calculationMilliseconds);
         viewModel.statusText = job != null && job.externalFailures > 0
             ? Localize("{0} result(s), {1} external ballistic failure(s).", tableRows.Count, job.externalFailures)
             : Localize("{0} result(s).", tableRows.Count);
         RefreshOutputs();
+    }
+
+    void SetCalculationTime(double? milliseconds, bool calculating = false)
+    {
+        if (calculationTimeLabel == null)
+            return;
+
+        if (calculating)
+        {
+            calculationTimeLabel.text = "Calculation time: calculating...";
+            return;
+        }
+
+        calculationTimeLabel.text = milliseconds.HasValue
+            ? $"Calculation time: {milliseconds.Value.ToString("0.##", CultureInfo.InvariantCulture)} ms"
+            : "Calculation time: -";
     }
 
     void ShowProgressDialog(int completedRows, int totalRows)

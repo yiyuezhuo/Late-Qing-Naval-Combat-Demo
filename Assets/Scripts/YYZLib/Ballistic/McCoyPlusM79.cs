@@ -65,7 +65,7 @@ namespace YYZ.Ballistic
         public static McCoyPlusM79Result Calculate(McCoyPlusM79Input input)
         {
             var source = input ?? new McCoyPlusM79Input();
-            var trajectory = McCoyPlus.Calculate(source.McCoy);
+            var trajectory = McCoyPlus.CalculateParallel(source.McCoy);
             var warnings = new List<string>(trajectory.Warnings);
             var rows = new List<McCoyPlusM79Row>();
             foreach (var row in trajectory.Rows)
@@ -118,7 +118,7 @@ namespace YYZ.Ballistic
                 Obliquity = obliquity,
                 StrikingVelocity = row.Velocity,
                 Elongation = baseInput.Elongation,
-            });
+            }, false);
             return new M79AtThicknessResult { Result = result, Obliquity = obliquity };
         }
 

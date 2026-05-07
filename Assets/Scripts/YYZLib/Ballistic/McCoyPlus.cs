@@ -164,9 +164,11 @@ namespace YYZ.Ballistic
         {
             var targetRanges = SweepTargets(source.MaxRange).ToList();
             var dragTable = source.DragTable != null && source.DragTable.Count >= 2 ? source.DragTable : Presets.Value[0].Points;
+            var maxTargetRange = targetRanges.Where(range => range > 0).DefaultIfEmpty(source.MaxRange).Max();
+            var simulationLimit = Math.Max(source.MaxRange, maxTargetRange * 1.35 + 1000);
             var sampleRanges = new List<double> { 0 };
             sampleRanges.AddRange(targetRanges);
-            var cache = new FixedElevationTrajectoryCache(source, dragTable, sampleRanges);
+            var cache = new FixedElevationTrajectoryCache(source, dragTable, sampleRanges, simulationLimit);
             var rows = new List<McCoyPlusRow>();
             var warnings = new List<string>();
             var rangeTolerance = Math.Max(0.5, targetRanges.DefaultIfEmpty(0).Max() * 0.0001);
@@ -228,7 +230,7 @@ namespace YYZ.Ballistic
 
             public readonly List<string> Warnings = new List<string>();
 
-            public FixedElevationTrajectoryCache(McCoyPlusInput source, List<DragPoint> dragTable, List<double> sampleRanges)
+            public FixedElevationTrajectoryCache(McCoyPlusInput source, List<DragPoint> dragTable, List<double> sampleRanges, double simulationLimit)
             {
                 this.source = source;
                 this.dragTable = dragTable;
@@ -237,7 +239,7 @@ namespace YYZ.Ballistic
                     .Distinct()
                     .OrderBy(range => range)
                     .ToList();
-                maxRange = this.sampleRanges.Count > 0 ? this.sampleRanges[this.sampleRanges.Count - 1] : 1;
+                maxRange = Math.Max(simulationLimit, this.sampleRanges.Count > 0 ? this.sampleRanges[this.sampleRanges.Count - 1] : 1);
             }
 
             public FixedElevationTrajectory GetOrAdd(double elevationMinutes)
@@ -287,6 +289,39 @@ namespace YYZ.Ballistic
                     .Where(sample => sample.Success && sample.ElevationMinutes > elevationMinutes + 1e-6)
                     .OrderBy(sample => sample.ElevationMinutes)
                     .FirstOrDefault();
+            }
+
+            public List<TrajectoryPoint> BuildDisplayTrajectory(FixedElevationTrajectory sample, double targetRange)
+            {
+                if (sample?.MatchedPoint == null)
+                {
+                    return new List<TrajectoryPoint>();
+                }
+
+                var displayRange = Math.Max(sample.MatchedPoint.Range, targetRange);
+                var displayStep = Math.Max(1, Math.Floor(Math.Max(displayRange, 1) / 100));
+                var displayRanges = new List<double> { 0 };
+                for (var range = displayStep; range <= displayRange + 1e-9; range += displayStep)
+                {
+                    displayRanges.Add(range);
+                }
+
+                if (Math.Abs(displayRanges[displayRanges.Count - 1] - displayRange) > 1e-9)
+                {
+                    displayRanges.Add(displayRange);
+                }
+
+                var result = McCoy.CalculateFixedElevationToHeightAtRanges(
+                    ToFixedElevationMcCoyInput(source, dragTable, displayRange),
+                    sample.ElevationMinutes,
+                    source.MatchHeight,
+                    displayRange,
+                    displayRanges);
+                return result.Points.Count > 0
+                    ? result.Points
+                    : sample.Result.Points
+                        .Where(point => point.Range <= sample.MatchedPoint.Range + 1e-9)
+                        .ToList();
             }
 
             public static long Key(double value)
@@ -357,7 +392,7 @@ namespace YYZ.Ballistic
                 bestSample = FindNearestRangeSample(branch, targetRange, bestSample);
                 if (bestSample != null && Math.Abs(bestSample.MatchedRange - targetRange) <= rangeTolerance)
                 {
-                    return BuildCachedRow(targetRange, bestSample);
+                    return BuildCachedRow(cache, targetRange, bestSample);
                 }
 
                 if (TryFindRangeBracket(branch, targetRange, out var low, out var high))
@@ -445,7 +480,7 @@ namespace YYZ.Ballistic
             return false;
         }
 
-        static SolvedRow BuildCachedRow(double targetRange, FixedElevationTrajectory sample)
+        static SolvedRow BuildCachedRow(FixedElevationTrajectoryCache cache, double targetRange, FixedElevationTrajectory sample)
         {
             var point = sample.MatchedPoint;
             var angle = FallAngleDegrees(point);
@@ -459,9 +494,7 @@ namespace YYZ.Ballistic
                 };
             }
 
-            var trajectory = sample.Result.Points
-                .Where(candidate => candidate.Range <= point.Range + 1e-9)
-                .ToList();
+            var trajectory = cache.BuildDisplayTrajectory(sample, targetRange);
             return new SolvedRow
             {
                 Row = new McCoyPlusRow

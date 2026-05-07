@@ -187,7 +187,9 @@ namespace YYZ.Ballistic
             }
 
             warnings.AddRange(cache.Warnings);
-            return BuildResult(source, rows, warnings);
+            var result = BuildResult(source, rows, warnings);
+            cache.BuildDisplayTrajectories(result.ChartRows);
+            return result;
         }
 
         static McCoyPlusResult BuildResult(McCoyPlusInput source, List<McCoyPlusRow> rows, List<string> warnings)
@@ -226,6 +228,7 @@ namespace YYZ.Ballistic
             readonly List<DragPoint> dragTable;
             readonly List<double> sampleRanges;
             readonly Dictionary<long, FixedElevationTrajectory> samples = new Dictionary<long, FixedElevationTrajectory>();
+            readonly Dictionary<McCoyPlusRow, FixedElevationTrajectory> rowSamples = new Dictionary<McCoyPlusRow, FixedElevationTrajectory>();
             readonly double maxRange;
 
             public readonly List<string> Warnings = new List<string>();
@@ -289,6 +292,30 @@ namespace YYZ.Ballistic
                     .Where(sample => sample.Success && sample.ElevationMinutes > elevationMinutes + 1e-6)
                     .OrderBy(sample => sample.ElevationMinutes)
                     .FirstOrDefault();
+            }
+
+            public void RegisterRowSample(McCoyPlusRow row, FixedElevationTrajectory sample)
+            {
+                if (row != null && sample != null)
+                {
+                    rowSamples[row] = sample;
+                }
+            }
+
+            public void BuildDisplayTrajectories(IEnumerable<McCoyPlusRow> rows)
+            {
+                if (rows == null)
+                {
+                    return;
+                }
+
+                foreach (var row in rows.Distinct())
+                {
+                    if (rowSamples.TryGetValue(row, out var sample))
+                    {
+                        row.Trajectory = BuildDisplayTrajectory(sample, row.Range);
+                    }
+                }
             }
 
             public List<TrajectoryPoint> BuildDisplayTrajectory(FixedElevationTrajectory sample, double targetRange)
@@ -494,18 +521,22 @@ namespace YYZ.Ballistic
                 };
             }
 
-            var trajectory = cache.BuildDisplayTrajectory(sample, targetRange);
+            var trajectory = sample.Result.Points
+                .Where(candidate => candidate.Range <= point.Range + 1e-9)
+                .ToList();
+            var row = new McCoyPlusRow
+            {
+                Range = targetRange,
+                Time = point.Time,
+                ElevationDegrees = sample.ElevationMinutes / 60,
+                Velocity = point.Velocity,
+                FallAngleDegrees = angle,
+                Trajectory = trajectory,
+            };
+            cache.RegisterRowSample(row, sample);
             return new SolvedRow
             {
-                Row = new McCoyPlusRow
-                {
-                    Range = targetRange,
-                    Time = point.Time,
-                    ElevationDegrees = sample.ElevationMinutes / 60,
-                    Velocity = point.Velocity,
-                    FallAngleDegrees = angle,
-                    Trajectory = trajectory,
-                },
+                Row = row,
             };
         }
 

@@ -315,9 +315,28 @@ namespace YYZ.Ballistic
 
         public static FacehardResult CalculateFacehard(FacehardInput input)
         {
+            return CalculateFacehard(input, true);
+        }
+
+        public static double CalculateFacehardNavyBl(FacehardInput input)
+        {
             input ??= FacehardInput.CreateDefault();
             var legacyInput = ToLegacyInput(input);
-            var state = Facehard69Legacy.RunSlice(legacyInput);
+            var state = Facehard69Legacy.RunLimitSlice(legacyInput, new Facehard69LegacyRunOptions
+            {
+                renderReports = false,
+            });
+            return state.VLMT;
+        }
+
+        public static FacehardResult CalculateFacehard(FacehardInput input, bool includeReports)
+        {
+            input ??= FacehardInput.CreateDefault();
+            var legacyInput = ToLegacyInput(input);
+            var state = Facehard69Legacy.RunSlice(legacyInput, new Facehard69LegacyRunOptions
+            {
+                renderReports = includeReports,
+            });
             var baseArmor = FacehardArmors.FirstOrDefault(armor => armor.Id == input.ArmorId) ?? FacehardArmors[16];
             var armorResult = baseArmor.Clone();
             armorResult.Q = state.Q;

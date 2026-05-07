@@ -106,6 +106,7 @@ namespace YYZ.Ballistic
     public sealed class Facehard69LegacyRunOptions
     {
         public bool resolveArmorInfo = true;
+        public bool renderReports = true;
     }
 
     public static class Facehard69Legacy
@@ -1950,7 +1951,7 @@ namespace YYZ.Ballistic
             }
         }
 
-        public static Facehard69LegacyState RunSlice(Facehard69LegacyInput input, Facehard69LegacyRunOptions options = null)
+        static Facehard69LegacyState RunSetupAndLimits(Facehard69LegacyInput input, Facehard69LegacyRunOptions options)
         {
             var state = CreateState(input);
             if (options == null || options.resolveArmorInfo) ArmorInfo(state);
@@ -1962,6 +1963,17 @@ namespace YYZ.Ballistic
             ImpactSetup(state);
             CalcBl(state);
             BlPlusEx(state);
+            return state;
+        }
+
+        public static Facehard69LegacyState RunLimitSlice(Facehard69LegacyInput input, Facehard69LegacyRunOptions options = null)
+        {
+            return RunSetupAndLimits(input, options);
+        }
+
+        public static Facehard69LegacyState RunSlice(Facehard69LegacyInput input, Facehard69LegacyRunOptions options = null)
+        {
+            var state = RunSetupAndLimits(input, options);
             DamageCalc(state);
             PlugWts(state);
             FinalResults(state);
@@ -1972,9 +1984,12 @@ namespace YYZ.Ballistic
             ProjMotionPrnt(state);
             SplntrPrnt(state);
             RemVelPrnt(state);
-            RenderReport(state);
-            RenderSecondPage(state);
-            RenderProcessReport(state);
+            if (options == null || options.renderReports)
+            {
+                RenderReport(state);
+                RenderSecondPage(state);
+                RenderProcessReport(state);
+            }
             return state;
         }
 

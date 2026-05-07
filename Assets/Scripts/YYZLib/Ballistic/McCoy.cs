@@ -49,6 +49,10 @@ namespace YYZ.Ballistic
 
         public bool DidAdjustElevation { get; set; }
 
+        public bool DidReachSampledHeight { get; set; }
+
+        public double SampledHeightRange { get; set; }
+
         public List<string> Warnings { get; set; } = new List<string>();
 
         public List<string> LegacyReport { get; set; } = new List<string>();
@@ -82,6 +86,8 @@ namespace YYZ.Ballistic
         {
             public List<TrajectoryPoint> Points = new List<TrajectoryPoint>();
             public double FinalHeightFeet;
+            public bool ReachedStopHeight;
+            public double StopHeightRangeUnits;
             public List<string> Warnings = new List<string>();
         }
 
@@ -219,6 +225,42 @@ namespace YYZ.Ballistic
             return result;
         }
 
+        public static McCoyResult CalculateFixedElevationToHeightAtRanges(
+            McCoyInput input,
+            double elevationMinutes,
+            double targetHeightInches,
+            double maxRange,
+            IReadOnlyList<double> sampleRanges)
+        {
+            var normalized = Normalize(input);
+            var ranges = (sampleRanges ?? Array.Empty<double>())
+                .Where(range => BallisticMath.IsFinite(range) && range >= 0 && range <= maxRange + 1e-9)
+                .Distinct()
+                .OrderBy(range => range)
+                .ToList();
+            normalized.MatchRange = 0;
+            normalized.MatchHeight = 0;
+            normalized.MaxRange = Math.Max(maxRange, 1);
+            normalized.PrintInterval = Math.Max(normalized.PrintInterval, 1);
+
+            var trajectory = RunTrajectory(normalized, elevationMinutes, normalized.MaxRange, true, ranges, targetHeightInches / 12.0);
+            var warnings = new List<string>(trajectory.Warnings);
+            if (!trajectory.ReachedStopHeight)
+            {
+                warnings.Add("Fixed-elevation trajectory did not descend through the target height before the range limit.");
+            }
+
+            return new McCoyResult
+            {
+                Points = trajectory.Points,
+                AdjustedElevationMinutes = elevationMinutes,
+                DidAdjustElevation = false,
+                DidReachSampledHeight = trajectory.ReachedStopHeight,
+                SampledHeightRange = trajectory.StopHeightRangeUnits,
+                Warnings = BallisticCollections.DistinctStrings(warnings),
+            };
+        }
+
         public static List<string> RenderLegacyReport(McCoyInput input, McCoyResult result)
         {
             var lines = new List<string>();
@@ -342,7 +384,13 @@ namespace YYZ.Ballistic
             return table[table.Count - 1].Cd;
         }
 
-        static TrajectoryRun RunTrajectory(McCoyInput input, double elevationMinutes, double stopRange, bool collectOutput)
+        static TrajectoryRun RunTrajectory(
+            McCoyInput input,
+            double elevationMinutes,
+            double stopRange,
+            bool collectOutput,
+            IReadOnlyList<double> outputRanges = null,
+            double? descendingStopHeightFeet = null)
         {
             var table = input.DragTable;
             var constants = AtmosphereFor(input.Atmosphere);
@@ -351,6 +399,12 @@ namespace YYZ.Ballistic
             var stepFeet = stepUnits * unitFeet;
             var printStep = Math.Max(input.PrintInterval, 1);
             var run = new TrajectoryRun();
+            var sortedOutputRanges = outputRanges?
+                .Where(range => BallisticMath.IsFinite(range) && range >= 0 && range <= stopRange + 1e-9)
+                .Distinct()
+                .OrderBy(range => range)
+                .ToList();
+            var outputRangeIndex = 0;
 
             var vx = input.MuzzleVelocity * Math.Cos(elevationMinutes / 3437.74677);
             var vy = input.MuzzleVelocity * Math.Sin(elevationMinutes / 3437.74677);
@@ -365,19 +419,80 @@ namespace YYZ.Ballistic
             var crossWind = (22 * input.CrossWindMph) / 15.0;
             var c3 = (constants.Pir * input.DensityRatio) / input.BallisticCoefficient;
 
-            void PushPoint()
+            void PushPoint(double sampleRangeUnits, double sampleHeightFeet, double sampleDeflectionFeet, double sampleVelocityX, double sampleVelocityY, double sampleVelocityZ, double sampleTime)
             {
                 run.Points.Add(new TrajectoryPoint
                 {
-                    Range = rangeUnits,
-                    HeightInches = 12 * heightFeet,
-                    DeflectionInches = 12 * deflectionFeet,
-                    Velocity = Math.Sqrt(vx * vx + vy * vy + vz * vz),
-                    Time = time,
-                    Vx = vx,
-                    Vy = vy,
-                    Vz = vz,
+                    Range = sampleRangeUnits,
+                    HeightInches = 12 * sampleHeightFeet,
+                    DeflectionInches = 12 * sampleDeflectionFeet,
+                    Velocity = Math.Sqrt(sampleVelocityX * sampleVelocityX + sampleVelocityY * sampleVelocityY + sampleVelocityZ * sampleVelocityZ),
+                    Time = sampleTime,
+                    Vx = sampleVelocityX,
+                    Vy = sampleVelocityY,
+                    Vz = sampleVelocityZ,
                 });
+            }
+
+            void PushCurrentPoint()
+            {
+                PushPoint(rangeUnits, heightFeet, deflectionFeet, vx, vy, vz, time);
+            }
+
+            void PushInterpolatedPoint(
+                double sampleRangeUnits,
+                double previousRangeUnits,
+                double previousHeightFeet,
+                double previousDeflectionFeet,
+                double previousVx,
+                double previousVy,
+                double previousVz,
+                double previousTime)
+            {
+                var t = Math.Abs(rangeUnits - previousRangeUnits) < 1e-12
+                    ? 0
+                    : (sampleRangeUnits - previousRangeUnits) / (rangeUnits - previousRangeUnits);
+                t = Math.Min(Math.Max(t, 0), 1);
+                PushPoint(
+                    sampleRangeUnits,
+                    previousHeightFeet + (heightFeet - previousHeightFeet) * t,
+                    previousDeflectionFeet + (deflectionFeet - previousDeflectionFeet) * t,
+                    previousVx + (vx - previousVx) * t,
+                    previousVy + (vy - previousVy) * t,
+                    previousVz + (vz - previousVz) * t,
+                    previousTime + (time - previousTime) * t);
+            }
+
+            TrajectoryPoint CreateInterpolatedPoint(
+                double sampleRangeUnits,
+                double previousRangeUnits,
+                double previousHeightFeet,
+                double previousDeflectionFeet,
+                double previousVx,
+                double previousVy,
+                double previousVz,
+                double previousTime)
+            {
+                var t = Math.Abs(rangeUnits - previousRangeUnits) < 1e-12
+                    ? 0
+                    : (sampleRangeUnits - previousRangeUnits) / (rangeUnits - previousRangeUnits);
+                t = Math.Min(Math.Max(t, 0), 1);
+                var sampleHeightFeet = previousHeightFeet + (heightFeet - previousHeightFeet) * t;
+                var sampleDeflectionFeet = previousDeflectionFeet + (deflectionFeet - previousDeflectionFeet) * t;
+                var sampleVx = previousVx + (vx - previousVx) * t;
+                var sampleVy = previousVy + (vy - previousVy) * t;
+                var sampleVz = previousVz + (vz - previousVz) * t;
+                return new TrajectoryPoint
+                {
+                    Range = sampleRangeUnits,
+                    HeightInches = 12 * sampleHeightFeet,
+                    DeflectionInches = 12 * sampleDeflectionFeet,
+                    Velocity = Math.Sqrt(sampleVx * sampleVx + sampleVy * sampleVy + sampleVz * sampleVz),
+                    Time = previousTime + (time - previousTime) * t,
+                    Vx = sampleVx,
+                    Vy = sampleVy,
+                    Vz = sampleVz,
+                };
             }
 
             Acceleration AccelerationFor(double localVx, double localVy, double localVz, double localHeightFeet)
@@ -397,7 +512,18 @@ namespace YYZ.Ballistic
 
             if (collectOutput)
             {
-                PushPoint();
+                if (sortedOutputRanges == null)
+                {
+                    PushCurrentPoint();
+                }
+                else
+                {
+                    while (outputRangeIndex < sortedOutputRanges.Count && sortedOutputRanges[outputRangeIndex] <= 1e-9)
+                    {
+                        PushCurrentPoint();
+                        outputRangeIndex += 1;
+                    }
+                }
             }
 
             try
@@ -411,6 +537,7 @@ namespace YYZ.Ballistic
                     var oldHeight = heightFeet;
                     var oldDeflection = deflectionFeet;
                     var oldTime = time;
+                    var oldRangeUnits = rangeUnits;
 
                     var predictedVx = oldVx + a1.Ax * stepFeet;
                     var predictedVy = oldVy + a1.Ay * stepFeet;
@@ -441,10 +568,46 @@ namespace YYZ.Ballistic
                     vy = predictedVy;
                     vz = predictedVz;
 
-                    if (collectOutput && rangeUnits >= nextPrintRange - 1e-9)
+                    if (collectOutput && sortedOutputRanges == null && rangeUnits >= nextPrintRange - 1e-9)
                     {
-                        PushPoint();
+                        PushCurrentPoint();
                         nextPrintRange += printStep;
+                    }
+
+                    if (collectOutput && sortedOutputRanges != null)
+                    {
+                        while (outputRangeIndex < sortedOutputRanges.Count && sortedOutputRanges[outputRangeIndex] <= rangeUnits + 1e-9)
+                        {
+                            var sampleRange = sortedOutputRanges[outputRangeIndex];
+                            if (sampleRange >= oldRangeUnits - 1e-9)
+                            {
+                                PushInterpolatedPoint(sampleRange, oldRangeUnits, oldHeight, oldDeflection, oldVx, oldVy, oldVz, oldTime);
+                            }
+                            outputRangeIndex += 1;
+                        }
+                    }
+
+                    if (descendingStopHeightFeet.HasValue &&
+                        oldRangeUnits > 0 &&
+                        oldHeight >= descendingStopHeightFeet.Value &&
+                        heightFeet <= descendingStopHeightFeet.Value &&
+                        heightFeet <= oldHeight)
+                    {
+                        var denominator = heightFeet - oldHeight;
+                        var t = Math.Abs(denominator) < 1e-12
+                            ? 1
+                            : (descendingStopHeightFeet.Value - oldHeight) / denominator;
+                        t = Math.Min(Math.Max(t, 0), 1);
+                        var stopRangeUnits = oldRangeUnits + (rangeUnits - oldRangeUnits) * t;
+                        var stopPoint = CreateInterpolatedPoint(stopRangeUnits, oldRangeUnits, oldHeight, oldDeflection, oldVx, oldVy, oldVz, oldTime);
+                        if (collectOutput && (run.Points.Count == 0 || Math.Abs(run.Points[run.Points.Count - 1].Range - stopPoint.Range) > 1e-9))
+                        {
+                            run.Points.Add(stopPoint);
+                        }
+                        run.ReachedStopHeight = true;
+                        run.StopHeightRangeUnits = stopRangeUnits;
+                        heightFeet = descendingStopHeightFeet.Value;
+                        break;
                     }
 
                     if (rangeFeet < 0 || vx <= 0)

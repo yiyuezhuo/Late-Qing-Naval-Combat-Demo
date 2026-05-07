@@ -537,6 +537,7 @@ public sealed class McCoyOkunCalculatorDialog
         input.Add(NumberField("Ballistic Coefficient", mccoy.BallisticCoefficient, "lb/in2", value => mccoy.BallisticCoefficient = value, 0.001));
         input.Add(NumberField("Maximum Range", mccoy.MaxRange, mccoy.RangeUnit, value => mccoy.MaxRange = value, 1));
         input.Add(NumberField("Match Height", mccoy.MatchHeight, "in", value => mccoy.MatchHeight = value));
+        input.Add(McCoyPlusElevationSearchDropdown(mccoy));
         input.Add(Dropdown("Atmosphere Model", new List<string> { "Army Standard Metro", "ICAO" }, mccoy.Atmosphere == "icao" ? 1 : 0,
             index => mccoy.Atmosphere = index == 1 ? "icao" : "standard"));
         input.Add(NumberField("Density Ratio", mccoy.DensityRatio, "", value => mccoy.DensityRatio = value, 0.001));
@@ -853,6 +854,7 @@ public sealed class McCoyOkunCalculatorDialog
 
     void AddMcCoyPlusCoreInputs(VisualElement input, McCoyPlusInput target, bool includePreset, Func<string> getPresetId, Action<string> setPresetId, Func<string> getDragText, Action<string> setDragText)
     {
+        input.Add(McCoyPlusElevationSearchDropdown(target));
         input.Add(Dropdown("Atmosphere Model", new List<string> { "Army Standard Metro", "ICAO" }, target.Atmosphere == "icao" ? 1 : 0,
             index => target.Atmosphere = index == 1 ? "icao" : "standard"));
         if (includePreset)
@@ -863,6 +865,15 @@ public sealed class McCoyOkunCalculatorDialog
         input.Add(NumberField("Density Ratio", target.DensityRatio, "", value => target.DensityRatio = value, 0.001));
         input.Add(NumberField("Temperature", target.TemperatureF, "deg F", value => target.TemperatureF = value));
         input.Add(NumberField("Match Height", target.MatchHeight, "in", value => target.MatchHeight = value));
+    }
+
+    VisualElement McCoyPlusElevationSearchDropdown(McCoyPlusInput target)
+    {
+        return Dropdown("Elevation Search", new List<string> { "Cached Binary Search", "Matched Range" },
+            target.ElevationSearchMode == McCoyPlusElevationSearchMode.MatchedRange ? 1 : 0,
+            index => target.ElevationSearchMode = index == 1
+                ? McCoyPlusElevationSearchMode.MatchedRange
+                : McCoyPlusElevationSearchMode.CachedBinarySearch);
     }
 
     void AddMcCoyPlusPresetDropdown(VisualElement input, McCoyPlusInput target, Func<string> getPresetId, Action<string> setPresetId, Action<string> setDragText, Action onPresetChanged = null)

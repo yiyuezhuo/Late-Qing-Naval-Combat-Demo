@@ -504,6 +504,14 @@ public partial class BatteryPenetrationFireControlChart : VisualElement
 
 public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, ShipClass>
 {
+    static readonly GlobalString Sk5CodeHelpMessage = new()
+    {
+        english = "Fire Control Code, which denotes a specific combination of Fire Control Components in SK5 data, and Component only serve to set the inferred values of the Fire Control Table when the 'Reset Fire Control Table' button is clicked. They also act as a form of remark/annotation. Their values themselves do not affect resolution because their effects are already fully captured by the Fire Control Table, which acts as a sufficient statistic.",
+        japanese = "射撃統制コード（SK5データにおける射撃統制構成要素の特定の組み合わせを表す）と構成要素は、「射撃統制表をリセット」ボタンがクリックされたときに、射撃統制表の推定値を設定するためだけに機能します。また、注釈／メモとしての役割も果たします。それらの値自体は解決に影響しません。なぜなら、その影響は十分統計量として機能する射撃統制表にすでに完全に反映されているからです。",
+        chineseSimplified = "火控码（表示 SK5 数据中火控具体组成的某种特定组合）和具体组成仅用于在点击“重置火控表”按钮时设置火控表的推断值，同时也起到备注／注释的作用。它们的值本身不会影响结算，因为其影响已经完整体现在火控表中，而火控表起到了充分统计量的作用。",
+        chineseTraditional = "火控碼（表示 SK5 資料中火控具體組成的某種特定組合）和具體組成僅用於在點擊「重置火控表」按鈕時設定火控表的推斷值，同時也起到備註／註釋的作用。它們的值本身不會影響結算，因為其影響已經完整體現在火控表中，而火控表起到了充分統計量的作用。",
+    };
+
     ListView batteryRecordsListView;
     VisualElement portraitTopPreview;
     VisualElement portraitIconPreview;
@@ -600,8 +608,17 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
             var fireControlTableMultiColumnListView = el.Q<MultiColumnListView>("FireControlTableMultiColumnListView");
             var penetrationTableMultiColumnListView = el.Q<MultiColumnListView>("PenetrationTableMultiColumnListView");
             var mountsListView = el.Q<ListView>("MountsListView");
+            var sk5CodeHelpButton = el.Q<Button>("Sk5CodeHelpButton");
             var fireControlModelComparisonButton = el.Q<Button>("FireControlModelComparisonButton");
             var batteryRecordMetaInfoButton = el.Q<Button>("BatteryRecordMetaInfoButton");
+            if (sk5CodeHelpButton != null)
+            {
+                sk5CodeHelpButton.clicked += () =>
+                {
+                    DialogRoot.Instance.PopupMessageDialog(Sk5CodeHelpMessage.GetShortName(), Localize("SK5 Code"));
+                };
+            }
+
             if (batteryRecordMetaInfoButton != null)
             {
                 batteryRecordMetaInfoButton.clicked += () =>

@@ -721,7 +721,8 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         {
             itemsSource = rows,
             selectionType = SelectionType.None,
-            virtualizationMethod = CollectionVirtualizationMethod.DynamicHeight,
+            virtualizationMethod = CollectionVirtualizationMethod.FixedHeight,
+            fixedItemHeight = 24,
             style = { height = Mathf.Clamp((rows?.Count ?? 0) * 26 + 42, 120, 300), flexShrink = 0 }
         };
         listView.columns.Clear();
@@ -734,7 +735,7 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
                 width = column.Width,
                 minWidth = Math.Min(column.Width, 80),
                 stretchable = false,
-                makeCell = () => new Label { style = { whiteSpace = WhiteSpace.Normal } },
+                makeCell = () => new Label { style = { whiteSpace = WhiteSpace.NoWrap } },
                 bindCell = (element, index) =>
                 {
                     if (element is not Label label)

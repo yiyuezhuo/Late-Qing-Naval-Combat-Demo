@@ -1351,7 +1351,8 @@ public sealed class McCoyOkunCalculatorDialog
         {
             itemsSource = rows,
             selectionType = SelectionType.None,
-            virtualizationMethod = CollectionVirtualizationMethod.DynamicHeight,
+            virtualizationMethod = CollectionVirtualizationMethod.FixedHeight,
+            fixedItemHeight = 24,
             style =
             {
                 height = Mathf.Clamp((rows?.Count ?? 0) * 26 + 42, 120, 300),
@@ -1372,7 +1373,7 @@ public sealed class McCoyOkunCalculatorDialog
                 {
                     style =
                     {
-                        whiteSpace = WhiteSpace.Normal
+                        whiteSpace = WhiteSpace.NoWrap
                     }
                 },
                 bindCell = (element, index) =>

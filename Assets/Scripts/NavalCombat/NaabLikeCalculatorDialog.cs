@@ -1088,7 +1088,8 @@ public sealed class NaabLikeCalculatorDialog
             return;
 
         resultListView.selectionType = SelectionType.None;
-        resultListView.virtualizationMethod = CollectionVirtualizationMethod.DynamicHeight;
+        resultListView.virtualizationMethod = CollectionVirtualizationMethod.FixedHeight;
+        resultListView.fixedItemHeight = 24;
         resultListView.columns.Clear();
 
         void AddColumn(string name, string title, int width, Func<NaabLikeResultRow, string> selector)
@@ -1104,7 +1105,7 @@ public sealed class NaabLikeCalculatorDialog
                 {
                     style =
                     {
-                        whiteSpace = WhiteSpace.Normal
+                        whiteSpace = WhiteSpace.NoWrap
                     }
                 },
                 bindCell = (element, index) =>
@@ -1136,7 +1137,8 @@ public sealed class NaabLikeCalculatorDialog
 
         sk5DataListView.itemsSource = viewModel.sk5PenetrationTableRecords;
         sk5DataListView.selectionType = SelectionType.Single;
-        sk5DataListView.virtualizationMethod = CollectionVirtualizationMethod.DynamicHeight;
+        sk5DataListView.virtualizationMethod = CollectionVirtualizationMethod.FixedHeight;
+        sk5DataListView.fixedItemHeight = 24;
         sk5DataListView.showAddRemoveFooter = true;
         sk5DataListView.columns.Clear();
 

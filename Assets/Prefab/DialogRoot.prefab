@@ -99,6 +99,7 @@ MonoBehaviour:
   influenceMapDialogDocument: {fileID: 9197481963319205126, guid: d6f1b25bc38d454b91a148d3648da462, type: 3}
   wtaSolverInspectorDialogDocument: {fileID: 9197481963319205126, guid: c2c6f09c90e14c9080e0ce5f1f966a40, type: 3}
   naabLikeCalculatorDialogDocument: {fileID: 9197481963319205126, guid: 3bfbcb25fe45e0c49a08e95ffe79ffed, type: 3}
+  mccoyOkunCalculatorDialogDocument: {fileID: 9197481963319205126, guid: f2e4c831b0b74e348e13d97df0a928b5, type: 3}
   torpedoInterceptSolutionVisualizerDialogDocument: {fileID: 9197481963319205126, guid: 34c3ca9783dc4f3ca4f7a5374e6b3945, type: 3}
   strategicInfluenceMapDialogDocument: {fileID: 9197481963319205126, guid: 7e9e1a90d21d4ac18d25acde0f135e77, type: 3}
   shipTimeLocDialogDocument: {fileID: 9197481963319205126, guid: 2dc95f1d0f1a4cc88f5834f2d42f6b6d, type: 3}

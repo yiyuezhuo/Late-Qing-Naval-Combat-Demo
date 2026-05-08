@@ -1,0 +1,177 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="McCoyOkunCalculatorRoot" style="width: 1050px; height: 600px; flex-grow: 1; flex-shrink: 1;">
+        <ui:VisualElement name="McCoyOkunTabBar" style="flex-direction: row; flex-shrink: 0; margin-bottom: 6px;">
+            <ui:Button name="M79ApclcTabButton" text="M79 APCLC" class="mccoy-okun-tab-button" style="flex-grow: 1; min-height: 28px;" />
+            <ui:Button name="Facehard69TabButton" text="Facehard69" class="mccoy-okun-tab-button" style="flex-grow: 1; min-height: 28px;" />
+            <ui:Button name="McCoyTabButton" text="McCoy" class="mccoy-okun-tab-button" style="flex-grow: 1; min-height: 28px;" />
+            <ui:Button name="McCoyPlusTabButton" text="McCoy Plus" class="mccoy-okun-tab-button" style="flex-grow: 1; min-height: 28px;" />
+            <ui:Button name="McCoyPlusFacehardTabButton" text="McCoy Plus Facehard" class="mccoy-okun-tab-button" style="flex-grow: 1; min-height: 28px;" />
+            <ui:Button name="McCoyPlusM79TabButton" text="McCoy Plus M79" class="mccoy-okun-tab-button" style="flex-grow: 1; min-height: 28px;" />
+            <ui:Button name="JbmTabButton" text="JBM" class="mccoy-okun-tab-button" style="flex-grow: 1; min-height: 28px;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="McCoyOkunContent" style="flex-grow: 1; flex-shrink: 1;">
+            <ui:VisualElement name="M79ApclcPage" class="mccoy-okun-page" style="flex-direction: row; flex-grow: 1; flex-shrink: 1;">
+                <ui:ScrollView name="M79ApclcInput" mode="Vertical" class="mccoy-okun-input" style="flex-basis: 340px; flex-shrink: 0; margin-right: 8px;">
+                    <ui:VisualElement style="flex-direction: row; margin-bottom: 6px;"><ui:Label text="M79 APCLC" style="-unity-font-style: bold; flex-grow: 1;" /><ui:Button name="M79ApclcResetButton" text="Reset" /></ui:VisualElement>
+                    <ui:DropdownField name="M79ApclcSampleField" label="Sample" />
+                    <ui:FloatField name="M79ApclcProjectileDiameterField" label="Projectile Diameter" />
+                    <ui:FloatField name="M79ApclcProjectileWeightField" label="Projectile Weight" />
+                    <ui:FloatField name="M79ApclcPlateThicknessField" label="Plate Thickness" />
+                    <ui:FloatField name="M79ApclcPlateQualityField" label="Plate Quality" />
+                    <ui:FloatField name="M79ApclcObliquityField" label="Obliquity" />
+                    <ui:FloatField name="M79ApclcStrikingVelocityField" label="Striking Velocity" />
+                    <ui:FloatField name="M79ApclcElongationField" label="Elongation" />
+                </ui:ScrollView>
+                <ui:ScrollView name="M79ApclcOutput" mode="Vertical" class="mccoy-okun-output" style="flex-grow: 1; flex-shrink: 1;"><ui:VisualElement name="M79ApclcOutputContent" /></ui:ScrollView>
+            </ui:VisualElement>
+            <ui:VisualElement name="Facehard69Page" class="mccoy-okun-page" style="display: none; flex-direction: row; flex-grow: 1; flex-shrink: 1;">
+                <ui:ScrollView name="Facehard69Input" mode="Vertical" class="mccoy-okun-input" style="flex-basis: 340px; flex-shrink: 0; margin-right: 8px;">
+                    <ui:VisualElement style="flex-direction: row; margin-bottom: 6px;"><ui:Label text="Facehard69 Baseline" style="-unity-font-style: bold; flex-grow: 1;" /><ui:Button name="Facehard69ResetButton" text="Reset" /></ui:VisualElement>
+                    <ui:DropdownField name="Facehard69SampleField" label="Sample" />
+                    <ui:VisualElement style="flex-direction: row; margin-bottom: 6px;"><ui:Button name="Facehard69RecordButton" text="Record Current Velocity and Obliquity" style="flex-grow: 1;" /><ui:Button name="Facehard69ClearButton" text="Clear" /></ui:VisualElement>
+                    <ui:DropdownField name="Facehard69ProjectileNationField" label="Projectile Nation" />
+                    <ui:DropdownField name="Facehard69ProjectileTypeField" label="Projectile Type" />
+                    <ui:DropdownField name="Facehard69CapOrHoodField" label="Cap Or Hood" />
+                    <ui:DropdownField name="Facehard69NoseSchemaField" label="Nose Schema" />
+                    <ui:DropdownField name="Facehard69JapaneseCapHeadField" label="Japanese Cap Head Type" />
+                    <ui:DropdownField name="Facehard69NoseConditionField" label="Pre-Impact Nose Condition" />
+                    <ui:FloatField name="Facehard69ProjectileDiameterField" label="Projectile Diameter" />
+                    <ui:FloatField name="Facehard69ProjectileWeightField" label="Projectile Weight" />
+                    <ui:FloatField name="Facehard69ProjectileBodyWeightField" label="Projectile Body Weight" />
+                    <ui:FloatField name="Facehard69WindscreenCapHeadWeightField" label="Windscreen + Cap Head Weight" />
+                    <ui:FloatField name="Facehard69WindscreenWeightField" label="Windscreen Weight" />
+                    <ui:FloatField name="Facehard69RemainingNoseWeightField" label="Remaining Nose Covering Weight" />
+                    <ui:FloatField name="Facehard69PlimField" label="PLIM" />
+                    <ui:FloatField name="Facehard69PdamField" label="PDAM" />
+                    <ui:FloatField name="Facehard69StrikingVelocityField" label="Striking Velocity" />
+                    <ui:FloatField name="Facehard69ObliquityField" label="Obliquity" />
+                    <ui:DropdownField name="Facehard69ArmorTypeField" label="Armor Type" />
+                    <ui:Toggle name="Facehard69CurvedPlateToggle" label="Strongly Curved Plate" />
+                    <ui:FloatField name="Facehard69PlateThicknessField" label="Plate Thickness" />
+                    <ui:FloatField name="Facehard69WoodBackingField" label="Wood Backing" />
+                    <ui:FloatField name="Facehard69CementBackingField" label="Cement Backing" />
+                    <ui:FloatField name="Facehard69MetalBackingField" label="Metal Backing" />
+                    <ui:FloatField name="Facehard69BackingQualityField" label="Backing Quality" />
+                    <ui:FloatField name="Facehard69BackingPlatesField" label="Backing Plates" />
+                    <ui:VisualElement name="Facehard69InputWarnings" />
+                </ui:ScrollView>
+                <ui:ScrollView name="Facehard69Output" mode="Vertical" class="mccoy-okun-output" style="flex-grow: 1; flex-shrink: 1;"><ui:VisualElement name="Facehard69OutputContent" /></ui:ScrollView>
+            </ui:VisualElement>
+            <ui:VisualElement name="McCoyPage" class="mccoy-okun-page" style="display: none; flex-direction: row; flex-grow: 1; flex-shrink: 1;">
+                <ui:ScrollView name="McCoyInput" mode="Vertical" class="mccoy-okun-input" style="flex-basis: 340px; flex-shrink: 0; margin-right: 8px;">
+                    <ui:VisualElement style="flex-direction: row; margin-bottom: 6px;"><ui:Label text="McCoy Point-Mass Trajectory" style="-unity-font-style: bold; flex-grow: 1;" /><ui:Button name="McCoyResetButton" text="Reset" /></ui:VisualElement>
+                    <ui:DropdownField name="McCoyAtmosphereField" label="Atmosphere Model" />
+                    <ui:FloatField name="McCoyMuzzleVelocityField" label="Muzzle Velocity" />
+                    <ui:FloatField name="McCoyBallisticCoefficientField" label="Ballistic Coefficient" />
+                    <ui:FloatField name="McCoySightHeightField" label="Sight Height" />
+                    <ui:FloatField name="McCoyElevationMinutesField" label="Elevation" />
+                    <ui:FloatField name="McCoyDensityRatioField" label="Density Ratio" />
+                    <ui:FloatField name="McCoyTemperatureField" label="Temperature" />
+                    <ui:FloatField name="McCoyPrintIntervalField" label="Print Interval" />
+                    <ui:FloatField name="McCoyMaxRangeField" label="Maximum Range" />
+                    <ui:FloatField name="McCoyRangeWindField" label="Range Wind" />
+                    <ui:FloatField name="McCoyCrossWindField" label="Crosswind" />
+                    <ui:FloatField name="McCoyMatchRangeField" label="Match Range" />
+                    <ui:FloatField name="McCoyMatchHeightField" label="Match Height" />
+                    <ui:TextField name="McCoyDragTableField" label="Mach-CD Drag Table" multiline="true" style="height: 120px;" />
+                </ui:ScrollView>
+                <ui:ScrollView name="McCoyOutput" mode="Vertical" class="mccoy-okun-output" style="flex-grow: 1; flex-shrink: 1;"><ui:VisualElement name="McCoyOutputContent" /></ui:ScrollView>
+            </ui:VisualElement>
+            <ui:VisualElement name="McCoyPlusPage" class="mccoy-okun-page" style="display: none; flex-direction: row; flex-grow: 1; flex-shrink: 1;">
+                <ui:ScrollView name="McCoyPlusInput" mode="Vertical" class="mccoy-okun-input" style="flex-basis: 340px; flex-shrink: 0; margin-right: 8px;">
+                    <ui:VisualElement style="flex-direction: row; margin-bottom: 6px;"><ui:Label text="McCoy Plus Range Sweep" style="-unity-font-style: bold; flex-grow: 1;" /><ui:Button name="McCoyPlusResetButton" text="Reset" /></ui:VisualElement>
+                    <ui:DropdownField name="McCoyPlusElevationSearchField" label="Elevation Search" />
+                    <ui:DropdownField name="McCoyPlusAtmosphereField" label="Atmosphere Model" />
+                    <ui:DropdownField name="McCoyPlusPresetField" label="Mach-CD Preset" />
+                    <ui:FloatField name="McCoyPlusMuzzleVelocityField" label="Muzzle Velocity" />
+                    <ui:FloatField name="McCoyPlusBallisticCoefficientField" label="Ballistic Coefficient" />
+                    <ui:FloatField name="McCoyPlusMaxRangeField" label="Maximum Range" />
+                    <ui:FloatField name="McCoyPlusDensityRatioField" label="Density Ratio" />
+                    <ui:FloatField name="McCoyPlusTemperatureField" label="Temperature" />
+                    <ui:FloatField name="McCoyPlusMatchHeightField" label="Match Height" />
+                    <ui:TextField name="McCoyPlusDragTableField" label="Mach-CD Drag Table" multiline="true" style="height: 120px;" />
+                </ui:ScrollView>
+                <ui:ScrollView name="McCoyPlusOutput" mode="Vertical" class="mccoy-okun-output" style="flex-grow: 1; flex-shrink: 1;"><ui:VisualElement name="McCoyPlusOutputContent" /></ui:ScrollView>
+            </ui:VisualElement>
+            <ui:VisualElement name="McCoyPlusFacehardPage" class="mccoy-okun-page" style="display: none; flex-direction: row; flex-grow: 1; flex-shrink: 1;">
+                <ui:ScrollView name="McCoyPlusFacehardInput" mode="Vertical" class="mccoy-okun-input" style="flex-basis: 340px; flex-shrink: 0; margin-right: 8px;">
+                    <ui:VisualElement style="flex-direction: row; margin-bottom: 6px;"><ui:Label text="McCoy Plus Facehard" style="-unity-font-style: bold; flex-grow: 1;" /><ui:Button name="McCoyPlusFacehardResetButton" text="Reset" /></ui:VisualElement>
+                    <ui:DropdownField name="McCoyPlusFacehardSampleField" label="Sample" />
+                    <ui:DropdownField name="McCoyPlusFacehardElevationSearchField" label="Elevation Search" />
+                    <ui:DropdownField name="McCoyPlusFacehardAtmosphereField" label="Atmosphere Model" />
+                    <ui:DropdownField name="McCoyPlusFacehardPresetField" label="Mach-CD Preset" />
+                    <ui:FloatField name="McCoyPlusFacehardMuzzleVelocityField" label="Muzzle Velocity" />
+                    <ui:FloatField name="McCoyPlusFacehardBallisticCoefficientField" label="Ballistic Coefficient" />
+                    <ui:FloatField name="McCoyPlusFacehardMaxRangeField" label="Maximum Range" />
+                    <ui:FloatField name="McCoyPlusFacehardDensityRatioField" label="Density Ratio" />
+                    <ui:FloatField name="McCoyPlusFacehardTemperatureField" label="Temperature" />
+                    <ui:FloatField name="McCoyPlusFacehardMatchHeightField" label="Match Height" />
+                    <ui:Label text="Facehard Inputs" style="-unity-font-style: bold; margin-top: 8px; margin-bottom: 4px;" />
+                    <ui:DropdownField name="McCoyPlusFacehardArmorTypeField" label="Armor Type" />
+                    <ui:DropdownField name="McCoyPlusFacehardProjectileNationField" label="Projectile Nation" />
+                    <ui:DropdownField name="McCoyPlusFacehardProjectileTypeField" label="Projectile Type" />
+                    <ui:DropdownField name="McCoyPlusFacehardCapOrHoodField" label="Cap Or Hood" />
+                    <ui:DropdownField name="McCoyPlusFacehardNoseSchemaField" label="Nose Schema" />
+                    <ui:DropdownField name="McCoyPlusFacehardJapaneseCapHeadField" label="Japanese Cap Head Type" />
+                    <ui:DropdownField name="McCoyPlusFacehardNoseConditionField" label="Pre-Impact Nose Condition" />
+                    <ui:FloatField name="McCoyPlusFacehardProjectileDiameterField" label="Projectile Diameter" />
+                    <ui:FloatField name="McCoyPlusFacehardProjectileWeightField" label="Projectile Weight" />
+                    <ui:FloatField name="McCoyPlusFacehardProjectileBodyWeightField" label="Body Weight" />
+                    <ui:FloatField name="McCoyPlusFacehardWindscreenCapHeadWeightField" label="Windscreen + Cap Head Weight" />
+                    <ui:FloatField name="McCoyPlusFacehardWindscreenWeightField" label="Windscreen Weight" />
+                    <ui:FloatField name="McCoyPlusFacehardRemainingNoseWeightField" label="Remaining Nose Covering Weight" />
+                    <ui:FloatField name="McCoyPlusFacehardPlimField" label="PLIM" />
+                    <ui:FloatField name="McCoyPlusFacehardPdamField" label="PDAM" />
+                    <ui:FloatField name="McCoyPlusFacehardWoodBackingField" label="Wood Backing" />
+                    <ui:FloatField name="McCoyPlusFacehardCementBackingField" label="Cement Backing" />
+                    <ui:FloatField name="McCoyPlusFacehardMetalBackingField" label="Metal Backing" />
+                    <ui:VisualElement name="McCoyPlusFacehardInputWarnings" />
+                    <ui:TextField name="McCoyPlusFacehardDragTableField" label="Mach-CD Drag Table" multiline="true" style="height: 120px;" />
+                </ui:ScrollView>
+                <ui:ScrollView name="McCoyPlusFacehardOutput" mode="Vertical" class="mccoy-okun-output" style="flex-grow: 1; flex-shrink: 1;"><ui:DropdownField name="McCoyPlusFacehardChartModeField" label="Chart Mode" /><ui:VisualElement name="McCoyPlusFacehardOutputContent" /></ui:ScrollView>
+            </ui:VisualElement>
+            <ui:VisualElement name="McCoyPlusM79Page" class="mccoy-okun-page" style="display: none; flex-direction: row; flex-grow: 1; flex-shrink: 1;">
+                <ui:ScrollView name="McCoyPlusM79Input" mode="Vertical" class="mccoy-okun-input" style="flex-basis: 340px; flex-shrink: 0; margin-right: 8px;">
+                    <ui:VisualElement style="flex-direction: row; margin-bottom: 6px;"><ui:Label text="McCoy Plus M79 APCLC" style="-unity-font-style: bold; flex-grow: 1;" /><ui:Button name="McCoyPlusM79ResetButton" text="Reset" /></ui:VisualElement>
+                    <ui:DropdownField name="McCoyPlusM79SampleField" label="Sample" />
+                    <ui:Label text="M79 Inputs" style="-unity-font-style: bold; margin-top: 8px; margin-bottom: 4px;" />
+                    <ui:FloatField name="McCoyPlusM79ProjectileDiameterField" label="Projectile Diameter" />
+                    <ui:FloatField name="McCoyPlusM79ProjectileWeightField" label="Projectile Weight" />
+                    <ui:FloatField name="McCoyPlusM79MuzzleVelocityField" label="Muzzle Velocity" />
+                    <ui:FloatField name="McCoyPlusM79BallisticCoefficientField" label="Ballistic Coefficient" />
+                    <ui:FloatField name="McCoyPlusM79MaxRangeField" label="Maximum Range" />
+                    <ui:FloatField name="McCoyPlusM79MatchHeightField" label="Match Height" />
+                    <ui:DropdownField name="McCoyPlusM79ElevationSearchField" label="Elevation Search" />
+                    <ui:DropdownField name="McCoyPlusM79AtmosphereField" label="Atmosphere Model" />
+                    <ui:FloatField name="McCoyPlusM79DensityRatioField" label="Density Ratio" />
+                    <ui:FloatField name="McCoyPlusM79TemperatureField" label="Temperature" />
+                    <ui:FloatField name="McCoyPlusM79ArmorQualityField" label="Armor Quality" />
+                    <ui:FloatField name="McCoyPlusM79ElongationField" label="Elongation" />
+                    <ui:DropdownField name="McCoyPlusM79PresetField" label="Mach-CD Preset" />
+                    <ui:TextField name="McCoyPlusM79DragTableField" label="Mach-CD Drag Table" multiline="true" style="height: 120px;" />
+                </ui:ScrollView>
+                <ui:ScrollView name="McCoyPlusM79Output" mode="Vertical" class="mccoy-okun-output" style="flex-grow: 1; flex-shrink: 1;"><ui:DropdownField name="McCoyPlusM79ChartModeField" label="Chart Mode" /><ui:VisualElement name="McCoyPlusM79OutputContent" /></ui:ScrollView>
+            </ui:VisualElement>
+            <ui:VisualElement name="JbmPage" class="mccoy-okun-page" style="display: none; flex-direction: row; flex-grow: 1; flex-shrink: 1;">
+                <ui:ScrollView name="JbmInput" mode="Vertical" class="mccoy-okun-input" style="flex-basis: 340px; flex-shrink: 0; margin-right: 8px;">
+                    <ui:VisualElement style="flex-direction: row; margin-bottom: 6px;"><ui:Label text="JBM / McCoy Aerodynamics" style="-unity-font-style: bold; flex-grow: 1;" /><ui:Button name="JbmResetButton" text="Reset" /></ui:VisualElement>
+                    <ui:DropdownField name="JbmProgramField" label="Program" />
+                    <ui:TextField name="JbmProjectileIdField" label="Projectile ID" />
+                    <ui:FloatField name="JbmReferenceDiameterField" label="Reference Diameter" />
+                    <ui:FloatField name="JbmTotalLengthField" label="Total Length" />
+                    <ui:FloatField name="JbmNoseLengthField" label="Nose Length" />
+                    <ui:FloatField name="JbmTangentRadiusRatioField" label="RT/R" />
+                    <ui:FloatField name="JbmBoattailLengthField" label="Boattail Length" />
+                    <ui:FloatField name="JbmBaseDiameterField" label="Base Diameter" />
+                    <ui:FloatField name="JbmMeplatDiameterField" label="Meplat Diameter" />
+                    <ui:FloatField name="JbmProjectileDensityField" label="Projectile Density" />
+                    <ui:FloatField name="JbmRiflingTwistField" label="Rifling Twist" />
+                    <ui:FloatField name="JbmCenterOfGravityField" label="Center of Gravity" />
+                    <ui:FloatField name="JbmRotatingBandDiameterField" label="Rotating Band Diameter" />
+                    <ui:DropdownField name="JbmBoundaryLayerField" label="Boundary Layer" />
+                </ui:ScrollView>
+                <ui:ScrollView name="JbmOutput" mode="Vertical" class="mccoy-okun-output" style="flex-grow: 1; flex-shrink: 1;"><ui:VisualElement name="JbmOutputContent" /></ui:ScrollView>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

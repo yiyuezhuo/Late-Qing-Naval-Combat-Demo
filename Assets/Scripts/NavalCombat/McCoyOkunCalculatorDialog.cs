@@ -25,6 +25,45 @@ public sealed class McCoyOkunCalculatorDialog
         public List<Vector2> Points = new();
     }
 
+    sealed class TemplatePageSurface
+    {
+        public VisualElement Root;
+        public ScrollView Input;
+        public ScrollView Output;
+        public VisualElement OutputContent;
+    }
+
+    sealed class TemplateFloatBinding
+    {
+        public bool Updating;
+        public double? Min;
+        public Action<double> Setter;
+    }
+
+    sealed class TemplateDropdownBinding
+    {
+        public bool Updating;
+        public List<string> Choices = new();
+        public Action<int> Setter;
+    }
+
+    sealed class TemplateTextBinding
+    {
+        public bool Updating;
+        public Action<string> Setter;
+    }
+
+    sealed class TemplateToggleBinding
+    {
+        public bool Updating;
+        public Action<bool> Setter;
+    }
+
+    sealed class TemplateButtonBinding
+    {
+        public Action Clicked;
+    }
+
     readonly string[] tabs =
     {
         "M79 APCLC",
@@ -38,6 +77,10 @@ public sealed class McCoyOkunCalculatorDialog
 
     VisualElement tabBar;
     VisualElement content;
+    readonly Dictionary<string, Button> templateTabButtons = new();
+    readonly Dictionary<string, TemplatePageSurface> templatePages = new();
+    bool templateBackedTabs;
+    bool templateBackedPages;
     string activeTab = "M79 APCLC";
 
     M79Input m79Input = M79.DefaultInput();
@@ -102,40 +145,36 @@ public sealed class McCoyOkunCalculatorDialog
         new BallisticSample { Id = "germany-38cm-psgr-bismarck", Label = "38cm Psgr.m.K. L/4.4 APC / Germany (Bismack)", DragPresetId = "g7", ProjectilePresetId = "GPR12", CapType = "hard", ProjectileDiameter = 14.96, ProjectileWeight = 1763.7, ProjectileBodyWeight = 1552.05, WindscreenWeight = 52.91, BallisticCoefficient = 7.7734, MuzzleVelocity = 2690, MaxRange = 38870 },
     };
 
-    public VisualElement BuildContent()
+    public VisualElement BuildContent(VisualTreeAsset template)
     {
-        var root = new VisualElement
-        {
-            style =
-            {
-                width = 1050,
-                height = 600,
-                flexGrow = 1,
-                flexShrink = 1
-            }
-        };
+        if (template == null)
+            throw new InvalidOperationException("McCoy Okun Calculator requires McCoyOkunCalculatorDialog.uxml to be assigned.");
 
-        tabBar = new VisualElement
-        {
-            style =
-            {
-                flexDirection = FlexDirection.Row,
-                flexShrink = 0,
-                marginBottom = 6
-            }
-        };
-        root.Add(tabBar);
+        templateTabButtons.Clear();
+        templatePages.Clear();
+        templateBackedTabs = false;
+        templateBackedPages = false;
 
-        content = new VisualElement
-        {
-            style =
-            {
-                flexGrow = 1,
-                flexShrink = 1
-            }
-        };
-        root.Add(content);
+        var root = template.CloneTree();
+        root.style.position = Position.Relative;
+        root.style.flexGrow = 1;
+        root.style.flexShrink = 1;
 
+        var calculatorRoot = root.Q<VisualElement>("McCoyOkunCalculatorRoot") ?? root;
+        calculatorRoot.style.flexGrow = 1;
+        calculatorRoot.style.flexShrink = 1;
+
+        tabBar = root.Q<VisualElement>("McCoyOkunTabBar");
+        content = root.Q<VisualElement>("McCoyOkunContent");
+        if (tabBar == null || content == null)
+            throw new InvalidOperationException("McCoyOkunCalculatorDialog.uxml is missing McCoyOkunTabBar or McCoyOkunContent.");
+
+        WireTemplateTabs(root);
+        WireTemplatePages(root);
+        if (!templateBackedTabs)
+            throw new InvalidOperationException("McCoyOkunCalculatorDialog.uxml is missing one or more tab buttons.");
+        if (!templateBackedPages)
+            throw new InvalidOperationException("McCoyOkunCalculatorDialog.uxml is missing one or more page/input/output containers.");
         BuildTabs();
         RebuildContent();
         return root;
@@ -143,118 +182,323 @@ public sealed class McCoyOkunCalculatorDialog
 
     void BuildTabs()
     {
-        tabBar.Clear();
+        if (!templateBackedTabs)
+            throw new InvalidOperationException("McCoy Okun tab buttons have not been wired from UXML.");
+
         foreach (var tab in tabs)
         {
-            var button = new Button(() =>
-            {
-                activeTab = tab;
-                BuildTabs();
-                RebuildContent();
-            })
-            {
-                text = tab
-            };
-            button.style.flexGrow = 1;
-            button.style.minHeight = 28;
-            if (tab == activeTab)
-                button.SetEnabled(false);
-            tabBar.Add(button);
+            if (!templateTabButtons.TryGetValue(tab, out var button))
+                throw new InvalidOperationException($"McCoyOkunCalculatorDialog.uxml is missing tab button for {tab}.");
+
+            button.text = tab;
+            button.SetEnabled(tab != activeTab);
+            button.EnableInClassList("mccoy-okun-tab-active", tab == activeTab);
         }
+    }
+
+    void WireTemplateTabs(VisualElement root)
+    {
+        foreach (var tab in tabs)
+        {
+            var button = root.Q<Button>(TabButtonName(tab));
+            if (button == null)
+                continue;
+
+            var selectedTab = tab;
+            button.clicked += () => SelectTab(selectedTab);
+            templateTabButtons[tab] = button;
+        }
+
+        templateBackedTabs = templateTabButtons.Count == tabs.Length;
+    }
+
+    void SelectTab(string tab)
+    {
+        activeTab = tab;
+        BuildTabs();
+        RebuildContent();
+    }
+
+    static string TabButtonName(string tab)
+    {
+        return tab switch
+        {
+            "M79 APCLC" => "M79ApclcTabButton",
+            "Facehard69" => "Facehard69TabButton",
+            "McCoy" => "McCoyTabButton",
+            "McCoy Plus" => "McCoyPlusTabButton",
+            "McCoy Plus Facehard" => "McCoyPlusFacehardTabButton",
+            "McCoy Plus M79" => "McCoyPlusM79TabButton",
+            "JBM" => "JbmTabButton",
+            _ => string.Empty
+        };
     }
 
     void RebuildContent()
     {
-        content.Clear();
-        content.Add(activeTab switch
-        {
-            "Facehard69" => BuildFacehardPage(),
-            "McCoy" => BuildMcCoyPage(),
-            "McCoy Plus" => BuildMcCoyPlusPage(),
-            "McCoy Plus Facehard" => BuildMcCoyPlusFacehardPage(),
-            "McCoy Plus M79" => BuildMcCoyPlusM79Page(),
-            "JBM" => BuildJbmPage(),
-            _ => BuildM79Page()
-        });
+        if (!templateBackedPages)
+            throw new InvalidOperationException("McCoy Okun page surfaces have not been wired from UXML.");
+        RebuildTemplateContent();
     }
 
-    VisualElement BuildM79Page()
+    void WireTemplatePages(VisualElement root)
+    {
+        foreach (var tab in tabs)
+        {
+            var page = root.Q<VisualElement>(PageName(tab));
+            var input = root.Q<ScrollView>(InputName(tab));
+            var output = root.Q<ScrollView>(OutputName(tab));
+            if (page == null || input == null || output == null)
+                continue;
+
+            templatePages[tab] = new TemplatePageSurface
+            {
+                Root = page,
+                Input = input,
+                Output = output,
+                OutputContent = root.Q<VisualElement>($"{TabElementPrefix(tab)}OutputContent") ?? output.contentContainer
+            };
+        }
+
+        templateBackedPages = templatePages.Count == tabs.Length;
+    }
+
+    void RebuildTemplateContent()
+    {
+        foreach (var tab in tabs)
+        {
+            if (templatePages.TryGetValue(tab, out var surface))
+                surface.Root.style.display = tab == activeTab ? DisplayStyle.Flex : DisplayStyle.None;
+        }
+
+        if (!templatePages.TryGetValue(activeTab, out var activeSurface))
+            throw new InvalidOperationException($"McCoyOkunCalculatorDialog.uxml is missing page surface for {activeTab}.");
+
+        ConfigureTemplateInputs(activeTab, activeSurface.Root);
+        ConfigureTemplateOutputControls(activeTab, activeSurface.Root);
+        activeSurface.OutputContent.Clear();
+        BuildTemplateOutput(activeTab, activeSurface.OutputContent);
+    }
+
+    void ConfigureTemplateInputs(string tab, VisualElement root)
+    {
+        switch (tab)
+        {
+            case "Facehard69":
+                ConfigureFacehardTemplate(root, "Facehard69", facehardInput, FacehardCalculator.CalculateFacehard(facehardInput), true);
+                BindButton(root, "Facehard69ResetButton", () =>
+                {
+                    facehardInput = FacehardCalculator.DefaultFacehardInput();
+                    facehardSampleId = "";
+                    facehardRecordedRuns.Clear();
+                    RebuildContent();
+                });
+                BindSample(root, "Facehard69SampleField", facehardSampleId, id =>
+                {
+                    facehardSampleId = id;
+                    var sample = SampleById(id);
+                    if (sample != null)
+                        ApplyFacehardSample(facehardInput, sample);
+                });
+                BindButton(root, "Facehard69RecordButton", () =>
+                {
+                    var result = FacehardCalculator.CalculateFacehard(facehardInput);
+                    facehardRecordedRuns.Add(new FacehardRecordedRun
+                    {
+                        Obliquity = facehardInput.Obliquity,
+                        Velocity = facehardInput.StrikingVelocity,
+                        NavyBl = result.NavyBl,
+                        HolingBl = result.HolingBl,
+                        EffectiveBl = result.EffectiveBl,
+                        Status = result.Status,
+                        Penetration = result.Penetration?.Label ?? ""
+                    });
+                    RebuildContent();
+                });
+                BindButton(root, "Facehard69ClearButton", () =>
+                {
+                    facehardRecordedRuns.Clear();
+                    RebuildContent();
+                });
+                break;
+            case "McCoy":
+                BindButton(root, "McCoyResetButton", () =>
+                {
+                    mccoyInput = McCoy.DefaultInput();
+                    mccoyDragText = McCoy.DragTableToText(McCoy.DefaultDragTable());
+                    RebuildContent();
+                });
+                BindDropdown(root, "McCoyAtmosphereField", new List<string> { "Army Standard Metro", "ICAO" }, mccoyInput.Atmosphere == "icao" ? 1 : 0, index => mccoyInput.Atmosphere = index == 1 ? "icao" : "standard");
+                BindFloat(root, "McCoyMuzzleVelocityField", mccoyInput.MuzzleVelocity, value => mccoyInput.MuzzleVelocity = value, 1);
+                BindFloat(root, "McCoyBallisticCoefficientField", mccoyInput.BallisticCoefficient, value => mccoyInput.BallisticCoefficient = value, 0.001);
+                BindFloat(root, "McCoySightHeightField", mccoyInput.SightHeight, value => mccoyInput.SightHeight = value);
+                BindFloat(root, "McCoyElevationMinutesField", mccoyInput.ElevationMinutes, value => mccoyInput.ElevationMinutes = value);
+                BindFloat(root, "McCoyDensityRatioField", mccoyInput.DensityRatio, value => mccoyInput.DensityRatio = value, 0.001);
+                BindFloat(root, "McCoyTemperatureField", mccoyInput.TemperatureF, value => mccoyInput.TemperatureF = value);
+                BindFloat(root, "McCoyPrintIntervalField", mccoyInput.PrintInterval, value => mccoyInput.PrintInterval = value, 1);
+                BindFloat(root, "McCoyMaxRangeField", mccoyInput.MaxRange, value => mccoyInput.MaxRange = value, 1);
+                BindFloat(root, "McCoyRangeWindField", mccoyInput.RangeWindMph, value => mccoyInput.RangeWindMph = value);
+                BindFloat(root, "McCoyCrossWindField", mccoyInput.CrossWindMph, value => mccoyInput.CrossWindMph = value);
+                BindFloat(root, "McCoyMatchRangeField", mccoyInput.MatchRange, value => mccoyInput.MatchRange = value, 0);
+                BindFloat(root, "McCoyMatchHeightField", mccoyInput.MatchHeight, value => mccoyInput.MatchHeight = value);
+                BindText(root, "McCoyDragTableField", mccoyDragText, value => mccoyDragText = value);
+                break;
+            case "McCoy Plus":
+                BindButton(root, "McCoyPlusResetButton", () =>
+                {
+                    mccoyPlusInput = McCoyPlus.DefaultInput();
+                    mccoyPlusPresetId = "g1";
+                    mccoyPlusDragText = McCoyPlus.DragPresetToText("g1");
+                    RebuildContent();
+                });
+                ConfigureMcCoyPlusTemplate(root, "McCoyPlus", mccoyPlusInput, () => mccoyPlusPresetId, value => mccoyPlusPresetId = value, () => mccoyPlusDragText, value => mccoyPlusDragText = value);
+                break;
+            case "McCoy Plus Facehard":
+                SyncComboMcCoy(mccoyPlusFacehardInput.McCoy, mccoyPlusFacehardDragText);
+                SyncFacehardBridge();
+                var facehardPreview = FacehardCalculator.CalculateFacehard(mccoyPlusFacehardDetails, false);
+                BindButton(root, "McCoyPlusFacehardResetButton", () =>
+                {
+                    mccoyPlusFacehardInput = McCoyPlusFacehard.DefaultInput();
+                    mccoyPlusFacehardDetails = FacehardCalculator.DefaultFacehardInput();
+                    mccoyPlusFacehardSampleId = "";
+                    mccoyPlusFacehardPresetId = "g1";
+                    mccoyPlusFacehardDragText = McCoyPlus.DragPresetToText("g1");
+                    mccoyPlusFacehardChartMode = "trajectory";
+                    RebuildContent();
+                });
+                BindSample(root, "McCoyPlusFacehardSampleField", mccoyPlusFacehardSampleId, id =>
+                {
+                    mccoyPlusFacehardSampleId = id;
+                    var sample = SampleById(id);
+                    if (sample != null)
+                    {
+                        ApplyMcCoyPlusSample(mccoyPlusFacehardInput.McCoy, sample, value => mccoyPlusFacehardPresetId = value, value => mccoyPlusFacehardDragText = value);
+                        ApplyFacehardSample(mccoyPlusFacehardDetails, sample);
+                        SyncFacehardBridge();
+                    }
+                });
+                ConfigureMcCoyPlusTemplate(root, "McCoyPlusFacehard", mccoyPlusFacehardInput.McCoy, () => mccoyPlusFacehardPresetId, value => mccoyPlusFacehardPresetId = value, () => mccoyPlusFacehardDragText, value => mccoyPlusFacehardDragText = value);
+                ConfigureFacehardComboTemplate(root, "McCoyPlusFacehard", mccoyPlusFacehardDetails, facehardPreview);
+                BindText(root, "McCoyPlusFacehardDragTableField", mccoyPlusFacehardDragText, value =>
+                {
+                    mccoyPlusFacehardDragText = value;
+                    mccoyPlusFacehardInput.McCoy.DragTable = McCoy.NormalizeDragTable(value);
+                });
+                break;
+            case "McCoy Plus M79":
+                SyncComboMcCoy(mccoyPlusM79Input.McCoy, mccoyPlusM79DragText);
+                BindButton(root, "McCoyPlusM79ResetButton", () =>
+                {
+                    mccoyPlusM79Input = McCoyPlusM79.DefaultInput();
+                    mccoyPlusM79SampleId = "";
+                    mccoyPlusM79PresetId = "g1";
+                    mccoyPlusM79DragText = McCoyPlus.DragPresetToText("g1");
+                    mccoyPlusM79ChartMode = "trajectory";
+                    RebuildContent();
+                });
+                BindSample(root, "McCoyPlusM79SampleField", mccoyPlusM79SampleId, id =>
+                {
+                    mccoyPlusM79SampleId = id;
+                    var sample = SampleById(id);
+                    if (sample != null)
+                    {
+                        ApplyMcCoyPlusSample(mccoyPlusM79Input.McCoy, sample, value => mccoyPlusM79PresetId = value, value => mccoyPlusM79DragText = value);
+                        ApplyM79Sample(mccoyPlusM79Input.M79, sample);
+                    }
+                });
+                ConfigureM79ComboTemplate(root, "McCoyPlusM79", mccoyPlusM79Input.M79, mccoyPlusM79Input.McCoy, () => mccoyPlusM79PresetId, value => mccoyPlusM79PresetId = value, () => mccoyPlusM79DragText, value => mccoyPlusM79DragText = value, () => mccoyPlusM79SampleId = "");
+                BindText(root, "McCoyPlusM79DragTableField", mccoyPlusM79DragText, value =>
+                {
+                    mccoyPlusM79DragText = value;
+                    mccoyPlusM79Input.McCoy.DragTable = McCoy.NormalizeDragTable(value);
+                });
+                break;
+            case "JBM":
+                BindButton(root, "JbmResetButton", () =>
+                {
+                    mcDragInput = Jbm.DefaultMcDragInput();
+                    mcGyroInput = Jbm.DefaultMcGyroInput();
+                    intLiftInput = Jbm.DefaultIntLiftInput();
+                    RebuildContent();
+                });
+                BindDropdown(root, "JbmProgramField", new List<string> { "MCDRAG", "MCGYRO", "INTLIFT" }, jbmMode == "mcgyro" ? 1 : jbmMode == "intlift" ? 2 : 0,
+                    index => jbmMode = index == 1 ? "mcgyro" : index == 2 ? "intlift" : "mcdrag");
+                ConfigureJbmTemplate(root);
+                break;
+            default:
+                BindButton(root, "M79ApclcResetButton", () =>
+                {
+                    m79Input = M79.DefaultInput();
+                    m79SampleId = "";
+                    RebuildContent();
+                });
+                BindSample(root, "M79ApclcSampleField", m79SampleId, id =>
+                {
+                    m79SampleId = id;
+                    var sample = SampleById(id);
+                    if (sample != null)
+                        ApplyM79Sample(m79Input, sample);
+                });
+                ConfigureM79Template(root, "M79Apclc", m79Input);
+                break;
+        }
+    }
+
+    void ConfigureTemplateOutputControls(string tab, VisualElement root)
+    {
+        SetDisplay(root, "McCoyPlusFacehardChartModeField", tab == "McCoy Plus Facehard");
+        SetDisplay(root, "McCoyPlusM79ChartModeField", tab == "McCoy Plus M79");
+        if (tab == "McCoy Plus Facehard")
+            BindDropdown(root, "McCoyPlusFacehardChartModeField", new List<string> { "Matched Trajectories", "Penetration By Range" }, mccoyPlusFacehardChartMode == "trajectory" ? 0 : 1,
+                index => mccoyPlusFacehardChartMode = index == 0 ? "trajectory" : "penetration");
+        if (tab == "McCoy Plus M79")
+            BindDropdown(root, "McCoyPlusM79ChartModeField", new List<string> { "Matched Trajectories", "Penetration By Range" }, mccoyPlusM79ChartMode == "trajectory" ? 0 : 1,
+                index => mccoyPlusM79ChartMode = index == 0 ? "trajectory" : "penetration");
+    }
+
+    void BuildTemplateOutput(string tab, VisualElement output)
+    {
+        switch (tab)
+        {
+            case "Facehard69":
+                BuildFacehardOutput(output);
+                break;
+            case "McCoy":
+                BuildMcCoyOutput(output);
+                break;
+            case "McCoy Plus":
+                BuildMcCoyPlusOutput(output);
+                break;
+            case "McCoy Plus Facehard":
+                BuildMcCoyPlusFacehardOutput(output);
+                break;
+            case "McCoy Plus M79":
+                BuildMcCoyPlusM79Output(output);
+                break;
+            case "JBM":
+                BuildJbmOutput(output);
+                break;
+            default:
+                BuildM79Output(output);
+                break;
+        }
+    }
+
+    void BuildM79Output(VisualElement output)
     {
         var result = M79.Calculate(m79Input);
-        var root = PageRoot(out var input, out var output);
-        input.Add(Header("M79 APCLC", () =>
-        {
-            m79Input = M79.DefaultInput();
-            m79SampleId = "";
-            RebuildContent();
-        }));
-        AddSampleDropdown(input, "Sample", m79SampleId, id =>
-        {
-            m79SampleId = id;
-            var sample = SampleById(id);
-            if (sample != null)
-                ApplyM79Sample(m79Input, sample);
-        });
-        AddM79Inputs(input, m79Input);
-
         output.Add(Banner(("Navy BL", F(result.NavyBallisticLimitRounded), "ft/s"),
             ("Mode", result.PenetrationMode, ""),
             ("Remaining Velocity", F(result.RemainingVelocity), "ft/s")));
         output.Add(Chart("Thickness Scan", M79.Scan(m79Input, m79Input.ProjectileDiameter * 6, 80)
             .Select(row => new Vector2((float)row.Thickness, (float)row.Result.NavyBallisticLimit))));
         output.Add(Pre("M79 Legacy BASIC Report", result.LegacyReport));
-        return root;
     }
 
-    VisualElement BuildFacehardPage()
+    void BuildFacehardOutput(VisualElement output)
     {
         var result = FacehardCalculator.CalculateFacehard(facehardInput);
-        var root = PageRoot(out var input, out var output);
-        input.Add(Header("Facehard69 Baseline", () =>
-        {
-            facehardInput = FacehardCalculator.DefaultFacehardInput();
-            facehardSampleId = "";
-            facehardRecordedRuns.Clear();
-            RebuildContent();
-        }));
-        AddSampleDropdown(input, "Sample", facehardSampleId, id =>
-        {
-            facehardSampleId = id;
-            var sample = SampleById(id);
-            if (sample != null)
-                ApplyFacehardSample(facehardInput, sample);
-        });
-        var recordRow = new VisualElement { style = { flexDirection = FlexDirection.Row, marginBottom = 6 } };
-        var recordButton = new Button(() =>
-        {
-            facehardRecordedRuns.Add(new FacehardRecordedRun
-            {
-                Obliquity = facehardInput.Obliquity,
-                Velocity = facehardInput.StrikingVelocity,
-                NavyBl = result.NavyBl,
-                HolingBl = result.HolingBl,
-                EffectiveBl = result.EffectiveBl,
-                Status = result.Status,
-                Penetration = result.Penetration?.Label ?? ""
-            });
-            RebuildContent();
-        })
-        {
-            text = "Record Current Velocity and Obliquity"
-        };
-        recordButton.style.flexGrow = 1;
-        recordRow.Add(recordButton);
-        recordRow.Add(new Button(() =>
-        {
-            facehardRecordedRuns.Clear();
-            RebuildContent();
-        })
-        {
-            text = "Clear"
-        });
-        input.Add(recordRow);
-        AddFacehardInputs(input, facehardInput, result, true);
-
         output.Add(Banner(("NBL", F(result.NavyBl), "ft/s"),
             ("HBL", F(result.HolingBl), "ft/s"),
             ("Status", result.Status, "")));
@@ -263,40 +507,15 @@ public sealed class McCoyOkunCalculatorDialog
         output.Add(Pre("Metrics", FacehardMetricLines(result)));
         output.Add(Pre("Facehard69 Legacy BASIC Report", result.Legacy.Report));
         output.Add(Pre("Process Report", result.Legacy.ProcessReport));
-        return root;
     }
 
-    VisualElement BuildMcCoyPage()
+    void BuildMcCoyOutput(VisualElement output)
     {
         mccoyInput.DragTable = McCoy.NormalizeDragTable(mccoyDragText);
         var stopwatch = Stopwatch.StartNew();
         var result = McCoy.Calculate(mccoyInput);
         stopwatch.Stop();
-        var calculationElapsed = stopwatch.Elapsed;
         var last = result.Points.LastOrDefault();
-        var root = PageRoot(out var input, out var output);
-        input.Add(Header("McCoy Point-Mass Trajectory", () =>
-        {
-            mccoyInput = McCoy.DefaultInput();
-            mccoyDragText = McCoy.DragTableToText(McCoy.DefaultDragTable());
-            RebuildContent();
-        }));
-        input.Add(Dropdown("Atmosphere Model", new List<string> { "Army Standard Metro", "ICAO" }, mccoyInput.Atmosphere == "icao" ? 1 : 0,
-            index => mccoyInput.Atmosphere = index == 1 ? "icao" : "standard"));
-        input.Add(NumberField("Muzzle Velocity", mccoyInput.MuzzleVelocity, "ft/s", value => mccoyInput.MuzzleVelocity = value, 1));
-        input.Add(NumberField("Ballistic Coefficient", mccoyInput.BallisticCoefficient, "lb/in2", value => mccoyInput.BallisticCoefficient = value, 0.001));
-        input.Add(NumberField("Sight Height", mccoyInput.SightHeight, "in", value => mccoyInput.SightHeight = value));
-        input.Add(NumberField("Elevation", mccoyInput.ElevationMinutes, "min", value => mccoyInput.ElevationMinutes = value));
-        input.Add(NumberField("Density Ratio", mccoyInput.DensityRatio, "", value => mccoyInput.DensityRatio = value, 0.001));
-        input.Add(NumberField("Temperature", mccoyInput.TemperatureF, "deg F", value => mccoyInput.TemperatureF = value));
-        input.Add(NumberField("Print Interval", mccoyInput.PrintInterval, mccoyInput.RangeUnit, value => mccoyInput.PrintInterval = value, 1));
-        input.Add(NumberField("Maximum Range", mccoyInput.MaxRange, mccoyInput.RangeUnit, value => mccoyInput.MaxRange = value, 1));
-        input.Add(NumberField("Range Wind", mccoyInput.RangeWindMph, "mph", value => mccoyInput.RangeWindMph = value));
-        input.Add(NumberField("Crosswind", mccoyInput.CrossWindMph, "mph", value => mccoyInput.CrossWindMph = value));
-        input.Add(NumberField("Match Range", mccoyInput.MatchRange, mccoyInput.RangeUnit, value => mccoyInput.MatchRange = value, 0));
-        input.Add(NumberField("Match Height", mccoyInput.MatchHeight, "in", value => mccoyInput.MatchHeight = value));
-        input.Add(TextArea("Mach-CD Drag Table", mccoyDragText, value => mccoyDragText = value));
-
         output.Add(Banner(("Terminal Velocity", F(last?.Velocity), "ft/s"),
             ("Terminal Height", F(last?.HeightInches), "in"),
             ("Elevation Used", F(result.AdjustedElevationMinutes, 3), "min")));
@@ -304,7 +523,7 @@ public sealed class McCoyOkunCalculatorDialog
         output.Add(Chart("Height Curve", result.Points.Select(point => new Vector2((float)point.Range, (float)point.HeightInches))));
         output.Add(Chart("Velocity Curve", result.Points.Select(point => new Vector2((float)point.Range, (float)point.Velocity))));
         output.Add(Pre("McCoy Legacy BASIC Report", result.LegacyReport));
-        output.Add(CalculationTime(calculationElapsed));
+        output.Add(CalculationTime(stopwatch.Elapsed));
         output.Add(Table("Trajectory Points", result.Points.Take(80).ToList(),
             Col<TrajectoryPoint>("range", "Range", 90, point => F(point.Range, 0)),
             Col<TrajectoryPoint>("height", "Height", 90, point => F(point.HeightInches, 1)),
@@ -314,83 +533,42 @@ public sealed class McCoyOkunCalculatorDialog
             Col<TrajectoryPoint>("vx", "VX", 80, point => F(point.Vx, 0)),
             Col<TrajectoryPoint>("vy", "VY", 80, point => F(point.Vy, 0)),
             Col<TrajectoryPoint>("vz", "VZ", 80, point => F(point.Vz, 0))));
-        return root;
     }
 
-    VisualElement BuildMcCoyPlusPage()
+    void BuildMcCoyPlusOutput(VisualElement output)
     {
         mccoyPlusInput.DragTable = McCoy.NormalizeDragTable(mccoyPlusDragText);
         var stopwatch = Stopwatch.StartNew();
         var result = McCoyPlus.CalculateParallel(mccoyPlusInput);
         stopwatch.Stop();
-        var calculationElapsed = stopwatch.Elapsed;
         var last = result.Rows.LastOrDefault();
-        var root = PageRoot(out var input, out var output);
-        BuildMcCoyPlusInputs(input, mccoyPlusInput, () =>
-        {
-            mccoyPlusInput = McCoyPlus.DefaultInput();
-            mccoyPlusPresetId = "g1";
-            mccoyPlusDragText = McCoyPlus.DragPresetToText("g1");
-            RebuildContent();
-        });
         output.Add(Banner(("Solved Ranges", F(result.Rows.Count, 0), "Rows"),
             ("Maximum Range", F(last?.Range), mccoyPlusInput.RangeUnit),
             ("Last Velocity", F(last?.Velocity), "ft/s")));
         output.Add(Warnings(result.Warnings));
         output.Add(ChartSeries("Matched Trajectories", TrajectorySeries(result.ChartRows, mccoyPlusInput.RangeUnit), mccoyPlusInput.RangeUnit, "ft"));
-        output.Add(CalculationTime(calculationElapsed));
+        output.Add(CalculationTime(stopwatch.Elapsed));
         output.Add(Table("Range Sweep", result.Rows,
             Col<McCoyPlusRow>("range", "Range", 90, row => F(row.Range, 0)),
             Col<McCoyPlusRow>("time", "Time", 90, row => F(row.Time, 3)),
             Col<McCoyPlusRow>("elevation", "Elevation (degree)", 140, row => F(row.ElevationDegrees, 4)),
             Col<McCoyPlusRow>("velocity", "Velocity", 90, row => F(row.Velocity, 0)),
             Col<McCoyPlusRow>("fall", "Fall Angle (degree)", 140, row => F(row.FallAngleDegrees, 3))));
-        return root;
     }
 
-    VisualElement BuildMcCoyPlusFacehardPage()
+    void BuildMcCoyPlusFacehardOutput(VisualElement output)
     {
         SyncComboMcCoy(mccoyPlusFacehardInput.McCoy, mccoyPlusFacehardDragText);
         SyncFacehardBridge();
         McCoyPlusFacehard.FacehardCalculator = bridge => FacehardBridgeCalculate(bridge, mccoyPlusFacehardDetails);
-        var facehardPreview = FacehardCalculator.CalculateFacehard(mccoyPlusFacehardDetails, false);
         var stopwatch = Stopwatch.StartNew();
         var result = McCoyPlusFacehard.Calculate(mccoyPlusFacehardInput);
         stopwatch.Stop();
-        var calculationElapsed = stopwatch.Elapsed;
-        var root = PageRoot(out var input, out var output);
-        input.Add(Header("McCoy Plus Facehard", () =>
-        {
-            mccoyPlusFacehardInput = McCoyPlusFacehard.DefaultInput();
-            mccoyPlusFacehardDetails = FacehardCalculator.DefaultFacehardInput();
-            mccoyPlusFacehardSampleId = "";
-            mccoyPlusFacehardPresetId = "g1";
-            mccoyPlusFacehardDragText = McCoyPlus.DragPresetToText("g1");
-            mccoyPlusFacehardChartMode = "trajectory";
-            RebuildContent();
-        }));
-        AddSampleDropdown(input, "Sample", mccoyPlusFacehardSampleId, id =>
-        {
-            mccoyPlusFacehardSampleId = id;
-            var sample = SampleById(id);
-            if (sample != null)
-            {
-                ApplyMcCoyPlusSample(mccoyPlusFacehardInput.McCoy, sample, value => mccoyPlusFacehardPresetId = value, value => mccoyPlusFacehardDragText = value);
-                ApplyFacehardSample(mccoyPlusFacehardDetails, sample);
-                SyncFacehardBridge();
-            }
-        });
-        AddMcCoyPlusCoreInputs(input, mccoyPlusFacehardInput.McCoy, true, () => mccoyPlusFacehardPresetId, value => mccoyPlusFacehardPresetId = value, () => mccoyPlusFacehardDragText, value => mccoyPlusFacehardDragText = value);
-        input.Add(Section("Facehard Inputs"));
-        AddFacehardComboInputs(input, mccoyPlusFacehardDetails, facehardPreview);
-        AddMcCoyPlusDragEditor(input, mccoyPlusFacehardInput.McCoy, () => mccoyPlusFacehardDragText, value => mccoyPlusFacehardDragText = value);
         output.Add(Warnings(result.Warnings));
-        output.Add(Dropdown("Chart Mode", new List<string> { "Matched Trajectories", "Penetration By Range" }, mccoyPlusFacehardChartMode == "trajectory" ? 0 : 1,
-            index => mccoyPlusFacehardChartMode = index == 0 ? "trajectory" : "penetration"));
         output.Add(mccoyPlusFacehardChartMode == "trajectory"
             ? ChartSeries("Matched Trajectories", TrajectorySeries(result.ChartRows, mccoyPlusFacehardInput.McCoy.RangeUnit), mccoyPlusFacehardInput.McCoy.RangeUnit, "ft")
             : Chart("Facehard Penetration", result.Rows.Where(row => row.PenetrationInches.HasValue).Select(row => new Vector2((float)row.Range, (float)row.PenetrationInches.Value))));
-        output.Add(CalculationTime(calculationElapsed));
+        output.Add(CalculationTime(stopwatch.Elapsed));
         output.Add(Table("Rows", result.Rows,
             Col<McCoyPlusFacehardRow>("range", "Range", 90, row => F(row.Range, 0)),
             Col<McCoyPlusFacehardRow>("time", "Time", 90, row => F(row.Time, 3)),
@@ -399,46 +577,19 @@ public sealed class McCoyOkunCalculatorDialog
             Col<McCoyPlusFacehardRow>("fall", "Fall Angle (degree)", 140, row => F(row.FallAngleDegrees, 3)),
             Col<McCoyPlusFacehardRow>("penetration", "Penetration", 110, row => F(row.PenetrationInches, 2)),
             Col<McCoyPlusFacehardRow>("horizontal", "Horizontal Penetration", 160, row => row.HorizontalPenetrationInches.HasValue ? F(row.HorizontalPenetrationInches, 2) : "n/a")));
-        return root;
     }
 
-    VisualElement BuildMcCoyPlusM79Page()
+    void BuildMcCoyPlusM79Output(VisualElement output)
     {
         SyncComboMcCoy(mccoyPlusM79Input.McCoy, mccoyPlusM79DragText);
         var stopwatch = Stopwatch.StartNew();
         var result = McCoyPlusM79.Calculate(mccoyPlusM79Input);
         stopwatch.Stop();
-        var calculationElapsed = stopwatch.Elapsed;
-        var root = PageRoot(out var input, out var output);
-        input.Add(Header("McCoy Plus M79 APCLC", () =>
-        {
-            mccoyPlusM79Input = McCoyPlusM79.DefaultInput();
-            mccoyPlusM79SampleId = "";
-            mccoyPlusM79PresetId = "g1";
-            mccoyPlusM79DragText = McCoyPlus.DragPresetToText("g1");
-            mccoyPlusM79ChartMode = "trajectory";
-            RebuildContent();
-        }));
-        AddSampleDropdown(input, "Sample", mccoyPlusM79SampleId, id =>
-        {
-            mccoyPlusM79SampleId = id;
-            var sample = SampleById(id);
-            if (sample != null)
-            {
-                ApplyMcCoyPlusSample(mccoyPlusM79Input.McCoy, sample, value => mccoyPlusM79PresetId = value, value => mccoyPlusM79DragText = value);
-                ApplyM79Sample(mccoyPlusM79Input.M79, sample);
-            }
-        });
-        input.Add(Section("M79 Inputs"));
-        AddM79ComboInputs(input, mccoyPlusM79Input.M79, mccoyPlusM79Input.McCoy, () => mccoyPlusM79PresetId, value => mccoyPlusM79PresetId = value, () => mccoyPlusM79DragText, value => mccoyPlusM79DragText = value, () => mccoyPlusM79SampleId = "");
-        AddMcCoyPlusDragEditor(input, mccoyPlusM79Input.McCoy, () => mccoyPlusM79DragText, value => mccoyPlusM79DragText = value);
         output.Add(Warnings(result.Warnings));
-        output.Add(Dropdown("Chart Mode", new List<string> { "Matched Trajectories", "Penetration By Range" }, mccoyPlusM79ChartMode == "trajectory" ? 0 : 1,
-            index => mccoyPlusM79ChartMode = index == 0 ? "trajectory" : "penetration"));
         output.Add(mccoyPlusM79ChartMode == "trajectory"
             ? ChartSeries("Matched Trajectories", TrajectorySeries(result.ChartRows, mccoyPlusM79Input.McCoy.RangeUnit), mccoyPlusM79Input.McCoy.RangeUnit, "ft")
             : Chart("M79 Penetration", result.Rows.Where(row => row.PenetrationInches.HasValue).Select(row => new Vector2((float)row.Range, (float)row.PenetrationInches.Value))));
-        output.Add(CalculationTime(calculationElapsed));
+        output.Add(CalculationTime(stopwatch.Elapsed));
         output.Add(Table("Rows", result.Rows,
             Col<McCoyPlusM79Row>("range", "Range", 90, row => F(row.Range, 0)),
             Col<McCoyPlusM79Row>("time", "Time", 90, row => F(row.Time, 3)),
@@ -450,35 +601,18 @@ public sealed class McCoyOkunCalculatorDialog
             Col<McCoyPlusM79Row>("nbl", "M79 NBL", 100, row => F(row.M79NavyBallisticLimit, 0)),
             Col<McCoyPlusM79Row>("mode", "Mode", 160, row => row.PenetrationMode ?? "outside-range"),
             Col<McCoyPlusM79Row>("remaining", "Remaining Velocity", 140, row => F(row.RemainingVelocity, 0))));
-        return root;
     }
 
-    VisualElement BuildJbmPage()
+    void BuildJbmOutput(VisualElement output)
     {
-        var root = PageRoot(out var input, out var output);
-        input.Add(Header("JBM / McCoy Aerodynamics", () =>
-        {
-            mcDragInput = Jbm.DefaultMcDragInput();
-            mcGyroInput = Jbm.DefaultMcGyroInput();
-            intLiftInput = Jbm.DefaultIntLiftInput();
-            RebuildContent();
-        }));
-        input.Add(Dropdown("Program", new List<string> { "MCDRAG", "MCGYRO", "INTLIFT" }, jbmMode == "mcgyro" ? 1 : jbmMode == "intlift" ? 2 : 0,
-            index => jbmMode = index == 1 ? "mcgyro" : index == 2 ? "intlift" : "mcdrag"));
-
         if (jbmMode == "mcgyro")
         {
-            AddJbmGeometryInputs(input, mcGyroInput);
-            input.Add(NumberField("Projectile Density", mcGyroInput.ProjectileDensityGramsPerCc, "g/cc", value => mcGyroInput.ProjectileDensityGramsPerCc = value, 0.001));
-            input.Add(NumberField("Rifling Twist", mcGyroInput.RiflingTwistCalibersPerTurn, "cal/turn", value => mcGyroInput.RiflingTwistCalibersPerTurn = value, 0.001));
             var result = Jbm.CalculateMcGyro(mcGyroInput);
             output.Add(Chart("Stability Factor", result.Rows.Select(row => new Vector2((float)row.Mach, (float)row.StabilityFactor))));
             output.Add(Pre("MCGYRO Report", result.LegacyReport));
         }
         else if (jbmMode == "intlift")
         {
-            AddJbmGeometryInputs(input, intLiftInput);
-            input.Add(NumberField("Center of Gravity", intLiftInput.CenterOfGravityCalibers, "cal", value => intLiftInput.CenterOfGravityCalibers = value, 0.001));
             var result = Jbm.CalculateIntLift(intLiftInput);
             output.Add(Warnings(result.Warnings));
             output.Add(Chart("CLA", result.Rows.Select(row => new Vector2((float)row.Mach, (float)row.Cla))));
@@ -486,21 +620,209 @@ public sealed class McCoyOkunCalculatorDialog
         }
         else
         {
-            AddJbmGeometryInputs(input, mcDragInput);
-            input.Add(NumberField("Rotating Band Diameter", mcDragInput.RotatingBandDiameterCalibers, "cal", value => mcDragInput.RotatingBandDiameterCalibers = value, 0.001));
-            input.Add(NumberField("Center of Gravity", mcDragInput.CenterOfGravityCalibers, "cal", value => mcDragInput.CenterOfGravityCalibers = value, 0.001));
-            input.Add(Dropdown("Boundary Layer", new List<string> { "Laminar/Laminar", "Laminar/Turbulent", "Turbulent/Turbulent" }, BoundaryLayerIndex(mcDragInput.BoundaryLayer),
-                index => mcDragInput.BoundaryLayer = index == 0 ? JbmBoundaryLayer.LaminarLaminar : index == 2 ? JbmBoundaryLayer.TurbulentTurbulent : JbmBoundaryLayer.LaminarTurbulent));
             var result = Jbm.CalculateMcDrag(mcDragInput);
             output.Add(Warnings(result.Warnings));
             output.Add(Chart("CD0", result.Rows.Select(row => new Vector2((float)row.Mach, (float)row.Cd0))));
             output.Add(Pre("MCDRAG Report", result.LegacyReport));
         }
-
-        return root;
     }
 
-    void AddSampleDropdown(VisualElement input, string label, string selectedId, Action<string> setter)
+    void ConfigureM79Template(VisualElement root, string prefix, M79Input target)
+    {
+        BindFloat(root, $"{prefix}ProjectileDiameterField", target.ProjectileDiameter, value => target.ProjectileDiameter = value, 0.001);
+        BindFloat(root, $"{prefix}ProjectileWeightField", target.ProjectileWeight, value => target.ProjectileWeight = value, 0.001);
+        BindFloat(root, $"{prefix}PlateThicknessField", target.PlateThickness, value => target.PlateThickness = value, 0.001);
+        BindFloat(root, $"{prefix}PlateQualityField", target.PlateQuality, value => target.PlateQuality = value, 0.001);
+        BindFloat(root, $"{prefix}ObliquityField", target.Obliquity, value => target.Obliquity = value, 0);
+        BindFloat(root, $"{prefix}StrikingVelocityField", target.StrikingVelocity, value => target.StrikingVelocity = value, 1);
+        BindFloat(root, $"{prefix}ElongationField", target.Elongation, value => target.Elongation = value, 10);
+    }
+
+    void ConfigureM79ComboTemplate(VisualElement root, string prefix, M79Input m79, McCoyPlusInput mccoy, Func<string> getPresetId, Action<string> setPresetId, Func<string> getDragText, Action<string> setDragText, Action onPresetChanged)
+    {
+        BindFloat(root, $"{prefix}ProjectileDiameterField", m79.ProjectileDiameter, value => m79.ProjectileDiameter = value, 0.001);
+        BindFloat(root, $"{prefix}ProjectileWeightField", m79.ProjectileWeight, value => m79.ProjectileWeight = value, 0.001);
+        BindFloat(root, $"{prefix}MuzzleVelocityField", mccoy.MuzzleVelocity, value => mccoy.MuzzleVelocity = value, 1);
+        BindFloat(root, $"{prefix}BallisticCoefficientField", mccoy.BallisticCoefficient, value => mccoy.BallisticCoefficient = value, 0.001);
+        BindFloat(root, $"{prefix}MaxRangeField", mccoy.MaxRange, value => mccoy.MaxRange = value, 1);
+        BindFloat(root, $"{prefix}MatchHeightField", mccoy.MatchHeight, value => mccoy.MatchHeight = value);
+        BindMcCoyPlusElevationSearch(root, prefix, mccoy);
+        BindDropdown(root, $"{prefix}AtmosphereField", new List<string> { "Army Standard Metro", "ICAO" }, mccoy.Atmosphere == "icao" ? 1 : 0, index => mccoy.Atmosphere = index == 1 ? "icao" : "standard");
+        BindFloat(root, $"{prefix}DensityRatioField", mccoy.DensityRatio, value => mccoy.DensityRatio = value, 0.001);
+        BindFloat(root, $"{prefix}TemperatureField", mccoy.TemperatureF, value => mccoy.TemperatureF = value);
+        BindFloat(root, $"{prefix}ArmorQualityField", m79.PlateQuality, value => m79.PlateQuality = value, 0.001);
+        BindFloat(root, $"{prefix}ElongationField", m79.Elongation, value => m79.Elongation = value, 10);
+        BindMcCoyPlusPreset(root, prefix, mccoy, getPresetId, setPresetId, setDragText, onPresetChanged);
+    }
+
+    void ConfigureMcCoyPlusTemplate(VisualElement root, string prefix, McCoyPlusInput target, Func<string> getPresetId, Action<string> setPresetId, Func<string> getDragText, Action<string> setDragText)
+    {
+        BindMcCoyPlusElevationSearch(root, prefix, target);
+        BindDropdown(root, $"{prefix}AtmosphereField", new List<string> { "Army Standard Metro", "ICAO" }, target.Atmosphere == "icao" ? 1 : 0, index => target.Atmosphere = index == 1 ? "icao" : "standard");
+        BindMcCoyPlusPreset(root, prefix, target, getPresetId, setPresetId, setDragText);
+        BindFloat(root, $"{prefix}MuzzleVelocityField", target.MuzzleVelocity, value => target.MuzzleVelocity = value, 1);
+        BindFloat(root, $"{prefix}BallisticCoefficientField", target.BallisticCoefficient, value => target.BallisticCoefficient = value, 0.001);
+        BindFloat(root, $"{prefix}MaxRangeField", target.MaxRange, value => target.MaxRange = value, 1);
+        BindFloat(root, $"{prefix}DensityRatioField", target.DensityRatio, value => target.DensityRatio = value, 0.001);
+        BindFloat(root, $"{prefix}TemperatureField", target.TemperatureF, value => target.TemperatureF = value);
+        BindFloat(root, $"{prefix}MatchHeightField", target.MatchHeight, value => target.MatchHeight = value);
+        BindText(root, $"{prefix}DragTableField", getDragText(), value =>
+        {
+            setDragText(value);
+            target.DragTable = McCoy.NormalizeDragTable(value);
+        });
+    }
+
+    void BindMcCoyPlusElevationSearch(VisualElement root, string prefix, McCoyPlusInput target)
+    {
+        BindDropdown(root, $"{prefix}ElevationSearchField", new List<string> { "Cached Binary Search", "Matched Range" },
+            target.ElevationSearchMode == McCoyPlusElevationSearchMode.MatchedRange ? 1 : 0,
+            index => target.ElevationSearchMode = index == 1
+                ? McCoyPlusElevationSearchMode.MatchedRange
+                : McCoyPlusElevationSearchMode.CachedBinarySearch);
+    }
+
+    void BindMcCoyPlusPreset(VisualElement root, string prefix, McCoyPlusInput target, Func<string> getPresetId, Action<string> setPresetId, Action<string> setDragText, Action onPresetChanged = null)
+    {
+        var presets = McCoyPlus.DragPresets();
+        BindDropdown(root, $"{prefix}PresetField", presets.Select(item => item.Label).ToList(), Mathf.Max(0, presets.FindIndex(item => item.Id == getPresetId())), index =>
+        {
+            var preset = presets[Mathf.Max(0, index)];
+            ApplyMcCoyPlusPreset(target, preset.Id, setPresetId, setDragText);
+            onPresetChanged?.Invoke();
+        });
+    }
+
+    void ConfigureFacehardTemplate(VisualElement root, string prefix, FacehardInput target, FacehardResult preview, bool includeVelocity)
+    {
+        ConfigureFacehardProjectileTemplate(root, prefix, target, preview);
+        if (includeVelocity)
+        {
+            BindFloat(root, $"{prefix}StrikingVelocityField", target.StrikingVelocity, value => target.StrikingVelocity = value, 1);
+            BindFloat(root, $"{prefix}ObliquityField", target.Obliquity, value => target.Obliquity = value, 0);
+        }
+        BindDropdown(root, $"{prefix}ArmorTypeField", FacehardCalculator.FacehardArmors.Select(item => item.Name).ToList(),
+            FacehardCalculator.FacehardArmors.FindIndex(item => item.Id == target.ArmorId),
+            index => target.ArmorId = FacehardCalculator.FacehardArmors[Mathf.Max(0, index)].Id);
+        BindToggle(root, $"{prefix}CurvedPlateToggle", target.CurvedPlate, value => target.CurvedPlate = value);
+        BindFloat(root, $"{prefix}PlateThicknessField", target.PlateThickness, value => target.PlateThickness = value, 0.001);
+        BindFloat(root, $"{prefix}WoodBackingField", target.WoodBackingThickness, value => target.WoodBackingThickness = value, 0);
+        BindFloat(root, $"{prefix}CementBackingField", target.CementBackingThickness, value => target.CementBackingThickness = value, 0);
+        BindFloat(root, $"{prefix}MetalBackingField", target.MetalBackingThickness, value => target.MetalBackingThickness = value, 0);
+        BindFloat(root, $"{prefix}BackingQualityField", target.BackingQuality, value => target.BackingQuality = value, 0.001);
+        BindFloat(root, $"{prefix}BackingPlatesField", target.BackingPlates, value => target.BackingPlates = value, 0);
+        UpdateFacehardInputWarnings(root, prefix, target, preview?.ResolvedCapType ?? ResolvedCapType(target));
+    }
+
+    void ConfigureFacehardComboTemplate(VisualElement root, string prefix, FacehardInput target, FacehardResult preview)
+    {
+        BindDropdown(root, $"{prefix}ArmorTypeField", FacehardCalculator.FacehardArmors.Select(item => item.Name).ToList(),
+            FacehardCalculator.FacehardArmors.FindIndex(item => item.Id == target.ArmorId),
+            index => target.ArmorId = FacehardCalculator.FacehardArmors[Mathf.Max(0, index)].Id);
+        ConfigureFacehardProjectileTemplate(root, prefix, target, preview);
+        BindFloat(root, $"{prefix}WoodBackingField", target.WoodBackingThickness, value => target.WoodBackingThickness = value, 0);
+        BindFloat(root, $"{prefix}CementBackingField", target.CementBackingThickness, value => target.CementBackingThickness = value, 0);
+        BindFloat(root, $"{prefix}MetalBackingField", target.MetalBackingThickness, value => target.MetalBackingThickness = value, 0);
+        UpdateFacehardInputWarnings(root, prefix, target, preview?.ResolvedCapType ?? ResolvedCapType(target));
+    }
+
+    void ConfigureFacehardProjectileTemplate(VisualElement root, string prefix, FacehardInput target, FacehardResult preview)
+    {
+        var selectedPreset = preview?.ProjectilePreset
+            ?? FacehardCalculator.FacehardProjectilePresets.FirstOrDefault(item => item.Id == target.ProjectilePresetId)
+            ?? FacehardCalculator.FacehardProjectilePresets.FirstOrDefault(item => item.Id == "custom");
+        var selectedNation = selectedPreset?.Nation ?? "Custom";
+        var resolvedCapType = preview?.ResolvedCapType ?? ResolvedCapType(target);
+        var nations = FacehardCalculator.FacehardProjectileNations;
+        BindDropdown(root, $"{prefix}ProjectileNationField", nations.Select(item => item.Name).ToList(),
+            Mathf.Max(0, nations.FindIndex(item => item.Id == selectedNation)), index =>
+            {
+                var nation = nations[Mathf.Max(0, index)];
+                target.ProjectilePresetId = nation.DefaultProjectileId;
+            });
+
+        var projectileChoices = FacehardCalculator.FacehardProjectilePresets.Where(item => item.Nation == selectedNation).ToList();
+        if (projectileChoices.Count == 0)
+            projectileChoices = FacehardCalculator.FacehardProjectilePresets.Where(item => item.Nation == "Custom").ToList();
+        BindDropdown(root, $"{prefix}ProjectileTypeField", projectileChoices.Select(ProjectilePresetLabel).ToList(),
+            Mathf.Max(0, projectileChoices.FindIndex(item => item.Id == target.ProjectilePresetId)),
+            index => target.ProjectilePresetId = projectileChoices[Mathf.Max(0, index)].Id);
+
+        var isCustom = target.ProjectilePresetId == "custom";
+        var capLabels = new List<string> { "Hard AP cap", "Thin/Tough hard cap", "Soft AP cap", "Hood", "No cap" };
+        var capValues = new List<string> { "hard", "thin-hard", "soft", "hood", "none" };
+        BindDropdown(root, $"{prefix}CapOrHoodField", capLabels, Mathf.Max(0, capValues.IndexOf(resolvedCapType)), index => target.CapType = capValues[Mathf.Max(0, index)], isCustom);
+
+        var schemaValues = new List<string> { "standard", "japanese-cap-head" };
+        BindDropdown(root, $"{prefix}NoseSchemaField", new List<string> { "Standard", "Japanese Cap Head" }, Mathf.Max(0, schemaValues.IndexOf(target.NoseSchema)), index =>
+        {
+            target.NoseSchema = schemaValues[Mathf.Max(0, index)];
+            target.NoseCondition = "intact";
+        }, isCustom);
+
+        SetDisplay(root, $"{prefix}JapaneseCapHeadField", isCustom && target.NoseSchema == "japanese-cap-head");
+        BindDropdown(root, $"{prefix}JapaneseCapHeadField", new List<string> { "Uncapped Type 91 AP", "Capped Type 88/91/1 APC" }, target.JapaneseCapHead <= 1 ? 0 : 1, index =>
+        {
+            target.JapaneseCapHead = index == 0 ? 1 : 2;
+            target.NoseCondition = "intact";
+        });
+
+        var noseWeights = FacehardCalculator.FacehardNoseCoveringWeights(target);
+        BindDropdown(root, $"{prefix}NoseConditionField", noseWeights.ConditionOptions.Select(NoseConditionLabel).ToList(),
+            Mathf.Max(0, noseWeights.ConditionOptions.IndexOf(noseWeights.Condition)),
+            index => target.NoseCondition = noseWeights.ConditionOptions[Mathf.Max(0, index)]);
+        BindFloat(root, $"{prefix}ProjectileDiameterField", target.ProjectileDiameter, value => target.ProjectileDiameter = value, 0.001);
+        BindFloat(root, $"{prefix}ProjectileWeightField", target.ProjectileWeight, value => target.ProjectileWeight = value, 0.001);
+        BindFloat(root, $"{prefix}ProjectileBodyWeightField", target.ProjectileBodyWeight, value => target.ProjectileBodyWeight = value, 0.001);
+        SetDisplay(root, $"{prefix}WindscreenCapHeadWeightField", noseWeights.SchemaKind == "japanese-cap-head" && noseWeights.CapHead == 2);
+        BindFloat(root, $"{prefix}WindscreenCapHeadWeightField", target.WindscreenCapHeadWeight, value => target.WindscreenCapHeadWeight = value, 0);
+        SetDisplay(root, $"{prefix}WindscreenWeightField", noseWeights.SchemaKind == "standard");
+        BindFloat(root, $"{prefix}WindscreenWeightField", target.WindscreenWeight, value => target.WindscreenWeight = value, 0);
+        BindFloat(root, $"{prefix}RemainingNoseWeightField", noseWeights.RemainWeight, _ => { }, 0, false, RemainingNoseWeightLabel(noseWeights.CapHead, resolvedCapType));
+        BindFloat(root, $"{prefix}PlimField", isCustom ? target.ProjectileLimitQuality : selectedPreset?.ProjectileLimitQuality ?? target.ProjectileLimitQuality, value => target.ProjectileLimitQuality = value, 0.001, isCustom);
+        BindFloat(root, $"{prefix}PdamField", isCustom ? target.ProjectileDamageQuality : selectedPreset?.ProjectileDamageQuality ?? target.ProjectileDamageQuality, value => target.ProjectileDamageQuality = value, 0.001, isCustom);
+    }
+
+    void UpdateFacehardInputWarnings(VisualElement root, string prefix, FacehardInput target, string resolvedCapType)
+    {
+        var warningRoot = root.Q<VisualElement>($"{prefix}InputWarnings");
+        if (warningRoot == null)
+            return;
+        warningRoot.Clear();
+        var noseWeights = FacehardCalculator.FacehardNoseCoveringWeights(target);
+        if (((noseWeights.Condition == "windscreen-removed" && resolvedCapType != "none") || noseWeights.Condition == "caphead-removed") && noseWeights.RemainWeight <= 0)
+            warningRoot.Add(Warnings(new[] { "The selected lost-covering weight consumes all non-body weight; Facehard69 requires remaining cap/hood weight for this state." }));
+    }
+
+    void ConfigureJbmTemplate(VisualElement root)
+    {
+        var geometry = jbmMode == "mcgyro" ? (JbmProjectileGeometryInput)mcGyroInput : jbmMode == "intlift" ? intLiftInput : mcDragInput;
+        BindText(root, "JbmProjectileIdField", geometry.ProjectileId, value => geometry.ProjectileId = value);
+        BindFloat(root, "JbmReferenceDiameterField", geometry.ReferenceDiameterMm, value => geometry.ReferenceDiameterMm = value, 0.001);
+        BindFloat(root, "JbmTotalLengthField", geometry.TotalLengthCalibers, value => geometry.TotalLengthCalibers = value, 0.001);
+        BindFloat(root, "JbmNoseLengthField", geometry.NoseLengthCalibers, value => geometry.NoseLengthCalibers = value, 0.001);
+        BindFloat(root, "JbmTangentRadiusRatioField", geometry.TangentRadiusRatio, value => geometry.TangentRadiusRatio = value, 0);
+        BindFloat(root, "JbmBoattailLengthField", geometry.BoattailLengthCalibers, value => geometry.BoattailLengthCalibers = value, 0);
+        BindFloat(root, "JbmBaseDiameterField", geometry.BaseDiameterCalibers, value => geometry.BaseDiameterCalibers = value, 0.001);
+        BindFloat(root, "JbmMeplatDiameterField", geometry.MeplatDiameterCalibers, value => geometry.MeplatDiameterCalibers = value, 0);
+
+        SetDisplay(root, "JbmProjectileDensityField", jbmMode == "mcgyro");
+        SetDisplay(root, "JbmRiflingTwistField", jbmMode == "mcgyro");
+        SetDisplay(root, "JbmCenterOfGravityField", jbmMode != "mcgyro");
+        SetDisplay(root, "JbmRotatingBandDiameterField", jbmMode == "mcdrag");
+        SetDisplay(root, "JbmBoundaryLayerField", jbmMode == "mcdrag");
+        BindFloat(root, "JbmProjectileDensityField", mcGyroInput.ProjectileDensityGramsPerCc, value => mcGyroInput.ProjectileDensityGramsPerCc = value, 0.001);
+        BindFloat(root, "JbmRiflingTwistField", mcGyroInput.RiflingTwistCalibersPerTurn, value => mcGyroInput.RiflingTwistCalibersPerTurn = value, 0.001);
+        if (jbmMode == "intlift")
+            BindFloat(root, "JbmCenterOfGravityField", intLiftInput.CenterOfGravityCalibers, value => intLiftInput.CenterOfGravityCalibers = value, 0.001);
+        else
+            BindFloat(root, "JbmCenterOfGravityField", mcDragInput.CenterOfGravityCalibers, value => mcDragInput.CenterOfGravityCalibers = value, 0.001);
+        BindFloat(root, "JbmRotatingBandDiameterField", mcDragInput.RotatingBandDiameterCalibers, value => mcDragInput.RotatingBandDiameterCalibers = value, 0.001);
+        BindDropdown(root, "JbmBoundaryLayerField", new List<string> { "Laminar/Laminar", "Laminar/Turbulent", "Turbulent/Turbulent" }, BoundaryLayerIndex(mcDragInput.BoundaryLayer),
+            index => mcDragInput.BoundaryLayer = index == 0 ? JbmBoundaryLayer.LaminarLaminar : index == 2 ? JbmBoundaryLayer.TurbulentTurbulent : JbmBoundaryLayer.LaminarTurbulent);
+    }
+
+    void BindSample(VisualElement root, string name, string selectedId, Action<string> setter)
     {
         var choices = new List<string> { "Not Specified" };
         choices.AddRange(Samples.Select(sample => sample.Label));
@@ -508,217 +830,163 @@ public sealed class McCoyOkunCalculatorDialog
         var sampleIndex = Samples.FindIndex(sample => sample.Id == selectedId);
         if (sampleIndex >= 0)
             index = sampleIndex + 1;
-        input.Add(Dropdown(label, choices, index, selected =>
+        BindDropdown(root, name, choices, index, selected => setter(selected <= 0 ? "" : Samples[Mathf.Clamp(selected - 1, 0, Samples.Count - 1)].Id));
+    }
+
+    void BindButton(VisualElement root, string name, Action clicked)
+    {
+        var button = root.Q<Button>(name);
+        if (button == null)
+            return;
+        if (button.userData is not TemplateButtonBinding binding)
         {
-            setter(selected <= 0 ? "" : Samples[Mathf.Clamp(selected - 1, 0, Samples.Count - 1)].Id);
-        }));
+            binding = new TemplateButtonBinding();
+            button.userData = binding;
+            button.clicked += () =>
+            {
+                if (button.userData is TemplateButtonBinding current)
+                    current.Clicked?.Invoke();
+            };
+        }
+        binding.Clicked = clicked;
+    }
+
+    void BindFloat(VisualElement root, string name, double value, Action<double> setter, double? min = null, bool enabled = true, string label = null)
+    {
+        var field = root.Q<FloatField>(name);
+        if (field == null)
+            return;
+        if (field.userData is not TemplateFloatBinding binding)
+        {
+            binding = new TemplateFloatBinding();
+            field.userData = binding;
+            field.RegisterValueChangedCallback(evt =>
+            {
+                if (field.userData is not TemplateFloatBinding current || current.Updating)
+                    return;
+                var next = (double)evt.newValue;
+                if (current.Min.HasValue)
+                    next = Math.Max(current.Min.Value, next);
+                current.Setter?.Invoke(next);
+                RebuildContent();
+            });
+        }
+        binding.Updating = true;
+        binding.Min = min;
+        binding.Setter = setter;
+        if (!string.IsNullOrEmpty(label))
+            field.label = label;
+        field.SetEnabled(enabled);
+        field.SetValueWithoutNotify((float)value);
+        binding.Updating = false;
+    }
+
+    void BindDropdown(VisualElement root, string name, List<string> choices, int index, Action<int> setter, bool enabled = true)
+    {
+        var field = root.Q<DropdownField>(name);
+        if (field == null)
+            return;
+        if (choices.Count == 0)
+            choices.Add("");
+        index = Mathf.Clamp(index, 0, choices.Count - 1);
+        if (field.userData is not TemplateDropdownBinding binding)
+        {
+            binding = new TemplateDropdownBinding();
+            field.userData = binding;
+            field.RegisterValueChangedCallback(evt =>
+            {
+                if (field.userData is not TemplateDropdownBinding current || current.Updating)
+                    return;
+                current.Setter?.Invoke(Mathf.Max(0, current.Choices.IndexOf(evt.newValue)));
+                RebuildContent();
+            });
+        }
+        binding.Updating = true;
+        binding.Choices = choices;
+        binding.Setter = setter;
+        field.choices = choices;
+        field.SetEnabled(enabled);
+        field.SetValueWithoutNotify(choices[index]);
+        binding.Updating = false;
+    }
+
+    void BindText(VisualElement root, string name, string value, Action<string> setter)
+    {
+        var field = root.Q<TextField>(name);
+        if (field == null)
+            return;
+        if (field.userData is not TemplateTextBinding binding)
+        {
+            binding = new TemplateTextBinding();
+            field.userData = binding;
+            field.RegisterValueChangedCallback(evt =>
+            {
+                if (field.userData is not TemplateTextBinding current || current.Updating)
+                    return;
+                current.Setter?.Invoke(evt.newValue);
+                RebuildContent();
+            });
+        }
+        binding.Updating = true;
+        binding.Setter = setter;
+        field.SetValueWithoutNotify(value ?? "");
+        binding.Updating = false;
+    }
+
+    void BindToggle(VisualElement root, string name, bool value, Action<bool> setter)
+    {
+        var field = root.Q<Toggle>(name);
+        if (field == null)
+            return;
+        if (field.userData is not TemplateToggleBinding binding)
+        {
+            binding = new TemplateToggleBinding();
+            field.userData = binding;
+            field.RegisterValueChangedCallback(evt =>
+            {
+                if (field.userData is not TemplateToggleBinding current || current.Updating)
+                    return;
+                current.Setter?.Invoke(evt.newValue);
+                RebuildContent();
+            });
+        }
+        binding.Updating = true;
+        binding.Setter = setter;
+        field.SetValueWithoutNotify(value);
+        binding.Updating = false;
+    }
+
+    static void SetDisplay(VisualElement root, string name, bool visible)
+    {
+        var element = root.Q<VisualElement>(name);
+        if (element != null)
+            element.style.display = visible ? DisplayStyle.Flex : DisplayStyle.None;
+    }
+
+    static string PageName(string tab) => $"{TabElementPrefix(tab)}Page";
+
+    static string InputName(string tab) => $"{TabElementPrefix(tab)}Input";
+
+    static string OutputName(string tab) => $"{TabElementPrefix(tab)}Output";
+
+    static string TabElementPrefix(string tab)
+    {
+        return tab switch
+        {
+            "M79 APCLC" => "M79Apclc",
+            "Facehard69" => "Facehard69",
+            "McCoy" => "McCoy",
+            "McCoy Plus" => "McCoyPlus",
+            "McCoy Plus Facehard" => "McCoyPlusFacehard",
+            "McCoy Plus M79" => "McCoyPlusM79",
+            "JBM" => "Jbm",
+            _ => string.Empty
+        };
     }
 
     static BallisticSample SampleById(string id)
     {
         return Samples.FirstOrDefault(sample => sample.Id == id);
-    }
-
-    void AddM79Inputs(VisualElement input, M79Input target)
-    {
-        input.Add(NumberField("Projectile Diameter", target.ProjectileDiameter, "in", value => target.ProjectileDiameter = value, 0.001));
-        input.Add(NumberField("Projectile Weight", target.ProjectileWeight, "lb", value => target.ProjectileWeight = value, 0.001));
-        input.Add(NumberField("Plate Thickness", target.PlateThickness, "in", value => target.PlateThickness = value, 0.001));
-        input.Add(NumberField("Plate Quality", target.PlateQuality, "", value => target.PlateQuality = value, 0.001));
-        input.Add(NumberField("Obliquity", target.Obliquity, "deg", value => target.Obliquity = value, 0));
-        input.Add(NumberField("Striking Velocity", target.StrikingVelocity, "ft/s", value => target.StrikingVelocity = value, 1));
-        input.Add(NumberField("Elongation", target.Elongation, "%", value => target.Elongation = value, 10));
-    }
-
-    void AddM79ComboInputs(VisualElement input, M79Input m79, McCoyPlusInput mccoy, Func<string> getPresetId, Action<string> setPresetId, Func<string> getDragText, Action<string> setDragText, Action onPresetChanged)
-    {
-        input.Add(NumberField("Projectile Diameter", m79.ProjectileDiameter, "in", value => m79.ProjectileDiameter = value, 0.001));
-        input.Add(NumberField("Projectile Weight", m79.ProjectileWeight, "lb", value => m79.ProjectileWeight = value, 0.001));
-        input.Add(NumberField("Muzzle Velocity", mccoy.MuzzleVelocity, "ft/s", value => mccoy.MuzzleVelocity = value, 1));
-        input.Add(NumberField("Ballistic Coefficient", mccoy.BallisticCoefficient, "lb/in2", value => mccoy.BallisticCoefficient = value, 0.001));
-        input.Add(NumberField("Maximum Range", mccoy.MaxRange, mccoy.RangeUnit, value => mccoy.MaxRange = value, 1));
-        input.Add(NumberField("Match Height", mccoy.MatchHeight, "in", value => mccoy.MatchHeight = value));
-        input.Add(McCoyPlusElevationSearchDropdown(mccoy));
-        input.Add(Dropdown("Atmosphere Model", new List<string> { "Army Standard Metro", "ICAO" }, mccoy.Atmosphere == "icao" ? 1 : 0,
-            index => mccoy.Atmosphere = index == 1 ? "icao" : "standard"));
-        input.Add(NumberField("Density Ratio", mccoy.DensityRatio, "", value => mccoy.DensityRatio = value, 0.001));
-        input.Add(NumberField("Temperature", mccoy.TemperatureF, "deg F", value => mccoy.TemperatureF = value));
-        input.Add(NumberField("Armor Quality", m79.PlateQuality, "", value => m79.PlateQuality = value, 0.001));
-        input.Add(NumberField("Elongation", m79.Elongation, "%", value => m79.Elongation = value, 10));
-        AddMcCoyPlusPresetDropdown(input, mccoy, getPresetId, setPresetId, setDragText, onPresetChanged);
-    }
-
-    void AddFacehardInputs(VisualElement input, FacehardInput target, FacehardResult preview, bool includeVelocity)
-    {
-        var selectedPreset = preview?.ProjectilePreset
-            ?? FacehardCalculator.FacehardProjectilePresets.FirstOrDefault(item => item.Id == target.ProjectilePresetId)
-            ?? FacehardCalculator.FacehardProjectilePresets.FirstOrDefault(item => item.Id == "custom");
-        var selectedNation = selectedPreset?.Nation ?? "Custom";
-        var resolvedCapType = preview?.ResolvedCapType ?? ResolvedCapType(target);
-        var nations = FacehardCalculator.FacehardProjectileNations;
-        input.Add(Dropdown("Projectile Nation", nations.Select(item => item.Name).ToList(),
-            Mathf.Max(0, nations.FindIndex(item => item.Id == selectedNation)), index =>
-            {
-                var nation = nations[Mathf.Max(0, index)];
-                target.ProjectilePresetId = nation.DefaultProjectileId;
-            }));
-
-        var projectileChoices = FacehardCalculator.FacehardProjectilePresets
-            .Where(item => item.Nation == selectedNation)
-            .ToList();
-        if (projectileChoices.Count == 0)
-            projectileChoices = FacehardCalculator.FacehardProjectilePresets.Where(item => item.Nation == "Custom").ToList();
-        input.Add(Dropdown("Projectile Type", projectileChoices.Select(ProjectilePresetLabel).ToList(),
-            Mathf.Max(0, projectileChoices.FindIndex(item => item.Id == target.ProjectilePresetId)),
-            index => target.ProjectilePresetId = projectileChoices[Mathf.Max(0, index)].Id));
-
-        var isCustom = target.ProjectilePresetId == "custom";
-        var capLabels = new List<string> { "Hard AP cap", "Thin/Tough hard cap", "Soft AP cap", "Hood", "No cap" };
-        var capValues = new List<string> { "hard", "thin-hard", "soft", "hood", "none" };
-        input.Add(Dropdown("Cap Or Hood", capLabels, Mathf.Max(0, capValues.IndexOf(resolvedCapType)), index => target.CapType = capValues[Mathf.Max(0, index)], isCustom));
-
-        var schemaValues = new List<string> { "standard", "japanese-cap-head" };
-        input.Add(Dropdown("Nose Schema", new List<string> { "Standard", "Japanese Cap Head" }, Mathf.Max(0, schemaValues.IndexOf(target.NoseSchema)),
-            index =>
-            {
-                target.NoseSchema = schemaValues[Mathf.Max(0, index)];
-                target.NoseCondition = "intact";
-            }, isCustom));
-        if (isCustom && target.NoseSchema == "japanese-cap-head")
-        {
-            input.Add(Dropdown("Japanese Cap Head Type", new List<string> { "Uncapped Type 91 AP", "Capped Type 88/91/1 APC" }, target.JapaneseCapHead <= 1 ? 0 : 1,
-                index =>
-                {
-                    target.JapaneseCapHead = index == 0 ? 1 : 2;
-                    target.NoseCondition = "intact";
-                }));
-        }
-
-        var noseWeights = FacehardCalculator.FacehardNoseCoveringWeights(target);
-        var conditionLabels = noseWeights.ConditionOptions.Select(NoseConditionLabel).ToList();
-        input.Add(Dropdown("Pre-Impact Nose Condition", conditionLabels,
-            Mathf.Max(0, noseWeights.ConditionOptions.IndexOf(noseWeights.Condition)),
-            index => target.NoseCondition = noseWeights.ConditionOptions[Mathf.Max(0, index)]));
-
-        input.Add(NumberField("Projectile Diameter", target.ProjectileDiameter, "in", value => target.ProjectileDiameter = value, 0.001));
-        input.Add(NumberField("Projectile Weight", target.ProjectileWeight, "lb", value => target.ProjectileWeight = value, 0.001));
-        input.Add(NumberField("Projectile Body Weight", target.ProjectileBodyWeight, "lb", value => target.ProjectileBodyWeight = value, 0.001));
-        if (noseWeights.SchemaKind == "japanese-cap-head" && noseWeights.CapHead == 2)
-            input.Add(NumberField("Windscreen + Cap Head Weight", target.WindscreenCapHeadWeight, "lb", value => target.WindscreenCapHeadWeight = value, 0));
-        else if (noseWeights.SchemaKind == "standard")
-            input.Add(NumberField("Windscreen Weight", target.WindscreenWeight, "lb", value => target.WindscreenWeight = value, 0));
-        input.Add(NumberField(RemainingNoseWeightLabel(noseWeights.CapHead, resolvedCapType), noseWeights.RemainWeight, "lb", _ => { }, 0, false));
-        input.Add(NumberField("PLIM", isCustom ? target.ProjectileLimitQuality : selectedPreset?.ProjectileLimitQuality ?? target.ProjectileLimitQuality, "", value => target.ProjectileLimitQuality = value, 0.001, isCustom));
-        input.Add(NumberField("PDAM", isCustom ? target.ProjectileDamageQuality : selectedPreset?.ProjectileDamageQuality ?? target.ProjectileDamageQuality, "", value => target.ProjectileDamageQuality = value, 0.001, isCustom));
-
-        if (includeVelocity)
-        {
-            input.Add(NumberField("Striking Velocity", target.StrikingVelocity, "ft/s", value => target.StrikingVelocity = value, 1));
-            input.Add(NumberField("Obliquity", target.Obliquity, "deg", value => target.Obliquity = value, 0));
-        }
-
-        input.Add(Dropdown("Armor Type", FacehardCalculator.FacehardArmors.Select(item => item.Name).ToList(),
-            FacehardCalculator.FacehardArmors.FindIndex(item => item.Id == target.ArmorId),
-            index => target.ArmorId = FacehardCalculator.FacehardArmors[Mathf.Max(0, index)].Id));
-        input.Add(ToggleField("Strongly Curved Plate", target.CurvedPlate, value => target.CurvedPlate = value));
-        input.Add(NumberField("Plate Thickness", target.PlateThickness, "in", value => target.PlateThickness = value, 0.001));
-        input.Add(NumberField("Wood Backing", target.WoodBackingThickness, "in", value => target.WoodBackingThickness = value, 0));
-        input.Add(NumberField("Cement Backing", target.CementBackingThickness, "in", value => target.CementBackingThickness = value, 0));
-        input.Add(NumberField("Metal Backing", target.MetalBackingThickness, "in", value => target.MetalBackingThickness = value, 0));
-        input.Add(NumberField("Backing Quality", target.BackingQuality, "", value => target.BackingQuality = value, 0.001));
-        input.Add(NumberField("Backing Plates", target.BackingPlates, "", value => target.BackingPlates = value, 0));
-        if (((noseWeights.Condition == "windscreen-removed" && resolvedCapType != "none") || noseWeights.Condition == "caphead-removed") && noseWeights.RemainWeight <= 0)
-            input.Add(Warnings(new[] { "The selected lost-covering weight consumes all non-body weight; Facehard69 requires remaining cap/hood weight for this state." }));
-    }
-
-    void AddFacehardComboInputs(VisualElement input, FacehardInput target, FacehardResult preview)
-    {
-        input.Add(Dropdown("Armor Type", FacehardCalculator.FacehardArmors.Select(item => item.Name).ToList(),
-            FacehardCalculator.FacehardArmors.FindIndex(item => item.Id == target.ArmorId),
-            index => target.ArmorId = FacehardCalculator.FacehardArmors[Mathf.Max(0, index)].Id));
-
-        var selectedPreset = preview?.ProjectilePreset
-            ?? FacehardCalculator.FacehardProjectilePresets.FirstOrDefault(item => item.Id == target.ProjectilePresetId)
-            ?? FacehardCalculator.FacehardProjectilePresets.FirstOrDefault(item => item.Id == "custom");
-        var selectedNation = selectedPreset?.Nation ?? "Custom";
-        var resolvedCapType = preview?.ResolvedCapType ?? ResolvedCapType(target);
-        var nations = FacehardCalculator.FacehardProjectileNations;
-        input.Add(Dropdown("Projectile Nation", nations.Select(item => item.Name).ToList(),
-            Mathf.Max(0, nations.FindIndex(item => item.Id == selectedNation)), index =>
-            {
-                var nation = nations[Mathf.Max(0, index)];
-                target.ProjectilePresetId = nation.DefaultProjectileId;
-            }));
-
-        var projectileChoices = FacehardCalculator.FacehardProjectilePresets
-            .Where(item => item.Nation == selectedNation)
-            .ToList();
-        if (projectileChoices.Count == 0)
-            projectileChoices = FacehardCalculator.FacehardProjectilePresets.Where(item => item.Nation == "Custom").ToList();
-        input.Add(Dropdown("Projectile Type", projectileChoices.Select(ProjectilePresetLabel).ToList(),
-            Mathf.Max(0, projectileChoices.FindIndex(item => item.Id == target.ProjectilePresetId)),
-            index => target.ProjectilePresetId = projectileChoices[Mathf.Max(0, index)].Id));
-
-        AddFacehardProjectileDetailInputs(input, target, selectedPreset, resolvedCapType, target.ProjectilePresetId == "custom");
-        var noseWeights = FacehardCalculator.FacehardNoseCoveringWeights(target);
-        input.Add(NumberField("Wood Backing", target.WoodBackingThickness, "in", value => target.WoodBackingThickness = value, 0));
-        input.Add(NumberField("Cement Backing", target.CementBackingThickness, "in", value => target.CementBackingThickness = value, 0));
-        input.Add(NumberField("Metal Backing", target.MetalBackingThickness, "in", value => target.MetalBackingThickness = value, 0));
-        if (((noseWeights.Condition == "windscreen-removed" && resolvedCapType != "none") || noseWeights.Condition == "caphead-removed") && noseWeights.RemainWeight <= 0)
-            input.Add(Warnings(new[] { "The selected lost-covering weight consumes all non-body weight; Facehard69 requires remaining cap/hood weight for this state." }));
-    }
-
-    void AddFacehardProjectileDetailInputs(VisualElement input, FacehardInput target, FacehardProjectilePreset selectedPreset, string resolvedCapType, bool isCustom)
-    {
-        var capLabels = new List<string> { "Hard AP cap", "Thin/Tough hard cap", "Soft AP cap", "Hood", "No cap" };
-        var capValues = new List<string> { "hard", "thin-hard", "soft", "hood", "none" };
-        input.Add(Dropdown("Cap Or Hood", capLabels, Mathf.Max(0, capValues.IndexOf(resolvedCapType)), index => target.CapType = capValues[Mathf.Max(0, index)], isCustom));
-
-        var schemaValues = new List<string> { "standard", "japanese-cap-head" };
-        input.Add(Dropdown("Nose Schema", new List<string> { "Standard", "Japanese Cap Head" }, Mathf.Max(0, schemaValues.IndexOf(target.NoseSchema)),
-            index =>
-            {
-                target.NoseSchema = schemaValues[Mathf.Max(0, index)];
-                target.NoseCondition = "intact";
-            }, isCustom));
-        if (isCustom && target.NoseSchema == "japanese-cap-head")
-        {
-            input.Add(Dropdown("Japanese Cap Head Type", new List<string> { "Uncapped Type 91 AP", "Capped Type 88/91/1 APC" }, target.JapaneseCapHead <= 1 ? 0 : 1,
-                index =>
-                {
-                    target.JapaneseCapHead = index == 0 ? 1 : 2;
-                    target.NoseCondition = "intact";
-                }));
-        }
-
-        var noseWeights = FacehardCalculator.FacehardNoseCoveringWeights(target);
-        var conditionLabels = noseWeights.ConditionOptions.Select(NoseConditionLabel).ToList();
-        input.Add(Dropdown("Pre-Impact Nose Condition", conditionLabels,
-            Mathf.Max(0, noseWeights.ConditionOptions.IndexOf(noseWeights.Condition)),
-            index => target.NoseCondition = noseWeights.ConditionOptions[Mathf.Max(0, index)]));
-
-        input.Add(NumberField("Projectile Diameter", target.ProjectileDiameter, "in", value => target.ProjectileDiameter = value, 0.001));
-        input.Add(NumberField("Projectile Weight", target.ProjectileWeight, "lb", value => target.ProjectileWeight = value, 0.001));
-        input.Add(NumberField("Body Weight", target.ProjectileBodyWeight, "lb", value => target.ProjectileBodyWeight = value, 0.001));
-        if (noseWeights.SchemaKind == "japanese-cap-head" && noseWeights.CapHead == 2)
-            input.Add(NumberField("Windscreen + Cap Head Weight", target.WindscreenCapHeadWeight, "lb", value => target.WindscreenCapHeadWeight = value, 0));
-        else if (noseWeights.SchemaKind == "standard")
-            input.Add(NumberField("Windscreen Weight", target.WindscreenWeight, "lb", value => target.WindscreenWeight = value, 0));
-        input.Add(NumberField(RemainingNoseWeightLabel(noseWeights.CapHead, resolvedCapType), noseWeights.RemainWeight, "lb", _ => { }, 0, false));
-        input.Add(NumberField("PLIM", isCustom ? target.ProjectileLimitQuality : selectedPreset?.ProjectileLimitQuality ?? target.ProjectileLimitQuality, "", value => target.ProjectileLimitQuality = value, 0.001, isCustom));
-        input.Add(NumberField("PDAM", isCustom ? target.ProjectileDamageQuality : selectedPreset?.ProjectileDamageQuality ?? target.ProjectileDamageQuality, "", value => target.ProjectileDamageQuality = value, 0.001, isCustom));
-    }
-
-    void AddJbmGeometryInputs(VisualElement input, JbmProjectileGeometryInput target)
-    {
-        input.Add(TextField("Projectile ID", target.ProjectileId, value => target.ProjectileId = value));
-        input.Add(NumberField("Reference Diameter", target.ReferenceDiameterMm, "mm", value => target.ReferenceDiameterMm = value, 0.001));
-        input.Add(NumberField("Total Length", target.TotalLengthCalibers, "cal", value => target.TotalLengthCalibers = value, 0.001));
-        input.Add(NumberField("Nose Length", target.NoseLengthCalibers, "cal", value => target.NoseLengthCalibers = value, 0.001));
-        input.Add(NumberField("RT/R", target.TangentRadiusRatio, "", value => target.TangentRadiusRatio = value, 0));
-        input.Add(NumberField("Boattail Length", target.BoattailLengthCalibers, "cal", value => target.BoattailLengthCalibers = value, 0));
-        input.Add(NumberField("Base Diameter", target.BaseDiameterCalibers, "cal", value => target.BaseDiameterCalibers = value, 0.001));
-        input.Add(NumberField("Meplat Diameter", target.MeplatDiameterCalibers, "cal", value => target.MeplatDiameterCalibers = value, 0));
     }
 
     static int BoundaryLayerIndex(string boundaryLayer)
@@ -854,48 +1122,6 @@ public sealed class McCoyOkunCalculatorDialog
         mccoyPlusFacehardInput.Facehard.StrikingVelocity = mccoyPlusFacehardDetails.StrikingVelocity;
     }
 
-    void BuildMcCoyPlusInputs(VisualElement input, McCoyPlusInput target, Action reset)
-    {
-        input.Add(Header("McCoy Plus Range Sweep", reset));
-        AddMcCoyPlusCoreInputs(input, target, true, () => mccoyPlusPresetId, value => mccoyPlusPresetId = value, () => mccoyPlusDragText, value => mccoyPlusDragText = value);
-        AddMcCoyPlusDragEditor(input, target, () => mccoyPlusDragText, value => mccoyPlusDragText = value);
-    }
-
-    void AddMcCoyPlusCoreInputs(VisualElement input, McCoyPlusInput target, bool includePreset, Func<string> getPresetId, Action<string> setPresetId, Func<string> getDragText, Action<string> setDragText)
-    {
-        input.Add(McCoyPlusElevationSearchDropdown(target));
-        input.Add(Dropdown("Atmosphere Model", new List<string> { "Army Standard Metro", "ICAO" }, target.Atmosphere == "icao" ? 1 : 0,
-            index => target.Atmosphere = index == 1 ? "icao" : "standard"));
-        if (includePreset)
-            AddMcCoyPlusPresetDropdown(input, target, getPresetId, setPresetId, setDragText);
-        input.Add(NumberField("Muzzle Velocity", target.MuzzleVelocity, "ft/s", value => target.MuzzleVelocity = value, 1));
-        input.Add(NumberField("Ballistic Coefficient", target.BallisticCoefficient, "lb/in2", value => target.BallisticCoefficient = value, 0.001));
-        input.Add(NumberField("Maximum Range", target.MaxRange, target.RangeUnit, value => target.MaxRange = value, 1));
-        input.Add(NumberField("Density Ratio", target.DensityRatio, "", value => target.DensityRatio = value, 0.001));
-        input.Add(NumberField("Temperature", target.TemperatureF, "deg F", value => target.TemperatureF = value));
-        input.Add(NumberField("Match Height", target.MatchHeight, "in", value => target.MatchHeight = value));
-    }
-
-    VisualElement McCoyPlusElevationSearchDropdown(McCoyPlusInput target)
-    {
-        return Dropdown("Elevation Search", new List<string> { "Cached Binary Search", "Matched Range" },
-            target.ElevationSearchMode == McCoyPlusElevationSearchMode.MatchedRange ? 1 : 0,
-            index => target.ElevationSearchMode = index == 1
-                ? McCoyPlusElevationSearchMode.MatchedRange
-                : McCoyPlusElevationSearchMode.CachedBinarySearch);
-    }
-
-    void AddMcCoyPlusPresetDropdown(VisualElement input, McCoyPlusInput target, Func<string> getPresetId, Action<string> setPresetId, Action<string> setDragText, Action onPresetChanged = null)
-    {
-        var presets = McCoyPlus.DragPresets();
-        input.Add(Dropdown("Mach-CD Preset", presets.Select(item => item.Label).ToList(), Mathf.Max(0, presets.FindIndex(item => item.Id == getPresetId())), index =>
-        {
-            var preset = presets[Mathf.Max(0, index)];
-            ApplyMcCoyPlusPreset(target, preset.Id, setPresetId, setDragText);
-            onPresetChanged?.Invoke();
-        }));
-    }
-
     static void ApplyMcCoyPlusPreset(McCoyPlusInput target, string presetId, Action<string> setPresetId, Action<string> setDragText)
     {
         var preset = McCoyPlus.DragPresets().FirstOrDefault(item => item.Id == presetId)
@@ -907,70 +1133,11 @@ public sealed class McCoyOkunCalculatorDialog
         target.RangeUnit = "yards";
     }
 
-    void AddMcCoyPlusDragEditor(VisualElement input, McCoyPlusInput target, Func<string> getDragText, Action<string> setDragText)
-    {
-        input.Add(TextArea("Mach-CD Drag Table", getDragText(), value =>
-        {
-            setDragText(value);
-            target.DragTable = McCoy.NormalizeDragTable(value);
-        }));
-    }
-
     void SyncComboMcCoy(McCoyPlusInput input, string dragText)
     {
         input.DragTable = input.DragTable != null && input.DragTable.Count >= 2
             ? input.DragTable
             : McCoy.NormalizeDragTable(dragText);
-    }
-
-    static VisualElement PageRoot(out ScrollView input, out ScrollView output)
-    {
-        var root = new VisualElement
-        {
-            style =
-            {
-                flexDirection = FlexDirection.Row,
-                flexGrow = 1,
-                flexShrink = 1
-            }
-        };
-        input = new ScrollView(ScrollViewMode.Vertical)
-        {
-            style =
-            {
-                flexBasis = 340,
-                flexShrink = 0,
-                marginRight = 8
-            }
-        };
-        output = new ScrollView(ScrollViewMode.Vertical)
-        {
-            style =
-            {
-                flexGrow = 1,
-                flexShrink = 1
-            }
-        };
-        root.Add(input);
-        root.Add(output);
-        return root;
-    }
-
-    static VisualElement Header(string title, Action reset)
-    {
-        var row = new VisualElement { style = { flexDirection = FlexDirection.Row, marginBottom = 6 } };
-        var label = new Label(title)
-        {
-            style =
-            {
-                unityFontStyleAndWeight = FontStyle.Bold,
-                flexGrow = 1
-            }
-        };
-        var button = new Button(reset) { text = "Reset" };
-        row.Add(label);
-        row.Add(button);
-        return row;
     }
 
     static Label Section(string title)
@@ -994,92 +1161,6 @@ public sealed class McCoyOkunCalculatorDialog
                 color = new StyleColor(new Color(0.55f, 0.55f, 0.55f))
             }
         };
-    }
-
-    VisualElement NumberField(string label, double value, string unit, Action<double> setter, double? min = null, bool enabled = true)
-    {
-        var field = new FloatField(label)
-        {
-            value = (float)value
-        };
-        field.SetEnabled(enabled);
-        field.RegisterValueChangedCallback(evt =>
-        {
-            var next = evt.newValue;
-            if (min.HasValue)
-                next = Mathf.Max((float)min.Value, next);
-            setter(next);
-            RebuildContent();
-        });
-        if (!string.IsNullOrEmpty(unit))
-        {
-            var row = new VisualElement { style = { flexDirection = FlexDirection.Row } };
-            field.style.flexGrow = 1;
-            row.Add(field);
-            var unitLabel = new Label(unit) { style = { width = 48, unityTextAlign = TextAnchor.MiddleLeft, marginLeft = 4 } };
-            row.Add(unitLabel);
-            return row;
-        }
-        return field;
-    }
-
-    VisualElement Dropdown(string label, List<string> choices, int index, Action<int> setter, bool enabled = true)
-    {
-        if (choices.Count == 0)
-            choices.Add("");
-        index = Mathf.Clamp(index, 0, choices.Count - 1);
-        var field = new DropdownField(label, choices, index);
-        field.SetEnabled(enabled);
-        field.RegisterValueChangedCallback(evt =>
-        {
-            setter(choices.IndexOf(evt.newValue));
-            RebuildContent();
-        });
-        return field;
-    }
-
-    VisualElement TextField(string label, string value, Action<string> setter)
-    {
-        var field = new UnityEngine.UIElements.TextField(label)
-        {
-            value = value ?? ""
-        };
-        field.RegisterValueChangedCallback(evt =>
-        {
-            setter(evt.newValue);
-            RebuildContent();
-        });
-        return field;
-    }
-
-    VisualElement ToggleField(string label, bool value, Action<bool> setter)
-    {
-        var toggle = new Toggle(label)
-        {
-            value = value
-        };
-        toggle.RegisterValueChangedCallback(evt =>
-        {
-            setter(evt.newValue);
-            RebuildContent();
-        });
-        return toggle;
-    }
-
-    VisualElement TextArea(string label, string value, Action<string> setter)
-    {
-        var field = new TextField(label)
-        {
-            multiline = true,
-            value = value
-        };
-        field.style.height = 120;
-        field.RegisterValueChangedCallback(evt =>
-        {
-            setter(evt.newValue);
-            RebuildContent();
-        });
-        return field;
     }
 
     static VisualElement Banner(params (string label, string value, string unit)[] items)

@@ -921,6 +921,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset influenceMapDialogDocument;
     public VisualTreeAsset wtaSolverInspectorDialogDocument;
     public VisualTreeAsset naabLikeCalculatorDialogDocument;
+    public VisualTreeAsset mccoyOkunCalculatorDialogDocument;
     public VisualTreeAsset torpedoInterceptSolutionVisualizerDialogDocument;
     public VisualTreeAsset strategicInfluenceMapDialogDocument;
     public VisualTreeAsset shipTimeLocDialogDocument;
@@ -3827,7 +3828,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         var dialog = new McCoyOkunCalculatorDialog();
         return PopupCustomContentDialog(
             "McCoy Okun Calculator",
-            dialog.BuildContent,
+            () => dialog.BuildContent(mccoyOkunCalculatorDialogDocument),
             Localize("Close")
         );
     }

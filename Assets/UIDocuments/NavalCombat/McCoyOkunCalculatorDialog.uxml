@@ -1,15 +1,7 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:VisualElement name="McCoyOkunCalculatorRoot" style="width: 1050px; height: 600px; flex-grow: 1; flex-shrink: 1;">
-        <ui:VisualElement name="McCoyOkunTabBar" style="flex-direction: row; flex-shrink: 0; margin-bottom: 6px;">
-            <ui:Button name="M79ApclcTabButton" text="M79 APCLC" class="mccoy-okun-tab-button" style="flex-grow: 1; min-height: 28px;" />
-            <ui:Button name="Facehard69TabButton" text="Facehard69" class="mccoy-okun-tab-button" style="flex-grow: 1; min-height: 28px;" />
-            <ui:Button name="McCoyTabButton" text="McCoy" class="mccoy-okun-tab-button" style="flex-grow: 1; min-height: 28px;" />
-            <ui:Button name="McCoyPlusTabButton" text="McCoy Plus" class="mccoy-okun-tab-button" style="flex-grow: 1; min-height: 28px;" />
-            <ui:Button name="McCoyPlusFacehardTabButton" text="McCoy Plus Facehard" class="mccoy-okun-tab-button" style="flex-grow: 1; min-height: 28px;" />
-            <ui:Button name="McCoyPlusM79TabButton" text="McCoy Plus M79" class="mccoy-okun-tab-button" style="flex-grow: 1; min-height: 28px;" />
-            <ui:Button name="JbmTabButton" text="JBM" class="mccoy-okun-tab-button" style="flex-grow: 1; min-height: 28px;" />
-        </ui:VisualElement>
-        <ui:VisualElement name="McCoyOkunContent" style="flex-grow: 1; flex-shrink: 1;">
+        <ui:TabView name="McCoyOkunTabView" style="flex-grow: 1; flex-shrink: 1;">
+            <ui:Tab label="M79 APCLC">
             <ui:VisualElement name="M79ApclcPage" class="mccoy-okun-page" style="flex-direction: row; flex-grow: 1; flex-shrink: 1;">
                 <ui:ScrollView name="M79ApclcInput" mode="Vertical" class="mccoy-okun-input" style="flex-basis: 340px; flex-shrink: 0; margin-right: 8px;">
                     <ui:VisualElement style="flex-direction: row; margin-bottom: 6px;"><ui:Label text="M79 APCLC" style="-unity-font-style: bold; flex-grow: 1;" /><ui:Button name="M79ApclcResetButton" text="Reset" /></ui:VisualElement>
@@ -24,7 +16,9 @@
                 </ui:ScrollView>
                 <ui:ScrollView name="M79ApclcOutput" mode="Vertical" class="mccoy-okun-output" style="flex-grow: 1; flex-shrink: 1;"><ui:VisualElement name="M79ApclcOutputContent" /></ui:ScrollView>
             </ui:VisualElement>
-            <ui:VisualElement name="Facehard69Page" class="mccoy-okun-page" style="display: none; flex-direction: row; flex-grow: 1; flex-shrink: 1;">
+            </ui:Tab>
+            <ui:Tab label="Facehard69">
+            <ui:VisualElement name="Facehard69Page" class="mccoy-okun-page" style="flex-direction: row; flex-grow: 1; flex-shrink: 1;">
                 <ui:ScrollView name="Facehard69Input" mode="Vertical" class="mccoy-okun-input" style="flex-basis: 340px; flex-shrink: 0; margin-right: 8px;">
                     <ui:VisualElement style="flex-direction: row; margin-bottom: 6px;"><ui:Label text="Facehard69 Baseline" style="-unity-font-style: bold; flex-grow: 1;" /><ui:Button name="Facehard69ResetButton" text="Reset" /></ui:VisualElement>
                     <ui:DropdownField name="Facehard69SampleField" label="Sample" />
@@ -57,7 +51,9 @@
                 </ui:ScrollView>
                 <ui:ScrollView name="Facehard69Output" mode="Vertical" class="mccoy-okun-output" style="flex-grow: 1; flex-shrink: 1;"><ui:VisualElement name="Facehard69OutputContent" /></ui:ScrollView>
             </ui:VisualElement>
-            <ui:VisualElement name="McCoyPage" class="mccoy-okun-page" style="display: none; flex-direction: row; flex-grow: 1; flex-shrink: 1;">
+            </ui:Tab>
+            <ui:Tab label="McCoy">
+            <ui:VisualElement name="McCoyPage" class="mccoy-okun-page" style="flex-direction: row; flex-grow: 1; flex-shrink: 1;">
                 <ui:ScrollView name="McCoyInput" mode="Vertical" class="mccoy-okun-input" style="flex-basis: 340px; flex-shrink: 0; margin-right: 8px;">
                     <ui:VisualElement style="flex-direction: row; margin-bottom: 6px;"><ui:Label text="McCoy Point-Mass Trajectory" style="-unity-font-style: bold; flex-grow: 1;" /><ui:Button name="McCoyResetButton" text="Reset" /></ui:VisualElement>
                     <ui:DropdownField name="McCoyAtmosphereField" label="Atmosphere Model" />
@@ -77,7 +73,9 @@
                 </ui:ScrollView>
                 <ui:ScrollView name="McCoyOutput" mode="Vertical" class="mccoy-okun-output" style="flex-grow: 1; flex-shrink: 1;"><ui:VisualElement name="McCoyOutputContent" /></ui:ScrollView>
             </ui:VisualElement>
-            <ui:VisualElement name="McCoyPlusPage" class="mccoy-okun-page" style="display: none; flex-direction: row; flex-grow: 1; flex-shrink: 1;">
+            </ui:Tab>
+            <ui:Tab label="McCoy Plus">
+            <ui:VisualElement name="McCoyPlusPage" class="mccoy-okun-page" style="flex-direction: row; flex-grow: 1; flex-shrink: 1;">
                 <ui:ScrollView name="McCoyPlusInput" mode="Vertical" class="mccoy-okun-input" style="flex-basis: 340px; flex-shrink: 0; margin-right: 8px;">
                     <ui:VisualElement style="flex-direction: row; margin-bottom: 6px;"><ui:Label text="McCoy Plus Range Sweep" style="-unity-font-style: bold; flex-grow: 1;" /><ui:Button name="McCoyPlusResetButton" text="Reset" /></ui:VisualElement>
                     <ui:DropdownField name="McCoyPlusElevationSearchField" label="Elevation Search" />
@@ -93,7 +91,9 @@
                 </ui:ScrollView>
                 <ui:ScrollView name="McCoyPlusOutput" mode="Vertical" class="mccoy-okun-output" style="flex-grow: 1; flex-shrink: 1;"><ui:VisualElement name="McCoyPlusOutputContent" /></ui:ScrollView>
             </ui:VisualElement>
-            <ui:VisualElement name="McCoyPlusFacehardPage" class="mccoy-okun-page" style="display: none; flex-direction: row; flex-grow: 1; flex-shrink: 1;">
+            </ui:Tab>
+            <ui:Tab label="McCoy Plus Facehard">
+            <ui:VisualElement name="McCoyPlusFacehardPage" class="mccoy-okun-page" style="flex-direction: row; flex-grow: 1; flex-shrink: 1;">
                 <ui:ScrollView name="McCoyPlusFacehardInput" mode="Vertical" class="mccoy-okun-input" style="flex-basis: 340px; flex-shrink: 0; margin-right: 8px;">
                     <ui:VisualElement style="flex-direction: row; margin-bottom: 6px;"><ui:Label text="McCoy Plus Facehard" style="-unity-font-style: bold; flex-grow: 1;" /><ui:Button name="McCoyPlusFacehardResetButton" text="Reset" /></ui:VisualElement>
                     <ui:DropdownField name="McCoyPlusFacehardSampleField" label="Sample" />
@@ -130,7 +130,9 @@
                 </ui:ScrollView>
                 <ui:ScrollView name="McCoyPlusFacehardOutput" mode="Vertical" class="mccoy-okun-output" style="flex-grow: 1; flex-shrink: 1;"><ui:DropdownField name="McCoyPlusFacehardChartModeField" label="Chart Mode" /><ui:VisualElement name="McCoyPlusFacehardOutputContent" /></ui:ScrollView>
             </ui:VisualElement>
-            <ui:VisualElement name="McCoyPlusM79Page" class="mccoy-okun-page" style="display: none; flex-direction: row; flex-grow: 1; flex-shrink: 1;">
+            </ui:Tab>
+            <ui:Tab label="McCoy Plus M79">
+            <ui:VisualElement name="McCoyPlusM79Page" class="mccoy-okun-page" style="flex-direction: row; flex-grow: 1; flex-shrink: 1;">
                 <ui:ScrollView name="McCoyPlusM79Input" mode="Vertical" class="mccoy-okun-input" style="flex-basis: 340px; flex-shrink: 0; margin-right: 8px;">
                     <ui:VisualElement style="flex-direction: row; margin-bottom: 6px;"><ui:Label text="McCoy Plus M79 APCLC" style="-unity-font-style: bold; flex-grow: 1;" /><ui:Button name="McCoyPlusM79ResetButton" text="Reset" /></ui:VisualElement>
                     <ui:DropdownField name="McCoyPlusM79SampleField" label="Sample" />
@@ -152,7 +154,9 @@
                 </ui:ScrollView>
                 <ui:ScrollView name="McCoyPlusM79Output" mode="Vertical" class="mccoy-okun-output" style="flex-grow: 1; flex-shrink: 1;"><ui:DropdownField name="McCoyPlusM79ChartModeField" label="Chart Mode" /><ui:VisualElement name="McCoyPlusM79OutputContent" /></ui:ScrollView>
             </ui:VisualElement>
-            <ui:VisualElement name="JbmPage" class="mccoy-okun-page" style="display: none; flex-direction: row; flex-grow: 1; flex-shrink: 1;">
+            </ui:Tab>
+            <ui:Tab label="JBM">
+            <ui:VisualElement name="JbmPage" class="mccoy-okun-page" style="flex-direction: row; flex-grow: 1; flex-shrink: 1;">
                 <ui:ScrollView name="JbmInput" mode="Vertical" class="mccoy-okun-input" style="flex-basis: 340px; flex-shrink: 0; margin-right: 8px;">
                     <ui:VisualElement style="flex-direction: row; margin-bottom: 6px;"><ui:Label text="JBM / McCoy Aerodynamics" style="-unity-font-style: bold; flex-grow: 1;" /><ui:Button name="JbmResetButton" text="Reset" /></ui:VisualElement>
                     <ui:DropdownField name="JbmProgramField" label="Program" />
@@ -172,6 +176,7 @@
                 </ui:ScrollView>
                 <ui:ScrollView name="JbmOutput" mode="Vertical" class="mccoy-okun-output" style="flex-grow: 1; flex-shrink: 1;"><ui:VisualElement name="JbmOutputContent" /></ui:ScrollView>
             </ui:VisualElement>
-        </ui:VisualElement>
+            </ui:Tab>
+        </ui:TabView>
     </ui:VisualElement>
 </ui:UXML>

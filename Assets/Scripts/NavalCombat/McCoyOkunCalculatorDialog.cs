@@ -75,10 +75,10 @@ public sealed class McCoyOkunCalculatorDialog
         "JBM"
     };
 
-    VisualElement tabBar;
-    VisualElement content;
-    readonly Dictionary<string, Button> templateTabButtons = new();
+    TabView templateTabView;
+    readonly Dictionary<string, Tab> templateTabs = new();
     readonly Dictionary<string, TemplatePageSurface> templatePages = new();
+    readonly HashSet<string> outputBuiltTabs = new();
     bool templateBackedTabs;
     bool templateBackedPages;
     string activeTab = "M79 APCLC";
@@ -150,8 +150,9 @@ public sealed class McCoyOkunCalculatorDialog
         if (template == null)
             throw new InvalidOperationException("McCoy Okun Calculator requires McCoyOkunCalculatorDialog.uxml to be assigned.");
 
-        templateTabButtons.Clear();
+        templateTabs.Clear();
         templatePages.Clear();
+        outputBuiltTabs.Clear();
         templateBackedTabs = false;
         templateBackedPages = false;
 
@@ -164,81 +165,58 @@ public sealed class McCoyOkunCalculatorDialog
         calculatorRoot.style.flexGrow = 1;
         calculatorRoot.style.flexShrink = 1;
 
-        tabBar = root.Q<VisualElement>("McCoyOkunTabBar");
-        content = root.Q<VisualElement>("McCoyOkunContent");
-        if (tabBar == null || content == null)
-            throw new InvalidOperationException("McCoyOkunCalculatorDialog.uxml is missing McCoyOkunTabBar or McCoyOkunContent.");
+        templateTabView = root.Q<TabView>("McCoyOkunTabView");
+        if (templateTabView == null)
+            throw new InvalidOperationException("McCoyOkunCalculatorDialog.uxml is missing McCoyOkunTabView.");
 
         WireTemplateTabs(root);
         WireTemplatePages(root);
         if (!templateBackedTabs)
-            throw new InvalidOperationException("McCoyOkunCalculatorDialog.uxml is missing one or more tab buttons.");
+            throw new InvalidOperationException("McCoyOkunCalculatorDialog.uxml is missing one or more tabs.");
         if (!templateBackedPages)
             throw new InvalidOperationException("McCoyOkunCalculatorDialog.uxml is missing one or more page/input/output containers.");
-        BuildTabs();
+        templateTabView.selectedTabIndex = Math.Max(0, Array.IndexOf(tabs, activeTab));
         RebuildContent();
         return root;
     }
 
-    void BuildTabs()
-    {
-        if (!templateBackedTabs)
-            throw new InvalidOperationException("McCoy Okun tab buttons have not been wired from UXML.");
-
-        foreach (var tab in tabs)
-        {
-            if (!templateTabButtons.TryGetValue(tab, out var button))
-                throw new InvalidOperationException($"McCoyOkunCalculatorDialog.uxml is missing tab button for {tab}.");
-
-            button.text = tab;
-            button.SetEnabled(tab != activeTab);
-            button.EnableInClassList("mccoy-okun-tab-active", tab == activeTab);
-        }
-    }
-
     void WireTemplateTabs(VisualElement root)
     {
+        templateTabView.activeTabChanged += OnActiveTabChanged;
+
+        var uxmlTabs = templateTabView.Children().OfType<Tab>().ToList();
         foreach (var tab in tabs)
         {
-            var button = root.Q<Button>(TabButtonName(tab));
-            if (button == null)
+            var templateTab = uxmlTabs.FirstOrDefault(item => item.label == tab);
+            if (templateTab == null)
                 continue;
 
-            var selectedTab = tab;
-            button.clicked += () => SelectTab(selectedTab);
-            templateTabButtons[tab] = button;
+            templateTabs[tab] = templateTab;
         }
 
-        templateBackedTabs = templateTabButtons.Count == tabs.Length;
+        templateBackedTabs = templateTabs.Count == tabs.Length;
+    }
+
+    void OnActiveTabChanged(Tab previousTab, Tab newTab)
+    {
+        if (newTab != null)
+            SelectTab(newTab.label);
     }
 
     void SelectTab(string tab)
     {
+        if (!templateTabs.ContainsKey(tab))
+            return;
+
         activeTab = tab;
-        BuildTabs();
-        RebuildContent();
+        RebuildContent(false);
     }
 
-    static string TabButtonName(string tab)
-    {
-        return tab switch
-        {
-            "M79 APCLC" => "M79ApclcTabButton",
-            "Facehard69" => "Facehard69TabButton",
-            "McCoy" => "McCoyTabButton",
-            "McCoy Plus" => "McCoyPlusTabButton",
-            "McCoy Plus Facehard" => "McCoyPlusFacehardTabButton",
-            "McCoy Plus M79" => "McCoyPlusM79TabButton",
-            "JBM" => "JbmTabButton",
-            _ => string.Empty
-        };
-    }
-
-    void RebuildContent()
+    void RebuildContent(bool rebuildOutput = true)
     {
         if (!templateBackedPages)
             throw new InvalidOperationException("McCoy Okun page surfaces have not been wired from UXML.");
-        RebuildTemplateContent();
+        RebuildTemplateContent(rebuildOutput);
     }
 
     void WireTemplatePages(VisualElement root)
@@ -263,21 +241,19 @@ public sealed class McCoyOkunCalculatorDialog
         templateBackedPages = templatePages.Count == tabs.Length;
     }
 
-    void RebuildTemplateContent()
+    void RebuildTemplateContent(bool rebuildOutput)
     {
-        foreach (var tab in tabs)
-        {
-            if (templatePages.TryGetValue(tab, out var surface))
-                surface.Root.style.display = tab == activeTab ? DisplayStyle.Flex : DisplayStyle.None;
-        }
-
         if (!templatePages.TryGetValue(activeTab, out var activeSurface))
             throw new InvalidOperationException($"McCoyOkunCalculatorDialog.uxml is missing page surface for {activeTab}.");
 
         ConfigureTemplateInputs(activeTab, activeSurface.Root);
         ConfigureTemplateOutputControls(activeTab, activeSurface.Root);
-        activeSurface.OutputContent.Clear();
-        BuildTemplateOutput(activeTab, activeSurface.OutputContent);
+        if (rebuildOutput || !outputBuiltTabs.Contains(activeTab))
+        {
+            activeSurface.OutputContent.Clear();
+            BuildTemplateOutput(activeTab, activeSurface.OutputContent);
+            outputBuiltTabs.Add(activeTab);
+        }
     }
 
     void ConfigureTemplateInputs(string tab, VisualElement root)

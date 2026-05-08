@@ -721,13 +721,16 @@ public sealed class McCoyOkunCalculatorDialog
 
     void ConfigureFacehardComboTemplate(VisualElement root, string prefix, FacehardInput target, FacehardResult preview)
     {
+        ConfigureFacehardProjectileTemplate(root, prefix, target, preview);
         BindDropdown(root, $"{prefix}ArmorTypeField", FacehardCalculator.FacehardArmors.Select(item => item.Name).ToList(),
             FacehardCalculator.FacehardArmors.FindIndex(item => item.Id == target.ArmorId),
             index => target.ArmorId = FacehardCalculator.FacehardArmors[Mathf.Max(0, index)].Id);
-        ConfigureFacehardProjectileTemplate(root, prefix, target, preview);
+        BindToggle(root, $"{prefix}CurvedPlateToggle", target.CurvedPlate, value => target.CurvedPlate = value);
         BindFloat(root, $"{prefix}WoodBackingField", target.WoodBackingThickness, value => target.WoodBackingThickness = value, 0);
         BindFloat(root, $"{prefix}CementBackingField", target.CementBackingThickness, value => target.CementBackingThickness = value, 0);
         BindFloat(root, $"{prefix}MetalBackingField", target.MetalBackingThickness, value => target.MetalBackingThickness = value, 0);
+        BindFloat(root, $"{prefix}BackingQualityField", target.BackingQuality, value => target.BackingQuality = value, 0.001);
+        BindFloat(root, $"{prefix}BackingPlatesField", target.BackingPlates, value => target.BackingPlates = value, 0);
         UpdateFacehardInputWarnings(root, prefix, target, preview?.ResolvedCapType ?? ResolvedCapType(target));
     }
 

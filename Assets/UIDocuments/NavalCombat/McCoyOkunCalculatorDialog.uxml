@@ -106,8 +106,7 @@
                     <ui:FloatField name="McCoyPlusFacehardDensityRatioField" label="Density Ratio" />
                     <ui:FloatField name="McCoyPlusFacehardTemperatureField" label="Temperature" />
                     <ui:FloatField name="McCoyPlusFacehardMatchHeightField" label="Match Height" />
-                    <ui:Label text="Facehard Inputs" style="-unity-font-style: bold; margin-top: 8px; margin-bottom: 4px;" />
-                    <ui:DropdownField name="McCoyPlusFacehardArmorTypeField" label="Armor Type" />
+                    <ui:Label text="Projectile Inputs" style="-unity-font-style: bold; margin-top: 8px; margin-bottom: 4px;" />
                     <ui:DropdownField name="McCoyPlusFacehardProjectileNationField" label="Projectile Nation" />
                     <ui:DropdownField name="McCoyPlusFacehardProjectileTypeField" label="Projectile Type" />
                     <ui:DropdownField name="McCoyPlusFacehardCapOrHoodField" label="Cap Or Hood" />
@@ -122,9 +121,14 @@
                     <ui:FloatField name="McCoyPlusFacehardRemainingNoseWeightField" label="Remaining Nose Covering Weight" />
                     <ui:FloatField name="McCoyPlusFacehardPlimField" label="PLIM" />
                     <ui:FloatField name="McCoyPlusFacehardPdamField" label="PDAM" />
+                    <ui:Label text="Armor Inputs" style="-unity-font-style: bold; margin-top: 8px; margin-bottom: 4px;" />
+                    <ui:DropdownField name="McCoyPlusFacehardArmorTypeField" label="Armor Type" />
+                    <ui:Toggle name="McCoyPlusFacehardCurvedPlateToggle" label="Strongly Curved Plate" />
                     <ui:FloatField name="McCoyPlusFacehardWoodBackingField" label="Wood Backing" />
                     <ui:FloatField name="McCoyPlusFacehardCementBackingField" label="Cement Backing" />
                     <ui:FloatField name="McCoyPlusFacehardMetalBackingField" label="Metal Backing" />
+                    <ui:FloatField name="McCoyPlusFacehardBackingQualityField" label="Backing Quality" />
+                    <ui:FloatField name="McCoyPlusFacehardBackingPlatesField" label="Backing Plates" />
                     <ui:VisualElement name="McCoyPlusFacehardInputWarnings" />
                     <ui:TextField name="McCoyPlusFacehardDragTableField" label="Mach-CD Drag Table" multiline="true" style="height: 120px;" />
                 </ui:ScrollView>

@@ -17,8 +17,6 @@ namespace YYZ.Ballistic
 
         public string Label { get; set; } = string.Empty;
 
-        public string Source { get; set; } = string.Empty;
-
         public List<DragPoint> Points { get; set; } = new List<DragPoint>();
     }
 
@@ -80,11 +78,11 @@ namespace YYZ.Ballistic
         const int CachedSearchMaxIterations = 48;
         public const double SweepLimit = 100000;
 
-        static readonly Lazy<List<McCoyPlusDragPreset>> Presets = new Lazy<List<McCoyPlusDragPreset>>(BuildDragPresets);
+        static readonly List<McCoyPlusDragPreset> Presets = BuildDragPresets();
 
         public static List<McCoyPlusDragPreset> DragPresets()
         {
-            return Presets.Value.Select(ClonePreset).ToList();
+            return Presets.Select(ClonePreset).ToList();
         }
 
         public static McCoyPlusInput DefaultInput()
@@ -94,7 +92,7 @@ namespace YYZ.Ballistic
 
         public static string DragPresetToText(string presetId)
         {
-            var selected = Presets.Value.FirstOrDefault(item => item.Id == presetId) ?? Presets.Value[0];
+            var selected = Presets.FirstOrDefault(item => item.Id == presetId) ?? Presets[0];
             return McCoy.DragTableToText(selected.Points);
         }
 
@@ -108,7 +106,7 @@ namespace YYZ.Ballistic
 
             var rows = new List<McCoyPlusRow>();
             var warnings = new List<string>();
-            var dragTable = source.DragTable != null && source.DragTable.Count >= 2 ? source.DragTable : Presets.Value[0].Points;
+            var dragTable = source.DragTable != null && source.DragTable.Count >= 2 ? source.DragTable : Presets[0].Points;
 
             foreach (var targetRange in SweepTargets(source.MaxRange))
             {
@@ -135,7 +133,7 @@ namespace YYZ.Ballistic
             }
 
             var targetRanges = SweepTargets(source.MaxRange).ToList();
-            var dragTable = source.DragTable != null && source.DragTable.Count >= 2 ? source.DragTable : Presets.Value[0].Points;
+            var dragTable = source.DragTable != null && source.DragTable.Count >= 2 ? source.DragTable : Presets[0].Points;
             var solvedRows = new SolvedRow[targetRanges.Count];
             var workers = Math.Max(1, Math.Min(workerCount, 64));
 
@@ -163,7 +161,7 @@ namespace YYZ.Ballistic
         static McCoyPlusResult CalculateCachedBinarySearch(McCoyPlusInput source)
         {
             var targetRanges = SweepTargets(source.MaxRange).ToList();
-            var dragTable = source.DragTable != null && source.DragTable.Count >= 2 ? source.DragTable : Presets.Value[0].Points;
+            var dragTable = source.DragTable != null && source.DragTable.Count >= 2 ? source.DragTable : Presets[0].Points;
             var maxTargetRange = targetRanges.Where(range => range > 0).DefaultIfEmpty(source.MaxRange).Max();
             var simulationLimit = Math.Max(source.MaxRange, maxTargetRange * 1.35 + 1000);
             var sampleRanges = new List<double> { 0 };
@@ -662,18 +660,16 @@ namespace YYZ.Ballistic
             {
                 Id = preset.Id,
                 Label = preset.Label,
-                Source = preset.Source,
                 Points = preset.Points.Select(point => new DragPoint { Mach = point.Mach, Cd = point.Cd }).ToList(),
             };
         }
 
-        static McCoyPlusDragPreset Preset(string id, string label, string source, string text)
+        static McCoyPlusDragPreset Preset(string id, string label, string text)
         {
             return new McCoyPlusDragPreset
             {
                 Id = id,
                 Label = label,
-                Source = source,
                 Points = McCoy.ParseDragTable(text),
             };
         }
@@ -682,15 +678,15 @@ namespace YYZ.Ballistic
         {
             return new List<McCoyPlusDragPreset>
             {
-                Preset("g1", "G1 standard projectile", "References/JBM/mcg1.txt", JbmMcg1),
-                Preset("g2", "G2 standard projectile", "References/JBM/mcg2.txt", JbmMcg2),
-                Preset("g5", "G5 standard projectile", "References/JBM/mcg5.txt", JbmMcg5),
-                Preset("g6", "G6 standard projectile", "References/JBM/mcg6.txt", JbmMcg6),
-                Preset("g7", "G7 standard projectile", "References/JBM/mcg7.txt", JbmMcg7),
-                Preset("g8", "G8 standard projectile", "References/JBM/mcg8.txt", JbmMcg8),
-                Preset("gi", "GI standard projectile", "References/JBM/mcgi.txt", JbmMcgi),
-                Preset("gs", "GS sphere, 9/16 inch", "References/JBM/mcgs.txt", JbmMcgs),
-                Preset("ra4", "RA4 drag function", "References/JBM/ra4.txt", JbmRa4),
+                Preset("g1", "G1 standard projectile", JbmMcg1),
+                Preset("g2", "G2 standard projectile", JbmMcg2),
+                Preset("g5", "G5 standard projectile", JbmMcg5),
+                Preset("g6", "G6 standard projectile", JbmMcg6),
+                Preset("g7", "G7 standard projectile", JbmMcg7),
+                Preset("g8", "G8 standard projectile", JbmMcg8),
+                Preset("gi", "GI standard projectile", JbmMcgi),
+                Preset("gs", "GS sphere, 9/16 inch", JbmMcgs),
+                Preset("ra4", "RA4 drag function", JbmRa4),
             };
         }
 

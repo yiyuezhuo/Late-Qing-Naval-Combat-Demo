@@ -140,10 +140,15 @@ public sealed class McCoyOkunCalculatorDialog
         public McCoyPlusDragFunction DragFunction;
         public string ProjectilePresetId;
         public FacehardCapType CapType;
+        public FacehardNoseSchema NoseSchema = FacehardNoseSchema.Standard;
+        public double JapaneseCapHead = 2;
         public double ProjectileDiameter;
         public double ProjectileWeight;
         public double ProjectileBodyWeight;
         public double WindscreenWeight;
+        public double WindscreenCapHeadWeight = 0;
+        public double ProjectileLimitQuality = 1;
+        public double ProjectileDamageQuality = 1;
         public double BallisticCoefficient;
         public double MuzzleVelocity;
         public double MaxRange;
@@ -1135,10 +1140,33 @@ public sealed class McCoyOkunCalculatorDialog
         target.ProjectileWeight = sample.ProjectileWeight;
         target.ProjectileBodyWeight = sample.ProjectileBodyWeight;
         target.CapType = sample.CapType;
-        target.NoseSchema = FacehardNoseSchema.Standard;
         target.NoseCondition = FacehardNoseCondition.Intact;
         target.WindscreenWeight = sample.WindscreenWeight;
-        target.WindscreenCapHeadWeight = 0;
+
+        var isCustomProjectile = target.ProjectilePresetId == "custom";
+        if (isCustomProjectile)
+        {
+            target.NoseSchema = sample.NoseSchema;
+            target.JapaneseCapHead = sample.JapaneseCapHead <= 1 ? 1 : 2;
+            target.ProjectileLimitQuality = sample.ProjectileLimitQuality;
+            target.ProjectileDamageQuality = sample.ProjectileDamageQuality;
+        }
+        else
+        {
+            target.NoseSchema = FacehardNoseSchema.Standard;
+            target.JapaneseCapHead = 2;
+        }
+
+        var noseWeights = FacehardCalculator.FacehardNoseCoveringWeights(target);
+        if (noseWeights.SchemaKind == FacehardNoseSchema.JapaneseCapHead &&
+            noseWeights.CapHead == 2)
+        {
+            target.WindscreenCapHeadWeight = sample.WindscreenCapHeadWeight;
+        }
+        else if (noseWeights.SchemaKind != FacehardNoseSchema.JapaneseCapHead || noseWeights.CapHead != 2)
+        {
+            target.WindscreenCapHeadWeight = 0;
+        }
     }
 
     void ApplyMcCoyPlusSample(McCoyPlusInput target, BallisticSample sample, Action<McCoyPlusDragFunction> setPreset, Action<string> setDragText)

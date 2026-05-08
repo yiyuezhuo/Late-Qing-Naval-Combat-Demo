@@ -75,6 +75,11 @@ namespace YYZ.Ballistic
 
         public static McCoyPlusFacehardResult Calculate(McCoyPlusFacehardInput input)
         {
+            return Calculate(input, null);
+        }
+
+        public static McCoyPlusFacehardResult Calculate(McCoyPlusFacehardInput input, IEnumerable<double> targetRanges)
+        {
             if (FacehardCalculator == null)
             {
                 return new McCoyPlusFacehardResult
@@ -87,7 +92,9 @@ namespace YYZ.Ballistic
             }
 
             var source = input ?? new McCoyPlusFacehardInput();
-            var trajectory = McCoyPlus.CalculateParallel(source.McCoy);
+            var trajectory = targetRanges == null
+                ? McCoyPlus.CalculateParallel(source.McCoy)
+                : McCoyPlus.CalculateTargetsParallel(source.McCoy, targetRanges);
             var warnings = new List<string>(trajectory.Warnings);
             var rows = new List<McCoyPlusFacehardRow>();
             foreach (var row in trajectory.Rows)

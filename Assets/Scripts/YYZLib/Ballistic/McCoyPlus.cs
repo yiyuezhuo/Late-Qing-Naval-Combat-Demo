@@ -127,19 +127,31 @@ namespace YYZ.Ballistic
         public static McCoyPlusResult CalculateParallel(McCoyPlusInput input, int workerCount = 8)
         {
             var source = input ?? new McCoyPlusInput();
+            return CalculateParallel(source, SweepTargets(source.MaxRange), workerCount);
+        }
+
+        public static McCoyPlusResult CalculateTargetsParallel(McCoyPlusInput input, IEnumerable<double> targetRanges, int workerCount = 8)
+        {
+            var source = input ?? new McCoyPlusInput();
+            var targets = NormalizeTargetRanges(targetRanges, source.MaxRange).ToList();
+            return CalculateParallel(source, targets, workerCount);
+        }
+
+        static McCoyPlusResult CalculateParallel(McCoyPlusInput source, IEnumerable<double> targetRanges, int workerCount)
+        {
             if (source.ElevationSearchMode == McCoyPlusElevationSearchMode.CachedBinarySearch)
             {
-                return CalculateCachedBinarySearch(source);
+                return CalculateCachedBinarySearch(source, targetRanges);
             }
 
-            var targetRanges = SweepTargets(source.MaxRange).ToList();
+            var targets = NormalizeTargetRanges(targetRanges, source.MaxRange).ToList();
             var dragTable = source.DragTable != null && source.DragTable.Count >= 2 ? source.DragTable : Presets[0].Points;
-            var solvedRows = new SolvedRow[targetRanges.Count];
+            var solvedRows = new SolvedRow[targets.Count];
             var workers = Math.Max(1, Math.Min(workerCount, 64));
 
-            Parallel.For(0, targetRanges.Count, new ParallelOptions { MaxDegreeOfParallelism = workers }, index =>
+            Parallel.For(0, targets.Count, new ParallelOptions { MaxDegreeOfParallelism = workers }, index =>
             {
-                solvedRows[index] = SolveRow(source, dragTable, targetRanges[index]);
+                solvedRows[index] = SolveRow(source, dragTable, targets[index]);
             });
 
             var rows = new List<McCoyPlusRow>();
@@ -160,7 +172,12 @@ namespace YYZ.Ballistic
 
         static McCoyPlusResult CalculateCachedBinarySearch(McCoyPlusInput source)
         {
-            var targetRanges = SweepTargets(source.MaxRange).ToList();
+            return CalculateCachedBinarySearch(source, SweepTargets(source.MaxRange));
+        }
+
+        static McCoyPlusResult CalculateCachedBinarySearch(McCoyPlusInput source, IEnumerable<double> targetRangesSource)
+        {
+            var targetRanges = NormalizeTargetRanges(targetRangesSource, source.MaxRange).ToList();
             var dragTable = source.DragTable != null && source.DragTable.Count >= 2 ? source.DragTable : Presets[0].Points;
             var maxTargetRange = targetRanges.Where(range => range > 0).DefaultIfEmpty(source.MaxRange).Max();
             var simulationLimit = Math.Max(source.MaxRange, maxTargetRange * 1.35 + 1000);
@@ -188,6 +205,17 @@ namespace YYZ.Ballistic
             var result = BuildResult(source, rows, warnings);
             cache.BuildDisplayTrajectories(result.ChartRows);
             return result;
+        }
+
+        static IEnumerable<double> NormalizeTargetRanges(IEnumerable<double> targetRanges, double fallbackMaxRange)
+        {
+            var normalized = (targetRanges ?? Enumerable.Empty<double>())
+                .Where(range => BallisticMath.IsFinite(range) && range > 0)
+                .Select(range => Math.Min(range, SweepLimit))
+                .Distinct()
+                .OrderBy(range => range)
+                .ToList();
+            return normalized.Count > 0 ? normalized : SweepTargets(fallbackMaxRange);
         }
 
         static McCoyPlusResult BuildResult(McCoyPlusInput source, List<McCoyPlusRow> rows, List<string> warnings)

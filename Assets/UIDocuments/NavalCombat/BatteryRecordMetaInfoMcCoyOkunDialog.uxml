@@ -53,9 +53,19 @@
                         <ui:FloatField name="TemperatureField" label="Temperature" />
                         <ui:FloatField name="MatchHeightField" label="Match Height" />
                         <ui:FloatField name="FallToNextFireSecondsField" label="Fall To Next Fire (s)" />
+                        <ui:DropdownField name="RangeModeField" label="Range Mode" />
                         <ui:DropdownField name="ChartModeField" label="Chart Mode" />
                         <ui:TextField name="DragTableField" label="Mach-CD Drag Table" multiline="true" style="height: 120px;" />
                     </ui:ScrollView>
+                </ui:Tab>
+                <ui:Tab label="SK5 Data">
+                    <ui:VisualElement style="flex-grow: 1; flex-shrink: 1;">
+                        <ui:FloatField name="Sk5MaxRateOfFireField" label="Max ROF" />
+                        <ui:FloatField name="Sk5FallToNextFireSecondsField" label="Fall To Next Fire (s)" />
+                        <ui:Toggle name="RoundSyncBackValuesField" label="Round Sync Back" value="true" />
+                        <ui:Button text="Sync Back" name="Sk5SyncBackButton" style="margin-top: 4px; margin-bottom: 6px;" />
+                        <ui:MultiColumnListView name="Sk5PenetrationTableListView" show-border="true" style="height: 300px; flex-shrink: 0;" />
+                    </ui:VisualElement>
                 </ui:Tab>
             </ui:TabView>
         </ui:VisualElement>

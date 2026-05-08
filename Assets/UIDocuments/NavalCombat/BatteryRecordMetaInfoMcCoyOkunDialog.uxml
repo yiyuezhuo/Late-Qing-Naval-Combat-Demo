@@ -1,0 +1,66 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="BatteryRecordMetaInfoMcCoyOkunRoot" style="flex-direction: row; flex-grow: 1; flex-shrink: 1;">
+        <ui:VisualElement style="width: 390px; flex-shrink: 0; margin-right: 8px;">
+            <ui:VisualElement style="flex-direction: row; margin-bottom: 6px;">
+                <ui:Button text="Calculate" name="CalculateButton" style="flex-grow: 1; margin-right: 4px;" />
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-direction: row; margin-bottom: 6px;">
+                <ui:Button text="Create" name="CreateDeleteButton" style="flex-grow: 1; margin-right: 4px;" />
+                <ui:Button text="Sync Back" name="SyncBackButton" style="flex-grow: 1; margin-right: 4px;" />
+            </ui:VisualElement>
+            <ui:TabView name="InputTabView" style="flex-grow: 1; flex-shrink: 1;">
+                <ui:Tab label="Projectile">
+                    <ui:ScrollView mode="Vertical" style="flex-grow: 1; flex-shrink: 1;">
+                        <ui:DropdownField name="SampleField" label="Sample" />
+                        <ui:DropdownField name="PresetField" label="Mach-CD Preset" />
+                        <ui:FloatField name="MuzzleVelocityField" label="Muzzle Velocity" />
+                        <ui:FloatField name="BallisticCoefficientField" label="Ballistic Coefficient" />
+                        <ui:FloatField name="MaxRangeField" label="Maximum Range" />
+                        <ui:Label text="Projectile Inputs" style="-unity-font-style: bold; margin-top: 8px; margin-bottom: 4px;" />
+                        <ui:DropdownField name="ProjectileNationField" label="Projectile Nation" />
+                        <ui:DropdownField name="ProjectileTypeField" label="Projectile Type" />
+                        <ui:DropdownField name="CapOrHoodField" label="Cap Or Hood" />
+                        <ui:DropdownField name="NoseSchemaField" label="Nose Schema" />
+                        <ui:DropdownField name="JapaneseCapHeadField" label="Japanese Cap Head Type" />
+                        <ui:DropdownField name="NoseConditionField" label="Pre-Impact Nose Condition" />
+                        <ui:FloatField name="ProjectileDiameterField" label="Projectile Diameter" />
+                        <ui:FloatField name="ProjectileWeightField" label="Projectile Weight" />
+                        <ui:FloatField name="ProjectileBodyWeightField" label="Body Weight" />
+                        <ui:FloatField name="WindscreenCapHeadWeightField" label="Windscreen + Cap Head Weight" />
+                        <ui:FloatField name="WindscreenWeightField" label="Windscreen Weight" />
+                        <ui:FloatField name="RemainingNoseWeightField" label="Remaining Nose Covering Weight" />
+                        <ui:FloatField name="PlimField" label="PLIM" />
+                        <ui:FloatField name="PdamField" label="PDAM" />
+                    </ui:ScrollView>
+                </ui:Tab>
+                <ui:Tab label="Armor">
+                    <ui:ScrollView mode="Vertical" style="flex-grow: 1; flex-shrink: 1;">
+                        <ui:DropdownField name="ArmorTypeField" label="Armor Type" />
+                        <ui:Toggle name="CurvedPlateToggle" label="Strongly Curved Plate" />
+                        <ui:FloatField name="WoodBackingField" label="Wood Backing" />
+                        <ui:FloatField name="CementBackingField" label="Cement Backing" />
+                        <ui:FloatField name="MetalBackingField" label="Metal Backing" />
+                        <ui:FloatField name="BackingQualityField" label="Backing Quality" />
+                        <ui:FloatField name="BackingPlatesField" label="Backing Plates" />
+                        <ui:VisualElement name="InputWarnings" />
+                    </ui:ScrollView>
+                </ui:Tab>
+                <ui:Tab label="Misc">
+                    <ui:ScrollView mode="Vertical" style="flex-grow: 1; flex-shrink: 1;">
+                        <ui:DropdownField name="ElevationSearchField" label="Elevation Search" />
+                        <ui:DropdownField name="AtmosphereField" label="Atmosphere Model" />
+                        <ui:FloatField name="DensityRatioField" label="Density Ratio" />
+                        <ui:FloatField name="TemperatureField" label="Temperature" />
+                        <ui:FloatField name="MatchHeightField" label="Match Height" />
+                        <ui:FloatField name="FallToNextFireSecondsField" label="Fall To Next Fire (s)" />
+                        <ui:DropdownField name="ChartModeField" label="Chart Mode" />
+                        <ui:TextField name="DragTableField" label="Mach-CD Drag Table" multiline="true" style="height: 120px;" />
+                    </ui:ScrollView>
+                </ui:Tab>
+            </ui:TabView>
+        </ui:VisualElement>
+        <ui:ScrollView name="Output" mode="Vertical" style="flex-grow: 1; flex-shrink: 1;">
+            <ui:VisualElement name="OutputContent" />
+        </ui:ScrollView>
+    </ui:VisualElement>
+</ui:UXML>

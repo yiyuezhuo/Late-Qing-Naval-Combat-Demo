@@ -946,6 +946,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset rapidFireBatteryRecordSelectorDialogDocument;
     public VisualTreeAsset rapidFireBatteryRecordMetaInfoDialogDocument;
     public VisualTreeAsset batteryRecordMetaInfoDialogDocument;
+    public VisualTreeAsset batteryRecordMetaInfoMcCoyOkunDialogDocument;
     public VisualTreeAsset torpedoSectorSelectorDialogDocument;
     public VisualTreeAsset scenarioStateEditorDialogDocument;
     public VisualTreeAsset vladivostokSquadronRaidingSideSelectorDialogDocument;
@@ -1555,7 +1556,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         var dialog = new BatteryRecordMetaInfoMcCoyOkunDialog(batteryRecord, callback);
         return PopupCustomContentDialog(
             "Meta Info (McCoy Okun)",
-            dialog.BuildContent,
+            () => dialog.BuildContent(batteryRecordMetaInfoMcCoyOkunDialogDocument),
             Localize("Close")
         );
     }

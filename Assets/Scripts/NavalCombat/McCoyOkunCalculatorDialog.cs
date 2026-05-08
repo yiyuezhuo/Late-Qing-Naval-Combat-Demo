@@ -115,18 +115,18 @@ public sealed class McCoyOkunCalculatorDialog
     McCoyInput mccoyInput = McCoy.DefaultInput();
     string mccoyDragText = McCoy.DragTableToText(McCoy.DefaultDragTable());
     McCoyPlusInput mccoyPlusInput = McCoyPlus.DefaultInput();
-    string mccoyPlusPresetId = "g1";
-    string mccoyPlusDragText = McCoyPlus.DragPresetToText("g1");
+    McCoyPlusDragFunction mccoyPlusPreset = McCoyPlusDragFunction.G1;
+    string mccoyPlusDragText = McCoyPlus.DragPresetToText(McCoyPlusDragFunction.G1);
     McCoyPlusFacehardInput mccoyPlusFacehardInput = McCoyPlusFacehard.DefaultInput();
     FacehardInput mccoyPlusFacehardDetails = FacehardCalculator.DefaultFacehardInput();
     string mccoyPlusFacehardSampleId = "";
-    string mccoyPlusFacehardPresetId = "g1";
-    string mccoyPlusFacehardDragText = McCoyPlus.DragPresetToText("g1");
+    McCoyPlusDragFunction mccoyPlusFacehardPreset = McCoyPlusDragFunction.G1;
+    string mccoyPlusFacehardDragText = McCoyPlus.DragPresetToText(McCoyPlusDragFunction.G1);
     McCoyOkunChartMode mccoyPlusFacehardChartMode = McCoyOkunChartMode.Trajectory;
     McCoyPlusM79Input mccoyPlusM79Input = McCoyPlusM79.DefaultInput();
     string mccoyPlusM79SampleId = "";
-    string mccoyPlusM79PresetId = "g1";
-    string mccoyPlusM79DragText = McCoyPlus.DragPresetToText("g1");
+    McCoyPlusDragFunction mccoyPlusM79Preset = McCoyPlusDragFunction.G1;
+    string mccoyPlusM79DragText = McCoyPlus.DragPresetToText(McCoyPlusDragFunction.G1);
     McCoyOkunChartMode mccoyPlusM79ChartMode = McCoyOkunChartMode.Trajectory;
     JbmProgramMode jbmMode = JbmProgramMode.McDrag;
     McDragInput mcDragInput = Jbm.DefaultMcDragInput();
@@ -137,7 +137,7 @@ public sealed class McCoyOkunCalculatorDialog
     {
         public string Id;
         public string Label;
-        public string DragPresetId;
+        public McCoyPlusDragFunction DragFunction;
         public string ProjectilePresetId;
         public FacehardCapType CapType;
         public double ProjectileDiameter;
@@ -162,11 +162,11 @@ public sealed class McCoyOkunCalculatorDialog
 
     static readonly List<BallisticSample> Samples = new()
     {
-        new BallisticSample { Id = "britain-palliser-6", Label = "Palliser chilled cast iron shot and common shell / 6'' / Britain", DragPresetId = "g1", ProjectilePresetId = "BPR1", CapType = FacehardCapType.None, ProjectileDiameter = 6, ProjectileWeight = 100, ProjectileBodyWeight = 100, WindscreenWeight = 0, BallisticCoefficient = 2.9727, MuzzleVelocity = 2230, MaxRange = 14600 },
-        new BallisticSample { Id = "britain-palliser-10", Label = "Palliser chilled cast iron shot and common shell / 10'' / Britain", DragPresetId = "g1", ProjectilePresetId = "BPR1", CapType = FacehardCapType.None, ProjectileDiameter = 10, ProjectileWeight = 500, ProjectileBodyWeight = 500, WindscreenWeight = 0, BallisticCoefficient = 5.1846, MuzzleVelocity = 2040, MaxRange = 11000 },
-        new BallisticSample { Id = "britain-uncapped-75", Label = "Uncapped steel AP shot/shell 1890-1905 / 7.5'' / Britain", DragPresetId = "g1", ProjectilePresetId = "BPR2", CapType = FacehardCapType.None, ProjectileDiameter = 7.5, ProjectileWeight = 200, ProjectileBodyWeight = 200, WindscreenWeight = 0, BallisticCoefficient = 2.489, MuzzleVelocity = 2827, MaxRange = 14328 },
-        new BallisticSample { Id = "britain-uncapped-12", Label = "Uncapped steel AP shot/shell 1890-1905 / 12'' / Britain", DragPresetId = "g1", ProjectilePresetId = "BPR2", CapType = FacehardCapType.None, ProjectileDiameter = 12, ProjectileWeight = 714, ProjectileBodyWeight = 715, WindscreenWeight = 0, BallisticCoefficient = 5.0293, MuzzleVelocity = 1914, MaxRange = 9450 },
-        new BallisticSample { Id = "germany-38cm-psgr-bismarck", Label = "38cm Psgr.m.K. L/4.4 APC / Germany (Bismack)", DragPresetId = "g7", ProjectilePresetId = "GPR12", CapType = FacehardCapType.Hard, ProjectileDiameter = 14.96, ProjectileWeight = 1763.7, ProjectileBodyWeight = 1552.05, WindscreenWeight = 52.91, BallisticCoefficient = 7.7734, MuzzleVelocity = 2690, MaxRange = 38870 },
+        new BallisticSample { Id = "britain-palliser-6", Label = "Palliser chilled cast iron shot and common shell / 6'' / Britain", DragFunction = McCoyPlusDragFunction.G1, ProjectilePresetId = "BPR1", CapType = FacehardCapType.None, ProjectileDiameter = 6, ProjectileWeight = 100, ProjectileBodyWeight = 100, WindscreenWeight = 0, BallisticCoefficient = 2.9727, MuzzleVelocity = 2230, MaxRange = 14600 },
+        new BallisticSample { Id = "britain-palliser-10", Label = "Palliser chilled cast iron shot and common shell / 10'' / Britain", DragFunction = McCoyPlusDragFunction.G1, ProjectilePresetId = "BPR1", CapType = FacehardCapType.None, ProjectileDiameter = 10, ProjectileWeight = 500, ProjectileBodyWeight = 500, WindscreenWeight = 0, BallisticCoefficient = 5.1846, MuzzleVelocity = 2040, MaxRange = 11000 },
+        new BallisticSample { Id = "britain-uncapped-75", Label = "Uncapped steel AP shot/shell 1890-1905 / 7.5'' / Britain", DragFunction = McCoyPlusDragFunction.G1, ProjectilePresetId = "BPR2", CapType = FacehardCapType.None, ProjectileDiameter = 7.5, ProjectileWeight = 200, ProjectileBodyWeight = 200, WindscreenWeight = 0, BallisticCoefficient = 2.489, MuzzleVelocity = 2827, MaxRange = 14328 },
+        new BallisticSample { Id = "britain-uncapped-12", Label = "Uncapped steel AP shot/shell 1890-1905 / 12'' / Britain", DragFunction = McCoyPlusDragFunction.G1, ProjectilePresetId = "BPR2", CapType = FacehardCapType.None, ProjectileDiameter = 12, ProjectileWeight = 714, ProjectileBodyWeight = 715, WindscreenWeight = 0, BallisticCoefficient = 5.0293, MuzzleVelocity = 1914, MaxRange = 9450 },
+        new BallisticSample { Id = "germany-38cm-psgr-bismarck", Label = "38cm Psgr.m.K. L/4.4 APC / Germany (Bismack)", DragFunction = McCoyPlusDragFunction.G7, ProjectilePresetId = "GPR12", CapType = FacehardCapType.Hard, ProjectileDiameter = 14.96, ProjectileWeight = 1763.7, ProjectileBodyWeight = 1552.05, WindscreenWeight = 52.91, BallisticCoefficient = 7.7734, MuzzleVelocity = 2690, MaxRange = 38870 },
     };
 
     public VisualElement BuildContent(VisualTreeAsset template)
@@ -347,11 +347,11 @@ public sealed class McCoyOkunCalculatorDialog
                 BindButton(root, "McCoyPlusResetButton", () =>
                 {
                     mccoyPlusInput = McCoyPlus.DefaultInput();
-                    mccoyPlusPresetId = "g1";
-                    mccoyPlusDragText = McCoyPlus.DragPresetToText("g1");
+                    mccoyPlusPreset = McCoyPlusDragFunction.G1;
+                    mccoyPlusDragText = McCoyPlus.DragPresetToText(McCoyPlusDragFunction.G1);
                     RebuildContent();
                 });
-                ConfigureMcCoyPlusTemplate(root, "McCoyPlus", mccoyPlusInput, () => mccoyPlusPresetId, value => mccoyPlusPresetId = value, () => mccoyPlusDragText, value => mccoyPlusDragText = value);
+                ConfigureMcCoyPlusTemplate(root, "McCoyPlus", mccoyPlusInput, () => mccoyPlusPreset, value => mccoyPlusPreset = value, () => mccoyPlusDragText, value => mccoyPlusDragText = value);
                 break;
             case McCoyOkunTab.McCoyPlusFacehard:
                 SyncComboMcCoy(mccoyPlusFacehardInput.McCoy, mccoyPlusFacehardDragText);
@@ -362,8 +362,8 @@ public sealed class McCoyOkunCalculatorDialog
                     mccoyPlusFacehardInput = McCoyPlusFacehard.DefaultInput();
                     mccoyPlusFacehardDetails = FacehardCalculator.DefaultFacehardInput();
                     mccoyPlusFacehardSampleId = "";
-                    mccoyPlusFacehardPresetId = "g1";
-                    mccoyPlusFacehardDragText = McCoyPlus.DragPresetToText("g1");
+                    mccoyPlusFacehardPreset = McCoyPlusDragFunction.G1;
+                    mccoyPlusFacehardDragText = McCoyPlus.DragPresetToText(McCoyPlusDragFunction.G1);
                     mccoyPlusFacehardChartMode = McCoyOkunChartMode.Trajectory;
                     RebuildContent();
                 });
@@ -373,12 +373,12 @@ public sealed class McCoyOkunCalculatorDialog
                     var sample = SampleById(id);
                     if (sample != null)
                     {
-                        ApplyMcCoyPlusSample(mccoyPlusFacehardInput.McCoy, sample, value => mccoyPlusFacehardPresetId = value, value => mccoyPlusFacehardDragText = value);
+                        ApplyMcCoyPlusSample(mccoyPlusFacehardInput.McCoy, sample, value => mccoyPlusFacehardPreset = value, value => mccoyPlusFacehardDragText = value);
                         ApplyFacehardSample(mccoyPlusFacehardDetails, sample);
                         SyncFacehardBridge();
                     }
                 });
-                ConfigureMcCoyPlusTemplate(root, "McCoyPlusFacehard", mccoyPlusFacehardInput.McCoy, () => mccoyPlusFacehardPresetId, value => mccoyPlusFacehardPresetId = value, () => mccoyPlusFacehardDragText, value => mccoyPlusFacehardDragText = value);
+                ConfigureMcCoyPlusTemplate(root, "McCoyPlusFacehard", mccoyPlusFacehardInput.McCoy, () => mccoyPlusFacehardPreset, value => mccoyPlusFacehardPreset = value, () => mccoyPlusFacehardDragText, value => mccoyPlusFacehardDragText = value);
                 ConfigureFacehardComboTemplate(root, "McCoyPlusFacehard", mccoyPlusFacehardDetails, facehardPreview);
                 BindText(root, "McCoyPlusFacehardDragTableField", mccoyPlusFacehardDragText, value =>
                 {
@@ -392,8 +392,8 @@ public sealed class McCoyOkunCalculatorDialog
                 {
                     mccoyPlusM79Input = McCoyPlusM79.DefaultInput();
                     mccoyPlusM79SampleId = "";
-                    mccoyPlusM79PresetId = "g1";
-                    mccoyPlusM79DragText = McCoyPlus.DragPresetToText("g1");
+                    mccoyPlusM79Preset = McCoyPlusDragFunction.G1;
+                    mccoyPlusM79DragText = McCoyPlus.DragPresetToText(McCoyPlusDragFunction.G1);
                     mccoyPlusM79ChartMode = McCoyOkunChartMode.Trajectory;
                     RebuildContent();
                 });
@@ -403,11 +403,11 @@ public sealed class McCoyOkunCalculatorDialog
                     var sample = SampleById(id);
                     if (sample != null)
                     {
-                        ApplyMcCoyPlusSample(mccoyPlusM79Input.McCoy, sample, value => mccoyPlusM79PresetId = value, value => mccoyPlusM79DragText = value);
+                        ApplyMcCoyPlusSample(mccoyPlusM79Input.McCoy, sample, value => mccoyPlusM79Preset = value, value => mccoyPlusM79DragText = value);
                         ApplyM79Sample(mccoyPlusM79Input.M79, sample);
                     }
                 });
-                ConfigureM79ComboTemplate(root, "McCoyPlusM79", mccoyPlusM79Input.M79, mccoyPlusM79Input.McCoy, () => mccoyPlusM79PresetId, value => mccoyPlusM79PresetId = value, () => mccoyPlusM79DragText, value => mccoyPlusM79DragText = value, () => mccoyPlusM79SampleId = "");
+                ConfigureM79ComboTemplate(root, "McCoyPlusM79", mccoyPlusM79Input.M79, mccoyPlusM79Input.McCoy, () => mccoyPlusM79Preset, value => mccoyPlusM79Preset = value, () => mccoyPlusM79DragText, value => mccoyPlusM79DragText = value, () => mccoyPlusM79SampleId = "");
                 BindText(root, "McCoyPlusM79DragTableField", mccoyPlusM79DragText, value =>
                 {
                     mccoyPlusM79DragText = value;
@@ -638,7 +638,7 @@ public sealed class McCoyOkunCalculatorDialog
         BindFloat(root, $"{prefix}ElongationField", target.Elongation, value => target.Elongation = value, 10);
     }
 
-    void ConfigureM79ComboTemplate(VisualElement root, string prefix, M79Input m79, McCoyPlusInput mccoy, Func<string> getPresetId, Action<string> setPresetId, Func<string> getDragText, Action<string> setDragText, Action onPresetChanged)
+    void ConfigureM79ComboTemplate(VisualElement root, string prefix, M79Input m79, McCoyPlusInput mccoy, Func<McCoyPlusDragFunction> getPreset, Action<McCoyPlusDragFunction> setPreset, Func<string> getDragText, Action<string> setDragText, Action onPresetChanged)
     {
         BindFloat(root, $"{prefix}ProjectileDiameterField", m79.ProjectileDiameter, value => m79.ProjectileDiameter = value, 0.001);
         BindFloat(root, $"{prefix}ProjectileWeightField", m79.ProjectileWeight, value => m79.ProjectileWeight = value, 0.001);
@@ -652,14 +652,14 @@ public sealed class McCoyOkunCalculatorDialog
         BindFloat(root, $"{prefix}TemperatureField", mccoy.TemperatureF, value => mccoy.TemperatureF = value);
         BindFloat(root, $"{prefix}ArmorQualityField", m79.PlateQuality, value => m79.PlateQuality = value, 0.001);
         BindFloat(root, $"{prefix}ElongationField", m79.Elongation, value => m79.Elongation = value, 10);
-        BindMcCoyPlusPreset(root, prefix, mccoy, getPresetId, setPresetId, setDragText, onPresetChanged);
+        BindMcCoyPlusPreset(root, prefix, mccoy, getPreset, setPreset, setDragText, onPresetChanged);
     }
 
-    void ConfigureMcCoyPlusTemplate(VisualElement root, string prefix, McCoyPlusInput target, Func<string> getPresetId, Action<string> setPresetId, Func<string> getDragText, Action<string> setDragText)
+    void ConfigureMcCoyPlusTemplate(VisualElement root, string prefix, McCoyPlusInput target, Func<McCoyPlusDragFunction> getPreset, Action<McCoyPlusDragFunction> setPreset, Func<string> getDragText, Action<string> setDragText)
     {
         BindMcCoyPlusElevationSearch(root, prefix, target);
         BindDropdown(root, $"{prefix}AtmosphereField", new List<string> { "Army Standard Metro", "ICAO" }, target.Atmosphere == McCoyAtmosphere.Icao ? 1 : 0, index => target.Atmosphere = index == 1 ? McCoyAtmosphere.Icao : McCoyAtmosphere.StandardMetro);
-        BindMcCoyPlusPreset(root, prefix, target, getPresetId, setPresetId, setDragText);
+        BindMcCoyPlusPreset(root, prefix, target, getPreset, setPreset, setDragText);
         BindFloat(root, $"{prefix}MuzzleVelocityField", target.MuzzleVelocity, value => target.MuzzleVelocity = value, 1);
         BindFloat(root, $"{prefix}BallisticCoefficientField", target.BallisticCoefficient, value => target.BallisticCoefficient = value, 0.001);
         BindFloat(root, $"{prefix}MaxRangeField", target.MaxRange, value => target.MaxRange = value, 1);
@@ -682,13 +682,13 @@ public sealed class McCoyOkunCalculatorDialog
                 : McCoyPlusElevationSearchMode.CachedBinarySearch);
     }
 
-    void BindMcCoyPlusPreset(VisualElement root, string prefix, McCoyPlusInput target, Func<string> getPresetId, Action<string> setPresetId, Action<string> setDragText, Action onPresetChanged = null)
+    void BindMcCoyPlusPreset(VisualElement root, string prefix, McCoyPlusInput target, Func<McCoyPlusDragFunction> getPreset, Action<McCoyPlusDragFunction> setPreset, Action<string> setDragText, Action onPresetChanged = null)
     {
         var presets = McCoyPlus.DragPresets();
-        BindDropdown(root, $"{prefix}PresetField", presets.Select(item => item.Label).ToList(), Mathf.Max(0, presets.FindIndex(item => item.Id == getPresetId())), index =>
+        BindDropdown(root, $"{prefix}PresetField", presets.Select(item => item.Label).ToList(), Mathf.Max(0, presets.FindIndex(item => item.Function == getPreset())), index =>
         {
             var preset = presets[Mathf.Max(0, index)];
-            ApplyMcCoyPlusPreset(target, preset.Id, setPresetId, setDragText);
+            ApplyMcCoyPlusPreset(target, preset.Function, setPreset, setDragText);
             onPresetChanged?.Invoke();
         });
     }
@@ -1141,9 +1141,9 @@ public sealed class McCoyOkunCalculatorDialog
         target.WindscreenCapHeadWeight = 0;
     }
 
-    void ApplyMcCoyPlusSample(McCoyPlusInput target, BallisticSample sample, Action<string> setPresetId, Action<string> setDragText)
+    void ApplyMcCoyPlusSample(McCoyPlusInput target, BallisticSample sample, Action<McCoyPlusDragFunction> setPreset, Action<string> setDragText)
     {
-        ApplyMcCoyPlusPreset(target, sample.DragPresetId, setPresetId, setDragText);
+        ApplyMcCoyPlusPreset(target, sample.DragFunction, setPreset, setDragText);
         target.ProjectileId = sample.Label;
         target.BallisticCoefficient = sample.BallisticCoefficient;
         target.MuzzleVelocity = sample.MuzzleVelocity;
@@ -1158,12 +1158,12 @@ public sealed class McCoyOkunCalculatorDialog
         mccoyPlusFacehardInput.Facehard.StrikingVelocity = mccoyPlusFacehardDetails.StrikingVelocity;
     }
 
-    static void ApplyMcCoyPlusPreset(McCoyPlusInput target, string presetId, Action<string> setPresetId, Action<string> setDragText)
+    static void ApplyMcCoyPlusPreset(McCoyPlusInput target, McCoyPlusDragFunction function, Action<McCoyPlusDragFunction> setPreset, Action<string> setDragText)
     {
-        var preset = McCoyPlus.DragPresets().FirstOrDefault(item => item.Id == presetId)
+        var preset = McCoyPlus.DragPresets().FirstOrDefault(item => item.Function == function)
             ?? McCoyPlus.DragPresets()[0];
-        setPresetId(preset.Id);
-        setDragText(McCoyPlus.DragPresetToText(preset.Id));
+        setPreset(preset.Function);
+        setDragText(McCoyPlus.DragPresetToText(preset.Function));
         target.DragName = preset.Label;
         target.DragTable = preset.Points;
         target.RangeUnit = McCoyRangeUnit.Yards;

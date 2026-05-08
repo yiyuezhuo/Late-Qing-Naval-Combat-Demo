@@ -13,7 +13,7 @@ namespace YYZ.Ballistic
 
     public sealed class McCoyPlusDragPreset
     {
-        public string Id { get; set; } = string.Empty;
+        public McCoyPlusDragFunction Function { get; set; }
 
         public string Label { get; set; } = string.Empty;
 
@@ -90,9 +90,9 @@ namespace YYZ.Ballistic
             return new McCoyPlusInput();
         }
 
-        public static string DragPresetToText(string presetId)
+        public static string DragPresetToText(McCoyPlusDragFunction function)
         {
-            var selected = Presets.FirstOrDefault(item => item.Id == presetId) ?? Presets[0];
+            var selected = Presets.FirstOrDefault(item => item.Function == function) ?? Presets[0];
             return McCoy.DragTableToText(selected.Points);
         }
 
@@ -658,17 +658,17 @@ namespace YYZ.Ballistic
         {
             return new McCoyPlusDragPreset
             {
-                Id = preset.Id,
+                Function = preset.Function,
                 Label = preset.Label,
                 Points = preset.Points.Select(point => new DragPoint { Mach = point.Mach, Cd = point.Cd }).ToList(),
             };
         }
 
-        static McCoyPlusDragPreset Preset(string id, string label, string text)
+        static McCoyPlusDragPreset Preset(McCoyPlusDragFunction function, string label, string text)
         {
             return new McCoyPlusDragPreset
             {
-                Id = id,
+                Function = function,
                 Label = label,
                 Points = McCoy.ParseDragTable(text),
             };
@@ -678,15 +678,15 @@ namespace YYZ.Ballistic
         {
             return new List<McCoyPlusDragPreset>
             {
-                Preset("g1", "G1 standard projectile", JbmMcg1),
-                Preset("g2", "G2 standard projectile", JbmMcg2),
-                Preset("g5", "G5 standard projectile", JbmMcg5),
-                Preset("g6", "G6 standard projectile", JbmMcg6),
-                Preset("g7", "G7 standard projectile", JbmMcg7),
-                Preset("g8", "G8 standard projectile", JbmMcg8),
-                Preset("gi", "GI standard projectile", JbmMcgi),
-                Preset("gs", "GS sphere, 9/16 inch", JbmMcgs),
-                Preset("ra4", "RA4 drag function", JbmRa4),
+                Preset(McCoyPlusDragFunction.G1, "G1 standard projectile", JbmMcg1),
+                Preset(McCoyPlusDragFunction.G2, "G2 standard projectile", JbmMcg2),
+                Preset(McCoyPlusDragFunction.G5, "G5 standard projectile", JbmMcg5),
+                Preset(McCoyPlusDragFunction.G6, "G6 standard projectile", JbmMcg6),
+                Preset(McCoyPlusDragFunction.G7, "G7 standard projectile", JbmMcg7),
+                Preset(McCoyPlusDragFunction.G8, "G8 standard projectile", JbmMcg8),
+                Preset(McCoyPlusDragFunction.GI, "GI standard projectile", JbmMcgi),
+                Preset(McCoyPlusDragFunction.GS, "GS sphere, 9/16 inch", JbmMcgs),
+                Preset(McCoyPlusDragFunction.RA4, "RA4 drag function", JbmRa4),
             };
         }
 

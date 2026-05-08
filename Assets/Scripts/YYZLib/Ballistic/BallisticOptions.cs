@@ -12,6 +12,19 @@ namespace YYZ.Ballistic
         Icao
     }
 
+    public enum McCoyPlusDragFunction
+    {
+        G1,
+        G2,
+        G5,
+        G6,
+        G7,
+        G8,
+        GI,
+        GS,
+        RA4
+    }
+
     public enum M79PenetrationMode
     {
         NoseFirst,
@@ -92,6 +105,22 @@ namespace YYZ.Ballistic
         public static string ToLegacyCode(McCoyAtmosphere value)
         {
             return value == McCoyAtmosphere.Icao ? "icao" : "standard";
+        }
+
+        public static string ToLegacyCode(McCoyPlusDragFunction value)
+        {
+            return value switch
+            {
+                McCoyPlusDragFunction.G2 => "g2",
+                McCoyPlusDragFunction.G5 => "g5",
+                McCoyPlusDragFunction.G6 => "g6",
+                McCoyPlusDragFunction.G7 => "g7",
+                McCoyPlusDragFunction.G8 => "g8",
+                McCoyPlusDragFunction.GI => "gi",
+                McCoyPlusDragFunction.GS => "gs",
+                McCoyPlusDragFunction.RA4 => "ra4",
+                _ => "g1",
+            };
         }
 
         public static string ToLegacyCode(M79PenetrationMode value)

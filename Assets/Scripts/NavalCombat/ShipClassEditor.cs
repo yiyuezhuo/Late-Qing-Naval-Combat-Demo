@@ -611,6 +611,7 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
             var sk5CodeHelpButton = el.Q<Button>("Sk5CodeHelpButton");
             var fireControlModelComparisonButton = el.Q<Button>("FireControlModelComparisonButton");
             var batteryRecordMetaInfoButton = el.Q<Button>("BatteryRecordMetaInfoButton");
+            var batteryRecordMetaInfoMcCoyOkunButton = el.Q<Button>("BatteryRecordMetaInfoMcCoyOkunButton");
             if (sk5CodeHelpButton != null)
             {
                 sk5CodeHelpButton.clicked += () =>
@@ -630,6 +631,24 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
                     }
 
                     DialogRoot.Instance.PopupBatteryRecordMetaInfoDialog(batteryRecord, () =>
+                    {
+                        penetrationTableMultiColumnListView?.RefreshItems();
+                        RequestSectorArcRefresh(true);
+                    });
+                };
+            }
+
+            if (batteryRecordMetaInfoMcCoyOkunButton != null)
+            {
+                batteryRecordMetaInfoMcCoyOkunButton.clicked += () =>
+                {
+                    if (!Utils.TryResolveCurrentValueForBinding(batteryRecordMetaInfoMcCoyOkunButton, out BatteryRecord batteryRecord))
+                    {
+                        DialogRoot.Instance.PopupMessageDialog(Localize("No battery record is selected."));
+                        return;
+                    }
+
+                    DialogRoot.Instance.PopupBatteryRecordMetaInfoMcCoyOkunDialog(batteryRecord, () =>
                     {
                         penetrationTableMultiColumnListView?.RefreshItems();
                         RequestSectorArcRefresh(true);

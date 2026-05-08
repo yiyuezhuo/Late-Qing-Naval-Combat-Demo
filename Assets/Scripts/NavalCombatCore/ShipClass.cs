@@ -9,6 +9,7 @@ using System.Collections;
 
 using CoreUtils;
 using System.Diagnostics;
+using YYZ.Ballistic;
 
 namespace NavalCombatCore
 {
@@ -556,6 +557,7 @@ namespace NavalCombatCore
         public float shellWeightPounds; // lb
         public int ammunitionCapacity;
         public BatteryRecordMetaInfo metaInfo = null;
+        public BatteryRecordMetaInfoMcCoyOkun metaInfoMcCoyOkun = null;
 
         public List<FireControlTableRecord> fireControlTableRecords = new();
         public AmmunitionType penetrationTableBaseType;
@@ -711,6 +713,60 @@ namespace NavalCombatCore
     public class BatteryRecordMetaInfo
     {
         public NaabLikeProjectile naabLikeProjectile = NaabLikeProjectile.CreateDefaultMetaProjectile();
+        public float fallToNextFireSeconds = 15f;
+    }
+
+    public class BallisticSample
+    {
+        public string Id;
+        public string Label;
+        public McCoyPlusDragFunction DragFunction;
+        public string ProjectilePresetId;
+        public FacehardCapType CapType;
+        public FacehardNoseSchema NoseSchema = FacehardNoseSchema.Standard;
+        public double JapaneseCapHead = 2;
+        public double ProjectileDiameter;
+        public double ProjectileWeight;
+        public double ProjectileBodyWeight;
+        public double WindscreenWeight;
+        public double WindscreenCapHeadWeight = 0;
+        public double ProjectileLimitQuality = 1;
+        public double ProjectileDamageQuality = 1;
+        public double BallisticCoefficient;
+        public double MuzzleVelocity;
+        public double MaxRange;
+
+        public BallisticSample Clone()
+        {
+            return (BallisticSample)MemberwiseClone();
+        }
+    }
+
+    public static class BallisticSampleCatalog
+    {
+        static readonly List<BallisticSample> Samples = new()
+        {
+            new BallisticSample { Id = "britain-palliser-6", Label = "Palliser chilled cast iron shot and common shell / 6'' / Britain", DragFunction = McCoyPlusDragFunction.G1, ProjectilePresetId = "BPR1", CapType = FacehardCapType.None, ProjectileDiameter = 6, ProjectileWeight = 100, ProjectileBodyWeight = 100, WindscreenWeight = 0, BallisticCoefficient = 2.9727, MuzzleVelocity = 2230, MaxRange = 14600 },
+            new BallisticSample { Id = "britain-palliser-10", Label = "Palliser chilled cast iron shot and common shell / 10'' / Britain", DragFunction = McCoyPlusDragFunction.G1, ProjectilePresetId = "BPR1", CapType = FacehardCapType.None, ProjectileDiameter = 10, ProjectileWeight = 500, ProjectileBodyWeight = 500, WindscreenWeight = 0, BallisticCoefficient = 5.1846, MuzzleVelocity = 2040, MaxRange = 11000 },
+            new BallisticSample { Id = "britain-uncapped-75", Label = "Uncapped steel AP shot/shell 1890-1905 / 7.5'' / Britain", DragFunction = McCoyPlusDragFunction.G1, ProjectilePresetId = "BPR2", CapType = FacehardCapType.None, ProjectileDiameter = 7.5, ProjectileWeight = 200, ProjectileBodyWeight = 200, WindscreenWeight = 0, BallisticCoefficient = 2.489, MuzzleVelocity = 2827, MaxRange = 14328 },
+            new BallisticSample { Id = "britain-uncapped-12", Label = "Uncapped steel AP shot/shell 1890-1905 / 12'' / Britain", DragFunction = McCoyPlusDragFunction.G1, ProjectilePresetId = "BPR2", CapType = FacehardCapType.None, ProjectileDiameter = 12, ProjectileWeight = 714, ProjectileBodyWeight = 715, WindscreenWeight = 0, BallisticCoefficient = 5.0293, MuzzleVelocity = 1914, MaxRange = 9450 },
+            new BallisticSample { Id = "germany-38cm-psgr-bismarck", Label = "38cm Psgr.m.K. L/4.4 APC / Germany (Bismack)", DragFunction = McCoyPlusDragFunction.G7, ProjectilePresetId = "GPR12", CapType = FacehardCapType.Hard, ProjectileDiameter = 14.96, ProjectileWeight = 1763.7, ProjectileBodyWeight = 1552.05, WindscreenWeight = 52.91, BallisticCoefficient = 7.7734, MuzzleVelocity = 2690, MaxRange = 38870 },
+        };
+
+        public static List<BallisticSample> All()
+        {
+            return Samples.Select(sample => sample.Clone()).ToList();
+        }
+
+        public static BallisticSample SampleById(string id)
+        {
+            return Samples.FirstOrDefault(sample => sample.Id == id)?.Clone();
+        }
+    }
+
+    public class BatteryRecordMetaInfoMcCoyOkun
+    {
+        public BallisticSample ballisticSample;
         public float fallToNextFireSeconds = 15f;
     }
 

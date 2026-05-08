@@ -1550,6 +1550,16 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         tempDialog.Popup();
     }
 
+    public TempDialog PopupBatteryRecordMetaInfoMcCoyOkunDialog(BatteryRecord batteryRecord, Action callback)
+    {
+        var dialog = new BatteryRecordMetaInfoMcCoyOkunDialog(batteryRecord, callback);
+        return PopupCustomContentDialog(
+            "Meta Info (McCoy Okun)",
+            dialog.BuildContent,
+            Localize("Close")
+        );
+    }
+
     public void PopupScenarioStateEditor()
     {
         var scenarioStateEditor = new ScenarioStateEditor()

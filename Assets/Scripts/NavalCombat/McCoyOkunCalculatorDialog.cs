@@ -253,7 +253,7 @@ public sealed class McCoyOkunCalculatorDialog
             text = "Clear"
         });
         input.Add(recordRow);
-        AddFacehardInputs(input, facehardInput, true);
+        AddFacehardInputs(input, facehardInput, result, true);
 
         output.Add(Banner(("NBL", F(result.NavyBl), "ft/s"),
             ("HBL", F(result.HolingBl), "ft/s"),
@@ -337,7 +337,7 @@ public sealed class McCoyOkunCalculatorDialog
             ("Maximum Range", F(last?.Range), mccoyPlusInput.RangeUnit),
             ("Last Velocity", F(last?.Velocity), "ft/s")));
         output.Add(Warnings(result.Warnings));
-        output.Add(ChartSeries("Matched Trajectories", TrajectorySeries(result.ChartRows, mccoyPlusInput.RangeUnit)));
+        output.Add(ChartSeries("Matched Trajectories", TrajectorySeries(result.ChartRows, mccoyPlusInput.RangeUnit), mccoyPlusInput.RangeUnit, "ft"));
         output.Add(CalculationTime(calculationElapsed));
         output.Add(Table("Range Sweep", result.Rows,
             Col<McCoyPlusRow>("range", "Range", 90, row => F(row.Range, 0)),
@@ -353,6 +353,7 @@ public sealed class McCoyOkunCalculatorDialog
         SyncComboMcCoy(mccoyPlusFacehardInput.McCoy, mccoyPlusFacehardDragText);
         SyncFacehardBridge();
         McCoyPlusFacehard.FacehardCalculator = bridge => FacehardBridgeCalculate(bridge, mccoyPlusFacehardDetails);
+        var facehardPreview = FacehardCalculator.CalculateFacehard(mccoyPlusFacehardDetails, false);
         var stopwatch = Stopwatch.StartNew();
         var result = McCoyPlusFacehard.Calculate(mccoyPlusFacehardInput);
         stopwatch.Stop();
@@ -381,13 +382,13 @@ public sealed class McCoyOkunCalculatorDialog
         });
         AddMcCoyPlusCoreInputs(input, mccoyPlusFacehardInput.McCoy, true, () => mccoyPlusFacehardPresetId, value => mccoyPlusFacehardPresetId = value, () => mccoyPlusFacehardDragText, value => mccoyPlusFacehardDragText = value);
         input.Add(Section("Facehard Inputs"));
-        AddFacehardComboInputs(input, mccoyPlusFacehardDetails);
+        AddFacehardComboInputs(input, mccoyPlusFacehardDetails, facehardPreview);
         AddMcCoyPlusDragEditor(input, mccoyPlusFacehardInput.McCoy, () => mccoyPlusFacehardDragText, value => mccoyPlusFacehardDragText = value);
         output.Add(Warnings(result.Warnings));
         output.Add(Dropdown("Chart Mode", new List<string> { "Matched Trajectories", "Penetration By Range" }, mccoyPlusFacehardChartMode == "trajectory" ? 0 : 1,
             index => mccoyPlusFacehardChartMode = index == 0 ? "trajectory" : "penetration"));
         output.Add(mccoyPlusFacehardChartMode == "trajectory"
-            ? ChartSeries("Matched Trajectories", TrajectorySeries(result.ChartRows, mccoyPlusFacehardInput.McCoy.RangeUnit))
+            ? ChartSeries("Matched Trajectories", TrajectorySeries(result.ChartRows, mccoyPlusFacehardInput.McCoy.RangeUnit), mccoyPlusFacehardInput.McCoy.RangeUnit, "ft")
             : Chart("Facehard Penetration", result.Rows.Where(row => row.PenetrationInches.HasValue).Select(row => new Vector2((float)row.Range, (float)row.PenetrationInches.Value))));
         output.Add(CalculationTime(calculationElapsed));
         output.Add(Table("Rows", result.Rows,
@@ -435,7 +436,7 @@ public sealed class McCoyOkunCalculatorDialog
         output.Add(Dropdown("Chart Mode", new List<string> { "Matched Trajectories", "Penetration By Range" }, mccoyPlusM79ChartMode == "trajectory" ? 0 : 1,
             index => mccoyPlusM79ChartMode = index == 0 ? "trajectory" : "penetration"));
         output.Add(mccoyPlusM79ChartMode == "trajectory"
-            ? ChartSeries("Matched Trajectories", TrajectorySeries(result.ChartRows, mccoyPlusM79Input.McCoy.RangeUnit))
+            ? ChartSeries("Matched Trajectories", TrajectorySeries(result.ChartRows, mccoyPlusM79Input.McCoy.RangeUnit), mccoyPlusM79Input.McCoy.RangeUnit, "ft")
             : Chart("M79 Penetration", result.Rows.Where(row => row.PenetrationInches.HasValue).Select(row => new Vector2((float)row.Range, (float)row.PenetrationInches.Value))));
         output.Add(CalculationTime(calculationElapsed));
         output.Add(Table("Rows", result.Rows,
@@ -547,11 +548,13 @@ public sealed class McCoyOkunCalculatorDialog
         AddMcCoyPlusPresetDropdown(input, mccoy, getPresetId, setPresetId, setDragText, onPresetChanged);
     }
 
-    void AddFacehardInputs(VisualElement input, FacehardInput target, bool includeVelocity)
+    void AddFacehardInputs(VisualElement input, FacehardInput target, FacehardResult preview, bool includeVelocity)
     {
-        var selectedPreset = FacehardCalculator.FacehardProjectilePresets.FirstOrDefault(item => item.Id == target.ProjectilePresetId)
+        var selectedPreset = preview?.ProjectilePreset
+            ?? FacehardCalculator.FacehardProjectilePresets.FirstOrDefault(item => item.Id == target.ProjectilePresetId)
             ?? FacehardCalculator.FacehardProjectilePresets.FirstOrDefault(item => item.Id == "custom");
         var selectedNation = selectedPreset?.Nation ?? "Custom";
+        var resolvedCapType = preview?.ResolvedCapType ?? ResolvedCapType(target);
         var nations = FacehardCalculator.FacehardProjectileNations;
         input.Add(Dropdown("Projectile Nation", nations.Select(item => item.Name).ToList(),
             Mathf.Max(0, nations.FindIndex(item => item.Id == selectedNation)), index =>
@@ -572,7 +575,7 @@ public sealed class McCoyOkunCalculatorDialog
         var isCustom = target.ProjectilePresetId == "custom";
         var capLabels = new List<string> { "Hard AP cap", "Thin/Tough hard cap", "Soft AP cap", "Hood", "No cap" };
         var capValues = new List<string> { "hard", "thin-hard", "soft", "hood", "none" };
-        input.Add(Dropdown("Cap Or Hood", capLabels, Mathf.Max(0, capValues.IndexOf(ResolvedCapType(target))), index => target.CapType = capValues[Mathf.Max(0, index)], isCustom));
+        input.Add(Dropdown("Cap Or Hood", capLabels, Mathf.Max(0, capValues.IndexOf(resolvedCapType)), index => target.CapType = capValues[Mathf.Max(0, index)], isCustom));
 
         var schemaValues = new List<string> { "standard", "japanese-cap-head" };
         input.Add(Dropdown("Nose Schema", new List<string> { "Standard", "Japanese Cap Head" }, Mathf.Max(0, schemaValues.IndexOf(target.NoseSchema)),
@@ -604,7 +607,7 @@ public sealed class McCoyOkunCalculatorDialog
             input.Add(NumberField("Windscreen + Cap Head Weight", target.WindscreenCapHeadWeight, "lb", value => target.WindscreenCapHeadWeight = value, 0));
         else if (noseWeights.SchemaKind == "standard")
             input.Add(NumberField("Windscreen Weight", target.WindscreenWeight, "lb", value => target.WindscreenWeight = value, 0));
-        input.Add(NumberField(RemainingNoseWeightLabel(target, noseWeights.CapHead), noseWeights.RemainWeight, "lb", _ => { }, 0, false));
+        input.Add(NumberField(RemainingNoseWeightLabel(noseWeights.CapHead, resolvedCapType), noseWeights.RemainWeight, "lb", _ => { }, 0, false));
         input.Add(NumberField("PLIM", isCustom ? target.ProjectileLimitQuality : selectedPreset?.ProjectileLimitQuality ?? target.ProjectileLimitQuality, "", value => target.ProjectileLimitQuality = value, 0.001, isCustom));
         input.Add(NumberField("PDAM", isCustom ? target.ProjectileDamageQuality : selectedPreset?.ProjectileDamageQuality ?? target.ProjectileDamageQuality, "", value => target.ProjectileDamageQuality = value, 0.001, isCustom));
 
@@ -624,19 +627,21 @@ public sealed class McCoyOkunCalculatorDialog
         input.Add(NumberField("Metal Backing", target.MetalBackingThickness, "in", value => target.MetalBackingThickness = value, 0));
         input.Add(NumberField("Backing Quality", target.BackingQuality, "", value => target.BackingQuality = value, 0.001));
         input.Add(NumberField("Backing Plates", target.BackingPlates, "", value => target.BackingPlates = value, 0));
-        if (((noseWeights.Condition == "windscreen-removed" && ResolvedCapType(target) != "none") || noseWeights.Condition == "caphead-removed") && noseWeights.RemainWeight <= 0)
+        if (((noseWeights.Condition == "windscreen-removed" && resolvedCapType != "none") || noseWeights.Condition == "caphead-removed") && noseWeights.RemainWeight <= 0)
             input.Add(Warnings(new[] { "The selected lost-covering weight consumes all non-body weight; Facehard69 requires remaining cap/hood weight for this state." }));
     }
 
-    void AddFacehardComboInputs(VisualElement input, FacehardInput target)
+    void AddFacehardComboInputs(VisualElement input, FacehardInput target, FacehardResult preview)
     {
         input.Add(Dropdown("Armor Type", FacehardCalculator.FacehardArmors.Select(item => item.Name).ToList(),
             FacehardCalculator.FacehardArmors.FindIndex(item => item.Id == target.ArmorId),
             index => target.ArmorId = FacehardCalculator.FacehardArmors[Mathf.Max(0, index)].Id));
 
-        var selectedPreset = FacehardCalculator.FacehardProjectilePresets.FirstOrDefault(item => item.Id == target.ProjectilePresetId)
+        var selectedPreset = preview?.ProjectilePreset
+            ?? FacehardCalculator.FacehardProjectilePresets.FirstOrDefault(item => item.Id == target.ProjectilePresetId)
             ?? FacehardCalculator.FacehardProjectilePresets.FirstOrDefault(item => item.Id == "custom");
         var selectedNation = selectedPreset?.Nation ?? "Custom";
+        var resolvedCapType = preview?.ResolvedCapType ?? ResolvedCapType(target);
         var nations = FacehardCalculator.FacehardProjectileNations;
         input.Add(Dropdown("Projectile Nation", nations.Select(item => item.Name).ToList(),
             Mathf.Max(0, nations.FindIndex(item => item.Id == selectedNation)), index =>
@@ -654,20 +659,20 @@ public sealed class McCoyOkunCalculatorDialog
             Mathf.Max(0, projectileChoices.FindIndex(item => item.Id == target.ProjectilePresetId)),
             index => target.ProjectilePresetId = projectileChoices[Mathf.Max(0, index)].Id));
 
-        AddFacehardProjectileDetailInputs(input, target, selectedPreset, target.ProjectilePresetId == "custom");
+        AddFacehardProjectileDetailInputs(input, target, selectedPreset, resolvedCapType, target.ProjectilePresetId == "custom");
         var noseWeights = FacehardCalculator.FacehardNoseCoveringWeights(target);
         input.Add(NumberField("Wood Backing", target.WoodBackingThickness, "in", value => target.WoodBackingThickness = value, 0));
         input.Add(NumberField("Cement Backing", target.CementBackingThickness, "in", value => target.CementBackingThickness = value, 0));
         input.Add(NumberField("Metal Backing", target.MetalBackingThickness, "in", value => target.MetalBackingThickness = value, 0));
-        if (((noseWeights.Condition == "windscreen-removed" && ResolvedCapType(target) != "none") || noseWeights.Condition == "caphead-removed") && noseWeights.RemainWeight <= 0)
+        if (((noseWeights.Condition == "windscreen-removed" && resolvedCapType != "none") || noseWeights.Condition == "caphead-removed") && noseWeights.RemainWeight <= 0)
             input.Add(Warnings(new[] { "The selected lost-covering weight consumes all non-body weight; Facehard69 requires remaining cap/hood weight for this state." }));
     }
 
-    void AddFacehardProjectileDetailInputs(VisualElement input, FacehardInput target, FacehardProjectilePreset selectedPreset, bool isCustom)
+    void AddFacehardProjectileDetailInputs(VisualElement input, FacehardInput target, FacehardProjectilePreset selectedPreset, string resolvedCapType, bool isCustom)
     {
         var capLabels = new List<string> { "Hard AP cap", "Thin/Tough hard cap", "Soft AP cap", "Hood", "No cap" };
         var capValues = new List<string> { "hard", "thin-hard", "soft", "hood", "none" };
-        input.Add(Dropdown("Cap Or Hood", capLabels, Mathf.Max(0, capValues.IndexOf(ResolvedCapType(target))), index => target.CapType = capValues[Mathf.Max(0, index)], isCustom));
+        input.Add(Dropdown("Cap Or Hood", capLabels, Mathf.Max(0, capValues.IndexOf(resolvedCapType)), index => target.CapType = capValues[Mathf.Max(0, index)], isCustom));
 
         var schemaValues = new List<string> { "standard", "japanese-cap-head" };
         input.Add(Dropdown("Nose Schema", new List<string> { "Standard", "Japanese Cap Head" }, Mathf.Max(0, schemaValues.IndexOf(target.NoseSchema)),
@@ -699,7 +704,7 @@ public sealed class McCoyOkunCalculatorDialog
             input.Add(NumberField("Windscreen + Cap Head Weight", target.WindscreenCapHeadWeight, "lb", value => target.WindscreenCapHeadWeight = value, 0));
         else if (noseWeights.SchemaKind == "standard")
             input.Add(NumberField("Windscreen Weight", target.WindscreenWeight, "lb", value => target.WindscreenWeight = value, 0));
-        input.Add(NumberField(RemainingNoseWeightLabel(target, noseWeights.CapHead), noseWeights.RemainWeight, "lb", _ => { }, 0, false));
+        input.Add(NumberField(RemainingNoseWeightLabel(noseWeights.CapHead, resolvedCapType), noseWeights.RemainWeight, "lb", _ => { }, 0, false));
         input.Add(NumberField("PLIM", isCustom ? target.ProjectileLimitQuality : selectedPreset?.ProjectileLimitQuality ?? target.ProjectileLimitQuality, "", value => target.ProjectileLimitQuality = value, 0.001, isCustom));
         input.Add(NumberField("PDAM", isCustom ? target.ProjectileDamageQuality : selectedPreset?.ProjectileDamageQuality ?? target.ProjectileDamageQuality, "", value => target.ProjectileDamageQuality = value, 0.001, isCustom));
     }
@@ -741,13 +746,17 @@ public sealed class McCoyOkunCalculatorDialog
             : $"{preset.Id}. {preset.Name} ({preset.BranchLabel ?? preset.OriginalCode})";
     }
 
-    static string RemainingNoseWeightLabel(FacehardInput input, double capHead)
+    static string RemainingNoseWeightLabel(double capHead, string resolvedCapType)
     {
-        if (input?.NoseSchema == "japanese-cap-head" && capHead == 1)
-            return "Remaining Nose Plug Weight";
-        if (input?.NoseSchema == "japanese-cap-head" && capHead == 2)
-            return "Remaining AP Cap Weight";
-        return "Remaining Nose Covering Weight";
+        if (capHead == 2)
+            return "Remaining AP Cap Body Weight";
+        if (capHead == 1)
+            return "Remaining Nose Covering Weight";
+        if (resolvedCapType == "hood")
+            return "Remaining Hood Weight";
+        if (resolvedCapType == "none")
+            return "Remaining Nose Covering Weight";
+        return "Remaining AP Cap Weight";
     }
 
     static string ResolvedCapType(FacehardInput input)
@@ -1132,41 +1141,68 @@ public sealed class McCoyOkunCalculatorDialog
         return root;
     }
 
-    static VisualElement ChartSeries(string title, IEnumerable<MiniChartSeries> series)
+    static VisualElement ChartSeries(string title, IEnumerable<MiniChartSeries> series, string xUnit, string yUnit)
     {
         var resolvedSeries = series?.Where(item => item != null && item.Points.Count > 0).ToList() ?? new();
-        var root = new VisualElement { style = { minHeight = 210, marginBottom = 8 } };
+        var root = new VisualElement { style = { minHeight = 230, marginBottom = 8 } };
         root.Add(Section(title));
+        if (resolvedSeries.Count > 1)
+            root.Add(ChartLegend(resolvedSeries));
         var chart = new McCoyOkunMiniChart();
+        chart.SetAxisLabels(xUnit, yUnit);
         chart.SetSeries(resolvedSeries);
         root.Add(chart);
-        if (resolvedSeries.Count > 1)
+        return root;
+    }
+
+    static VisualElement ChartLegend(List<MiniChartSeries> series)
+    {
+        var legend = new VisualElement
         {
-            var legend = new VisualElement
+            style =
+            {
+                flexDirection = FlexDirection.Row,
+                flexWrap = Wrap.Wrap,
+                marginTop = 2,
+                marginBottom = 2,
+                marginLeft = 42
+            }
+        };
+        for (var i = 0; i < series.Count; i++)
+        {
+            var item = new VisualElement
             {
                 style =
                 {
                     flexDirection = FlexDirection.Row,
-                    flexWrap = Wrap.Wrap,
-                    marginTop = 4
+                    alignItems = Align.Center,
+                    marginRight = 16,
+                    marginBottom = 2
                 }
             };
-            for (var i = 0; i < resolvedSeries.Count; i++)
+            var swatch = new VisualElement
             {
-                var label = new Label(resolvedSeries[i].Label)
+                style =
                 {
-                    style =
-                    {
-                        marginRight = 12,
-                        unityFontStyleAndWeight = FontStyle.Bold
-                    }
-                };
-                label.style.color = McCoyOkunMiniChart.SeriesColor(i);
-                legend.Add(label);
-            }
-            root.Add(legend);
+                    width = 18,
+                    height = 3,
+                    marginRight = 5
+                }
+            };
+            swatch.style.backgroundColor = McCoyOkunMiniChart.SeriesColor(i);
+            item.Add(swatch);
+            var label = new Label(series[i].Label)
+            {
+                style =
+                {
+                    fontSize = 11
+                }
+            };
+            label.style.color = McCoyOkunMiniChart.SeriesColor(i);
+            item.Add(label);
+            legend.Add(item);
         }
-        return root;
+        return legend;
     }
 
     static IEnumerable<MiniChartSeries> TrajectorySeries<T>(IEnumerable<T> rows, string rangeUnit) where T : McCoyPlusRow
@@ -1176,7 +1212,7 @@ public sealed class McCoyOkunCalculatorDialog
             yield return new MiniChartSeries
             {
                 Label = $"{F(row.Range, 0)} {rangeUnit}",
-                Points = row.Trajectory.Select(point => new Vector2((float)point.Range, (float)point.HeightInches)).ToList()
+                Points = row.Trajectory.Select(point => new Vector2((float)point.Range, (float)(point.HeightInches / 12d))).ToList()
             };
         }
     }
@@ -1294,12 +1330,23 @@ public sealed class McCoyOkunMiniChart : VisualElement
     };
 
     readonly List<McCoyOkunCalculatorDialog.MiniChartSeries> Series = new();
+    readonly VisualElement labelLayer = new();
+    string xAxisUnit = "";
+    string yAxisUnit = "";
 
     public McCoyOkunMiniChart()
     {
         style.height = 150;
         style.flexGrow = 1;
+        labelLayer.style.position = Position.Absolute;
+        labelLayer.style.left = 0;
+        labelLayer.style.top = 0;
+        labelLayer.style.right = 0;
+        labelLayer.style.bottom = 0;
+        labelLayer.pickingMode = PickingMode.Ignore;
+        Add(labelLayer);
         generateVisualContent += OnGenerateVisualContent;
+        RegisterCallback<GeometryChangedEvent>(_ => RebuildLabels());
     }
 
     public static Color SeriesColor(int index)
@@ -1319,6 +1366,14 @@ public sealed class McCoyOkunMiniChart : VisualElement
         });
     }
 
+    public void SetAxisLabels(string xUnit, string yUnit)
+    {
+        xAxisUnit = xUnit ?? "";
+        yAxisUnit = yUnit ?? "";
+        RebuildLabels();
+        MarkDirtyRepaint();
+    }
+
     public void SetSeries(IEnumerable<McCoyOkunCalculatorDialog.MiniChartSeries> newSeries)
     {
         Series.Clear();
@@ -1336,6 +1391,7 @@ public sealed class McCoyOkunMiniChart : VisualElement
                 });
             }
         }
+        RebuildLabels();
         MarkDirtyRepaint();
     }
 
@@ -1353,7 +1409,7 @@ public sealed class McCoyOkunMiniChart : VisualElement
         if (Mathf.Approximately(minX, maxX) || Mathf.Approximately(minY, maxY))
             return;
 
-        var plot = new Rect(rect.x + 42, rect.y + 12, rect.width - 56, rect.height - 34);
+        var plot = GetPlotRect(rect);
         var painter = context.painter2D;
         painter.lineWidth = 1;
         painter.strokeColor = HtmlColor("#aab3ab");
@@ -1383,6 +1439,58 @@ public sealed class McCoyOkunMiniChart : VisualElement
             }
             painter.Stroke();
         }
+    }
+
+    void RebuildLabels()
+    {
+        labelLayer.Clear();
+        var rect = contentRect;
+        var allPoints = Series.SelectMany(item => item.Points).ToList();
+        if (rect.width <= 8 || rect.height <= 8 || allPoints.Count < 2)
+            return;
+
+        var plot = GetPlotRect(rect);
+        var maxX = allPoints.Max(point => point.x);
+        var maxY = allPoints.Max(point => point.y);
+        var axisColor = HtmlColor("#aab3ab");
+        var yLabel = string.IsNullOrWhiteSpace(yAxisUnit) ? "" : yAxisUnit;
+        var xLabel = string.IsNullOrWhiteSpace(xAxisUnit)
+            ? maxX.ToString("0", CultureInfo.InvariantCulture)
+            : $"{maxX.ToString("0", CultureInfo.InvariantCulture)} {AbbreviateUnit(xAxisUnit)}";
+        labelLayer.Add(BuildLabel(yLabel, 2f, plot.yMin - 6f, plot.xMin - 8f, 18f, TextAnchor.MiddleRight, axisColor));
+        labelLayer.Add(BuildLabel(maxY.ToString("0", CultureInfo.InvariantCulture), 2f, plot.yMin + 10f, plot.xMin - 8f, 18f, TextAnchor.MiddleRight, axisColor));
+        labelLayer.Add(BuildLabel(xLabel, plot.xMax - 82f, plot.yMax + 8f, 86f, 18f, TextAnchor.UpperRight, axisColor));
+    }
+
+    static Rect GetPlotRect(Rect rect)
+    {
+        return new Rect(rect.x + 42, rect.y + 12, rect.width - 56, rect.height - 34);
+    }
+
+    static string AbbreviateUnit(string unit)
+    {
+        return unit switch
+        {
+            "yards" => "yd",
+            "yard" => "yd",
+            "feet" => "ft",
+            "foot" => "ft",
+            _ => unit
+        };
+    }
+
+    static Label BuildLabel(string text, float left, float top, float width, float height, TextAnchor align, Color color)
+    {
+        var label = new Label(text);
+        label.style.position = Position.Absolute;
+        label.style.left = left;
+        label.style.top = top;
+        label.style.width = width;
+        label.style.height = height;
+        label.style.unityTextAlign = align;
+        label.style.fontSize = 11;
+        label.style.color = color;
+        return label;
     }
 
     static Color HtmlColor(string html)

@@ -92,13 +92,17 @@ static async Task AskIntLift(IntLiftInput input)
     }
 }
 
-static async Task<string> AskBoundaryLayer(string fallback)
+static async Task<JbmBoundaryLayer> AskBoundaryLayer(JbmBoundaryLayer fallback)
 {
     while (true)
     {
-        var code = (await Ask("ENTER THE BOUNDARY LAYER CODE (L/L, L/T, OR T/T)", fallback)).ToUpperInvariant();
-        if (code == JbmBoundaryLayer.LaminarLaminar || code == JbmBoundaryLayer.LaminarTurbulent || code == JbmBoundaryLayer.TurbulentTurbulent)
-            return code;
+        var code = (await Ask("ENTER THE BOUNDARY LAYER CODE (L/L, L/T, OR T/T)", BallisticOptions.ToLegacyCode(fallback))).ToUpperInvariant();
+        if (code == "L/L")
+            return JbmBoundaryLayer.LaminarLaminar;
+        if (code == "L/T")
+            return JbmBoundaryLayer.LaminarTurbulent;
+        if (code == "T/T")
+            return JbmBoundaryLayer.TurbulentTurbulent;
         Console.WriteLine("INCORRECT BOUNDARY LAYER CODE. PLEASE TRY AGAIN.");
     }
 }

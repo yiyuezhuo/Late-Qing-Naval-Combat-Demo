@@ -10,9 +10,9 @@ namespace YYZ.Ballistic
 
         public List<DragPoint> DragTable { get; set; } = McCoy.DefaultDragTable();
 
-        public string RangeUnit { get; set; } = "yards";
+        public McCoyRangeUnit RangeUnit { get; set; } = McCoyRangeUnit.Yards;
 
-        public string Atmosphere { get; set; } = "standard";
+        public McCoyAtmosphere Atmosphere { get; set; } = McCoyAtmosphere.StandardMetro;
 
         public string ProjectileId { get; set; } = "Example projectile";
 
@@ -264,8 +264,8 @@ namespace YYZ.Ballistic
         public static List<string> RenderLegacyReport(McCoyInput input, McCoyResult result)
         {
             var lines = new List<string>();
-            var unitLabel = input.RangeUnit == "yards" ? "(YARDS)" : "(METERS)";
-            lines.Add(input.Atmosphere == "standard" ? "ARMY STANDARD METRO" : "ICAO STANDARD ATMOSPHERE");
+            var unitLabel = input.RangeUnit == McCoyRangeUnit.Yards ? "(YARDS)" : "(METERS)";
+            lines.Add(input.Atmosphere == McCoyAtmosphere.StandardMetro ? "ARMY STANDARD METRO" : "ICAO STANDARD ATMOSPHERE");
             lines.Add("");
             lines.Add($"DRAG FUNCTION: {input.DragName}");
             lines.Add($"PROJECTILE IDENTIFICATION: {input.ProjectileId}");
@@ -327,14 +327,14 @@ namespace YYZ.Ballistic
             };
         }
 
-        static double UnitToFeet(string unit)
+        static double UnitToFeet(McCoyRangeUnit unit)
         {
-            return unit == "yards" ? 3 : 1 / 0.3048;
+            return unit == McCoyRangeUnit.Yards ? 3 : 1 / 0.3048;
         }
 
-        static AtmosphereConstants AtmosphereFor(string kind)
+        static AtmosphereConstants AtmosphereFor(McCoyAtmosphere kind)
         {
-            if (kind == "icao")
+            if (kind == McCoyAtmosphere.Icao)
             {
                 return new AtmosphereConstants
                 {

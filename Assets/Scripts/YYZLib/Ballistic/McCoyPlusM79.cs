@@ -20,7 +20,7 @@ namespace YYZ.Ballistic
 
         public double M79Obliquity { get; set; }
 
-        public string PenetrationMode { get; set; }
+        public M79PenetrationMode? PenetrationMode { get; set; }
 
         public double? RemainingVelocity { get; set; }
     }
@@ -46,7 +46,7 @@ namespace YYZ.Ballistic
             public double? PenetrationInches;
             public double? M79NavyBallisticLimit;
             public double M79Obliquity;
-            public string PenetrationMode;
+            public M79PenetrationMode? PenetrationMode;
             public double? RemainingVelocity;
             public string Warning;
         }

@@ -3,13 +3,6 @@ using System.Collections.Generic;
 
 namespace YYZ.Ballistic
 {
-    public static class M79PenetrationMode
-    {
-        public const string NoseFirst = "nose-first";
-        public const string BaseFirst = "base-first";
-        public const string NoCompletePenetration = "no-complete-penetration";
-    }
-
     public sealed class M79Input
     {
         public double ProjectileDiameter { get; set; } = 3;
@@ -57,7 +50,7 @@ namespace YYZ.Ballistic
 
         public double VsNblRatio { get; set; }
 
-        public string PenetrationMode { get; set; } = M79PenetrationMode.NoseFirst;
+        public M79PenetrationMode PenetrationMode { get; set; } = M79PenetrationMode.NoseFirst;
 
         public double EnergyNbl { get; set; }
 

@@ -3,13 +3,6 @@ using System.Collections.Generic;
 
 namespace YYZ.Ballistic
 {
-    public static class JbmBoundaryLayer
-    {
-        public const string LaminarLaminar = "L/L";
-        public const string LaminarTurbulent = "L/T";
-        public const string TurbulentTurbulent = "T/T";
-    }
-
     public class JbmProjectileGeometryInput
     {
         public double ReferenceDiameterMm { get; set; } = 7.82;
@@ -35,7 +28,7 @@ namespace YYZ.Ballistic
 
         public double CenterOfGravityCalibers { get; set; } = 2.1;
 
-        public string BoundaryLayer { get; set; } = JbmBoundaryLayer.LaminarTurbulent;
+        public JbmBoundaryLayer BoundaryLayer { get; set; } = JbmBoundaryLayer.LaminarTurbulent;
     }
 
     public sealed class McDragRow
@@ -695,7 +688,7 @@ namespace YYZ.Ballistic
             lines.Add($"PROJECTILE IDENTIFICATION: {input.ProjectileId}");
             lines.Add("");
             lines.Add("REF. DIA.  TOTAL LENGTH  NOSE LENGTH  RT/R  BOATTAIL LENGTH  BASE DIA.  MEPLAT DIA.  BAND DIA.  XCG  BOUND. LAYER");
-            lines.Add($"{BallisticText.ToJsString(input.ReferenceDiameterMm)} {BallisticText.ToJsString(input.TotalLengthCalibers)} {BallisticText.ToJsString(input.NoseLengthCalibers)} {BallisticText.ToJsString(input.TangentRadiusRatio)} {BallisticText.ToJsString(input.BoattailLengthCalibers)} {BallisticText.ToJsString(input.BaseDiameterCalibers)} {BallisticText.ToJsString(input.MeplatDiameterCalibers)} {BallisticText.ToJsString(input.RotatingBandDiameterCalibers)} {BallisticText.ToJsString(input.CenterOfGravityCalibers)} {input.BoundaryLayer}");
+            lines.Add($"{BallisticText.ToJsString(input.ReferenceDiameterMm)} {BallisticText.ToJsString(input.TotalLengthCalibers)} {BallisticText.ToJsString(input.NoseLengthCalibers)} {BallisticText.ToJsString(input.TangentRadiusRatio)} {BallisticText.ToJsString(input.BoattailLengthCalibers)} {BallisticText.ToJsString(input.BaseDiameterCalibers)} {BallisticText.ToJsString(input.MeplatDiameterCalibers)} {BallisticText.ToJsString(input.RotatingBandDiameterCalibers)} {BallisticText.ToJsString(input.CenterOfGravityCalibers)} {BallisticOptions.ToLegacyCode(input.BoundaryLayer)}");
             lines.Add("");
             lines.Add("M      CD0    CDH    CDSF   CDBND  CDBT   CDB    PB/PINF");
             foreach (var row in rows)

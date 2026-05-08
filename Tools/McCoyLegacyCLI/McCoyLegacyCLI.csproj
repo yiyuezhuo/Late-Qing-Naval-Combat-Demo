@@ -7,6 +7,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="..\..\Assets\Scripts\YYZLib\Ballistic\BallisticCommon.cs" Link="BallisticCommon.cs" />
+    <Compile Include="..\..\Assets\Scripts\YYZLib\Ballistic\BallisticOptions.cs" Link="BallisticOptions.cs" />
     <Compile Include="..\..\Assets\Scripts\YYZLib\Ballistic\McCoy.cs" Link="McCoy.cs" />
   </ItemGroup>
 </Project>

@@ -38,16 +38,16 @@ namespace YYZ.Ballistic
         public double Obliquity = 30;
         public double ProjectileLimitQuality = 1;
         public double ProjectileDamageQuality = 1;
-        public string CapType = "hard";
+        public FacehardCapType CapType = FacehardCapType.Hard;
         public bool CurvedPlate;
         public double WoodBackingThickness;
         public double CementBackingThickness;
         public double MetalBackingThickness;
         public double BackingQuality = 1;
         public double BackingPlates = 1;
-        public string NoseSchema = "standard";
+        public FacehardNoseSchema NoseSchema = FacehardNoseSchema.Standard;
         public double JapaneseCapHead = 2;
-        public string NoseCondition = "intact";
+        public FacehardNoseCondition NoseCondition = FacehardNoseCondition.Intact;
         public double WindscreenWeight;
         public double WindscreenCapHeadWeight;
 
@@ -73,7 +73,7 @@ namespace YYZ.Ballistic
         public string BranchLabel;
         public double ProjectileLimitQuality = 1;
         public double ProjectileDamageQuality = 1;
-        public string CapType = "hard";
+        public FacehardCapType CapType = FacehardCapType.Hard;
         public double ShatterResistance;
         public double NoShatterDamageAngle = 15;
         public double LightCase;
@@ -101,10 +101,10 @@ namespace YYZ.Ballistic
         public double TotalWeight;
         public double BodyWeight;
         public double MaxNoseCoveringWeight;
-        public string SchemaKind;
+        public FacehardNoseSchema SchemaKind;
         public double CapHead;
-        public string Condition;
-        public List<string> ConditionOptions = new List<string>();
+        public FacehardNoseCondition Condition;
+        public List<FacehardNoseCondition> ConditionOptions = new List<FacehardNoseCondition>();
         public double WindscreenWeight;
         public double WindscreenCapHeadWeight;
         public double LossWeight;
@@ -138,9 +138,9 @@ namespace YYZ.Ballistic
 
     public sealed class FacehardPenetrationResult
     {
-        public double Type;
+        public FacehardPenetrationType Type;
         public string Label;
-        public string PenetrationFlag;
+        public FacehardPenetrationFlag PenetrationFlag;
         public double? ProjectileRemainingVelocity;
         public double? PlugOrPiecesVelocity;
         public double? AverageRemainingVelocity;
@@ -153,7 +153,7 @@ namespace YYZ.Ballistic
     public sealed class FacehardShatterResult
     {
         public bool Occurs;
-        public string Type;
+        public FacehardShatterType Type;
         public string Reason;
         public double Multiplier;
         public double ObliquityMultiplier;
@@ -178,7 +178,7 @@ namespace YYZ.Ballistic
         public FacehardProjectilePreset ProjectilePreset;
         public double ResolvedProjectileLimitQuality;
         public double ResolvedProjectileDamageQuality;
-        public string ResolvedCapType;
+        public FacehardCapType ResolvedCapType;
         public double ProjectileQualityBonus;
         public FacehardShatterResult Shatter;
         public FacehardLimitSelection Limits;
@@ -208,7 +208,7 @@ namespace YYZ.Ballistic
         public double BendVdf;
         public double BendCriticalObliquity;
         public double? CardonaldCriticalVelocity;
-        public string Status;
+        public FacehardStatus Status;
         public List<string> Notes = new List<string>();
         public FacehardLegacyResult Legacy;
     }
@@ -282,7 +282,7 @@ namespace YYZ.Ballistic
         {
             input ??= FacehardInput.CreateDefault();
             var capHead = ResolvedCapHead(input);
-            var schemaKind = capHead > 0 ? "japanese-cap-head" : "standard";
+            var schemaKind = capHead > 0 ? FacehardNoseSchema.JapaneseCapHead : FacehardNoseSchema.Standard;
             var conditionOptions = NoseConditionOptions(capHead);
             var condition = NormalizeNoseCondition(input.NoseCondition, capHead);
             var totalWeight = Math.Max(input.ProjectileWeight, 1);
@@ -290,11 +290,11 @@ namespace YYZ.Ballistic
             var maxNoseCoveringWeight = Math.Max(0, totalWeight - bodyWeight);
             var windscreenWeight = Math.Min(Math.Max(input.WindscreenWeight, 0), maxNoseCoveringWeight);
             var windscreenCapHeadWeight = Math.Min(Math.Max(input.WindscreenCapHeadWeight, 0), maxNoseCoveringWeight);
-            var lossWeight = condition == "windscreen-removed"
+            var lossWeight = condition == FacehardNoseCondition.WindscreenRemoved
                 ? windscreenWeight
-                : condition == "caphead-removed"
+                : condition == FacehardNoseCondition.CapHeadRemoved
                     ? windscreenCapHeadWeight
-                    : condition == "all-removed"
+                    : condition == FacehardNoseCondition.AllRemoved
                         ? maxNoseCoveringWeight
                         : 0;
             return new FacehardNoseCoveringWeights
@@ -350,10 +350,10 @@ namespace YYZ.Ballistic
 
             var shatterType = LegacyShatterType(state);
             var penetrationFlag = LegacyPenetrationFlag(state.PENFLG);
-            var penetrationType = Math.Min(Math.Max(state.PENTP, 0), 6);
-            var status = "no-hole";
-            if (input.StrikingVelocity >= state.VLMT) status = input.StrikingVelocity >= state.MINEV ? "effective-complete" : "complete";
-            else if (input.StrikingVelocity >= state.VHOL) status = "holed";
+            var penetrationType = LegacyPenetrationType(state.PENTP);
+            var status = FacehardStatus.NoHole;
+            if (input.StrikingVelocity >= state.VLMT) status = input.StrikingVelocity >= state.MINEV ? FacehardStatus.EffectiveComplete : FacehardStatus.Complete;
+            else if (input.StrikingVelocity >= state.VHOL) status = FacehardStatus.Holed;
 
             var notes = new List<string> { "Facehard69 legacy kernel is the authoritative calculation path for this panel." };
             if (state.PROCESS_REPORT != null) notes.AddRange(state.PROCESS_REPORT);
@@ -370,7 +370,7 @@ namespace YYZ.Ballistic
                 {
                     Occurs = state.SHAT == 1 || state.NSSHAT > 0,
                     Type = shatterType,
-                    Reason = shatterType == "none"
+                    Reason = shatterType == FacehardShatterType.None
                         ? "Legacy IMPACTSETUP did not select a shatter branch."
                         : $"Legacy IMPACTSETUP selected SHAT={state.SHAT}, NSSHAT={state.NSSHAT}.",
                     Multiplier = state.SHATMULT,
@@ -488,9 +488,9 @@ namespace YYZ.Ballistic
                 NBK = input.MetalBackingThickness > 0 ? backingPlates : 0,
                 QBK = Math.Max(input.BackingQuality, 0),
                 CAPHD = noseWeights.CapHead,
-                noseCoveringState = noseWeights.Condition,
-                WWT = noseWeights.Condition == "windscreen-removed" ? noseWeights.WindscreenWeight : 0,
-                WCHWT = noseWeights.Condition == "caphead-removed" ? noseWeights.WindscreenCapHeadWeight : 0,
+                noseCoveringState = BallisticOptions.ToLegacyCode(noseWeights.Condition),
+                WWT = noseWeights.Condition == FacehardNoseCondition.WindscreenRemoved ? noseWeights.WindscreenWeight : 0,
+                WCHWT = noseWeights.Condition == FacehardNoseCondition.CapHeadRemoved ? noseWeights.WindscreenCapHeadWeight : 0,
             };
 
             if (isCustom)
@@ -549,64 +549,74 @@ namespace YYZ.Ballistic
         static double ResolvedCapHead(FacehardInput input)
         {
             var preset = ProjectilePresetForLegacy(input);
-            if (preset.Id == "custom") return input.NoseSchema == "japanese-cap-head" ? Clamp(Math.Round(input.JapaneseCapHead), 1, 2) : 0;
+            if (preset.Id == "custom") return input.NoseSchema == FacehardNoseSchema.JapaneseCapHead ? Clamp(Math.Round(input.JapaneseCapHead), 1, 2) : 0;
             return AutomaticCapHead(preset);
         }
 
-        static List<string> NoseConditionOptions(double capHead)
+        static List<FacehardNoseCondition> NoseConditionOptions(double capHead)
         {
-            if (capHead == 1) return new List<string> { "intact", "all-removed" };
-            if (capHead == 2) return new List<string> { "intact", "caphead-removed" };
-            return new List<string> { "intact", "windscreen-removed", "all-removed" };
+            if (capHead == 1) return new List<FacehardNoseCondition> { FacehardNoseCondition.Intact, FacehardNoseCondition.AllRemoved };
+            if (capHead == 2) return new List<FacehardNoseCondition> { FacehardNoseCondition.Intact, FacehardNoseCondition.CapHeadRemoved };
+            return new List<FacehardNoseCondition> { FacehardNoseCondition.Intact, FacehardNoseCondition.WindscreenRemoved, FacehardNoseCondition.AllRemoved };
         }
 
-        static string NormalizeNoseCondition(string condition, double capHead)
+        static FacehardNoseCondition NormalizeNoseCondition(FacehardNoseCondition condition, double capHead)
         {
-            if (capHead == 1) return condition == "intact" ? "intact" : "all-removed";
-            if (capHead == 2) return condition == "intact" ? "intact" : "caphead-removed";
-            return condition == "caphead-removed" ? "intact" : condition;
+            if (capHead == 1) return condition == FacehardNoseCondition.Intact ? FacehardNoseCondition.Intact : FacehardNoseCondition.AllRemoved;
+            if (capHead == 2) return condition == FacehardNoseCondition.Intact ? FacehardNoseCondition.Intact : FacehardNoseCondition.CapHeadRemoved;
+            return condition == FacehardNoseCondition.CapHeadRemoved ? FacehardNoseCondition.Intact : condition;
         }
 
-        static double CapTypeToLegacyCode(string capType)
+        static double CapTypeToLegacyCode(FacehardCapType capType)
         {
-            if (capType == "hood") return -1;
-            if (capType == "soft") return 1;
-            if (capType == "hard") return 2;
-            if (capType == "thin-hard") return 3;
-            return 0;
+            return capType switch
+            {
+                FacehardCapType.Hood => -1,
+                FacehardCapType.Soft => 1,
+                FacehardCapType.Hard => 2,
+                FacehardCapType.ThinHard => 3,
+                _ => 0,
+            };
         }
 
-        static string LegacyCapType(double code)
+        static FacehardCapType LegacyCapType(double code)
         {
-            if (code == -1) return "hood";
-            if (code == 1) return "soft";
-            if (code == 2) return "hard";
-            if (code == 3) return "thin-hard";
-            return "none";
+            if (code == -1) return FacehardCapType.Hood;
+            if (code == 1) return FacehardCapType.Soft;
+            if (code == 2) return FacehardCapType.Hard;
+            if (code == 3) return FacehardCapType.ThinHard;
+            return FacehardCapType.None;
         }
 
-        static string PenetrationLabel(double type)
+        static string PenetrationLabel(FacehardPenetrationType type)
         {
-            if (type == 1) return "Effective complete penetration";
-            if (type == 2) return "Complete penetration";
-            if (type == 3) return "Plate holed, damaged projectile rejected";
-            if (type == 4) return "Partial penetration by lower body pieces";
-            if (type == 5) return "Partial penetration by plug or fragments";
-            if (type == 6) return "Projectile shattered against plate";
-            return "No caliber-size hole";
+            return type switch
+            {
+                FacehardPenetrationType.EffectiveComplete => "Effective complete penetration",
+                FacehardPenetrationType.Complete => "Complete penetration",
+                FacehardPenetrationType.HoledDamagedProjectileRejected => "Plate holed, damaged projectile rejected",
+                FacehardPenetrationType.PartialByLowerBodyPieces => "Partial penetration by lower body pieces",
+                FacehardPenetrationType.PartialByPlugOrFragments => "Partial penetration by plug or fragments",
+                FacehardPenetrationType.ShatteredAgainstPlate => "Projectile shattered against plate",
+                _ => "No caliber-size hole",
+            };
         }
 
-        static string LegacyPenetrationFlag(double flag)
+        static FacehardPenetrationType LegacyPenetrationType(double type)
         {
-            if (flag == 0) return "none";
-            if (flag == 1) return "holing";
-            return "complete";
+            return (FacehardPenetrationType)(int)Math.Min(Math.Max(type, 0), 6);
         }
 
-        static string LegacyShatterType(Facehard69LegacyState state)
+        static FacehardPenetrationFlag LegacyPenetrationFlag(double flag)
         {
-            if (state.NSSHAT == 1 || state.NSSHAT == 4) return "nose-only";
-            return state.SHAT == 1 ? "complete" : "none";
+            if (flag == 1) return FacehardPenetrationFlag.Holing;
+            return flag == 0 ? FacehardPenetrationFlag.None : FacehardPenetrationFlag.Complete;
+        }
+
+        static FacehardShatterType LegacyShatterType(Facehard69LegacyState state)
+        {
+            if (state.NSSHAT == 1 || state.NSSHAT == 4) return FacehardShatterType.NoseOnly;
+            return state.SHAT == 1 ? FacehardShatterType.Complete : FacehardShatterType.None;
         }
 
         static FacehardProjectilePreset SelectedLegacyPreset(FacehardInput input, Facehard69LegacyState state)
@@ -685,7 +695,7 @@ namespace YYZ.Ballistic
                 Nation = "Custom",
                 ProjectileLimitQuality = 1,
                 ProjectileDamageQuality = 1,
-                CapType = "hard",
+                CapType = FacehardCapType.Hard,
                 ShatterResistance = 0,
                 NoShatterDamageAngle = 15,
                 LightCase = 0,

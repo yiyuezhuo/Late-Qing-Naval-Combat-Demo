@@ -28,9 +28,9 @@ namespace YYZ.Ballistic
 
         public List<DragPoint> DragTable { get; set; } = McCoyPlus.DragPresets()[0].Points;
 
-        public string RangeUnit { get; set; } = "yards";
+        public McCoyRangeUnit RangeUnit { get; set; } = McCoyRangeUnit.Yards;
 
-        public string Atmosphere { get; set; } = "standard";
+        public McCoyAtmosphere Atmosphere { get; set; } = McCoyAtmosphere.StandardMetro;
 
         public string ProjectileId { get; set; } = "Example projectile";
 
@@ -196,7 +196,7 @@ namespace YYZ.Ballistic
         {
             if (rows.Count > 0 && rows[rows.Count - 1].Range >= SweepLimit)
             {
-                warnings.Add($"Stopped at {BallisticText.ToJsString(SweepLimit)} {source.RangeUnit}: safety sweep limit reached.");
+                warnings.Add($"Stopped at {BallisticText.ToJsString(SweepLimit)} {BallisticOptions.ToLegacyCode(source.RangeUnit)}: safety sweep limit reached.");
             }
 
             return new McCoyPlusResult
@@ -400,7 +400,7 @@ namespace YYZ.Ballistic
             var reason = result.Warnings.Count > 0 ? string.Join("; ", result.Warnings) : "solver did not return a finite target-range solution";
             return new SolvedRow
             {
-                Warning = $"Stopped at {BallisticText.ToJsString(targetRange)} {source.RangeUnit}: {reason}.",
+                Warning = $"Stopped at {BallisticText.ToJsString(targetRange)} {BallisticOptions.ToLegacyCode(source.RangeUnit)}: {reason}.",
             };
         }
 

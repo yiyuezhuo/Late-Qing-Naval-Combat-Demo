@@ -23,16 +23,16 @@ static async Task Interactive(McCoyInput initial)
         if (!await AskYesNo("IS THE ABOVE DRAG TABLE CORRECT", true))
             continue;
 
-        input.RangeUnit = (await Ask("RANGE IN YARDS OR METERS? (ENTER Y FOR YARDS, M FOR METERS)", input.RangeUnit == "yards" ? "Y" : "M"))
+        input.RangeUnit = (await Ask("RANGE IN YARDS OR METERS? (ENTER Y FOR YARDS, M FOR METERS)", input.RangeUnit == McCoyRangeUnit.Yards ? "Y" : "M"))
             .ToUpperInvariant()
             .StartsWith("M", StringComparison.Ordinal)
-            ? "meters"
-            : "yards";
-        input.Atmosphere = (await Ask("ARMY STANDARD METRO OR ICAO? (ENTER S FOR STANDARD, I FOR ICAO)", input.Atmosphere == "standard" ? "S" : "I"))
+            ? McCoyRangeUnit.Meters
+            : McCoyRangeUnit.Yards;
+        input.Atmosphere = (await Ask("ARMY STANDARD METRO OR ICAO? (ENTER S FOR STANDARD, I FOR ICAO)", input.Atmosphere == McCoyAtmosphere.StandardMetro ? "S" : "I"))
             .ToUpperInvariant()
             .StartsWith("I", StringComparison.Ordinal)
-            ? "icao"
-            : "standard";
+            ? McCoyAtmosphere.Icao
+            : McCoyAtmosphere.StandardMetro;
         input.ProjectileId = await Ask("ENTER PROJECTILE IDENTIFICATION", input.ProjectileId);
         input.MuzzleVelocity = await AskNumber("ENTER MUZZLE VELOCITY (FEET/SECOND)", input.MuzzleVelocity, 1);
         input.BallisticCoefficient = await AskNumber("ENTER BALLISTIC COEFFICIENT (LB/IN 2)", input.BallisticCoefficient, 0.0001);
@@ -40,11 +40,11 @@ static async Task Interactive(McCoyInput initial)
         input.ElevationMinutes = await AskNumber("ENTER GUN ELEVATION ANGLE (MINUTES)", input.ElevationMinutes);
         input.DensityRatio = await AskNumber("ENTER RATIO OF AIR DENSITY TO SEA LEVEL STANDARD", input.DensityRatio, 0.0001);
         input.TemperatureF = await AskNumber("ENTER AIR TEMPERATURE (DEGREES, FAHRENHEIT)", input.TemperatureF);
-        input.PrintInterval = await AskNumber($"ENTER RANGE PRINT INTERVAL ({input.RangeUnit.ToUpperInvariant()})", input.PrintInterval, 1);
-        input.MaxRange = await AskNumber($"ENTER RANGE TO TERMINATE TRAJECTORY ({input.RangeUnit.ToUpperInvariant()})", input.MaxRange, 1);
+        input.PrintInterval = await AskNumber($"ENTER RANGE PRINT INTERVAL ({BallisticOptions.ToLegacyCode(input.RangeUnit).ToUpperInvariant()})", input.PrintInterval, 1);
+        input.MaxRange = await AskNumber($"ENTER RANGE TO TERMINATE TRAJECTORY ({BallisticOptions.ToLegacyCode(input.RangeUnit).ToUpperInvariant()})", input.MaxRange, 1);
         input.RangeWindMph = await AskNumber("ENTER RANGE WIND SPEED (MILES/HOUR)", input.RangeWindMph);
         input.CrossWindMph = await AskNumber("ENTER CROSS WIND SPEED (MILES/HOUR)", input.CrossWindMph);
-        input.MatchRange = await AskNumber($"ENTER THE TRAJECTORY MATCH RANGE, RMATCH ({input.RangeUnit.ToUpperInvariant()})", input.MatchRange, 0);
+        input.MatchRange = await AskNumber($"ENTER THE TRAJECTORY MATCH RANGE, RMATCH ({BallisticOptions.ToLegacyCode(input.RangeUnit).ToUpperInvariant()})", input.MatchRange, 0);
         input.MatchHeight = await AskNumber("ENTER THE TRAJECTORY MATCH HEIGHT, HMATCH (INCHES)", input.MatchHeight);
 
         if (Math.Floor(input.MaxRange / input.PrintInterval + 1.5) > 101

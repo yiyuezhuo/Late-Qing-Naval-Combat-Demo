@@ -767,7 +767,7 @@ namespace NavalCombatCore
     public class BatteryRecordMetaInfoMcCoyOkun
     {
         public BallisticSample ballisticSample;
-        public float fallToNextFireSeconds = 15f;
+        public float fallToNextFireSeconds = 12f;
     }
 
     public class RapidFireBatteryFireControlLevelRecord

@@ -72,7 +72,6 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
     VisualElement outputContent;
     Button createDeleteButton;
     Button syncBackButton;
-    Button sk5SyncBackButton;
     MultiColumnListView sk5DataListView;
 
     McCoyPlusFacehardInput input = McCoyPlusFacehard.DefaultInput();
@@ -82,10 +81,8 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
     string dragText = McCoyPlus.DragPresetToText(McCoyPlusDragFunction.G1);
     ChartMode chartMode = ChartMode.Trajectory;
     RangeMode rangeMode = RangeMode.Sweep;
-    float fallToNextFireSeconds = 15f;
-    float sk5MaxRateOfFireShootPerMin;
+    float fallToNextFireSeconds = 12f;
     bool roundSyncBackValuesToOneDecimal = true;
-    List<PenetrationTableRecord> sk5PenetrationTableRecords = new();
     List<ResultRow> tableRows = new();
     bool hasCalculated;
 
@@ -93,9 +90,7 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
     {
         this.batteryRecord = batteryRecord;
         this.callback = callback;
-        fallToNextFireSeconds = batteryRecord?.metaInfoMcCoyOkun?.fallToNextFireSeconds ?? 15f;
-        sk5MaxRateOfFireShootPerMin = batteryRecord?.maxRateOfFireShootPerMin ?? 0f;
-        sk5PenetrationTableRecords = ClonePenetrationRecords(batteryRecord?.penetrationTableRecords);
+        fallToNextFireSeconds = batteryRecord?.metaInfoMcCoyOkun?.fallToNextFireSeconds ?? 12f;
         var storedSample = batteryRecord?.metaInfoMcCoyOkun?.ballisticSample;
         if (storedSample != null)
             ApplyBallisticSample(storedSample);
@@ -119,9 +114,6 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         syncBackButton = root.Q<Button>("SyncBackButton");
         if (syncBackButton != null)
             syncBackButton.clicked += SyncBack;
-        sk5SyncBackButton = root.Q<Button>("Sk5SyncBackButton");
-        if (sk5SyncBackButton != null)
-            sk5SyncBackButton.clicked += SyncBack;
         sk5DataListView = root.Q<MultiColumnListView>("Sk5PenetrationTableListView");
         ConfigureSk5DataListView();
         outputContent = root.Q<VisualElement>("OutputContent");
@@ -214,7 +206,6 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         BindFloat("DensityRatioField", input.McCoy.DensityRatio, value => input.McCoy.DensityRatio = value, 0.001);
         BindFloat("TemperatureField", input.McCoy.TemperatureF, value => input.McCoy.TemperatureF = value);
         BindFloat("MatchHeightField", input.McCoy.MatchHeight, value => input.McCoy.MatchHeight = value);
-        BindFloat("FallToNextFireSecondsField", fallToNextFireSeconds, value => fallToNextFireSeconds = (float)value, 0);
         BindDropdown("RangeModeField", new List<string> { "Sweep", "Search SK5" },
             rangeMode == RangeMode.SearchSk5 ? 1 : 0, selected =>
             {
@@ -237,7 +228,10 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
 
     void BindSk5DataTab()
     {
-        BindFloat("Sk5MaxRateOfFireField", sk5MaxRateOfFireShootPerMin, value => sk5MaxRateOfFireShootPerMin = (float)value, 0);
+        var batteryLabel = root?.Q<Label>("Sk5BatteryShortNameLabel");
+        if (batteryLabel != null)
+            batteryLabel.text = batteryRecord?.name?.GetShortName() ?? "Battery";
+        BindFloat("Sk5MaxRateOfFireField", CurrentMaxRateOfFireShootPerMin(), _ => { }, 0, false);
         BindFloat("Sk5FallToNextFireSecondsField", fallToNextFireSeconds, value => fallToNextFireSeconds = (float)value, 0);
         BindToggle("RoundSyncBackValuesField", roundSyncBackValuesToOneDecimal, value => roundSyncBackValuesToOneDecimal = value);
     }
@@ -247,14 +241,14 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         if (sk5DataListView == null)
             return;
 
-        sk5DataListView.itemsSource = sk5PenetrationTableRecords;
-        sk5DataListView.selectionType = SelectionType.Single;
+        sk5DataListView.itemsSource = CurrentPenetrationTableRecords();
+        sk5DataListView.selectionType = SelectionType.None;
         sk5DataListView.virtualizationMethod = CollectionVirtualizationMethod.FixedHeight;
         sk5DataListView.fixedItemHeight = 24;
-        sk5DataListView.showAddRemoveFooter = true;
+        sk5DataListView.showAddRemoveFooter = false;
         sk5DataListView.columns.Clear();
 
-        void AddFloatColumn(string name, string title, int width, Func<PenetrationTableRecord, float> getter, Action<PenetrationTableRecord, float> setter)
+        void AddLabelColumn(string name, string title, int width, Func<PenetrationTableRecord, string> selector)
         {
             sk5DataListView.columns.Add(new Column
             {
@@ -263,87 +257,31 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
                 width = width,
                 minWidth = Math.Min(width, 80),
                 stretchable = false,
-                makeCell = () =>
-                {
-                    var field = new FloatField { style = { whiteSpace = WhiteSpace.NoWrap } };
-                    field.RegisterValueChangedCallback(evt =>
-                    {
-                        if (field.userData is PenetrationTableRecord record)
-                        {
-                            setter(record, evt.newValue);
-                            MarkOutputDirty();
-                        }
-                    });
-                    return field;
-                },
+                makeCell = () => new Label { style = { whiteSpace = WhiteSpace.NoWrap } },
                 bindCell = (element, index) =>
                 {
-                    if (element is not FloatField field)
+                    if (element is not Label label)
                         return;
                     var row = GetSk5Row(index);
-                    field.userData = row;
-                    field.SetValueWithoutNotify(row == null ? 0f : getter(row));
+                    label.text = row == null ? "" : selector(row);
                 }
             });
         }
 
-        sk5DataListView.columns.Add(new Column
-        {
-            name = "rangeBand",
-            title = "Range Band",
-            width = 120,
-            minWidth = 90,
-            stretchable = false,
-            makeCell = () =>
-            {
-                var field = new EnumField(RangeBand.Short);
-                field.RegisterValueChangedCallback(evt =>
-                {
-                    if (field.userData is PenetrationTableRecord record && evt.newValue is RangeBand rangeBand)
-                    {
-                        record.rangeBand = rangeBand;
-                        MarkOutputDirty();
-                    }
-                });
-                return field;
-            },
-            bindCell = (element, index) =>
-            {
-                if (element is not EnumField field)
-                    return;
-                var row = GetSk5Row(index);
-                field.userData = row;
-                field.SetValueWithoutNotify(row?.rangeBand ?? RangeBand.Short);
-            }
-        });
+        AddLabelColumn("rangeBand", "Range Band", 120, row => row.rangeBand.ToString());
+        AddLabelColumn("distanceYards", "Distance Yards", 130, row => F(row.distanceYards, 0));
+        AddLabelColumn("rateOfFire", "Rate of Fire", 120, row => F(row.rateOfFire, 2));
+        AddLabelColumn("horizontalPenetration", "Hor Pen", 110, row => F(row.horizontalPenetrationInchs, 2));
+        AddLabelColumn("verticalPenetration", "Vert Pen", 110, row => F(row.verticalPenetrationInchs, 2));
 
-        AddFloatColumn("distanceYards", "Distance Yards", 130, row => row.distanceYards, (row, value) => row.distanceYards = value);
-        AddFloatColumn("rateOfFire", "Rate of Fire", 120, row => row.rateOfFire, (row, value) => row.rateOfFire = value);
-        AddFloatColumn("horizontalPenetration", "Hor Pen", 110, row => row.horizontalPenetrationInchs, (row, value) => row.horizontalPenetrationInchs = value);
-        AddFloatColumn("verticalPenetration", "Vert Pen", 110, row => row.verticalPenetrationInchs, (row, value) => row.verticalPenetrationInchs = value);
-
-        sk5DataListView.itemsAdded += indexes =>
-        {
-            foreach (var index in indexes)
-            {
-                if (index >= 0 && index < sk5PenetrationTableRecords.Count && sk5PenetrationTableRecords[index] == null)
-                    sk5PenetrationTableRecords[index] = new PenetrationTableRecord();
-            }
-            sk5DataListView.Rebuild();
-            MarkOutputDirty();
-        };
-        sk5DataListView.itemsRemoved += _ =>
-        {
-            sk5DataListView.Rebuild();
-            MarkOutputDirty();
-        };
         sk5DataListView.Rebuild();
     }
 
     PenetrationTableRecord GetSk5Row(int index)
     {
-        return index >= 0 && index < sk5PenetrationTableRecords.Count
-            ? sk5PenetrationTableRecords[index]
+        var records = CurrentPenetrationTableRecords();
+        return index >= 0 && index < records.Count
+            ? records[index]
             : null;
     }
 
@@ -472,8 +410,9 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
 
     List<double> GetSearchSk5TargetRanges()
     {
-        var sourceRanges = sk5PenetrationTableRecords.Any(record => record != null && record.distanceYards > 0f)
-            ? sk5PenetrationTableRecords
+        var records = CurrentPenetrationTableRecords();
+        var sourceRanges = records.Any(record => record != null && record.distanceYards > 0f)
+            ? records
                 .Where(record => record != null && record.distanceYards > 0f)
                 .Select(record => record.distanceYards)
                 .Distinct()
@@ -502,9 +441,10 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
 
     PenetrationTableRecord FindSk5Record(float rangeYards)
     {
-        if (rangeMode != RangeMode.SearchSk5 || sk5PenetrationTableRecords.Count == 0)
+        var recordsSource = CurrentPenetrationTableRecords();
+        if (rangeMode != RangeMode.SearchSk5 || recordsSource.Count == 0)
             return null;
-        var records = sk5PenetrationTableRecords
+        var records = recordsSource
             .Where(record => record != null && record.distanceYards > 0f)
             .OrderBy(record => MathF.Abs(record.distanceYards - rangeYards))
             .ToList();
@@ -521,7 +461,7 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         if (firingCycleSeconds <= 0f)
             return 0f;
         var flightLimitedRate = 120f / firingCycleSeconds;
-        var gunLimitedRate = MathF.Max(sk5MaxRateOfFireShootPerMin, 0f) * 2f;
+        var gunLimitedRate = MathF.Max(CurrentMaxRateOfFireShootPerMin(), 0f) * 2f;
         return MathF.Min(flightLimitedRate, gunLimitedRate);
     }
 
@@ -558,14 +498,12 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
 
         var newRecords = BuildCalculatedPenetrationRecords();
         batteryRecord.rangeYards = (float)input.McCoy.MaxRange;
-        batteryRecord.maxRateOfFireShootPerMin = sk5MaxRateOfFireShootPerMin;
         batteryRecord.penetrationTableRecords ??= new List<PenetrationTableRecord>();
         batteryRecord.penetrationTableRecords.Clear();
         batteryRecord.penetrationTableRecords.AddRange(newRecords);
-        sk5PenetrationTableRecords = ClonePenetrationRecords(newRecords);
         if (sk5DataListView != null)
         {
-            sk5DataListView.itemsSource = sk5PenetrationTableRecords;
+            sk5DataListView.itemsSource = CurrentPenetrationTableRecords();
             sk5DataListView.Rebuild();
         }
 
@@ -1034,19 +972,14 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         return root;
     }
 
-    static List<PenetrationTableRecord> ClonePenetrationRecords(IEnumerable<PenetrationTableRecord> records)
+    List<PenetrationTableRecord> CurrentPenetrationTableRecords()
     {
-        return (records ?? Enumerable.Empty<PenetrationTableRecord>())
-            .Where(record => record != null)
-            .Select(record => new PenetrationTableRecord
-            {
-                distanceYards = record.distanceYards,
-                rateOfFire = record.rateOfFire,
-                rangeBand = record.rangeBand,
-                horizontalPenetrationInchs = record.horizontalPenetrationInchs,
-                verticalPenetrationInchs = record.verticalPenetrationInchs
-            })
-            .ToList();
+        return batteryRecord?.penetrationTableRecords ?? new List<PenetrationTableRecord>();
+    }
+
+    float CurrentMaxRateOfFireShootPerMin()
+    {
+        return batteryRecord?.maxRateOfFireShootPerMin ?? 0f;
     }
 
     static string FormatPenetrationComparison(double? calculated, float? sk5)

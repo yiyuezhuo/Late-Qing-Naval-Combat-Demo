@@ -212,6 +212,7 @@ public class TopTabs : SingletonDocument<TopTabs>
         root.Q<Button>("InfluenceMapButton").clicked += DialogRoot.Instance.PopupInfluenceMapDialog;
         root.Q<Button>("TorpedoInterceptSolutionVisualizerButton").clicked += DialogRoot.Instance.PopupTorpedoInterceptSolutionVisualizerDialog;
         root.Q<Button>("WtaSolverInspectorButton").clicked += DialogRoot.Instance.PopupWtaSolverInspectorDialog;
+        root.Q<Button>("McCoyOkunCalculatorButton").clicked += () => DialogRoot.Instance.PopupMcCoyOkunCalculatorDialog();
 
         root.Q<Button>("SetCourseButton").clicked += () =>
         {

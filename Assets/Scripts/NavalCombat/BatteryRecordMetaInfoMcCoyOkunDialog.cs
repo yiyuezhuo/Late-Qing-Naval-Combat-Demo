@@ -23,9 +23,16 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         SearchSk5
     }
 
+    enum OkunMode
+    {
+        FacehardM79,
+        FacehardOnly,
+        M79Only
+    }
+
     sealed class ResultRow
     {
-        public McCoyPlusFacehardRow Result;
+        public McCoyPlusFacehardM79Row Result;
         public PenetrationTableRecord Sk5Record;
         public RangeBand SimulatedRangeBand;
         public float CalculatedRateOfFire;
@@ -74,13 +81,14 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
     Button syncBackButton;
     MultiColumnListView sk5DataListView;
 
-    McCoyPlusFacehardInput input = McCoyPlusFacehard.DefaultInput();
+    McCoyPlusFacehardM79Input input = McCoyPlusFacehardM79.DefaultInput();
     FacehardInput facehardDetails = FacehardCalculator.DefaultFacehardInput();
     string sampleId = "";
     McCoyPlusDragFunction preset = McCoyPlusDragFunction.G1;
     string dragText = McCoyPlus.DragPresetToText(McCoyPlusDragFunction.G1);
     ChartMode chartMode = ChartMode.Trajectory;
-    RangeMode rangeMode = RangeMode.Sweep;
+    RangeMode rangeMode = RangeMode.SearchSk5;
+    OkunMode okunMode = OkunMode.FacehardM79;
     float fallToNextFireSeconds = 12f;
     bool roundSyncBackValuesToOneDecimal = true;
     List<ResultRow> tableRows = new();
@@ -127,6 +135,7 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
     {
         BindProjectileTab();
         BindArmorTab();
+        BindDeckArmorTab();
         BindMiscTab();
         BindSk5DataTab();
         RefreshMetaButtons();
@@ -187,6 +196,12 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         UpdateInputWarnings();
     }
 
+    void BindDeckArmorTab()
+    {
+        BindFloat("M79ArmorQualityField", input.M79.PlateQuality, value => input.M79.PlateQuality = value, 0.001);
+        BindFloat("M79ElongationField", input.M79.Elongation, value => input.M79.Elongation = value, 10);
+    }
+
     void BindMiscTab()
     {
         BindDropdown("ElevationSearchField", new List<string> { "Cached Binary Search", "Matched Range" },
@@ -216,6 +231,22 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
             chartMode == ChartMode.Trajectory ? 0 : 1, selected =>
             {
                 chartMode = selected == 0 ? ChartMode.Trajectory : ChartMode.Penetration;
+                MarkOutputDirty();
+            });
+        BindDropdown("OkunModeField", new List<string> { "Facehard + M79", "Facehard Only", "M79 Only" },
+            okunMode switch
+            {
+                OkunMode.FacehardOnly => 1,
+                OkunMode.M79Only => 2,
+                _ => 0,
+            }, selected =>
+            {
+                okunMode = selected switch
+                {
+                    1 => OkunMode.FacehardOnly,
+                    2 => OkunMode.M79Only,
+                    _ => OkunMode.FacehardM79,
+                };
                 MarkOutputDirty();
             });
         BindText("DragTableField", dragText, value =>
@@ -372,7 +403,7 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         McCoyPlusFacehard.FacehardCalculator = bridge => FacehardBridgeCalculate(bridge, facehardDetails);
         var stopwatch = Stopwatch.StartNew();
         var targetRanges = rangeMode == RangeMode.SearchSk5 ? GetSearchSk5TargetRanges() : null;
-        var result = targetRanges == null ? McCoyPlusFacehard.Calculate(input) : McCoyPlusFacehard.Calculate(input, targetRanges);
+        var result = CalculateOkun(input, targetRanges, okunMode);
         stopwatch.Stop();
         tableRows = result.Rows.Select(BuildRow).ToList();
 
@@ -380,7 +411,7 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         outputContent.Add(Warnings(result.Warnings));
         outputContent.Add(chartMode == ChartMode.Trajectory
             ? ChartSeries("Matched Trajectories", TrajectorySeries(result.ChartRows, input.McCoy.RangeUnit), BallisticOptions.ToLegacyCode(input.McCoy.RangeUnit), "ft")
-            : Chart("Facehard Penetration", result.Rows.Where(row => row.PenetrationInches.HasValue).Select(row => new Vector2((float)row.Range, (float)row.PenetrationInches.Value))));
+            : ChartSeries("Penetration By Range", PenetrationSeries(result.Rows), BallisticOptions.ToLegacyCode(input.McCoy.RangeUnit), "in"));
         outputContent.Add(CalculationTime(stopwatch.Elapsed));
         outputContent.Add(Table("Rows", tableRows,
             Col<ResultRow>("range", "Range", 90, row => F(row.Result?.Range, 0)),
@@ -395,7 +426,90 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         hasCalculated = true;
     }
 
-    ResultRow BuildRow(McCoyPlusFacehardRow result)
+    static McCoyPlusFacehardM79Result CalculateOkun(McCoyPlusFacehardM79Input source, IEnumerable<double> targetRanges, OkunMode mode)
+    {
+        if (mode == OkunMode.FacehardM79)
+            return McCoyPlusFacehardM79.Calculate(source, targetRanges);
+
+        source ??= McCoyPlusFacehardM79.DefaultInput();
+        var trajectory = targetRanges == null
+            ? McCoyPlus.CalculateParallel(source.McCoy)
+            : McCoyPlus.CalculateTargetsParallel(source.McCoy, targetRanges);
+        var warnings = new List<string>(trajectory.Warnings);
+        var rows = new List<McCoyPlusFacehardM79Row>();
+
+        foreach (var trajectoryRow in trajectory.Rows)
+        {
+            var row = mode == OkunMode.FacehardOnly
+                ? BuildFacehardOnlyRow(source.Facehard, trajectoryRow, warnings)
+                : BuildM79OnlyRow(source.M79, trajectoryRow, warnings);
+            rows.Add(row);
+        }
+
+        return new McCoyPlusFacehardM79Result
+        {
+            Rows = rows,
+            ChartRows = McCoyPlus.SelectChartRows(rows),
+            Warnings = warnings
+                .Where(warning => !string.IsNullOrEmpty(warning))
+                .Distinct()
+                .ToList(),
+        };
+    }
+
+    static McCoyPlusFacehardM79Row BuildFacehardOnlyRow(FacehardBridgeInput facehard, McCoyPlusRow trajectoryRow, List<string> warnings)
+    {
+        var verticalSolved = McCoyPlusFacehard.SolvePenetrationThicknessForRow(facehard, trajectoryRow, trajectoryRow.FallAngleDegrees);
+        var horizontalSolved = McCoyPlusFacehard.SolvePenetrationThicknessForRow(facehard, trajectoryRow, 90 - trajectoryRow.FallAngleDegrees, true);
+        AddWarning(warnings, verticalSolved.Warning);
+        AddWarning(warnings, horizontalSolved.Warning);
+
+        return new McCoyPlusFacehardM79Row
+        {
+            Range = trajectoryRow.Range,
+            Time = trajectoryRow.Time,
+            ElevationDegrees = trajectoryRow.ElevationDegrees,
+            Velocity = trajectoryRow.Velocity,
+            FallAngleDegrees = trajectoryRow.FallAngleDegrees,
+            Trajectory = trajectoryRow.Trajectory,
+            PenetrationInches = verticalSolved.PenetrationInches,
+            HorizontalPenetrationInches = horizontalSolved.PenetrationInches,
+            FacehardNavyBl = verticalSolved.FacehardNavyBl,
+            FacehardObliquity = verticalSolved.FacehardObliquity,
+        };
+    }
+
+    static McCoyPlusFacehardM79Row BuildM79OnlyRow(M79Input m79, McCoyPlusRow trajectoryRow, List<string> warnings)
+    {
+        var verticalSolved = McCoyPlusM79.SolvePenetrationThicknessForRow(m79, trajectoryRow, trajectoryRow.FallAngleDegrees);
+        var horizontalSolved = McCoyPlusM79.SolvePenetrationThicknessForRow(m79, trajectoryRow, 90 - trajectoryRow.FallAngleDegrees, true);
+        AddWarning(warnings, verticalSolved.Warning);
+        AddWarning(warnings, horizontalSolved.Warning);
+
+        return new McCoyPlusFacehardM79Row
+        {
+            Range = trajectoryRow.Range,
+            Time = trajectoryRow.Time,
+            ElevationDegrees = trajectoryRow.ElevationDegrees,
+            Velocity = trajectoryRow.Velocity,
+            FallAngleDegrees = trajectoryRow.FallAngleDegrees,
+            Trajectory = trajectoryRow.Trajectory,
+            PenetrationInches = verticalSolved.PenetrationInches,
+            HorizontalPenetrationInches = horizontalSolved.PenetrationInches,
+            M79NavyBallisticLimit = horizontalSolved.M79NavyBallisticLimit,
+            M79Obliquity = horizontalSolved.M79Obliquity,
+            PenetrationMode = horizontalSolved.PenetrationMode,
+            RemainingVelocity = horizontalSolved.RemainingVelocity,
+        };
+    }
+
+    static void AddWarning(List<string> warnings, string warning)
+    {
+        if (!string.IsNullOrEmpty(warning))
+            warnings.Add(warning);
+    }
+
+    ResultRow BuildRow(McCoyPlusFacehardM79Row result)
     {
         var angleOfFall = result == null ? 0f : (float)result.FallAngleDegrees;
         var simulatedBand = Sk5RangeBandRules.FromAngleOfFallDeg(angleOfFall);
@@ -678,6 +792,8 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         input.Facehard.PlateThickness = facehardDetails.PlateThickness;
         input.Facehard.Obliquity = facehardDetails.Obliquity;
         input.Facehard.StrikingVelocity = facehardDetails.StrikingVelocity;
+        input.M79.ProjectileDiameter = facehardDetails.ProjectileDiameter;
+        input.M79.ProjectileWeight = facehardDetails.ProjectileWeight;
     }
 
     static FacehardBridgeResult FacehardBridgeCalculate(FacehardBridgeInput bridge, FacehardInput template)
@@ -919,10 +1035,10 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         return legend;
     }
 
-    static IEnumerable<McCoyOkunCalculatorDialog.MiniChartSeries> TrajectorySeries(IEnumerable<McCoyPlusFacehardRow> rows, McCoyRangeUnit rangeUnit)
+    static IEnumerable<McCoyOkunCalculatorDialog.MiniChartSeries> TrajectorySeries(IEnumerable<McCoyPlusFacehardM79Row> rows, McCoyRangeUnit rangeUnit)
     {
         var unitLabel = BallisticOptions.ToLegacyCode(rangeUnit);
-        foreach (var row in rows ?? Enumerable.Empty<McCoyPlusFacehardRow>())
+        foreach (var row in rows ?? Enumerable.Empty<McCoyPlusFacehardM79Row>())
         {
             yield return new McCoyOkunCalculatorDialog.MiniChartSeries
             {
@@ -930,6 +1046,27 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
                 Points = row.Trajectory.Select(point => new Vector2((float)point.Range, (float)(point.HeightInches / 12d))).ToList()
             };
         }
+    }
+
+    static IEnumerable<McCoyOkunCalculatorDialog.MiniChartSeries> PenetrationSeries(IEnumerable<McCoyPlusFacehardM79Row> rows)
+    {
+        var rowList = rows?.ToList() ?? new List<McCoyPlusFacehardM79Row>();
+        yield return new McCoyOkunCalculatorDialog.MiniChartSeries
+        {
+            Label = "V Pen",
+            Points = rowList
+                .Where(row => row.PenetrationInches.HasValue)
+                .Select(row => new Vector2((float)row.Range, (float)row.PenetrationInches.Value))
+                .ToList()
+        };
+        yield return new McCoyOkunCalculatorDialog.MiniChartSeries
+        {
+            Label = "H Pen",
+            Points = rowList
+                .Where(row => row.HorizontalPenetrationInches.HasValue)
+                .Select(row => new Vector2((float)row.Range, (float)row.HorizontalPenetrationInches.Value))
+                .ToList()
+        };
     }
 
     static TableColumnSpec<T> Col<T>(string name, string title, int width, Func<T, string> selector)

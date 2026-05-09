@@ -33,7 +33,7 @@
                         <ui:FloatField name="PdamField" label="PDAM" />
                     </ui:ScrollView>
                 </ui:Tab>
-                <ui:Tab label="Armor">
+                <ui:Tab label="Vertical Armor">
                     <ui:ScrollView mode="Vertical" style="flex-grow: 1; flex-shrink: 1;">
                         <ui:DropdownField name="ArmorTypeField" label="Armor Type" />
                         <ui:Toggle name="CurvedPlateToggle" label="Strongly Curved Plate" />
@@ -45,10 +45,17 @@
                         <ui:VisualElement name="InputWarnings" />
                     </ui:ScrollView>
                 </ui:Tab>
+                <ui:Tab label="Deck Armor">
+                    <ui:ScrollView mode="Vertical" style="flex-grow: 1; flex-shrink: 1;">
+                        <ui:FloatField name="M79ArmorQualityField" label="Armor Quality" />
+                        <ui:FloatField name="M79ElongationField" label="Elongation" />
+                    </ui:ScrollView>
+                </ui:Tab>
                 <ui:Tab label="Misc">
                     <ui:ScrollView mode="Vertical" style="flex-grow: 1; flex-shrink: 1;">
                         <ui:DropdownField name="RangeModeField" label="Range Mode" />
                         <ui:DropdownField name="ChartModeField" label="Chart Mode" />
+                        <ui:DropdownField name="OkunModeField" label="Okun Mode" />
                         <ui:DropdownField name="ElevationSearchField" label="Elevation Search" />
                         <ui:DropdownField name="AtmosphereField" label="Atmosphere Model" />
                         <ui:FloatField name="DensityRatioField" label="Density Ratio" />

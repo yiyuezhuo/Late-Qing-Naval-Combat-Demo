@@ -72,14 +72,62 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         public Action<bool> Setter;
     }
 
+    sealed class FitCandidate
+    {
+        public double BallisticCoefficient;
+    }
+
+    sealed class ExternalFitJob
+    {
+        public McCoyPlusInput Source;
+        public List<PenetrationTableRecord> Records = new();
+        public readonly List<FitCandidate> Candidates = new();
+
+        public int Pass;
+        public int CandidateIndex;
+        public int ProcessedCandidates;
+        public int TotalCandidates;
+        public bool PauseRequested;
+        public bool CancelRequested;
+
+        public double OriginalBallisticCoefficient;
+        public double BestBallisticCoefficient;
+        public double CurrentBallisticCoefficient;
+        public double BestScore = double.PositiveInfinity;
+        public double CurrentScore = double.PositiveInfinity;
+        public string CurrentDetail = "";
+        public double BcSpan = 0.75;
+    }
+
+    readonly struct ExteriorFitScore
+    {
+        public readonly double Score;
+        public readonly int RangeBandMismatchCount;
+        public readonly double MaxRangeErrorYards;
+
+        public ExteriorFitScore(double score, int rangeBandMismatchCount, double maxRangeErrorYards)
+        {
+            Score = score;
+            RangeBandMismatchCount = rangeBandMismatchCount;
+            MaxRangeErrorYards = maxRangeErrorYards;
+        }
+    }
+
     readonly BatteryRecord batteryRecord;
     readonly Action callback;
 
     VisualElement root;
     VisualElement outputContent;
-    Button createDeleteButton;
-    Button syncBackButton;
+    VisualElement fitProgressRoot;
+    Button calculateButton;
+    Button fitExternalButton;
+    Button fitPauseButton;
+    Button fitCancelButton;
+    ProgressBar fitProgressBar;
+    Label fitProgressLabel;
     MultiColumnListView sk5DataListView;
+    IVisualElementScheduledItem fitSchedule;
+    ExternalFitJob currentFitJob;
 
     McCoyPlusFacehardM79Input input = McCoyPlusFacehardM79.DefaultInput();
     FacehardInput facehardDetails = FacehardCalculator.DefaultFacehardInput();
@@ -101,7 +149,14 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         fallToNextFireSeconds = batteryRecord?.metaInfoMcCoyOkun?.fallToNextFireSeconds ?? 12f;
         var storedSample = batteryRecord?.metaInfoMcCoyOkun?.ballisticSample;
         if (storedSample != null)
+        {
             ApplyBallisticSample(storedSample);
+        }
+        else
+        {
+            ApplyBatteryRecordDefaults();
+        }
+        EnsureMetaInfoBallisticSample();
     }
 
     public VisualElement BuildContent(VisualTreeAsset template)
@@ -113,22 +168,68 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         root.style.flexGrow = 1;
         root.style.flexShrink = 1;
 
-        var calculateButton = root.Q<Button>("CalculateButton");
+        calculateButton = root.Q<Button>("CalculateButton");
         if (calculateButton != null)
             calculateButton.clicked += Calculate;
-        createDeleteButton = root.Q<Button>("CreateDeleteButton");
-        if (createDeleteButton != null)
-            createDeleteButton.clicked += ToggleMetaInfo;
-        syncBackButton = root.Q<Button>("SyncBackButton");
-        if (syncBackButton != null)
-            syncBackButton.clicked += SyncBack;
+        fitExternalButton = root.Q<Button>("FitExternalBallisticButton");
+        if (fitExternalButton != null)
+            fitExternalButton.clicked += StartExternalFit;
+        fitPauseButton = root.Q<Button>("FitPauseButton");
+        if (fitPauseButton != null)
+            fitPauseButton.clicked += PauseCurrentFit;
+        fitCancelButton = root.Q<Button>("FitCancelButton");
+        if (fitCancelButton != null)
+            fitCancelButton.clicked += CancelCurrentFit;
+        fitProgressRoot = root.Q<VisualElement>("FitProgressRoot");
+        fitProgressBar = root.Q<ProgressBar>("FitProgressBar");
+        fitProgressLabel = root.Q<Label>("FitProgressLabel");
         sk5DataListView = root.Q<MultiColumnListView>("Sk5PenetrationTableListView");
         ConfigureSk5DataListView();
         outputContent = root.Q<VisualElement>("OutputContent");
 
         RebuildInputs();
+        RefreshFitControls();
         ShowPendingOutput();
         return root;
+    }
+
+    void ApplyBatteryRecordDefaults()
+    {
+        if (batteryRecord == null)
+            return;
+
+        if (batteryRecord.shellSizeInch > 0f)
+            facehardDetails.ProjectileDiameter = batteryRecord.shellSizeInch;
+        if (batteryRecord.shellWeightPounds > 0f)
+        {
+            facehardDetails.ProjectileWeight = batteryRecord.shellWeightPounds;
+            facehardDetails.ProjectileBodyWeight = batteryRecord.shellWeightPounds;
+        }
+        if (batteryRecord.rangeYards > 0f)
+            input.McCoy.MaxRange = batteryRecord.rangeYards;
+        var shortName = batteryRecord.name?.GetShortName();
+        if (!string.IsNullOrWhiteSpace(shortName))
+            input.McCoy.ProjectileId = shortName;
+    }
+
+    void EnsureMetaInfoBallisticSample()
+    {
+        if (batteryRecord == null)
+            return;
+
+        var changed = false;
+        if (batteryRecord.metaInfoMcCoyOkun == null)
+        {
+            batteryRecord.metaInfoMcCoyOkun = new BatteryRecordMetaInfoMcCoyOkun();
+            changed = true;
+        }
+        if (batteryRecord.metaInfoMcCoyOkun.ballisticSample == null)
+        {
+            SaveMetaInfo();
+            changed = true;
+        }
+        if (changed)
+            callback?.Invoke();
     }
 
     void RebuildInputs()
@@ -138,7 +239,7 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         BindDeckArmorTab();
         BindMiscTab();
         BindSk5DataTab();
-        RefreshMetaButtons();
+        RefreshFitControls();
     }
 
     void BindProjectileTab()
@@ -398,6 +499,9 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
 
     void Calculate()
     {
+        if (currentFitJob != null)
+            return;
+
         SyncComboMcCoy();
         SyncFacehardBridge();
         McCoyPlusFacehard.FacehardCalculator = bridge => FacehardBridgeCalculate(bridge, facehardDetails);
@@ -522,6 +626,278 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         };
     }
 
+    void StartExternalFit()
+    {
+        if (currentFitJob != null)
+            return;
+
+        var setupError = CreateExternalFitJob(out var job);
+        if (setupError != null)
+        {
+            ShowFitStatus(setupError, 0);
+            return;
+        }
+
+        currentFitJob = job;
+        PrepareExternalFitPass(job);
+        UpdateFitProgress(job, "External ballistic fit started.");
+        RefreshFitControls();
+        fitSchedule = root.schedule.Execute(ProcessFitStep).Every(1);
+    }
+
+    string CreateExternalFitJob(out ExternalFitJob job)
+    {
+        job = null;
+        SyncComboMcCoy();
+        var fitRecords = CurrentPenetrationTableRecords()
+            .Where(record => record != null && record.distanceYards > 0f)
+            .OrderBy(record => record.distanceYards)
+            .ToList();
+        if (fitRecords.Count == 0)
+            return "No valid SK5 rows.";
+        if (input.McCoy.BallisticCoefficient <= 0)
+            return "Ballistic coefficient must be greater than 0.";
+        if (input.McCoy.MaxRange <= 0)
+            return "Maximum range must be greater than 0.";
+
+        var source = CloneMcCoyPlusInput(input.McCoy);
+        source.MaxRange = Math.Max(source.MaxRange, fitRecords.Max(record => record.distanceYards));
+        job = new ExternalFitJob
+        {
+            Source = source,
+            Records = fitRecords,
+            OriginalBallisticCoefficient = input.McCoy.BallisticCoefficient,
+            BestBallisticCoefficient = Math.Max(input.McCoy.BallisticCoefficient, 0.01),
+            CurrentBallisticCoefficient = input.McCoy.BallisticCoefficient,
+            TotalCandidates = 4 * 9,
+        };
+        return null;
+    }
+
+    void ProcessFitStep()
+    {
+        var job = currentFitJob;
+        if (job == null)
+        {
+            fitSchedule?.Pause();
+            fitSchedule = null;
+            return;
+        }
+
+        if (job.CancelRequested)
+        {
+            FinishFitJob(false, "Cancelled by user");
+            return;
+        }
+
+        if (job.PauseRequested)
+        {
+            FinishFitJob(true, "Paused by user");
+            return;
+        }
+
+        if (job.Pass >= 4 && job.CandidateIndex >= job.Candidates.Count)
+        {
+            FinishFitJob(true, "Completed");
+            return;
+        }
+
+        if (job.CandidateIndex >= job.Candidates.Count)
+        {
+            job.Pass++;
+            job.BcSpan *= 0.42;
+            if (job.Pass >= 4)
+            {
+                FinishFitJob(true, "Completed");
+                return;
+            }
+            PrepareExternalFitPass(job);
+        }
+
+        var candidate = job.Candidates[job.CandidateIndex++];
+        job.CurrentBallisticCoefficient = candidate.BallisticCoefficient;
+        var detail = ScoreExterior(job.Source, candidate.BallisticCoefficient, job.Records);
+        job.CurrentScore = detail.Score;
+        job.CurrentDetail = double.IsInfinity(detail.MaxRangeErrorYards)
+            ? $"mismatch {detail.RangeBandMismatchCount}, max range target failed"
+            : $"mismatch {detail.RangeBandMismatchCount}, max range error {detail.MaxRangeErrorYards:0} yd";
+        job.ProcessedCandidates++;
+        if (detail.Score < job.BestScore)
+        {
+            job.BestScore = detail.Score;
+            job.BestBallisticCoefficient = candidate.BallisticCoefficient;
+        }
+        UpdateFitProgress(job, BuildExternalFitDiagnostic(job));
+    }
+
+    static void PrepareExternalFitPass(ExternalFitJob job)
+    {
+        job.Candidates.Clear();
+        job.CandidateIndex = 0;
+        for (var index = -4; index <= 4; index++)
+        {
+            job.Candidates.Add(new FitCandidate
+            {
+                BallisticCoefficient = Math.Max(0.01, job.BestBallisticCoefficient * Math.Pow(1 + job.BcSpan, index / 4d))
+            });
+        }
+    }
+
+    void PauseCurrentFit()
+    {
+        if (currentFitJob != null)
+            currentFitJob.PauseRequested = true;
+    }
+
+    void CancelCurrentFit()
+    {
+        if (currentFitJob != null)
+            currentFitJob.CancelRequested = true;
+    }
+
+    void FinishFitJob(bool applyBest, string reason)
+    {
+        var job = currentFitJob;
+        fitSchedule?.Pause();
+        fitSchedule = null;
+        currentFitJob = null;
+
+        if (job != null)
+        {
+            input.McCoy.BallisticCoefficient = applyBest
+                ? job.BestBallisticCoefficient
+                : job.OriginalBallisticCoefficient;
+            RebuildInputs();
+            tableRows.Clear();
+            hasCalculated = false;
+            var status = applyBest
+                ? $"{reason}: best BC {job.BestBallisticCoefficient:0.####}, score {job.BestScore:0.####}. Click Calculate to refresh."
+                : $"{reason}: restored BC {job.OriginalBallisticCoefficient:0.####}.";
+            ShowPendingOutput(status);
+            ShowFitStatus(status, applyBest ? 1 : 0);
+        }
+
+        RefreshFitControls();
+    }
+
+    void UpdateFitProgress(ExternalFitJob job, string diagnostic)
+    {
+        var progress = job.TotalCandidates <= 0 ? 0 : Math.Clamp((double)job.ProcessedCandidates / job.TotalCandidates, 0, 1);
+        ShowFitStatus(diagnostic, progress);
+    }
+
+    void ShowFitStatus(string message, double progress)
+    {
+        if (fitProgressBar != null)
+            fitProgressBar.value = (float)Math.Clamp(progress, 0, 1);
+        if (fitProgressLabel != null)
+            fitProgressLabel.text = message ?? "";
+        RefreshFitControls();
+    }
+
+    void RefreshFitControls()
+    {
+        var fitting = currentFitJob != null;
+        calculateButton?.SetEnabled(!fitting);
+        fitExternalButton?.SetEnabled(!fitting);
+        if (fitPauseButton != null)
+            fitPauseButton.style.display = fitting ? DisplayStyle.Flex : DisplayStyle.None;
+        if (fitCancelButton != null)
+            fitCancelButton.style.display = fitting ? DisplayStyle.Flex : DisplayStyle.None;
+        if (fitProgressRoot != null)
+        {
+            var hasMessage = !string.IsNullOrEmpty(fitProgressLabel?.text);
+            fitProgressRoot.style.display = fitting || hasMessage ? DisplayStyle.Flex : DisplayStyle.None;
+        }
+    }
+
+    string BuildExternalFitDiagnostic(ExternalFitJob job)
+    {
+        return string.Join("\n", new[]
+        {
+            "External ballistic fit",
+            $"pass {job.Pass + 1}/4, candidate {job.CandidateIndex}/{job.Candidates.Count}",
+            $"current BC {job.CurrentBallisticCoefficient:0.####}, score {job.CurrentScore:0.####}",
+            $"best BC {job.BestBallisticCoefficient:0.####}, score {job.BestScore:0.####}",
+            job.CurrentDetail
+        });
+    }
+
+    ExteriorFitScore ScoreExterior(McCoyPlusInput seed, double ballisticCoefficient, List<PenetrationTableRecord> records)
+    {
+        var source = CloneMcCoyPlusInput(seed);
+        source.BallisticCoefficient = ballisticCoefficient;
+        var targetRanges = new List<double>(records.Count);
+        for (var index = 0; index < records.Count; index++)
+            targetRanges.Add(GetFitRecordTargetRange(records, index, source.MaxRange));
+
+        var result = McCoyPlus.CalculateTargetsParallel(source, targetRanges, 8);
+        var score = 0d;
+        var mismatchCount = 0;
+        for (var index = 0; index < records.Count; index++)
+        {
+            var targetRange = targetRanges[index];
+            var row = FindTrajectoryRow(result.Rows, targetRange);
+            if (row != null)
+            {
+                var predicted = Sk5RangeBandRules.FromAngleOfFallDeg((float)row.FallAngleDegrees);
+                var bandDelta = Math.Abs((int)predicted - (int)records[index].rangeBand);
+                if (bandDelta > 0)
+                    mismatchCount++;
+                score += bandDelta * bandDelta * 10d;
+            }
+            else
+            {
+                mismatchCount++;
+                score += 100d;
+            }
+        }
+
+        var maxRangeTarget = targetRanges.Count == 0 ? source.MaxRange : targetRanges[^1];
+        var maxRangeRow = FindTrajectoryRow(result.Rows, maxRangeTarget);
+        var maxRangeErrorYards = maxRangeRow == null ? double.PositiveInfinity : maxRangeRow.Range - source.MaxRange;
+        if (maxRangeRow == null)
+            score += 250d;
+
+        return new ExteriorFitScore(score, mismatchCount, maxRangeErrorYards);
+    }
+
+    static McCoyPlusRow FindTrajectoryRow(List<McCoyPlusRow> rows, double targetRange)
+    {
+        var tolerance = Math.Max(0.5, Math.Abs(targetRange) * 0.0001);
+        return rows?
+            .Where(row => row != null)
+            .OrderBy(row => Math.Abs(row.Range - targetRange))
+            .FirstOrDefault(row => Math.Abs(row.Range - targetRange) <= tolerance);
+    }
+
+    static double GetFitRecordTargetRange(IReadOnlyList<PenetrationTableRecord> records, int index, double maxRange)
+    {
+        if (records == null || index < 0 || index >= records.Count)
+            return 0;
+        return index == records.Count - 1 ? maxRange : records[index].distanceYards;
+    }
+
+    static McCoyPlusInput CloneMcCoyPlusInput(McCoyPlusInput source)
+    {
+        source ??= McCoyPlus.DefaultInput();
+        return new McCoyPlusInput
+        {
+            DragName = source.DragName,
+            DragTable = source.DragTable,
+            RangeUnit = source.RangeUnit,
+            Atmosphere = source.Atmosphere,
+            ProjectileId = source.ProjectileId,
+            MuzzleVelocity = source.MuzzleVelocity,
+            BallisticCoefficient = source.BallisticCoefficient,
+            MaxRange = source.MaxRange,
+            DensityRatio = source.DensityRatio,
+            TemperatureF = source.TemperatureF,
+            MatchHeight = source.MatchHeight,
+            ElevationSearchMode = source.ElevationSearchMode,
+        };
+    }
+
     List<double> GetSearchSk5TargetRanges()
     {
         var records = CurrentPenetrationTableRecords();
@@ -579,35 +955,55 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         return MathF.Min(flightLimitedRate, gunLimitedRate);
     }
 
-    void ToggleMetaInfo()
+    public bool SaveAndClose()
     {
-        if (batteryRecord == null)
-            return;
+        if (currentFitJob != null)
+        {
+            ShowFitStatus("Finish or cancel the fitting job before saving.", 0);
+            return false;
+        }
 
-        if (batteryRecord.metaInfoMcCoyOkun == null)
-        {
-            batteryRecord.metaInfoMcCoyOkun = new BatteryRecordMetaInfoMcCoyOkun();
-            SaveMetaInfo();
-            callback?.Invoke();
-            RefreshMetaButtons();
-        }
-        else
-        {
-            batteryRecord.metaInfoMcCoyOkun = null;
-            callback?.Invoke();
-            RefreshMetaButtons();
-        }
+        return SyncBack();
     }
 
-    void SyncBack()
+    public bool ClearAndClose()
     {
+        if (currentFitJob != null)
+        {
+            ShowFitStatus("Finish or cancel the fitting job before clearing.", 0);
+            return false;
+        }
+
         if (batteryRecord == null)
-            return;
+            return true;
+
+        batteryRecord.metaInfoMcCoyOkun = null;
+        callback?.Invoke();
+        return true;
+    }
+
+    public void OnClosed()
+    {
+        fitSchedule?.Pause();
+        fitSchedule = null;
+        currentFitJob = null;
+    }
+
+    bool SyncBack()
+    {
+        if (currentFitJob != null)
+        {
+            ShowFitStatus("Finish or cancel the fitting job before saving.", 0);
+            return false;
+        }
+
+        if (batteryRecord == null)
+            return true;
 
         if (tableRows.Count == 0)
         {
-            ShowPendingOutput("Calculate successful rows before syncing back.");
-            return;
+            ShowPendingOutput("Calculate successful rows before saving.");
+            return false;
         }
 
         var newRecords = BuildCalculatedPenetrationRecords();
@@ -624,7 +1020,7 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         batteryRecord.metaInfoMcCoyOkun ??= new BatteryRecordMetaInfoMcCoyOkun();
         SaveMetaInfo();
         callback?.Invoke();
-        RefreshMetaButtons();
+        return true;
     }
 
     void SaveMetaInfo()
@@ -670,14 +1066,6 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         return roundSyncBackValuesToOneDecimal
             ? MathF.Round(value, 1, MidpointRounding.AwayFromZero)
             : value;
-    }
-
-    void RefreshMetaButtons()
-    {
-        if (createDeleteButton != null)
-            createDeleteButton.text = batteryRecord?.metaInfoMcCoyOkun == null ? "Create" : "Delete";
-        if (syncBackButton != null)
-            syncBackButton.style.display = batteryRecord?.metaInfoMcCoyOkun == null ? DisplayStyle.None : DisplayStyle.Flex;
     }
 
     void MarkOutputDirty()

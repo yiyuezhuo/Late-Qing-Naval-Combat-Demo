@@ -1554,11 +1554,82 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public TempDialog PopupBatteryRecordMetaInfoMcCoyOkunDialog(BatteryRecord batteryRecord, Action callback)
     {
         var dialog = new BatteryRecordMetaInfoMcCoyOkunDialog(batteryRecord, callback);
-        return PopupCustomContentDialog(
-            "Meta Info (McCoy Okun)",
-            () => dialog.BuildContent(batteryRecordMetaInfoMcCoyOkunDialogDocument),
-            Localize("Close")
-        );
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = modelComparisonDialogDocument,
+            templateDataSource = null,
+        };
+
+        tempDialog.onCreated += (sender, el) =>
+        {
+            var titleLabel = el.Q<Label>("TitleLabel");
+            if (titleLabel != null)
+                titleLabel.text = "Meta Info (McCoy Okun)";
+
+            var confirmButton = el.Q<Button>("ConfirmButton");
+            if (confirmButton != null)
+            {
+                confirmButton.text = Localize("Close");
+                confirmButton.style.flexGrow = 1;
+                var dialogRoot = confirmButton.parent;
+                if (dialogRoot != null)
+                {
+                    var buttonIndex = dialogRoot.IndexOf(confirmButton);
+                    dialogRoot.Remove(confirmButton);
+                    var buttonRow = new VisualElement
+                    {
+                        style =
+                        {
+                            flexDirection = FlexDirection.Row,
+                            flexShrink = 0,
+                        }
+                    };
+
+                    var saveButton = new Button(() =>
+                    {
+                        if (dialog.SaveAndClose())
+                            tempDialog.Close();
+                    })
+                    {
+                        text = "Save & Close",
+                    };
+                    saveButton.style.flexGrow = 1;
+                    saveButton.style.marginRight = 4;
+
+                    var clearButton = new Button(() =>
+                    {
+                        if (dialog.ClearAndClose())
+                            tempDialog.Close();
+                    })
+                    {
+                        text = "Clear & Close",
+                    };
+                    clearButton.style.flexGrow = 1;
+                    clearButton.style.marginRight = 4;
+
+                    confirmButton.style.marginLeft = 0;
+                    confirmButton.style.marginRight = 0;
+                    buttonRow.Add(saveButton);
+                    buttonRow.Add(clearButton);
+                    buttonRow.Add(confirmButton);
+                    dialogRoot.Insert(Math.Max(0, buttonIndex), buttonRow);
+                }
+            }
+
+            var contentContainer = el.Q<VisualElement>("ContentContainer");
+            var customContent = dialog.BuildContent(batteryRecordMetaInfoMcCoyOkunDialogDocument);
+            if (contentContainer != null && customContent != null)
+            {
+                customContent.style.flexGrow = 1;
+                customContent.style.flexShrink = 1;
+                contentContainer.Add(customContent);
+            }
+        };
+        tempDialog.onClosed += (_, _) => dialog.OnClosed();
+
+        tempDialog.Popup();
+        return tempDialog;
     }
 
     public void PopupScenarioStateEditor()

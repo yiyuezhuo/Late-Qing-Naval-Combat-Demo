@@ -3,10 +3,13 @@
         <ui:VisualElement style="width: 390px; flex-shrink: 0; margin-right: 8px;">
             <ui:VisualElement style="flex-direction: row; margin-bottom: 6px;">
                 <ui:Button text="Calculate" name="CalculateButton" style="flex-grow: 1; margin-right: 4px;" />
+                <ui:Button text="Fit External Ballistic" name="FitExternalBallisticButton" style="flex-grow: 1; margin-right: 4px;" />
+                <ui:Button text="Pause" name="FitPauseButton" style="width: 70px; margin-right: 4px; display: none;" />
+                <ui:Button text="Cancel" name="FitCancelButton" style="width: 70px; display: none;" />
             </ui:VisualElement>
-            <ui:VisualElement style="flex-direction: row; margin-bottom: 6px;">
-                <ui:Button text="Create" name="CreateDeleteButton" style="flex-grow: 1; margin-right: 4px;" />
-                <ui:Button text="Sync Back" name="SyncBackButton" style="flex-grow: 1; margin-right: 4px;" />
+            <ui:VisualElement name="FitProgressRoot" style="display: none; margin-bottom: 6px;">
+                <ui:ProgressBar name="FitProgressBar" low-value="0" high-value="1" style="height: 18px;" />
+                <ui:Label name="FitProgressLabel" text="" style="white-space: normal; font-size: 11px; margin-top: 2px;" />
             </ui:VisualElement>
             <ui:TabView name="InputTabView" style="flex-grow: 1; flex-shrink: 1;">
                 <ui:Tab label="Projectile">

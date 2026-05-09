@@ -4,6 +4,7 @@
             <ui:VisualElement style="flex-direction: row; margin-bottom: 6px;">
                 <ui:Button text="Calculate" name="CalculateButton" style="flex-grow: 1; margin-right: 4px;" />
                 <ui:Button text="Fit External Ballistic" name="FitExternalBallisticButton" style="flex-grow: 1; margin-right: 4px;" />
+                <ui:Button text="Load From Battery" name="LoadFromBatteryButton" style="flex-grow: 1; margin-right: 4px;" />
                 <ui:Button text="Pause" name="FitPauseButton" style="width: 70px; margin-right: 4px; display: none;" />
                 <ui:Button text="Cancel" name="FitCancelButton" style="width: 70px; display: none;" />
             </ui:VisualElement>

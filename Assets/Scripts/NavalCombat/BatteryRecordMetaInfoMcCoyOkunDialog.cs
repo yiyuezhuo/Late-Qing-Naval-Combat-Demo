@@ -121,6 +121,7 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
     VisualElement fitProgressRoot;
     Button calculateButton;
     Button fitExternalButton;
+    Button loadFromBatteryButton;
     Button fitPauseButton;
     Button fitCancelButton;
     ProgressBar fitProgressBar;
@@ -174,6 +175,9 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         fitExternalButton = root.Q<Button>("FitExternalBallisticButton");
         if (fitExternalButton != null)
             fitExternalButton.clicked += StartExternalFit;
+        loadFromBatteryButton = root.Q<Button>("LoadFromBatteryButton");
+        if (loadFromBatteryButton != null)
+            loadFromBatteryButton.clicked += LoadFromBattery;
         fitPauseButton = root.Q<Button>("FitPauseButton");
         if (fitPauseButton != null)
             fitPauseButton.clicked += PauseCurrentFit;
@@ -198,6 +202,17 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         if (batteryRecord == null)
             return;
 
+        LoadBatteryRecordCoreValues();
+        var shortName = batteryRecord.name?.GetShortName();
+        if (!string.IsNullOrWhiteSpace(shortName))
+            input.McCoy.ProjectileId = shortName;
+    }
+
+    void LoadBatteryRecordCoreValues()
+    {
+        if (batteryRecord == null)
+            return;
+
         if (batteryRecord.shellSizeInch > 0f)
             facehardDetails.ProjectileDiameter = batteryRecord.shellSizeInch;
         if (batteryRecord.shellWeightPounds > 0f)
@@ -207,9 +222,17 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         }
         if (batteryRecord.rangeYards > 0f)
             input.McCoy.MaxRange = batteryRecord.rangeYards;
-        var shortName = batteryRecord.name?.GetShortName();
-        if (!string.IsNullOrWhiteSpace(shortName))
-            input.McCoy.ProjectileId = shortName;
+    }
+
+    void LoadFromBattery()
+    {
+        if (currentFitJob != null)
+            return;
+
+        LoadBatteryRecordCoreValues();
+        RebuildInputs();
+        MarkOutputDirty();
+        ShowFitStatus("Loaded max range, projectile weight, and projectile diameter from BatteryRecord.", 0);
     }
 
     void EnsureMetaInfoBallisticSample()
@@ -800,6 +823,7 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         var fitting = currentFitJob != null;
         calculateButton?.SetEnabled(!fitting);
         fitExternalButton?.SetEnabled(!fitting);
+        loadFromBatteryButton?.SetEnabled(!fitting);
         if (fitPauseButton != null)
             fitPauseButton.style.display = fitting ? DisplayStyle.Flex : DisplayStyle.None;
         if (fitCancelButton != null)

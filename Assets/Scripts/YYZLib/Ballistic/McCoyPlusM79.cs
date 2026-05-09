@@ -34,22 +34,22 @@ namespace YYZ.Ballistic
         public List<string> Warnings { get; set; } = new List<string>();
     }
 
+    internal sealed class McCoyPlusM79SolvedThickness
+    {
+        public double? PenetrationInches;
+        public double? M79NavyBallisticLimit;
+        public double M79Obliquity;
+        public M79PenetrationMode? PenetrationMode;
+        public double? RemainingVelocity;
+        public string Warning;
+    }
+
     public static class McCoyPlusM79
     {
         const double MinThicknessDiameters = 0.001;
         const double MaxThicknessDiameters = 5.99999;
         const double ThicknessToleranceFps = 0.5;
         const int MaxSearchIterations = 42;
-
-        sealed class SolvedThickness
-        {
-            public double? PenetrationInches;
-            public double? M79NavyBallisticLimit;
-            public double M79Obliquity;
-            public M79PenetrationMode? PenetrationMode;
-            public double? RemainingVelocity;
-            public string Warning;
-        }
 
         sealed class M79AtThicknessResult
         {
@@ -70,8 +70,8 @@ namespace YYZ.Ballistic
             var rows = new List<McCoyPlusM79Row>();
             foreach (var row in trajectory.Rows)
             {
-                var solved = SolvePenetrationThickness(source.M79, row, row.FallAngleDegrees);
-                var horizontalSolved = SolvePenetrationThickness(source.M79, row, 90 - row.FallAngleDegrees, true);
+                var solved = SolvePenetrationThicknessForRow(source.M79, row, row.FallAngleDegrees);
+                var horizontalSolved = SolvePenetrationThicknessForRow(source.M79, row, 90 - row.FallAngleDegrees, true);
                 if (solved.Warning != null)
                 {
                     warnings.Add(solved.Warning);
@@ -122,11 +122,11 @@ namespace YYZ.Ballistic
             return new M79AtThicknessResult { Result = result, Obliquity = obliquity };
         }
 
-        static SolvedThickness SolvePenetrationThickness(M79Input baseInput, McCoyPlusRow row, double impactObliquity, bool rejectAboveLimit = false)
+        internal static McCoyPlusM79SolvedThickness SolvePenetrationThicknessForRow(M79Input baseInput, McCoyPlusRow row, double impactObliquity, bool rejectAboveLimit = false)
         {
             if (rejectAboveLimit && impactObliquity > 79.9999)
             {
-                return new SolvedThickness
+                return new McCoyPlusM79SolvedThickness
                 {
                     PenetrationInches = null,
                     M79NavyBallisticLimit = null,
@@ -146,7 +146,7 @@ namespace YYZ.Ballistic
 
             if (lowResult.Result.NavyBallisticLimit > row.Velocity)
             {
-                return new SolvedThickness
+                return new McCoyPlusM79SolvedThickness
                 {
                     PenetrationInches = null,
                     M79NavyBallisticLimit = lowResult.Result.NavyBallisticLimit,
@@ -159,7 +159,7 @@ namespace YYZ.Ballistic
 
             if (highResult.Result.NavyBallisticLimit < row.Velocity)
             {
-                return new SolvedThickness
+                return new McCoyPlusM79SolvedThickness
                 {
                     PenetrationInches = null,
                     M79NavyBallisticLimit = highResult.Result.NavyBallisticLimit,
@@ -197,7 +197,7 @@ namespace YYZ.Ballistic
                 }
             }
 
-            return new SolvedThickness
+            return new McCoyPlusM79SolvedThickness
             {
                 PenetrationInches = bestThickness,
                 M79NavyBallisticLimit = bestResult.NavyBallisticLimit,

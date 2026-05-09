@@ -135,6 +135,67 @@
                 <ui:ScrollView name="McCoyPlusFacehardOutput" mode="Vertical" class="mccoy-okun-output" style="flex-grow: 1; flex-shrink: 1;"><ui:DropdownField name="McCoyPlusFacehardChartModeField" label="Chart Mode" /><ui:VisualElement name="McCoyPlusFacehardOutputContent" /></ui:ScrollView>
             </ui:VisualElement>
             </ui:Tab>
+            <ui:Tab label="McCoy Plus Facehard M79">
+            <ui:VisualElement name="McCoyPlusFacehardM79Page" class="mccoy-okun-page" style="flex-direction: row; flex-grow: 1; flex-shrink: 1;">
+                <ui:ScrollView name="McCoyPlusFacehardM79Input" mode="Vertical" class="mccoy-okun-input" style="flex-basis: 390px; flex-shrink: 0; margin-right: 8px;">
+                    <ui:VisualElement style="flex-direction: row; margin-bottom: 6px;"><ui:Label text="McCoy Plus Facehard M79" style="-unity-font-style: bold; flex-grow: 1;" /><ui:Button name="McCoyPlusFacehardM79ResetButton" text="Reset" /></ui:VisualElement>
+                    <ui:DropdownField name="McCoyPlusFacehardM79SampleField" label="Sample" />
+                    <ui:TabView name="McCoyPlusFacehardM79InputTabView" style="flex-grow: 1; flex-shrink: 1;">
+                        <ui:Tab label="Projectile">
+                            <ui:ScrollView mode="Vertical" style="flex-grow: 1; flex-shrink: 1;">
+                                <ui:DropdownField name="McCoyPlusFacehardM79PresetField" label="Mach-CD Preset" />
+                                <ui:FloatField name="McCoyPlusFacehardM79MuzzleVelocityField" label="Muzzle Velocity" />
+                                <ui:FloatField name="McCoyPlusFacehardM79BallisticCoefficientField" label="Ballistic Coefficient" />
+                                <ui:FloatField name="McCoyPlusFacehardM79MaxRangeField" label="Maximum Range" />
+                                <ui:DropdownField name="McCoyPlusFacehardM79ProjectileNationField" label="Projectile Nation" />
+                                <ui:DropdownField name="McCoyPlusFacehardM79ProjectileTypeField" label="Projectile Type" />
+                                <ui:DropdownField name="McCoyPlusFacehardM79CapOrHoodField" label="Cap Or Hood" />
+                                <ui:DropdownField name="McCoyPlusFacehardM79NoseSchemaField" label="Nose Schema" />
+                                <ui:DropdownField name="McCoyPlusFacehardM79JapaneseCapHeadField" label="Japanese Cap Head Type" />
+                                <ui:DropdownField name="McCoyPlusFacehardM79NoseConditionField" label="Pre-Impact Nose Condition" />
+                                <ui:FloatField name="McCoyPlusFacehardM79ProjectileDiameterField" label="Projectile Diameter" />
+                                <ui:FloatField name="McCoyPlusFacehardM79ProjectileWeightField" label="Projectile Weight" />
+                                <ui:FloatField name="McCoyPlusFacehardM79ProjectileBodyWeightField" label="Body Weight" />
+                                <ui:FloatField name="McCoyPlusFacehardM79WindscreenCapHeadWeightField" label="Windscreen + Cap Head Weight" />
+                                <ui:FloatField name="McCoyPlusFacehardM79WindscreenWeightField" label="Windscreen Weight" />
+                                <ui:FloatField name="McCoyPlusFacehardM79RemainingNoseWeightField" label="Remaining Nose Covering Weight" />
+                                <ui:FloatField name="McCoyPlusFacehardM79PlimField" label="PLIM" />
+                                <ui:FloatField name="McCoyPlusFacehardM79PdamField" label="PDAM" />
+                            </ui:ScrollView>
+                        </ui:Tab>
+                        <ui:Tab label="Vertical Armor">
+                            <ui:ScrollView mode="Vertical" style="flex-grow: 1; flex-shrink: 1;">
+                                <ui:DropdownField name="McCoyPlusFacehardM79ArmorTypeField" label="Armor Type" />
+                                <ui:Toggle name="McCoyPlusFacehardM79CurvedPlateToggle" label="Strongly Curved Plate" />
+                                <ui:FloatField name="McCoyPlusFacehardM79WoodBackingField" label="Wood Backing" />
+                                <ui:FloatField name="McCoyPlusFacehardM79CementBackingField" label="Cement Backing" />
+                                <ui:FloatField name="McCoyPlusFacehardM79MetalBackingField" label="Metal Backing" />
+                                <ui:FloatField name="McCoyPlusFacehardM79BackingQualityField" label="Backing Quality" />
+                                <ui:FloatField name="McCoyPlusFacehardM79BackingPlatesField" label="Backing Plates" />
+                                <ui:VisualElement name="McCoyPlusFacehardM79InputWarnings" />
+                            </ui:ScrollView>
+                        </ui:Tab>
+                        <ui:Tab label="Deck Armor">
+                            <ui:ScrollView mode="Vertical" style="flex-grow: 1; flex-shrink: 1;">
+                                <ui:FloatField name="McCoyPlusFacehardM79ArmorQualityField" label="Armor Quality" />
+                                <ui:FloatField name="McCoyPlusFacehardM79ElongationField" label="Elongation" />
+                            </ui:ScrollView>
+                        </ui:Tab>
+                        <ui:Tab label="Misc">
+                            <ui:ScrollView mode="Vertical" style="flex-grow: 1; flex-shrink: 1;">
+                                <ui:DropdownField name="McCoyPlusFacehardM79ElevationSearchField" label="Elevation Search" />
+                                <ui:DropdownField name="McCoyPlusFacehardM79AtmosphereField" label="Atmosphere Model" />
+                                <ui:FloatField name="McCoyPlusFacehardM79DensityRatioField" label="Density Ratio" />
+                                <ui:FloatField name="McCoyPlusFacehardM79TemperatureField" label="Temperature" />
+                                <ui:FloatField name="McCoyPlusFacehardM79MatchHeightField" label="Match Height" />
+                                <ui:TextField name="McCoyPlusFacehardM79DragTableField" label="Mach-CD Drag Table" multiline="true" style="height: 120px;" />
+                            </ui:ScrollView>
+                        </ui:Tab>
+                    </ui:TabView>
+                </ui:ScrollView>
+                <ui:ScrollView name="McCoyPlusFacehardM79Output" mode="Vertical" class="mccoy-okun-output" style="flex-grow: 1; flex-shrink: 1;"><ui:DropdownField name="McCoyPlusFacehardM79ChartModeField" label="Chart Mode" /><ui:VisualElement name="McCoyPlusFacehardM79OutputContent" /></ui:ScrollView>
+            </ui:VisualElement>
+            </ui:Tab>
             <ui:Tab label="McCoy Plus M79">
             <ui:VisualElement name="McCoyPlusM79Page" class="mccoy-okun-page" style="flex-direction: row; flex-grow: 1; flex-shrink: 1;">
                 <ui:ScrollView name="McCoyPlusM79Input" mode="Vertical" class="mccoy-okun-input" style="flex-basis: 340px; flex-shrink: 0; margin-right: 8px;">

@@ -46,6 +46,14 @@ namespace YYZ.Ballistic
         public List<string> Warnings { get; set; } = new List<string>();
     }
 
+    internal sealed class McCoyPlusFacehardSolvedThickness
+    {
+        public double? PenetrationInches;
+        public double? FacehardNavyBl;
+        public double FacehardObliquity;
+        public string Warning;
+    }
+
     public static class McCoyPlusFacehard
     {
         const double MaxThicknessInches = 80;
@@ -53,14 +61,6 @@ namespace YYZ.Ballistic
         const int MaxSearchIterations = 42;
 
         public static Func<FacehardBridgeInput, FacehardBridgeResult> FacehardCalculator { get; set; }
-
-        sealed class SolvedThickness
-        {
-            public double? PenetrationInches;
-            public double? FacehardNavyBl;
-            public double FacehardObliquity;
-            public string Warning;
-        }
 
         sealed class NavyBlResult
         {
@@ -99,8 +99,8 @@ namespace YYZ.Ballistic
             var rows = new List<McCoyPlusFacehardRow>();
             foreach (var row in trajectory.Rows)
             {
-                var solved = SolvePenetrationThickness(source.Facehard, row, row.FallAngleDegrees);
-                var horizontalSolved = SolvePenetrationThickness(source.Facehard, row, 90 - row.FallAngleDegrees, true);
+                var solved = SolvePenetrationThicknessForRow(source.Facehard, row, row.FallAngleDegrees);
+                var horizontalSolved = SolvePenetrationThicknessForRow(source.Facehard, row, 90 - row.FallAngleDegrees, true);
                 if (solved.Warning != null)
                 {
                     warnings.Add(solved.Warning);
@@ -141,11 +141,11 @@ namespace YYZ.Ballistic
             return new NavyBlResult { NavyBl = result.NavyBl, Obliquity = obliquity };
         }
 
-        static SolvedThickness SolvePenetrationThickness(FacehardBridgeInput baseInput, McCoyPlusRow row, double impactObliquity, bool rejectAboveLimit = false)
+        internal static McCoyPlusFacehardSolvedThickness SolvePenetrationThicknessForRow(FacehardBridgeInput baseInput, McCoyPlusRow row, double impactObliquity, bool rejectAboveLimit = false)
         {
             if (rejectAboveLimit && impactObliquity > 80)
             {
-                return new SolvedThickness
+                return new McCoyPlusFacehardSolvedThickness
                 {
                     PenetrationInches = null,
                     FacehardNavyBl = null,
@@ -168,7 +168,7 @@ namespace YYZ.Ballistic
 
             if (highResult.NavyBl < row.Velocity)
             {
-                return new SolvedThickness
+                return new McCoyPlusFacehardSolvedThickness
                 {
                     PenetrationInches = null,
                     FacehardNavyBl = highResult.NavyBl,
@@ -204,7 +204,7 @@ namespace YYZ.Ballistic
                 }
             }
 
-            return new SolvedThickness
+            return new McCoyPlusFacehardSolvedThickness
             {
                 PenetrationInches = bestThickness,
                 FacehardNavyBl = bestNavyBl,

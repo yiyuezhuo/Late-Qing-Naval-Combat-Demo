@@ -25,6 +25,7 @@ public sealed class McCoyOkunCalculatorDialog
         McCoy,
         McCoyPlus,
         McCoyPlusFacehard,
+        McCoyPlusFacehardM79,
         McCoyPlusM79,
         Jbm
     }
@@ -96,6 +97,7 @@ public sealed class McCoyOkunCalculatorDialog
         McCoyOkunTab.McCoy,
         McCoyOkunTab.McCoyPlus,
         McCoyOkunTab.McCoyPlusFacehard,
+        McCoyOkunTab.McCoyPlusFacehardM79,
         McCoyOkunTab.McCoyPlusM79,
         McCoyOkunTab.Jbm
     };
@@ -124,6 +126,12 @@ public sealed class McCoyOkunCalculatorDialog
     McCoyPlusDragFunction mccoyPlusFacehardPreset = McCoyPlusDragFunction.G1;
     string mccoyPlusFacehardDragText = McCoyPlus.DragPresetToText(McCoyPlusDragFunction.G1);
     McCoyOkunChartMode mccoyPlusFacehardChartMode = McCoyOkunChartMode.Trajectory;
+    McCoyPlusFacehardM79Input mccoyPlusFacehardM79Input = McCoyPlusFacehardM79.DefaultInput();
+    FacehardInput mccoyPlusFacehardM79Details = FacehardCalculator.DefaultFacehardInput();
+    string mccoyPlusFacehardM79SampleId = "";
+    McCoyPlusDragFunction mccoyPlusFacehardM79Preset = McCoyPlusDragFunction.G1;
+    string mccoyPlusFacehardM79DragText = McCoyPlus.DragPresetToText(McCoyPlusDragFunction.G1);
+    McCoyOkunChartMode mccoyPlusFacehardM79ChartMode = McCoyOkunChartMode.Trajectory;
     McCoyPlusM79Input mccoyPlusM79Input = McCoyPlusM79.DefaultInput();
     string mccoyPlusM79SampleId = "";
     McCoyPlusDragFunction mccoyPlusM79Preset = McCoyPlusDragFunction.G1;
@@ -362,6 +370,34 @@ public sealed class McCoyOkunCalculatorDialog
                     mccoyPlusFacehardInput.McCoy.DragTable = McCoy.NormalizeDragTable(value);
                 });
                 break;
+            case McCoyOkunTab.McCoyPlusFacehardM79:
+                SyncComboMcCoy(mccoyPlusFacehardM79Input.McCoy, mccoyPlusFacehardM79DragText);
+                SyncFacehardM79Bridge();
+                var facehardM79Preview = FacehardCalculator.CalculateFacehard(mccoyPlusFacehardM79Details, false);
+                BindButton(root, "McCoyPlusFacehardM79ResetButton", () =>
+                {
+                    mccoyPlusFacehardM79Input = McCoyPlusFacehardM79.DefaultInput();
+                    mccoyPlusFacehardM79Details = FacehardCalculator.DefaultFacehardInput();
+                    mccoyPlusFacehardM79SampleId = "";
+                    mccoyPlusFacehardM79Preset = McCoyPlusDragFunction.G1;
+                    mccoyPlusFacehardM79DragText = McCoyPlus.DragPresetToText(McCoyPlusDragFunction.G1);
+                    mccoyPlusFacehardM79ChartMode = McCoyOkunChartMode.Trajectory;
+                    RebuildContent();
+                });
+                BindSample(root, "McCoyPlusFacehardM79SampleField", mccoyPlusFacehardM79SampleId, id =>
+                {
+                    mccoyPlusFacehardM79SampleId = id;
+                    var sample = SampleById(id);
+                    if (sample != null)
+                    {
+                        ApplyMcCoyPlusSample(mccoyPlusFacehardM79Input.McCoy, sample, value => mccoyPlusFacehardM79Preset = value, value => mccoyPlusFacehardM79DragText = value);
+                        ApplyFacehardSample(mccoyPlusFacehardM79Details, sample);
+                        ApplyM79Sample(mccoyPlusFacehardM79Input.M79, sample);
+                        SyncFacehardM79Bridge();
+                    }
+                });
+                ConfigureMcCoyPlusFacehardM79Template(root, facehardM79Preview);
+                break;
             case McCoyOkunTab.McCoyPlusM79:
                 SyncComboMcCoy(mccoyPlusM79Input.McCoy, mccoyPlusM79DragText);
                 BindButton(root, "McCoyPlusM79ResetButton", () =>
@@ -424,10 +460,14 @@ public sealed class McCoyOkunCalculatorDialog
     void ConfigureTemplateOutputControls(McCoyOkunTab tab, VisualElement root)
     {
         SetDisplay(root, "McCoyPlusFacehardChartModeField", tab == McCoyOkunTab.McCoyPlusFacehard);
+        SetDisplay(root, "McCoyPlusFacehardM79ChartModeField", tab == McCoyOkunTab.McCoyPlusFacehardM79);
         SetDisplay(root, "McCoyPlusM79ChartModeField", tab == McCoyOkunTab.McCoyPlusM79);
         if (tab == McCoyOkunTab.McCoyPlusFacehard)
             BindDropdown(root, "McCoyPlusFacehardChartModeField", new List<string> { "Matched Trajectories", "Penetration By Range" }, mccoyPlusFacehardChartMode == McCoyOkunChartMode.Trajectory ? 0 : 1,
                 index => mccoyPlusFacehardChartMode = index == 0 ? McCoyOkunChartMode.Trajectory : McCoyOkunChartMode.Penetration);
+        if (tab == McCoyOkunTab.McCoyPlusFacehardM79)
+            BindDropdown(root, "McCoyPlusFacehardM79ChartModeField", new List<string> { "Matched Trajectories", "Penetration By Range" }, mccoyPlusFacehardM79ChartMode == McCoyOkunChartMode.Trajectory ? 0 : 1,
+                index => mccoyPlusFacehardM79ChartMode = index == 0 ? McCoyOkunChartMode.Trajectory : McCoyOkunChartMode.Penetration);
         if (tab == McCoyOkunTab.McCoyPlusM79)
             BindDropdown(root, "McCoyPlusM79ChartModeField", new List<string> { "Matched Trajectories", "Penetration By Range" }, mccoyPlusM79ChartMode == McCoyOkunChartMode.Trajectory ? 0 : 1,
                 index => mccoyPlusM79ChartMode = index == 0 ? McCoyOkunChartMode.Trajectory : McCoyOkunChartMode.Penetration);
@@ -448,6 +488,9 @@ public sealed class McCoyOkunCalculatorDialog
                 break;
             case McCoyOkunTab.McCoyPlusFacehard:
                 BuildMcCoyPlusFacehardOutput(output);
+                break;
+            case McCoyOkunTab.McCoyPlusFacehardM79:
+                BuildMcCoyPlusFacehardM79Output(output);
                 break;
             case McCoyOkunTab.McCoyPlusM79:
                 BuildMcCoyPlusM79Output(output);
@@ -555,6 +598,29 @@ public sealed class McCoyOkunCalculatorDialog
             Col<McCoyPlusFacehardRow>("horizontal", "Horizontal Penetration", 160, row => row.HorizontalPenetrationInches.HasValue ? F(row.HorizontalPenetrationInches, 2) : "n/a")));
     }
 
+    void BuildMcCoyPlusFacehardM79Output(VisualElement output)
+    {
+        SyncComboMcCoy(mccoyPlusFacehardM79Input.McCoy, mccoyPlusFacehardM79DragText);
+        SyncFacehardM79Bridge();
+        McCoyPlusFacehard.FacehardCalculator = bridge => FacehardBridgeCalculate(bridge, mccoyPlusFacehardM79Details);
+        var stopwatch = Stopwatch.StartNew();
+        var result = McCoyPlusFacehardM79.Calculate(mccoyPlusFacehardM79Input);
+        stopwatch.Stop();
+        output.Add(Warnings(result.Warnings));
+        output.Add(mccoyPlusFacehardM79ChartMode == McCoyOkunChartMode.Trajectory
+            ? ChartSeries("Matched Trajectories", TrajectorySeries(result.ChartRows, mccoyPlusFacehardM79Input.McCoy.RangeUnit), BallisticOptions.ToLegacyCode(mccoyPlusFacehardM79Input.McCoy.RangeUnit), "ft")
+            : ChartSeries("Penetration By Range", PenetrationSeries(result.Rows), BallisticOptions.ToLegacyCode(mccoyPlusFacehardM79Input.McCoy.RangeUnit), "in"));
+        output.Add(CalculationTime(stopwatch.Elapsed));
+        output.Add(Table("Rows", result.Rows,
+            Col<McCoyPlusFacehardM79Row>("range", "Range", 90, row => F(row.Range, 0)),
+            Col<McCoyPlusFacehardM79Row>("penetration", "V Pen", 90, row => F(row.PenetrationInches, 2)),
+            Col<McCoyPlusFacehardM79Row>("horizontal", "H Pen", 90, row => row.HorizontalPenetrationInches.HasValue ? F(row.HorizontalPenetrationInches, 2) : "n/a"),
+            Col<McCoyPlusFacehardM79Row>("velocity", "Velocity", 90, row => F(row.Velocity, 0)),
+            Col<McCoyPlusFacehardM79Row>("fall", "Fall Angle", 100, row => F(row.FallAngleDegrees, 3)),
+            Col<McCoyPlusFacehardM79Row>("elevation", "Elevation", 90, row => F(row.ElevationDegrees, 4)),
+            Col<McCoyPlusFacehardM79Row>("time", "Time", 90, row => F(row.Time, 3))));
+    }
+
     void BuildMcCoyPlusM79Output(VisualElement output)
     {
         SyncComboMcCoy(mccoyPlusM79Input.McCoy, mccoyPlusM79DragText);
@@ -631,6 +697,32 @@ public sealed class McCoyOkunCalculatorDialog
         BindMcCoyPlusPreset(root, prefix, mccoy, getPreset, setPreset, setDragText, onPresetChanged);
     }
 
+    void ConfigureMcCoyPlusFacehardM79Template(VisualElement root, FacehardResult facehardPreview)
+    {
+        const string prefix = "McCoyPlusFacehardM79";
+        ConfigureFacehardProjectileTemplate(root, prefix, mccoyPlusFacehardM79Details, facehardPreview);
+        BindMcCoyPlusPreset(root, prefix, mccoyPlusFacehardM79Input.McCoy, () => mccoyPlusFacehardM79Preset, value => mccoyPlusFacehardM79Preset = value, value => mccoyPlusFacehardM79DragText = value, () => mccoyPlusFacehardM79SampleId = "");
+        BindFloat(root, $"{prefix}MuzzleVelocityField", mccoyPlusFacehardM79Input.McCoy.MuzzleVelocity, value => mccoyPlusFacehardM79Input.McCoy.MuzzleVelocity = value, 1);
+        BindFloat(root, $"{prefix}BallisticCoefficientField", mccoyPlusFacehardM79Input.McCoy.BallisticCoefficient, value => mccoyPlusFacehardM79Input.McCoy.BallisticCoefficient = value, 0.001);
+        BindFloat(root, $"{prefix}MaxRangeField", mccoyPlusFacehardM79Input.McCoy.MaxRange, value => mccoyPlusFacehardM79Input.McCoy.MaxRange = value, 1);
+
+        ConfigureFacehardArmorTemplate(root, prefix, mccoyPlusFacehardM79Details, facehardPreview);
+
+        BindFloat(root, $"{prefix}ArmorQualityField", mccoyPlusFacehardM79Input.M79.PlateQuality, value => mccoyPlusFacehardM79Input.M79.PlateQuality = value, 0.001);
+        BindFloat(root, $"{prefix}ElongationField", mccoyPlusFacehardM79Input.M79.Elongation, value => mccoyPlusFacehardM79Input.M79.Elongation = value, 10);
+
+        BindMcCoyPlusElevationSearch(root, prefix, mccoyPlusFacehardM79Input.McCoy);
+        BindDropdown(root, $"{prefix}AtmosphereField", new List<string> { "Army Standard Metro", "ICAO" }, mccoyPlusFacehardM79Input.McCoy.Atmosphere == McCoyAtmosphere.Icao ? 1 : 0, index => mccoyPlusFacehardM79Input.McCoy.Atmosphere = index == 1 ? McCoyAtmosphere.Icao : McCoyAtmosphere.StandardMetro);
+        BindFloat(root, $"{prefix}DensityRatioField", mccoyPlusFacehardM79Input.McCoy.DensityRatio, value => mccoyPlusFacehardM79Input.McCoy.DensityRatio = value, 0.001);
+        BindFloat(root, $"{prefix}TemperatureField", mccoyPlusFacehardM79Input.McCoy.TemperatureF, value => mccoyPlusFacehardM79Input.McCoy.TemperatureF = value);
+        BindFloat(root, $"{prefix}MatchHeightField", mccoyPlusFacehardM79Input.McCoy.MatchHeight, value => mccoyPlusFacehardM79Input.McCoy.MatchHeight = value);
+        BindText(root, $"{prefix}DragTableField", mccoyPlusFacehardM79DragText, value =>
+        {
+            mccoyPlusFacehardM79DragText = value;
+            mccoyPlusFacehardM79Input.McCoy.DragTable = McCoy.NormalizeDragTable(value);
+        });
+    }
+
     void ConfigureMcCoyPlusTemplate(VisualElement root, string prefix, McCoyPlusInput target, Func<McCoyPlusDragFunction> getPreset, Action<McCoyPlusDragFunction> setPreset, Func<string> getDragText, Action<string> setDragText)
     {
         BindMcCoyPlusElevationSearch(root, prefix, target);
@@ -693,6 +785,11 @@ public sealed class McCoyOkunCalculatorDialog
     void ConfigureFacehardComboTemplate(VisualElement root, string prefix, FacehardInput target, FacehardResult preview)
     {
         ConfigureFacehardProjectileTemplate(root, prefix, target, preview);
+        ConfigureFacehardArmorTemplate(root, prefix, target, preview);
+    }
+
+    void ConfigureFacehardArmorTemplate(VisualElement root, string prefix, FacehardInput target, FacehardResult preview)
+    {
         BindDropdown(root, $"{prefix}ArmorTypeField", FacehardCalculator.FacehardArmors.Select(item => item.Name).ToList(),
             FacehardCalculator.FacehardArmors.FindIndex(item => item.Id == target.ArmorId),
             index => target.ArmorId = FacehardCalculator.FacehardArmors[Mathf.Max(0, index)].Id);
@@ -958,6 +1055,7 @@ public sealed class McCoyOkunCalculatorDialog
             McCoyOkunTab.McCoy => "McCoy",
             McCoyOkunTab.McCoyPlus => "McCoyPlus",
             McCoyOkunTab.McCoyPlusFacehard => "McCoyPlusFacehard",
+            McCoyOkunTab.McCoyPlusFacehardM79 => "McCoyPlusFacehardM79",
             McCoyOkunTab.McCoyPlusM79 => "McCoyPlusM79",
             McCoyOkunTab.Jbm => "Jbm",
             _ => string.Empty
@@ -973,6 +1071,7 @@ public sealed class McCoyOkunCalculatorDialog
             McCoyOkunTab.McCoy => "McCoy",
             McCoyOkunTab.McCoyPlus => "McCoy Plus",
             McCoyOkunTab.McCoyPlusFacehard => "McCoy Plus Facehard",
+            McCoyOkunTab.McCoyPlusFacehardM79 => "McCoy Plus Facehard M79",
             McCoyOkunTab.McCoyPlusM79 => "McCoy Plus M79",
             McCoyOkunTab.Jbm => "JBM",
             _ => string.Empty
@@ -988,6 +1087,7 @@ public sealed class McCoyOkunCalculatorDialog
             "McCoy" => McCoyOkunTab.McCoy,
             "McCoy Plus" => McCoyOkunTab.McCoyPlus,
             "McCoy Plus Facehard" => McCoyOkunTab.McCoyPlusFacehard,
+            "McCoy Plus Facehard M79" => McCoyOkunTab.McCoyPlusFacehardM79,
             "McCoy Plus M79" => McCoyOkunTab.McCoyPlusM79,
             "JBM" => McCoyOkunTab.Jbm,
             _ => McCoyOkunTab.M79Apclc
@@ -1159,6 +1259,16 @@ public sealed class McCoyOkunCalculatorDialog
         mccoyPlusFacehardInput.Facehard.PlateThickness = mccoyPlusFacehardDetails.PlateThickness;
         mccoyPlusFacehardInput.Facehard.Obliquity = mccoyPlusFacehardDetails.Obliquity;
         mccoyPlusFacehardInput.Facehard.StrikingVelocity = mccoyPlusFacehardDetails.StrikingVelocity;
+    }
+
+    void SyncFacehardM79Bridge()
+    {
+        mccoyPlusFacehardM79Input.Facehard.ProjectileDiameter = mccoyPlusFacehardM79Details.ProjectileDiameter;
+        mccoyPlusFacehardM79Input.Facehard.PlateThickness = mccoyPlusFacehardM79Details.PlateThickness;
+        mccoyPlusFacehardM79Input.Facehard.Obliquity = mccoyPlusFacehardM79Details.Obliquity;
+        mccoyPlusFacehardM79Input.Facehard.StrikingVelocity = mccoyPlusFacehardM79Details.StrikingVelocity;
+        mccoyPlusFacehardM79Input.M79.ProjectileDiameter = mccoyPlusFacehardM79Details.ProjectileDiameter;
+        mccoyPlusFacehardM79Input.M79.ProjectileWeight = mccoyPlusFacehardM79Details.ProjectileWeight;
     }
 
     static void ApplyMcCoyPlusPreset(McCoyPlusInput target, McCoyPlusDragFunction function, Action<McCoyPlusDragFunction> setPreset, Action<string> setDragText)
@@ -1336,6 +1446,27 @@ public sealed class McCoyOkunCalculatorDialog
                 Points = row.Trajectory.Select(point => new Vector2((float)point.Range, (float)(point.HeightInches / 12d))).ToList()
             };
         }
+    }
+
+    static IEnumerable<MiniChartSeries> PenetrationSeries(IEnumerable<McCoyPlusFacehardM79Row> rows)
+    {
+        var rowList = rows?.ToList() ?? new List<McCoyPlusFacehardM79Row>();
+        yield return new MiniChartSeries
+        {
+            Label = "V Pen",
+            Points = rowList
+                .Where(row => row.PenetrationInches.HasValue)
+                .Select(row => new Vector2((float)row.Range, (float)row.PenetrationInches.Value))
+                .ToList()
+        };
+        yield return new MiniChartSeries
+        {
+            Label = "H Pen",
+            Points = rowList
+                .Where(row => row.HorizontalPenetrationInches.HasValue)
+                .Select(row => new Vector2((float)row.Range, (float)row.HorizontalPenetrationInches.Value))
+                .ToList()
+        };
     }
 
     static TableColumnSpec<T> Col<T>(string name, string title, int width, Func<T, string> selector)

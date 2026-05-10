@@ -11,6 +11,8 @@ using YYZ.Ballistic;
 
 public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
 {
+    const string DefaultNewMetaInfoSampleId = "britain-uncapped-75";
+
     enum ChartMode
     {
         Trajectory,
@@ -155,7 +157,7 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         }
         else
         {
-            ApplyBatteryRecordDefaults();
+            ApplyNewMetaInfoDefaults();
         }
         EnsureMetaInfoBallisticSample();
     }
@@ -193,19 +195,16 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
 
         RebuildInputs();
         RefreshFitControls();
-        ShowPendingOutput();
+        Calculate();
         return root;
     }
 
-    void ApplyBatteryRecordDefaults()
+    void ApplyNewMetaInfoDefaults()
     {
-        if (batteryRecord == null)
-            return;
-
+        var sample = BallisticSampleCatalog.SampleById(DefaultNewMetaInfoSampleId);
+        if (sample != null)
+            ApplyBallisticSample(sample);
         LoadBatteryRecordCoreValues();
-        var shortName = batteryRecord.name?.GetShortName();
-        if (!string.IsNullOrWhiteSpace(shortName))
-            input.McCoy.ProjectileId = shortName;
     }
 
     void LoadBatteryRecordCoreValues()
@@ -232,7 +231,7 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         LoadBatteryRecordCoreValues();
         RebuildInputs();
         MarkOutputDirty();
-        ShowFitStatus("Loaded max range, projectile weight, and projectile diameter from BatteryRecord.", 0);
+        ShowPendingOutput("Loaded max range, projectile weight, and projectile diameter from BatteryRecord.");
     }
 
     void EnsureMetaInfoBallisticSample()
@@ -657,7 +656,7 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         var setupError = CreateExternalFitJob(out var job);
         if (setupError != null)
         {
-            ShowFitStatus(setupError, 0);
+            ShowPendingOutput(setupError);
             return;
         }
 
@@ -794,10 +793,10 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
             tableRows.Clear();
             hasCalculated = false;
             var status = applyBest
-                ? $"{reason}: best BC {job.BestBallisticCoefficient:0.####}, score {job.BestScore:0.####}. Click Calculate to refresh."
+                ? $"{reason}: best BC {job.BestBallisticCoefficient:0.####}, score {job.BestScore:0.####}."
                 : $"{reason}: restored BC {job.OriginalBallisticCoefficient:0.####}.";
             ShowPendingOutput(status);
-            ShowFitStatus(status, applyBest ? 1 : 0);
+            Calculate();
         }
 
         RefreshFitControls();
@@ -829,10 +828,7 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         if (fitCancelButton != null)
             fitCancelButton.style.display = fitting ? DisplayStyle.Flex : DisplayStyle.None;
         if (fitProgressRoot != null)
-        {
-            var hasMessage = !string.IsNullOrEmpty(fitProgressLabel?.text);
-            fitProgressRoot.style.display = fitting || hasMessage ? DisplayStyle.Flex : DisplayStyle.None;
-        }
+            fitProgressRoot.style.display = fitting ? DisplayStyle.Flex : DisplayStyle.None;
     }
 
     string BuildExternalFitDiagnostic(ExternalFitJob job)

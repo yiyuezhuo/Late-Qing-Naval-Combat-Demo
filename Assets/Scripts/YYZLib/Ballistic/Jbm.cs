@@ -121,6 +121,7 @@ namespace YYZ.Ballistic
             1.6, 1.7, 1.8, 2.0, 2.2, 2.5, 3.0, 3.5, 4.0, 5.0,
         };
 
+        // INTLIFT Mach table for CLA, CMA, and CDA2 output.
         static readonly double[] IntLiftMaches =
         {
             0.5, 0.6, 0.7, 0.8, 0.9, 0.95, 1.0, 1.1, 1.2, 1.4, 1.6, 1.8,
@@ -144,11 +145,15 @@ namespace YYZ.Ballistic
 
         public static McDragResult CalculateMcDrag(McDragInput rawInput)
         {
+            // MCDRAG, BY R. L. MCCOY.
+            // DEC. 1974 DRAG COEFFICIENT ESTIMATE FOR AN AXISYMMETRIC PROJECTILE.
             var input = NormalizeMcDrag(rawInput ?? new McDragInput());
             var rows = new List<McDragRow>();
 
             foreach (var mach in McDragMaches)
             {
+                // Skin-friction setup: Reynolds number, laminar/turbulent coefficients,
+                // and wetted areas for nose plus afterbody.
                 var t1 = (1 - input.MeplatDiameterCalibers) / input.NoseLengthCalibers;
                 var m2 = mach * mach;
                 var reynolds = 23296.3 * mach * input.TotalLengthCalibers * input.ReferenceDiameterMm;
@@ -178,6 +183,7 @@ namespace YYZ.Ballistic
                 }
 
                 var cdsf = (c9 * s1 + c10 * s2) / s3;
+                // Meplat/head pressure contribution used by the transonic and supersonic head drag terms.
                 var c15 = (m2 - 1) / (2.4 * m2);
                 var p5 = mach <= 1
                     ? Math.Pow(1 + 0.2 * m2, 3.5)
@@ -197,6 +203,7 @@ namespace YYZ.Ballistic
                     c18 = (0.254 + 2.88 * c15) * c16;
                 }
 
+                // Base pressure ratio and base drag.
                 var p2 = mach < 1
                     ? 1 / (1 + 0.1875 * m2 + 0.0531 * m2 * m2)
                     : 1 / (1 + 0.2477 * m2 + 0.0345 * m2 * m2);
@@ -204,6 +211,7 @@ namespace YYZ.Ballistic
                     (1 + 0.25 * m2 * (1 - input.BaseDiameterCalibers));
                 var pbOverPinf = Math.Max(p2 * p4, 0);
                 var cdb = (1.4286 * (1 - pbOverPinf) * Math.Pow(input.BaseDiameterCalibers, 2)) / m2;
+                // Rotating band drag.
                 var cdbnd = mach < 0.95
                     ? Math.Pow(mach, 12.5) * (input.RotatingBandDiameterCalibers - 1)
                     : (0.21 + 0.28 / m2) * (input.RotatingBandDiameterCalibers - 1);
@@ -212,6 +220,7 @@ namespace YYZ.Ballistic
                 double cdbt;
                 if (mach <= 1)
                 {
+                    // Subsonic and transonic boattail drag and head drag.
                     if (input.BoattailLengthCalibers <= 0 || mach <= 0.85)
                     {
                         cdbt = 0;
@@ -231,6 +240,7 @@ namespace YYZ.Ballistic
                 }
                 else
                 {
+                    // Supersonic head drag and boattail drag.
                     var b2 = m2 - 1;
                     var b = Math.Sqrt(b2);
                     var z = b;
@@ -297,6 +307,10 @@ namespace YYZ.Ballistic
 
         public static McGyroResult CalculateMcGyro(McGyroInput rawInput)
         {
+            // MCGYRO, APRIL 1986, BY R. L. MCCOY.
+            // ESTIMATE OF GYROSCOPIC STABILITY FACTOR (SG) FOR A UNIFORM DENSITY PROJECTILE.
+            // THE STANDARD DEVIATION OF THE SG ESTIMATE IS 5 PERCENT AT SUBSONIC AND
+            // SUPERSONIC SPEEDS, AND 10 PERCENT AT TRANSONIC SPEEDS.
             var input = NormalizeMcGyro(rawInput ?? new McGyroInput());
             var s1 = Math.Sqrt(Math.Max(1 - input.MeplatDiameterCalibers, 0));
             var s2 = 1 - input.BaseDiameterCalibers * input.BaseDiameterCalibers;
@@ -321,6 +335,7 @@ namespace YYZ.Ballistic
                 var a1 = g1 * s2;
                 double a;
                 double b;
+                // Subsonic and supersonic coefficient branches for SG and N15.
                 if (mach < 1)
                 {
                     var b1 = Math.Sqrt(Math.Max(1 - m2, 0));
@@ -335,6 +350,7 @@ namespace YYZ.Ballistic
                 }
 
                 var twistForSg15 = (a * Math.Sqrt(input.ProjectileDensityGramsPerCc)) / Math.Pow(input.TotalLengthCalibers, b);
+                // Rifling twist rate required to give SG=1.5 is the slowest acceptable twist rate.
                 var stabilityFactor = 1.5 * Math.Pow(twistForSg15 / input.RiflingTwistCalibersPerTurn, 2);
                 rows.Add(new McGyroRow { Mach = mach, StabilityFactor = stabilityFactor, TwistForSg15 = twistForSg15 });
             }
@@ -348,6 +364,9 @@ namespace YYZ.Ballistic
 
         public static IntLiftResult CalculateIntLift(IntLiftInput rawInput)
         {
+            // PROGRAM INTLIFT.BAS, EDITED FOR TANDY 1000 HX (JULY 1990).
+            // THIS PROGRAM IS A MODIFIED VERSION OF M. A. MORRIS' RARDLIFT CODE,
+            // WITH CORRECTIONS FOR SMALL ARMS BULLETS AND MEDIUM CALIBER CANNON PROJECTILES.
             rawInput = rawInput ?? new IntLiftInput();
             var normalized = NormalizeGeometry(rawInput);
             var input = new IntLiftInput
@@ -375,6 +394,7 @@ namespace YYZ.Ballistic
                 warnings.Add("NOSE LENGTH TOO SHORT FOR ACCURATE ESTIMATES.");
             }
 
+            // CONVERT MCDRAG UNITS TO PROGRAM UNITS.
             var d = input.ReferenceDiameterMm / 1000;
             var l3 = input.TotalLengthCalibers - input.NoseLengthCalibers;
             var l1 = input.NoseLengthCalibers;
@@ -383,6 +403,7 @@ namespace YYZ.Ballistic
             var f2 = input.MeplatDiameterCalibers * d;
             var g1 = input.CenterOfGravityCalibers;
             var noseType = input.TangentRadiusRatio < 0.1 ? 3 : input.TangentRadiusRatio > 0.8 ? 2 : 1;
+            // Set nose shape parameters and shift the center of gravity to the program nose datum.
             var l10 = l1;
             var t1 = (l10 * l10 + Math.Pow((1 - f2 / d) / 2, 2)) / (1 - f2 / d);
             if (noseType != 3)
@@ -409,6 +430,7 @@ namespace YYZ.Ballistic
                 var b = Math.Sqrt(Math.Abs(mach * mach - 1));
                 var b1 = Math.Sqrt(Math.Abs(mach * mach - 0.9025));
                 double c1;
+                // CALCULATION OF BODY LIFT WITH NO BOATTAIL.
                 if (mach > 1.19)
                 {
                     c1 = 1.974 + (0.921 * b) / l1;
@@ -434,6 +456,8 @@ namespace YYZ.Ballistic
                     }
                 }
 
+                // SUBSONIC LIFT LOSS DUE TO THE PRESENCE OF A BOATTAIL.
+                // SUPERSONIC BOATTAIL LIFT LOSS.
                 double c2;
                 if (mach < 0.951 && l2 >= 0.48)
                 {
@@ -471,6 +495,7 @@ namespace YYZ.Ballistic
                     }
                 }
 
+                // TOTAL LIFT.
                 var cla = c1 - c2;
                 double c4;
                 if (mach >= 1.01)
@@ -510,9 +535,11 @@ namespace YYZ.Ballistic
                     c4 = (0.456 * c4) / 0.557;
                 }
 
+                // BOATTAIL LIFT CENTER FROM NOSE.
                 var x1 = (mach == 1 ? l2 / 2 : (0.66 - (0.041 * l2) / b) * l2) + l1 + l3 - l2;
                 var c5 = x1 * c2;
                 var c6 = c4 - c5;
+                // OVERALL LIFT CENTER AFT OF NOSE.
                 var x2 = c6 / cla;
                 var x3 = g1 - x2;
                 var cma = cla * x3;
@@ -520,6 +547,7 @@ namespace YYZ.Ballistic
                 cma *= u7;
 
                 var a1 = 1 / (l1 / 2 + l3 - l2 + (l2 * (1 + d1)) / 2);
+                // CALCULATION OF YAW DRAG.
                 double cda2;
                 if (mach > 1.3)
                 {
@@ -576,6 +604,7 @@ namespace YYZ.Ballistic
                     u1 = 1.09 - 0.057 * mach;
                 }
 
+                // Final empirical correction to CLA.
                 if (l3 < 1.5)
                 {
                     u1 -= 0.12 * Math.Pow(1.5 - l3, 2);
@@ -600,6 +629,7 @@ namespace YYZ.Ballistic
 
         static JbmProjectileGeometryInput NormalizeGeometry(JbmProjectileGeometryInput input)
         {
+            // Normalize free-form UI input before feeding the McCoy estimate equations.
             return new JbmProjectileGeometryInput
             {
                 ReferenceDiameterMm = BallisticMath.Positive(input.ReferenceDiameterMm, 0.001),
@@ -652,6 +682,7 @@ namespace YYZ.Ballistic
 
         static List<string> GetMcDragWarnings(McDragInput input)
         {
+            // Original warning branches from MCDRAG input validation.
             var warnings = new List<string>();
             if (input.NoseLengthCalibers < 1)
             {
@@ -682,6 +713,7 @@ namespace YYZ.Ballistic
 
         static List<string> RenderMcDragLegacyReport(McDragInput input, List<McDragRow> rows, List<string> warnings)
         {
+            // PRINT MCDRAG OUTPUT.
             var lines = new List<string>();
             lines.Add("MCDRAG, DECEMBER 1974, R. L. MCCOY");
             lines.Add("");
@@ -707,6 +739,7 @@ namespace YYZ.Ballistic
 
         static List<string> RenderMcGyroLegacyReport(McGyroInput input, List<McGyroRow> rows)
         {
+            // Print McGyro Output.
             var lines = new List<string>();
             lines.Add("MCGYRO, APRIL 1986, R. L. MCCOY.");
             lines.Add("");
@@ -729,6 +762,7 @@ namespace YYZ.Ballistic
 
         static List<string> RenderIntLiftLegacyReport(IntLiftInput input, List<IntLiftRow> rows, List<string> warnings)
         {
+            // PRINT INTLIFT OUTPUT.
             var lines = new List<string>();
             lines.Add("* * * INTERIM PROGRAM FOR CLA, CMA, AND CDA2 * * *");
             lines.Add("");

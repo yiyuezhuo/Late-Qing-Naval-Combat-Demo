@@ -4,6 +4,28 @@ using System.Linq;
 
 namespace YYZ.Ballistic
 {
+    // MCTRAJ.BAS, MAR 1987. [REVISED 07/90; 02/93; 05/94]
+    // [Q-BASIC VERSION-- OCTOBER 1994]
+    // POINT MASS TRAJECTORIES FOR SMALL ARMS.
+    // THE PROGRAM REQUIRES AN INPUT TABLE OF DRAG COEFFICIENT (CD) VERSUS MACH NUMBER (M).
+    // ADDITIONAL REQUIRED INPUTS ARE: MUZZLE VELOCITY (FT/SEC); BALLISTIC COEFFICIENT
+    // (LB/IN 2); HEIGHT OF SIGHT LINE ABOVE BORE CENTERLINE (INCHES); GUN ELEVATION
+    // ANGLE (MINUTES); RATIO OF AIR DENSITY TO STANDARD DENSITY; AIR TEMPERATURE
+    // (DEG F); RANGE PRINT INTERVAL (YARDS/METERS); RANGE TO TERMINATE TRAJECTORY
+    // (YARDS/METERS); RANGE WIND SPEED (MPH--POSITIVE IF WIND BLOWS FROM GUN TO
+    // TARGET); AND CROSSWIND SPEED (MPH--POSITIVE IF WIND BLOWS FROM LEFT TO RIGHT
+    // ACROSS FIRING LINE).
+    // THE PROGRAM ALSO PROVIDES AN OPTION TO ADJUST THE TRAJECTORY TO PASS THROUGH
+    // A SPECIFIED POINT IN SPACE, DENOTED BY RMATCH (YARDS/METERS), AND HMATCH (INCHES).
+    // THE GUN ELEVATION ANGLE IS ADJUSTED UNTIL THE TRAJECTORY PASSES THROUGH THE
+    // POINT (RMATCH,HMATCH). IF NO ADJUSTMENT IS DESIRED, INPUT ZEROS FOR RMATCH
+    // AND HMATCH, AND THE TRAJECTORY WILL BE RUN WITH THE INPUT ELEVATION ANGLE.
+    // THE PROGRAM SOLVES THE TRAJECTORY BY NUMERICAL INTEGRATION USING THE HEUN
+    // METHOD, WHICH IS AN ITERATIVELY APPLIED SECOND ORDER PREDICTOR-CORRECTOR TECHNIQUE.
+    // THE TRAJECTORY OUTPUT IS RANGE (YARDS/METERS); HEIGHT RELATIVE TO LINE OF SIGHT
+    // (INCHES); DEFLECTION (INCHES); TOTAL VELOCITY (FT/SEC); TIME OF FLIGHT (SECONDS);
+    // RANGE COMPONENT OF VELOCITY (VX-FT/SEC); VERTICAL COMPONENT OF VELOCITY
+    // (VY-FT/SEC); AND HORIZONTAL COMPONENT OF VELOCITY (VZ-FT/SEC).
     public sealed class McCoyInput
     {
         public string DragName { get; set; } = "Example custom table";
@@ -62,6 +84,8 @@ namespace YYZ.Ballistic
     {
         const double G = 32.174;
         const double Eps = 0.00001;
+
+        // DEFINE PROGRAM CONSTANTS.
         const int MaxCorrectorIterations = 40;
         const int MaxElevationIterations = 20;
 
@@ -114,11 +138,13 @@ namespace YYZ.Ballistic
 
         public static string DragTableToText(IEnumerable<DragPoint> points)
         {
+            // ECHO INPUT DRAG COEFFICIENT TABLE.
             return string.Join("\n", points.Select(point => $"{BallisticText.ToJsString(point.Mach)}, {BallisticText.ToJsString(point.Cd)}"));
         }
 
         public static List<DragPoint> ParseDragTable(string text)
         {
+            // INPUT DRAG COEFFICIENT TABLE.
             var result = new List<DragPoint>();
             if (string.IsNullOrWhiteSpace(text))
             {
@@ -173,6 +199,7 @@ namespace YYZ.Ballistic
 
             if (wantsMatch && normalized.MatchRange > 0)
             {
+                // ITERATION TO ADJUST ELEVATION FOR MATCH RANGE AND HEIGHT.
                 var targetHeightFeet = normalized.MatchHeight / 12.0;
                 var elevations = new List<double>();
                 var heights = new List<double>();
@@ -203,11 +230,13 @@ namespace YYZ.Ballistic
                             break;
                         }
 
+                        // ALGORITHM TO ADJUST ELEVATION ANGLE.
                         elevation = e1 + (targetHeightFeet - h1) * ((e0 - e1) / (h0 - h1));
                     }
                 }
             }
 
+            // RUN FINAL TRAJECTORY WITH PRINTS.
             var trajectory = RunTrajectory(normalized, elevation, normalized.MaxRange, true);
             warnings.AddRange(trajectory.Warnings);
             var result = new McCoyResult
@@ -329,11 +358,13 @@ namespace YYZ.Ballistic
 
         static double UnitToFeet(McCoyRangeUnit unit)
         {
+            // DINT IS THE DISTANCE INTEGRATION STEP (YARDS/METERS).
             return unit == McCoyRangeUnit.Yards ? 3 : 1 / 0.3048;
         }
 
         static AtmosphereConstants AtmosphereFor(McCoyAtmosphere kind)
         {
+            // NOTE: PIR=-(PI/8)*(RHO0/144).
             if (kind == McCoyAtmosphere.Icao)
             {
                 return new AtmosphereConstants
@@ -360,6 +391,7 @@ namespace YYZ.Ballistic
 
         static double InterpolateCd(double mach, List<DragPoint> table)
         {
+            // SUBROUTINE FOR INTERPOLATION IN DRAG TABLE.
             if (table.Count < 2)
             {
                 throw new InvalidOperationException("Drag table needs at least two points.");
@@ -395,6 +427,7 @@ namespace YYZ.Ballistic
             var table = input.DragTable;
             var constants = AtmosphereFor(input.Atmosphere);
             var unitFeet = UnitToFeet(input.RangeUnit);
+            // DINT IS THE DISTANCE INTEGRATION STEP (YARDS/METERS).
             const double stepUnits = 1;
             var stepFeet = stepUnits * unitFeet;
             var printStep = Math.Max(input.PrintInterval, 1);
@@ -415,7 +448,9 @@ namespace YYZ.Ballistic
             var deflectionFeet = 0.0;
             var time = 0.0;
             var nextPrintRange = printStep;
+            // RANGE WIND SPEED (MPH--POSITIVE IF WIND BLOWS FROM GUN TO TARGET).
             var rangeWind = (22 * input.RangeWindMph) / 15.0;
+            // CROSSWIND SPEED (MPH--POSITIVE IF WIND BLOWS FROM LEFT TO RIGHT ACROSS FIRING LINE).
             var crossWind = (22 * input.CrossWindMph) / 15.0;
             var c3 = (constants.Pir * input.DensityRatio) / input.BallisticCoefficient;
 
@@ -497,6 +532,7 @@ namespace YYZ.Ballistic
 
             Acceleration AccelerationFor(double localVx, double localVy, double localVz, double localHeightFeet)
             {
+                // COMPUTE DRAG COEFFICIENT FROM MACH NUMBER, THEN APPLY ATMOSPHERIC DENSITY.
                 var relativeSpeed = Math.Sqrt(Math.Pow(localVx - rangeWind, 2) + localVy * localVy + Math.Pow(localVz - crossWind, 2));
                 var localTempF = (input.TemperatureF + 459.67) * Math.Exp((constants.Tk1 + constants.Tk2 * localHeightFeet) * localHeightFeet) - 459.67;
                 var soundSpeed = constants.Vv1 * Math.Sqrt(localTempF + 459.67);
@@ -539,6 +575,7 @@ namespace YYZ.Ballistic
                     var oldTime = time;
                     var oldRangeUnits = rangeUnits;
 
+                    // APPLY EULER PREDICTOR FORMULA.
                     var predictedVx = oldVx + a1.Ax * stepFeet;
                     var predictedVy = oldVy + a1.Ay * stepFeet;
                     var predictedVz = oldVz + a1.Az * stepFeet;
@@ -546,6 +583,7 @@ namespace YYZ.Ballistic
 
                     for (var iteration = 0; iteration < MaxCorrectorIterations; iteration += 1)
                     {
+                        // APPLY ITERATIVE HEUN CORRECTOR FORMULA.
                         var a2 = AccelerationFor(predictedVx, predictedVy, predictedVz, oldHeight);
                         predictedVx = oldVx + 0.5 * (a1.Ax + a2.Ax) * stepFeet;
                         predictedVy = oldVy + 0.5 * (a1.Ay + a2.Ay) * stepFeet;

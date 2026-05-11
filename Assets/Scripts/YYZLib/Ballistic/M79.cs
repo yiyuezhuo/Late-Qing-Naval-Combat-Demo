@@ -3,6 +3,18 @@ using System.Collections.Generic;
 
 namespace YYZ.Ballistic
 {
+    // M79apclc.bas:
+    // NAVY BALLISTIC LIMIT, ENERGY, EXIT ANGLE, & REMAINING VELOCITY FOR PROJECTILES
+    // LIKE WWII U.S. ARMY 3-INCH M79 AP SHOT (TANGENT OGIVE W/1.667-CALIBER RADIUS)
+    // VS WWII U.S. NAVY CLASS 'B' ARMOR OR S.T.S. OF 115,000 P.S.I. TENSILE STRENGTH
+    // THIS PROGRAM ASSUMES NO PROJECTILE DAMAGE EVER OCCURS. THE PROJECTILE HAS NO
+    // AP CAP, HOOD, OR WINDSCREEN, AND NO EXPLOSIVE FILLER CAVITY, ONLY A TRACER.
+    // ITS NOSE SHAPE IS IN THE MIDDLE BETWEEN LONG-POINT WWI & BLUNT WWII DESIGNS.
+    // AT THE NAVY BALLISTIC LIMIT, THE HOLE IN THE PLATE BACK IS ALWAYS CIRCULAR IF
+    // THE IMPACT OBLIQUITY IS UP TO 45 DEGREES. ABOVE 45 DEGREES THE HOLE BECOMES
+    // MORE AND MORE ELONGATED ALONG THE FORWARD DIRECTION IN THE OBLIQUITY PLANE.
+    // LINEAR INTERPOLATION IS USED HERE TO BE COMPATIBLE WITH ALL OTHER NOSE SHAPE
+    // COMPUTATION FORMULAE. ERROR IS NEGLIGIBLE.
     public sealed class M79Input
     {
         public double ProjectileDiameter { get; set; } = 3;
@@ -128,6 +140,8 @@ namespace YYZ.Ballistic
             public double DeflectionAngle;
         }
 
+        // TABLE OF VALUES FOR VARIOUS PARTS OF THE M79 PENETRATION FORMULA PLUS THE
+        // MAXIMUM THICKNESS IN CALIBERS FOR USING THAT SET OF VALUES.
         static readonly RangeRow[] Ranges =
         {
             new RangeRow { Max = 0.01156, Nc = 335.25392, TCoefficient = 0.4336513, Ja = 0, Jb = 0, Jc = 0 },
@@ -143,12 +157,16 @@ namespace YYZ.Ballistic
             new RangeRow { Max = 6, Nc = 1227.31234, TCoefficient = 0.609576, Ja = 0, Jb = 0, Jc = 0 },
         };
 
+        // TABLE OF M' VALUES FOR OBLIQUITY ANGLES UP TO 45 DEGREES (ALL PLATE THICKNESSES).
         static readonly double[] MpLtBite =
         {
             1, 0.999, 0.998, 0.995, 0.991, 0.986, 0.981, 0.974, 0.966, 0.958,
             0.948, 0.937, 0.925, 0.912, 0.901, 0.889, 0.881, 0.879, 0.885,
         };
 
+        // TABLE OF M' VALUES FOR OBLIQUITY ANGLES ABOVE 45 DEGREES (PLATE THICKNESS ALTERS RESULTS).
+        // FIRST INDEX IS OBLIQUITY ANGLE IN 2.5-DEGREE INCREMENTS UP TO 80 DEGREES.
+        // SECOND INDEX IS PLATE THICKNESS IN .05-CALIBER INCREMENTS UP TO INDEX 18 = .9 CALIBER.
         static readonly double[,] MpTable =
         {
             { 0.885, 0.885, 0.885, 0.885, 0.885, 0.885, 0.885, 0.885, 0.885, 0.885, 0.885, 0.885, 0.885, 0.885, 0.885, 0.885, 0.885, 0.885, 0.885 },
@@ -168,6 +186,8 @@ namespace YYZ.Ballistic
             { 1.153, 1.071, 0.933, 0.858, 0.826, 0.82, 0.837, 0.853, 0.881, 0.908, 0.933, 0.961, 0.982, 1.007, 1.025, 1.039, 1.049, 1.055, 1.06 },
         };
 
+        // BASE-FIRST PENETRATION COMPUTATION M'(OB) VALUES.
+        // MPNF(0)-MPNF(2) AT 67.5 DEG; MPNF(3)-MPNF(5) AT 65 DEG.
         static readonly double[] MpNf = { 1.519, 1.414, 1.232, 1.134, 1.099, 1.094 };
 
         public static M79Input DefaultInput()
@@ -189,25 +209,34 @@ namespace YYZ.Ballistic
             var obRad = input.Obliquity * BallisticMath.Deg;
             var cosOb = Math.Cos(obRad);
             var range = SelectRange(tSlashD);
+            // COMPUTE GREEN'S FUNCTION (J), WHEN USED; "J" USUALLY IS 1.00 (NOT USED).
             var green = GreenFunction(range, tSlashD);
+            // COMPUTE OBLIQUITY MULTIPLIER (FUNCTION OF OB ONLY IF OB <= 45, BUT TA NEEDED IF OB > 45).
             var mPrime = MPrimeFor(input, tSlashD, cosOb);
             var mObliquity = mPrime / cosOb;
+            // CALCULATE REGULAR NBL.
             var navyBl =
                 (range.Nc * green * mObliquity * scaleFactor * Math.Pow(input.PlateQuality * tSlashD, range.TCoefficient)) /
                 Math.Sqrt(projectileDensity);
             if (input.Elongation < 25 && input.ProjectileDiameter > 8)
             {
+                // ADD IN EXTRA PERCENT ELONGATION SCALING EFFECTS, IF ANY.
                 navyBl *= 1 - (1 - Math.Sqrt(input.Elongation / 25)) * ((input.ProjectileDiameter - 8) / 8);
             }
 
+            // USE ROUNDED VALUES FOR COMPARISONS.
             var navyRounded = BallisticText.RoundHalfUp(navyBl);
             var noseFirst = NoseFirstNbl(tSlashD, input.Obliquity, mPrime, navyBl);
             var noseFirstRounded = BallisticText.RoundHalfUp(noseFirst);
             var vsRounded = BallisticText.RoundHalfUp(input.StrikingVelocity);
+            // HOW MUCH ENERGY PER VOLUME OF ARMOR MATERIAL REMOVED WAS NEEDED TO OPEN UP
+            // A CALIBER-DIAMETER HOLE IN THAT PLATE.
             var energyDensity = (0.5 * (input.ProjectileWeight / 32.186) * navyBl * navyBl) /
                 (Math.PI * input.PlateThickness * Math.Pow(input.ProjectileDiameter / 2, 2));
+            // ENERGY PER VOLUME USING ONLY COMPONENT OF NBL NORMAL TO PLATE FACE AT IMPACT POINT (=NBL*COS(OB)).
             var normalEnergyDensity = energyDensity * cosOb * cosOb;
 
+            // SET BASE-FIRST PENETRATION FLAG BFPEN TO VARIOUS VALUES.
             var mode = M79PenetrationMode.NoseFirst;
             if (vsRounded < navyRounded)
             {
@@ -221,6 +250,7 @@ namespace YYZ.Ballistic
             var energyNbl = navyBl;
             if (mode == M79PenetrationMode.NoseFirst && input.Obliquity > 45 && noseFirstRounded != navyRounded)
             {
+                // COMPUTE ENERGY NBL, WHICH REPLACES NBL IN VR CALC WHEN NOSE-FIRST PEN OCCURS AT OB > 45.
                 energyNbl = EnergyNblForHighOb(input.Obliquity, obRad, cosOb, navyBl);
             }
 
@@ -229,6 +259,7 @@ namespace YYZ.Ballistic
             double? remaining = null;
             if (mode != M79PenetrationMode.NoCompletePenetration)
             {
+                // CALCULATE EX & DF.
                 var angles = ExitAngle(input, energyNbl, mode == M79PenetrationMode.BaseFirst);
                 exit = angles.ExitAngle;
                 deflection = angles.DeflectionAngle;
@@ -297,11 +328,14 @@ namespace YYZ.Ballistic
         public static List<M79LegacyRangeRow> ScanLegacyRange(M79RangeInput input)
         {
             var rows = new List<M79LegacyRangeRow>();
+            // MAXIMUM ALLOWED PLATE THICKNESS IS 6 CALIBERS; MINIMUM IS .001 CALIBER.
             var minThickness = Math.Max(input.MinPlateThickness, input.ProjectileDiameter * 0.001);
             var maxThickness = Math.Min(Math.Max(input.MaxPlateThickness, minThickness), input.ProjectileDiameter * 5.99999);
             var step = input.ThicknessStep <= 0 ? 0 : Math.Max(input.ThicknessStep, 0.0001);
             for (double thickness = minThickness, guard = 0; guard < 10000; guard += 1)
             {
+                // 'P' ENTRY PRINTOUT: COMPUTE DATA FOR ONE PASS, THEN DO NEXT PASS UNTIL THE
+                // LAST PASS IS COMPLETED OR THE NEXT LINE WILL REPEAT THIS ONE'S "T".
                 var result = Calculate(new M79Input
                 {
                     ProjectileDiameter = input.ProjectileDiameter,
@@ -312,6 +346,10 @@ namespace YYZ.Ballistic
                     StrikingVelocity = 3500,
                     Elongation = input.Elongation,
                 });
+                // COMPUTE HOW MUCH ENERGY PER VOLUME OF ARMOR MATERIAL REMOVED WAS NEEDED
+                // TO OPEN UP A CALIBER-DIAMETER HOLE IN THAT PLATE. ALSO COMPUTE THAT ENERGY
+                // TIMES THE SQUARE OF THE COSINE OF OBLIQUITY TO GIVE A MEASURE OF HOW THE
+                // ENERGY CHANGES WITH OBLIQUITY ANGLE.
                 var noseFirstEnergy = (0.5 * (input.ProjectileWeight / 32.185) * result.NoseFirstNbl * result.NoseFirstNbl) /
                     (Math.PI * thickness * Math.Pow(input.ProjectileDiameter / 2, 2));
                 var cosObSquared = Math.Pow(Math.Cos(input.Obliquity * BallisticMath.Deg), 2);
@@ -332,6 +370,7 @@ namespace YYZ.Ballistic
                 }
 
                 var next = thickness + step;
+                // LIMIT MAXIMUM TO MANUAL MAXIMUM ENTRY (THIS IS LAST PASS).
                 thickness = next > maxThickness ? maxThickness : next;
             }
 
@@ -340,6 +379,7 @@ namespace YYZ.Ballistic
 
         public static List<string> RenderLegacyReport(M79Input input, M79Result result)
         {
+            // PRINT RESULTS ON PAPER / SCREEN.
             var lines = new List<string>();
             var vsRounded = BallisticText.RoundHalfUp(input.StrikingVelocity);
             var obRounded = BallisticText.RoundHalfUp(10 * input.Obliquity) / 10;
@@ -423,6 +463,7 @@ namespace YYZ.Ballistic
 
         static RangeRow SelectRange(double tSlashD)
         {
+            // SELECT COEFFICIENTS FOR PENETRATION FORMULAE BASED ON TA/D RANGE.
             foreach (var range in Ranges)
             {
                 if (tSlashD <= range.Max)
@@ -450,26 +491,38 @@ namespace YYZ.Ballistic
         {
             if (input.Obliquity < 45)
             {
+                // COMPUTE M' FOR U.S. ARMY 3" M79 AP SHOT BELOW 45 DEGREES OBLIQUITY USING LINEAR INTERPOLATION.
+                // 2.5 DEG INTERVAL; M' FOR OBLIQUITY UP TO 45 DEGREES.
                 var i1 = (int)Math.Floor(input.Obliquity / 2.5);
                 var i2 = (input.Obliquity - 2.5 * i1) / 2.5;
                 return MpLtBite[i1] + i2 * (MpLtBite[i1 + 1] - MpLtBite[i1]);
             }
 
+            // COMPUTE M' FOR U.S. ARMY 3" M79 AP SHOT AT AND ABOVE 45 DEGREES OBLIQUITY.
+            // OBLIQUITY AXIS: DELTA(OB) = 2.5-DEGREE INTERVAL (INCREASING).
             var c1 = (int)Math.Floor((input.Obliquity - 45) / 2.5);
             var c2 = (input.Obliquity - 45 - 2.5 * c1) / 2.5;
+            // M' BECOMES CONSTANT AT 0.9 CALIBER (OR LESS) FOR ALL OBLIQUITY VALUES.
             var tSlashDPr = Math.Min(tSlashD, 0.899);
+            // THICKNESS AXIS: DELTA(T/D) = .05-CALIBER INTERVAL (INCREASING).
             var t1 = (int)Math.Floor(tSlashDPr / 0.05);
             var t2 = (tSlashDPr - 0.05 * t1) / 0.05;
+            // FIND THE LOWEST AND HIGHEST OB INTERPOLATION POINTS HOLDING OBLIQUITY AXIS FIXED.
             var mp0 = MpTable[c1, t1] + t2 * (MpTable[c1, t1 + 1] - MpTable[c1, t1]);
             var mp1 = MpTable[c1 + 1, t1] + t2 * (MpTable[c1 + 1, t1 + 1] - MpTable[c1 + 1, t1]);
+            // USING THE ABOVE TWO THICKNESS-AXIS POINTS JUST FOUND, CALCULATE THE FINAL
+            // OBLIQUITY-AXIS INTERPOLATED VALUE USING LINEAR INTERPOLATION.
             var value = mp0 + c2 * (mp1 - mp0);
             return BallisticMath.IsFinite(value) ? value : cosOb;
         }
 
         static double NoseFirstNbl(double tSlashD, double obliquity, double mPrime, double navyBl)
         {
+            // COMPUTE NOSE-FIRST PENETRATION NBL USING MPNF(T/D) TABLE
+            // (UP TO T/D = 0.25 AND OB FROM 65-67.5 DEG TO 80 DEG).
             if (!((tSlashD > 0.1 && tSlashD < 0.25 && obliquity > 65) || (tSlashD <= 0.1 && obliquity > 67.5)))
             {
+                // NL IS ALWAYS NLNF OUTSIDE DEFINED REGION.
                 return navyBl;
             }
 
@@ -477,13 +530,17 @@ namespace YYZ.Ballistic
             var t1 = (int)Math.Floor(tSlashDPr / 0.05);
             var t2 = (tSlashDPr - 0.05 * t1) / 0.05;
             var safeT1 = Math.Min(t1, MpNf.Length - 2);
+            // M' FOR 65 (T/D > 0.1) OR 67.5 DEG (T/D = 0-0.1) (MAXIMUM VALUE).
             var mPrimeMax = MpNf[safeT1] + t2 * (MpNf[safeT1 + 1] - MpNf[safeT1]);
+            // AT T/D = 0.25 AND UP, ALL NLNF VALUES MERGE WITH ACTUAL NL VALUES.
             var mPrimeNf = mPrimeMax - (mPrimeMax - mPrime) * (tSlashD / 0.25);
             return (mPrimeNf / mPrime) * navyBl;
         }
 
         static double EnergyNblForHighOb(double obliquity, double obRad, double cosOb, double navyBl)
         {
+            // COMPUTE EFFECTIVE V'MIN(OB) FOR OB OVER 45 DEG FOR VR CALCULATION WHEN
+            // NOSE-FIRST PENETRATIONS OCCUR.
             var e1 = 1 + (obliquity - 45) / 45;
             var e2 = 2 * Math.Sin(obRad) * cosOb;
             var e3 = e1 / e2;
@@ -493,8 +550,10 @@ namespace YYZ.Ballistic
 
         static ExitAngles ExitAngle(M79Input input, double energyNbl, bool baseFirst)
         {
+            // COMPUTE EXIT ANGLE EX FROM STRIKING VELOCITY, OBLIQUITY, AND NBL VALUES.
             if (input.Obliquity <= 0.005)
             {
+                // PREVENT DIVIDE-BY-ZERO ERROR.
                 return new ExitAngles { ExitAngle = 0, DeflectionAngle = input.Obliquity };
             }
 
@@ -511,10 +570,12 @@ namespace YYZ.Ballistic
             var snCs = baseFirst ? Math.Sin(Rad45) * Math.Cos(Rad45) : trueSnCs;
             var tmpDf1 = snCs / tmpVel;
             var tmpDf2 = Math.Max(1 - 4 * tmpDf1 * tmpDf1, 0);
+            // TRIG IDENTITY FOR TANGENT OF DF.
             var tanDf = (1 - Math.Sqrt(tmpDf2)) / (2 * tmpDf1);
             var deflectionAngle = Math.Atan(tanDf) / BallisticMath.Deg;
             if (snCs != trueSnCs)
             {
+                // CHECK FOR BASE-FIRST PENETRATION WHEN OB > 45.
                 deflectionAngle *= 1 + (input.Obliquity - 45) / 45;
             }
 

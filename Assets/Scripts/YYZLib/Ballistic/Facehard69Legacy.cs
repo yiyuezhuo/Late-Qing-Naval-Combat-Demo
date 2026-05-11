@@ -5,6 +5,11 @@ using System.Reflection;
 
 namespace YYZ.Ballistic
 {
+    // Literal Facehard 6.9 translation track.
+    //
+    // This file intentionally keeps BASIC-era names and state. The goal is to build
+    // an executable legacy kernel first, then refactor only after its behavior is
+    // locked down. Line references point at References/Facehard69/*.BAS.
     public sealed class Facehard69LegacyInput
     {
         public double ARMOR;
@@ -60,6 +65,8 @@ namespace YYZ.Ballistic
 
     public sealed class Facehard69LegacyState
     {
+        // COMMON SHARED, FH69MAIN.BAS:80-99. Only the first converted slice is typed
+        // here so the state can grow without forcing unrelated refactors.
         public double ARMOR, Q, QDAM, UB, UBCALC, CARTWL, CMPND, SOFTSHAT, THNCHL, THKTHN;
         public double TA, TEFF, D, WT, WB, OB, VS, OBRAD, SC, MO, MSHAT, VXP;
         public double VDFSTD, VDFUSED, VDFSTDWW1, VDFSTDWW2, VDFHARVEY, VDFBND, VDFBRK;
@@ -214,6 +221,14 @@ namespace YYZ.Ballistic
 
         public static void ArmorBackSetup(Facehard69LegacyState s)
         {
+            // FH69MAIN.BAS:216-256 backing/effective thickness setup.
+            // PEN EFFECTIVE THICKNESS W/O BACKING.
+            // PROJ DAMAGE EFFECTIVE THICKNESS.
+            // CURVED-PLATE RULE DEFINED: CURVED FH PLATES ELIMINATE BODY DAMAGE TO STEEL PROJ AT
+            // OB>45 DEG IF HBL <= VEL < NBL. IF SHATR OCCURS, RESULTS IN NOSE-ONLY SHATR INSTEAD OF
+            // USUAL COMPLETE SHATR.
+            // ENTER BACKING DATA. THEY ONLY INCREASE RESISTANCE, NOT PROJ DAMAGE.
+            // ALL METAL BACKING PLATES ASSUMED IDENTICAL (USUAL DESIGN).
             s.TP = s.TA * s.Q;
             s.TD = s.TA * s.QDAM;
             if (s.MTLBACK == 0)
@@ -228,27 +243,45 @@ namespace YYZ.Ballistic
                 if (s.NBK == 0) s.NBK = 1;
                 if (s.BTP > 0) s.QBK = 0.5d + s.BTP / 10d;
                 if (s.QBK == 0) s.QBK = 1;
+                // DE MARRE SPACED ARMOR/2.
                 s.BKEFF = 0.5d * Math.Pow(s.NBK * Math.Pow(s.MTLBACK * s.QBK / s.NBK, 1.4d), 0.714286d);
             }
+            // TOTAL EFFECTIVE THICKNESS OF PLATE + BACKING.
             s.TEFF = s.TP + s.WD + s.CMT + s.BKEFF;
             s.TPCAL = s.TP / s.D;
         }
 
         public static void NoseCoverSetup(Facehard69LegacyState s)
         {
+            // FH69MAIN.BAS:275-390, non-interactive nose-covering loss logic.
+            // BEGIN NOSE COVERINGS LOST PRIOR TO FACE-HARDENED ARMOR IMPACT LOGIC.
+            // ONLY POST-WWI JAP "DIVING" TYPE 88/91/1 AP PROJ HAD A REMOVABLE NOSE-TIP CALLED
+            // A "CAP HEAD" (FLAT END UNDER IT). LOSS OF WINDSCREEN ALWAYS CAUSED LOSS OF
+            // CAP HEAD, WHICH WAS HELD ON ONLY BY NOTCHED WINDSCREEN THREADS.
+            // CAP HEAD WAS AP CAP TIP IN LARGER, CAPPED JAP TYPE 88/91/1 PROJ, SO LOSING
+            // CAP HEAD KEPT MOST OF AP CAP.
+            // UNCAPPED JAP TYPE 91 AP W/O CAP HEAD & WINDSCREEN REVERTS TO PRE-WWI UNCAPPED
+            // AP & COMMON PROJ (DEFAULT #3).
+            // "HOOD" IS THIN SOFT-AP-CAP-LIKE NOSE COVERING FOR SCREWING ON WINDSCREEN.
+            // IT ACTS AS A LOW-GRADE SOFT AP CAP. A HOOD WILL ACT AS AN SOFT AP CAP,
+            // BUT IF IMPACT IS BELOW THE NBL, THE PROJECTILE NOSE BREAKS UP NO MATTER WHAT.
+            // INIT DEFAULT VALUES FOR POSSIBLE CHANGE.
             s.HARD = s.APCAP;
             s.WT = s.WTSAVE;
 
             if (s.noseCoveringState == "all-removed")
             {
+                // DISCARD ALL NOSE COVERINGS; SET NO AP CAP FLAG.
                 s.WT = s.WB;
                 s.HARD = 0;
             }
             else if (s.CAPHD > 0 && (s.noseCoveringState == "caphead-removed" || s.noseCoveringState == "windscreen-removed"))
             {
+                // JAP TYPE 88/91 AP PROJ LOGIC.
                 s.CAPHDRMV = 1;
                 if (s.CAPHD == 1)
                 {
+                    // UNCAPPED TYPE 91 AP PROJ (LOSES MOST OF NOSE; MUST ALSO CHANGE PROJ PEN/DAM PARAMETERS).
                     s.WT = s.WB;
                 }
                 else
@@ -267,6 +300,7 @@ namespace YYZ.Ballistic
                 }
                 if (s.WT > s.WB && s.noseCoveringState == "windscreen-removed")
                 {
+                    // WINDSCREEN LOSS ONLY LOGIC (MINOR WEIGHT LOSS EFFECT).
                     var wDiff = s.WT - s.WB;
                     if (s.WWT > wDiff || (s.APCAP != 0 && s.WWT == wDiff)) s.WWT = 0;
                     s.WT -= s.WWT;
@@ -275,6 +309,8 @@ namespace YYZ.Ballistic
 
             if (s.WT == s.WB)
             {
+                // LOSS OF AP CAP ASSUMES LOSS OF ALL PROJ NOSE COVERINGS.
+                // WHEN UNCAPPED TYPE 91 AP PROJ LOSES ITS CAP HEAD, SWITCH TO PRE-WWI UNCAPPED AP & COMMON PROJ PARAMETERS.
                 if (s.CAPHD == 1 && s.PROJ == 10)
                 {
                     Set(s, ("SHATRES", 1), ("APCAP", 0), ("NSDAMAGL", 5), ("PLIM", 0.795), ("PDAM", 0.7),
@@ -297,6 +333,7 @@ namespace YYZ.Ballistic
 
         public static void AllProjData(Facehard69LegacyState s, int NATN, int PRJTL)
         {
+            // ALLPROJDATA, FH69SBM1.BAS:47-453.
             s.NATION = NATN;
             s.PROJ = PRJTL;
             s.BEND = 0;
@@ -488,22 +525,34 @@ namespace YYZ.Ballistic
 
         public static void FaceCalc(Facehard69LegacyState s)
         {
+            // FACECALC, FH69SBM2.BAS:257-292.
+            // CALCULATE VARIABLE BACK LAYER THICKNESS (UB) FOR GRUSON CHILLED CAST IRON,
+            // HARVEY ARMOR (BOTH TYPES), & WWII ITALIAN TERNI CEMENTED ARMORS.
             if (s.ARMOR == 1)
             {
+                // GRUSON ARMOR.
                 if (s.TA <= 15.75) s.UBCALC = 45;
+                // THICKEST PLATE KNOWN (84CM) W/MAX BACK LAYER THICKNESS.
                 else if (s.TA >= 33.07) s.UBCALC = 67;
+                // LINEAR INCREASE FROM 45% TO 67% UNAFFECTED BACK ASSUMED.
+                // MATCH INTERNAL VALUE TO DISPLAYED VALUE (ROUND DOWN TO WHOLE NUMBER).
                 else s.UBCALC = QbInt(45 + 22 * (s.TA - 15.75) / 17.32);
             }
             else if (s.ARMOR == 3 || s.ARMOR == 4)
             {
+                // HARVEYIZED STEEL (3 = MILD STEEL & 4 = NICKEL-STEEL).
+                // FIXED 1-1.5" FACE LAYER THICKNESS (USE AVERAGE).
                 s.UBCALC = QbInt(100 * (1 - 1.25 / s.TA));
             }
             else
             {
+                // TERNI ARMOR.
                 if (s.TA < 6.2205) s.UBCALC = 50;
                 else if (s.TA > 10.433) s.UBCALC = 70;
                 else
                 {
+                    // SHAPE OF FACE THICKNESS CURVE BETWEEN 13CM & 28CM NOT KNOWN. ASSUME SIMPLEST CURVE THAT DOES NOT CAUSE PROBLEMS.
+                    // ALL INTERMEDIATE PLATES (NEARLY CONSTANT FACE THICKNESS).
                     var face = 3.1102 + 0.004682 * (s.TA - 6.2205);
                     s.UBCALC = QbInt(100 * (1 - face / s.TA));
                 }
@@ -512,7 +561,18 @@ namespace YYZ.Ballistic
 
         public static void ArmorInfo(Facehard69LegacyState s)
         {
+            // ARMORINFO, FH69SBM1.BAS:459-560.
+            // PARAMETERS FOR SELECTED ARMOR TYPE:
+            // "CARTWL"  --IF 1, BRITTLE PLATE ALWAYS THROWS LARGE DISK ("CARTWHEEL" OR "BACK SPALL") FROM BACK; IF 2, HAPPENS ONLY AT HIGH OBLIQUITY.
+            // "CMPND"   --COMPOUND (STEEL-FACED WROUGHT IRON) ARMOR (FACE TOO SOFT TO SHATR MOST STEEL PROJ).
+            // "SOFTSHAT"--EXTRA-TOUGH ARMOR THAT, IF 1, ALWAYS SHATRS SOFT-CAPPED PROJ (MOST POST-WWI ARMOR) OR, IF 2, SAME FOR WEAKER SOFT-CAPPED PROJ ("CARDONALD" < 2).
+            // "THKTHN"  --FLAG FOR BOUNDARY OF THICK- & THIN-PLATE CALCULATIONS.
+            // "THNCHL"  --VERY THIN FACE LAYER W/REDUCED BREAKAGE ABILITY (HARVEY & BETHLEHEM THIN CHILL).
+            // "Q"       --PLATE'S RELATIVE STEEL QUALITY BASED ON TYPICAL WWII ARMOR AS 1.00 STANDARD (LARGER=BETTER).
+            // "QDAM"    --PLATE'S RELATIVE PROJ DAMAGE ABILITY (ONLY RARELY DIFFERENT FROM "Q").
+            // "UB"      --AVERAGE THICKNESS OF PLATE'S UNHARDENED BACK LAYER (THINNER MEANS MORE SCALING EFFECTS).
             s.Q = 1; s.UB = 65; s.CARTWL = 0; s.CMPND = 0; s.SOFTSHAT = 0; s.THKTHN = 0; s.THNCHL = 0;
+            // FOR HARVEY ARMOR ONLY: PLATE QUALITY INCREASES AS THICKNESS DECREASES; BELOW 8" THIS RATE IS FASTER.
             var qvelhThick = -0.027917 * s.TA + 1.2525;
             var qvelhThin = (-0.035 * s.TA + 1.28) * qvelhThick;
             var qvelhMult = s.TA < 8 ? qvelhThin : qvelhThick;
@@ -546,6 +606,11 @@ namespace YYZ.Ballistic
 
         public static void ScaleFactor(Facehard69LegacyState s, double back)
         {
+            // SCALEFACTOR, FH69SBM1.BAS:1579-1607.
+            // SCALING FACTOR CONSTANTS BASED ON UNAFFECTED BACK PERCENTAGE OF ACTUAL PLATE THICKNESS.
+            // THINNER BACK = LARGER SCALING EFFECTS FROM FACE & TRANSITION LAYER SHEARING & BRITTLE FRACTURE FAILURE.
+            // CONSTANTS "AZ" & "BZ" FOR COMBINED FACE & TRANSITION LAYERS & "CZ" FOR SOFT BACK LAYER.
+            // COMPUTE SCALING FACTOR TERM "SC" USING FORMULA: SC = (AZ * (D^BZ)) + CZ.
             double az, bz, cz;
             if (back > 90) { az = 0; bz = 1; cz = 79; }
             else if (back > 75) { az = 0.000000665; bz = 5.35; cz = 78.5; }
@@ -559,22 +624,32 @@ namespace YYZ.Ballistic
 
         public static void SetObMult(Facehard69LegacyState s)
         {
+            // SETOBMULT, FH69SBM1.BAS:1657-1714.
+            // PROJ OB MULTIPLIER FOR BOTH SHATRD & UNSHATRD PROJ FROM TABLE INTERPOLATION OR CALCULATION FORMULAE.
+            // "INT1" IS M/MS-TABLE INDEX & "INT2" IS FRACTION OF 5-DEG STEP THAT OB IS ABOVE M/MS(INT1).
             if (s.OB < 70)
             {
+                // FIRST, DO UNSHATRD PROJ MULTIPLIER; "MO" IS FOR ALL UNSHATRD PROJ, EXCEPT HBL WHEN "VHSHAT" < "VHTRU".
+                // 3-POINT FORWARD-LOOKING INTERPOLATION FORMULA.
                 var int1 = QbInt(s.OB / 5);
                 var int2 = (s.OB - 5 * int1) / 5;
                 var point5 = int1 > 11 ? 0 : 0.5;
                 s.MO = s.M[int1] + int2 * (s.M[int1 + 1] - s.M[int1]) + point5 * int2 * (int2 - 1) * (s.M[int1 + 2] - 2 * s.M[int1 + 1] + s.M[int1]);
             }
+            // OB = 70 DEG IS MAX FOR UNSHATRD COMPLETE PEN.
             else if (s.OB == 70) s.MO = 8;
+            // ENSURE NO PEN OCCURS AT OB > 70 DEG IF NO SHATR (70.01-80 DEG).
             else s.MO = 100;
 
+            // "MSHAT" IS FOR SHATRD PROJ (TWO VALUES DEPENDING ON "THIN" PLATE THICKNESS THRESHOLD).
+            // THICK PLATE, USE FORMULAE FOR MSHAT.
             const double thkMax = 5.5264;
             var thick = s.OB > 75 ? 100 : s.OB == 75 ? thkMax : 1 / Math.Cos(1.061 * s.OBRAD);
             double thin;
             if (s.OB >= 80) thin = 1.51;
             else
             {
+                // THIN PLATE, USE SPECIAL SHATR OB MULT TABLE (PLATE SHATRS, TOO!).
                 var int1 = QbInt(s.OB / 5);
                 var int2 = (s.OB - 5 * int1) / 5;
                 thin = s.MS[int1] + int2 * (s.MS[int1 + 1] - s.MS[int1]) + 0.5 * int2 * (int2 - 1) * (s.MS[int1 + 2] - 2 * s.MS[int1 + 1] + s.MS[int1]);
@@ -583,6 +658,7 @@ namespace YYZ.Ballistic
             var tpcal = s.TEFF / s.D;
             if (tpcal < s.THIN)
             {
+                // STEP DOWN TO THE THIN VALUE IN TWO INTERMEDIATE STEPS FOR ALL "OB" UP TO 80 DEG.
                 if (tpcal > s.TRUTHIN) s.MSHAT = thin + 0.625 * Math.Abs(thick - thin);
                 else if (tpcal > s.TRUTHIN - 0.05) s.MSHAT = thin + 0.3 * Math.Abs(thick - thin);
                 else s.MSHAT = thin;
@@ -592,6 +668,10 @@ namespace YYZ.Ballistic
 
         public static void ThinSelect(Facehard69LegacyState s)
         {
+            // THINSELECT, FH69SBM2.BAS:1208-1229.
+            // U.S. WWI-ERA TESTS SHOW BRITTLE FH ARMORS LOST STRENGTH IF <0.55-CAL EFFECTIVE THICKNESS,
+            // REDUCING "MSHAT" FOR SUCH "THIN" ARMOR. LATER, TOUGHER PLATES ("THKTHN" FLAG = 1 OR 2)
+            // ACT AS "THIN" PLATES IF <0.35-CAL ("THKTHN=1").
             s.THIN = 0.55;
             s.TRUTHIN = 0.45;
             if (s.THKTHN == 1) { s.THIN = 0.35; s.TRUTHIN = 0.25; }
@@ -600,6 +680,13 @@ namespace YYZ.Ballistic
 
         public static void CalcVdf(Facehard69LegacyState s)
         {
+            // CALCVDF, FH69SBM1.BAS:635-680. This only computes the common scalar state;
+            // the full MODIFYVDF limit selection remains a later translation step.
+            // COMPUTE VELOCITY HOLING DIFFERENTIAL TO USE IN THIS CASE.
+            // BRITTLE WWI PLATES (ALL "THKTHN = 0" PLATES) USE "VDFSTDWW1";
+            // ALL MORE MODERN, TOUGHER ("THKTHN > 0") PLATES USE SMALLER "VDFSTDWW2" DIFFERENCE.
+            // BRITISH DEFORMABLE PROJECTILES ("BEND" = 1) VARY THIS FROM A NARROW GAP UP TO 22.5 DEG
+            // THEN A RAPID INCREASE IN THE GAP UNTIL IT REACHES THE STANDARD PLATE GAP AT & ABOVE 45 DEG.
             if (s.THKTHN > 0) s.VDFSTD = s.VDFSTDWW2;
             else if (s.ARMOR == 3 || s.ARMOR == 4) s.VDFSTD = s.VDFHARVEY;
             else s.VDFSTD = s.VDFSTDWW1;
@@ -607,12 +694,14 @@ namespace YYZ.Ballistic
 
             if (s.BEND == 1 && s.CARDONALD == 0)
             {
+                // BRITISH DEFORMABLE NON-CARDONALD PROJ.
                 var obvdf = s.OB;
                 if (obvdf < 22.5) obvdf = 22.5;
                 if (obvdf > 45) obvdf = 45;
                 var vdfVal = (90 / 57.29578) * (2 * ((obvdf - 22.5) / 22.5) + 1);
                 const double dif1 = 0.08;
                 const double dif2 = 0.01;
+                // EQUAL TO "DIF2" IF OB <= 22.5 DEG; EQUAL TO "DIF1+DIF2" IF OB >= 45 DEG.
                 s.VDFBND = s.VDFUSED / (dif1 + dif2) * (dif1 * ((1 - Math.Sin(vdfVal)) / 2) + dif2);
             }
             else s.VDFBND = 0;
@@ -620,11 +709,15 @@ namespace YYZ.Ballistic
 
         public static void ProjQMods(Facehard69LegacyState s)
         {
+            // PROJQMODS, FH69SBM1.BAS:1524-1550.
+            // CALCULATE ALL PROJECTILE PENETRATION QUALITY FACTOR MODIFIERS.
             var lcDam = 0d;
             var tcal = s.TD / s.D;
+            // LIGHTCASE BASE-FUZED PROJ LOSE PEN AT NORMAL WHEN EFFECTIVE DAMAGE-CAUSING PLATE THICKNESS > 0.67 CALIBER.
             if (s.LTCASE == 2 && tcal > 0.67) lcDam = 0.5;
             var oPrimeL = s.OB;
             var oPrimeD = s.OB;
+            // LITTLE DATA AT OB > 60 DEG EXIST FOR PROJ USING THIS FORMULA, SO RESTRICT EFFECTS TO OB = 45 DEG AS WORST CASE.
             if (s.OB > 60) { oPrimeL = 60; oPrimeD = 60; }
             s.LCMOD = lcDam * (tcal - 0.67);
             s.POLMOD = 1 + s.CLD * oPrimeL - s.ALD * tcal * Math.Pow(oPrimeL, s.BLD) - s.LCMOD;
@@ -633,6 +726,8 @@ namespace YYZ.Ballistic
             if (s.AED < 0) s.POIMOD = s.POLMOD;
             else
             {
+                // "AED" = -1 MEANS "POIMOD" FORMULA NOT USED BY THIS PROJ TYPE.
+                // BENDING/COMPRESSION/BREAKAGE DAMAGE EFFECTS ON EFFECTIVE LIMIT, IF USED FOR THIS PROJ TYPE.
                 s.POIMOD = 1 + s.CED * oPrimeD - s.AED * tcal * Math.Pow(oPrimeD, s.BED) - s.LCMOD;
                 if (s.POIMOD > 1) s.POIMOD = 1;
                 else if (s.POIMOD < 0.095) s.POIMOD = 0.095;
@@ -641,21 +736,35 @@ namespace YYZ.Ballistic
 
         public static void ShtrMultSelect(Facehard69LegacyState s)
         {
+            // SHTRMULTSELECT, FH69SBM2.BAS:1124-1146.
+            // SHATTER INCREASES HBL, WHICH ALSO INCREASES NBL.
+            // SELECT WHICH HBL SHATTER MULTIPLIER TO USE.
             if (s.ARMOR == 3 || s.ARMOR == 4)
             {
+                // NORMAL OB BONUS FOR THICK HARVEYIZED ARMORS.
                 s.SHATMULT = s.TA >= 8 ? 1 : 1.25 - 0.03125 * s.TA;
             }
+            // NORMAL OB BONUS FOR IMPROVED BRITISH WWI PLATES & REGULAR SOFT-CAPPED PROJ AT OB<=20 DEG.
             else if (s.SOFTSHAT == 2 && Math.Abs(s.HARD) == 1 && s.NSSHAT == 1 && s.OB <= 20) s.SHATMULT = 1.2;
+            // NORMAL OB BONUS FOR BEST SOFTSHAT PLATES WHEN PROJ HAS COMPLETE SHATR.
             else if (s.SOFTSHAT == 1 && s.HARD < 3 && s.BEND == 0 && (s.NSSHAT == 0 || s.OB > 20)) s.SHATMULT = 1.4;
+            // NORMAL OB BONUS FOR EVERY OTHER CASE.
             else s.SHATMULT = 1.3;
         }
 
         public static void ModifyVdf(Facehard69LegacyState s)
         {
+            // MODIFYVDF, FH69SBM2.BAS:467-532.
+            // CHANGE THE HBL-TO-NBL VELOCITY RANGE FOR SPECIAL CASES.
+            // STANDARD WWI "15% THICKNESS DIFFERENCE RULE": PLATE'S HBL = NBL OF A PLATE 15% THINNER;
+            // WWII PLATES ARE USUALLY MUCH TOUGHER & HAVE A NARROWER DIFFERENCE.
+            // AGAINST BRITISH DEFORMING PROJ, GAP IS NARROW TO 22.5 DEG & THEN WIDENS UNTIL REGULAR GAP USED ABOVE 45 DEG.
             s.VDFUSEDPR = s.VDFUSED;
             s.SHATVDFPR = s.VDFUSED;
             if (s.ARMOR == 3 || s.ARMOR == 4)
             {
+                // HARVEYIZED STEEL ARMOR.
+                // FOR THINNER FACES, PUNCHING THROUGH THE FACE DOES NOT FORM A PLUG THAT PUNCHES A HOLE THRU THE REST OF THE PLATE.
                 var vdfThin = s.TA >= 8 ? 0 : -0.023 * s.TA + 0.184;
                 s.VHTRU = (1 - (s.VDFBRK + vdfThin)) * s.VLTRU;
                 s.VHND = (1 - (s.VDFBRK + vdfThin)) * s.VLND;
@@ -702,6 +811,8 @@ namespace YYZ.Ballistic
 
         public static void CalcBl(Facehard69LegacyState s)
         {
+            // CALCBL, FH69MAIN.BAS:588-850.
+            // COMPUTE SCALE FACTOR "SC".
             ScaleFactor(s, s.UB);
             s.DEN = Math.Pow(s.WT / Math.Pow(s.D, 3), 0.2);
             s.TD = s.TA * s.QDAM;
@@ -710,6 +821,9 @@ namespace YYZ.Ballistic
             s.PPLUS = 0;
             if (s.CMPND == 1)
             {
+                // THIN CHILL, HARVEY, & COMPOUND ARMORS CAN CAUSE LESS STRONG PROJ DAMAGE,
+                // SO IF THEY CAUSE DAMAGE, THE REDUCED "QP" THEY CAUSE CAN BE INCREASED BACK UP TO 1.0
+                // OR "SOFTQPMAX" (SOFT CAP/HOOD) MAXIMUM VALUE.
                 if (s.SHATRES == 2) s.PPLUS = 0;
                 else if (s.BRAIK == 2 || s.BEND == 2) s.PPLUS = 0.1;
                 else s.PPLUS = 0.2;
@@ -801,9 +915,12 @@ namespace YYZ.Ballistic
 
         public static void ImpactSetup(Facehard69LegacyState s, Facehard69LegacyImpactOptions options = null)
         {
+            // IMPACTSETUP, FH69MAIN.BAS:853-879 and FH69SBM2.BAS:295-386.
+            // DETERMINE PROJECTILE SHATTER, NOSE-ONLY SHATTER, AND OTHER INITIAL IMPACT FLAGS.
             var vs = s.VS;
             if (s.CAPHD == 2 && s.CAPHDRMV == 1)
             {
+                // FOR OB<45 DEG ONLY.
                 s.CAPHDLOSS = 0.045;
                 if (s.OB >= 45) s.CAPHDLOSS *= Math.Pow(Math.Cos(2 * (s.OB - 45) / 57.29578), 2);
             }
@@ -893,6 +1010,13 @@ namespace YYZ.Ballistic
 
         public static void BlPlusEx(Facehard69LegacyState s)
         {
+            // BLPLUSEX, FH69MAIN.BAS:883-1187. This preserves the numeric selection path;
+            // print-marker strings are intentionally kept out of the first executable slice.
+            // SELECT ALL LIMIT VEL THAT APPLY TO IMPACT ("!" IS FOR PEN & "#" IS FOR POST-IMPACT EFFECTS).
+            // IF NO SHATR, "EX" LINEARLY INCREASES FROM 0 TO "EXMIN" AS VEL INCREASES FROM HBL TO NBL.
+            // ALWAYS USE DESIGNATED LIMITS FOR THAT POST-IMPACT PROJ DAMAGE LEVEL.
+            // IF VEL<HBL, NO LARGE HOLE MADE IN PLATE & "EX" IS UNDEFINED, SO EXIT "EX" LOGIC.
+            // "EX" VEL RATIO FORMULA: "EX" -> OB (DEFLECTION = OB - "EX" = "OBDF" -> 0) AS VEL INCREASES.
             var vs = s.VS;
             s.N1 = s.N2 = s.N3 = s.N4 = s.H1 = s.H2 = s.H3 = s.H4 = "";
             s.PENFLG = 2; s.VRAT = 0; s.OB45 = 0; s.OB45CALC = 0; s.VHDAM = 0; s.VLDAM = 0;
@@ -1113,6 +1237,12 @@ namespace YYZ.Ballistic
 
         public static void DamageCalc(Facehard69LegacyState s)
         {
+            // DAMAGECALC, FH69MAIN.BAS:1199-1311.
+            // SHATRD PROJ DAMAGE LOGIC.
+            // UNSHATRD PROJ COMPLETE PEN NOSE & BODY DAM LOGIC.
+            // ONLY COMPUTE NOSE DAMAGE USING CRIT NOSE (OB-EX) LOGIC IF VEL>=HBL ("PENFLG">0),
+            // WHICH RELIEVES FORCE ON NOSE DUE TO INITIAL IMPACT, BUT ADDS TO TWISTING FORCES ON NOSE.
+            // RICOCHET & HOLING-ONLY PEN LOGIC (SKIP IF COMPLETE PEN) W/O CURVED-PLATE RULE.
             var vs = s.VS;
             s.CRVRL = 0; s.BDYDM = 0; s.BRK = 0; s.NSBRK = 0;
             var obrk = s.CMPND == 1 ? 50 : 40;
@@ -1175,10 +1305,12 @@ namespace YYZ.Ballistic
             s.TOTPLUGWT = s.NORMPLUGWT + s.DELTAPLUGWT;
         }
 
+        // PLUGWTS bridges to the plug-weight calculation used by remaining-velocity logic.
         public static void PlugWts(Facehard69LegacyState s) => PlugCalc(s);
 
         public static void PenVrvPlgCalc(Facehard69LegacyState s)
         {
+            // PENVRVPLGCALC, FH69SBM2.BAS:795-894.
             var vs = s.VS;
             if (s.HF == 1 || vs < s.VLMT)
             {
@@ -1234,9 +1366,15 @@ namespace YYZ.Ballistic
 
         public static void FinalResults(Facehard69LegacyState s)
         {
+            // FINALRESULTS, FH69MAIN.BAS:1331-1441.
+            // NEXT LINES GIVE EFFECTS IF NO HOLE MADE COMPLETELY THRU PLATE.
+            // "PENTP=0" MEANS THAT ONLY SHOCK EFFECTS OCCUR BEHIND PLATE UNLESS MODIFIED
+            // TO "PENTP = 1" FOR SPLINTERS BEING KNOCKED FROM PLATE BACK.
+            // REMAINING VEL CALC NEEDS TO REMOVE NORMAL PLUG ENERGY & ENERGY LOST TEARING THRU PLATE BETWEEN HBL & NBL.
             var vs = s.VS;
             if (vs < s.VHOL)
             {
+                // NO PEN THRU PLATE ACHIEVED (EXCEPT FOR SMALL POSSIBLE BACK-SPALLING & A SMALL HOLE IF SHATR NEAR HBL).
                 s.PENTP = 0;
                 if (s.BKEFF <= 0 && s.CART > 0) s.PENTP = 1;
                 s.TOTPLUGWT = s.NORMPLUGWT = s.DELTAPLUGWT = 0;
@@ -1318,6 +1456,8 @@ namespace YYZ.Ballistic
 
         public static void SetupSecPg(Facehard69LegacyState s)
         {
+            // SETUPSECPG numeric portion, FH69MAIN.BAS:1922-2050.
+            // CALCULATE "EFFECTIVE" LIMIT "MINEV" FOR THIS IMPACT FROM ALL DATA.
             LmtStrings(s);
             EffVelInit(s);
             var obrk = s.CMPND == 1 ? 50 : 40;
@@ -1408,6 +1548,10 @@ namespace YYZ.Ballistic
 
         public static void DamageSetup(Facehard69LegacyState s)
         {
+            // DAMAGESETUP, FH69SBM2.BAS:94-216, translated to structured state.
+            // SET UP TO PRINT PROJECTILE DAMAGE MESSAGES.
+            // CURVED-PLATE RULE APPLIED; REGULAR CURVED-PLATE RULE FORCES NOSE-ONLY SHATR
+            // OR LOWERS EFFECTIVE LIMIT TO HBL DEPENDING ON THE SELECTED MINIMUM EFFECTIVE VELOCITY.
             if (s.NSBRK == 8)
             {
                 s.EFFPRINT1 = " HOLING BL (TOUGH PROJ VS HARVEY ARMOR)";
@@ -1925,12 +2069,18 @@ namespace YYZ.Ballistic
 
         public static void ThresholdCalc(Facehard69LegacyState s)
         {
+            // THRESHOLDCALC, FH69SBM2.BAS:1232-1277.
+            // COMPUTE MINIMUM EFFECTIVE-FILLER OR NO-NOSE-DAMAGE VELOCITY THRESHOLD VALUE.
+            // ALWAYS USE DAMAGE/NO-DAMAGE BOUNDARY FOR "EBL" & USE ACTUAL "VLEX/VHEX" VALUES FOR NOSE DAMAGE CALC.
+            // "THVAL" IS PROJ CRITICAL DEFLECTION ANGLE CALCULATED PREVIOUSLY (NOSE OR BODY, AS SELECTED).
+            // WE MUST FIND THE STRIKING VEL THAT GIVES AN "EX" FOR GIVEN "OB" SUCH THAT "THVAL" IS EXACTLY REACHED.
             s.THSPD = 0;
             if (s.THVAL <= s.OB)
             {
                 var exth = s.OB - s.THVAL;
                 if (s.SHAT == 1 || (exth > 15 && s.OB > 15))
                 {
+                    // COMPUTE "THSPD" USING INVERSE OF "EX" VEL RATIO FORMULA IF > "VLEXREV".
                     var temp0 = s.THVAL / 57.29578;
                     var temp1 = temp0 / (1 + s.OB45);
                     var temp2 = Math.Sin(temp1) * Math.Cos(temp1);
@@ -1941,10 +2091,12 @@ namespace YYZ.Ballistic
                 }
                 else
                 {
+                    // LINEAR INCREASE IN "EX" WITH VEL FROM HBL TO NBL.
                     var thvusd = s.OB <= 15 ? s.THVAL : 15 - exth;
                     s.THSPD = s.VLEXREV - thvusd / s.MAXDIFF * (s.VLEXREV - s.VHEXREV);
                 }
                 var thchk = Math.Abs(s.THSPD - s.VLEXREV);
+                // ROUND "THSPD" TO EXACTLY EQUAL "VLMT" OR "VHOL" IF SO ROUNDED ON DISPLAY.
                 if (thchk < 0.5) s.THSPD = s.VLEXREV;
                 thchk = Math.Abs(s.THSPD - s.VHEXREV);
                 if (thchk < 0.5) s.THSPD = s.VHEXREV;

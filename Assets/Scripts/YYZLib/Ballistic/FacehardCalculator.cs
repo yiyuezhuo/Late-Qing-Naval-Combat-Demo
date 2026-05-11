@@ -769,6 +769,8 @@ namespace YYZ.Ballistic
                 ("FPR6", "France", "Average SAP, 1923-1960", "FPR6 -> DEFAULT5"),
                 ("FPR7", "France", "33cm APC / SAPC O.Pf(RC) KMle 34", "FPR7"),
                 ("FPR8", "France", "38cm APC original French 1940 O.Pf(RC) KMle 40", "FPR8"),
+                // The original BASIC allows France selection 9 and contains FPR9 data, but its ON PRJTL GOTO list omits FPR9.
+                // Keep FPR9 reachable here as an author-intent correction instead of reproducing the fall-through-to-FPR1 bug.
                 ("FPR9", "France", "38cm APC U.S. Crucible Steel AP Mk 1, 1943", "FPR9 (author-intent correction)"),
                 ("IPR1", "Italy", "Ave. Palliser/Gruson chilled cast iron shot/shell and common shells", "IPR1 -> DEFAULT1"),
                 ("IPR2", "Italy", "Ave. steel AP shot/shell, 1890-1923", "IPR2 -> DEFAULT3"),

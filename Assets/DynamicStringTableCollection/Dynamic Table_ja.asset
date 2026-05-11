@@ -4567,6 +4567,10 @@ MonoBehaviour:
     m_Localized: "\u6975\u7AEF\u50BE\u659C\u89D2\u88DC\u6B63\u3092\u6709\u52B9\u5316"
     m_Metadata:
       m_Items: []
+  - m_Id: -362
+    m_Localized: "\u6226\u7565\u30E2\u30FC\u30C9\u3067\u306E\u307F\u6709\u52B9\u3067\u3059\u3002"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

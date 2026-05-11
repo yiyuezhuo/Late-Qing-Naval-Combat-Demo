@@ -4527,6 +4527,10 @@ MonoBehaviour:
     m_Localized: Enable Extreme Obliquity Correction
     m_Metadata:
       m_Items: []
+  - m_Id: -362
+    m_Localized: Only valid in strategic mode.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

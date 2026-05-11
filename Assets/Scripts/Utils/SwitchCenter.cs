@@ -3,6 +3,7 @@ using NavalCombatCore;
 using CoreUtils;
 using StrategicCombatCore;
 using System;
+using YYZ;
 
 public interface ISwitchable
 {
@@ -15,6 +16,8 @@ public interface ISwitchable
 public class SwitchCenter
 {
     ISwitchable currentActiveViewContainer; // A 2-columns editor or a TempDialog
+
+    static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
 
     void UpdateCurrentActiveViewContainer(ISwitchable newContainer)
     {
@@ -104,15 +107,22 @@ public class SwitchCenter
     {
         if(GamePreference.Instance.isInEditMode)
         {
-            UpdateCurrentActiveViewContainer(StrategicGroupEditor.Instance);
-            StrategicGroupEditor.Instance.Show();
+            var editor = StrategicGroupEditor.Instance;
+            if(editor == null)
+            {
+                DialogRoot.Instance?.PopupMessageDialog(Localize("Only valid in strategic mode."));
+                return;
+            }
+
+            UpdateCurrentActiveViewContainer(editor);
+            editor.Show();
 
             if(group != null)
             {
                 var idx = StrategicGameState.Instance.strategicGroups.IndexOf(group);
                 if(idx != -1)
                 {
-                    BehaviourUtils.Instance.ScheduleToSetSelectionForListView(StrategicGroupEditor.Instance.objectListView, idx);
+                    BehaviourUtils.Instance.ScheduleToSetSelectionForListView(editor.objectListView, idx);
                 }
             }
         }

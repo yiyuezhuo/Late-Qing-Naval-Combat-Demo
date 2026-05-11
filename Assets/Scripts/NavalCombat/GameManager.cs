@@ -1820,17 +1820,17 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                     }
                 }
 
-                if (Input.GetKeyDown(KeyCode.I) && selectedShipLog != null && !selectedShipLog.IsSurpriseCommandChangeBlocked())
+                if (Input.GetKeyDown(KeyCode.I) && selectedShipLog != null)
                 {
                     selectedShipLog.controlMode = ControlMode.Independent;
                 }
 
-                if (Input.GetKeyDown(KeyCode.F) && selectedShipLog != null && !selectedShipLog.IsSurpriseCommandChangeBlocked()) // Set "Follow" Control
+                if (Input.GetKeyDown(KeyCode.F) && selectedShipLog != null) // Set "Follow" Control
                 {
                     state = State.SelectingFollowedTarget;
                 }
 
-                if (Input.GetKeyDown(KeyCode.R) && selectedShipLog != null && !selectedShipLog.IsSurpriseCommandChangeBlocked()) // Set "Relative To" Control
+                if (Input.GetKeyDown(KeyCode.R) && selectedShipLog != null) // Set "Relative To" Control
                 {
                     state = State.SelectingRelativeToTarget;
                 }
@@ -1919,7 +1919,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 if (!pointerOverBlockingUi && Input.GetMouseButtonDown(0))
                 {
                     state = State.Idle;
-                    if (selectedShipLog != null && !selectedShipLog.IsSurpriseCommandChangeBlocked())
+                    if (selectedShipLog != null)
                     {
                         var targetShipLog = TryToRaycastShipLog();
                         if (targetShipLog != null && CheckGiveControlTo(selectedShipLog, targetShipLog))
@@ -1936,7 +1936,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 if (!pointerOverBlockingUi && Input.GetMouseButtonDown(0))
                 {
                     state = State.Idle;
-                    if (selectedShipLog != null && !selectedShipLog.IsSurpriseCommandChangeBlocked())
+                    if (selectedShipLog != null)
                     {
                         var targetShipLog = TryToRaycastShipLog();
                         if (targetShipLog != null && CheckGiveControlTo(selectedShipLog, targetShipLog))

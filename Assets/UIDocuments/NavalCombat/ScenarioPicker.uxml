@@ -7,13 +7,13 @@
         </ui:Label>
         <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
             <ui:VisualElement style="flex-grow: 1; border-right-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); flex-basis: 100px;">
-                <ui:ListView name="ScenarioListView" data-source-path="scenarioNames" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/Templates/ScenarioNameLabel.uxml?fileID=9197481963319205126&amp;guid=2317dd99dc3dde847a013a22a08760f4&amp;type=3#ScenarioNameLabel" style="flex-grow: 1;"/>
+                <ui:ListView name="ScenarioListView" data-source-path="scenarioNames" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/Templates/ScenarioNameLabel.uxml?fileID=9197481963319205126&amp;guid=2317dd99dc3dde847a013a22a08760f4&amp;type=3#ScenarioNameLabel" fixed-item-height="22" style="flex-grow: 1;"/>
                 <ui:Label text="Scenario type notes" style="white-space: normal; font-size: 10px; margin-top: 4px; margin-bottom: 4px;">
                     <Bindings>
                         <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000012)"/>
                     </Bindings>
                 </ui:Label>
-                <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
+                <ui:VisualElement style="flex-grow: 0; flex-direction: row; flex-shrink: 0;">
                     <ui:Button text="Confirm" name="ConfirmButton" style="flex-basis: 50px; flex-grow: 1;">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66345015873536)"/>

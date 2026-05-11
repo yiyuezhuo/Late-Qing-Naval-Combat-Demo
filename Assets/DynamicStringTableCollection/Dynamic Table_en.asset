@@ -2932,11 +2932,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 50841832444825600
-    m_Localized: SJH - Torpedo Attack Day 1, Weihaiwei
+    m_Localized: "SJH - Torpedo Attack Day 1, Weihaiwei \u25B3"
     m_Metadata:
       m_Items: []
   - m_Id: 51372251963625472
-    m_Localized: SJH - Torpedo Attack Day 2, Weihaiwei
+    m_Localized: "SJH - Torpedo Attack Day 2, Weihaiwei \u25B3"
     m_Metadata:
       m_Items: []
   - m_Id: 51831417308090368
@@ -2944,7 +2944,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 52518222156173312
-    m_Localized: RJH - Battle of the Yellow Sea
+    m_Localized: "RJH - Battle of the Yellow Sea \u25B3"
     m_Metadata:
       m_Items: []
   - m_Id: 58890040000000003
@@ -4264,7 +4264,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 68749144731848704
-    m_Localized: BRH - Battle of the Taku Forts
+    m_Localized: "BRH - Battle of the Taku Forts \u25B3"
     m_Metadata:
       m_Items: []
   - m_Id: 68749153867042816

@@ -2626,8 +2626,8 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 69800000000012
     m_Localized: "TT - \u6559\u7A0B\uFF0CSJH - \u7532\u5348\u6230\u722D\u6B77\u53F2\u5287\u672C\uFF0CRJH
-      - \u65E5\u4FC4\u6230\u722D\u6B77\u53F2\u5287\u672C\uFF0CSJS - \u7532\u5348\u6230\u722D\u5047\u60F3\u3001\u6E2C\u8A66\u6216\u5C0F\u5287\u672C\u3002\u2605
-      - \u63A8\u85A6"
+      - \u65E5\u4FC4\u6230\u722D\u6B77\u53F2\u5287\u672C\uFF0CSJS - \u7532\u5348\u6230\u722D\u5047\u60F3\u3001\u6E2C\u8A66\u6216\u5C0F\u5287\u672C\u3001BR
+      - \u7FA9\u548C\u5718\u904B\u52D5\u3002\u2605 - \u63A8\u85A6\uFF0C\u25B3 - \u4E0D\u63A8\u85A6\uFF08\u958B\u767C\u4E2D\u3001\u5BE6\u9A57\u6027\u5167\u5BB9\uFF0C\u6216\u9700\u8981\u66F4\u591A\u6A5F\u5236\u4F86\u63D0\u9AD8\u6B77\u53F2\u6E96\u78BA\u6027\u3002\uFF09"
     m_Metadata:
       m_Items: []
   - m_Id: 69800000000013
@@ -3272,7 +3272,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -112
-    m_Localized: "NAAB-like Calculator"
+    m_Localized: NAAB-like Calculator
     m_Metadata:
       m_Items: []
   - m_Id: -113

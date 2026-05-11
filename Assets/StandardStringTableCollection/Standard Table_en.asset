@@ -2676,7 +2676,9 @@ MonoBehaviour:
   - m_Id: 69800000000012
     m_Localized: "TT - Tutorial, SJH - First Sino-Japanese War historical scenarios,
       RJH - Russo-Japanese War historical scenarios, SJS - First Sino-Japanese War
-      hypothetical, test, or small scenarios. \u2605 - Recommended"
+      hypothetical, test, or small scenarios, BR - Boxer Rebellion. \u2605 - Recommended,
+      \u25B3 - Not Recommended (work-in-progress, experimental or need more mechanism
+      to make it historically accurate.)"
     m_Metadata:
       m_Items: []
   - m_Id: 69800000000013

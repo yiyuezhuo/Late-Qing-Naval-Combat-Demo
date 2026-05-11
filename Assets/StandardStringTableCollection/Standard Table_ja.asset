@@ -2629,8 +2629,8 @@ MonoBehaviour:
   - m_Id: 69800000000012
     m_Localized: "TT - \u30C1\u30E5\u30FC\u30C8\u30EA\u30A2\u30EB\u3001SJH - \u65E5\u6E05\u6226\u4E89\u306E\u53F2\u5B9F\u30B7\u30CA\u30EA\u30AA\u3001RJH
       - \u65E5\u9732\u6226\u4E89\u306E\u53F2\u5B9F\u30B7\u30CA\u30EA\u30AA\u3001SJS
-      - \u65E5\u6E05\u6226\u4E89\u306E\u4EEE\u60F3\u30FB\u30C6\u30B9\u30C8\u30FB\u5C0F\u898F\u6A21\u30B7\u30CA\u30EA\u30AA\u3002\u2605
-      - \u304A\u3059\u3059\u3081"
+      - \u65E5\u6E05\u6226\u4E89\u306E\u4EEE\u60F3\u30FB\u30C6\u30B9\u30C8\u30FB\u5C0F\u898F\u6A21\u30B7\u30CA\u30EA\u30AA\u3001BR
+      - \u7FA9\u548C\u56E3\u306E\u4E71\u3002\u2605 - \u63A8\u5968\u3001\u25B3 - \u975E\u63A8\u5968\uFF08\u4F5C\u696D\u4E2D\u3001\u5B9F\u9A13\u7684\u3001\u307E\u305F\u306F\u6B74\u53F2\u7684\u6B63\u78BA\u6027\u3092\u9AD8\u3081\u308B\u305F\u3081\u306B\u3055\u3089\u306A\u308B\u4ED5\u7D44\u307F\u304C\u5FC5\u8981\u3002\uFF09 "
     m_Metadata:
       m_Items: []
   - m_Id: 69800000000013
@@ -3262,7 +3262,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -108
-    m_Localized: "Calculator"
+    m_Localized: Calculator
     m_Metadata:
       m_Items: []
   - m_Id: -109
@@ -3278,7 +3278,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -112
-    m_Localized: "NAAB-like Calculator"
+    m_Localized: NAAB-like Calculator
     m_Metadata:
       m_Items: []
   - m_Id: -113

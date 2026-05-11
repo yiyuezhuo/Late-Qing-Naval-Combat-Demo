@@ -224,6 +224,14 @@
      <isBuiltin>true</isBuiltin>
     </pathReference>
    </EventItem>
+   <EventItem>
+    <name>Insert Ship To Map Dialog Opened</name>
+    <eventType>InsertShipToMapDialogOpened</eventType>
+    <pathReference>
+     <path>ScenarioScripts\Tutorial 7 - Insert Ship To Map Dialog Opened.js</path>
+     <isBuiltin>true</isBuiltin>
+    </pathReference>
+   </EventItem>
   </eventItems>
  </eventState>
 </FullState>

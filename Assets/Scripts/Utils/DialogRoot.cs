@@ -4427,6 +4427,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         tempDialog.confirmCheck = insertShipComplexDialog.ConfirmCheck;
 
         tempDialog.Popup();
+        GameManager.Instance.insertShipToMapDialogOpened?.Invoke(this, EventArgs.Empty);
     }
 
     public void PopupShipLogSelectorDialogForRedeploy()

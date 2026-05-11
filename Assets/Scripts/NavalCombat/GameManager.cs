@@ -409,6 +409,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public EventHandler loaded;
     public EventHandler minuteChanged;
     public EventHandler shipLogClicked;
+    public EventHandler insertShipToMapDialogOpened;
     public EventHandler firstRemainOneOperationalFleetPrompted;
     public EventHandler reachEndDateTimePrompted;
 

@@ -23,6 +23,7 @@ namespace NavalCombat
         ShipClassEditorClosed,
         DistanceMeasureLineFixed,
         OrderOfBattleEditorShown,
+        InsertShipToMapDialogOpened,
         FirstRemainOneOperationalFleetPrompted,
         ReachEndDateTimePrompted
     }
@@ -136,6 +137,10 @@ namespace NavalCombat
                 {
                     ResetAndBind(ref orderOfBattleEditor.shown, grouping);
                 }
+                else if (eventType == EventType.InsertShipToMapDialogOpened)
+                {
+                    ResetAndBind(ref manager.insertShipToMapDialogOpened, grouping);
+                }
                 else if (eventType == EventType.FirstRemainOneOperationalFleetPrompted)
                 {
                     ResetAndBind(ref manager.firstRemainOneOperationalFleetPrompted, grouping);
@@ -161,6 +166,7 @@ namespace NavalCombat
             cameraController.cameraMoved = null;
             cameraController.cameraZoomed = null;
             manager.shipLogClicked = null;
+            manager.insertShipToMapDialogOpened = null;
             manager.firstRemainOneOperationalFleetPrompted = null;
             manager.reachEndDateTimePrompted = null;
             switchCenter.shipLogViewShown = null;

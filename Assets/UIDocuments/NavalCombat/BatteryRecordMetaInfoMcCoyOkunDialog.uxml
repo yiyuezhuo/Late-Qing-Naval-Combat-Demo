@@ -35,6 +35,9 @@
                         <ui:FloatField name="RemainingNoseWeightField" label="Remaining Nose Covering Weight" />
                         <ui:FloatField name="PlimField" label="PLIM" />
                         <ui:FloatField name="PdamField" label="PDAM" />
+                        <ui:DropdownField name="ShatResField" label="SHATRES" />
+                        <ui:DropdownField name="BreakUnderNblField" label="BRAAK" />
+                        <ui:DropdownField name="LightCaseField" label="LTCASE" />
                     </ui:ScrollView>
                 </ui:Tab>
                 <ui:Tab label="Vertical Armor">

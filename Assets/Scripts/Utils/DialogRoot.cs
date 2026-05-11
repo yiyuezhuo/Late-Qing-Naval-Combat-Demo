@@ -4720,7 +4720,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             el.Q<Label>("LicenseLabel").text = MyLocale.Get("Open-source under the MIT License");
 
             BindOpenUrlButton(el, "GitHubButton", "GitHub (Open Source Repository)", "https://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo");
-            BindOpenUrlButton(el, "GitHubReleaseButton", "GitHub Release (What's New)", "https://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo/releases");
+            BindOpenUrlButton(el, "OnlineManualButton", "Online Manual", "https://github.com/yiyuezhuo/First-Sino-Japanese-War-Manual");
             BindOpenUrlButton(el, "SteamStoreButton", "Steam Store", "https://store.steampowered.com/app/3996220/First_SinoJapanese_War/");
             BindOpenUrlButton(el, "SteamDiscussionsButton", "Steam Discussions", "https://steamcommunity.com/app/3996220/discussions/");
             BindOpenUrlButton(el, "DiscordButton", "Discord", "https://discord.gg/2yqbyGwsdQ");

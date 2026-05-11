@@ -14,7 +14,7 @@
                         <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(3101437890560)"/>
                     </Bindings>
                 </ui:Label>
-                <ui:Label text="And Other Pre-Dreadnought Battles" class="main-menu-subtitle">
+                <ui:Label text="And the East Asian Pre-Dreadnought Era" class="main-menu-subtitle">
                     <Bindings>
                         <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(44380493585223680)"/>
                     </Bindings>
@@ -72,12 +72,12 @@
                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(6979457814528)"/>
                             </Bindings>
                         </ui:Button>
-                        <ui:Button text="Calculator" name="CalculatorButton" class="verylarge">
+                        <ui:Button text="Calculator" name="CalculatorButton" class="verylarge" style="display: none;">
                             <Bindings>
                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-108)"/>
                             </Bindings>
                         </ui:Button>
-                        <ui:Button text="NAAB-like Calculator" name="NaabLikeCalculatorButton" class="verylarge">
+                        <ui:Button text="NAAB-like Calculator" name="NaabLikeCalculatorButton" class="verylarge" style="display: none;">
                             <Bindings>
                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-112)"/>
                             </Bindings>
@@ -88,9 +88,9 @@
                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(33508883324112896)"/>
                             </Bindings>
                         </ui:Button>
-                        <ui:Button text="Online Manual" name="OnlineManualButton" class="verylarge">
+                        <ui:Button text="Changelog" name="ChangelogButton" class="verylarge">
                             <Bindings>
-                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-82)"/>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-119)"/>
                             </Bindings>
                         </ui:Button>
                         <ui:Button text="About" name="AboutButton" class="verylarge">

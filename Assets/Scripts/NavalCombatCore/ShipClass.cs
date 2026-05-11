@@ -732,6 +732,9 @@ namespace NavalCombatCore
         public double WindscreenCapHeadWeight = 0;
         public double ProjectileLimitQuality = 1;
         public double ProjectileDamageQuality = 1;
+        public double ShatterResistance = 0;
+        public double BreakUnderNbl = 0;
+        public double LightCase = 0;
         public double BallisticCoefficient;
         public double MuzzleVelocity;
         public double MaxRange;

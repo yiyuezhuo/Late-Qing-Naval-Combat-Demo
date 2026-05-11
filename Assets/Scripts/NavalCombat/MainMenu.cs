@@ -23,7 +23,7 @@ public class MainMenu : SingletonDocument<MainMenu>
         var calculatorButton = root.Q<Button>("CalculatorButton");
         var naabLikeCalculatorButton = root.Q<Button>("NaabLikeCalculatorButton");
         var mccoyOkunCalculatorButton = root.Q<Button>("McCoyOkunCalculatorButton");
-        var onlineManualButton = root.Q<Button>("OnlineManualButton");
+        var changelogButton = root.Q<Button>("ChangelogButton");
         var aboutButton = root.Q<Button>("AboutButton");
         var exitButton = root.Q<Button>("ExitButton");
 
@@ -70,10 +70,10 @@ public class MainMenu : SingletonDocument<MainMenu>
             var readmePath = Application.streamingAssetsPath + "/" + "Manuals/readme.pdf"; // This file is under version control, should be manual placed.
             DialogRoot.Instance.PopupConfirmOpenURLDialog(readmePath);
         };
-        onlineManualButton.text = MyLocale.Get("Online Manual");
-        onlineManualButton.clicked += () =>
+        changelogButton.text = MyLocale.Get("Changelog");
+        changelogButton.clicked += () =>
         {
-            DialogRoot.Instance.PopupConfirmOpenURLDialog("https://github.com/yiyuezhuo/First-Sino-Japanese-War-Manual");
+            DialogRoot.Instance.PopupConfirmOpenURLDialog("https://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo/releases");
         };
         aboutButton.text = MyLocale.Get("About");
         aboutButton.clicked += DialogRoot.Instance.PopupAboutDialogDocument;

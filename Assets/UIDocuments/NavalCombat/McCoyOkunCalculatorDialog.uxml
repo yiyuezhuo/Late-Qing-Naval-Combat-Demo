@@ -37,6 +37,9 @@
                     <ui:FloatField name="Facehard69RemainingNoseWeightField" label="Remaining Nose Covering Weight" />
                     <ui:FloatField name="Facehard69PlimField" label="PLIM" />
                     <ui:FloatField name="Facehard69PdamField" label="PDAM" />
+                    <ui:DropdownField name="Facehard69ShatResField" label="SHATRES" />
+                    <ui:DropdownField name="Facehard69BreakUnderNblField" label="BRAAK" />
+                    <ui:DropdownField name="Facehard69LightCaseField" label="LTCASE" />
                     <ui:FloatField name="Facehard69StrikingVelocityField" label="Striking Velocity" />
                     <ui:FloatField name="Facehard69ObliquityField" label="Obliquity" />
                     <ui:DropdownField name="Facehard69ArmorTypeField" label="Armor Type" />
@@ -121,6 +124,9 @@
                     <ui:FloatField name="McCoyPlusFacehardRemainingNoseWeightField" label="Remaining Nose Covering Weight" />
                     <ui:FloatField name="McCoyPlusFacehardPlimField" label="PLIM" />
                     <ui:FloatField name="McCoyPlusFacehardPdamField" label="PDAM" />
+                    <ui:DropdownField name="McCoyPlusFacehardShatResField" label="SHATRES" />
+                    <ui:DropdownField name="McCoyPlusFacehardBreakUnderNblField" label="BRAAK" />
+                    <ui:DropdownField name="McCoyPlusFacehardLightCaseField" label="LTCASE" />
                     <ui:Label text="Armor Inputs" style="-unity-font-style: bold; margin-top: 8px; margin-bottom: 4px;" />
                     <ui:DropdownField name="McCoyPlusFacehardArmorTypeField" label="Armor Type" />
                     <ui:Toggle name="McCoyPlusFacehardCurvedPlateToggle" label="Strongly Curved Plate" />
@@ -161,6 +167,9 @@
                                 <ui:FloatField name="McCoyPlusFacehardM79RemainingNoseWeightField" label="Remaining Nose Covering Weight" />
                                 <ui:FloatField name="McCoyPlusFacehardM79PlimField" label="PLIM" />
                                 <ui:FloatField name="McCoyPlusFacehardM79PdamField" label="PDAM" />
+                                <ui:DropdownField name="McCoyPlusFacehardM79ShatResField" label="SHATRES" />
+                                <ui:DropdownField name="McCoyPlusFacehardM79BreakUnderNblField" label="BRAAK" />
+                                <ui:DropdownField name="McCoyPlusFacehardM79LightCaseField" label="LTCASE" />
                             </ui:ScrollView>
                         </ui:Tab>
                         <ui:Tab label="Vertical Armor">

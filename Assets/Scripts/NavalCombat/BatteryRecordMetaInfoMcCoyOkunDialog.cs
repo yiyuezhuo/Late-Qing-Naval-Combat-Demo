@@ -32,6 +32,27 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         M79Only
     }
 
+    static readonly List<string> ShatterResistanceLabels = new()
+    {
+        "0 - shatter-resistant",
+        "1 - shatter-prone",
+        "2 - very weak / chilled cast iron"
+    };
+
+    static readonly List<string> BreakUnderNblLabels = new()
+    {
+        "0 - no early breakage",
+        "1 - break-prone",
+        "2 - severe breakage"
+    };
+
+    static readonly List<string> LightCaseLabels = new()
+    {
+        "0 - normal body",
+        "1 - light case",
+        "2 - severe large cavity"
+    };
+
     sealed class ResultRow
     {
         public McCoyPlusFacehardM79Row Result;
@@ -517,6 +538,12 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
             value => facehardDetails.ProjectileLimitQuality = value, 0.001, isCustom);
         BindFloat("PdamField", isCustom ? facehardDetails.ProjectileDamageQuality : selectedPreset?.ProjectileDamageQuality ?? facehardDetails.ProjectileDamageQuality,
             value => facehardDetails.ProjectileDamageQuality = value, 0.001, isCustom);
+        BindProjectileFlag("ShatResField", isCustom ? facehardDetails.ShatterResistance : selectedPreset?.ShatterResistance ?? facehardDetails.ShatterResistance,
+            value => facehardDetails.ShatterResistance = value, isCustom, ShatterResistanceLabels);
+        BindProjectileFlag("BreakUnderNblField", isCustom ? facehardDetails.BreakUnderNbl : selectedPreset?.BreakUnderNbl ?? facehardDetails.BreakUnderNbl,
+            value => facehardDetails.BreakUnderNbl = value, isCustom, BreakUnderNblLabels);
+        BindProjectileFlag("LightCaseField", isCustom ? facehardDetails.LightCase : selectedPreset?.LightCase ?? facehardDetails.LightCase,
+            value => facehardDetails.LightCase = value, isCustom, LightCaseLabels);
     }
 
     void Calculate()
@@ -1128,6 +1155,9 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
             WindscreenCapHeadWeight = facehardDetails.WindscreenCapHeadWeight,
             ProjectileLimitQuality = facehardDetails.ProjectileLimitQuality,
             ProjectileDamageQuality = facehardDetails.ProjectileDamageQuality,
+            ShatterResistance = facehardDetails.ShatterResistance,
+            BreakUnderNbl = facehardDetails.BreakUnderNbl,
+            LightCase = facehardDetails.LightCase,
             BallisticCoefficient = input.McCoy.BallisticCoefficient,
             MuzzleVelocity = input.McCoy.MuzzleVelocity,
             MaxRange = input.McCoy.MaxRange
@@ -1163,6 +1193,9 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
             facehardDetails.JapaneseCapHead = sample.JapaneseCapHead <= 1 ? 1 : 2;
             facehardDetails.ProjectileLimitQuality = sample.ProjectileLimitQuality;
             facehardDetails.ProjectileDamageQuality = sample.ProjectileDamageQuality;
+            facehardDetails.ShatterResistance = sample.ShatterResistance;
+            facehardDetails.BreakUnderNbl = sample.BreakUnderNbl;
+            facehardDetails.LightCase = sample.LightCase;
         }
         else
         {
@@ -1219,6 +1252,9 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
             ProjectileLimitQuality = template?.ProjectileLimitQuality ?? 1,
             ProjectileDamageQuality = template?.ProjectileDamageQuality ?? 1,
             CapType = template?.CapType ?? FacehardCapType.Hard,
+            ShatterResistance = template?.ShatterResistance ?? 0,
+            BreakUnderNbl = template?.BreakUnderNbl ?? 0,
+            LightCase = template?.LightCase ?? 0,
             CurvedPlate = template?.CurvedPlate ?? false,
             WoodBackingThickness = template?.WoodBackingThickness ?? 0,
             CementBackingThickness = template?.CementBackingThickness ?? 0,
@@ -1302,6 +1338,15 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         field.SetEnabled(enabled);
         field.SetValueWithoutNotify(choices[index]);
         binding.Updating = false;
+    }
+
+    void BindProjectileFlag(string name, double value, Action<double> setter, bool enabled, List<string> labels)
+    {
+        BindDropdown(name, labels, Mathf.Clamp((int)Math.Round(value), 0, labels.Count - 1), selected =>
+        {
+            setter(selected);
+            MarkOutputDirty();
+        }, enabled);
     }
 
     void BindText(string name, string value, Action<string> setter)

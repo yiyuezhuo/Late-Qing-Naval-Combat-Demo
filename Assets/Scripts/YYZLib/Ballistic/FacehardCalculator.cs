@@ -39,6 +39,9 @@ namespace YYZ.Ballistic
         public double ProjectileLimitQuality = 1;
         public double ProjectileDamageQuality = 1;
         public FacehardCapType CapType = FacehardCapType.Hard;
+        public double ShatterResistance;
+        public double BreakUnderNbl;
+        public double LightCase;
         public bool CurvedPlate;
         public double WoodBackingThickness;
         public double CementBackingThickness;
@@ -498,10 +501,10 @@ namespace YYZ.Ballistic
                 result.PLIM = Math.Max(input.ProjectileLimitQuality, 0.05);
                 result.PDAM = Math.Max(input.ProjectileDamageQuality, 0.05);
                 result.APCAP = CapTypeToLegacyCode(input.CapType);
-                result.SHATRES = preset.ShatterResistance;
-                result.BRAAK = preset.BreakUnderNbl;
-                result.BRAIK = preset.BreakUnderNbl;
-                result.LTCASE = preset.LightCase;
+                result.SHATRES = ClampProjectileFlag(input.ShatterResistance);
+                result.BRAAK = ClampProjectileFlag(input.BreakUnderNbl);
+                result.BRAIK = ClampProjectileFlag(input.BreakUnderNbl);
+                result.LTCASE = ClampProjectileFlag(input.LightCase);
                 result.NSDAMAGL = preset.NoShatterDamageAngle;
                 result.CRITAGL = preset.CriticalAngle;
                 result.BEND = preset.Bend ?? 0;
@@ -526,6 +529,11 @@ namespace YYZ.Ballistic
             return FacehardProjectilePresets.FirstOrDefault(item => item.Id == input.ProjectilePresetId)
                 ?? FacehardProjectilePresets.FirstOrDefault(item => item.Id == FacehardInput.CreateDefault().ProjectilePresetId)
                 ?? CustomProjectilePreset();
+        }
+
+        static double ClampProjectileFlag(double value)
+        {
+            return Clamp(Math.Round(value), 0, 2);
         }
 
         static (double? nation, double? projectile) LegacyProjectileSelection(FacehardProjectilePreset preset)

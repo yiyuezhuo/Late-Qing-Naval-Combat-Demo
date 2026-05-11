@@ -102,6 +102,27 @@ public sealed class McCoyOkunCalculatorDialog
         McCoyOkunTab.Jbm
     };
 
+    static readonly List<string> ShatterResistanceLabels = new()
+    {
+        "0 - shatter-resistant",
+        "1 - shatter-prone",
+        "2 - very weak / chilled cast iron"
+    };
+
+    static readonly List<string> BreakUnderNblLabels = new()
+    {
+        "0 - no early breakage",
+        "1 - break-prone",
+        "2 - severe breakage"
+    };
+
+    static readonly List<string> LightCaseLabels = new()
+    {
+        "0 - normal body",
+        "1 - light case",
+        "2 - severe large cavity"
+    };
+
     TabView templateTabView;
     readonly Dictionary<McCoyOkunTab, Tab> templateTabs = new();
     readonly Dictionary<McCoyOkunTab, TemplatePageSurface> templatePages = new();
@@ -857,6 +878,14 @@ public sealed class McCoyOkunCalculatorDialog
         BindFloat(root, $"{prefix}RemainingNoseWeightField", noseWeights.RemainWeight, _ => { }, 0, false, RemainingNoseWeightLabel(noseWeights.CapHead, resolvedCapType));
         BindFloat(root, $"{prefix}PlimField", isCustom ? target.ProjectileLimitQuality : selectedPreset?.ProjectileLimitQuality ?? target.ProjectileLimitQuality, value => target.ProjectileLimitQuality = value, 0.001, isCustom);
         BindFloat(root, $"{prefix}PdamField", isCustom ? target.ProjectileDamageQuality : selectedPreset?.ProjectileDamageQuality ?? target.ProjectileDamageQuality, value => target.ProjectileDamageQuality = value, 0.001, isCustom);
+        BindProjectileFlag(root, $"{prefix}ShatResField", isCustom ? target.ShatterResistance : selectedPreset?.ShatterResistance ?? target.ShatterResistance, value => target.ShatterResistance = value, isCustom, ShatterResistanceLabels);
+        BindProjectileFlag(root, $"{prefix}BreakUnderNblField", isCustom ? target.BreakUnderNbl : selectedPreset?.BreakUnderNbl ?? target.BreakUnderNbl, value => target.BreakUnderNbl = value, isCustom, BreakUnderNblLabels);
+        BindProjectileFlag(root, $"{prefix}LightCaseField", isCustom ? target.LightCase : selectedPreset?.LightCase ?? target.LightCase, value => target.LightCase = value, isCustom, LightCaseLabels);
+    }
+
+    void BindProjectileFlag(VisualElement root, string name, double value, Action<double> setter, bool enabled, List<string> labels)
+    {
+        BindDropdown(root, name, labels, Mathf.Clamp((int)Math.Round(value), 0, labels.Count - 1), index => setter(index), enabled);
     }
 
     void UpdateFacehardInputWarnings(VisualElement root, string prefix, FacehardInput target, FacehardCapType resolvedCapType)
@@ -1551,6 +1580,9 @@ public sealed class McCoyOkunCalculatorDialog
             ProjectileLimitQuality = template?.ProjectileLimitQuality ?? 1,
             ProjectileDamageQuality = template?.ProjectileDamageQuality ?? 1,
             CapType = template?.CapType ?? FacehardCapType.Hard,
+            ShatterResistance = template?.ShatterResistance ?? 0,
+            BreakUnderNbl = template?.BreakUnderNbl ?? 0,
+            LightCase = template?.LightCase ?? 0,
             CurvedPlate = template?.CurvedPlate ?? false,
             WoodBackingThickness = template?.WoodBackingThickness ?? 0,
             CementBackingThickness = template?.CementBackingThickness ?? 0,

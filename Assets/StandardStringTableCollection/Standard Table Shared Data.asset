@@ -2357,7 +2357,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 44380493585223680
-    m_Key: And Other Pre-Dreadnought Battles
+    m_Key: And the East Asian Pre-Dreadnought Era
     m_Metadata:
       m_Items: []
   - m_Id: 44746725643685888
@@ -3264,6 +3264,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: -118
     m_Key: Drag to reattach or reorder.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -119
+    m_Key: Changelog
     m_Metadata:
       m_Items: []
   m_Metadata:

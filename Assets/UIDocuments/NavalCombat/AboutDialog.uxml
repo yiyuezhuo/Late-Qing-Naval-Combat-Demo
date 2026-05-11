@@ -11,7 +11,7 @@
             <ui:ScrollView name="LinkScrollView" mode="Vertical" vertical-scroller-visibility="Auto" horizontal-scroller-visibility="Hidden" style="flex-grow: 1;">
                 <ui:VisualElement style="flex-grow: 1; row-gap: 8px; padding-right: 4px;">
                     <ui:Button text="GitHub (Open Source Repository)" name="GitHubButton"/>
-                    <ui:Button text="GitHub Release (What&apos;s New)" name="GitHubReleaseButton"/>
+                    <ui:Button text="Online Manual" name="OnlineManualButton"/>
                     <ui:Button text="Steam Store" name="SteamStoreButton"/>
                     <ui:Button text="Steam Discussions" name="SteamDiscussionsButton"/>
                     <ui:Button text="Discord" name="DiscordButton"/>

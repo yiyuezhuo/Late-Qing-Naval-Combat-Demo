@@ -4521,6 +4521,10 @@ MonoBehaviour:
     m_Key: Only valid in strategic mode.
     m_Metadata:
       m_Items: []
+  - m_Id: 76600397579063296
+    m_Key: TT - Tutorial 7 - Custom Scenario.scen.xml
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

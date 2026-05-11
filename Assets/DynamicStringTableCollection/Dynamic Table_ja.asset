@@ -4573,6 +4573,11 @@ MonoBehaviour:
     m_Localized: "\u6226\u7565\u30E2\u30FC\u30C9\u3067\u306E\u307F\u6709\u52B9\u3067\u3059\u3002"
     m_Metadata:
       m_Items: []
+  - m_Id: 76600397579063296
+    m_Localized: "TT - \u30C1\u30E5\u30FC\u30C8\u30EA\u30A2\u30EB 7 - \u30AB\u30B9\u30BF\u30E0\u30B7\u30CA\u30EA\u30AA
+      \u2605"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

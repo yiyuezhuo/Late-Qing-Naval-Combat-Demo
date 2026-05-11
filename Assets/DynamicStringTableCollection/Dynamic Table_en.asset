@@ -4531,6 +4531,10 @@ MonoBehaviour:
     m_Localized: Only valid in strategic mode.
     m_Metadata:
       m_Items: []
+  - m_Id: 76600397579063296
+    m_Localized: "TT - Tutorial 7 - Custom Scenario \u2605"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

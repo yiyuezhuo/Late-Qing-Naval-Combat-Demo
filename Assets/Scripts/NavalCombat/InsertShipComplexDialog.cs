@@ -204,6 +204,8 @@ public class InsertShipComplexDialog
                 selectedShipGroup.childrenObjectIds.Add(deployedShipLog.objectId);
                 deployedShipLog.parentObjectId = selectedShipGroup.objectId;
             }
+
+            GameManager.Instance.shipStateInsertedToMap?.Invoke(this, System.EventArgs.Empty);
         }
     }
 }

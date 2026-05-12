@@ -4535,6 +4535,14 @@ MonoBehaviour:
     m_Localized: "TT - Tutorial 7 - Custom Scenario \u2605"
     m_Metadata:
       m_Items: []
+  - m_Id: -363
+    m_Localized: Free Observation
+    m_Metadata:
+      m_Items: []
+  - m_Id: -364
+    m_Localized: Observer / Editor
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

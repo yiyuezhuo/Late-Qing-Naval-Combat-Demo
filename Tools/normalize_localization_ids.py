@@ -14,7 +14,8 @@ WHAT IT DOES
   - Renumbers all negative IDs in Dynamic Table and Standard Table to -1, -2, -3, ...
   - Updates Standard Table UXML references when their entry IDs change.
   - Reports the current negative-ID range, next free ID, fragmentation, legacy large negatives,
-    locale synchronization status, and Standard Table UXML reference health.
+    duplicate IDs inside table assets, locale synchronization status, and Standard Table
+    UXML reference health.
 """
 
 import argparse
@@ -71,6 +72,16 @@ def write(path: str, content: str, apply: bool):
 
 def parse_all_ids(content: str) -> list[int]:
     return [int(value) for value in re.findall(r"m_Id: (-?\d+)", content)]
+
+
+def find_duplicate_ids(ids: list[int]) -> list[int]:
+    seen = set()
+    duplicates = []
+    for entry_id in ids:
+        if entry_id in seen and entry_id not in duplicates:
+            duplicates.append(entry_id)
+        seen.add(entry_id)
+    return sorted(duplicates)
 
 
 def parse_negative_ids(content: str) -> list[int]:
@@ -143,12 +154,22 @@ def find_table_uxml_refs(guid: str) -> list[dict]:
 def summarize_table(name: str, cfg: dict) -> dict:
     shared_content = read(cfg["shared"])
     shared_all_ids = parse_all_ids(shared_content)
+    shared_duplicate_ids = find_duplicate_ids(shared_all_ids)
     negative_ids = parse_negative_ids(shared_content)
 
     locale_sets = {}
+    locale_duplicate_ids = []
     locale_mismatches = []
     for locale_path in cfg["locales"]:
-        locale_ids = set(parse_negative_ids(read(locale_path)))
+        locale_all_ids = parse_all_ids(read(locale_path))
+        duplicate_ids = find_duplicate_ids(locale_all_ids)
+        if duplicate_ids:
+            locale_duplicate_ids.append({
+                "path": locale_path,
+                "duplicates": duplicate_ids,
+            })
+
+        locale_ids = set(entry_id for entry_id in locale_all_ids if entry_id < 0)
         locale_sets[locale_path] = locale_ids
         shared_set = set(negative_ids)
         if locale_ids != shared_set:
@@ -172,6 +193,8 @@ def summarize_table(name: str, cfg: dict) -> dict:
         "negative_ids": negative_ids,
         "negative_count": len(negative_ids),
         "all_id_count": len(shared_all_ids),
+        "shared_duplicate_ids": shared_duplicate_ids,
+        "locale_duplicate_ids": locale_duplicate_ids,
         "sequential": is_sequential(negative_ids),
         "next_free_negative_id": next_free_negative_id(negative_ids),
         "large_negative_ids": large_negative_ids,
@@ -278,6 +301,8 @@ def cmd_status():
         print(f"Sequential: {'yes' if summary['sequential'] else 'no'}")
         print(f"Next free negative ID: {summary['next_free_negative_id']}")
         print(f"Large-magnitude negatives: {len(summary['large_negative_ids'])}")
+        print(f"Shared duplicate IDs: {len(summary['shared_duplicate_ids'])}")
+        print(f"Locale files with duplicate IDs: {len(summary['locale_duplicate_ids'])}")
         print(f"Locale sync: {'ok' if not summary['locale_mismatches'] else 'mismatch'}")
 
         if summary["uxml_refs"]:
@@ -289,6 +314,12 @@ def cmd_verify() -> int:
     issues = []
     for table_name, cfg in TABLES.items():
         summary = summarize_table(table_name, cfg)
+        if summary["shared_duplicate_ids"]:
+            duplicate_text = ", ".join(str(entry_id) for entry_id in summary["shared_duplicate_ids"])
+            issues.append(f"{table_name}: duplicate IDs in {summary['shared_path']}: {duplicate_text}.")
+        for duplicate in summary["locale_duplicate_ids"]:
+            duplicate_text = ", ".join(str(entry_id) for entry_id in duplicate["duplicates"])
+            issues.append(f"{table_name}: duplicate IDs in {duplicate['path']}: {duplicate_text}.")
         if not summary["sequential"]:
             issues.append(f"{table_name}: negative IDs are fragmented; run normalize.")
         if summary["large_negative_ids"]:

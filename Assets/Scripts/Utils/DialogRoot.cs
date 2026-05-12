@@ -251,6 +251,8 @@ public sealed class StrategicViewerSideQuickPickerDialogModel
 {
     public List<StrategicViewerSideQuickPickerDialogOption> options { get; }
 
+    static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
+
     public StrategicViewerSideQuickPickerDialogModel()
     {
         var gameState = StrategicGameManager.Instance.gameState;
@@ -266,8 +268,8 @@ public sealed class StrategicViewerSideQuickPickerDialogModel
         options.Add(new StrategicViewerSideQuickPickerDialogOption()
         {
             isObserverEditorMode = true,
-            displayName = "Observer / Editor",
-            topGroupName = "Free Observation",
+            displayName = Localize("Observer / Editor"),
+            topGroupName = Localize("Free Observation"),
         });
     }
 

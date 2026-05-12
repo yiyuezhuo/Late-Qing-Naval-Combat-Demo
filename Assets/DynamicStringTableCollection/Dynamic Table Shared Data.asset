@@ -4525,6 +4525,14 @@ MonoBehaviour:
     m_Key: TT - Tutorial 7 - Custom Scenario.scen.xml
     m_Metadata:
       m_Items: []
+  - m_Id: -363
+    m_Key: Free Observation
+    m_Metadata:
+      m_Items: []
+  - m_Id: -364
+    m_Key: Observer / Editor
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
@@ -4536,3 +4544,4 @@ MonoBehaviour:
       type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
       data:
         m_CustomEpoch: 1760258163327
+

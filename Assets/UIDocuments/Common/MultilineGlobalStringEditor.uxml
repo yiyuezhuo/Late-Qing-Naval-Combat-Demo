@@ -1,28 +1,28 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:TabView>
+    <ui:TabView name="TabView">
         <ui:Tab label="English">
-            <ui:TextField multiline="true" vertical-scroller-visibility="Auto" style="white-space: normal; min-height: 150px;">
+            <ui:TextField multiline="true" vertical-scroller-visibility="Auto" style="white-space: normal; flex-shrink: 1; flex-grow: 1; height: 150px;">
                 <Bindings>
                     <ui:DataBinding property="value" data-source-path="english" binding-mode="TwoWay"/>
                 </Bindings>
             </ui:TextField>
         </ui:Tab>
         <ui:Tab label="Japanese">
-            <ui:TextField multiline="true" vertical-scroller-visibility="Auto" style="white-space: normal; min-height: 150px;">
+            <ui:TextField multiline="true" vertical-scroller-visibility="Auto" style="white-space: normal; height: 150px;">
                 <Bindings>
                     <ui:DataBinding property="value" data-source-path="japanese" binding-mode="TwoWay"/>
                 </Bindings>
             </ui:TextField>
         </ui:Tab>
         <ui:Tab label="Chinese (Sim)">
-            <ui:TextField multiline="true" vertical-scroller-visibility="Auto" style="white-space: normal; min-height: 150px;">
+            <ui:TextField multiline="true" vertical-scroller-visibility="Auto" style="white-space: normal; height: 150px;">
                 <Bindings>
                     <ui:DataBinding property="value" data-source-path="chineseSimplified" binding-mode="TwoWay"/>
                 </Bindings>
             </ui:TextField>
         </ui:Tab>
         <ui:Tab label="Chinese (Trad)">
-            <ui:TextField multiline="true" vertical-scroller-visibility="Auto" style="white-space: normal; min-height: 150px;">
+            <ui:TextField multiline="true" vertical-scroller-visibility="Auto" style="white-space: normal; height: 150px;">
                 <Bindings>
                     <ui:DataBinding property="value" data-source-path="chineseTraditional" binding-mode="TwoWay"/>
                 </Bindings>

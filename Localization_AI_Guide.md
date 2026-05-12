@@ -23,6 +23,9 @@ Use the helper that matches the target table:
 - `Tools\add_localization.py` is for **Dynamic Table add**.
 - `Tools\update_dynamic_localization.py` is for **Dynamic Table batch update / mixed add / cleanup**.
 - `Tools\standard_localization.py` is for **Standard Table only**.
+- Do not run localization write helpers in parallel. They assign the next negative ID from
+  the current files, so concurrent add/update commands can create duplicate `m_Id` entries
+  inside a locale asset. Use one batch file or run the commands sequentially.
 
 ### Dynamic Table
 
@@ -70,6 +73,7 @@ For **Standard Table**, treat `--key` as the stable lookup identifier. It can ma
   - `python Tools\normalize_localization_ids.py status`
 - Verify no localization ID/reference problems remain:
   - `python Tools\normalize_localization_ids.py verify`
+  - This also checks for duplicate `m_Id` entries inside each shared and locale table asset.
 - Re-pack fragmented negative IDs when necessary:
   - `python Tools\normalize_localization_ids.py --apply`
 - For new entries, let the helper scripts assign the next sequential small negative ID automatically. Do not manually invent large arbitrary negative IDs.

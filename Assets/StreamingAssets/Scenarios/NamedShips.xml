@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-16"?>
+<?xml version="1.0" encoding="utf-8"?>
 <ArrayOfNamedShip xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
  <NamedShip>
   <shipClassObjectId>fcf5997b-fe22-49ad-9e5b-70080d2221a9</shipClassObjectId>

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using System.Xml.Serialization;
 using System.Xml;
 
@@ -14,9 +15,15 @@ namespace YYZ
 
         static XmlWriterSettings defaultSetting = new()
         {
+            Encoding = Encoding.UTF8,
             Indent = true,
             IndentChars = " ",
         };
+
+        sealed class Utf8StringWriter : StringWriter
+        {
+            public override Encoding Encoding => Encoding.UTF8;
+        }
 
         static XmlSerializer GetOrCreate(Type t)
         {
@@ -31,7 +38,7 @@ namespace YYZ
         {
             var serializer = GetOrCreate(typeof(T));
 
-            using (var textWriter = new StringWriter())
+            using (var textWriter = new Utf8StringWriter())
             {
                 using (XmlWriter xmlWriter = XmlWriter.Create(textWriter, defaultSetting))
                 {

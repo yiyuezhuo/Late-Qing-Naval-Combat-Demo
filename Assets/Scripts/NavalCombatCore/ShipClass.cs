@@ -586,16 +586,7 @@ namespace NavalCombatCore
 
         public string ToXML()
         {
-            using (var textWriter = new StringWriter())
-            {
-                using (XmlWriter xmlWriter = XmlWriter.Create(textWriter))
-                {
-                    serializer.Serialize(xmlWriter, this);
-                    string serializedXml = textWriter.ToString();
-
-                    return serializedXml;
-                }
-            }
+            return YYZ.XmlUtils.ToXML(this);
         }
 
         public static BatteryRecord FromXml(string xml)

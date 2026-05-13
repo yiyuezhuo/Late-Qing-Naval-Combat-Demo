@@ -504,6 +504,44 @@ public partial class BatteryPenetrationFireControlChart : VisualElement
 
 public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, ShipClass>
 {
+    const string ArmorTypeMarkdown = @"Armor Type Factor is derived from Okun's [Table of Metallurgical Properties of Naval Armor and Construction Materials](http://www.navweaps.com/index_nathan/metalprpsept2009.php) 
+
+
+| Armor Type                             | SK5 Armor Factor | Okun Material / Rule                                     | Okun Field       | Okun Value               | Derivation              |
+| -------------------------------------- | ---------------: | -------------------------------------------------------- | ---------------- | ------------------------ | ----------------------- |
+| No Armor                               |                0 | -                                                        | -                | -                        | game placeholder        |
+| Wrought Iron                           |             0.60 | WROUGHT IRON ARMOR                                       | Average Quality  | approx. 0.55-0.60        | selected / rounded      |
+| Mild Steel                             |             0.75 | AVE. “MILD/MEDIUM” STEEL                                 | Average Quality  | 0.75                     | direct                  |
+| Compound Hard Steel Faced Wrought Iron |             0.68 | “COMPOUND” HARD-STEEL-FACED WROUGHT IRON                 | Q / QD           | Q=0.75; QD=0.60          | mean / rounded          |
+| Nickel Steel                           |             0.90 | AVE. NICKEL-STEEL ARMOR                                  | Average Quality  | 0.90                     | direct                  |
+| Harvey Mild Steel                      |             0.74 | AVE. HARVEYIZED MILD STEEL                               | Q / QD           | Q=0.78; QD=0.70          | mean(Q,QD)              |
+| Harvey Nickel Steel                    |             0.78 | AVE. HARVEYIZED NICKEL-STEEL                             | Q / QD           | Q≈0.805; QD≈0.75         | mean / rounded          |
+| Krupp Chrome Nickel Steel              |             0.95 | Krupp “HIGH-%” Nickel-Steel                              | Average Quality  | 0.95                     | direct                  |
+| Krupp Cemented 1894                    |             0.83 | Original KC / KC a/A                                     | Q                | Q=0.828                  | rounded                 |
+| High Tensile Steel                     |             0.82 | AVE. HIGH-TENSILE STEEL                                  | Average Quality  | 1895=0.80; post-WWI=0.85 | interpolated / selected |
+| Class A Armor 1900                     |             0.83 | AVE. WWI-ERA CLASS “A” ARMOR / early Class A rule        | Q                | Q≈0.828                  | rounded                 |
+| Krupp Nickel Steel                     |             0.83 | likely KC a/A or default pre-1911 FH armor               | Q                | Q≈0.828                  | rounded                 |
+| Krupp Non-Cemented                     |             0.95 | KRUPP NON-CEMENTED / KNC-like homogeneous armor          | Average Quality  | 0.95                     | direct                  |
+| Krupp Cemented WW1 Era 1905            |             0.83 | default face-hardened armor through 1910                 | Q                | Q=0.828                  | rounded                 |
+| Witkowitzer KC                         |             0.95 | IMPROVED AUSTRO-HUNGARIAN WITKOWITZER KC                 | Q                | Q=0.947                  | rounded                 |
+| Class A Armor Midvale Non-Cemented     |             0.88 | MIDVALE NON-CEMENTED CLASS “A”                           | Q / special case | Q=0.889                  | truncated               |
+| Class B Armor 1910                     |             0.95 | early STS / WWI-era Class “B” homogeneous armor          | Average Quality  | 0.95                     | direct                  |
+| Special Treatment Steel                |             1.00 | SPECIAL TREATMENT STEEL / STS                            | Average Quality  | 1.00                     | direct                  |
+| Class A Armor 1911                     |             0.89 | AVE. WWI-ERA CLASS “A” ARMOR                             | Q                | Q=0.889                  | rounded                 |
+| Krupp Cemented WW1 Era 1911            |             0.85 | default FH armor 1911–1921                               | Q                | Q=0.850                  | direct                  |
+| Krupp Wotan Hard Nickel Steel          |             1.00 | German WOTAN HART / Wh / Wotan Härte                     | Average Quality  | 1.00                     | direct                  |
+| D Silicon Manganese HT Steel           |             0.90 | AVE. EXTRA-HIGH-STRENGTH “D” SILICON-MANGANESE HT STEELS | Average Quality  | 0.90                     | direct                  |
+| New Vickers Non-Cemented               |             0.95 | NEW VICKERS NON-CEMENTED / NVNC                          | Average Quality  | 0.95                     | direct                  |
+| Non-Cemented Armor                     |             1.00 | AVE. NON-CEMENTED ARMOR / NCA                            | Average Quality  | 1.00                     | direct                  |
+| Krupp Cemented 1928                    |             1.00 | Krupp Cemented new type / KC n/A                         | Q                | Q=1.00                   | direct                  |
+| PO Homogenous Plate                    |             1.00 | PIASTRE OMOGENEE / PO                                    | Average Quality  | 1.00 estimated           | direct                  |
+| Italian WW2 Era Krupp Cemented         |             1.00 | ITALIAN WWII KRUPP CEMENTED                              | Q                | Q=1.00 estimated         | direct                  |
+| British Cemented Armor                 |             1.00 | BRITISH CEMENTED ARMOR / CA                              | Q                | Q=1.00                   | direct                  |
+| Class B Armor 1933                     |             1.00 | WWII-era CLASS “B” ARMOR                                 | Average Quality  | 1.00                     | direct                  |
+| Class A Armor 1933                     |             1.00 | improved USN CLASS “A” ARMOR / post-1921 FH default      | Q                | 1.00                     | direct / default        |
+| Vickers Non-Cemented                   |             0.84 | VICKERS HARDENED NON-CEMENTED / VH                       | Q                | Q=0.839                  | rounded                 |
+| Molybdenum Non-Cemented                |             0.97 | MOLYBDENUM NON-CEMENTED / MNC                            | Average Quality  | 0.97                     | direct                  |";
+
     const string TorpedoDamageClassMarkdown = @"| Damage Class | Type                                                                                                   | Firing Ship Example                                                                                                                           | Year | warhead (lb) | diameter (inch) |
 | ------------ | ------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | ---- | ------------ | --------------- |
 | A            | [61cm Type 93 M1-2](https://en.wikipedia.org/wiki/Type_93_torpedo)                                     | JAPAN / DD / [Kawakaze (江風)](https://en.wikipedia.org/wiki/Japanese_destroyer_Kawakaze_(1936))                                                | 1933 | 1080         | 24              |
@@ -605,7 +643,7 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
         {
             armorTypeHelpButton.clicked += () =>
             {
-                DialogRoot.Instance.PopupConfirmOpenURLDialog(ArmorRating.ArmorTypeReferenceUrl);
+                DialogRoot.Instance.PopupMarkdownDialog(ArmorTypeMarkdown, Localize("Armor Type"));
             };
         }
 

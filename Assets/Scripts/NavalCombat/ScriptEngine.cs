@@ -147,7 +147,7 @@ public class ScriptEngine
         yield return new WaitForSecondsRealtime(seconds);
         if (GameManager.Instance != null)
             GameManager.Instance.StopAutoPlay();
-        DialogRoot.Instance.PopupMarkdownDialog(markdown);
+        DialogRoot.Instance.PopupMarkdownDialog(markdown, messageSized: true);
     }
 
     static void Markdown(object markdown)

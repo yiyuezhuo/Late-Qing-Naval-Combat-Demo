@@ -3860,7 +3860,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         tempDialog.Popup();
     }
 
-    public void PopupMarkdownDialog(string markdown, string title = null)
+    public void PopupMarkdownDialog(string markdown, string title = null, bool messageSized = false)
     {
         var tempDialog = new TempDialog()
         {
@@ -3875,6 +3875,16 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             if (markdownRenderer != null)
             {
                 markdownRenderer.value = markdown;
+            }
+
+            if (messageSized)
+            {
+                var panel = el.Q<VisualElement>("MarkdownDialogPanel");
+                if (panel != null)
+                {
+                    panel.style.width = 600;
+                    panel.style.height = 400;
+                }
             }
 
             if (title != null)

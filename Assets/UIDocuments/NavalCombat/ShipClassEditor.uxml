@@ -299,12 +299,15 @@
                                                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(74290944446464)"/>
                                                         </Bindings>
                                                     </ui:IntegerField>
-                                                    <ui:EnumField label="Damage Class" value="Center" type="NavalCombatCore.TorpedoDamageClass, Assembly-CSharp">
-                                                        <Bindings>
-                                                            <ui:DataBinding property="value" data-source-path="damageClass" binding-mode="TwoWay"/>
-                                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(82506625486848)"/>
-                                                        </Bindings>
-                                                    </ui:EnumField>
+                                                    <ui:VisualElement style="flex-direction: row; align-items: center;">
+                                                        <ui:EnumField label="Damage Class" value="Center" type="NavalCombatCore.TorpedoDamageClass, Assembly-CSharp" style="flex-grow: 1;">
+                                                            <Bindings>
+                                                                <ui:DataBinding property="value" data-source-path="damageClass" binding-mode="TwoWay"/>
+                                                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(82506625486848)"/>
+                                                            </Bindings>
+                                                        </ui:EnumField>
+                                                        <ui:Button text="?" name="TorpedoDamageClassHelpButton" tooltip="Torpedo Damage Class Reference" style="width: 24px; min-width: 24px; height: 20px; margin-left: 2px; padding-left: 0; padding-right: 0;"/>
+                                                    </ui:VisualElement>
                                                     <ui:VisualElement style="flex-direction: row; align-items: center;">
                                                         <ui:Label text="Meta: None" name="TorpedoSectorMetaInfoLabel" style="flex-grow: 1;">
                                                             <Bindings>

@@ -69,6 +69,7 @@ Desktop is the major platform, WebGL will work but the huge file size will not d
 - [UnityStandaloneFileBrowser](https://github.com/gkngkc/UnityStandaloneFileBrowser)
 - [UnityNativeFilePicker](https://github.com/yasirkula/UnityNativeFilePicker)
 - [JInt](https://github.com/sebastienros/jint)
+- [Markdig](https://github.com/xoofx/markdig)
 
 ### Assets
 

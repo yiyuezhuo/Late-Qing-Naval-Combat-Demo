@@ -897,6 +897,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset shipClassSelectorDocument;
     public VisualTreeAsset namedShipSelectorDocument;
     public VisualTreeAsset messageDialogDocument;
+    public VisualTreeAsset markdownDialogDocument;
     public VisualTreeAsset modelComparisonDialogDocument;
     public VisualTreeAsset confirmDialogDocument;
     public VisualTreeAsset followFormationDialogDocument;
@@ -3849,6 +3850,33 @@ public class DialogRoot : SingletonDocument<DialogRoot>
             var contentTextField = el.Q<TextField>("ContentTextField");
 
             contentTextField.SetValueWithoutNotify(message);
+            if (title != null)
+            {
+                var titleLabel = el.Q<Label>("TitleLabel");
+                titleLabel.text = title;
+            }
+        };
+
+        tempDialog.Popup();
+    }
+
+    public void PopupMarkdownDialog(string markdown, string title = null)
+    {
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = markdownDialogDocument,
+            templateDataSource = null,
+        };
+
+        tempDialog.onCreated += (sender, el) =>
+        {
+            var markdownRenderer = el.Q<MarkdownRenderer>("ContentMarkdownRenderer");
+            if (markdownRenderer != null)
+            {
+                markdownRenderer.value = markdown;
+            }
+
             if (title != null)
             {
                 var titleLabel = el.Q<Label>("TitleLabel");

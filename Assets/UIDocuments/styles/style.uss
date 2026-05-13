@@ -1206,3 +1206,193 @@
     top: 1px;
     bottom: -1px;
 }
+
+.markdown-renderer {
+    flex-grow: 1;
+    flex-shrink: 1;
+    color: var(--ui-text-primary);
+    white-space: normal;
+}
+
+.markdown-text {
+    white-space: normal;
+    color: var(--ui-text-primary);
+}
+
+.markdown-paragraph {
+    margin-top: 3px;
+    margin-bottom: 5px;
+}
+
+.markdown-heading {
+    -unity-font-style: bold;
+    margin-top: 8px;
+    margin-bottom: 5px;
+    color: var(--ui-text-selected);
+}
+
+.markdown-heading-1 {
+    font-size: 22px;
+}
+
+.markdown-heading-2 {
+    font-size: 18px;
+}
+
+.markdown-heading-3 {
+    font-size: 15px;
+}
+
+.markdown-heading-4,
+.markdown-heading-5,
+.markdown-heading-6 {
+    font-size: 13px;
+}
+
+.markdown-blockquote {
+    margin-top: 5px;
+    margin-bottom: 6px;
+    padding-left: 8px;
+    padding-right: 6px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    background-color: var(--ui-surface-info-panel);
+    border-left-width: 3px;
+    border-left-color: var(--ui-icon-accent);
+}
+
+.markdown-code-block {
+    margin-top: 5px;
+    margin-bottom: 6px;
+    padding-top: 5px;
+    padding-right: 6px;
+    padding-bottom: 5px;
+    padding-left: 6px;
+    background-color: var(--ui-surface-input);
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-left-color: var(--ui-border-input-side);
+    border-right-color: var(--ui-border-input-side);
+    border-top-color: var(--ui-border-input-top);
+    border-bottom-color: var(--ui-border-input-bottom);
+}
+
+.markdown-code-info {
+    color: var(--ui-text-label);
+    -unity-font-style: bold;
+    margin-bottom: 3px;
+}
+
+.markdown-code-text,
+.markdown-html,
+.markdown-unsupported {
+    color: var(--ui-text-log);
+    white-space: normal;
+}
+
+.markdown-hr {
+    height: 1px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    background-color: var(--ui-border-divider);
+}
+
+.markdown-list {
+    margin-top: 3px;
+    margin-bottom: 5px;
+}
+
+.markdown-list-item {
+    flex-direction: row;
+    margin-top: 1px;
+    margin-bottom: 2px;
+}
+
+.markdown-list-marker {
+    min-width: 24px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    color: var(--ui-icon-accent);
+    -unity-text-align: upper-right;
+    margin-right: 4px;
+}
+
+.markdown-list-content {
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.markdown-table-scroll {
+    flex-grow: 0;
+    flex-shrink: 1;
+    margin-top: 6px;
+    margin-bottom: 8px;
+}
+
+.markdown-table {
+    flex-grow: 0;
+    flex-shrink: 0;
+    border-top-width: 1px;
+    border-left-width: 1px;
+    border-top-color: var(--ui-border-panel-top);
+    border-left-color: var(--ui-border-panel-side);
+}
+
+.markdown-table-row {
+    flex-direction: row;
+    flex-grow: 0;
+    flex-shrink: 0;
+    align-items: stretch;
+}
+
+.markdown-table-cell {
+    padding-top: 4px;
+    padding-right: 6px;
+    padding-bottom: 4px;
+    padding-left: 6px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    background-color: var(--ui-surface-list);
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-right-color: var(--ui-border-panel-side);
+    border-bottom-color: var(--ui-border-panel-bottom);
+}
+
+.markdown-table-header-cell {
+    background-color: var(--ui-surface-title);
+}
+
+.markdown-table-header-cell .markdown-text {
+    -unity-font-style: bold;
+    color: var(--ui-text-selected);
+}
+
+.markdown-image-root {
+    margin-top: 6px;
+    margin-bottom: 8px;
+}
+
+.markdown-image {
+    flex-grow: 0;
+    flex-shrink: 1;
+    min-height: 32px;
+    max-width: 100%;
+    background-color: var(--ui-surface-image-frame);
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-left-color: var(--ui-border-input-side);
+    border-right-color: var(--ui-border-input-side);
+    border-top-color: var(--ui-border-input-top);
+    border-bottom-color: var(--ui-border-input-bottom);
+}
+
+.markdown-image-alt {
+    color: var(--ui-text-label);
+    font-size: 11px;
+    margin-top: 2px;
+}

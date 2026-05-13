@@ -504,6 +504,18 @@ public partial class BatteryPenetrationFireControlChart : VisualElement
 
 public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, ShipClass>
 {
+    const string TorpedoDamageClassMarkdown = @"| Damage Class | Type                                                                                                   | Firing Ship Example                                                                                                                           | Year | warhead (lb) | diameter (inch) |
+| ------------ | ------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | ---- | ------------ | --------------- |
+| A            | [61cm Type 93 M1-2](https://en.wikipedia.org/wiki/Type_93_torpedo)                                     | JAPAN / DD / [Kawakaze (江風)](https://en.wikipedia.org/wiki/Japanese_destroyer_Kawakaze_(1936))                                                | 1933 | 1080         | 24              |
+| B            | [61cm Type 90](https://en.wikipedia.org/wiki/61_cm_Type_90_torpedo)                                    | JAPAN / DD / [Shikinami (敷波)](https://en.wikipedia.org/wiki/Japanese_destroyer_Shikinami_(1929))                                              | 1933 | 880          | 24              |
+| C            | [53cm G7a T1](https://en.wikipedia.org/wiki/G7a_torpedo)                                               | GERMANY / SS / [U-47](https://en.wikipedia.org/wiki/German_submarine_U-47_(1938))                                                             | 1934 | 661          | 21              |
+| D            | [53cm Si270I](https://regiamarina.net/torpedoes/)                                                      | ITALY / SS / [Axum](https://en.wikipedia.org/wiki/Italian_submarine_Axum) ( [Adua](https://en.wikipedia.org/wiki/Adua-class_submarine)-class) | 1936 | 595          | 21              |
+| E            | [53cm G7e T2/3](https://en.wikipedia.org/wiki/G7e_torpedo)                                             | GERMANY / SS / [U-29](https://en.wikipedia.org/wiki/German_submarine_U-29_(1936))                                                             | 1936 | 660          | 21.04           |
+| F            | [21"" Mk I](https://en.wikipedia.org/wiki/British_21-inch_torpedo)                                      | GREAT BRITAIN / DD / [Onslaught](https://en.wikipedia.org/wiki/HMS_Onslaught_(1915))                                                          | 1910 | 200          | 21              |
+| G            | [50cm G6](http://www.navweaps.com/Weapons/WTGER_PreWWII.php#50_cm_%2819.7%22%29_G%2F6_and_G%2F6D)      | GERMANY / SS / [U-21](https://en.wikipedia.org/wiki/SM_U-21_(Germany))  ([U-19](https://en.wikipedia.org/wiki/Type_U_19_submarine)-class)     | 1911 | 353          | 19.7            |
+| H            | [45cm C/06](http://www.navweaps.com/Weapons/WTGER_PreWWII.php#45_cm_%2817.7%22%29_C%2F06_and_C%2F06_D) | GERMANY / SS / [U-9](https://en.wikipedia.org/wiki/SM_U-9)                                                                                    | 1907 | 270          | 17.7            |
+| I            | [14"" Whitehead](https://en.wikipedia.org/wiki/Whitehead_torpedo)                                       | CHILE / TB / [Almirante Lynch](https://en.wikipedia.org/wiki/Chilean_torpedo_gunboat_Almirante_Lynch)                                         | 1868 | 118          | 14              |";
+
     static readonly GlobalString Sk5CodeHelpMessage = new()
     {
         english = "Fire Control Code, which denotes a specific combination of Fire Control Components in SK5 data, and Component only serve to set the inferred values of the Fire Control Table when the 'Reset Fire Control Table' button is clicked. They also act as a form of remark/annotation. Their values themselves do not affect resolution because their effects are already fully captured by the Fire Control Table, which acts as a sufficient statistic.",
@@ -594,6 +606,15 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
             armorTypeHelpButton.clicked += () =>
             {
                 DialogRoot.Instance.PopupConfirmOpenURLDialog(ArmorRating.ArmorTypeReferenceUrl);
+            };
+        }
+
+        var torpedoDamageClassHelpButton = root.Q<Button>("TorpedoDamageClassHelpButton");
+        if (torpedoDamageClassHelpButton != null)
+        {
+            torpedoDamageClassHelpButton.clicked += () =>
+            {
+                DialogRoot.Instance.PopupMarkdownDialog(TorpedoDamageClassMarkdown, Localize("Torpedo Damage Class"));
             };
         }
 

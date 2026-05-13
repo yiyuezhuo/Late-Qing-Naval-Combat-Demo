@@ -24,6 +24,7 @@ public partial class MarkdownRenderer : BindableElement
     string _basePath;
     float _maxImageHeight = 260;
     bool _openExternalLinks = true;
+    bool _selectable;
 
     public MarkdownRenderer()
     {
@@ -70,6 +71,17 @@ public partial class MarkdownRenderer : BindableElement
         set
         {
             _openExternalLinks = value;
+            Render();
+        }
+    }
+
+    [UxmlAttribute]
+    public bool selectable
+    {
+        get => _selectable;
+        set
+        {
+            _selectable = value;
             Render();
         }
     }
@@ -413,6 +425,7 @@ public partial class MarkdownRenderer : BindableElement
     {
         var label = new Label(text ?? "");
         label.enableRichText = true;
+        ApplySelectable(label);
         label.AddToClassList("markdown-text");
         AddClasses(label, classNames);
 
@@ -426,9 +439,27 @@ public partial class MarkdownRenderer : BindableElement
     {
         var label = new Label(text ?? "");
         label.enableRichText = false;
+        ApplySelectable(label);
         label.AddToClassList("markdown-text");
         AddClasses(label, classNames);
         return label;
+    }
+
+    void ApplySelectable(Label label)
+    {
+        label.selection.isSelectable = _selectable;
+        label.selection.doubleClickSelectsWord = _selectable;
+        label.selection.tripleClickSelectsLine = _selectable;
+        label.focusable = _selectable;
+        label.pickingMode = PickingMode.Position;
+
+        if (_selectable)
+        {
+            label.AddToClassList(TextElement.selectableUssClassName);
+            return;
+        }
+
+        label.RemoveFromClassList(TextElement.selectableUssClassName);
     }
 
     static void AddClasses(VisualElement element, string classNames)

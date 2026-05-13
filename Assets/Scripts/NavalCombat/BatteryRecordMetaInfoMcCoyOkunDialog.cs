@@ -8,6 +8,7 @@ using NavalCombatCore;
 using UnityEngine;
 using UnityEngine.UIElements;
 using YYZ.Ballistic;
+using YYZ;
 
 public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
 {
@@ -32,26 +33,31 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         M79Only
     }
 
-    static readonly List<string> ShatterResistanceLabels = new()
+    static readonly string[] ShatterResistanceLabelKeys =
     {
         "0 - shatter-resistant",
         "1 - shatter-prone",
         "2 - very weak / chilled cast iron"
     };
 
-    static readonly List<string> BreakUnderNblLabels = new()
+    static readonly string[] BreakUnderNblLabelKeys =
     {
         "0 - no early breakage",
         "1 - break-prone",
         "2 - severe breakage"
     };
 
-    static readonly List<string> LightCaseLabels = new()
+    static readonly string[] LightCaseLabelKeys =
     {
         "0 - normal body",
         "1 - light case",
         "2 - severe large cavity"
     };
+
+    static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
+    static string LocalizeEnum<T>(T value) => ServiceLocator.Get<ILocalizeService>().GetEnum(value);
+    static List<string> LocalizedChoices(params string[] keys) => keys.Select(key => Localize(key)).ToList();
+    static List<string> LocalizedChoices(IEnumerable<string> keys) => keys.Select(key => Localize(key)).ToList();
 
     sealed class ResultRow
     {
@@ -252,7 +258,7 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         LoadBatteryRecordCoreValues();
         RebuildInputs();
         MarkOutputDirty();
-        ShowPendingOutput("Loaded max range, projectile weight, and projectile diameter from BatteryRecord.");
+        ShowPendingOutput(Localize("Loaded max range, projectile weight, and projectile diameter from BatteryRecord."));
     }
 
     void EnsureMetaInfoBallisticSample()
@@ -288,7 +294,7 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
     void BindProjectileTab()
     {
         var samples = BallisticSampleCatalog.All();
-        var sampleChoices = new List<string> { "Not Specified" };
+        var sampleChoices = new List<string> { Localize("Not Specified") };
         sampleChoices.AddRange(samples.Select(sample => sample.Label));
         var sampleIndex = samples.FindIndex(sample => sample.Id == sampleId);
         BindDropdown("SampleField", sampleChoices, sampleIndex >= 0 ? sampleIndex + 1 : 0, selected =>
@@ -348,7 +354,7 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
 
     void BindMiscTab()
     {
-        BindDropdown("ElevationSearchField", new List<string> { "Cached Binary Search", "Matched Range" },
+        BindDropdown("ElevationSearchField", LocalizedChoices("Cached Binary Search", "Matched Range"),
             input.McCoy.ElevationSearchMode == McCoyPlusElevationSearchMode.MatchedRange ? 1 : 0, selected =>
             {
                 input.McCoy.ElevationSearchMode = selected == 1
@@ -356,7 +362,7 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
                     : McCoyPlusElevationSearchMode.CachedBinarySearch;
                 MarkOutputDirty();
             });
-        BindDropdown("AtmosphereField", new List<string> { "Army Standard Metro", "ICAO" },
+        BindDropdown("AtmosphereField", LocalizedChoices("Army Standard Metro", "ICAO"),
             input.McCoy.Atmosphere == McCoyAtmosphere.Icao ? 1 : 0, selected =>
             {
                 input.McCoy.Atmosphere = selected == 1 ? McCoyAtmosphere.Icao : McCoyAtmosphere.StandardMetro;
@@ -365,19 +371,19 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         BindFloat("DensityRatioField", input.McCoy.DensityRatio, value => input.McCoy.DensityRatio = value, 0.001);
         BindFloat("TemperatureField", input.McCoy.TemperatureF, value => input.McCoy.TemperatureF = value);
         BindFloat("MatchHeightField", input.McCoy.MatchHeight, value => input.McCoy.MatchHeight = value);
-        BindDropdown("RangeModeField", new List<string> { "Sweep", "Search SK5" },
+        BindDropdown("RangeModeField", LocalizedChoices("Sweep", "Search SK5"),
             rangeMode == RangeMode.SearchSk5 ? 1 : 0, selected =>
             {
                 rangeMode = selected == 1 ? RangeMode.SearchSk5 : RangeMode.Sweep;
                 MarkOutputDirty();
             });
-        BindDropdown("ChartModeField", new List<string> { "Matched Trajectories", "Penetration By Range" },
+        BindDropdown("ChartModeField", LocalizedChoices("Matched Trajectories", "Penetration By Range"),
             chartMode == ChartMode.Trajectory ? 0 : 1, selected =>
             {
                 chartMode = selected == 0 ? ChartMode.Trajectory : ChartMode.Penetration;
                 MarkOutputDirty();
             });
-        BindDropdown("OkunModeField", new List<string> { "Facehard + M79", "Facehard Only", "M79 Only" },
+        BindDropdown("OkunModeField", LocalizedChoices("Facehard + M79", "Facehard Only", "M79 Only"),
             okunMode switch
             {
                 OkunMode.FacehardOnly => 1,
@@ -405,7 +411,7 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
     {
         var batteryLabel = root?.Q<Label>("Sk5BatteryShortNameLabel");
         if (batteryLabel != null)
-            batteryLabel.text = batteryRecord?.name?.GetShortName() ?? "Battery";
+            batteryLabel.text = batteryRecord?.name?.GetShortName() ?? Localize("Battery");
         BindFloat("Sk5MaxRateOfFireField", CurrentMaxRateOfFireShootPerMin(), _ => { }, 0, false);
         BindFloat("Sk5FallToNextFireSecondsField", fallToNextFireSeconds, value => fallToNextFireSeconds = (float)value, 0);
         BindToggle("RoundSyncBackValuesField", roundSyncBackValuesToOneDecimal, value => roundSyncBackValuesToOneDecimal = value);
@@ -428,7 +434,7 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
             sk5DataListView.columns.Add(new Column
             {
                 name = name,
-                title = title,
+                title = Localize(title),
                 width = width,
                 minWidth = Math.Min(width, 80),
                 stretchable = false,
@@ -443,7 +449,7 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
             });
         }
 
-        AddLabelColumn("rangeBand", "Range Band", 120, row => row.rangeBand.ToString());
+        AddLabelColumn("rangeBand", "Range Band", 120, row => LocalizeEnum(row.rangeBand));
         AddLabelColumn("distanceYards", "Distance Yards", 130, row => F(row.distanceYards, 0));
         AddLabelColumn("rateOfFire", "Rate of Fire", 120, row => F(row.rateOfFire, 2));
         AddLabelColumn("horizontalPenetration", "Hor Pen", 110, row => F(row.horizontalPenetrationInchs, 2));
@@ -489,7 +495,7 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
             });
 
         var isCustom = facehardDetails.ProjectilePresetId == "custom";
-        var capLabels = new List<string> { "Hard AP cap", "Thin/Tough hard cap", "Soft AP cap", "Hood", "No cap" };
+        var capLabels = LocalizedChoices("Hard AP cap", "Thin/Tough hard cap", "Soft AP cap", "Hood", "No cap");
         var capValues = new List<FacehardCapType> { FacehardCapType.Hard, FacehardCapType.ThinHard, FacehardCapType.Soft, FacehardCapType.Hood, FacehardCapType.None };
         BindDropdown("CapOrHoodField", capLabels, Math.Max(0, capValues.IndexOf(resolvedCapType)), selected =>
         {
@@ -499,7 +505,7 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         }, isCustom);
 
         var schemaValues = new List<FacehardNoseSchema> { FacehardNoseSchema.Standard, FacehardNoseSchema.JapaneseCapHead };
-        BindDropdown("NoseSchemaField", new List<string> { "Standard", "Japanese Cap Head" },
+        BindDropdown("NoseSchemaField", LocalizedChoices("Standard", "Japanese Cap Head"),
             Math.Max(0, schemaValues.IndexOf(facehardDetails.NoseSchema)), selected =>
             {
                 facehardDetails.NoseSchema = schemaValues[Mathf.Max(0, selected)];
@@ -509,7 +515,7 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
             }, isCustom);
 
         SetDisplay("JapaneseCapHeadField", isCustom && facehardDetails.NoseSchema == FacehardNoseSchema.JapaneseCapHead);
-        BindDropdown("JapaneseCapHeadField", new List<string> { "Uncapped Type 91 AP", "Capped Type 88/91/1 APC" },
+        BindDropdown("JapaneseCapHeadField", LocalizedChoices("Uncapped Type 91 AP", "Capped Type 88/91/1 APC"),
             facehardDetails.JapaneseCapHead <= 1 ? 0 : 1, selected =>
             {
                 facehardDetails.JapaneseCapHead = selected == 0 ? 1 : 2;
@@ -539,11 +545,11 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         BindFloat("PdamField", isCustom ? facehardDetails.ProjectileDamageQuality : selectedPreset?.ProjectileDamageQuality ?? facehardDetails.ProjectileDamageQuality,
             value => facehardDetails.ProjectileDamageQuality = value, 0.001, isCustom);
         BindProjectileFlag("ShatResField", isCustom ? facehardDetails.ShatterResistance : selectedPreset?.ShatterResistance ?? facehardDetails.ShatterResistance,
-            value => facehardDetails.ShatterResistance = value, isCustom, ShatterResistanceLabels);
+            value => facehardDetails.ShatterResistance = value, isCustom, LocalizedChoices(ShatterResistanceLabelKeys));
         BindProjectileFlag("BreakUnderNblField", isCustom ? facehardDetails.BreakUnderNbl : selectedPreset?.BreakUnderNbl ?? facehardDetails.BreakUnderNbl,
-            value => facehardDetails.BreakUnderNbl = value, isCustom, BreakUnderNblLabels);
+            value => facehardDetails.BreakUnderNbl = value, isCustom, LocalizedChoices(BreakUnderNblLabelKeys));
         BindProjectileFlag("LightCaseField", isCustom ? facehardDetails.LightCase : selectedPreset?.LightCase ?? facehardDetails.LightCase,
-            value => facehardDetails.LightCase = value, isCustom, LightCaseLabels);
+            value => facehardDetails.LightCase = value, isCustom, LocalizedChoices(LightCaseLabelKeys));
     }
 
     void Calculate()
@@ -571,7 +577,7 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
             Col<ResultRow>("horizontal", "Horizontal Pen Calc/SK5", 170, row => FormatPenetrationComparison(row.Result?.HorizontalPenetrationInches, row.Sk5Record?.horizontalPenetrationInchs)),
             Col<ResultRow>("vertical", "Vertical Pen Calc/SK5", 160, row => FormatPenetrationComparison(row.Result?.PenetrationInches, row.Sk5Record?.verticalPenetrationInchs)),
             Col<ResultRow>("rof", "ROF Calc/SK5", 120, row => FormatFloatComparison(row.CalculatedRateOfFire, row.Sk5Record?.rateOfFire, 2)),
-            Col<ResultRow>("rangeBand", "Range Band Calc/SK5", 160, row => row.Sk5Record == null ? row.SimulatedRangeBand.ToString() : $"{row.SimulatedRangeBand}/{row.Sk5Record.rangeBand}"),
+            Col<ResultRow>("rangeBand", "Range Band Calc/SK5", 160, row => row.Sk5Record == null ? LocalizeEnum(row.SimulatedRangeBand) : $"{LocalizeEnum(row.SimulatedRangeBand)}/{LocalizeEnum(row.Sk5Record.rangeBand)}"),
             Col<ResultRow>("time", "Time", 90, row => F(row.Result?.Time, 3)),
             Col<ResultRow>("velocity", "Velocity", 90, row => F(row.Result?.Velocity, 0)),
             Col<ResultRow>("fall", "Fall Angle", 100, row => F(row.Result?.FallAngleDegrees, 3)),
@@ -689,7 +695,7 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
 
         currentFitJob = job;
         PrepareExternalFitPass(job);
-        UpdateFitProgress(job, "External ballistic fit started.");
+        UpdateFitProgress(job, Localize("External ballistic fit started."));
         RefreshFitControls();
         fitSchedule = root.schedule.Execute(ProcessFitStep).Every(1);
     }
@@ -703,11 +709,11 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
             .OrderBy(record => record.distanceYards)
             .ToList();
         if (fitRecords.Count == 0)
-            return "No valid SK5 rows.";
+            return Localize("No valid SK5 rows.");
         if (input.McCoy.BallisticCoefficient <= 0)
-            return "Ballistic coefficient must be greater than 0.";
+            return Localize("Ballistic coefficient must be greater than 0.");
         if (input.McCoy.MaxRange <= 0)
-            return "Maximum range must be greater than 0.";
+            return Localize("Maximum range must be greater than 0.");
 
         var source = CloneMcCoyPlusInput(input.McCoy);
         source.MaxRange = Math.Max(source.MaxRange, fitRecords.Max(record => record.distanceYards));
@@ -735,19 +741,19 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
 
         if (job.CancelRequested)
         {
-            FinishFitJob(false, "Cancelled by user");
+            FinishFitJob(false, Localize("Cancelled by user"));
             return;
         }
 
         if (job.PauseRequested)
         {
-            FinishFitJob(true, "Paused by user");
+            FinishFitJob(true, Localize("Paused by user"));
             return;
         }
 
         if (job.Pass >= 4 && job.CandidateIndex >= job.Candidates.Count)
         {
-            FinishFitJob(true, "Completed");
+            FinishFitJob(true, Localize("Completed"));
             return;
         }
 
@@ -757,7 +763,7 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
             job.BcSpan *= 0.42;
             if (job.Pass >= 4)
             {
-                FinishFitJob(true, "Completed");
+                FinishFitJob(true, Localize("Completed"));
                 return;
             }
             PrepareExternalFitPass(job);
@@ -768,8 +774,8 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         var detail = ScoreExterior(job.Source, candidate.BallisticCoefficient, job.Records);
         job.CurrentScore = detail.Score;
         job.CurrentDetail = double.IsInfinity(detail.MaxRangeErrorYards)
-            ? $"mismatch {detail.RangeBandMismatchCount}, max range target failed"
-            : $"mismatch {detail.RangeBandMismatchCount}, max range error {detail.MaxRangeErrorYards:0} yd";
+            ? Localize("mismatch {0}, max range target failed", detail.RangeBandMismatchCount)
+            : Localize("mismatch {0}, max range error {1} yd", detail.RangeBandMismatchCount, detail.MaxRangeErrorYards.ToString("0", CultureInfo.InvariantCulture));
         job.ProcessedCandidates++;
         if (detail.Score < job.BestScore)
         {
@@ -820,8 +826,8 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
             tableRows.Clear();
             hasCalculated = false;
             var status = applyBest
-                ? $"{reason}: best BC {job.BestBallisticCoefficient:0.####}, score {job.BestScore:0.####}."
-                : $"{reason}: restored BC {job.OriginalBallisticCoefficient:0.####}.";
+                ? Localize("{0}: best BC {1}, score {2}.", reason, job.BestBallisticCoefficient.ToString("0.####", CultureInfo.InvariantCulture), job.BestScore.ToString("0.####", CultureInfo.InvariantCulture))
+                : Localize("{0}: restored BC {1}.", reason, job.OriginalBallisticCoefficient.ToString("0.####", CultureInfo.InvariantCulture));
             ShowPendingOutput(status);
             Calculate();
         }
@@ -862,10 +868,10 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
     {
         return string.Join("\n", new[]
         {
-            "External ballistic fit",
-            $"pass {job.Pass + 1}/4, candidate {job.CandidateIndex}/{job.Candidates.Count}",
-            $"current BC {job.CurrentBallisticCoefficient:0.####}, score {job.CurrentScore:0.####}",
-            $"best BC {job.BestBallisticCoefficient:0.####}, score {job.BestScore:0.####}",
+            Localize("External ballistic fit"),
+            Localize("pass {0}/4, candidate {1}/{2}", job.Pass + 1, job.CandidateIndex, job.Candidates.Count),
+            Localize("current BC {0}, score {1}", job.CurrentBallisticCoefficient.ToString("0.####", CultureInfo.InvariantCulture), job.CurrentScore.ToString("0.####", CultureInfo.InvariantCulture)),
+            Localize("best BC {0}, score {1}", job.BestBallisticCoefficient.ToString("0.####", CultureInfo.InvariantCulture), job.BestScore.ToString("0.####", CultureInfo.InvariantCulture)),
             job.CurrentDetail
         });
     }
@@ -1006,7 +1012,7 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
     {
         if (currentFitJob != null)
         {
-            ShowFitStatus("Finish or cancel the fitting job before saving.", 0);
+            ShowFitStatus(Localize("Finish or cancel the fitting job before saving."), 0);
             return false;
         }
 
@@ -1049,7 +1055,7 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
 
         if (tableRows.Count == 0)
         {
-            ShowPendingOutput("Calculate successful rows before saving.");
+            ShowPendingOutput(Localize("Calculate successful rows before saving."));
             return false;
         }
 
@@ -1121,13 +1127,13 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
             return;
         hasCalculated = false;
         tableRows.Clear();
-        ShowPendingOutput("Input changed. Click Calculate to refresh.");
+        ShowPendingOutput(Localize("Input changed. Click Calculate to refresh."));
     }
 
-    void ShowPendingOutput(string message = "Click Calculate to run McCoy Plus Facehard.")
+    void ShowPendingOutput(string message = null)
     {
         outputContent?.Clear();
-        outputContent?.Add(new Label(message)
+        outputContent?.Add(new Label(message ?? Localize("Click Calculate to run McCoy Plus Facehard."))
         {
             style =
             {
@@ -1279,7 +1285,7 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         var resolvedCapType = ResolvedCapType(facehardDetails);
         var noseWeights = FacehardCalculator.FacehardNoseCoveringWeights(facehardDetails);
         if (((noseWeights.Condition == FacehardNoseCondition.WindscreenRemoved && resolvedCapType != FacehardCapType.None) || noseWeights.Condition == FacehardNoseCondition.CapHeadRemoved) && noseWeights.RemainWeight <= 0)
-            warningRoot.Add(Warnings(new[] { "The selected lost-covering weight consumes all non-body weight; Facehard69 requires remaining cap/hood weight for this state." }));
+            warningRoot.Add(Warnings(new[] { Localize("The selected lost-covering weight consumes all non-body weight; Facehard69 requires remaining cap/hood weight for this state.") }));
     }
 
     void BindFloat(string name, double value, Action<double> setter, double? min = null, bool enabled = true, string label = null)
@@ -1409,7 +1415,7 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
 
     static Label Section(string title)
     {
-        var label = new Label(title);
+        var label = new Label(Localize(title));
         label.style.unityFontStyleAndWeight = FontStyle.Bold;
         label.style.marginTop = 8;
         label.style.marginBottom = 4;
@@ -1418,7 +1424,7 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
 
     static Label CalculationTime(TimeSpan elapsed)
     {
-        return new Label($"Calculation time: {elapsed.TotalMilliseconds.ToString("0.##", CultureInfo.InvariantCulture)} ms")
+        return new Label(Localize("Calculation time: {0} ms", elapsed.TotalMilliseconds.ToString("0.##", CultureInfo.InvariantCulture)))
         {
             style =
             {
@@ -1506,7 +1512,7 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         var rowList = rows?.ToList() ?? new List<McCoyPlusFacehardM79Row>();
         yield return new McCoyOkunCalculatorDialog.MiniChartSeries
         {
-            Label = "V Pen",
+            Label = Localize("V Pen"),
             Points = rowList
                 .Where(row => row.PenetrationInches.HasValue)
                 .Select(row => new Vector2((float)row.Range, (float)row.PenetrationInches.Value))
@@ -1514,7 +1520,7 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         };
         yield return new McCoyOkunCalculatorDialog.MiniChartSeries
         {
-            Label = "H Pen",
+            Label = Localize("H Pen"),
             Points = rowList
                 .Where(row => row.HorizontalPenetrationInches.HasValue)
                 .Select(row => new Vector2((float)row.Range, (float)row.HorizontalPenetrationInches.Value))
@@ -1545,7 +1551,7 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
             listView.columns.Add(new Column
             {
                 name = column.Name,
-                title = column.Title,
+                title = Localize(column.Title),
                 width = column.Width,
                 minWidth = Math.Min(column.Width, 80),
                 stretchable = false,
@@ -1599,20 +1605,20 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
     {
         return condition switch
         {
-            FacehardNoseCondition.WindscreenRemoved => "Only windscreen lost",
-            FacehardNoseCondition.CapHeadRemoved => "Windscreen and cap-head lost",
-            FacehardNoseCondition.AllRemoved => "All nose coverings lost",
-            _ => "Intact"
+            FacehardNoseCondition.WindscreenRemoved => Localize("Only windscreen lost"),
+            FacehardNoseCondition.CapHeadRemoved => Localize("Windscreen and cap-head lost"),
+            FacehardNoseCondition.AllRemoved => Localize("All nose coverings lost"),
+            _ => Localize("Intact")
         };
     }
 
     static string RemainingNoseWeightLabel(double capHead, FacehardCapType resolvedCapType)
     {
         if (resolvedCapType == FacehardCapType.Hood)
-            return "Remaining Hood Weight";
+            return Localize("Remaining Hood Weight");
         if (resolvedCapType == FacehardCapType.None)
-            return "Remaining Nose Covering Weight";
-        return capHead > 0 ? "Remaining Cap Head Weight" : "Remaining AP Cap Weight";
+            return Localize("Remaining Nose Covering Weight");
+        return capHead > 0 ? Localize("Remaining Cap Head Weight") : Localize("Remaining AP Cap Weight");
     }
 
     const double facehardWeightFallback = 1500;

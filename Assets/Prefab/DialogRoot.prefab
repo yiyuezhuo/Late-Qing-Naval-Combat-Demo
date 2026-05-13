@@ -123,6 +123,7 @@ MonoBehaviour:
   batteryRecordSelectorDialogDocument: {fileID: 9197481963319205126, guid: 6dd880859ca130a4280536833db99551, type: 3}
   rapidFireBatteryRecordSelectorDialogDocument: {fileID: 9197481963319205126, guid: b6c5450149a0a0c4e92018b24f6363c0, type: 3}
   rapidFireBatteryRecordMetaInfoDialogDocument: {fileID: 9197481963319205126, guid: 78f412b6ecbd4509863f74f16f318a79, type: 3}
+  torpedoSectorMetaInfoDialogDocument: {fileID: 9197481963319205126, guid: 6410c0d85f6c4a63831fe535b33eeb7c, type: 3}
   batteryRecordMetaInfoDialogDocument: {fileID: 9197481963319205126, guid: 6c2981377e7f4efcb2e47f8e3cba62ad, type: 3}
   batteryRecordMetaInfoMcCoyOkunDialogDocument: {fileID: 9197481963319205126, guid: 9fd0b971d1e148f9bcd1606226a78f12, type: 3}
   torpedoSectorSelectorDialogDocument: {fileID: 9197481963319205126, guid: 857c986f3a3113844bc4353301e19d90, type: 3}

@@ -1326,6 +1326,76 @@ namespace NavalCombatCore
     public partial class TorpedoSector
     {
         [CreateProperty]
+        public string metaInfoLabel
+        {
+            get
+            {
+                if (metaInfo == null)
+                    return "Meta: None";
+
+                var parts = new List<string>();
+                if (metaInfo.warheadLb > 0f)
+                    parts.Add($"{metaInfo.warheadLb.ToString("0.###", CultureInfo.InvariantCulture)} lb");
+                if (metaInfo.diameterIn > 0f)
+                    parts.Add($"{metaInfo.diameterIn.ToString("0.###", CultureInfo.InvariantCulture)}''");
+                if (metaInfo.year > 0)
+                    parts.Add(metaInfo.year.ToString(CultureInfo.InvariantCulture));
+
+                return parts.Count > 0 ? $"Meta Info: {string.Join(", ", parts)}" : "Meta Info";
+            }
+        }
+
+        public bool InferDamageClassFromMetaInfo(out string message)
+        {
+            message = null;
+            if (metaInfo == null || metaInfo.warheadLb <= 0f || metaInfo.diameterIn <= 0f || metaInfo.year <= 0)
+            {
+                message = "Please input Warhead (lb), Diameter (in), and Year before inferring torpedo damage class.";
+                return false;
+            }
+
+            damageClass = InferDamageClassFromMetaInfo(metaInfo.warheadLb, metaInfo.diameterIn, metaInfo.year);
+            return true;
+        }
+
+        static TorpedoDamageClass InferDamageClassFromMetaInfo(float warheadLb, float diameterIn, int year)
+        {
+            if (warheadLb <= 437.5f)
+            {
+                if (diameterIn <= 17.7f)
+                    return year <= 1910.5f ? TorpedoDamageClass.I : TorpedoDamageClass.F;
+
+                if (year <= 1916.5f)
+                {
+                    if (warheadLb <= 324.5f)
+                        return diameterIn <= 19.5f ? TorpedoDamageClass.H : TorpedoDamageClass.G;
+
+                    return TorpedoDamageClass.G;
+                }
+
+                if (warheadLb <= 287.0f)
+                    return warheadLb <= 104.0f ? TorpedoDamageClass.E : TorpedoDamageClass.G;
+
+                return diameterIn <= 18.8f ? TorpedoDamageClass.F : TorpedoDamageClass.E;
+            }
+
+            if (warheadLb <= 780.0f)
+            {
+                if (warheadLb <= 597.5f)
+                {
+                    if (warheadLb <= 538.0f)
+                        return year <= 1938.0f ? TorpedoDamageClass.E : TorpedoDamageClass.B;
+
+                    return TorpedoDamageClass.D;
+                }
+
+                return TorpedoDamageClass.C;
+            }
+
+            return year <= 1942.0f ? TorpedoDamageClass.B : TorpedoDamageClass.A;
+        }
+
+        [CreateProperty]
         public bool isInEditMode => GamePreference.Instance.isInEditMode;
     }
 

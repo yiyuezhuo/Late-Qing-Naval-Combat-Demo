@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 using NavalCombatCore;
+using YYZ;
 using YYZ.Ballistic;
 
 public sealed class McCoyOkunCalculatorDialog
@@ -102,26 +103,30 @@ public sealed class McCoyOkunCalculatorDialog
         McCoyOkunTab.Jbm
     };
 
-    static readonly List<string> ShatterResistanceLabels = new()
+    static readonly string[] ShatterResistanceLabelKeys =
     {
         "0 - shatter-resistant",
         "1 - shatter-prone",
         "2 - very weak / chilled cast iron"
     };
 
-    static readonly List<string> BreakUnderNblLabels = new()
+    static readonly string[] BreakUnderNblLabelKeys =
     {
         "0 - no early breakage",
         "1 - break-prone",
         "2 - severe breakage"
     };
 
-    static readonly List<string> LightCaseLabels = new()
+    static readonly string[] LightCaseLabelKeys =
     {
         "0 - normal body",
         "1 - light case",
         "2 - severe large cavity"
     };
+
+    static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
+    static List<string> LocalizedChoices(params string[] keys) => keys.Select(key => Localize(key)).ToList();
+    static List<string> LocalizedChoices(IEnumerable<string> keys) => keys.Select(key => Localize(key)).ToList();
 
     TabView templateTabView;
     readonly Dictionary<McCoyOkunTab, Tab> templateTabs = new();
@@ -214,13 +219,12 @@ public sealed class McCoyOkunCalculatorDialog
         templateTabView.activeTabChanged += OnActiveTabChanged;
 
         var uxmlTabs = templateTabView.Children().OfType<Tab>().ToList();
-        foreach (var tab in tabs)
+        for (var index = 0; index < tabs.Length; index++)
         {
-            var templateTab = uxmlTabs.FirstOrDefault(item => item.label == TabLabel(tab));
-            if (templateTab == null)
+            if (index >= uxmlTabs.Count)
                 continue;
 
-            templateTabs[tab] = templateTab;
+            templateTabs[tabs[index]] = uxmlTabs[index];
         }
 
         templateBackedTabs = templateTabs.Count == tabs.Length;
@@ -228,8 +232,9 @@ public sealed class McCoyOkunCalculatorDialog
 
     void OnActiveTabChanged(Tab previousTab, Tab newTab)
     {
-        if (newTab != null && TryTabFromLabel(newTab.label, out var tab))
-            SelectTab(tab);
+        var pair = templateTabs.FirstOrDefault(item => item.Value == newTab);
+        if (pair.Value != null)
+            SelectTab(pair.Key);
     }
 
     void SelectTab(McCoyOkunTab tab)
@@ -333,7 +338,7 @@ public sealed class McCoyOkunCalculatorDialog
                     mccoyDragText = McCoy.DragTableToText(McCoy.DefaultDragTable());
                     RebuildContent();
                 });
-                BindDropdown(root, "McCoyAtmosphereField", new List<string> { "Army Standard Metro", "ICAO" }, mccoyInput.Atmosphere == McCoyAtmosphere.Icao ? 1 : 0, index => mccoyInput.Atmosphere = index == 1 ? McCoyAtmosphere.Icao : McCoyAtmosphere.StandardMetro);
+                BindDropdown(root, "McCoyAtmosphereField", LocalizedChoices("Army Standard Metro", "ICAO"), mccoyInput.Atmosphere == McCoyAtmosphere.Icao ? 1 : 0, index => mccoyInput.Atmosphere = index == 1 ? McCoyAtmosphere.Icao : McCoyAtmosphere.StandardMetro);
                 BindFloat(root, "McCoyMuzzleVelocityField", mccoyInput.MuzzleVelocity, value => mccoyInput.MuzzleVelocity = value, 1);
                 BindFloat(root, "McCoyBallisticCoefficientField", mccoyInput.BallisticCoefficient, value => mccoyInput.BallisticCoefficient = value, 0.001);
                 BindFloat(root, "McCoySightHeightField", mccoyInput.SightHeight, value => mccoyInput.SightHeight = value);
@@ -455,7 +460,7 @@ public sealed class McCoyOkunCalculatorDialog
                     intLiftInput = Jbm.DefaultIntLiftInput();
                     RebuildContent();
                 });
-                BindDropdown(root, "JbmProgramField", new List<string> { "MCDRAG", "MCGYRO", "INTLIFT" }, JbmProgramIndex(jbmMode),
+                BindDropdown(root, "JbmProgramField", LocalizedChoices("MCDRAG", "MCGYRO", "INTLIFT"), JbmProgramIndex(jbmMode),
                     index => jbmMode = index == 1 ? JbmProgramMode.McGyro : index == 2 ? JbmProgramMode.IntLift : JbmProgramMode.McDrag);
                 ConfigureJbmTemplate(root);
                 break;
@@ -484,13 +489,13 @@ public sealed class McCoyOkunCalculatorDialog
         SetDisplay(root, "McCoyPlusFacehardM79ChartModeField", tab == McCoyOkunTab.McCoyPlusFacehardM79);
         SetDisplay(root, "McCoyPlusM79ChartModeField", tab == McCoyOkunTab.McCoyPlusM79);
         if (tab == McCoyOkunTab.McCoyPlusFacehard)
-            BindDropdown(root, "McCoyPlusFacehardChartModeField", new List<string> { "Matched Trajectories", "Penetration By Range" }, mccoyPlusFacehardChartMode == McCoyOkunChartMode.Trajectory ? 0 : 1,
+            BindDropdown(root, "McCoyPlusFacehardChartModeField", LocalizedChoices("Matched Trajectories", "Penetration By Range"), mccoyPlusFacehardChartMode == McCoyOkunChartMode.Trajectory ? 0 : 1,
                 index => mccoyPlusFacehardChartMode = index == 0 ? McCoyOkunChartMode.Trajectory : McCoyOkunChartMode.Penetration);
         if (tab == McCoyOkunTab.McCoyPlusFacehardM79)
-            BindDropdown(root, "McCoyPlusFacehardM79ChartModeField", new List<string> { "Matched Trajectories", "Penetration By Range" }, mccoyPlusFacehardM79ChartMode == McCoyOkunChartMode.Trajectory ? 0 : 1,
+            BindDropdown(root, "McCoyPlusFacehardM79ChartModeField", LocalizedChoices("Matched Trajectories", "Penetration By Range"), mccoyPlusFacehardM79ChartMode == McCoyOkunChartMode.Trajectory ? 0 : 1,
                 index => mccoyPlusFacehardM79ChartMode = index == 0 ? McCoyOkunChartMode.Trajectory : McCoyOkunChartMode.Penetration);
         if (tab == McCoyOkunTab.McCoyPlusM79)
-            BindDropdown(root, "McCoyPlusM79ChartModeField", new List<string> { "Matched Trajectories", "Penetration By Range" }, mccoyPlusM79ChartMode == McCoyOkunChartMode.Trajectory ? 0 : 1,
+            BindDropdown(root, "McCoyPlusM79ChartModeField", LocalizedChoices("Matched Trajectories", "Penetration By Range"), mccoyPlusM79ChartMode == McCoyOkunChartMode.Trajectory ? 0 : 1,
                 index => mccoyPlusM79ChartMode = index == 0 ? McCoyOkunChartMode.Trajectory : McCoyOkunChartMode.Penetration);
     }
 
@@ -710,7 +715,7 @@ public sealed class McCoyOkunCalculatorDialog
         BindFloat(root, $"{prefix}MaxRangeField", mccoy.MaxRange, value => mccoy.MaxRange = value, 1);
         BindFloat(root, $"{prefix}MatchHeightField", mccoy.MatchHeight, value => mccoy.MatchHeight = value);
         BindMcCoyPlusElevationSearch(root, prefix, mccoy);
-        BindDropdown(root, $"{prefix}AtmosphereField", new List<string> { "Army Standard Metro", "ICAO" }, mccoy.Atmosphere == McCoyAtmosphere.Icao ? 1 : 0, index => mccoy.Atmosphere = index == 1 ? McCoyAtmosphere.Icao : McCoyAtmosphere.StandardMetro);
+        BindDropdown(root, $"{prefix}AtmosphereField", LocalizedChoices("Army Standard Metro", "ICAO"), mccoy.Atmosphere == McCoyAtmosphere.Icao ? 1 : 0, index => mccoy.Atmosphere = index == 1 ? McCoyAtmosphere.Icao : McCoyAtmosphere.StandardMetro);
         BindFloat(root, $"{prefix}DensityRatioField", mccoy.DensityRatio, value => mccoy.DensityRatio = value, 0.001);
         BindFloat(root, $"{prefix}TemperatureField", mccoy.TemperatureF, value => mccoy.TemperatureF = value);
         BindFloat(root, $"{prefix}ArmorQualityField", m79.PlateQuality, value => m79.PlateQuality = value, 0.001);
@@ -733,7 +738,7 @@ public sealed class McCoyOkunCalculatorDialog
         BindFloat(root, $"{prefix}ElongationField", mccoyPlusFacehardM79Input.M79.Elongation, value => mccoyPlusFacehardM79Input.M79.Elongation = value, 10);
 
         BindMcCoyPlusElevationSearch(root, prefix, mccoyPlusFacehardM79Input.McCoy);
-        BindDropdown(root, $"{prefix}AtmosphereField", new List<string> { "Army Standard Metro", "ICAO" }, mccoyPlusFacehardM79Input.McCoy.Atmosphere == McCoyAtmosphere.Icao ? 1 : 0, index => mccoyPlusFacehardM79Input.McCoy.Atmosphere = index == 1 ? McCoyAtmosphere.Icao : McCoyAtmosphere.StandardMetro);
+        BindDropdown(root, $"{prefix}AtmosphereField", LocalizedChoices("Army Standard Metro", "ICAO"), mccoyPlusFacehardM79Input.McCoy.Atmosphere == McCoyAtmosphere.Icao ? 1 : 0, index => mccoyPlusFacehardM79Input.McCoy.Atmosphere = index == 1 ? McCoyAtmosphere.Icao : McCoyAtmosphere.StandardMetro);
         BindFloat(root, $"{prefix}DensityRatioField", mccoyPlusFacehardM79Input.McCoy.DensityRatio, value => mccoyPlusFacehardM79Input.McCoy.DensityRatio = value, 0.001);
         BindFloat(root, $"{prefix}TemperatureField", mccoyPlusFacehardM79Input.McCoy.TemperatureF, value => mccoyPlusFacehardM79Input.McCoy.TemperatureF = value);
         BindFloat(root, $"{prefix}MatchHeightField", mccoyPlusFacehardM79Input.McCoy.MatchHeight, value => mccoyPlusFacehardM79Input.McCoy.MatchHeight = value);
@@ -747,7 +752,7 @@ public sealed class McCoyOkunCalculatorDialog
     void ConfigureMcCoyPlusTemplate(VisualElement root, string prefix, McCoyPlusInput target, Func<McCoyPlusDragFunction> getPreset, Action<McCoyPlusDragFunction> setPreset, Func<string> getDragText, Action<string> setDragText)
     {
         BindMcCoyPlusElevationSearch(root, prefix, target);
-        BindDropdown(root, $"{prefix}AtmosphereField", new List<string> { "Army Standard Metro", "ICAO" }, target.Atmosphere == McCoyAtmosphere.Icao ? 1 : 0, index => target.Atmosphere = index == 1 ? McCoyAtmosphere.Icao : McCoyAtmosphere.StandardMetro);
+        BindDropdown(root, $"{prefix}AtmosphereField", LocalizedChoices("Army Standard Metro", "ICAO"), target.Atmosphere == McCoyAtmosphere.Icao ? 1 : 0, index => target.Atmosphere = index == 1 ? McCoyAtmosphere.Icao : McCoyAtmosphere.StandardMetro);
         BindMcCoyPlusPreset(root, prefix, target, getPreset, setPreset, setDragText);
         BindFloat(root, $"{prefix}MuzzleVelocityField", target.MuzzleVelocity, value => target.MuzzleVelocity = value, 1);
         BindFloat(root, $"{prefix}BallisticCoefficientField", target.BallisticCoefficient, value => target.BallisticCoefficient = value, 0.001);
@@ -764,7 +769,7 @@ public sealed class McCoyOkunCalculatorDialog
 
     void BindMcCoyPlusElevationSearch(VisualElement root, string prefix, McCoyPlusInput target)
     {
-        BindDropdown(root, $"{prefix}ElevationSearchField", new List<string> { "Cached Binary Search", "Matched Range" },
+        BindDropdown(root, $"{prefix}ElevationSearchField", LocalizedChoices("Cached Binary Search", "Matched Range"),
             target.ElevationSearchMode == McCoyPlusElevationSearchMode.MatchedRange ? 1 : 0,
             index => target.ElevationSearchMode = index == 1
                 ? McCoyPlusElevationSearchMode.MatchedRange
@@ -846,19 +851,19 @@ public sealed class McCoyOkunCalculatorDialog
             index => target.ProjectilePresetId = projectileChoices[Mathf.Max(0, index)].Id);
 
         var isCustom = target.ProjectilePresetId == "custom";
-        var capLabels = new List<string> { "Hard AP cap", "Thin/Tough hard cap", "Soft AP cap", "Hood", "No cap" };
+        var capLabels = LocalizedChoices("Hard AP cap", "Thin/Tough hard cap", "Soft AP cap", "Hood", "No cap");
         var capValues = new List<FacehardCapType> { FacehardCapType.Hard, FacehardCapType.ThinHard, FacehardCapType.Soft, FacehardCapType.Hood, FacehardCapType.None };
         BindDropdown(root, $"{prefix}CapOrHoodField", capLabels, Mathf.Max(0, capValues.IndexOf(resolvedCapType)), index => target.CapType = capValues[Mathf.Max(0, index)], isCustom);
 
         var schemaValues = new List<FacehardNoseSchema> { FacehardNoseSchema.Standard, FacehardNoseSchema.JapaneseCapHead };
-        BindDropdown(root, $"{prefix}NoseSchemaField", new List<string> { "Standard", "Japanese Cap Head" }, Mathf.Max(0, schemaValues.IndexOf(target.NoseSchema)), index =>
+        BindDropdown(root, $"{prefix}NoseSchemaField", LocalizedChoices("Standard", "Japanese Cap Head"), Mathf.Max(0, schemaValues.IndexOf(target.NoseSchema)), index =>
         {
             target.NoseSchema = schemaValues[Mathf.Max(0, index)];
             target.NoseCondition = FacehardNoseCondition.Intact;
         }, isCustom);
 
         SetDisplay(root, $"{prefix}JapaneseCapHeadField", isCustom && target.NoseSchema == FacehardNoseSchema.JapaneseCapHead);
-        BindDropdown(root, $"{prefix}JapaneseCapHeadField", new List<string> { "Uncapped Type 91 AP", "Capped Type 88/91/1 APC" }, target.JapaneseCapHead <= 1 ? 0 : 1, index =>
+        BindDropdown(root, $"{prefix}JapaneseCapHeadField", LocalizedChoices("Uncapped Type 91 AP", "Capped Type 88/91/1 APC"), target.JapaneseCapHead <= 1 ? 0 : 1, index =>
         {
             target.JapaneseCapHead = index == 0 ? 1 : 2;
             target.NoseCondition = FacehardNoseCondition.Intact;
@@ -878,9 +883,9 @@ public sealed class McCoyOkunCalculatorDialog
         BindFloat(root, $"{prefix}RemainingNoseWeightField", noseWeights.RemainWeight, _ => { }, 0, false, RemainingNoseWeightLabel(noseWeights.CapHead, resolvedCapType));
         BindFloat(root, $"{prefix}PlimField", isCustom ? target.ProjectileLimitQuality : selectedPreset?.ProjectileLimitQuality ?? target.ProjectileLimitQuality, value => target.ProjectileLimitQuality = value, 0.001, isCustom);
         BindFloat(root, $"{prefix}PdamField", isCustom ? target.ProjectileDamageQuality : selectedPreset?.ProjectileDamageQuality ?? target.ProjectileDamageQuality, value => target.ProjectileDamageQuality = value, 0.001, isCustom);
-        BindProjectileFlag(root, $"{prefix}ShatResField", isCustom ? target.ShatterResistance : selectedPreset?.ShatterResistance ?? target.ShatterResistance, value => target.ShatterResistance = value, isCustom, ShatterResistanceLabels);
-        BindProjectileFlag(root, $"{prefix}BreakUnderNblField", isCustom ? target.BreakUnderNbl : selectedPreset?.BreakUnderNbl ?? target.BreakUnderNbl, value => target.BreakUnderNbl = value, isCustom, BreakUnderNblLabels);
-        BindProjectileFlag(root, $"{prefix}LightCaseField", isCustom ? target.LightCase : selectedPreset?.LightCase ?? target.LightCase, value => target.LightCase = value, isCustom, LightCaseLabels);
+        BindProjectileFlag(root, $"{prefix}ShatResField", isCustom ? target.ShatterResistance : selectedPreset?.ShatterResistance ?? target.ShatterResistance, value => target.ShatterResistance = value, isCustom, LocalizedChoices(ShatterResistanceLabelKeys));
+        BindProjectileFlag(root, $"{prefix}BreakUnderNblField", isCustom ? target.BreakUnderNbl : selectedPreset?.BreakUnderNbl ?? target.BreakUnderNbl, value => target.BreakUnderNbl = value, isCustom, LocalizedChoices(BreakUnderNblLabelKeys));
+        BindProjectileFlag(root, $"{prefix}LightCaseField", isCustom ? target.LightCase : selectedPreset?.LightCase ?? target.LightCase, value => target.LightCase = value, isCustom, LocalizedChoices(LightCaseLabelKeys));
     }
 
     void BindProjectileFlag(VisualElement root, string name, double value, Action<double> setter, bool enabled, List<string> labels)
@@ -896,7 +901,7 @@ public sealed class McCoyOkunCalculatorDialog
         warningRoot.Clear();
         var noseWeights = FacehardCalculator.FacehardNoseCoveringWeights(target);
         if (((noseWeights.Condition == FacehardNoseCondition.WindscreenRemoved && resolvedCapType != FacehardCapType.None) || noseWeights.Condition == FacehardNoseCondition.CapHeadRemoved) && noseWeights.RemainWeight <= 0)
-            warningRoot.Add(Warnings(new[] { "The selected lost-covering weight consumes all non-body weight; Facehard69 requires remaining cap/hood weight for this state." }));
+            warningRoot.Add(Warnings(new[] { Localize("The selected lost-covering weight consumes all non-body weight; Facehard69 requires remaining cap/hood weight for this state.") }));
     }
 
     void ConfigureJbmTemplate(VisualElement root)
@@ -923,14 +928,14 @@ public sealed class McCoyOkunCalculatorDialog
         else
             BindFloat(root, "JbmCenterOfGravityField", mcDragInput.CenterOfGravityCalibers, value => mcDragInput.CenterOfGravityCalibers = value, 0.001);
         BindFloat(root, "JbmRotatingBandDiameterField", mcDragInput.RotatingBandDiameterCalibers, value => mcDragInput.RotatingBandDiameterCalibers = value, 0.001);
-        BindDropdown(root, "JbmBoundaryLayerField", new List<string> { "Laminar/Laminar", "Laminar/Turbulent", "Turbulent/Turbulent" }, BoundaryLayerIndex(mcDragInput.BoundaryLayer),
+        BindDropdown(root, "JbmBoundaryLayerField", LocalizedChoices("Laminar/Laminar", "Laminar/Turbulent", "Turbulent/Turbulent"), BoundaryLayerIndex(mcDragInput.BoundaryLayer),
             index => mcDragInput.BoundaryLayer = index == 0 ? JbmBoundaryLayer.LaminarLaminar : index == 2 ? JbmBoundaryLayer.TurbulentTurbulent : JbmBoundaryLayer.LaminarTurbulent);
     }
 
     void BindSample(VisualElement root, string name, string selectedId, Action<string> setter)
     {
         var samples = BallisticSampleCatalog.All();
-        var choices = new List<string> { "Not Specified" };
+        var choices = new List<string> { Localize("Not Specified") };
         choices.AddRange(samples.Select(sample => sample.Label));
         var index = 0;
         var sampleIndex = samples.FindIndex(sample => sample.Id == selectedId);
@@ -1143,10 +1148,10 @@ public sealed class McCoyOkunCalculatorDialog
     {
         return condition switch
         {
-            FacehardNoseCondition.WindscreenRemoved => "Only windscreen lost",
-            FacehardNoseCondition.CapHeadRemoved => "Windscreen and cap-head lost",
-            FacehardNoseCondition.AllRemoved => "All nose coverings lost",
-            _ => "All nose coverings intact"
+            FacehardNoseCondition.WindscreenRemoved => Localize("Only windscreen lost"),
+            FacehardNoseCondition.CapHeadRemoved => Localize("Windscreen and cap-head lost"),
+            FacehardNoseCondition.AllRemoved => Localize("All nose coverings lost"),
+            _ => Localize("All nose coverings intact")
         };
     }
 
@@ -1162,14 +1167,14 @@ public sealed class McCoyOkunCalculatorDialog
     static string RemainingNoseWeightLabel(double capHead, FacehardCapType resolvedCapType)
     {
         if (capHead == 2)
-            return "Remaining AP Cap Body Weight";
+            return Localize("Remaining AP Cap Body Weight");
         if (capHead == 1)
-            return "Remaining Nose Covering Weight";
+            return Localize("Remaining Nose Covering Weight");
         if (resolvedCapType == FacehardCapType.Hood)
-            return "Remaining Hood Weight";
+            return Localize("Remaining Hood Weight");
         if (resolvedCapType == FacehardCapType.None)
-            return "Remaining Nose Covering Weight";
-        return "Remaining AP Cap Weight";
+            return Localize("Remaining Nose Covering Weight");
+        return Localize("Remaining AP Cap Weight");
     }
 
     static FacehardCapType ResolvedCapType(FacehardInput input)
@@ -1320,7 +1325,7 @@ public sealed class McCoyOkunCalculatorDialog
 
     static Label Section(string title)
     {
-        var label = new Label(title);
+        var label = new Label(Localize(title));
         label.style.unityFontStyleAndWeight = FontStyle.Bold;
         label.style.marginTop = 8;
         label.style.marginBottom = 4;
@@ -1329,7 +1334,7 @@ public sealed class McCoyOkunCalculatorDialog
 
     static Label CalculationTime(TimeSpan elapsed)
     {
-        return new Label($"Calculation time: {elapsed.TotalMilliseconds.ToString("0.##", CultureInfo.InvariantCulture)} ms")
+        return new Label(Localize("Calculation time: {0} ms", elapsed.TotalMilliseconds.ToString("0.##", CultureInfo.InvariantCulture)))
         {
             style =
             {
@@ -1369,7 +1374,7 @@ public sealed class McCoyOkunCalculatorDialog
                     marginRight = 4
                 }
             };
-            box.Add(new Label(item.label));
+            box.Add(new Label(Localize(item.label)));
             var value = new Label(item.value) { style = { unityFontStyleAndWeight = FontStyle.Bold } };
             box.Add(value);
             if (!string.IsNullOrEmpty(item.unit))
@@ -1482,7 +1487,7 @@ public sealed class McCoyOkunCalculatorDialog
         var rowList = rows?.ToList() ?? new List<McCoyPlusFacehardM79Row>();
         yield return new MiniChartSeries
         {
-            Label = "V Pen",
+            Label = Localize("V Pen"),
             Points = rowList
                 .Where(row => row.PenetrationInches.HasValue)
                 .Select(row => new Vector2((float)row.Range, (float)row.PenetrationInches.Value))
@@ -1490,7 +1495,7 @@ public sealed class McCoyOkunCalculatorDialog
         };
         yield return new MiniChartSeries
         {
-            Label = "H Pen",
+            Label = Localize("H Pen"),
             Points = rowList
                 .Where(row => row.HorizontalPenetrationInches.HasValue)
                 .Select(row => new Vector2((float)row.Range, (float)row.HorizontalPenetrationInches.Value))
@@ -1525,7 +1530,7 @@ public sealed class McCoyOkunCalculatorDialog
             listView.columns.Add(new Column
             {
                 name = column.Name,
-                title = column.Title,
+                title = Localize(column.Title),
                 width = column.Width,
                 minWidth = Math.Min(column.Width, 80),
                 stretchable = false,

@@ -3,6 +3,9 @@
     <ui:VisualElement data-source-type="GameManager, Assembly-CSharp" class="hud-topbar" style="flex-grow: 0;">
         <ui:TabView class="hud-tabview">
             <ui:Tab label="Command">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(61563505119232)"/>
+                </Bindings>
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
                     <ui:Button text="Advance 1 Min (1)" name="Advance1MinButton">
                         <Bindings>
@@ -102,6 +105,9 @@
                 </Bindings>
             </ui:Tab>
             <ui:Tab label="File">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(61646443286528)"/>
+                </Bindings>
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
                     <ui:Button text="Load" name="LoadButton">
                         <Bindings>
@@ -178,6 +184,9 @@
                 </ui:VisualElement>
             </ui:Tab>
             <ui:Tab label="Tools">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(61714353262592)"/>
+                </Bindings>
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
                     <ui:Button text="Distance Measure (D)" name="DistanceMeasureButton">
                         <Bindings>
@@ -229,13 +238,20 @@
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-44)"/>
                         </Bindings>
                     </ui:Button>
-                    <ui:Button text="McCoy Okun Calculator" name="McCoyOkunCalculatorButton" />
+                    <ui:Button text="McCoy Okun Calculator" name="McCoyOkunCalculatorButton" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-164)"/>
+                        </Bindings>
+                    </ui:Button>
                 </ui:VisualElement>
                 <Bindings>
                     <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(61714353262592)"/>
                 </Bindings>
             </ui:Tab>
             <ui:Tab label="Editor">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(61775904673792)"/>
+                </Bindings>
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
                     <ui:Button text="Leader" name="LeaderEditorButton">
                         <Bindings>
@@ -353,14 +369,25 @@
                 </Bindings>
             </ui:Tab>
             <ui:Tab label="Help">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(61863393660928)"/>
+                </Bindings>
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
                     <ui:Button text="Manual" name="ManualButton">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(33508883324112896)"/>
                         </Bindings>
                     </ui:Button>
-                    <ui:Button text="Online Manual" name="OnlineManualButton"/>
-                    <ui:Button text="About" name="AboutButton"/>
+                    <ui:Button text="Online Manual" name="OnlineManualButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-82)"/>
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="About" name="AboutButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-83)"/>
+                        </Bindings>
+                    </ui:Button>
                 </ui:VisualElement>
                 <Bindings>
                     <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(7671924822016)"/>

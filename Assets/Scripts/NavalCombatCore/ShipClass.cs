@@ -668,6 +668,13 @@ namespace NavalCombatCore
         Magnetic
     }
 
+    public class TorpedoSectorMetaInfo
+    {
+        public float warheadLb;
+        public float diameterIn;
+        public int year;
+    }
+
     public partial class TorpedoSector
     {
         public GlobalString name = new();
@@ -677,6 +684,7 @@ namespace NavalCombatCore
         // public List<TorpedoSetting> torpedoSettings = new() { new() };
         public int ammunitionCapacity;
         public TorpedoDamageClass damageClass;
+        public TorpedoSectorMetaInfo metaInfo = null;
         public float dudProbability = 0.5f; // General value of 15% for 1880-1945 is too "optimistic" for 1894
         public TorpedoPistolType pistolType;
 

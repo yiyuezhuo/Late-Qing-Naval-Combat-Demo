@@ -751,6 +751,18 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
             return el;
         };
 
+        var torpedoSectorMetaInfoButton = root.Q<Button>("TorpedoSectorMetaInfoSetButton");
+        if (torpedoSectorMetaInfoButton != null)
+        {
+            torpedoSectorMetaInfoButton.clicked += () =>
+            {
+                if (!Utils.TryResolveCurrentValueForBinding(torpedoSectorMetaInfoButton, out TorpedoSector torpedoSector))
+                    return;
+
+                DialogRoot.Instance.PopupTorpedoSectorMetaInfoDialog(torpedoSector, null);
+            };
+        }
+
         var rapidFireBatteryListView = root.Q<ListView>("RapidFireBatteryListView");
         // rapidFireBatteryListView.itemsAdded += Utils.MakeCallbackForItemsAdded<RapidFireBatteryRecord>(rapidFireBatteryListView);
         Utils.BindItemsAddedRemoved<RapidFireBatteryRecord>(rapidFireBatteryListView, SelectedShipClassProvider);

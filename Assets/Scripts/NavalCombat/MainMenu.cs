@@ -62,7 +62,7 @@ public class MainMenu : SingletonDocument<MainMenu>
         calculatorButton.clicked += () => DialogRoot.Instance.PopupExternalBallisticsCalculatorDialog();
         naabLikeCalculatorButton.text = MyLocale.Get("NAAB-like Calculator");
         naabLikeCalculatorButton.clicked += () => DialogRoot.Instance.PopupNaabLikeCalculatorDialog();
-        mccoyOkunCalculatorButton.text = "McCoy Okun Calculator";
+        mccoyOkunCalculatorButton.text = MyLocale.Get("McCoy Okun Calculator");
         mccoyOkunCalculatorButton.clicked += () => DialogRoot.Instance.PopupMcCoyOkunCalculatorDialog();
 
         root.Q<Button>("ManualButton").text = MyLocale.Get("Manual");

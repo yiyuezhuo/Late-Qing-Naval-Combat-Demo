@@ -947,6 +947,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset batteryRecordSelectorDialogDocument;
     public VisualTreeAsset rapidFireBatteryRecordSelectorDialogDocument;
     public VisualTreeAsset rapidFireBatteryRecordMetaInfoDialogDocument;
+    public VisualTreeAsset torpedoSectorMetaInfoDialogDocument;
     public VisualTreeAsset batteryRecordMetaInfoDialogDocument;
     public VisualTreeAsset batteryRecordMetaInfoMcCoyOkunDialogDocument;
     public VisualTreeAsset torpedoSectorSelectorDialogDocument;
@@ -1532,6 +1533,27 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         tempDialog.Popup();
     }
 
+    public void PopupTorpedoSectorMetaInfoDialog(TorpedoSector torpedoSector, Action callback)
+    {
+        var model = new TorpedoSectorMetaInfoDialog()
+        {
+            torpedoSector = torpedoSector,
+            callback = callback
+        };
+
+        var tempDialog = new TempDialog()
+        {
+            root = root,
+            template = torpedoSectorMetaInfoDialogDocument,
+            templateDataSource = model
+        };
+
+        tempDialog.onCreated += model.OnCreated;
+        tempDialog.onConfirmed += model.OnConfirm;
+
+        tempDialog.Popup();
+    }
+
     public void PopupBatteryRecordMetaInfoDialog(BatteryRecord batteryRecord, Action callback)
     {
         var model = new BatteryRecordMetaInfoDialog()
@@ -1567,7 +1589,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         {
             var titleLabel = el.Q<Label>("TitleLabel");
             if (titleLabel != null)
-                titleLabel.text = "Meta Info (McCoy Okun)";
+                titleLabel.text = Localize("Meta Info (McCoy Okun)");
 
             var confirmButton = el.Q<Button>("ConfirmButton");
             if (confirmButton != null)
@@ -1594,7 +1616,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
                             tempDialog.Close();
                     })
                     {
-                        text = "Save & Close",
+                        text = Localize("Save & Close"),
                     };
                     saveButton.style.flexGrow = 1;
                     saveButton.style.marginRight = 4;
@@ -1605,7 +1627,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
                             tempDialog.Close();
                     })
                     {
-                        text = "Clear & Close",
+                        text = Localize("Clear & Close"),
                     };
                     clearButton.style.flexGrow = 1;
                     clearButton.style.marginRight = 4;
@@ -3911,7 +3933,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     {
         var dialog = new McCoyOkunCalculatorDialog();
         return PopupCustomContentDialog(
-            "McCoy Okun Calculator",
+            Localize("McCoy Okun Calculator"),
             () => dialog.BuildContent(mccoyOkunCalculatorDialogDocument),
             Localize("Close")
         );

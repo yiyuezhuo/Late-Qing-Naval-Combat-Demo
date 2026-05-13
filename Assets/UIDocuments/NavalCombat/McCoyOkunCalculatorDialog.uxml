@@ -2,251 +2,1027 @@
     <ui:VisualElement name="McCoyOkunCalculatorRoot" style="width: 1050px; height: 600px; flex-grow: 1; flex-shrink: 1;">
         <ui:TabView name="McCoyOkunTabView" style="flex-grow: 1; flex-shrink: 1;">
             <ui:Tab label="M79 APCLC">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-156)"/>
+                </Bindings>
             <ui:VisualElement name="M79ApclcPage" class="mccoy-okun-page" style="flex-direction: row; flex-grow: 1; flex-shrink: 1;">
                 <ui:ScrollView name="M79ApclcInput" mode="Vertical" class="mccoy-okun-input" style="flex-basis: 340px; flex-shrink: 0; margin-right: 8px;">
-                    <ui:VisualElement style="flex-direction: row; margin-bottom: 6px;"><ui:Label text="M79 APCLC" style="-unity-font-style: bold; flex-grow: 1;" /><ui:Button name="M79ApclcResetButton" text="Reset" /></ui:VisualElement>
-                    <ui:DropdownField name="M79ApclcSampleField" label="Sample" />
-                    <ui:FloatField name="M79ApclcProjectileDiameterField" label="Projectile Diameter" />
-                    <ui:FloatField name="M79ApclcProjectileWeightField" label="Projectile Weight" />
-                    <ui:FloatField name="M79ApclcPlateThicknessField" label="Plate Thickness" />
-                    <ui:FloatField name="M79ApclcPlateQualityField" label="Plate Quality" />
-                    <ui:FloatField name="M79ApclcObliquityField" label="Obliquity" />
-                    <ui:FloatField name="M79ApclcStrikingVelocityField" label="Striking Velocity" />
-                    <ui:FloatField name="M79ApclcElongationField" label="Elongation" />
+                    <ui:VisualElement style="flex-direction: row; margin-bottom: 6px;"><ui:Label text="M79 APCLC" style="-unity-font-style: bold; flex-grow: 1;" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-156)"/>
+                        </Bindings>
+                    </ui:Label><ui:Button name="M79ApclcResetButton" text="Reset" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-202)"/>
+                        </Bindings>
+                    </ui:Button></ui:VisualElement>
+                    <ui:DropdownField name="M79ApclcSampleField" label="Sample" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-209)"/>
+                        </Bindings>
+                    </ui:DropdownField>
+                    <ui:FloatField name="M79ApclcProjectileDiameterField" label="Projectile Diameter" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-191)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="M79ApclcProjectileWeightField" label="Projectile Weight" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-196)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="M79ApclcPlateThicknessField" label="Plate Thickness" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-184)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="M79ApclcPlateQualityField" label="Plate Quality" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-183)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="M79ApclcObliquityField" label="Obliquity" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-178)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="M79ApclcStrikingVelocityField" label="Striking Velocity" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-211)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="M79ApclcElongationField" label="Elongation" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-146)"/>
+                        </Bindings>
+                    </ui:FloatField>
                 </ui:ScrollView>
                 <ui:ScrollView name="M79ApclcOutput" mode="Vertical" class="mccoy-okun-output" style="flex-grow: 1; flex-shrink: 1;"><ui:VisualElement name="M79ApclcOutputContent" /></ui:ScrollView>
             </ui:VisualElement>
             </ui:Tab>
             <ui:Tab label="Facehard69">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-147)"/>
+                </Bindings>
             <ui:VisualElement name="Facehard69Page" class="mccoy-okun-page" style="flex-direction: row; flex-grow: 1; flex-shrink: 1;">
                 <ui:ScrollView name="Facehard69Input" mode="Vertical" class="mccoy-okun-input" style="flex-basis: 340px; flex-shrink: 0; margin-right: 8px;">
-                    <ui:VisualElement style="flex-direction: row; margin-bottom: 6px;"><ui:Label text="Facehard69 Baseline" style="-unity-font-style: bold; flex-grow: 1;" /><ui:Button name="Facehard69ResetButton" text="Reset" /></ui:VisualElement>
-                    <ui:DropdownField name="Facehard69SampleField" label="Sample" />
-                    <ui:VisualElement style="flex-direction: row; margin-bottom: 6px;"><ui:Button name="Facehard69RecordButton" text="Record Current Velocity and Obliquity" style="flex-grow: 1;" /><ui:Button name="Facehard69ClearButton" text="Clear" /></ui:VisualElement>
-                    <ui:DropdownField name="Facehard69ProjectileNationField" label="Projectile Nation" />
-                    <ui:DropdownField name="Facehard69ProjectileTypeField" label="Projectile Type" />
-                    <ui:DropdownField name="Facehard69CapOrHoodField" label="Cap Or Hood" />
-                    <ui:DropdownField name="Facehard69NoseSchemaField" label="Nose Schema" />
-                    <ui:DropdownField name="Facehard69JapaneseCapHeadField" label="Japanese Cap Head Type" />
-                    <ui:DropdownField name="Facehard69NoseConditionField" label="Pre-Impact Nose Condition" />
-                    <ui:FloatField name="Facehard69ProjectileDiameterField" label="Projectile Diameter" />
-                    <ui:FloatField name="Facehard69ProjectileWeightField" label="Projectile Weight" />
-                    <ui:FloatField name="Facehard69ProjectileBodyWeightField" label="Projectile Body Weight" />
-                    <ui:FloatField name="Facehard69WindscreenCapHeadWeightField" label="Windscreen + Cap Head Weight" />
-                    <ui:FloatField name="Facehard69WindscreenWeightField" label="Windscreen Weight" />
-                    <ui:FloatField name="Facehard69RemainingNoseWeightField" label="Remaining Nose Covering Weight" />
-                    <ui:FloatField name="Facehard69PlimField" label="PLIM" />
-                    <ui:FloatField name="Facehard69PdamField" label="PDAM" />
-                    <ui:DropdownField name="Facehard69ShatResField" label="SHATRES" />
-                    <ui:DropdownField name="Facehard69BreakUnderNblField" label="BRAAK" />
-                    <ui:DropdownField name="Facehard69LightCaseField" label="LTCASE" />
-                    <ui:FloatField name="Facehard69StrikingVelocityField" label="Striking Velocity" />
-                    <ui:FloatField name="Facehard69ObliquityField" label="Obliquity" />
-                    <ui:DropdownField name="Facehard69ArmorTypeField" label="Armor Type" />
-                    <ui:Toggle name="Facehard69CurvedPlateToggle" label="Strongly Curved Plate" />
-                    <ui:FloatField name="Facehard69PlateThicknessField" label="Plate Thickness" />
-                    <ui:FloatField name="Facehard69WoodBackingField" label="Wood Backing" />
-                    <ui:FloatField name="Facehard69CementBackingField" label="Cement Backing" />
-                    <ui:FloatField name="Facehard69MetalBackingField" label="Metal Backing" />
-                    <ui:FloatField name="Facehard69BackingQualityField" label="Backing Quality" />
-                    <ui:FloatField name="Facehard69BackingPlatesField" label="Backing Plates" />
+                    <ui:VisualElement style="flex-direction: row; margin-bottom: 6px;"><ui:Label text="Facehard69 Baseline" style="-unity-font-style: bold; flex-grow: 1;" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-148)"/>
+                        </Bindings>
+                    </ui:Label><ui:Button name="Facehard69ResetButton" text="Reset" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-202)"/>
+                        </Bindings>
+                    </ui:Button></ui:VisualElement>
+                    <ui:DropdownField name="Facehard69SampleField" label="Sample" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-209)"/>
+                        </Bindings>
+                    </ui:DropdownField>
+                    <ui:VisualElement style="flex-direction: row; margin-bottom: 6px;"><ui:Button name="Facehard69RecordButton" text="Record Current Velocity and Obliquity" style="flex-grow: 1;" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-199)"/>
+                        </Bindings>
+                    </ui:Button><ui:Button name="Facehard69ClearButton" text="Clear" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000026)"/>
+                        </Bindings>
+                    </ui:Button></ui:VisualElement>
+                    <ui:DropdownField name="Facehard69ProjectileNationField" label="Projectile Nation" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-194)"/>
+                        </Bindings>
+                    </ui:DropdownField>
+                    <ui:DropdownField name="Facehard69ProjectileTypeField" label="Projectile Type" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-195)"/>
+                        </Bindings>
+                    </ui:DropdownField>
+                    <ui:DropdownField name="Facehard69CapOrHoodField" label="Cap Or Hood" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-137)"/>
+                        </Bindings>
+                    </ui:DropdownField>
+                    <ui:DropdownField name="Facehard69NoseSchemaField" label="Nose Schema" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-177)"/>
+                        </Bindings>
+                    </ui:DropdownField>
+                    <ui:DropdownField name="Facehard69JapaneseCapHeadField" label="Japanese Cap Head Type" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-153)"/>
+                        </Bindings>
+                    </ui:DropdownField>
+                    <ui:DropdownField name="Facehard69NoseConditionField" label="Pre-Impact Nose Condition" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-185)"/>
+                        </Bindings>
+                    </ui:DropdownField>
+                    <ui:FloatField name="Facehard69ProjectileDiameterField" label="Projectile Diameter" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-191)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="Facehard69ProjectileWeightField" label="Projectile Weight" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-196)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="Facehard69ProjectileBodyWeightField" label="Projectile Body Weight" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-189)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="Facehard69WindscreenCapHeadWeightField" label="Windscreen + Cap Head Weight" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-216)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="Facehard69WindscreenWeightField" label="Windscreen Weight" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-217)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="Facehard69RemainingNoseWeightField" label="Remaining Nose Covering Weight" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-201)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="Facehard69PlimField" label="PLIM" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-182)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="Facehard69PdamField" label="PDAM" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-181)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:DropdownField name="Facehard69ShatResField" label="SHATRES" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-207)"/>
+                        </Bindings>
+                    </ui:DropdownField>
+                    <ui:DropdownField name="Facehard69BreakUnderNblField" label="BRAAK" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-128)"/>
+                        </Bindings>
+                    </ui:DropdownField>
+                    <ui:DropdownField name="Facehard69LightCaseField" label="LTCASE" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-155)"/>
+                        </Bindings>
+                    </ui:DropdownField>
+                    <ui:FloatField name="Facehard69StrikingVelocityField" label="Striking Velocity" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-211)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="Facehard69ObliquityField" label="Obliquity" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-178)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:DropdownField name="Facehard69ArmorTypeField" label="Armor Type" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-126)"/>
+                        </Bindings>
+                    </ui:DropdownField>
+                    <ui:Toggle name="Facehard69CurvedPlateToggle" label="Strongly Curved Plate" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-212)"/>
+                        </Bindings>
+                    </ui:Toggle>
+                    <ui:FloatField name="Facehard69PlateThicknessField" label="Plate Thickness" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-184)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="Facehard69WoodBackingField" label="Wood Backing" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-218)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="Facehard69CementBackingField" label="Cement Backing" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-138)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="Facehard69MetalBackingField" label="Metal Backing" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-174)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="Facehard69BackingQualityField" label="Backing Quality" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-130)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="Facehard69BackingPlatesField" label="Backing Plates" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-129)"/>
+                        </Bindings>
+                    </ui:FloatField>
                     <ui:VisualElement name="Facehard69InputWarnings" />
                 </ui:ScrollView>
                 <ui:ScrollView name="Facehard69Output" mode="Vertical" class="mccoy-okun-output" style="flex-grow: 1; flex-shrink: 1;"><ui:VisualElement name="Facehard69OutputContent" /></ui:ScrollView>
             </ui:VisualElement>
             </ui:Tab>
             <ui:Tab label="McCoy">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-163)"/>
+                </Bindings>
             <ui:VisualElement name="McCoyPage" class="mccoy-okun-page" style="flex-direction: row; flex-grow: 1; flex-shrink: 1;">
                 <ui:ScrollView name="McCoyInput" mode="Vertical" class="mccoy-okun-input" style="flex-basis: 340px; flex-shrink: 0; margin-right: 8px;">
-                    <ui:VisualElement style="flex-direction: row; margin-bottom: 6px;"><ui:Label text="McCoy Point-Mass Trajectory" style="-unity-font-style: bold; flex-grow: 1;" /><ui:Button name="McCoyResetButton" text="Reset" /></ui:VisualElement>
-                    <ui:DropdownField name="McCoyAtmosphereField" label="Atmosphere Model" />
-                    <ui:FloatField name="McCoyMuzzleVelocityField" label="Muzzle Velocity" />
-                    <ui:FloatField name="McCoyBallisticCoefficientField" label="Ballistic Coefficient" />
-                    <ui:FloatField name="McCoySightHeightField" label="Sight Height" />
-                    <ui:FloatField name="McCoyElevationMinutesField" label="Elevation" />
-                    <ui:FloatField name="McCoyDensityRatioField" label="Density Ratio" />
-                    <ui:FloatField name="McCoyTemperatureField" label="Temperature" />
-                    <ui:FloatField name="McCoyPrintIntervalField" label="Print Interval" />
-                    <ui:FloatField name="McCoyMaxRangeField" label="Maximum Range" />
-                    <ui:FloatField name="McCoyRangeWindField" label="Range Wind" />
-                    <ui:FloatField name="McCoyCrossWindField" label="Crosswind" />
-                    <ui:FloatField name="McCoyMatchRangeField" label="Match Range" />
-                    <ui:FloatField name="McCoyMatchHeightField" label="Match Height" />
-                    <ui:TextField name="McCoyDragTableField" label="Mach-CD Drag Table" multiline="true" style="height: 120px;" />
+                    <ui:VisualElement style="flex-direction: row; margin-bottom: 6px;"><ui:Label text="McCoy Point-Mass Trajectory" style="-unity-font-style: bold; flex-grow: 1;" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-171)"/>
+                        </Bindings>
+                    </ui:Label><ui:Button name="McCoyResetButton" text="Reset" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-202)"/>
+                        </Bindings>
+                    </ui:Button></ui:VisualElement>
+                    <ui:DropdownField name="McCoyAtmosphereField" label="Atmosphere Model" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-127)"/>
+                        </Bindings>
+                    </ui:DropdownField>
+                    <ui:FloatField name="McCoyMuzzleVelocityField" label="Muzzle Velocity" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-175)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="McCoyBallisticCoefficientField" label="Ballistic Coefficient" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-131)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="McCoySightHeightField" label="Sight Height" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-210)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="McCoyElevationMinutesField" label="Elevation" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-144)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="McCoyDensityRatioField" label="Density Ratio" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-143)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="McCoyTemperatureField" label="Temperature" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-213)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="McCoyPrintIntervalField" label="Print Interval" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-186)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="McCoyMaxRangeField" label="Maximum Range" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-162)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="McCoyRangeWindField" label="Range Wind" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-198)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="McCoyCrossWindField" label="Crosswind" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-141)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="McCoyMatchRangeField" label="Match Range" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-161)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="McCoyMatchHeightField" label="Match Height" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-160)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:TextField name="McCoyDragTableField" label="Mach-CD Drag Table" multiline="true" style="height: 120px;" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-158)"/>
+                        </Bindings>
+                    </ui:TextField>
                 </ui:ScrollView>
                 <ui:ScrollView name="McCoyOutput" mode="Vertical" class="mccoy-okun-output" style="flex-grow: 1; flex-shrink: 1;"><ui:VisualElement name="McCoyOutputContent" /></ui:ScrollView>
             </ui:VisualElement>
             </ui:Tab>
             <ui:Tab label="McCoy Plus">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-165)"/>
+                </Bindings>
             <ui:VisualElement name="McCoyPlusPage" class="mccoy-okun-page" style="flex-direction: row; flex-grow: 1; flex-shrink: 1;">
                 <ui:ScrollView name="McCoyPlusInput" mode="Vertical" class="mccoy-okun-input" style="flex-basis: 340px; flex-shrink: 0; margin-right: 8px;">
-                    <ui:VisualElement style="flex-direction: row; margin-bottom: 6px;"><ui:Label text="McCoy Plus Range Sweep" style="-unity-font-style: bold; flex-grow: 1;" /><ui:Button name="McCoyPlusResetButton" text="Reset" /></ui:VisualElement>
-                    <ui:DropdownField name="McCoyPlusElevationSearchField" label="Elevation Search" />
-                    <ui:DropdownField name="McCoyPlusAtmosphereField" label="Atmosphere Model" />
-                    <ui:DropdownField name="McCoyPlusPresetField" label="Mach-CD Preset" />
-                    <ui:FloatField name="McCoyPlusMuzzleVelocityField" label="Muzzle Velocity" />
-                    <ui:FloatField name="McCoyPlusBallisticCoefficientField" label="Ballistic Coefficient" />
-                    <ui:FloatField name="McCoyPlusMaxRangeField" label="Maximum Range" />
-                    <ui:FloatField name="McCoyPlusDensityRatioField" label="Density Ratio" />
-                    <ui:FloatField name="McCoyPlusTemperatureField" label="Temperature" />
-                    <ui:FloatField name="McCoyPlusMatchHeightField" label="Match Height" />
-                    <ui:TextField name="McCoyPlusDragTableField" label="Mach-CD Drag Table" multiline="true" style="height: 120px;" />
+                    <ui:VisualElement style="flex-direction: row; margin-bottom: 6px;"><ui:Label text="McCoy Plus Range Sweep" style="-unity-font-style: bold; flex-grow: 1;" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-170)"/>
+                        </Bindings>
+                    </ui:Label><ui:Button name="McCoyPlusResetButton" text="Reset" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-202)"/>
+                        </Bindings>
+                    </ui:Button></ui:VisualElement>
+                    <ui:DropdownField name="McCoyPlusElevationSearchField" label="Elevation Search" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-145)"/>
+                        </Bindings>
+                    </ui:DropdownField>
+                    <ui:DropdownField name="McCoyPlusAtmosphereField" label="Atmosphere Model" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-127)"/>
+                        </Bindings>
+                    </ui:DropdownField>
+                    <ui:DropdownField name="McCoyPlusPresetField" label="Mach-CD Preset" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-159)"/>
+                        </Bindings>
+                    </ui:DropdownField>
+                    <ui:FloatField name="McCoyPlusMuzzleVelocityField" label="Muzzle Velocity" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-175)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="McCoyPlusBallisticCoefficientField" label="Ballistic Coefficient" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-131)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="McCoyPlusMaxRangeField" label="Maximum Range" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-162)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="McCoyPlusDensityRatioField" label="Density Ratio" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-143)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="McCoyPlusTemperatureField" label="Temperature" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-213)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="McCoyPlusMatchHeightField" label="Match Height" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-160)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:TextField name="McCoyPlusDragTableField" label="Mach-CD Drag Table" multiline="true" style="height: 120px;" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-158)"/>
+                        </Bindings>
+                    </ui:TextField>
                 </ui:ScrollView>
                 <ui:ScrollView name="McCoyPlusOutput" mode="Vertical" class="mccoy-okun-output" style="flex-grow: 1; flex-shrink: 1;"><ui:VisualElement name="McCoyPlusOutputContent" /></ui:ScrollView>
             </ui:VisualElement>
             </ui:Tab>
             <ui:Tab label="McCoy Plus Facehard">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-166)"/>
+                </Bindings>
             <ui:VisualElement name="McCoyPlusFacehardPage" class="mccoy-okun-page" style="flex-direction: row; flex-grow: 1; flex-shrink: 1;">
                 <ui:ScrollView name="McCoyPlusFacehardInput" mode="Vertical" class="mccoy-okun-input" style="flex-basis: 340px; flex-shrink: 0; margin-right: 8px;">
-                    <ui:VisualElement style="flex-direction: row; margin-bottom: 6px;"><ui:Label text="McCoy Plus Facehard" style="-unity-font-style: bold; flex-grow: 1;" /><ui:Button name="McCoyPlusFacehardResetButton" text="Reset" /></ui:VisualElement>
-                    <ui:DropdownField name="McCoyPlusFacehardSampleField" label="Sample" />
-                    <ui:DropdownField name="McCoyPlusFacehardElevationSearchField" label="Elevation Search" />
-                    <ui:DropdownField name="McCoyPlusFacehardAtmosphereField" label="Atmosphere Model" />
-                    <ui:DropdownField name="McCoyPlusFacehardPresetField" label="Mach-CD Preset" />
-                    <ui:FloatField name="McCoyPlusFacehardMuzzleVelocityField" label="Muzzle Velocity" />
-                    <ui:FloatField name="McCoyPlusFacehardBallisticCoefficientField" label="Ballistic Coefficient" />
-                    <ui:FloatField name="McCoyPlusFacehardMaxRangeField" label="Maximum Range" />
-                    <ui:FloatField name="McCoyPlusFacehardDensityRatioField" label="Density Ratio" />
-                    <ui:FloatField name="McCoyPlusFacehardTemperatureField" label="Temperature" />
-                    <ui:FloatField name="McCoyPlusFacehardMatchHeightField" label="Match Height" />
-                    <ui:Label text="Projectile Inputs" style="-unity-font-style: bold; margin-top: 8px; margin-bottom: 4px;" />
-                    <ui:DropdownField name="McCoyPlusFacehardProjectileNationField" label="Projectile Nation" />
-                    <ui:DropdownField name="McCoyPlusFacehardProjectileTypeField" label="Projectile Type" />
-                    <ui:DropdownField name="McCoyPlusFacehardCapOrHoodField" label="Cap Or Hood" />
-                    <ui:DropdownField name="McCoyPlusFacehardNoseSchemaField" label="Nose Schema" />
-                    <ui:DropdownField name="McCoyPlusFacehardJapaneseCapHeadField" label="Japanese Cap Head Type" />
-                    <ui:DropdownField name="McCoyPlusFacehardNoseConditionField" label="Pre-Impact Nose Condition" />
-                    <ui:FloatField name="McCoyPlusFacehardProjectileDiameterField" label="Projectile Diameter" />
-                    <ui:FloatField name="McCoyPlusFacehardProjectileWeightField" label="Projectile Weight" />
-                    <ui:FloatField name="McCoyPlusFacehardProjectileBodyWeightField" label="Body Weight" />
-                    <ui:FloatField name="McCoyPlusFacehardWindscreenCapHeadWeightField" label="Windscreen + Cap Head Weight" />
-                    <ui:FloatField name="McCoyPlusFacehardWindscreenWeightField" label="Windscreen Weight" />
-                    <ui:FloatField name="McCoyPlusFacehardRemainingNoseWeightField" label="Remaining Nose Covering Weight" />
-                    <ui:FloatField name="McCoyPlusFacehardPlimField" label="PLIM" />
-                    <ui:FloatField name="McCoyPlusFacehardPdamField" label="PDAM" />
-                    <ui:DropdownField name="McCoyPlusFacehardShatResField" label="SHATRES" />
-                    <ui:DropdownField name="McCoyPlusFacehardBreakUnderNblField" label="BRAAK" />
-                    <ui:DropdownField name="McCoyPlusFacehardLightCaseField" label="LTCASE" />
-                    <ui:Label text="Armor Inputs" style="-unity-font-style: bold; margin-top: 8px; margin-bottom: 4px;" />
-                    <ui:DropdownField name="McCoyPlusFacehardArmorTypeField" label="Armor Type" />
-                    <ui:Toggle name="McCoyPlusFacehardCurvedPlateToggle" label="Strongly Curved Plate" />
-                    <ui:FloatField name="McCoyPlusFacehardWoodBackingField" label="Wood Backing" />
-                    <ui:FloatField name="McCoyPlusFacehardCementBackingField" label="Cement Backing" />
-                    <ui:FloatField name="McCoyPlusFacehardMetalBackingField" label="Metal Backing" />
-                    <ui:FloatField name="McCoyPlusFacehardBackingQualityField" label="Backing Quality" />
-                    <ui:FloatField name="McCoyPlusFacehardBackingPlatesField" label="Backing Plates" />
+                    <ui:VisualElement style="flex-direction: row; margin-bottom: 6px;"><ui:Label text="McCoy Plus Facehard" style="-unity-font-style: bold; flex-grow: 1;" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-166)"/>
+                        </Bindings>
+                    </ui:Label><ui:Button name="McCoyPlusFacehardResetButton" text="Reset" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-202)"/>
+                        </Bindings>
+                    </ui:Button></ui:VisualElement>
+                    <ui:DropdownField name="McCoyPlusFacehardSampleField" label="Sample" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-209)"/>
+                        </Bindings>
+                    </ui:DropdownField>
+                    <ui:DropdownField name="McCoyPlusFacehardElevationSearchField" label="Elevation Search" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-145)"/>
+                        </Bindings>
+                    </ui:DropdownField>
+                    <ui:DropdownField name="McCoyPlusFacehardAtmosphereField" label="Atmosphere Model" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-127)"/>
+                        </Bindings>
+                    </ui:DropdownField>
+                    <ui:DropdownField name="McCoyPlusFacehardPresetField" label="Mach-CD Preset" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-159)"/>
+                        </Bindings>
+                    </ui:DropdownField>
+                    <ui:FloatField name="McCoyPlusFacehardMuzzleVelocityField" label="Muzzle Velocity" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-175)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="McCoyPlusFacehardBallisticCoefficientField" label="Ballistic Coefficient" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-131)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="McCoyPlusFacehardMaxRangeField" label="Maximum Range" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-162)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="McCoyPlusFacehardDensityRatioField" label="Density Ratio" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-143)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="McCoyPlusFacehardTemperatureField" label="Temperature" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-213)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="McCoyPlusFacehardMatchHeightField" label="Match Height" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-160)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:Label text="Projectile Inputs" style="-unity-font-style: bold; margin-top: 8px; margin-bottom: 4px;" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-193)"/>
+                        </Bindings>
+                    </ui:Label>
+                    <ui:DropdownField name="McCoyPlusFacehardProjectileNationField" label="Projectile Nation" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-194)"/>
+                        </Bindings>
+                    </ui:DropdownField>
+                    <ui:DropdownField name="McCoyPlusFacehardProjectileTypeField" label="Projectile Type" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-195)"/>
+                        </Bindings>
+                    </ui:DropdownField>
+                    <ui:DropdownField name="McCoyPlusFacehardCapOrHoodField" label="Cap Or Hood" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-137)"/>
+                        </Bindings>
+                    </ui:DropdownField>
+                    <ui:DropdownField name="McCoyPlusFacehardNoseSchemaField" label="Nose Schema" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-177)"/>
+                        </Bindings>
+                    </ui:DropdownField>
+                    <ui:DropdownField name="McCoyPlusFacehardJapaneseCapHeadField" label="Japanese Cap Head Type" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-153)"/>
+                        </Bindings>
+                    </ui:DropdownField>
+                    <ui:DropdownField name="McCoyPlusFacehardNoseConditionField" label="Pre-Impact Nose Condition" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-185)"/>
+                        </Bindings>
+                    </ui:DropdownField>
+                    <ui:FloatField name="McCoyPlusFacehardProjectileDiameterField" label="Projectile Diameter" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-191)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="McCoyPlusFacehardProjectileWeightField" label="Projectile Weight" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-196)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="McCoyPlusFacehardProjectileBodyWeightField" label="Body Weight" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-134)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="McCoyPlusFacehardWindscreenCapHeadWeightField" label="Windscreen + Cap Head Weight" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-216)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="McCoyPlusFacehardWindscreenWeightField" label="Windscreen Weight" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-217)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="McCoyPlusFacehardRemainingNoseWeightField" label="Remaining Nose Covering Weight" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-201)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="McCoyPlusFacehardPlimField" label="PLIM" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-182)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="McCoyPlusFacehardPdamField" label="PDAM" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-181)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:DropdownField name="McCoyPlusFacehardShatResField" label="SHATRES" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-207)"/>
+                        </Bindings>
+                    </ui:DropdownField>
+                    <ui:DropdownField name="McCoyPlusFacehardBreakUnderNblField" label="BRAAK" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-128)"/>
+                        </Bindings>
+                    </ui:DropdownField>
+                    <ui:DropdownField name="McCoyPlusFacehardLightCaseField" label="LTCASE" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-155)"/>
+                        </Bindings>
+                    </ui:DropdownField>
+                    <ui:Label text="Armor Inputs" style="-unity-font-style: bold; margin-top: 8px; margin-bottom: 4px;" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-124)"/>
+                        </Bindings>
+                    </ui:Label>
+                    <ui:DropdownField name="McCoyPlusFacehardArmorTypeField" label="Armor Type" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-126)"/>
+                        </Bindings>
+                    </ui:DropdownField>
+                    <ui:Toggle name="McCoyPlusFacehardCurvedPlateToggle" label="Strongly Curved Plate" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-212)"/>
+                        </Bindings>
+                    </ui:Toggle>
+                    <ui:FloatField name="McCoyPlusFacehardWoodBackingField" label="Wood Backing" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-218)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="McCoyPlusFacehardCementBackingField" label="Cement Backing" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-138)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="McCoyPlusFacehardMetalBackingField" label="Metal Backing" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-174)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="McCoyPlusFacehardBackingQualityField" label="Backing Quality" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-130)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="McCoyPlusFacehardBackingPlatesField" label="Backing Plates" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-129)"/>
+                        </Bindings>
+                    </ui:FloatField>
                     <ui:VisualElement name="McCoyPlusFacehardInputWarnings" />
-                    <ui:TextField name="McCoyPlusFacehardDragTableField" label="Mach-CD Drag Table" multiline="true" style="height: 120px;" />
+                    <ui:TextField name="McCoyPlusFacehardDragTableField" label="Mach-CD Drag Table" multiline="true" style="height: 120px;" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-158)"/>
+                        </Bindings>
+                    </ui:TextField>
                 </ui:ScrollView>
-                <ui:ScrollView name="McCoyPlusFacehardOutput" mode="Vertical" class="mccoy-okun-output" style="flex-grow: 1; flex-shrink: 1;"><ui:DropdownField name="McCoyPlusFacehardChartModeField" label="Chart Mode" /><ui:VisualElement name="McCoyPlusFacehardOutputContent" /></ui:ScrollView>
+                <ui:ScrollView name="McCoyPlusFacehardOutput" mode="Vertical" class="mccoy-okun-output" style="flex-grow: 1; flex-shrink: 1;"><ui:DropdownField name="McCoyPlusFacehardChartModeField" label="Chart Mode" >
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-140)"/>
+                    </Bindings>
+                </ui:DropdownField><ui:VisualElement name="McCoyPlusFacehardOutputContent" /></ui:ScrollView>
             </ui:VisualElement>
             </ui:Tab>
             <ui:Tab label="McCoy Plus Facehard M79">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-167)"/>
+                </Bindings>
             <ui:VisualElement name="McCoyPlusFacehardM79Page" class="mccoy-okun-page" style="flex-direction: row; flex-grow: 1; flex-shrink: 1;">
                 <ui:ScrollView name="McCoyPlusFacehardM79Input" mode="Vertical" class="mccoy-okun-input" style="flex-basis: 390px; flex-shrink: 0; margin-right: 8px;">
-                    <ui:VisualElement style="flex-direction: row; margin-bottom: 6px;"><ui:Label text="McCoy Plus Facehard M79" style="-unity-font-style: bold; flex-grow: 1;" /><ui:Button name="McCoyPlusFacehardM79ResetButton" text="Reset" /></ui:VisualElement>
-                    <ui:DropdownField name="McCoyPlusFacehardM79SampleField" label="Sample" />
+                    <ui:VisualElement style="flex-direction: row; margin-bottom: 6px;"><ui:Label text="McCoy Plus Facehard M79" style="-unity-font-style: bold; flex-grow: 1;" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-167)"/>
+                        </Bindings>
+                    </ui:Label><ui:Button name="McCoyPlusFacehardM79ResetButton" text="Reset" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-202)"/>
+                        </Bindings>
+                    </ui:Button></ui:VisualElement>
+                    <ui:DropdownField name="McCoyPlusFacehardM79SampleField" label="Sample" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-209)"/>
+                        </Bindings>
+                    </ui:DropdownField>
                     <ui:TabView name="McCoyPlusFacehardM79InputTabView" style="flex-grow: 1; flex-shrink: 1;">
                         <ui:Tab label="Projectile">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-188)"/>
+                            </Bindings>
                             <ui:ScrollView mode="Vertical" style="flex-grow: 1; flex-shrink: 1;">
-                                <ui:DropdownField name="McCoyPlusFacehardM79PresetField" label="Mach-CD Preset" />
-                                <ui:FloatField name="McCoyPlusFacehardM79MuzzleVelocityField" label="Muzzle Velocity" />
-                                <ui:FloatField name="McCoyPlusFacehardM79BallisticCoefficientField" label="Ballistic Coefficient" />
-                                <ui:FloatField name="McCoyPlusFacehardM79MaxRangeField" label="Maximum Range" />
-                                <ui:DropdownField name="McCoyPlusFacehardM79ProjectileNationField" label="Projectile Nation" />
-                                <ui:DropdownField name="McCoyPlusFacehardM79ProjectileTypeField" label="Projectile Type" />
-                                <ui:DropdownField name="McCoyPlusFacehardM79CapOrHoodField" label="Cap Or Hood" />
-                                <ui:DropdownField name="McCoyPlusFacehardM79NoseSchemaField" label="Nose Schema" />
-                                <ui:DropdownField name="McCoyPlusFacehardM79JapaneseCapHeadField" label="Japanese Cap Head Type" />
-                                <ui:DropdownField name="McCoyPlusFacehardM79NoseConditionField" label="Pre-Impact Nose Condition" />
-                                <ui:FloatField name="McCoyPlusFacehardM79ProjectileDiameterField" label="Projectile Diameter" />
-                                <ui:FloatField name="McCoyPlusFacehardM79ProjectileWeightField" label="Projectile Weight" />
-                                <ui:FloatField name="McCoyPlusFacehardM79ProjectileBodyWeightField" label="Body Weight" />
-                                <ui:FloatField name="McCoyPlusFacehardM79WindscreenCapHeadWeightField" label="Windscreen + Cap Head Weight" />
-                                <ui:FloatField name="McCoyPlusFacehardM79WindscreenWeightField" label="Windscreen Weight" />
-                                <ui:FloatField name="McCoyPlusFacehardM79RemainingNoseWeightField" label="Remaining Nose Covering Weight" />
-                                <ui:FloatField name="McCoyPlusFacehardM79PlimField" label="PLIM" />
-                                <ui:FloatField name="McCoyPlusFacehardM79PdamField" label="PDAM" />
-                                <ui:DropdownField name="McCoyPlusFacehardM79ShatResField" label="SHATRES" />
-                                <ui:DropdownField name="McCoyPlusFacehardM79BreakUnderNblField" label="BRAAK" />
-                                <ui:DropdownField name="McCoyPlusFacehardM79LightCaseField" label="LTCASE" />
+                                <ui:DropdownField name="McCoyPlusFacehardM79PresetField" label="Mach-CD Preset" >
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-159)"/>
+                                    </Bindings>
+                                </ui:DropdownField>
+                                <ui:FloatField name="McCoyPlusFacehardM79MuzzleVelocityField" label="Muzzle Velocity" >
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-175)"/>
+                                    </Bindings>
+                                </ui:FloatField>
+                                <ui:FloatField name="McCoyPlusFacehardM79BallisticCoefficientField" label="Ballistic Coefficient" >
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-131)"/>
+                                    </Bindings>
+                                </ui:FloatField>
+                                <ui:FloatField name="McCoyPlusFacehardM79MaxRangeField" label="Maximum Range" >
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-162)"/>
+                                    </Bindings>
+                                </ui:FloatField>
+                                <ui:DropdownField name="McCoyPlusFacehardM79ProjectileNationField" label="Projectile Nation" >
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-194)"/>
+                                    </Bindings>
+                                </ui:DropdownField>
+                                <ui:DropdownField name="McCoyPlusFacehardM79ProjectileTypeField" label="Projectile Type" >
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-195)"/>
+                                    </Bindings>
+                                </ui:DropdownField>
+                                <ui:DropdownField name="McCoyPlusFacehardM79CapOrHoodField" label="Cap Or Hood" >
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-137)"/>
+                                    </Bindings>
+                                </ui:DropdownField>
+                                <ui:DropdownField name="McCoyPlusFacehardM79NoseSchemaField" label="Nose Schema" >
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-177)"/>
+                                    </Bindings>
+                                </ui:DropdownField>
+                                <ui:DropdownField name="McCoyPlusFacehardM79JapaneseCapHeadField" label="Japanese Cap Head Type" >
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-153)"/>
+                                    </Bindings>
+                                </ui:DropdownField>
+                                <ui:DropdownField name="McCoyPlusFacehardM79NoseConditionField" label="Pre-Impact Nose Condition" >
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-185)"/>
+                                    </Bindings>
+                                </ui:DropdownField>
+                                <ui:FloatField name="McCoyPlusFacehardM79ProjectileDiameterField" label="Projectile Diameter" >
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-191)"/>
+                                    </Bindings>
+                                </ui:FloatField>
+                                <ui:FloatField name="McCoyPlusFacehardM79ProjectileWeightField" label="Projectile Weight" >
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-196)"/>
+                                    </Bindings>
+                                </ui:FloatField>
+                                <ui:FloatField name="McCoyPlusFacehardM79ProjectileBodyWeightField" label="Body Weight" >
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-134)"/>
+                                    </Bindings>
+                                </ui:FloatField>
+                                <ui:FloatField name="McCoyPlusFacehardM79WindscreenCapHeadWeightField" label="Windscreen + Cap Head Weight" >
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-216)"/>
+                                    </Bindings>
+                                </ui:FloatField>
+                                <ui:FloatField name="McCoyPlusFacehardM79WindscreenWeightField" label="Windscreen Weight" >
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-217)"/>
+                                    </Bindings>
+                                </ui:FloatField>
+                                <ui:FloatField name="McCoyPlusFacehardM79RemainingNoseWeightField" label="Remaining Nose Covering Weight" >
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-201)"/>
+                                    </Bindings>
+                                </ui:FloatField>
+                                <ui:FloatField name="McCoyPlusFacehardM79PlimField" label="PLIM" >
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-182)"/>
+                                    </Bindings>
+                                </ui:FloatField>
+                                <ui:FloatField name="McCoyPlusFacehardM79PdamField" label="PDAM" >
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-181)"/>
+                                    </Bindings>
+                                </ui:FloatField>
+                                <ui:DropdownField name="McCoyPlusFacehardM79ShatResField" label="SHATRES" >
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-207)"/>
+                                    </Bindings>
+                                </ui:DropdownField>
+                                <ui:DropdownField name="McCoyPlusFacehardM79BreakUnderNblField" label="BRAAK" >
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-128)"/>
+                                    </Bindings>
+                                </ui:DropdownField>
+                                <ui:DropdownField name="McCoyPlusFacehardM79LightCaseField" label="LTCASE" >
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-155)"/>
+                                    </Bindings>
+                                </ui:DropdownField>
                             </ui:ScrollView>
                         </ui:Tab>
                         <ui:Tab label="Vertical Armor">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-215)"/>
+                            </Bindings>
                             <ui:ScrollView mode="Vertical" style="flex-grow: 1; flex-shrink: 1;">
-                                <ui:DropdownField name="McCoyPlusFacehardM79ArmorTypeField" label="Armor Type" />
-                                <ui:Toggle name="McCoyPlusFacehardM79CurvedPlateToggle" label="Strongly Curved Plate" />
-                                <ui:FloatField name="McCoyPlusFacehardM79WoodBackingField" label="Wood Backing" />
-                                <ui:FloatField name="McCoyPlusFacehardM79CementBackingField" label="Cement Backing" />
-                                <ui:FloatField name="McCoyPlusFacehardM79MetalBackingField" label="Metal Backing" />
-                                <ui:FloatField name="McCoyPlusFacehardM79BackingQualityField" label="Backing Quality" />
-                                <ui:FloatField name="McCoyPlusFacehardM79BackingPlatesField" label="Backing Plates" />
+                                <ui:DropdownField name="McCoyPlusFacehardM79ArmorTypeField" label="Armor Type" >
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-126)"/>
+                                    </Bindings>
+                                </ui:DropdownField>
+                                <ui:Toggle name="McCoyPlusFacehardM79CurvedPlateToggle" label="Strongly Curved Plate" >
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-212)"/>
+                                    </Bindings>
+                                </ui:Toggle>
+                                <ui:FloatField name="McCoyPlusFacehardM79WoodBackingField" label="Wood Backing" >
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-218)"/>
+                                    </Bindings>
+                                </ui:FloatField>
+                                <ui:FloatField name="McCoyPlusFacehardM79CementBackingField" label="Cement Backing" >
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-138)"/>
+                                    </Bindings>
+                                </ui:FloatField>
+                                <ui:FloatField name="McCoyPlusFacehardM79MetalBackingField" label="Metal Backing" >
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-174)"/>
+                                    </Bindings>
+                                </ui:FloatField>
+                                <ui:FloatField name="McCoyPlusFacehardM79BackingQualityField" label="Backing Quality" >
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-130)"/>
+                                    </Bindings>
+                                </ui:FloatField>
+                                <ui:FloatField name="McCoyPlusFacehardM79BackingPlatesField" label="Backing Plates" >
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-129)"/>
+                                    </Bindings>
+                                </ui:FloatField>
                                 <ui:VisualElement name="McCoyPlusFacehardM79InputWarnings" />
                             </ui:ScrollView>
                         </ui:Tab>
                         <ui:Tab label="Deck Armor">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-142)"/>
+                            </Bindings>
                             <ui:ScrollView mode="Vertical" style="flex-grow: 1; flex-shrink: 1;">
-                                <ui:FloatField name="McCoyPlusFacehardM79ArmorQualityField" label="Armor Quality" />
-                                <ui:FloatField name="McCoyPlusFacehardM79ElongationField" label="Elongation" />
+                                <ui:FloatField name="McCoyPlusFacehardM79ArmorQualityField" label="Armor Quality" >
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-125)"/>
+                                    </Bindings>
+                                </ui:FloatField>
+                                <ui:FloatField name="McCoyPlusFacehardM79ElongationField" label="Elongation" >
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-146)"/>
+                                    </Bindings>
+                                </ui:FloatField>
                             </ui:ScrollView>
                         </ui:Tab>
                         <ui:Tab label="Misc">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(40329917863989248)"/>
+                            </Bindings>
                             <ui:ScrollView mode="Vertical" style="flex-grow: 1; flex-shrink: 1;">
-                                <ui:DropdownField name="McCoyPlusFacehardM79ElevationSearchField" label="Elevation Search" />
-                                <ui:DropdownField name="McCoyPlusFacehardM79AtmosphereField" label="Atmosphere Model" />
-                                <ui:FloatField name="McCoyPlusFacehardM79DensityRatioField" label="Density Ratio" />
-                                <ui:FloatField name="McCoyPlusFacehardM79TemperatureField" label="Temperature" />
-                                <ui:FloatField name="McCoyPlusFacehardM79MatchHeightField" label="Match Height" />
-                                <ui:TextField name="McCoyPlusFacehardM79DragTableField" label="Mach-CD Drag Table" multiline="true" style="height: 120px;" />
+                                <ui:DropdownField name="McCoyPlusFacehardM79ElevationSearchField" label="Elevation Search" >
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-145)"/>
+                                    </Bindings>
+                                </ui:DropdownField>
+                                <ui:DropdownField name="McCoyPlusFacehardM79AtmosphereField" label="Atmosphere Model" >
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-127)"/>
+                                    </Bindings>
+                                </ui:DropdownField>
+                                <ui:FloatField name="McCoyPlusFacehardM79DensityRatioField" label="Density Ratio" >
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-143)"/>
+                                    </Bindings>
+                                </ui:FloatField>
+                                <ui:FloatField name="McCoyPlusFacehardM79TemperatureField" label="Temperature" >
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-213)"/>
+                                    </Bindings>
+                                </ui:FloatField>
+                                <ui:FloatField name="McCoyPlusFacehardM79MatchHeightField" label="Match Height" >
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-160)"/>
+                                    </Bindings>
+                                </ui:FloatField>
+                                <ui:TextField name="McCoyPlusFacehardM79DragTableField" label="Mach-CD Drag Table" multiline="true" style="height: 120px;" >
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-158)"/>
+                                    </Bindings>
+                                </ui:TextField>
                             </ui:ScrollView>
                         </ui:Tab>
                     </ui:TabView>
                 </ui:ScrollView>
-                <ui:ScrollView name="McCoyPlusFacehardM79Output" mode="Vertical" class="mccoy-okun-output" style="flex-grow: 1; flex-shrink: 1;"><ui:DropdownField name="McCoyPlusFacehardM79ChartModeField" label="Chart Mode" /><ui:VisualElement name="McCoyPlusFacehardM79OutputContent" /></ui:ScrollView>
+                <ui:ScrollView name="McCoyPlusFacehardM79Output" mode="Vertical" class="mccoy-okun-output" style="flex-grow: 1; flex-shrink: 1;"><ui:DropdownField name="McCoyPlusFacehardM79ChartModeField" label="Chart Mode" >
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-140)"/>
+                    </Bindings>
+                </ui:DropdownField><ui:VisualElement name="McCoyPlusFacehardM79OutputContent" /></ui:ScrollView>
             </ui:VisualElement>
             </ui:Tab>
             <ui:Tab label="McCoy Plus M79">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-168)"/>
+                </Bindings>
             <ui:VisualElement name="McCoyPlusM79Page" class="mccoy-okun-page" style="flex-direction: row; flex-grow: 1; flex-shrink: 1;">
                 <ui:ScrollView name="McCoyPlusM79Input" mode="Vertical" class="mccoy-okun-input" style="flex-basis: 340px; flex-shrink: 0; margin-right: 8px;">
-                    <ui:VisualElement style="flex-direction: row; margin-bottom: 6px;"><ui:Label text="McCoy Plus M79 APCLC" style="-unity-font-style: bold; flex-grow: 1;" /><ui:Button name="McCoyPlusM79ResetButton" text="Reset" /></ui:VisualElement>
-                    <ui:DropdownField name="McCoyPlusM79SampleField" label="Sample" />
-                    <ui:Label text="M79 Inputs" style="-unity-font-style: bold; margin-top: 8px; margin-bottom: 4px;" />
-                    <ui:FloatField name="McCoyPlusM79ProjectileDiameterField" label="Projectile Diameter" />
-                    <ui:FloatField name="McCoyPlusM79ProjectileWeightField" label="Projectile Weight" />
-                    <ui:FloatField name="McCoyPlusM79MuzzleVelocityField" label="Muzzle Velocity" />
-                    <ui:FloatField name="McCoyPlusM79BallisticCoefficientField" label="Ballistic Coefficient" />
-                    <ui:FloatField name="McCoyPlusM79MaxRangeField" label="Maximum Range" />
-                    <ui:FloatField name="McCoyPlusM79MatchHeightField" label="Match Height" />
-                    <ui:DropdownField name="McCoyPlusM79ElevationSearchField" label="Elevation Search" />
-                    <ui:DropdownField name="McCoyPlusM79AtmosphereField" label="Atmosphere Model" />
-                    <ui:FloatField name="McCoyPlusM79DensityRatioField" label="Density Ratio" />
-                    <ui:FloatField name="McCoyPlusM79TemperatureField" label="Temperature" />
-                    <ui:FloatField name="McCoyPlusM79ArmorQualityField" label="Armor Quality" />
-                    <ui:FloatField name="McCoyPlusM79ElongationField" label="Elongation" />
-                    <ui:DropdownField name="McCoyPlusM79PresetField" label="Mach-CD Preset" />
-                    <ui:TextField name="McCoyPlusM79DragTableField" label="Mach-CD Drag Table" multiline="true" style="height: 120px;" />
+                    <ui:VisualElement style="flex-direction: row; margin-bottom: 6px;"><ui:Label text="McCoy Plus M79 APCLC" style="-unity-font-style: bold; flex-grow: 1;" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-169)"/>
+                        </Bindings>
+                    </ui:Label><ui:Button name="McCoyPlusM79ResetButton" text="Reset" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-202)"/>
+                        </Bindings>
+                    </ui:Button></ui:VisualElement>
+                    <ui:DropdownField name="McCoyPlusM79SampleField" label="Sample" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-209)"/>
+                        </Bindings>
+                    </ui:DropdownField>
+                    <ui:Label text="M79 Inputs" style="-unity-font-style: bold; margin-top: 8px; margin-bottom: 4px;" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-157)"/>
+                        </Bindings>
+                    </ui:Label>
+                    <ui:FloatField name="McCoyPlusM79ProjectileDiameterField" label="Projectile Diameter" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-191)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="McCoyPlusM79ProjectileWeightField" label="Projectile Weight" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-196)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="McCoyPlusM79MuzzleVelocityField" label="Muzzle Velocity" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-175)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="McCoyPlusM79BallisticCoefficientField" label="Ballistic Coefficient" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-131)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="McCoyPlusM79MaxRangeField" label="Maximum Range" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-162)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="McCoyPlusM79MatchHeightField" label="Match Height" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-160)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:DropdownField name="McCoyPlusM79ElevationSearchField" label="Elevation Search" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-145)"/>
+                        </Bindings>
+                    </ui:DropdownField>
+                    <ui:DropdownField name="McCoyPlusM79AtmosphereField" label="Atmosphere Model" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-127)"/>
+                        </Bindings>
+                    </ui:DropdownField>
+                    <ui:FloatField name="McCoyPlusM79DensityRatioField" label="Density Ratio" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-143)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="McCoyPlusM79TemperatureField" label="Temperature" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-213)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="McCoyPlusM79ArmorQualityField" label="Armor Quality" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-125)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="McCoyPlusM79ElongationField" label="Elongation" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-146)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:DropdownField name="McCoyPlusM79PresetField" label="Mach-CD Preset" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-159)"/>
+                        </Bindings>
+                    </ui:DropdownField>
+                    <ui:TextField name="McCoyPlusM79DragTableField" label="Mach-CD Drag Table" multiline="true" style="height: 120px;" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-158)"/>
+                        </Bindings>
+                    </ui:TextField>
                 </ui:ScrollView>
-                <ui:ScrollView name="McCoyPlusM79Output" mode="Vertical" class="mccoy-okun-output" style="flex-grow: 1; flex-shrink: 1;"><ui:DropdownField name="McCoyPlusM79ChartModeField" label="Chart Mode" /><ui:VisualElement name="McCoyPlusM79OutputContent" /></ui:ScrollView>
+                <ui:ScrollView name="McCoyPlusM79Output" mode="Vertical" class="mccoy-okun-output" style="flex-grow: 1; flex-shrink: 1;"><ui:DropdownField name="McCoyPlusM79ChartModeField" label="Chart Mode" >
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-140)"/>
+                    </Bindings>
+                </ui:DropdownField><ui:VisualElement name="McCoyPlusM79OutputContent" /></ui:ScrollView>
             </ui:VisualElement>
             </ui:Tab>
             <ui:Tab label="JBM">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-151)"/>
+                </Bindings>
             <ui:VisualElement name="JbmPage" class="mccoy-okun-page" style="flex-direction: row; flex-grow: 1; flex-shrink: 1;">
                 <ui:ScrollView name="JbmInput" mode="Vertical" class="mccoy-okun-input" style="flex-basis: 340px; flex-shrink: 0; margin-right: 8px;">
-                    <ui:VisualElement style="flex-direction: row; margin-bottom: 6px;"><ui:Label text="JBM / McCoy Aerodynamics" style="-unity-font-style: bold; flex-grow: 1;" /><ui:Button name="JbmResetButton" text="Reset" /></ui:VisualElement>
-                    <ui:DropdownField name="JbmProgramField" label="Program" />
-                    <ui:TextField name="JbmProjectileIdField" label="Projectile ID" />
-                    <ui:FloatField name="JbmReferenceDiameterField" label="Reference Diameter" />
-                    <ui:FloatField name="JbmTotalLengthField" label="Total Length" />
-                    <ui:FloatField name="JbmNoseLengthField" label="Nose Length" />
-                    <ui:FloatField name="JbmTangentRadiusRatioField" label="RT/R" />
-                    <ui:FloatField name="JbmBoattailLengthField" label="Boattail Length" />
-                    <ui:FloatField name="JbmBaseDiameterField" label="Base Diameter" />
-                    <ui:FloatField name="JbmMeplatDiameterField" label="Meplat Diameter" />
-                    <ui:FloatField name="JbmProjectileDensityField" label="Projectile Density" />
-                    <ui:FloatField name="JbmRiflingTwistField" label="Rifling Twist" />
-                    <ui:FloatField name="JbmCenterOfGravityField" label="Center of Gravity" />
-                    <ui:FloatField name="JbmRotatingBandDiameterField" label="Rotating Band Diameter" />
-                    <ui:DropdownField name="JbmBoundaryLayerField" label="Boundary Layer" />
+                    <ui:VisualElement style="flex-direction: row; margin-bottom: 6px;"><ui:Label text="JBM / McCoy Aerodynamics" style="-unity-font-style: bold; flex-grow: 1;" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-152)"/>
+                        </Bindings>
+                    </ui:Label><ui:Button name="JbmResetButton" text="Reset" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-202)"/>
+                        </Bindings>
+                    </ui:Button></ui:VisualElement>
+                    <ui:DropdownField name="JbmProgramField" label="Program" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-187)"/>
+                        </Bindings>
+                    </ui:DropdownField>
+                    <ui:TextField name="JbmProjectileIdField" label="Projectile ID" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-192)"/>
+                        </Bindings>
+                    </ui:TextField>
+                    <ui:FloatField name="JbmReferenceDiameterField" label="Reference Diameter" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-200)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="JbmTotalLengthField" label="Total Length" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-214)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="JbmNoseLengthField" label="Nose Length" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-176)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="JbmTangentRadiusRatioField" label="RT/R" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-206)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="JbmBoattailLengthField" label="Boattail Length" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-133)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="JbmBaseDiameterField" label="Base Diameter" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-132)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="JbmMeplatDiameterField" label="Meplat Diameter" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-172)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="JbmProjectileDensityField" label="Projectile Density" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-190)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="JbmRiflingTwistField" label="Rifling Twist" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-203)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="JbmCenterOfGravityField" label="Center of Gravity" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-139)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:FloatField name="JbmRotatingBandDiameterField" label="Rotating Band Diameter" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-204)"/>
+                        </Bindings>
+                    </ui:FloatField>
+                    <ui:DropdownField name="JbmBoundaryLayerField" label="Boundary Layer" >
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-135)"/>
+                        </Bindings>
+                    </ui:DropdownField>
                 </ui:ScrollView>
                 <ui:ScrollView name="JbmOutput" mode="Vertical" class="mccoy-okun-output" style="flex-grow: 1; flex-shrink: 1;"><ui:VisualElement name="JbmOutputContent" /></ui:ScrollView>
             </ui:VisualElement>

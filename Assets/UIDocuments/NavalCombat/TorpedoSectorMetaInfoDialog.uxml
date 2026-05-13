@@ -1,0 +1,50 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement data-source-type="TorpedoSectorMetaInfoDialog, Assembly-CSharp" class="panel-dialog" style="width: 360px; height: auto;">
+        <ui:Label text="Torpedo Sector Meta Info" class="title">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-120)"/>
+            </Bindings>
+        </ui:Label>
+        <ui:Toggle label="Has Meta Info" name="HasMetaInfoToggle">
+            <Bindings>
+                <ui:DataBinding property="value" data-source-path="hasMetaInfo" binding-mode="TwoWay"/>
+                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-121)"/>
+            </Bindings>
+        </ui:Toggle>
+        <ui:VisualElement name="MetaInfoContainer" style="margin-top: 6px; margin-bottom: 6px;">
+            <ui:FloatField label="Warhead (lb)" name="WarheadLbField">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="torpedoSector.metaInfo.warheadLb" binding-mode="TwoWay"/>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-122)"/>
+                </Bindings>
+            </ui:FloatField>
+            <ui:FloatField label="Diameter (in)" name="DiameterInField">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="torpedoSector.metaInfo.diameterIn" binding-mode="TwoWay"/>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-123)"/>
+                </Bindings>
+            </ui:FloatField>
+            <ui:IntegerField label="Year" name="YearField">
+                <Bindings>
+                    <ui:DataBinding property="value" data-source-path="torpedoSector.metaInfo.year" binding-mode="TwoWay"/>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(176249026285568)"/>
+                </Bindings>
+            </ui:IntegerField>
+            <ui:Button text="Infer Other" name="InferOtherButton" style="margin-top: 4px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-111)"/>
+                </Bindings>
+            </ui:Button>
+            <Bindings>
+                <ui:DataBinding property="style.display" data-source-path="hasMetaInfo" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
+            </Bindings>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-direction: row; flex-shrink: 0;">
+            <ui:Button text="Confirm" name="ConfirmButton" style="flex-grow: 1;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66345015873536)"/>
+                </Bindings>
+            </ui:Button>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -2007,7 +2007,7 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
 
     static float GetFireControlAspectFactor(TargetAspect targetAspect)
     {
-        return targetAspect == TargetAspect.Narrow ? 0.6005f : 1f;
+        return targetAspect == TargetAspect.Narrow ? 0.6f : 1f;
     }
 
     static float GetFireControlRangeBandFactor(RangeBand rangeBand)

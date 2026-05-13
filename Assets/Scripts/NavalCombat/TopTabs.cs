@@ -498,6 +498,8 @@ public class TopTabs : SingletonDocument<TopTabs>
                     break;
             }
         }
+
+        GameManager.Instance.setToFormationPositionButtonClicked?.Invoke(this, EventArgs.Empty);
     }
 
     void ReverseControlChain()

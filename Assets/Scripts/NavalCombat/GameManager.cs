@@ -411,6 +411,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public EventHandler shipLogClicked;
     public EventHandler insertShipToMapDialogOpened;
     public EventHandler shipStateInsertedToMap;
+    public EventHandler setToFormationPositionButtonClicked;
     public EventHandler firstRemainOneOperationalFleetPrompted;
     public EventHandler reachEndDateTimePrompted;
 

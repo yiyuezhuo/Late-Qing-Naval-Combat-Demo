@@ -25,6 +25,7 @@ namespace NavalCombat
         OrderOfBattleEditorShown,
         InsertShipToMapDialogOpened,
         ShipStateInsertedToMap,
+        SetToFormationPositionButtonClicked,
         FirstRemainOneOperationalFleetPrompted,
         ReachEndDateTimePrompted
     }
@@ -146,6 +147,10 @@ namespace NavalCombat
                 {
                     ResetAndBind(ref manager.shipStateInsertedToMap, grouping);
                 }
+                else if (eventType == EventType.SetToFormationPositionButtonClicked)
+                {
+                    ResetAndBind(ref manager.setToFormationPositionButtonClicked, grouping);
+                }
                 else if (eventType == EventType.FirstRemainOneOperationalFleetPrompted)
                 {
                     ResetAndBind(ref manager.firstRemainOneOperationalFleetPrompted, grouping);
@@ -173,6 +178,7 @@ namespace NavalCombat
             manager.shipLogClicked = null;
             manager.insertShipToMapDialogOpened = null;
             manager.shipStateInsertedToMap = null;
+            manager.setToFormationPositionButtonClicked = null;
             manager.firstRemainOneOperationalFleetPrompted = null;
             manager.reachEndDateTimePrompted = null;
             switchCenter.shipLogViewShown = null;

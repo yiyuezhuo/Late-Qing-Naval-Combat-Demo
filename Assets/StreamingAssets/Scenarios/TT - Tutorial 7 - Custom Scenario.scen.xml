@@ -196,7 +196,7 @@
     <isBuiltin>false</isBuiltin>
    </backgroundPictureReference>
    <disableFirstRemainOneOperationalFleetPrompt>false</disableFirstRemainOneOperationalFleetPrompt>
-   <disableStartupAIDialog>false</disableStartupAIDialog>
+   <disableStartupAIDialog>true</disableStartupAIDialog>
   </scenarioState>
   <launchedTorpedos />
   <tempSubjectLogs />
@@ -237,6 +237,14 @@
     <eventType>ShipStateInsertedToMap</eventType>
     <pathReference>
      <path>ScenarioScripts\Tutorial 7 - Ship State Inserted.js</path>
+     <isBuiltin>true</isBuiltin>
+    </pathReference>
+   </EventItem>
+   <EventItem>
+    <name>Set To Formation Position Button Clicked</name>
+    <eventType>SetToFormationPositionButtonClicked</eventType>
+    <pathReference>
+     <path>ScenarioScripts\Tutorial 7 - Set To Formation Position Button Clicked.js</path>
      <isBuiltin>true</isBuiltin>
     </pathReference>
    </EventItem>

@@ -215,6 +215,7 @@ public partial class MarkdownRenderer : BindableElement
         var scroller = new ScrollView(ScrollViewMode.Horizontal);
         scroller.verticalScrollerVisibility = ScrollerVisibility.Hidden;
         scroller.horizontalScrollerVisibility = ScrollerVisibility.Auto;
+        scroller.RegisterCallback<WheelEvent>(OnTableWheel, TrickleDown.TrickleDown);
         scroller.AddToClassList("markdown-table-scroll");
 
         var tableElement = new VisualElement();
@@ -261,6 +262,34 @@ public partial class MarkdownRenderer : BindableElement
 
         scroller.Add(tableElement);
         parent.Add(scroller);
+    }
+
+    void OnTableWheel(WheelEvent evt)
+    {
+        if (evt.shiftKey)
+            return;
+
+        var tableScrollView = evt.currentTarget as ScrollView;
+        var outerScrollView = FindOuterScrollView(tableScrollView);
+        if (outerScrollView == null)
+            return;
+
+        outerScrollView.scrollOffset += new Vector2(0, evt.delta.y * 18f);
+        evt.StopImmediatePropagation();
+    }
+
+    static ScrollView FindOuterScrollView(VisualElement element)
+    {
+        var current = element?.parent;
+        while (current != null)
+        {
+            if (current is ScrollView scrollView)
+                return scrollView;
+
+            current = current.parent;
+        }
+
+        return null;
     }
 
     List<float> CalculateTableColumnWidths(List<TableRow> rows)

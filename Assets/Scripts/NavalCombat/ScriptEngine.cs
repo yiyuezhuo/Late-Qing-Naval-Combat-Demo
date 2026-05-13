@@ -25,6 +25,7 @@ public class ScriptEngine
         engine.SetValue("GameManager", TypeReference.CreateTypeReference<GameManager>(engine));
         engine.SetValue("msgBox", new Action<object>(Msg));
         engine.SetValue("msgBoxDelay", new Action<object, object>(MsgDelay));
+        engine.SetValue("markdownBox", new Action<object>(Markdown));
         engine.SetValue("getShipLogByName", new Func<object, object>(GetShipLogByName));
         engine.SetValue("getDistanceYard", new Func<object, object, float>(GetDistanceYard));
         engine.SetValue("getPositiveAngleDifference", new Func<object, object, float>(GetPositiveAngleDifference));
@@ -138,6 +139,21 @@ public class ScriptEngine
         var _msg = msg as string;
         var _seconds = (float)(double)seconds;
         BehaviourUtils.Instance.StartCoroutine(DoMsgDelay(_msg, _seconds));
+    }
+
+    static IEnumerator DoMarkdownDelay(string markdown, float seconds)
+    {
+        // Tutorial prompts should still appear when naval simulation is paused (timeScale = 0).
+        yield return new WaitForSecondsRealtime(seconds);
+        if (GameManager.Instance != null)
+            GameManager.Instance.StopAutoPlay();
+        DialogRoot.Instance.PopupMarkdownDialog(markdown);
+    }
+
+    static void Markdown(object markdown)
+    {
+        var _markdown = markdown as string;
+        BehaviourUtils.Instance.StartCoroutine(DoMarkdownDelay(_markdown, 0.0f));
     }
 
     public void Execute(string script)

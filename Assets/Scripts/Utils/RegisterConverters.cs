@@ -182,6 +182,8 @@ public static class RegisteredConverters
         RegisterEnumIntTwoWay<DirectorControlType>();
         RegisterEnumIntTwoWay<StabilizationType>();
         RegisterEnumIntTwoWay<PowerRemoteControlType>();
+        RegisterEnumIntTwoWay<FireControlSystemRole>();
+        RegisterEnumIntTwoWay<FireControlSystemEra>();
         RegisterEnumIntTwoWay<MountLocation>();
         RegisterEnumIntTwoWay<TorpedoPistolType>();
 

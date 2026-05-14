@@ -2253,7 +2253,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 36678942066380800
-    m_Key: SK5 Code
+    m_Key: Fire Control Code
     m_Metadata:
       m_Items: []
   - m_Id: 36692937234092032
@@ -3664,6 +3664,14 @@ MonoBehaviour:
       m_Items: []
   - m_Id: -218
     m_Key: Wood Backing
+    m_Metadata:
+      m_Items: []
+  - m_Id: -219
+    m_Key: FireControlSystem.Role
+    m_Metadata:
+      m_Items: []
+  - m_Id: -220
+    m_Key: FireControlSystem.Era
     m_Metadata:
       m_Items: []
   m_Metadata:

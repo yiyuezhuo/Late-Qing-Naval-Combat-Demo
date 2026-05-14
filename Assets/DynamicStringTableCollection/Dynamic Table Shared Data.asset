@@ -5002,6 +5002,26 @@ MonoBehaviour:
     m_Key: Clear & Close
     m_Metadata:
       m_Items: []
+  - m_Id: -482
+    m_Key: FireControlSystemRole.Primary
+    m_Metadata:
+      m_Items: []
+  - m_Id: -483
+    m_Key: FireControlSystemRole.Secondary
+    m_Metadata:
+      m_Items: []
+  - m_Id: -484
+    m_Key: FireControlSystemEra.Predreadnought
+    m_Metadata:
+      m_Items: []
+  - m_Id: -485
+    m_Key: FireControlSystemEra.WorldWarI
+    m_Metadata:
+      m_Items: []
+  - m_Id: -486
+    m_Key: FireControlSystemEra.WorldWarII
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

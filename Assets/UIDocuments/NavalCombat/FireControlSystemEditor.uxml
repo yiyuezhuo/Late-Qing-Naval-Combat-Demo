@@ -1,5 +1,17 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:VisualElement data-source-type="NavalCombatCore.FireControlSystem, Assembly-CSharp" style="flex-grow: 1;">
+        <LocalizedEnumField label="Role" type-str="NavalCombatCore.FireControlSystemRole">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-219)"/>
+                <ui:DataBinding property="value" data-source-path="roleProp" binding-mode="TwoWay" source-to-ui-converters="FireControlSystemRole =&gt; int" ui-to-source-converters="int =&gt; FireControlSystemRole"/>
+            </Bindings>
+        </LocalizedEnumField>
+        <LocalizedEnumField label="Era" type-str="NavalCombatCore.FireControlSystemEra">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-220)"/>
+                <ui:DataBinding property="value" data-source-path="eraProp" binding-mode="TwoWay" source-to-ui-converters="FireControlSystemEra =&gt; int" ui-to-source-converters="int =&gt; FireControlSystemEra"/>
+            </Bindings>
+        </LocalizedEnumField>
         <ui:VisualElement style="flex-direction: row;">
             <ui:EnumField label="Code" value="Center" type="NavalCombatCore.FCSCode, Assembly-CSharp" name="FireControlCodeField" style="flex-grow: 1;">
                 <Bindings>

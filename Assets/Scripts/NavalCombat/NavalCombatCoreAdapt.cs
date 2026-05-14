@@ -1164,6 +1164,22 @@ namespace NavalCombatCore
     {
         [XmlIgnore]
         [CreateProperty]
+        public FireControlSystemRole roleProp
+        {
+            get => role;
+            set => role = value;
+        }
+
+        [XmlIgnore]
+        [CreateProperty]
+        public FireControlSystemEra eraProp
+        {
+            get => era;
+            set => era = value;
+        }
+
+        [XmlIgnore]
+        [CreateProperty]
         public FCSCode codeProp
         {
             get => code;

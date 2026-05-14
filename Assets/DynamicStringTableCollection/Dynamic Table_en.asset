@@ -5011,6 +5011,26 @@ MonoBehaviour:
     m_Localized: 'Clear & Close'
     m_Metadata:
       m_Items: []
+  - m_Id: -482
+    m_Localized: Primary (1)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -483
+    m_Localized: Secondary (2)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -484
+    m_Localized: Predreadnought (1)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -485
+    m_Localized: World War I (2)
+    m_Metadata:
+      m_Items: []
+  - m_Id: -486
+    m_Localized: World War II (3)
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

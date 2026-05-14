@@ -37,6 +37,8 @@
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>X</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -226,6 +228,8 @@
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -561,6 +565,8 @@
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>X</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -750,6 +756,8 @@
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -1090,6 +1098,8 @@
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -1279,6 +1289,8 @@
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -1603,6 +1615,8 @@
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>X</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -1792,6 +1806,8 @@
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -2121,6 +2137,8 @@ SK5 data book seems to forget to update Akitsushima's fire control table to refl
     <maxRateOfFireShootPerMin>0.4</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -2269,6 +2287,8 @@ SK5 data book seems to forget to update Akitsushima's fire control table to refl
     <maxRateOfFireShootPerMin>5</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -2586,6 +2606,8 @@ Of course, these two classifications make no practical difference aside from the
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>S</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -2944,6 +2966,8 @@ Of course, these two classifications make no practical difference aside from the
     <maxRateOfFireShootPerMin>0.8</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -3073,6 +3097,8 @@ Of course, these two classifications make no practical difference aside from the
     <maxRateOfFireShootPerMin>4</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -3377,6 +3403,8 @@ Chi Yuan or Jiyuan</remark>
     <maxRateOfFireShootPerMin>5</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -3710,6 +3738,8 @@ Chi Yuan or Jiyuan</remark>
     <maxRateOfFireShootPerMin>0.6</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -3856,9 +3886,11 @@ Chi Yuan or Jiyuan</remark>
     <maxRateOfFireShootPerMin>4</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
-     <code>Y</code>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
+     <code>Z</code>
      <gunSight>Basic</gunSight>
-     <fireControlInstrument>Basic</fireControlInstrument>
+     <fireControlInstrument>None</fireControlInstrument>
      <rangeFinder>None</rangeFinder>
      <directorControl>None</directorControl>
      <stabilization>Manual</stabilization>
@@ -4159,6 +4191,8 @@ Ting Yuen or Dingyuan</remark>
     <maxRateOfFireShootPerMin>0.6</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>T</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -4305,6 +4339,8 @@ Ting Yuen or Dingyuan</remark>
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -4636,6 +4672,8 @@ Acquisition &amp; modified by Japan in 1895</remark>
     <maxRateOfFireShootPerMin>0.8</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -4780,6 +4818,8 @@ Acquisition &amp; modified by Japan in 1895</remark>
     <maxRateOfFireShootPerMin>3</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -5059,6 +5099,8 @@ I can't see why SK5 classify a Unprotected Cruiser to CA though.</remark>
     <maxRateOfFireShootPerMin>1</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -5210,6 +5252,8 @@ I can't see why SK5 classify a Unprotected Cruiser to CA though.</remark>
     <maxRateOfFireShootPerMin>4</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -5524,6 +5568,8 @@ For some reason, SK5 classify it to CA</remark>
     <maxRateOfFireShootPerMin>0.8</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -5656,6 +5702,8 @@ For some reason, SK5 classify it to CA</remark>
     <maxRateOfFireShootPerMin>4</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -5940,6 +5988,8 @@ King Yuan or Jingyuan</remark>
     <maxRateOfFireShootPerMin>0.5</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -6079,6 +6129,8 @@ King Yuan or Jingyuan</remark>
     <maxRateOfFireShootPerMin>4</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -6365,9 +6417,11 @@ Ping Yuen or Pingyuan
     <maxRateOfFireShootPerMin>4</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
-     <code>Z</code>
+     <role>Primary</role>
+     <era>Predreadnought</era>
+     <code>Y</code>
      <gunSight>Basic</gunSight>
-     <fireControlInstrument>None</fireControlInstrument>
+     <fireControlInstrument>Basic</fireControlInstrument>
      <rangeFinder>None</rangeFinder>
      <directorControl>None</directorControl>
      <stabilization>Manual</stabilization>
@@ -6494,6 +6548,8 @@ Ping Yuen or Pingyuan
     <maxRateOfFireShootPerMin>4</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -6763,6 +6819,8 @@ Ping Yuen or Pingyuan
     <maxRateOfFireShootPerMin>4</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -6895,6 +6953,8 @@ Ping Yuen or Pingyuan
     <maxRateOfFireShootPerMin>4</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -7296,6 +7356,8 @@ Fu Lung or Fulong
     <maxRateOfFireShootPerMin>0.8</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -7444,6 +7506,8 @@ Fu Lung or Fulong
     <maxRateOfFireShootPerMin>5</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -7763,6 +7827,8 @@ Fu Lung or Fulong
     <maxRateOfFireShootPerMin>0.3</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -7906,6 +7972,8 @@ Fu Lung or Fulong
     <maxRateOfFireShootPerMin>4.5</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -8299,6 +8367,8 @@ Itsukushima (厳島, 1891)
     <maxRateOfFireShootPerMin>0.3</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>S</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -8442,6 +8512,8 @@ Itsukushima (厳島, 1891)
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -8826,6 +8898,8 @@ Itsukushima (厳島, 1891)
     <maxRateOfFireShootPerMin>0.3</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -8969,6 +9043,8 @@ Itsukushima (厳島, 1891)
     <maxRateOfFireShootPerMin>4.5</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -9348,6 +9424,8 @@ For reason, it's classified as CA in SK5.
     <maxRateOfFireShootPerMin>0.3</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>S</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -9491,6 +9569,8 @@ For reason, it's classified as CA in SK5.
     <maxRateOfFireShootPerMin>4.5</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -9861,6 +9941,8 @@ For reason, it's classified as CA in SK5.
     <maxRateOfFireShootPerMin>3.5</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -10014,6 +10096,8 @@ For reason, it's classified as CA in SK5.
     <maxRateOfFireShootPerMin>4.5</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -10302,6 +10386,8 @@ Hiei (比叡, 1878)</remark>
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -10681,6 +10767,8 @@ Hiei (比叡, 1878)</remark>
     <maxRateOfFireShootPerMin>0.8</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -10810,6 +10898,8 @@ Hiei (比叡, 1878)</remark>
     <maxRateOfFireShootPerMin>3</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -11047,6 +11137,8 @@ Hiei (比叡, 1878)</remark>
     <maxRateOfFireShootPerMin>4.5</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -11303,6 +11395,8 @@ Hiei (比叡, 1878)</remark>
     <maxRateOfFireShootPerMin>3.5</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -11447,6 +11541,8 @@ Hiei (比叡, 1878)</remark>
     <maxRateOfFireShootPerMin>3</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -11748,6 +11844,8 @@ Cancel Armor Type Factor</remark>
     <maxRateOfFireShootPerMin>4.5</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -11880,6 +11978,8 @@ Cancel Armor Type Factor</remark>
     <maxRateOfFireShootPerMin>3</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -12139,6 +12239,8 @@ Cancel Armor Type Factor</remark>
     <maxRateOfFireShootPerMin>4.5</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -12307,6 +12409,8 @@ Cancel Armor Type Factor</remark>
     <maxRateOfFireShootPerMin>3</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -13823,6 +13927,8 @@ Draft &amp; Complement is placeholder.
     <maxRateOfFireShootPerMin>1</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>T</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -13995,6 +14101,8 @@ Draft &amp; Complement is placeholder.
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -14362,6 +14470,8 @@ Draft &amp; Complement is placeholder.
     <maxRateOfFireShootPerMin>1</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>S</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -14534,6 +14644,8 @@ Draft &amp; Complement is placeholder.
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -15194,6 +15306,8 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
     <maxRateOfFireShootPerMin>1.5</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Q</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -15382,6 +15496,8 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
     <maxRateOfFireShootPerMin>5</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -15837,6 +15953,8 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
     <maxRateOfFireShootPerMin>1.5</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>R</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -16025,6 +16143,8 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
     <maxRateOfFireShootPerMin>5</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -16462,6 +16582,8 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
     <maxRateOfFireShootPerMin>0.6</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>R</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -16636,6 +16758,8 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
     <maxRateOfFireShootPerMin>5</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>WorldWarI</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -16848,6 +16972,8 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
     <maxRateOfFireShootPerMin>5</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -17201,6 +17327,8 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
     <maxRateOfFireShootPerMin>2</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>T</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -17365,6 +17493,8 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -17734,6 +17864,8 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
     <maxRateOfFireShootPerMin>2</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>T</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -17898,6 +18030,8 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -18316,6 +18450,8 @@ Azuma or Adzuma (SK5 name)</remark>
     <maxRateOfFireShootPerMin>2</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>T</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -18480,6 +18616,8 @@ Azuma or Adzuma (SK5 name)</remark>
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -18848,6 +18986,8 @@ Azuma or Adzuma (SK5 name)</remark>
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>X</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -19178,6 +19318,8 @@ Sometime called Niitaka class.
     <maxRateOfFireShootPerMin>5</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>W</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -20261,6 +20403,8 @@ Sometime called Niitaka class.
     <maxRateOfFireShootPerMin>2</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>T</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -20425,6 +20569,8 @@ Sometime called Niitaka class.
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -20814,6 +20960,8 @@ Sometime called Niitaka class.
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>X</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -20971,6 +21119,8 @@ Sometime called Niitaka class.
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -21275,6 +21425,8 @@ Correction: SK5 length 37 -&gt; 307</remark>
     <maxRateOfFireShootPerMin>5</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>W</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -21763,6 +21915,8 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
     <maxRateOfFireShootPerMin>0.6</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>W</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -21913,6 +22067,8 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
     <maxRateOfFireShootPerMin>1.5</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -22049,6 +22205,8 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
     <maxRateOfFireShootPerMin>4</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -22344,6 +22502,8 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
     <maxRateOfFireShootPerMin>1</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>W</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -22508,6 +22668,8 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
     <maxRateOfFireShootPerMin>3</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>W</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -22672,11 +22834,13 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
     <maxRateOfFireShootPerMin>3</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
-     <code>W</code>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
+     <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
      <rangeFinder>None</rangeFinder>
-     <directorControl>FollowThePointer</directorControl>
+     <directorControl>None</directorControl>
      <stabilization>Manual</stabilization>
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
@@ -23901,6 +24065,8 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
     <maxRateOfFireShootPerMin>1</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Q</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -24065,6 +24231,8 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
     <maxRateOfFireShootPerMin>3</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>W</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -24504,6 +24672,8 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
     <maxRateOfFireShootPerMin>0.8</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>W</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -24682,6 +24852,8 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
     <maxRateOfFireShootPerMin>3</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>W</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -25078,6 +25250,8 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
     <maxRateOfFireShootPerMin>0.8</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Q</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -25256,6 +25430,8 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
     <maxRateOfFireShootPerMin>3</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>W</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -25652,6 +25828,8 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
     <maxRateOfFireShootPerMin>1</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>W</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -25816,6 +25994,8 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
     <maxRateOfFireShootPerMin>3</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>W</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -25980,6 +26160,8 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
     <maxRateOfFireShootPerMin>3</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -26368,6 +26550,8 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
     <maxRateOfFireShootPerMin>1.5</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>R</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -26532,6 +26716,8 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
     <maxRateOfFireShootPerMin>7</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>WorldWarI</era>
      <code>W</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -26948,6 +27134,8 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
     <maxRateOfFireShootPerMin>5</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>W</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -27416,6 +27604,8 @@ https://naval-encyclopedia.com/ww1/russia/askold-1900.php
     <maxRateOfFireShootPerMin>5</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>W</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -27821,6 +28011,8 @@ https://naval-encyclopedia.com/ww1/russia/askold-1900.php
     <maxRateOfFireShootPerMin>5</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>W</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -28216,6 +28408,8 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
     <maxRateOfFireShootPerMin>5</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>W</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -28934,6 +29128,8 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
     <maxRateOfFireShootPerMin>1</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>S</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -29105,6 +29301,8 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -29494,6 +29692,8 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
     <maxRateOfFireShootPerMin>1</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>S</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -29665,6 +29865,8 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -30052,6 +30254,8 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
     <maxRateOfFireShootPerMin>1</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>S</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -30223,6 +30427,8 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -30619,6 +30825,8 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
     <maxRateOfFireShootPerMin>2</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>T</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -30783,6 +30991,8 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -31165,6 +31375,8 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
     <maxRateOfFireShootPerMin>2</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>T</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -31329,6 +31541,8 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -31714,6 +31928,8 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -31935,6 +32151,8 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
     <maxRateOfFireShootPerMin>0.8</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>W</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -32176,6 +32394,8 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
     <maxRateOfFireShootPerMin>0.8</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -32388,6 +32608,8 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
     <maxRateOfFireShootPerMin>0.5</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -32538,6 +32760,8 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
     <maxRateOfFireShootPerMin>4</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -32820,6 +33044,8 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
     <maxRateOfFireShootPerMin>4.5</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -33109,6 +33335,8 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
     <maxRateOfFireShootPerMin>0.4</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -33248,6 +33476,8 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -33461,6 +33691,8 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
     <maxRateOfFireShootPerMin>0.4</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -33600,6 +33832,8 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>X</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -33753,6 +33987,8 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -33966,6 +34202,8 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
     <maxRateOfFireShootPerMin>0.8</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -34098,6 +34336,8 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>X</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -34325,6 +34565,8 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
     <maxRateOfFireShootPerMin>2</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>S</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -34476,6 +34718,8 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
     <maxRateOfFireShootPerMin>2</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>S</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -34628,6 +34872,8 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -34960,6 +35206,8 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
     <maxRateOfFireShootPerMin>2</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>S</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -35124,6 +35372,8 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -35504,6 +35754,8 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
     <maxRateOfFireShootPerMin>3</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -35787,6 +36039,8 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
     <maxRateOfFireShootPerMin>0.8</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>T</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -35937,6 +36191,8 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -36581,6 +36837,8 @@ https://ru.wikipedia.org/wiki/%D0%9C%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D1%86%D
     <maxRateOfFireShootPerMin>1.6</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>T</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -36745,6 +37003,8 @@ https://ru.wikipedia.org/wiki/%D0%9C%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D1%86%D
     <maxRateOfFireShootPerMin>8</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>U</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -37111,6 +37371,8 @@ Hai Qi (Hai Chi, 海圻) and Hai Tien (Hai Tian, 海天)
     <maxRateOfFireShootPerMin>5</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>U</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -37282,6 +37544,8 @@ Hai Qi (Hai Chi, 海圻) and Hai Tien (Hai Tian, 海天)
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -37627,6 +37891,8 @@ https://naval-encyclopedia.com/ww1/china/hai-yung-class-cruisers.php
     <maxRateOfFireShootPerMin>1.8</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>T</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -37791,6 +38057,8 @@ https://naval-encyclopedia.com/ww1/china/hai-yung-class-cruisers.php
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>T</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -38185,6 +38453,8 @@ Alternate history: Suppose the China had purchased this ship from Chile.
     <maxRateOfFireShootPerMin>1</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>T</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -38366,6 +38636,8 @@ Alternate history: Suppose the China had purchased this ship from Chile.
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>U</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -38719,6 +38991,8 @@ Alternate history: Suppose the China had purchased this ship from Chile.
     <maxRateOfFireShootPerMin>0.8</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -38868,6 +39142,8 @@ Alternate history: Suppose the China had purchased this ship from Chile.
     <maxRateOfFireShootPerMin>3</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -39173,6 +39449,8 @@ Alternate history: Suppose the China had purchased this ship from Chile. (In tru
     <maxRateOfFireShootPerMin>4</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>U</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -39330,6 +39608,8 @@ Alternate history: Suppose the China had purchased this ship from Chile. (In tru
     <maxRateOfFireShootPerMin>5</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -39819,6 +40099,8 @@ Alternate history: Suppose the China had purchased this ship from Chile.</remark
     <maxRateOfFireShootPerMin>1.5</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>T</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -39981,6 +40263,8 @@ Alternate history: Suppose the China had purchased this ship from Chile.</remark
     <maxRateOfFireShootPerMin>5</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -40346,6 +40630,8 @@ Alternate history: Suppose the China had purchased this ship from Argentina.</re
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>T</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -40518,6 +40804,8 @@ Alternate history: Suppose the China had purchased this ship from Argentina.</re
     <maxRateOfFireShootPerMin>5</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -40846,6 +41134,8 @@ https://naval-encyclopedia.com/ww1/argentina/9-de-julio.php</remark>
     <maxRateOfFireShootPerMin>0.8</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -41037,6 +41327,8 @@ https://naval-encyclopedia.com/ww1/argentina/9-de-julio.php</remark>
     <maxRateOfFireShootPerMin>3</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -41334,6 +41626,8 @@ https://naval-encyclopedia.com/ww1/argentina/9-de-julio.php</remark>
     <maxRateOfFireShootPerMin>0.5</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -41585,6 +41879,8 @@ https://zh.wikipedia.org/wiki/Epsilon%E7%B4%9A%E7%A0%B2%E8%89%87
     <maxRateOfFireShootPerMin>0.8</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -41726,6 +42022,8 @@ https://zh.wikipedia.org/wiki/Epsilon%E7%B4%9A%E7%A0%B2%E8%89%87
     <maxRateOfFireShootPerMin>4</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -42024,6 +42322,8 @@ https://www.historyofwar.org/articles/weapons_kai_che.html</remark>
     <maxRateOfFireShootPerMin>1.5</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -42177,6 +42477,8 @@ https://www.historyofwar.org/articles/weapons_kai_che.html</remark>
     <maxRateOfFireShootPerMin>3</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -42460,6 +42762,8 @@ https://www.historyofwar.org/articles/weapons_kai_che.html</remark>
     <maxRateOfFireShootPerMin>0.8</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -42601,6 +42905,8 @@ https://www.historyofwar.org/articles/weapons_kai_che.html</remark>
     <maxRateOfFireShootPerMin>4</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -42929,6 +43235,8 @@ https://www.historyofwar.org/articles/weapons_kai_che.html</remark>
     <maxRateOfFireShootPerMin>4</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -43070,6 +43378,8 @@ https://www.historyofwar.org/articles/weapons_kai_che.html</remark>
     <maxRateOfFireShootPerMin>4</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -43381,6 +43691,8 @@ https://www.historyofwar.org/articles/weapons_kai_che.html</remark>
     <maxRateOfFireShootPerMin>0.3</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -43524,6 +43836,8 @@ https://www.historyofwar.org/articles/weapons_kai_che.html</remark>
     <maxRateOfFireShootPerMin>0.6</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -43681,6 +43995,8 @@ https://www.historyofwar.org/articles/weapons_kai_che.html</remark>
     <maxRateOfFireShootPerMin>1.5</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -44079,6 +44395,8 @@ https://en.wikipedia.org/wiki/Russian_battleship_Imperator_Nikolai_I_(1889)</rem
     <maxRateOfFireShootPerMin>0.6</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -44253,6 +44571,8 @@ https://en.wikipedia.org/wiki/Russian_battleship_Imperator_Nikolai_I_(1889)</rem
     <maxRateOfFireShootPerMin>1.5</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -44633,6 +44953,8 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Nakhimov_(1885)
     <maxRateOfFireShootPerMin>0.6</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>R</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -44992,6 +45314,8 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Nakhimov_(1885)</remark>
     <maxRateOfFireShootPerMin>0.6</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -45142,6 +45466,8 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Nakhimov_(1885)</remark>
     <maxRateOfFireShootPerMin>1.5</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -45529,6 +45855,8 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Pamiat_Azova
     <maxRateOfFireShootPerMin>0.3</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -45696,6 +46024,8 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Pamiat_Azova
     <maxRateOfFireShootPerMin>2</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -46071,6 +46401,8 @@ Strange FC Code given by SK5 datasheet, which may overestimate its fire control 
     <maxRateOfFireShootPerMin>2</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>W</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -46452,6 +46784,8 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Kornilov</remark>
     <maxRateOfFireShootPerMin>1</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Q</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -46616,6 +46950,8 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Kornilov</remark>
     <maxRateOfFireShootPerMin>3</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>W</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -47049,6 +47385,8 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Kornilov</remark>
     <maxRateOfFireShootPerMin>1</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>W</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -47213,6 +47551,8 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Kornilov</remark>
     <maxRateOfFireShootPerMin>3</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>W</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -47578,6 +47918,8 @@ https://en.wikipedia.org/wiki/Russian_battleship_Sissoi_Veliky</remark>
     <maxRateOfFireShootPerMin>1</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Q</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -47742,6 +48084,8 @@ https://en.wikipedia.org/wiki/Russian_battleship_Sissoi_Veliky</remark>
     <maxRateOfFireShootPerMin>3</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>W</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -47906,6 +48250,8 @@ https://en.wikipedia.org/wiki/Russian_battleship_Sissoi_Veliky</remark>
     <maxRateOfFireShootPerMin>5</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -48265,6 +48611,8 @@ https://en.wikipedia.org/wiki/Russian_battleship_Sissoi_Veliky</remark>
     <maxRateOfFireShootPerMin>0.4</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Q</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -48422,6 +48770,8 @@ https://en.wikipedia.org/wiki/Russian_battleship_Sissoi_Veliky</remark>
     <maxRateOfFireShootPerMin>1.5</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>W</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -48799,6 +49149,8 @@ https://en.wikipedia.org/wiki/Russian_battleship_Navarin</remark>
     <maxRateOfFireShootPerMin>0.5</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -49103,6 +49455,8 @@ One of reference ship class of Ding Yuan
     <maxRateOfFireShootPerMin>0.6</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>T</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -49260,6 +49614,8 @@ One of reference ship class of Ding Yuan
     <maxRateOfFireShootPerMin>4.5</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -49603,6 +49959,8 @@ One of reference ship class of Ding Yuan
     <maxRateOfFireShootPerMin>2</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Q</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -49976,6 +50334,8 @@ Reference only, a new damage schema is required to work properly.
     <maxRateOfFireShootPerMin>2</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>WorldWarI</era>
      <code>Q</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -50171,6 +50531,8 @@ Reference only, a new damage schema is required to work properly.
     <maxRateOfFireShootPerMin>9</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>WorldWarI</era>
      <code>S</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -50506,6 +50868,8 @@ Reference only, a new damage schema is required to work properly.
     <maxRateOfFireShootPerMin>1.2</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>T</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -50662,6 +51026,8 @@ Reference only, a new damage schema is required to work properly.
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>WorldWarI</era>
      <code>T</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -50818,6 +51184,8 @@ Reference only, a new damage schema is required to work properly.
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -51138,6 +51506,8 @@ Reference only, a new damage schema is required to work properly.
     <maxRateOfFireShootPerMin>1</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -51287,6 +51657,8 @@ Reference only, a new damage schema is required to work properly.
     <maxRateOfFireShootPerMin>4</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -51633,6 +52005,8 @@ Reference only, a new damage schema is required to work properly.
     <maxRateOfFireShootPerMin>2.5</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>U</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -51960,6 +52334,8 @@ Reference only, a new damage schema is required to work properly.
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>T</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -52117,6 +52493,8 @@ Reference only, a new damage schema is required to work properly.
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -52458,6 +52836,8 @@ Reference only, a new damage schema is required to work properly.
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -53095,6 +53475,8 @@ Complement 50 is inferred.
     <maxRateOfFireShootPerMin>0.5</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>W</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -53233,6 +53615,8 @@ Complement 50 is inferred.
     <maxRateOfFireShootPerMin>0.4</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -53355,6 +53739,8 @@ Complement 50 is inferred.
     <maxRateOfFireShootPerMin>4</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -53725,6 +54111,8 @@ Sivuch or Gilyak</remark>
     <maxRateOfFireShootPerMin>5</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -53857,6 +54245,8 @@ Sivuch or Gilyak</remark>
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -54402,6 +54792,8 @@ https://www.history.navy.mil/our-collections/photography/numerical-list-of-image
     <maxRateOfFireShootPerMin>0.5</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -54708,6 +55100,8 @@ One of Ting Yuen's Reference class
     <maxRateOfFireShootPerMin>4</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>T</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -54880,6 +55274,8 @@ One of Ting Yuen's Reference class
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -55260,6 +55656,8 @@ One of Ting Yuen's Reference class
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>T</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -55634,6 +56032,8 @@ One of Ting Yuen's Reference class
     <maxRateOfFireShootPerMin>11</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -55960,6 +56360,8 @@ One of Ting Yuen's Reference class
     <maxRateOfFireShootPerMin>1</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>T</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -56115,6 +56517,8 @@ One of Ting Yuen's Reference class
     <maxRateOfFireShootPerMin>5.5</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -56486,6 +56890,8 @@ One of Ting Yuen's Reference class
     <maxRateOfFireShootPerMin>3</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>W</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -56636,6 +57042,8 @@ One of Ting Yuen's Reference class
     <maxRateOfFireShootPerMin>5</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -56984,6 +57392,8 @@ One of Ting Yuen's Reference class
     <maxRateOfFireShootPerMin>5</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -57247,6 +57657,8 @@ One of Ting Yuen's Reference class
     <maxRateOfFireShootPerMin>5</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>R</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -57421,6 +57833,8 @@ One of Ting Yuen's Reference class
     <maxRateOfFireShootPerMin>5</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>R</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -57767,6 +58181,8 @@ One of Ting Yuen's Reference class
     <maxRateOfFireShootPerMin>5</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>R</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -57941,6 +58357,8 @@ One of Ting Yuen's Reference class
     <maxRateOfFireShootPerMin>5</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>R</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -58271,6 +58689,8 @@ One of Ting Yuen's Reference class
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>R</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -58676,6 +59096,8 @@ One of Ting Yuen's Reference class
     <maxRateOfFireShootPerMin>2</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>T</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -59187,6 +59609,8 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -59499,6 +59923,8 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
     <maxRateOfFireShootPerMin>11</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -59811,6 +60237,8 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
     <maxRateOfFireShootPerMin>3</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -59933,6 +60361,8 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
     <maxRateOfFireShootPerMin>5</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -60090,6 +60520,8 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
     <maxRateOfFireShootPerMin>3</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -60287,6 +60719,8 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
     <maxRateOfFireShootPerMin>5</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -60433,6 +60867,8 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -60592,6 +61028,8 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
     <maxRateOfFireShootPerMin>3</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>W</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -60804,6 +61242,8 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
     <maxRateOfFireShootPerMin>5</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -60961,6 +61401,8 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
     <maxRateOfFireShootPerMin>3</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>W</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -61111,6 +61553,8 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
     <maxRateOfFireShootPerMin>4.5</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -61279,6 +61723,8 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>T</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -61441,6 +61887,8 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
     <maxRateOfFireShootPerMin>0.8</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>Z</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>None</fireControlInstrument>
@@ -61647,6 +62095,8 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
     <maxRateOfFireShootPerMin>5</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>W</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -61960,6 +62410,8 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
     <maxRateOfFireShootPerMin>0.5</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
      <code>T</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -62123,6 +62575,8 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
@@ -62279,6 +62733,8 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
+     <role>Secondary</role>
+     <era>Predreadnought</era>
      <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>

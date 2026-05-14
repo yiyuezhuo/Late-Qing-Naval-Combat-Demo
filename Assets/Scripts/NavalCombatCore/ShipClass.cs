@@ -98,6 +98,19 @@ namespace NavalCombatCore
         Full
     }
 
+    public enum FireControlSystemRole
+    {
+        Primary,
+        Secondary
+    }
+
+    public enum FireControlSystemEra
+    {
+        Predreadnought,
+        WorldWarI,
+        WorldWarII
+    }
+
     public enum FCSCode // SK5 Table A11 FIRE CONTROL SYSTEM DATA
     {
         Custom,
@@ -129,6 +142,8 @@ namespace NavalCombatCore
 
     public partial class FireControlSystem
     {
+        public FireControlSystemRole role;
+        public FireControlSystemEra era;
         public FCSCode code;
         public GunSightType gunSight; // Basic, Telescope
         public FireControlInstrumentType fireControlInstrument; // None, Basic, MechanicalComputer, AdvancedMechanicalComputer
@@ -152,7 +167,7 @@ namespace NavalCombatCore
 
         public override string ToString()
         {
-            return $"FireControlSystem({code}, {gunSight} {fireControlInstrument} {rangeFinder} {directorControl} {stabilization} {powerRemoteControl})";
+            return $"FireControlSystem({role} {code} {era}, {gunSight} {fireControlInstrument} {rangeFinder} {directorControl} {stabilization} {powerRemoteControl})";
         }
 
         static List<FireControlSystem> referenceFireControlSystems = new()

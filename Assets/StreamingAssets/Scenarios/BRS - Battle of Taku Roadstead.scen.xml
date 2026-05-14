@@ -10822,12 +10822,17 @@
      <string>380fcf8e-8e35-438e-a3bf-ab46760a7460</string>
     </childrenObjectIds>
     <name>
-     <english>British</english>
+     <english>China Station (GB)</english>
+     <japanese>中国艦隊 (GB)</japanese>
+     <chineseSimplified>中国舰队 (英)</chineseSimplified>
+     <chineseTraditional>中国艦隊 (GB)</chineseTraditional>
     </name>
     <remark>
-     <english>none</english>
+     <english>https://en.wikipedia.org/wiki/Commander-in-Chief,_China_(Royal_Navy)</english>
     </remark>
-    <leaderReference />
+    <leaderReference>
+     <referenceObjectId>7ace35ae-2ffa-4e58-adbd-4d0cca9ed8d3</referenceObjectId>
+    </leaderReference>
     <type>General</type>
     <formation>General</formation>
     <objectId>bf3842a1-e9e7-4574-871f-f6154110e304</objectId>
@@ -10899,12 +10904,19 @@
      <string>a44f39d8-84da-427a-9cd6-23e4e0293743</string>
     </childrenObjectIds>
     <name>
-     <english>Russian</english>
+     <english>Pacific Fleet (RU)</english>
+     <japanese>太平洋艦隊 (RU)</japanese>
+     <chineseSimplified>太平洋舰队 (俄)</chineseSimplified>
+     <chineseTraditional>太平洋艦隊 (RU)</chineseTraditional>
     </name>
     <remark>
-     <english>none</english>
+     <english>Первая Тихоокеанская эскадра
+
+https://ru.wikipedia.org/wiki/%D0%9F%D0%B5%D1%80%D0%B2%D0%B0%D1%8F_%D0%A2%D0%B8%D1%85%D0%BE%D0%BE%D0%BA%D0%B5%D0%B0%D0%BD%D1%81%D0%BA%D0%B0%D1%8F_%D1%8D%D1%81%D0%BA%D0%B0%D0%B4%D1%80%D0%B0</english>
     </remark>
-    <leaderReference />
+    <leaderReference>
+     <referenceObjectId>68103d70-ce29-4022-a090-3268ea2c6356</referenceObjectId>
+    </leaderReference>
     <type>General</type>
     <formation>General</formation>
     <objectId>18d5aebb-0cde-4596-b1dd-95030a8b3ec9</objectId>
@@ -10977,12 +10989,19 @@
      <string>46f6a687-e566-4080-bb49-c2f0f3688a63</string>
     </childrenObjectIds>
     <name>
-     <english>German</english>
+     <english>East Asia Squadron (GE)</english>
+     <japanese>東洋艦隊 (GE)</japanese>
+     <chineseSimplified>东亚分舰队 (德)</chineseSimplified>
+     <chineseTraditional>東亞分艦隊 (GE)</chineseTraditional>
     </name>
     <remark>
-     <english>none</english>
+     <english>Kreuzergeschwader / Ostasiengeschwader
+
+https://en.wikipedia.org/wiki/East_Asia_Squadron</english>
     </remark>
-    <leaderReference />
+    <leaderReference>
+     <referenceObjectId>98eea4d9-89cf-47ac-b6ba-ce48e1c01dbe</referenceObjectId>
+    </leaderReference>
     <type>General</type>
     <formation>General</formation>
     <objectId>7954933b-c4c7-483a-9f3b-a6a02a5c8421</objectId>
@@ -11055,12 +11074,19 @@
      <string>4b780065-35cd-448d-b091-1188de63a0b0</string>
     </childrenObjectIds>
     <name>
-     <english>French</english>
+     <english>Far East Squadron (FR)</english>
+     <japanese>極東艦隊 (FR)</japanese>
+     <chineseSimplified>远东舰队 (法)</chineseSimplified>
+     <chineseTraditional>遠東艦隊 (FR)</chineseTraditional>
     </name>
     <remark>
-     <english>none</english>
+     <english>escadre d'Extrême-Orient
+
+https://fr.wikipedia.org/wiki/Division_navale_d%27Extr%C3%AAme-Orient</english>
     </remark>
-    <leaderReference />
+    <leaderReference>
+     <referenceObjectId>e1e80c3e-9f3c-4a04-bdfa-498108933807</referenceObjectId>
+    </leaderReference>
     <type>General</type>
     <formation>General</formation>
     <objectId>1bb19191-d15d-47a0-93fe-7366e2f7e287</objectId>
@@ -11281,12 +11307,17 @@
      <string>69cfe838-4676-464c-baf1-68414b7a1357</string>
     </childrenObjectIds>
     <name>
-     <english>Japanese</english>
+     <english>Standing Fleet (JA)</english>
+     <japanese>常備艦隊</japanese>
+     <chineseSimplified>常备舰队</chineseSimplified>
+     <chineseTraditional>常備艦隊</chineseTraditional>
     </name>
     <remark>
-     <english>none</english>
+     <english>https://en.wikipedia.org/wiki/Standing_Fleet</english>
     </remark>
-    <leaderReference />
+    <leaderReference>
+     <referenceObjectId>bbdc13c1-a909-411c-b949-ad82485ab108</referenceObjectId>
+    </leaderReference>
     <type>General</type>
     <formation>General</formation>
     <objectId>544f2588-329f-4cf8-94e9-888fddce3bfe</objectId>
@@ -11356,12 +11387,17 @@
      <string>79d197e6-98c3-480d-b533-ad0c3ea785e3</string>
     </childrenObjectIds>
     <name>
-     <english>American</english>
+     <english>Asiatic Squadron (US)</english>
+     <japanese>アジア艦隊 (US)</japanese>
+     <chineseSimplified>亚洲分舰队 (美)</chineseSimplified>
+     <chineseTraditional>亞洲分艦隊 (US)</chineseTraditional>
     </name>
     <remark>
-     <english>none</english>
+     <english>https://en.wikipedia.org/wiki/Asiatic_Squadron</english>
     </remark>
-    <leaderReference />
+    <leaderReference>
+     <referenceObjectId>8e90bf3a-1069-43ef-a48a-bd361c0ec096</referenceObjectId>
+    </leaderReference>
     <type>General</type>
     <formation>General</formation>
     <objectId>c3943198-66b6-4d70-be17-a89f25a15b72</objectId>

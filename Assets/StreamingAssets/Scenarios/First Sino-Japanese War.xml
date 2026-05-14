@@ -16590,7 +16590,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>1060</supplyTons>
+    <supplyTons>1040</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -16741,7 +16741,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>1060</supplyTons>
+    <supplyTons>1040</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -16892,7 +16892,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>1060</supplyTons>
+    <supplyTons>1040</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -17043,7 +17043,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>1060</supplyTons>
+    <supplyTons>1040</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -32990,7 +32990,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>2195.740002155304</supplyTons>
+    <supplyTons>2291.2100021839142</supplyTons>
     <supplyGeneratedTons>100</supplyGeneratedTons>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
     <supplyTransferState>
@@ -33899,7 +33899,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>241622.84810531139</supplyTons>
+    <supplyTons>251621.34810531139</supplyTons>
     <supplyGeneratedTons>10000</supplyGeneratedTons>
     <remark>Generic Super Depot Supply Source.</remark>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
@@ -33943,7 +33943,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>259844.85125112534</supplyTons>
+    <supplyTons>269804.57324957848</supplyTons>
     <supplyGeneratedTons>10000</supplyGeneratedTons>
     <remark>Generic Super Depot Supply Source.</remark>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
@@ -34085,7 +34085,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>21287.202247142792</supplyTons>
+    <supplyTons>21207.321247577667</supplyTons>
     <supplyGeneratedTons>0</supplyGeneratedTons>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
     <supplyTransferState>
@@ -34238,7 +34238,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>110.03994905948639</supplyTons>
+    <supplyTons>96.284948408603668</supplyTons>
     <supplyGeneratedTons>0</supplyGeneratedTons>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
     <supplyTransferState>
@@ -34330,7 +34330,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>146.8800422847271</supplyTons>
+    <supplyTons>128.52004198729992</supplyTons>
     <supplyGeneratedTons>0</supplyGeneratedTons>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
     <supplyTransferState>
@@ -34471,7 +34471,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>24168.70968413353</supplyTons>
+    <supplyTons>24167.20968413353</supplyTons>
     <supplyGeneratedTons>0</supplyGeneratedTons>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
     <supplyTransferState>
@@ -34521,7 +34521,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>749.92515933513641</supplyTons>
+    <supplyTons>736.29015946388245</supplyTons>
     <supplyGeneratedTons>0</supplyGeneratedTons>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
     <supplyTransferState>
@@ -34627,7 +34627,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>2524.5</supplyTons>
+    <supplyTons>2523</supplyTons>
     <supplyGeneratedTons>0</supplyGeneratedTons>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
     <supplyTransferState>
@@ -35054,15 +35054,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
      <requestedRecords>
       <SupplyFlowRecord>
        <otherObjectId>08fca40c-4af4-451f-a9d9-f56efc40c2dd</otherObjectId>
-       <targetSupplyTons>3</targetSupplyTons>
-       <flowSupplyTons>3</flowSupplyTons>
-       <cost>0</cost>
-       <pathCells />
-      </SupplyFlowRecord>
-      <SupplyFlowRecord>
-       <otherObjectId>a22c5405-f69f-49ba-98fd-f2ba6a64ac01</otherObjectId>
-       <targetSupplyTons>43</targetSupplyTons>
-       <flowSupplyTons>43</flowSupplyTons>
+       <targetSupplyTons>1.5</targetSupplyTons>
+       <flowSupplyTons>1.5</flowSupplyTons>
        <cost>0</cost>
        <pathCells />
       </SupplyFlowRecord>
@@ -35413,8 +35406,8 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <supplyTransferState>
      <requestRecord>
       <otherObjectId>4c896c0a-7146-4e07-8696-1d684b426a83</otherObjectId>
-      <targetSupplyTons>3</targetSupplyTons>
-      <flowSupplyTons>3</flowSupplyTons>
+      <targetSupplyTons>1.5</targetSupplyTons>
+      <flowSupplyTons>1.5</flowSupplyTons>
       <cost>0</cost>
       <pathCells />
      </requestRecord>
@@ -35842,7 +35835,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>-3631.4000244140625</supplyTons>
+    <supplyTons>0</supplyTons>
     <supplyGeneratedTons>500</supplyGeneratedTons>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
     <supplyTransferState>
@@ -35857,62 +35850,6 @@ Each cavalry battalion has 277 personnel (excluding laborers)
        <otherObjectId>3d3334bc-2985-4a92-91f5-b61b3e744d13</otherObjectId>
        <targetSupplyTons>0</targetSupplyTons>
        <flowSupplyTons>0</flowSupplyTons>
-       <cost>0</cost>
-       <pathCells />
-      </SupplyFlowRecord>
-      <SupplyFlowRecord>
-       <otherObjectId>67ac4984-baca-4ff8-8e00-fff443d54107</otherObjectId>
-       <targetSupplyTons>1063.4000244140625</targetSupplyTons>
-       <flowSupplyTons>1063.4000244140625</flowSupplyTons>
-       <cost>0</cost>
-       <pathCells />
-      </SupplyFlowRecord>
-      <SupplyFlowRecord>
-       <otherObjectId>d42fd788-86be-4408-af13-a6ac6d734808</otherObjectId>
-       <targetSupplyTons>735</targetSupplyTons>
-       <flowSupplyTons>735</flowSupplyTons>
-       <cost>0</cost>
-       <pathCells />
-      </SupplyFlowRecord>
-      <SupplyFlowRecord>
-       <otherObjectId>63aae906-c867-47bb-a938-4b949457e061</otherObjectId>
-       <targetSupplyTons>560</targetSupplyTons>
-       <flowSupplyTons>560</flowSupplyTons>
-       <cost>0</cost>
-       <pathCells />
-      </SupplyFlowRecord>
-      <SupplyFlowRecord>
-       <otherObjectId>db814a26-3860-4cfa-aae1-36e9b261ed38</otherObjectId>
-       <targetSupplyTons>373</targetSupplyTons>
-       <flowSupplyTons>373</flowSupplyTons>
-       <cost>0</cost>
-       <pathCells />
-      </SupplyFlowRecord>
-      <SupplyFlowRecord>
-       <otherObjectId>fd16868f-d6ab-457c-9d1f-caebc9d8d846</otherObjectId>
-       <targetSupplyTons>350</targetSupplyTons>
-       <flowSupplyTons>350</flowSupplyTons>
-       <cost>0</cost>
-       <pathCells />
-      </SupplyFlowRecord>
-      <SupplyFlowRecord>
-       <otherObjectId>1ce2129c-b2d8-4104-853d-15e5a9c49376</otherObjectId>
-       <targetSupplyTons>350</targetSupplyTons>
-       <flowSupplyTons>350</flowSupplyTons>
-       <cost>0</cost>
-       <pathCells />
-      </SupplyFlowRecord>
-      <SupplyFlowRecord>
-       <otherObjectId>5c210d71-f762-42b4-b008-3e51b70bd2d9</otherObjectId>
-       <targetSupplyTons>350</targetSupplyTons>
-       <flowSupplyTons>350</flowSupplyTons>
-       <cost>0</cost>
-       <pathCells />
-      </SupplyFlowRecord>
-      <SupplyFlowRecord>
-       <otherObjectId>60667181-b77a-4c2d-ab2a-4f09bb59fcfd</otherObjectId>
-       <targetSupplyTons>350</targetSupplyTons>
-       <flowSupplyTons>350</flowSupplyTons>
        <cost>0</cost>
        <pathCells />
       </SupplyFlowRecord>
@@ -42182,10 +42119,10 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
    </StrategicGroup>
    <StrategicGroup>
     <name>
-     <english>Commander-in-Chief, China</english>
+     <english>China Station (GB)</english>
      <japanese>中国艦隊 (イギリス)</japanese>
-     <chineseSimplified>中国舰队 (英国)</chineseSimplified>
-     <chineseTraditional>中國艦隊 (英國)</chineseTraditional>
+     <chineseSimplified>中国舰队 (英)</chineseSimplified>
+     <chineseTraditional>中國艦隊 (英)</chineseTraditional>
     </name>
     <type>Fleet</type>
     <size>Division</size>

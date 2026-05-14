@@ -5285,4 +5285,72 @@ https://en.wikipedia.org/wiki/Edward_Seymour_(Royal_Navy_officer)
 </remark>
   <objectId>aa4fdb8c-0888-41f3-afe6-4cee0293f72a</objectId>
  </Leader>
+ <Leader>
+  <name>
+   <english>Felix von Bendemann</english>
+   <japanese>フェリックス・フォン・ベンデマン</japanese>
+   <chineseSimplified>费利克斯·冯·本德曼</chineseSimplified>
+   <chineseTraditional>費利克斯·馮·本德曼</chineseTraditional>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Felix von Bendemann.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Average</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>https://en.wikipedia.org/wiki/Felix_von_Bendemann</remark>
+  <objectId>98eea4d9-89cf-47ac-b6ba-ce48e1c01dbe</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Charles Courrejolles</english>
+   <japanese>シャルル・クレジョル </japanese>
+   <chineseSimplified>高礼睿</chineseSimplified>
+   <chineseTraditional>高禮睿</chineseTraditional>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\courrejolles.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Average</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>Charles Louis Théobald COURREJOLLES
+
+https://museedesetoiles.fr/piece/vice-amiral-courrejolles-2/
+</remark>
+  <objectId>e1e80c3e-9f3c-4a04-bdfa-498108933807</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>George Remey</english>
+   <japanese>ジョージ・レメイ</japanese>
+   <chineseSimplified>乔治·雷米</chineseSimplified>
+   <chineseTraditional>喬治·雷米</chineseTraditional>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\George C. Remey.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Average</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>George Collier Remey 
+
+https://en.wikipedia.org/wiki/George_C._Remey</remark>
+  <objectId>8e90bf3a-1069-43ef-a48a-bd361c0ec096</objectId>
+ </Leader>
 </ArrayOfLeader>

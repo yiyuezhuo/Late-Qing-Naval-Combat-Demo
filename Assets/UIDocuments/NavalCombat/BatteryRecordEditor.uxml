@@ -96,7 +96,7 @@
                     <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-107)"/>
                 </Bindings>
             </ui:Button>
-            <ui:Button text="Meta Info" name="BatteryRecordMetaInfoButton" style="flex-shrink: 0; margin-left: 4px;"/>
+            <ui:Button text="Meta Info" name="BatteryRecordMetaInfoButton" style="flex-shrink: 0; margin-left: 4px; display: none;"/>
             <ui:Button text="Meta Info (McCoy Okun)" name="BatteryRecordMetaInfoMcCoyOkunButton" style="flex-shrink: 0; margin-left: 4px;">
                 <Bindings>
                     <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-173)"/>

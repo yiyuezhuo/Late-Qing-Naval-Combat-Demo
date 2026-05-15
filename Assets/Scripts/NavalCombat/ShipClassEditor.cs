@@ -740,11 +740,33 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
                         return;
                     }
 
-                    UpdateFireControlTableFromCodeModel(selectedShipClass, batteryRecord);
-                    fireControlTableMultiColumnListView?.RefreshItems();
-                    DialogRoot.Instance.PopupMessageDialog(
-                        Localize("Fire control table reset from code model."),
-                        Localize("Reset Fire Control Table"));
+                    void ResetFromStandardCode()
+                    {
+                        if (!ResetFireControlTableFromStandardCode(batteryRecord))
+                        {
+                            DialogRoot.Instance.PopupMessageDialog(
+                                Localize("No standard fire control table is available for this Role/Code/Era combination."),
+                                Localize("Reset Fire Control Table"));
+                            return;
+                        }
+
+                        fireControlTableMultiColumnListView?.RefreshItems();
+                        DialogRoot.Instance.PopupMessageDialog(
+                            Localize("Fire control table reset from standard code table."),
+                            Localize("Reset Fire Control Table"));
+                    }
+
+                    if (batteryRecord.customFireControlTable)
+                    {
+                        DialogRoot.Instance.PopupConfirmDialog(
+                            Localize("This battery uses a custom fire control table. Resetting will replace it with the standard table generated from Role/Code/Era and clear the Custom flag."),
+                            ResetFromStandardCode,
+                            Localize("Reset Fire Control Table"));
+                    }
+                    else
+                    {
+                        ResetFromStandardCode();
+                    }
                 };
             }
 
@@ -1493,7 +1515,8 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
         var records = batteryRecord.fireControlTableRecords
             .OrderBy(record => record.speedThresholdKnot)
             .ToList();
-        var observedLeftTop = records[0].shortBroad;
+        var hasStandardTable = TryGetStandardFireControlTableRecords(batteryRecord, out var standardCode, out var standardRecords);
+        var closestStandard = FindClosestStandardFireControlCode(records);
         var codeLatent = PredictFireControlLatentFromCode(shipClass, batteryRecord, out var usedCodeCoefficient);
 
         var scrollView = new ScrollView(ScrollViewMode.Vertical);
@@ -1510,9 +1533,25 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
         summary.style.marginBottom = 10;
         scrollView.Add(summary);
 
+        if (batteryRecord.customFireControlTable)
+        {
+            var customNotice = new Label(Localize("Custom Fire Control Table: differences from the standard code table are expected."));
+            customNotice.style.whiteSpace = WhiteSpace.Normal;
+            customNotice.style.marginBottom = 10;
+            scrollView.Add(customNotice);
+        }
+
         if (!usedCodeCoefficient)
         {
             var warning = new Label(Localize("No fitted Code coefficient is available for this fire-control code. The Code model uses the component fallback."));
+            warning.style.whiteSpace = WhiteSpace.Normal;
+            warning.style.marginBottom = 10;
+            scrollView.Add(warning);
+        }
+
+        if (!hasStandardTable)
+        {
+            var warning = new Label(Localize("No standard table is available for the current Role/Code/Era."));
             warning.style.whiteSpace = WhiteSpace.Normal;
             warning.style.marginBottom = 10;
             scrollView.Add(warning);
@@ -1524,22 +1563,40 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
         void RefreshComparison()
         {
             var roundPredictions = roundPredictionToggle.value;
-            var proportionStats = CalculateFireControlComparisonStats(records, observedLeftTop, roundPredictions);
+            var standardStats = hasStandardTable ? CalculateFireControlComparisonStats(records, standardRecords) : new FireControlErrorStats();
             var codeStats = CalculateFireControlComparisonStats(records, codeLatent, roundPredictions);
+            var standardStatus = hasStandardTable && standardStats.exact == standardStats.count
+                ? Localize("Matches standard fire control table.")
+                : Localize("Does not match the standard code table. Review the table/code or mark it as Custom.");
 
-            summary.text =
-                $"{Localize("Overall Error")}\n" +
-                $"{Localize("Proportion table")} (left-top={observedLeftTop:0.###}): {FormatFireControlErrorStats(proportionStats)}\n" +
-                $"{Localize("Code model table")} (latent={codeLatent:0.###}): {FormatFireControlErrorStats(codeStats)}";
+            var summaryLines = new List<string>
+            {
+                $"{Localize("Overall Error")}",
+            };
+            if (hasStandardTable)
+            {
+                summaryLines.Add($"{Localize("Current standard code")} ({standardCode}): {FormatFireControlErrorStats(standardStats)}");
+                summaryLines.Add(standardStatus);
+            }
+            else
+            {
+                summaryLines.Add(Localize("No standard table is available for the current Role/Code/Era."));
+            }
+            if (!string.IsNullOrEmpty(closestStandard.code))
+                summaryLines.Add($"{Localize("Closest standard code")} ({closestStandard.code}): {FormatFireControlErrorStats(closestStandard.stats)}");
+            summaryLines.Add($"{Localize("Code model table")} (latent={codeLatent:0.###}): {FormatFireControlErrorStats(codeStats)}");
+            summary.text = string.Join("\n", summaryLines);
 
             tablesContainer.Clear();
-            tablesContainer.Add(BuildFireControlComparisonTable(
-                Localize("Proportion Check"),
-                Localize("Uses the current left-top value, then applies the fitted Broad/Narrow, range-band, and speed ratios."),
-                records,
-                observedLeftTop,
-                roundPredictions
-            ));
+            if (hasStandardTable)
+            {
+                tablesContainer.Add(BuildFireControlStandardComparisonTable(
+                    Localize("Standard Code Table"),
+                    Localize("Uses the standard SK5 table generated from the current Role, Code, and Era."),
+                    records,
+                    standardRecords
+                ));
+            }
             tablesContainer.Add(BuildFireControlComparisonTable(
                 Localize("Code, Shell Size, Displacement Model"),
                 Localize("Uses the fitted latent left-top value from Code, shell size, and displacement, then applies the same ratios."),
@@ -1819,6 +1876,168 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
         return $"{100f * value:0.#}%";
     }
 
+    static readonly float[] StandardFireControlSpeedThresholds =
+    {
+        9f, 18f, 27f, 36f, 45f
+    };
+
+    static readonly Dictionary<string, string> StandardFireControlTableData = new()
+    {
+        { "1Q1", "14,8,8,5,6,4,5,3;9,6,6,3,4,2,3,2;7,4,4,3,3,2,3,2;6,4,4,2,3,2,2,1;5,3,3,2,2,1,2,1" },
+        { "2Q1", "11,6,7,4,5,3,4,2;7,4,4,3,3,2,2,1;6,3,3,2,2,1,2,1;5,3,3,2,2,1,2,1;4,2,3,2,2,1,1,1" },
+        { "1R1", "11,7,7,4,5,3,4,2;8,5,5,3,3,2,3,2;6,4,4,2,3,2,2,1;5,3,3,2,2,1,2,1;4,3,3,2,2,1,1,1" },
+        { "2R1", "9,5,5,3,4,2,3,2;6,4,4,2,3,2,2,1;5,3,3,2,2,1,2,1;4,2,2,1,2,1,1,1;3,2,2,1,1,1,1,1" },
+        { "1S1", "12,7,7,4,5,3,4,3;8,5,5,3,3,2,3,2;6,4,4,2,3,2,2,1;5,3,3,2,2,1,2,1;5,3,3,2,2,1,2,1" },
+        { "2S1", "9,6,6,3,4,2,3,2;6,4,4,2,3,2,2,1;5,3,3,2,2,1,2,1;4,2,2,1,2,1,1,1;4,2,2,1,2,1,1,1" },
+        { "1T1", "10,6,6,4,5,3,4,2;7,4,4,3,3,2,2,1;5,3,3,2,2,1,2,1;4,3,3,2,2,1,2,1;4,2,2,1,2,1,1,1" },
+        { "2T1", "8,5,5,3,4,2,3,2;5,3,3,2,2,1,2,1;4,3,3,2,2,1,1,1;3,2,2,1,1,1,1,1;3,2,2,1,1,1,1,1" },
+        { "1U1", "9,5,5,3,4,2,3,2;6,3,3,2,2,1,2,1;5,3,3,2,2,1,2,1;4,2,2,1,2,1,1,1;3,2,2,1,1,1,1,1" },
+        { "2U1", "7,4,4,2,3,2,2,1;4,3,3,2,2,1,2,1;4,2,2,1,2,1,1,1;3,2,2,1,1,1,1,1;3,2,2,1,1,1,1,1" },
+        { "1V1", "13,8,8,5,5,3,4,3;8,5,5,3,4,2,3,2;7,4,4,2,3,2,2,1;5,3,3,2,2,1,2,1;5,3,3,2,2,1,2,1" },
+        { "1W1", "11,6,7,4,5,3,4,2;7,4,4,3,3,2,2,1;6,3,3,2,2,1,2,1;5,3,3,2,2,1,2,1;4,2,2,1,2,1,1,1" },
+        { "2W1", "8,5,5,3,4,2,3,2;5,3,3,2,2,1,2,1;4,3,3,2,2,1,2,1;4,2,2,1,2,1,1,1;3,2,2,1,1,1,1,1" },
+        { "1X1", "11,6,7,4,5,3,4,2;7,4,4,3,3,2,2,1;6,3,3,2,2,1,2,1;5,3,3,2,2,1,2,1;4,2,2,1,2,1,1,1" },
+        { "2X1", "8,5,5,3,4,2,3,2;5,3,3,2,2,1,2,1;4,3,3,2,2,1,2,1;4,2,2,1,2,1,1,1;3,2,2,1,1,1,1,1" },
+        { "1Y1", "9,5,5,3,4,2,3,2;6,4,4,2,3,2,2,1;5,3,3,2,2,1,2,1;4,2,2,1,2,1,1,1;3,2,2,1,1,1,1,1" },
+        { "2Y1", "7,4,4,3,3,2,2,1;5,3,3,2,2,1,2,1;4,2,2,1,2,1,1,1;3,2,2,1,1,1,1,1;3,2,2,1,1,1,1,1" },
+        { "1Z1", "7,4,4,3,3,2,2,1;5,3,3,2,2,1,2,1;4,2,2,1,2,1,1,1;3,2,2,1,1,1,1,1;3,2,2,1,1,1,1,1" },
+        { "2Z1", "6,3,3,2,2,1,2,1;4,2,2,1,2,1,1,1;3,2,2,1,1,1,1,1;2,1,1,1,1,1,1,0;2,1,1,1,1,1,1,0" },
+        { "1G2", "21,13,15,10,12,8,10,7;15,9,11,7,9,5,7,5;12,8,9,6,7,4,6,4;10,7,7,5,6,4,5,3;9,6,7,4,5,3,5,3" },
+        { "2G2", "16,10,12,7,9,6,8,5;12,7,8,5,7,4,6,4;10,6,7,4,5,3,5,3;8,5,6,4,5,3,4,2;7,5,5,3,4,3,4,2" },
+        { "1H2", "23,14,16,10,13,8,11,7;17,11,12,8,10,6,9,5;15,9,11,7,9,5,7,5;13,8,9,6,7,5,6,4;12,8,9,5,7,4,6,4" },
+        { "2H2", "17,11,12,8,10,6,8,5;13,8,9,6,7,5,6,4;11,7,8,5,6,4,5,3;10,6,7,4,6,4,5,3;9,6,7,4,5,3,4,3" },
+        { "1J2", "19,12,14,9,11,7,9,6;13,8,10,6,8,5,7,4;11,7,8,5,6,4,5,3;9,6,7,4,5,3,5,3;8,5,6,4,5,3,4,3" },
+        { "2J2", "15,9,11,7,8,5,7,5;10,7,7,5,6,4,5,3;9,5,6,4,5,3,4,3;7,5,5,3,4,3,4,2;7,4,5,3,4,2,3,2" },
+        { "1K2", "18,11,13,8,10,7,9,6;13,8,9,6,7,5,6,4;11,7,8,5,6,4,5,3;9,6,6,4,5,3,4,3;8,5,6,4,5,3,4,3" },
+        { "1M2", "16,10,11,7,8,5,7,4;11,7,8,5,6,4,5,3;9,6,6,4,5,3,4,2;8,5,5,3,4,2,3,2;7,5,5,3,4,2,3,2" },
+        { "2M2", "13,8,8,5,6,4,5,3;9,6,6,4,4,3,4,2;7,5,5,3,4,2,3,2;6,4,4,3,3,2,3,2;6,4,4,2,3,2,2,1" },
+        { "1N2", "16,10,12,7,9,6,8,5;11,7,8,5,7,4,6,4;9,6,7,4,5,3,5,3;8,5,6,4,5,3,4,2;7,5,5,3,4,3,4,2" },
+        { "2N2", "13,8,9,6,7,5,6,4;9,6,6,4,5,3,4,3;7,5,5,3,4,3,4,2;6,4,4,3,4,2,3,2;6,4,4,3,3,2,3,2" },
+        { "1Q2", "14,9,9,6,7,4,6,4;10,6,7,4,5,3,4,3;8,5,5,3,4,3,3,2;7,4,5,3,3,2,3,2;6,4,4,3,3,2,3,2" },
+        { "2Q2", "11,7,7,5,5,3,4,3;8,5,5,3,4,2,3,2;6,4,4,3,3,2,3,2;5,3,4,2,3,2,2,1;5,3,3,2,2,2,2,1" },
+        { "1R2", "11,7,8,5,6,4,5,3;8,5,5,3,4,3,3,2;7,4,4,3,3,2,3,2;6,4,4,2,3,2,2,1;5,3,3,2,3,2,2,1" },
+        { "1S2", "12,8,8,5,6,4,5,3;9,5,6,4,4,3,4,2;7,4,5,3,4,2,3,2;6,4,4,2,3,2,2,2;5,3,4,2,3,2,2,1" },
+        { "2S2", "9,6,6,4,5,3,4,2;7,4,4,3,3,2,3,2;5,3,4,2,3,2,2,1;5,3,3,2,2,1,2,1;4,3,3,2,2,1,2,1" },
+        { "1T2", "10,7,7,4,5,3,4,3;7,5,5,3,4,2,3,2;6,4,4,3,3,2,3,2;5,3,3,2,3,2,2,1;5,3,3,2,2,1,2,1" },
+        { "2T2", "8,5,5,3,4,3,3,2;6,4,4,2,3,2,2,1;5,3,3,2,2,1,2,1;4,3,3,2,2,1,2,1;4,2,2,2,2,1,1,1" },
+        { "1V2", "13,8,8,5,6,4,5,3;9,6,6,4,4,3,4,2;7,5,5,3,4,2,3,2;6,4,4,3,3,2,3,2;6,4,4,2,3,2,2,1" },
+        { "1W2", "11,7,7,4,5,3,4,3;8,5,5,3,4,2,3,2;6,4,4,3,3,2,3,2;5,3,3,2,3,2,2,1;5,3,3,2,2,2,2,1" },
+        { "2W2", "8,5,6,3,4,3,3,2;6,4,4,2,3,2,2,2;5,3,3,2,2,2,2,1;4,3,3,2,2,1,2,1;4,2,2,2,2,1,2,1" },
+        { "1X2", "11,7,7,4,5,3,4,3;8,5,5,3,4,2,3,2;6,4,4,3,3,2,3,2;5,3,3,2,3,2,2,1;5,3,3,2,2,2,2,1" },
+        { "2X2", "8,5,6,3,4,3,3,2;6,4,4,2,3,2,2,2;5,3,3,2,2,2,2,1;4,3,3,2,2,1,2,1;4,2,2,2,2,1,2,1" },
+        { "2Y2", "7,4,5,3,3,2,3,2;5,3,3,2,2,2,2,1;4,3,3,2,2,1,2,1;3,2,2,1,2,1,1,1;3,2,2,1,2,1,1,1" },
+        { "1A3", "29,20,23,16,19,14,17,12;26,18,20,14,17,12,15,10;24,17,18,13,16,11,14,10;22,15,17,12,15,10,13,9;21,15,17,12,14,10,12,9" },
+        { "2A3", "22,15,17,12,14,10,13,9;19,13,15,10,13,9,11,8;18,12,14,10,12,8,10,7;16,12,13,9,11,8,10,7;16,11,12,9,10,7,9,7" },
+        { "1B3", "28,20,22,15,18,13,16,11;23,16,18,12,15,10,13,9;20,14,16,11,13,9,12,8;18,13,14,10,12,8,11,7;17,12,13,9,11,8,10,7" },
+        { "2B3", "21,15,16,12,14,10,12,9;17,12,13,9,11,8,10,7;15,11,12,8,10,7,9,6;14,10,11,8,9,6,8,6;13,9,10,7,9,6,8,5" },
+        { "1C3", "26,18,20,14,17,12,15,11;20,14,15,11,13,9,12,8;17,12,13,9,11,8,10,7;15,10,12,8,10,7,9,6;14,10,11,7,9,6,8,6" },
+        { "1D3", "26,18,21,14,17,12,16,11;23,16,18,13,15,11,14,9;21,15,17,12,14,10,13,9;20,14,16,11,13,9,12,8;19,13,15,10,13,9,11,8" },
+        { "1E3", "25,17,20,14,16,12,15,10;20,14,16,11,13,9,12,8;18,13,14,10,12,8,11,7;16,11,13,9,11,8,10,7;15,11,12,8,10,7,9,6" },
+        { "2E3", "19,13,15,10,12,9,11,8;15,11,12,8,10,7,9,6;14,10,11,7,9,6,8,6;12,9,10,7,8,6,7,5;12,8,9,6,8,5,7,5" },
+        { "1F3", "23,16,18,13,15,11,14,10;18,12,14,10,12,8,10,7;15,11,12,8,10,7,9,6;13,9,10,7,9,6,8,5;12,9,10,7,8,6,7,5" },
+        { "2F3", "18,13,14,10,12,8,11,7;14,10,11,7,9,6,8,6;12,8,9,6,8,5,7,5;10,7,8,6,7,5,6,4;10,7,7,5,6,4,6,4" },
+        { "1G3", "21,14,16,11,14,9,12,8;16,11,12,8,11,7,9,6;14,9,11,7,9,6,8,5;12,8,9,6,8,5,7,5;11,7,9,6,7,5,7,4" },
+        { "2G3", "16,11,13,9,11,7,10,6;12,8,10,6,8,5,7,5;11,7,8,6,7,5,6,4;9,6,7,5,6,4,5,4;9,6,7,4,6,4,5,3" },
+        { "1H3", "23,15,18,12,15,10,13,9;19,12,15,10,12,8,11,7;17,11,13,9,11,7,10,6;15,10,12,8,10,7,9,6;14,9,11,7,9,6,8,6" },
+        { "2H3", "17,11,13,9,11,8,10,7;14,9,11,7,9,6,8,5;12,8,10,6,8,5,7,5;11,7,9,6,7,5,7,4;11,7,8,6,7,5,6,4" },
+        { "1J3", "19,13,15,10,12,8,11,7;14,10,11,7,9,6,8,6;12,8,10,6,8,5,7,5;11,7,8,6,7,5,6,4;10,7,8,5,7,4,6,4" },
+        { "2J3", "15,10,11,8,10,6,9,6;11,7,9,6,7,5,7,4;10,6,7,5,6,4,6,4;8,6,6,4,5,4,5,3;8,5,6,4,5,3,5,3" },
+        { "1K3", "18,12,14,10,12,8,11,7;14,9,11,7,9,6,8,5;12,8,9,6,8,5,7,5;10,7,8,5,7,5,6,4;10,6,7,5,6,4,6,4" },
+        { "1M3", "16,11,12,8,9,6,8,5;12,8,9,6,7,5,6,4;10,7,8,5,6,4,5,3;9,6,7,4,5,3,4,3;8,6,6,4,5,3,4,3" },
+        { "1N3", "16,11,13,8,11,7,9,6;12,8,10,6,8,5,7,5;10,7,8,5,7,5,6,4;9,6,7,5,6,4,5,4;8,6,7,4,6,4,5,3" },
+        { "1Q3", "14,9,10,7,8,5,7,5;11,7,8,5,6,4,5,3;9,6,7,4,5,3,4,3;8,5,6,4,5,3,4,3;7,5,5,3,4,3,4,2" },
+        { "1S3", "12,8,9,6,7,5,6,4;9,6,7,4,5,4,5,3;8,5,6,4,5,3,4,3;7,5,5,3,4,3,3,2;6,4,5,3,4,2,3,2" },
+    };
+
+    static bool TryGetStandardFireControlTableRecords(BatteryRecord batteryRecord, out string fullCode, out List<FireControlTableRecord> records)
+    {
+        fullCode = BuildFireControlFullCode(batteryRecord);
+        records = null;
+        if (string.IsNullOrEmpty(fullCode) || !StandardFireControlTableData.TryGetValue(fullCode, out var tableData))
+            return false;
+
+        records = ParseStandardFireControlTable(tableData);
+        return true;
+    }
+
+    static string BuildFireControlFullCode(BatteryRecord batteryRecord)
+    {
+        var fcs = batteryRecord?.fireControlType;
+        if (fcs == null || fcs.code == FCSCode.Custom)
+            return null;
+
+        var rolePrefix = fcs.role switch
+        {
+            FireControlSystemRole.Primary => "1",
+            FireControlSystemRole.Secondary => "2",
+            _ => null
+        };
+        var eraSuffix = fcs.era switch
+        {
+            FireControlSystemEra.Predreadnought => "1",
+            FireControlSystemEra.WorldWarI => "2",
+            FireControlSystemEra.WorldWarII => "3",
+            _ => null
+        };
+
+        return rolePrefix == null || eraSuffix == null ? null : $"{rolePrefix}{fcs.code}{eraSuffix}";
+    }
+
+    static List<FireControlTableRecord> ParseStandardFireControlTable(string tableData)
+    {
+        var rows = tableData.Split(';');
+        var records = new List<FireControlTableRecord>(rows.Length);
+        for (var i = 0; i < rows.Length && i < StandardFireControlSpeedThresholds.Length; i++)
+        {
+            var cells = rows[i].Split(',').Select(int.Parse).ToArray();
+            records.Add(new FireControlTableRecord
+            {
+                speedThresholdKnot = StandardFireControlSpeedThresholds[i],
+                shortBroad = cells[0],
+                shortNarrow = cells[1],
+                mediumBroad = cells[2],
+                mediumNarrow = cells[3],
+                longBroad = cells[4],
+                longNarrow = cells[5],
+                extremeBroad = cells[6],
+                extremeNarrow = cells[7],
+            });
+        }
+        return records;
+    }
+
+    static (string code, FireControlErrorStats stats) FindClosestStandardFireControlCode(List<FireControlTableRecord> records)
+    {
+        string bestCode = null;
+        FireControlErrorStats bestStats = null;
+        foreach (var (code, tableData) in StandardFireControlTableData)
+        {
+            var stats = CalculateFireControlComparisonStats(records, ParseStandardFireControlTable(tableData));
+            if (bestStats == null
+                || stats.sumAbs < bestStats.sumAbs
+                || (Mathf.Approximately(stats.sumAbs, bestStats.sumAbs) && stats.maxAbs < bestStats.maxAbs)
+                || (Mathf.Approximately(stats.sumAbs, bestStats.sumAbs) && Mathf.Approximately(stats.maxAbs, bestStats.maxAbs) && stats.exact > bestStats.exact))
+            {
+                bestCode = code;
+                bestStats = stats;
+            }
+        }
+
+        return (bestCode, bestStats);
+    }
+
+    static bool ResetFireControlTableFromStandardCode(BatteryRecord batteryRecord)
+    {
+        if (!TryGetStandardFireControlTableRecords(batteryRecord, out _, out var standardRecords))
+            return false;
+
+        batteryRecord.fireControlTableRecords ??= new List<FireControlTableRecord>();
+        batteryRecord.fireControlTableRecords.Clear();
+        batteryRecord.fireControlTableRecords.AddRange(standardRecords);
+        batteryRecord.customFireControlTable = false;
+        return true;
+    }
+
     VisualElement BuildFireControlComparisonTable(string title, string description, List<FireControlTableRecord> records, float leftTop, bool roundPredictions)
     {
         var section = new VisualElement();
@@ -1870,6 +2089,65 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
         return section;
     }
 
+    VisualElement BuildFireControlStandardComparisonTable(string title, string description, List<FireControlTableRecord> records, IReadOnlyList<FireControlTableRecord> standardRecords)
+    {
+        var section = new VisualElement();
+        section.style.marginTop = 10;
+        section.style.marginBottom = 12;
+
+        var titleLabel = new Label(title);
+        titleLabel.style.unityFontStyleAndWeight = FontStyle.Bold;
+        titleLabel.style.marginBottom = 2;
+        section.Add(titleLabel);
+
+        var descriptionLabel = new Label(description);
+        descriptionLabel.style.whiteSpace = WhiteSpace.Normal;
+        descriptionLabel.style.marginBottom = 6;
+        section.Add(descriptionLabel);
+
+        var table = new VisualElement();
+        table.style.flexDirection = FlexDirection.Column;
+        table.style.minWidth = 920;
+        section.Add(table);
+
+        var header = BuildFireControlComparisonTableRow();
+        header.Add(BuildFireControlComparisonCell(Localize("Tgt Spd"), true, 74));
+        foreach (var column in FireControlComparisonColumns)
+        {
+            header.Add(BuildFireControlComparisonCell(column.label, true));
+        }
+        table.Add(header);
+
+        for (var i = 0; i < records.Count; i++)
+        {
+            var record = records[i];
+            var standardRecord = i < standardRecords.Count ? standardRecords[i] : null;
+            var row = BuildFireControlComparisonTableRow();
+            row.Add(BuildFireControlComparisonCell($"{record.speedThresholdKnot:0.#} kt", true, 74));
+            foreach (var column in FireControlComparisonColumns)
+            {
+                var actual = record.GetValue(column.rangeBand, column.targetAspect);
+                if (standardRecord == null)
+                {
+                    row.Add(BuildFireControlComparisonCell($"{actual:0.#} / {Localize("Missing")}", false));
+                    continue;
+                }
+
+                var predicted = standardRecord.GetValue(column.rangeBand, column.targetAspect);
+                var diff = predicted - actual;
+                row.Add(BuildFireControlComparisonCell($"{actual:0.#} / {predicted:0.#}\n{FormatFireControlDiff(diff, true)}", false));
+            }
+            table.Add(row);
+        }
+
+        var legend = new Label(Localize("Each cell is shown as current / model, then model-current delta."));
+        legend.style.whiteSpace = WhiteSpace.Normal;
+        legend.style.marginTop = 4;
+        section.Add(legend);
+
+        return section;
+    }
+
     static VisualElement BuildFireControlComparisonTableRow()
     {
         var row = new VisualElement();
@@ -1907,6 +2185,24 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
                 var actual = record.GetValue(column.rangeBand, column.targetAspect);
                 var predicted = PredictFireControlCell(leftTop, record.speedThresholdKnot, column.rangeBand, column.targetAspect, roundPredictions);
                 stats.Add(actual, predicted);
+            }
+        }
+        return stats;
+    }
+
+    static FireControlErrorStats CalculateFireControlComparisonStats(List<FireControlTableRecord> records, IReadOnlyList<FireControlTableRecord> predictedRecords)
+    {
+        var stats = new FireControlErrorStats();
+        var count = Mathf.Min(records.Count, predictedRecords?.Count ?? 0);
+        for (var i = 0; i < count; i++)
+        {
+            var actualRecord = records[i];
+            var predictedRecord = predictedRecords[i];
+            foreach (var column in FireControlComparisonColumns)
+            {
+                stats.Add(
+                    actualRecord.GetValue(column.rangeBand, column.targetAspect),
+                    predictedRecord.GetValue(column.rangeBand, column.targetAspect));
             }
         }
         return stats;

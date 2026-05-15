@@ -5031,6 +5031,50 @@ MonoBehaviour:
     m_Localized: World War II (3)
     m_Metadata:
       m_Items: []
+  - m_Id: -487
+    m_Localized: No standard fire control table is available for this Role/Code/Era combination.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -488
+    m_Localized: Fire control table reset from standard code table.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -489
+    m_Localized: This battery uses a custom fire control table. Resetting will replace it with the standard table generated from Role/Code/Era and clear the Custom flag.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -490
+    m_Localized: 'Custom Fire Control Table: differences from the standard code table are expected.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -491
+    m_Localized: No standard table is available for the current Role/Code/Era.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -492
+    m_Localized: Matches standard fire control table.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -493
+    m_Localized: Does not match the standard code table. Review the table/code or mark it as Custom.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -494
+    m_Localized: Current standard code
+    m_Metadata:
+      m_Items: []
+  - m_Id: -495
+    m_Localized: Closest standard code
+    m_Metadata:
+      m_Items: []
+  - m_Id: -496
+    m_Localized: Standard Code Table
+    m_Metadata:
+      m_Items: []
+  - m_Id: -497
+    m_Localized: Uses the standard SK5 table generated from the current Role, Code, and Era.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

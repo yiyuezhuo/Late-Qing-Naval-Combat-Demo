@@ -575,6 +575,7 @@ namespace NavalCombatCore
         public BatteryRecordMetaInfoMcCoyOkun metaInfoMcCoyOkun = null;
 
         public List<FireControlTableRecord> fireControlTableRecords = new();
+        public bool customFireControlTable = false;
         public AmmunitionType penetrationTableBaseType;
         public List<PenetrationTableRecord> penetrationTableRecords = new();
         public List<MountLocationRecord> mountLocationRecords = new();

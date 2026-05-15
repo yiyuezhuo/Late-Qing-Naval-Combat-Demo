@@ -3760,6 +3760,10 @@ MonoBehaviour:
     m_Localized: Era
     m_Metadata:
       m_Items: []
+  - m_Id: -221
+    m_Localized: Custom Fire Control Table
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

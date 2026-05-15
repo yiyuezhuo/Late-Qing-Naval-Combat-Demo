@@ -3674,6 +3674,10 @@ MonoBehaviour:
     m_Key: FireControlSystem.Era
     m_Metadata:
       m_Items: []
+  - m_Id: -221
+    m_Key: BatteryRecord.CustomFireControlTable
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

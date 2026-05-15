@@ -39,10 +39,10 @@
     <fireControlType>
      <role>Primary</role>
      <era>Predreadnought</era>
-     <code>X</code>
+     <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
-     <rangeFinder>Optical</rangeFinder>
+     <rangeFinder>None</rangeFinder>
      <directorControl>None</directorControl>
      <stabilization>Manual</stabilization>
      <powerRemoteControl>None</powerRemoteControl>
@@ -113,6 +113,7 @@
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -230,9 +231,9 @@
     <fireControlType>
      <role>Secondary</role>
      <era>Predreadnought</era>
-     <code>Z</code>
+     <code>Y</code>
      <gunSight>Basic</gunSight>
-     <fireControlInstrument>None</fireControlInstrument>
+     <fireControlInstrument>Basic</fireControlInstrument>
      <rangeFinder>None</rangeFinder>
      <directorControl>None</directorControl>
      <stabilization>Manual</stabilization>
@@ -304,6 +305,7 @@
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>Common</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -641,6 +643,7 @@
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -832,6 +835,7 @@
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>Common</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -1174,6 +1178,7 @@
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -1291,9 +1296,9 @@
     <fireControlType>
      <role>Secondary</role>
      <era>Predreadnought</era>
-     <code>Z</code>
+     <code>Y</code>
      <gunSight>Basic</gunSight>
-     <fireControlInstrument>None</fireControlInstrument>
+     <fireControlInstrument>Basic</fireControlInstrument>
      <rangeFinder>None</rangeFinder>
      <directorControl>None</directorControl>
      <stabilization>Manual</stabilization>
@@ -1365,6 +1370,7 @@
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>Common</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -1691,6 +1697,7 @@
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -1882,6 +1889,7 @@
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>Common</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -2183,7 +2191,7 @@ SK5 data book seems to forget to update Akitsushima's fire control table to refl
       <speedThresholdKnot>27</speedThresholdKnot>
       <shortBroad>5</shortBroad>
       <shortNarrow>3</shortNarrow>
-      <mediumBroad>2</mediumBroad>
+      <mediumBroad>3</mediumBroad>
       <mediumNarrow>2</mediumNarrow>
       <longBroad>2</longBroad>
       <longNarrow>1</longNarrow>
@@ -2213,6 +2221,7 @@ SK5 data book seems to forget to update Akitsushima's fire control table to refl
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -2363,6 +2372,7 @@ SK5 data book seems to forget to update Akitsushima's fire control table to refl
       <extremeNarrow>0</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -2682,6 +2692,7 @@ Of course, these two classifications make no practical difference aside from the
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -3042,6 +3053,7 @@ Of course, these two classifications make no practical difference aside from the
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>true</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -3173,6 +3185,7 @@ Of course, these two classifications make no practical difference aside from the
       <extremeNarrow>0</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>true</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -3349,7 +3362,9 @@ Of course, these two classifications make no practical difference aside from the
   <portraitUrl>https://www.the-blueprints.com/blueprints/ships/ships-china/90585/view/china_-_rocn_jiyuan_protected_cruiser_1895/</portraitUrl>
   <remark>https://en.wikipedia.org/wiki/Chinese_cruiser_Jiyuan
 
-Chi Yuan or Jiyuan</remark>
+Chi Yuan or Jiyuan
+
+15cm RKL/35 C/80 FC Table is not determined by FC code</remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Chi Yuan.png</path>
@@ -3479,6 +3494,7 @@ Chi Yuan or Jiyuan</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>true</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -3814,6 +3830,7 @@ Chi Yuan or Jiyuan</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>true</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -3962,6 +3979,7 @@ Chi Yuan or Jiyuan</remark>
       <extremeNarrow>0</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>true</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -4267,6 +4285,7 @@ Ting Yuen or Dingyuan</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -4415,6 +4434,7 @@ Ting Yuen or Dingyuan</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -4748,6 +4768,7 @@ Acquisition &amp; modified by Japan in 1895</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>true</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -4894,6 +4915,7 @@ Acquisition &amp; modified by Japan in 1895</remark>
       <extremeNarrow>0</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>true</customFireControlTable>
     <penetrationTableBaseType>Common</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -5175,6 +5197,7 @@ I can't see why SK5 classify a Unprotected Cruiser to CA though.</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>true</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -5328,6 +5351,7 @@ I can't see why SK5 classify a Unprotected Cruiser to CA though.</remark>
       <extremeNarrow>0</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>true</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -5644,6 +5668,7 @@ For some reason, SK5 classify it to CA</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>true</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -5778,6 +5803,7 @@ For some reason, SK5 classify it to CA</remark>
       <extremeNarrow>0</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>true</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -6064,6 +6090,7 @@ King Yuan or Jingyuan</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>true</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -6205,6 +6232,7 @@ King Yuan or Jingyuan</remark>
       <extremeNarrow>0</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>true</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -6493,6 +6521,7 @@ Ping Yuen or Pingyuan
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>true</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -6624,6 +6653,7 @@ Ping Yuen or Pingyuan
       <extremeNarrow>0</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>true</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -6895,6 +6925,7 @@ Ping Yuen or Pingyuan
       <extremeNarrow>0</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>true</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -7029,6 +7060,7 @@ Ping Yuen or Pingyuan
       <extremeNarrow>0</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>true</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -7432,6 +7464,7 @@ Fu Lung or Fulong
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -7582,6 +7615,7 @@ Fu Lung or Fulong
       <extremeNarrow>0</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -7829,9 +7863,9 @@ Fu Lung or Fulong
     <fireControlType>
      <role>Primary</role>
      <era>Predreadnought</era>
-     <code>Z</code>
+     <code>Y</code>
      <gunSight>Basic</gunSight>
-     <fireControlInstrument>None</fireControlInstrument>
+     <fireControlInstrument>Basic</fireControlInstrument>
      <rangeFinder>None</rangeFinder>
      <directorControl>None</directorControl>
      <stabilization>Manual</stabilization>
@@ -7903,6 +7937,7 @@ Fu Lung or Fulong
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -8048,6 +8083,7 @@ Fu Lung or Fulong
       <extremeNarrow>0</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>Common</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -8443,6 +8479,7 @@ Itsukushima (厳島, 1891)
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -8588,6 +8625,7 @@ Itsukushima (厳島, 1891)
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>Common</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -8900,9 +8938,9 @@ Itsukushima (厳島, 1891)
     <fireControlType>
      <role>Primary</role>
      <era>Predreadnought</era>
-     <code>Z</code>
+     <code>Y</code>
      <gunSight>Basic</gunSight>
-     <fireControlInstrument>None</fireControlInstrument>
+     <fireControlInstrument>Basic</fireControlInstrument>
      <rangeFinder>None</rangeFinder>
      <directorControl>None</directorControl>
      <stabilization>Manual</stabilization>
@@ -8974,6 +9012,7 @@ Itsukushima (厳島, 1891)
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -9119,6 +9158,7 @@ Itsukushima (厳島, 1891)
       <extremeNarrow>0</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>Common</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -9500,6 +9540,7 @@ For reason, it's classified as CA in SK5.
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -9642,9 +9683,10 @@ For reason, it's classified as CA in SK5.
       <longBroad>1</longBroad>
       <longNarrow>1</longNarrow>
       <extremeBroad>1</extremeBroad>
-      <extremeNarrow>0</extremeNarrow>
+      <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>Common</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -10017,6 +10059,7 @@ For reason, it's classified as CA in SK5.
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -10172,6 +10215,7 @@ For reason, it's classified as CA in SK5.
       <extremeNarrow>0</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -10432,7 +10476,7 @@ Hiei (比叡, 1878)</remark>
       <speedThresholdKnot>27</speedThresholdKnot>
       <shortBroad>5</shortBroad>
       <shortNarrow>3</shortNarrow>
-      <mediumBroad>2</mediumBroad>
+      <mediumBroad>3</mediumBroad>
       <mediumNarrow>2</mediumNarrow>
       <longBroad>2</longBroad>
       <longNarrow>1</longNarrow>
@@ -10462,6 +10506,7 @@ Hiei (比叡, 1878)</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>Common</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -10843,6 +10888,7 @@ Hiei (比叡, 1878)</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -10974,6 +11020,7 @@ Hiei (比叡, 1878)</remark>
       <extremeNarrow>0</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -11213,6 +11260,7 @@ Hiei (比叡, 1878)</remark>
       <extremeNarrow>0</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -11471,6 +11519,7 @@ Hiei (比叡, 1878)</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -11569,7 +11618,7 @@ Hiei (比叡, 1878)</remark>
       <mediumNarrow>2</mediumNarrow>
       <longBroad>2</longBroad>
       <longNarrow>1</longNarrow>
-      <extremeBroad>1</extremeBroad>
+      <extremeBroad>2</extremeBroad>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
      <FireControlTableRecord>
@@ -11617,6 +11666,7 @@ Hiei (比叡, 1878)</remark>
       <extremeNarrow>0</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>HighExplosive</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -11920,6 +11970,7 @@ Cancel Armor Type Factor</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -12054,6 +12105,7 @@ Cancel Armor Type Factor</remark>
       <extremeNarrow>0</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>HighExplosive</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -12261,28 +12313,17 @@ Cancel Armor Type Factor</remark>
     <fireControlTableRecords>
      <FireControlTableRecord>
       <speedThresholdKnot>9</speedThresholdKnot>
-      <shortBroad>9</shortBroad>
-      <shortNarrow>5</shortNarrow>
-      <mediumBroad>5</mediumBroad>
-      <mediumNarrow>3</mediumNarrow>
-      <longBroad>4</longBroad>
-      <longNarrow>2</longNarrow>
-      <extremeBroad>3</extremeBroad>
-      <extremeNarrow>2</extremeNarrow>
-     </FireControlTableRecord>
-     <FireControlTableRecord>
-      <speedThresholdKnot>18</speedThresholdKnot>
-      <shortBroad>6</shortBroad>
+      <shortBroad>7</shortBroad>
       <shortNarrow>4</shortNarrow>
       <mediumBroad>4</mediumBroad>
-      <mediumNarrow>2</mediumNarrow>
+      <mediumNarrow>3</mediumNarrow>
       <longBroad>3</longBroad>
       <longNarrow>2</longNarrow>
       <extremeBroad>2</extremeBroad>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
      <FireControlTableRecord>
-      <speedThresholdKnot>27</speedThresholdKnot>
+      <speedThresholdKnot>18</speedThresholdKnot>
       <shortBroad>5</shortBroad>
       <shortNarrow>3</shortNarrow>
       <mediumBroad>3</mediumBroad>
@@ -12293,12 +12334,23 @@ Cancel Armor Type Factor</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
      <FireControlTableRecord>
-      <speedThresholdKnot>36</speedThresholdKnot>
+      <speedThresholdKnot>27</speedThresholdKnot>
       <shortBroad>4</shortBroad>
       <shortNarrow>2</shortNarrow>
       <mediumBroad>2</mediumBroad>
       <mediumNarrow>1</mediumNarrow>
       <longBroad>2</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>1</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>36</speedThresholdKnot>
+      <shortBroad>3</shortBroad>
+      <shortNarrow>2</shortNarrow>
+      <mediumBroad>2</mediumBroad>
+      <mediumNarrow>1</mediumNarrow>
+      <longBroad>1</longBroad>
       <longNarrow>1</longNarrow>
       <extremeBroad>1</extremeBroad>
       <extremeNarrow>1</extremeNarrow>
@@ -12315,6 +12367,7 @@ Cancel Armor Type Factor</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -12485,6 +12538,7 @@ Cancel Armor Type Factor</remark>
       <extremeNarrow>0</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -12633,7 +12687,7 @@ Takao (Takao, old kana: Takao) was a cruiser of the Imperial Japanese Navy. The 
 In SK5 data, RF gun seeme come from QF 6-pounder Hotchkiss gun, but the Japanese wiki doesn't mension it.
 
 Cancel Armor Type Factor</remark>
-  <isPoorlySupported>false</isPoorlySupported>
+  <isPoorlySupported>true</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Takao.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -14003,6 +14057,7 @@ Draft &amp; Complement is placeholder.
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -14177,6 +14232,7 @@ Draft &amp; Complement is placeholder.
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -14546,6 +14602,7 @@ Draft &amp; Complement is placeholder.
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -14720,6 +14777,7 @@ Draft &amp; Complement is placeholder.
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -15308,10 +15366,10 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
     <fireControlType>
      <role>Primary</role>
      <era>Predreadnought</era>
-     <code>Q</code>
+     <code>R</code>
      <gunSight>Telescope</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
-     <rangeFinder>Optical</rangeFinder>
+     <rangeFinder>None</rangeFinder>
      <directorControl>FollowThePointer</directorControl>
      <stabilization>Manual</stabilization>
      <powerRemoteControl>None</powerRemoteControl>
@@ -15382,6 +15440,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -15572,6 +15631,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -16029,6 +16089,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -16219,6 +16280,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -16658,6 +16720,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -16786,8 +16849,8 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
       <mediumNarrow>3</mediumNarrow>
       <longBroad>3</longBroad>
       <longNarrow>2</longNarrow>
-      <extremeBroad>2</extremeBroad>
-      <extremeNarrow>1</extremeNarrow>
+      <extremeBroad>3</extremeBroad>
+      <extremeNarrow>2</extremeNarrow>
      </FireControlTableRecord>
      <FireControlTableRecord>
       <speedThresholdKnot>18</speedThresholdKnot>
@@ -16834,6 +16897,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -17048,6 +17112,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -17403,6 +17468,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -17543,7 +17609,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
       <mediumNarrow>1</mediumNarrow>
       <longBroad>2</longBroad>
       <longNarrow>1</longNarrow>
-      <extremeBroad>2</extremeBroad>
+      <extremeBroad>1</extremeBroad>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
      <FireControlTableRecord>
@@ -17569,6 +17635,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -17940,6 +18007,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -18080,7 +18148,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
       <mediumNarrow>1</mediumNarrow>
       <longBroad>2</longBroad>
       <longNarrow>1</longNarrow>
-      <extremeBroad>2</extremeBroad>
+      <extremeBroad>1</extremeBroad>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
      <FireControlTableRecord>
@@ -18106,6 +18174,7 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -18526,6 +18595,7 @@ Azuma or Adzuma (SK5 name)</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -18666,7 +18736,7 @@ Azuma or Adzuma (SK5 name)</remark>
       <mediumNarrow>1</mediumNarrow>
       <longBroad>2</longBroad>
       <longNarrow>1</longNarrow>
-      <extremeBroad>2</extremeBroad>
+      <extremeBroad>1</extremeBroad>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
      <FireControlTableRecord>
@@ -18692,6 +18762,7 @@ Azuma or Adzuma (SK5 name)</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -19062,6 +19133,7 @@ Azuma or Adzuma (SK5 name)</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -19394,6 +19466,7 @@ Sometime called Niitaka class.
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -20479,6 +20552,7 @@ Sometime called Niitaka class.
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -20619,7 +20693,7 @@ Sometime called Niitaka class.
       <mediumNarrow>1</mediumNarrow>
       <longBroad>2</longBroad>
       <longNarrow>1</longNarrow>
-      <extremeBroad>2</extremeBroad>
+      <extremeBroad>1</extremeBroad>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
      <FireControlTableRecord>
@@ -20645,6 +20719,7 @@ Sometime called Niitaka class.
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -21036,6 +21111,7 @@ Sometime called Niitaka class.
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -21195,6 +21271,7 @@ Sometime called Niitaka class.
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -21501,6 +21578,7 @@ Correction: SK5 length 37 -&gt; 307</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -21991,6 +22069,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -22126,7 +22205,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
       <shortNarrow>2</shortNarrow>
       <mediumBroad>2</mediumBroad>
       <mediumNarrow>1</mediumNarrow>
-      <longBroad>2</longBroad>
+      <longBroad>1</longBroad>
       <longNarrow>1</longNarrow>
       <extremeBroad>1</extremeBroad>
       <extremeNarrow>1</extremeNarrow>
@@ -22143,6 +22222,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -22281,6 +22361,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>Common</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -22578,6 +22659,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -22744,6 +22826,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -22893,7 +22976,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
       <shortNarrow>2</shortNarrow>
       <mediumBroad>2</mediumBroad>
       <mediumNarrow>1</mediumNarrow>
-      <longBroad>2</longBroad>
+      <longBroad>1</longBroad>
       <longNarrow>1</longNarrow>
       <extremeBroad>1</extremeBroad>
       <extremeNarrow>1</extremeNarrow>
@@ -22910,6 +22993,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -24141,6 +24225,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -24307,6 +24392,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -24748,6 +24834,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -24928,6 +25015,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -25326,6 +25414,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -25506,6 +25595,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -25904,6 +25994,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -26070,6 +26161,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -26236,6 +26328,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -26626,6 +26719,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -26792,6 +26886,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -27210,6 +27305,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -27680,6 +27776,7 @@ https://naval-encyclopedia.com/ww1/russia/askold-1900.php
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -28087,6 +28184,7 @@ https://naval-encyclopedia.com/ww1/russia/askold-1900.php
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -28484,6 +28582,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -29204,6 +29303,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -29377,6 +29477,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -29768,6 +29869,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -29941,6 +30043,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -30330,6 +30433,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -30503,6 +30607,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -30901,6 +31006,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -31067,6 +31173,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>Common</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -31451,6 +31558,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -31617,6 +31725,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>Common</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -31930,9 +32039,9 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
     <fireControlType>
      <role>Primary</role>
      <era>Predreadnought</era>
-     <code>Y</code>
+     <code>Z</code>
      <gunSight>Basic</gunSight>
-     <fireControlInstrument>Basic</fireControlInstrument>
+     <fireControlInstrument>None</fireControlInstrument>
      <rangeFinder>None</rangeFinder>
      <directorControl>None</directorControl>
      <stabilization>Manual</stabilization>
@@ -31978,7 +32087,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
       <mediumNarrow>1</mediumNarrow>
       <longBroad>2</longBroad>
       <longNarrow>1</longNarrow>
-      <extremeBroad>2</extremeBroad>
+      <extremeBroad>1</extremeBroad>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
      <FireControlTableRecord>
@@ -32004,6 +32113,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -32227,6 +32337,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -32470,6 +32581,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -32684,6 +32796,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -32836,6 +32949,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
       <extremeNarrow>0</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -33120,6 +33234,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>Common</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -33381,7 +33496,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
       <speedThresholdKnot>27</speedThresholdKnot>
       <shortBroad>5</shortBroad>
       <shortNarrow>3</shortNarrow>
-      <mediumBroad>2</mediumBroad>
+      <mediumBroad>3</mediumBroad>
       <mediumNarrow>2</mediumNarrow>
       <longBroad>2</longBroad>
       <longNarrow>1</longNarrow>
@@ -33411,6 +33526,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -33552,6 +33668,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>Common</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -33737,7 +33854,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
       <speedThresholdKnot>27</speedThresholdKnot>
       <shortBroad>5</shortBroad>
       <shortNarrow>3</shortNarrow>
-      <mediumBroad>2</mediumBroad>
+      <mediumBroad>3</mediumBroad>
       <mediumNarrow>2</mediumNarrow>
       <longBroad>2</longBroad>
       <longNarrow>1</longNarrow>
@@ -33767,6 +33884,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -33832,12 +33950,12 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
-     <role>Secondary</role>
+     <role>Primary</role>
      <era>Predreadnought</era>
-     <code>X</code>
+     <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
-     <rangeFinder>Optical</rangeFinder>
+     <rangeFinder>None</rangeFinder>
      <directorControl>None</directorControl>
      <stabilization>Manual</stabilization>
      <powerRemoteControl>None</powerRemoteControl>
@@ -33908,6 +34026,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -34063,6 +34182,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>Common</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -34278,6 +34398,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>true</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -34336,12 +34457,12 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
-     <role>Secondary</role>
+     <role>Primary</role>
      <era>Predreadnought</era>
-     <code>X</code>
+     <code>Y</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
-     <rangeFinder>Optical</rangeFinder>
+     <rangeFinder>None</rangeFinder>
      <directorControl>None</directorControl>
      <stabilization>Manual</stabilization>
      <powerRemoteControl>None</powerRemoteControl>
@@ -34412,6 +34533,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -34637,10 +34759,11 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
       <mediumNarrow>2</mediumNarrow>
       <longBroad>2</longBroad>
       <longNarrow>1</longNarrow>
-      <extremeBroad>1</extremeBroad>
+      <extremeBroad>2</extremeBroad>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -34794,6 +34917,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -34948,6 +35072,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -35282,6 +35407,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -35448,6 +35574,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -35830,6 +35957,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>Common</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -36115,6 +36243,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -36215,9 +36344,9 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
       <speedThresholdKnot>9</speedThresholdKnot>
       <shortBroad>7</shortBroad>
       <shortNarrow>4</shortNarrow>
-      <mediumBroad>3</mediumBroad>
+      <mediumBroad>4</mediumBroad>
       <mediumNarrow>3</mediumNarrow>
-      <longBroad>2</longBroad>
+      <longBroad>3</longBroad>
       <longNarrow>2</longNarrow>
       <extremeBroad>2</extremeBroad>
       <extremeNarrow>1</extremeNarrow>
@@ -36267,6 +36396,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -36913,6 +37043,7 @@ https://ru.wikipedia.org/wiki/%D0%9C%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D1%86%D
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -37079,6 +37210,7 @@ https://ru.wikipedia.org/wiki/%D0%9C%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D1%86%D
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -37433,7 +37565,7 @@ Hai Qi (Hai Chi, 海圻) and Hai Tien (Hai Tian, 海天)
       <longBroad>2</longBroad>
       <longNarrow>1</longNarrow>
       <extremeBroad>1</extremeBroad>
-      <extremeNarrow>0</extremeNarrow>
+      <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
      <FireControlTableRecord>
       <speedThresholdKnot>45</speedThresholdKnot>
@@ -37444,9 +37576,10 @@ Hai Qi (Hai Chi, 海圻) and Hai Tien (Hai Tian, 海天)
       <longBroad>1</longBroad>
       <longNarrow>1</longNarrow>
       <extremeBroad>1</extremeBroad>
-      <extremeNarrow>0</extremeNarrow>
+      <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -37620,6 +37753,7 @@ Hai Qi (Hai Chi, 海圻) and Hai Tien (Hai Tian, 海天)
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>SemiArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -37967,6 +38101,7 @@ https://naval-encyclopedia.com/ww1/china/hai-yung-class-cruisers.php
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -38133,6 +38268,7 @@ https://naval-encyclopedia.com/ww1/china/hai-yung-class-cruisers.php
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -38529,6 +38665,7 @@ Alternate history: Suppose the China had purchased this ship from Chile.
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -38712,6 +38849,7 @@ Alternate history: Suppose the China had purchased this ship from Chile.
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -39067,6 +39205,7 @@ Alternate history: Suppose the China had purchased this ship from Chile.
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -39218,6 +39357,7 @@ Alternate history: Suppose the China had purchased this ship from Chile.
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -39511,7 +39651,7 @@ Alternate history: Suppose the China had purchased this ship from Chile. (In tru
       <longBroad>2</longBroad>
       <longNarrow>1</longNarrow>
       <extremeBroad>1</extremeBroad>
-      <extremeNarrow>0</extremeNarrow>
+      <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
      <FireControlTableRecord>
       <speedThresholdKnot>45</speedThresholdKnot>
@@ -39522,9 +39662,10 @@ Alternate history: Suppose the China had purchased this ship from Chile. (In tru
       <longBroad>1</longBroad>
       <longNarrow>1</longNarrow>
       <extremeBroad>1</extremeBroad>
-      <extremeNarrow>0</extremeNarrow>
+      <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -39684,6 +39825,7 @@ Alternate history: Suppose the China had purchased this ship from Chile. (In tru
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -40175,6 +40317,7 @@ Alternate history: Suppose the China had purchased this ship from Chile.</remark
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -40339,6 +40482,7 @@ Alternate history: Suppose the China had purchased this ship from Chile.</remark
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -40706,6 +40850,7 @@ Alternate history: Suppose the China had purchased this ship from Argentina.</re
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -40880,6 +41025,7 @@ Alternate history: Suppose the China had purchased this ship from Argentina.</re
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -41210,6 +41356,7 @@ https://naval-encyclopedia.com/ww1/argentina/9-de-julio.php</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -41394,7 +41541,7 @@ https://naval-encyclopedia.com/ww1/argentina/9-de-julio.php</remark>
      <FireControlTableRecord>
       <speedThresholdKnot>45</speedThresholdKnot>
       <shortBroad>2</shortBroad>
-      <shortNarrow>2</shortNarrow>
+      <shortNarrow>1</shortNarrow>
       <mediumBroad>1</mediumBroad>
       <mediumNarrow>1</mediumNarrow>
       <longBroad>1</longBroad>
@@ -41403,6 +41550,7 @@ https://naval-encyclopedia.com/ww1/argentina/9-de-julio.php</remark>
       <extremeNarrow>0</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>Common</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -41702,6 +41850,7 @@ https://naval-encyclopedia.com/ww1/argentina/9-de-julio.php</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -41955,6 +42104,7 @@ https://zh.wikipedia.org/wiki/Epsilon%E7%B4%9A%E7%A0%B2%E8%89%87
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -42098,6 +42248,7 @@ https://zh.wikipedia.org/wiki/Epsilon%E7%B4%9A%E7%A0%B2%E8%89%87
       <extremeNarrow>0</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -42398,6 +42549,7 @@ https://www.historyofwar.org/articles/weapons_kai_che.html</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -42553,6 +42705,7 @@ https://www.historyofwar.org/articles/weapons_kai_che.html</remark>
       <extremeNarrow>0</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -42838,6 +42991,7 @@ https://www.historyofwar.org/articles/weapons_kai_che.html</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -42981,6 +43135,7 @@ https://www.historyofwar.org/articles/weapons_kai_che.html</remark>
       <extremeNarrow>0</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -43311,6 +43466,7 @@ https://www.historyofwar.org/articles/weapons_kai_che.html</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -43454,6 +43610,7 @@ https://www.historyofwar.org/articles/weapons_kai_che.html</remark>
       <extremeNarrow>0</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -43761,12 +43918,13 @@ https://www.historyofwar.org/articles/weapons_kai_che.html</remark>
       <shortNarrow>2</shortNarrow>
       <mediumBroad>2</mediumBroad>
       <mediumNarrow>1</mediumNarrow>
-      <longBroad>2</longBroad>
+      <longBroad>1</longBroad>
       <longNarrow>1</longNarrow>
       <extremeBroad>1</extremeBroad>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -43912,6 +44070,7 @@ https://www.historyofwar.org/articles/weapons_kai_che.html</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -44054,7 +44213,7 @@ https://www.historyofwar.org/articles/weapons_kai_che.html</remark>
       <shortNarrow>2</shortNarrow>
       <mediumBroad>2</mediumBroad>
       <mediumNarrow>1</mediumNarrow>
-      <longBroad>2</longBroad>
+      <longBroad>1</longBroad>
       <longNarrow>1</longNarrow>
       <extremeBroad>1</extremeBroad>
       <extremeNarrow>1</extremeNarrow>
@@ -44071,6 +44230,7 @@ https://www.historyofwar.org/articles/weapons_kai_che.html</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -44471,6 +44631,7 @@ https://en.wikipedia.org/wiki/Russian_battleship_Imperator_Nikolai_I_(1889)</rem
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -44610,7 +44771,7 @@ https://en.wikipedia.org/wiki/Russian_battleship_Imperator_Nikolai_I_(1889)</rem
       <mediumNarrow>1</mediumNarrow>
       <longBroad>2</longBroad>
       <longNarrow>1</longNarrow>
-      <extremeBroad>2</extremeBroad>
+      <extremeBroad>1</extremeBroad>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
      <FireControlTableRecord>
@@ -44619,7 +44780,7 @@ https://en.wikipedia.org/wiki/Russian_battleship_Imperator_Nikolai_I_(1889)</rem
       <shortNarrow>2</shortNarrow>
       <mediumBroad>2</mediumBroad>
       <mediumNarrow>1</mediumNarrow>
-      <longBroad>2</longBroad>
+      <longBroad>1</longBroad>
       <longNarrow>1</longNarrow>
       <extremeBroad>1</extremeBroad>
       <extremeNarrow>1</extremeNarrow>
@@ -44628,7 +44789,7 @@ https://en.wikipedia.org/wiki/Russian_battleship_Imperator_Nikolai_I_(1889)</rem
       <speedThresholdKnot>36</speedThresholdKnot>
       <shortBroad>2</shortBroad>
       <shortNarrow>1</shortNarrow>
-      <mediumBroad>2</mediumBroad>
+      <mediumBroad>1</mediumBroad>
       <mediumNarrow>1</mediumNarrow>
       <longBroad>1</longBroad>
       <longNarrow>1</longNarrow>
@@ -44647,6 +44808,7 @@ https://en.wikipedia.org/wiki/Russian_battleship_Imperator_Nikolai_I_(1889)</rem
       <extremeNarrow>0</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -45029,6 +45191,7 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Nakhimov_(1885)
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -45390,6 +45553,7 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Nakhimov_(1885)</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -45505,7 +45669,7 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Nakhimov_(1885)</remark>
       <mediumNarrow>1</mediumNarrow>
       <longBroad>2</longBroad>
       <longNarrow>1</longNarrow>
-      <extremeBroad>2</extremeBroad>
+      <extremeBroad>1</extremeBroad>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
      <FireControlTableRecord>
@@ -45514,7 +45678,7 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Nakhimov_(1885)</remark>
       <shortNarrow>2</shortNarrow>
       <mediumBroad>2</mediumBroad>
       <mediumNarrow>1</mediumNarrow>
-      <longBroad>2</longBroad>
+      <longBroad>1</longBroad>
       <longNarrow>1</longNarrow>
       <extremeBroad>1</extremeBroad>
       <extremeNarrow>1</extremeNarrow>
@@ -45523,7 +45687,7 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Nakhimov_(1885)</remark>
       <speedThresholdKnot>36</speedThresholdKnot>
       <shortBroad>2</shortBroad>
       <shortNarrow>1</shortNarrow>
-      <mediumBroad>2</mediumBroad>
+      <mediumBroad>1</mediumBroad>
       <mediumNarrow>1</mediumNarrow>
       <longBroad>1</longBroad>
       <longNarrow>1</longNarrow>
@@ -45542,6 +45706,7 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Nakhimov_(1885)</remark>
       <extremeNarrow>0</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -45914,7 +46079,7 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Pamiat_Azova
       <shortNarrow>2</shortNarrow>
       <mediumBroad>2</mediumBroad>
       <mediumNarrow>1</mediumNarrow>
-      <longBroad>2</longBroad>
+      <longBroad>1</longBroad>
       <longNarrow>1</longNarrow>
       <extremeBroad>1</extremeBroad>
       <extremeNarrow>1</extremeNarrow>
@@ -45931,6 +46096,7 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Pamiat_Azova
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -46063,7 +46229,7 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Pamiat_Azova
       <mediumNarrow>1</mediumNarrow>
       <longBroad>2</longBroad>
       <longNarrow>1</longNarrow>
-      <extremeBroad>2</extremeBroad>
+      <extremeBroad>1</extremeBroad>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
      <FireControlTableRecord>
@@ -46072,7 +46238,7 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Pamiat_Azova
       <shortNarrow>2</shortNarrow>
       <mediumBroad>2</mediumBroad>
       <mediumNarrow>1</mediumNarrow>
-      <longBroad>2</longBroad>
+      <longBroad>1</longBroad>
       <longNarrow>1</longNarrow>
       <extremeBroad>1</extremeBroad>
       <extremeNarrow>1</extremeNarrow>
@@ -46081,7 +46247,7 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Pamiat_Azova
       <speedThresholdKnot>36</speedThresholdKnot>
       <shortBroad>2</shortBroad>
       <shortNarrow>1</shortNarrow>
-      <mediumBroad>2</mediumBroad>
+      <mediumBroad>1</mediumBroad>
       <mediumNarrow>1</mediumNarrow>
       <longBroad>1</longBroad>
       <longNarrow>1</longNarrow>
@@ -46100,6 +46266,7 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Pamiat_Azova
       <extremeNarrow>0</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -46477,6 +46644,7 @@ Strange FC Code given by SK5 datasheet, which may overestimate its fire control 
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -46860,6 +47028,7 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Kornilov</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -47020,12 +47189,13 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Kornilov</remark>
       <shortNarrow>2</shortNarrow>
       <mediumBroad>2</mediumBroad>
       <mediumNarrow>1</mediumNarrow>
-      <longBroad>2</longBroad>
+      <longBroad>1</longBroad>
       <longNarrow>1</longNarrow>
       <extremeBroad>1</extremeBroad>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -47461,6 +47631,7 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Kornilov</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -47621,12 +47792,13 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Kornilov</remark>
       <shortNarrow>2</shortNarrow>
       <mediumBroad>2</mediumBroad>
       <mediumNarrow>1</mediumNarrow>
-      <longBroad>2</longBroad>
+      <longBroad>1</longBroad>
       <longNarrow>1</longNarrow>
       <extremeBroad>1</extremeBroad>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -47994,6 +48166,7 @@ https://en.wikipedia.org/wiki/Russian_battleship_Sissoi_Veliky</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -48154,12 +48327,13 @@ https://en.wikipedia.org/wiki/Russian_battleship_Sissoi_Veliky</remark>
       <shortNarrow>2</shortNarrow>
       <mediumBroad>2</mediumBroad>
       <mediumNarrow>1</mediumNarrow>
-      <longBroad>2</longBroad>
+      <longBroad>1</longBroad>
       <longNarrow>1</longNarrow>
       <extremeBroad>1</extremeBroad>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -48326,6 +48500,7 @@ https://en.wikipedia.org/wiki/Russian_battleship_Sissoi_Veliky</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -48687,6 +48862,7 @@ https://en.wikipedia.org/wiki/Russian_battleship_Sissoi_Veliky</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -48846,6 +49022,7 @@ https://en.wikipedia.org/wiki/Russian_battleship_Sissoi_Veliky</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -49225,6 +49402,7 @@ https://en.wikipedia.org/wiki/Russian_battleship_Navarin</remark>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -49531,6 +49709,7 @@ One of reference ship class of Ding Yuan
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -49690,6 +49869,7 @@ One of reference ship class of Ding Yuan
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>Common</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -50035,6 +50215,7 @@ One of reference ship class of Ding Yuan
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -50410,6 +50591,7 @@ Reference only, a new damage schema is required to work properly.
       <extremeNarrow>2</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -50607,6 +50789,7 @@ Reference only, a new damage schema is required to work properly.
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -50944,6 +51127,7 @@ Reference only, a new damage schema is required to work properly.
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -51102,6 +51286,7 @@ Reference only, a new damage schema is required to work properly.
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -51242,7 +51427,7 @@ Reference only, a new damage schema is required to work properly.
       <shortBroad>3</shortBroad>
       <shortNarrow>2</shortNarrow>
       <mediumBroad>2</mediumBroad>
-      <mediumNarrow>2</mediumNarrow>
+      <mediumNarrow>1</mediumNarrow>
       <longBroad>1</longBroad>
       <longNarrow>1</longNarrow>
       <extremeBroad>1</extremeBroad>
@@ -51260,6 +51445,7 @@ Reference only, a new damage schema is required to work properly.
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -51567,7 +51753,7 @@ Reference only, a new damage schema is required to work properly.
       <mediumNarrow>1</mediumNarrow>
       <longBroad>2</longBroad>
       <longNarrow>1</longNarrow>
-      <extremeBroad>2</extremeBroad>
+      <extremeBroad>1</extremeBroad>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
      <FireControlTableRecord>
@@ -51582,6 +51768,7 @@ Reference only, a new damage schema is required to work properly.
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -51715,7 +51902,7 @@ Reference only, a new damage schema is required to work properly.
       <shortBroad>3</shortBroad>
       <shortNarrow>2</shortNarrow>
       <mediumBroad>2</mediumBroad>
-      <mediumNarrow>2</mediumNarrow>
+      <mediumNarrow>1</mediumNarrow>
       <longBroad>1</longBroad>
       <longNarrow>1</longNarrow>
       <extremeBroad>1</extremeBroad>
@@ -51733,6 +51920,7 @@ Reference only, a new damage schema is required to work properly.
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -52081,6 +52269,7 @@ Reference only, a new damage schema is required to work properly.
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -52403,13 +52592,14 @@ Reference only, a new damage schema is required to work properly.
       <shortBroad>4</shortBroad>
       <shortNarrow>2</shortNarrow>
       <mediumBroad>2</mediumBroad>
-      <mediumNarrow>2</mediumNarrow>
+      <mediumNarrow>1</mediumNarrow>
       <longBroad>2</longBroad>
       <longNarrow>1</longNarrow>
       <extremeBroad>1</extremeBroad>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -52485,7 +52675,7 @@ Reference only, a new damage schema is required to work properly.
    </BatteryRecord>
    <BatteryRecord>
     <name>
-     <english>4.7''/40 QF Type 41</english>
+     <english>4.7‘’/40 QF Mk I-IV</english>
      <japanese />
      <chineseSimplified />
     </name>
@@ -52517,12 +52707,12 @@ Reference only, a new damage schema is required to work properly.
       <speedThresholdKnot>9</speedThresholdKnot>
       <shortBroad>7</shortBroad>
       <shortNarrow>4</shortNarrow>
-      <mediumBroad>5</mediumBroad>
+      <mediumBroad>4</mediumBroad>
       <mediumNarrow>3</mediumNarrow>
       <longBroad>3</longBroad>
       <longNarrow>2</longNarrow>
-      <extremeBroad>3</extremeBroad>
-      <extremeNarrow>2</extremeNarrow>
+      <extremeBroad>2</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
      <FireControlTableRecord>
       <speedThresholdKnot>18</speedThresholdKnot>
@@ -52538,12 +52728,12 @@ Reference only, a new damage schema is required to work properly.
      <FireControlTableRecord>
       <speedThresholdKnot>27</speedThresholdKnot>
       <shortBroad>4</shortBroad>
-      <shortNarrow>3</shortNarrow>
-      <mediumBroad>3</mediumBroad>
-      <mediumNarrow>2</mediumNarrow>
+      <shortNarrow>2</shortNarrow>
+      <mediumBroad>2</mediumBroad>
+      <mediumNarrow>1</mediumNarrow>
       <longBroad>2</longBroad>
       <longNarrow>1</longNarrow>
-      <extremeBroad>2</extremeBroad>
+      <extremeBroad>1</extremeBroad>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
      <FireControlTableRecord>
@@ -52552,7 +52742,7 @@ Reference only, a new damage schema is required to work properly.
       <shortNarrow>2</shortNarrow>
       <mediumBroad>2</mediumBroad>
       <mediumNarrow>1</mediumNarrow>
-      <longBroad>2</longBroad>
+      <longBroad>1</longBroad>
       <longNarrow>1</longNarrow>
       <extremeBroad>1</extremeBroad>
       <extremeNarrow>1</extremeNarrow>
@@ -52563,12 +52753,13 @@ Reference only, a new damage schema is required to work properly.
       <shortNarrow>2</shortNarrow>
       <mediumBroad>2</mediumBroad>
       <mediumNarrow>1</mediumNarrow>
-      <longBroad>2</longBroad>
+      <longBroad>1</longBroad>
       <longNarrow>1</longNarrow>
       <extremeBroad>1</extremeBroad>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -52906,12 +53097,13 @@ Reference only, a new damage schema is required to work properly.
       <shortNarrow>2</shortNarrow>
       <mediumBroad>2</mediumBroad>
       <mediumNarrow>1</mediumNarrow>
-      <longBroad>2</longBroad>
+      <longBroad>1</longBroad>
       <longNarrow>1</longNarrow>
       <extremeBroad>1</extremeBroad>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -53551,6 +53743,7 @@ Complement 50 is inferred.
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -53691,6 +53884,7 @@ Complement 50 is inferred.
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -53815,6 +54009,7 @@ Complement 50 is inferred.
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>Common</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -54187,6 +54382,7 @@ Sivuch or Gilyak</remark>
       <extremeNarrow>0</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>true</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -54267,7 +54463,7 @@ Sivuch or Gilyak</remark>
     <fireControlTableRecords>
      <FireControlTableRecord>
       <speedThresholdKnot>9</speedThresholdKnot>
-      <shortBroad>5</shortBroad>
+      <shortBroad>6</shortBroad>
       <shortNarrow>3</shortNarrow>
       <mediumBroad>3</mediumBroad>
       <mediumNarrow>2</mediumNarrow>
@@ -54307,7 +54503,7 @@ Sivuch or Gilyak</remark>
       <longBroad>1</longBroad>
       <longNarrow>1</longNarrow>
       <extremeBroad>1</extremeBroad>
-      <extremeNarrow>1</extremeNarrow>
+      <extremeNarrow>0</extremeNarrow>
      </FireControlTableRecord>
      <FireControlTableRecord>
       <speedThresholdKnot>45</speedThresholdKnot>
@@ -54321,6 +54517,7 @@ Sivuch or Gilyak</remark>
       <extremeNarrow>0</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -54838,7 +55035,7 @@ https://www.history.navy.mil/our-collections/photography/numerical-list-of-image
       <speedThresholdKnot>27</speedThresholdKnot>
       <shortBroad>5</shortBroad>
       <shortNarrow>3</shortNarrow>
-      <mediumBroad>2</mediumBroad>
+      <mediumBroad>3</mediumBroad>
       <mediumNarrow>2</mediumNarrow>
       <longBroad>2</longBroad>
       <longNarrow>1</longNarrow>
@@ -54868,6 +55065,7 @@ https://www.history.navy.mil/our-collections/photography/numerical-list-of-image
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -55176,6 +55374,7 @@ One of Ting Yuen's Reference class
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -55350,6 +55549,7 @@ One of Ting Yuen's Reference class
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -55732,6 +55932,7 @@ One of Ting Yuen's Reference class
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -56108,6 +56309,7 @@ One of Ting Yuen's Reference class
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>SemiArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -56436,6 +56638,7 @@ One of Ting Yuen's Reference class
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -56593,6 +56796,7 @@ One of Ting Yuen's Reference class
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -56966,6 +57170,7 @@ One of Ting Yuen's Reference class
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -57118,6 +57323,7 @@ One of Ting Yuen's Reference class
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -57468,6 +57674,7 @@ One of Ting Yuen's Reference class
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -57733,6 +57940,7 @@ One of Ting Yuen's Reference class
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -57909,6 +58117,7 @@ One of Ting Yuen's Reference class
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -58257,6 +58466,7 @@ One of Ting Yuen's Reference class
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -58433,6 +58643,7 @@ One of Ting Yuen's Reference class
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -58761,10 +58972,11 @@ One of Ting Yuen's Reference class
       <mediumNarrow>2</mediumNarrow>
       <longBroad>2</longBroad>
       <longNarrow>1</longNarrow>
-      <extremeBroad>2</extremeBroad>
+      <extremeBroad>1</extremeBroad>
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -59172,6 +59384,7 @@ One of Ting Yuen's Reference class
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -59685,6 +59898,7 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>Common</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -59999,6 +60213,7 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>SemiArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -60313,6 +60528,7 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
       <extremeNarrow>0</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -60437,6 +60653,7 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>true</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -60596,6 +60813,7 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
       <extremeNarrow>0</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>true</customFireControlTable>
     <penetrationTableBaseType>Common</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -60795,6 +61013,7 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>true</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -60943,6 +61162,7 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -61104,6 +61324,7 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -61318,6 +61539,7 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>true</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -61403,11 +61625,11 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
     <fireControlType>
      <role>Primary</role>
      <era>Predreadnought</era>
-     <code>W</code>
+     <code>X</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
-     <rangeFinder>None</rangeFinder>
-     <directorControl>FollowThePointer</directorControl>
+     <rangeFinder>Optical</rangeFinder>
+     <directorControl>None</directorControl>
      <stabilization>Manual</stabilization>
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
@@ -61477,6 +61699,7 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -61553,11 +61776,11 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
     <maxRateOfFireShootPerMin>4.5</maxRateOfFireShootPerMin>
     <fireControlPositions>1</fireControlPositions>
     <fireControlType>
-     <role>Secondary</role>
+     <role>Primary</role>
      <era>Predreadnought</era>
-     <code>Z</code>
+     <code>Y</code>
      <gunSight>Basic</gunSight>
-     <fireControlInstrument>None</fireControlInstrument>
+     <fireControlInstrument>Basic</fireControlInstrument>
      <rangeFinder>None</rangeFinder>
      <directorControl>None</directorControl>
      <stabilization>Manual</stabilization>
@@ -61629,6 +61852,7 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -61799,6 +62023,7 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -61963,6 +62188,7 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -62171,6 +62397,7 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -62486,6 +62713,7 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -62651,6 +62879,7 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>
@@ -62809,6 +63038,7 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
       <extremeNarrow>1</extremeNarrow>
      </FireControlTableRecord>
     </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
     <penetrationTableBaseType>ArmorPiercing</penetrationTableBaseType>
     <penetrationTableRecords>
      <PenetrationTableRecord>

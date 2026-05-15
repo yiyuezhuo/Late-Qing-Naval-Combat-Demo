@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Linq;
 
 using NavalCombatCore;
+using Unity.Properties;
 using UnityEngine;
 using UnityEngine.UIElements;
 using YYZ.Ballistic;
@@ -58,8 +59,6 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
     static string LocalizeEnum<T>(T value) => ServiceLocator.Get<ILocalizeService>().GetEnum(value);
     static List<string> LocalizedChoices(params string[] keys) => keys.Select(key => Localize(key)).ToList();
     static List<string> LocalizedChoices(IEnumerable<string> keys) => keys.Select(key => Localize(key)).ToList();
-    static DropdownOption<T> Option<T>(T value, string labelKey) => new(value, Localize(labelKey));
-    static List<DropdownOption<T>> Options<T>(params DropdownOption<T>[] options) => options.ToList();
 
     sealed class ResultRow
     {
@@ -75,48 +74,6 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         public string Title;
         public int Width;
         public Func<T, string> Selector;
-    }
-
-    sealed class FloatBinding
-    {
-        public bool Updating;
-        public double Value;
-        public double? Min;
-        public Action<double> Setter;
-    }
-
-    sealed class DropdownOption<T>
-    {
-        public T Value;
-        public string Label;
-
-        public DropdownOption(T value, string label)
-        {
-            Value = value;
-            Label = label;
-        }
-    }
-
-    sealed class DropdownBinding<T>
-    {
-        public bool Updating;
-        public T Value;
-        public List<DropdownOption<T>> Options = new();
-        public Action<T> Setter;
-    }
-
-    sealed class TextBinding
-    {
-        public bool Updating;
-        public string Value = "";
-        public Action<string> Setter;
-    }
-
-    sealed class ToggleBinding
-    {
-        public bool Updating;
-        public bool Value;
-        public Action<bool> Setter;
     }
 
     sealed class FitCandidate
@@ -160,6 +117,409 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         }
     }
 
+    public sealed class InputViewModel : INotifyBindablePropertyChanged
+    {
+        readonly BatteryRecordMetaInfoMcCoyOkunDialog owner;
+
+        public event EventHandler<BindablePropertyChangedEventArgs> propertyChanged;
+
+        public InputViewModel(BatteryRecordMetaInfoMcCoyOkunDialog owner)
+        {
+            this.owner = owner;
+        }
+
+        [CreateProperty]
+        public int sampleIndex
+        {
+            get
+            {
+                var index = owner.Samples.FindIndex(sample => sample.Id == owner.sampleId);
+                return index >= 0 ? index + 1 : 0;
+            }
+            set
+            {
+                value = Mathf.Clamp(value, 0, owner.Samples.Count);
+                if (value == sampleIndex)
+                    return;
+
+                if (value <= 0)
+                {
+                    owner.sampleId = "";
+                    owner.input.McCoy.ProjectileId = "Example projectile";
+                }
+                else
+                {
+                    var sample = owner.Samples[Mathf.Clamp(value - 1, 0, owner.Samples.Count - 1)];
+                    owner.sampleId = sample.Id;
+                    owner.ApplyBallisticSample(sample);
+                }
+
+                owner.RefreshInputBindings(true);
+                owner.MarkOutputDirty();
+            }
+        }
+
+        [CreateProperty]
+        public int presetIndex
+        {
+            get => Math.Max(0, owner.DragPresets.FindIndex(item => item.Function == owner.preset));
+            set
+            {
+                value = Mathf.Clamp(value, 0, owner.DragPresets.Count - 1);
+                var selected = owner.DragPresets[value];
+                if (selected.Function == owner.preset)
+                    return;
+                owner.ApplyMcCoyPlusPreset(selected.Function);
+                owner.NotifyInputProperties();
+                owner.MarkOutputDirty();
+            }
+        }
+
+        [CreateProperty] public float muzzleVelocity { get => (float)owner.input.McCoy.MuzzleVelocity; set => SetDouble(owner.input.McCoy.MuzzleVelocity, value, v => owner.input.McCoy.MuzzleVelocity = v, nameof(muzzleVelocity), 1); }
+        [CreateProperty] public float ballisticCoefficient { get => (float)owner.input.McCoy.BallisticCoefficient; set => SetDouble(owner.input.McCoy.BallisticCoefficient, value, v => owner.input.McCoy.BallisticCoefficient = v, nameof(ballisticCoefficient), 0.001); }
+        [CreateProperty] public float maxRange { get => (float)owner.input.McCoy.MaxRange; set => SetDouble(owner.input.McCoy.MaxRange, value, v => owner.input.McCoy.MaxRange = v, nameof(maxRange), 1); }
+
+        [CreateProperty]
+        public int armorTypeIndex
+        {
+            get => Math.Max(0, FacehardCalculator.FacehardArmors.FindIndex(item => item.Id == owner.facehardDetails.ArmorId));
+            set
+            {
+                value = Mathf.Clamp(value, 0, FacehardCalculator.FacehardArmors.Count - 1);
+                var armorId = FacehardCalculator.FacehardArmors[value].Id;
+                if (owner.facehardDetails.ArmorId == armorId)
+                    return;
+                owner.facehardDetails.ArmorId = armorId;
+                Notify(nameof(armorTypeIndex));
+                owner.MarkOutputDirty();
+            }
+        }
+
+        [CreateProperty] public bool curvedPlate { get => owner.facehardDetails.CurvedPlate; set => SetBool(owner.facehardDetails.CurvedPlate, value, v => owner.facehardDetails.CurvedPlate = v, nameof(curvedPlate)); }
+        [CreateProperty] public float woodBacking { get => (float)owner.facehardDetails.WoodBackingThickness; set => SetDouble(owner.facehardDetails.WoodBackingThickness, value, v => owner.facehardDetails.WoodBackingThickness = v, nameof(woodBacking), 0); }
+        [CreateProperty] public float cementBacking { get => (float)owner.facehardDetails.CementBackingThickness; set => SetDouble(owner.facehardDetails.CementBackingThickness, value, v => owner.facehardDetails.CementBackingThickness = v, nameof(cementBacking), 0); }
+        [CreateProperty] public float metalBacking { get => (float)owner.facehardDetails.MetalBackingThickness; set => SetDouble(owner.facehardDetails.MetalBackingThickness, value, v => owner.facehardDetails.MetalBackingThickness = v, nameof(metalBacking), 0); }
+        [CreateProperty] public float backingQuality { get => (float)owner.facehardDetails.BackingQuality; set => SetDouble(owner.facehardDetails.BackingQuality, value, v => owner.facehardDetails.BackingQuality = v, nameof(backingQuality), 0.001); }
+        [CreateProperty] public float backingPlates { get => (float)owner.facehardDetails.BackingPlates; set => SetDouble(owner.facehardDetails.BackingPlates, value, v => owner.facehardDetails.BackingPlates = v, nameof(backingPlates), 0); }
+
+        [CreateProperty] public float m79ArmorQuality { get => (float)owner.input.M79.PlateQuality; set => SetDouble(owner.input.M79.PlateQuality, value, v => owner.input.M79.PlateQuality = v, nameof(m79ArmorQuality), 0.001); }
+        [CreateProperty] public float m79Elongation { get => (float)owner.input.M79.Elongation; set => SetDouble(owner.input.M79.Elongation, value, v => owner.input.M79.Elongation = v, nameof(m79Elongation), 10); }
+
+        [CreateProperty]
+        public int elevationSearchIndex
+        {
+            get => owner.input.McCoy.ElevationSearchMode == McCoyPlusElevationSearchMode.MatchedRange ? 1 : 0;
+            set
+            {
+                var next = value == 1 ? McCoyPlusElevationSearchMode.MatchedRange : McCoyPlusElevationSearchMode.CachedBinarySearch;
+                if (owner.input.McCoy.ElevationSearchMode == next)
+                    return;
+                owner.input.McCoy.ElevationSearchMode = next;
+                Notify(nameof(elevationSearchIndex));
+                owner.MarkOutputDirty();
+            }
+        }
+
+        [CreateProperty]
+        public int atmosphereIndex
+        {
+            get => owner.input.McCoy.Atmosphere == McCoyAtmosphere.Icao ? 1 : 0;
+            set
+            {
+                var next = value == 1 ? McCoyAtmosphere.Icao : McCoyAtmosphere.StandardMetro;
+                if (owner.input.McCoy.Atmosphere == next)
+                    return;
+                owner.input.McCoy.Atmosphere = next;
+                Notify(nameof(atmosphereIndex));
+                owner.MarkOutputDirty();
+            }
+        }
+
+        [CreateProperty] public float densityRatio { get => (float)owner.input.McCoy.DensityRatio; set => SetDouble(owner.input.McCoy.DensityRatio, value, v => owner.input.McCoy.DensityRatio = v, nameof(densityRatio), 0.001); }
+        [CreateProperty] public float temperature { get => (float)owner.input.McCoy.TemperatureF; set => SetDouble(owner.input.McCoy.TemperatureF, value, v => owner.input.McCoy.TemperatureF = v, nameof(temperature)); }
+        [CreateProperty] public float matchHeight { get => (float)owner.input.McCoy.MatchHeight; set => SetDouble(owner.input.McCoy.MatchHeight, value, v => owner.input.McCoy.MatchHeight = v, nameof(matchHeight)); }
+
+        [CreateProperty]
+        public int rangeModeIndex
+        {
+            get => owner.rangeMode == RangeMode.SearchSk5 ? 1 : 0;
+            set
+            {
+                var next = value == 1 ? RangeMode.SearchSk5 : RangeMode.Sweep;
+                if (owner.rangeMode == next)
+                    return;
+                owner.rangeMode = next;
+                Notify(nameof(rangeModeIndex));
+                owner.MarkOutputDirty();
+            }
+        }
+
+        [CreateProperty]
+        public int chartModeIndex
+        {
+            get => owner.chartMode == ChartMode.Penetration ? 1 : 0;
+            set
+            {
+                var next = value == 1 ? ChartMode.Penetration : ChartMode.Trajectory;
+                if (owner.chartMode == next)
+                    return;
+                owner.chartMode = next;
+                Notify(nameof(chartModeIndex));
+                owner.MarkOutputDirty();
+            }
+        }
+
+        [CreateProperty]
+        public int okunModeIndex
+        {
+            get => owner.okunMode switch
+            {
+                OkunMode.FacehardOnly => 1,
+                OkunMode.M79Only => 2,
+                _ => 0,
+            };
+            set
+            {
+                var next = value switch
+                {
+                    1 => OkunMode.FacehardOnly,
+                    2 => OkunMode.M79Only,
+                    _ => OkunMode.FacehardM79,
+                };
+                if (owner.okunMode == next)
+                    return;
+                owner.okunMode = next;
+                Notify(nameof(okunModeIndex));
+                owner.MarkOutputDirty();
+            }
+        }
+
+        [CreateProperty]
+        public string dragTableText
+        {
+            get => owner.dragText;
+            set
+            {
+                value ??= "";
+                if (string.Equals(owner.dragText, value, StringComparison.Ordinal))
+                    return;
+                owner.dragText = value;
+                owner.input.McCoy.DragTable = McCoy.NormalizeDragTable(owner.dragText);
+                Notify(nameof(dragTableText));
+                owner.MarkOutputDirty();
+            }
+        }
+
+        [CreateProperty]
+        public int projectileNationIndex
+        {
+            get
+            {
+                var selectedPreset = owner.CurrentProjectilePreset;
+                var selectedNation = selectedPreset?.Nation ?? "Custom";
+                return Math.Max(0, FacehardCalculator.FacehardProjectileNations.FindIndex(item => item.Id == selectedNation));
+            }
+            set
+            {
+                value = Mathf.Clamp(value, 0, FacehardCalculator.FacehardProjectileNations.Count - 1);
+                var nation = FacehardCalculator.FacehardProjectileNations[value];
+                if (owner.CurrentProjectilePreset?.Nation == nation.Id)
+                    return;
+                owner.facehardDetails.ProjectilePresetId = nation.DefaultProjectileId;
+                owner.facehardDetails.NoseCondition = FacehardNoseCondition.Intact;
+                owner.RefreshInputBindings(true);
+                owner.MarkOutputDirty();
+            }
+        }
+
+        [CreateProperty]
+        public int projectileTypeIndex
+        {
+            get => Math.Max(0, owner.ProjectileChoices.FindIndex(item => item.Id == owner.facehardDetails.ProjectilePresetId));
+            set
+            {
+                var choices = owner.ProjectileChoices;
+                value = Mathf.Clamp(value, 0, choices.Count - 1);
+                var projectileId = choices[value].Id;
+                if (owner.facehardDetails.ProjectilePresetId == projectileId)
+                    return;
+                owner.facehardDetails.ProjectilePresetId = projectileId;
+                owner.facehardDetails.NoseCondition = FacehardNoseCondition.Intact;
+                owner.RefreshInputBindings(true);
+                owner.MarkOutputDirty();
+            }
+        }
+
+        [CreateProperty]
+        public int capOrHoodIndex
+        {
+            get => Math.Max(0, owner.CapValues.IndexOf(owner.ResolvedCapType));
+            set
+            {
+                if (!isCustomProjectile)
+                    return;
+                value = Mathf.Clamp(value, 0, owner.CapValues.Count - 1);
+                var next = owner.CapValues[value];
+                if (owner.facehardDetails.CapType == next)
+                    return;
+                owner.facehardDetails.CapType = next;
+                owner.RefreshInputBindings();
+                owner.MarkOutputDirty();
+            }
+        }
+
+        [CreateProperty]
+        public int noseSchemaIndex
+        {
+            get => owner.facehardDetails.NoseSchema == FacehardNoseSchema.JapaneseCapHead ? 1 : 0;
+            set
+            {
+                if (!isCustomProjectile)
+                    return;
+                var next = value == 1 ? FacehardNoseSchema.JapaneseCapHead : FacehardNoseSchema.Standard;
+                if (owner.facehardDetails.NoseSchema == next)
+                    return;
+                owner.facehardDetails.NoseSchema = next;
+                owner.facehardDetails.NoseCondition = FacehardNoseCondition.Intact;
+                owner.RefreshInputBindings();
+                owner.MarkOutputDirty();
+            }
+        }
+
+        [CreateProperty]
+        public int japaneseCapHeadIndex
+        {
+            get => owner.facehardDetails.JapaneseCapHead <= 1 ? 0 : 1;
+            set
+            {
+                var next = value == 0 ? 1 : 2;
+                if (owner.facehardDetails.JapaneseCapHead == next)
+                    return;
+                owner.facehardDetails.JapaneseCapHead = next;
+                owner.facehardDetails.NoseCondition = FacehardNoseCondition.Intact;
+                owner.RefreshInputBindings();
+                owner.MarkOutputDirty();
+            }
+        }
+
+        [CreateProperty]
+        public int noseConditionIndex
+        {
+            get => Math.Max(0, owner.NoseWeights.ConditionOptions.IndexOf(owner.NoseWeights.Condition));
+            set
+            {
+                var options = owner.NoseWeights.ConditionOptions;
+                value = Mathf.Clamp(value, 0, options.Count - 1);
+                var next = options[value];
+                if (owner.facehardDetails.NoseCondition == next)
+                    return;
+                owner.facehardDetails.NoseCondition = next;
+                owner.RefreshInputBindings();
+                owner.MarkOutputDirty();
+            }
+        }
+
+        [CreateProperty] public float projectileDiameter { get => (float)owner.facehardDetails.ProjectileDiameter; set { if (SetDouble(owner.facehardDetails.ProjectileDiameter, value, v => owner.facehardDetails.ProjectileDiameter = v, nameof(projectileDiameter), 0.001)) owner.RefreshProjectileDerivedState(); } }
+        [CreateProperty] public float projectileWeight { get => (float)owner.facehardDetails.ProjectileWeight; set { if (SetDouble(owner.facehardDetails.ProjectileWeight, value, v => owner.facehardDetails.ProjectileWeight = v, nameof(projectileWeight), 0.001)) owner.RefreshProjectileDerivedState(); } }
+        [CreateProperty] public float projectileBodyWeight { get => (float)owner.facehardDetails.ProjectileBodyWeight; set { if (SetDouble(owner.facehardDetails.ProjectileBodyWeight, value, v => owner.facehardDetails.ProjectileBodyWeight = v, nameof(projectileBodyWeight), 0.001)) owner.RefreshProjectileDerivedState(); } }
+        [CreateProperty] public float windscreenCapHeadWeight { get => (float)owner.facehardDetails.WindscreenCapHeadWeight; set { if (SetDouble(owner.facehardDetails.WindscreenCapHeadWeight, value, v => owner.facehardDetails.WindscreenCapHeadWeight = v, nameof(windscreenCapHeadWeight), 0)) owner.RefreshProjectileDerivedState(); } }
+        [CreateProperty] public float windscreenWeight { get => (float)owner.facehardDetails.WindscreenWeight; set { if (SetDouble(owner.facehardDetails.WindscreenWeight, value, v => owner.facehardDetails.WindscreenWeight = v, nameof(windscreenWeight), 0)) owner.RefreshProjectileDerivedState(); } }
+        [CreateProperty] public float remainingNoseWeight => (float)owner.NoseWeights.RemainWeight;
+        [CreateProperty] public string remainingNoseWeightLabel => RemainingNoseWeightLabel(owner.NoseWeights.CapHead, owner.ResolvedCapType);
+        [CreateProperty] public float plim { get => (float)(isCustomProjectile ? owner.facehardDetails.ProjectileLimitQuality : owner.CurrentProjectilePreset?.ProjectileLimitQuality ?? owner.facehardDetails.ProjectileLimitQuality); set { if (isCustomProjectile) SetDouble(owner.facehardDetails.ProjectileLimitQuality, value, v => owner.facehardDetails.ProjectileLimitQuality = v, nameof(plim), 0.001); } }
+        [CreateProperty] public float pdam { get => (float)(isCustomProjectile ? owner.facehardDetails.ProjectileDamageQuality : owner.CurrentProjectilePreset?.ProjectileDamageQuality ?? owner.facehardDetails.ProjectileDamageQuality); set { if (isCustomProjectile) SetDouble(owner.facehardDetails.ProjectileDamageQuality, value, v => owner.facehardDetails.ProjectileDamageQuality = v, nameof(pdam), 0.001); } }
+        [CreateProperty] public int shatResIndex { get => Mathf.Clamp((int)Math.Round(isCustomProjectile ? owner.facehardDetails.ShatterResistance : owner.CurrentProjectilePreset?.ShatterResistance ?? owner.facehardDetails.ShatterResistance), 0, ShatterResistanceLabelKeys.Length - 1); set { if (isCustomProjectile) SetDouble(owner.facehardDetails.ShatterResistance, value, v => owner.facehardDetails.ShatterResistance = v, nameof(shatResIndex)); } }
+        [CreateProperty] public int breakUnderNblIndex { get => Mathf.Clamp((int)Math.Round(isCustomProjectile ? owner.facehardDetails.BreakUnderNbl : owner.CurrentProjectilePreset?.BreakUnderNbl ?? owner.facehardDetails.BreakUnderNbl), 0, BreakUnderNblLabelKeys.Length - 1); set { if (isCustomProjectile) SetDouble(owner.facehardDetails.BreakUnderNbl, value, v => owner.facehardDetails.BreakUnderNbl = v, nameof(breakUnderNblIndex)); } }
+        [CreateProperty] public int lightCaseIndex { get => Mathf.Clamp((int)Math.Round(isCustomProjectile ? owner.facehardDetails.LightCase : owner.CurrentProjectilePreset?.LightCase ?? owner.facehardDetails.LightCase), 0, LightCaseLabelKeys.Length - 1); set { if (isCustomProjectile) SetDouble(owner.facehardDetails.LightCase, value, v => owner.facehardDetails.LightCase = v, nameof(lightCaseIndex)); } }
+
+        [CreateProperty] public bool isCustomProjectile => owner.facehardDetails.ProjectilePresetId == "custom";
+        [CreateProperty] public bool projectileCustomFieldEnabled => isCustomProjectile;
+        [CreateProperty] public bool readOnlyFieldEnabled => false;
+        [CreateProperty] public DisplayStyle japaneseCapHeadDisplay => isCustomProjectile && owner.facehardDetails.NoseSchema == FacehardNoseSchema.JapaneseCapHead ? DisplayStyle.Flex : DisplayStyle.None;
+        [CreateProperty] public DisplayStyle windscreenCapHeadWeightDisplay => owner.NoseWeights.SchemaKind == FacehardNoseSchema.JapaneseCapHead && owner.NoseWeights.CapHead == 2 ? DisplayStyle.Flex : DisplayStyle.None;
+        [CreateProperty] public DisplayStyle windscreenWeightDisplay => owner.NoseWeights.SchemaKind == FacehardNoseSchema.Standard ? DisplayStyle.Flex : DisplayStyle.None;
+
+        [CreateProperty] public float sk5MaxRateOfFire => owner.CurrentMaxRateOfFireShootPerMin();
+        [CreateProperty] public float fallToNextFireSeconds { get => owner.fallToNextFireSeconds; set => SetFloat(owner.fallToNextFireSeconds, value, v => owner.fallToNextFireSeconds = v, nameof(fallToNextFireSeconds), 0); }
+        [CreateProperty] public bool roundSyncBackValues { get => owner.roundSyncBackValuesToOneDecimal; set => SetBool(owner.roundSyncBackValuesToOneDecimal, value, v => owner.roundSyncBackValuesToOneDecimal = v, nameof(roundSyncBackValues)); }
+
+        bool SetFloat(float current, float value, Action<float> setter, string propertyName, float? min = null)
+        {
+            var next = min.HasValue ? Math.Max(min.Value, value) : value;
+            if (Mathf.Abs(current - next) <= 0.000001f)
+                return false;
+            setter(next);
+            Notify(propertyName);
+            owner.MarkOutputDirty();
+            return true;
+        }
+
+        bool SetDouble(double current, double value, Action<double> setter, string propertyName, double? min = null)
+        {
+            var next = min.HasValue ? Math.Max(min.Value, value) : value;
+            if (Math.Abs(current - next) <= 0.000001)
+                return false;
+            setter(next);
+            Notify(propertyName);
+            owner.MarkOutputDirty();
+            return true;
+        }
+
+        bool SetBool(bool current, bool value, Action<bool> setter, string propertyName)
+        {
+            if (current == value)
+                return false;
+            setter(value);
+            Notify(propertyName);
+            owner.MarkOutputDirty();
+            return true;
+        }
+
+        public void NotifyAll()
+        {
+            foreach (var propertyName in AllInputPropertyNames)
+                Notify(propertyName);
+        }
+
+        public void NotifyProjectileState()
+        {
+            foreach (var propertyName in ProjectileStatePropertyNames)
+                Notify(propertyName);
+        }
+
+        void Notify(string propertyName)
+        {
+            var bindingId = new BindingId(propertyName);
+            propertyChanged?.Invoke(this, new BindablePropertyChangedEventArgs(in bindingId));
+        }
+
+        static readonly string[] ProjectileStatePropertyNames =
+        {
+            nameof(projectileNationIndex), nameof(projectileTypeIndex), nameof(capOrHoodIndex), nameof(noseSchemaIndex),
+            nameof(japaneseCapHeadIndex), nameof(noseConditionIndex), nameof(projectileDiameter), nameof(projectileWeight),
+            nameof(projectileBodyWeight), nameof(windscreenCapHeadWeight), nameof(windscreenWeight), nameof(remainingNoseWeight),
+            nameof(remainingNoseWeightLabel), nameof(plim), nameof(pdam), nameof(shatResIndex), nameof(breakUnderNblIndex),
+            nameof(lightCaseIndex), nameof(isCustomProjectile), nameof(projectileCustomFieldEnabled), nameof(readOnlyFieldEnabled), nameof(japaneseCapHeadDisplay),
+            nameof(windscreenCapHeadWeightDisplay), nameof(windscreenWeightDisplay)
+        };
+
+        static readonly string[] AllInputPropertyNames =
+        {
+            nameof(sampleIndex), nameof(presetIndex), nameof(muzzleVelocity), nameof(ballisticCoefficient), nameof(maxRange),
+            nameof(armorTypeIndex), nameof(curvedPlate), nameof(woodBacking), nameof(cementBacking), nameof(metalBacking),
+            nameof(backingQuality), nameof(backingPlates), nameof(m79ArmorQuality), nameof(m79Elongation),
+            nameof(elevationSearchIndex), nameof(atmosphereIndex), nameof(densityRatio), nameof(temperature), nameof(matchHeight),
+            nameof(rangeModeIndex), nameof(chartModeIndex), nameof(okunModeIndex), nameof(dragTableText),
+            nameof(sk5MaxRateOfFire), nameof(fallToNextFireSeconds), nameof(roundSyncBackValues),
+            nameof(projectileNationIndex), nameof(projectileTypeIndex), nameof(capOrHoodIndex), nameof(noseSchemaIndex),
+            nameof(japaneseCapHeadIndex), nameof(noseConditionIndex), nameof(projectileDiameter), nameof(projectileWeight),
+            nameof(projectileBodyWeight), nameof(windscreenCapHeadWeight), nameof(windscreenWeight), nameof(remainingNoseWeight),
+            nameof(remainingNoseWeightLabel), nameof(plim), nameof(pdam), nameof(shatResIndex), nameof(breakUnderNblIndex),
+            nameof(lightCaseIndex), nameof(isCustomProjectile), nameof(projectileCustomFieldEnabled), nameof(readOnlyFieldEnabled), nameof(japaneseCapHeadDisplay),
+            nameof(windscreenCapHeadWeightDisplay), nameof(windscreenWeightDisplay)
+        };
+    }
+
     readonly BatteryRecord batteryRecord;
     readonly Action callback;
 
@@ -176,6 +536,7 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
     MultiColumnListView sk5DataListView;
     IVisualElementScheduledItem fitSchedule;
     ExternalFitJob currentFitJob;
+    InputViewModel viewModel;
 
     McCoyPlusFacehardM79Input input = McCoyPlusFacehardM79.DefaultInput();
     FacehardInput facehardDetails = FacehardCalculator.DefaultFacehardInput();
@@ -189,7 +550,25 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
     bool roundSyncBackValuesToOneDecimal = true;
     List<ResultRow> tableRows = new();
     bool hasCalculated;
-    string currentInputChangeSource;
+
+    List<BallisticSample> Samples => BallisticSampleCatalog.All();
+    List<McCoyPlusDragPreset> DragPresets => McCoyPlus.DragPresets();
+    List<FacehardCapType> CapValues { get; } = new() { FacehardCapType.Hard, FacehardCapType.ThinHard, FacehardCapType.Soft, FacehardCapType.Hood, FacehardCapType.None };
+    FacehardProjectilePreset CurrentProjectilePreset => FacehardCalculator.FacehardProjectilePresets.FirstOrDefault(item => item.Id == facehardDetails.ProjectilePresetId)
+        ?? FacehardCalculator.FacehardProjectilePresets.FirstOrDefault(item => item.Id == "custom");
+    List<FacehardProjectilePreset> ProjectileChoices
+    {
+        get
+        {
+            var selectedNation = CurrentProjectilePreset?.Nation ?? "Custom";
+            var choices = FacehardCalculator.FacehardProjectilePresets.Where(item => item.Nation == selectedNation).ToList();
+            return choices.Count > 0
+                ? choices
+                : FacehardCalculator.FacehardProjectilePresets.Where(item => item.Nation == "Custom").ToList();
+        }
+    }
+    FacehardNoseCoveringWeights NoseWeights => FacehardCalculator.FacehardNoseCoveringWeights(facehardDetails);
+    FacehardCapType ResolvedCapType => ResolvedCapTypeFor(facehardDetails);
 
     public BatteryRecordMetaInfoMcCoyOkunDialog(BatteryRecord batteryRecord, Action callback)
     {
@@ -239,6 +618,9 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         ConfigureSk5DataListView();
         outputContent = root.Q<VisualElement>("OutputContent");
 
+        viewModel = new InputViewModel(this);
+        RefreshInputChoices();
+        root.dataSource = viewModel;
         RebuildInputs();
         RefreshFitControls();
         Calculate();
@@ -302,138 +684,65 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
 
     void RebuildInputs()
     {
-        BindProjectileTab();
-        BindArmorTab();
-        BindDeckArmorTab();
-        BindMiscTab();
-        BindSk5DataTab();
+        RefreshInputBindings(true);
         RefreshFitControls();
     }
 
-    void BindProjectileTab()
+    void RefreshInputBindings(bool notifyAll = false)
     {
-        var samples = BallisticSampleCatalog.All();
-        var sampleChoices = new List<string> { Localize("Not Specified") };
-        sampleChoices.AddRange(samples.Select(sample => sample.Label));
-        var sampleIndex = samples.FindIndex(sample => sample.Id == sampleId);
-        BindDropdown("SampleField", sampleChoices, sampleIndex >= 0 ? sampleIndex + 1 : 0, selected =>
-        {
-            if (selected <= 0)
-            {
-                sampleId = "";
-                input.McCoy.ProjectileId = "Example projectile";
-            }
-            else
-            {
-                var sample = samples[Mathf.Clamp(selected - 1, 0, samples.Count - 1)];
-                sampleId = sample.Id;
-                ApplyBallisticSample(sample);
-            }
-            RebuildInputs();
-            MarkOutputDirty();
-        });
-
-        var presets = McCoyPlus.DragPresets();
-        BindDropdown("PresetField", presets.Select(item => item.Label).ToList(),
-            Math.Max(0, presets.FindIndex(item => item.Function == preset)), selected =>
-            {
-                ApplyMcCoyPlusPreset(presets[Mathf.Max(0, selected)].Function);
-                MarkOutputDirty();
-            });
-        BindFloat("MuzzleVelocityField", input.McCoy.MuzzleVelocity, value => input.McCoy.MuzzleVelocity = value, 1);
-        BindFloat("BallisticCoefficientField", input.McCoy.BallisticCoefficient, value => input.McCoy.BallisticCoefficient = value, 0.001);
-        BindFloat("MaxRangeField", input.McCoy.MaxRange, value => input.McCoy.MaxRange = value, 1);
-
-        var preview = FacehardCalculator.CalculateFacehard(facehardDetails, false);
-        BindFacehardProjectileFields(preview);
-    }
-
-    void BindArmorTab()
-    {
-        BindDropdown("ArmorTypeField", FacehardCalculator.FacehardArmors.Select(item => item.Name).ToList(),
-            FacehardCalculator.FacehardArmors.FindIndex(item => item.Id == facehardDetails.ArmorId), selected =>
-            {
-                facehardDetails.ArmorId = FacehardCalculator.FacehardArmors[Mathf.Max(0, selected)].Id;
-                MarkOutputDirty();
-            });
-        BindToggle("CurvedPlateToggle", facehardDetails.CurvedPlate, value => facehardDetails.CurvedPlate = value);
-        BindFloat("WoodBackingField", facehardDetails.WoodBackingThickness, value => facehardDetails.WoodBackingThickness = value, 0);
-        BindFloat("CementBackingField", facehardDetails.CementBackingThickness, value => facehardDetails.CementBackingThickness = value, 0);
-        BindFloat("MetalBackingField", facehardDetails.MetalBackingThickness, value => facehardDetails.MetalBackingThickness = value, 0);
-        BindFloat("BackingQualityField", facehardDetails.BackingQuality, value => facehardDetails.BackingQuality = value, 0.001);
-        BindFloat("BackingPlatesField", facehardDetails.BackingPlates, value => facehardDetails.BackingPlates = value, 0);
+        RefreshInputChoices();
         UpdateInputWarnings();
+        if (notifyAll)
+            viewModel?.NotifyAll();
+        else
+            viewModel?.NotifyProjectileState();
     }
 
-    void BindDeckArmorTab()
+    void NotifyInputProperties()
     {
-        BindFloat("M79ArmorQualityField", input.M79.PlateQuality, value => input.M79.PlateQuality = value, 0.001);
-        BindFloat("M79ElongationField", input.M79.Elongation, value => input.M79.Elongation = value, 10);
+        viewModel?.NotifyAll();
     }
 
-    void BindMiscTab()
+    void RefreshProjectileDerivedState()
     {
-        BindDropdown("ElevationSearchField", LocalizedChoices("Cached Binary Search", "Matched Range"),
-            input.McCoy.ElevationSearchMode == McCoyPlusElevationSearchMode.MatchedRange ? 1 : 0, selected =>
-            {
-                input.McCoy.ElevationSearchMode = selected == 1
-                    ? McCoyPlusElevationSearchMode.MatchedRange
-                    : McCoyPlusElevationSearchMode.CachedBinarySearch;
-                MarkOutputDirty();
-            });
-        BindDropdown("AtmosphereField", LocalizedChoices("Army Standard Metro", "ICAO"),
-            input.McCoy.Atmosphere == McCoyAtmosphere.Icao ? 1 : 0, selected =>
-            {
-                input.McCoy.Atmosphere = selected == 1 ? McCoyAtmosphere.Icao : McCoyAtmosphere.StandardMetro;
-                MarkOutputDirty();
-            });
-        BindFloat("DensityRatioField", input.McCoy.DensityRatio, value => input.McCoy.DensityRatio = value, 0.001);
-        BindFloat("TemperatureField", input.McCoy.TemperatureF, value => input.McCoy.TemperatureF = value);
-        BindFloat("MatchHeightField", input.McCoy.MatchHeight, value => input.McCoy.MatchHeight = value);
-        BindDropdown("RangeModeField",
-            Options(
-                Option(RangeMode.Sweep, "Sweep"),
-                Option(RangeMode.SearchSk5, "Search SK5")),
-            rangeMode, selected =>
-            {
-                rangeMode = selected;
-                MarkOutputDirty();
-            });
-        BindDropdown("ChartModeField",
-            Options(
-                Option(ChartMode.Trajectory, "Matched Trajectories"),
-                Option(ChartMode.Penetration, "Penetration By Range")),
-            chartMode, selected =>
-            {
-                chartMode = selected;
-                MarkOutputDirty();
-            });
-        BindDropdown("OkunModeField",
-            Options(
-                Option(OkunMode.FacehardM79, "Facehard + M79"),
-                Option(OkunMode.FacehardOnly, "Facehard Only"),
-                Option(OkunMode.M79Only, "M79 Only")),
-            okunMode, selected =>
-            {
-                okunMode = selected;
-                MarkOutputDirty();
-            });
-        BindText("DragTableField", dragText, value =>
-        {
-            dragText = value;
-            input.McCoy.DragTable = McCoy.NormalizeDragTable(dragText);
-            MarkOutputDirty();
-        });
+        UpdateInputWarnings();
+        viewModel?.NotifyProjectileState();
     }
 
-    void BindSk5DataTab()
+    void RefreshInputChoices()
     {
+        SetDropdownChoices("SampleField", new[] { Localize("Not Specified") }.Concat(Samples.Select(sample => sample.Label)));
+        SetDropdownChoices("PresetField", DragPresets.Select(item => item.Label));
+        SetDropdownChoices("ArmorTypeField", FacehardCalculator.FacehardArmors.Select(item => item.Name));
+        SetDropdownChoices("ElevationSearchField", LocalizedChoices("Cached Binary Search", "Matched Range"));
+        SetDropdownChoices("AtmosphereField", LocalizedChoices("Army Standard Metro", "ICAO"));
+        SetDropdownChoices("RangeModeField", LocalizedChoices("Sweep", "Search SK5"));
+        SetDropdownChoices("ChartModeField", LocalizedChoices("Matched Trajectories", "Penetration By Range"));
+        SetDropdownChoices("OkunModeField", LocalizedChoices("Facehard + M79", "Facehard Only", "M79 Only"));
+        SetDropdownChoices("ProjectileNationField", FacehardCalculator.FacehardProjectileNations.Select(item => item.Name));
+        SetDropdownChoices("ProjectileTypeField", ProjectileChoices.Select(ProjectilePresetLabel));
+        SetDropdownChoices("CapOrHoodField", LocalizedChoices("Hard AP cap", "Thin/Tough hard cap", "Soft AP cap", "Hood", "No cap"));
+        SetDropdownChoices("NoseSchemaField", LocalizedChoices("Standard", "Japanese Cap Head"));
+        SetDropdownChoices("JapaneseCapHeadField", LocalizedChoices("Uncapped Type 91 AP", "Capped Type 88/91/1 APC"));
+        SetDropdownChoices("NoseConditionField", NoseWeights.ConditionOptions.Select(NoseConditionLabel));
+        SetDropdownChoices("ShatResField", LocalizedChoices(ShatterResistanceLabelKeys));
+        SetDropdownChoices("BreakUnderNblField", LocalizedChoices(BreakUnderNblLabelKeys));
+        SetDropdownChoices("LightCaseField", LocalizedChoices(LightCaseLabelKeys));
+
         var batteryLabel = root?.Q<Label>("Sk5BatteryShortNameLabel");
         if (batteryLabel != null)
             batteryLabel.text = batteryRecord?.name?.GetShortName() ?? Localize("Battery");
-        BindFloat("Sk5MaxRateOfFireField", CurrentMaxRateOfFireShootPerMin(), _ => { }, 0, false);
-        BindFloat("Sk5FallToNextFireSecondsField", fallToNextFireSeconds, value => fallToNextFireSeconds = (float)value, 0);
-        BindToggle("RoundSyncBackValuesField", roundSyncBackValuesToOneDecimal, value => roundSyncBackValuesToOneDecimal = value);
+    }
+
+    void SetDropdownChoices(string name, IEnumerable<string> choices)
+    {
+        var field = root?.Q<DropdownField>(name);
+        if (field == null)
+            return;
+        var choiceList = choices?.ToList() ?? new List<string>();
+        if (choiceList.Count == 0)
+            choiceList.Add("");
+        field.choices = choiceList;
     }
 
     void ConfigureSk5DataListView()
@@ -483,92 +792,6 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         return index >= 0 && index < records.Count
             ? records[index]
             : null;
-    }
-
-    void BindFacehardProjectileFields(FacehardResult preview)
-    {
-        var selectedPreset = preview?.ProjectilePreset
-            ?? FacehardCalculator.FacehardProjectilePresets.FirstOrDefault(item => item.Id == facehardDetails.ProjectilePresetId)
-            ?? FacehardCalculator.FacehardProjectilePresets.FirstOrDefault(item => item.Id == "custom");
-        var selectedNation = selectedPreset?.Nation ?? "Custom";
-        var nations = FacehardCalculator.FacehardProjectileNations;
-        var resolvedCapType = preview?.ResolvedCapType ?? ResolvedCapType(facehardDetails);
-
-        BindDropdown("ProjectileNationField", nations.Select(item => item.Name).ToList(),
-            Math.Max(0, nations.FindIndex(item => item.Id == selectedNation)), selected =>
-            {
-                facehardDetails.ProjectilePresetId = nations[Mathf.Max(0, selected)].DefaultProjectileId;
-                RebuildInputs();
-                MarkOutputDirty();
-            });
-
-        var projectileChoices = FacehardCalculator.FacehardProjectilePresets.Where(item => item.Nation == selectedNation).ToList();
-        if (projectileChoices.Count == 0)
-            projectileChoices = FacehardCalculator.FacehardProjectilePresets.Where(item => item.Nation == "Custom").ToList();
-        BindDropdown("ProjectileTypeField", projectileChoices.Select(ProjectilePresetLabel).ToList(),
-            Math.Max(0, projectileChoices.FindIndex(item => item.Id == facehardDetails.ProjectilePresetId)), selected =>
-            {
-                facehardDetails.ProjectilePresetId = projectileChoices[Mathf.Max(0, selected)].Id;
-                RebuildInputs();
-                MarkOutputDirty();
-            });
-
-        var isCustom = facehardDetails.ProjectilePresetId == "custom";
-        var capLabels = LocalizedChoices("Hard AP cap", "Thin/Tough hard cap", "Soft AP cap", "Hood", "No cap");
-        var capValues = new List<FacehardCapType> { FacehardCapType.Hard, FacehardCapType.ThinHard, FacehardCapType.Soft, FacehardCapType.Hood, FacehardCapType.None };
-        BindDropdown("CapOrHoodField", capLabels, Math.Max(0, capValues.IndexOf(resolvedCapType)), selected =>
-        {
-            facehardDetails.CapType = capValues[Mathf.Max(0, selected)];
-            RebuildInputs();
-            MarkOutputDirty();
-        }, isCustom);
-
-        var schemaValues = new List<FacehardNoseSchema> { FacehardNoseSchema.Standard, FacehardNoseSchema.JapaneseCapHead };
-        BindDropdown("NoseSchemaField", LocalizedChoices("Standard", "Japanese Cap Head"),
-            Math.Max(0, schemaValues.IndexOf(facehardDetails.NoseSchema)), selected =>
-            {
-                facehardDetails.NoseSchema = schemaValues[Mathf.Max(0, selected)];
-                facehardDetails.NoseCondition = FacehardNoseCondition.Intact;
-                RebuildInputs();
-                MarkOutputDirty();
-            }, isCustom);
-
-        SetDisplay("JapaneseCapHeadField", isCustom && facehardDetails.NoseSchema == FacehardNoseSchema.JapaneseCapHead);
-        BindDropdown("JapaneseCapHeadField", LocalizedChoices("Uncapped Type 91 AP", "Capped Type 88/91/1 APC"),
-            facehardDetails.JapaneseCapHead <= 1 ? 0 : 1, selected =>
-            {
-                facehardDetails.JapaneseCapHead = selected == 0 ? 1 : 2;
-                facehardDetails.NoseCondition = FacehardNoseCondition.Intact;
-                RebuildInputs();
-                MarkOutputDirty();
-            });
-
-        var noseWeights = FacehardCalculator.FacehardNoseCoveringWeights(facehardDetails);
-        BindDropdown("NoseConditionField", noseWeights.ConditionOptions.Select(NoseConditionLabel).ToList(),
-            Math.Max(0, noseWeights.ConditionOptions.IndexOf(noseWeights.Condition)), selected =>
-            {
-                facehardDetails.NoseCondition = noseWeights.ConditionOptions[Mathf.Max(0, selected)];
-                RebuildInputs();
-                MarkOutputDirty();
-            });
-        BindFloat("ProjectileDiameterField", facehardDetails.ProjectileDiameter, value => facehardDetails.ProjectileDiameter = value, 0.001);
-        BindFloat("ProjectileWeightField", facehardDetails.ProjectileWeight, value => facehardDetails.ProjectileWeight = value, 0.001);
-        BindFloat("ProjectileBodyWeightField", facehardDetails.ProjectileBodyWeight, value => facehardDetails.ProjectileBodyWeight = value, 0.001);
-        SetDisplay("WindscreenCapHeadWeightField", noseWeights.SchemaKind == FacehardNoseSchema.JapaneseCapHead && noseWeights.CapHead == 2);
-        BindFloat("WindscreenCapHeadWeightField", facehardDetails.WindscreenCapHeadWeight, value => facehardDetails.WindscreenCapHeadWeight = value, 0);
-        SetDisplay("WindscreenWeightField", noseWeights.SchemaKind == FacehardNoseSchema.Standard);
-        BindFloat("WindscreenWeightField", facehardDetails.WindscreenWeight, value => facehardDetails.WindscreenWeight = value, 0);
-        BindFloat("RemainingNoseWeightField", noseWeights.RemainWeight, _ => { }, 0, false, RemainingNoseWeightLabel(noseWeights.CapHead, resolvedCapType));
-        BindFloat("PlimField", isCustom ? facehardDetails.ProjectileLimitQuality : selectedPreset?.ProjectileLimitQuality ?? facehardDetails.ProjectileLimitQuality,
-            value => facehardDetails.ProjectileLimitQuality = value, 0.001, isCustom);
-        BindFloat("PdamField", isCustom ? facehardDetails.ProjectileDamageQuality : selectedPreset?.ProjectileDamageQuality ?? facehardDetails.ProjectileDamageQuality,
-            value => facehardDetails.ProjectileDamageQuality = value, 0.001, isCustom);
-        BindProjectileFlag("ShatResField", isCustom ? facehardDetails.ShatterResistance : selectedPreset?.ShatterResistance ?? facehardDetails.ShatterResistance,
-            value => facehardDetails.ShatterResistance = value, isCustom, LocalizedChoices(ShatterResistanceLabelKeys));
-        BindProjectileFlag("BreakUnderNblField", isCustom ? facehardDetails.BreakUnderNbl : selectedPreset?.BreakUnderNbl ?? facehardDetails.BreakUnderNbl,
-            value => facehardDetails.BreakUnderNbl = value, isCustom, LocalizedChoices(BreakUnderNblLabelKeys));
-        BindProjectileFlag("LightCaseField", isCustom ? facehardDetails.LightCase : selectedPreset?.LightCase ?? facehardDetails.LightCase,
-            value => facehardDetails.LightCase = value, isCustom, LocalizedChoices(LightCaseLabelKeys));
     }
 
     void Calculate()
@@ -1140,14 +1363,10 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
             : value;
     }
 
-    void MarkOutputDirty(string source = null)
+    void MarkOutputDirty()
     {
         if (!hasCalculated || outputContent == null)
             return;
-        UnityEngine.Debug.Log(
-            $"[MetaInfoMcCoyOkun] Output dirty. Source={source ?? currentInputChangeSource ?? "unknown"}; " +
-            $"RangeMode={rangeMode}; ChartMode={chartMode}; OkunMode={okunMode}; " +
-            $"MaxRange={(input?.McCoy == null ? "null" : input.McCoy.MaxRange.ToString(CultureInfo.InvariantCulture))}");
         hasCalculated = false;
         tableRows.Clear();
         ShowPendingOutput(Localize("Input changed. Click Calculate to refresh."));
@@ -1305,205 +1524,13 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         if (warningRoot == null)
             return;
         warningRoot.Clear();
-        var resolvedCapType = ResolvedCapType(facehardDetails);
+        var resolvedCapType = ResolvedCapType;
         var noseWeights = FacehardCalculator.FacehardNoseCoveringWeights(facehardDetails);
         if (((noseWeights.Condition == FacehardNoseCondition.WindscreenRemoved && resolvedCapType != FacehardCapType.None) || noseWeights.Condition == FacehardNoseCondition.CapHeadRemoved) && noseWeights.RemainWeight <= 0)
             warningRoot.Add(Warnings(new[] { Localize("The selected lost-covering weight consumes all non-body weight; Facehard69 requires remaining cap/hood weight for this state.") }));
     }
 
-    void BindFloat(string name, double value, Action<double> setter, double? min = null, bool enabled = true, string label = null)
-    {
-        var field = root.Q<FloatField>(name);
-        if (field == null)
-            return;
-        if (field.userData is not FloatBinding binding)
-        {
-            binding = new FloatBinding();
-            field.userData = binding;
-            field.RegisterValueChangedCallback(evt =>
-            {
-                if (field.userData is not FloatBinding current || current.Updating)
-                    return;
-                var next = (double)evt.newValue;
-                if (current.Min.HasValue)
-                    next = Math.Max(current.Min.Value, next);
-                if (FloatValuesEqual(next, current.Value))
-                    return;
-                currentInputChangeSource = $"FloatField {name}: {current.Value.ToString(CultureInfo.InvariantCulture)} -> {next.ToString(CultureInfo.InvariantCulture)}";
-                current.Value = next;
-                try
-                {
-                    current.Setter?.Invoke(next);
-                    MarkOutputDirty();
-                }
-                finally
-                {
-                    currentInputChangeSource = null;
-                }
-            });
-        }
-        binding.Updating = true;
-        binding.Value = value;
-        binding.Min = min;
-        binding.Setter = setter;
-        if (!string.IsNullOrEmpty(label))
-            field.label = label;
-        field.SetEnabled(enabled);
-        field.SetValueWithoutNotify((float)value);
-        binding.Updating = false;
-    }
-
-    void BindDropdown(string name, List<string> choices, int index, Action<int> setter, bool enabled = true)
-    {
-        if (choices.Count == 0)
-            choices.Add("");
-        index = Mathf.Clamp(index, 0, choices.Count - 1);
-        BindDropdown(name, choices.Select((choice, choiceIndex) => new DropdownOption<int>(choiceIndex, choice)).ToList(), index, setter, enabled);
-    }
-
-    void BindDropdown<T>(string name, List<DropdownOption<T>> options, T value, Action<T> setter, bool enabled = true)
-    {
-        var field = root.Q<DropdownField>(name);
-        if (field == null)
-            return;
-        if (options.Count == 0)
-            options.Add(new DropdownOption<T>(default, ""));
-        var selectedIndex = options.FindIndex(option => EqualityComparer<T>.Default.Equals(option.Value, value));
-        if (selectedIndex < 0)
-            selectedIndex = 0;
-        if (field.userData is not DropdownBinding<T> binding)
-        {
-            binding = new DropdownBinding<T>();
-            field.userData = binding;
-            field.RegisterValueChangedCallback(evt =>
-            {
-                if (field.userData is not DropdownBinding<T> current || current.Updating)
-                    return;
-                var optionIndex = current.Options.FindIndex(option => string.Equals(option.Label, evt.newValue, StringComparison.Ordinal));
-                if (optionIndex < 0 || optionIndex >= current.Options.Count)
-                    return;
-                var selectedValue = current.Options[optionIndex].Value;
-                if (EqualityComparer<T>.Default.Equals(selectedValue, current.Value))
-                    return;
-                currentInputChangeSource = $"DropdownField {name}: {current.Value} -> {selectedValue}; evt.newValue='{evt.newValue}'";
-                current.Value = selectedValue;
-                try
-                {
-                    current.Setter?.Invoke(selectedValue);
-                }
-                finally
-                {
-                    currentInputChangeSource = null;
-                }
-            });
-        }
-        var choices = options.Select(option => option.Label).ToList();
-        binding.Updating = true;
-        binding.Value = value;
-        binding.Options = options;
-        binding.Setter = setter;
-        field.choices = choices;
-        field.SetEnabled(enabled);
-        field.SetValueWithoutNotify(choices[selectedIndex]);
-        binding.Updating = false;
-    }
-
-    void BindProjectileFlag(string name, double value, Action<double> setter, bool enabled, List<string> labels)
-    {
-        BindDropdown(name, labels, Mathf.Clamp((int)Math.Round(value), 0, labels.Count - 1), selected =>
-        {
-            setter(selected);
-            MarkOutputDirty();
-        }, enabled);
-    }
-
-    void BindText(string name, string value, Action<string> setter)
-    {
-        var field = root.Q<TextField>(name);
-        if (field == null)
-            return;
-        if (field.userData is not TextBinding binding)
-        {
-            binding = new TextBinding();
-            field.userData = binding;
-            field.RegisterValueChangedCallback(evt =>
-            {
-                if (field.userData is not TextBinding current || current.Updating)
-                    return;
-                var next = evt.newValue ?? "";
-                if (!string.Equals(next, field.value ?? "", StringComparison.Ordinal))
-                    return;
-                if (string.Equals(next, current.Value, StringComparison.Ordinal))
-                    return;
-                currentInputChangeSource = $"TextField {name}: '{current.Value}' -> '{next}'";
-                current.Value = next;
-                try
-                {
-                    current.Setter?.Invoke(next);
-                }
-                finally
-                {
-                    currentInputChangeSource = null;
-                }
-            });
-        }
-        binding.Updating = true;
-        binding.Value = value ?? "";
-        binding.Setter = setter;
-        field.SetValueWithoutNotify(value ?? "");
-        binding.Updating = false;
-    }
-
-    void BindToggle(string name, bool value, Action<bool> setter)
-    {
-        var field = root.Q<Toggle>(name);
-        if (field == null)
-            return;
-        if (field.userData is not ToggleBinding binding)
-        {
-            binding = new ToggleBinding();
-            field.userData = binding;
-            field.RegisterValueChangedCallback(evt =>
-            {
-                if (field.userData is not ToggleBinding current || current.Updating)
-                    return;
-                if (evt.newValue == current.Value)
-                    return;
-                currentInputChangeSource = $"Toggle {name}: {current.Value} -> {evt.newValue}";
-                current.Value = evt.newValue;
-                try
-                {
-                    current.Setter?.Invoke(evt.newValue);
-                    MarkOutputDirty();
-                }
-                finally
-                {
-                    currentInputChangeSource = null;
-                }
-            });
-        }
-        binding.Updating = true;
-        binding.Value = value;
-        binding.Setter = setter;
-        field.SetValueWithoutNotify(value);
-        binding.Updating = false;
-    }
-
-    static bool FloatValuesEqual(double a, double b)
-    {
-        if (double.IsNaN(a) || double.IsNaN(b))
-            return double.IsNaN(a) && double.IsNaN(b);
-        return Math.Abs(a - b) <= 0.000001;
-    }
-
-    void SetDisplay(string name, bool visible)
-    {
-        var element = root.Q<VisualElement>(name);
-        if (element != null)
-            element.style.display = visible ? DisplayStyle.Flex : DisplayStyle.None;
-    }
-
-    static FacehardCapType ResolvedCapType(FacehardInput input)
+    static FacehardCapType ResolvedCapTypeFor(FacehardInput input)
     {
         var preset = FacehardCalculator.FacehardProjectilePresets.FirstOrDefault(item => item.Id == input.ProjectilePresetId);
         return input.ProjectilePresetId == "custom" || preset == null ? input.CapType : preset.CapType;

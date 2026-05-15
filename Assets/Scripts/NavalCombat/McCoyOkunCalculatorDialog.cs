@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Linq;
 
 using UnityEngine;
+using Unity.Properties;
 using UnityEngine.UIElements;
 
 using NavalCombatCore;
@@ -60,48 +61,171 @@ public sealed class McCoyOkunCalculatorDialog
         public VisualElement OutputContent;
     }
 
-    sealed class TemplateFloatBinding
-    {
-        public bool Updating;
-        public double? Min;
-        public Action<double> Setter;
-    }
-
-    sealed class DropdownOption<T>
-    {
-        public T Value;
-        public string Label;
-
-        public DropdownOption(T value, string label)
-        {
-            Value = value;
-            Label = label;
-        }
-    }
-
-    sealed class TemplateDropdownBinding<T>
-    {
-        public bool Updating;
-        public T Value;
-        public List<DropdownOption<T>> Options = new();
-        public Action<T> Setter;
-    }
-
-    sealed class TemplateTextBinding
-    {
-        public bool Updating;
-        public Action<string> Setter;
-    }
-
-    sealed class TemplateToggleBinding
-    {
-        public bool Updating;
-        public Action<bool> Setter;
-    }
-
     sealed class TemplateButtonBinding
     {
         public Action Clicked;
+    }
+
+    enum TemplateRefresh
+    {
+        OutputOnly,
+        InputsAndOutput
+    }
+
+    abstract class TemplateFieldViewModel : INotifyBindablePropertyChanged
+    {
+        readonly Func<bool> enabledGetter;
+        readonly Func<DisplayStyle> displayGetter;
+
+        protected TemplateFieldViewModel(Func<bool> enabledGetter = null, Func<DisplayStyle> displayGetter = null)
+        {
+            this.enabledGetter = enabledGetter;
+            this.displayGetter = displayGetter;
+        }
+
+        public event EventHandler<BindablePropertyChangedEventArgs> propertyChanged;
+
+        [CreateProperty]
+        public bool enabled => enabledGetter?.Invoke() ?? true;
+
+        [CreateProperty]
+        public DisplayStyle display => displayGetter?.Invoke() ?? DisplayStyle.Flex;
+
+        protected void Notify(string name)
+        {
+            var bindingId = new BindingId(name);
+            propertyChanged?.Invoke(this, new BindablePropertyChangedEventArgs(in bindingId));
+        }
+    }
+
+    sealed class TemplateFloatFieldViewModel : TemplateFieldViewModel
+    {
+        readonly Func<double> getter;
+        readonly Action<double> setter;
+        readonly double? min;
+        readonly Func<string> labelGetter;
+        readonly Action changed;
+
+        public TemplateFloatFieldViewModel(Func<double> getter, Action<double> setter, double? min, Func<string> labelGetter, Action changed, Func<bool> enabledGetter = null, Func<DisplayStyle> displayGetter = null)
+            : base(enabledGetter, displayGetter)
+        {
+            this.getter = getter;
+            this.setter = setter;
+            this.min = min;
+            this.labelGetter = labelGetter;
+            this.changed = changed;
+        }
+
+        [CreateProperty]
+        public float value
+        {
+            get => (float)getter();
+            set
+            {
+                var next = (double)value;
+                if (min.HasValue)
+                    next = Math.Max(min.Value, next);
+                if (Math.Abs(getter() - next) < 0.000001)
+                    return;
+                setter(next);
+                Notify(nameof(value));
+                changed?.Invoke();
+            }
+        }
+
+        [CreateProperty]
+        public string label => labelGetter?.Invoke() ?? "";
+    }
+
+    sealed class TemplateDropdownFieldViewModel : TemplateFieldViewModel
+    {
+        readonly Func<int> getter;
+        readonly Action<int> setter;
+        readonly int choiceCount;
+        readonly Action changed;
+
+        public TemplateDropdownFieldViewModel(Func<int> getter, Action<int> setter, int choiceCount, Action changed, Func<bool> enabledGetter = null, Func<DisplayStyle> displayGetter = null)
+            : base(enabledGetter, displayGetter)
+        {
+            this.getter = getter;
+            this.setter = setter;
+            this.choiceCount = Math.Max(1, choiceCount);
+            this.changed = changed;
+        }
+
+        [CreateProperty]
+        public int index
+        {
+            get => Mathf.Clamp(getter(), 0, choiceCount - 1);
+            set
+            {
+                var next = Mathf.Clamp(value, 0, choiceCount - 1);
+                if (next == index)
+                    return;
+                setter(next);
+                Notify(nameof(index));
+                changed?.Invoke();
+            }
+        }
+    }
+
+    sealed class TemplateTextFieldViewModel : TemplateFieldViewModel
+    {
+        readonly Func<string> getter;
+        readonly Action<string> setter;
+        readonly Action changed;
+
+        public TemplateTextFieldViewModel(Func<string> getter, Action<string> setter, Action changed, Func<bool> enabledGetter = null, Func<DisplayStyle> displayGetter = null)
+            : base(enabledGetter, displayGetter)
+        {
+            this.getter = getter;
+            this.setter = setter;
+            this.changed = changed;
+        }
+
+        [CreateProperty]
+        public string value
+        {
+            get => getter() ?? "";
+            set
+            {
+                var next = value ?? "";
+                if (string.Equals(getter() ?? "", next, StringComparison.Ordinal))
+                    return;
+                setter(next);
+                Notify(nameof(value));
+                changed?.Invoke();
+            }
+        }
+    }
+
+    sealed class TemplateToggleFieldViewModel : TemplateFieldViewModel
+    {
+        readonly Func<bool> getter;
+        readonly Action<bool> setter;
+        readonly Action changed;
+
+        public TemplateToggleFieldViewModel(Func<bool> getter, Action<bool> setter, Action changed, Func<bool> enabledGetter = null, Func<DisplayStyle> displayGetter = null)
+            : base(enabledGetter, displayGetter)
+        {
+            this.getter = getter;
+            this.setter = setter;
+            this.changed = changed;
+        }
+
+        [CreateProperty]
+        public bool value
+        {
+            get => getter();
+            set
+            {
+                if (getter() == value)
+                    return;
+                setter(value);
+                Notify(nameof(value));
+                changed?.Invoke();
+            }
+        }
     }
 
     readonly McCoyOkunTab[] tabs =
@@ -140,8 +264,6 @@ public sealed class McCoyOkunCalculatorDialog
     static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
     static List<string> LocalizedChoices(params string[] keys) => keys.Select(key => Localize(key)).ToList();
     static List<string> LocalizedChoices(IEnumerable<string> keys) => keys.Select(key => Localize(key)).ToList();
-    static DropdownOption<T> Option<T>(T value, string labelKey) => new(value, Localize(labelKey));
-    static List<DropdownOption<T>> Options<T>(params DropdownOption<T>[] options) => options.ToList();
 
     TabView templateTabView;
     readonly Dictionary<McCoyOkunTab, Tab> templateTabs = new();
@@ -224,6 +346,7 @@ public sealed class McCoyOkunCalculatorDialog
             throw new InvalidOperationException("McCoyOkunCalculatorDialog.uxml is missing one or more tabs.");
         if (!templateBackedPages)
             throw new InvalidOperationException("McCoyOkunCalculatorDialog.uxml is missing one or more page/input/output containers.");
+        ConfigureAllTemplateInputs();
         templateTabView.selectedTabIndex = Math.Max(0, Array.IndexOf(tabs, activeTab));
         RebuildContent();
         return root;
@@ -266,6 +389,18 @@ public sealed class McCoyOkunCalculatorDialog
         if (!templateBackedPages)
             throw new InvalidOperationException("McCoy Okun page surfaces have not been wired from UXML.");
         RebuildTemplateContent(rebuildOutput);
+    }
+
+    void ConfigureAllTemplateInputs()
+    {
+        foreach (var tab in tabs)
+        {
+            if (!templatePages.TryGetValue(tab, out var surface))
+                continue;
+
+            ConfigureTemplateInputs(tab, surface.Root);
+            ConfigureTemplateOutputControls(tab, surface.Root);
+        }
     }
 
     void WireTemplatePages(VisualElement root)
@@ -311,21 +446,21 @@ public sealed class McCoyOkunCalculatorDialog
         {
             case McCoyOkunTab.Facehard69:
                 ConfigureFacehardTemplate(root, "Facehard69", facehardInput, FacehardCalculator.CalculateFacehard(facehardInput), true);
-                BindButton(root, "Facehard69ResetButton", () =>
+                ConfigureButton(root, "Facehard69ResetButton", () =>
                 {
                     facehardInput = FacehardCalculator.DefaultFacehardInput();
                     facehardSampleId = "";
                     facehardRecordedRuns.Clear();
                     RebuildContent();
                 });
-                BindSample(root, "Facehard69SampleField", facehardSampleId, id =>
+                ConfigureSampleDropdown(root, "Facehard69SampleField", facehardSampleId, id =>
                 {
                     facehardSampleId = id;
                     var sample = SampleById(id);
                     if (sample != null)
                         ApplyFacehardSample(facehardInput, sample);
                 });
-                BindButton(root, "Facehard69RecordButton", () =>
+                ConfigureButton(root, "Facehard69RecordButton", () =>
                 {
                     var result = FacehardCalculator.CalculateFacehard(facehardInput);
                     facehardRecordedRuns.Add(new FacehardRecordedRun
@@ -340,36 +475,36 @@ public sealed class McCoyOkunCalculatorDialog
                     });
                     RebuildContent();
                 });
-                BindButton(root, "Facehard69ClearButton", () =>
+                ConfigureButton(root, "Facehard69ClearButton", () =>
                 {
                     facehardRecordedRuns.Clear();
                     RebuildContent();
                 });
                 break;
             case McCoyOkunTab.McCoy:
-                BindButton(root, "McCoyResetButton", () =>
+                ConfigureButton(root, "McCoyResetButton", () =>
                 {
                     mccoyInput = McCoy.DefaultInput();
                     mccoyDragText = McCoy.DragTableToText(McCoy.DefaultDragTable());
                     RebuildContent();
                 });
-                BindDropdown(root, "McCoyAtmosphereField", LocalizedChoices("Army Standard Metro", "ICAO"), mccoyInput.Atmosphere == McCoyAtmosphere.Icao ? 1 : 0, index => mccoyInput.Atmosphere = index == 1 ? McCoyAtmosphere.Icao : McCoyAtmosphere.StandardMetro);
-                BindFloat(root, "McCoyMuzzleVelocityField", mccoyInput.MuzzleVelocity, value => mccoyInput.MuzzleVelocity = value, 1);
-                BindFloat(root, "McCoyBallisticCoefficientField", mccoyInput.BallisticCoefficient, value => mccoyInput.BallisticCoefficient = value, 0.001);
-                BindFloat(root, "McCoySightHeightField", mccoyInput.SightHeight, value => mccoyInput.SightHeight = value);
-                BindFloat(root, "McCoyElevationMinutesField", mccoyInput.ElevationMinutes, value => mccoyInput.ElevationMinutes = value);
-                BindFloat(root, "McCoyDensityRatioField", mccoyInput.DensityRatio, value => mccoyInput.DensityRatio = value, 0.001);
-                BindFloat(root, "McCoyTemperatureField", mccoyInput.TemperatureF, value => mccoyInput.TemperatureF = value);
-                BindFloat(root, "McCoyPrintIntervalField", mccoyInput.PrintInterval, value => mccoyInput.PrintInterval = value, 1);
-                BindFloat(root, "McCoyMaxRangeField", mccoyInput.MaxRange, value => mccoyInput.MaxRange = value, 1);
-                BindFloat(root, "McCoyRangeWindField", mccoyInput.RangeWindMph, value => mccoyInput.RangeWindMph = value);
-                BindFloat(root, "McCoyCrossWindField", mccoyInput.CrossWindMph, value => mccoyInput.CrossWindMph = value);
-                BindFloat(root, "McCoyMatchRangeField", mccoyInput.MatchRange, value => mccoyInput.MatchRange = value, 0);
-                BindFloat(root, "McCoyMatchHeightField", mccoyInput.MatchHeight, value => mccoyInput.MatchHeight = value);
-                BindText(root, "McCoyDragTableField", mccoyDragText, value => mccoyDragText = value);
+                ConfigureDropdown(root, "McCoyAtmosphereField", LocalizedChoices("Army Standard Metro", "ICAO"), mccoyInput.Atmosphere == McCoyAtmosphere.Icao ? 1 : 0, index => mccoyInput.Atmosphere = index == 1 ? McCoyAtmosphere.Icao : McCoyAtmosphere.StandardMetro);
+                ConfigureFloat(root, "McCoyMuzzleVelocityField", mccoyInput.MuzzleVelocity, value => mccoyInput.MuzzleVelocity = value, 1);
+                ConfigureFloat(root, "McCoyBallisticCoefficientField", mccoyInput.BallisticCoefficient, value => mccoyInput.BallisticCoefficient = value, 0.001);
+                ConfigureFloat(root, "McCoySightHeightField", mccoyInput.SightHeight, value => mccoyInput.SightHeight = value);
+                ConfigureFloat(root, "McCoyElevationMinutesField", mccoyInput.ElevationMinutes, value => mccoyInput.ElevationMinutes = value);
+                ConfigureFloat(root, "McCoyDensityRatioField", mccoyInput.DensityRatio, value => mccoyInput.DensityRatio = value, 0.001);
+                ConfigureFloat(root, "McCoyTemperatureField", mccoyInput.TemperatureF, value => mccoyInput.TemperatureF = value);
+                ConfigureFloat(root, "McCoyPrintIntervalField", mccoyInput.PrintInterval, value => mccoyInput.PrintInterval = value, 1);
+                ConfigureFloat(root, "McCoyMaxRangeField", mccoyInput.MaxRange, value => mccoyInput.MaxRange = value, 1);
+                ConfigureFloat(root, "McCoyRangeWindField", mccoyInput.RangeWindMph, value => mccoyInput.RangeWindMph = value);
+                ConfigureFloat(root, "McCoyCrossWindField", mccoyInput.CrossWindMph, value => mccoyInput.CrossWindMph = value);
+                ConfigureFloat(root, "McCoyMatchRangeField", mccoyInput.MatchRange, value => mccoyInput.MatchRange = value, 0);
+                ConfigureFloat(root, "McCoyMatchHeightField", mccoyInput.MatchHeight, value => mccoyInput.MatchHeight = value);
+                ConfigureText(root, "McCoyDragTableField", mccoyDragText, value => mccoyDragText = value);
                 break;
             case McCoyOkunTab.McCoyPlus:
-                BindButton(root, "McCoyPlusResetButton", () =>
+                ConfigureButton(root, "McCoyPlusResetButton", () =>
                 {
                     mccoyPlusInput = McCoyPlus.DefaultInput();
                     mccoyPlusPreset = McCoyPlusDragFunction.G1;
@@ -382,7 +517,7 @@ public sealed class McCoyOkunCalculatorDialog
                 SyncComboMcCoy(mccoyPlusFacehardInput.McCoy, mccoyPlusFacehardDragText);
                 SyncFacehardBridge();
                 var facehardPreview = FacehardCalculator.CalculateFacehard(mccoyPlusFacehardDetails, false);
-                BindButton(root, "McCoyPlusFacehardResetButton", () =>
+                ConfigureButton(root, "McCoyPlusFacehardResetButton", () =>
                 {
                     mccoyPlusFacehardInput = McCoyPlusFacehard.DefaultInput();
                     mccoyPlusFacehardDetails = FacehardCalculator.DefaultFacehardInput();
@@ -392,7 +527,7 @@ public sealed class McCoyOkunCalculatorDialog
                     mccoyPlusFacehardChartMode = McCoyOkunChartMode.Trajectory;
                     RebuildContent();
                 });
-                BindSample(root, "McCoyPlusFacehardSampleField", mccoyPlusFacehardSampleId, id =>
+                ConfigureSampleDropdown(root, "McCoyPlusFacehardSampleField", mccoyPlusFacehardSampleId, id =>
                 {
                     mccoyPlusFacehardSampleId = id;
                     var sample = SampleById(id);
@@ -405,7 +540,7 @@ public sealed class McCoyOkunCalculatorDialog
                 });
                 ConfigureMcCoyPlusTemplate(root, "McCoyPlusFacehard", mccoyPlusFacehardInput.McCoy, () => mccoyPlusFacehardPreset, value => mccoyPlusFacehardPreset = value, () => mccoyPlusFacehardDragText, value => mccoyPlusFacehardDragText = value);
                 ConfigureFacehardComboTemplate(root, "McCoyPlusFacehard", mccoyPlusFacehardDetails, facehardPreview);
-                BindText(root, "McCoyPlusFacehardDragTableField", mccoyPlusFacehardDragText, value =>
+                ConfigureText(root, "McCoyPlusFacehardDragTableField", mccoyPlusFacehardDragText, value =>
                 {
                     mccoyPlusFacehardDragText = value;
                     mccoyPlusFacehardInput.McCoy.DragTable = McCoy.NormalizeDragTable(value);
@@ -415,7 +550,7 @@ public sealed class McCoyOkunCalculatorDialog
                 SyncComboMcCoy(mccoyPlusFacehardM79Input.McCoy, mccoyPlusFacehardM79DragText);
                 SyncFacehardM79Bridge();
                 var facehardM79Preview = FacehardCalculator.CalculateFacehard(mccoyPlusFacehardM79Details, false);
-                BindButton(root, "McCoyPlusFacehardM79ResetButton", () =>
+                ConfigureButton(root, "McCoyPlusFacehardM79ResetButton", () =>
                 {
                     mccoyPlusFacehardM79Input = McCoyPlusFacehardM79.DefaultInput();
                     mccoyPlusFacehardM79Details = FacehardCalculator.DefaultFacehardInput();
@@ -425,7 +560,7 @@ public sealed class McCoyOkunCalculatorDialog
                     mccoyPlusFacehardM79ChartMode = McCoyOkunChartMode.Trajectory;
                     RebuildContent();
                 });
-                BindSample(root, "McCoyPlusFacehardM79SampleField", mccoyPlusFacehardM79SampleId, id =>
+                ConfigureSampleDropdown(root, "McCoyPlusFacehardM79SampleField", mccoyPlusFacehardM79SampleId, id =>
                 {
                     mccoyPlusFacehardM79SampleId = id;
                     var sample = SampleById(id);
@@ -441,7 +576,7 @@ public sealed class McCoyOkunCalculatorDialog
                 break;
             case McCoyOkunTab.McCoyPlusM79:
                 SyncComboMcCoy(mccoyPlusM79Input.McCoy, mccoyPlusM79DragText);
-                BindButton(root, "McCoyPlusM79ResetButton", () =>
+                ConfigureButton(root, "McCoyPlusM79ResetButton", () =>
                 {
                     mccoyPlusM79Input = McCoyPlusM79.DefaultInput();
                     mccoyPlusM79SampleId = "";
@@ -450,7 +585,7 @@ public sealed class McCoyOkunCalculatorDialog
                     mccoyPlusM79ChartMode = McCoyOkunChartMode.Trajectory;
                     RebuildContent();
                 });
-                BindSample(root, "McCoyPlusM79SampleField", mccoyPlusM79SampleId, id =>
+                ConfigureSampleDropdown(root, "McCoyPlusM79SampleField", mccoyPlusM79SampleId, id =>
                 {
                     mccoyPlusM79SampleId = id;
                     var sample = SampleById(id);
@@ -461,32 +596,32 @@ public sealed class McCoyOkunCalculatorDialog
                     }
                 });
                 ConfigureM79ComboTemplate(root, "McCoyPlusM79", mccoyPlusM79Input.M79, mccoyPlusM79Input.McCoy, () => mccoyPlusM79Preset, value => mccoyPlusM79Preset = value, () => mccoyPlusM79DragText, value => mccoyPlusM79DragText = value, () => mccoyPlusM79SampleId = "");
-                BindText(root, "McCoyPlusM79DragTableField", mccoyPlusM79DragText, value =>
+                ConfigureText(root, "McCoyPlusM79DragTableField", mccoyPlusM79DragText, value =>
                 {
                     mccoyPlusM79DragText = value;
                     mccoyPlusM79Input.McCoy.DragTable = McCoy.NormalizeDragTable(value);
                 });
                 break;
             case McCoyOkunTab.Jbm:
-                BindButton(root, "JbmResetButton", () =>
+                ConfigureButton(root, "JbmResetButton", () =>
                 {
                     mcDragInput = Jbm.DefaultMcDragInput();
                     mcGyroInput = Jbm.DefaultMcGyroInput();
                     intLiftInput = Jbm.DefaultIntLiftInput();
                     RebuildContent();
                 });
-                BindDropdown(root, "JbmProgramField", LocalizedChoices("MCDRAG", "MCGYRO", "INTLIFT"), JbmProgramIndex(jbmMode),
-                    index => jbmMode = index == 1 ? JbmProgramMode.McGyro : index == 2 ? JbmProgramMode.IntLift : JbmProgramMode.McDrag);
+                ConfigureDropdown(root, "JbmProgramField", LocalizedChoices("MCDRAG", "MCGYRO", "INTLIFT"), JbmProgramIndex(jbmMode),
+                    index => jbmMode = index == 1 ? JbmProgramMode.McGyro : index == 2 ? JbmProgramMode.IntLift : JbmProgramMode.McDrag, true, TemplateRefresh.InputsAndOutput);
                 ConfigureJbmTemplate(root);
                 break;
             default:
-                BindButton(root, "M79ApclcResetButton", () =>
+                ConfigureButton(root, "M79ApclcResetButton", () =>
                 {
                     m79Input = M79.DefaultInput();
                     m79SampleId = "";
                     RebuildContent();
                 });
-                BindSample(root, "M79ApclcSampleField", m79SampleId, id =>
+                ConfigureSampleDropdown(root, "M79ApclcSampleField", m79SampleId, id =>
                 {
                     m79SampleId = id;
                     var sample = SampleById(id);
@@ -500,22 +635,21 @@ public sealed class McCoyOkunCalculatorDialog
 
     void ConfigureTemplateOutputControls(McCoyOkunTab tab, VisualElement root)
     {
-        SetDisplay(root, "McCoyPlusFacehardChartModeField", tab == McCoyOkunTab.McCoyPlusFacehard);
-        SetDisplay(root, "McCoyPlusFacehardM79ChartModeField", tab == McCoyOkunTab.McCoyPlusFacehardM79);
-        SetDisplay(root, "McCoyPlusM79ChartModeField", tab == McCoyOkunTab.McCoyPlusM79);
         if (tab == McCoyOkunTab.McCoyPlusFacehard)
-            BindDropdown(root, "McCoyPlusFacehardChartModeField", LocalizedChoices("Matched Trajectories", "Penetration By Range"), mccoyPlusFacehardChartMode == McCoyOkunChartMode.Trajectory ? 0 : 1,
+            ConfigureDropdown(root, "McCoyPlusFacehardChartModeField", LocalizedChoices("Matched Trajectories", "Penetration By Range"), mccoyPlusFacehardChartMode == McCoyOkunChartMode.Trajectory ? 0 : 1,
                 index => mccoyPlusFacehardChartMode = index == 0 ? McCoyOkunChartMode.Trajectory : McCoyOkunChartMode.Penetration);
         if (tab == McCoyOkunTab.McCoyPlusFacehardM79)
-            BindDropdown(root, "McCoyPlusFacehardM79ChartModeField", LocalizedChoices("Matched Trajectories", "Penetration By Range"), mccoyPlusFacehardM79ChartMode == McCoyOkunChartMode.Trajectory ? 0 : 1,
+            ConfigureDropdown(root, "McCoyPlusFacehardM79ChartModeField", LocalizedChoices("Matched Trajectories", "Penetration By Range"), mccoyPlusFacehardM79ChartMode == McCoyOkunChartMode.Trajectory ? 0 : 1,
                 index => mccoyPlusFacehardM79ChartMode = index == 0 ? McCoyOkunChartMode.Trajectory : McCoyOkunChartMode.Penetration);
         if (tab == McCoyOkunTab.McCoyPlusM79)
-            BindDropdown(root, "McCoyPlusM79ChartModeField", LocalizedChoices("Matched Trajectories", "Penetration By Range"), mccoyPlusM79ChartMode == McCoyOkunChartMode.Trajectory ? 0 : 1,
+            ConfigureDropdown(root, "McCoyPlusM79ChartModeField", LocalizedChoices("Matched Trajectories", "Penetration By Range"), mccoyPlusM79ChartMode == McCoyOkunChartMode.Trajectory ? 0 : 1,
                 index => mccoyPlusM79ChartMode = index == 0 ? McCoyOkunChartMode.Trajectory : McCoyOkunChartMode.Penetration);
     }
 
     void BuildTemplateOutput(McCoyOkunTab tab, VisualElement output)
     {
+        PrepareTemplateOutput(tab);
+
         switch (tab)
         {
             case McCoyOkunTab.Facehard69:
@@ -712,52 +846,52 @@ public sealed class McCoyOkunCalculatorDialog
 
     void ConfigureM79Template(VisualElement root, string prefix, M79Input target)
     {
-        BindFloat(root, $"{prefix}ProjectileDiameterField", target.ProjectileDiameter, value => target.ProjectileDiameter = value, 0.001);
-        BindFloat(root, $"{prefix}ProjectileWeightField", target.ProjectileWeight, value => target.ProjectileWeight = value, 0.001);
-        BindFloat(root, $"{prefix}PlateThicknessField", target.PlateThickness, value => target.PlateThickness = value, 0.001);
-        BindFloat(root, $"{prefix}PlateQualityField", target.PlateQuality, value => target.PlateQuality = value, 0.001);
-        BindFloat(root, $"{prefix}ObliquityField", target.Obliquity, value => target.Obliquity = value, 0);
-        BindFloat(root, $"{prefix}StrikingVelocityField", target.StrikingVelocity, value => target.StrikingVelocity = value, 1);
-        BindFloat(root, $"{prefix}ElongationField", target.Elongation, value => target.Elongation = value, 10);
+        ConfigureFloat(root, $"{prefix}ProjectileDiameterField", target.ProjectileDiameter, value => target.ProjectileDiameter = value, 0.001);
+        ConfigureFloat(root, $"{prefix}ProjectileWeightField", target.ProjectileWeight, value => target.ProjectileWeight = value, 0.001);
+        ConfigureFloat(root, $"{prefix}PlateThicknessField", target.PlateThickness, value => target.PlateThickness = value, 0.001);
+        ConfigureFloat(root, $"{prefix}PlateQualityField", target.PlateQuality, value => target.PlateQuality = value, 0.001);
+        ConfigureFloat(root, $"{prefix}ObliquityField", target.Obliquity, value => target.Obliquity = value, 0);
+        ConfigureFloat(root, $"{prefix}StrikingVelocityField", target.StrikingVelocity, value => target.StrikingVelocity = value, 1);
+        ConfigureFloat(root, $"{prefix}ElongationField", target.Elongation, value => target.Elongation = value, 10);
     }
 
     void ConfigureM79ComboTemplate(VisualElement root, string prefix, M79Input m79, McCoyPlusInput mccoy, Func<McCoyPlusDragFunction> getPreset, Action<McCoyPlusDragFunction> setPreset, Func<string> getDragText, Action<string> setDragText, Action onPresetChanged)
     {
-        BindFloat(root, $"{prefix}ProjectileDiameterField", m79.ProjectileDiameter, value => m79.ProjectileDiameter = value, 0.001);
-        BindFloat(root, $"{prefix}ProjectileWeightField", m79.ProjectileWeight, value => m79.ProjectileWeight = value, 0.001);
-        BindFloat(root, $"{prefix}MuzzleVelocityField", mccoy.MuzzleVelocity, value => mccoy.MuzzleVelocity = value, 1);
-        BindFloat(root, $"{prefix}BallisticCoefficientField", mccoy.BallisticCoefficient, value => mccoy.BallisticCoefficient = value, 0.001);
-        BindFloat(root, $"{prefix}MaxRangeField", mccoy.MaxRange, value => mccoy.MaxRange = value, 1);
-        BindFloat(root, $"{prefix}MatchHeightField", mccoy.MatchHeight, value => mccoy.MatchHeight = value);
-        BindMcCoyPlusElevationSearch(root, prefix, mccoy);
-        BindDropdown(root, $"{prefix}AtmosphereField", LocalizedChoices("Army Standard Metro", "ICAO"), mccoy.Atmosphere == McCoyAtmosphere.Icao ? 1 : 0, index => mccoy.Atmosphere = index == 1 ? McCoyAtmosphere.Icao : McCoyAtmosphere.StandardMetro);
-        BindFloat(root, $"{prefix}DensityRatioField", mccoy.DensityRatio, value => mccoy.DensityRatio = value, 0.001);
-        BindFloat(root, $"{prefix}TemperatureField", mccoy.TemperatureF, value => mccoy.TemperatureF = value);
-        BindFloat(root, $"{prefix}ArmorQualityField", m79.PlateQuality, value => m79.PlateQuality = value, 0.001);
-        BindFloat(root, $"{prefix}ElongationField", m79.Elongation, value => m79.Elongation = value, 10);
-        BindMcCoyPlusPreset(root, prefix, mccoy, getPreset, setPreset, setDragText, onPresetChanged);
+        ConfigureFloat(root, $"{prefix}ProjectileDiameterField", m79.ProjectileDiameter, value => m79.ProjectileDiameter = value, 0.001);
+        ConfigureFloat(root, $"{prefix}ProjectileWeightField", m79.ProjectileWeight, value => m79.ProjectileWeight = value, 0.001);
+        ConfigureFloat(root, $"{prefix}MuzzleVelocityField", mccoy.MuzzleVelocity, value => mccoy.MuzzleVelocity = value, 1);
+        ConfigureFloat(root, $"{prefix}BallisticCoefficientField", mccoy.BallisticCoefficient, value => mccoy.BallisticCoefficient = value, 0.001);
+        ConfigureFloat(root, $"{prefix}MaxRangeField", mccoy.MaxRange, value => mccoy.MaxRange = value, 1);
+        ConfigureFloat(root, $"{prefix}MatchHeightField", mccoy.MatchHeight, value => mccoy.MatchHeight = value);
+        ConfigureMcCoyPlusElevationSearch(root, prefix, mccoy);
+        ConfigureDropdown(root, $"{prefix}AtmosphereField", LocalizedChoices("Army Standard Metro", "ICAO"), mccoy.Atmosphere == McCoyAtmosphere.Icao ? 1 : 0, index => mccoy.Atmosphere = index == 1 ? McCoyAtmosphere.Icao : McCoyAtmosphere.StandardMetro);
+        ConfigureFloat(root, $"{prefix}DensityRatioField", mccoy.DensityRatio, value => mccoy.DensityRatio = value, 0.001);
+        ConfigureFloat(root, $"{prefix}TemperatureField", mccoy.TemperatureF, value => mccoy.TemperatureF = value);
+        ConfigureFloat(root, $"{prefix}ArmorQualityField", m79.PlateQuality, value => m79.PlateQuality = value, 0.001);
+        ConfigureFloat(root, $"{prefix}ElongationField", m79.Elongation, value => m79.Elongation = value, 10);
+        ConfigureMcCoyPlusPreset(root, prefix, mccoy, getPreset, setPreset, setDragText, onPresetChanged);
     }
 
     void ConfigureMcCoyPlusFacehardM79Template(VisualElement root, FacehardResult facehardPreview)
     {
         const string prefix = "McCoyPlusFacehardM79";
         ConfigureFacehardProjectileTemplate(root, prefix, mccoyPlusFacehardM79Details, facehardPreview);
-        BindMcCoyPlusPreset(root, prefix, mccoyPlusFacehardM79Input.McCoy, () => mccoyPlusFacehardM79Preset, value => mccoyPlusFacehardM79Preset = value, value => mccoyPlusFacehardM79DragText = value, () => mccoyPlusFacehardM79SampleId = "");
-        BindFloat(root, $"{prefix}MuzzleVelocityField", mccoyPlusFacehardM79Input.McCoy.MuzzleVelocity, value => mccoyPlusFacehardM79Input.McCoy.MuzzleVelocity = value, 1);
-        BindFloat(root, $"{prefix}BallisticCoefficientField", mccoyPlusFacehardM79Input.McCoy.BallisticCoefficient, value => mccoyPlusFacehardM79Input.McCoy.BallisticCoefficient = value, 0.001);
-        BindFloat(root, $"{prefix}MaxRangeField", mccoyPlusFacehardM79Input.McCoy.MaxRange, value => mccoyPlusFacehardM79Input.McCoy.MaxRange = value, 1);
+        ConfigureMcCoyPlusPreset(root, prefix, mccoyPlusFacehardM79Input.McCoy, () => mccoyPlusFacehardM79Preset, value => mccoyPlusFacehardM79Preset = value, value => mccoyPlusFacehardM79DragText = value, () => mccoyPlusFacehardM79SampleId = "");
+        ConfigureFloat(root, $"{prefix}MuzzleVelocityField", mccoyPlusFacehardM79Input.McCoy.MuzzleVelocity, value => mccoyPlusFacehardM79Input.McCoy.MuzzleVelocity = value, 1);
+        ConfigureFloat(root, $"{prefix}BallisticCoefficientField", mccoyPlusFacehardM79Input.McCoy.BallisticCoefficient, value => mccoyPlusFacehardM79Input.McCoy.BallisticCoefficient = value, 0.001);
+        ConfigureFloat(root, $"{prefix}MaxRangeField", mccoyPlusFacehardM79Input.McCoy.MaxRange, value => mccoyPlusFacehardM79Input.McCoy.MaxRange = value, 1);
 
         ConfigureFacehardArmorTemplate(root, prefix, mccoyPlusFacehardM79Details, facehardPreview);
 
-        BindFloat(root, $"{prefix}ArmorQualityField", mccoyPlusFacehardM79Input.M79.PlateQuality, value => mccoyPlusFacehardM79Input.M79.PlateQuality = value, 0.001);
-        BindFloat(root, $"{prefix}ElongationField", mccoyPlusFacehardM79Input.M79.Elongation, value => mccoyPlusFacehardM79Input.M79.Elongation = value, 10);
+        ConfigureFloat(root, $"{prefix}ArmorQualityField", mccoyPlusFacehardM79Input.M79.PlateQuality, value => mccoyPlusFacehardM79Input.M79.PlateQuality = value, 0.001);
+        ConfigureFloat(root, $"{prefix}ElongationField", mccoyPlusFacehardM79Input.M79.Elongation, value => mccoyPlusFacehardM79Input.M79.Elongation = value, 10);
 
-        BindMcCoyPlusElevationSearch(root, prefix, mccoyPlusFacehardM79Input.McCoy);
-        BindDropdown(root, $"{prefix}AtmosphereField", LocalizedChoices("Army Standard Metro", "ICAO"), mccoyPlusFacehardM79Input.McCoy.Atmosphere == McCoyAtmosphere.Icao ? 1 : 0, index => mccoyPlusFacehardM79Input.McCoy.Atmosphere = index == 1 ? McCoyAtmosphere.Icao : McCoyAtmosphere.StandardMetro);
-        BindFloat(root, $"{prefix}DensityRatioField", mccoyPlusFacehardM79Input.McCoy.DensityRatio, value => mccoyPlusFacehardM79Input.McCoy.DensityRatio = value, 0.001);
-        BindFloat(root, $"{prefix}TemperatureField", mccoyPlusFacehardM79Input.McCoy.TemperatureF, value => mccoyPlusFacehardM79Input.McCoy.TemperatureF = value);
-        BindFloat(root, $"{prefix}MatchHeightField", mccoyPlusFacehardM79Input.McCoy.MatchHeight, value => mccoyPlusFacehardM79Input.McCoy.MatchHeight = value);
-        BindText(root, $"{prefix}DragTableField", mccoyPlusFacehardM79DragText, value =>
+        ConfigureMcCoyPlusElevationSearch(root, prefix, mccoyPlusFacehardM79Input.McCoy);
+        ConfigureDropdown(root, $"{prefix}AtmosphereField", LocalizedChoices("Army Standard Metro", "ICAO"), mccoyPlusFacehardM79Input.McCoy.Atmosphere == McCoyAtmosphere.Icao ? 1 : 0, index => mccoyPlusFacehardM79Input.McCoy.Atmosphere = index == 1 ? McCoyAtmosphere.Icao : McCoyAtmosphere.StandardMetro);
+        ConfigureFloat(root, $"{prefix}DensityRatioField", mccoyPlusFacehardM79Input.McCoy.DensityRatio, value => mccoyPlusFacehardM79Input.McCoy.DensityRatio = value, 0.001);
+        ConfigureFloat(root, $"{prefix}TemperatureField", mccoyPlusFacehardM79Input.McCoy.TemperatureF, value => mccoyPlusFacehardM79Input.McCoy.TemperatureF = value);
+        ConfigureFloat(root, $"{prefix}MatchHeightField", mccoyPlusFacehardM79Input.McCoy.MatchHeight, value => mccoyPlusFacehardM79Input.McCoy.MatchHeight = value);
+        ConfigureText(root, $"{prefix}DragTableField", mccoyPlusFacehardM79DragText, value =>
         {
             mccoyPlusFacehardM79DragText = value;
             mccoyPlusFacehardM79Input.McCoy.DragTable = McCoy.NormalizeDragTable(value);
@@ -766,40 +900,40 @@ public sealed class McCoyOkunCalculatorDialog
 
     void ConfigureMcCoyPlusTemplate(VisualElement root, string prefix, McCoyPlusInput target, Func<McCoyPlusDragFunction> getPreset, Action<McCoyPlusDragFunction> setPreset, Func<string> getDragText, Action<string> setDragText)
     {
-        BindMcCoyPlusElevationSearch(root, prefix, target);
-        BindDropdown(root, $"{prefix}AtmosphereField", LocalizedChoices("Army Standard Metro", "ICAO"), target.Atmosphere == McCoyAtmosphere.Icao ? 1 : 0, index => target.Atmosphere = index == 1 ? McCoyAtmosphere.Icao : McCoyAtmosphere.StandardMetro);
-        BindMcCoyPlusPreset(root, prefix, target, getPreset, setPreset, setDragText);
-        BindFloat(root, $"{prefix}MuzzleVelocityField", target.MuzzleVelocity, value => target.MuzzleVelocity = value, 1);
-        BindFloat(root, $"{prefix}BallisticCoefficientField", target.BallisticCoefficient, value => target.BallisticCoefficient = value, 0.001);
-        BindFloat(root, $"{prefix}MaxRangeField", target.MaxRange, value => target.MaxRange = value, 1);
-        BindFloat(root, $"{prefix}DensityRatioField", target.DensityRatio, value => target.DensityRatio = value, 0.001);
-        BindFloat(root, $"{prefix}TemperatureField", target.TemperatureF, value => target.TemperatureF = value);
-        BindFloat(root, $"{prefix}MatchHeightField", target.MatchHeight, value => target.MatchHeight = value);
-        BindText(root, $"{prefix}DragTableField", getDragText(), value =>
+        ConfigureMcCoyPlusElevationSearch(root, prefix, target);
+        ConfigureDropdown(root, $"{prefix}AtmosphereField", LocalizedChoices("Army Standard Metro", "ICAO"), target.Atmosphere == McCoyAtmosphere.Icao ? 1 : 0, index => target.Atmosphere = index == 1 ? McCoyAtmosphere.Icao : McCoyAtmosphere.StandardMetro);
+        ConfigureMcCoyPlusPreset(root, prefix, target, getPreset, setPreset, setDragText);
+        ConfigureFloat(root, $"{prefix}MuzzleVelocityField", target.MuzzleVelocity, value => target.MuzzleVelocity = value, 1);
+        ConfigureFloat(root, $"{prefix}BallisticCoefficientField", target.BallisticCoefficient, value => target.BallisticCoefficient = value, 0.001);
+        ConfigureFloat(root, $"{prefix}MaxRangeField", target.MaxRange, value => target.MaxRange = value, 1);
+        ConfigureFloat(root, $"{prefix}DensityRatioField", target.DensityRatio, value => target.DensityRatio = value, 0.001);
+        ConfigureFloat(root, $"{prefix}TemperatureField", target.TemperatureF, value => target.TemperatureF = value);
+        ConfigureFloat(root, $"{prefix}MatchHeightField", target.MatchHeight, value => target.MatchHeight = value);
+        ConfigureText(root, $"{prefix}DragTableField", getDragText(), value =>
         {
             setDragText(value);
             target.DragTable = McCoy.NormalizeDragTable(value);
         });
     }
 
-    void BindMcCoyPlusElevationSearch(VisualElement root, string prefix, McCoyPlusInput target)
+    void ConfigureMcCoyPlusElevationSearch(VisualElement root, string prefix, McCoyPlusInput target)
     {
-        BindDropdown(root, $"{prefix}ElevationSearchField", LocalizedChoices("Cached Binary Search", "Matched Range"),
+        ConfigureDropdown(root, $"{prefix}ElevationSearchField", LocalizedChoices("Cached Binary Search", "Matched Range"),
             target.ElevationSearchMode == McCoyPlusElevationSearchMode.MatchedRange ? 1 : 0,
             index => target.ElevationSearchMode = index == 1
                 ? McCoyPlusElevationSearchMode.MatchedRange
                 : McCoyPlusElevationSearchMode.CachedBinarySearch);
     }
 
-    void BindMcCoyPlusPreset(VisualElement root, string prefix, McCoyPlusInput target, Func<McCoyPlusDragFunction> getPreset, Action<McCoyPlusDragFunction> setPreset, Action<string> setDragText, Action onPresetChanged = null)
+    void ConfigureMcCoyPlusPreset(VisualElement root, string prefix, McCoyPlusInput target, Func<McCoyPlusDragFunction> getPreset, Action<McCoyPlusDragFunction> setPreset, Action<string> setDragText, Action onPresetChanged = null)
     {
         var presets = McCoyPlus.DragPresets();
-        BindDropdown(root, $"{prefix}PresetField", presets.Select(item => item.Label).ToList(), Mathf.Max(0, presets.FindIndex(item => item.Function == getPreset())), index =>
+        ConfigureDropdown(root, $"{prefix}PresetField", presets.Select(item => item.Label).ToList(), Mathf.Max(0, presets.FindIndex(item => item.Function == getPreset())), index =>
         {
             var preset = presets[Mathf.Max(0, index)];
             ApplyMcCoyPlusPreset(target, preset.Function, setPreset, setDragText);
             onPresetChanged?.Invoke();
-        });
+        }, true, TemplateRefresh.InputsAndOutput);
     }
 
     void ConfigureFacehardTemplate(VisualElement root, string prefix, FacehardInput target, FacehardResult preview, bool includeVelocity)
@@ -807,19 +941,19 @@ public sealed class McCoyOkunCalculatorDialog
         ConfigureFacehardProjectileTemplate(root, prefix, target, preview);
         if (includeVelocity)
         {
-            BindFloat(root, $"{prefix}StrikingVelocityField", target.StrikingVelocity, value => target.StrikingVelocity = value, 1);
-            BindFloat(root, $"{prefix}ObliquityField", target.Obliquity, value => target.Obliquity = value, 0);
+            ConfigureFloat(root, $"{prefix}StrikingVelocityField", target.StrikingVelocity, value => target.StrikingVelocity = value, 1);
+            ConfigureFloat(root, $"{prefix}ObliquityField", target.Obliquity, value => target.Obliquity = value, 0);
         }
-        BindDropdown(root, $"{prefix}ArmorTypeField", FacehardCalculator.FacehardArmors.Select(item => item.Name).ToList(),
+        ConfigureDropdown(root, $"{prefix}ArmorTypeField", FacehardCalculator.FacehardArmors.Select(item => item.Name).ToList(),
             FacehardCalculator.FacehardArmors.FindIndex(item => item.Id == target.ArmorId),
             index => target.ArmorId = FacehardCalculator.FacehardArmors[Mathf.Max(0, index)].Id);
-        BindToggle(root, $"{prefix}CurvedPlateToggle", target.CurvedPlate, value => target.CurvedPlate = value);
-        BindFloat(root, $"{prefix}PlateThicknessField", target.PlateThickness, value => target.PlateThickness = value, 0.001);
-        BindFloat(root, $"{prefix}WoodBackingField", target.WoodBackingThickness, value => target.WoodBackingThickness = value, 0);
-        BindFloat(root, $"{prefix}CementBackingField", target.CementBackingThickness, value => target.CementBackingThickness = value, 0);
-        BindFloat(root, $"{prefix}MetalBackingField", target.MetalBackingThickness, value => target.MetalBackingThickness = value, 0);
-        BindFloat(root, $"{prefix}BackingQualityField", target.BackingQuality, value => target.BackingQuality = value, 0.001);
-        BindFloat(root, $"{prefix}BackingPlatesField", target.BackingPlates, value => target.BackingPlates = value, 0);
+        ConfigureToggle(root, $"{prefix}CurvedPlateToggle", target.CurvedPlate, value => target.CurvedPlate = value);
+        ConfigureFloat(root, $"{prefix}PlateThicknessField", target.PlateThickness, value => target.PlateThickness = value, 0.001);
+        ConfigureFloat(root, $"{prefix}WoodBackingField", target.WoodBackingThickness, value => target.WoodBackingThickness = value, 0);
+        ConfigureFloat(root, $"{prefix}CementBackingField", target.CementBackingThickness, value => target.CementBackingThickness = value, 0);
+        ConfigureFloat(root, $"{prefix}MetalBackingField", target.MetalBackingThickness, value => target.MetalBackingThickness = value, 0);
+        ConfigureFloat(root, $"{prefix}BackingQualityField", target.BackingQuality, value => target.BackingQuality = value, 0.001);
+        ConfigureFloat(root, $"{prefix}BackingPlatesField", target.BackingPlates, value => target.BackingPlates = value, 0);
         UpdateFacehardInputWarnings(root, prefix, target, preview?.ResolvedCapType ?? ResolvedCapType(target));
     }
 
@@ -831,15 +965,15 @@ public sealed class McCoyOkunCalculatorDialog
 
     void ConfigureFacehardArmorTemplate(VisualElement root, string prefix, FacehardInput target, FacehardResult preview)
     {
-        BindDropdown(root, $"{prefix}ArmorTypeField", FacehardCalculator.FacehardArmors.Select(item => item.Name).ToList(),
+        ConfigureDropdown(root, $"{prefix}ArmorTypeField", FacehardCalculator.FacehardArmors.Select(item => item.Name).ToList(),
             FacehardCalculator.FacehardArmors.FindIndex(item => item.Id == target.ArmorId),
             index => target.ArmorId = FacehardCalculator.FacehardArmors[Mathf.Max(0, index)].Id);
-        BindToggle(root, $"{prefix}CurvedPlateToggle", target.CurvedPlate, value => target.CurvedPlate = value);
-        BindFloat(root, $"{prefix}WoodBackingField", target.WoodBackingThickness, value => target.WoodBackingThickness = value, 0);
-        BindFloat(root, $"{prefix}CementBackingField", target.CementBackingThickness, value => target.CementBackingThickness = value, 0);
-        BindFloat(root, $"{prefix}MetalBackingField", target.MetalBackingThickness, value => target.MetalBackingThickness = value, 0);
-        BindFloat(root, $"{prefix}BackingQualityField", target.BackingQuality, value => target.BackingQuality = value, 0.001);
-        BindFloat(root, $"{prefix}BackingPlatesField", target.BackingPlates, value => target.BackingPlates = value, 0);
+        ConfigureToggle(root, $"{prefix}CurvedPlateToggle", target.CurvedPlate, value => target.CurvedPlate = value);
+        ConfigureFloat(root, $"{prefix}WoodBackingField", target.WoodBackingThickness, value => target.WoodBackingThickness = value, 0);
+        ConfigureFloat(root, $"{prefix}CementBackingField", target.CementBackingThickness, value => target.CementBackingThickness = value, 0);
+        ConfigureFloat(root, $"{prefix}MetalBackingField", target.MetalBackingThickness, value => target.MetalBackingThickness = value, 0);
+        ConfigureFloat(root, $"{prefix}BackingQualityField", target.BackingQuality, value => target.BackingQuality = value, 0.001);
+        ConfigureFloat(root, $"{prefix}BackingPlatesField", target.BackingPlates, value => target.BackingPlates = value, 0);
         UpdateFacehardInputWarnings(root, prefix, target, preview?.ResolvedCapType ?? ResolvedCapType(target));
     }
 
@@ -851,61 +985,62 @@ public sealed class McCoyOkunCalculatorDialog
         var selectedNation = selectedPreset?.Nation ?? "Custom";
         var resolvedCapType = preview?.ResolvedCapType ?? ResolvedCapType(target);
         var nations = FacehardCalculator.FacehardProjectileNations;
-        BindDropdown(root, $"{prefix}ProjectileNationField", nations.Select(item => item.Name).ToList(),
+        ConfigureDropdown(root, $"{prefix}ProjectileNationField", nations.Select(item => item.Name).ToList(),
             Mathf.Max(0, nations.FindIndex(item => item.Id == selectedNation)), index =>
             {
                 var nation = nations[Mathf.Max(0, index)];
                 target.ProjectilePresetId = nation.DefaultProjectileId;
-            });
+            }, true, TemplateRefresh.InputsAndOutput);
 
         var projectileChoices = FacehardCalculator.FacehardProjectilePresets.Where(item => item.Nation == selectedNation).ToList();
         if (projectileChoices.Count == 0)
             projectileChoices = FacehardCalculator.FacehardProjectilePresets.Where(item => item.Nation == "Custom").ToList();
-        BindDropdown(root, $"{prefix}ProjectileTypeField", projectileChoices.Select(ProjectilePresetLabel).ToList(),
+        ConfigureDropdown(root, $"{prefix}ProjectileTypeField", projectileChoices.Select(ProjectilePresetLabel).ToList(),
             Mathf.Max(0, projectileChoices.FindIndex(item => item.Id == target.ProjectilePresetId)),
-            index => target.ProjectilePresetId = projectileChoices[Mathf.Max(0, index)].Id);
+            index => target.ProjectilePresetId = projectileChoices[Mathf.Max(0, index)].Id, true, TemplateRefresh.InputsAndOutput);
 
         var isCustom = target.ProjectilePresetId == "custom";
         var capLabels = LocalizedChoices("Hard AP cap", "Thin/Tough hard cap", "Soft AP cap", "Hood", "No cap");
         var capValues = new List<FacehardCapType> { FacehardCapType.Hard, FacehardCapType.ThinHard, FacehardCapType.Soft, FacehardCapType.Hood, FacehardCapType.None };
-        BindDropdown(root, $"{prefix}CapOrHoodField", capLabels, Mathf.Max(0, capValues.IndexOf(resolvedCapType)), index => target.CapType = capValues[Mathf.Max(0, index)], isCustom);
+        ConfigureDropdown(root, $"{prefix}CapOrHoodField", capLabels, Mathf.Max(0, capValues.IndexOf(resolvedCapType)), index => target.CapType = capValues[Mathf.Max(0, index)], isCustom, TemplateRefresh.InputsAndOutput);
 
         var schemaValues = new List<FacehardNoseSchema> { FacehardNoseSchema.Standard, FacehardNoseSchema.JapaneseCapHead };
-        BindDropdown(root, $"{prefix}NoseSchemaField", LocalizedChoices("Standard", "Japanese Cap Head"), Mathf.Max(0, schemaValues.IndexOf(target.NoseSchema)), index =>
+        ConfigureDropdown(root, $"{prefix}NoseSchemaField", LocalizedChoices("Standard", "Japanese Cap Head"), Mathf.Max(0, schemaValues.IndexOf(target.NoseSchema)), index =>
         {
             target.NoseSchema = schemaValues[Mathf.Max(0, index)];
             target.NoseCondition = FacehardNoseCondition.Intact;
-        }, isCustom);
+        }, isCustom, TemplateRefresh.InputsAndOutput);
 
-        SetDisplay(root, $"{prefix}JapaneseCapHeadField", isCustom && target.NoseSchema == FacehardNoseSchema.JapaneseCapHead);
-        BindDropdown(root, $"{prefix}JapaneseCapHeadField", LocalizedChoices("Uncapped Type 91 AP", "Capped Type 88/91/1 APC"), target.JapaneseCapHead <= 1 ? 0 : 1, index =>
+        ConfigureDropdown(root, $"{prefix}JapaneseCapHeadField", LocalizedChoices("Uncapped Type 91 AP", "Capped Type 88/91/1 APC"), target.JapaneseCapHead <= 1 ? 0 : 1, index =>
         {
             target.JapaneseCapHead = index == 0 ? 1 : 2;
             target.NoseCondition = FacehardNoseCondition.Intact;
-        });
+        }, true, TemplateRefresh.InputsAndOutput, () => FieldDisplay(isCustom && target.NoseSchema == FacehardNoseSchema.JapaneseCapHead));
 
         var noseWeights = FacehardCalculator.FacehardNoseCoveringWeights(target);
-        BindDropdown(root, $"{prefix}NoseConditionField", noseWeights.ConditionOptions.Select(NoseConditionLabel).ToList(),
+        ConfigureDropdown(root, $"{prefix}NoseConditionField", noseWeights.ConditionOptions.Select(NoseConditionLabel).ToList(),
             Mathf.Max(0, noseWeights.ConditionOptions.IndexOf(noseWeights.Condition)),
-            index => target.NoseCondition = noseWeights.ConditionOptions[Mathf.Max(0, index)]);
-        BindFloat(root, $"{prefix}ProjectileDiameterField", target.ProjectileDiameter, value => target.ProjectileDiameter = value, 0.001);
-        BindFloat(root, $"{prefix}ProjectileWeightField", target.ProjectileWeight, value => target.ProjectileWeight = value, 0.001);
-        BindFloat(root, $"{prefix}ProjectileBodyWeightField", target.ProjectileBodyWeight, value => target.ProjectileBodyWeight = value, 0.001);
-        SetDisplay(root, $"{prefix}WindscreenCapHeadWeightField", noseWeights.SchemaKind == FacehardNoseSchema.JapaneseCapHead && noseWeights.CapHead == 2);
-        BindFloat(root, $"{prefix}WindscreenCapHeadWeightField", target.WindscreenCapHeadWeight, value => target.WindscreenCapHeadWeight = value, 0);
-        SetDisplay(root, $"{prefix}WindscreenWeightField", noseWeights.SchemaKind == FacehardNoseSchema.Standard);
-        BindFloat(root, $"{prefix}WindscreenWeightField", target.WindscreenWeight, value => target.WindscreenWeight = value, 0);
-        BindFloat(root, $"{prefix}RemainingNoseWeightField", noseWeights.RemainWeight, _ => { }, 0, false, RemainingNoseWeightLabel(noseWeights.CapHead, resolvedCapType));
-        BindFloat(root, $"{prefix}PlimField", isCustom ? target.ProjectileLimitQuality : selectedPreset?.ProjectileLimitQuality ?? target.ProjectileLimitQuality, value => target.ProjectileLimitQuality = value, 0.001, isCustom);
-        BindFloat(root, $"{prefix}PdamField", isCustom ? target.ProjectileDamageQuality : selectedPreset?.ProjectileDamageQuality ?? target.ProjectileDamageQuality, value => target.ProjectileDamageQuality = value, 0.001, isCustom);
-        BindProjectileFlag(root, $"{prefix}ShatResField", isCustom ? target.ShatterResistance : selectedPreset?.ShatterResistance ?? target.ShatterResistance, value => target.ShatterResistance = value, isCustom, LocalizedChoices(ShatterResistanceLabelKeys));
-        BindProjectileFlag(root, $"{prefix}BreakUnderNblField", isCustom ? target.BreakUnderNbl : selectedPreset?.BreakUnderNbl ?? target.BreakUnderNbl, value => target.BreakUnderNbl = value, isCustom, LocalizedChoices(BreakUnderNblLabelKeys));
-        BindProjectileFlag(root, $"{prefix}LightCaseField", isCustom ? target.LightCase : selectedPreset?.LightCase ?? target.LightCase, value => target.LightCase = value, isCustom, LocalizedChoices(LightCaseLabelKeys));
+            index => target.NoseCondition = noseWeights.ConditionOptions[Mathf.Max(0, index)], true, TemplateRefresh.InputsAndOutput);
+        ConfigureFloat(root, $"{prefix}ProjectileDiameterField", target.ProjectileDiameter, value => target.ProjectileDiameter = value, 0.001, true, null, TemplateRefresh.InputsAndOutput);
+        ConfigureFloat(root, $"{prefix}ProjectileWeightField", target.ProjectileWeight, value => target.ProjectileWeight = value, 0.001, true, null, TemplateRefresh.InputsAndOutput);
+        ConfigureFloat(root, $"{prefix}ProjectileBodyWeightField", target.ProjectileBodyWeight, value => target.ProjectileBodyWeight = value, 0.001, true, null, TemplateRefresh.InputsAndOutput);
+        ConfigureFloat(root, $"{prefix}WindscreenCapHeadWeightField", target.WindscreenCapHeadWeight, value => target.WindscreenCapHeadWeight = value, 0, true, null, TemplateRefresh.InputsAndOutput, () =>
+        {
+            var currentNoseWeights = FacehardCalculator.FacehardNoseCoveringWeights(target);
+            return FieldDisplay(currentNoseWeights.SchemaKind == FacehardNoseSchema.JapaneseCapHead && currentNoseWeights.CapHead == 2);
+        });
+        ConfigureFloat(root, $"{prefix}WindscreenWeightField", target.WindscreenWeight, value => target.WindscreenWeight = value, 0, true, null, TemplateRefresh.InputsAndOutput, () => FieldDisplay(FacehardCalculator.FacehardNoseCoveringWeights(target).SchemaKind == FacehardNoseSchema.Standard));
+        ConfigureFloat(root, $"{prefix}RemainingNoseWeightField", noseWeights.RemainWeight, _ => { }, 0, false, RemainingNoseWeightLabel(noseWeights.CapHead, resolvedCapType));
+        ConfigureFloat(root, $"{prefix}PlimField", isCustom ? target.ProjectileLimitQuality : selectedPreset?.ProjectileLimitQuality ?? target.ProjectileLimitQuality, value => target.ProjectileLimitQuality = value, 0.001, isCustom);
+        ConfigureFloat(root, $"{prefix}PdamField", isCustom ? target.ProjectileDamageQuality : selectedPreset?.ProjectileDamageQuality ?? target.ProjectileDamageQuality, value => target.ProjectileDamageQuality = value, 0.001, isCustom);
+        ConfigureProjectileFlag(root, $"{prefix}ShatResField", isCustom ? target.ShatterResistance : selectedPreset?.ShatterResistance ?? target.ShatterResistance, value => target.ShatterResistance = value, isCustom, LocalizedChoices(ShatterResistanceLabelKeys));
+        ConfigureProjectileFlag(root, $"{prefix}BreakUnderNblField", isCustom ? target.BreakUnderNbl : selectedPreset?.BreakUnderNbl ?? target.BreakUnderNbl, value => target.BreakUnderNbl = value, isCustom, LocalizedChoices(BreakUnderNblLabelKeys));
+        ConfigureProjectileFlag(root, $"{prefix}LightCaseField", isCustom ? target.LightCase : selectedPreset?.LightCase ?? target.LightCase, value => target.LightCase = value, isCustom, LocalizedChoices(LightCaseLabelKeys));
     }
 
-    void BindProjectileFlag(VisualElement root, string name, double value, Action<double> setter, bool enabled, List<string> labels)
+    void ConfigureProjectileFlag(VisualElement root, string name, double value, Action<double> setter, bool enabled, List<string> labels)
     {
-        BindDropdown(root, name, labels, Mathf.Clamp((int)Math.Round(value), 0, labels.Count - 1), index => setter(index), enabled);
+        ConfigureDropdown(root, name, labels, Mathf.Clamp((int)Math.Round(value), 0, labels.Count - 1), index => setter(index), enabled, TemplateRefresh.InputsAndOutput);
     }
 
     void UpdateFacehardInputWarnings(VisualElement root, string prefix, FacehardInput target, FacehardCapType resolvedCapType)
@@ -922,32 +1057,27 @@ public sealed class McCoyOkunCalculatorDialog
     void ConfigureJbmTemplate(VisualElement root)
     {
         var geometry = jbmMode == JbmProgramMode.McGyro ? (JbmProjectileGeometryInput)mcGyroInput : jbmMode == JbmProgramMode.IntLift ? intLiftInput : mcDragInput;
-        BindText(root, "JbmProjectileIdField", geometry.ProjectileId, value => geometry.ProjectileId = value);
-        BindFloat(root, "JbmReferenceDiameterField", geometry.ReferenceDiameterMm, value => geometry.ReferenceDiameterMm = value, 0.001);
-        BindFloat(root, "JbmTotalLengthField", geometry.TotalLengthCalibers, value => geometry.TotalLengthCalibers = value, 0.001);
-        BindFloat(root, "JbmNoseLengthField", geometry.NoseLengthCalibers, value => geometry.NoseLengthCalibers = value, 0.001);
-        BindFloat(root, "JbmTangentRadiusRatioField", geometry.TangentRadiusRatio, value => geometry.TangentRadiusRatio = value, 0);
-        BindFloat(root, "JbmBoattailLengthField", geometry.BoattailLengthCalibers, value => geometry.BoattailLengthCalibers = value, 0);
-        BindFloat(root, "JbmBaseDiameterField", geometry.BaseDiameterCalibers, value => geometry.BaseDiameterCalibers = value, 0.001);
-        BindFloat(root, "JbmMeplatDiameterField", geometry.MeplatDiameterCalibers, value => geometry.MeplatDiameterCalibers = value, 0);
+        ConfigureText(root, "JbmProjectileIdField", geometry.ProjectileId, value => geometry.ProjectileId = value);
+        ConfigureFloat(root, "JbmReferenceDiameterField", geometry.ReferenceDiameterMm, value => geometry.ReferenceDiameterMm = value, 0.001);
+        ConfigureFloat(root, "JbmTotalLengthField", geometry.TotalLengthCalibers, value => geometry.TotalLengthCalibers = value, 0.001);
+        ConfigureFloat(root, "JbmNoseLengthField", geometry.NoseLengthCalibers, value => geometry.NoseLengthCalibers = value, 0.001);
+        ConfigureFloat(root, "JbmTangentRadiusRatioField", geometry.TangentRadiusRatio, value => geometry.TangentRadiusRatio = value, 0);
+        ConfigureFloat(root, "JbmBoattailLengthField", geometry.BoattailLengthCalibers, value => geometry.BoattailLengthCalibers = value, 0);
+        ConfigureFloat(root, "JbmBaseDiameterField", geometry.BaseDiameterCalibers, value => geometry.BaseDiameterCalibers = value, 0.001);
+        ConfigureFloat(root, "JbmMeplatDiameterField", geometry.MeplatDiameterCalibers, value => geometry.MeplatDiameterCalibers = value, 0);
 
-        SetDisplay(root, "JbmProjectileDensityField", jbmMode == JbmProgramMode.McGyro);
-        SetDisplay(root, "JbmRiflingTwistField", jbmMode == JbmProgramMode.McGyro);
-        SetDisplay(root, "JbmCenterOfGravityField", jbmMode != JbmProgramMode.McGyro);
-        SetDisplay(root, "JbmRotatingBandDiameterField", jbmMode == JbmProgramMode.McDrag);
-        SetDisplay(root, "JbmBoundaryLayerField", jbmMode == JbmProgramMode.McDrag);
-        BindFloat(root, "JbmProjectileDensityField", mcGyroInput.ProjectileDensityGramsPerCc, value => mcGyroInput.ProjectileDensityGramsPerCc = value, 0.001);
-        BindFloat(root, "JbmRiflingTwistField", mcGyroInput.RiflingTwistCalibersPerTurn, value => mcGyroInput.RiflingTwistCalibersPerTurn = value, 0.001);
+        ConfigureFloat(root, "JbmProjectileDensityField", mcGyroInput.ProjectileDensityGramsPerCc, value => mcGyroInput.ProjectileDensityGramsPerCc = value, 0.001, true, null, TemplateRefresh.OutputOnly, () => FieldDisplay(jbmMode == JbmProgramMode.McGyro));
+        ConfigureFloat(root, "JbmRiflingTwistField", mcGyroInput.RiflingTwistCalibersPerTurn, value => mcGyroInput.RiflingTwistCalibersPerTurn = value, 0.001, true, null, TemplateRefresh.OutputOnly, () => FieldDisplay(jbmMode == JbmProgramMode.McGyro));
         if (jbmMode == JbmProgramMode.IntLift)
-            BindFloat(root, "JbmCenterOfGravityField", intLiftInput.CenterOfGravityCalibers, value => intLiftInput.CenterOfGravityCalibers = value, 0.001);
+            ConfigureFloat(root, "JbmCenterOfGravityField", intLiftInput.CenterOfGravityCalibers, value => intLiftInput.CenterOfGravityCalibers = value, 0.001, true, null, TemplateRefresh.OutputOnly, () => FieldDisplay(jbmMode != JbmProgramMode.McGyro));
         else
-            BindFloat(root, "JbmCenterOfGravityField", mcDragInput.CenterOfGravityCalibers, value => mcDragInput.CenterOfGravityCalibers = value, 0.001);
-        BindFloat(root, "JbmRotatingBandDiameterField", mcDragInput.RotatingBandDiameterCalibers, value => mcDragInput.RotatingBandDiameterCalibers = value, 0.001);
-        BindDropdown(root, "JbmBoundaryLayerField", LocalizedChoices("Laminar/Laminar", "Laminar/Turbulent", "Turbulent/Turbulent"), BoundaryLayerIndex(mcDragInput.BoundaryLayer),
-            index => mcDragInput.BoundaryLayer = index == 0 ? JbmBoundaryLayer.LaminarLaminar : index == 2 ? JbmBoundaryLayer.TurbulentTurbulent : JbmBoundaryLayer.LaminarTurbulent);
+            ConfigureFloat(root, "JbmCenterOfGravityField", mcDragInput.CenterOfGravityCalibers, value => mcDragInput.CenterOfGravityCalibers = value, 0.001, true, null, TemplateRefresh.OutputOnly, () => FieldDisplay(jbmMode != JbmProgramMode.McGyro));
+        ConfigureFloat(root, "JbmRotatingBandDiameterField", mcDragInput.RotatingBandDiameterCalibers, value => mcDragInput.RotatingBandDiameterCalibers = value, 0.001, true, null, TemplateRefresh.OutputOnly, () => FieldDisplay(jbmMode == JbmProgramMode.McDrag));
+        ConfigureDropdown(root, "JbmBoundaryLayerField", LocalizedChoices("Laminar/Laminar", "Laminar/Turbulent", "Turbulent/Turbulent"), BoundaryLayerIndex(mcDragInput.BoundaryLayer),
+            index => mcDragInput.BoundaryLayer = index == 0 ? JbmBoundaryLayer.LaminarLaminar : index == 2 ? JbmBoundaryLayer.TurbulentTurbulent : JbmBoundaryLayer.LaminarTurbulent, true, TemplateRefresh.OutputOnly, () => FieldDisplay(jbmMode == JbmProgramMode.McDrag));
     }
 
-    void BindSample(VisualElement root, string name, string selectedId, Action<string> setter)
+    void ConfigureSampleDropdown(VisualElement root, string name, string selectedId, Action<string> setter)
     {
         var samples = BallisticSampleCatalog.All();
         var choices = new List<string> { Localize("Not Specified") };
@@ -956,10 +1086,10 @@ public sealed class McCoyOkunCalculatorDialog
         var sampleIndex = samples.FindIndex(sample => sample.Id == selectedId);
         if (sampleIndex >= 0)
             index = sampleIndex + 1;
-        BindDropdown(root, name, choices, index, selected => setter(selected <= 0 ? "" : samples[Mathf.Clamp(selected - 1, 0, samples.Count - 1)].Id));
+        ConfigureDropdown(root, name, choices, index, selected => setter(selected <= 0 ? "" : samples[Mathf.Clamp(selected - 1, 0, samples.Count - 1)].Id), true, TemplateRefresh.InputsAndOutput);
     }
 
-    void BindButton(VisualElement root, string name, Action clicked)
+    void ConfigureButton(VisualElement root, string name, Action clicked)
     {
         var button = root.Q<Button>(name);
         if (button == null)
@@ -977,139 +1107,108 @@ public sealed class McCoyOkunCalculatorDialog
         binding.Clicked = clicked;
     }
 
-    void BindFloat(VisualElement root, string name, double value, Action<double> setter, double? min = null, bool enabled = true, string label = null)
+    void ConfigureFloat(VisualElement root, string name, double value, Action<double> setter, double? min = null, bool enabled = true, string label = null, TemplateRefresh refresh = TemplateRefresh.OutputOnly, Func<DisplayStyle> displayGetter = null)
     {
         var field = root.Q<FloatField>(name);
         if (field == null)
             return;
-        if (field.userData is not TemplateFloatBinding binding)
-        {
-            binding = new TemplateFloatBinding();
-            field.userData = binding;
-            field.RegisterValueChangedCallback(evt =>
+        var current = value;
+        field.dataSource = new TemplateFloatFieldViewModel(
+            () => current,
+            next =>
             {
-                if (field.userData is not TemplateFloatBinding current || current.Updating)
-                    return;
-                var next = (double)evt.newValue;
-                if (current.Min.HasValue)
-                    next = Math.Max(current.Min.Value, next);
-                current.Setter?.Invoke(next);
-                RebuildContent();
-            });
-        }
-        binding.Updating = true;
-        binding.Min = min;
-        binding.Setter = setter;
-        if (!string.IsNullOrEmpty(label))
-            field.label = label;
-        field.SetEnabled(enabled);
-        field.SetValueWithoutNotify((float)value);
-        binding.Updating = false;
+                current = next;
+                setter(next);
+            },
+            min,
+            string.IsNullOrEmpty(label) ? null : () => label,
+            () => RefreshAfterTemplateInputChange(refresh),
+            () => enabled,
+            displayGetter);
     }
 
-    void BindDropdown(VisualElement root, string name, List<string> choices, int index, Action<int> setter, bool enabled = true)
+    void ConfigureDropdown(VisualElement root, string name, List<string> choices, int index, Action<int> setter, bool enabled = true, TemplateRefresh refresh = TemplateRefresh.OutputOnly, Func<DisplayStyle> displayGetter = null)
     {
         if (choices.Count == 0)
             choices.Add("");
         index = Mathf.Clamp(index, 0, choices.Count - 1);
-        BindDropdown(root, name, choices.Select((choice, choiceIndex) => new DropdownOption<int>(choiceIndex, choice)).ToList(), index, setter, enabled);
-    }
-
-    void BindDropdown<T>(VisualElement root, string name, List<DropdownOption<T>> options, T value, Action<T> setter, bool enabled = true)
-    {
         var field = root.Q<DropdownField>(name);
         if (field == null)
             return;
-        if (options.Count == 0)
-            options.Add(new DropdownOption<T>(default, ""));
-        var selectedIndex = options.FindIndex(option => EqualityComparer<T>.Default.Equals(option.Value, value));
-        if (selectedIndex < 0)
-            selectedIndex = 0;
-        if (field.userData is not TemplateDropdownBinding<T> binding)
-        {
-            binding = new TemplateDropdownBinding<T>();
-            field.userData = binding;
-            field.RegisterValueChangedCallback(evt =>
-            {
-                if (field.userData is not TemplateDropdownBinding<T> current || current.Updating)
-                    return;
-                var optionIndex = current.Options.FindIndex(option => string.Equals(option.Label, evt.newValue, StringComparison.Ordinal));
-                if (optionIndex < 0 || optionIndex >= current.Options.Count)
-                    return;
-                var selectedValue = current.Options[optionIndex].Value;
-                if (EqualityComparer<T>.Default.Equals(selectedValue, current.Value))
-                    return;
-                current.Value = selectedValue;
-                current.Setter?.Invoke(selectedValue);
-                RebuildContent();
-            });
-        }
-        var choices = options.Select(option => option.Label).ToList();
-        binding.Updating = true;
-        binding.Value = value;
-        binding.Options = options;
-        binding.Setter = setter;
         field.choices = choices;
-        field.SetEnabled(enabled);
-        field.SetValueWithoutNotify(choices[selectedIndex]);
-        binding.Updating = false;
+        var current = index;
+        field.dataSource = new TemplateDropdownFieldViewModel(
+            () => current,
+            next =>
+            {
+                current = next;
+                setter(next);
+            },
+            choices.Count,
+            () => RefreshAfterTemplateInputChange(refresh),
+            () => enabled,
+            displayGetter);
     }
 
-    void BindText(VisualElement root, string name, string value, Action<string> setter)
+    void ConfigureText(VisualElement root, string name, string value, Action<string> setter, TemplateRefresh refresh = TemplateRefresh.OutputOnly, Func<DisplayStyle> displayGetter = null)
     {
         var field = root.Q<TextField>(name);
         if (field == null)
             return;
-        if (field.userData is not TemplateTextBinding binding)
-        {
-            binding = new TemplateTextBinding();
-            field.userData = binding;
-            field.RegisterValueChangedCallback(evt =>
+        var current = value ?? "";
+        field.dataSource = new TemplateTextFieldViewModel(
+            () => current,
+            next =>
             {
-                if (field.userData is not TemplateTextBinding current || current.Updating)
-                    return;
-                var next = evt.newValue ?? "";
-                if (!string.Equals(next, field.value ?? "", StringComparison.Ordinal))
-                    return;
-                current.Setter?.Invoke(next);
-                RebuildContent();
-            });
-        }
-        binding.Updating = true;
-        binding.Setter = setter;
-        field.SetValueWithoutNotify(value ?? "");
-        binding.Updating = false;
+                current = next;
+                setter(next);
+            },
+            () => RefreshAfterTemplateInputChange(refresh),
+            null,
+            displayGetter);
     }
 
-    void BindToggle(VisualElement root, string name, bool value, Action<bool> setter)
+    void ConfigureToggle(VisualElement root, string name, bool value, Action<bool> setter, TemplateRefresh refresh = TemplateRefresh.OutputOnly, bool enabled = true, Func<DisplayStyle> displayGetter = null)
     {
         var field = root.Q<Toggle>(name);
         if (field == null)
             return;
-        if (field.userData is not TemplateToggleBinding binding)
-        {
-            binding = new TemplateToggleBinding();
-            field.userData = binding;
-            field.RegisterValueChangedCallback(evt =>
+        var current = value;
+        field.dataSource = new TemplateToggleFieldViewModel(
+            () => current,
+            next =>
             {
-                if (field.userData is not TemplateToggleBinding current || current.Updating)
-                    return;
-                current.Setter?.Invoke(evt.newValue);
-                RebuildContent();
-            });
-        }
-        binding.Updating = true;
-        binding.Setter = setter;
-        field.SetValueWithoutNotify(value);
-        binding.Updating = false;
+                current = next;
+                setter(next);
+            },
+            () => RefreshAfterTemplateInputChange(refresh),
+            () => enabled,
+            displayGetter);
     }
 
-    static void SetDisplay(VisualElement root, string name, bool visible)
+    void RefreshAfterTemplateInputChange(TemplateRefresh refresh)
     {
-        var element = root.Q<VisualElement>(name);
-        if (element != null)
-            element.style.display = visible ? DisplayStyle.Flex : DisplayStyle.None;
+        if (refresh == TemplateRefresh.InputsAndOutput &&
+            templatePages.TryGetValue(activeTab, out var activeSurface))
+        {
+            ConfigureTemplateInputs(activeTab, activeSurface.Root);
+            ConfigureTemplateOutputControls(activeTab, activeSurface.Root);
+        }
+
+        RefreshActiveOutput();
     }
+
+    void RefreshActiveOutput()
+    {
+        if (!templatePages.TryGetValue(activeTab, out var activeSurface))
+            return;
+
+        activeSurface.OutputContent.Clear();
+        BuildTemplateOutput(activeTab, activeSurface.OutputContent);
+        outputBuiltTabs.Add(activeTab);
+    }
+
+    static DisplayStyle FieldDisplay(bool visible) => visible ? DisplayStyle.Flex : DisplayStyle.None;
 
     static string PageName(McCoyOkunTab tab) => $"{TabElementPrefix(tab)}Page";
 
@@ -1312,6 +1411,24 @@ public sealed class McCoyOkunCalculatorDialog
         else if (noseWeights.SchemaKind != FacehardNoseSchema.JapaneseCapHead || noseWeights.CapHead != 2)
         {
             target.WindscreenCapHeadWeight = 0;
+        }
+    }
+
+    void PrepareTemplateOutput(McCoyOkunTab tab)
+    {
+        switch (tab)
+        {
+            case McCoyOkunTab.McCoyPlusFacehard:
+                SyncComboMcCoy(mccoyPlusFacehardInput.McCoy, mccoyPlusFacehardDragText);
+                SyncFacehardBridge();
+                break;
+            case McCoyOkunTab.McCoyPlusFacehardM79:
+                SyncComboMcCoy(mccoyPlusFacehardM79Input.McCoy, mccoyPlusFacehardM79DragText);
+                SyncFacehardM79Bridge();
+                break;
+            case McCoyOkunTab.McCoyPlusM79:
+                SyncComboMcCoy(mccoyPlusM79Input.McCoy, mccoyPlusM79DragText);
+                break;
         }
     }
 

@@ -40,26 +40,31 @@
                     <ui:ScrollView mode="Vertical" style="flex-grow: 1; flex-shrink: 1;">
                         <ui:DropdownField name="SampleField" label="Sample" >
                             <Bindings>
+                                <ui:DataBinding property="index" data-source-path="sampleIndex" binding-mode="TwoWay"/>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-209)"/>
                             </Bindings>
                         </ui:DropdownField>
                         <ui:DropdownField name="PresetField" label="Mach-CD Preset" >
                             <Bindings>
+                                <ui:DataBinding property="index" data-source-path="presetIndex" binding-mode="TwoWay"/>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-159)"/>
                             </Bindings>
                         </ui:DropdownField>
                         <ui:FloatField name="MuzzleVelocityField" label="Muzzle Velocity" >
                             <Bindings>
+                                <ui:DataBinding property="value" data-source-path="muzzleVelocity" binding-mode="TwoWay"/>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-175)"/>
                             </Bindings>
                         </ui:FloatField>
                         <ui:FloatField name="BallisticCoefficientField" label="Ballistic Coefficient" >
                             <Bindings>
+                                <ui:DataBinding property="value" data-source-path="ballisticCoefficient" binding-mode="TwoWay"/>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-131)"/>
                             </Bindings>
                         </ui:FloatField>
                         <ui:FloatField name="MaxRangeField" label="Maximum Range" >
                             <Bindings>
+                                <ui:DataBinding property="value" data-source-path="maxRange" binding-mode="TwoWay"/>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-162)"/>
                             </Bindings>
                         </ui:FloatField>
@@ -70,86 +75,114 @@
                         </ui:Label>
                         <ui:DropdownField name="ProjectileNationField" label="Projectile Nation" >
                             <Bindings>
+                                <ui:DataBinding property="index" data-source-path="projectileNationIndex" binding-mode="TwoWay"/>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-194)"/>
                             </Bindings>
                         </ui:DropdownField>
                         <ui:DropdownField name="ProjectileTypeField" label="Projectile Type" >
                             <Bindings>
+                                <ui:DataBinding property="index" data-source-path="projectileTypeIndex" binding-mode="TwoWay"/>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-195)"/>
                             </Bindings>
                         </ui:DropdownField>
                         <ui:DropdownField name="CapOrHoodField" label="Cap Or Hood" >
                             <Bindings>
+                                <ui:DataBinding property="index" data-source-path="capOrHoodIndex" binding-mode="TwoWay"/>
+                                <ui:DataBinding property="enabledSelf" data-source-path="projectileCustomFieldEnabled" binding-mode="ToTarget"/>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-137)"/>
                             </Bindings>
                         </ui:DropdownField>
                         <ui:DropdownField name="NoseSchemaField" label="Nose Schema" >
                             <Bindings>
+                                <ui:DataBinding property="index" data-source-path="noseSchemaIndex" binding-mode="TwoWay"/>
+                                <ui:DataBinding property="enabledSelf" data-source-path="projectileCustomFieldEnabled" binding-mode="ToTarget"/>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-177)"/>
                             </Bindings>
                         </ui:DropdownField>
                         <ui:DropdownField name="JapaneseCapHeadField" label="Japanese Cap Head Type" >
                             <Bindings>
+                                <ui:DataBinding property="index" data-source-path="japaneseCapHeadIndex" binding-mode="TwoWay"/>
+                                <ui:DataBinding property="style.display" data-source-path="japaneseCapHeadDisplay" binding-mode="ToTarget"/>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-153)"/>
                             </Bindings>
                         </ui:DropdownField>
                         <ui:DropdownField name="NoseConditionField" label="Pre-Impact Nose Condition" >
                             <Bindings>
+                                <ui:DataBinding property="index" data-source-path="noseConditionIndex" binding-mode="TwoWay"/>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-185)"/>
                             </Bindings>
                         </ui:DropdownField>
                         <ui:FloatField name="ProjectileDiameterField" label="Projectile Diameter" >
                             <Bindings>
+                                <ui:DataBinding property="value" data-source-path="projectileDiameter" binding-mode="TwoWay"/>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-191)"/>
                             </Bindings>
                         </ui:FloatField>
                         <ui:FloatField name="ProjectileWeightField" label="Projectile Weight" >
                             <Bindings>
+                                <ui:DataBinding property="value" data-source-path="projectileWeight" binding-mode="TwoWay"/>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-196)"/>
                             </Bindings>
                         </ui:FloatField>
                         <ui:FloatField name="ProjectileBodyWeightField" label="Body Weight" >
                             <Bindings>
+                                <ui:DataBinding property="value" data-source-path="projectileBodyWeight" binding-mode="TwoWay"/>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-134)"/>
                             </Bindings>
                         </ui:FloatField>
                         <ui:FloatField name="WindscreenCapHeadWeightField" label="Windscreen + Cap Head Weight" >
                             <Bindings>
+                                <ui:DataBinding property="value" data-source-path="windscreenCapHeadWeight" binding-mode="TwoWay"/>
+                                <ui:DataBinding property="style.display" data-source-path="windscreenCapHeadWeightDisplay" binding-mode="ToTarget"/>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-216)"/>
                             </Bindings>
                         </ui:FloatField>
                         <ui:FloatField name="WindscreenWeightField" label="Windscreen Weight" >
                             <Bindings>
+                                <ui:DataBinding property="value" data-source-path="windscreenWeight" binding-mode="TwoWay"/>
+                                <ui:DataBinding property="style.display" data-source-path="windscreenWeightDisplay" binding-mode="ToTarget"/>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-217)"/>
                             </Bindings>
                         </ui:FloatField>
                         <ui:FloatField name="RemainingNoseWeightField" label="Remaining Nose Covering Weight" >
                             <Bindings>
-                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-201)"/>
+                                <ui:DataBinding property="value" data-source-path="remainingNoseWeight" binding-mode="ToTarget"/>
+                                <ui:DataBinding property="label" data-source-path="remainingNoseWeightLabel" binding-mode="ToTarget"/>
+                                <ui:DataBinding property="enabledSelf" data-source-path="readOnlyFieldEnabled" binding-mode="ToTarget"/>
                             </Bindings>
                         </ui:FloatField>
                         <ui:FloatField name="PlimField" label="PLIM" >
                             <Bindings>
+                                <ui:DataBinding property="value" data-source-path="plim" binding-mode="TwoWay"/>
+                                <ui:DataBinding property="enabledSelf" data-source-path="projectileCustomFieldEnabled" binding-mode="ToTarget"/>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-182)"/>
                             </Bindings>
                         </ui:FloatField>
                         <ui:FloatField name="PdamField" label="PDAM" >
                             <Bindings>
+                                <ui:DataBinding property="value" data-source-path="pdam" binding-mode="TwoWay"/>
+                                <ui:DataBinding property="enabledSelf" data-source-path="projectileCustomFieldEnabled" binding-mode="ToTarget"/>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-181)"/>
                             </Bindings>
                         </ui:FloatField>
                         <ui:DropdownField name="ShatResField" label="SHATRES" >
                             <Bindings>
+                                <ui:DataBinding property="index" data-source-path="shatResIndex" binding-mode="TwoWay"/>
+                                <ui:DataBinding property="enabledSelf" data-source-path="projectileCustomFieldEnabled" binding-mode="ToTarget"/>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-207)"/>
                             </Bindings>
                         </ui:DropdownField>
                         <ui:DropdownField name="BreakUnderNblField" label="BRAAK" >
                             <Bindings>
+                                <ui:DataBinding property="index" data-source-path="breakUnderNblIndex" binding-mode="TwoWay"/>
+                                <ui:DataBinding property="enabledSelf" data-source-path="projectileCustomFieldEnabled" binding-mode="ToTarget"/>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-128)"/>
                             </Bindings>
                         </ui:DropdownField>
                         <ui:DropdownField name="LightCaseField" label="LTCASE" >
                             <Bindings>
+                                <ui:DataBinding property="index" data-source-path="lightCaseIndex" binding-mode="TwoWay"/>
+                                <ui:DataBinding property="enabledSelf" data-source-path="projectileCustomFieldEnabled" binding-mode="ToTarget"/>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-155)"/>
                             </Bindings>
                         </ui:DropdownField>
@@ -162,36 +195,43 @@
                     <ui:ScrollView mode="Vertical" style="flex-grow: 1; flex-shrink: 1;">
                         <ui:DropdownField name="ArmorTypeField" label="Armor Type" >
                             <Bindings>
+                                <ui:DataBinding property="index" data-source-path="armorTypeIndex" binding-mode="TwoWay"/>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-126)"/>
                             </Bindings>
                         </ui:DropdownField>
                         <ui:Toggle name="CurvedPlateToggle" label="Strongly Curved Plate" >
                             <Bindings>
+                                <ui:DataBinding property="value" data-source-path="curvedPlate" binding-mode="TwoWay"/>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-212)"/>
                             </Bindings>
                         </ui:Toggle>
                         <ui:FloatField name="WoodBackingField" label="Wood Backing" >
                             <Bindings>
+                                <ui:DataBinding property="value" data-source-path="woodBacking" binding-mode="TwoWay"/>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-218)"/>
                             </Bindings>
                         </ui:FloatField>
                         <ui:FloatField name="CementBackingField" label="Cement Backing" >
                             <Bindings>
+                                <ui:DataBinding property="value" data-source-path="cementBacking" binding-mode="TwoWay"/>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-138)"/>
                             </Bindings>
                         </ui:FloatField>
                         <ui:FloatField name="MetalBackingField" label="Metal Backing" >
                             <Bindings>
+                                <ui:DataBinding property="value" data-source-path="metalBacking" binding-mode="TwoWay"/>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-174)"/>
                             </Bindings>
                         </ui:FloatField>
                         <ui:FloatField name="BackingQualityField" label="Backing Quality" >
                             <Bindings>
+                                <ui:DataBinding property="value" data-source-path="backingQuality" binding-mode="TwoWay"/>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-130)"/>
                             </Bindings>
                         </ui:FloatField>
                         <ui:FloatField name="BackingPlatesField" label="Backing Plates" >
                             <Bindings>
+                                <ui:DataBinding property="value" data-source-path="backingPlates" binding-mode="TwoWay"/>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-129)"/>
                             </Bindings>
                         </ui:FloatField>
@@ -205,11 +245,13 @@
                     <ui:ScrollView mode="Vertical" style="flex-grow: 1; flex-shrink: 1;">
                         <ui:FloatField name="M79ArmorQualityField" label="Armor Quality" >
                             <Bindings>
+                                <ui:DataBinding property="value" data-source-path="m79ArmorQuality" binding-mode="TwoWay"/>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-125)"/>
                             </Bindings>
                         </ui:FloatField>
                         <ui:FloatField name="M79ElongationField" label="Elongation" >
                             <Bindings>
+                                <ui:DataBinding property="value" data-source-path="m79Elongation" binding-mode="TwoWay"/>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-146)"/>
                             </Bindings>
                         </ui:FloatField>
@@ -222,46 +264,55 @@
                     <ui:ScrollView mode="Vertical" style="flex-grow: 1; flex-shrink: 1;">
                         <ui:DropdownField name="RangeModeField" label="Range Mode" >
                             <Bindings>
+                                <ui:DataBinding property="index" data-source-path="rangeModeIndex" binding-mode="TwoWay"/>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-197)"/>
                             </Bindings>
                         </ui:DropdownField>
                         <ui:DropdownField name="ChartModeField" label="Chart Mode" >
                             <Bindings>
+                                <ui:DataBinding property="index" data-source-path="chartModeIndex" binding-mode="TwoWay"/>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-140)"/>
                             </Bindings>
                         </ui:DropdownField>
                         <ui:DropdownField name="OkunModeField" label="Okun Mode" >
                             <Bindings>
+                                <ui:DataBinding property="index" data-source-path="okunModeIndex" binding-mode="TwoWay"/>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-179)"/>
                             </Bindings>
                         </ui:DropdownField>
                         <ui:DropdownField name="ElevationSearchField" label="Elevation Search" >
                             <Bindings>
+                                <ui:DataBinding property="index" data-source-path="elevationSearchIndex" binding-mode="TwoWay"/>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-145)"/>
                             </Bindings>
                         </ui:DropdownField>
                         <ui:DropdownField name="AtmosphereField" label="Atmosphere Model" >
                             <Bindings>
+                                <ui:DataBinding property="index" data-source-path="atmosphereIndex" binding-mode="TwoWay"/>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-127)"/>
                             </Bindings>
                         </ui:DropdownField>
                         <ui:FloatField name="DensityRatioField" label="Density Ratio" >
                             <Bindings>
+                                <ui:DataBinding property="value" data-source-path="densityRatio" binding-mode="TwoWay"/>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-143)"/>
                             </Bindings>
                         </ui:FloatField>
                         <ui:FloatField name="TemperatureField" label="Temperature" >
                             <Bindings>
+                                <ui:DataBinding property="value" data-source-path="temperature" binding-mode="TwoWay"/>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-213)"/>
                             </Bindings>
                         </ui:FloatField>
                         <ui:FloatField name="MatchHeightField" label="Match Height" >
                             <Bindings>
+                                <ui:DataBinding property="value" data-source-path="matchHeight" binding-mode="TwoWay"/>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-160)"/>
                             </Bindings>
                         </ui:FloatField>
                         <ui:TextField name="DragTableField" label="Mach-CD Drag Table" multiline="true" style="height: 120px;" >
                             <Bindings>
+                                <ui:DataBinding property="value" data-source-path="dragTableText" binding-mode="TwoWay"/>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-158)"/>
                             </Bindings>
                         </ui:TextField>
@@ -279,16 +330,20 @@
                         </ui:Label>
                         <ui:FloatField name="Sk5MaxRateOfFireField" label="Max ROF" >
                             <Bindings>
+                                <ui:DataBinding property="value" data-source-path="sk5MaxRateOfFire" binding-mode="ToTarget"/>
+                                <ui:DataBinding property="enabledSelf" data-source-path="readOnlyFieldEnabled" binding-mode="ToTarget"/>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(73929584185344)"/>
                             </Bindings>
                         </ui:FloatField>
                         <ui:FloatField name="Sk5FallToNextFireSecondsField" label="Fall To Next Fire (s)" >
                             <Bindings>
+                                <ui:DataBinding property="value" data-source-path="fallToNextFireSeconds" binding-mode="TwoWay"/>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-149)"/>
                             </Bindings>
                         </ui:FloatField>
                         <ui:Toggle name="RoundSyncBackValuesField" label="Round Sync Back" value="true" >
                             <Bindings>
+                                <ui:DataBinding property="value" data-source-path="roundSyncBackValues" binding-mode="TwoWay"/>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-205)"/>
                             </Bindings>
                         </ui:Toggle>

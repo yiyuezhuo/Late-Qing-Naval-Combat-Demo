@@ -2764,8 +2764,8 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
-    <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>4</surpriseAttackInitialDesiredSpeedKnots>
     <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
@@ -2943,9 +2943,9 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
     <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
-    <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
+    <surpriseAttackInitialDesiredHeadingDeg>89.9989853</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -3123,9 +3123,9 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
     <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
-    <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
+    <surpriseAttackInitialDesiredHeadingDeg>89.9989853</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -3303,9 +3303,9 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
     <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
-    <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
+    <surpriseAttackInitialDesiredHeadingDeg>89.9989853</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -3483,9 +3483,9 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
     <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
-    <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
+    <surpriseAttackInitialDesiredHeadingDeg>89.9989853</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -3592,9 +3592,9 @@
     </childrenObjectIds>
     <name>
      <english>Taku Fort Force</english>
-     <japanese />
-     <chineseSimplified />
-     <chineseTraditional />
+     <japanese>大沽砲台部隊</japanese>
+     <chineseSimplified>大沽炮台部队</chineseSimplified>
+     <chineseTraditional>大沽砲台部隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
@@ -3839,6 +3839,9 @@
     </childrenObjectIds>
     <name>
      <english>Beiyang Destroyer Division</english>
+     <japanese>北洋駆逐隊</japanese>
+     <chineseSimplified>北洋驱逐队</chineseSimplified>
+     <chineseTraditional>北洋驅逐隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
@@ -3919,7 +3922,26 @@
    <surpriseAttack>false</surpriseAttack>
    <awakeDistanceYards>0</awakeDistanceYards>
    <globalDescription>
-    <english>none</english>
+    <english>https://en.wikipedia.org/wiki/Battle_of_the_Taku_Forts_(1900)
+
+The Battle of the Taku was an engagement during the Boxer Rebellion between several gunboats and small vessels from the Eight-Nation Alliance fleet and the Taku Forts. The Alliance's main fleet did not take part. Alliance marines landed to divert some of the fort's fire, but the forts were ultimately destroyed mainly by direct hits on their ammunition magazines.
+
+Due to pathfinding and related issues, this scenario does not run as intended and is best treated as an experimental scenario. Players who want to try it should disable the player’s default "Weak" obstacle avoidance setting.</english>
+    <japanese>https://en.wikipedia.org/wiki/Battle_of_the_Taku_Forts_(1900)
+
+大沽の戦いは、義和団戦争中に発生した、八か国連合艦隊の一部の砲艦・小型艦艇と大沽砲台との交戦です。連合軍の主力艦隊は参加していません。連合軍の海兵隊は上陸して砲台の火力の一部を引きつけましたが、砲台は最終的には主に弾薬庫への直撃によって破壊されました。
+
+このシナリオは、経路探索などの問題により想定どおりに動作しないため、実験的なシナリオとして扱うのが適切です。プレイする場合は、プレイヤーのデフォルトの「弱」障害物回避設定を無効にしてください。</japanese>
+    <chineseSimplified>https://en.wikipedia.org/wiki/Battle_of_the_Taku_Forts_(1900)
+
+大沽之战是义和团战争期间，八国联军舰队中的若干炮艇和小型舰艇与大沽炮台之间的交战。联军主力舰队并未参战。联军陆战队登陆以牵制炮台的部分火力，但炮台最终主要是因弹药库被直接命中而被摧毁。
+
+由于寻路等相关问题，该剧本无法按预期运行，因此更适合作为实验性剧本。想要游玩的玩家应关闭玩家默认的“弱”避障设置。</chineseSimplified>
+    <chineseTraditional>https://en.wikipedia.org/wiki/Battle_of_the_Taku_Forts_(1900)
+
+大沽之戰是義和團戰爭期間，八國聯軍艦隊中的若干砲艇和小型艦艇與大沽砲台之間的交戰。聯軍主力艦隊並未參戰。聯軍陸戰隊登陸以牽制砲台的部分火力，但砲台最終主要是因彈藥庫被直接命中而被摧毀。
+
+由於尋路等相關問題，該劇本無法按預期運作，因此更適合作為實驗性劇本。想要遊玩的玩家應關閉玩家預設的「弱」障礙物迴避設定。</chineseTraditional>
    </globalDescription>
    <weaponSimulationAssignmentClock>
     <intervalSeconds>120</intervalSeconds>

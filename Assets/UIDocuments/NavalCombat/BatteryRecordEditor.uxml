@@ -81,15 +81,15 @@
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="FireControlTableToolRow" style="flex-direction: row; flex-shrink: 0; margin-bottom: 4px;">
-            <ui:Toggle label="Custom Fire Control Table" style="flex-shrink: 0; margin-right: 4px;">
+            <ui:Toggle label="Custom Fire Control Table" style="flex-shrink: 0; margin-right: 1px; margin-left: 1px;">
                 <Bindings>
                     <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-221)"/>
                     <ui:DataBinding property="value" data-source-path="customFireControlTable" binding-mode="TwoWay"/>
                 </Bindings>
             </ui:Toggle>
-            <ui:Button text="Model Comparison" name="FireControlModelComparisonButton" style="flex-shrink: 0;">
+            <ui:Button text="Meta Info (McCoy Okun)" name="BatteryRecordMetaInfoMcCoyOkunButton" style="flex-shrink: 0; margin-left: 4px;">
                 <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-106)"/>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-173)"/>
                 </Bindings>
             </ui:Button>
             <ui:Button text="Reset Fire Control Table" name="ResetFireControlTableButton" style="flex-shrink: 0; margin-left: 4px;">
@@ -103,9 +103,9 @@
                 </Bindings>
             </ui:Button>
             <ui:Button text="Meta Info" name="BatteryRecordMetaInfoButton" style="flex-shrink: 0; margin-left: 4px; display: none;"/>
-            <ui:Button text="Meta Info (McCoy Okun)" name="BatteryRecordMetaInfoMcCoyOkunButton" style="flex-shrink: 0; margin-left: 4px;">
+            <ui:Button text="Model Comparison" name="FireControlModelComparisonButton" style="flex-shrink: 0;">
                 <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-173)"/>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-106)"/>
                 </Bindings>
             </ui:Button>
         </ui:VisualElement>

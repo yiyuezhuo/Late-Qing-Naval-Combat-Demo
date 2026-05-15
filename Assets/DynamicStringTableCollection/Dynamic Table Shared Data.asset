@@ -5031,11 +5031,14 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -489
-    m_Key: This battery uses a custom fire control table. Resetting will replace it with the standard table generated from Role/Code/Era and clear the Custom flag.
+    m_Key: This battery uses a custom fire control table. Resetting will replace
+      it with the standard table generated from Role/Code/Era and clear the Custom
+      flag.
     m_Metadata:
       m_Items: []
   - m_Id: -490
-    m_Key: 'Custom Fire Control Table: differences from the standard code table are expected.'
+    m_Key: 'Custom Fire Control Table: differences from the standard code table are
+      expected.'
     m_Metadata:
       m_Items: []
   - m_Id: -491
@@ -5047,7 +5050,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -493
-    m_Key: Does not match the standard code table. Review the table/code or mark it as Custom.
+    m_Key: Does not match the standard code table. Review the table/code or mark
+      it as Custom.
     m_Metadata:
       m_Items: []
   - m_Id: -494
@@ -5063,7 +5067,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -497
-    m_Key: Uses the standard SK5 table generated from the current Role, Code, and Era.
+    m_Key: Uses the standard SK5 table generated from the current Role, Code, and
+      Era.
     m_Metadata:
       m_Items: []
   - m_Id: -498
@@ -5083,11 +5088,13 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -502
-    m_Key: Uses midpoint latent base and midpoint range/speed/aspect multipliers from the SK5 fire-control latent variable model.
+    m_Key: Uses midpoint latent base and midpoint range/speed/aspect multipliers
+      from the SK5 fire-control latent variable model.
     m_Metadata:
       m_Items: []
   - m_Id: -503
-    m_Key: 'Each cell is shown as current / latent variable -> rounded, then rounded-current delta.'
+    m_Key: Each cell is shown as current / latent variable -> rounded, then rounded-current
+      delta.
     m_Metadata:
       m_Items: []
   m_Metadata:

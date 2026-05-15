@@ -23,6 +23,9 @@ Use the helper that matches the target table:
 - `Tools\add_localization.py` is for **Dynamic Table add**.
 - `Tools\update_dynamic_localization.py` is for **Dynamic Table batch update / mixed add / cleanup**.
 - `Tools\standard_localization.py` is for **Standard Table only**.
+- Check `Docs\Localization_Terminology.md` before translating naval, tactical,
+  SK5, or other domain-specific terms. Add new special-case terms there rather
+  than scattering one-off wording decisions across localization assets.
 - Do not run localization write helpers in parallel. They assign the next negative ID from
   the current files, so concurrent add/update commands can create duplicate `m_Id` entries
   inside a locale asset. Use one batch file or run the commands sequentially.
@@ -73,13 +76,14 @@ Scenario tutorial scripts may use inline `getLocalized(en, ja, zhHans, zhHant)` 
 ## 4. Default checklist
 
 1. Decide which table owns the text.
-2. If editing C# Dynamic Table lookups, run `python Tools\dynamic_localization.py scan-cs ...` first.
-3. If editing UXML, run `python Tools\standard_localization.py scan-uxml ...` first.
-4. Add, update, or reuse the key with the matching helper script.
-5. If using Standard Table, paste the generated binding snippet into the UXML file.
-6. For Dynamic Table batches that remove or add keys, run `python Tools\normalize_localization_ids.py --apply` if verification reports fragmented negative IDs.
-7. Run `python Tools\normalize_localization_ids.py verify`.
-8. If the UI shows raw key text in-game, first suspect the wrong table or a missing key/binding.
+2. Check `Docs\Localization_Terminology.md` for domain terms before translating.
+3. If editing C# Dynamic Table lookups, run `python Tools\dynamic_localization.py scan-cs ...` first.
+4. If editing UXML, run `python Tools\standard_localization.py scan-uxml ...` first.
+5. Add, update, or reuse the key with the matching helper script.
+6. If using Standard Table, paste the generated binding snippet into the UXML file.
+7. For Dynamic Table batches that remove or add keys, run `python Tools\normalize_localization_ids.py --apply` if verification reports fragmented negative IDs.
+8. Run `python Tools\normalize_localization_ids.py verify`.
+9. If the UI shows raw key text in-game, first suspect the wrong table or a missing key/binding.
 
 ## 5. Verification commands
 

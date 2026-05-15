@@ -58,6 +58,8 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
     static string LocalizeEnum<T>(T value) => ServiceLocator.Get<ILocalizeService>().GetEnum(value);
     static List<string> LocalizedChoices(params string[] keys) => keys.Select(key => Localize(key)).ToList();
     static List<string> LocalizedChoices(IEnumerable<string> keys) => keys.Select(key => Localize(key)).ToList();
+    static DropdownOption<T> Option<T>(T value, string labelKey) => new(value, Localize(labelKey));
+    static List<DropdownOption<T>> Options<T>(params DropdownOption<T>[] options) => options.ToList();
 
     sealed class ResultRow
     {
@@ -78,26 +80,42 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
     sealed class FloatBinding
     {
         public bool Updating;
+        public double Value;
         public double? Min;
         public Action<double> Setter;
     }
 
-    sealed class DropdownBinding
+    sealed class DropdownOption<T>
+    {
+        public T Value;
+        public string Label;
+
+        public DropdownOption(T value, string label)
+        {
+            Value = value;
+            Label = label;
+        }
+    }
+
+    sealed class DropdownBinding<T>
     {
         public bool Updating;
-        public List<string> Choices = new();
-        public Action<int> Setter;
+        public T Value;
+        public List<DropdownOption<T>> Options = new();
+        public Action<T> Setter;
     }
 
     sealed class TextBinding
     {
         public bool Updating;
+        public string Value = "";
         public Action<string> Setter;
     }
 
     sealed class ToggleBinding
     {
         public bool Updating;
+        public bool Value;
         public Action<bool> Setter;
     }
 
@@ -171,6 +189,7 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
     bool roundSyncBackValuesToOneDecimal = true;
     List<ResultRow> tableRows = new();
     bool hasCalculated;
+    string currentInputChangeSource;
 
     public BatteryRecordMetaInfoMcCoyOkunDialog(BatteryRecord batteryRecord, Action callback)
     {
@@ -371,32 +390,32 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         BindFloat("DensityRatioField", input.McCoy.DensityRatio, value => input.McCoy.DensityRatio = value, 0.001);
         BindFloat("TemperatureField", input.McCoy.TemperatureF, value => input.McCoy.TemperatureF = value);
         BindFloat("MatchHeightField", input.McCoy.MatchHeight, value => input.McCoy.MatchHeight = value);
-        BindDropdown("RangeModeField", LocalizedChoices("Sweep", "Search SK5"),
-            rangeMode == RangeMode.SearchSk5 ? 1 : 0, selected =>
+        BindDropdown("RangeModeField",
+            Options(
+                Option(RangeMode.Sweep, "Sweep"),
+                Option(RangeMode.SearchSk5, "Search SK5")),
+            rangeMode, selected =>
             {
-                rangeMode = selected == 1 ? RangeMode.SearchSk5 : RangeMode.Sweep;
+                rangeMode = selected;
                 MarkOutputDirty();
             });
-        BindDropdown("ChartModeField", LocalizedChoices("Matched Trajectories", "Penetration By Range"),
-            chartMode == ChartMode.Trajectory ? 0 : 1, selected =>
+        BindDropdown("ChartModeField",
+            Options(
+                Option(ChartMode.Trajectory, "Matched Trajectories"),
+                Option(ChartMode.Penetration, "Penetration By Range")),
+            chartMode, selected =>
             {
-                chartMode = selected == 0 ? ChartMode.Trajectory : ChartMode.Penetration;
+                chartMode = selected;
                 MarkOutputDirty();
             });
-        BindDropdown("OkunModeField", LocalizedChoices("Facehard + M79", "Facehard Only", "M79 Only"),
-            okunMode switch
+        BindDropdown("OkunModeField",
+            Options(
+                Option(OkunMode.FacehardM79, "Facehard + M79"),
+                Option(OkunMode.FacehardOnly, "Facehard Only"),
+                Option(OkunMode.M79Only, "M79 Only")),
+            okunMode, selected =>
             {
-                OkunMode.FacehardOnly => 1,
-                OkunMode.M79Only => 2,
-                _ => 0,
-            }, selected =>
-            {
-                okunMode = selected switch
-                {
-                    1 => OkunMode.FacehardOnly,
-                    2 => OkunMode.M79Only,
-                    _ => OkunMode.FacehardM79,
-                };
+                okunMode = selected;
                 MarkOutputDirty();
             });
         BindText("DragTableField", dragText, value =>
@@ -1121,10 +1140,14 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
             : value;
     }
 
-    void MarkOutputDirty()
+    void MarkOutputDirty(string source = null)
     {
         if (!hasCalculated || outputContent == null)
             return;
+        UnityEngine.Debug.Log(
+            $"[MetaInfoMcCoyOkun] Output dirty. Source={source ?? currentInputChangeSource ?? "unknown"}; " +
+            $"RangeMode={rangeMode}; ChartMode={chartMode}; OkunMode={okunMode}; " +
+            $"MaxRange={(input?.McCoy == null ? "null" : input.McCoy.MaxRange.ToString(CultureInfo.InvariantCulture))}");
         hasCalculated = false;
         tableRows.Clear();
         ShowPendingOutput(Localize("Input changed. Click Calculate to refresh."));
@@ -1304,11 +1327,23 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
                 var next = (double)evt.newValue;
                 if (current.Min.HasValue)
                     next = Math.Max(current.Min.Value, next);
-                current.Setter?.Invoke(next);
-                MarkOutputDirty();
+                if (FloatValuesEqual(next, current.Value))
+                    return;
+                currentInputChangeSource = $"FloatField {name}: {current.Value.ToString(CultureInfo.InvariantCulture)} -> {next.ToString(CultureInfo.InvariantCulture)}";
+                current.Value = next;
+                try
+                {
+                    current.Setter?.Invoke(next);
+                    MarkOutputDirty();
+                }
+                finally
+                {
+                    currentInputChangeSource = null;
+                }
             });
         }
         binding.Updating = true;
+        binding.Value = value;
         binding.Min = min;
         binding.Setter = setter;
         if (!string.IsNullOrEmpty(label))
@@ -1320,29 +1355,56 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
 
     void BindDropdown(string name, List<string> choices, int index, Action<int> setter, bool enabled = true)
     {
-        var field = root.Q<DropdownField>(name);
-        if (field == null)
-            return;
         if (choices.Count == 0)
             choices.Add("");
         index = Mathf.Clamp(index, 0, choices.Count - 1);
-        if (field.userData is not DropdownBinding binding)
+        BindDropdown(name, choices.Select((choice, choiceIndex) => new DropdownOption<int>(choiceIndex, choice)).ToList(), index, setter, enabled);
+    }
+
+    void BindDropdown<T>(string name, List<DropdownOption<T>> options, T value, Action<T> setter, bool enabled = true)
+    {
+        var field = root.Q<DropdownField>(name);
+        if (field == null)
+            return;
+        if (options.Count == 0)
+            options.Add(new DropdownOption<T>(default, ""));
+        var selectedIndex = options.FindIndex(option => EqualityComparer<T>.Default.Equals(option.Value, value));
+        if (selectedIndex < 0)
+            selectedIndex = 0;
+        if (field.userData is not DropdownBinding<T> binding)
         {
-            binding = new DropdownBinding();
+            binding = new DropdownBinding<T>();
             field.userData = binding;
             field.RegisterValueChangedCallback(evt =>
             {
-                if (field.userData is not DropdownBinding current || current.Updating)
+                if (field.userData is not DropdownBinding<T> current || current.Updating)
                     return;
-                current.Setter?.Invoke(Mathf.Max(0, current.Choices.IndexOf(evt.newValue)));
+                var optionIndex = current.Options.FindIndex(option => string.Equals(option.Label, evt.newValue, StringComparison.Ordinal));
+                if (optionIndex < 0 || optionIndex >= current.Options.Count)
+                    return;
+                var selectedValue = current.Options[optionIndex].Value;
+                if (EqualityComparer<T>.Default.Equals(selectedValue, current.Value))
+                    return;
+                currentInputChangeSource = $"DropdownField {name}: {current.Value} -> {selectedValue}; evt.newValue='{evt.newValue}'";
+                current.Value = selectedValue;
+                try
+                {
+                    current.Setter?.Invoke(selectedValue);
+                }
+                finally
+                {
+                    currentInputChangeSource = null;
+                }
             });
         }
+        var choices = options.Select(option => option.Label).ToList();
         binding.Updating = true;
-        binding.Choices = choices;
+        binding.Value = value;
+        binding.Options = options;
         binding.Setter = setter;
         field.choices = choices;
         field.SetEnabled(enabled);
-        field.SetValueWithoutNotify(choices[index]);
+        field.SetValueWithoutNotify(choices[selectedIndex]);
         binding.Updating = false;
     }
 
@@ -1368,10 +1430,25 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
             {
                 if (field.userData is not TextBinding current || current.Updating)
                     return;
-                current.Setter?.Invoke(evt.newValue);
+                var next = evt.newValue ?? "";
+                if (!string.Equals(next, field.value ?? "", StringComparison.Ordinal))
+                    return;
+                if (string.Equals(next, current.Value, StringComparison.Ordinal))
+                    return;
+                currentInputChangeSource = $"TextField {name}: '{current.Value}' -> '{next}'";
+                current.Value = next;
+                try
+                {
+                    current.Setter?.Invoke(next);
+                }
+                finally
+                {
+                    currentInputChangeSource = null;
+                }
             });
         }
         binding.Updating = true;
+        binding.Value = value ?? "";
         binding.Setter = setter;
         field.SetValueWithoutNotify(value ?? "");
         binding.Updating = false;
@@ -1390,14 +1467,33 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
             {
                 if (field.userData is not ToggleBinding current || current.Updating)
                     return;
-                current.Setter?.Invoke(evt.newValue);
-                MarkOutputDirty();
+                if (evt.newValue == current.Value)
+                    return;
+                currentInputChangeSource = $"Toggle {name}: {current.Value} -> {evt.newValue}";
+                current.Value = evt.newValue;
+                try
+                {
+                    current.Setter?.Invoke(evt.newValue);
+                    MarkOutputDirty();
+                }
+                finally
+                {
+                    currentInputChangeSource = null;
+                }
             });
         }
         binding.Updating = true;
+        binding.Value = value;
         binding.Setter = setter;
         field.SetValueWithoutNotify(value);
         binding.Updating = false;
+    }
+
+    static bool FloatValuesEqual(double a, double b)
+    {
+        if (double.IsNaN(a) || double.IsNaN(b))
+            return double.IsNaN(a) && double.IsNaN(b);
+        return Math.Abs(a - b) <= 0.000001;
     }
 
     void SetDisplay(string name, bool visible)

@@ -67,11 +67,24 @@ public sealed class McCoyOkunCalculatorDialog
         public Action<double> Setter;
     }
 
-    sealed class TemplateDropdownBinding
+    sealed class DropdownOption<T>
+    {
+        public T Value;
+        public string Label;
+
+        public DropdownOption(T value, string label)
+        {
+            Value = value;
+            Label = label;
+        }
+    }
+
+    sealed class TemplateDropdownBinding<T>
     {
         public bool Updating;
-        public List<string> Choices = new();
-        public Action<int> Setter;
+        public T Value;
+        public List<DropdownOption<T>> Options = new();
+        public Action<T> Setter;
     }
 
     sealed class TemplateTextBinding
@@ -127,6 +140,8 @@ public sealed class McCoyOkunCalculatorDialog
     static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
     static List<string> LocalizedChoices(params string[] keys) => keys.Select(key => Localize(key)).ToList();
     static List<string> LocalizedChoices(IEnumerable<string> keys) => keys.Select(key => Localize(key)).ToList();
+    static DropdownOption<T> Option<T>(T value, string labelKey) => new(value, Localize(labelKey));
+    static List<DropdownOption<T>> Options<T>(params DropdownOption<T>[] options) => options.ToList();
 
     TabView templateTabView;
     readonly Dictionary<McCoyOkunTab, Tab> templateTabs = new();
@@ -994,30 +1009,49 @@ public sealed class McCoyOkunCalculatorDialog
 
     void BindDropdown(VisualElement root, string name, List<string> choices, int index, Action<int> setter, bool enabled = true)
     {
-        var field = root.Q<DropdownField>(name);
-        if (field == null)
-            return;
         if (choices.Count == 0)
             choices.Add("");
         index = Mathf.Clamp(index, 0, choices.Count - 1);
-        if (field.userData is not TemplateDropdownBinding binding)
+        BindDropdown(root, name, choices.Select((choice, choiceIndex) => new DropdownOption<int>(choiceIndex, choice)).ToList(), index, setter, enabled);
+    }
+
+    void BindDropdown<T>(VisualElement root, string name, List<DropdownOption<T>> options, T value, Action<T> setter, bool enabled = true)
+    {
+        var field = root.Q<DropdownField>(name);
+        if (field == null)
+            return;
+        if (options.Count == 0)
+            options.Add(new DropdownOption<T>(default, ""));
+        var selectedIndex = options.FindIndex(option => EqualityComparer<T>.Default.Equals(option.Value, value));
+        if (selectedIndex < 0)
+            selectedIndex = 0;
+        if (field.userData is not TemplateDropdownBinding<T> binding)
         {
-            binding = new TemplateDropdownBinding();
+            binding = new TemplateDropdownBinding<T>();
             field.userData = binding;
             field.RegisterValueChangedCallback(evt =>
             {
-                if (field.userData is not TemplateDropdownBinding current || current.Updating)
+                if (field.userData is not TemplateDropdownBinding<T> current || current.Updating)
                     return;
-                current.Setter?.Invoke(Mathf.Max(0, current.Choices.IndexOf(evt.newValue)));
+                var optionIndex = current.Options.FindIndex(option => string.Equals(option.Label, evt.newValue, StringComparison.Ordinal));
+                if (optionIndex < 0 || optionIndex >= current.Options.Count)
+                    return;
+                var selectedValue = current.Options[optionIndex].Value;
+                if (EqualityComparer<T>.Default.Equals(selectedValue, current.Value))
+                    return;
+                current.Value = selectedValue;
+                current.Setter?.Invoke(selectedValue);
                 RebuildContent();
             });
         }
+        var choices = options.Select(option => option.Label).ToList();
         binding.Updating = true;
-        binding.Choices = choices;
+        binding.Value = value;
+        binding.Options = options;
         binding.Setter = setter;
         field.choices = choices;
         field.SetEnabled(enabled);
-        field.SetValueWithoutNotify(choices[index]);
+        field.SetValueWithoutNotify(choices[selectedIndex]);
         binding.Updating = false;
     }
 
@@ -1034,7 +1068,10 @@ public sealed class McCoyOkunCalculatorDialog
             {
                 if (field.userData is not TemplateTextBinding current || current.Updating)
                     return;
-                current.Setter?.Invoke(evt.newValue);
+                var next = evt.newValue ?? "";
+                if (!string.Equals(next, field.value ?? "", StringComparison.Ordinal))
+                    return;
+                current.Setter?.Invoke(next);
                 RebuildContent();
             });
         }

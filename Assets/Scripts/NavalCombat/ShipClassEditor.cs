@@ -1490,6 +1490,13 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
             .OrderBy(record => record.speedThresholdKnot)
             .ToList();
         var hasStandardTable = TryGetStandardFireControlTableRecords(batteryRecord, out var standardCode, out var standardRecords);
+        var hasLatentModel = TryGetLatentFireControlTableRecords(
+            batteryRecord,
+            out var latentCode,
+            out var latentBase,
+            out _,
+            out var latentRecords);
+        var roundedLatentRecords = hasLatentModel ? RoundFireControlTableRecords(latentRecords) : null;
         var bestStandards = FindBestMatchingStandardFireControlCodes(records);
 
         var scrollView = new ScrollView(ScrollViewMode.Vertical);
@@ -1517,12 +1524,21 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
             scrollView.Add(warning);
         }
 
+        if (!hasLatentModel)
+        {
+            var warning = new Label(Localize("No latent variable model parameters are available for the current Role/Code/Era."));
+            warning.style.whiteSpace = WhiteSpace.Normal;
+            warning.style.marginBottom = 10;
+            scrollView.Add(warning);
+        }
+
         var tablesContainer = new VisualElement();
         scrollView.Add(tablesContainer);
 
         void RefreshComparison()
         {
             var standardStats = hasStandardTable ? CalculateFireControlComparisonStats(records, standardRecords) : new FireControlErrorStats();
+            var latentStats = hasLatentModel ? CalculateFireControlComparisonStats(records, roundedLatentRecords) : new FireControlErrorStats();
             var standardStatus = hasStandardTable && standardStats.exact == standardStats.count
                 ? Localize("Matches standard fire control table.")
                 : Localize("Does not match the standard code table. Review the table/code or mark it as Custom.");
@@ -1542,6 +1558,14 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
             }
             if (bestStandards.codes.Count > 0)
                 summaryLines.Add($"{Localize("Best matching standard codes")} ({FormatStandardCodeList(bestStandards.codes)}): {FormatFireControlErrorStats(bestStandards.stats)}");
+            if (hasLatentModel)
+                summaryLines.Add(Localize(
+                    "Latent variable model code ({0}, base {1}-{2}, midpoint {3}): {4}",
+                    latentCode,
+                    $"{latentBase.min:0.00}",
+                    $"{latentBase.max:0.00}",
+                    $"{latentBase.mid:0.00}",
+                    FormatFireControlErrorStats(latentStats)));
             summary.text = string.Join("\n", summaryLines);
 
             tablesContainer.Clear();
@@ -1552,6 +1576,15 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
                     Localize("Uses the standard SK5 table generated from the current Role, Code, and Era."),
                     records,
                     standardRecords
+                ));
+            }
+            if (hasLatentModel)
+            {
+                tablesContainer.Add(BuildFireControlLatentComparisonTable(
+                    Localize("Latent Variable Model Table"),
+                    Localize("Uses midpoint latent base and midpoint range/speed/aspect multipliers from the SK5 fire-control latent variable model."),
+                    records,
+                    latentRecords
                 ));
             }
         }
@@ -1909,6 +1942,156 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
         return true;
     }
 
+    readonly struct LatentFireControlBase
+    {
+        public readonly float min;
+        public readonly float max;
+        public readonly float mid;
+
+        public LatentFireControlBase(float min, float max, float mid)
+        {
+            this.min = min;
+            this.max = max;
+            this.mid = mid;
+        }
+    }
+
+    readonly struct LatentFireControlMultipliers
+    {
+        public readonly float medium;
+        public readonly float longRange;
+        public readonly float extreme;
+        public readonly float speed18;
+        public readonly float speed27;
+        public readonly float speed36;
+        public readonly float speed45;
+        public readonly float narrow;
+
+        public LatentFireControlMultipliers(
+            float medium,
+            float longRange,
+            float extreme,
+            float speed18,
+            float speed27,
+            float speed36,
+            float speed45,
+            float narrow)
+        {
+            this.medium = medium;
+            this.longRange = longRange;
+            this.extreme = extreme;
+            this.speed18 = speed18;
+            this.speed27 = speed27;
+            this.speed36 = speed36;
+            this.speed45 = speed45;
+            this.narrow = narrow;
+        }
+
+        public float GetRangeMultiplier(RangeBand rangeBand) => rangeBand switch
+        {
+            RangeBand.Short => 1f,
+            RangeBand.Medium => medium,
+            RangeBand.Long => longRange,
+            RangeBand.Extreme => extreme,
+            _ => 1f
+        };
+
+        public float GetSpeedMultiplier(float speedThresholdKnot)
+        {
+            if (speedThresholdKnot <= 9.001f)
+                return 1f;
+            if (speedThresholdKnot <= 18.001f)
+                return speed18;
+            if (speedThresholdKnot <= 27.001f)
+                return speed27;
+            if (speedThresholdKnot <= 36.001f)
+                return speed36;
+            return speed45;
+        }
+
+        public float GetAspectMultiplier(TargetAspect targetAspect) =>
+            targetAspect == TargetAspect.Narrow ? narrow : 1f;
+    }
+
+    static readonly Dictionary<(FireControlSystemRole role, FCSCode code), LatentFireControlBase> LatentFireControlBases = new()
+    {
+        { (FireControlSystemRole.Primary, FCSCode.A), new(28.78f, 29.41f, 29.10f) },
+        { (FireControlSystemRole.Secondary, FCSCode.A), new(21.50f, 22.02f, 21.76f) },
+        { (FireControlSystemRole.Primary, FCSCode.B), new(27.50f, 28.50f, 28.00f) },
+        { (FireControlSystemRole.Secondary, FCSCode.B), new(20.74f, 21.50f, 21.12f) },
+        { (FireControlSystemRole.Primary, FCSCode.C), new(25.50f, 26.50f, 26.00f) },
+        { (FireControlSystemRole.Primary, FCSCode.D), new(25.50f, 26.50f, 26.00f) },
+        { (FireControlSystemRole.Primary, FCSCode.E), new(24.70f, 25.11f, 24.90f) },
+        { (FireControlSystemRole.Secondary, FCSCode.E), new(18.50f, 19.02f, 18.76f) },
+        { (FireControlSystemRole.Primary, FCSCode.F), new(22.59f, 23.50f, 23.05f) },
+        { (FireControlSystemRole.Secondary, FCSCode.F), new(17.50f, 18.50f, 18.00f) },
+        { (FireControlSystemRole.Primary, FCSCode.G), new(20.52f, 21.49f, 21.00f) },
+        { (FireControlSystemRole.Secondary, FCSCode.G), new(16.06f, 16.50f, 16.28f) },
+        { (FireControlSystemRole.Primary, FCSCode.H), new(22.50f, 23.32f, 22.91f) },
+        { (FireControlSystemRole.Secondary, FCSCode.H), new(16.71f, 17.46f, 17.09f) },
+        { (FireControlSystemRole.Primary, FCSCode.J), new(18.50f, 19.50f, 19.00f) },
+        { (FireControlSystemRole.Secondary, FCSCode.J), new(14.50f, 15.13f, 14.82f) },
+        { (FireControlSystemRole.Primary, FCSCode.K), new(17.61f, 18.50f, 18.06f) },
+        { (FireControlSystemRole.Primary, FCSCode.M), new(15.61f, 16.50f, 16.06f) },
+        { (FireControlSystemRole.Secondary, FCSCode.M), new(12.50f, 13.03f, 12.77f) },
+        { (FireControlSystemRole.Primary, FCSCode.N), new(15.50f, 16.50f, 16.00f) },
+        { (FireControlSystemRole.Secondary, FCSCode.N), new(12.50f, 13.27f, 12.88f) },
+        { (FireControlSystemRole.Primary, FCSCode.Q), new(13.50f, 14.17f, 13.83f) },
+        { (FireControlSystemRole.Secondary, FCSCode.Q), new(10.50f, 11.06f, 10.78f) },
+        { (FireControlSystemRole.Primary, FCSCode.R), new(10.83f, 11.50f, 11.17f) },
+        { (FireControlSystemRole.Secondary, FCSCode.R), new(8.50f, 9.33f, 8.91f) },
+        { (FireControlSystemRole.Primary, FCSCode.S), new(11.59f, 12.50f, 12.05f) },
+        { (FireControlSystemRole.Secondary, FCSCode.S), new(8.87f, 9.50f, 9.19f) },
+        { (FireControlSystemRole.Primary, FCSCode.T), new(9.97f, 10.50f, 10.23f) },
+        { (FireControlSystemRole.Secondary, FCSCode.T), new(7.62f, 8.50f, 8.06f) },
+        { (FireControlSystemRole.Primary, FCSCode.U), new(8.50f, 9.50f, 9.00f) },
+        { (FireControlSystemRole.Secondary, FCSCode.U), new(6.50f, 7.50f, 7.00f) },
+        { (FireControlSystemRole.Primary, FCSCode.V), new(12.50f, 13.36f, 12.93f) },
+        { (FireControlSystemRole.Primary, FCSCode.W), new(10.50f, 11.21f, 10.86f) },
+        { (FireControlSystemRole.Secondary, FCSCode.W), new(8.09f, 8.50f, 8.29f) },
+        { (FireControlSystemRole.Primary, FCSCode.X), new(10.50f, 11.21f, 10.86f) },
+        { (FireControlSystemRole.Secondary, FCSCode.X), new(8.09f, 8.50f, 8.29f) },
+        { (FireControlSystemRole.Primary, FCSCode.Y), new(8.50f, 9.50f, 9.00f) },
+        { (FireControlSystemRole.Secondary, FCSCode.Y), new(6.50f, 7.50f, 7.00f) },
+        { (FireControlSystemRole.Primary, FCSCode.Z), new(6.50f, 7.50f, 7.00f) },
+        { (FireControlSystemRole.Secondary, FCSCode.Z), new(5.50f, 6.06f, 5.78f) },
+    };
+
+    static readonly LatentFireControlMultipliers PredreadnoughtLatentFireControlMultipliers =
+        new(0.6043f, 0.4343f, 0.3467f, 0.6661f, 0.5100f, 0.4202f, 0.3765f, 0.5990f);
+
+    static readonly Dictionary<(FireControlSystemEra era, FCSCode code), LatentFireControlMultipliers> LatentFireControlMultiplierTable = new()
+    {
+        { (FireControlSystemEra.WorldWarI, FCSCode.G), new(0.7181f, 0.5637f, 0.4929f, 0.7181f, 0.5928f, 0.4929f, 0.4460f, 0.6331f) },
+        { (FireControlSystemEra.WorldWarI, FCSCode.H), new(0.7088f, 0.5742f, 0.4984f, 0.7585f, 0.6603f, 0.5714f, 0.5378f, 0.6222f) },
+        { (FireControlSystemEra.WorldWarI, FCSCode.J), new(0.7342f, 0.5709f, 0.4975f, 0.6992f, 0.5837f, 0.4936f, 0.4394f, 0.6331f) },
+        { (FireControlSystemEra.WorldWarI, FCSCode.K), new(0.7178f, 0.5647f, 0.4897f, 0.7178f, 0.6073f, 0.4897f, 0.4571f, 0.6381f) },
+        { (FireControlSystemEra.WorldWarI, FCSCode.M), new(0.6661f, 0.4991f, 0.4170f, 0.6971f, 0.5692f, 0.4873f, 0.4478f, 0.6387f) },
+        { (FireControlSystemEra.WorldWarI, FCSCode.N), new(0.7285f, 0.5826f, 0.4991f, 0.7117f, 0.5692f, 0.4968f, 0.4450f, 0.6261f) },
+        { (FireControlSystemEra.WorldWarI, FCSCode.Q), new(0.6700f, 0.4892f, 0.4066f, 0.7310f, 0.5873f, 0.4987f, 0.4364f, 0.6421f) },
+        { (FireControlSystemEra.WorldWarI, FCSCode.R), new(0.6722f, 0.5084f, 0.4229f, 0.6928f, 0.5826f, 0.5169f, 0.4290f, 0.6288f) },
+        { (FireControlSystemEra.WorldWarI, FCSCode.S), new(0.6643f, 0.5015f, 0.4115f, 0.7310f, 0.5928f, 0.5146f, 0.4450f, 0.6235f) },
+        { (FireControlSystemEra.WorldWarI, FCSCode.T), new(0.6667f, 0.5111f, 0.4066f, 0.7183f, 0.6199f, 0.4965f, 0.4835f, 0.6557f) },
+        { (FireControlSystemEra.WorldWarI, FCSCode.V), new(0.6400f, 0.4933f, 0.4123f, 0.7035f, 0.5692f, 0.4873f, 0.4659f, 0.6400f) },
+        { (FireControlSystemEra.WorldWarI, FCSCode.W), new(0.6807f, 0.4892f, 0.4066f, 0.7308f, 0.5873f, 0.4892f, 0.4416f, 0.6182f) },
+        { (FireControlSystemEra.WorldWarI, FCSCode.X), new(0.6807f, 0.4892f, 0.4066f, 0.7308f, 0.5873f, 0.4892f, 0.4416f, 0.6182f) },
+        { (FireControlSystemEra.WorldWarI, FCSCode.Y), new(0.6889f, 0.4835f, 0.4359f, 0.6889f, 0.5795f, 0.4835f, 0.4835f, 0.6462f) },
+        { (FireControlSystemEra.WorldWarII, FCSCode.A), new(0.7773f, 0.6594f, 0.5879f, 0.8857f, 0.8094f, 0.7555f, 0.7283f, 0.7056f) },
+        { (FireControlSystemEra.WorldWarII, FCSCode.B), new(0.7805f, 0.6512f, 0.5838f, 0.8207f, 0.7212f, 0.6545f, 0.6140f, 0.7056f) },
+        { (FireControlSystemEra.WorldWarII, FCSCode.C), new(0.7684f, 0.6545f, 0.5844f, 0.7684f, 0.6545f, 0.5844f, 0.5404f, 0.6959f) },
+        { (FireControlSystemEra.WorldWarII, FCSCode.D), new(0.7979f, 0.6637f, 0.6033f, 0.8757f, 0.8084f, 0.7699f, 0.7281f, 0.6906f) },
+        { (FireControlSystemEra.WorldWarII, FCSCode.E), new(0.7954f, 0.6549f, 0.5987f, 0.8007f, 0.7203f, 0.6549f, 0.6163f, 0.7056f) },
+        { (FireControlSystemEra.WorldWarII, FCSCode.F), new(0.7747f, 0.6569f, 0.5872f, 0.7612f, 0.6553f, 0.5742f, 0.5345f, 0.6971f) },
+        { (FireControlSystemEra.WorldWarII, FCSCode.G), new(0.7824f, 0.6700f, 0.5928f, 0.7568f, 0.6582f, 0.5569f, 0.5378f, 0.6656f) },
+        { (FireControlSystemEra.WorldWarII, FCSCode.H), new(0.7848f, 0.6463f, 0.5826f, 0.8247f, 0.7306f, 0.6593f, 0.6222f, 0.6639f) },
+        { (FireControlSystemEra.WorldWarII, FCSCode.J), new(0.7747f, 0.6474f, 0.5921f, 0.7615f, 0.6443f, 0.5587f, 0.5438f, 0.6697f) },
+        { (FireControlSystemEra.WorldWarII, FCSCode.K), new(0.7596f, 0.6529f, 0.5986f, 0.7696f, 0.6627f, 0.5600f, 0.5345f, 0.6697f) },
+        { (FireControlSystemEra.WorldWarII, FCSCode.M), new(0.7604f, 0.5712f, 0.4920f, 0.7517f, 0.6387f, 0.5600f, 0.5110f, 0.6697f) },
+        { (FireControlSystemEra.WorldWarII, FCSCode.N), new(0.8178f, 0.6931f, 0.5712f, 0.7551f, 0.6282f, 0.5576f, 0.5149f, 0.6635f) },
+        { (FireControlSystemEra.WorldWarII, FCSCode.Q), new(0.7310f, 0.5742f, 0.4952f, 0.7851f, 0.6557f, 0.5795f, 0.5111f, 0.6557f) },
+        { (FireControlSystemEra.WorldWarII, FCSCode.S), new(0.7592f, 0.5928f, 0.5061f, 0.7592f, 0.6696f, 0.5782f, 0.5195f, 0.6643f) },
+    };
+
     static string BuildFireControlFullCode(BatteryRecord batteryRecord)
     {
         var fcs = batteryRecord?.fireControlType;
@@ -1931,6 +2114,94 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
 
         return rolePrefix == null || eraSuffix == null ? null : $"{rolePrefix}{fcs.code}{eraSuffix}";
     }
+
+    static bool TryGetLatentFireControlTableRecords(
+        BatteryRecord batteryRecord,
+        out string fullCode,
+        out LatentFireControlBase latentBase,
+        out LatentFireControlMultipliers multipliers,
+        out List<FireControlTableRecord> records)
+    {
+        fullCode = BuildFireControlFullCode(batteryRecord);
+        latentBase = default;
+        multipliers = default;
+        records = null;
+
+        var fcs = batteryRecord?.fireControlType;
+        if (fcs == null || fcs.code == FCSCode.Custom)
+            return false;
+
+        if (!LatentFireControlBases.TryGetValue((fcs.role, fcs.code), out latentBase))
+            return false;
+
+        if (!TryGetLatentFireControlMultipliers(fcs.era, fcs.code, out multipliers))
+            return false;
+
+        records = BuildLatentFireControlTableRecords(latentBase.mid, multipliers);
+        return true;
+    }
+
+    static bool TryGetLatentFireControlMultipliers(FireControlSystemEra era, FCSCode code, out LatentFireControlMultipliers multipliers)
+    {
+        if (era == FireControlSystemEra.Predreadnought)
+        {
+            multipliers = PredreadnoughtLatentFireControlMultipliers;
+            return true;
+        }
+
+        return LatentFireControlMultiplierTable.TryGetValue((era, code), out multipliers);
+    }
+
+    static List<FireControlTableRecord> BuildLatentFireControlTableRecords(float latentBase, LatentFireControlMultipliers multipliers)
+    {
+        return StandardFireControlSpeedThresholds
+            .Select(speedThresholdKnot => new FireControlTableRecord
+            {
+                speedThresholdKnot = speedThresholdKnot,
+                shortBroad = PredictLatentFireControlValue(latentBase, multipliers, speedThresholdKnot, RangeBand.Short, TargetAspect.Broad),
+                shortNarrow = PredictLatentFireControlValue(latentBase, multipliers, speedThresholdKnot, RangeBand.Short, TargetAspect.Narrow),
+                mediumBroad = PredictLatentFireControlValue(latentBase, multipliers, speedThresholdKnot, RangeBand.Medium, TargetAspect.Broad),
+                mediumNarrow = PredictLatentFireControlValue(latentBase, multipliers, speedThresholdKnot, RangeBand.Medium, TargetAspect.Narrow),
+                longBroad = PredictLatentFireControlValue(latentBase, multipliers, speedThresholdKnot, RangeBand.Long, TargetAspect.Broad),
+                longNarrow = PredictLatentFireControlValue(latentBase, multipliers, speedThresholdKnot, RangeBand.Long, TargetAspect.Narrow),
+                extremeBroad = PredictLatentFireControlValue(latentBase, multipliers, speedThresholdKnot, RangeBand.Extreme, TargetAspect.Broad),
+                extremeNarrow = PredictLatentFireControlValue(latentBase, multipliers, speedThresholdKnot, RangeBand.Extreme, TargetAspect.Narrow),
+            })
+            .ToList();
+    }
+
+    static float PredictLatentFireControlValue(
+        float latentBase,
+        LatentFireControlMultipliers multipliers,
+        float speedThresholdKnot,
+        RangeBand rangeBand,
+        TargetAspect targetAspect)
+    {
+        return latentBase
+            * multipliers.GetRangeMultiplier(rangeBand)
+            * multipliers.GetSpeedMultiplier(speedThresholdKnot)
+            * multipliers.GetAspectMultiplier(targetAspect);
+    }
+
+    static List<FireControlTableRecord> RoundFireControlTableRecords(IReadOnlyList<FireControlTableRecord> records)
+    {
+        return records
+            .Select(record => new FireControlTableRecord
+            {
+                speedThresholdKnot = record.speedThresholdKnot,
+                shortBroad = RoundFireControlValue(record.shortBroad),
+                shortNarrow = RoundFireControlValue(record.shortNarrow),
+                mediumBroad = RoundFireControlValue(record.mediumBroad),
+                mediumNarrow = RoundFireControlValue(record.mediumNarrow),
+                longBroad = RoundFireControlValue(record.longBroad),
+                longNarrow = RoundFireControlValue(record.longNarrow),
+                extremeBroad = RoundFireControlValue(record.extremeBroad),
+                extremeNarrow = RoundFireControlValue(record.extremeNarrow),
+            })
+            .ToList();
+    }
+
+    static float RoundFireControlValue(float value) => Mathf.Floor(value + 0.5f);
 
     static List<FireControlTableRecord> ParseStandardFireControlTable(string tableData)
     {
@@ -2062,6 +2333,66 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
         }
 
         var legend = new Label(Localize("Each cell is shown as current / model, then model-current delta."));
+        legend.style.whiteSpace = WhiteSpace.Normal;
+        legend.style.marginTop = 4;
+        section.Add(legend);
+
+        return section;
+    }
+
+    VisualElement BuildFireControlLatentComparisonTable(string title, string description, List<FireControlTableRecord> records, IReadOnlyList<FireControlTableRecord> latentRecords)
+    {
+        var section = new VisualElement();
+        section.style.marginTop = 10;
+        section.style.marginBottom = 12;
+
+        var titleLabel = new Label(title);
+        titleLabel.style.unityFontStyleAndWeight = FontStyle.Bold;
+        titleLabel.style.marginBottom = 2;
+        section.Add(titleLabel);
+
+        var descriptionLabel = new Label(description);
+        descriptionLabel.style.whiteSpace = WhiteSpace.Normal;
+        descriptionLabel.style.marginBottom = 6;
+        section.Add(descriptionLabel);
+
+        var table = new VisualElement();
+        table.style.flexDirection = FlexDirection.Column;
+        table.style.minWidth = 920;
+        section.Add(table);
+
+        var header = BuildFireControlComparisonTableRow();
+        header.Add(BuildFireControlComparisonCell(Localize("Tgt Spd"), true, 74));
+        foreach (var column in FireControlComparisonColumns)
+        {
+            header.Add(BuildFireControlComparisonCell(column.label, true));
+        }
+        table.Add(header);
+
+        for (var i = 0; i < records.Count; i++)
+        {
+            var record = records[i];
+            var latentRecord = i < latentRecords.Count ? latentRecords[i] : null;
+            var row = BuildFireControlComparisonTableRow();
+            row.Add(BuildFireControlComparisonCell($"{record.speedThresholdKnot:0.#} kt", true, 74));
+            foreach (var column in FireControlComparisonColumns)
+            {
+                var actual = record.GetValue(column.rangeBand, column.targetAspect);
+                if (latentRecord == null)
+                {
+                    row.Add(BuildFireControlComparisonCell($"{actual:0.#} / {Localize("Missing")}", false));
+                    continue;
+                }
+
+                var latent = latentRecord.GetValue(column.rangeBand, column.targetAspect);
+                var rounded = RoundFireControlValue(latent);
+                var diff = rounded - actual;
+                row.Add(BuildFireControlComparisonCell($"{actual:0.#} / {latent:0.00} -> {rounded:0.#}\n{FormatFireControlDiff(diff, true)}", false));
+            }
+            table.Add(row);
+        }
+
+        var legend = new Label(Localize("Each cell is shown as current / latent variable -> rounded, then rounded-current delta."));
         legend.style.whiteSpace = WhiteSpace.Normal;
         legend.style.marginTop = 4;
         section.Add(legend);

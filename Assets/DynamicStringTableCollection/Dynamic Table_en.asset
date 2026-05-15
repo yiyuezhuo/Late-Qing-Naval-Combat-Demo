@@ -5079,6 +5079,26 @@ MonoBehaviour:
     m_Localized: Best matching standard codes
     m_Metadata:
       m_Items: []
+  - m_Id: -499
+    m_Localized: No latent variable model parameters are available for the current Role/Code/Era.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -500
+    m_Localized: 'Latent variable model code ({0}, base {1}-{2}, midpoint {3}): {4}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: -501
+    m_Localized: Latent Variable Model Table
+    m_Metadata:
+      m_Items: []
+  - m_Id: -502
+    m_Localized: Uses midpoint latent base and midpoint range/speed/aspect multipliers from the SK5 fire-control latent variable model.
+    m_Metadata:
+      m_Items: []
+  - m_Id: -503
+    m_Localized: 'Each cell is shown as current / latent variable -> rounded, then rounded-current delta.'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

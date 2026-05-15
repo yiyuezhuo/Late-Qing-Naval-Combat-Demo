@@ -5114,6 +5114,26 @@ MonoBehaviour:
     m_Localized: "\u6700\u4F73\u5339\u914D\u6A19\u6E96\u4EE3\u78BC"
     m_Metadata:
       m_Items: []
+  - m_Id: -499
+    m_Localized: "\u76EE\u524D Role/Code/Era \u6C92\u6709\u53EF\u7528\u7684\u96B1\u8B8A\u91CF\u6A21\u578B\u53C3\u6578\u3002"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -500
+    m_Localized: "\u96B1\u8B8A\u91CF\u6A21\u578B\u4EE3\u78BC\uFF08{0}\uFF0C\u57FA\u6E96\u503C {1}-{2}\uFF0C\u4E2D\u9EDE {3}\uFF09\uFF1A{4}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -501
+    m_Localized: "\u96B1\u8B8A\u91CF\u6A21\u578B\u8868"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -502
+    m_Localized: "\u4F7F\u7528 SK5 \u706B\u63A7\u96B1\u8B8A\u91CF\u6A21\u578B\u4E2D\u7684\u6F5B\u5728\u57FA\u6E96\u503C\u4E2D\u9EDE\uFF0C\u4EE5\u53CA\u5C04\u7A0B/\u901F\u5EA6/\u76EE\u6A19\u8237\u89D2\u4E58\u5B50\u7684\u4E2D\u9EDE\u3002"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -503
+    m_Localized: "\u6BCF\u500B\u5132\u5B58\u683C\u986F\u793A\u70BA \u76EE\u524D\u503C / \u96B1\u8B8A\u91CF -> \u6368\u5165\u503C\uFF0C\u7136\u5F8C\u986F\u793A \u6368\u5165\u503C-\u76EE\u524D\u503C \u7684\u5DEE\u3002"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

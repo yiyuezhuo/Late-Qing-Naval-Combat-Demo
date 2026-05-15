@@ -725,7 +725,7 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
                         return;
                     }
 
-                    PopupFireControlModelComparisonDialog(selectedShipClass, batteryRecord);
+                    PopupFireControlModelComparisonDialog(batteryRecord);
                 };
             }
 
@@ -1427,33 +1427,7 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
         new("E/N", RangeBand.Extreme, TargetAspect.Narrow),
     };
 
-    static readonly FireControlSpeedFactor[] FireControlSpeedFactors =
-    {
-        new(9f, 1f),
-        new(18f, 0.6710f),
-        new(27f, 0.5265f),
-        new(36f, 0.4393f),
-        new(45f, 0.3758f),
-    };
-
-    static readonly Dictionary<FCSCode, float> FireControlCodeLatentOffsets = new()
-    {
-        { FCSCode.Z, 0f },
-        { FCSCode.Y, 2.1829f },
-        { FCSCode.X, 4.2304f },
-        { FCSCode.W, 4.1718f },
-        { FCSCode.U, 2.4735f },
-        { FCSCode.T, 4.0784f },
-        { FCSCode.S, 5.2111f },
-        { FCSCode.R, 6.0497f },
-        { FCSCode.Q, 7.4472f },
-    };
-
-    const float FireControlCodeLatentIntercept = 4.5261f;
-    const float FireControlCodeShellSizeCoef = 0.2334f;
-    const float FireControlCodeDisplacement1000Coef = -0.0823f;
-
-    void PopupFireControlModelComparisonDialog(ShipClass shipClass, BatteryRecord batteryRecord)
+    void PopupFireControlModelComparisonDialog(BatteryRecord batteryRecord)
     {
         if (batteryRecord == null)
             return;
@@ -1467,12 +1441,12 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
 
         DialogRoot.Instance.PopupModelComparisonDialog(
             Localize("Model Comparison"),
-            () => BuildModelComparisonContent(shipClass, batteryRecord),
+            () => BuildModelComparisonContent(batteryRecord),
             Localize("Close")
         );
     }
 
-    VisualElement BuildModelComparisonContent(ShipClass shipClass, BatteryRecord batteryRecord)
+    VisualElement BuildModelComparisonContent(BatteryRecord batteryRecord)
     {
         var tabView = new TabView
         {
@@ -1484,7 +1458,7 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
             }
         };
 
-        tabView.Add(BuildModelComparisonTab(Localize("Fire Control"), BuildFireControlModelComparisonContent(shipClass, batteryRecord)));
+        tabView.Add(BuildModelComparisonTab(Localize("Fire Control"), BuildFireControlModelComparisonContent(batteryRecord)));
         tabView.Add(BuildModelComparisonTab(Localize("Penetration"), BuildPenetrationModelComparisonContent(batteryRecord)));
         return tabView;
     }
@@ -1503,7 +1477,7 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
         return tab;
     }
 
-    VisualElement BuildFireControlModelComparisonContent(ShipClass shipClass, BatteryRecord batteryRecord)
+    VisualElement BuildFireControlModelComparisonContent(BatteryRecord batteryRecord)
     {
         if (batteryRecord.fireControlTableRecords == null || batteryRecord.fireControlTableRecords.Count == 0)
         {
@@ -1517,16 +1491,10 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
             .ToList();
         var hasStandardTable = TryGetStandardFireControlTableRecords(batteryRecord, out var standardCode, out var standardRecords);
         var closestStandard = FindClosestStandardFireControlCode(records);
-        var codeLatent = PredictFireControlLatentFromCode(shipClass, batteryRecord, out var usedCodeCoefficient);
 
         var scrollView = new ScrollView(ScrollViewMode.Vertical);
         scrollView.style.flexGrow = 1;
         scrollView.style.flexShrink = 1;
-
-        var roundPredictionToggle = new Toggle(Localize("Round predicted values"));
-        roundPredictionToggle.value = true;
-        roundPredictionToggle.style.marginBottom = 8;
-        scrollView.Add(roundPredictionToggle);
 
         var summary = new Label();
         summary.style.whiteSpace = WhiteSpace.Normal;
@@ -1539,14 +1507,6 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
             customNotice.style.whiteSpace = WhiteSpace.Normal;
             customNotice.style.marginBottom = 10;
             scrollView.Add(customNotice);
-        }
-
-        if (!usedCodeCoefficient)
-        {
-            var warning = new Label(Localize("No fitted Code coefficient is available for this fire-control code. The Code model uses the component fallback."));
-            warning.style.whiteSpace = WhiteSpace.Normal;
-            warning.style.marginBottom = 10;
-            scrollView.Add(warning);
         }
 
         if (!hasStandardTable)
@@ -1562,9 +1522,7 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
 
         void RefreshComparison()
         {
-            var roundPredictions = roundPredictionToggle.value;
             var standardStats = hasStandardTable ? CalculateFireControlComparisonStats(records, standardRecords) : new FireControlErrorStats();
-            var codeStats = CalculateFireControlComparisonStats(records, codeLatent, roundPredictions);
             var standardStatus = hasStandardTable && standardStats.exact == standardStats.count
                 ? Localize("Matches standard fire control table.")
                 : Localize("Does not match the standard code table. Review the table/code or mark it as Custom.");
@@ -1584,7 +1542,6 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
             }
             if (!string.IsNullOrEmpty(closestStandard.code))
                 summaryLines.Add($"{Localize("Closest standard code")} ({closestStandard.code}): {FormatFireControlErrorStats(closestStandard.stats)}");
-            summaryLines.Add($"{Localize("Code model table")} (latent={codeLatent:0.###}): {FormatFireControlErrorStats(codeStats)}");
             summary.text = string.Join("\n", summaryLines);
 
             tablesContainer.Clear();
@@ -1597,16 +1554,8 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
                     standardRecords
                 ));
             }
-            tablesContainer.Add(BuildFireControlComparisonTable(
-                Localize("Code, Shell Size, Displacement Model"),
-                Localize("Uses the fitted latent left-top value from Code, shell size, and displacement, then applies the same ratios."),
-                records,
-                codeLatent,
-                roundPredictions
-            ));
         }
 
-        roundPredictionToggle.RegisterValueChangedCallback(_ => RefreshComparison());
         RefreshComparison();
 
         return scrollView;
@@ -2038,57 +1987,6 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
         return true;
     }
 
-    VisualElement BuildFireControlComparisonTable(string title, string description, List<FireControlTableRecord> records, float leftTop, bool roundPredictions)
-    {
-        var section = new VisualElement();
-        section.style.marginTop = 10;
-        section.style.marginBottom = 12;
-
-        var titleLabel = new Label(title);
-        titleLabel.style.unityFontStyleAndWeight = FontStyle.Bold;
-        titleLabel.style.marginBottom = 2;
-        section.Add(titleLabel);
-
-        var descriptionLabel = new Label(description);
-        descriptionLabel.style.whiteSpace = WhiteSpace.Normal;
-        descriptionLabel.style.marginBottom = 6;
-        section.Add(descriptionLabel);
-
-        var table = new VisualElement();
-        table.style.flexDirection = FlexDirection.Column;
-        table.style.minWidth = 920;
-        section.Add(table);
-
-        var header = BuildFireControlComparisonTableRow();
-        header.Add(BuildFireControlComparisonCell(Localize("Tgt Spd"), true, 74));
-        foreach (var column in FireControlComparisonColumns)
-        {
-            header.Add(BuildFireControlComparisonCell(column.label, true));
-        }
-        table.Add(header);
-
-        foreach (var record in records)
-        {
-            var row = BuildFireControlComparisonTableRow();
-            row.Add(BuildFireControlComparisonCell($"{record.speedThresholdKnot:0.#} kt", true, 74));
-            foreach (var column in FireControlComparisonColumns)
-            {
-                var actual = record.GetValue(column.rangeBand, column.targetAspect);
-                var predicted = PredictFireControlCell(leftTop, record.speedThresholdKnot, column.rangeBand, column.targetAspect, roundPredictions);
-                var diff = predicted - actual;
-                row.Add(BuildFireControlComparisonCell($"{actual:0.#} / {FormatFireControlPredictedValue(predicted, roundPredictions)}\n{FormatFireControlDiff(diff, roundPredictions)}", false));
-            }
-            table.Add(row);
-        }
-
-        var legend = new Label(Localize("Each cell is shown as current / model, then model-current delta."));
-        legend.style.whiteSpace = WhiteSpace.Normal;
-        legend.style.marginTop = 4;
-        section.Add(legend);
-
-        return section;
-    }
-
     VisualElement BuildFireControlStandardComparisonTable(string title, string description, List<FireControlTableRecord> records, IReadOnlyList<FireControlTableRecord> standardRecords)
     {
         var section = new VisualElement();
@@ -2175,21 +2073,6 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
         return cell;
     }
 
-    static FireControlErrorStats CalculateFireControlComparisonStats(List<FireControlTableRecord> records, float leftTop, bool roundPredictions)
-    {
-        var stats = new FireControlErrorStats();
-        foreach (var record in records)
-        {
-            foreach (var column in FireControlComparisonColumns)
-            {
-                var actual = record.GetValue(column.rangeBand, column.targetAspect);
-                var predicted = PredictFireControlCell(leftTop, record.speedThresholdKnot, column.rangeBand, column.targetAspect, roundPredictions);
-                stats.Add(actual, predicted);
-            }
-        }
-        return stats;
-    }
-
     static FireControlErrorStats CalculateFireControlComparisonStats(List<FireControlTableRecord> records, IReadOnlyList<FireControlTableRecord> predictedRecords)
     {
         var stats = new FireControlErrorStats();
@@ -2216,138 +2099,9 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
         return $"exact {stats.exact}/{stats.count} ({(100f * stats.exact / stats.count):0.#}%), MAE {stats.MAE:0.###}, RMSE {stats.RMSE:0.###}, max {stats.maxAbs:0.###}";
     }
 
-    static float PredictFireControlLatentFromCode(ShipClass shipClass, BatteryRecord batteryRecord, out bool usedCodeCoefficient)
-    {
-        var fcs = batteryRecord?.fireControlType;
-        if (fcs != null && FireControlCodeLatentOffsets.TryGetValue(fcs.code, out var codeOffset))
-        {
-            usedCodeCoefficient = true;
-            return FireControlCodeLatentIntercept
-                + codeOffset
-                + FireControlCodeShellSizeCoef * (batteryRecord?.shellSizeInch ?? 0f)
-                + FireControlCodeDisplacement1000Coef * ((shipClass?.displacementTons ?? 0f) / 1000f);
-        }
-
-        usedCodeCoefficient = false;
-        return PredictFireControlLatentFromComponents(shipClass, batteryRecord);
-    }
-
-    static float PredictFireControlLatentFromComponents(ShipClass shipClass, BatteryRecord batteryRecord)
-    {
-        var fcs = batteryRecord?.fireControlType;
-        var latent = 4.7316f
-            + 0.2128f * (batteryRecord?.shellSizeInch ?? 0f)
-            - 0.0893f * ((shipClass?.displacementTons ?? 0f) / 1000f);
-
-        if (fcs == null)
-            return latent;
-
-        if (fcs.gunSight == GunSightType.Telescope)
-            latent += 1.8941f;
-        if (fcs.fireControlInstrument == FireControlInstrumentType.Basic)
-            latent += 2.1650f;
-        if (fcs.rangeFinder == RangeFinderType.Optical)
-            latent += 1.5337f;
-        if (fcs.directorControl == DirectorControlType.FollowThePointer)
-            latent += 1.9988f;
-
-        return latent;
-    }
-
-    static string FormatFireControlPredictedValue(float value, bool roundPredictions)
-    {
-        return roundPredictions ? $"{value:0.#}" : $"{value:0.00}";
-    }
-
     static string FormatFireControlDiff(float value, bool roundPredictions)
     {
         return roundPredictions ? $"{value:+0.#;-0.#;0}" : $"{value:+0.00;-0.00;0.00}";
-    }
-
-    static void UpdateFireControlTableFromCodeModel(ShipClass shipClass, BatteryRecord batteryRecord)
-    {
-        if (batteryRecord == null)
-            return;
-
-        batteryRecord.fireControlTableRecords ??= new List<FireControlTableRecord>();
-        if (batteryRecord.fireControlTableRecords.Count == 0)
-        {
-            foreach (var speedFactor in FireControlSpeedFactors)
-            {
-                batteryRecord.fireControlTableRecords.Add(new FireControlTableRecord
-                {
-                    speedThresholdKnot = speedFactor.speedThresholdKnot
-                });
-            }
-        }
-
-        var latent = PredictFireControlLatentFromCode(shipClass, batteryRecord, out _);
-        foreach (var record in batteryRecord.fireControlTableRecords)
-        {
-            record.shortBroad = PredictFireControlCell(latent, record.speedThresholdKnot, RangeBand.Short, TargetAspect.Broad, true);
-            record.shortNarrow = PredictFireControlCell(latent, record.speedThresholdKnot, RangeBand.Short, TargetAspect.Narrow, true);
-            record.mediumBroad = PredictFireControlCell(latent, record.speedThresholdKnot, RangeBand.Medium, TargetAspect.Broad, true);
-            record.mediumNarrow = PredictFireControlCell(latent, record.speedThresholdKnot, RangeBand.Medium, TargetAspect.Narrow, true);
-            record.longBroad = PredictFireControlCell(latent, record.speedThresholdKnot, RangeBand.Long, TargetAspect.Broad, true);
-            record.longNarrow = PredictFireControlCell(latent, record.speedThresholdKnot, RangeBand.Long, TargetAspect.Narrow, true);
-            record.extremeBroad = PredictFireControlCell(latent, record.speedThresholdKnot, RangeBand.Extreme, TargetAspect.Broad, true);
-            record.extremeNarrow = PredictFireControlCell(latent, record.speedThresholdKnot, RangeBand.Extreme, TargetAspect.Narrow, true);
-        }
-    }
-
-    static float PredictFireControlCell(float leftTop, float speedThresholdKnot, RangeBand rangeBand, TargetAspect targetAspect, bool roundPrediction)
-    {
-        var predicted = leftTop * GetFireControlSpeedFactor(speedThresholdKnot) * GetFireControlRangeBandFactor(rangeBand) * GetFireControlAspectFactor(targetAspect);
-        return roundPrediction ? RoundHalfUp(predicted) : predicted;
-    }
-
-    static float GetFireControlAspectFactor(TargetAspect targetAspect)
-    {
-        return targetAspect == TargetAspect.Narrow ? 0.6f : 1f;
-    }
-
-    static float GetFireControlRangeBandFactor(RangeBand rangeBand)
-    {
-        return rangeBand switch
-        {
-            RangeBand.Medium => 0.6010f,
-            RangeBand.Long => 0.4165f,
-            RangeBand.Extreme => 0.3567f,
-            _ => 1f
-        };
-    }
-
-    static float GetFireControlSpeedFactor(float speedThresholdKnot)
-    {
-        const float tolerance = 0.01f;
-        foreach (var speedFactor in FireControlSpeedFactors)
-        {
-            if (Mathf.Abs(speedThresholdKnot - speedFactor.speedThresholdKnot) <= tolerance)
-                return speedFactor.factor;
-        }
-
-        if (speedThresholdKnot <= FireControlSpeedFactors[0].speedThresholdKnot)
-            return FireControlSpeedFactors[0].factor;
-        if (speedThresholdKnot >= FireControlSpeedFactors[^1].speedThresholdKnot)
-            return FireControlSpeedFactors[^1].factor;
-
-        for (var i = 1; i < FireControlSpeedFactors.Length; i++)
-        {
-            var previous = FireControlSpeedFactors[i - 1];
-            var next = FireControlSpeedFactors[i];
-            if (speedThresholdKnot <= next.speedThresholdKnot)
-            {
-                var t = Mathf.InverseLerp(previous.speedThresholdKnot, next.speedThresholdKnot, speedThresholdKnot);
-                return Mathf.Lerp(previous.factor, next.factor, t);
-            }
-        }
-
-        return 1f;
-    }
-
-    static float RoundHalfUp(float value)
-    {
-        return Mathf.Floor(value + 0.5f);
     }
 
     static float RoundTenth(float value)
@@ -2366,18 +2120,6 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
             this.label = label;
             this.rangeBand = rangeBand;
             this.targetAspect = targetAspect;
-        }
-    }
-
-    readonly struct FireControlSpeedFactor
-    {
-        public readonly float speedThresholdKnot;
-        public readonly float factor;
-
-        public FireControlSpeedFactor(float speedThresholdKnot, float factor)
-        {
-            this.speedThresholdKnot = speedThresholdKnot;
-            this.factor = factor;
         }
     }
 

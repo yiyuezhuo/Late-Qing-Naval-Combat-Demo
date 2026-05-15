@@ -5075,6 +5075,10 @@ MonoBehaviour:
     m_Localized: Uses the standard SK5 table generated from the current Role, Code, and Era.
     m_Metadata:
       m_Items: []
+  - m_Id: -498
+    m_Localized: Best matching standard codes
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

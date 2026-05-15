@@ -1490,7 +1490,7 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
             .OrderBy(record => record.speedThresholdKnot)
             .ToList();
         var hasStandardTable = TryGetStandardFireControlTableRecords(batteryRecord, out var standardCode, out var standardRecords);
-        var closestStandard = FindClosestStandardFireControlCode(records);
+        var bestStandards = FindBestMatchingStandardFireControlCodes(records);
 
         var scrollView = new ScrollView(ScrollViewMode.Vertical);
         scrollView.style.flexGrow = 1;
@@ -1540,8 +1540,8 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
             {
                 summaryLines.Add(Localize("No standard table is available for the current Role/Code/Era."));
             }
-            if (!string.IsNullOrEmpty(closestStandard.code))
-                summaryLines.Add($"{Localize("Closest standard code")} ({closestStandard.code}): {FormatFireControlErrorStats(closestStandard.stats)}");
+            if (bestStandards.codes.Count > 0)
+                summaryLines.Add($"{Localize("Best matching standard codes")} ({FormatStandardCodeList(bestStandards.codes)}): {FormatFireControlErrorStats(bestStandards.stats)}");
             summary.text = string.Join("\n", summaryLines);
 
             tablesContainer.Clear();
@@ -1955,10 +1955,10 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
         return records;
     }
 
-    static (string code, FireControlErrorStats stats) FindClosestStandardFireControlCode(List<FireControlTableRecord> records)
+    static (List<string> codes, FireControlErrorStats stats) FindBestMatchingStandardFireControlCodes(List<FireControlTableRecord> records)
     {
-        string bestCode = null;
         FireControlErrorStats bestStats = null;
+        var bestCodes = new List<string>();
         foreach (var (code, tableData) in StandardFireControlTableData)
         {
             var stats = CalculateFireControlComparisonStats(records, ParseStandardFireControlTable(tableData));
@@ -1967,12 +1967,35 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
                 || (Mathf.Approximately(stats.sumAbs, bestStats.sumAbs) && stats.maxAbs < bestStats.maxAbs)
                 || (Mathf.Approximately(stats.sumAbs, bestStats.sumAbs) && Mathf.Approximately(stats.maxAbs, bestStats.maxAbs) && stats.exact > bestStats.exact))
             {
-                bestCode = code;
                 bestStats = stats;
+                bestCodes.Clear();
+                bestCodes.Add(code);
+            }
+            else if (IsSameFireControlError(stats, bestStats))
+            {
+                bestCodes.Add(code);
             }
         }
 
-        return (bestCode, bestStats);
+        return (bestCodes, bestStats);
+    }
+
+    static bool IsSameFireControlError(FireControlErrorStats a, FireControlErrorStats b)
+    {
+        return b != null
+            && Mathf.Approximately(a.sumAbs, b.sumAbs)
+            && Mathf.Approximately(a.maxAbs, b.maxAbs)
+            && a.exact == b.exact;
+    }
+
+    static string FormatStandardCodeList(IReadOnlyList<string> codes)
+    {
+        const int maxVisible = 6;
+        if (codes == null || codes.Count == 0)
+            return "";
+        if (codes.Count <= maxVisible)
+            return string.Join(", ", codes);
+        return $"{string.Join(", ", codes.Take(maxVisible))}, +{codes.Count - maxVisible}";
     }
 
     static bool ResetFireControlTableFromStandardCode(BatteryRecord batteryRecord)

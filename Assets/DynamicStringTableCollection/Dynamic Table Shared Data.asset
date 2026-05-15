@@ -5066,6 +5066,10 @@ MonoBehaviour:
     m_Key: Uses the standard SK5 table generated from the current Role, Code, and Era.
     m_Metadata:
       m_Items: []
+  - m_Id: -498
+    m_Key: Best matching standard codes
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

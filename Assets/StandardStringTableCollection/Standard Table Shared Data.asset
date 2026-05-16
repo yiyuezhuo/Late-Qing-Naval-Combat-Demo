@@ -3682,6 +3682,10 @@ MonoBehaviour:
     m_Key: Fire Control Tier
     m_Metadata:
       m_Items: []
+  - m_Id: -223
+    m_Key: Rapid Fire Battery Meta Info
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

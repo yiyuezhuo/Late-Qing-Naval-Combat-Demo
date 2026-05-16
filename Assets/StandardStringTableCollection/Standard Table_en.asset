@@ -3768,6 +3768,10 @@ MonoBehaviour:
     m_Localized: Fire Control Tier
     m_Metadata:
       m_Items: []
+  - m_Id: -223
+    m_Localized: Rapid Fire Battery Meta Info
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

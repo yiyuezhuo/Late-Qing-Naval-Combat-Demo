@@ -993,6 +993,35 @@ namespace NavalCombatCore
     {
         const float EffectiveRangeToMaxRangeCoef = 0.45f;
 
+        readonly struct RapidFireBatteryFireControlTierRecord
+        {
+            public readonly float FirstMaxRange;
+            public readonly float SecondMaxRange;
+            public readonly float FirstEffectiveRange;
+            public readonly float SecondEffectiveRange;
+
+            public RapidFireBatteryFireControlTierRecord(
+                float firstMaxRange,
+                float secondMaxRange,
+                float firstEffectiveRange,
+                float secondEffectiveRange)
+            {
+                FirstMaxRange = firstMaxRange;
+                SecondMaxRange = secondMaxRange;
+                FirstEffectiveRange = firstEffectiveRange;
+                SecondEffectiveRange = secondEffectiveRange;
+            }
+        }
+
+        static readonly Dictionary<int, RapidFireBatteryFireControlTierRecord> FireControlTierRecords = new()
+        {
+            { 1, new(4f, 3f, 6f, 5f) },
+            { 2, new(5f, 4f, 8f, 6f) },
+            { 3, new(7f, 5f, 11f, 8f) },
+            { 4, new(9f, 7f, 13f, 10f) },
+            { 5, new(11f, 8f, 14f, 11f) },
+        };
+
         [XmlIgnore]
         [CreateProperty]
         public string metaInfoLabel
@@ -1007,6 +1036,8 @@ namespace NavalCombatCore
                     parts.Add($"{metaInfo.shellSizeInch.ToString("0.###", CultureInfo.InvariantCulture)}''");
                 if (metaInfo.shellWeightPounds > 0f)
                     parts.Add($"{metaInfo.shellWeightPounds.ToString("0.###", CultureInfo.InvariantCulture)} lb");
+                if (metaInfo.fireControlTier > 0)
+                    parts.Add($"FC Tier {metaInfo.fireControlTier}");
 
                 return parts.Count > 0 ? $"Meta Info: {string.Join(", ", parts)}" : "Meta Info";
             }
@@ -1031,6 +1062,26 @@ namespace NavalCombatCore
             }
 
             return false;
+        }
+
+        public bool InferFireControlRecordsFromMetaInfo()
+        {
+            if (metaInfo == null || !FireControlTierRecords.TryGetValue(metaInfo.fireControlTier, out var tierRecord))
+                return false;
+
+            fireControlRecords ??= new List<RapidFireBatteryFireControlLevelRecord>();
+            fireControlRecords.Clear();
+            fireControlRecords.Add(new RapidFireBatteryFireControlLevelRecord
+            {
+                fireControlMaxRange = tierRecord.FirstMaxRange,
+                fireControlEffectiveRange = tierRecord.FirstEffectiveRange,
+            });
+            fireControlRecords.Add(new RapidFireBatteryFireControlLevelRecord
+            {
+                fireControlMaxRange = tierRecord.SecondMaxRange,
+                fireControlEffectiveRange = tierRecord.SecondEffectiveRange,
+            });
+            return true;
         }
 
         [XmlIgnore]

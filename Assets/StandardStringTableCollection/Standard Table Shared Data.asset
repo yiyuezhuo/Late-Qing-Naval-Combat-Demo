@@ -3678,6 +3678,10 @@ MonoBehaviour:
     m_Key: BatteryRecord.CustomFireControlTable
     m_Metadata:
       m_Items: []
+  - m_Id: -222
+    m_Key: Fire Control Tier
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

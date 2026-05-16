@@ -3764,6 +3764,10 @@ MonoBehaviour:
     m_Localized: Custom Fire Control Table
     m_Metadata:
       m_Items: []
+  - m_Id: -222
+    m_Localized: Fire Control Tier
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

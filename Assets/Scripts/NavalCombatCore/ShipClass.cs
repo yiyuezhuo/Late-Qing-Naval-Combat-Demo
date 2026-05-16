@@ -801,6 +801,7 @@ namespace NavalCombatCore
     {
         public float shellSizeInch = RapidFireBatteryRecord.defaultShellSizeInch;
         public float shellWeightPounds = 0f;
+        public int fireControlTier = 0;
     }
 
     public partial class RapidFireBatteryRecord

@@ -1232,24 +1232,43 @@ namespace NavalCombatCore
             return MathF.Round(100f * (float)Math.Sqrt(Math.Max(0f, displacementTons) * 0.033f));
         }
 
-        public static int CalculateTargetSizeModifierFromDisplacement(float displacementTons)
+        public static int CalculateTargetSizeModifierFromWaterplaneArea(float waterplaneAreaFoot2)
         {
-            if (displacementTons <= 671.5f)
+            waterplaneAreaFoot2 = Math.Max(0f, waterplaneAreaFoot2);
+            // TODO: Submarine (SS) ship type is not implemented yet, so all ships use the non-SS branch.
+            // SS rule when added: <= 5292 => -1, 5292-10830 => 0, > 10830 => +1.
+
+            if (waterplaneAreaFoot2 <= 6228f)
             {
                 return -1;
             }
 
-            if (displacementTons <= 3110f)
+            if (waterplaneAreaFoot2 <= 12949.5f)
             {
                 return 0;
             }
 
-            if (displacementTons <= 16660f)
+            if (waterplaneAreaFoot2 <= 38935f)
             {
                 return 1;
             }
 
-            return 2;
+            if (waterplaneAreaFoot2 <= 64458.5f)
+            {
+                return 2;
+            }
+
+            if (waterplaneAreaFoot2 <= 90500f)
+            {
+                return 3;
+            }
+
+            return 4;
+        }
+
+        public static int CalculateTargetSizeModifierFromDimensions(float lengthFoot, float beamFoot)
+        {
+            return CalculateTargetSizeModifierFromWaterplaneArea(lengthFoot * beamFoot);
         }
 
         public static int CalculateDamageControlRatingFromDisplacement(float displacementTons)

@@ -70,9 +70,32 @@ namespace NavalCombatCore
             {
                 displacementTons = value;
                 damagePoint = CalculateDamagePointFromDisplacement(value);
-                targetSizeModifier = CalculateTargetSizeModifierFromDisplacement(value);
                 damageControlRatingUnmodified = CalculateDamageControlRatingFromDisplacement(value);
                 ApplyDisplacementTypeDefaults();
+            }
+        }
+
+        [XmlIgnore]
+        [CreateProperty]
+        public float lengthFootProp
+        {
+            get => lengthFoot;
+            set
+            {
+                lengthFoot = value;
+                UpdateTargetSizeModifierFromDimensions();
+            }
+        }
+
+        [XmlIgnore]
+        [CreateProperty]
+        public float beamFootProp
+        {
+            get => beamFoot;
+            set
+            {
+                beamFoot = value;
+                UpdateTargetSizeModifierFromDimensions();
             }
         }
 
@@ -94,6 +117,12 @@ namespace NavalCombatCore
             beamFoot = CalculateBeamFootFromDisplacementAndType(displacementTons, type);
             draftFoot = CalculateDraftFootFromDisplacementAndType(displacementTons, type);
             complementMen = CalculateComplementMenFromDisplacementAndType(displacementTons, type);
+            UpdateTargetSizeModifierFromDimensions();
+        }
+
+        void UpdateTargetSizeModifierFromDimensions()
+        {
+            targetSizeModifier = CalculateTargetSizeModifierFromDimensions(lengthFoot, beamFoot);
         }
 
         [CreateProperty]

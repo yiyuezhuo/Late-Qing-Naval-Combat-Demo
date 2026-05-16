@@ -104,12 +104,6 @@
                                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69481491238912)"/>
                                         </Bindings>
                                     </ui:FloatField>
-                                    <ui:IntegerField label="Target Size">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="targetSizeModifier" binding-mode="TwoWay"/>
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69380098134016)"/>
-                                        </Bindings>
-                                    </ui:IntegerField>
                                     <ui:IntegerField label="Dmg Ctrl Rating">
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="damageControlRatingUnmodified" binding-mode="TwoWay"/>
@@ -118,13 +112,13 @@
                                     </ui:IntegerField>
                                     <ui:FloatField label="Length (foot)">
                                         <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="lengthFoot" binding-mode="TwoWay"/>
+                                            <ui:DataBinding property="value" data-source-path="lengthFootProp" binding-mode="TwoWay"/>
                                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(86174229762048)"/>
                                         </Bindings>
                                     </ui:FloatField>
                                     <ui:FloatField label="Beam (foot)">
                                         <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="beamFoot" binding-mode="TwoWay"/>
+                                            <ui:DataBinding property="value" data-source-path="beamFootProp" binding-mode="TwoWay"/>
                                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(86429511880704)"/>
                                         </Bindings>
                                     </ui:FloatField>
@@ -134,6 +128,12 @@
                                             <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(86574546718720)"/>
                                         </Bindings>
                                     </ui:FloatField>
+                                    <ui:IntegerField label="Target Size">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="targetSizeModifier" binding-mode="TwoWay"/>
+                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69380098134016)"/>
+                                        </Bindings>
+                                    </ui:IntegerField>
                                     <ui:IntegerField label="Complement (men)">
                                         <Bindings>
                                             <ui:DataBinding property="value" data-source-path="complementMen" binding-mode="TwoWay"/>

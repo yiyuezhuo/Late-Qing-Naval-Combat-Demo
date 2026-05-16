@@ -16,16 +16,51 @@ using UnityEngine.Localization;
 using GeographicLib;
 using YYZ;
 
-public class ScenarioPickerDialog // ScenarioPicker's root data source
+public class ScenarioPickerDialog : INotifyBindablePropertyChanged // ScenarioPicker's root data source
 {
     public List<string> scenarioNames = new();
 
-    public string currentDescription;
+    string _currentDescription;
+    NavalGameState _currentGameState;
+
+    public event EventHandler<BindablePropertyChangedEventArgs> propertyChanged;
+
+    [CreateProperty]
+    public string currentDescription
+    {
+        get => _currentDescription;
+        set
+        {
+            if (_currentDescription == value)
+                return;
+            _currentDescription = value;
+            Notify(nameof(currentDescription));
+        }
+    }
+
     public Action<string> callbackOnceScenarioNameGet;
-    public NavalGameState currentGameState;
+
+    [CreateProperty]
+    public NavalGameState currentGameState
+    {
+        get => _currentGameState;
+        set
+        {
+            if (_currentGameState == value)
+                return;
+            _currentGameState = value;
+            Notify(nameof(currentGameState));
+        }
+    }
 
     static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
     static string LocalizeEnum<T>(T obj) => ServiceLocator.Get<ILocalizeService>().GetEnum(obj);
+
+    void Notify(string propertyName)
+    {
+        var bindingId = new BindingId(propertyName);
+        propertyChanged?.Invoke(this, new BindablePropertyChangedEventArgs(in bindingId));
+    }
 
     public void Bind(TempDialog tempDialog)
     {
@@ -35,6 +70,15 @@ public class ScenarioPickerDialog // ScenarioPicker's root data source
             Utils.BindItemsSourceRecursive(root);
 
             var scenarioListView = root.Q<ListView>("ScenarioListView");
+            var scenarioMarkdownRenderer = root.Q<MarkdownRenderer>("ScenarioInfoMarkdownRenderer");
+            var scenarioPreviewPanel = root.Q<VisualElement>("ScenarioPreviewPanel");
+
+            void SetCurrentDescription(string markdown)
+            {
+                currentDescription = markdown;
+                scenarioMarkdownRenderer?.SetMarkdownWithoutNotify(currentDescription);
+            }
+
             scenarioListView.selectionChanged += (IEnumerable<object> objects) =>
             {
                 Debug.Log("scenarioListView.selectionChanged");
@@ -45,10 +89,13 @@ public class ScenarioPickerDialog // ScenarioPicker's root data source
                     var scenarioName = scenarioPath.Split("/").Last();
                     // Update information
                     // GameManager.Instance.StartLoadScenarioCoroutine(scenarioName);
-                    currentDescription = "Fetching Preview... " + scenarioName; // TODO: Show more informative data like side's deployed units.
+                    SetCurrentDescription($"_{Localize("Fetching Preview...")} {scenarioName}_"); // TODO: Show more informative data like side's deployed units.
                     DialogRoot.Instance.StartCoroutine(
                         StreamingAssetReference.Instance.FetchScenarioFile(scenarioName, fullStateStr =>
                         {
+                            if (!Equals(scenarioListView.selectedItem, scenarioPath))
+                                return;
+
                             var fullState = FullState.FromXML(fullStateStr);
                             var shipCount = fullState.navalGameState.shipLogs.Count(s => s.mapState == MapState.Deployed);
                             var dateTimeUTC = fullState.navalGameState.scenarioState.dateTime;
@@ -61,33 +108,37 @@ public class ScenarioPickerDialog // ScenarioPicker's root data source
                             // var dateTimeLocal = fullState.navalGameState.scenarioState.GetLocalDateTime(centerLon);
                             var lines = new List<string>()
                             {
-                                scenarioName,
-                                Localize("Begin UTC Time: {0}", dateTimeUTC),
-                                Localize("Begin Local DateTime: {0}", ScenarioState.GetLocalDateTimeOffset(centerLon, dateTimeUTC)),
+                                $"# {scenarioName}",
+                                "",
+                                $"- {Localize("Begin UTC Time: {0}", dateTimeUTC)}",
+                                $"- {Localize("Begin Local DateTime: {0}", ScenarioState.GetLocalDateTimeOffset(centerLon, dateTimeUTC))}",
                             };
                             if(fullState.navalGameState.scenarioState.hasEndDateTime)
                             {
                                 var endDateTimeUTC = fullState.navalGameState.scenarioState.endDateTime;
                                 lines.AddRange(new List<string>()
                                 {
-                                    Localize("End UTC DateTime: {0}", endDateTimeUTC),
-                                    Localize("End Local DateTime: {0}", ScenarioState.GetLocalDateTimeOffset(centerLon, endDateTimeUTC)),
+                                    $"- {Localize("End UTC DateTime: {0}", endDateTimeUTC)}",
+                                    $"- {Localize("End Local DateTime: {0}", ScenarioState.GetLocalDateTimeOffset(centerLon, endDateTimeUTC))}",
                                 });
                             }
                             lines.AddRange(new List<string>()
                             {
-                                Localize("Ship Count (On Map): {0}", shipCount),
-                                Localize("Latitude: {0}, Longtitude: {1}", centerLat, centerLon),
-                                Localize("Visibility: {0}", LocalizeEnum(fullState.navalGameState.scenarioState.visibility)),
-                                Localize("Sea State (Beaufort): {0}", fullState.navalGameState.scenarioState.seaStateBeaufort),
-                                Localize("Description:"),
+                                $"- {Localize("Ship Count (On Map): {0}", shipCount)}",
+                                $"- {Localize("Latitude: {0}, Longtitude: {1}", centerLat, centerLon)}",
+                                $"- {Localize("Visibility: {0}", LocalizeEnum(fullState.navalGameState.scenarioState.visibility))}",
+                                $"- {Localize("Sea State (Beaufort): {0}", fullState.navalGameState.scenarioState.seaStateBeaufort)}",
+                                "",
+                                $"## {Localize("Description:")}",
+                                "",
                                 // fullState.navalGameState.scenarioState.description
                                 fullState.navalGameState.scenarioState.globalDescription.GetShortName()
                             });
-                            currentDescription = string.Join("\n", lines);
+                            SetCurrentDescription(string.Join("\n", lines));
 
                             // currentBackground = fullState.navalGameState.scenarioState.backgroundPictureReference.pictureStyleBackground;
                             currentGameState = fullState.navalGameState;
+                            scenarioPreviewPanel.style.backgroundImage = currentGameState.scenarioState.backgroundPictureReference.pictureStyleBackground;
                         })
                     );
                 }

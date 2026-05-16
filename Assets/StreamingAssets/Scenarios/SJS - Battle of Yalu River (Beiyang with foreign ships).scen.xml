@@ -262,17 +262,25 @@
     <searchLightHits>
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
+     <portEnabled>false</portEnabled>
+     <portDirectionDeg>180</portDirectionDeg>
+     <starboardEnabled>false</starboardEnabled>
+     <starboardDirectionDeg>0</starboardDirectionDeg>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>Independent</controlMode>
+    <manualRoute />
     <followDistanceYards>500</followDistanceYards>
     <relativeTargetObjectId>0</relativeTargetObjectId>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>12</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>70</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -285,17 +293,25 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
+    <autoReattachAfterRepair>false</autoReattachAfterRepair>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <loadedGroups />
     <repairPriority>0</repairPriority>
+    <portSearchlightHits>0</portSearchlightHits>
+    <starboardSearchlightHits>0</starboardSearchlightHits>
+    <portSearchlightEnabled>false</portSearchlightEnabled>
+    <portSearchlightDirectionDeg>180</portSearchlightDirectionDeg>
+    <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
+    <starboardSearchlightDirectionDeg>0</starboardSearchlightDirectionDeg>
     <parentObjectId>bbdf7768-050f-4eb8-8bfb-49e92d81ffbf</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -306,6 +322,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -314,6 +334,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -344,7 +372,10 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>b7241e0d-4ccf-43b2-abdf-d4a5988ae39d</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <enableAutoReattachProp>false</enableAutoReattachProp>
+    <parentGroupReference />
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -571,18 +602,26 @@
     <searchLightHits>
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
+     <portEnabled>false</portEnabled>
+     <portDirectionDeg>180</portDirectionDeg>
+     <starboardEnabled>false</starboardEnabled>
+     <starboardDirectionDeg>0</starboardDirectionDeg>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
+    <manualRoute />
     <followedTargetObjectId>25623a6b-a217-4e49-baca-6ea3b7c782a6</followedTargetObjectId>
     <followDistanceYards>500</followDistanceYards>
     <relativeTargetObjectId>0</relativeTargetObjectId>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>12</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>70</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -595,17 +634,25 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
+    <autoReattachAfterRepair>false</autoReattachAfterRepair>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <loadedGroups />
     <repairPriority>0</repairPriority>
+    <portSearchlightHits>0</portSearchlightHits>
+    <starboardSearchlightHits>0</starboardSearchlightHits>
+    <portSearchlightEnabled>false</portSearchlightEnabled>
+    <portSearchlightDirectionDeg>180</portSearchlightDirectionDeg>
+    <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
+    <starboardSearchlightDirectionDeg>0</starboardSearchlightDirectionDeg>
     <parentObjectId>bbdf7768-050f-4eb8-8bfb-49e92d81ffbf</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -616,6 +663,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -624,6 +675,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -654,7 +713,10 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>6061b071-5b11-4907-93fd-6b7fccffc181</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <enableAutoReattachProp>false</enableAutoReattachProp>
+    <parentGroupReference />
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -863,18 +925,26 @@
     <searchLightHits>
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
+     <portEnabled>false</portEnabled>
+     <portDirectionDeg>180</portDirectionDeg>
+     <starboardEnabled>false</starboardEnabled>
+     <starboardDirectionDeg>0</starboardDirectionDeg>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
+    <manualRoute />
     <followedTargetObjectId>01092b52-c42d-4f06-9f4e-57762a39aeba</followedTargetObjectId>
     <followDistanceYards>500</followDistanceYards>
     <relativeTargetObjectId>0</relativeTargetObjectId>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>12</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>70</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -887,17 +957,25 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
+    <autoReattachAfterRepair>false</autoReattachAfterRepair>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <loadedGroups />
     <repairPriority>0</repairPriority>
+    <portSearchlightHits>0</portSearchlightHits>
+    <starboardSearchlightHits>0</starboardSearchlightHits>
+    <portSearchlightEnabled>false</portSearchlightEnabled>
+    <portSearchlightDirectionDeg>180</portSearchlightDirectionDeg>
+    <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
+    <starboardSearchlightDirectionDeg>0</starboardSearchlightDirectionDeg>
     <parentObjectId>bbdf7768-050f-4eb8-8bfb-49e92d81ffbf</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -908,6 +986,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -916,6 +998,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -946,7 +1036,10 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>9a91de81-a3c4-4dca-a0a2-9261c317bb96</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <enableAutoReattachProp>false</enableAutoReattachProp>
+    <parentGroupReference />
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -1094,17 +1187,25 @@
     <searchLightHits>
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
+     <portEnabled>false</portEnabled>
+     <portDirectionDeg>180</portDirectionDeg>
+     <starboardEnabled>false</starboardEnabled>
+     <starboardDirectionDeg>0</starboardDirectionDeg>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
+    <manualRoute />
     <followedTargetObjectId>3ecfd394-30a5-45af-95be-f83b75d246b2</followedTargetObjectId>
     <followDistanceYards>500</followDistanceYards>
     <relativeToTargetDistanceYards>500</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>225</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>8</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>240</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -1117,17 +1218,25 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
+    <autoReattachAfterRepair>false</autoReattachAfterRepair>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <loadedGroups />
     <repairPriority>0</repairPriority>
+    <portSearchlightHits>0</portSearchlightHits>
+    <starboardSearchlightHits>0</starboardSearchlightHits>
+    <portSearchlightEnabled>false</portSearchlightEnabled>
+    <portSearchlightDirectionDeg>180</portSearchlightDirectionDeg>
+    <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
+    <starboardSearchlightDirectionDeg>0</starboardSearchlightDirectionDeg>
     <parentObjectId>a819def6-c727-4538-8e0e-625daaa44c93</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -1138,6 +1247,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -1146,6 +1259,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -1176,7 +1297,10 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>3d21b4b9-44bf-434c-9318-91a287b84c00</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <enableAutoReattachProp>false</enableAutoReattachProp>
+    <parentGroupReference />
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -1340,17 +1464,25 @@
     <searchLightHits>
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
+     <portEnabled>false</portEnabled>
+     <portDirectionDeg>180</portDirectionDeg>
+     <starboardEnabled>false</starboardEnabled>
+     <starboardDirectionDeg>0</starboardDirectionDeg>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
+    <manualRoute />
     <followedTargetObjectId>c8a76edb-7330-4ef4-a115-2f468df23494</followedTargetObjectId>
     <followDistanceYards>500</followDistanceYards>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>8</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>240</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -1363,17 +1495,25 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
+    <autoReattachAfterRepair>false</autoReattachAfterRepair>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <loadedGroups />
     <repairPriority>0</repairPriority>
+    <portSearchlightHits>0</portSearchlightHits>
+    <starboardSearchlightHits>0</starboardSearchlightHits>
+    <portSearchlightEnabled>false</portSearchlightEnabled>
+    <portSearchlightDirectionDeg>180</portSearchlightDirectionDeg>
+    <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
+    <starboardSearchlightDirectionDeg>0</starboardSearchlightDirectionDeg>
     <parentObjectId>a819def6-c727-4538-8e0e-625daaa44c93</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -1384,6 +1524,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -1392,6 +1536,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -1422,7 +1574,10 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>f3960039-be8e-488a-a10b-ee1b4d5c1b61</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <enableAutoReattachProp>false</enableAutoReattachProp>
+    <parentGroupReference />
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -1586,17 +1741,25 @@
     <searchLightHits>
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
+     <portEnabled>false</portEnabled>
+     <portDirectionDeg>180</portDirectionDeg>
+     <starboardEnabled>false</starboardEnabled>
+     <starboardDirectionDeg>0</starboardDirectionDeg>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>Independent</controlMode>
+    <manualRoute />
     <followDistanceYards>500</followDistanceYards>
     <relativeTargetObjectId>0</relativeTargetObjectId>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>8</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>240</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -1609,17 +1772,25 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
+    <autoReattachAfterRepair>false</autoReattachAfterRepair>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <loadedGroups />
     <repairPriority>0</repairPriority>
+    <portSearchlightHits>0</portSearchlightHits>
+    <starboardSearchlightHits>0</starboardSearchlightHits>
+    <portSearchlightEnabled>false</portSearchlightEnabled>
+    <portSearchlightDirectionDeg>180</portSearchlightDirectionDeg>
+    <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
+    <starboardSearchlightDirectionDeg>0</starboardSearchlightDirectionDeg>
     <parentObjectId>a819def6-c727-4538-8e0e-625daaa44c93</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -1630,6 +1801,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -1638,6 +1813,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -1668,7 +1851,10 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>d072f018-955e-4ad9-8572-dba0775c2740</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <enableAutoReattachProp>false</enableAutoReattachProp>
+    <parentGroupReference />
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -1822,17 +2008,25 @@
     <searchLightHits>
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
+     <portEnabled>false</portEnabled>
+     <portDirectionDeg>180</portDirectionDeg>
+     <starboardEnabled>false</starboardEnabled>
+     <starboardDirectionDeg>0</starboardDirectionDeg>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
+    <manualRoute />
     <followedTargetObjectId>6a20093b-9f39-47fd-972f-49eaaefaf1d5</followedTargetObjectId>
     <followDistanceYards>500</followDistanceYards>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>8</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>240</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -1845,17 +2039,25 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
+    <autoReattachAfterRepair>false</autoReattachAfterRepair>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <loadedGroups />
     <repairPriority>0</repairPriority>
+    <portSearchlightHits>0</portSearchlightHits>
+    <starboardSearchlightHits>0</starboardSearchlightHits>
+    <portSearchlightEnabled>false</portSearchlightEnabled>
+    <portSearchlightDirectionDeg>180</portSearchlightDirectionDeg>
+    <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
+    <starboardSearchlightDirectionDeg>0</starboardSearchlightDirectionDeg>
     <parentObjectId>a819def6-c727-4538-8e0e-625daaa44c93</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -1866,6 +2068,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -1874,6 +2080,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -1904,7 +2118,10 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>aa66cd17-d38e-481b-a0a7-e17ed0fd1437</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <enableAutoReattachProp>false</enableAutoReattachProp>
+    <parentGroupReference />
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -2058,17 +2275,25 @@
     <searchLightHits>
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
+     <portEnabled>false</portEnabled>
+     <portDirectionDeg>180</portDirectionDeg>
+     <starboardEnabled>false</starboardEnabled>
+     <starboardDirectionDeg>0</starboardDirectionDeg>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
+    <manualRoute />
     <followedTargetObjectId>370f72b3-2243-44ff-ab42-e08d3c6d273c</followedTargetObjectId>
     <followDistanceYards>500</followDistanceYards>
     <relativeToTargetDistanceYards>500</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>8</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>240</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -2081,17 +2306,25 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
+    <autoReattachAfterRepair>false</autoReattachAfterRepair>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <loadedGroups />
     <repairPriority>0</repairPriority>
+    <portSearchlightHits>0</portSearchlightHits>
+    <starboardSearchlightHits>0</starboardSearchlightHits>
+    <portSearchlightEnabled>false</portSearchlightEnabled>
+    <portSearchlightDirectionDeg>180</portSearchlightDirectionDeg>
+    <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
+    <starboardSearchlightDirectionDeg>0</starboardSearchlightDirectionDeg>
     <parentObjectId>a819def6-c727-4538-8e0e-625daaa44c93</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -2102,6 +2335,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -2110,6 +2347,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -2140,7 +2385,10 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>8d7c1f7d-94b0-4a04-98db-dcfeeae352b3</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <enableAutoReattachProp>false</enableAutoReattachProp>
+    <parentGroupReference />
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -2306,17 +2554,25 @@
     <searchLightHits>
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
+     <portEnabled>false</portEnabled>
+     <portDirectionDeg>180</portDirectionDeg>
+     <starboardEnabled>false</starboardEnabled>
+     <starboardDirectionDeg>0</starboardDirectionDeg>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
+    <manualRoute />
     <followedTargetObjectId>00fb2b34-3d37-444b-9041-e8540c9304d1</followedTargetObjectId>
     <followDistanceYards>500</followDistanceYards>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>8</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>240</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -2329,17 +2585,25 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
+    <autoReattachAfterRepair>false</autoReattachAfterRepair>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <loadedGroups />
     <repairPriority>0</repairPriority>
+    <portSearchlightHits>0</portSearchlightHits>
+    <starboardSearchlightHits>0</starboardSearchlightHits>
+    <portSearchlightEnabled>false</portSearchlightEnabled>
+    <portSearchlightDirectionDeg>180</portSearchlightDirectionDeg>
+    <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
+    <starboardSearchlightDirectionDeg>0</starboardSearchlightDirectionDeg>
     <parentObjectId>a819def6-c727-4538-8e0e-625daaa44c93</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -2350,6 +2614,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -2358,6 +2626,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -2388,7 +2664,10 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>23a18325-18ef-46cb-8752-2504d7943ca7</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <enableAutoReattachProp>false</enableAutoReattachProp>
+    <parentGroupReference />
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -2554,17 +2833,25 @@
     <searchLightHits>
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
+     <portEnabled>false</portEnabled>
+     <portDirectionDeg>180</portDirectionDeg>
+     <starboardEnabled>false</starboardEnabled>
+     <starboardDirectionDeg>0</starboardDirectionDeg>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
+    <manualRoute />
     <followedTargetObjectId>b5dfd87e-cb47-4a4b-abba-affa96e356c4</followedTargetObjectId>
     <followDistanceYards>500</followDistanceYards>
     <relativeToTargetDistanceYards>500</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>225</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>8</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>240</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -2577,17 +2864,25 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
+    <autoReattachAfterRepair>false</autoReattachAfterRepair>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <loadedGroups />
     <repairPriority>0</repairPriority>
+    <portSearchlightHits>0</portSearchlightHits>
+    <starboardSearchlightHits>0</starboardSearchlightHits>
+    <portSearchlightEnabled>false</portSearchlightEnabled>
+    <portSearchlightDirectionDeg>180</portSearchlightDirectionDeg>
+    <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
+    <starboardSearchlightDirectionDeg>0</starboardSearchlightDirectionDeg>
     <parentObjectId>a819def6-c727-4538-8e0e-625daaa44c93</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -2598,6 +2893,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -2606,6 +2905,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -2636,7 +2943,10 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>56185056-05af-40b0-836b-9e932169a0e8</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <enableAutoReattachProp>false</enableAutoReattachProp>
+    <parentGroupReference />
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -2783,17 +3093,25 @@
     <searchLightHits>
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
+     <portEnabled>false</portEnabled>
+     <portDirectionDeg>180</portDirectionDeg>
+     <starboardEnabled>false</starboardEnabled>
+     <starboardDirectionDeg>0</starboardDirectionDeg>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
+    <manualRoute />
     <followedTargetObjectId>a55bdec2-a47a-4d2b-af3c-9588a875e58c</followedTargetObjectId>
     <followDistanceYards>500</followDistanceYards>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>8</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>240</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -2806,17 +3124,25 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
+    <autoReattachAfterRepair>false</autoReattachAfterRepair>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <loadedGroups />
     <repairPriority>0</repairPriority>
+    <portSearchlightHits>0</portSearchlightHits>
+    <starboardSearchlightHits>0</starboardSearchlightHits>
+    <portSearchlightEnabled>false</portSearchlightEnabled>
+    <portSearchlightDirectionDeg>180</portSearchlightDirectionDeg>
+    <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
+    <starboardSearchlightDirectionDeg>0</starboardSearchlightDirectionDeg>
     <parentObjectId>a819def6-c727-4538-8e0e-625daaa44c93</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -2827,6 +3153,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -2835,6 +3165,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -2865,7 +3203,10 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>8e31deee-c81b-430b-a468-f5b77fa8b5f3</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <enableAutoReattachProp>false</enableAutoReattachProp>
+    <parentGroupReference />
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -3012,17 +3353,25 @@
     <searchLightHits>
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
+     <portEnabled>false</portEnabled>
+     <portDirectionDeg>180</portDirectionDeg>
+     <starboardEnabled>false</starboardEnabled>
+     <starboardDirectionDeg>0</starboardDirectionDeg>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
+    <manualRoute />
     <followedTargetObjectId>61f04aed-26e0-4495-bd04-344f5d223de1</followedTargetObjectId>
     <followDistanceYards>500</followDistanceYards>
     <relativeToTargetDistanceYards>500</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>8</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>240</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -3035,17 +3384,25 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
+    <autoReattachAfterRepair>false</autoReattachAfterRepair>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <loadedGroups />
     <repairPriority>0</repairPriority>
+    <portSearchlightHits>0</portSearchlightHits>
+    <starboardSearchlightHits>0</starboardSearchlightHits>
+    <portSearchlightEnabled>false</portSearchlightEnabled>
+    <portSearchlightDirectionDeg>180</portSearchlightDirectionDeg>
+    <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
+    <starboardSearchlightDirectionDeg>0</starboardSearchlightDirectionDeg>
     <parentObjectId>a819def6-c727-4538-8e0e-625daaa44c93</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -3056,6 +3413,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -3064,6 +3425,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -3094,7 +3463,10 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>f1f6df32-35f8-4eab-b279-00a1f4c97ba6</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <enableAutoReattachProp>false</enableAutoReattachProp>
+    <parentGroupReference />
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -3241,18 +3613,26 @@
     <searchLightHits>
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
+     <portEnabled>false</portEnabled>
+     <portDirectionDeg>180</portDirectionDeg>
+     <starboardEnabled>false</starboardEnabled>
+     <starboardDirectionDeg>0</starboardDirectionDeg>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
+    <manualRoute />
     <followedTargetObjectId>59969f6c-ed18-4e48-84d2-0b43c3e8ac74</followedTargetObjectId>
     <followDistanceYards>500</followDistanceYards>
     <relativeTargetObjectId>0</relativeTargetObjectId>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>8</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>240</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -3265,17 +3645,25 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
+    <autoReattachAfterRepair>false</autoReattachAfterRepair>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <loadedGroups />
     <repairPriority>0</repairPriority>
+    <portSearchlightHits>0</portSearchlightHits>
+    <starboardSearchlightHits>0</starboardSearchlightHits>
+    <portSearchlightEnabled>false</portSearchlightEnabled>
+    <portSearchlightDirectionDeg>180</portSearchlightDirectionDeg>
+    <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
+    <starboardSearchlightDirectionDeg>0</starboardSearchlightDirectionDeg>
     <parentObjectId>a819def6-c727-4538-8e0e-625daaa44c93</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -3286,6 +3674,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -3294,6 +3686,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -3324,7 +3724,10 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>18c097ed-9ca1-4988-b030-71d8799b5b46</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <enableAutoReattachProp>false</enableAutoReattachProp>
+    <parentGroupReference />
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -3462,17 +3865,25 @@
     <searchLightHits>
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
+     <portEnabled>false</portEnabled>
+     <portDirectionDeg>180</portDirectionDeg>
+     <starboardEnabled>false</starboardEnabled>
+     <starboardDirectionDeg>0</starboardDirectionDeg>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
+    <manualRoute />
     <followedTargetObjectId>feb28dc4-1640-4d42-bf66-b17ca2a1a46f</followedTargetObjectId>
     <followDistanceYards>500</followDistanceYards>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>8</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>240</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -3485,17 +3896,25 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
+    <autoReattachAfterRepair>false</autoReattachAfterRepair>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <loadedGroups />
     <repairPriority>0</repairPriority>
+    <portSearchlightHits>0</portSearchlightHits>
+    <starboardSearchlightHits>0</starboardSearchlightHits>
+    <portSearchlightEnabled>false</portSearchlightEnabled>
+    <portSearchlightDirectionDeg>180</portSearchlightDirectionDeg>
+    <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
+    <starboardSearchlightDirectionDeg>0</starboardSearchlightDirectionDeg>
     <parentObjectId>a819def6-c727-4538-8e0e-625daaa44c93</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -3506,6 +3925,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -3514,6 +3937,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -3544,7 +3975,10 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>f35a689e-d7d0-4865-aab1-47ca01f30a36</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <enableAutoReattachProp>false</enableAutoReattachProp>
+    <parentGroupReference />
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -3728,18 +4162,26 @@
     <searchLightHits>
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
+     <portEnabled>false</portEnabled>
+     <portDirectionDeg>180</portDirectionDeg>
+     <starboardEnabled>false</starboardEnabled>
+     <starboardDirectionDeg>0</starboardDirectionDeg>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
+    <manualRoute />
     <followedTargetObjectId>3e705d71-1239-4963-8946-2aa151d5e57f</followedTargetObjectId>
     <followDistanceYards>500</followDistanceYards>
     <relativeTargetObjectId>0</relativeTargetObjectId>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>12</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>70</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -3752,17 +4194,25 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
+    <autoReattachAfterRepair>false</autoReattachAfterRepair>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <loadedGroups />
     <repairPriority>0</repairPriority>
+    <portSearchlightHits>0</portSearchlightHits>
+    <starboardSearchlightHits>0</starboardSearchlightHits>
+    <portSearchlightEnabled>false</portSearchlightEnabled>
+    <portSearchlightDirectionDeg>180</portSearchlightDirectionDeg>
+    <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
+    <starboardSearchlightDirectionDeg>0</starboardSearchlightDirectionDeg>
     <parentObjectId>55b05b8e-c4bc-4392-8988-b098825b3ad0</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -3773,6 +4223,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -3781,6 +4235,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -3811,7 +4273,10 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>9085ea81-17bf-4ae4-93a4-013acd130c4c</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <enableAutoReattachProp>false</enableAutoReattachProp>
+    <parentGroupReference />
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -4065,18 +4530,26 @@
     <searchLightHits>
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
+     <portEnabled>false</portEnabled>
+     <portDirectionDeg>180</portDirectionDeg>
+     <starboardEnabled>false</starboardEnabled>
+     <starboardDirectionDeg>0</starboardDirectionDeg>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
+    <manualRoute />
     <followedTargetObjectId>1180b828-a3da-4927-ae6a-ea21c6c5c1be</followedTargetObjectId>
     <followDistanceYards>500</followDistanceYards>
     <relativeTargetObjectId>0</relativeTargetObjectId>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>12</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>70</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -4089,17 +4562,25 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
+    <autoReattachAfterRepair>false</autoReattachAfterRepair>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <loadedGroups />
     <repairPriority>0</repairPriority>
+    <portSearchlightHits>0</portSearchlightHits>
+    <starboardSearchlightHits>0</starboardSearchlightHits>
+    <portSearchlightEnabled>false</portSearchlightEnabled>
+    <portSearchlightDirectionDeg>180</portSearchlightDirectionDeg>
+    <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
+    <starboardSearchlightDirectionDeg>0</starboardSearchlightDirectionDeg>
     <parentObjectId>55b05b8e-c4bc-4392-8988-b098825b3ad0</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -4110,6 +4591,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -4118,6 +4603,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -4148,7 +4641,10 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>ecf0ac0d-69d5-4700-bdea-b5e2136060e6</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <enableAutoReattachProp>false</enableAutoReattachProp>
+    <parentGroupReference />
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -4402,18 +4898,26 @@
     <searchLightHits>
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
+     <portEnabled>false</portEnabled>
+     <portDirectionDeg>180</portDirectionDeg>
+     <starboardEnabled>false</starboardEnabled>
+     <starboardDirectionDeg>0</starboardDirectionDeg>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
+    <manualRoute />
     <followedTargetObjectId>8c1e5af6-3f33-4f97-8f94-5d8a63785c28</followedTargetObjectId>
     <followDistanceYards>500</followDistanceYards>
     <relativeTargetObjectId>0</relativeTargetObjectId>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>12</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>70</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -4426,17 +4930,25 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
+    <autoReattachAfterRepair>false</autoReattachAfterRepair>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <loadedGroups />
     <repairPriority>0</repairPriority>
+    <portSearchlightHits>0</portSearchlightHits>
+    <starboardSearchlightHits>0</starboardSearchlightHits>
+    <portSearchlightEnabled>false</portSearchlightEnabled>
+    <portSearchlightDirectionDeg>180</portSearchlightDirectionDeg>
+    <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
+    <starboardSearchlightDirectionDeg>0</starboardSearchlightDirectionDeg>
     <parentObjectId>55b05b8e-c4bc-4392-8988-b098825b3ad0</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -4447,6 +4959,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -4455,6 +4971,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -4485,7 +5009,10 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>2aa90b55-062a-40cc-a4aa-f65dba83fd6f</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <enableAutoReattachProp>false</enableAutoReattachProp>
+    <parentGroupReference />
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -4678,18 +5205,26 @@
     <searchLightHits>
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
+     <portEnabled>false</portEnabled>
+     <portDirectionDeg>180</portDirectionDeg>
+     <starboardEnabled>false</starboardEnabled>
+     <starboardDirectionDeg>0</starboardDirectionDeg>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
+    <manualRoute />
     <followedTargetObjectId>10ae7cc2-8728-40b6-9d4b-4f06087918c6</followedTargetObjectId>
     <followDistanceYards>500</followDistanceYards>
     <relativeTargetObjectId>0</relativeTargetObjectId>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>12</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>70</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -4702,17 +5237,25 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
+    <autoReattachAfterRepair>false</autoReattachAfterRepair>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <loadedGroups />
     <repairPriority>0</repairPriority>
+    <portSearchlightHits>0</portSearchlightHits>
+    <starboardSearchlightHits>0</starboardSearchlightHits>
+    <portSearchlightEnabled>false</portSearchlightEnabled>
+    <portSearchlightDirectionDeg>180</portSearchlightDirectionDeg>
+    <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
+    <starboardSearchlightDirectionDeg>0</starboardSearchlightDirectionDeg>
     <parentObjectId>55b05b8e-c4bc-4392-8988-b098825b3ad0</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -4723,6 +5266,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -4731,6 +5278,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -4761,7 +5316,10 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>9f04fda1-475d-4a2d-af55-ba993f584908</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <enableAutoReattachProp>false</enableAutoReattachProp>
+    <parentGroupReference />
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -5024,17 +5582,25 @@
     <searchLightHits>
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
+     <portEnabled>false</portEnabled>
+     <portDirectionDeg>180</portDirectionDeg>
+     <starboardEnabled>false</starboardEnabled>
+     <starboardDirectionDeg>0</starboardDirectionDeg>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>Independent</controlMode>
+    <manualRoute />
     <followDistanceYards>500</followDistanceYards>
     <relativeTargetObjectId>0</relativeTargetObjectId>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>12</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>70</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -5047,17 +5613,25 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
+    <autoReattachAfterRepair>false</autoReattachAfterRepair>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <loadedGroups />
     <repairPriority>0</repairPriority>
+    <portSearchlightHits>0</portSearchlightHits>
+    <starboardSearchlightHits>0</starboardSearchlightHits>
+    <portSearchlightEnabled>false</portSearchlightEnabled>
+    <portSearchlightDirectionDeg>180</portSearchlightDirectionDeg>
+    <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
+    <starboardSearchlightDirectionDeg>0</starboardSearchlightDirectionDeg>
     <parentObjectId>55b05b8e-c4bc-4392-8988-b098825b3ad0</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -5068,6 +5642,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -5076,6 +5654,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -5106,7 +5692,10 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>e9182ab6-47e1-463d-89ed-296108dbb64c</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <enableAutoReattachProp>false</enableAutoReattachProp>
+    <parentGroupReference />
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -5315,18 +5904,26 @@
     <searchLightHits>
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
+     <portEnabled>false</portEnabled>
+     <portDirectionDeg>180</portDirectionDeg>
+     <starboardEnabled>false</starboardEnabled>
+     <starboardDirectionDeg>0</starboardDirectionDeg>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
+    <manualRoute />
     <followedTargetObjectId>cf6393ee-7cbe-4a15-93ce-eb53bc18ada8</followedTargetObjectId>
     <followDistanceYards>500</followDistanceYards>
     <relativeTargetObjectId>0</relativeTargetObjectId>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>12</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>70</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -5339,17 +5936,25 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
+    <autoReattachAfterRepair>false</autoReattachAfterRepair>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <loadedGroups />
     <repairPriority>0</repairPriority>
+    <portSearchlightHits>0</portSearchlightHits>
+    <starboardSearchlightHits>0</starboardSearchlightHits>
+    <portSearchlightEnabled>false</portSearchlightEnabled>
+    <portSearchlightDirectionDeg>180</portSearchlightDirectionDeg>
+    <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
+    <starboardSearchlightDirectionDeg>0</starboardSearchlightDirectionDeg>
     <parentObjectId>bbdf7768-050f-4eb8-8bfb-49e92d81ffbf</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -5360,6 +5965,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -5368,6 +5977,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -5398,7 +6015,10 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>4f90da80-3508-40be-8547-46b48fae1a9e</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <enableAutoReattachProp>false</enableAutoReattachProp>
+    <parentGroupReference />
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -5594,18 +6214,26 @@
     <searchLightHits>
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
+     <portEnabled>false</portEnabled>
+     <portDirectionDeg>180</portDirectionDeg>
+     <starboardEnabled>false</starboardEnabled>
+     <starboardDirectionDeg>0</starboardDirectionDeg>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
+    <manualRoute />
     <followedTargetObjectId>e1f10636-ab79-4b42-8316-c3a533f31512</followedTargetObjectId>
     <followDistanceYards>500</followDistanceYards>
     <relativeTargetObjectId>0</relativeTargetObjectId>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>12</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>70</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -5618,17 +6246,25 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
+    <autoReattachAfterRepair>false</autoReattachAfterRepair>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <loadedGroups />
     <repairPriority>0</repairPriority>
+    <portSearchlightHits>0</portSearchlightHits>
+    <starboardSearchlightHits>0</starboardSearchlightHits>
+    <portSearchlightEnabled>false</portSearchlightEnabled>
+    <portSearchlightDirectionDeg>180</portSearchlightDirectionDeg>
+    <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
+    <starboardSearchlightDirectionDeg>0</starboardSearchlightDirectionDeg>
     <parentObjectId>55b05b8e-c4bc-4392-8988-b098825b3ad0</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -5639,6 +6275,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -5647,6 +6287,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -5677,7 +6325,10 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>19830381-029b-4eed-9868-11c030719667</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <enableAutoReattachProp>false</enableAutoReattachProp>
+    <parentGroupReference />
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -5812,18 +6463,26 @@
     <searchLightHits>
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
+     <portEnabled>false</portEnabled>
+     <portDirectionDeg>180</portDirectionDeg>
+     <starboardEnabled>false</starboardEnabled>
+     <starboardDirectionDeg>0</starboardDirectionDeg>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
+    <manualRoute />
     <followedTargetObjectId>9ad21ac1-2365-4f33-bfa9-fee5f27b965a</followedTargetObjectId>
     <followDistanceYards>500</followDistanceYards>
     <relativeTargetObjectId>0</relativeTargetObjectId>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>8</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>240</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -5836,17 +6495,25 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
+    <autoReattachAfterRepair>false</autoReattachAfterRepair>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <loadedGroups />
     <repairPriority>0</repairPriority>
+    <portSearchlightHits>0</portSearchlightHits>
+    <starboardSearchlightHits>0</starboardSearchlightHits>
+    <portSearchlightEnabled>false</portSearchlightEnabled>
+    <portSearchlightDirectionDeg>180</portSearchlightDirectionDeg>
+    <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
+    <starboardSearchlightDirectionDeg>0</starboardSearchlightDirectionDeg>
     <parentObjectId>a819def6-c727-4538-8e0e-625daaa44c93</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -5857,6 +6524,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -5865,6 +6536,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -5895,7 +6574,10 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>8cfb8f35-393d-4407-b467-2c82f90e7b07</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <enableAutoReattachProp>false</enableAutoReattachProp>
+    <parentGroupReference />
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -6006,18 +6688,26 @@
     <searchLightHits>
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
+     <portEnabled>false</portEnabled>
+     <portDirectionDeg>180</portDirectionDeg>
+     <starboardEnabled>false</starboardEnabled>
+     <starboardDirectionDeg>0</starboardDirectionDeg>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
+    <manualRoute />
     <followedTargetObjectId>c4bd2221-a6e2-4646-a59e-60c9e392a80b</followedTargetObjectId>
     <followDistanceYards>500</followDistanceYards>
     <relativeTargetObjectId>0</relativeTargetObjectId>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>12</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>70</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -6030,17 +6720,25 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
+    <autoReattachAfterRepair>false</autoReattachAfterRepair>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <loadedGroups />
     <repairPriority>0</repairPriority>
+    <portSearchlightHits>0</portSearchlightHits>
+    <starboardSearchlightHits>0</starboardSearchlightHits>
+    <portSearchlightEnabled>false</portSearchlightEnabled>
+    <portSearchlightDirectionDeg>180</portSearchlightDirectionDeg>
+    <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
+    <starboardSearchlightDirectionDeg>0</starboardSearchlightDirectionDeg>
     <parentObjectId>325f3d53-3214-456c-9731-e8f8e22fea04</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -6051,6 +6749,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -6059,6 +6761,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -6089,7 +6799,10 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>0df6b3e4-4fe6-4581-9a91-73f3d31da9ac</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <enableAutoReattachProp>false</enableAutoReattachProp>
+    <parentGroupReference />
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -6169,17 +6882,25 @@
     <searchLightHits>
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
+     <portEnabled>false</portEnabled>
+     <portDirectionDeg>180</portDirectionDeg>
+     <starboardEnabled>false</starboardEnabled>
+     <starboardDirectionDeg>0</starboardDirectionDeg>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>Independent</controlMode>
+    <manualRoute />
     <followDistanceYards>500</followDistanceYards>
     <relativeTargetObjectId>0</relativeTargetObjectId>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>12</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>70</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -6192,17 +6913,25 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
+    <autoReattachAfterRepair>false</autoReattachAfterRepair>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <loadedGroups />
     <repairPriority>0</repairPriority>
+    <portSearchlightHits>0</portSearchlightHits>
+    <starboardSearchlightHits>0</starboardSearchlightHits>
+    <portSearchlightEnabled>false</portSearchlightEnabled>
+    <portSearchlightDirectionDeg>180</portSearchlightDirectionDeg>
+    <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
+    <starboardSearchlightDirectionDeg>0</starboardSearchlightDirectionDeg>
     <parentObjectId>325f3d53-3214-456c-9731-e8f8e22fea04</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -6213,6 +6942,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -6221,6 +6954,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -6251,7 +6992,10 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>47379286-703d-401f-8649-25853bbd2280</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <enableAutoReattachProp>false</enableAutoReattachProp>
+    <parentGroupReference />
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -6318,18 +7062,26 @@
     <searchLightHits>
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
+     <portEnabled>false</portEnabled>
+     <portDirectionDeg>180</portDirectionDeg>
+     <starboardEnabled>false</starboardEnabled>
+     <starboardDirectionDeg>0</starboardDirectionDeg>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
+    <manualRoute />
     <followedTargetObjectId>f134adc9-f5b7-4d86-88a9-27ecd13b70c8</followedTargetObjectId>
     <followDistanceYards>500</followDistanceYards>
     <relativeTargetObjectId>0</relativeTargetObjectId>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>10</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>240</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -6342,17 +7094,25 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
+    <autoReattachAfterRepair>false</autoReattachAfterRepair>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <loadedGroups />
     <repairPriority>0</repairPriority>
+    <portSearchlightHits>0</portSearchlightHits>
+    <starboardSearchlightHits>0</starboardSearchlightHits>
+    <portSearchlightEnabled>false</portSearchlightEnabled>
+    <portSearchlightDirectionDeg>180</portSearchlightDirectionDeg>
+    <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
+    <starboardSearchlightDirectionDeg>0</starboardSearchlightDirectionDeg>
     <parentObjectId>0a61c851-6c2e-4bc8-899a-4d7626b9e3a9</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -6363,6 +7123,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -6371,6 +7135,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -6401,7 +7173,10 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>f3bfd5b3-017e-4612-b1dd-9611df6de943</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <enableAutoReattachProp>false</enableAutoReattachProp>
+    <parentGroupReference />
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -6468,18 +7243,26 @@
     <searchLightHits>
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
+     <portEnabled>false</portEnabled>
+     <portDirectionDeg>180</portDirectionDeg>
+     <starboardEnabled>false</starboardEnabled>
+     <starboardDirectionDeg>0</starboardDirectionDeg>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>Independent</controlMode>
+    <manualRoute />
     <followedTargetObjectId>0cfda6a2-50de-48bf-8aa6-5338375327ef</followedTargetObjectId>
     <followDistanceYards>500</followDistanceYards>
     <relativeTargetObjectId>0</relativeTargetObjectId>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>10</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>240</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -6492,17 +7275,25 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
+    <autoReattachAfterRepair>false</autoReattachAfterRepair>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <loadedGroups />
     <repairPriority>0</repairPriority>
+    <portSearchlightHits>0</portSearchlightHits>
+    <starboardSearchlightHits>0</starboardSearchlightHits>
+    <portSearchlightEnabled>false</portSearchlightEnabled>
+    <portSearchlightDirectionDeg>180</portSearchlightDirectionDeg>
+    <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
+    <starboardSearchlightDirectionDeg>0</starboardSearchlightDirectionDeg>
     <parentObjectId>0a61c851-6c2e-4bc8-899a-4d7626b9e3a9</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -6513,6 +7304,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -6521,6 +7316,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -6551,7 +7354,10 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>092ed1ac-0faf-4f84-b708-53360fbcd60c</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <enableAutoReattachProp>false</enableAutoReattachProp>
+    <parentGroupReference />
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -6821,16 +7627,24 @@
     <searchLightHits>
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
+     <portEnabled>false</portEnabled>
+     <portDirectionDeg>180</portDirectionDeg>
+     <starboardEnabled>false</starboardEnabled>
+     <starboardDirectionDeg>0</starboardDirectionDeg>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>Independent</controlMode>
+    <manualRoute />
     <followDistanceYards>500</followDistanceYards>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>10</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>240</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -6843,17 +7657,25 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
+    <autoReattachAfterRepair>false</autoReattachAfterRepair>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <loadedGroups />
     <repairPriority>0</repairPriority>
+    <portSearchlightHits>0</portSearchlightHits>
+    <starboardSearchlightHits>0</starboardSearchlightHits>
+    <portSearchlightEnabled>false</portSearchlightEnabled>
+    <portSearchlightDirectionDeg>180</portSearchlightDirectionDeg>
+    <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
+    <starboardSearchlightDirectionDeg>0</starboardSearchlightDirectionDeg>
     <parentObjectId>02517e0a-672c-4fa7-bdd1-be4c17ab68c9</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -6864,6 +7686,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -6872,6 +7698,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -6902,7 +7736,10 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>074d857e-a809-4201-942d-e6a26143104e</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <enableAutoReattachProp>false</enableAutoReattachProp>
+    <parentGroupReference />
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -7111,17 +7948,25 @@
     <searchLightHits>
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
+     <portEnabled>false</portEnabled>
+     <portDirectionDeg>180</portDirectionDeg>
+     <starboardEnabled>false</starboardEnabled>
+     <starboardDirectionDeg>0</starboardDirectionDeg>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
+    <manualRoute />
     <followedTargetObjectId>c6a39890-2760-439d-851b-6def1d4d7018</followedTargetObjectId>
     <followDistanceYards>500</followDistanceYards>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>10</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>240</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -7134,17 +7979,25 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
+    <autoReattachAfterRepair>false</autoReattachAfterRepair>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <loadedGroups />
     <repairPriority>0</repairPriority>
+    <portSearchlightHits>0</portSearchlightHits>
+    <starboardSearchlightHits>0</starboardSearchlightHits>
+    <portSearchlightEnabled>false</portSearchlightEnabled>
+    <portSearchlightDirectionDeg>180</portSearchlightDirectionDeg>
+    <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
+    <starboardSearchlightDirectionDeg>0</starboardSearchlightDirectionDeg>
     <parentObjectId>02517e0a-672c-4fa7-bdd1-be4c17ab68c9</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -7155,6 +8008,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -7163,6 +8020,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -7193,7 +8058,10 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>0a774995-36ea-4be2-8883-21a5593f379c</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <enableAutoReattachProp>false</enableAutoReattachProp>
+    <parentGroupReference />
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -7393,17 +8261,25 @@
     <searchLightHits>
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
+     <portEnabled>false</portEnabled>
+     <portDirectionDeg>180</portDirectionDeg>
+     <starboardEnabled>false</starboardEnabled>
+     <starboardDirectionDeg>0</starboardDirectionDeg>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
+    <manualRoute />
     <followedTargetObjectId>40d9dff0-b61b-4e02-a0f9-87b743e954ec</followedTargetObjectId>
     <followDistanceYards>500</followDistanceYards>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>10</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>240</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -7416,17 +8292,25 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
+    <autoReattachAfterRepair>false</autoReattachAfterRepair>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <loadedGroups />
     <repairPriority>0</repairPriority>
+    <portSearchlightHits>0</portSearchlightHits>
+    <starboardSearchlightHits>0</starboardSearchlightHits>
+    <portSearchlightEnabled>false</portSearchlightEnabled>
+    <portSearchlightDirectionDeg>180</portSearchlightDirectionDeg>
+    <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
+    <starboardSearchlightDirectionDeg>0</starboardSearchlightDirectionDeg>
     <parentObjectId>02517e0a-672c-4fa7-bdd1-be4c17ab68c9</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -7437,6 +8321,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -7445,6 +8333,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -7475,7 +8371,10 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>43e23967-8942-4e27-a4fb-5c0672c9f463</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <enableAutoReattachProp>false</enableAutoReattachProp>
+    <parentGroupReference />
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -7657,17 +8556,25 @@
     <searchLightHits>
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
+     <portEnabled>false</portEnabled>
+     <portDirectionDeg>180</portDirectionDeg>
+     <starboardEnabled>false</starboardEnabled>
+     <starboardDirectionDeg>0</starboardDirectionDeg>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
+    <manualRoute />
     <followedTargetObjectId>34b10324-565d-4d77-96d6-75e85ff3e8f5</followedTargetObjectId>
     <followDistanceYards>500</followDistanceYards>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>10</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>240</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -7680,17 +8587,25 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
+    <autoReattachAfterRepair>false</autoReattachAfterRepair>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <loadedGroups />
     <repairPriority>0</repairPriority>
+    <portSearchlightHits>0</portSearchlightHits>
+    <starboardSearchlightHits>0</starboardSearchlightHits>
+    <portSearchlightEnabled>false</portSearchlightEnabled>
+    <portSearchlightDirectionDeg>180</portSearchlightDirectionDeg>
+    <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
+    <starboardSearchlightDirectionDeg>0</starboardSearchlightDirectionDeg>
     <parentObjectId>02517e0a-672c-4fa7-bdd1-be4c17ab68c9</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -7701,6 +8616,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -7709,6 +8628,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -7739,7 +8666,10 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>c5ed425e-4104-4751-ae25-65852108a6e0</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <enableAutoReattachProp>false</enableAutoReattachProp>
+    <parentGroupReference />
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -7842,17 +8772,25 @@
     <searchLightHits>
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
+     <portEnabled>false</portEnabled>
+     <portDirectionDeg>180</portDirectionDeg>
+     <starboardEnabled>false</starboardEnabled>
+     <starboardDirectionDeg>0</starboardDirectionDeg>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
+    <manualRoute />
     <followedTargetObjectId>42d0aed7-6e98-4146-b55f-0d5f8940328b</followedTargetObjectId>
     <followDistanceYards>500</followDistanceYards>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>10</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>240</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -7865,17 +8803,25 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
+    <autoReattachAfterRepair>false</autoReattachAfterRepair>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <loadedGroups />
     <repairPriority>0</repairPriority>
+    <portSearchlightHits>0</portSearchlightHits>
+    <starboardSearchlightHits>0</starboardSearchlightHits>
+    <portSearchlightEnabled>false</portSearchlightEnabled>
+    <portSearchlightDirectionDeg>180</portSearchlightDirectionDeg>
+    <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
+    <starboardSearchlightDirectionDeg>0</starboardSearchlightDirectionDeg>
     <parentObjectId>02517e0a-672c-4fa7-bdd1-be4c17ab68c9</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -7886,6 +8832,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -7894,6 +8844,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -7924,7 +8882,10 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>cab1e6dd-d0fb-4a89-a968-0556f15de324</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <enableAutoReattachProp>false</enableAutoReattachProp>
+    <parentGroupReference />
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -8027,17 +8988,25 @@
     <searchLightHits>
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
+     <portEnabled>false</portEnabled>
+     <portDirectionDeg>180</portDirectionDeg>
+     <starboardEnabled>false</starboardEnabled>
+     <starboardDirectionDeg>0</starboardDirectionDeg>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
+    <manualRoute />
     <followedTargetObjectId>4aba7866-acb6-432b-8f9c-96950e4cb1d8</followedTargetObjectId>
     <followDistanceYards>500</followDistanceYards>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>10</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>240</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -8050,17 +9019,25 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
+    <autoReattachAfterRepair>false</autoReattachAfterRepair>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <loadedGroups />
     <repairPriority>0</repairPriority>
+    <portSearchlightHits>0</portSearchlightHits>
+    <starboardSearchlightHits>0</starboardSearchlightHits>
+    <portSearchlightEnabled>false</portSearchlightEnabled>
+    <portSearchlightDirectionDeg>180</portSearchlightDirectionDeg>
+    <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
+    <starboardSearchlightDirectionDeg>0</starboardSearchlightDirectionDeg>
     <parentObjectId>02517e0a-672c-4fa7-bdd1-be4c17ab68c9</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -8071,6 +9048,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -8079,6 +9060,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -8109,7 +9098,10 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>47f52578-456c-4a08-b144-465f401ac282</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <enableAutoReattachProp>false</enableAutoReattachProp>
+    <parentGroupReference />
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -8334,17 +9326,25 @@
     <searchLightHits>
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
+     <portEnabled>false</portEnabled>
+     <portDirectionDeg>180</portDirectionDeg>
+     <starboardEnabled>false</starboardEnabled>
+     <starboardDirectionDeg>0</starboardDirectionDeg>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
+    <manualRoute />
     <followedTargetObjectId>5899984f-08e5-4362-8884-179c452157fd</followedTargetObjectId>
     <followDistanceYards>500</followDistanceYards>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>10</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>240</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -8357,17 +9357,25 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
+    <autoReattachAfterRepair>false</autoReattachAfterRepair>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <loadedGroups />
     <repairPriority>0</repairPriority>
+    <portSearchlightHits>0</portSearchlightHits>
+    <starboardSearchlightHits>0</starboardSearchlightHits>
+    <portSearchlightEnabled>false</portSearchlightEnabled>
+    <portSearchlightDirectionDeg>180</portSearchlightDirectionDeg>
+    <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
+    <starboardSearchlightDirectionDeg>0</starboardSearchlightDirectionDeg>
     <parentObjectId>02517e0a-672c-4fa7-bdd1-be4c17ab68c9</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -8378,6 +9386,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -8386,6 +9398,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -8416,7 +9436,10 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>dc55eaf3-4bb8-4c03-b210-f393555aab3d</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <enableAutoReattachProp>false</enableAutoReattachProp>
+    <parentGroupReference />
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -8677,17 +9700,25 @@
     <searchLightHits>
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
+     <portEnabled>false</portEnabled>
+     <portDirectionDeg>180</portDirectionDeg>
+     <starboardEnabled>false</starboardEnabled>
+     <starboardDirectionDeg>0</starboardDirectionDeg>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
+    <manualRoute />
     <followedTargetObjectId>f9bb16a1-a8d4-4b24-9c0d-552d8587ecec</followedTargetObjectId>
     <followDistanceYards>500</followDistanceYards>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>10</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>240</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -8700,17 +9731,25 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
+    <autoReattachAfterRepair>false</autoReattachAfterRepair>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <loadedGroups />
     <repairPriority>0</repairPriority>
+    <portSearchlightHits>0</portSearchlightHits>
+    <starboardSearchlightHits>0</starboardSearchlightHits>
+    <portSearchlightEnabled>false</portSearchlightEnabled>
+    <portSearchlightDirectionDeg>180</portSearchlightDirectionDeg>
+    <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
+    <starboardSearchlightDirectionDeg>0</starboardSearchlightDirectionDeg>
     <parentObjectId>02517e0a-672c-4fa7-bdd1-be4c17ab68c9</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -8721,6 +9760,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -8729,6 +9772,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -8759,7 +9810,10 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>0230b482-a64b-4503-8d23-a32783687f18</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <enableAutoReattachProp>false</enableAutoReattachProp>
+    <parentGroupReference />
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -8992,17 +10046,25 @@
     <searchLightHits>
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
+     <portEnabled>false</portEnabled>
+     <portDirectionDeg>180</portDirectionDeg>
+     <starboardEnabled>false</starboardEnabled>
+     <starboardDirectionDeg>0</starboardDirectionDeg>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
+    <manualRoute />
     <followedTargetObjectId>a6df31f8-b317-43bc-99b0-1fbb1c66e949</followedTargetObjectId>
     <followDistanceYards>500</followDistanceYards>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>10</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>240</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -9015,17 +10077,25 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
+    <autoReattachAfterRepair>false</autoReattachAfterRepair>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <loadedGroups />
     <repairPriority>0</repairPriority>
+    <portSearchlightHits>0</portSearchlightHits>
+    <starboardSearchlightHits>0</starboardSearchlightHits>
+    <portSearchlightEnabled>false</portSearchlightEnabled>
+    <portSearchlightDirectionDeg>180</portSearchlightDirectionDeg>
+    <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
+    <starboardSearchlightDirectionDeg>0</starboardSearchlightDirectionDeg>
     <parentObjectId>02517e0a-672c-4fa7-bdd1-be4c17ab68c9</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -9036,6 +10106,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -9044,6 +10118,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -9074,7 +10156,10 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>5b4df4ad-5c56-4013-8ac6-b3ace448d1ef</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <enableAutoReattachProp>false</enableAutoReattachProp>
+    <parentGroupReference />
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </ShipLog>
    <ShipLog>
     <subStates />
@@ -9256,17 +10341,25 @@
     <searchLightHits>
      <portHit>0</portHit>
      <starboardHit>0</starboardHit>
+     <portEnabled>false</portEnabled>
+     <portDirectionDeg>180</portDirectionDeg>
+     <starboardEnabled>false</starboardEnabled>
+     <starboardDirectionDeg>0</starboardDirectionDeg>
     </searchLightHits>
     <damageControlRatingHits>0</damageControlRatingHits>
     <disableDamageInReset>false</disableDamageInReset>
     <emergencyRudder>false</emergencyRudder>
     <assistedDeceleration>true</assistedDeceleration>
     <controlMode>FollowTarget</controlMode>
+    <manualRoute />
     <followedTargetObjectId>6378968c-ce0a-4d3d-9fb7-e9ce058139ef</followedTargetObjectId>
     <followDistanceYards>500</followDistanceYards>
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>10</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>240</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -9279,17 +10372,25 @@
     </cargoAreas>
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
+    <autoReattachAfterRepair>false</autoReattachAfterRepair>
     <supplyTons>0</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
       <flowSupplyTons>0</flowSupplyTons>
       <cost>0</cost>
+      <pathCells />
      </requestRecord>
      <requestedRecords />
     </supplyTransferState>
     <loadedGroups />
     <repairPriority>0</repairPriority>
+    <portSearchlightHits>0</portSearchlightHits>
+    <starboardSearchlightHits>0</starboardSearchlightHits>
+    <portSearchlightEnabled>false</portSearchlightEnabled>
+    <portSearchlightDirectionDeg>180</portSearchlightDirectionDeg>
+    <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
+    <starboardSearchlightDirectionDeg>0</starboardSearchlightDirectionDeg>
     <parentObjectId>02517e0a-672c-4fa7-bdd1-be4c17ab68c9</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
@@ -9300,6 +10401,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -9308,6 +10413,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -9338,7 +10451,10 @@
      </maximumFiringDistanceYardsForTorpedo>
      <objectId>de42f15c-4fea-4ea7-96d9-61583fe9725b</objectId>
     </doctrine>
-    <strategicGroupReference />
+    <enableAutoReattachProp>false</enableAutoReattachProp>
+    <parentGroupReference />
+    <detachedFromGroupReference />
+    <enableAutoReattach>false</enableAutoReattach>
    </ShipLog>
   </shipLogs>
   <serializedCustomBoolMap />
@@ -9373,6 +10489,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -9381,6 +10501,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -9452,6 +10580,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -9460,6 +10592,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -9520,6 +10660,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -9528,6 +10672,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -9589,6 +10741,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -9597,6 +10753,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -9662,6 +10826,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -9670,6 +10838,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -9733,6 +10909,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -9741,6 +10921,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -9800,6 +10988,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -9808,6 +11000,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -9872,6 +11072,10 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </fireAutomaticType>
+     <searchlightAutomaticType>
+      <isInherited>true</isInherited>
+      <value>Automatic</value>
+     </searchlightAutomaticType>
      <ammunitionFallbackable>
       <isInherited>true</isInherited>
       <value>true</value>
@@ -9880,6 +11084,14 @@
       <isInherited>true</isInherited>
       <value>Automatic</value>
      </ammunitionSwitchAutomaticType>
+     <awakeCountdownMinutes>
+      <isInherited>true</isInherited>
+      <value>0</value>
+     </awakeCountdownMinutes>
+     <awaking>
+      <isInherited>true</isInherited>
+      <value>true</value>
+     </awaking>
      <maximumFiringDistanceYardsFor200mmPlus>
       <isInherited>true</isInherited>
       <value>
@@ -9913,11 +11125,14 @@
    </ShipGroup>
   </shipGroups>
   <scenarioState>
+   <locationLabels />
    <dateTime>1894-09-17T04:30:00Z</dateTime>
    <beginDateTime>1894-09-17T04:30:00Z</beginDateTime>
    <visibility>ExceptionallyClear</visibility>
    <seaStateBeaufort>2</seaStateBeaufort>
    <hasMoonlight>true</hasMoonlight>
+   <surpriseAttack>false</surpriseAttack>
+   <awakeDistanceYards>0</awakeDistanceYards>
    <globalDescription>
     <english>Variant of the Battle of the Yalu River: The Beiyang Fleet Augmented with Historically Attempted but Unacquired Vessels
 
@@ -9926,16 +11141,16 @@ This scenario adds several ships to the Beiyang Fleet that were historically con
 Chile:
 
 Protected Cruiser Blanco Encalada: A relatively advanced vessel; had it joined the First Sino-Japanese War, it would have been the most powerful protected cruiser in the fleet.
-Ironclad Capitán Prat: Its armor was similar to that of theDingyuan, but its firepower was far superior.
+Ironclad Capitán Prat: Its armor was similar to Dingyuan, but its firepower was far superior.
 Protected Cruiser Esmeralda: Its combat capability was average, falling between the average strength of Chinese and Japanese cruisers. It was historically later purchased by Japan.
 Protected Cruisers Presidente Errázuriz /Presidente Pinto: Combat capabilities similar to theEsmeralda.
 Torpedo Gunboats Almirante Condell /Almirante Lynch: Large torpedo boats; historically, these were the first vessels to sink a target using self-propelled torpedoes.
 
 Argentina:
 
-Protected CruiserVeinticinco de Mayo: Combat capability comparable to Japanese cruisers.
-Protected CruiserNueve de Julio: Similar to theVeinticinco de Mayo.
-Armored CruiserAlmirante Brown: Combat capability comparable to Japanese cruisers.
+Protected Cruiser Veinticinco de Mayo: Combat capability comparable to Japanese cruisers.
+Protected Cruiser Nueve de Julio: Similar to theVeinticinco de Mayo.
+Armored Cruiser Almirante Brown: Combat capability comparable to Japanese cruisers.
 
 Scenario Adjustments:
 Compared to historical positions, the battle formation is shifted slightly southward. Torpedo boats are organized into a separate squadron, and all other foreign-purchased vessels form another distinct squadron.
@@ -10023,7 +11238,7 @@ Compared to historical positions, the battle formation is shifted slightly south
     <isBuiltin>true</isBuiltin>
    </backgroundPictureReference>
    <disableFirstRemainOneOperationalFleetPrompt>false</disableFirstRemainOneOperationalFleetPrompt>
-   <locationLabels />
+   <disableStartupAIDialog>false</disableStartupAIDialog>
   </scenarioState>
   <launchedTorpedos />
   <tempSubjectLogs />

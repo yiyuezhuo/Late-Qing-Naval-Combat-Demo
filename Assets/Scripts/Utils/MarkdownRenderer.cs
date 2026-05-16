@@ -185,7 +185,19 @@ public partial class MarkdownRenderer : BindableElement
             var item = new VisualElement();
             item.AddToClassList("markdown-list-item");
 
-            var marker = new Label(list.IsOrdered ? $"{index}." : "\u2022");
+            VisualElement marker;
+            if (list.IsOrdered)
+            {
+                marker = new Label($"{index}.");
+            }
+            else
+            {
+                marker = new VisualElement();
+                marker.AddToClassList("markdown-list-bullet-marker");
+                var dot = new VisualElement();
+                dot.AddToClassList("markdown-list-bullet");
+                marker.Add(dot);
+            }
             marker.AddToClassList("markdown-list-marker");
             item.Add(marker);
 

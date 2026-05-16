@@ -1300,28 +1300,51 @@
 }
 
 .markdown-list {
-    margin-top: 3px;
-    margin-bottom: 5px;
+    margin-top: 2px;
+    margin-bottom: 4px;
 }
 
 .markdown-list-item {
     flex-direction: row;
-    margin-top: 1px;
-    margin-bottom: 2px;
+    align-items: center;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 .markdown-list-marker {
-    min-width: 24px;
+    min-width: 18px;
     flex-grow: 0;
     flex-shrink: 0;
     color: var(--ui-icon-accent);
-    -unity-text-align: upper-right;
-    margin-right: 4px;
+    -unity-text-align: middle-right;
+    margin-right: 2px;
+}
+
+.markdown-list-bullet-marker {
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.markdown-list-bullet {
+    width: 5px;
+    height: 5px;
+    background-color: var(--ui-icon-accent);
+    border-top-left-radius: 999px;
+    border-top-right-radius: 999px;
+    border-bottom-right-radius: 999px;
+    border-bottom-left-radius: 999px;
 }
 
 .markdown-list-content {
     flex-grow: 1;
     flex-shrink: 1;
+}
+
+.markdown-list-content .markdown-paragraph {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 .markdown-table-scroll {

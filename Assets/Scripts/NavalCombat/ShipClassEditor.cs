@@ -556,10 +556,10 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
 
     static readonly GlobalString Sk5CodeHelpMessage = new()
     {
-        english = "Fire Control Code, which denotes a specific combination of Fire Control Components in SK5 data, and Component only serve to set the inferred values of the Fire Control Table when the 'Reset Fire Control Table' button is clicked. They also act as a form of remark/annotation. Their values themselves do not affect resolution because their effects are already fully captured by the Fire Control Table, which acts as a sufficient statistic.",
-        japanese = "射撃統制コード（SK5データにおける射撃統制構成要素の特定の組み合わせを表す）と構成要素は、「射撃統制表をリセット」ボタンがクリックされたときに、射撃統制表の推定値を設定するためだけに機能します。また、注釈／メモとしての役割も果たします。それらの値自体は解決に影響しません。なぜなら、その影響は十分統計量として機能する射撃統制表にすでに完全に反映されているからです。",
-        chineseSimplified = "火控码（表示 SK5 数据中火控具体组成的某种特定组合）和具体组成仅用于在点击“重置火控表”按钮时设置火控表的推断值，同时也起到备注／注释的作用。它们的值本身不会影响结算，因为其影响已经完整体现在火控表中，而火控表起到了充分统计量的作用。",
-        chineseTraditional = "火控碼（表示 SK5 資料中火控具體組成的某種特定組合）和具體組成僅用於在點擊「重置火控表」按鈕時設定火控表的推斷值，同時也起到備註／註釋的作用。它們的值本身不會影響結算，因為其影響已經完整體現在火控表中，而火控表起到了充分統計量的作用。",
+        english = "Fire Control Code denotes a specific combination of Fire Control Components in SK5 data. Changing Role, Fire Control Code, Era, or component fields updates the Fire Control Table from the standard table when available; otherwise the battery is marked as using a custom table. The code and component values themselves do not affect resolution because their effects are already fully captured by the Fire Control Table, which acts as a sufficient statistic.",
+        japanese = "射撃統制コードは、SK5データにおける射撃統制構成要素の特定の組み合わせを表します。役割、射撃統制コード、時代、または構成要素フィールドを変更すると、利用可能な場合は標準表から射撃統制表が更新されます。利用できない場合、その砲熕はカスタム表を使用しているものとしてマークされます。射撃統制コードと構成要素の値自体は解決処理に影響しません。これらの効果は、十分統計量として機能する射撃統制表にすでに完全に反映されているためです。",
+        chineseSimplified = "火控码表示 SK5 数据中火控组件的一种特定组合。修改地位、火控码、时代或组件字段时，如果有对应标准表，会用标准表更新火控表；否则该炮组会被标记为使用自定义表。火控码和组件值本身不影响结算，因为它们的效果已经完整体现在火控表中，而火控表起到充分统计量的作用。",
+        chineseTraditional = "火控碼表示 SK5 資料中火控組件的一種特定組合。修改地位、火控碼、時代或組件欄位時，如果有對應標準表，會用標準表更新火控表；否則該砲組會被標記為使用自訂表。火控碼和組件值本身不影響結算，因為它們的效果已經完整體現在火控表中，而火控表起到充分統計量的作用。",
     };
 
     ListView batteryRecordsListView;
@@ -726,47 +726,6 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
                     }
 
                     PopupFireControlModelComparisonDialog(batteryRecord);
-                };
-            }
-
-            var resetFireControlTableButton = el.Q<Button>("ResetFireControlTableButton");
-            if (resetFireControlTableButton != null)
-            {
-                resetFireControlTableButton.clicked += () =>
-                {
-                    if (!Utils.TryResolveCurrentValueForBinding(resetFireControlTableButton, out BatteryRecord batteryRecord))
-                    {
-                        DialogRoot.Instance.PopupMessageDialog(Localize("No battery record is selected."));
-                        return;
-                    }
-
-                    void ResetFromStandardCode()
-                    {
-                        if (!ResetFireControlTableFromStandardCode(batteryRecord))
-                        {
-                            DialogRoot.Instance.PopupMessageDialog(
-                                Localize("No standard fire control table is available for this Role/Code/Era combination."),
-                                Localize("Reset Fire Control Table"));
-                            return;
-                        }
-
-                        fireControlTableMultiColumnListView?.RefreshItems();
-                        DialogRoot.Instance.PopupMessageDialog(
-                            Localize("Fire control table reset from standard code table."),
-                            Localize("Reset Fire Control Table"));
-                    }
-
-                    if (batteryRecord.customFireControlTable)
-                    {
-                        DialogRoot.Instance.PopupConfirmDialog(
-                            Localize("This battery uses a custom fire control table. Resetting will replace it with the standard table generated from Role/Code/Era and clear the Custom flag."),
-                            ResetFromStandardCode,
-                            Localize("Reset Fire Control Table"));
-                    }
-                    else
-                    {
-                        ResetFromStandardCode();
-                    }
                 };
             }
 
@@ -1931,7 +1890,7 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
         { "1S3", "12,8,9,6,7,5,6,4;9,6,7,4,5,4,5,3;8,5,6,4,5,3,4,3;7,5,5,3,4,3,3,2;6,4,5,3,4,2,3,2" },
     };
 
-    static bool TryGetStandardFireControlTableRecords(BatteryRecord batteryRecord, out string fullCode, out List<FireControlTableRecord> records)
+    public static bool TryGetStandardFireControlTableRecords(BatteryRecord batteryRecord, out string fullCode, out List<FireControlTableRecord> records)
     {
         fullCode = BuildFireControlFullCode(batteryRecord);
         records = null;
@@ -2092,7 +2051,7 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
         { (FireControlSystemEra.WorldWarII, FCSCode.S), new(0.7592f, 0.5928f, 0.5061f, 0.7592f, 0.6696f, 0.5782f, 0.5195f, 0.6643f) },
     };
 
-    static string BuildFireControlFullCode(BatteryRecord batteryRecord)
+    public static string BuildFireControlFullCode(BatteryRecord batteryRecord)
     {
         var fcs = batteryRecord?.fireControlType;
         if (fcs == null || fcs.code == FCSCode.Custom)
@@ -2269,14 +2228,12 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
         return $"{string.Join(", ", codes.Take(maxVisible))}, +{codes.Count - maxVisible}";
     }
 
-    static bool ResetFireControlTableFromStandardCode(BatteryRecord batteryRecord)
+    public static bool ResetFireControlTableFromStandardCode(BatteryRecord batteryRecord)
     {
         if (!TryGetStandardFireControlTableRecords(batteryRecord, out _, out var standardRecords))
             return false;
 
-        batteryRecord.fireControlTableRecords ??= new List<FireControlTableRecord>();
-        batteryRecord.fireControlTableRecords.Clear();
-        batteryRecord.fireControlTableRecords.AddRange(standardRecords);
+        batteryRecord.fireControlTableRecords = standardRecords;
         batteryRecord.customFireControlTable = false;
         return true;
     }

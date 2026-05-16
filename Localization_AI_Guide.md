@@ -13,6 +13,9 @@ Use this file as the **default workflow only**. Read `Docs\Localization_Referenc
 
 The deciding factor is **how the text is looked up**, not where it appears on screen.
 
+In UXML, `table="GUID:7dfd13ea0ff0ef0408a7f015356a0054"` is the **Standard Table** collection; the **Dynamic Table** collection GUID is `01319b87f42fa3748a3c6cf56860807e`.
+When checking a `LocalizedString` binding, follow the GUID to the matching `*StringTableCollection` folder before comparing translations.
+
 > ⚠️ Putting a `Localize(...)` key into Standard Table causes silent fallback to raw key text.
 
 ## 2. Default workflow

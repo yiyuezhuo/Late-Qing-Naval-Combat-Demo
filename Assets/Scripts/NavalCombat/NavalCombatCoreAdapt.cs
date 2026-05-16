@@ -801,6 +801,188 @@ namespace NavalCombatCore
                 + DamageRatingShellWeightSqrtCoef * Mathf.Sqrt(shellWeight));
         }
 
+        [XmlIgnore]
+        [CreateProperty]
+        public FireControlSystemRole fireControlTypeRoleProp
+        {
+            get => fireControlType.role;
+            set
+            {
+                if (fireControlType.role == value)
+                    return;
+                fireControlType.role = value;
+                SyncFireControlTableByFireControlCode();
+            }
+        }
+
+        [XmlIgnore]
+        [CreateProperty]
+        public FireControlSystemEra fireControlTypeEraProp
+        {
+            get => fireControlType.era;
+            set
+            {
+                if (fireControlType.era == value)
+                    return;
+                fireControlType.era = value;
+                SyncFireControlTableByFireControlCode();
+            }
+        }
+
+        [XmlIgnore]
+        [CreateProperty]
+        public FCSCode fireControlTypeCodeProp
+        {
+            get => fireControlType.code;
+            set
+            {
+                if (fireControlType.code == value)
+                    return;
+                fireControlType.code = value;
+                fireControlType.SyncStatesByCode();
+                SyncFireControlTableByFireControlCode();
+            }
+        }
+
+        [XmlIgnore]
+        [CreateProperty]
+        public GunSightType fireControlTypeGunSightProp
+        {
+            get => fireControlType.gunSight;
+            set
+            {
+                if (fireControlType.gunSight == value)
+                    return;
+                fireControlType.gunSight = value;
+                fireControlType.SyncCodeByStates();
+                SyncFireControlTableByFireControlCode();
+            }
+        }
+
+        [XmlIgnore]
+        [CreateProperty]
+        public FireControlInstrumentType fireControlTypeFireControlInstrumentProp
+        {
+            get => fireControlType.fireControlInstrument;
+            set
+            {
+                if (fireControlType.fireControlInstrument == value)
+                    return;
+                fireControlType.fireControlInstrument = value;
+                fireControlType.SyncCodeByStates();
+                SyncFireControlTableByFireControlCode();
+            }
+        }
+
+        [XmlIgnore]
+        [CreateProperty]
+        public RangeFinderType fireControlTypeRangeFinderProp
+        {
+            get => fireControlType.rangeFinder;
+            set
+            {
+                if (fireControlType.rangeFinder == value)
+                    return;
+                fireControlType.rangeFinder = value;
+                fireControlType.SyncCodeByStates();
+                SyncFireControlTableByFireControlCode();
+            }
+        }
+
+        [XmlIgnore]
+        [CreateProperty]
+        public DirectorControlType fireControlTypeDirectorControlProp
+        {
+            get => fireControlType.directorControl;
+            set
+            {
+                if (fireControlType.directorControl == value)
+                    return;
+                fireControlType.directorControl = value;
+                fireControlType.SyncCodeByStates();
+                SyncFireControlTableByFireControlCode();
+            }
+        }
+
+        [XmlIgnore]
+        [CreateProperty]
+        public StabilizationType fireControlTypeStabilizationProp
+        {
+            get => fireControlType.stabilization;
+            set
+            {
+                if (fireControlType.stabilization == value)
+                    return;
+                fireControlType.stabilization = value;
+                fireControlType.SyncCodeByStates();
+                SyncFireControlTableByFireControlCode();
+            }
+        }
+
+        [XmlIgnore]
+        [CreateProperty]
+        public PowerRemoteControlType fireControlTypePowerRemoteControlProp
+        {
+            get => fireControlType.powerRemoteControl;
+            set
+            {
+                if (fireControlType.powerRemoteControl == value)
+                    return;
+                fireControlType.powerRemoteControl = value;
+                fireControlType.SyncCodeByStates();
+                SyncFireControlTableByFireControlCode();
+            }
+        }
+
+        [XmlIgnore]
+        [CreateProperty]
+        public bool customFireControlTableProp
+        {
+            get => customFireControlTable;
+            set
+            {
+                if (!HasStandardFireControlTable())
+                {
+                    customFireControlTable = true;
+                    return;
+                }
+
+                if (customFireControlTable == value)
+                    return;
+
+                if (value)
+                {
+                    customFireControlTable = true;
+                }
+                else
+                {
+                    ResetFireControlTableFromStandardCode();
+                }
+            }
+        }
+
+        [XmlIgnore]
+        [CreateProperty]
+        public bool customFireControlTableEditable => HasStandardFireControlTable();
+
+        public bool HasStandardFireControlTable()
+        {
+            return global::ShipClassEditor.TryGetStandardFireControlTableRecords(this, out _, out _);
+        }
+
+        void SyncFireControlTableByFireControlCode()
+        {
+            if (!ResetFireControlTableFromStandardCode())
+            {
+                customFireControlTable = true;
+            }
+        }
+
+        bool ResetFireControlTableFromStandardCode()
+        {
+            return global::ShipClassEditor.ResetFireControlTableFromStandardCode(this);
+        }
+
         static float RoundHalfUp(float value)
         {
             return Mathf.Floor(value + 0.5f);
@@ -1187,109 +1369,6 @@ namespace NavalCombatCore
 
         [CreateProperty]
         public string statOverlayText => $"S{shotsFiredCount} H{hitsLandedCount} IH{hitsTakenCount} L{damagePointLost:0.#} O{damagePointInflicted:0.#}";
-    }
-
-    public partial class FireControlSystem
-    {
-        [XmlIgnore]
-        [CreateProperty]
-        public FireControlSystemRole roleProp
-        {
-            get => role;
-            set => role = value;
-        }
-
-        [XmlIgnore]
-        [CreateProperty]
-        public FireControlSystemEra eraProp
-        {
-            get => era;
-            set => era = value;
-        }
-
-        [XmlIgnore]
-        [CreateProperty]
-        public FCSCode codeProp
-        {
-            get => code;
-            set
-            {
-                code = value;
-                SyncStatesByCode();
-            }
-        }
-
-        [XmlIgnore]
-        [CreateProperty]
-        public GunSightType gunSightProp
-        {
-            get => gunSight;
-            set
-            {
-                gunSight = value;
-                SyncCodeByStates();
-            }
-        }
-
-        [XmlIgnore]
-        [CreateProperty]
-        FireControlInstrumentType fireControlInstrumentProp
-        {
-            get => fireControlInstrument;
-            set
-            {
-                fireControlInstrument = value;
-                SyncCodeByStates();
-            }
-        }
-
-        [XmlIgnore]
-        [CreateProperty]
-        RangeFinderType rangeFinderProp
-        {
-            get => rangeFinder;
-            set
-            {
-                rangeFinder = value;
-                SyncCodeByStates();
-            }
-        }
-
-        [XmlIgnore]
-        [CreateProperty]
-        DirectorControlType directorControlProp
-        {
-            get => directorControl;
-            set
-            {
-                directorControl = value;
-                SyncCodeByStates();
-            }
-        }
-
-        [XmlIgnore]
-        [CreateProperty]
-        StabilizationType stabilizationProp
-        {
-            get => stabilization;
-            set
-            {
-                stabilization = value;
-                SyncCodeByStates();
-            }
-        }
-
-        [XmlIgnore]
-        [CreateProperty]
-        PowerRemoteControlType powerRemoteControlProp
-        {
-            get => powerRemoteControl;
-            set
-            {
-                powerRemoteControl = value;
-                SyncCodeByStates();
-            }
-        }
     }
 
     public partial class MountLocationRecord

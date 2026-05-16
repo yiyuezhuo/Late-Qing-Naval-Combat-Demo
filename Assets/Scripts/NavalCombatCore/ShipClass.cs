@@ -1254,42 +1254,62 @@ namespace NavalCombatCore
 
         public static int CalculateDamageControlRatingFromDisplacement(float displacementTons)
         {
-            if (displacementTons <= 111f)
+            if (displacementTons <= 120f)
             {
                 return 0;
             }
 
-            if (displacementTons <= 1092f)
+            if (displacementTons <= 1089f)
             {
                 return 1;
             }
 
-            if (displacementTons <= 2975f)
+            if (displacementTons <= 3000f)
             {
                 return 2;
             }
 
-            if (displacementTons <= 3040f)
-            {
-                return 1;
-            }
-
-            if (displacementTons <= 6202.5f)
+            if (displacementTons <= 5950f)
             {
                 return 3;
             }
 
-            if (displacementTons <= 9978f)
+            if (displacementTons <= 9800f)
             {
                 return 4;
             }
 
-            if (displacementTons <= 14262.5f)
+            if (displacementTons <= 14700f)
             {
                 return 5;
             }
 
-            return 6;
+            if (displacementTons <= 20500f)
+            {
+                return 6;
+            }
+
+            if (displacementTons <= 27000f)
+            {
+                return 7;
+            }
+
+            if (displacementTons <= 35000f)
+            {
+                return 8;
+            }
+
+            if (displacementTons <= 44000f)
+            {
+                return 9;
+            }
+
+            if (displacementTons <= 50000f)
+            {
+                return 10;
+            }
+
+            return 11;
         }
 
         public void InferSpeedIncreaseRecord()

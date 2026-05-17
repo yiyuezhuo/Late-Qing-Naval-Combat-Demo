@@ -887,7 +887,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 171474327080960
-    m_Localized: "\u6700\u5927\u5C04\u7A0B 200mm+ (\u30E4\u30FC\u30C9):"
+    m_Localized: "\u6700\u5927\u5C04\u7A0B 200mm\u4EE5\u4E0A (\u30E4\u30FC\u30C9):"
     m_Metadata:
       m_Items: []
   - m_Id: 171582267494400
@@ -895,7 +895,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 171927823618048
-    m_Localized: "\u6700\u5927\u5C04\u7A0B 100mm- (\u30E4\u30FC\u30C9):"
+    m_Localized: "\u6700\u5927\u5C04\u7A0B 100mm\u4EE5\u4E0B (\u30E4\u30FC\u30C9):"
     m_Metadata:
       m_Items: []
   - m_Id: 172027870351360

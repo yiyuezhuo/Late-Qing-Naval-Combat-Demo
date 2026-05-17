@@ -78,7 +78,7 @@
                     <ui:VisualElement data-source-path="ministryOfWar" class="border-box">
                         <ui:Label text="Ministry of War / 兵部" />
                         <ui:Instance template="DepartmentPosition" data-source-path="ministerOfWarManchu">
-                            <AttributeOverrides element-name="DepartmentPositionName" text="Minister of War (Manchu) / 兵部尚書（満洲缺）" />
+                            <AttributeOverrides element-name="DepartmentPositionName" text="Minister of War (Manchu) / 兵部尚書（満缺）" />
                         </ui:Instance>
                         <ui:Instance template="DepartmentPosition" data-source-path="ministerOfWarHan">
                             <AttributeOverrides element-name="DepartmentPositionName" text="Minister of War (Han) / 兵部尚書（漢缺）" />

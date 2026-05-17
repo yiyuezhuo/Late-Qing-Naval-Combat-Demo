@@ -59,6 +59,17 @@ public class NamedShipEditor : LeftObjectPickerRightEditor<NamedShipEditor, Name
         var selectDefaultLeaderButton = root.Q<Button>("SelectDefaultLeaderButton");
         selectDefaultLeaderButton.clicked += DialogRoot.Instance.PopupLeaderSelectorDialogForNamedShip;
 
+        var setRemarkButton = root.Q<Button>("SetRemarkButton");
+        setRemarkButton.clicked += () =>
+        {
+            var namedShip = selectedObject;
+            if (namedShip == null)
+                return;
+
+            namedShip.remark ??= new GlobalString();
+            DialogRoot.Instance.PopupGlobalStringMarkdownEditorDialog(namedShip.remark, "Remark");
+        };
+
         var gotoShipClassButton = root.Q<Button>("GotoShipClassButton");
         gotoShipClassButton.clicked += () =>
         {

@@ -163,23 +163,35 @@
                             </ui:VisualElement>
                             <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
                                 <ui:Instance template="NamedShipVisualizer" name="NamedShipVisualizer"/>
-                                <ui:Label text="Remark"/>
-                                <ui:TextField multiline="true" vertical-scroller-visibility="Auto" style="min-height: 100px; white-space: normal;">
-                                    <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="remark" binding-mode="TwoWay"/>
-                                        <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
-                                    </Bindings>
-                                </ui:TextField>
+                                <ui:VisualElement>
+                                    <ui:VisualElement style="flex-direction: row; align-items: center;">
+                                        <ui:Label text="Remark" style="flex-grow: 1;"/>
+                                        <ui:Button text="Set" name="SetRemarkButton">
+                                            <Bindings>
+                                                <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
+                                            </Bindings>
+                                        </ui:Button>
+                                    </ui:VisualElement>
+                                    <ui:ScrollView vertical-scroller-visibility="Auto" horizontal-scroller-visibility="Hidden" style="min-height: 100px; max-height: 220px;">
+                                        <MarkdownRenderer name="NamedShipRemarkMarkdownRenderer" selectable="true" max-image-height="180">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="remark.shortName" binding-mode="ToTarget"/>
+                                            </Bindings>
+                                        </MarkdownRenderer>
+                                    </ui:ScrollView>
+                                </ui:VisualElement>
                                 <ui:Label text="Class Remark">
                                     <Bindings>
                                         <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(38036319399219200)"/>
                                     </Bindings>
                                 </ui:Label>
-                                <ui:TextField multiline="true" enabled="false" style="min-height: 100px;">
-                                    <Bindings>
-                                        <ui:DataBinding property="value" data-source-path="shipClassRemark" binding-mode="ToTarget"/>
-                                    </Bindings>
-                                </ui:TextField>
+                                <ui:ScrollView vertical-scroller-visibility="Auto" horizontal-scroller-visibility="Hidden" style="min-height: 100px; max-height: 220px;">
+                                    <MarkdownRenderer name="ShipClassRemarkMarkdownRenderer" selectable="true" max-image-height="180">
+                                        <Bindings>
+                                            <ui:DataBinding property="value" data-source-path="shipClassRemark" binding-mode="ToTarget"/>
+                                        </Bindings>
+                                    </MarkdownRenderer>
+                                </ui:ScrollView>
                             </ui:VisualElement>
                         </ui:VisualElement>
                     </ui:ScrollView>

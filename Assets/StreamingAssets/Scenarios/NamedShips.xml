@@ -25,7 +25,9 @@
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Yoshino</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Yoshino</english>
+  </remark>
   <objectId>4722ebb2-c755-4ef3-a292-7b429aad7676</objectId>
  </NamedShip>
  <NamedShip>
@@ -50,9 +52,11 @@
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Yoshino
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Yoshino
 
-</remark>
+</english>
+  </remark>
   <objectId>3255b2ff-6ce3-4902-8582-8fc3ef9683e9</objectId>
  </NamedShip>
  <NamedShip>
@@ -80,7 +84,9 @@
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Akitsushima</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Akitsushima</english>
+  </remark>
   <objectId>5f1f4c9c-0819-468f-87fd-af3938dea6df</objectId>
  </NamedShip>
  <NamedShip>
@@ -105,7 +111,9 @@
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Akitsushima</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Akitsushima</english>
+  </remark>
   <objectId>f1c20165-d89f-4b65-b32e-0ce478dc4ddd</objectId>
  </NamedShip>
  <NamedShip>
@@ -133,7 +141,9 @@
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Naniwa</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Naniwa</english>
+  </remark>
   <objectId>7855b692-e843-41bb-a7b6-15662ab6de20</objectId>
  </NamedShip>
  <NamedShip>
@@ -158,7 +168,9 @@
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://ja.wikipedia.org/wiki/%E6%B5%AA%E9%80%9F_(%E9%98%B2%E8%AD%B7%E5%B7%A1%E6%B4%8B%E8%89%A6)</remark>
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E6%B5%AA%E9%80%9F_(%E9%98%B2%E8%AD%B7%E5%B7%A1%E6%B4%8B%E8%89%A6)</english>
+  </remark>
   <objectId>052f32f3-4c03-4d43-9df5-bb313ae2386b</objectId>
  </NamedShip>
  <NamedShip>
@@ -186,7 +198,9 @@
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Chinese_cruiser_Jiyuan</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Chinese_cruiser_Jiyuan</english>
+  </remark>
   <objectId>14fd6eb4-8fa6-4f4b-b98d-00ec411b5e16</objectId>
  </NamedShip>
  <NamedShip>
@@ -211,10 +225,12 @@
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Chinese_cruiser_Jiyuan
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Chinese_cruiser_Jiyuan
 
 After Fang was executed, Lin took command of the ship.
-</remark>
+</english>
+  </remark>
   <objectId>3cadbc79-3102-4015-8c30-7618c8e3662b</objectId>
  </NamedShip>
  <NamedShip>
@@ -242,7 +258,9 @@ After Fang was executed, Lin took command of the ship.
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://zh.wikipedia.org/wiki/%E5%B9%BF%E4%B9%99%E5%8F%B7%E9%98%B2%E6%8A%A4%E5%B7%A1%E6%B4%8B%E8%88%B0</remark>
+  <remark>
+   <english>https://zh.wikipedia.org/wiki/%E5%B9%BF%E4%B9%99%E5%8F%B7%E9%98%B2%E6%8A%A4%E5%B7%A1%E6%B4%8B%E8%88%B0</english>
+  </remark>
   <objectId>c58b4a18-5e00-4eca-ad5b-6ee74a2b9709</objectId>
  </NamedShip>
  <NamedShip>
@@ -272,7 +290,9 @@ After Fang was executed, Lin took command of the ship.
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Chinese_ironclad_Dingyuan</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Chinese_ironclad_Dingyuan</english>
+  </remark>
   <objectId>c12c377d-3a26-4d14-897a-db3beb221060</objectId>
  </NamedShip>
  <NamedShip>
@@ -302,7 +322,9 @@ After Fang was executed, Lin took command of the ship.
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Chinese_ironclad_Zhenyuan</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Chinese_ironclad_Zhenyuan</english>
+  </remark>
   <objectId>da81e4ec-40b5-4f9c-949d-375e86b668bf</objectId>
  </NamedShip>
  <NamedShip>
@@ -327,9 +349,11 @@ After Fang was executed, Lin took command of the ship.
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Chinese_ironclad_Zhenyuan
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Chinese_ironclad_Zhenyuan
 
-After Lin commited suicide, Lin took command of the ship.</remark>
+After Lin commited suicide, Lin took command of the ship.</english>
+  </remark>
   <objectId>aec1143a-8588-4c84-83ca-80c1f4439bb5</objectId>
  </NamedShip>
  <NamedShip>
@@ -354,7 +378,9 @@ After Lin commited suicide, Lin took command of the ship.</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Chinese_ironclad_Zhenyuan</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Chinese_ironclad_Zhenyuan</english>
+  </remark>
   <objectId>5dfb7c37-32da-47f7-be68-06832bcf8b59</objectId>
  </NamedShip>
  <NamedShip>
@@ -381,7 +407,9 @@ After Lin commited suicide, Lin took command of the ship.</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Chinese_cruiser_Yangwei</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Chinese_cruiser_Yangwei</english>
+  </remark>
   <objectId>695c4c4f-4c3e-475d-b8e0-f28de87685ca</objectId>
  </NamedShip>
  <NamedShip>
@@ -408,7 +436,9 @@ After Lin commited suicide, Lin took command of the ship.</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Chinese_cruiser_Chaoyong</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Chinese_cruiser_Chaoyong</english>
+  </remark>
   <objectId>3c8d69bc-78fa-4315-9b27-e6e6bb2678c6</objectId>
  </NamedShip>
  <NamedShip>
@@ -438,7 +468,9 @@ After Lin commited suicide, Lin took command of the ship.</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Chinese_cruiser_Jingyuan_(1886)</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Chinese_cruiser_Jingyuan_(1886)</english>
+  </remark>
   <objectId>eab7b62b-359b-4a48-8539-02b75902e2a2</objectId>
  </NamedShip>
  <NamedShip>
@@ -468,7 +500,9 @@ After Lin commited suicide, Lin took command of the ship.</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Chinese_cruiser_Zhiyuan</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Chinese_cruiser_Zhiyuan</english>
+  </remark>
   <objectId>47957b51-2f28-4364-9b69-0531e1920396</objectId>
  </NamedShip>
  <NamedShip>
@@ -495,7 +529,9 @@ After Lin commited suicide, Lin took command of the ship.</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Chinese_cruiser_Jingyuan_(1887)</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Chinese_cruiser_Jingyuan_(1887)</english>
+  </remark>
   <objectId>b95c048c-1701-400f-901d-becf31eac884</objectId>
  </NamedShip>
  <NamedShip>
@@ -522,7 +558,9 @@ After Lin commited suicide, Lin took command of the ship.</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Chinese_cruiser_Laiyuan</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Chinese_cruiser_Laiyuan</english>
+  </remark>
   <objectId>b1447997-60c7-4a81-a2c2-76c4f21e8695</objectId>
  </NamedShip>
  <NamedShip>
@@ -549,7 +587,9 @@ After Lin commited suicide, Lin took command of the ship.</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Chinese_ironclad_Pingyuan</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Chinese_ironclad_Pingyuan</english>
+  </remark>
   <objectId>93af5f5d-0afa-481b-8135-da07ff3dfe0d</objectId>
  </NamedShip>
  <NamedShip>
@@ -576,7 +616,9 @@ After Lin commited suicide, Lin took command of the ship.</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Chinese_corvette_Kwan_Chia</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Chinese_corvette_Kwan_Chia</english>
+  </remark>
   <objectId>6b3bdffa-e1c1-4926-9a3b-4c04c7ccc2f7</objectId>
  </NamedShip>
  <NamedShip>
@@ -630,7 +672,9 @@ After Lin commited suicide, Lin took command of the ship.</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://zh.wikipedia.org/wiki/%E5%B9%BF%E4%B8%99%E5%8F%B7%E9%98%B2%E6%8A%A4%E5%B7%A1%E6%B4%8B%E8%88%B0</remark>
+  <remark>
+   <english>https://zh.wikipedia.org/wiki/%E5%B9%BF%E4%B8%99%E5%8F%B7%E9%98%B2%E6%8A%A4%E5%B7%A1%E6%B4%8B%E8%88%B0</english>
+  </remark>
   <objectId>ece5d4b3-84e9-477d-85a1-a989b9acf0b6</objectId>
  </NamedShip>
  <NamedShip>
@@ -658,7 +702,9 @@ After Lin commited suicide, Lin took command of the ship.</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Chinese_torpedo_boat_Fulong</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Chinese_torpedo_boat_Fulong</english>
+  </remark>
   <objectId>300061b1-9426-4d75-97fa-d1256f55f648</objectId>
  </NamedShip>
  <NamedShip>
@@ -685,7 +731,9 @@ After Lin commited suicide, Lin took command of the ship.</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_ironclad_Fus%C5%8D</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_ironclad_Fus%C5%8D</english>
+  </remark>
   <objectId>1a287722-9d5f-440a-b25e-73ad5d987c8c</objectId>
  </NamedShip>
  <NamedShip>
@@ -712,7 +760,9 @@ After Lin commited suicide, Lin took command of the ship.</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Hashidate</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Hashidate</english>
+  </remark>
   <objectId>a30faffb-e4b9-4e55-aec2-db88671265ca</objectId>
  </NamedShip>
  <NamedShip>
@@ -737,7 +787,9 @@ After Lin commited suicide, Lin took command of the ship.</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Hashidate</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Hashidate</english>
+  </remark>
   <objectId>c579addb-d566-4c32-a05e-69b8363f6dfa</objectId>
  </NamedShip>
  <NamedShip>
@@ -765,7 +817,9 @@ After Lin commited suicide, Lin took command of the ship.</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Itsukushima</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Itsukushima</english>
+  </remark>
   <objectId>9105d76e-8241-4d51-8347-43448099ba54</objectId>
  </NamedShip>
  <NamedShip>
@@ -792,7 +846,9 @@ After Lin commited suicide, Lin took command of the ship.</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_ironclad_Hiei</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_ironclad_Hiei</english>
+  </remark>
   <objectId>cf7b7e83-91a0-4e45-89ac-db0babb1036c</objectId>
  </NamedShip>
  <NamedShip>
@@ -819,7 +875,9 @@ After Lin commited suicide, Lin took command of the ship.</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Matsushima</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Matsushima</english>
+  </remark>
   <objectId>52fe3068-7c3f-4b37-bcbc-88895e925217</objectId>
  </NamedShip>
  <NamedShip>
@@ -844,7 +902,9 @@ After Lin commited suicide, Lin took command of the ship.</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Matsushima</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Matsushima</english>
+  </remark>
   <objectId>c6f4a70c-e182-4eda-834f-6015d90eb2d9</objectId>
  </NamedShip>
  <NamedShip>
@@ -874,7 +934,9 @@ After Lin commited suicide, Lin took command of the ship.</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Takachiho</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Takachiho</english>
+  </remark>
   <objectId>e27761a0-d00a-4a7b-bcac-58aab2b8118d</objectId>
  </NamedShip>
  <NamedShip>
@@ -928,7 +990,9 @@ After Lin commited suicide, Lin took command of the ship.</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Chiyoda</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Chiyoda</english>
+  </remark>
   <objectId>d1a1333b-c9cd-44f7-acfa-e70190039282</objectId>
  </NamedShip>
  <NamedShip>
@@ -953,9 +1017,11 @@ After Lin commited suicide, Lin took command of the ship.</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Chiyoda
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Chiyoda
 
-No class update from 1894 to 1904</remark>
+No class update from 1894 to 1904</english>
+  </remark>
   <objectId>81fc0fc2-b4c8-4efc-9a4e-adde31586429</objectId>
  </NamedShip>
  <NamedShip>
@@ -980,7 +1046,9 @@ No class update from 1894 to 1904</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_gunboat_Akagi</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_gunboat_Akagi</english>
+  </remark>
   <objectId>cf53fae4-c151-47da-9ee0-1d540c655968</objectId>
  </NamedShip>
  <NamedShip>
@@ -1005,7 +1073,9 @@ No class update from 1894 to 1904</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_gunboat_Akagi</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_gunboat_Akagi</english>
+  </remark>
   <objectId>573e3bd9-5649-4c5b-ab3d-4fd264cfd0d9</objectId>
  </NamedShip>
  <NamedShip>
@@ -1033,7 +1103,9 @@ No class update from 1894 to 1904</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Saiky%C5%8D_Maru</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Saiky%C5%8D_Maru</english>
+  </remark>
   <objectId>fe326406-a6b5-42fe-b052-c79dacf9df1c</objectId>
  </NamedShip>
  <NamedShip>
@@ -1062,7 +1134,9 @@ No class update from 1894 to 1904</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_ironclad_Kong%C5%8D</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_ironclad_Kong%C5%8D</english>
+  </remark>
   <objectId>b86fb717-db2d-4130-ab94-f2e22400398a</objectId>
  </NamedShip>
  <NamedShip>
@@ -1088,7 +1162,9 @@ No class update from 1894 to 1904</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_corvette_Katsuragi</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_corvette_Katsuragi</english>
+  </remark>
   <objectId>3576de52-b215-4773-a033-13141d11ae44</objectId>
  </NamedShip>
  <NamedShip>
@@ -1112,7 +1188,9 @@ No class update from 1894 to 1904</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_corvette_Yamato</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_corvette_Yamato</english>
+  </remark>
   <objectId>5b4a018b-cfc9-4945-847c-209135461ffc</objectId>
  </NamedShip>
  <NamedShip>
@@ -1136,7 +1214,9 @@ No class update from 1894 to 1904</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_corvette_Musashi</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_corvette_Musashi</english>
+  </remark>
   <objectId>c94832ea-fce0-4a50-a6e9-7a0e1e2d9aa4</objectId>
  </NamedShip>
  <NamedShip>
@@ -1166,7 +1246,9 @@ No class update from 1894 to 1904</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_corvette_Tenry%C5%AB</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_corvette_Tenry%C5%AB</english>
+  </remark>
   <objectId>5763c614-30dd-47bf-b35a-2a8cbaba816d</objectId>
  </NamedShip>
  <NamedShip>
@@ -1194,7 +1276,9 @@ No class update from 1894 to 1904</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Takao_(1888)</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Takao_(1888)</english>
+  </remark>
   <objectId>79e50935-13e8-406e-920b-2e9739bb4330</objectId>
  </NamedShip>
  <NamedShip>
@@ -1688,7 +1772,9 @@ No class update from 1894 to 1904</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_torpedo_boat_Kotaka</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_torpedo_boat_Kotaka</english>
+  </remark>
   <objectId>4732996b-1361-4825-8813-3c8675674200</objectId>
  </NamedShip>
  <NamedShip>
@@ -1849,7 +1935,9 @@ No class update from 1894 to 1904</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>true</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_battleship_Fuji</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_battleship_Fuji</english>
+  </remark>
   <objectId>451ec14a-541b-4c41-b981-2ed95d9f0661</objectId>
  </NamedShip>
  <NamedShip>
@@ -1874,7 +1962,9 @@ No class update from 1894 to 1904</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_battleship_Fuji</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_battleship_Fuji</english>
+  </remark>
   <objectId>3d1826af-bc7a-4d6e-b1db-3ee554ae6396</objectId>
  </NamedShip>
  <NamedShip>
@@ -1899,7 +1989,9 @@ No class update from 1894 to 1904</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>true</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_battleship_Yashima</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_battleship_Yashima</english>
+  </remark>
   <objectId>13db4215-f2e6-4876-a9bc-a788d29a57ff</objectId>
  </NamedShip>
  <NamedShip>
@@ -1924,7 +2016,9 @@ No class update from 1894 to 1904</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_battleship_Yashima</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_battleship_Yashima</english>
+  </remark>
   <objectId>7fa03659-fba1-4574-a01c-6dc7ae7298d8</objectId>
  </NamedShip>
  <NamedShip>
@@ -1947,7 +2041,9 @@ No class update from 1894 to 1904</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Placeholder Generic Ship</remark>
+  <remark>
+   <english>Placeholder Generic Ship</english>
+  </remark>
   <objectId>f3b9f536-d8e0-4679-b73d-c018bd26646c</objectId>
  </NamedShip>
  <NamedShip>
@@ -1970,7 +2066,9 @@ No class update from 1894 to 1904</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Placeholder Generic Ship</remark>
+  <remark>
+   <english>Placeholder Generic Ship</english>
+  </remark>
   <objectId>bdbb4804-81b9-4586-9b5e-8bdd4bf77d2c</objectId>
  </NamedShip>
  <NamedShip>
@@ -1993,7 +2091,9 @@ No class update from 1894 to 1904</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Placeholder Generic Ship</remark>
+  <remark>
+   <english>Placeholder Generic Ship</english>
+  </remark>
   <objectId>e7454721-0f13-41c7-ae18-487bba6a2a28</objectId>
  </NamedShip>
  <NamedShip>
@@ -2016,7 +2116,9 @@ No class update from 1894 to 1904</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Placeholder Generic Ship</remark>
+  <remark>
+   <english>Placeholder Generic Ship</english>
+  </remark>
   <objectId>631dc3d4-5e5a-42bd-949e-046c7a9a229e</objectId>
  </NamedShip>
  <NamedShip>
@@ -2039,7 +2141,9 @@ No class update from 1894 to 1904</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Placeholder Generic Ship</remark>
+  <remark>
+   <english>Placeholder Generic Ship</english>
+  </remark>
   <objectId>84f20929-89f8-46b5-9da1-5362f695d7a0</objectId>
  </NamedShip>
  <NamedShip>
@@ -2062,7 +2166,9 @@ No class update from 1894 to 1904</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Placeholder Generic Ship</remark>
+  <remark>
+   <english>Placeholder Generic Ship</english>
+  </remark>
   <objectId>15d98f04-0f31-4564-aca7-d692964e3b1d</objectId>
  </NamedShip>
  <NamedShip>
@@ -2085,7 +2191,9 @@ No class update from 1894 to 1904</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Placeholder Generic Ship</remark>
+  <remark>
+   <english>Placeholder Generic Ship</english>
+  </remark>
   <objectId>af7e8e29-25ca-4853-bcd8-763d5e68316e</objectId>
  </NamedShip>
  <NamedShip>
@@ -2108,7 +2216,9 @@ No class update from 1894 to 1904</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Placeholder Generic Ship</remark>
+  <remark>
+   <english>Placeholder Generic Ship</english>
+  </remark>
   <objectId>2ef747f7-1800-48a7-8ffa-039cd09ad7e5</objectId>
  </NamedShip>
  <NamedShip>
@@ -2131,7 +2241,9 @@ No class update from 1894 to 1904</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Placeholder Generic Ship</remark>
+  <remark>
+   <english>Placeholder Generic Ship</english>
+  </remark>
   <objectId>9a88c0f3-1d75-47f4-8bb0-74aafe50abfd</objectId>
  </NamedShip>
  <NamedShip>
@@ -2154,7 +2266,9 @@ No class update from 1894 to 1904</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Placeholder Generic Ship</remark>
+  <remark>
+   <english>Placeholder Generic Ship</english>
+  </remark>
   <objectId>131eb933-c6ad-4bea-a263-cb9276e04647</objectId>
  </NamedShip>
  <NamedShip>
@@ -2177,7 +2291,9 @@ No class update from 1894 to 1904</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Placeholder Generic Ship</remark>
+  <remark>
+   <english>Placeholder Generic Ship</english>
+  </remark>
   <objectId>76d9777a-8f19-4dec-87db-07c6c5ca4115</objectId>
  </NamedShip>
  <NamedShip>
@@ -2200,7 +2316,9 @@ No class update from 1894 to 1904</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Placeholder Generic Ship</remark>
+  <remark>
+   <english>Placeholder Generic Ship</english>
+  </remark>
   <objectId>0ad53356-5ac9-4f9d-9a7c-307030928482</objectId>
  </NamedShip>
  <NamedShip>
@@ -2223,7 +2341,9 @@ No class update from 1894 to 1904</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Placeholder Generic Ship</remark>
+  <remark>
+   <english>Placeholder Generic Ship</english>
+  </remark>
   <objectId>c656d4a5-7e3e-4484-88bf-c03743e9a5a9</objectId>
  </NamedShip>
  <NamedShip>
@@ -2246,7 +2366,9 @@ No class update from 1894 to 1904</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Placeholder Generic Ship</remark>
+  <remark>
+   <english>Placeholder Generic Ship</english>
+  </remark>
   <objectId>667ffa05-ef82-475a-aaef-c909cc4e15d4</objectId>
  </NamedShip>
  <NamedShip>
@@ -2269,7 +2391,9 @@ No class update from 1894 to 1904</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Placeholder Generic Ship</remark>
+  <remark>
+   <english>Placeholder Generic Ship</english>
+  </remark>
   <objectId>b3e4a091-75e3-479b-866b-c13339fdff5f</objectId>
  </NamedShip>
  <NamedShip>
@@ -2292,7 +2416,9 @@ No class update from 1894 to 1904</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Placeholder Generic Ship</remark>
+  <remark>
+   <english>Placeholder Generic Ship</english>
+  </remark>
   <objectId>d2685bc0-ae0e-445e-8f84-253bdab9a131</objectId>
  </NamedShip>
  <NamedShip>
@@ -2315,7 +2441,9 @@ No class update from 1894 to 1904</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Placeholder Generic Ship</remark>
+  <remark>
+   <english>Placeholder Generic Ship</english>
+  </remark>
   <objectId>b0c890cd-d6a0-478f-9eda-65b5fd392968</objectId>
  </NamedShip>
  <NamedShip>
@@ -2338,7 +2466,9 @@ No class update from 1894 to 1904</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Placeholder Generic Ship</remark>
+  <remark>
+   <english>Placeholder Generic Ship</english>
+  </remark>
   <objectId>cd670f7c-da3f-4738-8838-d2284a740f32</objectId>
  </NamedShip>
  <NamedShip>
@@ -2361,7 +2491,9 @@ No class update from 1894 to 1904</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Placeholder Generic Ship</remark>
+  <remark>
+   <english>Placeholder Generic Ship</english>
+  </remark>
   <objectId>228aa6dd-7b58-4342-b8dc-cdb7d64ba9b8</objectId>
  </NamedShip>
  <NamedShip>
@@ -2384,7 +2516,9 @@ No class update from 1894 to 1904</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Placeholder Generic Ship</remark>
+  <remark>
+   <english>Placeholder Generic Ship</english>
+  </remark>
   <objectId>23cdabb1-9433-4aca-9cbc-2481ad2c79d4</objectId>
  </NamedShip>
  <NamedShip>
@@ -2407,7 +2541,9 @@ No class update from 1894 to 1904</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Placeholder Generic Ship</remark>
+  <remark>
+   <english>Placeholder Generic Ship</english>
+  </remark>
   <objectId>29c5ff53-f29e-4e48-926f-d234e26ac0ed</objectId>
  </NamedShip>
  <NamedShip>
@@ -2430,7 +2566,9 @@ No class update from 1894 to 1904</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Placeholder Generic Ship</remark>
+  <remark>
+   <english>Placeholder Generic Ship</english>
+  </remark>
   <objectId>e93ec8f2-d273-4daf-b228-f700c2116f44</objectId>
  </NamedShip>
  <NamedShip>
@@ -2453,7 +2591,8 @@ No class update from 1894 to 1904</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Placeholder Generic Ship
+  <remark>
+   <english>Placeholder Generic Ship
 
 “利运”舰，原来是轮船招商局的货轮，排水量1080吨，轮机110匹马力，后被北洋海军以87431两银购得，改造为运输舰。该舰流传下来的资料甚少，目前所知的仅仅是甲申事变时期，曾载运中国军队前往朝鲜登陆平乱，甲午战争重曾频繁在北洋一代执行运输任务，参加了运送铭字军前往大东沟的行动。甲午战争后，招商局轮船的序列中仍有一艘“利运”号，是否为同一艘船，还需要假以时间来考证判断。
 
@@ -2471,7 +2610,8 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
 
 陳悅 (2015), 《北洋海軍艦船誌》
 
-</remark>
+</english>
+  </remark>
   <objectId>95ef9985-e6fe-4ce0-a813-6e506f78484b</objectId>
  </NamedShip>
  <NamedShip>
@@ -2494,7 +2634,8 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Placeholder Generic Ship
+  <remark>
+   <english>Placeholder Generic Ship
 
 “海镜”舰，是福建船政建造的第13艘军舰，属于“付波”级的改型军舰，由法籍顾问安乐陶监造，1873年2月28日开工，当年11月8日下水，军舰为全木制结构，舰型上属于旧式炮舰改成的商船。排水量1258吨，动力采用一套普通立式蒸汽机，功率600匹马力，设计航速9节。该舰建成后，很快被改造作为商轮调拨给轮船招商局，用作台湾海峡的往来运输，北洋建成海防之后又被调往北洋，隶属北洋海军，曾参与过甲申平定朝鲜叛乱事件。甲午战争中，作为小型运输舰的“海镜”并未参与战斗，在旅顺被日军虏获拆毁。
 
@@ -2512,7 +2653,8 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
 
 陳悅 (2015), 《北洋海軍艦船誌》
 
-</remark>
+</english>
+  </remark>
   <objectId>8625e60d-6083-45a7-91f4-50aac0d7989c</objectId>
  </NamedShip>
  <NamedShip>
@@ -2535,7 +2677,8 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Placeholder Generic Ship
+  <remark>
+   <english>Placeholder Generic Ship
 
 “泰安”舰是北洋海军内另一艘由福建建造的军舰，在福建船政的建造序列里排序为第19，同型还有一艘“登瀛洲”舰。该级舰舰形较大，军舰长达65.4米，宽10.72米，舰首吃水3.52米，舰尾吃水4.16米，排水量达到 1258吨。动力系统采用了1台船政自造的立式二气缸蒸汽机，装备两座方式锅炉，功率500匹马力，单轴推进，设计航速10节，完工时由于船政经费紧张，没有配备任何五倍。
 
@@ -2553,7 +2696,8 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
 
 陳悅 (2015), 《北洋海軍艦船誌》
 
-</remark>
+</english>
+  </remark>
   <objectId>90f19df6-3c15-45b7-91eb-ee7f4e99d8d9</objectId>
  </NamedShip>
  <NamedShip>
@@ -2598,7 +2742,9 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Placeholder </remark>
+  <remark>
+   <english>Placeholder </english>
+  </remark>
   <objectId>b1772596-7c1d-44ec-ad71-292c584f75a6</objectId>
  </NamedShip>
  <NamedShip>
@@ -2623,7 +2769,9 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Russian_cruiser_Rossia</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Russian_cruiser_Rossia</english>
+  </remark>
   <objectId>ccfbb84c-983d-4bfc-a279-47b6206f1bcb</objectId>
  </NamedShip>
  <NamedShip>
@@ -2648,7 +2796,9 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Russian_cruiser_Rossia</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Russian_cruiser_Rossia</english>
+  </remark>
   <objectId>0ffd3749-6e49-42c8-a76b-9205bd4b1c8c</objectId>
  </NamedShip>
  <NamedShip>
@@ -2769,7 +2919,9 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Tokiwa</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Tokiwa</english>
+  </remark>
   <objectId>ef3aab5b-4612-4e48-8df2-d1f44db31e0e</objectId>
  </NamedShip>
  <NamedShip>
@@ -2794,7 +2946,9 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Iwate</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Iwate</english>
+  </remark>
   <objectId>beeb025a-e601-46f0-a22f-7bf4f6e08b24</objectId>
  </NamedShip>
  <NamedShip>
@@ -2843,7 +2997,9 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Russian_cruiser_Bogatyr</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Russian_cruiser_Bogatyr</english>
+  </remark>
   <objectId>87163a59-48ce-49d7-b37b-6bafa41e10c6</objectId>
  </NamedShip>
  <NamedShip>
@@ -2868,9 +3024,11 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Niitaka
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Niitaka
 
-</remark>
+</english>
+  </remark>
   <objectId>c06764c2-f4b7-4dc8-b9c8-db1c9439e86c</objectId>
  </NamedShip>
  <NamedShip>
@@ -3751,9 +3909,11 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/SS_Hitachi_Maru_(1898)
+  <remark>
+   <english>https://en.wikipedia.org/wiki/SS_Hitachi_Maru_(1898)
 
-Generic Placeholder class</remark>
+Generic Placeholder class</english>
+  </remark>
   <objectId>b34603f1-89d4-4135-bc43-4b7744d9520f</objectId>
  </NamedShip>
  <NamedShip>
@@ -3776,7 +3936,9 @@ Generic Placeholder class</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Generic Placeholder class</remark>
+  <remark>
+   <english>Generic Placeholder class</english>
+  </remark>
   <objectId>33bad679-764f-4104-b16b-e2f188e8198c</objectId>
  </NamedShip>
  <NamedShip>
@@ -3799,7 +3961,9 @@ Generic Placeholder class</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Generic Placeholder class</remark>
+  <remark>
+   <english>Generic Placeholder class</english>
+  </remark>
   <objectId>34345bca-5efa-4f85-8046-614b60a53427</objectId>
  </NamedShip>
  <NamedShip>
@@ -3824,7 +3988,9 @@ Generic Placeholder class</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Asama</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Asama</english>
+  </remark>
   <objectId>89d34a37-6713-46dc-a5e8-e56e641e3260</objectId>
  </NamedShip>
  <NamedShip>
@@ -3849,7 +4015,9 @@ Generic Placeholder class</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Yakumo</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Yakumo</english>
+  </remark>
   <objectId>82a8efa5-a1a1-4917-8083-51a734f660b3</objectId>
  </NamedShip>
  <NamedShip>
@@ -3874,7 +4042,9 @@ Generic Placeholder class</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Akashi</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Akashi</english>
+  </remark>
   <objectId>2e203508-d589-4fa9-9fd2-7223a2a40190</objectId>
  </NamedShip>
  <NamedShip>
@@ -3897,9 +4067,11 @@ Generic Placeholder class</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Suma
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Suma
 
-</remark>
+</english>
+  </remark>
   <objectId>3e2a1597-9996-4113-a4e2-c194a7a50244</objectId>
  </NamedShip>
  <NamedShip>
@@ -3922,7 +4094,9 @@ Generic Placeholder class</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://ja.wikipedia.org/wiki/%E9%9A%BC_(%E9%9A%BC%E5%9E%8B%E6%B0%B4%E9%9B%B7%E8%89%87)</remark>
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E9%9A%BC_(%E9%9A%BC%E5%9E%8B%E6%B0%B4%E9%9B%B7%E8%89%87)</english>
+  </remark>
   <objectId>64184894-1559-468a-a9ee-71d89d44b758</objectId>
  </NamedShip>
  <NamedShip>
@@ -3945,7 +4119,9 @@ Generic Placeholder class</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://ja.wikipedia.org/wiki/%E9%B5%B2_(%E9%9A%BC%E5%9E%8B%E6%B0%B4%E9%9B%B7%E8%89%87)</remark>
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E9%B5%B2_(%E9%9A%BC%E5%9E%8B%E6%B0%B4%E9%9B%B7%E8%89%87)</english>
+  </remark>
   <objectId>c7b73fa3-d986-4807-b484-da292acd5264</objectId>
  </NamedShip>
  <NamedShip>
@@ -3990,7 +4166,9 @@ Generic Placeholder class</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://ja.wikipedia.org/wiki/%E5%8D%83%E9%B3%A5_(%E9%9A%BC%E5%9E%8B%E6%B0%B4%E9%9B%B7%E8%89%87)</remark>
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E5%8D%83%E9%B3%A5_(%E9%9A%BC%E5%9E%8B%E6%B0%B4%E9%9B%B7%E8%89%87)</english>
+  </remark>
   <objectId>bf9d177b-d9cb-48e6-9ea4-3a5e9a00c78e</objectId>
  </NamedShip>
  <NamedShip>
@@ -4013,7 +4191,9 @@ Generic Placeholder class</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://ja.wikipedia.org/wiki/%E9%9B%81_(%E9%9A%BC%E5%9E%8B%E6%B0%B4%E9%9B%B7%E8%89%87)</remark>
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E9%9B%81_(%E9%9A%BC%E5%9E%8B%E6%B0%B4%E9%9B%B7%E8%89%87)</english>
+  </remark>
   <objectId>8de4908b-950c-4134-a08e-6a373e7c3314</objectId>
  </NamedShip>
  <NamedShip>
@@ -4036,7 +4216,9 @@ Generic Placeholder class</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://ja.wikipedia.org/wiki/%E8%92%BC%E9%B7%B9_(%E9%9A%BC%E5%9E%8B%E6%B0%B4%E9%9B%B7%E8%89%87)</remark>
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E8%92%BC%E9%B7%B9_(%E9%9A%BC%E5%9E%8B%E6%B0%B4%E9%9B%B7%E8%89%87)</english>
+  </remark>
   <objectId>6be4339c-a5de-4d7a-9e7c-bd26c6f464ec</objectId>
  </NamedShip>
  <NamedShip>
@@ -4059,7 +4241,9 @@ Generic Placeholder class</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://ja.wikipedia.org/wiki/%E9%B4%BF_(%E6%B0%B4%E9%9B%B7%E8%89%87)</remark>
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E9%B4%BF_(%E6%B0%B4%E9%9B%B7%E8%89%87)</english>
+  </remark>
   <objectId>0a34d18a-a174-45a1-8e03-9fdce8cd9095</objectId>
  </NamedShip>
  <NamedShip>
@@ -4082,7 +4266,9 @@ Generic Placeholder class</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://ja.wikipedia.org/wiki/%E7%87%95_(%E9%9A%BC%E5%9E%8B%E6%B0%B4%E9%9B%B7%E8%89%87)</remark>
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E7%87%95_(%E9%9A%BC%E5%9E%8B%E6%B0%B4%E9%9B%B7%E8%89%87)</english>
+  </remark>
   <objectId>37460130-ade2-4d67-8e6a-ba02666e2a8b</objectId>
  </NamedShip>
  <NamedShip>
@@ -4261,7 +4447,9 @@ Generic Placeholder class</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Russian_cruiser_Varyag_(1899)</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Russian_cruiser_Varyag_(1899)</english>
+  </remark>
   <objectId>fbd232b2-28a9-4f21-a09a-536d835b2d86</objectId>
  </NamedShip>
  <NamedShip>
@@ -4286,7 +4474,9 @@ Generic Placeholder class</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>For Taku Fort</remark>
+  <remark>
+   <english>For Taku Fort</english>
+  </remark>
   <objectId>cc5593db-fb51-4c8c-bff5-f9584f70b4c3</objectId>
  </NamedShip>
  <NamedShip>
@@ -4311,7 +4501,9 @@ Generic Placeholder class</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Russo-Japanese War</remark>
+  <remark>
+   <english>Russo-Japanese War</english>
+  </remark>
   <objectId>74138eaa-5f95-4aae-a9df-f0be719db548</objectId>
  </NamedShip>
  <NamedShip>
@@ -4336,7 +4528,9 @@ Generic Placeholder class</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Russian_battleship_Petropavlovsk_(1894)</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Russian_battleship_Petropavlovsk_(1894)</english>
+  </remark>
   <objectId>8c4ae50e-55e8-4b51-8826-632f8145d168</objectId>
  </NamedShip>
  <NamedShip>
@@ -4361,9 +4555,11 @@ Generic Placeholder class</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Russian_battleship_Poltava_(1894)
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Russian_battleship_Poltava_(1894)
 
-Полтава</remark>
+Полтава</english>
+  </remark>
   <objectId>35727299-0d09-421a-886f-258defe79986</objectId>
  </NamedShip>
  <NamedShip>
@@ -4388,7 +4584,9 @@ Generic Placeholder class</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Russian_battleship_Sevastopol_(1895)</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Russian_battleship_Sevastopol_(1895)</english>
+  </remark>
   <objectId>5219fa2a-b72b-48bf-971e-09770b635ef6</objectId>
  </NamedShip>
  <NamedShip>
@@ -4413,9 +4611,11 @@ Generic Placeholder class</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Russian_battleship_Sevastopol_(1895)
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Russian_battleship_Sevastopol_(1895)
 
-Севастополь</remark>
+Севастополь</english>
+  </remark>
   <objectId>017428d0-883c-4e49-bbf3-9a0624fa0ab8</objectId>
  </NamedShip>
  <NamedShip>
@@ -4438,7 +4638,9 @@ Generic Placeholder class</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_destroyer_Shirakumo_(1901)</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_destroyer_Shirakumo_(1901)</english>
+  </remark>
   <objectId>600e205a-4092-4102-9b3d-4999960930f1</objectId>
  </NamedShip>
  <NamedShip>
@@ -4461,7 +4663,9 @@ Generic Placeholder class</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_destroyer_Asashio_(1902)</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_destroyer_Asashio_(1902)</english>
+  </remark>
   <objectId>62ed0234-5ad4-4ee1-9164-a08677339f91</objectId>
  </NamedShip>
  <NamedShip>
@@ -4484,7 +4688,9 @@ Generic Placeholder class</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_destroyer_Kasumi_(1902)</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_destroyer_Kasumi_(1902)</english>
+  </remark>
   <objectId>0af658e3-f93a-45d2-950e-ff1f6bdc4c3b</objectId>
  </NamedShip>
  <NamedShip>
@@ -4507,7 +4713,9 @@ Generic Placeholder class</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_destroyer_Akatsuki_(1901)</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_destroyer_Akatsuki_(1901)</english>
+  </remark>
   <objectId>72464bdf-13f3-4ec8-8126-82aaeece1e81</objectId>
  </NamedShip>
  <NamedShip>
@@ -4530,8 +4738,10 @@ Generic Placeholder class</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://ja.wikipedia.org/wiki/%E9%9B%B7_(%E9%9B%B7%E5%9E%8B%E9%A7%86%E9%80%90%E8%89%A6)
-</remark>
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E9%9B%B7_(%E9%9B%B7%E5%9E%8B%E9%A7%86%E9%80%90%E8%89%A6)
+</english>
+  </remark>
   <objectId>54b38404-7748-43d2-a2c1-d0b5dcb4f96e</objectId>
  </NamedShip>
  <NamedShip>
@@ -4554,8 +4764,10 @@ Generic Placeholder class</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://ja.wikipedia.org/wiki/%E9%9B%BB_(%E9%9B%B7%E5%9E%8B%E9%A7%86%E9%80%90%E8%89%A6)
-</remark>
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E9%9B%BB_(%E9%9B%B7%E5%9E%8B%E9%A7%86%E9%80%90%E8%89%A6)
+</english>
+  </remark>
   <objectId>93489bc9-9509-4bc2-9dfd-572a5b36c77d</objectId>
  </NamedShip>
  <NamedShip>
@@ -4578,7 +4790,9 @@ Generic Placeholder class</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://ja.wikipedia.org/wiki/%E6%9B%99_(%E9%9B%B7%E5%9E%8B%E9%A7%86%E9%80%90%E8%89%A6)</remark>
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E6%9B%99_(%E9%9B%B7%E5%9E%8B%E9%A7%86%E9%80%90%E8%89%A6)</english>
+  </remark>
   <objectId>296e955f-499d-4a60-96c1-f573f564f40e</objectId>
  </NamedShip>
  <NamedShip>
@@ -4601,8 +4815,10 @@ Generic Placeholder class</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_destroyer_Sazanami_(1899)
-</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_destroyer_Sazanami_(1899)
+</english>
+  </remark>
   <objectId>eb8b7083-a5a2-4efe-a36f-886397b6e183</objectId>
  </NamedShip>
  <NamedShip>
@@ -4625,8 +4841,10 @@ Generic Placeholder class</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://ja.wikipedia.org/wiki/%E6%9C%A7_(%E9%9B%B7%E5%9E%8B%E9%A7%86%E9%80%90%E8%89%A6)
-</remark>
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E6%9C%A7_(%E9%9B%B7%E5%9E%8B%E9%A7%86%E9%80%90%E8%89%A6)
+</english>
+  </remark>
   <objectId>f980d585-cd48-4f53-b210-d73aefb3585c</objectId>
  </NamedShip>
  <NamedShip>
@@ -4671,7 +4889,9 @@ Generic Placeholder class</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_destroyer_Shinonome_(1898)</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_destroyer_Shinonome_(1898)</english>
+  </remark>
   <objectId>9e7584bf-b83e-4dbb-876e-a6d38a611e47</objectId>
  </NamedShip>
  <NamedShip>
@@ -4760,7 +4980,9 @@ Generic Placeholder class</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_destroyer_Usugumo_(1900)</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_destroyer_Usugumo_(1900)</english>
+  </remark>
   <objectId>1ae7c266-27f3-4a63-9565-d04f1893669c</objectId>
  </NamedShip>
  <NamedShip>
@@ -4785,7 +5007,8 @@ Generic Placeholder class</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Russian_battleship_Tsesarevich
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Russian_battleship_Tsesarevich
 
 Цесаревич
 
@@ -4793,7 +5016,8 @@ Questionable leadership records:
 
 15.02.1899 — 28.03.1904 — капитан 1-го ранга Григорович, Иван Константинович
 12.04.1904 — 22.04.1904[5] — капитан 1-го ранга Эбергард, Андрей Августович
-хх.хх.1904 — хх.хх.1904 — временно командующий капитан 1-го ранга Иванов, Николай Михайлович</remark>
+хх.хх.1904 — хх.хх.1904 — временно командующий капитан 1-го ранга Иванов, Николай Михайлович</english>
+  </remark>
   <objectId>fa91db00-9857-4be7-8078-46425dc1fae8</objectId>
  </NamedShip>
  <NamedShip>
@@ -4818,11 +5042,13 @@ Questionable leadership records:
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Russian_battleship_Peresvet
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Russian_battleship_Peresvet
 
 Пересвет
 
-Peresviet or Peresvet</remark>
+Peresviet or Peresvet</english>
+  </remark>
   <objectId>afd264d6-6650-4a3a-b4e6-f1e1116a3b78</objectId>
  </NamedShip>
  <NamedShip>
@@ -4847,9 +5073,11 @@ Peresviet or Peresvet</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Russian_battleship_Pobeda
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Russian_battleship_Pobeda
 
-Победа</remark>
+Победа</english>
+  </remark>
   <objectId>89155ba3-eb23-4ced-91f4-caf2b39eeba3</objectId>
  </NamedShip>
  <NamedShip>
@@ -4874,9 +5102,11 @@ Peresviet or Peresvet</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Russian_cruiser_Bayan_(1900)
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Russian_cruiser_Bayan_(1900)
 
-Баян</remark>
+Баян</english>
+  </remark>
   <objectId>f89516c3-3d99-40fb-9561-b2891498aa6f</objectId>
  </NamedShip>
  <NamedShip>
@@ -4923,9 +5153,11 @@ Peresviet or Peresvet</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Russian_cruiser_Askold
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Russian_cruiser_Askold
 
-Аскольд</remark>
+Аскольд</english>
+  </remark>
   <objectId>9173c1e2-c2b7-4243-ad26-384d7d8aa12d</objectId>
  </NamedShip>
  <NamedShip>
@@ -4948,9 +5180,11 @@ Peresviet or Peresvet</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Диана
+  <remark>
+   <english>Диана
 
-https://en.wikipedia.org/wiki/Russian_cruiser_Diana</remark>
+https://en.wikipedia.org/wiki/Russian_cruiser_Diana</english>
+  </remark>
   <objectId>d4bf9697-57a5-4400-8e00-735253603cf9</objectId>
  </NamedShip>
  <NamedShip>
@@ -4973,9 +5207,11 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Diana</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Russian_cruiser_Pallada_(1899)
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Russian_cruiser_Pallada_(1899)
 
-Паллада</remark>
+Паллада</english>
+  </remark>
   <objectId>ff4970a5-746d-47dd-ad33-d2bc5d593b5d</objectId>
  </NamedShip>
  <NamedShip>
@@ -4998,10 +5234,12 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Diana</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Russian_cruiser_Boyarin
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Russian_cruiser_Boyarin
 https://naval-encyclopedia.com/ww1/russia/boyarin.php
 
-Боярин</remark>
+Боярин</english>
+  </remark>
   <objectId>27252cd4-03d7-47b3-a503-76cde30923e3</objectId>
  </NamedShip>
  <NamedShip>
@@ -5024,9 +5262,11 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Russian_cruiser_Aurora
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Russian_cruiser_Aurora
 
-Авро́ра</remark>
+Авро́ра</english>
+  </remark>
   <objectId>5a0541e2-71c7-4f78-aa0a-90f371ad95bd</objectId>
  </NamedShip>
  <NamedShip>
@@ -5075,9 +5315,11 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Russian_cruiser_Novik
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Russian_cruiser_Novik
 
-Новик</remark>
+Новик</english>
+  </remark>
   <objectId>00384385-c2d8-4a81-bf93-6b1eb26e3993</objectId>
  </NamedShip>
  <NamedShip>
@@ -5124,9 +5366,11 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Russian_battleship_Retvizan
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Russian_battleship_Retvizan
 
-Ретвизан</remark>
+Ретвизан</english>
+  </remark>
   <objectId>1d4ca256-c8eb-4473-8e06-944a65fa450e</objectId>
  </NamedShip>
  <NamedShip>
@@ -5151,9 +5395,11 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_battleship_Mikasa
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_battleship_Mikasa
 
-</remark>
+</english>
+  </remark>
   <objectId>63b7b57c-04c4-434a-a1d1-7fb4736177a6</objectId>
  </NamedShip>
  <NamedShip>
@@ -5178,8 +5424,10 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_battleship_Asahi
-</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_battleship_Asahi
+</english>
+  </remark>
   <objectId>de62fd57-d624-49fc-b137-dc121728df44</objectId>
  </NamedShip>
  <NamedShip>
@@ -5204,8 +5452,10 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_battleship_Asahi
-</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_battleship_Asahi
+</english>
+  </remark>
   <objectId>21e58347-3a97-41bb-9e62-3c4b62d2ac4d</objectId>
  </NamedShip>
  <NamedShip>
@@ -5230,7 +5480,9 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_battleship_Shikishima</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_battleship_Shikishima</english>
+  </remark>
   <objectId>d1e103ca-ba50-4d30-af58-fc9f226a7c34</objectId>
  </NamedShip>
  <NamedShip>
@@ -5255,7 +5507,9 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_battleship_Hatsuse</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_battleship_Hatsuse</english>
+  </remark>
   <objectId>0536435f-698d-4bf9-8701-7b63f26b7350</objectId>
  </NamedShip>
  <NamedShip>
@@ -5280,9 +5534,11 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Kasagi
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Kasagi
 
-</remark>
+</english>
+  </remark>
   <objectId>3eaec09b-4b74-4529-a6cc-c3cbe29f98fd</objectId>
  </NamedShip>
  <NamedShip>
@@ -5307,9 +5563,11 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Kasagi
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Kasagi
 
-</remark>
+</english>
+  </remark>
   <objectId>8b58447a-d155-4c4c-9370-aa31b979018e</objectId>
  </NamedShip>
  <NamedShip>
@@ -5334,9 +5592,11 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Chitose
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Chitose
 
-</remark>
+</english>
+  </remark>
   <objectId>c681ebaf-0058-44d6-835c-7ffdb1b92bc7</objectId>
  </NamedShip>
  <NamedShip>
@@ -5361,7 +5621,9 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Takasago</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Takasago</english>
+  </remark>
   <objectId>ab70e233-f9e5-4b29-8f91-cd06cec2e40f</objectId>
  </NamedShip>
  <NamedShip>
@@ -5386,7 +5648,9 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Tsukushi</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Tsukushi</english>
+  </remark>
   <objectId>32e52a92-4efd-4a44-b08e-d2b5693ff60c</objectId>
  </NamedShip>
  <NamedShip>
@@ -5411,7 +5675,9 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_gunboat_Ch%C5%8Dkai</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_gunboat_Ch%C5%8Dkai</english>
+  </remark>
   <objectId>e87d0a96-19c2-49f2-90d2-c7c1ccf0e9ae</objectId>
  </NamedShip>
  <NamedShip>
@@ -5436,7 +5702,9 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_gunboat_%C5%8Cshima</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_gunboat_%C5%8Cshima</english>
+  </remark>
   <objectId>e2ce3c33-af6c-4024-9e13-31a36b57c1ab</objectId>
  </NamedShip>
  <NamedShip>
@@ -5767,7 +6035,9 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://ja.wikipedia.org/wiki/%E9%80%9F%E9%B3%A5_(%E9%A7%86%E9%80%90%E8%89%A6)</remark>
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E9%80%9F%E9%B3%A5_(%E9%A7%86%E9%80%90%E8%89%A6)</english>
+  </remark>
   <objectId>a0b5de48-35e1-45b6-8dc4-d1d11b6fe3c7</objectId>
  </NamedShip>
  <NamedShip>
@@ -5790,7 +6060,9 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://ja.wikipedia.org/wiki/%E6%98%A5%E9%9B%A8_(%E6%98%A5%E9%9B%A8%E5%9E%8B%E9%A7%86%E9%80%90%E8%89%A6)</remark>
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E6%98%A5%E9%9B%A8_(%E6%98%A5%E9%9B%A8%E5%9E%8B%E9%A7%86%E9%80%90%E8%89%A6)</english>
+  </remark>
   <objectId>32c9077c-0dc0-482f-9c63-4dc350d304d7</objectId>
  </NamedShip>
  <NamedShip>
@@ -5813,7 +6085,9 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://ja.wikipedia.org/wiki/%E6%9C%9D%E9%9C%A7_(%E6%98%A5%E9%9B%A8%E5%9E%8B%E9%A7%86%E9%80%90%E8%89%A6)</remark>
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E6%9C%9D%E9%9C%A7_(%E6%98%A5%E9%9B%A8%E5%9E%8B%E9%A7%86%E9%80%90%E8%89%A6)</english>
+  </remark>
   <objectId>073ca71e-f4fe-42b7-8204-bdca0d719fd6</objectId>
  </NamedShip>
  <NamedShip>
@@ -5836,7 +6110,9 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://ja.wikipedia.org/wiki/%E6%9D%91%E9%9B%A8_(%E6%98%A5%E9%9B%A8%E5%9E%8B%E9%A7%86%E9%80%90%E8%89%A6)</remark>
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E6%9D%91%E9%9B%A8_(%E6%98%A5%E9%9B%A8%E5%9E%8B%E9%A7%86%E9%80%90%E8%89%A6)</english>
+  </remark>
   <objectId>4346ea81-cc98-42ef-ba31-287926b6426c</objectId>
  </NamedShip>
  <NamedShip>
@@ -5861,7 +6137,9 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://ja.wikipedia.org/wiki/%E6%98%A5%E6%97%A5_(%E8%A3%85%E7%94%B2%E5%B7%A1%E6%B4%8B%E8%89%A6)</remark>
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E6%98%A5%E6%97%A5_(%E8%A3%85%E7%94%B2%E5%B7%A1%E6%B4%8B%E8%89%A6)</english>
+  </remark>
   <objectId>68a5becf-73ad-4263-ad2d-7be24831ebb9</objectId>
  </NamedShip>
  <NamedShip>
@@ -5908,7 +6186,9 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Yaeyama</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Yaeyama</english>
+  </remark>
   <objectId>f8609106-2fb7-4789-956b-bd930efb8950</objectId>
  </NamedShip>
  <NamedShip>
@@ -5931,7 +6211,9 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Chilean_cruiser_Esmeralda_(1883)</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Chilean_cruiser_Esmeralda_(1883)</english>
+  </remark>
   <objectId>60217514-9922-42dd-9be9-e94b0a048996</objectId>
  </NamedShip>
  <NamedShip>
@@ -5954,9 +6236,11 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Бойкий
+  <remark>
+   <english>Бойкий
 
-https://ru.wikipedia.org/wiki/%D0%91%D0%BE%D0%B9%D0%BA%D0%B8%D0%B9_(%D0%BC%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D0%B5%D1%86)</remark>
+https://ru.wikipedia.org/wiki/%D0%91%D0%BE%D0%B9%D0%BA%D0%B8%D0%B9_(%D0%BC%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D0%B5%D1%86)</english>
+  </remark>
   <objectId>d8369ab7-d510-4cea-8dc7-03273ae66f28</objectId>
  </NamedShip>
  <NamedShip>
@@ -5979,9 +6263,11 @@ https://ru.wikipedia.org/wiki/%D0%91%D0%BE%D0%B9%D0%BA%D0%B8%D0%B9_(%D0%BC%D0%B8
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Буйный
+  <remark>
+   <english>Буйный
 
-https://ru.wikipedia.org/wiki/%D0%91%D1%83%D0%B9%D0%BD%D1%8B%D0%B9_(%D0%BC%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D0%B5%D1%86)</remark>
+https://ru.wikipedia.org/wiki/%D0%91%D1%83%D0%B9%D0%BD%D1%8B%D0%B9_(%D0%BC%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D0%B5%D1%86)</english>
+  </remark>
   <objectId>d50b3c43-52f9-4215-abcf-274bf66b5f4c</objectId>
  </NamedShip>
  <NamedShip>
@@ -6004,9 +6290,11 @@ https://ru.wikipedia.org/wiki/%D0%91%D1%83%D0%B9%D0%BD%D1%8B%D0%B9_(%D0%BC%D0%B8
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Выносливый
+  <remark>
+   <english>Выносливый
 
-https://ru.wikipedia.org/wiki/%D0%92%D1%8B%D0%BD%D0%BE%D1%81%D0%BB%D0%B8%D0%B2%D1%8B%D0%B9_(%D0%BC%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D0%B5%D1%86)</remark>
+https://ru.wikipedia.org/wiki/%D0%92%D1%8B%D0%BD%D0%BE%D1%81%D0%BB%D0%B8%D0%B2%D1%8B%D0%B9_(%D0%BC%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D0%B5%D1%86)</english>
+  </remark>
   <objectId>4c28316c-fc76-4c5f-a47b-511db96f03d3</objectId>
  </NamedShip>
  <NamedShip>
@@ -6029,9 +6317,11 @@ https://ru.wikipedia.org/wiki/%D0%92%D1%8B%D0%BD%D0%BE%D1%81%D0%BB%D0%B8%D0%B2%D
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Властный
+  <remark>
+   <english>Властный
 
-https://ru.wikipedia.org/wiki/%D0%92%D0%BB%D0%B0%D1%81%D1%82%D0%BD%D1%8B%D0%B9_(%D0%BC%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D0%B5%D1%86)</remark>
+https://ru.wikipedia.org/wiki/%D0%92%D0%BB%D0%B0%D1%81%D1%82%D0%BD%D1%8B%D0%B9_(%D0%BC%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D0%B5%D1%86)</english>
+  </remark>
   <objectId>13b5f823-87b2-403d-a5bd-fdce957b5061</objectId>
  </NamedShip>
  <NamedShip>
@@ -6054,9 +6344,11 @@ https://ru.wikipedia.org/wiki/%D0%92%D0%BB%D0%B0%D1%81%D1%82%D0%BD%D1%8B%D0%B9_(
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Грозовой
+  <remark>
+   <english>Грозовой
 
-https://ru.wikipedia.org/wiki/%D0%93%D1%80%D0%BE%D0%B7%D0%BE%D0%B2%D0%BE%D0%B9_(%D0%BC%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D0%B5%D1%86)</remark>
+https://ru.wikipedia.org/wiki/%D0%93%D1%80%D0%BE%D0%B7%D0%BE%D0%B2%D0%BE%D0%B9_(%D0%BC%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D0%B5%D1%86)</english>
+  </remark>
   <objectId>2056ee3d-eecf-4286-b9a8-0193791a30ec</objectId>
  </NamedShip>
  <NamedShip>
@@ -6079,9 +6371,11 @@ https://ru.wikipedia.org/wiki/%D0%93%D1%80%D0%BE%D0%B7%D0%BE%D0%B2%D0%BE%D0%B9_(
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Бесстрашный
+  <remark>
+   <english>Бесстрашный
 
-https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%81%D1%81%D1%82%D1%80%D0%B0%D1%88%D0%BD%D1%8B%D0%B9_(%D0%BC%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D0%B5%D1%86)</remark>
+https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%81%D1%81%D1%82%D1%80%D0%B0%D1%88%D0%BD%D1%8B%D0%B9_(%D0%BC%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D0%B5%D1%86)</english>
+  </remark>
   <objectId>3fafb59f-c1fc-4915-866a-559125d3efaf</objectId>
  </NamedShip>
  <NamedShip>
@@ -6104,9 +6398,11 @@ https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%81%D1%81%D1%82%D1%80%D0%B0%D1%88%D
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Бесшумный
+  <remark>
+   <english>Бесшумный
 
-https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%81%D1%88%D1%83%D0%BC%D0%BD%D1%8B%D0%B9_(%D0%BC%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D0%B5%D1%86)</remark>
+https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%81%D1%88%D1%83%D0%BC%D0%BD%D1%8B%D0%B9_(%D0%BC%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D0%B5%D1%86)</english>
+  </remark>
   <objectId>195a8b86-11f4-44a4-8a76-1ebd19a85cc9</objectId>
  </NamedShip>
  <NamedShip>
@@ -6129,9 +6425,11 @@ https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%81%D1%88%D1%83%D0%BC%D0%BD%D1%8B%D
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Беспощадный
+  <remark>
+   <english>Беспощадный
 
-https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%81%D0%BF%D0%BE%D1%89%D0%B0%D0%B4%D0%BD%D1%8B%D0%B9_(%D0%BC%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D0%B5%D1%86)</remark>
+https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%81%D0%BF%D0%BE%D1%89%D0%B0%D0%B4%D0%BD%D1%8B%D0%B9_(%D0%BC%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D0%B5%D1%86)</english>
+  </remark>
   <objectId>2a67e708-40ff-46c2-a218-b1993ed7bdc4</objectId>
  </NamedShip>
  <NamedShip>
@@ -6156,8 +6454,10 @@ https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%81%D0%BF%D0%BE%D1%89%D0%B0%D0%B4%D
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Chinese_cruiser_Hai_Chi
-</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Chinese_cruiser_Hai_Chi
+</english>
+  </remark>
   <objectId>1a88e426-09c2-40b3-9df1-00d583e1ef16</objectId>
  </NamedShip>
  <NamedShip>
@@ -6182,8 +6482,10 @@ https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%81%D0%BF%D0%BE%D1%89%D0%B0%D0%B4%D
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Chinese_cruiser_Hai_Tien
-</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Chinese_cruiser_Hai_Tien
+</english>
+  </remark>
   <objectId>2f29c316-7ca5-4dea-9ba3-d76f056c4a90</objectId>
  </NamedShip>
  <NamedShip>
@@ -6206,7 +6508,9 @@ https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%81%D0%BF%D0%BE%D1%89%D0%B0%D0%B4%D
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Chinese_cruiser_Hai_Yung</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Chinese_cruiser_Hai_Yung</english>
+  </remark>
   <objectId>6c3d4167-3651-47f2-be27-fbe0d6e81691</objectId>
  </NamedShip>
  <NamedShip>
@@ -6229,7 +6533,9 @@ https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%81%D0%BF%D0%BE%D1%89%D0%B0%D0%B4%D
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E7%B1%8C%E8%99%9F%E9%98%B2%E8%AD%B7%E5%B7%A1%E6%B4%8B%E8%89%A6</remark>
+  <remark>
+   <english>https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E7%B1%8C%E8%99%9F%E9%98%B2%E8%AD%B7%E5%B7%A1%E6%B4%8B%E8%89%A6</english>
+  </remark>
   <objectId>fa3c85b0-d04e-431f-8f1f-c82abfd19a43</objectId>
  </NamedShip>
  <NamedShip>
@@ -6252,7 +6558,9 @@ https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%81%D0%BF%D0%BE%D1%89%D0%B0%D0%B4%D
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://zh.wikipedia.org/zh-tw/%E6%B5%B7%E7%90%9B%E8%99%9F%E9%98%B2%E8%AD%B7%E5%B7%A1%E6%B4%8B%E8%89%A6</remark>
+  <remark>
+   <english>https://zh.wikipedia.org/zh-tw/%E6%B5%B7%E7%90%9B%E8%99%9F%E9%98%B2%E8%AD%B7%E5%B7%A1%E6%B4%8B%E8%89%A6</english>
+  </remark>
   <objectId>549e2990-a7d1-4e0a-9c98-ae21588a7a54</objectId>
  </NamedShip>
  <NamedShip>
@@ -6277,7 +6585,9 @@ https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%81%D0%BF%D0%BE%D1%89%D0%B0%D0%B4%D
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>true</notAvailableForFirstSinoJapaneseWar>
-  <remark>Hypothetical Blanco Encalada is bought from Chile</remark>
+  <remark>
+   <english>Hypothetical Blanco Encalada is bought from Chile</english>
+  </remark>
   <objectId>5931eace-e011-43fc-958b-f8d3c6e74153</objectId>
  </NamedShip>
  <NamedShip>
@@ -6300,7 +6610,9 @@ https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%81%D0%BF%D0%BE%D1%89%D0%B0%D0%B4%D
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Chilean_battleship_Capit%C3%A1n_Prat</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Chilean_battleship_Capit%C3%A1n_Prat</english>
+  </remark>
   <objectId>082138d1-5e4f-42c6-ab2c-ab25298ff00c</objectId>
  </NamedShip>
  <NamedShip>
@@ -6345,7 +6657,9 @@ https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%81%D0%BF%D0%BE%D1%89%D0%B0%D0%B4%D
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://naval-encyclopedia.com/ww1/chile/presidente-pinto-class-cruisers.php</remark>
+  <remark>
+   <english>https://naval-encyclopedia.com/ww1/chile/presidente-pinto-class-cruisers.php</english>
+  </remark>
   <objectId>45228a40-211f-4a79-a22d-fa88cf9de8aa</objectId>
  </NamedShip>
  <NamedShip>
@@ -6368,7 +6682,9 @@ https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%81%D0%BF%D0%BE%D1%89%D0%B0%D0%B4%D
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://naval-encyclopedia.com/ww1/chile/presidente-pinto-class-cruisers.php</remark>
+  <remark>
+   <english>https://naval-encyclopedia.com/ww1/chile/presidente-pinto-class-cruisers.php</english>
+  </remark>
   <objectId>d2fe661e-006b-430a-ac4e-b9ec599e4a17</objectId>
  </NamedShip>
  <NamedShip>
@@ -6391,7 +6707,9 @@ https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%81%D0%BF%D0%BE%D1%89%D0%B0%D0%B4%D
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Chilean_torpedo_gunboat_Almirante_Lynch</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Chilean_torpedo_gunboat_Almirante_Lynch</english>
+  </remark>
   <objectId>856557b0-e462-41d2-ba8d-f57dfc11e7c3</objectId>
  </NamedShip>
  <NamedShip>
@@ -6414,9 +6732,11 @@ https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%81%D0%BF%D0%BE%D1%89%D0%B0%D0%B4%D
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://picryl.com/media/crucero-torpedero-almirante-condell-5ce8fd
+  <remark>
+   <english>https://picryl.com/media/crucero-torpedero-almirante-condell-5ce8fd
 
-https://dawlishchronicles.blogspot.com/2014/01/almirante-lynch-first-sinking-by.html</remark>
+https://dawlishchronicles.blogspot.com/2014/01/almirante-lynch-first-sinking-by.html</english>
+  </remark>
   <objectId>c8d4f49c-8d3f-49e8-8d19-14fa406298b5</objectId>
  </NamedShip>
  <NamedShip>
@@ -6439,7 +6759,9 @@ https://dawlishchronicles.blogspot.com/2014/01/almirante-lynch-first-sinking-by.
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/ARA_Veinticinco_de_Mayo_(1890)</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/ARA_Veinticinco_de_Mayo_(1890)</english>
+  </remark>
   <objectId>e177eeb6-1f15-4aa3-b72c-2ad8bac56987</objectId>
  </NamedShip>
  <NamedShip>
@@ -6506,10 +6828,12 @@ https://dawlishchronicles.blogspot.com/2014/01/almirante-lynch-first-sinking-by.
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Zhenbei or Chenpei
+  <remark>
+   <english>Zhenbei or Chenpei
 
 https://baike.baidu.com/item/%E9%95%87%E5%8C%97%E5%8F%B7%E7%82%AE%E8%88%B0/9024371
-</remark>
+</english>
+  </remark>
   <objectId>5196bfb4-3971-4868-8d2e-b752c4495811</objectId>
  </NamedShip>
  <NamedShip>
@@ -6532,9 +6856,11 @@ https://baike.baidu.com/item/%E9%95%87%E5%8C%97%E5%8F%B7%E7%82%AE%E8%88%B0/90243
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Zhendong or Chen Tung
+  <remark>
+   <english>Zhendong or Chen Tung
 
-https://baike.baidu.com/item/%E9%95%87%E4%B8%9C%E5%8F%B7%E7%82%AE%E8%88%B0/9024716</remark>
+https://baike.baidu.com/item/%E9%95%87%E4%B8%9C%E5%8F%B7%E7%82%AE%E8%88%B0/9024716</english>
+  </remark>
   <objectId>7e406bad-d8f6-4e82-b48e-20013030a914</objectId>
  </NamedShip>
  <NamedShip>
@@ -6557,10 +6883,12 @@ https://baike.baidu.com/item/%E9%95%87%E4%B8%9C%E5%8F%B7%E7%82%AE%E8%88%B0/90247
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Zhennan or Chen Nan
+  <remark>
+   <english>Zhennan or Chen Nan
 
 https://baike.baidu.com/item/%E9%95%87%E5%8D%97%E5%8F%B7%E7%82%AE%E8%88%B0/9024561
-</remark>
+</english>
+  </remark>
   <objectId>bebd5b6f-54f0-45b0-ac03-876164520319</objectId>
  </NamedShip>
  <NamedShip>
@@ -6583,10 +6911,12 @@ https://baike.baidu.com/item/%E9%95%87%E5%8D%97%E5%8F%B7%E7%82%AE%E8%88%B0/90245
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Zhenxi or Chen His
+  <remark>
+   <english>Zhenxi or Chen His
 
 https://baijiahao.baidu.com/s?id=1811274115024645871
-</remark>
+</english>
+  </remark>
   <objectId>8d790d2d-4e92-4d15-b7ae-2c2cbb800e47</objectId>
  </NamedShip>
  <NamedShip>
@@ -6609,11 +6939,13 @@ https://baijiahao.baidu.com/s?id=1811274115024645871
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Zhenbian or Chen Pien
+  <remark>
+   <english>Zhenbian or Chen Pien
 
 https://baike.baidu.com/item/%E9%95%87%E8%BE%B9%E5%8F%B7%E7%82%AE%E8%88%B0/9023284
 
-</remark>
+</english>
+  </remark>
   <objectId>fefdc8ed-f522-4f8b-a829-00ad787e6edb</objectId>
  </NamedShip>
  <NamedShip>
@@ -6636,11 +6968,13 @@ https://baike.baidu.com/item/%E9%95%87%E8%BE%B9%E5%8F%B7%E7%82%AE%E8%88%B0/90232
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Zhenzhong or Chen Chung
+  <remark>
+   <english>Zhenzhong or Chen Chung
 
 https://baike.baidu.com/item/%E9%95%87%E4%B8%AD%E5%8F%B7%E7%82%AE%E8%88%B0/9024231
 
-</remark>
+</english>
+  </remark>
   <objectId>18e1f87e-aa5d-4fa9-99d1-40996fdb1a33</objectId>
  </NamedShip>
  <NamedShip>
@@ -6663,10 +6997,12 @@ https://baike.baidu.com/item/%E9%95%87%E4%B8%AD%E5%8F%B7%E7%82%AE%E8%88%B0/90242
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>In SK5 data sheet, it's marked as Zhenhai (镇海) but it's actually another gunboat.
+  <remark>
+   <english>In SK5 data sheet, it's marked as Zhenhai (镇海) but it's actually another gunboat.
 
 https://baike.baidu.com/item/%E6%B5%B7%E9%95%9C%E6%B8%85%E5%8F%B7%E7%82%AE%E8%89%87/9021756
-</remark>
+</english>
+  </remark>
   <objectId>4a39ce4c-9775-4732-bb26-cfc0e84fd020</objectId>
  </NamedShip>
  <NamedShip>
@@ -6691,8 +7027,10 @@ https://baike.baidu.com/item/%E6%B5%B7%E9%95%9C%E6%B8%85%E5%8F%B7%E7%82%AE%E8%89
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://baike.baidu.com/item/%E5%BC%80%E6%B5%8E%E7%BA%A7%E5%B7%A1%E6%B4%8B%E8%88%B0/5946696
-</remark>
+  <remark>
+   <english>https://baike.baidu.com/item/%E5%BC%80%E6%B5%8E%E7%BA%A7%E5%B7%A1%E6%B4%8B%E8%88%B0/5946696
+</english>
+  </remark>
   <objectId>2cdfcd72-a575-4db7-a76c-e69aaaa1734e</objectId>
  </NamedShip>
  <NamedShip>
@@ -6717,10 +7055,12 @@ https://baike.baidu.com/item/%E6%B5%B7%E9%95%9C%E6%B8%85%E5%8F%B7%E7%82%AE%E8%89
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>King Ch'ing or Ching Ching
+  <remark>
+   <english>King Ch'ing or Ching Ching
 
 https://baike.baidu.com/item/%E9%95%9C%E6%B8%85%E5%8F%B7/9669520
-</remark>
+</english>
+  </remark>
   <objectId>34a353cb-a85f-44ed-9fe8-ca1d1f67c2d9</objectId>
  </NamedShip>
  <NamedShip>
@@ -6745,7 +7085,9 @@ https://baike.baidu.com/item/%E9%95%9C%E6%B8%85%E5%8F%B7/9669520
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://baike.baidu.com/item/%E5%8D%97%E6%B4%8B%E6%B0%B4%E5%B8%88%E2%80%9C%E5%AF%B0%E6%B3%B0%E2%80%9D%E5%8F%B7%E5%B7%A1%E6%B4%8B%E8%88%B0/7565174</remark>
+  <remark>
+   <english>https://baike.baidu.com/item/%E5%8D%97%E6%B4%8B%E6%B0%B4%E5%B8%88%E2%80%9C%E5%AF%B0%E6%B3%B0%E2%80%9D%E5%8F%B7%E5%B7%A1%E6%B4%8B%E8%88%B0/7565174</english>
+  </remark>
   <objectId>00d4be00-170d-4a58-9f70-149a8aeed435</objectId>
  </NamedShip>
  <NamedShip>
@@ -6770,8 +7112,10 @@ https://baike.baidu.com/item/%E9%95%9C%E6%B8%85%E5%8F%B7/9669520
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Chinese_cruiser_Nan_Chen
-</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Chinese_cruiser_Nan_Chen
+</english>
+  </remark>
   <objectId>df464fc1-d125-4880-bf7b-f88bfb52e939</objectId>
  </NamedShip>
  <NamedShip>
@@ -6796,7 +7140,9 @@ https://baike.baidu.com/item/%E9%95%9C%E6%B8%85%E5%8F%B7/9669520
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Chinese_cruiser_Nan_Shui</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Chinese_cruiser_Nan_Shui</english>
+  </remark>
   <objectId>22f31a46-4189-435a-a1c0-fcee6715b712</objectId>
  </NamedShip>
  <NamedShip>
@@ -6821,7 +7167,9 @@ https://baike.baidu.com/item/%E9%95%9C%E6%B8%85%E5%8F%B7/9669520
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://naval-encyclopedia.com/ww1/china/pao-min-1885.php</remark>
+  <remark>
+   <english>https://naval-encyclopedia.com/ww1/china/pao-min-1885.php</english>
+  </remark>
   <objectId>859a9413-57da-47ce-9aa9-ad5afc3dd934</objectId>
  </NamedShip>
  <NamedShip>
@@ -6844,8 +7192,10 @@ https://baike.baidu.com/item/%E9%95%9C%E6%B8%85%E5%8F%B7/9669520
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://zh.wikipedia.org/zh-tw/%E7%A6%8F%E9%9D%96%E5%8F%B7%E9%98%B2%E6%8A%A4%E5%B7%A1%E6%B4%8B%E8%88%B0
-</remark>
+  <remark>
+   <english>https://zh.wikipedia.org/zh-tw/%E7%A6%8F%E9%9D%96%E5%8F%B7%E9%98%B2%E6%8A%A4%E5%B7%A1%E6%B4%8B%E8%88%B0
+</english>
+  </remark>
   <objectId>e6b6b47c-bd9c-4db7-ad62-d114586b40bb</objectId>
  </NamedShip>
  <NamedShip>
@@ -6870,7 +7220,9 @@ https://baike.baidu.com/item/%E9%95%9C%E6%B8%85%E5%8F%B7/9669520
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Russian_battleship_Imperator_Nikolai_I_(1889)</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Russian_battleship_Imperator_Nikolai_I_(1889)</english>
+  </remark>
   <objectId>9bd9d71e-cab1-4a51-b106-8381954a0fbc</objectId>
  </NamedShip>
  <NamedShip>
@@ -6895,7 +7247,9 @@ https://baike.baidu.com/item/%E9%95%9C%E6%B8%85%E5%8F%B7/9669520
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Nakhimov_(1885)</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Nakhimov_(1885)</english>
+  </remark>
   <objectId>5aee1ca4-89bc-4916-83d3-95d31359a32d</objectId>
  </NamedShip>
  <NamedShip>
@@ -6920,7 +7274,9 @@ https://baike.baidu.com/item/%E9%95%9C%E6%B8%85%E5%8F%B7/9669520
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Nakhimov_(1885)</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Nakhimov_(1885)</english>
+  </remark>
   <objectId>49bda5a7-3b5c-4a24-8581-0bcc687c29b8</objectId>
  </NamedShip>
  <NamedShip>
@@ -6945,7 +7301,9 @@ https://baike.baidu.com/item/%E9%95%9C%E6%B8%85%E5%8F%B7/9669520
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Russian_cruiser_Pamiat_Azova</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Russian_cruiser_Pamiat_Azova</english>
+  </remark>
   <objectId>4e88cce5-4ba1-4789-959b-9015a13ea798</objectId>
  </NamedShip>
  <NamedShip>
@@ -6968,7 +7326,9 @@ https://baike.baidu.com/item/%E9%95%9C%E6%B8%85%E5%8F%B7/9669520
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Russian_cruiser_Vladimir_Monomakh</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Russian_cruiser_Vladimir_Monomakh</english>
+  </remark>
   <objectId>1a9d9c90-fec5-4f57-bcbc-27c188a58cbb</objectId>
  </NamedShip>
  <NamedShip>
@@ -6991,7 +7351,9 @@ https://baike.baidu.com/item/%E9%95%9C%E6%B8%85%E5%8F%B7/9669520
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Kornilov</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Kornilov</english>
+  </remark>
   <objectId>80060b20-58c0-4c8f-a6c8-2adc96cf3c45</objectId>
  </NamedShip>
  <NamedShip>
@@ -7016,10 +7378,12 @@ https://baike.baidu.com/item/%E9%95%9C%E6%B8%85%E5%8F%B7/9669520
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Бородино
+  <remark>
+   <english>Бородино
 
 https://en.wikipedia.org/wiki/Russian_battleship_Borodino
-́</remark>
+́</english>
+  </remark>
   <objectId>08ccf09a-760d-43e2-9e7e-43d7cab1986c</objectId>
  </NamedShip>
  <NamedShip>
@@ -7044,9 +7408,11 @@ https://en.wikipedia.org/wiki/Russian_battleship_Borodino
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Император Александр III
+  <remark>
+   <english>Император Александр III
 
-https://en.wikipedia.org/wiki/Russian_battleship_Imperator_Aleksandr_III_(1901)</remark>
+https://en.wikipedia.org/wiki/Russian_battleship_Imperator_Aleksandr_III_(1901)</english>
+  </remark>
   <objectId>922678e2-d35d-414a-96ba-67381362b0f9</objectId>
  </NamedShip>
  <NamedShip>
@@ -7071,9 +7437,11 @@ https://en.wikipedia.org/wiki/Russian_battleship_Imperator_Aleksandr_III_(1901)<
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Князь Суворов
+  <remark>
+   <english>Князь Суворов
 
-https://en.wikipedia.org/wiki/Russian_battleship_Knyaz_Suvorov</remark>
+https://en.wikipedia.org/wiki/Russian_battleship_Knyaz_Suvorov</english>
+  </remark>
   <objectId>a48a7e49-098d-419c-b1ff-6286f90afdf3</objectId>
  </NamedShip>
  <NamedShip>
@@ -7098,10 +7466,12 @@ https://en.wikipedia.org/wiki/Russian_battleship_Knyaz_Suvorov</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Орёл
+  <remark>
+   <english>Орёл
 
 https://en.wikipedia.org/wiki/Russian_battleship_Oryol
-</remark>
+</english>
+  </remark>
   <objectId>4e57accb-d8db-4546-88e7-b523ac15395c</objectId>
  </NamedShip>
  <NamedShip>
@@ -7126,9 +7496,11 @@ https://en.wikipedia.org/wiki/Russian_battleship_Oryol
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Ослябя
+  <remark>
+   <english>Ослябя
 
-https://en.wikipedia.org/wiki/Russian_battleship_Oslyabya</remark>
+https://en.wikipedia.org/wiki/Russian_battleship_Oslyabya</english>
+  </remark>
   <objectId>6086a75d-86dd-484f-bd45-9dccc479ee86</objectId>
  </NamedShip>
  <NamedShip>
@@ -7153,9 +7525,11 @@ https://en.wikipedia.org/wiki/Russian_battleship_Oslyabya</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Сисой Великий
+  <remark>
+   <english>Сисой Великий
 
-https://en.wikipedia.org/wiki/Russian_battleship_Sissoi_Veliky</remark>
+https://en.wikipedia.org/wiki/Russian_battleship_Sissoi_Veliky</english>
+  </remark>
   <objectId>f2dc9b34-1177-421b-b053-42cb5e9f7af6</objectId>
  </NamedShip>
  <NamedShip>
@@ -7180,9 +7554,11 @@ https://en.wikipedia.org/wiki/Russian_battleship_Sissoi_Veliky</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Сисой Великий
+  <remark>
+   <english>Сисой Великий
 
-https://en.wikipedia.org/wiki/Russian_battleship_Sissoi_Veliky</remark>
+https://en.wikipedia.org/wiki/Russian_battleship_Sissoi_Veliky</english>
+  </remark>
   <objectId>f5a986af-fcf7-446e-93f1-8d6b9aab09ac</objectId>
  </NamedShip>
  <NamedShip>
@@ -7207,9 +7583,11 @@ https://en.wikipedia.org/wiki/Russian_battleship_Sissoi_Veliky</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Наварин
+  <remark>
+   <english>Наварин
 
-https://en.wikipedia.org/wiki/Russian_battleship_Navarin</remark>
+https://en.wikipedia.org/wiki/Russian_battleship_Navarin</english>
+  </remark>
   <objectId>5c5654d7-bfc8-4ece-b3b3-9c14c45fb6b0</objectId>
  </NamedShip>
  <NamedShip>
@@ -7232,7 +7610,9 @@ https://en.wikipedia.org/wiki/Russian_battleship_Navarin</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/HMS_Inflexible_(1876)</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/HMS_Inflexible_(1876)</english>
+  </remark>
   <objectId>b4e01edb-513c-400c-8e3e-703c4cfe8c4f</objectId>
  </NamedShip>
  <NamedShip>
@@ -7257,8 +7637,10 @@ https://en.wikipedia.org/wiki/Russian_battleship_Navarin</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/HMS_Centurion_(1892)
-https://dreadnoughtproject.org/tfs/index.php/H.M.S._Centurion_(1892)</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/HMS_Centurion_(1892)
+https://dreadnoughtproject.org/tfs/index.php/H.M.S._Centurion_(1892)</english>
+  </remark>
   <objectId>79055f5c-3f73-4798-b5f1-195eeb404611</objectId>
  </NamedShip>
  <NamedShip>
@@ -7283,8 +7665,10 @@ https://dreadnoughtproject.org/tfs/index.php/H.M.S._Centurion_(1892)</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/HMS_Centurion_(1892)
-https://dreadnoughtproject.org/tfs/index.php/H.M.S._Centurion_(1892)</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/HMS_Centurion_(1892)
+https://dreadnoughtproject.org/tfs/index.php/H.M.S._Centurion_(1892)</english>
+  </remark>
   <objectId>ce1ceaf5-99f0-473f-9a31-6df438daa588</objectId>
  </NamedShip>
  <NamedShip>
@@ -7309,9 +7693,11 @@ https://dreadnoughtproject.org/tfs/index.php/H.M.S._Centurion_(1892)</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/HMS_Barfleur_(1892)
+  <remark>
+   <english>https://en.wikipedia.org/wiki/HMS_Barfleur_(1892)
 
-https://www.dreadnoughtproject.org/tfs/index.php/H.M.S._Barfleur_(1892)</remark>
+https://www.dreadnoughtproject.org/tfs/index.php/H.M.S._Barfleur_(1892)</english>
+  </remark>
   <objectId>162f0508-df37-4cdf-b967-c0710440306b</objectId>
  </NamedShip>
  <NamedShip>
@@ -7334,7 +7720,9 @@ https://www.dreadnoughtproject.org/tfs/index.php/H.M.S._Barfleur_(1892)</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/HMS_Dreadnought_(1906)</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/HMS_Dreadnought_(1906)</english>
+  </remark>
   <objectId>fbb4ec90-9eaf-40ad-9c50-677c33d7ecc2</objectId>
  </NamedShip>
  <NamedShip>
@@ -7357,8 +7745,10 @@ https://www.dreadnoughtproject.org/tfs/index.php/H.M.S._Barfleur_(1892)</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/HMS_Invincible_(1907)
-</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/HMS_Invincible_(1907)
+</english>
+  </remark>
   <objectId>b31a2d7f-8e2d-42cc-8b60-0f7d4353718b</objectId>
  </NamedShip>
  <NamedShip>
@@ -7381,7 +7771,9 @@ https://www.dreadnoughtproject.org/tfs/index.php/H.M.S._Barfleur_(1892)</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/HMS_Edgar_(1890)</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/HMS_Edgar_(1890)</english>
+  </remark>
   <objectId>aa593fcb-4a1c-41fe-8c75-f49ffea45d36</objectId>
  </NamedShip>
  <NamedShip>
@@ -7404,8 +7796,10 @@ https://www.dreadnoughtproject.org/tfs/index.php/H.M.S._Barfleur_(1892)</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/HMS_Undaunted
-</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/HMS_Undaunted
+</english>
+  </remark>
   <objectId>1d01473c-c7c0-4a71-953c-dbb375dc7ded</objectId>
  </NamedShip>
  <NamedShip>
@@ -7428,7 +7822,9 @@ https://www.dreadnoughtproject.org/tfs/index.php/H.M.S._Barfleur_(1892)</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/HMS_Mercury_(1878)</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/HMS_Mercury_(1878)</english>
+  </remark>
   <objectId>cc14e91d-809f-40ea-8a3b-40ea57f53ce3</objectId>
  </NamedShip>
  <NamedShip>
@@ -7451,8 +7847,10 @@ https://www.dreadnoughtproject.org/tfs/index.php/H.M.S._Barfleur_(1892)</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://naval-encyclopedia.com/ww1/uk/apollo-class-cruisers.php
-</remark>
+  <remark>
+   <english>https://naval-encyclopedia.com/ww1/uk/apollo-class-cruisers.php
+</english>
+  </remark>
   <objectId>d16b4168-9b26-489a-b649-9e39dfcf91d7</objectId>
  </NamedShip>
  <NamedShip>
@@ -7475,8 +7873,10 @@ https://www.dreadnoughtproject.org/tfs/index.php/H.M.S._Barfleur_(1892)</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/HMS_Spartan_(1891)
-</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/HMS_Spartan_(1891)
+</english>
+  </remark>
   <objectId>17bcd1e2-b616-48e3-b2b6-8a67052a1843</objectId>
  </NamedShip>
  <NamedShip>
@@ -7499,9 +7899,11 @@ https://www.dreadnoughtproject.org/tfs/index.php/H.M.S._Barfleur_(1892)</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/HMCS_Rainbow_(1891)
+  <remark>
+   <english>https://en.wikipedia.org/wiki/HMCS_Rainbow_(1891)
 
-</remark>
+</english>
+  </remark>
   <objectId>c9219d56-650f-49ce-9588-c832e3dcc8de</objectId>
  </NamedShip>
  <NamedShip>
@@ -7524,7 +7926,9 @@ https://www.dreadnoughtproject.org/tfs/index.php/H.M.S._Barfleur_(1892)</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://naval-encyclopedia.com/ww1/uk/apollo-class-cruisers.php</remark>
+  <remark>
+   <english>https://naval-encyclopedia.com/ww1/uk/apollo-class-cruisers.php</english>
+  </remark>
   <objectId>0e9f41fd-7e18-4b0a-beb3-bba8458a198d</objectId>
  </NamedShip>
  <NamedShip>
@@ -7549,9 +7953,11 @@ https://www.dreadnoughtproject.org/tfs/index.php/H.M.S._Barfleur_(1892)</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/HMS_Algerine_(1895)
+  <remark>
+   <english>https://en.wikipedia.org/wiki/HMS_Algerine_(1895)
 
-</remark>
+</english>
+  </remark>
   <objectId>45f5bb18-cce0-4bbe-8bdb-6a00c6ced733</objectId>
  </NamedShip>
  <NamedShip>
@@ -7576,7 +7982,9 @@ https://www.dreadnoughtproject.org/tfs/index.php/H.M.S._Barfleur_(1892)</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/HMS_Whiting_(1896)</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/HMS_Whiting_(1896)</english>
+  </remark>
   <objectId>fad7a6d7-6406-4b02-a8ec-161b147eef2b</objectId>
  </NamedShip>
  <NamedShip>
@@ -7601,8 +8009,10 @@ https://www.dreadnoughtproject.org/tfs/index.php/H.M.S._Barfleur_(1892)</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/HMS_Fame_(1896)
-</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/HMS_Fame_(1896)
+</english>
+  </remark>
   <objectId>90432bfa-d2f4-4d4e-b3d0-1ba231dc9309</objectId>
  </NamedShip>
  <NamedShip>
@@ -7627,10 +8037,12 @@ https://www.dreadnoughtproject.org/tfs/index.php/H.M.S._Barfleur_(1892)</remark>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Бобр (канонерская лодка)
+  <remark>
+   <english>Бобр (канонерская лодка)
 
 https://ru.wikipedia.org/wiki/%D0%91%D0%BE%D0%B1%D1%80_(%D0%BA%D0%B0%D0%BD%D0%BE%D0%BD%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F_%D0%BB%D0%BE%D0%B4%D0%BA%D0%B0)
-</remark>
+</english>
+  </remark>
   <objectId>d9ced899-c5e3-4bfe-94ac-5436db449c10</objectId>
  </NamedShip>
  <NamedShip>
@@ -7655,10 +8067,12 @@ https://ru.wikipedia.org/wiki/%D0%91%D0%BE%D0%B1%D1%80_(%D0%BA%D0%B0%D0%BD%D0%BE
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Сивуч (канонерская лодка)
+  <remark>
+   <english>Сивуч (канонерская лодка)
 
 https://ru.wikipedia.org/wiki/%D0%A1%D0%B8%D0%B2%D1%83%D1%87_(%D0%BA%D0%B0%D0%BD%D0%BE%D0%BD%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F_%D0%BB%D0%BE%D0%B4%D0%BA%D0%B0)
-</remark>
+</english>
+  </remark>
   <objectId>5388393e-3eb6-4541-ba8f-03c5be7f17b1</objectId>
  </NamedShip>
  <NamedShip>
@@ -7683,9 +8097,11 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%B8%D0%B2%D1%83%D1%87_(%D0%BA%D0%B0%D0%BD
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/SMS_Iltis_(1898)
+  <remark>
+   <english>https://en.wikipedia.org/wiki/SMS_Iltis_(1898)
 
-</remark>
+</english>
+  </remark>
   <objectId>d02d8241-2c25-417a-a741-212a33ed6118</objectId>
  </NamedShip>
  <NamedShip>
@@ -7710,9 +8126,11 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%B8%D0%B2%D1%83%D1%87_(%D0%BA%D0%B0%D0%BD
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_gunboat_Atago
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_gunboat_Atago
 
-</remark>
+</english>
+  </remark>
   <objectId>0cf00c8d-a96a-4a5d-9dc0-8e1ef1cea156</objectId>
  </NamedShip>
  <NamedShip>
@@ -7737,9 +8155,11 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%B8%D0%B2%D1%83%D1%87_(%D0%BA%D0%B0%D0%BD
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Japanese_gunboat_Atago
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_gunboat_Atago
 
-</remark>
+</english>
+  </remark>
   <objectId>6b515ed4-d9de-4cc1-8f35-f59e6cc13813</objectId>
  </NamedShip>
  <NamedShip>
@@ -7764,9 +8184,11 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%B8%D0%B2%D1%83%D1%87_(%D0%BA%D0%B0%D0%BD
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/HMS_Endymion_(1891)
+  <remark>
+   <english>https://en.wikipedia.org/wiki/HMS_Endymion_(1891)
 https://www.dreadnoughtproject.org/tfs/index.php/H.M.S._Endymion_(1891)
-</remark>
+</english>
+  </remark>
   <objectId>95929e8b-aa21-4c16-818e-ea7c933c770e</objectId>
  </NamedShip>
  <NamedShip>
@@ -7789,11 +8211,13 @@ https://www.dreadnoughtproject.org/tfs/index.php/H.M.S._Endymion_(1891)
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/HMS_Aurora_(1887)
+  <remark>
+   <english>https://en.wikipedia.org/wiki/HMS_Aurora_(1887)
 https://www.dreadnoughtproject.org/tfs/index.php/H.M.S._Aurora_(1887)
 
 The British Aurora (1887), not the well-known Russian one.
-</remark>
+</english>
+  </remark>
   <objectId>5540858f-5cfe-4e2b-9c42-1750fba18794</objectId>
  </NamedShip>
  <NamedShip>
@@ -7816,9 +8240,11 @@ The British Aurora (1887), not the well-known Russian one.
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/HMS_Orlando_(1886)
+  <remark>
+   <english>https://en.wikipedia.org/wiki/HMS_Orlando_(1886)
 https://www.dreadnoughtproject.org/tfs/index.php/H.M.S._Orlando_(1886)
-</remark>
+</english>
+  </remark>
   <objectId>11b93d3d-1c85-47b1-8997-c2bb1e30288c</objectId>
  </NamedShip>
  <NamedShip>
@@ -7843,10 +8269,12 @@ https://www.dreadnoughtproject.org/tfs/index.php/H.M.S._Orlando_(1886)
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://www.dreadnoughtproject.org/tfs/index.php/H.M.S._Alacrity_(1885)
+  <remark>
+   <english>https://www.dreadnoughtproject.org/tfs/index.php/H.M.S._Alacrity_(1885)
 https://en.wikipedia.org/wiki/Surprise-class_cruiser#HMS_Alacrity
 
-</remark>
+</english>
+  </remark>
   <objectId>8f436daf-7efd-4f81-a0d7-8c30e1bbad91</objectId>
  </NamedShip>
  <NamedShip>
@@ -7869,8 +8297,10 @@ https://en.wikipedia.org/wiki/Surprise-class_cruiser#HMS_Alacrity
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://commons.wikimedia.org/wiki/Category:Gaydamak_(ship,_1892)
-</remark>
+  <remark>
+   <english>https://commons.wikimedia.org/wiki/Category:Gaydamak_(ship,_1892)
+</english>
+  </remark>
   <objectId>0f39018f-f2f5-4e21-a841-b06bdd3fa005</objectId>
  </NamedShip>
  <NamedShip>
@@ -7895,8 +8325,10 @@ https://en.wikipedia.org/wiki/Surprise-class_cruiser#HMS_Alacrity
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/SMS_Hertha_(1897)
-</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/SMS_Hertha_(1897)
+</english>
+  </remark>
   <objectId>5d8cec48-5268-4e3b-82e5-0243d56c5178</objectId>
  </NamedShip>
  <NamedShip>
@@ -7921,8 +8353,10 @@ https://en.wikipedia.org/wiki/Surprise-class_cruiser#HMS_Alacrity
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/SMS_Hansa_(1898)
-</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/SMS_Hansa_(1898)
+</english>
+  </remark>
   <objectId>3d81678d-1825-4f9f-bd2a-20a77bcc7de2</objectId>
  </NamedShip>
  <NamedShip>
@@ -7947,8 +8381,10 @@ https://en.wikipedia.org/wiki/Surprise-class_cruiser#HMS_Alacrity
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/SMS_Kaiserin_Augusta
-</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/SMS_Kaiserin_Augusta
+</english>
+  </remark>
   <objectId>54da6ecc-5f49-4691-9d21-19948e6df831</objectId>
  </NamedShip>
  <NamedShip>
@@ -7973,9 +8409,11 @@ https://en.wikipedia.org/wiki/Surprise-class_cruiser#HMS_Alacrity
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/SMS_Gefion
+  <remark>
+   <english>https://en.wikipedia.org/wiki/SMS_Gefion
 
-</remark>
+</english>
+  </remark>
   <objectId>cf31755a-7ad0-4294-8421-339b36bcbd0b</objectId>
  </NamedShip>
  <NamedShip>
@@ -8000,8 +8438,10 @@ https://en.wikipedia.org/wiki/Surprise-class_cruiser#HMS_Alacrity
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/French_cruiser_D%27Entrecasteaux
-</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/French_cruiser_D%27Entrecasteaux
+</english>
+  </remark>
   <objectId>2bb51d30-db7f-4505-a01b-d716237769a4</objectId>
  </NamedShip>
  <NamedShip>
@@ -8024,8 +8464,10 @@ https://en.wikipedia.org/wiki/Surprise-class_cruiser#HMS_Alacrity
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/French_cruiser_Descartes
-</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/French_cruiser_Descartes
+</english>
+  </remark>
   <objectId>dbec9840-c62a-44b6-b220-231a25dbd70c</objectId>
  </NamedShip>
  <NamedShip>
@@ -8048,8 +8490,10 @@ https://en.wikipedia.org/wiki/Surprise-class_cruiser#HMS_Alacrity
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/French_cruiser_Pascal
-</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/French_cruiser_Pascal
+</english>
+  </remark>
   <objectId>79f1364a-76d0-40c9-9007-5a69d36c42e9</objectId>
  </NamedShip>
  <NamedShip>
@@ -8072,8 +8516,10 @@ https://en.wikipedia.org/wiki/Surprise-class_cruiser#HMS_Alacrity
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://laststandonzombieisland.com/tag/canonniere-la-zelee/
-</remark>
+  <remark>
+   <english>https://laststandonzombieisland.com/tag/canonniere-la-zelee/
+</english>
+  </remark>
   <objectId>f4adff63-c9f7-49de-bf28-2b69be46b8c7</objectId>
  </NamedShip>
  <NamedShip>
@@ -8096,8 +8542,10 @@ https://en.wikipedia.org/wiki/Surprise-class_cruiser#HMS_Alacrity
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Italian_cruiser_Calabria
-</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Italian_cruiser_Calabria
+</english>
+  </remark>
   <objectId>b977cf9d-0869-4f8a-9613-3b6e146531e1</objectId>
  </NamedShip>
  <NamedShip>
@@ -8120,8 +8568,10 @@ https://en.wikipedia.org/wiki/Surprise-class_cruiser#HMS_Alacrity
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/Italian_cruiser_Elba
-</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Italian_cruiser_Elba
+</english>
+  </remark>
   <objectId>d3f91676-7ebb-458e-858c-26fa90018dee</objectId>
  </NamedShip>
  <NamedShip>
@@ -8146,7 +8596,9 @@ https://en.wikipedia.org/wiki/Surprise-class_cruiser#HMS_Alacrity
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/SMS_Zenta</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/SMS_Zenta</english>
+  </remark>
   <objectId>d823d2a5-18fd-4361-9293-5b9116485111</objectId>
  </NamedShip>
  <NamedShip>
@@ -8171,7 +8623,9 @@ https://en.wikipedia.org/wiki/Surprise-class_cruiser#HMS_Alacrity
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://en.wikipedia.org/wiki/USS_Newark_(C-1)</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/USS_Newark_(C-1)</english>
+  </remark>
   <objectId>5a814b5a-f80d-4f66-a009-b08cfee1c332</objectId>
  </NamedShip>
  <NamedShip>
@@ -8196,9 +8650,11 @@ https://en.wikipedia.org/wiki/Surprise-class_cruiser#HMS_Alacrity
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Hai Hua, Hai Hola or Haihola
+  <remark>
+   <english>Hai Hua, Hai Hola or Haihola
 
-https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%88%B0</remark>
+https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%88%B0</english>
+  </remark>
   <objectId>d54c9f4c-77d4-46ea-a72f-7673bf004bb9</objectId>
  </NamedShip>
  <NamedShip>
@@ -8221,9 +8677,11 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Hai Lung or Hailong
+  <remark>
+   <english>Hai Lung or Hailong
 
-https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%88%B0</remark>
+https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%88%B0</english>
+  </remark>
   <objectId>6d16fd22-94d9-4830-bf66-23d0a6f991f5</objectId>
  </NamedShip>
  <NamedShip>
@@ -8246,9 +8704,11 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Hai Hse or Haixi
+  <remark>
+   <english>Hai Hse or Haixi
 
-https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%88%B0</remark>
+https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%88%B0</english>
+  </remark>
   <objectId>2bae4033-4714-43d6-9e37-f15d0658f2cd</objectId>
  </NamedShip>
  <NamedShip>
@@ -8271,9 +8731,11 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>Hai Ching, Hai Ying or Haiying
+  <remark>
+   <english>Hai Ching, Hai Ying or Haiying
 
-https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%88%B0</remark>
+https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%88%B0</english>
+  </remark>
   <objectId>17ecfb43-914e-44cd-bba8-7ad86cffcfd1</objectId>
  </NamedShip>
  <NamedShip>
@@ -8296,8 +8758,10 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://baike.baidu.com/item/%E9%A3%9E%E9%9C%86%E5%8F%B7%E7%82%AE%E8%88%B0/9031261
-</remark>
+  <remark>
+   <english>https://baike.baidu.com/item/%E9%A3%9E%E9%9C%86%E5%8F%B7%E7%82%AE%E8%88%B0/9031261
+</english>
+  </remark>
   <objectId>3af3b617-2f36-4945-9423-ae77d0d4b474</objectId>
  </NamedShip>
  <NamedShip>
@@ -8320,9 +8784,11 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://zh.wikipedia.org/wiki/%E9%A3%9E%E9%B9%B0%E5%8F%B7%E9%B1%BC%E9%9B%B7%E7%82%AE%E8%88%B0
+  <remark>
+   <english>https://zh.wikipedia.org/wiki/%E9%A3%9E%E9%B9%B0%E5%8F%B7%E9%B1%BC%E9%9B%B7%E7%82%AE%E8%88%B0
 
-</remark>
+</english>
+  </remark>
   <objectId>a890eacb-ed71-4140-b67d-5cd36d854c58</objectId>
  </NamedShip>
  <NamedShip>
@@ -8417,7 +8883,9 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://fr.wikipedia.org/wiki/Liste_des_canonni%C3%A8res_fran%C3%A7aises</remark>
+  <remark>
+   <english>https://fr.wikipedia.org/wiki/Liste_des_canonni%C3%A8res_fran%C3%A7aises</english>
+  </remark>
   <objectId>5e6268f2-81c8-4801-9d64-039fb754e709</objectId>
  </NamedShip>
  <NamedShip>
@@ -8442,8 +8910,10 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
-  <remark>https://ru.wikipedia.org/wiki/%D0%93%D0%B8%D0%BB%D1%8F%D0%BA_(%D0%BA%D0%B0%D0%BD%D0%BE%D0%BD%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F_%D0%BB%D0%BE%D0%B4%D0%BA%D0%B0)
-</remark>
+  <remark>
+   <english>https://ru.wikipedia.org/wiki/%D0%93%D0%B8%D0%BB%D1%8F%D0%BA_(%D0%BA%D0%B0%D0%BD%D0%BE%D0%BD%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F_%D0%BB%D0%BE%D0%B4%D0%BA%D0%B0)
+</english>
+  </remark>
   <objectId>1747168c-86cd-446f-a51f-e0de0328ab4c</objectId>
  </NamedShip>
 </ArrayOfNamedShip>

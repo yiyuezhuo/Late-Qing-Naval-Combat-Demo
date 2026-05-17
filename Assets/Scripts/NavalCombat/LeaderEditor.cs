@@ -57,6 +57,17 @@ public class LeaderEditor : LeftObjectPickerRightEditor<LeaderEditor, Leader>
             IOManager.Instance.LoadTextFile(OnLeadersXMLLoaded, "xml");
         };
 
+        var setRemarkButton = root.Q<Button>("SetRemarkButton");
+        setRemarkButton.clicked += () =>
+        {
+            var leader = selectedObject;
+            if (leader == null)
+                return;
+
+            leader.remark ??= new GlobalString();
+            DialogRoot.Instance.PopupGlobalStringMarkdownEditorDialog(leader.remark, "Remark");
+        };
+
         var portraitField = root.Q<VisualElement>("PortraitField");
         PathReferenceBinder.BindPictureReference(portraitField);
     }

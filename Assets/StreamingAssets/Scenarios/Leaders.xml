@@ -18,14 +18,16 @@
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Kawahara Yōichi (1850–1926)
+  <remark>
+   <english>Kawahara Yōichi (1850–1926)
 Vice Admiral, Imperial Japanese Navy.
 
 First Sino-Japanese War (1894–1895) – Captain of the protected cruiser Yoshino, serving in Tsuboi Kōzō’s Flying Squadron. Participated in the Battle of Pungdo (1894) and the Battle of the Yalu River (1894).
 
 Russo-Japanese War (1904–1905) – Did not command a combat unit; served as a member of the Naval Generals Council and later held reserve status.
 
-https://ja.wikipedia.org/wiki/%E6%B2%B3%E5%8E%9F%E8%A6%81%E4%B8%80</remark>
+https://ja.wikipedia.org/wiki/%E6%B2%B3%E5%8E%9F%E8%A6%81%E4%B8%80</english>
+  </remark>
   <objectId>a78127f5-61f9-450b-8013-1f57bfbaef42</objectId>
  </Leader>
  <Leader>
@@ -46,14 +48,16 @@ https://ja.wikipedia.org/wiki/%E6%B2%B3%E5%8E%9F%E8%A6%81%E4%B8%80</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Kamimura Hikonojō (1849–1916)
+  <remark>
+   <english>Kamimura Hikonojō (1849–1916)
 Admiral, Imperial Japanese Navy.
 
 First Sino-Japanese War (1894–1895) – Captain of the cruiser Akitsushima, participating in the Battle of the Yalu River (1894).
 
 Russo-Japanese War (1904–1905) – Commander of the 2nd Fleet of the Combined Fleet. Led this formation—flag aboard the armored cruiser Izumo—in operations against the Russian Vladivostok cruiser squadron and at the Battle off Ulsan (1904) and the Battle of Tsushima (1905).
 
-https://en.wikipedia.org/wiki/Kamimura_Hikonoj%C5%8D</remark>
+https://en.wikipedia.org/wiki/Kamimura_Hikonoj%C5%8D</english>
+  </remark>
   <objectId>43bfbde8-70e0-4d42-8122-3dc082557429</objectId>
  </Leader>
  <Leader>
@@ -76,14 +80,16 @@ https://en.wikipedia.org/wiki/Kamimura_Hikonoj%C5%8D</remark>
   <traits>
    <LeaderTrait>Lucky</LeaderTrait>
   </traits>
-  <remark>Tōgō Heihachirō (1848–1934)
+  <remark>
+   <english>Tōgō Heihachirō (1848–1934)
 Marshal-Admiral (Gensui) of the Imperial Japanese Navy.
 
 First Sino-Japanese War (1894–1895) – Captain of the protected cruiser Naniwa; participated in the Battle of Pungdo (1894) and the Battle of the Yalu River (1894).
 
 Russo-Japanese War (1904–1905) – Commander-in-Chief of the Combined Fleet. Directed operations against the Russian Pacific Fleet at Port Arthur and the Battle of the Yellow Sea (1904), and commanded the Japanese fleet to victory at the Battle of Tsushima (1905).
 
-https://en.wikipedia.org/wiki/T%C5%8Dg%C5%8D_Heihachir%C5%8D</remark>
+https://en.wikipedia.org/wiki/T%C5%8Dg%C5%8D_Heihachir%C5%8D</english>
+  </remark>
   <objectId>bbdc13c1-a909-411c-b949-ad82485ab108</objectId>
  </Leader>
  <Leader>
@@ -106,12 +112,14 @@ https://en.wikipedia.org/wiki/T%C5%8Dg%C5%8D_Heihachir%C5%8D</remark>
   <traits>
    <LeaderTrait>Coward</LeaderTrait>
   </traits>
-  <remark>Fang Boqian (1854–1894)
+  <remark>
+   <english>Fang Boqian (1854–1894)
 Captain, Beiyang Fleet (final rank).
 
 First Sino-Japanese War (1894) – Captain of the cruiser Jiyuan of the Beiyang Fleet. Escorted troop transports to Korea and fought at the Battle of Pungdo (1894) against Japanese cruisers. Also commanded Jiyuan at the Battle of the Yalu River (1894). After withdrawing from the battle, he was accused of desertion and executed by the Qing authorities later that year.
 
-https://en.wikipedia.org/wiki/Fang_Boqian</remark>
+https://en.wikipedia.org/wiki/Fang_Boqian</english>
+  </remark>
   <objectId>7fd0a036-e488-4d20-9660-b2a8c2af4658</objectId>
  </Leader>
  <Leader>
@@ -132,7 +140,9 @@ https://en.wikipedia.org/wiki/Fang_Boqian</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://baike.baidu.com/item/%E6%9E%97%E5%9B%BD%E7%A5%A5/8717195</remark>
+  <remark>
+   <english>https://baike.baidu.com/item/%E6%9E%97%E5%9B%BD%E7%A5%A5/8717195</english>
+  </remark>
   <objectId>f3e417c3-89d7-4a71-a8b8-84c408d0cb05</objectId>
  </Leader>
  <Leader>
@@ -153,12 +163,14 @@ https://en.wikipedia.org/wiki/Fang_Boqian</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Lin Taizeng (1851–1894)
+  <remark>
+   <english>Lin Taizeng (1851–1894)
 Senior Officer, Beiyang Fleet (Qing Dynasty Navy).
 
 First Sino-Japanese War (1894–1895) – Captain of the ironclad battleship Zhenyuan and Left Wing Commander (左翼总兵) of the Beiyang Fleet. He commanded Zhenyuan during the Battle of the Yalu River (1894), where the ship fought as one of the two principal ironclads of the fleet and was heavily engaged by Japanese forces. After the battle, while withdrawing to Weihaiwei, Zhenyuan ran aground and was damaged; taking responsibility for the accident, Lin Taizeng committed suicide by opium on 19 December 1894.
 
-https://zh.wikipedia.org/wiki/%E6%9E%97%E6%B3%B0%E6%9B%BE</remark>
+https://zh.wikipedia.org/wiki/%E6%9E%97%E6%B3%B0%E6%9B%BE</english>
+  </remark>
   <objectId>ee91367d-d291-4bad-81f1-b4aa5b1d5bd0</objectId>
  </Leader>
  <Leader>
@@ -179,12 +191,14 @@ https://zh.wikipedia.org/wiki/%E6%9E%97%E6%B3%B0%E6%9B%BE</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Liu Buchan (1852–1895)
+  <remark>
+   <english>Liu Buchan (1852–1895)
 Admiral, Beiyang Fleet.
 
 First Sino-Japanese War (1894–1895) – Captain of the ironclad battleship Dingyuan, flagship of the Beiyang Fleet. At the Battle of the Yalu River (1894) he commanded Dingyuan and assumed effective control of the fleet after Admiral Ding Ruchang was seriously wounded early in the battle. Later commanded Dingyuan during the Battle of Weihaiwei (1895); after the ship was heavily damaged and the base was about to fall, he ordered Dingyuan scuttled to prevent capture and then committed suicide on Liugong Island.
 
-https://en.wikipedia.org/wiki/Liu_Buchan</remark>
+https://en.wikipedia.org/wiki/Liu_Buchan</english>
+  </remark>
   <objectId>67623f92-366e-4f7f-a31e-a988494d9bdf</objectId>
  </Leader>
  <Leader>
@@ -205,12 +219,14 @@ https://en.wikipedia.org/wiki/Liu_Buchan</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Lin Lüzhong (1852–1894)
+  <remark>
+   <english>Lin Lüzhong (1852–1894)
 Officer, Beiyang Fleet (Qing Dynasty Navy).
 
 First Sino-Japanese War (1894–1895) – Captain (管带) of the cruiser Yangwei and Right-Wing Right Battalion Officer (右翼右营参将) of the Beiyang Fleet. During the Battle of the Yalu River (1894) the cruiser Yangwei was positioned on the far right of the Chinese formation and was heavily attacked by several Japanese cruisers including Yoshino. The ship caught fire and began to sink; after ordering many of his crew to abandon ship, Lin Lüzhong committed suicide by jumping into the sea as the vessel was lost.
 
-https://zh.wikipedia.org/wiki/%E6%9E%97%E5%B1%A5%E4%B8%AD</remark>
+https://zh.wikipedia.org/wiki/%E6%9E%97%E5%B1%A5%E4%B8%AD</english>
+  </remark>
   <objectId>571f00c5-74c3-42c7-bae4-be54f44d2b76</objectId>
  </Leader>
  <Leader>
@@ -231,12 +247,14 @@ https://zh.wikipedia.org/wiki/%E6%9E%97%E5%B1%A5%E4%B8%AD</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Huang Jianxun (1850s–1894)
+  <remark>
+   <english>Huang Jianxun (1850s–1894)
 Naval officer, Beiyang Fleet (Qing Dynasty Navy).
 
 First Sino-Japanese War (1894–1895) – Captain (管带) of the protected cruiser Chaoyong of the Beiyang Fleet. He commanded the ship during the Battle of the Yalu River (1894). Chaoyong engaged the Japanese fleet but was overwhelmed by several Japanese cruisers and set on fire by shell hits. The ship eventually sank during the battle. Huang Jianxun fell into the sea and reportedly refused rescue, choosing to die with his ship.
 
-https://zh.wikipedia.org/zh-hans/%E9%BB%84%E5%BB%BA%E5%8B%8B</remark>
+https://zh.wikipedia.org/zh-hans/%E9%BB%84%E5%BB%BA%E5%8B%8B</english>
+  </remark>
   <objectId>96b1f018-4a92-4ef0-81b1-b6b3dc1ff3ed</objectId>
  </Leader>
  <Leader>
@@ -257,12 +275,14 @@ https://zh.wikipedia.org/zh-hans/%E9%BB%84%E5%BB%BA%E5%8B%8B</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Ye Zugui (1852–1905)
+  <remark>
+   <english>Ye Zugui (1852–1905)
 Admiral (posthumous rank: Qing naval commander), Beiyang Fleet, Qing Dynasty Navy.
 
 First Sino-Japanese War (1894–1895) – Captain (管带) of the protected cruiser Ching Yuan of the Beiyang Fleet. He commanded the ship during the Battle of the Yalu River (1894). During the Battle of Weihaiwei (1895), Ching Yuan was hit by Japanese fire and disabled; Ye Zugui was rescued and brought to Liugong Island. After the defeat of the Beiyang Fleet, he was temporarily dismissed pending investigation together with several other naval officers.
 
-https://zh.wikipedia.org/zh-hant/%E5%8F%B6%E7%A5%96%E7%8F%AA</remark>
+https://zh.wikipedia.org/zh-hant/%E5%8F%B6%E7%A5%96%E7%8F%AA</english>
+  </remark>
   <objectId>2038e8d1-4ca4-4719-9a65-eea886fd0d2c</objectId>
  </Leader>
  <Leader>
@@ -285,12 +305,14 @@ https://zh.wikipedia.org/zh-hant/%E5%8F%B6%E7%A5%96%E7%8F%AA</remark>
   <traits>
    <LeaderTrait>Brave</LeaderTrait>
   </traits>
-  <remark>Deng Shichang (1849–1894)
+  <remark>
+   <english>Deng Shichang (1849–1894)
 Captain (Guandai), Beiyang Fleet.
 
 First Sino-Japanese War (1894–1895) – Captain of the protected cruiser Zhiyuan. At the Battle of the Yalu River (1894) he  attempted to close with a Japanese cruiser to ram it. Zhiyuan was heavily damaged by Japanese fire and sank during the engagement. Deng refused rescue and went down with his ship.
 
-https://en.wikipedia.org/wiki/Deng_Shichang</remark>
+https://en.wikipedia.org/wiki/Deng_Shichang</english>
+  </remark>
   <objectId>ca6e9344-d40e-4a16-8ee1-82ae8d5dbdb4</objectId>
  </Leader>
  <Leader>
@@ -311,12 +333,14 @@ https://en.wikipedia.org/wiki/Deng_Shichang</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Lin Yongsheng (1853–1894)
+  <remark>
+   <english>Lin Yongsheng (1853–1894)
 Vice Admiral (posthumous), Beiyang Fleet, Qing Dynasty Navy.
 
 First Sino-Japanese War (1894–1895) – Commander of the Left Wing of the Beiyang Fleet and captain of the protected cruiser Jingyuan. He commanded the ship during the Battle of the Yalu River (1894). In the later stage of the battle, Jingyuan was pursued and engaged by Japanese cruisers; Lin Yongsheng was killed by a shell hit while directing the fight, and the heavily damaged ship later capsized and sank.
 
-https://en.wikipedia.org/wiki/Lin_Yongsheng</remark>
+https://en.wikipedia.org/wiki/Lin_Yongsheng</english>
+  </remark>
   <objectId>ad05fef6-dae8-457e-9f31-e7166a09aede</objectId>
  </Leader>
  <Leader>
@@ -337,14 +361,16 @@ https://en.wikipedia.org/wiki/Lin_Yongsheng</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Qiu Baoren (dates unknown)
+  <remark>
+   <english>Qiu Baoren (dates unknown)
 Officer, Beiyang Fleet (Qing Dynasty Navy).
 
 First Sino-Japanese War (1894–1895) – Captain (管带) of the protected cruiser Laiyuan of the Beiyang Fleet. He commanded the ship during the Battle of the Yalu River (1894). Laiyuan fought heavily with Japanese cruisers, reportedly damaging the Japanese gunboat Akagi. The ship was hit more than 200 times and suffered a severe fire during the battle, but Qiu Baoren directed firefighting and withdrew temporarily to control the blaze before returning to the battle and eventually bringing the badly damaged ship back to Port Arthur.
 
 During the Battle of Weihaiwei (1895), Laiyuan was struck by a Japanese torpedo during a night attack in the harbor and capsized and sank; Qiu Baoren survived the sinking and was rescued.
 
-https://baike.baidu.com/item/%E9%82%B1%E5%AE%9D%E4%BB%81/8717162</remark>
+https://baike.baidu.com/item/%E9%82%B1%E5%AE%9D%E4%BB%81/8717162</english>
+  </remark>
   <objectId>19df649e-5f8a-4c29-b42a-936d15b4c8fe</objectId>
  </Leader>
  <Leader>
@@ -365,12 +391,14 @@ https://baike.baidu.com/item/%E9%82%B1%E5%AE%9D%E4%BB%81/8717162</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Li He (1853–?)
+  <remark>
+   <english>Li He (1853–?)
 Officer, Beiyang Fleet (Qing Dynasty Navy).
 
 First Sino-Japanese War (1894–1895) – Captain (管带) of the coastal defense ironclad/gunboat Pingyuan of the Beiyang Fleet. During the Battle of the Yalu River (1894) he brought the ship from guard duty at the Yalu estuary to join the main battle after the fleet signaled to concentrate. Pingyuan engaged the Japanese fleet with its heavy gun and reportedly hit Japanese ships during the battle.
 
-https://zh.wikipedia.org/wiki/%E6%9D%8E%E5%92%8C_(%E5%8C%97%E6%B4%8B%E6%B0%B4%E5%B8%AB)</remark>
+https://zh.wikipedia.org/wiki/%E6%9D%8E%E5%92%8C_(%E5%8C%97%E6%B4%8B%E6%B0%B4%E5%B8%AB)</english>
+  </remark>
   <objectId>a30c7e56-bf11-44b2-8f99-febd99701a42</objectId>
  </Leader>
  <Leader>
@@ -393,12 +421,14 @@ https://zh.wikipedia.org/wiki/%E6%9D%8E%E5%92%8C_(%E5%8C%97%E6%B4%8B%E6%B0%B4%E5
   <traits>
    <LeaderTrait>Coward</LeaderTrait>
   </traits>
-  <remark>Wu Jingrong (1864–?)
+  <remark>
+   <english>Wu Jingrong (1864–?)
 Officer, Guangdong Navy / participant in the Beiyang Fleet operations during the First Sino-Japanese War.
 
 First Sino-Japanese War (1894–1895) – Captain (管带) of the cruiser Guangjia of the Guangdong Fleet, which had been sent north to cooperate with the Beiyang Fleet. He commanded the ship during the Battle of the Yalu River (1894). During the battle Guangjia followed the cruiser Jiyuan in withdrawing from the engagement; the ship later ran aground near Sanshan Island at the entrance to Dalian Bay and was scuttled after it could not be refloated. Wu Jingrong was subsequently dismissed and investigated for the incident.
 
-https://baike.baidu.com/item/%E5%90%B4%E6%95%AC%E8%8D%A3/6067577</remark>
+https://baike.baidu.com/item/%E5%90%B4%E6%95%AC%E8%8D%A3/6067577</english>
+  </remark>
   <objectId>50197d07-3352-4362-9ea5-978742310265</objectId>
  </Leader>
  <Leader>
@@ -419,14 +449,16 @@ https://baike.baidu.com/item/%E5%90%B4%E6%95%AC%E8%8D%A3/6067577</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Arai Arikane (1849–1909)
+  <remark>
+   <english>Arai Arikane (1849–1909)
 Vice Admiral, Imperial Japanese Navy.
 
 First Sino-Japanese War (1894–1895) – Captain of the battleship Fusō of the Combined Fleet. He participated in the Battle of the Yalu River (1894) and was noted for his performance during the engagement.
 
 Russo-Japanese War (1904–1905) – Attached to the Imperial General Headquarters.
 
-https://ja.wikipedia.org/wiki/%E6%96%B0%E4%BA%95%E6%9C%89%E8%B2%AB</remark>
+https://ja.wikipedia.org/wiki/%E6%96%B0%E4%BA%95%E6%9C%89%E8%B2%AB</english>
+  </remark>
   <objectId>cbc0d169-122c-4c9a-8d48-b189663f0ca7</objectId>
  </Leader>
  <Leader>
@@ -447,14 +479,16 @@ https://ja.wikipedia.org/wiki/%E6%96%B0%E4%BA%95%E6%9C%89%E8%B2%AB</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Hidaka Sōnojō (1848–1932)
+  <remark>
+   <english>Hidaka Sōnojō (1848–1932)
 Admiral, Imperial Japanese Navy.
 
 First Sino-Japanese War (1894–1895) – Captain of the protected cruiser Hashidate and participated in the Battle of the Yalu River (1894) as part of the Combined Fleet.
 
 Russo-Japanese War (1904–1905) – At the outbreak of the war he was Commander of the Maizuru Naval District.
 
-https://en.wikipedia.org/wiki/Hidaka_S%C5%8Dnoj%C5%8D</remark>
+https://en.wikipedia.org/wiki/Hidaka_S%C5%8Dnoj%C5%8D</english>
+  </remark>
   <objectId>8e9f6ed9-97a9-48c3-8cee-0a2c79c272b3</objectId>
  </Leader>
  <Leader>
@@ -475,7 +509,9 @@ https://en.wikipedia.org/wiki/Hidaka_S%C5%8Dnoj%C5%8D</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://shozokan.nich.go.jp/collection/object/SZK001477-156</remark>
+  <remark>
+   <english>https://shozokan.nich.go.jp/collection/object/SZK001477-156</english>
+  </remark>
   <objectId>c7c3eb89-2eee-49f2-bd59-4732be768140</objectId>
  </Leader>
  <Leader>
@@ -496,12 +532,14 @@ https://en.wikipedia.org/wiki/Hidaka_S%C5%8Dnoj%C5%8D</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Sakurai Kikunosuke (1848–1912)
+  <remark>
+   <english>Sakurai Kikunosuke (1848–1912)
 Rear Admiral, Imperial Japanese Navy.
 
 First Sino-Japanese War (1894–1895) – Captain of the unprotected cruiser Hiei of the Combined Fleet. He participated in the Battle of the Yalu River (1894), where Hiei was heavily engaged and his conduct in the battle was regarded as distinguished service.
 
-https://ja.wikipedia.org/wiki/%E6%A1%9C%E4%BA%95%E8%A6%8F%E7%9F%A9%E4%B9%8B%E5%B7%A6%E5%8F%B3</remark>
+https://ja.wikipedia.org/wiki/%E6%A1%9C%E4%BA%95%E8%A6%8F%E7%9F%A9%E4%B9%8B%E5%B7%A6%E5%8F%B3</english>
+  </remark>
   <objectId>a190c470-bd54-4f67-afe8-c4113c7c3c98</objectId>
  </Leader>
  <Leader>
@@ -522,7 +560,8 @@ https://ja.wikipedia.org/wiki/%E6%A1%9C%E4%BA%95%E8%A6%8F%E7%9F%A9%E4%B9%8B%E5%B
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Omoto Tomomichi (1850–?)
+  <remark>
+   <english>Omoto Tomomichi (1850–?)
 Rear Admiral, Imperial Japanese Navy.
 
 First Sino-Japanese War (1894–1895) – Captain of the protected cruiser Matsushima of the Combined Fleet and participated in the war.
@@ -530,7 +569,8 @@ First Sino-Japanese War (1894–1895) – Captain of the protected cruiser Matsu
 Russo-Japanese War (1904–1905) – Served as Director of Naval Engineering at Sasebo Naval District.
 
 https://jahis.law.nagoya-u.ac.jp/who/docs/who1-601
-https://shozokan.nich.go.jp/collection/object/SZK001477-059</remark>
+https://shozokan.nich.go.jp/collection/object/SZK001477-059</english>
+  </remark>
   <objectId>56106ddf-e7e5-4a8e-b440-c8c01054485d</objectId>
  </Leader>
  <Leader>
@@ -551,12 +591,14 @@ https://shozokan.nich.go.jp/collection/object/SZK001477-059</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Nomura Tadashi (1845–1899)
+  <remark>
+   <english>Nomura Tadashi (1845–1899)
 Rear Admiral, Imperial Japanese Navy.
 
 First Sino-Japanese War (1894–1895) – Captain of the protected cruiser Takachiho of the 1st Flying Squadron (First Flying Division) under Tsuboi Kōzō. He participated in the Battle of the Yalu River (1894) as one of the four cruisers of the squadron and was credited with distinguished service in the engagement.
 
-https://ja.wikipedia.org/wiki/%E9%87%8E%E6%9D%91%E8%B2%9E</remark>
+https://ja.wikipedia.org/wiki/%E9%87%8E%E6%9D%91%E8%B2%9E</english>
+  </remark>
   <objectId>5b4492e9-81be-4d24-be9f-907a98487fa3</objectId>
  </Leader>
  <Leader>
@@ -577,14 +619,16 @@ https://ja.wikipedia.org/wiki/%E9%87%8E%E6%9D%91%E8%B2%9E</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Uchida Masatoshi (1851–1922)
+  <remark>
+   <english>Uchida Masatoshi (1851–1922)
 Vice Admiral, Imperial Japanese Navy.
 
 First Sino-Japanese War (1894–1895) – Captain of the protected cruiser Chiyoda of the Combined Fleet, appointed in February 1894 and participated in the war in that capacity.
 
 Russo-Japanese War (1904–1905) – Served as Director of Port Affairs at the Kure Naval District.
 
-https://ja.wikipedia.org/wiki/%E5%86%85%E7%94%B0%E6%AD%A3%E6%95%8F</remark>
+https://ja.wikipedia.org/wiki/%E5%86%85%E7%94%B0%E6%AD%A3%E6%95%8F</english>
+  </remark>
   <objectId>8154d513-73ac-4ac8-b33a-cb06872ce875</objectId>
  </Leader>
  <Leader>
@@ -605,14 +649,16 @@ https://ja.wikipedia.org/wiki/%E5%86%85%E7%94%B0%E6%AD%A3%E6%95%8F</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Cheng Biguang (1859–1918)
+  <remark>
+   <english>Cheng Biguang (1859–1918)
 Admiral, Imperial Chinese Navy / Republic of China Navy.
 
 First Sino-Japanese War (1894–1895) – Captain of the cruiser Guangbing of the Guangdong Squadron, later operating with the Beiyang Fleet. During the Battle of the Yalu River (1894) the ship joined the battle as reinforcement and fired on the Japanese dispatch vessel Saikyō Maru, damaging it and forcing it to withdraw. Cheng himself was wounded during the engagement. When the Beiyang Fleet was defeated and trapped at Weihaiwei (1895), he was tasked with delivering the surrender document to the Japanese fleet after Admiral Ding Ruchang’s death.
 
 Postwar career – After the war he continued serving in the Guangdong naval forces. Following the fall of the Qing dynasty he joined the Republic of China Navy, eventually becoming Commander-in-Chief of the Navy. During the Constitutional Protection Movement he supported Sun Yat-sen’s government in Guangzhou, commanding the southern naval forces until he was assassinated in Guangzhou in 1918.
 
-https://en.wikipedia.org/wiki/Cheng_Biguang</remark>
+https://en.wikipedia.org/wiki/Cheng_Biguang</english>
+  </remark>
   <objectId>46a1ffe4-7a2a-43b0-a44c-d29f71c34629</objectId>
  </Leader>
  <Leader>
@@ -636,12 +682,14 @@ https://en.wikipedia.org/wiki/Cheng_Biguang</remark>
    <LeaderTrait>NotFromNavalBackground</LeaderTrait>
    <LeaderTrait>ExperiencedNavalBureaucrat</LeaderTrait>
   </traits>
-  <remark>Ding Ruchang (1836–1895)
+  <remark>
+   <english>Ding Ruchang (1836–1895)
 Admiral, Beiyang Fleet.
 
 First Sino-Japanese War (1894–1895) – Commander-in-Chief of the Beiyang Fleet, directing Chinese naval forces at the Battle of the Yalu River (1894) and during the Battle of Weihaiwei (1895). He commanded the fleet from his flagship Dingyuan. After the fall of Weihaiwei, he committed suicide at his headquarters on Liugong Island.
 
-https://en.wikipedia.org/wiki/Ding_Ruchang</remark>
+https://en.wikipedia.org/wiki/Ding_Ruchang</english>
+  </remark>
   <objectId>18963af7-1163-4323-9421-9f2421c9fee1</objectId>
  </Leader>
  <Leader>
@@ -662,12 +710,14 @@ https://en.wikipedia.org/wiki/Ding_Ruchang</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Tsuboi Kōzō (1843–1898)
+  <remark>
+   <english>Tsuboi Kōzō (1843–1898)
 Vice Admiral, Imperial Japanese Navy.
 
 Commander of the Flying Squadron (fast cruiser division) of the Combined Fleet during the First Sino-Japanese War (1894–1895). Led this formation—centered on the cruisers Yoshino, Takachiho, Naniwa, and Akitsushima—in the Battle of the Yalu River (1894) and other naval operations against the Beiyang Fleet.
 
-https://en.wikipedia.org/wiki/Tsuboi_K%C5%8Dz%C5%8D</remark>
+https://en.wikipedia.org/wiki/Tsuboi_K%C5%8Dz%C5%8D</english>
+  </remark>
   <objectId>0e0b574a-a1a6-45f0-aaa4-42cf2b2afc52</objectId>
  </Leader>
  <Leader>
@@ -688,14 +738,16 @@ https://en.wikipedia.org/wiki/Tsuboi_K%C5%8Dz%C5%8D</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Itō Sukeyuki (1843–1914)
+  <remark>
+   <english>Itō Sukeyuki (1843–1914)
 Marshal-Admiral (Gensui) of the Imperial Japanese Navy.
 
 First Sino-Japanese War (1894–1895) – Commander-in-Chief of the Combined Fleet, with his flag aboard the cruiser Matsushima. Commanded Japanese naval forces at the Battle of the Yalu River (1894) and the Battle of Weihaiwei (1895), and directed naval operations in the Pescadores Campaign (1895).
 
 Russo-Japanese War (1904–1905) – Chief of the Naval General Staff, responsible for the strategic direction of the Imperial Japanese Navy during the war.
 
-https://en.wikipedia.org/wiki/It%C5%8D_Sukeyuki</remark>
+https://en.wikipedia.org/wiki/It%C5%8D_Sukeyuki</english>
+  </remark>
   <objectId>a77bd722-8233-4d1c-a65c-b712c07297d0</objectId>
  </Leader>
  <Leader>
@@ -716,12 +768,14 @@ https://en.wikipedia.org/wiki/It%C5%8D_Sukeyuki</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Sakamoto Hachirōta (1854–1894)
+  <remark>
+   <english>Sakamoto Hachirōta (1854–1894)
 Major, Imperial Japanese Navy.
 
 First Sino-Japanese War (1894–1895) – Captain of the gunboat Akagi of the Combined Fleet. During the Battle of the Yalu River (1894), Akagi fought while protecting the dispatch vessel Saikyō Maru, which carried Naval General Staff chief Kabayama Sukenori. While directing the ship’s defense under heavy fire from several Qing warships, Sakamoto was killed in action on 17 September 1894.
 
-https://ja.wikipedia.org/wiki/%E5%9D%82%E5%85%83%E5%85%AB%E9%83%8E%E5%A4%AA</remark>
+https://ja.wikipedia.org/wiki/%E5%9D%82%E5%85%83%E5%85%AB%E9%83%8E%E5%A4%AA</english>
+  </remark>
   <objectId>8acb59aa-d09c-4b71-b42e-ab3bc111da1b</objectId>
  </Leader>
  <Leader>
@@ -742,14 +796,16 @@ https://ja.wikipedia.org/wiki/%E5%9D%82%E5%85%83%E5%85%AB%E9%83%8E%E5%A4%AA</rem
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Kano Yūnoshin (1851–1928)
+  <remark>
+   <english>Kano Yūnoshin (1851–1928)
 Vice Admiral, Imperial Japanese Navy.
 
 First Sino-Japanese War (1894–1895) – Captain of the dispatch vessel Saikyō Maru and participated in the naval campaign of the war with the Combined Fleet.
 
 Russo-Japanese War (1904–1905) – Promoted to Rear Admiral in July 1903 and appointed Director of Port Affairs of the Sasebo Naval District.
 
-https://ja.wikipedia.org/wiki/%E9%B9%BF%E9%87%8E%E5%8B%87%E4%B9%8B%E9%80%B2</remark>
+https://ja.wikipedia.org/wiki/%E9%B9%BF%E9%87%8E%E5%8B%87%E4%B9%8B%E9%80%B2</english>
+  </remark>
   <objectId>04b9b1b0-330e-4737-a16e-a6038eeb252d</objectId>
  </Leader>
  <Leader>
@@ -770,14 +826,16 @@ https://ja.wikipedia.org/wiki/%E9%B9%BF%E9%87%8E%E5%8B%87%E4%B9%8B%E9%80%B2</rem
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Tsai Tingkan (1861–1935)
+  <remark>
+   <english>Tsai Tingkan (1861–1935)
 Naval officer, Beiyang Fleet; later statesman and diplomat in the Qing dynasty and Republic of China.
 
 First Sino-Japanese War (1894–1895) – Commanded a torpedo boat in the Battle of the Yellow Sea (1894) and subsequent operations defending Weihaiwei. During the fall of Weihaiwei he attempted to break out with other officers; his vessel was sunk and he was wounded and captured by Japanese forces.
 
 Post-war career – Later rehabilitated and served under Yuan Shikai, acting as an English-language adviser and intermediary in foreign affairs. Held several government positions including Chief of the Department of Naval Administration, tariff and customs administration posts, and briefly Foreign Minister of the Republic of China (1926).
 
-https://en.wikipedia.org/wiki/Tsai_Tingkan</remark>
+https://en.wikipedia.org/wiki/Tsai_Tingkan</english>
+  </remark>
   <objectId>0ffb8288-564a-4a0b-8973-e2d8d3610d21</objectId>
  </Leader>
  <Leader>
@@ -800,12 +858,14 @@ https://en.wikipedia.org/wiki/Tsai_Tingkan</remark>
   <traits>
    <LeaderTrait>Coward</LeaderTrait>
   </traits>
-  <remark>Wang Dengyun
+  <remark>
+   <english>Wang Dengyun
 Officer of the Beiyang Fleet, Qing Dynasty Navy.
 
 First Sino-Japanese War (1894–1895) – Commander (guandai) of the torpedo boat Zuo-yi of the Beiyang Fleet torpedo boat unit. During the Battle of Weihaiwei (1895), when the Beiyang Fleet was trapped at Liu-gong Island, he organized and led a breakout attempt by the torpedo boat flotilla toward Yantai together with several auxiliary vessels. Most of the boats were intercepted by pursuing Japanese cruisers and destroyed or captured; only Zuo-yi managed to escape.
 
-https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</remark>
+https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</english>
+  </remark>
   <objectId>dd09a700-93ff-4be0-b68e-06922f8d0098</objectId>
  </Leader>
  <Leader>
@@ -826,7 +886,9 @@ https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</remark>
   <landOperational>Average</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Prince_Arisugawa_Taruhito</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Prince_Arisugawa_Taruhito</english>
+  </remark>
   <objectId>c49be3d3-e058-4a2e-b0a7-c6bd70956afd</objectId>
  </Leader>
  <Leader>
@@ -847,7 +909,9 @@ https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</remark>
   <landOperational>Average</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Kawakami_Soroku</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Kawakami_Soroku</english>
+  </remark>
   <objectId>95639867-b7d4-4494-a8f2-de417c614f41</objectId>
  </Leader>
  <Leader>
@@ -868,7 +932,9 @@ https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Kabayama_Sukenori</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Kabayama_Sukenori</english>
+  </remark>
   <objectId>31837e7c-4f0d-492d-bae1-d05617a22da9</objectId>
  </Leader>
  <Leader>
@@ -889,7 +955,9 @@ https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</remark>
   <landOperational>Average</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/%C5%8Cyama_Iwao</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/%C5%8Cyama_Iwao</english>
+  </remark>
   <objectId>768c74cb-4117-4060-8c01-1ac6a42667d0</objectId>
  </Leader>
  <Leader>
@@ -910,7 +978,9 @@ https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Saig%C5%8D_J%C5%ABd%C5%8D</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Saig%C5%8D_J%C5%ABd%C5%8D</english>
+  </remark>
   <objectId>e5a097a6-836a-4d9a-a60f-181218da398e</objectId>
  </Leader>
  <Leader>
@@ -931,9 +1001,11 @@ https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</remark>
   <landOperational>AboveAverage</landOperational>
   <landTactical>AboveAverage</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Li_Hongzhang
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Li_Hongzhang
 
-</remark>
+</english>
+  </remark>
   <objectId>f24ac743-e528-4c85-82d4-f089c4cc189c</objectId>
  </Leader>
  <Leader>
@@ -954,7 +1026,9 @@ https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</remark>
   <landOperational>Average</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Yulu_(viceroy)</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Yulu_(viceroy)</english>
+  </remark>
   <objectId>76615ad8-573c-44d8-b405-a7e1af4af893</objectId>
  </Leader>
  <Leader>
@@ -975,7 +1049,9 @@ https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://baike.baidu.com/item/%E7%A6%8F%E6%BD%A4/7807874</remark>
+  <remark>
+   <english>https://baike.baidu.com/item/%E7%A6%8F%E6%BD%A4/7807874</english>
+  </remark>
   <objectId>56b856ce-8f54-4441-a5cd-9af4897dc301</objectId>
  </Leader>
  <Leader>
@@ -996,7 +1072,9 @@ https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</remark>
   <landOperational>BarelyCompetent</landOperational>
   <landTactical>BarelyCompetent</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Li_Bingheng</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Li_Bingheng</english>
+  </remark>
   <objectId>bb4f86ad-eebd-424f-a6b1-68ebc7ebfbb5</objectId>
  </Leader>
  <Leader>
@@ -1017,7 +1095,9 @@ https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://zh.wikipedia.org/zh-hans/%E6%95%AC%E4%BF%A1</remark>
+  <remark>
+   <english>https://zh.wikipedia.org/zh-hans/%E6%95%AC%E4%BF%A1</english>
+  </remark>
   <objectId>c440758b-a34b-46e0-9dee-2340321f5636</objectId>
  </Leader>
  <Leader>
@@ -1038,7 +1118,9 @@ https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://zh.wikipedia.org/zh-tw/%E5%AD%99%E6%AF%93%E6%B1%B6</remark>
+  <remark>
+   <english>https://zh.wikipedia.org/zh-tw/%E5%AD%99%E6%AF%93%E6%B1%B6</english>
+  </remark>
   <objectId>c91a7740-8806-4c3a-bf9a-5a5598500a2c</objectId>
  </Leader>
  <Leader>
@@ -1059,7 +1141,9 @@ https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</remark>
   <landOperational>BarelyCompetent</landOperational>
   <landTactical>BarelyCompetent</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Yikuang</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Yikuang</english>
+  </remark>
   <objectId>080bc4c5-ab61-49f7-bccc-4658a39d4290</objectId>
  </Leader>
  <Leader>
@@ -1080,7 +1164,9 @@ https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://ja.wikipedia.org/wiki/%E5%B2%A1%E6%B2%A2%E7%B2%BE</remark>
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E5%B2%A1%E6%B2%A2%E7%B2%BE</english>
+  </remark>
   <objectId>07b1845e-a293-416c-9da2-8bcb7f71663b</objectId>
  </Leader>
  <Leader>
@@ -1101,7 +1187,9 @@ https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://ja.wikipedia.org/wiki/%E6%9C%89%E9%A6%AC%E6%96%B0%E4%B8%80</remark>
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E6%9C%89%E9%A6%AC%E6%96%B0%E4%B8%80</english>
+  </remark>
   <objectId>d1ed8a2d-2a72-4e99-87a9-97aeb892d014</objectId>
  </Leader>
  <Leader>
@@ -1122,7 +1210,9 @@ https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://shozokan.nich.go.jp/collection/object/SZK001477-122</remark>
+  <remark>
+   <english>https://shozokan.nich.go.jp/collection/object/SZK001477-122</english>
+  </remark>
   <objectId>be818bd7-d326-4a8b-9b94-5adb4d24f60b</objectId>
  </Leader>
  <Leader>
@@ -1143,7 +1233,9 @@ https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://ja.wikipedia.org/wiki/%E4%B8%96%E8%89%AF%E7%94%B0%E4%BA%AE</remark>
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E4%B8%96%E8%89%AF%E7%94%B0%E4%BA%AE</english>
+  </remark>
   <objectId>e999703a-07c9-4cf4-8f59-2c3284fe6d3d</objectId>
  </Leader>
  <Leader>
@@ -1164,7 +1256,9 @@ https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</remark>
   <landOperational>AboveAverage</landOperational>
   <landTactical>AboveAverage</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Yamagata_Aritomo</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Yamagata_Aritomo</english>
+  </remark>
   <objectId>e1cf0e2b-7d5a-4b25-a89a-2ad1c22f7e20</objectId>
  </Leader>
  <Leader>
@@ -1185,7 +1279,9 @@ https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Katsura_Tar%C5%8D</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Katsura_Tar%C5%8D</english>
+  </remark>
   <objectId>d12ec66d-14e6-44eb-b261-968e64c32ca7</objectId>
  </Leader>
  <Leader>
@@ -1206,7 +1302,9 @@ https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</remark>
   <landOperational>AboveAverage</landOperational>
   <landTactical>AboveAverage</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/%C5%8Cshima_Yoshimasa</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/%C5%8Cshima_Yoshimasa</english>
+  </remark>
   <objectId>86a4739c-08c2-4c33-8e60-8a26b101535c</objectId>
  </Leader>
  <Leader>
@@ -1227,7 +1325,9 @@ https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Nozu_Michitsura</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Nozu_Michitsura</english>
+  </remark>
   <objectId>294116ce-1fd4-41ef-a81e-d721e3864af9</objectId>
  </Leader>
  <Leader>
@@ -1248,7 +1348,9 @@ https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://ja.wikipedia.org/wiki/%E8%A5%BF%E5%B3%B6%E5%8A%A9%E7%BE%A9</remark>
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E8%A5%BF%E5%B3%B6%E5%8A%A9%E7%BE%A9</english>
+  </remark>
   <objectId>6dfc4fa7-680b-4487-80e1-5de0ade8eb61</objectId>
  </Leader>
  <Leader>
@@ -1269,7 +1371,9 @@ https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</remark>
   <landOperational>Average</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>https://zh.wikipedia.org/zh-hant/%E8%91%89%E5%BF%97%E8%B6%85</remark>
+  <remark>
+   <english>https://zh.wikipedia.org/zh-hant/%E8%91%89%E5%BF%97%E8%B6%85</english>
+  </remark>
   <objectId>db26b666-2166-41cd-9411-4d3d3f0e9f41</objectId>
  </Leader>
  <Leader>
@@ -1290,7 +1394,9 @@ https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://ja.wikipedia.org/wiki/%E6%AD%A6%E7%94%B0%E7%A7%80%E5%B1%B1</remark>
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E6%AD%A6%E7%94%B0%E7%A7%80%E5%B1%B1</english>
+  </remark>
   <objectId>16a04cba-2db3-4388-abaf-ec73c3d258d1</objectId>
  </Leader>
  <Leader>
@@ -1311,7 +1417,9 @@ https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</remark>
   <landOperational>Average</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Liu_Kunyi</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Liu_Kunyi</english>
+  </remark>
   <objectId>edf4fbab-471a-4ad5-8156-64de120a1781</objectId>
  </Leader>
  <Leader>
@@ -1332,7 +1440,9 @@ https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</remark>
   <landOperational>Average</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Zhang_Zhidong</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Zhang_Zhidong</english>
+  </remark>
   <objectId>a1fd8ac3-c5e2-4e38-b934-924b84e00cb1</objectId>
  </Leader>
  <Leader>
@@ -1353,7 +1463,9 @@ https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://ja.wikipedia.org/wiki/%E4%B8%89%E6%B5%A6%E5%8A%9F_(%E6%B5%B7%E8%BB%8D%E8%BB%8D%E4%BA%BA)</remark>
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E4%B8%89%E6%B5%A6%E5%8A%9F_(%E6%B5%B7%E8%BB%8D%E8%BB%8D%E4%BA%BA)</english>
+  </remark>
   <objectId>a2fca3f8-a344-4c97-9f2e-191b70ccc96a</objectId>
  </Leader>
  <Leader>
@@ -1376,7 +1488,9 @@ https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</remark>
   <traits>
    <LeaderTrait>Coward</LeaderTrait>
   </traits>
-  <remark>https://zh.wikipedia.org/w/index.php?title=%E9%BE%94%E7%85%A7%E5%B6%BC&amp;oldformat=true&amp;variant=zh-cn</remark>
+  <remark>
+   <english>https://zh.wikipedia.org/w/index.php?title=%E9%BE%94%E7%85%A7%E5%B6%BC&amp;oldformat=true&amp;variant=zh-cn</english>
+  </remark>
   <objectId>130f7855-e669-4969-b7e7-1c975b8541c6</objectId>
  </Leader>
  <Leader>
@@ -1397,7 +1511,9 @@ https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://zh.wikipedia.org/zh-hant/%E6%9D%8E%E7%80%9A%E7%AB%A0</remark>
+  <remark>
+   <english>https://zh.wikipedia.org/zh-hant/%E6%9D%8E%E7%80%9A%E7%AB%A0</english>
+  </remark>
   <objectId>ce13834a-c139-4bae-aafc-c238f00c349a</objectId>
  </Leader>
  <Leader>
@@ -1418,7 +1534,9 @@ https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Shiduo</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Shiduo</english>
+  </remark>
   <objectId>c77de671-ced0-4f50-9701-3916f904c97a</objectId>
  </Leader>
  <Leader>
@@ -1439,9 +1557,11 @@ https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</remark>
   <landOperational>Average</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Yamaji_Motoharu
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Yamaji_Motoharu
 
-</remark>
+</english>
+  </remark>
   <objectId>62e7ff5c-a5f1-4b45-bad1-aea4b44f6d7c</objectId>
  </Leader>
  <Leader>
@@ -1462,7 +1582,9 @@ https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Nishi_Kanjir%C5%8D</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Nishi_Kanjir%C5%8D</english>
+  </remark>
   <objectId>adaab4f1-0e61-4792-8ae6-44444b0c4c1f</objectId>
  </Leader>
  <Leader>
@@ -1483,7 +1605,9 @@ https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</remark>
   <landOperational>Average</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Nogi_Maresuke</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Nogi_Maresuke</english>
+  </remark>
   <objectId>c77c5187-72e7-452c-bbd2-6d635c7c3368</objectId>
  </Leader>
  <Leader>
@@ -1504,7 +1628,9 @@ https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</remark>
   <landOperational>Average</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Sakuma_Samata</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Sakuma_Samata</english>
+  </remark>
   <objectId>c16d70ef-caf1-4753-882c-09d2676527d8</objectId>
  </Leader>
  <Leader>
@@ -1525,7 +1651,9 @@ https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</remark>
   <landOperational>Average</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Kuroki_Tamemoto</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Kuroki_Tamemoto</english>
+  </remark>
   <objectId>1142c402-080a-4392-9586-6fc6e63e10f0</objectId>
  </Leader>
  <Leader>
@@ -1546,7 +1674,9 @@ https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</remark>
   <landOperational>Average</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Tatsumi_Naofumi</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Tatsumi_Naofumi</english>
+  </remark>
   <objectId>facbfd37-a2ef-4cda-b2f2-249087b3a00a</objectId>
  </Leader>
  <Leader>
@@ -1567,7 +1697,9 @@ https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</remark>
   <landOperational>Average</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/%C5%8Cdera_Yasuzumi</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/%C5%8Cdera_Yasuzumi</english>
+  </remark>
   <objectId>dd2e9dab-4833-47d7-b927-203f9375f9df</objectId>
  </Leader>
  <Leader>
@@ -1588,7 +1720,9 @@ https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</remark>
   <landOperational>Average</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Hasegawa_Yoshimichi</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Hasegawa_Yoshimichi</english>
+  </remark>
   <objectId>65f00168-7828-4b73-a421-0c4935841be0</objectId>
  </Leader>
  <Leader>
@@ -1609,7 +1743,9 @@ https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</remark>
   <landOperational>Average</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Yamaguchi_Motomi</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Yamaguchi_Motomi</english>
+  </remark>
   <objectId>0c8c9249-c840-405b-b838-54c30dbc9ac7</objectId>
  </Leader>
  <Leader>
@@ -1630,7 +1766,9 @@ https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</remark>
   <landOperational>Average</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Prince_Fushimi_Sadanaru</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Prince_Fushimi_Sadanaru</english>
+  </remark>
   <objectId>78bc2b3b-d960-4a50-9602-f8e63a8e757c</objectId>
  </Leader>
  <Leader>
@@ -1651,7 +1789,9 @@ https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</remark>
   <landOperational>Average</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/%C5%8Csako_Naoharu</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/%C5%8Csako_Naoharu</english>
+  </remark>
   <objectId>90580c6c-279e-4d53-8e35-14913b55c6b0</objectId>
  </Leader>
  <Leader>
@@ -1672,7 +1812,9 @@ https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</remark>
   <landOperational>Average</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/%C5%8Cshima_Hisanao</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/%C5%8Cshima_Hisanao</english>
+  </remark>
   <objectId>c18c415d-a39c-4fcd-8fb7-c7427b53d4cc</objectId>
  </Leader>
  <Leader>
@@ -1693,8 +1835,10 @@ https://baike.baidu.com/item/%E7%8E%8B%E7%99%BB%E4%BA%91/73331</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>https://shozokan.nich.go.jp/collection/object/SZK001475-356
-https://shirakaba.link/betula/%E5%AF%8C%E5%B2%A1%E4%B8%89%E9%80%A0</remark>
+  <remark>
+   <english>https://shozokan.nich.go.jp/collection/object/SZK001475-356
+https://shirakaba.link/betula/%E5%AF%8C%E5%B2%A1%E4%B8%89%E9%80%A0</english>
+  </remark>
   <objectId>9077d990-6797-4dc7-82a3-621dc67b4240</objectId>
  </Leader>
  <Leader>
@@ -1715,7 +1859,9 @@ https://shirakaba.link/betula/%E5%AF%8C%E5%B2%A1%E4%B8%89%E9%80%A0</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>http://bujinkensyokai.web.fc2.com/yamaguchigd.html</remark>
+  <remark>
+   <english>http://bujinkensyokai.web.fc2.com/yamaguchigd.html</english>
+  </remark>
   <objectId>64f6e1f1-3972-4b04-98c7-0f3769d63568</objectId>
  </Leader>
  <Leader>
@@ -1736,7 +1882,9 @@ https://shirakaba.link/betula/%E5%AF%8C%E5%B2%A1%E4%B8%89%E9%80%A0</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>https://shozokan.nich.go.jp/collection/object/SZK001476-228</remark>
+  <remark>
+   <english>https://shozokan.nich.go.jp/collection/object/SZK001476-228</english>
+  </remark>
   <objectId>e5edb69e-8498-4d5c-94e4-6f4a7672ef01</objectId>
  </Leader>
  <Leader>
@@ -1757,7 +1905,9 @@ https://shirakaba.link/betula/%E5%AF%8C%E5%B2%A1%E4%B8%89%E9%80%A0</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>https://ja.wikipedia.org/wiki/%E4%B8%89%E5%A5%BD%E6%88%90%E8%A1%8C</remark>
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E4%B8%89%E5%A5%BD%E6%88%90%E8%A1%8C</english>
+  </remark>
   <objectId>ba2d73dd-e705-4102-968d-da2b4b8c2ecd</objectId>
  </Leader>
  <Leader>
@@ -1778,7 +1928,9 @@ https://shirakaba.link/betula/%E5%AF%8C%E5%B2%A1%E4%B8%89%E9%80%A0</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>https://ja.wikipedia.org/wiki/%E4%BD%90%E8%97%A4%E6%AD%A3_(%E9%99%B8%E8%BB%8D%E8%8D%89%E5%89%B5%E6%9C%9F)</remark>
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E4%BD%90%E8%97%A4%E6%AD%A3_(%E9%99%B8%E8%BB%8D%E8%8D%89%E5%89%B5%E6%9C%9F)</english>
+  </remark>
   <objectId>dc71fa74-56e7-4aea-b992-251320183b4b</objectId>
  </Leader>
  <Leader>
@@ -1799,7 +1951,9 @@ https://shirakaba.link/betula/%E5%AF%8C%E5%B2%A1%E4%B8%89%E9%80%A0</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>https://ja.wikipedia.org/wiki/%E5%A1%9A%E6%9C%AC%E5%8B%9D%E5%98%89</remark>
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E5%A1%9A%E6%9C%AC%E5%8B%9D%E5%98%89</english>
+  </remark>
   <objectId>f1cbac7d-8df1-4430-b7b1-dd32e8e5fb3f</objectId>
  </Leader>
  <Leader>
@@ -1820,7 +1974,9 @@ https://shirakaba.link/betula/%E5%AF%8C%E5%B2%A1%E4%B8%89%E9%80%A0</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>http://bujinkensyokai.web.fc2.com/yamaguchigc.html</remark>
+  <remark>
+   <english>http://bujinkensyokai.web.fc2.com/yamaguchigc.html</english>
+  </remark>
   <objectId>f99757b8-a31e-438d-aef3-a55104e3c427</objectId>
  </Leader>
  <Leader>
@@ -1841,8 +1997,10 @@ https://shirakaba.link/betula/%E5%AF%8C%E5%B2%A1%E4%B8%89%E9%80%A0</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>https://shirakaba.link/betula/%E7%A6%8F%E5%B3%B6%E5%BA%B8%E6%99%BA
-https://shozokan.nich.go.jp/collection/object/SZK001475-164</remark>
+  <remark>
+   <english>https://shirakaba.link/betula/%E7%A6%8F%E5%B3%B6%E5%BA%B8%E6%99%BA
+https://shozokan.nich.go.jp/collection/object/SZK001475-164</english>
+  </remark>
   <objectId>81603dfe-975d-48e4-8cab-f2ad76f6367d</objectId>
  </Leader>
  <Leader>
@@ -1863,7 +2021,9 @@ https://shozokan.nich.go.jp/collection/object/SZK001475-164</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>http://bujinkensyokai.web.fc2.com/isikawag.html</remark>
+  <remark>
+   <english>http://bujinkensyokai.web.fc2.com/isikawag.html</english>
+  </remark>
   <objectId>58595c28-22c0-4b36-a0c9-719034668fa3</objectId>
  </Leader>
  <Leader>
@@ -1884,7 +2044,9 @@ https://shozokan.nich.go.jp/collection/object/SZK001475-164</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>https://shozokan.nich.go.jp/collection/object/SZK001476-268</remark>
+  <remark>
+   <english>https://shozokan.nich.go.jp/collection/object/SZK001476-268</english>
+  </remark>
   <objectId>edb68fc5-87f5-465b-a74b-e2d039b1d752</objectId>
  </Leader>
  <Leader>
@@ -1905,7 +2067,9 @@ https://shozokan.nich.go.jp/collection/object/SZK001475-164</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>http://bujinkensyokai.web.fc2.com/chibag.html</remark>
+  <remark>
+   <english>http://bujinkensyokai.web.fc2.com/chibag.html</english>
+  </remark>
   <objectId>76fbca5c-9b5e-4de1-9aae-a7ddcc3cb640</objectId>
  </Leader>
  <Leader>
@@ -1926,8 +2090,10 @@ https://shozokan.nich.go.jp/collection/object/SZK001475-164</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>https://kotobank.jp/word/%E6%B2%B3%E9%87%8E%E9%80%9A%E5%A5%BD-1074280
-https://shozokan.nich.go.jp/collection/object/SZK001476-353</remark>
+  <remark>
+   <english>https://kotobank.jp/word/%E6%B2%B3%E9%87%8E%E9%80%9A%E5%A5%BD-1074280
+https://shozokan.nich.go.jp/collection/object/SZK001476-353</english>
+  </remark>
   <objectId>48a59ce3-612b-4005-9c7e-2c0286caa533</objectId>
  </Leader>
  <Leader>
@@ -1948,7 +2114,9 @@ https://shozokan.nich.go.jp/collection/object/SZK001476-353</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://ja.wikipedia.org/wiki/%E4%BC%8A%E7%80%AC%E7%9F%A5%E5%A5%BD%E6%88%90</remark>
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E4%BC%8A%E7%80%AC%E7%9F%A5%E5%A5%BD%E6%88%90</english>
+  </remark>
   <objectId>aa6651f0-9826-4d1d-9b2a-b42ca9eca5eb</objectId>
  </Leader>
  <Leader>
@@ -1969,7 +2137,9 @@ https://shozokan.nich.go.jp/collection/object/SZK001476-353</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>https://ja.wikipedia.org/wiki/%E6%9C%A8%E6%9D%91%E6%9C%89%E6%81%92</remark>
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E6%9C%A8%E6%9D%91%E6%9C%89%E6%81%92</english>
+  </remark>
   <objectId>85beba13-9b12-4da0-aae1-32500d3c8941</objectId>
  </Leader>
  <Leader>
@@ -1990,7 +2160,9 @@ https://shozokan.nich.go.jp/collection/object/SZK001476-353</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>http://bujinkensyokai.web.fc2.com/kagosimagb.html</remark>
+  <remark>
+   <english>http://bujinkensyokai.web.fc2.com/kagosimagb.html</english>
+  </remark>
   <objectId>5d641ae9-68f4-4fcf-89f8-020dcf7e8ff7</objectId>
  </Leader>
  <Leader>
@@ -2011,7 +2183,9 @@ https://shozokan.nich.go.jp/collection/object/SZK001476-353</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>https://ja.wikipedia.org/wiki/%E5%90%89%E7%94%B0%E6%B8%85%E4%B8%80</remark>
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E5%90%89%E7%94%B0%E6%B8%85%E4%B8%80</english>
+  </remark>
   <objectId>991fee9a-5718-43ad-82a3-26d166ab3e07</objectId>
  </Leader>
  <Leader>
@@ -2032,8 +2206,10 @@ https://shozokan.nich.go.jp/collection/object/SZK001476-353</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>https://jahis.law.nagoya-u.ac.jp/who/docs/who1-2968
-https://shozokan.nich.go.jp/collection/object/SZK001476-752</remark>
+  <remark>
+   <english>https://jahis.law.nagoya-u.ac.jp/who/docs/who1-2968
+https://shozokan.nich.go.jp/collection/object/SZK001476-752</english>
+  </remark>
   <objectId>2ea769ec-5df1-49c6-ac8d-47344913408b</objectId>
  </Leader>
  <Leader>
@@ -2054,8 +2230,10 @@ https://shozokan.nich.go.jp/collection/object/SZK001476-752</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>https://ja.wikipedia.org/wiki/%E6%9F%B4%E9%87%8E%E7%BE%A9%E5%BA%83
-https://shozokan.nich.go.jp/collection/object/SZK001474-505</remark>
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E6%9F%B4%E9%87%8E%E7%BE%A9%E5%BA%83
+https://shozokan.nich.go.jp/collection/object/SZK001474-505</english>
+  </remark>
   <objectId>1a8b6c44-74bd-44f7-9b68-681523ac1edc</objectId>
  </Leader>
  <Leader>
@@ -2076,7 +2254,9 @@ https://shozokan.nich.go.jp/collection/object/SZK001474-505</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>https://ja.wikipedia.org/wiki/%E8%A5%BF%E6%9D%91%E7%B2%BE%E4%B8%80</remark>
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E8%A5%BF%E6%9D%91%E7%B2%BE%E4%B8%80</english>
+  </remark>
   <objectId>1f29b4dc-c71e-4cbd-9cb4-d9553f96dfc1</objectId>
  </Leader>
  <Leader>
@@ -2097,7 +2277,9 @@ https://shozokan.nich.go.jp/collection/object/SZK001474-505</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>https://shozokan.nich.go.jp/collection/object/SZK001475-307</remark>
+  <remark>
+   <english>https://shozokan.nich.go.jp/collection/object/SZK001475-307</english>
+  </remark>
   <objectId>7a0ee432-3d99-40d8-8c97-c9e81754fdce</objectId>
  </Leader>
  <Leader>
@@ -2118,8 +2300,10 @@ https://shozokan.nich.go.jp/collection/object/SZK001474-505</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>https://ja.wikipedia.org/wiki/%E7%9F%B3%E4%BA%95%E9%9A%BC%E5%A4%AA
-https://shozokan.nich.go.jp/collection/object/SZK001474-102</remark>
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E7%9F%B3%E4%BA%95%E9%9A%BC%E5%A4%AA
+https://shozokan.nich.go.jp/collection/object/SZK001474-102</english>
+  </remark>
   <objectId>31b3fddd-e37a-4c4f-861c-ef5939dc481c</objectId>
  </Leader>
  <Leader>
@@ -2140,7 +2324,9 @@ https://shozokan.nich.go.jp/collection/object/SZK001474-102</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Tan_Zhonglin</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Tan_Zhonglin</english>
+  </remark>
   <objectId>6fb39207-8bd4-49b4-9294-7273a115fcc6</objectId>
  </Leader>
  <Leader>
@@ -2161,7 +2347,9 @@ https://shozokan.nich.go.jp/collection/object/SZK001474-102</remark>
   <landOperational>Average</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Wei_Rugui</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Wei_Rugui</english>
+  </remark>
   <objectId>d780f176-90ac-4161-985c-18d2058b2a60</objectId>
  </Leader>
  <Leader>
@@ -2182,7 +2370,9 @@ https://shozokan.nich.go.jp/collection/object/SZK001474-102</remark>
   <landOperational>Average</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>https://zh-classical.wikipedia.org/wiki/%E8%A1%9B%E6%B1%9D%E6%88%90</remark>
+  <remark>
+   <english>https://zh-classical.wikipedia.org/wiki/%E8%A1%9B%E6%B1%9D%E6%88%90</english>
+  </remark>
   <objectId>49db5d3e-1838-4652-b27d-3aa00dfa1150</objectId>
  </Leader>
  <Leader>
@@ -2203,7 +2393,9 @@ https://shozokan.nich.go.jp/collection/object/SZK001474-102</remark>
   <landOperational>Average</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Song_Qing_(Qing_dynasty)</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Song_Qing_(Qing_dynasty)</english>
+  </remark>
   <objectId>9ee1c989-2e58-4379-b193-c7cbb6e58c1e</objectId>
  </Leader>
  <Leader>
@@ -2223,7 +2415,9 @@ https://shozokan.nich.go.jp/collection/object/SZK001474-102</remark>
   <landOperational>Average</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Ma_Yukun</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Ma_Yukun</english>
+  </remark>
   <objectId>87f37339-bbe2-42a6-baa2-af5120ba387e</objectId>
  </Leader>
  <Leader>
@@ -2244,7 +2438,9 @@ https://shozokan.nich.go.jp/collection/object/SZK001474-102</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://zh.wikipedia.org/zh-hant/%E9%82%B5%E5%8F%8B%E6%BF%82</remark>
+  <remark>
+   <english>https://zh.wikipedia.org/zh-hant/%E9%82%B5%E5%8F%8B%E6%BF%82</english>
+  </remark>
   <objectId>06a26f9a-f9c9-413e-a683-5cd860138bcb</objectId>
  </Leader>
  <Leader>
@@ -2265,7 +2461,9 @@ https://shozokan.nich.go.jp/collection/object/SZK001474-102</remark>
   <landOperational>Outstanding</landOperational>
   <landTactical>Gifted</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Liu_Yongfu</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Liu_Yongfu</english>
+  </remark>
   <objectId>a95ed312-db84-4aef-94da-9616b743c08e</objectId>
  </Leader>
  <Leader>
@@ -2288,7 +2486,9 @@ https://shozokan.nich.go.jp/collection/object/SZK001474-102</remark>
   <traits>
    <LeaderTrait>Brave</LeaderTrait>
   </traits>
-  <remark>https://en.wikipedia.org/wiki/Zuo_Baogui</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Zuo_Baogui</english>
+  </remark>
   <objectId>aa91f6bf-bf4f-4586-bd0c-7a4252add98f</objectId>
  </Leader>
  <Leader>
@@ -2309,7 +2509,9 @@ https://shozokan.nich.go.jp/collection/object/SZK001474-102</remark>
   <landOperational>Average</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>https://baike.baidu.com/item/%E4%B8%B0%E5%8D%87%E9%98%BF/6156842</remark>
+  <remark>
+   <english>https://baike.baidu.com/item/%E4%B8%B0%E5%8D%87%E9%98%BF/6156842</english>
+  </remark>
   <objectId>122123c2-900d-413a-9be0-745d9d16f843</objectId>
  </Leader>
  <Leader>
@@ -2330,7 +2532,9 @@ https://shozokan.nich.go.jp/collection/object/SZK001474-102</remark>
   <landOperational>AboveAverage</landOperational>
   <landTactical>AboveAverage</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Nie_Shicheng</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Nie_Shicheng</english>
+  </remark>
   <objectId>1ef07b4f-587c-410b-9737-fe9db3b5e4cb</objectId>
  </Leader>
  <Leader>
@@ -2351,7 +2555,9 @@ https://shozokan.nich.go.jp/collection/object/SZK001474-102</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Inoue_Yoshika</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Inoue_Yoshika</english>
+  </remark>
   <objectId>cf6cab8d-b542-4930-aaeb-bc24eccace43</objectId>
  </Leader>
  <Leader>
@@ -2372,7 +2578,9 @@ https://shozokan.nich.go.jp/collection/object/SZK001474-102</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Shibayama_Yahachi</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Shibayama_Yahachi</english>
+  </remark>
   <objectId>55bcaa87-3db0-4dba-8138-9d4b345d0cb9</objectId>
  </Leader>
  <Leader>
@@ -2393,7 +2601,9 @@ https://shozokan.nich.go.jp/collection/object/SZK001474-102</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Arichi_Shinanoj%C5%8D</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Arichi_Shinanoj%C5%8D</english>
+  </remark>
   <objectId>7cdf6552-9b13-431b-ba02-8bfa99c1faf8</objectId>
  </Leader>
  <Leader>
@@ -2414,7 +2624,8 @@ https://shozokan.nich.go.jp/collection/object/SZK001474-102</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Карл Петрович Иессен
+  <remark>
+   <english>Карл Петрович Иессен
 
 Karl Johann Peter Jessen (1852–1918)
 Vice Admiral, Imperial Russian Navy.
@@ -2424,7 +2635,8 @@ Russo-Japanese War (1904–1905) – Promoted to Rear Admiral on 1 January 1904.
 On 14 August 1904, he commanded the Russian squadron at the Battle off Ulsan, engaging the Japanese cruiser force under Vice Admiral Kamimura Hikonojo. The battle ended with heavy Russian losses, including the loss of the cruiser Rurik and severe damage to the other ships.
 
 https://en.wikipedia.org/wiki/Karl_Jessen
-</remark>
+</english>
+  </remark>
   <objectId>a572b659-f9f6-4417-a9ab-fa7bbb7f6b81</objectId>
  </Leader>
  <Leader>
@@ -2445,7 +2657,8 @@ https://en.wikipedia.org/wiki/Karl_Jessen
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Андреев, Андрей Парфёнович
+  <remark>
+   <english>Андреев, Андрей Парфёнович
 
 Andrei Parfenovich Andreev (1855–1924)
 Rear Admiral, Imperial Russian Navy.
@@ -2453,7 +2666,8 @@ Rear Admiral, Imperial Russian Navy.
 Russo-Japanese War (1904–1905) – Captain (1st rank) and commander of the armored cruiser Rossia, serving in the Vladivostok Cruiser Squadron under Rear Admiral Karl Jessen. The squadron conducted commerce-raiding operations against Japanese shipping in the Sea of Japan. Rossia served as one of the principal ships of the formation and participated in the Battle off Ulsan (1904) against Vice Admiral Kamimura Hikonojo’s cruiser force.
 
 https://ru.wikipedia.org/wiki/%D0%90%D0%BD%D0%B4%D1%80%D0%B5%D0%B5%D0%B2,_%D0%90%D0%BD%D0%B4%D1%80%D0%B5%D0%B9_%D0%9F%D0%B0%D1%80%D1%84%D1%91%D0%BD%D0%BE%D0%B2%D0%B8%D1%87
-</remark>
+</english>
+  </remark>
   <objectId>b7052a6e-0748-4214-b5d3-0900a565383d</objectId>
  </Leader>
  <Leader>
@@ -2474,7 +2688,8 @@ https://ru.wikipedia.org/wiki/%D0%90%D0%BD%D0%B4%D1%80%D0%B5%D0%B5%D0%B2,_%D0%90
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Дабич, Николай Дмитриевич
+  <remark>
+   <english>Дабич, Николай Дмитриевич
 
 Nikolai Dmitrievich Dabić (1857–1908)
 Vice Admiral, Imperial Russian Navy.
@@ -2482,7 +2697,8 @@ Vice Admiral, Imperial Russian Navy.
 Russo-Japanese War (1904–1905) – Captain (1st rank) and commander of the armored cruiser Gromoboi of the Vladivostok Cruiser Squadron under Rear Admiral Karl Jessen. The squadron conducted commerce-raiding operations against Japanese shipping in the Sea of Japan. He commanded Gromoboi during the Battle off Ulsan (1904) against the Japanese cruiser force under Vice Admiral Kamimura Hikonojo, where he was seriously wounded but continued to command during the action.
 
 https://ru.wikipedia.org/wiki/%D0%94%D0%B0%D0%B1%D0%B8%D1%87,_%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B9_%D0%94%D0%BC%D0%B8%D1%82%D1%80%D0%B8%D0%B5%D0%B2%D0%B8%D1%87
-</remark>
+</english>
+  </remark>
   <objectId>8dec1ad5-af82-41ec-a921-966bcc69414f</objectId>
  </Leader>
  <Leader>
@@ -2503,7 +2719,8 @@ https://ru.wikipedia.org/wiki/%D0%94%D0%B0%D0%B1%D0%B8%D1%87,_%D0%9D%D0%B8%D0%BA
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Трусов, Евгений Александрович
+  <remark>
+   <english>Трусов, Евгений Александрович
 
 Yevgeny Alexandrovich Trusov (1855–1904)
 Captain 1st Rank, Imperial Russian Navy.
@@ -2511,7 +2728,8 @@ Captain 1st Rank, Imperial Russian Navy.
 Russo-Japanese War (1904–1905) – Commander of the armored cruiser Rurik in the Vladivostok Cruiser Squadron. He participated in cruiser raids against Japanese shipping in the Sea of Japan and the Korea Strait. On 14 August 1904, during the Battle off Ulsan, he commanded Rurik against the Japanese cruiser force under Vice Admiral Kamimura Hikonojo. He was mortally wounded early in the battle while directing the ship from the conning tower and died during the action as Rurik continued fighting until it was scuttled.
 
 https://ru.wikipedia.org/wiki/%D0%A2%D1%80%D1%83%D1%81%D0%BE%D0%B2,_%D0%95%D0%B2%D0%B3%D0%B5%D0%BD%D0%B8%D0%B9_%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%D0%BE%D0%B2%D0%B8%D1%87
-</remark>
+</english>
+  </remark>
   <objectId>b12294da-6e16-4c01-b459-3d4eba05f426</objectId>
  </Leader>
  <Leader>
@@ -2532,7 +2750,8 @@ https://ru.wikipedia.org/wiki/%D0%A2%D1%80%D1%83%D1%81%D0%BE%D0%B2,_%D0%95%D0%B2
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Ijichi Suetaka (1857–1935)
+  <remark>
+   <english>Ijichi Suetaka (1857–1935)
 Vice Admiral, Imperial Japanese Navy.
 
 First Sino-Japanese War (1894–1895) – Gunnery Officer of the battleship Fusō. He participated in the war in this capacity and was later transferred to the staff of the Standing Fleet in February 1895.
@@ -2541,7 +2760,8 @@ Russo-Japanese War (1904–1905) – Captain of the armored cruiser Izumo from S
 
 https://ja.wikipedia.org/wiki/%E4%BC%8A%E5%9C%B0%E7%9F%A5%E5%AD%A3%E7%8F%8D
 https://www.edohakuarchives.jp/detail-110167.html
-</remark>
+</english>
+  </remark>
   <objectId>941570a4-4562-46aa-944e-efa88ae96e11</objectId>
  </Leader>
  <Leader>
@@ -2562,9 +2782,11 @@ https://www.edohakuarchives.jp/detail-110167.html
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://ja.wikipedia.org/wiki/%E8%97%A4%E4%BA%95%E8%BC%83%E4%B8%80
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E8%97%A4%E4%BA%95%E8%BC%83%E4%B8%80
 
-</remark>
+</english>
+  </remark>
   <objectId>b4bc96fa-2c28-40ed-8a22-917afd59f512</objectId>
  </Leader>
  <Leader>
@@ -2585,8 +2807,10 @@ https://www.edohakuarchives.jp/detail-110167.html
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Shigetar%C5%8D_Yoshimatsu
-</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Shigetar%C5%8D_Yoshimatsu
+</english>
+  </remark>
   <objectId>86877788-7a24-4b0e-8ea3-2002dfb016c0</objectId>
  </Leader>
  <Leader>
@@ -2607,14 +2831,16 @@ https://www.edohakuarchives.jp/detail-110167.html
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Taketomi Kunikane (1852–1931)
+  <remark>
+   <english>Taketomi Kunikane (1852–1931)
 Vice Admiral, Imperial Japanese Navy.
 
 First Sino-Japanese War (1894–1895) – Served on the staff of the Yokosuka Naval District, rather than commanding a combat formation during the war.
 
 Russo-Japanese War (1904–1905) – From July 1901 he served as Captain of the armored cruiser Iwate and held this command during the early phase of the war. In January 1905 he was promoted to Rear Admiral and appointed Commander of the 5th Division of the 3rd Fleet. He commanded this division—composed mainly of older cruisers—during the Battle of Tsushima (1905). In June 1905 he was appointed Commander of the 4th Fleet.
 
-https://en.wikipedia.org/wiki/Taketomi_Kunikane</remark>
+https://en.wikipedia.org/wiki/Taketomi_Kunikane</english>
+  </remark>
   <objectId>94a92131-7824-4073-b21e-ceb00447704c</objectId>
  </Leader>
  <Leader>
@@ -2635,7 +2861,9 @@ https://en.wikipedia.org/wiki/Taketomi_Kunikane</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://ja.wikipedia.org/wiki/%E5%92%8C%E7%94%B0%E8%B3%A2%E5%8A%A9</remark>
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E5%92%8C%E7%94%B0%E8%B3%A2%E5%8A%A9</english>
+  </remark>
   <objectId>3883625e-c4c6-42da-b5e6-b4db7b42cb17</objectId>
  </Leader>
  <Leader>
@@ -2656,7 +2884,9 @@ https://en.wikipedia.org/wiki/Taketomi_Kunikane</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://hush.web.fc2.com/name/Biography/651mo.html</remark>
+  <remark>
+   <english>https://hush.web.fc2.com/name/Biography/651mo.html</english>
+  </remark>
   <objectId>d2d9a793-77d8-4aa9-b143-564e4e614f1b</objectId>
  </Leader>
  <Leader>
@@ -2677,14 +2907,16 @@ https://en.wikipedia.org/wiki/Taketomi_Kunikane</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Uryū Sotokichi (1857–1937)
+  <remark>
+   <english>Uryū Sotokichi (1857–1937)
 Admiral, Imperial Japanese Navy.
 
 First Sino-Japanese War (1894–1895) – Naval attaché to France (5 September 1892 – 31 August 1896), serving in a diplomatic and liaison role during the war rather than in a combat command.
 
 Russo-Japanese War (1904–1905) – Commander of the 4th Division, leading Japanese forces at the Battle of Chemulpo Bay (1904), where his squadron forced the Russian cruiser Varyag and gunboat Korietz to scuttle themselves. His forces later participated in fleet operations culminating in the Battle of Tsushima (1905).
 
-https://en.wikipedia.org/wiki/Ury%C5%AB_Sotokichi</remark>
+https://en.wikipedia.org/wiki/Ury%C5%AB_Sotokichi</english>
+  </remark>
   <objectId>c6361d17-bfe6-4b7e-b981-47474396e2bd</objectId>
  </Leader>
  <Leader>
@@ -2705,7 +2937,9 @@ https://en.wikipedia.org/wiki/Ury%C5%AB_Sotokichi</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Sent%C5%8D_Takenaka</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Sent%C5%8D_Takenaka</english>
+  </remark>
   <objectId>6390d9a5-eace-4109-b30a-87fe5e2da2e2</objectId>
  </Leader>
  <Leader>
@@ -2726,7 +2960,9 @@ https://en.wikipedia.org/wiki/Ury%C5%AB_Sotokichi</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://ru.wikipedia.org/wiki/%D0%9A%D1%80%D0%B8%D0%BD%D0%B8%D1%86%D0%BA%D0%B8%D0%B9,_%D0%95%D0%B2%D0%B3%D0%B5%D0%BD%D0%B8%D0%B9_%D0%98%D0%B2%D0%B0%D0%BD%D0%BE%D0%B2%D0%B8%D1%87</remark>
+  <remark>
+   <english>https://ru.wikipedia.org/wiki/%D0%9A%D1%80%D0%B8%D0%BD%D0%B8%D1%86%D0%BA%D0%B8%D0%B9,_%D0%95%D0%B2%D0%B3%D0%B5%D0%BD%D0%B8%D0%B9_%D0%98%D0%B2%D0%B0%D0%BD%D0%BE%D0%B2%D0%B8%D1%87</english>
+  </remark>
   <objectId>275a1073-d726-4ec3-964c-10576e906071</objectId>
  </Leader>
  <Leader>
@@ -2748,6 +2984,7 @@ https://en.wikipedia.org/wiki/Ury%C5%AB_Sotokichi</remark>
   <landTactical>Unknown</landTactical>
   <traits />
   <remark>
+   <english>
 Безобразов, Пётр Алексеевич
 
 Pyotr Alekseyevich Bezobrazov (1845–1906)
@@ -2756,7 +2993,8 @@ Vice Admiral, Imperial Russian Navy.
 Russo-Japanese War (1904–1905) – After the death of Vice Admiral Stepan Makarov, he was appointed Commander of the First Pacific Squadron on 8 May 1904. Unable to reach Port Arthur due to the Japanese blockade, he instead assumed command of the Vladivostok Cruiser Squadron, consisting of the armored cruisers Rossia, Gromoboi, and Rurik. On 15 June 1904 he led the squadron in a successful raid on Japanese troop transports in the Korea Strait, known as the Hitachi Maru Incident, sinking several transports carrying soldiers and military supplies. Later, Bezobrazov was promoted to Commander of the Baltic Fleet and appointed acting Chief of the Naval Staff.
 
 https://en.wikipedia.org/wiki/Pyotr_Bezobrazov
-</remark>
+</english>
+  </remark>
   <objectId>1bab70da-a152-43b6-8d59-245a00d72638</objectId>
  </Leader>
  <Leader>
@@ -2777,7 +3015,9 @@ https://en.wikipedia.org/wiki/Pyotr_Bezobrazov
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://hush.web.fc2.com/name/Biography/2271shiya.html#anchor211620</remark>
+  <remark>
+   <english>https://hush.web.fc2.com/name/Biography/2271shiya.html#anchor211620</english>
+  </remark>
   <objectId>984dc3a7-e611-4b37-9a08-8d4256c8bbb3</objectId>
  </Leader>
  <Leader>
@@ -2798,7 +3038,9 @@ https://en.wikipedia.org/wiki/Pyotr_Bezobrazov
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Yashiro_Rokur%C5%8D</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Yashiro_Rokur%C5%8D</english>
+  </remark>
   <objectId>27b34805-4813-4193-8160-304ad10d00b3</objectId>
  </Leader>
  <Leader>
@@ -2819,7 +3061,9 @@ https://en.wikipedia.org/wiki/Pyotr_Bezobrazov
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://jahis.law.nagoya-u.ac.jp/who/docs/who4-9222</remark>
+  <remark>
+   <english>https://jahis.law.nagoya-u.ac.jp/who/docs/who4-9222</english>
+  </remark>
   <objectId>ba5c909c-3b68-4e83-a449-b86953e5f621</objectId>
  </Leader>
  <Leader>
@@ -2840,7 +3084,9 @@ https://en.wikipedia.org/wiki/Pyotr_Bezobrazov
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://hush.web.fc2.com/name/Biography/627132miyashi.html</remark>
+  <remark>
+   <english>https://hush.web.fc2.com/name/Biography/627132miyashi.html</english>
+  </remark>
   <objectId>6ae397b5-8625-41a1-85b6-4d70f6af42c1</objectId>
  </Leader>
  <Leader>
@@ -2861,8 +3107,10 @@ https://en.wikipedia.org/wiki/Pyotr_Bezobrazov
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Murakami_Kakuichi
-</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Murakami_Kakuichi
+</english>
+  </remark>
   <objectId>0174bff2-ae6c-426b-af8b-c33b295b9981</objectId>
  </Leader>
  <Leader>
@@ -2883,7 +3131,8 @@ https://en.wikipedia.org/wiki/Pyotr_Bezobrazov
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Руднев, Всеволод Фёдорович
+  <remark>
+   <english>Руднев, Всеволод Фёдорович
 
 Vsevolod Fyodorovich Rudnev (1855–1913)
 Rear Admiral, Imperial Russian Navy.
@@ -2891,7 +3140,8 @@ Rear Admiral, Imperial Russian Navy.
 Russo-Japanese War (1904–1905) – Captain (Captain 1st Rank) and commander of the protected cruiser Varyag. Stationed at the neutral Korean port of Chemulpo (Incheon) with the gunboat Koreets. On 9 February 1904 he attempted to break out against the Japanese squadron commanded by Rear Admiral Uryū Sotokichi, initiating the Battle of Chemulpo Bay (1904). After sustaining heavy damage and casualties, he returned to the harbor and ordered the cruiser scuttled rather than surrender.
 
 https://ru.wikipedia.org/wiki/%D0%A0%D1%83%D0%B4%D0%BD%D0%B5%D0%B2,_%D0%92%D1%81%D0%B5%D0%B2%D0%BE%D0%BB%D0%BE%D0%B4_%D0%A4%D1%91%D0%B4%D0%BE%D1%80%D0%BE%D0%B2%D0%B8%D1%87
-</remark>
+</english>
+  </remark>
   <objectId>9777b95c-0ac6-4fa5-b080-f990f902855f</objectId>
  </Leader>
  <Leader>
@@ -2912,7 +3162,8 @@ https://ru.wikipedia.org/wiki/%D0%A0%D1%83%D0%B4%D0%BD%D0%B5%D0%B2,_%D0%92%D1%81
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Беляев, Григорий Павлович
+  <remark>
+   <english>Беляев, Григорий Павлович
 
 Grigory Pavlovich Belyaev (1857–1907)
 Captain 1st Rank, Imperial Russian Navy.
@@ -2920,7 +3171,8 @@ Captain 1st Rank, Imperial Russian Navy.
 Russo-Japanese War (1904–1905) – Captain 2nd Rank and commander of the gunboat Koreets of the Russian Pacific Fleet. Stationed at Chemulpo (Incheon) together with the cruiser Varyag. On 9 February 1904 he took part in the Battle of Chemulpo Bay, fighting against a superior Japanese squadron. After returning to the harbor following the engagement, Koreets was scuttled by explosion to prevent capture by Japanese forces.
 
 https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D0%BB%D1%8F%D0%B5%D0%B2,_%D0%93%D1%80%D0%B8%D0%B3%D0%BE%D1%80%D0%B8%D0%B9_%D0%9F%D0%B0%D0%B2%D0%BB%D0%BE%D0%B2%D0%B8%D1%87
-</remark>
+</english>
+  </remark>
   <objectId>2f47c986-2f57-4b72-9935-3d3f8d086263</objectId>
  </Leader>
  <Leader>
@@ -2941,7 +3193,8 @@ https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D0%BB%D1%8F%D0%B5%D0%B2,_%D0%93%D1%80
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Успенский, Иван Петрович
+  <remark>
+   <english>Успенский, Иван Петрович
 
 Ivan Petrovich Uspensky (1857 – after 1917)
 Vice Admiral, Imperial Russian Navy.
@@ -2951,7 +3204,8 @@ Russo-Japanese War (1904–1905) – Captain (1st Rank) and commander of the bat
 https://tverigrad.ru/publication/165-let-so-dnja-rozhdenija-komandujushhego-tihookeanskim-flotom-ivana-uspenskogo/
 
 https://ru.wikipedia.org/wiki/%D0%A3%D1%81%D0%BF%D0%B5%D0%BD%D1%81%D0%BA%D0%B8%D0%B9,_%D0%98%D0%B2%D0%B0%D0%BD_%D0%9F%D0%B5%D1%82%D1%80%D0%BE%D0%B2%D0%B8%D1%87
-</remark>
+</english>
+  </remark>
   <objectId>d4bb62bf-3786-4fa7-9180-83684f04a983</objectId>
  </Leader>
  <Leader>
@@ -2972,10 +3226,12 @@ https://ru.wikipedia.org/wiki/%D0%A3%D1%81%D0%BF%D0%B5%D0%BD%D1%81%D0%BA%D0%B8%D
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://ru.wikipedia.org/wiki/%D0%A7%D0%B5%D1%80%D0%BD%D1%8B%D1%88%D1%91%D0%B2,_%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B9_%D0%9A%D1%83%D0%B7%D1%8C%D0%BC%D0%B8%D1%87
+  <remark>
+   <english>https://ru.wikipedia.org/wiki/%D0%A7%D0%B5%D1%80%D0%BD%D1%8B%D1%88%D1%91%D0%B2,_%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B9_%D0%9A%D1%83%D0%B7%D1%8C%D0%BC%D0%B8%D1%87
 
 Чернышёв, Николай Кузьмич
-</remark>
+</english>
+  </remark>
   <objectId>7b10e5e4-d031-4278-9a72-fc408571288e</objectId>
  </Leader>
  <Leader>
@@ -2996,7 +3252,8 @@ https://ru.wikipedia.org/wiki/%D0%A3%D1%81%D0%BF%D0%B5%D0%BD%D1%81%D0%BA%D0%B8%D
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Эссен, Николай Оттович фон
+  <remark>
+   <english>Эссен, Николай Оттович фон
 
 Nikolai Ottovich von Essen (1860–1915)
 Admiral, Imperial Russian Navy.
@@ -3007,7 +3264,8 @@ In March 1904 Admiral Stepan Makarov reassigned him to command the battleship Se
 
 https://ru.wikipedia.org/wiki/%D0%AD%D1%81%D1%81%D0%B5%D0%BD,_%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B9_%D0%9E%D1%82%D1%82%D0%BE%D0%B2%D0%B8%D1%87_%D1%84%D0%BE%D0%BD
 
-</remark>
+</english>
+  </remark>
   <objectId>15b8d867-2985-4087-bb9c-990ee2d68dfd</objectId>
  </Leader>
  <Leader>
@@ -3028,10 +3286,12 @@ https://ru.wikipedia.org/wiki/%D0%AD%D1%81%D1%81%D0%B5%D0%BD,_%D0%9D%D0%B8%D0%BA
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://ru.wikipedia.org/wiki/%D0%AF%D0%BA%D0%BE%D0%B2%D0%BB%D0%B5%D0%B2,_%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B9_%D0%9C%D0%B0%D1%82%D0%B2%D0%B5%D0%B5%D0%B2%D0%B8%D1%87
+  <remark>
+   <english>https://ru.wikipedia.org/wiki/%D0%AF%D0%BA%D0%BE%D0%B2%D0%BB%D0%B5%D0%B2,_%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B9_%D0%9C%D0%B0%D1%82%D0%B2%D0%B5%D0%B5%D0%B2%D0%B8%D1%87
 
 Яковлев, Николай Матвеевич
-</remark>
+</english>
+  </remark>
   <objectId>4b5df0a8-8edd-468c-84b0-967587b52776</objectId>
  </Leader>
  <Leader>
@@ -3052,7 +3312,8 @@ https://ru.wikipedia.org/wiki/%D0%AD%D1%81%D1%81%D0%B5%D0%BD,_%D0%9D%D0%B8%D0%BA
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Ива́н Константи́нович Григоро́вич 
+  <remark>
+   <english>Ива́н Константи́нович Григоро́вич 
 
 Ivan Konstantinovich Grigorovich (1853–1930)
 Admiral, Imperial Russian Navy.
@@ -3060,7 +3321,8 @@ Admiral, Imperial Russian Navy.
 Russo-Japanese War (1904–1905) – At the outbreak of the war he was Captain of the battleship Tsesarevich of the Russian Pacific Fleet at Port Arthur. The ship participated in early operations of the fleet and was torpedoed during the Battle of Port Arthur (1904). After the death of Vice Admiral Stepan Makarov he was promoted to Rear Admiral and appointed Commander of the Port Arthur naval port, responsible for harbor administration, repair facilities, and fleet logistics during the Siege of Port Arthur (1904).
 
 https://ru.wikipedia.org/wiki/%D0%93%D1%80%D0%B8%D0%B3%D0%BE%D1%80%D0%BE%D0%B2%D0%B8%D1%87,_%D0%98%D0%B2%D0%B0%D0%BD_%D0%9A%D0%BE%D0%BD%D1%81%D1%82%D0%B0%D0%BD%D1%82%D0%B8%D0%BD%D0%BE%D0%B2%D0%B8%D1%87
-</remark>
+</english>
+  </remark>
   <objectId>30ed3237-938c-48b9-993e-cc0bdae25342</objectId>
  </Leader>
  <Leader>
@@ -3081,9 +3343,11 @@ https://ru.wikipedia.org/wiki/%D0%93%D1%80%D0%B8%D0%B3%D0%BE%D1%80%D0%BE%D0%B2%D
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://ru.wikipedia.org/wiki/%D0%91%D0%BE%D0%B9%D1%81%D0%BC%D0%B0%D0%BD,_%D0%92%D0%B0%D1%81%D0%B8%D0%BB%D0%B8%D0%B9_%D0%90%D1%80%D1%81%D0%B5%D0%BD%D1%8C%D0%B5%D0%B2%D0%B8%D1%87
+  <remark>
+   <english>https://ru.wikipedia.org/wiki/%D0%91%D0%BE%D0%B9%D1%81%D0%BC%D0%B0%D0%BD,_%D0%92%D0%B0%D1%81%D0%B8%D0%BB%D0%B8%D0%B9_%D0%90%D1%80%D1%81%D0%B5%D0%BD%D1%8C%D0%B5%D0%B2%D0%B8%D1%87
 
-Василий Арсеньевич Бойсман 1-й</remark>
+Василий Арсеньевич Бойсман 1-й</english>
+  </remark>
   <objectId>62b88df1-0c4e-4132-ae05-f2deb6223700</objectId>
  </Leader>
  <Leader>
@@ -3104,9 +3368,11 @@ https://ru.wikipedia.org/wiki/%D0%93%D1%80%D0%B8%D0%B3%D0%BE%D1%80%D0%BE%D0%B2%D
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://ru.wikipedia.org/wiki/%D0%97%D0%B0%D1%86%D0%B0%D1%80%D1%91%D0%BD%D0%BD%D1%8B%D0%B9,_%D0%92%D0%B0%D1%81%D0%B8%D0%BB%D0%B8%D0%B9_%D0%9C%D0%B0%D0%BA%D1%81%D0%B8%D0%BC%D0%BE%D0%B2%D0%B8%D1%87
+  <remark>
+   <english>https://ru.wikipedia.org/wiki/%D0%97%D0%B0%D1%86%D0%B0%D1%80%D1%91%D0%BD%D0%BD%D1%8B%D0%B9,_%D0%92%D0%B0%D1%81%D0%B8%D0%BB%D0%B8%D0%B9_%D0%9C%D0%B0%D0%BA%D1%81%D0%B8%D0%BC%D0%BE%D0%B2%D0%B8%D1%87
 
-Василий Максимович Зацарённый</remark>
+Василий Максимович Зацарённый</english>
+  </remark>
   <objectId>122c0be7-5f1e-49a9-8886-5ef42ba9c8c5</objectId>
  </Leader>
  <Leader>
@@ -3127,9 +3393,11 @@ https://ru.wikipedia.org/wiki/%D0%93%D1%80%D0%B8%D0%B3%D0%BE%D1%80%D0%BE%D0%B2%D
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://ru.wikipedia.org/wiki/%D0%A9%D0%B5%D0%BD%D1%81%D0%BD%D0%BE%D0%B2%D0%B8%D1%87,_%D0%AD%D0%B4%D1%83%D0%B0%D1%80%D0%B4_%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2%D0%B8%D1%87
+  <remark>
+   <english>https://ru.wikipedia.org/wiki/%D0%A9%D0%B5%D0%BD%D1%81%D0%BD%D0%BE%D0%B2%D0%B8%D1%87,_%D0%AD%D0%B4%D1%83%D0%B0%D1%80%D0%B4_%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2%D0%B8%D1%87
 
-Щенснович, Эдуард Николаевич</remark>
+Щенснович, Эдуард Николаевич</english>
+  </remark>
   <objectId>3a759f08-6df5-4d0f-9621-394e64411eac</objectId>
  </Leader>
  <Leader>
@@ -3150,9 +3418,11 @@ https://ru.wikipedia.org/wiki/%D0%93%D1%80%D0%B8%D0%B3%D0%BE%D1%80%D0%BE%D0%B2%D
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://ru.wikipedia.org/wiki/%D0%92%D0%B8%D1%80%D0%B5%D0%BD,_%D0%A0%D0%BE%D0%B1%D0%B5%D1%80%D1%82_%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2%D0%B8%D1%87
+  <remark>
+   <english>https://ru.wikipedia.org/wiki/%D0%92%D0%B8%D1%80%D0%B5%D0%BD,_%D0%A0%D0%BE%D0%B1%D0%B5%D1%80%D1%82_%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2%D0%B8%D1%87
 
-Вирен, Роберт Николаевич</remark>
+Вирен, Роберт Николаевич</english>
+  </remark>
   <objectId>8cf52fc9-e4fc-4aa2-81f7-a6d7e6953093</objectId>
  </Leader>
  <Leader>
@@ -3173,9 +3443,11 @@ https://ru.wikipedia.org/wiki/%D0%93%D1%80%D0%B8%D0%B3%D0%BE%D1%80%D0%BE%D0%B2%D
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://ru.wikipedia.org/wiki/%D0%98%D0%B2%D0%B0%D0%BD%D0%BE%D0%B2,_%D0%A4%D1%91%D0%B4%D0%BE%D1%80_%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2%D0%B8%D1%87
+  <remark>
+   <english>https://ru.wikipedia.org/wiki/%D0%98%D0%B2%D0%B0%D0%BD%D0%BE%D0%B2,_%D0%A4%D1%91%D0%B4%D0%BE%D1%80_%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B5%D0%B2%D0%B8%D1%87
 
-Иванов, Фёдор Николаевич</remark>
+Иванов, Фёдор Николаевич</english>
+  </remark>
   <objectId>fe435604-b241-4b8d-a9de-85248c390247</objectId>
  </Leader>
  <Leader>
@@ -3196,14 +3468,16 @@ https://ru.wikipedia.org/wiki/%D0%93%D1%80%D0%B8%D0%B3%D0%BE%D1%80%D0%BE%D0%B2%D
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Николай Карлович Рейценштейн
+  <remark>
+   <english>Николай Карлович Рейценштейн
 
 Nikolai Karlovich Reitsenshtein (1854–1916)
 Admiral, Imperial Russian Navy.
 
 Russo-Japanese War (1904–1905) – Initially appointed commander of the Vladivostok cruiser detachment, but in March 1904 Vice Admiral Stepan Makarov reassigned him to Port Arthur and promoted him to Rear Admiral, placing him in command of the cruiser squadron of the First Pacific Squadron. During the Battle of the Yellow Sea (1904) he flew his flag aboard the armored cruiser Askold. When Admiral Wilgelm Vitgeft was killed and the Russian battle line became disorganized, Reitsenshtein attempted to assume control and lead a breakout. Unable to coordinate the fleet due to damaged signals and lack of support from other commanders, he broke through the Japanese fleet with Askold and several destroyers and reached Shanghai, where the ships were interned.
 
-https://ru.wikipedia.org/wiki/%D0%A0%D0%B5%D0%B9%D1%86%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD,_%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B9_%D0%9A%D0%B0%D1%80%D0%BB%D0%BE%D0%B2%D0%B8%D1%87</remark>
+https://ru.wikipedia.org/wiki/%D0%A0%D0%B5%D0%B9%D1%86%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD,_%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B9_%D0%9A%D0%B0%D1%80%D0%BB%D0%BE%D0%B2%D0%B8%D1%87</english>
+  </remark>
   <objectId>de5c3853-f922-47fa-81d3-31564419f71c</objectId>
  </Leader>
  <Leader>
@@ -3224,9 +3498,11 @@ https://ru.wikipedia.org/wiki/%D0%A0%D0%B5%D0%B9%D1%86%D0%B5%D0%BD%D1%88%D1%82%D
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://ru.wikipedia.org/wiki/%D0%A8%D1%83%D0%BB%D1%8C%D1%86,_%D0%9C%D0%B0%D0%BA%D1%81%D0%B8%D0%BC%D0%B8%D0%BB%D0%B8%D0%B0%D0%BD_%D0%A4%D1%91%D0%B4%D0%BE%D1%80%D0%BE%D0%B2%D0%B8%D1%87
+  <remark>
+   <english>https://ru.wikipedia.org/wiki/%D0%A8%D1%83%D0%BB%D1%8C%D1%86,_%D0%9C%D0%B0%D0%BA%D1%81%D0%B8%D0%BC%D0%B8%D0%BB%D0%B8%D0%B0%D0%BD_%D0%A4%D1%91%D0%B4%D0%BE%D1%80%D0%BE%D0%B2%D0%B8%D1%87
 
-Максимилиа́н (Михаи́л) Фёдорович фон Шульц </remark>
+Максимилиа́н (Михаи́л) Фёдорович фон Шульц </english>
+  </remark>
   <objectId>9fc2f0d9-876e-486e-86ea-9f1ecae6cd05</objectId>
  </Leader>
  <Leader>
@@ -3247,14 +3523,16 @@ https://ru.wikipedia.org/wiki/%D0%A0%D0%B5%D0%B9%D1%86%D0%B5%D0%BD%D1%88%D1%82%D
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Misu Sōtarō (1855–1921)
+  <remark>
+   <english>Misu Sōtarō (1855–1921)
 Admiral, Imperial Japanese Navy.
 
 First Sino-Japanese War (1894–1895) – Head of the Naval Personnel Bureau in the Navy General Staff, responsible for personnel administration including pay, promotions, decorations, and compensation for casualties; he remained in this staff post throughout the war.
 
 Russo-Japanese War (1904–1905) – Commander of the 2nd Division of the 2nd Fleet. Participated in major fleet operations and was wounded in the eye at the Battle of Tsushima (1905).
 
-https://en.wikipedia.org/wiki/Misu_S%C5%8Dtar%C5%8D</remark>
+https://en.wikipedia.org/wiki/Misu_S%C5%8Dtar%C5%8D</english>
+  </remark>
   <objectId>74729e4e-1b29-410d-8e4a-c4e384e48fba</objectId>
  </Leader>
  <Leader>
@@ -3275,10 +3553,12 @@ https://en.wikipedia.org/wiki/Misu_S%C5%8Dtar%C5%8D</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>http://bujinkensyokai.web.fc2.com/aichigk.html
+  <remark>
+   <english>http://bujinkensyokai.web.fc2.com/aichigk.html
 
  翌７月呉水雷団長、３６年１１月第一駆逐隊司令となり日露戦争出征となる。
-戦役中に「熊野丸」艦長に転じ戦役末期に佐世保水雷団長に就任した。</remark>
+戦役中に「熊野丸」艦長に転じ戦役末期に佐世保水雷団長に就任した。</english>
+  </remark>
   <objectId>9120649a-1ee1-414d-bb7b-bbc0434ba974</objectId>
  </Leader>
  <Leader>
@@ -3299,14 +3579,16 @@ https://en.wikipedia.org/wiki/Misu_S%C5%8Dtar%C5%8D</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Старк, Оскар Викторович
+  <remark>
+   <english>Старк, Оскар Викторович
 
 Oskar Starck (1846–1928)
 Admiral, Imperial Russian Navy.
 
 Russo-Japanese War (1904–1905) – Commander of the Russian Pacific Fleet and previously commander of the naval base at Port Arthur. His flagship at the outbreak of the war was the battleship Petropavlovsk. He commanded Russian naval forces stationed at Port Arthur when the Imperial Japanese Navy launched the opening attack of the war in the Battle of Port Arthur (1904). After criticism of the fleet’s performance, he was removed from command on 24 February 1904 and replaced by Vice Admiral Stepan Makarov.
 
-https://en.wikipedia.org/wiki/Oskar_Starck</remark>
+https://en.wikipedia.org/wiki/Oskar_Starck</english>
+  </remark>
   <objectId>b06c5673-e679-4671-aa13-9e6bfb97bb5d</objectId>
  </Leader>
  <Leader>
@@ -3329,9 +3611,11 @@ https://en.wikipedia.org/wiki/Oskar_Starck</remark>
   <traits>
    <LeaderTrait>Unlucky</LeaderTrait>
   </traits>
-  <remark>https://en.wikipedia.org/wiki/Stepan_Makarov
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Stepan_Makarov
 
-Степан Осипович Макаров</remark>
+Степан Осипович Макаров</english>
+  </remark>
   <objectId>ee2d16d0-6f60-4303-9a7d-70b76d51ee17</objectId>
  </Leader>
  <Leader>
@@ -3352,14 +3636,16 @@ https://en.wikipedia.org/wiki/Oskar_Starck</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Ijichi Hikojirō (1860–1912)
+  <remark>
+   <english>Ijichi Hikojirō (1860–1912)
 Vice Admiral, Imperial Japanese Navy.
 
 First Sino-Japanese War (1894–1895) – Served as a division officer aboard the protected cruiser Hashidate during the war.
 
 Russo-Japanese War (1904–1905) – Captain of the battleship Mikasa, the flagship of Admiral Tōgō Heihachirō in the 1st Division of the 1st Fleet.
 
-https://en.wikipedia.org/wiki/Hikojir%C5%8D_Ijichi</remark>
+https://en.wikipedia.org/wiki/Hikojir%C5%8D_Ijichi</english>
+  </remark>
   <objectId>0aa2881a-c363-4367-b8b2-508f7880e5c7</objectId>
  </Leader>
  <Leader>
@@ -3380,7 +3666,8 @@ https://en.wikipedia.org/wiki/Hikojir%C5%8D_Ijichi</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Yamada Hikohachi (1855–1942)
+  <remark>
+   <english>Yamada Hikohachi (1855–1942)
 Vice Admiral, Imperial Japanese Navy.
 
 First Sino-Japanese War (1894–1895) – Served as Deputy Commander of the cruiser Yoshino during the war.
@@ -3389,7 +3676,8 @@ Russo-Japanese War (1904–1905) – At the outbreak of the war he served as Cap
 
 https://en.wikipedia.org/wiki/Hikohachi_Yamada
 
-</remark>
+</english>
+  </remark>
   <objectId>00bdf5bb-818b-47df-90ff-72522a3f7bb0</objectId>
  </Leader>
  <Leader>
@@ -3410,7 +3698,9 @@ https://en.wikipedia.org/wiki/Hikohachi_Yamada
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://jahis.law.nagoya-u.ac.jp/who/docs/who4-7692</remark>
+  <remark>
+   <english>https://jahis.law.nagoya-u.ac.jp/who/docs/who4-7692</english>
+  </remark>
   <objectId>bffb1804-47e3-4144-8658-7f70e88edf10</objectId>
  </Leader>
  <Leader>
@@ -3451,7 +3741,9 @@ https://en.wikipedia.org/wiki/Hikohachi_Yamada
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://ja.wikipedia.org/wiki/%E5%9D%82%E6%9C%AC%E4%B8%80_(%E6%B5%B7%E8%BB%8D%E8%BB%8D%E4%BA%BA)</remark>
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E5%9D%82%E6%9C%AC%E4%B8%80_(%E6%B5%B7%E8%BB%8D%E8%BB%8D%E4%BA%BA)</english>
+  </remark>
   <objectId>9624a025-ac34-4a9c-aa51-3f0c976ea7b0</objectId>
  </Leader>
  <Leader>
@@ -3472,7 +3764,9 @@ https://en.wikipedia.org/wiki/Hikohachi_Yamada
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Teragaki_Iz%C5%8D</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Teragaki_Iz%C5%8D</english>
+  </remark>
   <objectId>b2602ee1-cfea-4686-8f8c-d7e25583e9cb</objectId>
  </Leader>
  <Leader>
@@ -3493,9 +3787,11 @@ https://en.wikipedia.org/wiki/Hikohachi_Yamada
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://ja.wikipedia.org/wiki/%E4%B8%AD%E5%B0%BE%E9%9B%84
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E4%B8%AD%E5%B0%BE%E9%9B%84
 
-http://bujinkensyokai.web.fc2.com/hirosimagk.html</remark>
+http://bujinkensyokai.web.fc2.com/hirosimagk.html</english>
+  </remark>
   <objectId>b36b98ac-a3e5-49af-8934-898e130cab15</objectId>
  </Leader>
  <Leader>
@@ -3516,12 +3812,14 @@ http://bujinkensyokai.web.fc2.com/hirosimagk.html</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Pavel Petrovich Ukhtomsky (1848–1910)
+  <remark>
+   <english>Pavel Petrovich Ukhtomsky (1848–1910)
 Vice Admiral, Imperial Russian Navy.
 
 Russo-Japanese War (1904–1905) – Deputy Commander of the Russian Pacific Fleet at Port Arthur under Admiral Oskar Starck. After Starck’s dismissal on 24 February 1904, briefly served as acting commander of the fleet until Vice Admiral Stepan Makarov arrived. Following Makarov’s death on 13 April 1904, he again served temporarily as acting commander. During the Battle of the Yellow Sea (1904), after the death of fleet commander Admiral Wilgelm Vitgeft, he assumed command of the Russian squadron with his flag aboard the battleship Peresvet and ordered the damaged fleet to return to Port Arthur rather than continue the breakout to Vladivostok. He commanded the Port Arthur squadron for several weeks afterward until September 1904.
 
-https://en.wikipedia.org/wiki/Pavel_Petrovich_Ukhtomsky</remark>
+https://en.wikipedia.org/wiki/Pavel_Petrovich_Ukhtomsky</english>
+  </remark>
   <objectId>d03cc3f1-4ede-4b12-80d0-9443331b9645</objectId>
  </Leader>
  <Leader>
@@ -3542,8 +3840,10 @@ https://en.wikipedia.org/wiki/Pavel_Petrovich_Ukhtomsky</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://ja.wikipedia.org/wiki/%E4%BA%95%E6%89%8B%E9%BA%9F%E5%85%AD#%E8%84%9A%E6%B3%A8
-</remark>
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E4%BA%95%E6%89%8B%E9%BA%9F%E5%85%AD#%E8%84%9A%E6%B3%A8
+</english>
+  </remark>
   <objectId>9a599726-3505-4620-953f-16a58684a5c3</objectId>
  </Leader>
  <Leader>
@@ -3564,7 +3864,9 @@ https://en.wikipedia.org/wiki/Pavel_Petrovich_Ukhtomsky</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://ja.wikipedia.org/wiki/%E9%AB%98%E6%9C%A8%E5%8A%A9%E4%B8%80</remark>
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E9%AB%98%E6%9C%A8%E5%8A%A9%E4%B8%80</english>
+  </remark>
   <objectId>38409f9f-5eed-4246-be1c-c8d76df1a172</objectId>
  </Leader>
  <Leader>
@@ -3585,7 +3887,9 @@ https://en.wikipedia.org/wiki/Pavel_Petrovich_Ukhtomsky</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Ishibashi_Hajime</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Ishibashi_Hajime</english>
+  </remark>
   <objectId>1b7c8302-1e00-44ab-9e8d-2cec5fed163e</objectId>
  </Leader>
  <Leader>
@@ -3606,7 +3910,9 @@ https://en.wikipedia.org/wiki/Pavel_Petrovich_Ukhtomsky</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://ja.wikipedia.org/wiki/%E4%BD%90%E4%BC%AF%E8%AA%BE</remark>
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E4%BD%90%E4%BC%AF%E8%AA%BE</english>
+  </remark>
   <objectId>78a67c88-0618-46d6-aba6-68426f65a0b3</objectId>
  </Leader>
  <Leader>
@@ -3627,14 +3933,16 @@ https://en.wikipedia.org/wiki/Pavel_Petrovich_Ukhtomsky</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Samejima Kazunori (1845–1910)
+  <remark>
+   <english>Samejima Kazunori (1845–1910)
 Admiral, Imperial Japanese Navy.
 
 First Sino-Japanese War (1894–1895) – Chief of Staff of the Combined Fleet (from July 1894). Participated in fleet operations including the Battle of the Yalu River (1894).
 
 Russo-Japanese War (1904–1905) – Commander-in-Chief of the Sasebo Naval District, responsible for the administration and defense of the major naval base during the war.
 
-https://en.wikipedia.org/wiki/Samejima_Kazunori</remark>
+https://en.wikipedia.org/wiki/Samejima_Kazunori</english>
+  </remark>
   <objectId>416402fe-d252-48fd-8f54-d546128ced8f</objectId>
  </Leader>
  <Leader>
@@ -3655,7 +3963,9 @@ https://en.wikipedia.org/wiki/Samejima_Kazunori</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://commons.wikimedia.org/wiki/File:Miyoshi_Katsumi.jpg</remark>
+  <remark>
+   <english>https://commons.wikimedia.org/wiki/File:Miyoshi_Katsumi.jpg</english>
+  </remark>
   <objectId>30a13cd1-d2a6-48c9-9fda-28ee7bd5a1a0</objectId>
  </Leader>
  <Leader>
@@ -3676,14 +3986,16 @@ https://en.wikipedia.org/wiki/Samejima_Kazunori</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Tōgō Masamichi (1852–1906)
+  <remark>
+   <english>Tōgō Masamichi (1852–1906)
 Vice Admiral, Imperial Japanese Navy.
 
 First Sino-Japanese War (1894–1895) – Captain of the gunboat Chōkai during the war. He later commanded the Saikyō Maru and the corvettes Amagi and Musashi during the conflict.
 
 Russo-Japanese War (1904–1905) – Rear Admiral and Commander of the 6th Battle Division of the 3rd Fleet, flying his flag aboard the cruiser Suma. His division consisted mainly of smaller protected cruisers and participated in the Battle of the Yellow Sea (1904) and the Battle of Tsushima (1905). In November 1905 he was promoted to Vice Admiral and appointed Commander of the 4th Fleet.
 
-https://en.wikipedia.org/wiki/T%C5%8Dg%C5%8D_Masamichi</remark>
+https://en.wikipedia.org/wiki/T%C5%8Dg%C5%8D_Masamichi</english>
+  </remark>
   <objectId>ecbffe12-5f10-47d8-8001-7474333d70a5</objectId>
  </Leader>
  <Leader>
@@ -3704,7 +4016,9 @@ https://en.wikipedia.org/wiki/T%C5%8Dg%C5%8D_Masamichi</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://shozokan.nich.go.jp/collection/object/SZK001477-204</remark>
+  <remark>
+   <english>https://shozokan.nich.go.jp/collection/object/SZK001477-204</english>
+  </remark>
   <objectId>13c85d68-6d4b-46bd-8b2d-2386a451b965</objectId>
  </Leader>
  <Leader>
@@ -3725,8 +4039,10 @@ https://en.wikipedia.org/wiki/T%C5%8Dg%C5%8D_Masamichi</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://hush.web.fc2.com/name/Biography/517121hayasa.html
-https://shozokan.nich.go.jp/collection/?at=imageList&amp;id=12283</remark>
+  <remark>
+   <english>https://hush.web.fc2.com/name/Biography/517121hayasa.html
+https://shozokan.nich.go.jp/collection/?at=imageList&amp;id=12283</english>
+  </remark>
   <objectId>5c8acccf-b3aa-4c5f-abcb-486edf576095</objectId>
  </Leader>
  <Leader>
@@ -3747,8 +4063,10 @@ https://shozokan.nich.go.jp/collection/?at=imageList&amp;id=12283</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://zh.wikipedia.org/zh-hans/%E6%9D%A8%E7%94%A8%E9%9C%96
-http://www.hnyhw.org.cn/newscontent_nor.aspx?channel_id=12&amp;id=7729&amp;m=a0</remark>
+  <remark>
+   <english>https://zh.wikipedia.org/zh-hans/%E6%9D%A8%E7%94%A8%E9%9C%96
+http://www.hnyhw.org.cn/newscontent_nor.aspx?channel_id=12&amp;id=7729&amp;m=a0</english>
+  </remark>
   <objectId>691cb326-2c35-4e14-a93d-ec10a65e190a</objectId>
  </Leader>
  <Leader>
@@ -3769,7 +4087,9 @@ http://www.hnyhw.org.cn/newscontent_nor.aspx?channel_id=12&amp;id=7729&amp;m=a0<
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://baike.baidu.com/item/%E6%9E%97%E9%A2%96%E5%90%AF/8717232</remark>
+  <remark>
+   <english>https://baike.baidu.com/item/%E6%9E%97%E9%A2%96%E5%90%AF/8717232</english>
+  </remark>
   <objectId>14c034d1-7b72-4691-85ad-0d8def5e5182</objectId>
  </Leader>
  <Leader>
@@ -3790,14 +4110,16 @@ http://www.hnyhw.org.cn/newscontent_nor.aspx?channel_id=12&amp;id=7729&amp;m=a0<
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Suzuki Kantarō (1868–1948)
+  <remark>
+   <english>Suzuki Kantarō (1868–1948)
 Admiral, Imperial Japanese Navy. Later served as Prime Minister of Japan (1945), leading the government during the final months of World War II and Japan’s surrender.
 
 First Sino-Japanese War (1894–1895) – Commanded a torpedo boat, participating in the night torpedo attack during the Battle of Weihaiwei (1895).
 
 Russo-Japanese War (1904–1905) – Commander of Destroyer Division 2 early in the war; later Executive Officer of the cruiser Kasuga, participating in the Battle of the Yellow Sea (1904). At the Battle of Tsushima (1905) he commanded Destroyer Division 4 under the IJN 2nd Fleet.
 
-https://en.wikipedia.org/wiki/Kantar%C5%8D_Suzuki</remark>
+https://en.wikipedia.org/wiki/Kantar%C5%8D_Suzuki</english>
+  </remark>
   <objectId>c453116e-8d06-4c96-866f-13f1f7595e6c</objectId>
  </Leader>
  <Leader>
@@ -3818,7 +4140,8 @@ https://en.wikipedia.org/wiki/Kantar%C5%8D_Suzuki</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Mochihara Heiji (1852–1920)
+  <remark>
+   <english>Mochihara Heiji (1852–1920)
 Vice Admiral, Imperial Japanese Navy.
 
 First Sino-Japanese War (1894–1895) – Commander of a torpedo-boat division in the Standing Fleet, leading torpedo boat operations during the war.
@@ -3826,7 +4149,8 @@ First Sino-Japanese War (1894–1895) – Commander of a torpedo-boat division i
 Russo-Japanese War (1904–1905) – Commander of the Chinkai Guard District (naval defense force) at the outbreak of the war, responsible for local naval defense and harbor security.
 
 https://ja.wikipedia.org/wiki/%E9%A4%85%E5%8E%9F%E5%B9%B3%E4%BA%8C
-https://shozokan.nich.go.jp/collection/object/SZK001477-211</remark>
+https://shozokan.nich.go.jp/collection/object/SZK001477-211</english>
+  </remark>
   <objectId>f0026480-8947-4b4c-ad58-b6842a32c2e4</objectId>
  </Leader>
  <Leader>
@@ -3847,14 +4171,16 @@ https://shozokan.nich.go.jp/collection/object/SZK001477-211</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Tsuchiya Mitsukane (1864–1925)
+  <remark>
+   <english>Tsuchiya Mitsukane (1864–1925)
 Vice Admiral, Imperial Japanese Navy.
 
 First Sino-Japanese War (1894–1895) – In July 1894 he was appointed commander of the torpedo boat detachment of the Standing Fleet, and later commander of the 1st Torpedo Boat Division of the Standing Fleet, serving in torpedo boat forces during the war.
 
 Russo-Japanese War (1904–1905) – In September 1903 he was appointed Commander of the 3rd Destroyer Division of the Standing Fleet, serving as a destroyer division commander of the 1st Fleet during the war. Later he was transferred to the staff of the 3rd Fleet. In January 1905 he was promoted to Captain, and was appointed attached officer at the Yokosuka Naval District and outfitting committee member at the Yokosuka Naval Arsenal.
 
-https://ja.wikipedia.org/wiki/%E5%9C%9F%E5%B1%8B%E5%85%89%E9%87%91</remark>
+https://ja.wikipedia.org/wiki/%E5%9C%9F%E5%B1%8B%E5%85%89%E9%87%91</english>
+  </remark>
   <objectId>2cacc5b2-1c2d-44c4-b9e5-84eacb65b117</objectId>
  </Leader>
  <Leader>
@@ -3875,7 +4201,9 @@ https://ja.wikipedia.org/wiki/%E5%9C%9F%E5%B1%8B%E5%85%89%E9%87%91</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://kotobank.jp/word/%E7%9F%B3%E7%94%B0%E4%B8%80%E9%83%8E-1053392</remark>
+  <remark>
+   <english>https://kotobank.jp/word/%E7%9F%B3%E7%94%B0%E4%B8%80%E9%83%8E-1053392</english>
+  </remark>
   <objectId>fcf4725b-4de5-4040-a7a5-1d7ef84a1b45</objectId>
  </Leader>
  <Leader>
@@ -3896,7 +4224,9 @@ https://ja.wikipedia.org/wiki/%E5%9C%9F%E5%B1%8B%E5%85%89%E9%87%91</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Yamaya_Tanin</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Yamaya_Tanin</english>
+  </remark>
   <objectId>768f16af-9c1e-433e-8914-3d5b4624ad94</objectId>
  </Leader>
  <Leader>
@@ -3917,7 +4247,9 @@ https://ja.wikipedia.org/wiki/%E5%9C%9F%E5%B1%8B%E5%85%89%E9%87%91</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Heitar%C5%8D_Takenouchi</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Heitar%C5%8D_Takenouchi</english>
+  </remark>
   <objectId>f521bc56-cc06-434d-b358-6227df06f2d7</objectId>
  </Leader>
  <Leader>
@@ -3938,7 +4270,9 @@ https://ja.wikipedia.org/wiki/%E5%9C%9F%E5%B1%8B%E5%85%89%E9%87%91</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://hush.web.fc2.com/name/Biography/015o.html</remark>
+  <remark>
+   <english>https://hush.web.fc2.com/name/Biography/015o.html</english>
+  </remark>
   <objectId>fff85747-d553-4959-a0ef-4153c5c923cb</objectId>
  </Leader>
  <Leader>
@@ -3959,7 +4293,9 @@ https://ja.wikipedia.org/wiki/%E5%9C%9F%E5%B1%8B%E5%85%89%E9%87%91</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Kat%C5%8D_Sadakichi</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Kat%C5%8D_Sadakichi</english>
+  </remark>
   <objectId>e1247c52-775e-4e40-953e-46d7b9cf76be</objectId>
  </Leader>
  <Leader>
@@ -3980,7 +4316,9 @@ https://ja.wikipedia.org/wiki/%E5%9C%9F%E5%B1%8B%E5%85%89%E9%87%91</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://ja.wikipedia.org/wiki/%E5%B7%9D%E5%B3%B6%E4%BB%A4%E6%AC%A1%E9%83%8E</remark>
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E5%B7%9D%E5%B3%B6%E4%BB%A4%E6%AC%A1%E9%83%8E</english>
+  </remark>
   <objectId>8d53b035-147c-4930-b1a6-6b5bee738708</objectId>
  </Leader>
  <Leader>
@@ -4001,7 +4339,9 @@ https://ja.wikipedia.org/wiki/%E5%9C%9F%E5%B1%8B%E5%85%89%E9%87%91</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://kotobank.jp/word/%E4%BB%8A%E4%BA%95%E5%85%BC%E6%98%8C-1056199</remark>
+  <remark>
+   <english>https://kotobank.jp/word/%E4%BB%8A%E4%BA%95%E5%85%BC%E6%98%8C-1056199</english>
+  </remark>
   <objectId>4a3112c3-3cb9-407f-81f5-c54fc418f038</objectId>
  </Leader>
  <Leader>
@@ -4024,14 +4364,16 @@ https://ja.wikipedia.org/wiki/%E5%9C%9F%E5%B1%8B%E5%85%89%E9%87%91</remark>
   <traits>
    <LeaderTrait>Unlucky</LeaderTrait>
   </traits>
-  <remark>Витгефт, Вильгельм Карлович
+  <remark>
+   <english>Витгефт, Вильгельм Карлович
 
 Wilgelm Karlovich Vitgeft (1847–1904)
 Rear Admiral, Imperial Russian Navy.
 
 Russo-Japanese War (1904–1905) – Commander of the First Pacific Squadron of the Russian Pacific Fleet at Port Arthur after the death of Vice Admiral Stepan Makarov. Served simultaneously as Chief of Naval Headquarters in the Far East under Viceroy Yevgeny Alekseyev. On 10 August 1904 he led the squadron from Port Arthur in an attempt to break through the Japanese blockade and reach Vladivostok, flying his flag aboard the battleship Tsesarevich. During the Battle of the Yellow Sea (1904) he commanded a force of six battleships, four cruisers, and destroyers, but was killed when a Japanese shell struck the bridge of his flagship, throwing the Russian line into confusion.
 
-https://en.wikipedia.org/wiki/Wilgelm_Vitgeft</remark>
+https://en.wikipedia.org/wiki/Wilgelm_Vitgeft</english>
+  </remark>
   <objectId>3d11e780-0830-40f4-b6c5-1fec1ebdccda</objectId>
  </Leader>
  <Leader>
@@ -4054,14 +4396,16 @@ https://en.wikipedia.org/wiki/Wilgelm_Vitgeft</remark>
   <traits>
    <LeaderTrait>Unlucky</LeaderTrait>
   </traits>
-  <remark>Nashiba Tokioki (1850–1924)
+  <remark>
+   <english>Nashiba Tokioki (1850–1924)
 Vice Admiral, Imperial Japanese Navy.
 
 First Sino-Japanese War (1894–1895) – Served aboard the gunboat Akagi and later the corvette Amagi during the war.
 
 Russo-Japanese War (1904–1905) – Commander of 1st Division, the battleship Squadron, responsible for the blockade of the Russian Pacific Fleet at Port Arthur.
 
-https://en.wikipedia.org/wiki/Nashiba_Tokioki</remark>
+https://en.wikipedia.org/wiki/Nashiba_Tokioki</english>
+  </remark>
   <objectId>3e4ba392-54f1-4199-b23a-c8e6cc67ac92</objectId>
  </Leader>
  <Leader>
@@ -4082,14 +4426,16 @@ https://en.wikipedia.org/wiki/Nashiba_Tokioki</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Dewa Shigetō (1856–1930)
+  <remark>
+   <english>Dewa Shigetō (1856–1930)
 Admiral, Imperial Japanese Navy.
 
 First Sino-Japanese War (1894–1895) – Staff officer of the Western Seas Fleet.
 
 Russo-Japanese War (1904–1905) – Vice Admiral and commander of the 3rd Cruiser Division of the 1st Fleet. He took part in the Battle of Port Arthur (1904) and the Battle of the Yellow Sea (1904), Battle of Tsushima (1905).
 
-https://en.wikipedia.org/wiki/Dewa_Shiget%C5%8D</remark>
+https://en.wikipedia.org/wiki/Dewa_Shiget%C5%8D</english>
+  </remark>
   <objectId>d7303b6c-feef-4a49-8613-dc89cc9b029e</objectId>
  </Leader>
  <Leader>
@@ -4110,7 +4456,8 @@ https://en.wikipedia.org/wiki/Dewa_Shiget%C5%8D</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Kataoka Shichirō (1854–1920)
+  <remark>
+   <english>Kataoka Shichirō (1854–1920)
 Admiral, Imperial Japanese Navy.
 
 First Sino-Japanese War (1894–1895) – Initially assigned to the Imperial Japanese Navy General Staff in the early phase of the war. Later he commanded the corvette Tenryū and subsequently the cruiser Yoshino during operations in the Pescadores Campaign and the conquest of Taiwan (1894–1895).
@@ -4118,7 +4465,8 @@ First Sino-Japanese War (1894–1895) – Initially assigned to the Imperial Jap
 Russo-Japanese War (1904–1905) – Vice Admiral and Commander-in-Chief of the 3rd Fleet, a formation composed largely of older vessels. During the Battle of the Yellow Sea (1904) he commanded the 5th and 6th battle divisions. At the Battle of Tsushima (1905) he again commanded these divisions from the cruiser Hashidate. He also led the Japanese naval expedition for the invasion of Sakhalin (1905).
 
 https://en.wikipedia.org/wiki/Kataoka_Shichir%C5%8D
-</remark>
+</english>
+  </remark>
   <objectId>96e917d5-4465-4c27-b0db-2fde75bd1073</objectId>
  </Leader>
  <Leader>
@@ -4139,7 +4487,9 @@ https://en.wikipedia.org/wiki/Kataoka_Shichir%C5%8D
   <landOperational>Average</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>https://zh.wikipedia.org/zh-hans/%E6%88%B4%E5%AE%97%E9%AA%9E</remark>
+  <remark>
+   <english>https://zh.wikipedia.org/zh-hans/%E6%88%B4%E5%AE%97%E9%AA%9E</english>
+  </remark>
   <objectId>c6b97426-2404-4087-bf48-0a5d906ee410</objectId>
  </Leader>
  <Leader>
@@ -4160,8 +4510,10 @@ https://en.wikipedia.org/wiki/Kataoka_Shichir%C5%8D
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://baike.baidu.com/item/%E5%BE%90%E4%BC%A0%E9%9A%86/8526040
-</remark>
+  <remark>
+   <english>https://baike.baidu.com/item/%E5%BE%90%E4%BC%A0%E9%9A%86/8526040
+</english>
+  </remark>
   <objectId>ff67c098-cd68-42c8-bd1b-44a57c6b3fbb</objectId>
  </Leader>
  <Leader>
@@ -4182,8 +4534,10 @@ https://en.wikipedia.org/wiki/Kataoka_Shichir%C5%8D
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://baike.baidu.com/item/%E4%BD%95%E5%BF%83%E5%B7%9D/62429964
-</remark>
+  <remark>
+   <english>https://baike.baidu.com/item/%E4%BD%95%E5%BF%83%E5%B7%9D/62429964
+</english>
+  </remark>
   <objectId>0f19f26c-1142-47a5-8223-c5b580cffc3b</objectId>
  </Leader>
  <Leader>
@@ -4204,8 +4558,10 @@ https://en.wikipedia.org/wiki/Kataoka_Shichir%C5%8D
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://baike.baidu.com/item/%E5%90%B4%E5%AE%89%E5%BA%B7/62725335
-</remark>
+  <remark>
+   <english>https://baike.baidu.com/item/%E5%90%B4%E5%AE%89%E5%BA%B7/62725335
+</english>
+  </remark>
   <objectId>fc7b6efa-b7f9-4098-8f82-6c7b3a0ea1e7</objectId>
  </Leader>
  <Leader>
@@ -4286,9 +4642,11 @@ https://en.wikipedia.org/wiki/Kataoka_Shichir%C5%8D
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Лавров, Василий Михайлович
+  <remark>
+   <english>Лавров, Василий Михайлович
 
-https://ru.wikipedia.org/wiki/%D0%9B%D0%B0%D0%B2%D1%80%D0%BE%D0%B2,_%D0%92%D0%B0%D1%81%D0%B8%D0%BB%D0%B8%D0%B9_%D0%9C%D0%B8%D1%85%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2%D0%B8%D1%87</remark>
+https://ru.wikipedia.org/wiki/%D0%9B%D0%B0%D0%B2%D1%80%D0%BE%D0%B2,_%D0%92%D0%B0%D1%81%D0%B8%D0%BB%D0%B8%D0%B9_%D0%9C%D0%B8%D1%85%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2%D0%B8%D1%87</english>
+  </remark>
   <objectId>1a7afad8-12e6-4b15-a521-b468634fc8c3</objectId>
  </Leader>
  <Leader>
@@ -4309,9 +4667,11 @@ https://ru.wikipedia.org/wiki/%D0%9B%D0%B0%D0%B2%D1%80%D0%BE%D0%B2,_%D0%92%D0%B0
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Чухнин, Григорий Павлович
+  <remark>
+   <english>Чухнин, Григорий Павлович
 
-https://ru.wikipedia.org/wiki/%D0%A7%D1%83%D1%85%D0%BD%D0%B8%D0%BD,_%D0%93%D1%80%D0%B8%D0%B3%D0%BE%D1%80%D0%B8%D0%B9_%D0%9F%D0%B0%D0%B2%D0%BB%D0%BE%D0%B2%D0%B8%D1%87</remark>
+https://ru.wikipedia.org/wiki/%D0%A7%D1%83%D1%85%D0%BD%D0%B8%D0%BD,_%D0%93%D1%80%D0%B8%D0%B3%D0%BE%D1%80%D0%B8%D0%B9_%D0%9F%D0%B0%D0%B2%D0%BB%D0%BE%D0%B2%D0%B8%D1%87</english>
+  </remark>
   <objectId>ff003e02-f7e0-4567-a311-aa37c1edaef0</objectId>
  </Leader>
  <Leader>
@@ -4332,10 +4692,12 @@ https://ru.wikipedia.org/wiki/%D0%A7%D1%83%D1%85%D0%BD%D0%B8%D0%BD,_%D0%93%D1%80
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Тыртов, Сергей Петрович
+  <remark>
+   <english>Тыртов, Сергей Петрович
 
 https://ru.wikipedia.org/wiki/%D0%A2%D1%8B%D1%80%D1%82%D0%BE%D0%B2%2C_%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B9_%D0%9F%D0%B5%D1%82%D1%80%D0%BE%D0%B2%D0%B8%D1%87
-</remark>
+</english>
+  </remark>
   <objectId>73ce2f5b-725a-44a5-a555-6d2b4ce39cdd</objectId>
  </Leader>
  <Leader>
@@ -4356,10 +4718,12 @@ https://ru.wikipedia.org/wiki/%D0%A2%D1%8B%D1%80%D1%82%D0%BE%D0%B2%2C_%D0%A1%D0%
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Пётр Ио́сифович Сере́бренников
+  <remark>
+   <english>Пётр Ио́сифович Сере́бренников
 
 https://en.wikipedia.org/wiki/Pyotr_Serebrennikov
-</remark>
+</english>
+  </remark>
   <objectId>4fd0ae80-1b57-48ef-9df3-272ab5117950</objectId>
  </Leader>
  <Leader>
@@ -4380,11 +4744,13 @@ https://en.wikipedia.org/wiki/Pyotr_Serebrennikov
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Бухвостов, Николай Михайлович
+  <remark>
+   <english>Бухвостов, Николай Михайлович
 
 https://en.wikipedia.org/wiki/Nikolai_Bukhvostov
 
-</remark>
+</english>
+  </remark>
   <objectId>58661393-e1ea-4046-abc4-bda166c6b50e</objectId>
  </Leader>
  <Leader>
@@ -4405,9 +4771,11 @@ https://en.wikipedia.org/wiki/Nikolai_Bukhvostov
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Игнациус, Василий Васильевич
+  <remark>
+   <english>Игнациус, Василий Васильевич
 
-https://en.wikipedia.org/wiki/Vasily_Ignatius</remark>
+https://en.wikipedia.org/wiki/Vasily_Ignatius</english>
+  </remark>
   <objectId>10b5fdd1-4f8d-437a-8b38-ab62d1d8959e</objectId>
  </Leader>
  <Leader>
@@ -4428,9 +4796,11 @@ https://en.wikipedia.org/wiki/Vasily_Ignatius</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Юнг, Николай Викторович
+  <remark>
+   <english>Юнг, Николай Викторович
 
-https://en.wikipedia.org/wiki/Nikolay_Yung</remark>
+https://en.wikipedia.org/wiki/Nikolay_Yung</english>
+  </remark>
   <objectId>4786d9dc-e90b-41f6-ac76-6285774a0704</objectId>
  </Leader>
  <Leader>
@@ -4451,9 +4821,11 @@ https://en.wikipedia.org/wiki/Nikolay_Yung</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Родионов, Александр Андреевич
+  <remark>
+   <english>Родионов, Александр Андреевич
 
-https://ru.wikipedia.org/wiki/%D0%A0%D0%BE%D0%B4%D0%B8%D0%BE%D0%BD%D0%BE%D0%B2,_%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80_%D0%90%D0%BD%D0%B4%D1%80%D0%B5%D0%B5%D0%B2%D0%B8%D1%87</remark>
+https://ru.wikipedia.org/wiki/%D0%A0%D0%BE%D0%B4%D0%B8%D0%BE%D0%BD%D0%BE%D0%B2,_%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80_%D0%90%D0%BD%D0%B4%D1%80%D0%B5%D0%B5%D0%B2%D0%B8%D1%87</english>
+  </remark>
   <objectId>4cda3d53-13ef-455a-961a-8be68d8aaa23</objectId>
  </Leader>
  <Leader>
@@ -4474,9 +4846,11 @@ https://ru.wikipedia.org/wiki/%D0%A0%D0%BE%D0%B4%D0%B8%D0%BE%D0%BD%D0%BE%D0%B2,_
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Владимир Иосифович Бэр
+  <remark>
+   <english>Владимир Иосифович Бэр
 
-https://en.wikipedia.org/wiki/Vladimir_Baer</remark>
+https://en.wikipedia.org/wiki/Vladimir_Baer</english>
+  </remark>
   <objectId>ca9c5e84-af8a-4891-8c4e-dc3321e7d568</objectId>
  </Leader>
  <Leader>
@@ -4497,9 +4871,11 @@ https://en.wikipedia.org/wiki/Vladimir_Baer</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Озеров, Мануил Васильевич
+  <remark>
+   <english>Озеров, Мануил Васильевич
 
-https://en.wikipedia.org/wiki/Manuil_Ozerov</remark>
+https://en.wikipedia.org/wiki/Manuil_Ozerov</english>
+  </remark>
   <objectId>d708309c-f320-47fa-8191-a3831091b752</objectId>
  </Leader>
  <Leader>
@@ -4520,9 +4896,11 @@ https://en.wikipedia.org/wiki/Manuil_Ozerov</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Фитингоф, Бруно Александрович фон
+  <remark>
+   <english>Фитингоф, Бруно Александрович фон
 
-https://en.wikipedia.org/wiki/Bruno_von_Vietinghoff</remark>
+https://en.wikipedia.org/wiki/Bruno_von_Vietinghoff</english>
+  </remark>
   <objectId>67c406d2-12c8-4afe-9aaf-b358ffb1a0df</objectId>
  </Leader>
  <Leader>
@@ -4543,11 +4921,13 @@ https://en.wikipedia.org/wiki/Bruno_von_Vietinghoff</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Р. Р. Дикер
+  <remark>
+   <english>Р. Р. Дикер
 
 Richard Romanovich Dicker
 
-https://en.wikipedia.org/wiki/Russian_battleship_Imperator_Nikolai_I_(1889)</remark>
+https://en.wikipedia.org/wiki/Russian_battleship_Imperator_Nikolai_I_(1889)</english>
+  </remark>
   <objectId>602a66da-963a-4c6a-97a0-b13c715bfc3c</objectId>
  </Leader>
  <Leader>
@@ -4568,8 +4948,10 @@ https://en.wikipedia.org/wiki/Russian_battleship_Imperator_Nikolai_I_(1889)</rem
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Edmund_Fremantle
-</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Edmund_Fremantle
+</english>
+  </remark>
   <objectId>0c4105ad-387d-483d-b8ea-f39d4e26f26d</objectId>
  </Leader>
  <Leader>
@@ -4590,8 +4972,10 @@ https://en.wikipedia.org/wiki/Russian_battleship_Imperator_Nikolai_I_(1889)</rem
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://www.dreadnoughtproject.org/tfs/index.php/Robert_Hathorn_Johnston_Stewart
-</remark>
+  <remark>
+   <english>https://www.dreadnoughtproject.org/tfs/index.php/Robert_Hathorn_Johnston_Stewart
+</english>
+  </remark>
   <objectId>d9e56f2d-5e50-4538-8b11-a227331737ba</objectId>
  </Leader>
  <Leader>
@@ -4612,10 +4996,12 @@ https://en.wikipedia.org/wiki/Russian_battleship_Imperator_Nikolai_I_(1889)</rem
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://ru.wikipedia.org/wiki/%D0%A1%D0%B8%D0%BB%D1%8C%D0%BC%D0%B0%D0%BD,_%D0%A4%D1%91%D0%B4%D0%BE%D1%80_%D0%A4%D1%91%D0%B4%D0%BE%D1%80%D0%BE%D0%B2%D0%B8%D1%87
+  <remark>
+   <english>https://ru.wikipedia.org/wiki/%D0%A1%D0%B8%D0%BB%D1%8C%D0%BC%D0%B0%D0%BD,_%D0%A4%D1%91%D0%B4%D0%BE%D1%80_%D0%A4%D1%91%D0%B4%D0%BE%D1%80%D0%BE%D0%B2%D0%B8%D1%87
 
 https://kraeved-gatchina.de/ocherki/vydayushchiesya-zhiteli/silman-fedor/
-</remark>
+</english>
+  </remark>
   <objectId>b72d1d3b-0ea7-4603-b6c2-a23d1bf363fc</objectId>
  </Leader>
  <Leader>
@@ -4636,9 +5022,11 @@ https://kraeved-gatchina.de/ocherki/vydayushchiesya-zhiteli/silman-fedor/
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Добровольский Кирилл (Карл) Романович
+  <remark>
+   <english>Добровольский Кирилл (Карл) Романович
 
-https://ru.wikipedia.org/wiki/%D0%94%D0%BE%D0%B1%D1%80%D0%BE%D0%B2%D0%BE%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%B9,_%D0%9A%D0%B8%D1%80%D0%B8%D0%BB%D0%BB_%D0%A0%D0%BE%D0%BC%D0%B0%D0%BD%D0%BE%D0%B2%D0%B8%D1%87</remark>
+https://ru.wikipedia.org/wiki/%D0%94%D0%BE%D0%B1%D1%80%D0%BE%D0%B2%D0%BE%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%B9,_%D0%9A%D0%B8%D1%80%D0%B8%D0%BB%D0%BB_%D0%A0%D0%BE%D0%BC%D0%B0%D0%BD%D0%BE%D0%B2%D0%B8%D1%87</english>
+  </remark>
   <objectId>8c3b0564-3c0d-4dbb-80df-00dcc4e8df10</objectId>
  </Leader>
  <Leader>
@@ -4659,9 +5047,11 @@ https://ru.wikipedia.org/wiki/%D0%94%D0%BE%D0%B1%D1%80%D0%BE%D0%B2%D0%BE%D0%BB%D
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Иван Владимирович Сухотин
+  <remark>
+   <english>Иван Владимирович Сухотин
 
-https://ru.wikipedia.org/wiki/%D0%A1%D1%83%D1%85%D0%BE%D1%82%D0%B8%D0%BD,_%D0%98%D0%B2%D0%B0%D0%BD_%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B8%D1%87</remark>
+https://ru.wikipedia.org/wiki/%D0%A1%D1%83%D1%85%D0%BE%D1%82%D0%B8%D0%BD,_%D0%98%D0%B2%D0%B0%D0%BD_%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B8%D1%87</english>
+  </remark>
   <objectId>bb844ade-8231-4fa6-b5ae-f413784823fa</objectId>
  </Leader>
  <Leader>
@@ -4682,10 +5072,12 @@ https://ru.wikipedia.org/wiki/%D0%A1%D1%83%D1%85%D0%BE%D1%82%D0%B8%D0%BD,_%D0%98
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://de.wikipedia.org/wiki/Wilhelm_von_Lans
+  <remark>
+   <english>https://de.wikipedia.org/wiki/Wilhelm_von_Lans
 https://www.sps-hamminkeln.de/admiral-von-lans.html
 https://sammler.ru/index.php?/topic/49303-%D0%BD%D0%B0%D0%B3%D1%80%D0%B0%D0%B4%D1%8B-%D0%B0%D0%B4%D0%BC%D0%B8%D1%80%D0%B0%D0%BB%D0%B0-%D0%B2-%D1%84%D0%BE%D0%BD-%D0%BB%D0%B0%D0%BD%D1%81%D0%B0/
-</remark>
+</english>
+  </remark>
   <objectId>ec42d9d4-e515-4cf6-8510-e87c5afbf924</objectId>
  </Leader>
  <Leader>
@@ -4706,8 +5098,10 @@ https://sammler.ru/index.php?/topic/49303-%D0%BD%D0%B0%D0%B3%D1%80%D0%B0%D0%B4%D
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://ja.wikipedia.org/wiki/%E4%BA%95%E4%B8%8A%E8%89%AF%E6%99%BA
-</remark>
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E4%BA%95%E4%B8%8A%E8%89%AF%E6%99%BA
+</english>
+  </remark>
   <objectId>69f602f2-c155-4475-ac4c-18fd838a1432</objectId>
  </Leader>
  <Leader>
@@ -4728,9 +5122,11 @@ https://sammler.ru/index.php?/topic/49303-%D0%BD%D0%B0%D0%B3%D1%80%D0%B0%D0%B4%D
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>George John Scott Warrender
+  <remark>
+   <english>George John Scott Warrender
 
-https://www.dreadnoughtproject.org/tfs/index.php/George_John_Scott_Warrender,_Seventh_Baronet</remark>
+https://www.dreadnoughtproject.org/tfs/index.php/George_John_Scott_Warrender,_Seventh_Baronet</english>
+  </remark>
   <objectId>79ccb7e1-de6b-4923-8518-228c7bafde2e</objectId>
  </Leader>
  <Leader>
@@ -4751,14 +5147,16 @@ https://www.dreadnoughtproject.org/tfs/index.php/George_John_Scott_Warrender,_Se
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Admiral of the Fleet John Rushworth Jellicoe, 1st Earl Jellicoe
+  <remark>
+   <english>Admiral of the Fleet John Rushworth Jellicoe, 1st Earl Jellicoe
 
 Commanded the British Grand Fleet at the Battle of Jutland
 
 https://en.wikipedia.org/wiki/John_Jellicoe,_1st_Earl_Jellicoe
 https://dreadnoughtproject.org/tfs/index.php/John_Rushworth_Jellicoe,_First_Earl_Jellicoe
 
-</remark>
+</english>
+  </remark>
   <objectId>8855438c-0e11-4c35-848c-677e189e3a53</objectId>
  </Leader>
  <Leader>
@@ -4779,10 +5177,12 @@ https://dreadnoughtproject.org/tfs/index.php/John_Rushworth_Jellicoe,_First_Earl
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>John Mackenzie McQuhae
+  <remark>
+   <english>John Mackenzie McQuhae
 
 https://dreadnoughtproject.org/tfs/index.php/John_Mackenzie_McQuhae
-</remark>
+</english>
+  </remark>
   <objectId>9a90fb53-5170-4513-885c-af512541fa70</objectId>
  </Leader>
  <Leader>
@@ -4803,10 +5203,12 @@ https://dreadnoughtproject.org/tfs/index.php/John_Mackenzie_McQuhae
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Admiral of the Fleet SIR George Astley Callaghan
+  <remark>
+   <english>Admiral of the Fleet SIR George Astley Callaghan
 
 https://en.wikipedia.org/wiki/George_Callaghan
-https://www.dreadnoughtproject.org/tfs/index.php/George_Astley_Callaghan</remark>
+https://www.dreadnoughtproject.org/tfs/index.php/George_Astley_Callaghan</english>
+  </remark>
   <objectId>b701e81e-7d35-4764-8d2c-49ee9da6861d</objectId>
  </Leader>
  <Leader>
@@ -4827,11 +5229,13 @@ https://www.dreadnoughtproject.org/tfs/index.php/George_Astley_Callaghan</remark
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Christopher George Francis Maurice Cradock
+  <remark>
+   <english>Christopher George Francis Maurice Cradock
 
 https://en.wikipedia.org/wiki/Christopher_Cradock
 https://www.dreadnoughtproject.org/tfs/index.php/Christopher_George_Francis_Maurice_Cradock
-</remark>
+</english>
+  </remark>
   <objectId>cff1551f-76ab-4b74-bd10-b9b88d74783e</objectId>
  </Leader>
  <Leader>
@@ -4852,11 +5256,13 @@ https://www.dreadnoughtproject.org/tfs/index.php/Christopher_George_Francis_Maur
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Михаил Павлович Молас
+  <remark>
+   <english>Михаил Павлович Молас
 
 As Chief of Staff, he went down with Stepan Makarov aboard the Petropavlovsk. He had previously taken part in the Boxer Rebellion.
 
-https://www.geni.com/people/Michael-Pavlovich-Molas/6000000020501371061</remark>
+https://www.geni.com/people/Michael-Pavlovich-Molas/6000000020501371061</english>
+  </remark>
   <objectId>b63031ae-5494-4d53-a7d6-2649dfed6400</objectId>
  </Leader>
  <Leader>
@@ -4877,8 +5283,10 @@ https://www.geni.com/people/Michael-Pavlovich-Molas/6000000020501371061</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Guido_von_Usedom
-</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Guido_von_Usedom
+</english>
+  </remark>
   <objectId>65dd453b-d514-4aee-8e40-f6edacfabb1e</objectId>
  </Leader>
  <Leader>
@@ -4899,9 +5307,11 @@ https://www.geni.com/people/Michael-Pavlovich-Molas/6000000020501371061</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Hugo_von_Pohl
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Hugo_von_Pohl
 
-Commanding the German High Seas Fleet from February 1915 until January 1916</remark>
+Commanding the German High Seas Fleet from February 1915 until January 1916</english>
+  </remark>
   <objectId>3ed189f4-d9a8-407d-b717-a5e33ad06cb6</objectId>
  </Leader>
  <Leader>
@@ -4922,9 +5332,11 @@ Commanding the German High Seas Fleet from February 1915 until January 1916</rem
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://warshipsresearch.blogspot.com/2024/10/commanding-officers-of-german-cruisers.html
+  <remark>
+   <english>https://warshipsresearch.blogspot.com/2024/10/commanding-officers-of-german-cruisers.html
 https://commons.wikimedia.org/wiki/File:Korvettenkapit%C3%A4n_Buchholz.png
-</remark>
+</english>
+  </remark>
   <objectId>a51613ff-003a-40f4-b2c4-551102a244a0</objectId>
  </Leader>
  <Leader>
@@ -4945,9 +5357,11 @@ https://commons.wikimedia.org/wiki/File:Korvettenkapit%C3%A4n_Buchholz.png
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Max Heinrich Ludwig Rollmann
+  <remark>
+   <english>Max Heinrich Ludwig Rollmann
 
-https://de.wikipedia.org/wiki/Max_Rollmann</remark>
+https://de.wikipedia.org/wiki/Max_Rollmann</english>
+  </remark>
   <objectId>167b971e-5ed3-4f5d-8a0f-c2d25358d800</objectId>
  </Leader>
  <Leader>
@@ -4968,7 +5382,9 @@ https://de.wikipedia.org/wiki/Max_Rollmann</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://fr.wikipedia.org/wiki/Louis_de_Marolles</remark>
+  <remark>
+   <english>https://fr.wikipedia.org/wiki/Louis_de_Marolles</english>
+  </remark>
   <objectId>649c3866-4c54-401b-a27f-e6b9744ee122</objectId>
  </Leader>
  <Leader>
@@ -5009,9 +5425,11 @@ https://de.wikipedia.org/wiki/Max_Rollmann</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>Bowman Hendry McCalla
+  <remark>
+   <english>Bowman Hendry McCalla
 
-https://en.wikipedia.org/wiki/Bowman_H._McCalla</remark>
+https://en.wikipedia.org/wiki/Bowman_H._McCalla</english>
+  </remark>
   <objectId>208db209-893e-492a-9335-05db60d4e3ef</objectId>
  </Leader>
  <Leader>
@@ -5032,8 +5450,10 @@ https://en.wikipedia.org/wiki/Bowman_H._McCalla</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>https://laststandonzombieisland.com/2025/10/01/warship-wednesday-october-1-2025-small-ship-big-heroes/sms-zenta-fregattenkapitan-eduard-thomann-boxer-rebellion/
-</remark>
+  <remark>
+   <english>https://laststandonzombieisland.com/2025/10/01/warship-wednesday-october-1-2025-small-ship-big-heroes/sms-zenta-fregattenkapitan-eduard-thomann-boxer-rebellion/
+</english>
+  </remark>
   <objectId>f5d2dd6e-cbc5-4c0c-95b9-e575a058ae70</objectId>
  </Leader>
  <Leader>
@@ -5054,9 +5474,11 @@ https://en.wikipedia.org/wiki/Bowman_H._McCalla</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>https://baike.baidu.com/item/%E7%BD%97%E8%8D%A3%E5%85%89/7026836
+  <remark>
+   <english>https://baike.baidu.com/item/%E7%BD%97%E8%8D%A3%E5%85%89/7026836
 
-</remark>
+</english>
+  </remark>
   <objectId>61b49e4e-3b83-42bf-aa11-f1d1f0b60f08</objectId>
  </Leader>
  <Leader>
@@ -5077,8 +5499,10 @@ https://en.wikipedia.org/wiki/Bowman_H._McCalla</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>https://baike.baidu.com/item/%E5%A4%A7%E6%B2%BD%E5%8F%A3%E6%88%98%E5%BD%B9/5301127
-</remark>
+  <remark>
+   <english>https://baike.baidu.com/item/%E5%A4%A7%E6%B2%BD%E5%8F%A3%E6%88%98%E5%BD%B9/5301127
+</english>
+  </remark>
   <objectId>88f747c9-1de2-48e0-82ce-2b90a9eedd63</objectId>
  </Leader>
  <Leader>
@@ -5099,10 +5523,12 @@ https://en.wikipedia.org/wiki/Bowman_H._McCalla</remark>
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Сарычев, Владимир Фёдорович
+  <remark>
+   <english>Сарычев, Владимир Фёдорович
 
 https://ru.wikipedia.org/wiki/%D0%A1%D0%B0%D1%80%D1%8B%D1%87%D0%B5%D0%B2,_%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BC%D0%B8%D1%80_%D0%A4%D1%91%D0%B4%D0%BE%D1%80%D0%BE%D0%B2%D0%B8%D1%87
-</remark>
+</english>
+  </remark>
   <objectId>9161152b-cb63-465a-8f83-9fea0b1ea743</objectId>
  </Leader>
  <Leader>
@@ -5123,10 +5549,12 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%B0%D1%80%D1%8B%D1%87%D0%B5%D0%B2,_%D0%92
   <landOperational>Unknown</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>Admiral of the Fleet Roger John Brownlow Keyes, 1st Baron Keyes
+  <remark>
+   <english>Admiral of the Fleet Roger John Brownlow Keyes, 1st Baron Keyes
 
 https://en.wikipedia.org/wiki/Roger_Keyes,_1st_Baron_Keyes
-</remark>
+</english>
+  </remark>
   <objectId>cef5855d-b252-403b-b6d8-30850fda7c05</objectId>
  </Leader>
  <Leader>
@@ -5147,7 +5575,9 @@ https://en.wikipedia.org/wiki/Roger_Keyes,_1st_Baron_Keyes
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://www.dreadnoughtproject.org/tfs/index.php/Colin_Mackenzie</remark>
+  <remark>
+   <english>https://www.dreadnoughtproject.org/tfs/index.php/Colin_Mackenzie</english>
+  </remark>
   <objectId>be456c2c-0e51-473f-8272-f822cb2b6298</objectId>
  </Leader>
  <Leader>
@@ -5168,7 +5598,9 @@ https://en.wikipedia.org/wiki/Roger_Keyes,_1st_Baron_Keyes
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://fr.wikipedia.org/wiki/Jean-Fran%C3%A7ois-Charles_Amet</remark>
+  <remark>
+   <english>https://fr.wikipedia.org/wiki/Jean-Fran%C3%A7ois-Charles_Amet</english>
+  </remark>
   <objectId>dcdacc45-28db-4941-a14b-3e4fde90dc2a</objectId>
  </Leader>
  <Leader>
@@ -5189,10 +5621,12 @@ https://en.wikipedia.org/wiki/Roger_Keyes,_1st_Baron_Keyes
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Яков Апполонович Гильтебрандт
+  <remark>
+   <english>Яков Апполонович Гильтебрандт
 
 https://en.wikipedia.org/wiki/Yakov_Hildebrandt
-</remark>
+</english>
+  </remark>
   <objectId>68103d70-ce29-4022-a090-3268ea2c6356</objectId>
  </Leader>
  <Leader>
@@ -5213,8 +5647,10 @@ https://en.wikipedia.org/wiki/Yakov_Hildebrandt
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://baike.baidu.com/item/%E9%A5%B6%E9%B8%A3%E8%A1%A2/2266975
-</remark>
+  <remark>
+   <english>https://baike.baidu.com/item/%E9%A5%B6%E9%B8%A3%E8%A1%A2/2266975
+</english>
+  </remark>
   <objectId>43196154-3a3b-47b1-b366-20a0f3f9c5fa</objectId>
  </Leader>
  <Leader>
@@ -5235,10 +5671,12 @@ https://en.wikipedia.org/wiki/Yakov_Hildebrandt
   <landOperational>Average</landOperational>
   <landTactical>Average</landTactical>
   <traits />
-  <remark>Admiral of the Fleet Sir Edward Hobart Seymour
+  <remark>
+   <english>Admiral of the Fleet Sir Edward Hobart Seymour
 
 https://en.wikipedia.org/wiki/Edward_Seymour_(Royal_Navy_officer)
-</remark>
+</english>
+  </remark>
   <objectId>7ace35ae-2ffa-4e58-adbd-4d0cca9ed8d3</objectId>
  </Leader>
  <Leader>
@@ -5259,8 +5697,10 @@ https://en.wikipedia.org/wiki/Edward_Seymour_(Royal_Navy_officer)
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Sa_Zhenbing
-</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Sa_Zhenbing
+</english>
+  </remark>
   <objectId>bc4e9164-8784-40e2-85f8-62a837ae3b06</objectId>
  </Leader>
  <Leader>
@@ -5281,8 +5721,10 @@ https://en.wikipedia.org/wiki/Edward_Seymour_(Royal_Navy_officer)
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Liu_Guanxiong
-</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Liu_Guanxiong
+</english>
+  </remark>
   <objectId>aa4fdb8c-0888-41f3-afe6-4cee0293f72a</objectId>
  </Leader>
  <Leader>
@@ -5303,7 +5745,9 @@ https://en.wikipedia.org/wiki/Edward_Seymour_(Royal_Navy_officer)
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>https://en.wikipedia.org/wiki/Felix_von_Bendemann</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Felix_von_Bendemann</english>
+  </remark>
   <objectId>98eea4d9-89cf-47ac-b6ba-ce48e1c01dbe</objectId>
  </Leader>
  <Leader>
@@ -5324,10 +5768,12 @@ https://en.wikipedia.org/wiki/Edward_Seymour_(Royal_Navy_officer)
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>Charles Louis Théobald COURREJOLLES
+  <remark>
+   <english>Charles Louis Théobald COURREJOLLES
 
 https://museedesetoiles.fr/piece/vice-amiral-courrejolles-2/
-</remark>
+</english>
+  </remark>
   <objectId>e1e80c3e-9f3c-4a04-bdfa-498108933807</objectId>
  </Leader>
  <Leader>
@@ -5348,9 +5794,11 @@ https://museedesetoiles.fr/piece/vice-amiral-courrejolles-2/
   <landOperational>Unknown</landOperational>
   <landTactical>Unknown</landTactical>
   <traits />
-  <remark>George Collier Remey 
+  <remark>
+   <english>George Collier Remey 
 
-https://en.wikipedia.org/wiki/George_C._Remey</remark>
+https://en.wikipedia.org/wiki/George_C._Remey</english>
+  </remark>
   <objectId>8e90bf3a-1069-43ef-a48a-bd361c0ec096</objectId>
  </Leader>
 </ArrayOfLeader>

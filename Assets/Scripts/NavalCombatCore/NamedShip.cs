@@ -71,7 +71,7 @@ namespace NavalCombatCore
 
         public bool notAvailableForFirstSinoJapaneseWar;
 
-        public string remark;
+        public GlobalString remark = new();
 
         public override string ToString()
         {

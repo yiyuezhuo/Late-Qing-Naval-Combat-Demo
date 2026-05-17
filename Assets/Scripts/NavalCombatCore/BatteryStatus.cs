@@ -122,7 +122,7 @@ namespace NavalCombatCore
             var barrels = GetEffectiveBarrels(
                 mountStatus.Where(
                     m => m.IsOperational() &&
-                         m.GetMountLocationRecordInfo().record.IsInArc(bearingRelativeToBowDeg)
+                         (m.GetMountLocationRecordInfo()?.record?.IsInArc(bearingRelativeToBowDeg) ?? false)
                 )
             );
 

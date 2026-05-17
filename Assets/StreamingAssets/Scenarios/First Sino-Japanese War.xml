@@ -28560,7 +28560,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <LandUnitTemplate>
     <name>
      <english>Port</english>
-     <japanese>ポート</japanese>
+     <japanese>港</japanese>
      <chineseSimplified>港口</chineseSimplified>
      <chineseTraditional>港口</chineseTraditional>
     </name>
@@ -29026,7 +29026,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <LandUnit>
     <name>
      <english>Sheng Cav Guard</english>
-     <japanese>盛軍親兵馬小队</japanese>
+     <japanese>盛軍親兵馬小隊</japanese>
      <chineseSimplified>盛军亲兵马小队</chineseSimplified>
      <chineseTraditional>盛軍親兵馬小隊</chineseTraditional>
     </name>
@@ -29061,7 +29061,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <LandUnit>
     <name>
      <english>Sheng Inf Guard</english>
-     <japanese>盛軍親兵歩小队</japanese>
+     <japanese>盛軍親兵歩小隊</japanese>
      <chineseSimplified>盛军亲兵步小队</chineseSimplified>
      <chineseTraditional>盛軍親兵步小隊</chineseTraditional>
     </name>
@@ -29682,7 +29682,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <LandUnit>
     <name>
      <english>Cav Coy, Guard</english>
-     <japanese>親軍馬隊小队</japanese>
+     <japanese>親軍馬隊小隊</japanese>
      <chineseSimplified>亲军马队小队</chineseSimplified>
      <chineseTraditional>親軍馬隊小隊</chineseTraditional>
     </name>
@@ -30105,7 +30105,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <LandUnit>
     <name>
      <english>3rd Bn, 5th Field Art Regt</english>
-     <japanese>野戦炮兵第5連隊第3大隊</japanese>
+     <japanese>野戦砲兵第5連隊第3大隊</japanese>
      <chineseSimplified>野战炮兵第5联队第3大队</chineseSimplified>
      <chineseTraditional>野戰炮兵第5聯隊第3大隊</chineseTraditional>
     </name>
@@ -32157,7 +32157,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <LandUnit>
     <name>
      <english>1st Bn, 1st Art Regt</english>
-     <japanese>第一炮兵連隊第一大隊</japanese>
+     <japanese>第一砲兵連隊第一大隊</japanese>
      <chineseSimplified>第一炮兵联队第一大队</chineseSimplified>
      <chineseTraditional>第一炮兵聯隊第一大隊</chineseTraditional>
     </name>
@@ -32191,7 +32191,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <LandUnit>
     <name>
      <english>2st Bn, 1st Art Regt</english>
-     <japanese>第一炮兵連隊第二大隊</japanese>
+     <japanese>第一砲兵連隊第二大隊</japanese>
      <chineseSimplified>第一炮兵联队第二大队</chineseSimplified>
      <chineseTraditional>第一炮兵聯隊第二大隊</chineseTraditional>
     </name>
@@ -32225,7 +32225,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <LandUnit>
     <name>
      <english>3rd Bn, 1st Art Regt</english>
-     <japanese>第一炮兵連隊第三大隊</japanese>
+     <japanese>第一砲兵連隊第三大隊</japanese>
      <chineseSimplified>第一炮兵联队第三大队</chineseSimplified>
      <chineseTraditional>第一炮兵聯隊第三大隊</chineseTraditional>
     </name>
@@ -32259,7 +32259,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <LandUnit>
     <name>
      <english>1st Bn ,2nd Art Regt</english>
-     <japanese>第二炮兵連隊第一大隊</japanese>
+     <japanese>第二砲兵連隊第一大隊</japanese>
      <chineseSimplified>第二炮兵联队第一大队</chineseSimplified>
      <chineseTraditional>第二炮兵聯隊第一大隊</chineseTraditional>
     </name>
@@ -32293,7 +32293,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <LandUnit>
     <name>
      <english>2nd Bn ,2nd Art Regt</english>
-     <japanese>第二炮兵連隊第二大隊</japanese>
+     <japanese>第二砲兵連隊第二大隊</japanese>
      <chineseSimplified>第二炮兵联队第二大队</chineseSimplified>
      <chineseTraditional>第二炮兵聯隊第二大隊</chineseTraditional>
     </name>
@@ -32327,7 +32327,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <LandUnit>
     <name>
      <english>3rd Bn, 2nd Art Regt</english>
-     <japanese>第二炮兵連隊第三大隊</japanese>
+     <japanese>第二砲兵連隊第三大隊</japanese>
      <chineseSimplified>第二炮兵联队第三大队</chineseSimplified>
      <chineseTraditional>第二炮兵聯隊第三大隊</chineseTraditional>
     </name>
@@ -32361,7 +32361,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <LandUnit>
     <name>
      <english>1st Bn, 3rd Art Regt</english>
-     <japanese>第三炮兵連隊第一大隊</japanese>
+     <japanese>第三砲兵連隊第一大隊</japanese>
      <chineseSimplified>第三炮兵联队第一大队</chineseSimplified>
      <chineseTraditional>第三炮兵聯隊第一大隊</chineseTraditional>
     </name>
@@ -32395,7 +32395,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <LandUnit>
     <name>
      <english>2nd Bn, 3rd Art Regt</english>
-     <japanese>第三炮兵連隊第二大隊</japanese>
+     <japanese>第三砲兵連隊第二大隊</japanese>
      <chineseSimplified>第三炮兵联队第二大队</chineseSimplified>
      <chineseTraditional>第三炮兵聯隊第二大隊</chineseTraditional>
     </name>
@@ -32429,7 +32429,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <LandUnit>
     <name>
      <english>3rd Bn, 3rd Art Regt</english>
-     <japanese>第三炮兵連隊第三大隊</japanese>
+     <japanese>第三砲兵連隊第三大隊</japanese>
      <chineseSimplified>第三炮兵联队第三大队</chineseSimplified>
      <chineseTraditional>第三炮兵聯隊第三大隊</chineseTraditional>
     </name>
@@ -32463,7 +32463,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <LandUnit>
     <name>
      <english>1st Bn, 5th Art Regt</english>
-     <japanese>第五炮兵連隊第一大隊</japanese>
+     <japanese>第五砲兵連隊第一大隊</japanese>
      <chineseSimplified>第五炮兵联队第一大队</chineseSimplified>
      <chineseTraditional>第五炮兵聯隊第一大隊</chineseTraditional>
     </name>
@@ -32498,7 +32498,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <LandUnit>
     <name>
      <english>2nd Bn, 5th Art Regt</english>
-     <japanese>第五炮兵連隊第二大隊</japanese>
+     <japanese>第五砲兵連隊第二大隊</japanese>
      <chineseSimplified>第五炮兵联队第二大队</chineseSimplified>
      <chineseTraditional>第五炮兵聯隊第二大隊</chineseTraditional>
     </name>
@@ -32533,7 +32533,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <LandUnit>
     <name>
      <english>3rd Bn, 5th Art Regt</english>
-     <japanese>第五炮兵連隊第三大隊</japanese>
+     <japanese>第五砲兵連隊第三大隊</japanese>
      <chineseSimplified>第五炮兵联队第三大队</chineseSimplified>
      <chineseTraditional>第五炮兵聯隊第三大隊</chineseTraditional>
     </name>
@@ -32568,7 +32568,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <LandUnit>
     <name>
      <english>1st Bn, 6th Art Regt</english>
-     <japanese>第六炮兵連隊第一大隊</japanese>
+     <japanese>第六砲兵連隊第一大隊</japanese>
      <chineseSimplified>第六炮兵联队第一大队</chineseSimplified>
      <chineseTraditional>第六炮兵聯隊第一大隊</chineseTraditional>
     </name>
@@ -32602,7 +32602,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <LandUnit>
     <name>
      <english>2nd Bn, 6th Art Regt</english>
-     <japanese>第六炮兵連隊第二大隊</japanese>
+     <japanese>第六砲兵連隊第二大隊</japanese>
      <chineseSimplified>第六炮兵联队第二大队</chineseSimplified>
      <chineseTraditional>第六炮兵聯隊第二大隊</chineseTraditional>
     </name>
@@ -32636,7 +32636,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <LandUnit>
     <name>
      <english>3rd Bn, 6th Art Regt</english>
-     <japanese>第六炮兵連隊第三大隊</japanese>
+     <japanese>第六砲兵連隊第三大隊</japanese>
      <chineseSimplified>第六炮兵联队第三大队</chineseSimplified>
      <chineseTraditional>第六炮兵聯隊第三大隊</chineseTraditional>
     </name>
@@ -34840,7 +34840,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <LandUnit>
     <name>
      <english>Weihaiwei Port</english>
-     <japanese>威海衛ポート</japanese>
+     <japanese>威海衛港</japanese>
      <chineseSimplified>威海卫港口</chineseSimplified>
      <chineseTraditional>威海衛港口</chineseTraditional>
     </name>
@@ -34875,7 +34875,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <LandUnit>
     <name>
      <english>Yokosuka Port</english>
-     <japanese>横須賀ポート</japanese>
+     <japanese>横須賀港</japanese>
      <chineseSimplified>横须贺港口</chineseSimplified>
      <chineseTraditional>橫須賀港口</chineseTraditional>
     </name>
@@ -34910,7 +34910,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <LandUnit>
     <name>
      <english>Hiroshima Port</english>
-     <japanese>広島ポート</japanese>
+     <japanese>広島港</japanese>
      <chineseSimplified>广岛港口</chineseSimplified>
      <chineseTraditional>廣島港口</chineseTraditional>
     </name>
@@ -34945,7 +34945,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <LandUnit>
     <name>
      <english>Nagasaki Port</english>
-     <japanese>長崎ポート</japanese>
+     <japanese>長崎港</japanese>
      <chineseSimplified>长崎港口</chineseSimplified>
      <chineseTraditional>長崎港口</chineseTraditional>
     </name>
@@ -34980,7 +34980,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <LandUnit>
     <name>
      <english>Tianjin Port</english>
-     <japanese>天津ポート</japanese>
+     <japanese>天津港</japanese>
      <chineseSimplified>天津港口</chineseSimplified>
      <chineseTraditional>天津港口</chineseTraditional>
     </name>
@@ -36218,7 +36218,7 @@ From 1880, the Imperial Japanese Army wanted to produce guns on its own. With It
    <Weapon>
     <name>
      <english>Jingal</english>
-     <japanese>抬枪</japanese>
+     <japanese>抬槍</japanese>
      <chineseSimplified>抬枪</chineseSimplified>
      <chineseTraditional>抬槍</chineseTraditional>
     </name>

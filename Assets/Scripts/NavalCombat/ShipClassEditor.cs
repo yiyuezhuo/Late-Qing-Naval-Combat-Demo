@@ -557,7 +557,7 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
     static readonly GlobalString Sk5CodeHelpMessage = new()
     {
         english = "Fire Control Code denotes a specific combination of Fire Control Components in SK5 data. Changing Role, Fire Control Code, Era, or component fields updates the Fire Control Table from the standard table when available; otherwise the battery is marked as using a custom table. The code and component values themselves do not affect resolution because their effects are already fully captured by the Fire Control Table, which acts as a sufficient statistic.",
-        japanese = "射撃統制コードは、SK5データにおける射撃統制構成要素の特定の組み合わせを表します。役割、射撃統制コード、時代、または構成要素フィールドを変更すると、利用可能な場合は標準表から射撃統制表が更新されます。利用できない場合、その砲熕はカスタム表を使用しているものとしてマークされます。射撃統制コードと構成要素の値自体は解決処理に影響しません。これらの効果は、十分統計量として機能する射撃統制表にすでに完全に反映されているためです。",
+        japanese = "射撃指揮コードは、SK5データにおける射撃指揮構成要素の特定の組み合わせを表します。役割、射撃指揮コード、時代、または構成要素フィールドを変更すると、利用可能な場合は標準表から射撃指揮表が更新されます。利用できない場合、その砲熕はカスタム表を使用しているものとしてマークされます。射撃指揮コードと構成要素の値自体は解決処理に影響しません。これらの効果は、十分統計量として機能する射撃指揮表にすでに完全に反映されているためです。",
         chineseSimplified = "火控码表示 SK5 数据中火控组件的一种特定组合。修改地位、火控码、时代或组件字段时，如果有对应标准表，会用标准表更新火控表；否则该炮组会被标记为使用自定义表。火控码和组件值本身不影响结算，因为它们的效果已经完整体现在火控表中，而火控表起到充分统计量的作用。",
         chineseTraditional = "火控碼表示 SK5 資料中火控組件的一種特定組合。修改地位、火控碼、時代或組件欄位時，如果有對應標準表，會用標準表更新火控表；否則該砲組會被標記為使用自訂表。火控碼和組件值本身不影響結算，因為它們的效果已經完整體現在火控表中，而火控表起到充分統計量的作用。",
     };

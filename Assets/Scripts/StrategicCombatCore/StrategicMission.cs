@@ -908,7 +908,7 @@ namespace StrategicCombatCore
         static GlobalString tradeProtectionPatrolPrefix = new()
         {
             english = "Trade Protection Patrol to ",
-            japanese = "貿易保護パトロールへ ",
+            japanese = "通商保護哨戒へ ",
             chineseSimplified = "贸易保护巡逻至 ",
             chineseTraditional = "貿易保護巡邏至 "
         };
@@ -924,7 +924,7 @@ namespace StrategicCombatCore
         static GlobalString interceptionPrefix = new()
         {
             english = "Intercept to ",
-            japanese = "対抗へ ",
+            japanese = "迎撃へ ",
             chineseSimplified = "拦截至 ",
             chineseTraditional = "拦截至 "
         };

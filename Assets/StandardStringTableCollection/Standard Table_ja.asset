@@ -155,7 +155,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 63593606975488
-    m_Localized: "\u53EF\u8996\u7DDA\u6E2C\u5B9A (S)"
+    m_Localized: "\u898B\u901A\u3057\u7DDA\u6E2C\u5B9A (S)"
     m_Metadata:
       m_Items: []
   - m_Id: 63691988570112
@@ -399,7 +399,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 74394027855872
-    m_Localized: "\u5C04\u6483\u6307\u63EE\u30C6\u30FC\u30D6\u30EB"
+    m_Localized: "\u5C04\u6483\u6307\u63EE\u8868"
     m_Metadata:
       m_Items: []
   - m_Id: 74500038889472
@@ -407,7 +407,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 74592103862272
-    m_Localized: "\u8CAB\u901A\u30C6\u30FC\u30D6\u30EB"
+    m_Localized: "\u8CAB\u901A\u8868"
     m_Metadata:
       m_Items: []
   - m_Id: 74786790871040
@@ -455,11 +455,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 77742776946688
-    m_Localized: "\u4F11\u6B62\u89D2\u3092\u4F7F\u7528"
+    m_Localized: "\u5F85\u6A5F\u89D2\u3092\u4F7F\u7528"
     m_Metadata:
       m_Items: []
   - m_Id: 78205500952576
-    m_Localized: "\u4F11\u6B62\u89D2"
+    m_Localized: "\u5F85\u6A5F\u89D2"
     m_Metadata:
       m_Items: []
   - m_Id: 81564987461632
@@ -679,11 +679,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 103378971168768
-    m_Localized: "\u5E0C\u671B\u901F\u5EA6"
+    m_Localized: "\u76EE\u6A19\u901F\u529B"
     m_Metadata:
       m_Items: []
   - m_Id: 103504963866624
-    m_Localized: "\u5B9F\u52B9\u6700\u5927\u901F\u5EA6"
+    m_Localized: "\u5B9F\u52B9\u6700\u5927\u901F\u529B"
     m_Metadata:
       m_Items: []
   - m_Id: 103576539664384
@@ -703,7 +703,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 108278006321152
-    m_Localized: "\u5E0C\u671B\u901F\u5EA6 (\u30DC\u30A4\u30E9\u30FC\u5BA4)"
+    m_Localized: "\u76EE\u6A19\u901F\u529B (\u30DC\u30A4\u30E9\u30FC\u5BA4)"
     m_Metadata:
       m_Items: []
   - m_Id: 108362114699264
@@ -3079,7 +3079,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -70
-    m_Localized: "\u6226\u533A\u6240\u5C5E\u683C"
+    m_Localized: "\u6226\u533A\u30BB\u30EB"
     m_Metadata:
       m_Items: []
   - m_Id: -71
@@ -3267,11 +3267,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -110
-    m_Localized: "\u6839\u62E0\u304C\u4E0D\u5341\u5206"
+    m_Localized: "\u6839\u62E0\u8584\u5F31"
     m_Metadata:
       m_Items: []
   - m_Id: -111
-    m_Localized: "\u4ED6\u3092\u63A8\u5B9A"
+    m_Localized: "\u4ED6\u5024\u3092\u63A8\u5B9A"
     m_Metadata:
       m_Items: []
   - m_Id: -112
@@ -3375,7 +3375,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -137
-    m_Localized: "\u88AB\u5E3D\u307E\u305F\u306F\u30D5\u30FC\u30C9"
+    m_Localized: "\u88AB\u5E3D\u307E\u305F\u306F\u8986\u5E3D"
     m_Metadata:
       m_Items: []
   - m_Id: -138
@@ -3468,11 +3468,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -160
-    m_Localized: "\u4E00\u81F4\u9AD8\u5EA6"
+    m_Localized: "\u9AD8\u5EA6\u3092\u5408\u308F\u305B\u308B"
     m_Metadata:
       m_Items: []
   - m_Id: -161
-    m_Localized: "\u4E00\u81F4\u8DDD\u96E2"
+    m_Localized: "\u5C04\u7A0B\u3092\u5408\u308F\u305B\u308B"
     m_Metadata:
       m_Items: []
   - m_Id: -162
@@ -3568,7 +3568,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -185
-    m_Localized: "\u547D\u4E2D\u524D\u306E\u5F3E\u982D\u72B6\u614B"
+    m_Localized: "\u7740\u5F3E\u524D\u306E\u5F3E\u982D\u72B6\u614B"
     m_Metadata:
       m_Items: []
   - m_Id: -186
@@ -3632,7 +3632,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -201
-    m_Localized: "\u6B8B\u5B58\u5F3E\u982D\u88AB\u8986\u91CD\u91CF"
+    m_Localized: "\u6B8B\u5B58\u5F3E\u982D\u8986\u3044\u91CD\u91CF"
     m_Metadata:
       m_Items: []
   - m_Id: -202
@@ -3716,7 +3716,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -222
-    m_Localized: "\u5C04\u6483\u6307\u63EE\u30C6\u30A3\u30A2"
+    m_Localized: "\u5C04\u6483\u6307\u63EE\u7B49\u7D1A"
     m_Metadata:
       m_Items: []
   - m_Id: -223

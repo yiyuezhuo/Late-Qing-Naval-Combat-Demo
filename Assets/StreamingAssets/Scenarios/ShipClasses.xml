@@ -11487,7 +11487,7 @@ Hiei (比叡, 1878)</english>
    <BatteryRecord>
     <name>
      <english>17cm RKL/25 C/74</english>
-     <japanese>17cn克砲</japanese>
+     <japanese>17cmクルップ砲</japanese>
      <chineseSimplified>17厘米克虏伯炮</chineseSimplified>
      <chineseTraditional>17釐米克虜伯炮</chineseTraditional>
     </name>
@@ -15237,7 +15237,7 @@ Portrait is taken from Saikyō Maru (西京丸)</english>
  <ShipClass>
   <name>
    <english>Generic China Transport</english>
-   <japanese>通用の清軍輸送船</japanese>
+   <japanese>清軍汎用輸送船</japanese>
    <chineseSimplified>通用清军运输船</chineseSimplified>
    <chineseTraditional>通用清軍運輸船</chineseTraditional>
   </name>
@@ -33594,7 +33594,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
  <ShipClass>
   <name>
    <english>Old Donkey Mouth Battery</english>
-   <japanese>崂嵂嘴砲台</japanese>
+   <japanese>嶗嵂嘴砲台</japanese>
    <chineseSimplified>崂嵂嘴 (老驴嘴) 炮台</chineseSimplified>
    <chineseTraditional>嶗嵂嘴 (老驢嘴) 炮臺</chineseTraditional>
   </name>

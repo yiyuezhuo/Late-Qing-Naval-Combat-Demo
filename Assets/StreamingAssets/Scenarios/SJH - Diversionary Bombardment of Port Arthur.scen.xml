@@ -1644,8 +1644,8 @@
     <name>
      <english>Port Arthur Coast Batteries</english>
      <japanese>旅順海岸砲台群</japanese>
-     <chineseSimplified>旅顺岸防炮组</chineseSimplified>
-     <chineseTraditional>旅順岸防炮組</chineseTraditional>
+     <chineseSimplified>旅顺海岸炮台群</chineseSimplified>
+     <chineseTraditional>旅順海岸砲臺群</chineseTraditional>
     </name>
     <leaderReference />
     <type>General</type>
@@ -1781,10 +1781,10 @@ When the Japanese Army launched the assault on Port Arthur, the 4th Flying Squad
 日本陸軍が旅順攻撃を開始した際、第四遊撃隊は海上から陸軍に呼応して牽制行動を行ったが、旅順東部の砲台から集中砲火を受けた。第四遊撃隊はまず南東へ退避し、その後北上して孤立した砲台と交戦した。しかし戦果がほとんど見られなかったため、戦闘を離脱した。</japanese>
     <chineseSimplified>https://en.wikipedia.org/wiki/Battle_of_L%C3%BCshunkou
 
-日陆军进攻旅顺时，第四游击队从海上配合陆军进行牵制，突然被旅顺东部炮台集火。第四游击队先向东南撤退然后被北上与单独的炮台交战，由于没看到什么见效，随后脱离战斗。</chineseSimplified>
+日陆军进攻旅顺时，第四游击队从海上配合陆军进行牵制，突然被旅顺东部炮台集火。第四游击队先向东南撤退，随后北上与孤立炮台交战。由于几乎未见战果，随后脱离战斗。</chineseSimplified>
     <chineseTraditional>https://en.wikipedia.org/wiki/Battle_of_L%C3%BCshunkou
 
-當日軍陸隊攻擊（突擊）旅順時，第四遊擊隊從海上配合陸軍進行牽制，卻突然遭到旅順東部砲台的集中火力襲擊。第四遊擊隊先向東南撤退，隨後北上與單獨的砲台交戰，因未見顯著成效，隨即脫離戰鬥。</chineseTraditional>
+當日本陸軍攻擊旅順時，第四遊擊隊從海上配合陸軍進行牽制，卻突然遭到旅順東部砲台的集中火力襲擊。第四遊擊隊先向東南撤退，隨後北上與單獨的砲台交戰，因未見顯著成效，隨即脫離戰鬥。</chineseTraditional>
    </globalDescription>
    <weaponSimulationAssignmentClock>
     <intervalSeconds>120</intervalSeconds>

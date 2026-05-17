@@ -31,7 +31,7 @@
      <english>15cm/45 EOC/VSM</english>
      <japanese>6インチ速射砲</japanese>
      <chineseSimplified>6英寸速射炮</chineseSimplified>
-     <chineseTraditional>6英寸速射炮</chineseTraditional>
+     <chineseTraditional>6英寸速射砲</chineseTraditional>
     </name>
     <damageRating>16</damageRating>
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
@@ -223,7 +223,7 @@
      <english>4.7''/40 QF Type 41</english>
      <japanese>4.7インチ速射砲</japanese>
      <chineseSimplified>4.7英寸速射炮</chineseSimplified>
-     <chineseTraditional>4.7英寸速射炮</chineseTraditional>
+     <chineseTraditional>4.7英寸速射砲</chineseTraditional>
     </name>
     <damageRating>12</damageRating>
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
@@ -563,7 +563,7 @@
      <english>15cm/45 EOC/VSM</english>
      <japanese>6インチ速射砲</japanese>
      <chineseSimplified>6英寸速射炮</chineseSimplified>
-     <chineseTraditional>6英寸速射炮</chineseTraditional>
+     <chineseTraditional>6英寸速射砲</chineseTraditional>
     </name>
     <damageRating>16</damageRating>
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
@@ -755,7 +755,7 @@
      <english>4.7''/40 QF Type 41</english>
      <japanese>4.7インチ速射砲</japanese>
      <chineseSimplified>4.7英寸速射炮</chineseSimplified>
-     <chineseTraditional>4.7英寸速射炮</chineseTraditional>
+     <chineseTraditional>4.7英寸速射砲</chineseTraditional>
     </name>
     <damageRating>12</damageRating>
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
@@ -1100,7 +1100,7 @@
      <english>15cm/45 EOC/VSM</english>
      <japanese>6インチ速射砲</japanese>
      <chineseSimplified>6英寸速射炮</chineseSimplified>
-     <chineseTraditional>6英寸速射炮</chineseTraditional>
+     <chineseTraditional>6英寸速射砲</chineseTraditional>
     </name>
     <damageRating>16</damageRating>
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
@@ -1292,7 +1292,7 @@
      <english>4.7''/40 QF Type 41</english>
      <japanese>4.7インチ速射砲</japanese>
      <chineseSimplified>4.7英寸速射炮</chineseSimplified>
-     <chineseTraditional>4.7英寸速射炮</chineseTraditional>
+     <chineseTraditional>4.7英寸速射砲</chineseTraditional>
     </name>
     <damageRating>12</damageRating>
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
@@ -1511,7 +1511,7 @@
      <english>3pdr 5cwt Mk I,II</english>
      <japanese>オチキス 4.7cm(40口径)機砲</japanese>
      <chineseSimplified>哈奇开斯47毫米单装3磅速射炮</chineseSimplified>
-     <chineseTraditional>哈奇開斯47毫米單裝3磅速射炮</chineseTraditional>
+     <chineseTraditional>哈奇開斯47毫米單裝3磅速射砲</chineseTraditional>
     </name>
     <maxRangeYards>7000</maxRangeYards>
     <effectiveRangeYards>3150</effectiveRangeYards>
@@ -1621,7 +1621,7 @@
      <english>15cm/45 EOC/VSM</english>
      <japanese>6インチ速射砲</japanese>
      <chineseSimplified>6英寸速射炮</chineseSimplified>
-     <chineseTraditional>6英寸速射炮</chineseTraditional>
+     <chineseTraditional>6英寸速射砲</chineseTraditional>
     </name>
     <damageRating>16</damageRating>
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
@@ -1813,7 +1813,7 @@
      <english>4.7''/40 QF Type 41</english>
      <japanese>4.7インチ速射砲</japanese>
      <chineseSimplified>4.7英寸速射炮</chineseSimplified>
-     <chineseTraditional>4.7英寸速射炮</chineseTraditional>
+     <chineseTraditional>4.7英寸速射砲</chineseTraditional>
     </name>
     <damageRating>12</damageRating>
     <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
@@ -2032,7 +2032,7 @@
      <english>3pdr 5cwt Mk I,II</english>
      <japanese>オチキス 4.7cm(40口径)機砲</japanese>
      <chineseSimplified>哈奇开斯47毫米单装3磅速射炮</chineseSimplified>
-     <chineseTraditional>哈奇開斯47毫米單裝3磅速射炮</chineseTraditional>
+     <chineseTraditional>哈奇開斯47毫米單裝3磅速射砲</chineseTraditional>
     </name>
     <maxRangeYards>7000</maxRangeYards>
     <effectiveRangeYards>3150</effectiveRangeYards>
@@ -2509,7 +2509,7 @@ SK5 data book seems to forget to update Akitsushima's fire control table to refl
     <name>
      <english>3pdr 5cwt Mk I,II</english>
      <japanese>オチキス 43口径4.7cm単装機砲</japanese>
-     <chineseTraditional>哈奇开斯57毫米单装6磅速射炮</chineseTraditional>
+     <chineseTraditional>哈奇開斯57毫米單裝6磅速射砲</chineseTraditional>
     </name>
     <maxRangeYards>7000</maxRangeYards>
     <effectiveRangeYards>3150</effectiveRangeYards>
@@ -3651,7 +3651,7 @@ Chi Yuan or Jiyuan
      <english>3pdr 5cwt Mk I,II</english>
      <japanese>3.7cm5連装回転式機砲</japanese>
      <chineseSimplified>57毫米单装速射炮</chineseSimplified>
-     <chineseTraditional>57毫米單裝速射炮</chineseTraditional>
+     <chineseTraditional>57毫米單裝速射砲</chineseTraditional>
     </name>
     <maxRangeYards>7000</maxRangeYards>
     <effectiveRangeYards>3150</effectiveRangeYards>
@@ -4111,7 +4111,7 @@ Chi Yuan or Jiyuan
     <name>
      <english>2.2'' 6pdf 8cwt QF</english>
      <chineseSimplified>2门口径57毫米单管哈乞开司式机关炮，2门口径47毫米单管哈开司式机关炮</chineseSimplified>
-     <chineseTraditional>2 門 57 毫米速射炮,2 門 47 毫米速射炮</chineseTraditional>
+     <chineseTraditional>2門57毫米速射砲，2門47毫米速射砲</chineseTraditional>
     </name>
     <maxRangeYards>7500</maxRangeYards>
     <effectiveRangeYards>3375</effectiveRangeYards>
@@ -5502,7 +5502,7 @@ I can't see why SK5 classify a Unprotected Cruiser to CA though.</english>
      <english>2.2'' 6pdr 8cwt QF</english>
      <japanese>アームストロング 5.7cm（40口径）単装速射砲</japanese>
      <chineseSimplified>哈乞开斯57毫米6磅单装速射炮</chineseSimplified>
-     <chineseTraditional>哈乞開斯57毫米6磅單裝速射炮</chineseTraditional>
+     <chineseTraditional>哈乞開斯57毫米6磅單裝速射砲</chineseTraditional>
     </name>
     <maxRangeYards>7500</maxRangeYards>
     <effectiveRangeYards>3375</effectiveRangeYards>
@@ -7317,7 +7317,7 @@ https://baike.baidu.com/item/%E5%A8%81%E8%BF%9C%E5%8F%B7%E7%BB%83%E4%B9%A0%E8%88
      <english>1pdr revolver Mle 1877-79</english>
      <japanese>4.7cm保式単装軽速射砲</japanese>
      <chineseSimplified>37毫米速射炮</chineseSimplified>
-     <chineseTraditional>37毫米速射炮</chineseTraditional>
+     <chineseTraditional>37毫米速射砲</chineseTraditional>
     </name>
     <maxRangeYards>7000</maxRangeYards>
     <effectiveRangeYards>3150</effectiveRangeYards>
@@ -8291,7 +8291,7 @@ Fu Lung or Fulong
      <english>2.2'' 6pdr 8cwt QF</english>
      <japanese>47mm砲</japanese>
      <chineseSimplified>哈奇开斯47毫米单装重型速射炮</chineseSimplified>
-     <chineseTraditional>哈奇開斯47毫米單裝重型速射炮</chineseTraditional>
+     <chineseTraditional>哈奇開斯47毫米單裝重型速射砲</chineseTraditional>
     </name>
     <maxRangeYards>7500</maxRangeYards>
     <effectiveRangeYards>3375</effectiveRangeYards>
@@ -8317,7 +8317,7 @@ Fu Lung or Fulong
     <name>
      <english>3pdr 5cwt Mk I,II</english>
      <chineseSimplified>哈奇开斯47毫米轻型速射炮</chineseSimplified>
-     <chineseTraditional>哈奇開斯47毫米輕型速射炮</chineseTraditional>
+     <chineseTraditional>哈奇開斯47毫米輕型速射砲</chineseTraditional>
     </name>
     <maxRangeYards>7000</maxRangeYards>
     <effectiveRangeYards>3150</effectiveRangeYards>
@@ -8835,7 +8835,7 @@ Itsukushima (厳島, 1891)
      <english>2.2'' 6pdr 8cwt QF</english>
      <japanese>47mm砲</japanese>
      <chineseSimplified>哈奇开斯47毫米单装重型速射炮</chineseSimplified>
-     <chineseTraditional>哈奇開斯47毫米單裝重型速射炮</chineseTraditional>
+     <chineseTraditional>哈奇開斯47毫米單裝重型速射砲</chineseTraditional>
     </name>
     <maxRangeYards>7500</maxRangeYards>
     <effectiveRangeYards>3375</effectiveRangeYards>
@@ -8861,7 +8861,7 @@ Itsukushima (厳島, 1891)
     <name>
      <english>3pdr 5cwt Mk I,II</english>
      <chineseSimplified>哈奇开斯47毫米轻型速射炮</chineseSimplified>
-     <chineseTraditional>哈奇開斯47毫米輕型速射炮</chineseTraditional>
+     <chineseTraditional>哈奇開斯47毫米輕型速射砲</chineseTraditional>
     </name>
     <maxRangeYards>7000</maxRangeYards>
     <effectiveRangeYards>3150</effectiveRangeYards>
@@ -10748,7 +10748,7 @@ Hiei (比叡, 1878)</english>
     <name>
      <english>3pdr 5cwt Mk I,II</english>
      <chineseSimplified>哈奇开斯47毫米单装3磅速射炮</chineseSimplified>
-     <chineseTraditional>哈奇開斯47毫米單裝3磅速射炮</chineseTraditional>
+     <chineseTraditional>哈奇開斯47毫米單裝3磅速射砲</chineseTraditional>
     </name>
     <maxRangeYards>7000</maxRangeYards>
     <effectiveRangeYards>3150</effectiveRangeYards>
@@ -13567,7 +13567,7 @@ Complement is inferred</english>
     <name>
      <english>1pdr revolver Mle 1877-79</english>
      <chineseSimplified>3门哈乞开斯47毫米重型速射炮以及4门10管11毫米格林炮</chineseSimplified>
-     <chineseTraditional>3門哈乞開斯47毫米重型速射炮以及4門10管11毫米格林炮</chineseTraditional>
+     <chineseTraditional>3門哈乞開斯47毫米重型速射砲以及4門10管11毫米格林炮</chineseTraditional>
     </name>
     <maxRangeYards>7000</maxRangeYards>
     <effectiveRangeYards>3150</effectiveRangeYards>
@@ -13709,7 +13709,7 @@ Complement is inferred</english>
     <name>
      <english>37mm RF Gun</english>
      <chineseSimplified>一门37毫米口径的哈乞开斯五管速射炮</chineseSimplified>
-     <chineseTraditional>一門37毫米口徑的哈乞開斯五管速射炮</chineseTraditional>
+     <chineseTraditional>一門37毫米口徑的哈乞開斯五管速射砲</chineseTraditional>
     </name>
     <maxRangeYards>7000</maxRangeYards>
     <effectiveRangeYards>3150</effectiveRangeYards>
@@ -40153,7 +40153,7 @@ Alternate history: Suppose the China had purchased this ship from Chile. (In tru
      <english>2.2'' 6pdr 8cwt QF</english>
      <japanese>47mm砲</japanese>
      <chineseSimplified>哈奇开斯47毫米单装重型速射炮</chineseSimplified>
-     <chineseTraditional>哈奇開斯47毫米單裝重型速射炮</chineseTraditional>
+     <chineseTraditional>哈奇開斯47毫米單裝重型速射砲</chineseTraditional>
     </name>
     <maxRangeYards>7500</maxRangeYards>
     <effectiveRangeYards>3375</effectiveRangeYards>

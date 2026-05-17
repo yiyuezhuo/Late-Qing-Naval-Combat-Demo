@@ -28,8 +28,11 @@ when a term needs special handling.
 | English term | Simplified Chinese | Traditional Chinese | Notes |
 | --- | --- | --- | --- |
 | Fire Control System | 火控系统 | 火控系統 | Natural short technical term for naval gunnery UI text. |
+| Fire Control Radar | 火控雷达 | 火控雷達 | Use the same `火控` wording as Fire Control System in Chinese UI text. |
 | Fire Control Table | 火控表 | 火控表 | Use for the SK5/game table. |
 | Fire Control Code | 火控码 | 火控碼 | Use for codes such as `1Q1`. |
+| Role (SK5 fire-control context) | 地位 | 地位 | Use for the SK5 fire-control role/category field. Keep this wording even when `role` would normally be translated as `角色`. |
+| EA / Early Access | EA | EA | Keep the abbreviation `EA` unchanged when it appears in UI or scenario prose. |
 | latent variable model | 隐变量模型 | 隱變量模型 | Prefer this over literal mixed English phrases such as `latent model` or `latent-rounding model`. |
 | Quick-firing gun / rapid-firing gun | 速射炮 | 速射砲 | Use for the historical naval weapon type. Avoid literal `连射炮` / `連射砲`. |
 | Rapid Fire Battery / Rapid Firing Battery | 速射炮组 | 速射砲組 | Use for the shipboard rapid-fire battery record/group in UI labels. Avoid `炮台` / `砲台` unless the source literally means a fixed artillery battery. |

@@ -26,12 +26,27 @@ Use the helper that matches the target table:
 - `Tools\add_localization.py` is for **Dynamic Table add**.
 - `Tools\update_dynamic_localization.py` is for **Dynamic Table batch update / mixed add / cleanup**.
 - `Tools\standard_localization.py` is for **Standard Table only**.
+- `Tools\update_scenario_localized_text.py` is for **scenario XML localized prose exact replacements**.
 - Check `Docs\Localization_Terminology.md` before translating naval, tactical,
   SK5, or other domain-specific terms. Add new special-case terms there rather
   than scattering one-off wording decisions across localization assets.
 - Do not run localization write helpers in parallel. They assign the next negative ID from
   the current files, so concurrent add/update commands can create duplicate `m_Id` entries
   inside a locale asset. Use one batch file or run the commands sequentially.
+
+### Windows / PowerShell encoding guardrails
+
+- Treat PowerShell as a command launcher only for multilingual localization work.
+  Do not pass Japanese or Chinese replacement text through PowerShell here-strings,
+  pipelines, command arguments, `Set-Content`, or `Out-File`.
+- Put multilingual batch data in UTF-8 JSON files and let the Python helper read
+  those files directly. This avoids console code page and `$OutputEncoding`
+  corruption.
+- Do not trust `Get-Content` output when diagnosing mojibake. If text looks
+  corrupted in PowerShell, confirm with Python using `encoding="utf-8-sig"`:
+  `python -c "from pathlib import Path; print(Path('path').read_text(encoding='utf-8-sig'))"`.
+- It is fine to set `$env:PYTHONIOENCODING='utf-8'` for readable tool output, but
+  that does not make PowerShell safe for carrying localized source text.
 
 ### Dynamic Table
 
@@ -76,6 +91,19 @@ Scenario tutorial scripts may use inline `getLocalized(en, ja, zhHans, zhHant)` 
 - Preserve keyboard keys and hotkeys such as `F` and `Ins`.
 - Preserve abbreviations that are used as product/domain terms unless there is an established localized key. `OOB` is intentionally kept as `OOB`; translate the surrounding noun if needed, for example `OOB 関係` / `OOB 关系` / `OOB 關係`.
 
+For exact replacements in scenario XML, use:
+
+- `python Tools\update_scenario_localized_text.py --file path\to\scenario_text_updates.json`
+- Add `--dry-run` to preview.
+- The JSON file should be UTF-8 and contain `entries` with `file`, `old`, `new`,
+  and optional `count` (defaults to `1`). The helper preserves the file's detected
+  encoding and line endings, and fails if the expected occurrence count does not
+  match. It also refuses to write files whose XML encoding declaration disagrees
+  with the actual bytes.
+- To scan scenario XML for common mojibake markers with Python UTF-8 decoding,
+  use `python Tools\update_scenario_localized_text.py --scan-mojibake`. Treat
+  results as review candidates; accented Latin names can be legitimate.
+
 ## 4. Default checklist
 
 1. Decide which table owns the text.
@@ -83,10 +111,11 @@ Scenario tutorial scripts may use inline `getLocalized(en, ja, zhHans, zhHant)` 
 3. If editing C# Dynamic Table lookups, run `python Tools\dynamic_localization.py scan-cs ...` first.
 4. If editing UXML, run `python Tools\standard_localization.py scan-uxml ...` first.
 5. Add, update, or reuse the key with the matching helper script.
-6. If using Standard Table, paste the generated binding snippet into the UXML file.
-7. For Dynamic Table batches that remove or add keys, run `python Tools\normalize_localization_ids.py --apply` if verification reports fragmented negative IDs.
-8. Run `python Tools\normalize_localization_ids.py verify`.
-9. If the UI shows raw key text in-game, first suspect the wrong table or a missing key/binding.
+6. If editing scenario XML prose, use `python Tools\update_scenario_localized_text.py --file ...`.
+7. If using Standard Table, paste the generated binding snippet into the UXML file.
+8. For Dynamic Table batches that remove or add keys, run `python Tools\normalize_localization_ids.py --apply` if verification reports fragmented negative IDs.
+9. Run `python Tools\normalize_localization_ids.py verify`.
+10. If the UI shows raw key text in-game, first suspect the wrong table or a missing key/binding.
 
 ## 5. Verification commands
 

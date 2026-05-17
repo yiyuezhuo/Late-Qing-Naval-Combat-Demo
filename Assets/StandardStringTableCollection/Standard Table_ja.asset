@@ -823,7 +823,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 169182760701952
-    m_Localized: "FCR\uFF08\u5C04\u6483\u6307\u63EE\u88C5\u7F6E\uFF09\u6545\u969C"
+    m_Localized: "FCR\uFF08\u5C04\u6483\u7BA1\u5236\u30EC\u30FC\u30C0\u30FC\uFF09\u6545\u969C"
     m_Metadata:
       m_Items: []
   - m_Id: 169342341386240
@@ -3259,7 +3259,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -108
-    m_Localized: Calculator
+    m_Localized: "\u8A08\u7B97\u6A5F"
     m_Metadata:
       m_Items: []
   - m_Id: -109
@@ -3275,7 +3275,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -112
-    m_Localized: NAAB-like Calculator
+    m_Localized: "NAAB-like \u8A08\u7B97\u6A5F"
     m_Metadata:
       m_Items: []
   - m_Id: -113

@@ -638,7 +638,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 86320120238080
-    m_Localized: "DE 164, \u5C04\u6483\u6307\u63EE\u30EC\u30FC\u30C0\u30FC\u88AB\u5F3E"
+    m_Localized: "DE 164, \u5C04\u6483\u7BA1\u5236\u30EC\u30FC\u30C0\u30FC\u88AB\u5F3E"
     m_Metadata:
       m_Items: []
   - m_Id: 86351690764288
@@ -837,7 +837,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 89220888301568
-    m_Localized: "DE 504, \u5C04\u6483\u6307\u63EE\u30EC\u30FC\u30C0\u30FC\u96FB\u6E90\u55AA\u5931"
+    m_Localized: "DE 504, \u5C04\u6483\u7BA1\u5236\u30EC\u30FC\u30C0\u30FC\u96FB\u6E90\u55AA\u5931"
     m_Metadata:
       m_Items: []
   - m_Id: 89238445658112
@@ -1524,8 +1524,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 806530913570816
-    m_Localized: "\u7832\u6483\u5C04\u6483\u7BA1\u5236\u72B6\u614B\u7121\u52B9\u5316\u4FEE\u6574
-      ({0})"
+    m_Localized: "\u7832\u5074\u5C04\u6483\u6307\u63EE\u72B6\u614B\u4E0D\u80FD\u4FEE\u6B63 ({0})"
     m_Metadata:
       m_Items: []
   - m_Id: 807313151266816
@@ -3773,8 +3772,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -168
-    m_Localized: "\u57FA\u672C\u5C04\u6483\u7BA1\u5236\u5024 ({0} \u5C04\u7A0B /
-      \u5C04\u6483\u7BA1\u5236\u640D\u50B7\u30EC\u30D9\u30EB {1}) => {2}"
+    m_Localized: "\u57FA\u672C\u5C04\u6483\u6307\u63EE\u5024 ({0} \u5C04\u7A0B / \u5C04\u6483\u6307\u63EE\u640D\u50B7\u30EC\u30D9\u30EB {1}) => {2}"
     m_Metadata:
       m_Items: []
   - m_Id: -169
@@ -3964,15 +3962,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -215
-    m_Localized: Calculator
+    m_Localized: "\u8A08\u7B97\u6A5F"
     m_Metadata:
       m_Items: []
   - m_Id: -216
-    m_Localized: External Ballistics
+    m_Localized: "\u5916\u90E8\u5F3E\u9053\u5B66"
     m_Metadata:
       m_Items: []
   - m_Id: -217
-    m_Localized: Inputs
+    m_Localized: "\u5165\u529B"
     m_Metadata:
       m_Items: []
   - m_Id: -218
@@ -3980,43 +3978,43 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -219
-    m_Localized: Single
+    m_Localized: "\u5358\u4E00"
     m_Metadata:
       m_Items: []
   - m_Id: -220
-    m_Localized: Multiple
+    m_Localized: "\u8907\u6570"
     m_Metadata:
       m_Items: []
   - m_Id: -221
-    m_Localized: Muzzle Velocity (m/s)
+    m_Localized: "\u521D\u901F (m/s)"
     m_Metadata:
       m_Items: []
   - m_Id: -222
-    m_Localized: Elevation Angle (deg)
+    m_Localized: "\u4EF0\u89D2 (deg)"
     m_Metadata:
       m_Items: []
   - m_Id: -223
-    m_Localized: Min Elevation (deg)
+    m_Localized: "\u6700\u5C0F\u4EF0\u89D2 (deg)"
     m_Metadata:
       m_Items: []
   - m_Id: -224
-    m_Localized: Max Elevation (deg)
+    m_Localized: "\u6700\u5927\u4EF0\u89D2 (deg)"
     m_Metadata:
       m_Items: []
   - m_Id: -225
-    m_Localized: Elevation Step (deg)
+    m_Localized: "\u4EF0\u89D2\u30B9\u30C6\u30C3\u30D7 (deg)"
     m_Metadata:
       m_Items: []
   - m_Id: -226
-    m_Localized: Model Parameters
+    m_Localized: "\u30E2\u30C7\u30EB\u30D1\u30E9\u30E1\u30FC\u30BF"
     m_Metadata:
       m_Items: []
   - m_Id: -227
-    m_Localized: Projectile Diameter (inch)
+    m_Localized: "\u7832\u5F3E\u76F4\u5F84 (inch)"
     m_Metadata:
       m_Items: []
   - m_Id: -228
-    m_Localized: Projectile Mass (kg)
+    m_Localized: "\u7832\u5F3E\u8CEA\u91CF (kg)"
     m_Metadata:
       m_Items: []
   - m_Id: -229
@@ -4024,19 +4022,19 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -230
-    m_Localized: Drag Model
+    m_Localized: "\u6297\u529B\u30E2\u30C7\u30EB"
     m_Metadata:
       m_Items: []
   - m_Id: -231
-    m_Localized: Air Density (kg/m3)
+    m_Localized: "\u7A7A\u6C17\u5BC6\u5EA6 (kg/m3)"
     m_Metadata:
       m_Items: []
   - m_Id: -232
-    m_Localized: Algorithm Parameters
+    m_Localized: "\u30A2\u30EB\u30B4\u30EA\u30BA\u30E0\u30D1\u30E9\u30E1\u30FC\u30BF"
     m_Metadata:
       m_Items: []
   - m_Id: -233
-    m_Localized: Time Step (s)
+    m_Localized: "\u6642\u9593\u30B9\u30C6\u30C3\u30D7 (s)"
     m_Metadata:
       m_Items: []
   - m_Id: -234
@@ -4044,11 +4042,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -235
-    m_Localized: X Axis
+    m_Localized: "X\u8EF8"
     m_Metadata:
       m_Items: []
   - m_Id: -236
-    m_Localized: Y Axis
+    m_Localized: "Y\u8EF8"
     m_Metadata:
       m_Items: []
   - m_Id: -237
@@ -4060,55 +4058,55 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -239
-    m_Localized: Time of Flight
+    m_Localized: "\u98DB\u7FD4\u6642\u9593"
     m_Metadata:
       m_Items: []
   - m_Id: -240
-    m_Localized: Impact Velocity
+    m_Localized: "\u7740\u901F"
     m_Metadata:
       m_Items: []
   - m_Id: -241
-    m_Localized: Angle of Fall
+    m_Localized: "\u843D\u89D2"
     m_Metadata:
       m_Items: []
   - m_Id: -242
-    m_Localized: Range (yd)
+    m_Localized: "\u5C04\u7A0B (yd)"
     m_Metadata:
       m_Items: []
   - m_Id: -243
-    m_Localized: Time of Flight (s)
+    m_Localized: "\u98DB\u7FD4\u6642\u9593 (s)"
     m_Metadata:
       m_Items: []
   - m_Id: -244
-    m_Localized: Impact Velocity (m/s)
+    m_Localized: "\u7740\u901F (m/s)"
     m_Metadata:
       m_Items: []
   - m_Id: -245
-    m_Localized: Angle of Fall (deg)
+    m_Localized: "\u843D\u89D2 (deg)"
     m_Metadata:
       m_Items: []
   - m_Id: -246
-    m_Localized: Approx. {0:0} lb
+    m_Localized: "\u7D04 {0:0} lb"
     m_Metadata:
       m_Items: []
   - m_Id: -247
-    m_Localized: '{0} result(s).'
+    m_Localized: "{0} \u4EF6\u306E\u7D50\u679C\u3002"
     m_Metadata:
       m_Items: []
   - m_Id: -248
-    m_Localized: 'Calculation failed: {0}'
+    m_Localized: "\u8A08\u7B97\u306B\u5931\u6557\u3057\u307E\u3057\u305F: {0}"
     m_Metadata:
       m_Items: []
   - m_Id: -249
-    m_Localized: Muzzle velocity must be greater than 0.
+    m_Localized: "\u521D\u901F\u306F 0 \u3088\u308A\u5927\u304D\u3044\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\u3002"
     m_Metadata:
       m_Items: []
   - m_Id: -250
-    m_Localized: Projectile diameter must be greater than 0.
+    m_Localized: "\u7832\u5F3E\u76F4\u5F84\u306F 0 \u3088\u308A\u5927\u304D\u3044\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\u3002"
     m_Metadata:
       m_Items: []
   - m_Id: -251
-    m_Localized: Projectile mass must be greater than 0.
+    m_Localized: "\u7832\u5F3E\u8CEA\u91CF\u306F 0 \u3088\u308A\u5927\u304D\u3044\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\u3002"
     m_Metadata:
       m_Items: []
   - m_Id: -252
@@ -4116,51 +4114,51 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -253
-    m_Localized: Air density must be greater than 0.
+    m_Localized: "\u7A7A\u6C17\u5BC6\u5EA6\u306F 0 \u3088\u308A\u5927\u304D\u3044\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\u3002"
     m_Metadata:
       m_Items: []
   - m_Id: -254
-    m_Localized: Time step must be greater than 0.
+    m_Localized: "\u6642\u9593\u30B9\u30C6\u30C3\u30D7\u306F 0 \u3088\u308A\u5927\u304D\u3044\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\u3002"
     m_Metadata:
       m_Items: []
   - m_Id: -255
-    m_Localized: Elevation angle must be greater than 0 and less than 90 degrees.
+    m_Localized: "\u4EF0\u89D2\u306F 0 \u3088\u308A\u5927\u304D\u304F 90 \u5EA6\u672A\u6E80\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\u3002"
     m_Metadata:
       m_Items: []
   - m_Id: -256
-    m_Localized: Elevation step must be greater than 0.
+    m_Localized: "\u4EF0\u89D2\u30B9\u30C6\u30C3\u30D7\u306F 0 \u3088\u308A\u5927\u304D\u3044\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\u3002"
     m_Metadata:
       m_Items: []
   - m_Id: -257
-    m_Localized: Min elevation must be less than or equal to max elevation.
+    m_Localized: "\u6700\u5C0F\u4EF0\u89D2\u306F\u6700\u5927\u4EF0\u89D2\u4EE5\u4E0B\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\u3002"
     m_Metadata:
       m_Items: []
   - m_Id: -258
-    m_Localized: Too many elevation samples. Increase the step or narrow the range.
+    m_Localized: "\u4EF0\u89D2\u30B5\u30F3\u30D7\u30EB\u304C\u591A\u3059\u304E\u307E\u3059\u3002\u30B9\u30C6\u30C3\u30D7\u3092\u5927\u304D\u304F\u3059\u308B\u304B\u3001\u7BC4\u56F2\u3092\u72ED\u3081\u3066\u304F\u3060\u3055\u3044\u3002"
     m_Metadata:
       m_Items: []
   - m_Id: -259
-    m_Localized: No elevation angle is available.
+    m_Localized: "\u4F7F\u7528\u53EF\u80FD\u306A\u4EF0\u89D2\u304C\u3042\u308A\u307E\u305B\u3093\u3002"
     m_Metadata:
       m_Items: []
   - m_Id: -260
-    m_Localized: Drag Input Mode
+    m_Localized: "\u6297\u529B\u5165\u529B\u30E2\u30FC\u30C9"
     m_Metadata:
       m_Items: []
   - m_Id: -261
-    m_Localized: G Model BC
+    m_Localized: "G\u30E2\u30C7\u30EBBC"
     m_Metadata:
       m_Items: []
   - m_Id: -262
-    m_Localized: Physical Cd
+    m_Localized: "\u7269\u7406\u30D9\u30FC\u30B9Cd"
     m_Metadata:
       m_Items: []
   - m_Id: -263
-    m_Localized: Constant Cd
+    m_Localized: "\u4E00\u5B9ACd"
     m_Metadata:
       m_Items: []
   - m_Id: -264
-    m_Localized: Drag coefficient must be greater than 0.
+    m_Localized: "\u6297\u529B\u4FC2\u6570\u306F 0 \u3088\u308A\u5927\u304D\u3044\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\u3002"
     m_Metadata:
       m_Items: []
   - m_Id: -265
@@ -4486,15 +4484,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -341
-    m_Localized: AP Cap Weight (lb)
+    m_Localized: "\u5FB9\u7532\u5F3E\u88AB\u5E3D\u91CD\u91CF (lb)"
     m_Metadata:
       m_Items: []
   - m_Id: -342
-    m_Localized: Integration Step (ft)
+    m_Localized: "\u7A4D\u5206\u30B9\u30C6\u30C3\u30D7 (ft)"
     m_Metadata:
       m_Items: []
   - m_Id: -343
-    m_Localized: Integration step must be greater than 0.
+    m_Localized: "\u7A4D\u5206\u30B9\u30C6\u30C3\u30D7\u306F 0 \u3088\u308A\u5927\u304D\u3044\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\u3002"
     m_Metadata:
       m_Items: []
   - m_Id: -344

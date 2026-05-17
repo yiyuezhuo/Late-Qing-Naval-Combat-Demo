@@ -72,7 +72,14 @@ not write the XML back to disk.
 When editing scenario XML, follow the repository XML guardrails:
 
 - Prefer Python scripts over PowerShell text replacement or write-back.
+- For localized prose exact replacements under
+  `Assets/StreamingAssets/Scenarios/`, prefer
+  `python Tools\update_scenario_localized_text.py --file updates.json`.
+  Put Japanese/Chinese text in the UTF-8 JSON file, not in a PowerShell
+  here-string or command argument.
 - Do not use `Set-Content` for multilingual XML.
+- Do not trust `Get-Content` output when diagnosing mojibake; confirm by reading
+  the file with Python using `encoding="utf-8-sig"`.
 - Preserve the original encoding and line endings, or deliberately correct the
   encoding declaration and actual file encoding together.
 - Verify the diff only changes the intended XML nodes.

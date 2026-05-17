@@ -24,15 +24,12 @@ public class StrategicScenarioStateEditor
             ExportAreaSystem();
         };
 
-        RefreshDescriptionPreview(root);
-
         root.Q<Button>("SetDescriptionButton").clicked += () =>
         {
             scenarioState.globalDescription ??= new GlobalString();
             DialogRoot.Instance.PopupGlobalStringMarkdownEditorDialog(
                 scenarioState.globalDescription,
-                "Description",
-                () => RefreshDescriptionPreview(root));
+                "Description");
         };
     }
 
@@ -55,10 +52,4 @@ public class StrategicScenarioStateEditor
 
     [CreateProperty]
     public StrategicScenarioState scenarioState => StrategicGameState.Instance.scenarioState;
-
-    void RefreshDescriptionPreview(VisualElement root)
-    {
-        root.Q<MarkdownRenderer>("DescriptionMarkdownRenderer")
-            ?.SetMarkdownWithoutNotify(scenarioState.globalDescription?.shortName ?? string.Empty);
-    }
 }

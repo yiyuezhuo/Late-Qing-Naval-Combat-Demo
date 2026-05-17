@@ -7,6 +7,7 @@ using Markdig;
 using Markdig.Extensions.Tables;
 using Markdig.Syntax;
 using Markdig.Syntax.Inlines;
+using Unity.Properties;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -31,56 +32,73 @@ public partial class MarkdownRenderer : BindableElement
         AddToClassList("markdown-renderer");
     }
 
+    [CreateProperty]
     [UxmlAttribute]
     public string value
     {
         get => _value;
         set
         {
-            _value = value ?? "";
-            Render();
+            SetMarkdown(value);
         }
     }
 
+    [CreateProperty]
     [UxmlAttribute]
     public string basePath
     {
         get => _basePath;
         set
         {
+            if (_basePath == value)
+                return;
+
             _basePath = value;
             Render();
         }
     }
 
+    [CreateProperty]
     [UxmlAttribute]
     public float maxImageHeight
     {
         get => _maxImageHeight;
         set
         {
-            _maxImageHeight = Math.Max(1, value);
+            var normalized = Math.Max(1, value);
+            if (Math.Abs(_maxImageHeight - normalized) < 0.001f)
+                return;
+
+            _maxImageHeight = normalized;
             Render();
         }
     }
 
+    [CreateProperty]
     [UxmlAttribute]
     public bool openExternalLinks
     {
         get => _openExternalLinks;
         set
         {
+            if (_openExternalLinks == value)
+                return;
+
             _openExternalLinks = value;
             Render();
         }
     }
 
+    [CreateProperty]
     [UxmlAttribute]
     public bool selectable
     {
         get => _selectable;
         set
         {
+            if (_selectable == value)
+                return;
+
             _selectable = value;
             Render();
         }
@@ -88,7 +106,16 @@ public partial class MarkdownRenderer : BindableElement
 
     public void SetMarkdownWithoutNotify(string markdown)
     {
-        _value = markdown ?? "";
+        SetMarkdown(markdown);
+    }
+
+    void SetMarkdown(string markdown)
+    {
+        var normalized = markdown ?? "";
+        if (_value == normalized)
+            return;
+
+        _value = normalized;
         Render();
     }
 

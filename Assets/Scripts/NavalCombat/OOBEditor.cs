@@ -12,7 +12,6 @@ using NavalCombatCore;
 public class OOBEditor : HideableDocument<OOBEditor>
 {
     const string TreeDragObjectIdsDataKey = "OOBEditor.TreeDragObjectIds";
-    const string ShipGroupRemarkMarkdownRendererName = "ShipGroupRemarkMarkdownRenderer";
 
     public TreeView oobTreeView;
 
@@ -75,8 +74,6 @@ public class OOBEditor : HideableDocument<OOBEditor>
 
         NavalGameState.Instance.shipGroupsChanged -= OnShipGroupsChanged;
         NavalGameState.Instance.shipGroupsChanged += OnShipGroupsChanged;
-        GamePreference.Instance.shortLabelLanguageTypeChanged -= OnShortLabelLanguageTypeChanged;
-        GamePreference.Instance.shortLabelLanguageTypeChanged += OnShortLabelLanguageTypeChanged;
 
         root.dataSource = this;
 
@@ -146,7 +143,6 @@ public class OOBEditor : HideableDocument<OOBEditor>
             var newSelectedObjectId = selectedItems.FirstOrDefault() as string;
 
             currentSelectedObjectId = newSelectedObjectId;
-            RefreshSelectedGroupRemarkPreview();
         };
 
         var createGroupButton = root.Q<Button>("CreateGroupButton");
@@ -234,7 +230,7 @@ public class OOBEditor : HideableDocument<OOBEditor>
         {
             if (currentSelectedShipGroup != null)
             {
-                DialogRoot.Instance.PopupShipGroupRemarkDialog(currentSelectedShipGroup, RefreshSelectedGroupRemarkPreview);
+                DialogRoot.Instance.PopupShipGroupRemarkDialog(currentSelectedShipGroup);
             }
         };
 
@@ -257,8 +253,6 @@ public class OOBEditor : HideableDocument<OOBEditor>
 
             Sync();
         };
-
-        RefreshSelectedGroupRemarkPreview();
     }
 
     void OnDisable()
@@ -267,23 +261,6 @@ public class OOBEditor : HideableDocument<OOBEditor>
         {
             NavalGameState.Instance.shipGroupsChanged -= OnShipGroupsChanged;
         }
-
-        GamePreference.Instance.shortLabelLanguageTypeChanged -= OnShortLabelLanguageTypeChanged;
-    }
-
-    void OnShortLabelLanguageTypeChanged(object sender, EventArgs args)
-    {
-        RefreshSelectedGroupRemarkPreview();
-    }
-
-    void RefreshSelectedGroupRemarkPreview()
-    {
-        var remarkRenderer = root?.Q<MarkdownRenderer>(ShipGroupRemarkMarkdownRendererName);
-        if (remarkRenderer == null)
-            return;
-
-        var value = currentSelectedShipGroup?.remark?.shortName ?? string.Empty;
-        remarkRenderer.SetMarkdownWithoutNotify(value);
     }
 
     public void OnShipGroupsChanged(object sender, List<ShipGroup> rootShipGroups)
@@ -298,7 +275,6 @@ public class OOBEditor : HideableDocument<OOBEditor>
         oobTreeView.Rebuild();
 
         oobTreeView.ExpandAll(); // Set Default behaviour?
-        RefreshSelectedGroupRemarkPreview();
     }
 
     public EventHandler shown;

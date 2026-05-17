@@ -396,7 +396,11 @@
                                                 <ui:Button text="Set" name="SetRemarkButton"/>
                                             </ui:VisualElement>
                                             <ui:ScrollView vertical-scroller-visibility="Auto" horizontal-scroller-visibility="Hidden" style="height: 250px;">
-                                                <MarkdownRenderer name="ShipClassRemarkMarkdownRenderer" selectable="true" max-image-height="220"/>
+                                                <MarkdownRenderer name="ShipClassRemarkMarkdownRenderer" selectable="true" max-image-height="220">
+                                                    <Bindings>
+                                                        <ui:DataBinding property="value" data-source-path="remark.shortName" binding-mode="ToTarget"/>
+                                                    </Bindings>
+                                                </MarkdownRenderer>
                                             </ui:ScrollView>
                                         </ui:VisualElement>
                                         <ui:VisualElement style="flex-basis: 0;"/>

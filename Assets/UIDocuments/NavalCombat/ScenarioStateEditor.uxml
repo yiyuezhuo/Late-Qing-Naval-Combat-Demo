@@ -115,7 +115,11 @@
                                 <ui:Button text="Set" name="SetDescriptionButton"/>
                             </ui:VisualElement>
                             <ui:ScrollView vertical-scroller-visibility="Auto" horizontal-scroller-visibility="Hidden" style="height: 200px;">
-                                <MarkdownRenderer name="DescriptionMarkdownRenderer" selectable="true" max-image-height="180"/>
+                                <MarkdownRenderer name="DescriptionMarkdownRenderer" selectable="true" max-image-height="180">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="scenarioState.globalDescription.shortName" binding-mode="ToTarget"/>
+                                    </Bindings>
+                                </MarkdownRenderer>
                             </ui:ScrollView>
                         </ui:VisualElement>
                     </ui:VisualElement>

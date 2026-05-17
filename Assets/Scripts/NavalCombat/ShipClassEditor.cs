@@ -614,7 +614,6 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
 
             RequestSectorArcRefresh(currentShipClass, true);
             RequestDefaultPlaceholderPreviewRefresh(currentShipClass, true);
-            RefreshShipClassRemarkPreview();
         };
 
         var speedIncreaseMultiColumnListView = root.Q<MultiColumnListView>("SpeedIncreaseMultiColumnListView");
@@ -672,8 +671,7 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
                 shipClass.remark ??= new GlobalString();
                 DialogRoot.Instance.PopupGlobalStringMarkdownEditorDialog(
                     shipClass.remark,
-                    Localize("Remark"),
-                    RefreshShipClassRemarkPreview);
+                    Localize("Remark"));
             };
         }
 
@@ -1025,7 +1023,6 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
     protected override void OnShow()
     {
         RequestDefaultPlaceholderPreviewRefresh();
-        RefreshShipClassRemarkPreview();
         shown?.Invoke(this, EventArgs.Empty);
     }
 
@@ -1060,7 +1057,6 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
         GetFullObjects();
         RefreshFilter();
         RequestDefaultPlaceholderPreviewRefresh(selectedShipClass, true);
-        RefreshShipClassRemarkPreview();
     }
 
     [CreateProperty]
@@ -2603,12 +2599,6 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
     }
 
     static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
-
-    void RefreshShipClassRemarkPreview()
-    {
-        root?.Q<MarkdownRenderer>("ShipClassRemarkMarkdownRenderer")
-            ?.SetMarkdownWithoutNotify(selectedShipClass?.remark?.shortName ?? string.Empty);
-    }
 
     static void RefreshPictureField(VisualElement fieldRoot, PictureReference pictureReference)
     {

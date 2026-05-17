@@ -124,7 +124,11 @@
                             </ui:Button>
                         </ui:VisualElement>
                         <ui:ScrollView vertical-scroller-visibility="Auto" horizontal-scroller-visibility="Hidden" style="height: 100px;">
-                            <MarkdownRenderer name="ShipGroupRemarkMarkdownRenderer" selectable="true" max-image-height="90"/>
+                            <MarkdownRenderer name="ShipGroupRemarkMarkdownRenderer" selectable="true" max-image-height="90">
+                                <Bindings>
+                                    <ui:DataBinding property="value" data-source-path="remark.shortName" binding-mode="ToTarget"/>
+                                </Bindings>
+                            </MarkdownRenderer>
                         </ui:ScrollView>
                     </ui:VisualElement>
                     <Bindings>

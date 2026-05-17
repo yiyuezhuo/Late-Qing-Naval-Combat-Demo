@@ -303,21 +303,12 @@ public class ScenarioStateEditor
 
         PathReferenceBinder.BindPictureReference(root.Q<VisualElement>("BackgroundPictureField"));
 
-        RefreshDescriptionPreview(root);
-
         root.Q<Button>("SetDescriptionButton").clicked += () =>
         {
             scenarioState.globalDescription ??= new GlobalString();
             DialogRoot.Instance.PopupGlobalStringMarkdownEditorDialog(
                 scenarioState.globalDescription,
-                "Description",
-                () => RefreshDescriptionPreview(root));
+                "Description");
         };
-    }
-
-    void RefreshDescriptionPreview(VisualElement root)
-    {
-        root.Q<MarkdownRenderer>("DescriptionMarkdownRenderer")
-            ?.SetMarkdownWithoutNotify(scenarioState.globalDescription?.shortName ?? string.Empty);
     }
 }

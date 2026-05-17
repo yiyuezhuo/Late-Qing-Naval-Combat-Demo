@@ -1,6 +1,5 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="DateTimeField" src="project://database/Assets/UIDocuments/Common/DateTimeField.uxml?fileID=9197481963319205126&amp;guid=f2bdecc78fba4e446b80fb07b946d287&amp;type=3#DateTimeField"/>
-    <ui:Template name="MultilineGlobalStringEditor" src="project://database/Assets/UIDocuments/Common/MultilineGlobalStringEditor.uxml?fileID=9197481963319205126&amp;guid=3a7e28cd26dd1c748abce26c37380ec8&amp;type=3#MultilineGlobalStringEditor"/>
     <ui:Template name="PictureField" src="project://database/Assets/UIDocuments/Common/PictureField.uxml?fileID=9197481963319205126&amp;guid=7e20c3d60b5a8a34a80d1015e6851169&amp;type=3#PictureField"/>
     <ui:VisualElement data-source-type="ScenarioStateEditor, Assembly-CSharp" class="panel-dialog" style="flex-grow: 0; width: 850px; height: auto;">
         <ui:Label text="Scenario State Editor" class="title">
@@ -106,13 +105,18 @@
                                 </ui:Image>
                             </ui:VisualElement>
                         </ui:VisualElement>
-                        <ui:Label text="Description">
-                            <Bindings>
-                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(178159569506304)"/>
-                            </Bindings>
-                        </ui:Label>
-                        <ui:VisualElement data-source-path="scenarioState.globalDescription">
-                            <ui:Instance template="MultilineGlobalStringEditor" name="MultilineGlobalStringEditor" style="max-height: 200px;"/>
+                        <ui:VisualElement style="flex-grow: 0;">
+                            <ui:VisualElement style="flex-direction: row; align-items: center;">
+                                <ui:Label text="Description" style="flex-grow: 1;">
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(178159569506304)"/>
+                                    </Bindings>
+                                </ui:Label>
+                                <ui:Button text="Set" name="SetDescriptionButton"/>
+                            </ui:VisualElement>
+                            <ui:ScrollView vertical-scroller-visibility="Auto" horizontal-scroller-visibility="Hidden" style="height: 200px;">
+                                <MarkdownRenderer name="DescriptionMarkdownRenderer" selectable="true" max-image-height="180"/>
+                            </ui:ScrollView>
                         </ui:VisualElement>
                     </ui:VisualElement>
                 </ui:Tab>

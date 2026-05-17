@@ -117,18 +117,15 @@
                                     <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(67808446287872)"/>
                                 </Bindings>
                             </ui:Label>
-                            <ui:Button text="Edit" name="EditRemarkButton">
+                            <ui:Button text="Set" name="SetRemarkButton">
                                 <Bindings>
-                                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(11325371015925760)"/>
                                     <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                                 </Bindings>
                             </ui:Button>
                         </ui:VisualElement>
-                        <ui:TextField name="ShipGroupRemarkTextField" multiline="true" vertical-scroller-visibility="Auto" readonly="true" style="height: 100px; white-space: normal;">
-                            <Bindings>
-                                <ui:DataBinding property="value" data-source-path="remark.shortName" binding-mode="ToTarget"/>
-                            </Bindings>
-                        </ui:TextField>
+                        <ui:ScrollView vertical-scroller-visibility="Auto" horizontal-scroller-visibility="Hidden" style="height: 100px;">
+                            <MarkdownRenderer name="ShipGroupRemarkMarkdownRenderer" selectable="true" max-image-height="90"/>
+                        </ui:ScrollView>
                     </ui:VisualElement>
                     <Bindings>
                         <ui:DataBinding property="style.display" binding-mode="ToTarget" source-to-ui-converters="ShipGroup =&gt; DisplayStyle"/>

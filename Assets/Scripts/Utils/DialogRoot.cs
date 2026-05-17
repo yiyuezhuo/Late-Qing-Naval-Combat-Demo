@@ -964,7 +964,7 @@ public class DialogRoot : SingletonDocument<DialogRoot>
     public VisualTreeAsset faqDialogDocument;
     public VisualTreeAsset locationLabelDialogDocument;
     public VisualTreeAsset navalLocationLabelEditorDialogDocument;
-    public VisualTreeAsset shipGroupRemarkDialogDocument;
+    public VisualTreeAsset globalStringMarkdownEditorDialogDocument;
     public VisualTreeAsset locationLabelsEditorDialogDocument;
     public VisualTreeAsset subordinatePickerDialogDocument;
     public VisualTreeAsset strategicGroupTransferDialogDocument;
@@ -3785,12 +3785,33 @@ public class DialogRoot : SingletonDocument<DialogRoot>
         if (shipGroup == null)
             return;
 
+        shipGroup.remark ??= new GlobalString();
+        PopupGlobalStringMarkdownEditorDialog(shipGroup.remark, Localize("Remark"), onClosed);
+    }
+
+    public void PopupGlobalStringMarkdownEditorDialog(GlobalString globalString, string title = null, Action onClosed = null)
+    {
+        if (globalString == null)
+            return;
+
         var tempDialog = new TempDialog()
         {
             root = root,
-            template = shipGroupRemarkDialogDocument,
-            templateDataSource = shipGroup.remark
+            template = globalStringMarkdownEditorDialogDocument,
+            templateDataSource = globalString
         };
+
+        if (!string.IsNullOrEmpty(title))
+        {
+            tempDialog.onCreated += (sender, el) =>
+            {
+                var titleLabel = el.Q<Label>();
+                if (titleLabel != null)
+                {
+                    titleLabel.text = title;
+                }
+            };
+        }
 
         if (onClosed != null)
         {

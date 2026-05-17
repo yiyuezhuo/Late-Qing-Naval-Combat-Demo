@@ -12,7 +12,7 @@ using NavalCombatCore;
 public class OOBEditor : HideableDocument<OOBEditor>
 {
     const string TreeDragObjectIdsDataKey = "OOBEditor.TreeDragObjectIds";
-    const string ShipGroupRemarkTextFieldName = "ShipGroupRemarkTextField";
+    const string ShipGroupRemarkMarkdownRendererName = "ShipGroupRemarkMarkdownRenderer";
 
     public TreeView oobTreeView;
 
@@ -157,7 +157,7 @@ public class OOBEditor : HideableDocument<OOBEditor>
         var addShipButton = root.Q<Button>("AddShipButton");
         var removeShipButton = root.Q<Button>("RemoveShipButton");
         var repairButton = root.Q<Button>("RepairButton");
-        var editRemarkButton = root.Q<Button>("EditRemarkButton");
+        var setRemarkButton = root.Q<Button>("SetRemarkButton");
 
         expandButton.clicked += () => oobTreeView.ExpandAll();
         collapseButton.clicked += () => oobTreeView.CollapseAll();
@@ -230,7 +230,7 @@ public class OOBEditor : HideableDocument<OOBEditor>
             // }
         };
 
-        editRemarkButton.clicked += () =>
+        setRemarkButton.clicked += () =>
         {
             if (currentSelectedShipGroup != null)
             {
@@ -278,12 +278,12 @@ public class OOBEditor : HideableDocument<OOBEditor>
 
     void RefreshSelectedGroupRemarkPreview()
     {
-        var remarkTextField = root?.Q<TextField>(ShipGroupRemarkTextFieldName);
-        if (remarkTextField == null)
+        var remarkRenderer = root?.Q<MarkdownRenderer>(ShipGroupRemarkMarkdownRendererName);
+        if (remarkRenderer == null)
             return;
 
         var value = currentSelectedShipGroup?.remark?.shortName ?? string.Empty;
-        remarkTextField.SetValueWithoutNotify(value);
+        remarkRenderer.SetMarkdownWithoutNotify(value);
     }
 
     public void OnShipGroupsChanged(object sender, List<ShipGroup> rootShipGroups)

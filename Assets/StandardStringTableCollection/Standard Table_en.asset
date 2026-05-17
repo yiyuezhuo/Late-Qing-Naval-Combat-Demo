@@ -1149,33 +1149,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 191682492141568
-    m_Localized: "\r\n## Getting Started\r\n\r\n- Right-click and drag to move the
-      camera, use the scroll wheel to adjust the zoom level.\r\n- Press 1 to advance
-      by 1 minute\r\n- Control group leader (icon with a direction arrow) to control
-      a group\r\n    - Change direction: Select a group lead and left click a point
-      on globe to set a direction\r\n    - Change speed: Change value in the slider
-      of right panel\r\n    - Change or inspect a lot of details in editors.\r\n-
-      Use F or R to set Follow and relative to relationship, more parameter can be
-      specified in the ShipLog editor.\r\n\r\n## Automation\r\n\r\n- By default,
-      firing is automated, following a somewhat optimal rule, and can be configured
-      in the editor, ranging from doctrine to manual target specification.\r\n- If
-      a unit follow or is relative to a target, it will adjust its speed and course
-      to reach the desired position.\r\n- By default, an independent unit (usually
-      the group leader) maintains its current speed and course. However, if automatic
-      movement is enabled in the doctrine, the unit will adjust its course to maximize
-      firepower while minimizing incoming damage. (Speed is not controlled at this
-      point).\r\n\r\n## Shortcuts\r\n\r\nBasic:\r\n\r\n- Left Click: Select Unit\r\n-
-      Right Click: Select Unit and open Ship Log Editor for it.\r\n- Shift + Left
-      Click: Set course for the selected unit\r\n- D: Distance measuring line\r\n-
-      S: Line of Sight (check ship masking & Earth curvature)\r\n- I: Detach unit
-      (set control mode to Independent)\r\n- F: Set follow target (extra parameter
-      requires ship log editor)\r\n- R: Set relative to target (extra parameter requires
-      ship log editor)\r\n- L: Open Ship Log Editor for the selected ship\r\n- Esc:
-      Reset UI to idle state.\r\n\r\nEdit:\r\n\r\n- Insert: Insert a ShipLog on map.
-      (Deploy a \"non-deployed\" ship to map).\r\n- Delete: Delete selected ship.\r\n-
-      M: Move selected ship to another point.\r\n\r\n## Core\r\n\r\nMost core is
-      based on the rulebook of SEEKRIEG 5, Dawn of the Battleship also give some
-      insights.\r\n\r\n## Report bugs and Suggestions\r\n\r\nhttps://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo\r\n"
+    m_Localized: "\r\n## Getting Started\r\n\r\n- Right-click and drag to move the camera, use the scroll wheel to adjust the zoom level.\r\n- Press 1 to advance by 1 minute\r\n- Control group leader (icon with a direction arrow) to control a group\r - Change direction: Select a group lead and left click a point on globe to set a direction\r - Change speed: Change value in the slider of right panel\r - Change or inspect a lot of details in editors.\r\n- Use F or R to set Follow and relative to relationship, more parameter can be specified in the ShipLog editor.\r\n\r\n## Automation\r\n\r\n- By default, firing is automated, following a somewhat optimal rule, and can be configured in the editor, ranging from doctrine to manual target specification.\r\n- If a unit follow or is relative to a target, it will adjust its speed and course to reach the desired position.\r\n- By default, an independent unit (usually the group leader) maintains its current speed and course. However, if automatic movement is enabled in the doctrine, the unit will adjust its course to maximize firepower while minimizing incoming damage. (Speed is not controlled at this point).\r\n\r\n## Shortcuts\r\n\r\nBasic:\r\n\r\n- Left Click: Select Unit\r\n- Right Click: Select Unit and open Ship Log Editor for it.\r\n- Shift + Left Click: Set course for the selected unit\r\n- D: Distance measuring line\r\n- S: Line of Sight (check ship masking & Earth curvature)\r\n- I: Detach unit (set control mode to Independent)\r\n- F: Set follow target (extra parameter requires ship log editor)\r\n- R: Set relative to target (extra parameter requires ship log editor)\r\n- L: Open Ship Log Editor for the selected ship\r\n- Esc: Reset UI to idle state.\r\n\r\nEdit:\r\n\r\n- Insert: Insert a ShipLog on map. (Deploy a \"non-deployed\" ship to map).\r\n- Delete: Delete selected ship.\r\n- M: Move selected ship to another point.\r\n\r\n## Core\r\n\r\nMost core is based on the rulebook of SEEKRIEG 5, Dawn of the Battleship also give some insights.\r\n\r\n## Report bugs and Suggestions\r\n\r\nhttps://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo\r\n"
     m_Metadata:
       m_Items: []
   - m_Id: 192325730603008
@@ -1707,59 +1681,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 10965740016013312
-    m_Localized: "## Localization Quality Issues?\r\n\r\nThe development base language
-      is English, which remains the most polished version. If you encounter questionable
-      translations in other languages, please verify against the English version
-      first.\r\n\r\nCurrent localization approach:\r\n\r\n- **Basic UI**: English
-      and Simplified Chinese versions are manually crafted. Japanese and Traditional
-      Chinese are LLM-translated based on the above two languages.\r\n- **Remarks**:
-      Source content with its orignal language appears at the top; translation follow
-      below.\r\n- **Long Texts** (Help, tutorials, Steam page, etc.): English version
-      are manually written; other languages are LLM-translated from English.\r\n-
-      **Dynamic Content** (Damage effects, combat logs, etc.): Not yet localized.\r\n\r\n##
-      Why Don\u2019t Ships Sink Immediately After Reaching 100% Damage Points?\r\n\r\nIn
-      the SK5 system, reaching 100% Damage Points (DP) does not guarantee a ship
-      will sink. A vessel might survive well beyond 100% DP \u2014 or sink instantly
-      from the first hit.\r\n\r\nDP primarily drives the generation of General Damage
-      Effects, which can severely impair a ship\u2019s combat capability. The 100%
-      DP mark indicates a high probability that the ship becomes mission-killed (combat
-      ineffective).\r\n\r\nMechanically, 100% DP marks the point at which General
-      Damage Effect checks cease. Beyond this threshold, no further General DE rolls
-      are made, meaning that additional damage is relatively less likely to cause
-      the ship to sink via general damage (you can think of this as the chance of
-      catastrophic explosions, such as magazine detonations, having already been
-      exhausted, so further shell holes above the waterline no longer increase the
-      likelihood of sinking).\r\nThat said, specific damage effects resulting from
-      normal hits can still sink the ship.\r\n\r\n## How to Enable Movement AI\r\n\r\nSelect
-      a group in the OOB Editor, turn off \"Inherited\" in the automatic movement
-      field, and set it to \"Automatic.\" The group will then change its course according
-      to certain principles. This setting is usually applied to a top-level group,
-      such as \"Japan Fleet\" or \"China Fleet,\" but it can also be set at a subordinate
-      level for partial automation.\r\n\r\n## Editing is Not Intuitive\r\n\r\nI haven\u2019t
-      written related material since major rework is expected. If you really want
-      to edit something and find it frustrating, contact me (via GitHub issue or
-      Discord server) to let me know someone is really interested, I would write
-      a temp document to explain how to do it in the current stage.\r\n\r\n## Why
-      are so many standard UI elements named \"Editor\"? I don't want to \"edit\"
-      anything\u2014I just want to play.\r\n\r\nI aim to recreate a sandbox experience
-      similar to Vassal and Tabletop Simulator (TTS), where editing allows players
-      to introduce custom rules and house rules without coding. On the ohter hand,
-      in games like Command: Modern Operations (CMO), players often use edit mode
-      to streamline experimentation\u2014a feature I want to incorporate into game.\r\n\r\n##
-      Why is so much image loading done at runtime?\r\n\r\nI want to emulate Tabletop
-      Simulator's approach of loading images dynamically during gameplay.\r\n\r\n##
-      Why Is the Game So Large? Shouldn't It Be a Mini Game liek RTW Given the \"Minimalist\"
-      Graphics?\r\n\r\nSimilar to games like CMO, the majority of the installation
-      size comes from GIS elevation data. While titles such as Rule the Wave avoid
-      this overhead by using vector data, this project uses raster data \u2014 even
-      though ocean depth data has been clamped.\r\n\r\nThe reason for retaining elevation
-      data is to support a planned tactical land combat generator, which will utilize
-      terrain elevation in future updates. Also elevation data will render location
-      more recognizable and pretty.\r\n\r\n## Is the Strategic Game Playable Now?\r\n\r\nNo,
-      only the naval tactical game is currently playable (to some extent). The exposed
-      strategic game mode only gives a *feel* for what the full strategic experience
-      will eventually be like. \r\n\r\nThis area may also be of interest to open-source
-      contributors, as the strategic game is now the main focus of development.\r\n"
+    m_Localized: "## Localization Quality Issues?\r\n\r\nThe development base language is English, which remains the most polished version. If you encounter questionable translations in other languages, please verify against the English version first.\r\n\r\nCurrent localization approach:\r\n\r\n- **Basic UI**: English and Simplified Chinese versions are manually crafted. Japanese and Traditional Chinese are LLM-translated based on the above two languages.\r\n- **Remarks**: Source content with its orignal language appears at the top; translation follow below.\r\n- **Long Texts** (Help, tutorials, Steam page, etc.): English version are manually written; other languages are LLM-translated from English.\r\n- **Dynamic Content** (Damage effects, combat logs, etc.): Not yet localized.\r\n\r\n## Why Don’t Ships Sink Immediately After Reaching 100% Damage Points?\r\n\r\nIn the SK5 system, reaching 100% Damage Points (DP) does not guarantee a ship will sink. A vessel might survive well beyond 100% DP — or sink instantly from the first hit.\r\n\r\nDP primarily drives the generation of General Damage Effects, which can severely impair a ship’s combat capability. The 100% DP mark indicates a high probability that the ship becomes mission-killed (combat ineffective).\r\n\r\nMechanically, 100% DP marks the point at which General Damage Effect checks cease. Beyond this threshold, no further General DE rolls are made, meaning that additional damage is relatively less likely to cause the ship to sink via general damage (you can think of this as the chance of catastrophic explosions, such as magazine detonations, having already been exhausted, so further shell holes above the waterline no longer increase the likelihood of sinking).\r\nThat said, specific damage effects resulting from normal hits can still sink the ship.\r\n\r\n## How to Enable Movement AI\r\n\r\nSelect a group in the OOB Editor, turn off \"Inherited\" in the automatic movement field, and set it to \"Automatic.\" The group will then change its course according to certain principles. This setting is usually applied to a top-level group, such as \"Japan Fleet\" or \"China Fleet,\" but it can also be set at a subordinate level for partial automation.\r\n\r\n## Editing is Not Intuitive\r\n\r\nI haven’t written related material since major rework is expected. If you really want to edit something and find it frustrating, contact me (via GitHub issue or Discord server) to let me know someone is really interested, I would write a temp document to explain how to do it in the current stage.\r\n\r\n## Why are so many standard UI elements named \"Editor\"? I don't want to \"edit\" anything—I just want to play.\r\n\r\nI aim to recreate a sandbox experience similar to Vassal and Tabletop Simulator (TTS), where editing allows players to introduce custom rules and house rules without coding. On the ohter hand, in games like Command: Modern Operations (CMO), players often use edit mode to streamline experimentation—a feature I want to incorporate into game.\r\n\r\n## Why is so much image loading done at runtime?\r\n\r\nI want to emulate Tabletop Simulator's approach of loading images dynamically during gameplay.\r\n\r\n## Why Is the Game So Large? Shouldn't It Be a Mini Game liek RTW Given the \"Minimalist\" Graphics?\r\n\r\nSimilar to games like CMO, the majority of the installation size comes from GIS elevation data. While titles such as Rule the Wave avoid this overhead by using vector data, this project uses raster data — even though ocean depth data has been clamped.\r\n\r\nThe reason for retaining elevation data is to support a planned tactical land combat generator, which will utilize terrain elevation in future updates. Also elevation data will render location more recognizable and pretty.\r\n\r\n## Is the Strategic Game Playable Now?\r\n\r\nNo, only the naval tactical game is currently playable (to some extent). The exposed strategic game mode only gives a *feel* for what the full strategic experience will eventually be like. \r\n\r\nThis area may also be of interest to open-source contributors, as the strategic game is now the main focus of development.\r\n"
     m_Metadata:
       m_Items: []
   - m_Id: 11053239853813760

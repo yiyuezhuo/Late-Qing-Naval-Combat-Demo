@@ -26,6 +26,7 @@ Use the helper that matches the target table:
 - `Tools\add_localization.py` is for **Dynamic Table add**.
 - `Tools\update_dynamic_localization.py` is for **Dynamic Table batch update / mixed add / cleanup**.
 - `Tools\standard_localization.py` is for **Standard Table only**.
+- `Tools\update_standard_localization.py` is for **Standard Table batch update / mixed add**.
 - `Tools\update_scenario_localized_text.py` is for **scenario XML localized prose exact replacements**.
 - Check `Docs\Localization_Terminology.md` before translating naval, tactical,
   SK5, or other domain-specific terms. Add new special-case terms there rather
@@ -39,9 +40,21 @@ Use the helper that matches the target table:
 - Treat PowerShell as a command launcher only for multilingual localization work.
   Do not pass Japanese or Chinese replacement text through PowerShell here-strings,
   pipelines, command arguments, `Set-Content`, or `Out-File`.
+- Do not run long localization scripts through PowerShell here-strings such as
+  `@' ... '@ | python -`, especially when the script contains Japanese/Chinese
+  literals or regular expressions. This is only tolerable for short, ASCII-only,
+  read-only probes whose output will be re-checked before acting.
+- For one-off read-only scans that contain multilingual patterns, prefer saving a
+  UTF-8 `.py` file under `.codex-tmp\` and running it with
+  `python .codex-tmp\scan_....py`.
+  If the scan is likely to be reused, add a proper tool under `Tools\` instead.
+  Never use temporary inline Python for write-back.
 - Put multilingual batch data in UTF-8 JSON files and let the Python helper read
   those files directly. This avoids console code page and `$OutputEncoding`
   corruption.
+- Keep one-off localization JSON/script files under `.codex-tmp\` or outside the
+  repo, not Unity's `Temp\` directory. Delete them after the helper run unless
+  the user explicitly asks to keep the batch as an artifact.
 - Do not trust `Get-Content` output when diagnosing mojibake. If text looks
   corrupted in PowerShell, confirm with Python using `encoding="utf-8-sig"`:
   `python -c "from pathlib import Path; print(Path('path').read_text(encoding='utf-8-sig'))"`.
@@ -72,6 +85,9 @@ Use the helper that matches the target table:
   - `python Tools\standard_localization.py query "My Label"`
   - `python Tools\standard_localization.py add --key "..." --en "..." --ja "..." --zh-hans "..." --zh-hant "..."`
   - `python Tools\standard_localization.py ensure --file keys.json`
+- To update existing Standard Table values, or to do a mixed batch that updates existing keys and adds missing keys:
+  - `python Tools\update_standard_localization.py --file path\to\updates.json --add-missing`
+  - Existing-key entries may include only the locale fields being changed. Missing-key entries must include `key`, `en`, `ja`, `zh-hans`, and `zh-hant`.
 - After adding or reusing a key, paste the printed `LocalizedString` snippet into the target UXML file inside a `<Bindings>` block.
 - Use `property="text"` for Button/Label text and `property="label"` for control labels.
 
@@ -93,13 +109,14 @@ Scenario tutorial scripts may use inline `getLocalized(en, ja, zhHans, zhHant)` 
 
 For exact replacements in scenario XML, use:
 
-- `python Tools\update_scenario_localized_text.py --file path\to\scenario_text_updates.json`
+- `python Tools\update_scenario_localized_text.py --file .codex-tmp\scenario_text_updates.json`
 - Add `--dry-run` to preview.
 - The JSON file should be UTF-8 and contain `entries` with `file`, `old`, `new`,
   and optional `count` (defaults to `1`). The helper preserves the file's detected
   encoding and line endings, and fails if the expected occurrence count does not
   match. It also refuses to write files whose XML encoding declaration disagrees
   with the actual bytes.
+- Delete one-off batch JSON files after applying and reviewing the diff.
 - To scan scenario XML for common mojibake markers with Python UTF-8 decoding,
   use `python Tools\update_scenario_localized_text.py --scan-mojibake`. Treat
   results as review candidates; accented Latin names can be legitimate.
@@ -123,7 +140,7 @@ For exact replacements in scenario XML, use:
   - `python Tools\normalize_localization_ids.py status`
 - Verify no localization ID/reference problems remain:
   - `python Tools\normalize_localization_ids.py verify`
-  - This also checks for duplicate `m_Id` entries inside each shared and locale table asset.
+  - This also checks for duplicate `m_Id` entries inside each shared and locale table asset, plus common localization encoding damage such as replacement characters, question-mark corruption, mojibake markers, suspicious wrapped line breaks, and raw non-ASCII in escaped locale assets.
 - Re-pack fragmented negative IDs when necessary:
   - `python Tools\normalize_localization_ids.py --apply`
 - For new entries, let the helper scripts assign the next sequential small negative ID automatically. Do not manually invent large arbitrary negative IDs.

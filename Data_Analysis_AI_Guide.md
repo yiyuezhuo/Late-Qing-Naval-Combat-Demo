@@ -14,9 +14,15 @@ XML data under `Assets/StreamingAssets/Scenarios/`.
 5. Treat high residuals as review candidates, not automatic errors.
 6. Do not write tests for exploratory data analysis unless explicitly asked.
 
-Prefer small Python scripts for repeatable analysis. It is fine to run them
-inline for exploration, but keep the parsing and filtering logic clear enough
-to reproduce.
+Prefer small Python scripts for repeatable analysis. Inline Python is fine for
+short ASCII-only read-only exploration, but do not pipe long scripts through
+PowerShell here-strings when the script contains Japanese/Chinese literals,
+regular expressions, or replacement text. For multilingual scans, save a UTF-8
+temporary `.py` file under `.codex-tmp\` or promote the workflow into `Tools\`;
+for multilingual write-back, use a checked-in helper plus UTF-8 JSON input.
+Do not use Unity's `Temp\` directory for agent-authored scratch scripts or
+batch files, and delete one-off scratch files after use unless the user asks to
+keep them.
 
 ## 2. XML encoding checks
 
@@ -74,9 +80,13 @@ When editing scenario XML, follow the repository XML guardrails:
 - Prefer Python scripts over PowerShell text replacement or write-back.
 - For localized prose exact replacements under
   `Assets/StreamingAssets/Scenarios/`, prefer
-  `python Tools\update_scenario_localized_text.py --file updates.json`.
+  `python Tools\update_scenario_localized_text.py --file .codex-tmp\updates.json`.
   Put Japanese/Chinese text in the UTF-8 JSON file, not in a PowerShell
-  here-string or command argument.
+  here-string or command argument. Delete one-off update JSON files after
+  applying and reviewing the diff.
+- Do not use `@' ... '@ | python -` for scenario XML write-back. For read-only
+  multilingual scans it is still easy to misread PowerShell output, so prefer a
+  UTF-8 `.py` file or a reusable tool.
 - Do not use `Set-Content` for multilingual XML.
 - Do not trust `Get-Content` output when diagnosing mojibake; confirm by reading
   the file with Python using `encoding="utf-8-sig"`.

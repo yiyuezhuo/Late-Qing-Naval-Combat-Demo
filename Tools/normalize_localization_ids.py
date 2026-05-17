@@ -16,6 +16,9 @@ WHAT IT DOES
   - Reports the current negative-ID range, next free ID, fragmentation, legacy large negatives,
     duplicate IDs inside table assets, locale synchronization status, and Standard Table
     UXML reference health.
+  - Verifies localized text for common encoding damage such as replacement characters,
+    question-mark corruption, mojibake markers, suspicious wrapped line breaks,
+    and raw non-ASCII in escaped locale assets.
 """
 
 import argparse
@@ -50,6 +53,11 @@ TABLES = {
     },
 }
 
+MOJIBAKE_PATTERN = re.compile(
+    r"(?:[\u00C3\u0192\u00C2\u00E3\u00E4\u00E5\u00E6\u00EF].|\u00C3\u00A2..|\u00EF\u00BF\u00BD)"
+)
+QUESTION_MARK_RUN_PATTERN = re.compile(r"\?{3,}")
+
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -74,6 +82,40 @@ def parse_all_ids(content: str) -> list[int]:
     return [int(value) for value in re.findall(r"m_Id: (-?\d+)", content)]
 
 
+def yaml_unquote(value: str) -> str:
+    value = value.strip()
+    if value.startswith("'") and value.endswith("'"):
+        return value[1:-1].replace("''", "'")
+    if value.startswith('"') and value.endswith('"'):
+        return bytes(value[1:-1], "utf-8").decode("unicode_escape")
+    return value
+
+
+def parse_locale_entries(content: str) -> list[dict]:
+    entries = []
+    pattern = re.compile(
+        r"  - m_Id: (-?\d+)\n    m_Localized: (.*?)\n    m_Metadata:\n      m_Items: \[\]",
+        re.DOTALL,
+    )
+    for match in pattern.finditer(content):
+        raw_value = match.group(2).strip()
+        try:
+            decoded = yaml_unquote(raw_value)
+        except UnicodeDecodeError as exc:
+            decoded = ""
+            decode_error = str(exc)
+        else:
+            decode_error = None
+        entries.append({
+            "id": int(match.group(1)),
+            "raw": raw_value,
+            "decoded": decoded,
+            "line": content.count("\n", 0, match.start()) + 1,
+            "decode_error": decode_error,
+        })
+    return entries
+
+
 def find_duplicate_ids(ids: list[int]) -> list[int]:
     seen = set()
     duplicates = []
@@ -82,6 +124,48 @@ def find_duplicate_ids(ids: list[int]) -> list[int]:
             duplicates.append(entry_id)
         seen.add(entry_id)
     return sorted(duplicates)
+
+
+def detect_encoding_issues(path: str, locale: str, content: str) -> list[str]:
+    issues = []
+    expects_escaped = locale != "en"
+
+    for entry in parse_locale_entries(content):
+        location = f"{path}:{entry['line']} (id {entry['id']})"
+        raw_value = entry["raw"]
+        decoded = entry["decoded"]
+
+        if entry["decode_error"]:
+            issues.append(f"{location}: cannot decode YAML double-quoted escapes: {entry['decode_error']}.")
+            continue
+
+        has_physical_wrap = "\n" in raw_value
+        has_escaped_line_break = "\\r" in raw_value or "\\n" in raw_value
+        if has_physical_wrap and has_escaped_line_break:
+            issues.append(
+                f"{location}: mixes YAML physical wrapping with escaped line breaks; "
+                "rewrite through a localization helper."
+            )
+
+        if not has_physical_wrap and re.search(r"\n[ \t]{2,}", decoded):
+            issues.append(
+                f"{location}: decoded text contains LF followed by indentation; "
+                "possible serialized line-wrap leakage."
+            )
+
+        if "\ufffd" in decoded or "\\uFFFD" in raw_value or "\\ufffd" in raw_value:
+            issues.append(f"{location}: contains Unicode replacement character.")
+
+        if expects_escaped and QUESTION_MARK_RUN_PATTERN.search(decoded):
+            issues.append(f"{location}: contains a run of question marks; possible lost CJK/kana text.")
+
+        if MOJIBAKE_PATTERN.search(decoded):
+            issues.append(f"{location}: contains common mojibake markers.")
+
+        if expects_escaped and any(ord(ch) > 127 for ch in raw_value):
+            issues.append(f"{location}: contains raw non-ASCII; store non-English locale text as \\uXXXX escapes.")
+
+    return issues
 
 
 def parse_negative_ids(content: str) -> list[int]:
@@ -160,14 +244,30 @@ def summarize_table(name: str, cfg: dict) -> dict:
     locale_sets = {}
     locale_duplicate_ids = []
     locale_mismatches = []
+    encoding_issues = []
     for locale_path in cfg["locales"]:
-        locale_all_ids = parse_all_ids(read(locale_path))
+        locale_content = read(locale_path)
+        locale = os.path.basename(locale_path)
+        if locale.endswith("_en.asset"):
+            locale_key = "en"
+        elif locale.endswith("_ja.asset"):
+            locale_key = "ja"
+        elif locale.endswith("_zh-Hans.asset"):
+            locale_key = "zh-hans"
+        elif locale.endswith("_zh-Hant.asset"):
+            locale_key = "zh-hant"
+        else:
+            locale_key = "unknown"
+
+        locale_all_ids = parse_all_ids(locale_content)
         duplicate_ids = find_duplicate_ids(locale_all_ids)
         if duplicate_ids:
             locale_duplicate_ids.append({
                 "path": locale_path,
                 "duplicates": duplicate_ids,
             })
+
+        encoding_issues.extend(detect_encoding_issues(locale_path, locale_key, locale_content))
 
         locale_ids = set(entry_id for entry_id in locale_all_ids if entry_id < 0)
         locale_sets[locale_path] = locale_ids
@@ -199,6 +299,7 @@ def summarize_table(name: str, cfg: dict) -> dict:
         "next_free_negative_id": next_free_negative_id(negative_ids),
         "large_negative_ids": large_negative_ids,
         "locale_mismatches": locale_mismatches,
+        "encoding_issues": encoding_issues,
         "uxml_refs": uxml_refs,
         "missing_uxml_refs": missing_uxml_refs,
     }
@@ -304,6 +405,7 @@ def cmd_status():
         print(f"Shared duplicate IDs: {len(summary['shared_duplicate_ids'])}")
         print(f"Locale files with duplicate IDs: {len(summary['locale_duplicate_ids'])}")
         print(f"Locale sync: {'ok' if not summary['locale_mismatches'] else 'mismatch'}")
+        print(f"Encoding health: {'ok' if not summary['encoding_issues'] else str(len(summary['encoding_issues'])) + ' issue(s)'}")
 
         if summary["uxml_refs"]:
             print(f"UXML refs: {len(summary['uxml_refs'])}")
@@ -331,6 +433,8 @@ def cmd_verify() -> int:
                 f"{table_name}: locale mismatch in {mismatch['path']} "
                 f"(missing {len(mismatch['missing'])}, extra {len(mismatch['extra'])})."
             )
+        for issue in summary["encoding_issues"]:
+            issues.append(f"{table_name}: {issue}")
         for ref in summary["missing_uxml_refs"]:
             issues.append(
                 f"{table_name}: missing UXML reference {ref['id']} at {ref['path']}:{ref['line']}."

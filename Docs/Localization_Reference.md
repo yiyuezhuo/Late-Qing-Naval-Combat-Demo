@@ -147,7 +147,7 @@ Use `Tools\add_localization.py` or `Tools\standard_localization.py add` to assig
 
 ## 10. Tools
 
-Four Python helper scripts live in `Tools\` to reduce manual error when editing the YAML asset files.
+Python helper scripts live in `Tools\` to reduce manual error when editing the YAML asset files.
 
 ### `Tools\dynamic_localization.py` — query and scan Dynamic Table usage
 
@@ -244,9 +244,34 @@ Wrap it in a `<Bindings>` block inside the target UXML element. Change `property
 
 **Only works for Standard Table.** For Dynamic Table entries, use `Tools\add_localization.py`.
 
+### `Tools\update_standard_localization.py` - update Standard Table entries
+
+Use this JSON-driven helper when changing existing Standard Table translations. It reads multilingual text from a UTF-8 file instead of carrying it through PowerShell command strings.
+
+```bash
+python Tools\update_standard_localization.py --file .codex-tmp\standard_updates.json
+python Tools\update_standard_localization.py --file .codex-tmp\standard_updates.json --add-missing
+python Tools\update_standard_localization.py --file .codex-tmp\standard_updates.json --dry-run
+```
+
+Existing-key entries may include only the locale fields being changed:
+
+```json
+{
+  "entries": [
+    {
+      "key": "Help Description",
+      "ja": "..."
+    }
+  ]
+}
+```
+
+When `--add-missing` creates a new key, the entry must include `key`, `en`, `ja`, `zh-hans`, and `zh-hant`.
+
 ### `Tools\normalize_localization_ids.py` — normalize and verify localization IDs
 
-Renumbers all manual negative IDs in both tables to a clean `-1, -2, -3, …` sequence and updates `entry="Id(...)"` references in Standard Table UXML files. It can also report current ID health and verify that no issues remain.
+Renumbers all manual negative IDs in both tables to a clean `-1, -2, -3, …` sequence and updates `entry="Id(...)"` references in Standard Table UXML files. It can also report current ID health and verify that no issues remain. `verify` also checks localized text for common encoding damage such as replacement characters, question-mark corruption, mojibake markers, suspicious wrapped line breaks, and raw non-ASCII in escaped non-English locale assets.
 
 ```bash
 python Tools\normalize_localization_ids.py

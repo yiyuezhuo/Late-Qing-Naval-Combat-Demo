@@ -14,6 +14,8 @@ when a term needs special handling.
 | Fire Control Code | 射撃指揮コード | Use for SK5 fire-control codes such as `1Q1`. |
 | Fire Control Radar | 射撃管制レーダー | This expression is common and may be kept. |
 | FCS | FCS | Keep the abbreviation when the English source uses the short label, especially in compact damage-effect text or UI columns. |
+| Doctrine | ドクトリン | Use for gameplay/UI doctrine settings. Avoid Chinese-style literal translations such as `教義` or `条令` in Japanese UI and tutorial text. |
+| Ship Class | 艦級 | Use for ship class/type records and UI labels. Avoid `艦型` unless translating a literal hull-form/type nuance outside the game data concept. |
 
 ## Chinese
 

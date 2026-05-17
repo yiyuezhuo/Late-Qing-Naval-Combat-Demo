@@ -3313,7 +3313,7 @@ Of course, these two classifications make no practical difference aside from the
    <RapidFireBatteryRecord>
     <name>
      <english>3''/28 12-pdf BLR</english>
-     <japanese>7.5cm単装砲2基,47mm単装砲6基</japanese>
+     <japanese>7.5cm単装砲2基、47mm単装砲6基</japanese>
     </name>
     <maxRangeYards>4810</maxRangeYards>
     <effectiveRangeYards>2165</effectiveRangeYards>
@@ -3649,7 +3649,7 @@ Chi Yuan or Jiyuan
    <RapidFireBatteryRecord>
     <name>
      <english>3pdr 5cwt Mk I,II</english>
-     <japanese>3.7cm5連装回転式機砲</japanese>
+     <japanese>3.7cm 5連装回転式機砲</japanese>
      <chineseSimplified>57毫米单装速射炮</chineseSimplified>
      <chineseTraditional>57毫米單裝速射砲</chineseTraditional>
     </name>
@@ -3762,7 +3762,7 @@ Chi Yuan or Jiyuan
    <BatteryRecord>
     <name>
      <english>30.5cm RKL/25 C/80</english>
-     <japanese>クルップ 30.5cm（25口径）後装填式ライフル砲</japanese>
+     <japanese>クルップ 30.5cm（25口径）後装式ライフル砲</japanese>
      <chineseSimplified>克虏伯305毫米口径大炮</chineseSimplified>
      <chineseTraditional>克虜伯305毫米口徑大炮</chineseTraditional>
     </name>
@@ -4219,7 +4219,7 @@ Ting Yuen or Dingyuan</english>
    <BatteryRecord>
     <name>
      <english>30.5cm RKL/25 C/80</english>
-     <japanese>クルップ 30.5cm（25口径）後装填式ライフル砲</japanese>
+     <japanese>クルップ 30.5cm（25口径）後装式ライフル砲</japanese>
      <chineseSimplified>克虏伯305毫米口径大炮</chineseSimplified>
      <chineseTraditional>克虜伯305毫米口徑大炮</chineseTraditional>
     </name>
@@ -10482,7 +10482,7 @@ Hiei (比叡, 1878)</english>
   <draftFoot>14</draftFoot>
   <engineDesc>
    <english>2-shaft VTE</english>
-   <japanese>直立3段3気筒レシプロ 2基,または横置3段3気筒レシプロ 2基</japanese>
+   <japanese>直立3段3気筒レシプロ2基、または横置3段3気筒レシプロ2基</japanese>
    <chineseSimplified />
    <chineseTraditional>垂直三汽缸三段膨胀式蒸汽引擎2座 2軸推進</chineseTraditional>
   </engineDesc>
@@ -11658,7 +11658,7 @@ Hiei (比叡, 1878)</english>
    <BatteryRecord>
     <name>
      <english>12cm/25 Krupp C/78</english>
-     <japanese>12cm克砲</japanese>
+     <japanese>12cmクルップ砲</japanese>
      <chineseSimplified>120毫米克虏伯炮</chineseSimplified>
      <chineseTraditional>120毫米克虜伯炮</chineseTraditional>
     </name>
@@ -12534,7 +12534,7 @@ Cancel Armor Type Factor</english>
    <BatteryRecord>
     <name>
      <english>12cm/25 Krupp C/78</english>
-     <japanese>12cm克(クルップ)砲</japanese>
+     <japanese>12cmクルップ砲</japanese>
      <chineseSimplified>12厘米克虏伯炮</chineseSimplified>
      <chineseTraditional>12釐米克虜伯炮</chineseTraditional>
     </name>

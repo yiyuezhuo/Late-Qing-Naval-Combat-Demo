@@ -208,7 +208,7 @@ You can see that the Three Views ships have started maneuvering too. They are no
 Then manually control Ting Yuen Squadron while the other two friendly squadrons remain under AI control, and fight a bit. You can also switch them back to Manual and control them yourself. You can test some other doctrines too; see the manual for their effects. Once you feel you have tested enough, exit this tutorial and move on to the next one.
 `,
 `
-三景艦艇も機動を始めたことが分かります。ただし発砲はしていません。通常のシナリオと違って、ここでは結果が制御不能になるのを避けるため、開始時に自動射撃を無効にしてあるからです。必要ならそれを有効に戻して、連合艦隊を AI に全面的に任せることもできます。
+三景艦も機動を始めたことが分かります。ただし発砲はしていません。通常のシナリオと違って、ここでは結果が制御不能になるのを避けるため、開始時に自動射撃を無効にしてあるからです。必要ならそれを有効に戻して、連合艦隊を AI に全面的に任せることもできます。
 
 そのうえで自分は定遠隊を手動で操作し、他の味方二隊は AI に任せたまま交戦してみてください。再び手動に戻して自分で操作しても構いません。ほかのドクトリンも試せますし、効果はマニュアルで確認できます。十分に試したと思ったら、このチュートリアルを終了して次へ進んでください。
 `,

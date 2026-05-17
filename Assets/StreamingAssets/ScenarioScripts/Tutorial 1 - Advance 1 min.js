@@ -87,7 +87,7 @@ Now right-click the unit on the map or left-click on unit's name hyper link in t
 Note: The Ship State View will open as either a list editor or a single-ship view, depending on whether game is in edit mode.
 `,
 `
-コースが変更されました。
+針路が変更されました。
 
 マップ上のユニットを右クリックするか、情報パネル内のユニット名ハイパーリンクを左クリックして「艦船状態ビュー」を開いてください。
 

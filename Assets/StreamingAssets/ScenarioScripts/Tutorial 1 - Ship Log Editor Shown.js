@@ -8,7 +8,7 @@ Certain advanced commands can only be issued from the Ship State View.
 Once you are familiar with the Ship State View, click “Go to Named Ship” in the top right corner to proceed to the Named Ship View.
 `,
 `
-艦船状態ビューには、ダメージ状況、武器の状態（弾薬、攻撃対象、使用可否）、ドクトリンなど、ユニットの動的な情報が表示されます。タブを切り替えることで、さまざまなカテゴリの情報を確認できます。
+艦船状態ビューには、損傷状況、武器の状態（弾薬、攻撃対象、使用可否）、ドクトリンなど、ユニットの動的な情報が表示されます。タブを切り替えることで、さまざまなカテゴリの情報を確認できます。
 
 一部の高度なコマンドは、この艦船状態ビューからのみ実行可能です。
 

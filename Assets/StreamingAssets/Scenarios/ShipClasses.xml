@@ -7541,9 +7541,9 @@ Fu Lung or Fulong
      <MountLocationRecord>
       <mountLocation>StarboardMidship</mountLocation>
       <barrels>1</barrels>
-      <mounts>2</mounts>
+      <mounts>1</mounts>
       <mountArcs>
-       <MountArcRecord startDeg="75" CoverageDeg="30" isCrossDeckFire="false" />
+       <MountArcRecord startDeg="30" CoverageDeg="70" isCrossDeckFire="false" />
       </mountArcs>
       <trainable>false</trainable>
       <reloadLimit>0</reloadLimit>
@@ -7551,16 +7551,40 @@ Fu Lung or Fulong
       <objectId>82767135-3227-41fa-9ed5-4b2250b3ca97</objectId>
      </MountLocationRecord>
      <MountLocationRecord>
-      <mountLocation>PortMidship</mountLocation>
+      <mountLocation>StarboardMidship</mountLocation>
       <barrels>1</barrels>
-      <mounts>2</mounts>
+      <mounts>1</mounts>
       <mountArcs>
-       <MountArcRecord startDeg="255" CoverageDeg="30" isCrossDeckFire="false" />
+       <MountArcRecord startDeg="80" CoverageDeg="70" isCrossDeckFire="false" />
       </mountArcs>
       <trainable>false</trainable>
       <reloadLimit>0</reloadLimit>
       <mountArcsPattern>Normal</mountArcsPattern>
       <objectId>5d272e49-71a8-4a5c-9729-99f4bae15ab9</objectId>
+     </MountLocationRecord>
+     <MountLocationRecord>
+      <mountLocation>PortMidship</mountLocation>
+      <barrels>1</barrels>
+      <mounts>1</mounts>
+      <mountArcs>
+       <MountArcRecord startDeg="210" CoverageDeg="70" isCrossDeckFire="false" />
+      </mountArcs>
+      <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
+      <mountArcsPattern>Normal</mountArcsPattern>
+      <objectId>aa66e8f0-eb8b-4a2a-8d71-0f1fa630d9bb</objectId>
+     </MountLocationRecord>
+     <MountLocationRecord>
+      <mountLocation>PortMidship</mountLocation>
+      <barrels>1</barrels>
+      <mounts>1</mounts>
+      <mountArcs>
+       <MountArcRecord startDeg="260" CoverageDeg="70" isCrossDeckFire="false" />
+      </mountArcs>
+      <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
+      <mountArcsPattern>Normal</mountArcsPattern>
+      <objectId>3adac4de-0e0f-4bcb-9009-1bc2db558acd</objectId>
      </MountLocationRecord>
     </mountLocationRecords>
     <objectId>f9c082dd-4b93-4123-860b-82b84e403286</objectId>

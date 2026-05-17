@@ -132,13 +132,13 @@ Each hit inflicts a "homogeneous" amount of damage point loss, while more "heter
 Some damage effects may be permanent or temporary, and they are displayed in the Damage Effect tab. Certain effects, especially shipboard fires, is damage controllable. They may tend to be worsen if no Damage Control points are allocated to them. The AI will use its Damage Control points to contain Damage Effects according to default priorities.
 `,
 `
-艦艇に損傷効果（副状態）が適用されました！
+艦艇に損傷効果（サブ状態）が適用されました！
 
 全体ログで影響を受けた艦船を確認するか、艦船状態ビューを開いて「損傷効果」タブに切り替え、各艦を確認してください。
 
 各命中は「均一的」な損傷点の増加をもたらしますが、弾薬庫爆発・浸水・舵故障・射撃指揮装置誤差など、より「不均一」で部位特異的な損傷は損傷効果によって処理されます。
 
-一部の損傷効果は永続的または一時的であり、「損傷効果」タブに表示されます。特に艦上火災などの効果は損傷制御可能です。損傷制御ポイントが割り当てられない場合、悪化する傾向があります。AIは既定の優先順位に従って損傷制御ポイントを使用し損傷効果を抑制します。
+一部の損傷効果は永続的または一時的であり、「損傷効果」タブに表示されます。特に艦上火災などの効果はダメージコントロール可能です。ダメージコントロールポイントが割り当てられない場合、悪化する傾向があります。AIは既定の優先順位に従ってダメージコントロールポイントを使用し損傷効果を抑制します。
 `,
 `
 舰艇已施加损伤效果（子状态）！

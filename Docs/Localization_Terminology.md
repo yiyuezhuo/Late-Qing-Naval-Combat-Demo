@@ -25,6 +25,7 @@ when a term needs special handling.
 | Mount | 砲架 | Use for gun/weapon mounts in UI and damage text. Use `魚雷発射管` or `魚雷発射機` for torpedo-specific mounts when the component is explicitly a torpedo tube/launcher. Avoid generic `マウント` and avoid confusing mount with `搭載`. |
 | Scenario | シナリオ | Use for game scenarios, tutorial scenarios, scenario picker labels, and scenario prose. Avoid Chinese-style `劇本` in Japanese UI and tutorial text. |
 | Encounter Rock | 過岩 | Scenario location name. Keep `過岩`; do not replace with a katakana transliteration. |
+| Dengzhou Prefecture / Dengzhou Fu | 登劦府 | Scenario source-title place name. Keep `登劦府`; do not normalize to `登州府`. |
 
 ## Chinese
 

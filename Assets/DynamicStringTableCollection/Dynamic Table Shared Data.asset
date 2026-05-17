@@ -4282,242 +4282,234 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -303
-    m_Key: BNH
-    m_Metadata:
-      m_Items: []
-  - m_Id: -304
     m_Key: Inclined (deg)
     m_Metadata:
       m_Items: []
-  - m_Id: -305
+  - m_Id: -304
     m_Key: Projectile Parameters
     m_Metadata:
       m_Items: []
-  - m_Id: -306
+  - m_Id: -305
     m_Key: Projectile Preset
     m_Metadata:
       m_Items: []
-  - m_Id: -307
+  - m_Id: -306
     m_Key: Diameter (inch)
     m_Metadata:
       m_Items: []
-  - m_Id: -308
+  - m_Id: -307
     m_Key: Total Weight (lb)
     m_Metadata:
       m_Items: []
-  - m_Id: -309
+  - m_Id: -308
     m_Key: Body Weight (lb)
     m_Metadata:
       m_Items: []
-  - m_Id: -310
+  - m_Id: -309
     m_Key: Windscreen (lb)
     m_Metadata:
       m_Items: []
-  - m_Id: -311
+  - m_Id: -310
     m_Key: Cap Type
     m_Metadata:
       m_Items: []
-  - m_Id: -312
+  - m_Id: -311
     m_Key: Hard Cap
     m_Metadata:
       m_Items: []
-  - m_Id: -313
+  - m_Id: -312
     m_Key: Muzzle Velocity (fps)
     m_Metadata:
       m_Items: []
-  - m_Id: -314
+  - m_Id: -313
     m_Key: Max Range (yards)
     m_Metadata:
       m_Items: []
-  - m_Id: -315
+  - m_Id: -314
     m_Key: Drag Function
     m_Metadata:
       m_Items: []
-  - m_Id: -316
+  - m_Id: -315
     m_Key: Drag Coefficient
     m_Metadata:
       m_Items: []
-  - m_Id: -317
+  - m_Id: -316
     m_Key: Elevation Deg
     m_Metadata:
       m_Items: []
-  - m_Id: -318
+  - m_Id: -317
     m_Key: Shell Quality
     m_Metadata:
       m_Items: []
-  - m_Id: -319
+  - m_Id: -318
     m_Key: Plot Parameters
     m_Metadata:
       m_Items: []
-  - m_Id: -320
+  - m_Id: -319
     m_Key: Elevation Mode
     m_Metadata:
       m_Items: []
-  - m_Id: -321
+  - m_Id: -320
     m_Key: Search Fix
     m_Metadata:
       m_Items: []
-  - m_Id: -322
+  - m_Id: -321
     m_Key: Search SK5
     m_Metadata:
       m_Items: []
-  - m_Id: -323
+  - m_Id: -322
     m_Key: Plot Mode
     m_Metadata:
       m_Items: []
-  - m_Id: -324
+  - m_Id: -323
     m_Key: Trajectories
     m_Metadata:
       m_Items: []
-  - m_Id: -325
+  - m_Id: -324
     m_Key: Start Elevation (deg)
     m_Metadata:
       m_Items: []
-  - m_Id: -326
+  - m_Id: -325
     m_Key: End Elevation (deg)
     m_Metadata:
       m_Items: []
-  - m_Id: -327
+  - m_Id: -326
     m_Key: Range Step (yards)
     m_Metadata:
       m_Items: []
-  - m_Id: -328
+  - m_Id: -327
     m_Key: '{0} result(s), {1} external ballistic failure(s).'
     m_Metadata:
       m_Items: []
-  - m_Id: -329
+  - m_Id: -328
     m_Key: Quality must be greater than 0.
     m_Metadata:
       m_Items: []
-  - m_Id: -330
+  - m_Id: -329
     m_Key: Elongation must be greater than 0.
     m_Metadata:
       m_Items: []
-  - m_Id: -331
-    m_Key: BNH must be greater than 0.
-    m_Metadata:
-      m_Items: []
-  - m_Id: -332
+  - m_Id: -330
     m_Key: Projectile component weights must be 0 or greater.
     m_Metadata:
       m_Items: []
-  - m_Id: -333
+  - m_Id: -331
     m_Key: Projectile component weights must not exceed total weight.
     m_Metadata:
       m_Items: []
-  - m_Id: -334
+  - m_Id: -332
     m_Key: Max range must be greater than 0.
     m_Metadata:
       m_Items: []
-  - m_Id: -335
+  - m_Id: -333
     m_Key: Shell quality must be greater than 0.
     m_Metadata:
       m_Items: []
-  - m_Id: -336
+  - m_Id: -334
     m_Key: Start elevation must be less than or equal to end elevation.
     m_Metadata:
       m_Items: []
-  - m_Id: -337
+  - m_Id: -335
     m_Key: Range step must be greater than 0.
     m_Metadata:
       m_Items: []
-  - m_Id: -338
+  - m_Id: -336
     m_Key: 'Failed to load NAAB-like data: {0}'
     m_Metadata:
       m_Items: []
-  - m_Id: -339
+  - m_Id: -337
     m_Key: Calculating...
     m_Metadata:
       m_Items: []
-  - m_Id: -340
+  - m_Id: -338
     m_Key: '{0}/{1} rows'
     m_Metadata:
       m_Items: []
-  - m_Id: -341
+  - m_Id: -339
     m_Key: AP Cap Weight (lb)
     m_Metadata:
       m_Items: []
-  - m_Id: -342
+  - m_Id: -340
     m_Key: Integration Step (ft)
     m_Metadata:
       m_Items: []
-  - m_Id: -343
+  - m_Id: -341
     m_Key: Integration step must be greater than 0.
     m_Metadata:
       m_Items: []
-  - m_Id: -344
+  - m_Id: -342
     m_Key: BHN
     m_Metadata:
       m_Items: []
-  - m_Id: -345
+  - m_Id: -343
     m_Key: BHN must be greater than 0.
     m_Metadata:
       m_Items: []
-  - m_Id: -346
+  - m_Id: -344
     m_Key: Medium Cap
     m_Metadata:
       m_Items: []
-  - m_Id: -347
+  - m_Id: -345
     m_Key: Soft Cap
     m_Metadata:
       m_Items: []
-  - m_Id: -348
+  - m_Id: -346
     m_Key: Hood
     m_Metadata:
       m_Items: []
-  - m_Id: -349
+  - m_Id: -347
     m_Key: Effective Shell Quality
     m_Metadata:
       m_Items: []
-  - m_Id: -350
+  - m_Id: -348
     m_Key: Effective shell quality must be greater than 0.
     m_Metadata:
       m_Items: []
-  - m_Id: -351
+  - m_Id: -349
     m_Key: Windscreen NBL Addend Multiplier
     m_Metadata:
       m_Items: []
-  - m_Id: -352
+  - m_Id: -350
     m_Key: Hi-Obl Windscreen NBL Addend Mult.
     m_Metadata:
       m_Items: []
-  - m_Id: -353
+  - m_Id: -351
     m_Key: High-Obliquity Threshold (deg)
     m_Metadata:
       m_Items: []
-  - m_Id: -354
+  - m_Id: -352
     m_Key: Windscreen NBL addend multipliers must be 0 or greater.
     m_Metadata:
       m_Items: []
-  - m_Id: -355
+  - m_Id: -353
     m_Key: High-obliquity threshold must be 0 or greater.
     m_Metadata:
       m_Items: []
-  - m_Id: -356
+  - m_Id: -354
     m_Key: Avg. wrought iron construction and armor material
     m_Metadata:
       m_Items: []
-  - m_Id: -357
+  - m_Id: -355
     m_Key: Avg. "mild/medium" construction steel. (1890-on)
     m_Metadata:
       m_Items: []
-  - m_Id: -358
+  - m_Id: -356
     m_Key: Avg. U.S WWI-era class "B" armor
     m_Metadata:
       m_Items: []
-  - m_Id: -359
+  - m_Id: -357
     m_Key: Enable NAAB-like Adaptation
     m_Metadata:
       m_Items: []
-  - m_Id: -360
+  - m_Id: -358
     m_Key: Enable Shell Quality
     m_Metadata:
       m_Items: []
-  - m_Id: -361
+  - m_Id: -359
     m_Key: Enable Extreme Obliquity Correction
     m_Metadata:
       m_Items: []
-  - m_Id: -362
+  - m_Id: -360
     m_Key: Only valid in strategic mode.
     m_Metadata:
       m_Items: []
@@ -4525,574 +4517,574 @@ MonoBehaviour:
     m_Key: TT - Tutorial 7 - Custom Scenario.scen.xml
     m_Metadata:
       m_Items: []
-  - m_Id: -363
+  - m_Id: -361
     m_Key: Free Observation
     m_Metadata:
       m_Items: []
-  - m_Id: -364
+  - m_Id: -362
     m_Key: Observer / Editor
     m_Metadata:
       m_Items: []
-  - m_Id: -365
+  - m_Id: -363
     m_Key: McCoy Okun Calculator
     m_Metadata:
       m_Items: []
-  - m_Id: -366
+  - m_Id: -364
     m_Key: Meta Info (McCoy Okun)
     m_Metadata:
       m_Items: []
-  - m_Id: -367
+  - m_Id: -365
     m_Key: All nose coverings intact
     m_Metadata:
       m_Items: []
-  - m_Id: -368
+  - m_Id: -366
     m_Key: All nose coverings lost
     m_Metadata:
       m_Items: []
-  - m_Id: -369
+  - m_Id: -367
     m_Key: Army Standard Metro
     m_Metadata:
       m_Items: []
-  - m_Id: -370
+  - m_Id: -368
     m_Key: CD0
     m_Metadata:
       m_Items: []
-  - m_Id: -371
+  - m_Id: -369
     m_Key: CLA
     m_Metadata:
       m_Items: []
-  - m_Id: -372
+  - m_Id: -370
     m_Key: Cached Binary Search
     m_Metadata:
       m_Items: []
-  - m_Id: -373
+  - m_Id: -371
     m_Key: Calculate successful rows before saving.
     m_Metadata:
       m_Items: []
-  - m_Id: -374
+  - m_Id: -372
     m_Key: 'Calculation time: {0} ms'
     m_Metadata:
       m_Items: []
-  - m_Id: -375
+  - m_Id: -373
     m_Key: Cancelled by user
     m_Metadata:
       m_Items: []
-  - m_Id: -376
+  - m_Id: -374
     m_Key: Capped Type 88/91/1 APC
     m_Metadata:
       m_Items: []
-  - m_Id: -377
+  - m_Id: -375
     m_Key: Click Calculate to run McCoy Plus Facehard.
     m_Metadata:
       m_Items: []
-  - m_Id: -378
+  - m_Id: -376
     m_Key: Completed
     m_Metadata:
       m_Items: []
-  - m_Id: -379
+  - m_Id: -377
     m_Key: Defl.
     m_Metadata:
       m_Items: []
-  - m_Id: -380
+  - m_Id: -378
     m_Key: Elevation (degree)
     m_Metadata:
       m_Items: []
-  - m_Id: -381
+  - m_Id: -379
     m_Key: Elevation Used
     m_Metadata:
       m_Items: []
-  - m_Id: -382
+  - m_Id: -380
     m_Key: External ballistic fit
     m_Metadata:
       m_Items: []
-  - m_Id: -383
+  - m_Id: -381
     m_Key: External ballistic fit started.
     m_Metadata:
       m_Items: []
-  - m_Id: -384
+  - m_Id: -382
     m_Key: Facehard + M79
     m_Metadata:
       m_Items: []
-  - m_Id: -385
+  - m_Id: -383
     m_Key: Facehard Only
     m_Metadata:
       m_Items: []
-  - m_Id: -386
+  - m_Id: -384
     m_Key: Facehard Penetration
     m_Metadata:
       m_Items: []
-  - m_Id: -387
+  - m_Id: -385
     m_Key: Facehard69 Legacy BASIC Report
     m_Metadata:
       m_Items: []
-  - m_Id: -388
+  - m_Id: -386
     m_Key: Fall Angle
     m_Metadata:
       m_Items: []
-  - m_Id: -389
+  - m_Id: -387
     m_Key: Fall Angle (degree)
     m_Metadata:
       m_Items: []
-  - m_Id: -390
+  - m_Id: -388
     m_Key: Finish or cancel the fitting job before saving.
     m_Metadata:
       m_Items: []
-  - m_Id: -391
+  - m_Id: -389
     m_Key: H Pen
     m_Metadata:
       m_Items: []
-  - m_Id: -392
+  - m_Id: -390
     m_Key: HBL
     m_Metadata:
       m_Items: []
-  - m_Id: -393
+  - m_Id: -391
     m_Key: Hard AP cap
     m_Metadata:
       m_Items: []
-  - m_Id: -394
+  - m_Id: -392
     m_Key: Height
     m_Metadata:
       m_Items: []
-  - m_Id: -395
+  - m_Id: -393
     m_Key: Height Curve
     m_Metadata:
       m_Items: []
-  - m_Id: -396
+  - m_Id: -394
     m_Key: Horizontal Pen Calc/SK5
     m_Metadata:
       m_Items: []
-  - m_Id: -397
+  - m_Id: -395
     m_Key: ICAO
     m_Metadata:
       m_Items: []
-  - m_Id: -398
+  - m_Id: -396
     m_Key: INTLIFT
     m_Metadata:
       m_Items: []
-  - m_Id: -399
+  - m_Id: -397
     m_Key: INTLIFT Report
     m_Metadata:
       m_Items: []
-  - m_Id: -400
+  - m_Id: -398
     m_Key: Input changed. Click Calculate to refresh.
     m_Metadata:
       m_Items: []
-  - m_Id: -401
+  - m_Id: -399
     m_Key: Intact
     m_Metadata:
       m_Items: []
-  - m_Id: -402
+  - m_Id: -400
     m_Key: Japanese Cap Head
     m_Metadata:
       m_Items: []
-  - m_Id: -403
+  - m_Id: -401
     m_Key: Laminar/Laminar
     m_Metadata:
       m_Items: []
-  - m_Id: -404
+  - m_Id: -402
     m_Key: Laminar/Turbulent
     m_Metadata:
       m_Items: []
-  - m_Id: -405
+  - m_Id: -403
     m_Key: Last Velocity
     m_Metadata:
       m_Items: []
-  - m_Id: -406
+  - m_Id: -404
     m_Key: Loaded max range, projectile weight, and projectile diameter from BatteryRecord.
     m_Metadata:
       m_Items: []
-  - m_Id: -407
+  - m_Id: -405
     m_Key: M79 Legacy BASIC Report
     m_Metadata:
       m_Items: []
-  - m_Id: -408
+  - m_Id: -406
     m_Key: M79 NBL
     m_Metadata:
       m_Items: []
-  - m_Id: -409
+  - m_Id: -407
     m_Key: M79 Only
     m_Metadata:
       m_Items: []
-  - m_Id: -410
+  - m_Id: -408
     m_Key: M79 Penetration
     m_Metadata:
       m_Items: []
-  - m_Id: -411
+  - m_Id: -409
     m_Key: MCDRAG
     m_Metadata:
       m_Items: []
-  - m_Id: -412
+  - m_Id: -410
     m_Key: MCDRAG Report
     m_Metadata:
       m_Items: []
-  - m_Id: -413
+  - m_Id: -411
     m_Key: MCGYRO
     m_Metadata:
       m_Items: []
-  - m_Id: -414
+  - m_Id: -412
     m_Key: MCGYRO Report
     m_Metadata:
       m_Items: []
-  - m_Id: -415
+  - m_Id: -413
     m_Key: Matched Range
     m_Metadata:
       m_Items: []
-  - m_Id: -416
+  - m_Id: -414
     m_Key: Matched Trajectories
     m_Metadata:
       m_Items: []
-  - m_Id: -417
+  - m_Id: -415
     m_Key: Maximum Range
     m_Metadata:
       m_Items: []
-  - m_Id: -418
+  - m_Id: -416
     m_Key: Maximum range must be greater than 0.
     m_Metadata:
       m_Items: []
-  - m_Id: -419
+  - m_Id: -417
     m_Key: McCoy Legacy BASIC Report
     m_Metadata:
       m_Items: []
-  - m_Id: -420
+  - m_Id: -418
     m_Key: Metrics
     m_Metadata:
       m_Items: []
-  - m_Id: -421
+  - m_Id: -419
     m_Key: NBL
     m_Metadata:
       m_Items: []
-  - m_Id: -422
+  - m_Id: -420
     m_Key: Navy BL
     m_Metadata:
       m_Items: []
-  - m_Id: -423
+  - m_Id: -421
     m_Key: No cap
     m_Metadata:
       m_Items: []
-  - m_Id: -424
+  - m_Id: -422
     m_Key: No valid SK5 rows.
     m_Metadata:
       m_Items: []
-  - m_Id: -425
+  - m_Id: -423
     m_Key: Not Specified
     m_Metadata:
       m_Items: []
-  - m_Id: -426
+  - m_Id: -424
     m_Key: Only windscreen lost
     m_Metadata:
       m_Items: []
-  - m_Id: -427
+  - m_Id: -425
     m_Key: Paused by user
     m_Metadata:
       m_Items: []
-  - m_Id: -428
+  - m_Id: -426
     m_Key: Penetration By Range
     m_Metadata:
       m_Items: []
-  - m_Id: -429
+  - m_Id: -427
     m_Key: Process Report
     m_Metadata:
       m_Items: []
-  - m_Id: -430
+  - m_Id: -428
     m_Key: ROF Calc/SK5
     m_Metadata:
       m_Items: []
-  - m_Id: -431
+  - m_Id: -429
     m_Key: Range Band Calc/SK5
     m_Metadata:
       m_Items: []
-  - m_Id: -432
+  - m_Id: -430
     m_Key: Range Sweep
     m_Metadata:
       m_Items: []
-  - m_Id: -433
+  - m_Id: -431
     m_Key: Recorded Runs
     m_Metadata:
       m_Items: []
-  - m_Id: -434
+  - m_Id: -432
     m_Key: Remaining AP Cap Body Weight
     m_Metadata:
       m_Items: []
-  - m_Id: -435
+  - m_Id: -433
     m_Key: Remaining AP Cap Weight
     m_Metadata:
       m_Items: []
-  - m_Id: -436
+  - m_Id: -434
     m_Key: Remaining Cap Head Weight
     m_Metadata:
       m_Items: []
-  - m_Id: -437
+  - m_Id: -435
     m_Key: Remaining Hood Weight
     m_Metadata:
       m_Items: []
-  - m_Id: -438
+  - m_Id: -436
     m_Key: Remaining Nose Covering Weight
     m_Metadata:
       m_Items: []
-  - m_Id: -439
+  - m_Id: -437
     m_Key: Remaining Velocity
     m_Metadata:
       m_Items: []
-  - m_Id: -440
+  - m_Id: -438
     m_Key: Rows
     m_Metadata:
       m_Items: []
-  - m_Id: -441
+  - m_Id: -439
     m_Key: Soft AP cap
     m_Metadata:
       m_Items: []
-  - m_Id: -442
+  - m_Id: -440
     m_Key: Solved Ranges
     m_Metadata:
       m_Items: []
-  - m_Id: -443
+  - m_Id: -441
     m_Key: Stability Factor
     m_Metadata:
       m_Items: []
-  - m_Id: -444
+  - m_Id: -442
     m_Key: Standard
     m_Metadata:
       m_Items: []
-  - m_Id: -445
+  - m_Id: -443
     m_Key: Sweep
     m_Metadata:
       m_Items: []
-  - m_Id: -446
+  - m_Id: -444
     m_Key: Terminal Height
     m_Metadata:
       m_Items: []
-  - m_Id: -447
+  - m_Id: -445
     m_Key: Terminal Velocity
     m_Metadata:
       m_Items: []
-  - m_Id: -448
+  - m_Id: -446
     m_Key: The selected lost-covering weight consumes all non-body weight; Facehard69
       requires remaining cap/hood weight for this state.
     m_Metadata:
       m_Items: []
-  - m_Id: -449
+  - m_Id: -447
     m_Key: Thickness Scan
     m_Metadata:
       m_Items: []
-  - m_Id: -450
+  - m_Id: -448
     m_Key: Thin/Tough hard cap
     m_Metadata:
       m_Items: []
-  - m_Id: -451
+  - m_Id: -449
     m_Key: Trajectory Points
     m_Metadata:
       m_Items: []
-  - m_Id: -452
+  - m_Id: -450
     m_Key: Turbulent/Turbulent
     m_Metadata:
       m_Items: []
-  - m_Id: -453
+  - m_Id: -451
     m_Key: Uncapped Type 91 AP
     m_Metadata:
       m_Items: []
-  - m_Id: -454
+  - m_Id: -452
     m_Key: V Pen
     m_Metadata:
       m_Items: []
-  - m_Id: -455
+  - m_Id: -453
     m_Key: VX
     m_Metadata:
       m_Items: []
-  - m_Id: -456
+  - m_Id: -454
     m_Key: VY
     m_Metadata:
       m_Items: []
-  - m_Id: -457
+  - m_Id: -455
     m_Key: VZ
     m_Metadata:
       m_Items: []
-  - m_Id: -458
+  - m_Id: -456
     m_Key: Vel
     m_Metadata:
       m_Items: []
-  - m_Id: -459
+  - m_Id: -457
     m_Key: Velocity
     m_Metadata:
       m_Items: []
-  - m_Id: -460
+  - m_Id: -458
     m_Key: Velocity Curve
     m_Metadata:
       m_Items: []
-  - m_Id: -461
+  - m_Id: -459
     m_Key: Vertical Pen Calc/SK5
     m_Metadata:
       m_Items: []
-  - m_Id: -462
+  - m_Id: -460
     m_Key: Windscreen and cap-head lost
     m_Metadata:
       m_Items: []
-  - m_Id: -463
+  - m_Id: -461
     m_Key: best BC {0}, score {1}
     m_Metadata:
       m_Items: []
-  - m_Id: -464
+  - m_Id: -462
     m_Key: current BC {0}, score {1}
     m_Metadata:
       m_Items: []
-  - m_Id: -465
+  - m_Id: -463
     m_Key: mismatch {0}, max range error {1} yd
     m_Metadata:
       m_Items: []
-  - m_Id: -466
+  - m_Id: -464
     m_Key: mismatch {0}, max range target failed
     m_Metadata:
       m_Items: []
-  - m_Id: -467
+  - m_Id: -465
     m_Key: pass {0}/4, candidate {1}/{2}
     m_Metadata:
       m_Items: []
-  - m_Id: -468
+  - m_Id: -466
     m_Key: '{0}: best BC {1}, score {2}.'
     m_Metadata:
       m_Items: []
-  - m_Id: -469
+  - m_Id: -467
     m_Key: '{0}: restored BC {1}.'
     m_Metadata:
       m_Items: []
-  - m_Id: -470
+  - m_Id: -468
     m_Key: 0 - shatter-resistant
     m_Metadata:
       m_Items: []
-  - m_Id: -471
+  - m_Id: -469
     m_Key: 1 - shatter-prone
     m_Metadata:
       m_Items: []
-  - m_Id: -472
+  - m_Id: -470
     m_Key: 2 - very weak / chilled cast iron
     m_Metadata:
       m_Items: []
-  - m_Id: -473
+  - m_Id: -471
     m_Key: 0 - no early breakage
     m_Metadata:
       m_Items: []
-  - m_Id: -474
+  - m_Id: -472
     m_Key: 1 - break-prone
     m_Metadata:
       m_Items: []
-  - m_Id: -475
+  - m_Id: -473
     m_Key: 2 - severe breakage
     m_Metadata:
       m_Items: []
-  - m_Id: -476
+  - m_Id: -474
     m_Key: 0 - normal body
     m_Metadata:
       m_Items: []
-  - m_Id: -477
+  - m_Id: -475
     m_Key: 1 - light case
     m_Metadata:
       m_Items: []
-  - m_Id: -478
+  - m_Id: -476
     m_Key: 2 - severe large cavity
     m_Metadata:
       m_Items: []
-  - m_Id: -479
+  - m_Id: -477
     m_Key: Distance Yards
     m_Metadata:
       m_Items: []
-  - m_Id: -480
+  - m_Id: -478
     m_Key: Save & Close
     m_Metadata:
       m_Items: []
-  - m_Id: -481
+  - m_Id: -479
     m_Key: Clear & Close
     m_Metadata:
       m_Items: []
-  - m_Id: -482
+  - m_Id: -480
     m_Key: FireControlSystemRole.Primary
     m_Metadata:
       m_Items: []
-  - m_Id: -483
+  - m_Id: -481
     m_Key: FireControlSystemRole.Secondary
     m_Metadata:
       m_Items: []
-  - m_Id: -484
+  - m_Id: -482
     m_Key: FireControlSystemEra.Predreadnought
     m_Metadata:
       m_Items: []
-  - m_Id: -485
+  - m_Id: -483
     m_Key: FireControlSystemEra.WorldWarI
     m_Metadata:
       m_Items: []
-  - m_Id: -486
+  - m_Id: -484
     m_Key: FireControlSystemEra.WorldWarII
     m_Metadata:
       m_Items: []
-  - m_Id: -487
+  - m_Id: -485
     m_Key: No standard fire control table is available for this Role/Code/Era combination.
     m_Metadata:
       m_Items: []
-  - m_Id: -488
+  - m_Id: -486
     m_Key: Fire control table reset from standard code table.
     m_Metadata:
       m_Items: []
-  - m_Id: -489
+  - m_Id: -487
     m_Key: This battery uses a custom fire control table. Resetting will replace
       it with the standard table generated from Role/Code/Era and clear the Custom
       flag.
     m_Metadata:
       m_Items: []
-  - m_Id: -490
+  - m_Id: -488
     m_Key: 'Custom Fire Control Table: differences from the standard code table are
       expected.'
     m_Metadata:
       m_Items: []
-  - m_Id: -491
+  - m_Id: -489
     m_Key: No standard table is available for the current Role/Code/Era.
     m_Metadata:
       m_Items: []
-  - m_Id: -492
+  - m_Id: -490
     m_Key: Matches standard fire control table.
     m_Metadata:
       m_Items: []
-  - m_Id: -493
+  - m_Id: -491
     m_Key: Does not match the standard code table. Review the table/code or mark
       it as Custom.
     m_Metadata:
       m_Items: []
-  - m_Id: -494
+  - m_Id: -492
     m_Key: Current standard code
     m_Metadata:
       m_Items: []
-  - m_Id: -495
+  - m_Id: -493
     m_Key: Closest standard code
     m_Metadata:
       m_Items: []
-  - m_Id: -496
+  - m_Id: -494
     m_Key: Standard Code Table
     m_Metadata:
       m_Items: []
-  - m_Id: -497
+  - m_Id: -495
     m_Key: Uses the standard SK5 table generated from the current Role, Code, and
       Era.
     m_Metadata:
       m_Items: []
-  - m_Id: -498
+  - m_Id: -496
     m_Key: Best matching standard codes
     m_Metadata:
       m_Items: []
-  - m_Id: -499
+  - m_Id: -497
     m_Key: No latent variable model parameters are available for the current Role/Code/Era.
     m_Metadata:
       m_Items: []
-  - m_Id: -500
+  - m_Id: -498
     m_Key: 'Latent variable model code ({0}, base {1}-{2}, midpoint {3}): {4}'
     m_Metadata:
       m_Items: []
-  - m_Id: -501
+  - m_Id: -499
     m_Key: Latent Variable Model Table
     m_Metadata:
       m_Items: []
-  - m_Id: -502
+  - m_Id: -500
     m_Key: Uses midpoint latent base and midpoint range/speed/aspect multipliers
       from the SK5 fire-control latent variable model.
     m_Metadata:
       m_Items: []
-  - m_Id: -503
+  - m_Id: -501
     m_Key: Each cell is shown as current / latent variable -> rounded, then rounded-current
       delta.
     m_Metadata:

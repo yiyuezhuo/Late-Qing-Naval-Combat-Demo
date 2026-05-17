@@ -1170,7 +1170,7 @@ namespace NavalCombatCore
         public ArmorRating armorRating = new();
 
         public string portraitUrl;
-        public string remark;
+        public GlobalString remark = new();
         public bool isPoorlySupported; // So this data point should not used in the SK5 model fitting
         // public string portraitCode;
         // public string portraitTopCode;

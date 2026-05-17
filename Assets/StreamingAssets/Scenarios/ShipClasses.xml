@@ -516,7 +516,9 @@
    <armorType>HarveyNickelSteel</armorType>
   </armorRating>
   <portraitUrl>https://upload.wikimedia.org/wikipedia/commons/2/24/Yoshino_The-Naval-Annual1897.jpg</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Yoshino</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Yoshino</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Yoshino.jpg</path>
@@ -1046,8 +1048,10 @@
    <armorType>HarveyNickelSteel</armorType>
   </armorRating>
   <portraitUrl>https://upload.wikimedia.org/wikipedia/commons/2/24/Yoshino_The-Naval-Annual1897.jpg</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Yoshino
-</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Yoshino
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Yoshino.jpg</path>
@@ -1570,7 +1574,9 @@
    <armorType>HarveyNickelSteel</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/Japanese_cruiser_Akitsushima#/media/File:Akitsushima_plan_1904.png</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Akitsushima</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Akitsushima</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Akitsushima.png</path>
@@ -2089,9 +2095,11 @@
    <armorType>HarveyNickelSteel</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/Japanese_cruiser_Akitsushima#/media/File:Akitsushima_plan_1904.png</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Akitsushima
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Akitsushima
 
-SK5 data book seems to forget to update Akitsushima's fire control table to reflect its fire control code's upgrade.</remark>
+SK5 data book seems to forget to update Akitsushima's fire control table to reflect its fire control code's upgrade.</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Akitsushima.png</path>
@@ -2563,10 +2571,12 @@ SK5 data book seems to forget to update Akitsushima's fire control table to refl
    <armorType>MildSteel</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/Japanese_cruiser_Naniwa#/media/File:Naniwa_class_cruiser_left_elevation_and_deck_plan_Brasseys_1888.jpg</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Naniwa
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Naniwa
 
 Though Naniwa is usually classified as a protected cruiser (designated CL in the SK5 taxonomy), for some reason SK5 lists it as a CA, so I use CA as well. (Note JTS Naval Campaign does this as well).
-Of course, these two classifications make no practical difference aside from the type symbol displayed next to the ship's name.</remark>
+Of course, these two classifications make no practical difference aside from the type symbol displayed next to the ship's name.</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Naniwa.jpg</path>
@@ -2920,13 +2930,15 @@ Of course, these two classifications make no practical difference aside from the
    <armorType>MildSteel</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/Japanese_cruiser_Naniwa#/media/File:Naniwa_class_cruiser_left_elevation_and_deck_plan_Brasseys_1888.jpg</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Naniwa
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Naniwa
 
 The graphic is the version of the earlier version, which is not a accurate representation of 1903 version.
 
 Though Naniwa is usually classified as a protected cruiser (designated CL in the SK5 taxonomy), for some reason SK5 lists it as a CA, so I use CA as well. (Note JTS Naval Campaign does this as well).
 Of course, these two classifications make no practical difference aside from the type symbol displayed next to the ship's name.
-</remark>
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Naniwa.jpg</path>
@@ -3360,11 +3372,13 @@ Of course, these two classifications make no practical difference aside from the
    <armorType>CompoundHardSteelFacedWroughtIron</armorType>
   </armorRating>
   <portraitUrl>https://www.the-blueprints.com/blueprints/ships/ships-china/90585/view/china_-_rocn_jiyuan_protected_cruiser_1895/</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Chinese_cruiser_Jiyuan
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Chinese_cruiser_Jiyuan
 
 Chi Yuan or Jiyuan
 
-15cm RKL/35 C/80 FC Table is not determined by FC code</remark>
+15cm RKL/35 C/80 FC Table is not determined by FC code</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Chi Yuan.png</path>
@@ -3697,7 +3711,9 @@ Chi Yuan or Jiyuan
    <armorType>MildSteel</armorType>
   </armorRating>
   <portraitUrl>Illustrated History of Chinese Warships 1855–1911 (by Chen Yue)  中国军舰图志 1855-1911 （陈悦）</portraitUrl>
-  <remark>https://zh.wikipedia.org/wiki/%E5%B9%BF%E4%B9%99%E5%8F%B7%E9%98%B2%E6%8A%A4%E5%B7%A1%E6%B4%8B%E8%88%B0</remark>
+  <remark>
+   <english>https://zh.wikipedia.org/wiki/%E5%B9%BF%E4%B9%99%E5%8F%B7%E9%98%B2%E6%8A%A4%E5%B7%A1%E6%B4%8B%E8%88%B0</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Kuang Yi.png</path>
@@ -4156,9 +4172,11 @@ Chi Yuan or Jiyuan
    <armorType>CompoundHardSteelFacedWroughtIron</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:Japanese_battleship_Chen_Yuen.jpg</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Dingyuan-class_ironclad
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Dingyuan-class_ironclad
 
-Ting Yuen or Dingyuan</remark>
+Ting Yuen or Dingyuan</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Ting Yuen.jpg</path>
@@ -4639,9 +4657,11 @@ Ting Yuen or Dingyuan</remark>
    <armorType>MildSteel</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:Japanese_battleship_Chen_Yuen.jpg</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Chinese_ironclad_Zhenyuan
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Chinese_ironclad_Zhenyuan
 
-Acquisition &amp; modified by Japan in 1895</remark>
+Acquisition &amp; modified by Japan in 1895</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Ting Yuen.jpg</path>
@@ -5063,11 +5083,13 @@ Acquisition &amp; modified by Japan in 1895</remark>
    <armorType>MildSteel</armorType>
   </armorRating>
   <portraitUrl>https://www.tynebuiltships.co.uk/C-Ships/chaoyung1881.html</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Chinese_cruiser_Chaoyong
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Chinese_cruiser_Chaoyong
 
 Chao Yung or Chao Yong
 
-I can't see why SK5 classify a Unprotected Cruiser to CA though.</remark>
+I can't see why SK5 classify a Unprotected Cruiser to CA though.</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Chao Yong.jpg</path>
@@ -5542,9 +5564,11 @@ I can't see why SK5 classify a Unprotected Cruiser to CA though.</remark>
    <armorType>MildSteel</armorType>
   </armorRating>
   <portraitUrl>https://forum.warthunder.com/t/qing-dynasty-beiyang-fleet-zhiyuan-chih-yuen-protected-cruiser/17129</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Chinese_cruiser_Zhiyuan
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Chinese_cruiser_Zhiyuan
 
-For some reason, SK5 classify it to CA</remark>
+For some reason, SK5 classify it to CA</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Chih Yuan.jpeg</path>
@@ -5964,9 +5988,11 @@ For some reason, SK5 classify it to CA</remark>
    <armorType>CompoundHardSteelFacedWroughtIron</armorType>
   </armorRating>
   <portraitUrl>https://www.the-blueprints.com/blueprints/ships/ships-china/49091/view/china_-_king_yuan_protected_cruiser_1884/</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Chinese_cruiser_Jingyuan_(1887)
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Chinese_cruiser_Jingyuan_(1887)
 
-King Yuan or Jingyuan</remark>
+King Yuan or Jingyuan</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/King Yuan.png</path>
@@ -6391,10 +6417,12 @@ King Yuan or Jingyuan</remark>
    <armorType>MildSteel</armorType>
   </armorRating>
   <portraitUrl>Illustrated History of Chinese Warships 1855–1911 (by Chen Yue)  中国军舰图志 1855-1911 （陈悦）</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Chinese_ironclad_Pingyuan
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Chinese_ironclad_Pingyuan
 
 Ping Yuen or Pingyuan
-</remark>
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Ping Yuen.png</path>
@@ -6792,9 +6820,11 @@ Ping Yuen or Pingyuan
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>Illustrated History of Chinese Warships 1855–1911 (by Chen Yue)  中国军舰图志 1855-1911 （陈悦）</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Chinese_corvette_Kwan_Chia
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Chinese_corvette_Kwan_Chia
 
-</remark>
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Kuang Chia.png</path>
@@ -7198,9 +7228,11 @@ Ping Yuen or Pingyuan
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>Illustrated History of Chinese Warships 1855–1911 (by Chen Yue)  中国军舰图志 1855-1911 （陈悦） </portraitUrl>
-  <remark>https://capitancreative.com/cwm/chin/%E5%A8%81%E9%81%A0%E5%BA%B7%E6%BF%9F.html
+  <remark>
+   <english>https://capitancreative.com/cwm/chin/%E5%A8%81%E9%81%A0%E5%BA%B7%E6%BF%9F.html
 https://baike.baidu.com/item/%E5%A8%81%E8%BF%9C%E5%8F%B7%E7%BB%83%E4%B9%A0%E8%88%B0/9147946
-</remark>
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Wei Yuan.png</path>
@@ -7337,10 +7369,12 @@ https://baike.baidu.com/item/%E5%A8%81%E8%BF%9C%E5%8F%B7%E7%BB%83%E4%B9%A0%E8%88
    <armorType>NoArmor</armorType>
   </armorRating>
   <portraitUrl>https://garystockbridge617.getarchive.net/amp/media/fulong-ship-1886-brasseys-1887-0c1793</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Chinese_torpedo_boat_Fulong
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Chinese_torpedo_boat_Fulong
 
 Fu Lung or Fulong
-</remark>
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Fu Lung.png</path>
@@ -7810,7 +7844,9 @@ Fu Lung or Fulong
    <armorType>MildSteel</armorType>
   </armorRating>
   <portraitUrl>https://combrig-models.com/index.php/1700/65-japanese-navy-1860-1918/518-fuso1900</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Japanese_ironclad_Fus%C5%8D</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_ironclad_Fus%C5%8D</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Fuso.png</path>
@@ -8343,7 +8379,8 @@ Fu Lung or Fulong
    <armorType>HarveyNickelSteel</armorType>
   </armorRating>
   <portraitUrl>https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:Itsukushima_Brasseys1902.png</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Itsukushima
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Itsukushima
 
 Sankeikan (三景艦, 'three-views ships')
 
@@ -8352,7 +8389,8 @@ The main armament consisted of one breech-loading 320-millimetre (12.6 in) Canet
 Itsukushima (厳島, 1891)
 
 (Though Itsukushima is similar to 2 other ships, the main gun make significant variance)
-</remark>
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Itsukushima.png</path>
@@ -8885,7 +8923,9 @@ Itsukushima (厳島, 1891)
    <armorType>HarveyNickelSteel</armorType>
   </armorRating>
   <portraitUrl>https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:Itsukushima_Brasseys1902.png</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Itsukushima</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Itsukushima</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Itsukushima.png</path>
@@ -9401,7 +9441,8 @@ Itsukushima (厳島, 1891)
    <armorType>HarveyNickelSteel</armorType>
   </armorRating>
   <portraitUrl>https://naval-encyclopedia.com/industrial-era/1890-fleets/japan/matsushima-class_cruiser.php</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Matsushima-class_cruiser
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Matsushima-class_cruiser
 
 Sankeikan (三景艦, 'three-views ships')
 
@@ -9413,7 +9454,8 @@ Hashidate ((橋立, 1894)
 (Though Itsukushima is similar to 2 ships, the main gun make significant variance)
 
 For reason, it's classified as CA in SK5.
-</remark>
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Matsushima.jpg</path>
@@ -9929,7 +9971,9 @@ For reason, it's classified as CA in SK5.
    <armorType>HarveyNickelSteel</armorType>
   </armorRating>
   <portraitUrl>https://naval-encyclopedia.com/industrial-era/1890-fleets/japan/matsushima-class_cruiser.php</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Matsushima-class_cruiser</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Matsushima-class_cruiser</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Matsushima.jpg</path>
@@ -10374,10 +10418,12 @@ For reason, it's classified as CA in SK5.
    <armorType>WroughtIron</armorType>
   </armorRating>
   <portraitUrl>https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Kongo%281878%29.jpg/960px-Kongo%281878%29.jpg</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Japanese_ironclad_Kong%C5%8D
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_ironclad_Kong%C5%8D
 
 Kongō (金剛, 1878)
-Hiei (比叡, 1878)</remark>
+Hiei (比叡, 1878)</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Kongo(1878).jpg</path>
@@ -10764,7 +10810,9 @@ Hiei (比叡, 1878)</remark>
    <armorType>HarveyNickelSteel</armorType>
   </armorRating>
   <portraitUrl>https://zh.wikipedia.org/wiki/%E5%8D%83%E4%BB%A3%E7%94%B0%E8%99%9F%E9%98%B2%E8%AD%B7%E5%B7%A1%E6%B4%8B%E8%89%A6#/media/File:Chiyoda_plan_1904.png</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Chiyoda</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Chiyoda</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Chiyoda.png</path>
@@ -11135,8 +11183,10 @@ Hiei (比叡, 1878)</remark>
    <armorType>WroughtIron</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:Japanese_Gunboat_Maya.jpg</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Japanese_gunboat_Maya
-</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_gunboat_Maya
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Maya.jpg</path>
@@ -11385,8 +11435,10 @@ Hiei (比叡, 1878)</remark>
    <armorType>NoArmor</armorType>
   </armorRating>
   <portraitUrl>https://nntmodell.com/en/Ships/Merchant-Cruiser-Saikyomaru.html</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Saiky%C5%8D_Maru
-</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Saiky%C5%8D_Maru
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Saikyo_Maru.png</path>
@@ -11829,7 +11881,8 @@ Hiei (比叡, 1878)</remark>
    <superStructureVertical effectInch="0" actualInch="0" />
    <armorType>NoArmor</armorType>
   </armorRating>
-  <remark>https://en.wikipedia.org/wiki/Katsuragi-class_corvette
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Katsuragi-class_corvette
 
 7 1'- guns are ignored.
 
@@ -11837,7 +11890,8 @@ Katsuragi (葛城, 1883)
 Yamato (大和, 1883)
 Musashi (武蔵, 1884)
 
-Cancel Armor Type Factor</remark>
+Cancel Armor Type Factor</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Katsuragi.jpg</path>
@@ -12226,7 +12280,8 @@ Cancel Armor Type Factor</remark>
    <superStructureVertical effectInch="0" actualInch="0" />
    <armorType>NoArmor</armorType>
   </armorRating>
-  <remark>https://en.wikipedia.org/wiki/Japanese_corvette_Tenry%C5%AB
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_corvette_Tenry%C5%AB
 
 SK5 forget a 170mm gun?
 
@@ -12234,7 +12289,8 @@ Japanese wiki don't mention 75mm gun.
 
 4x 25mm guns are ignored.
 
-Cancel Armor Type Factor</remark>
+Cancel Armor Type Factor</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Tenryu.jpg</path>
@@ -12676,7 +12732,8 @@ Cancel Armor Type Factor</remark>
    <superStructureVertical effectInch="0" actualInch="0" />
    <armorType>NoArmor</armorType>
   </armorRating>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Takao_%281888%29
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Takao_%281888%29
 
 高雄（たかお、旧仮名:たかを）は、日本海軍の巡洋艦。 艦名は京都府の高雄山にちなむ。 日本海軍艦船名としては運送船「高雄丸」に続いて2代目。 
 
@@ -12686,7 +12743,8 @@ Takao (Takao, old kana: Takao) was a cruiser of the Imperial Japanese Navy. The 
 
 In SK5 data, RF gun seeme come from QF 6-pounder Hotchkiss gun, but the Japanese wiki doesn't mension it.
 
-Cancel Armor Type Factor</remark>
+Cancel Armor Type Factor</english>
+  </remark>
   <isPoorlySupported>true</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Takao.jpg</path>
@@ -12823,7 +12881,8 @@ Cancel Armor Type Factor</remark>
    <superStructureVertical effectInch="0" actualInch="0" />
    <armorType>NoArmor</armorType>
   </armorRating>
-  <remark>https://ja.wikipedia.org/wiki/%E7%AC%AC%E4%BA%94%E5%8F%B7%E5%9E%8B%E6%B0%B4%E9%9B%B7%E8%89%87
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E7%AC%AC%E4%BA%94%E5%8F%B7%E5%9E%8B%E6%B0%B4%E9%9B%B7%E8%89%87
 
 三等水雷艇 - 第五号型水雷艇
 
@@ -12831,7 +12890,8 @@ Cancel Armor Type Factor</remark>
 第5号 第6号 第7号 第8号 第9号 第10号 第11号 第12号 第13号 第14号 第16号 第17号 第18号 第19号
 
 TB 5 Class
-TB 5,6,7,8,9,10,11,12,13,14,16,17,18,19</remark>
+TB 5,6,7,8,9,10,11,12,13,14,16,17,18,19</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\TB5.jpg</path>
@@ -12966,7 +13026,8 @@ TB 5,6,7,8,9,10,11,12,13,14,16,17,18,19</remark>
    <superStructureVertical effectInch="0" actualInch="0" />
    <armorType>NoArmor</armorType>
   </armorRating>
-  <remark>https://ja.wikipedia.org/wiki/%E7%AC%AC%E5%8D%81%E4%BA%94%E5%8F%B7%E5%9E%8B%E6%B0%B4%E9%9B%B7%E8%89%87
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E7%AC%AC%E5%8D%81%E4%BA%94%E5%8F%B7%E5%9E%8B%E6%B0%B4%E9%9B%B7%E8%89%87
 
 三等水雷艇, 第15号型
 
@@ -12974,7 +13035,8 @@ TB 5,6,7,8,9,10,11,12,13,14,16,17,18,19</remark>
 - 第15号
 - 第20号
 
-</remark>
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/TB 15_Top.jpg</path>
@@ -13115,7 +13177,8 @@ TB 5,6,7,8,9,10,11,12,13,14,16,17,18,19</remark>
    <superStructureVertical effectInch="0" actualInch="0" />
    <armorType>NoArmor</armorType>
   </armorRating>
-  <remark>https://ja.wikipedia.org/wiki/%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%B8%80%E5%8F%B7%E5%9E%8B%E6%B0%B4%E9%9B%B7%E8%89%87
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%B8%80%E5%8F%B7%E5%9E%8B%E6%B0%B4%E9%9B%B7%E8%89%87
 
 二等水雷艇 - 第二十一号型水雷艇
 
@@ -13124,7 +13187,8 @@ TB 5,6,7,8,9,10,11,12,13,14,16,17,18,19</remark>
 
 Class II Torpedo Boats - TB 21 Class
 
-TB 21, TB 24</remark>
+TB 21, TB 24</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\TB21.jpg</path>
@@ -13258,7 +13322,8 @@ TB 21, TB 24</remark>
    <superStructureVertical effectInch="0" actualInch="0" />
    <armorType>NoArmor</armorType>
   </armorRating>
-  <remark>https://ja.wikipedia.org/wiki/%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%BA%8C%E5%8F%B7%E5%9E%8B%E6%B0%B4%E9%9B%B7%E8%89%87
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%BA%8C%E5%8F%B7%E5%9E%8B%E6%B0%B4%E9%9B%B7%E8%89%87
 
 二等水雷艇 - 第二十二号型水雷艇
 
@@ -13267,7 +13332,8 @@ TB 21, TB 24</remark>
 
 TB 22, 23, 25, 31, 32, 33, 34, 35, 36, 37, 38, 44, 45, 46, 47, 48, 49, 60, 61
 
-</remark>
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\TB22.jpg</path>
@@ -13413,9 +13479,11 @@ TB 22, 23, 25, 31, 32, 33, 34, 35, 36, 37, 38, 44, 45, 46, 47, 48, 49, 60, 61
    <armorType>NoArmor</armorType>
   </armorRating>
   <portraitUrl>https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:Kotaka_-_Brassey%27s_Naval_Annual_1887.png</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Japanese_torpedo_boat_Kotaka
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_torpedo_boat_Kotaka
 
-Complement is inferred</remark>
+Complement is inferred</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Kotaka.jpg</path>
@@ -13553,7 +13621,9 @@ Complement is inferred</remark>
    <armorType>NoArmor</armorType>
   </armorRating>
   <portraitUrl>Illustrated History of Chinese Warships 1855–1911 (by Chen Yue)  中国军舰图志 1855-1911 （陈悦）</portraitUrl>
-  <remark>https://baike.baidu.com/item/%E2%80%9C%E5%B7%A6%E9%98%9F%E4%B8%80%E5%8F%B7%E2%80%9D%E9%B1%BC%E9%9B%B7%E8%89%87/8273053</remark>
+  <remark>
+   <english>https://baike.baidu.com/item/%E2%80%9C%E5%B7%A6%E9%98%9F%E4%B8%80%E5%8F%B7%E2%80%9D%E9%B1%BC%E9%9B%B7%E8%89%87/8273053</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Tso I.png</path>
@@ -13690,9 +13760,11 @@ Complement is inferred</remark>
    <armorType>NoArmor</armorType>
   </armorRating>
   <portraitUrl>Chen Yue - Records of Beiyang Naval Vessels (陈悦 - 北洋海军舰船志)</portraitUrl>
-  <remark>Not supported by SK5 data. Very poorly supported by fact.
+  <remark>
+   <english>Not supported by SK5 data. Very poorly supported by fact.
 
-https://baike.baidu.com/item/%E2%80%9C%E5%B7%A6%E4%BA%8C%E2%80%9D%E5%8F%B7%E9%B1%BC%E9%9B%B7%E8%89%87/15701446?fr=aladdin</remark>
+https://baike.baidu.com/item/%E2%80%9C%E5%B7%A6%E4%BA%8C%E2%80%9D%E5%8F%B7%E9%B1%BC%E9%9B%B7%E8%89%87/15701446?fr=aladdin</english>
+  </remark>
   <isPoorlySupported>true</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Right I.png</path>
@@ -13793,11 +13865,13 @@ https://baike.baidu.com/item/%E2%80%9C%E5%B7%A6%E4%BA%8C%E2%80%9D%E5%8F%B7%E9%B1
    <armorType>NoArmor</armorType>
   </armorRating>
   <portraitUrl>Illustrated History of Chinese Warships 1855–1911 (by Chen Yue)  中国军舰图志 1855-1911 （陈悦） </portraitUrl>
-  <remark>https://www.bilibili.com/read/cv1361156
+  <remark>
+   <english>https://www.bilibili.com/read/cv1361156
 
 2 torpedo boats carried by Ting Yuen class. 
 
-Complement is placeholder</remark>
+Complement is placeholder</english>
+  </remark>
   <isPoorlySupported>true</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Ting I.jpg</path>
@@ -13918,13 +13992,15 @@ Complement is placeholder</remark>
    <superStructureVertical effectInch="0" actualInch="0" />
    <armorType>NotSpecified</armorType>
   </armorRating>
-  <remark>https://mil.news.sina.com.cn/2004-09-14/1508226927.html
+  <remark>
+   <english>https://mil.news.sina.com.cn/2004-09-14/1508226927.html
 
 Torpedo boats carried by Chi Yuan
 
 Draft &amp; Complement is placeholder.
 
-</remark>
+</english>
+  </remark>
   <isPoorlySupported>true</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Chong Chia_Top.jpg</path>
@@ -14475,7 +14551,9 @@ Draft &amp; Complement is placeholder.
    <armorType>HarveyNickelSteel</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/Japanese_battleship_Yashima</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Fuji-class_battleship</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Fuji-class_battleship</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Yashima.jpg</path>
@@ -15045,7 +15123,9 @@ Draft &amp; Complement is placeholder.
    <armorType>HarveyNickelSteel</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/Japanese_battleship_Yashima</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Fuji-class_battleship</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Fuji-class_battleship</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Yashima.jpg</path>
@@ -15132,9 +15212,11 @@ Draft &amp; Complement is placeholder.
    <superStructureVertical effectInch="0" actualInch="0" />
    <armorType>NoArmor</armorType>
   </armorRating>
-  <remark>Generic Placeholder IJN Transport
+  <remark>
+   <english>Generic Placeholder IJN Transport
 
-Portrait is taken from Saikyō Maru (西京丸)</remark>
+Portrait is taken from Saikyō Maru (西京丸)</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Saikyo_Maru.png</path>
@@ -15221,9 +15303,11 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
    <superStructureVertical effectInch="0" actualInch="0" />
    <armorType>NoArmor</armorType>
   </armorRating>
-  <remark>Generic Placeholder China Transport
+  <remark>
+   <english>Generic Placeholder China Transport
 
-Portrait is taken from Saikyō Maru (西京丸)</remark>
+Portrait is taken from Saikyō Maru (西京丸)</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Saikyo_Maru.png</path>
@@ -15311,11 +15395,13 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
    <armorType>NoArmor</armorType>
   </armorRating>
   <portraitUrl>https://lib.s.kaiyodai.ac.jp/library/digital/nishinkaisen_htmls/genzanmaru.html  </portraitUrl>
-  <remark>https://lib.s.kaiyodai.ac.jp/library/digital/nishinkaisen_htmls/genzanmaru.html
+  <remark>
+   <english>https://lib.s.kaiyodai.ac.jp/library/digital/nishinkaisen_htmls/genzanmaru.html
 
 総トン数2,198GT 長さ99.7m、幅10.26m、深さ3.22m、主機140馬力、速力9ノット 
 
-日清戦争の頃の工作船とはスパイ船ではなく、艦艇に附随して戦闘後、船體水線以下の修理で入渠を要する艦艇以外の船を迅速に応急修理をする船のことを言う。 日清戦争では元山丸、品川丸の二隻が工作船として徴用された。</remark>
+日清戦争の頃の工作船とはスパイ船ではなく、艦艇に附随して戦闘後、船體水線以下の修理で入渠を要する艦艇以外の船を迅速に応急修理をする船のことを言う。 日清戦争では元山丸、品川丸の二隻が工作船として徴用された。</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\genzan maru.jpg</path>
@@ -15962,9 +16048,11 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
    <armorType>HarveyNickelSteel</armorType>
   </armorRating>
   <portraitUrl>https://naval-encyclopedia.com/ww1/russia/rossiya-class-cruisers-1896.php</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Russian_cruiser_Rossia
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Russian_cruiser_Rossia
 
-</remark>
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Rossiya.png</path>
@@ -16595,7 +16683,9 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>https://naval-encyclopedia.com/ww1/russia/rossiya-class-cruisers-1896.php</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Russian_cruiser_Gromoboi</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Russian_cruiser_Gromoboi</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Gromoboy.png</path>
@@ -17343,7 +17433,9 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
    <armorType>HarveyMildSteel</armorType>
   </armorRating>
   <portraitUrl>https://military-history.fandom.com/wiki/Russian_cruiser_Rurik_(1892)</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Russian_cruiser_Rurik_(1892)</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Russian_cruiser_Rurik_(1892)</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Rurik.jpg</path>
@@ -17882,7 +17974,9 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:Izumo-class_armored_cruiser_left_elevation_plan.jpg</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Izumo</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Izumo</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Izumo.jpg</path>
@@ -18468,9 +18562,11 @@ Portrait is taken from Saikyō Maru (西京丸)</remark>
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/Japanese_cruiser_Azuma</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Azuma
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Azuma
 
-Azuma or Adzuma (SK5 name)</remark>
+Azuma or Adzuma (SK5 name)</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Azuma.jpg</path>
@@ -19335,12 +19431,14 @@ Azuma or Adzuma (SK5 name)</remark>
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:Japanese_cruiser_Tsushima_in_1905.jpg</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Tsushima
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Tsushima
 
 Sometime called Niitaka class.
 
 - Tsushima (対馬)
-- Niitaka (新高)</remark>
+- Niitaka (新高)</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Tsushima.jpg</path>
@@ -19780,10 +19878,12 @@ Sometime called Niitaka class.
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:Bogatyr_Brasseys1902.png</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Bogatyr-class_cruiser
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Bogatyr-class_cruiser
 
 Богатырь
-</remark>
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Bogatyr.png</path>
@@ -19934,7 +20034,8 @@ Sometime called Niitaka class.
    <superStructureVertical effectInch="0" actualInch="0" />
    <armorType>NoArmor</armorType>
   </armorRating>
-  <remark>https://en.wikipedia.org/wiki/Hayabusa-class_torpedo_boat
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Hayabusa-class_torpedo_boat
 
 - Hayabusa 隼
 - Kasasagi 鵲
@@ -19950,7 +20051,8 @@ Sometime called Niitaka class.
 - Uzura 鶉
 - Kamome 鴎
 - Hashitaka 鷂
-- Ootori 鴻</remark>
+- Ootori 鴻</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Hayabusa.jpg</path>
@@ -20102,7 +20204,9 @@ Sometime called Niitaka class.
    <superStructureVertical effectInch="0" actualInch="0" />
    <armorType>NotSpecified</armorType>
   </armorRating>
-  <remark>https://ja.wikipedia.org/wiki/%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%BA%8C%E5%8F%B7%E5%9E%8B%E6%B0%B4%E9%9B%B7%E8%89%87</remark>
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%BA%8C%E5%8F%B7%E5%9E%8B%E6%B0%B4%E9%9B%B7%E8%89%87</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\TB21.jpg</path>
@@ -20254,7 +20358,8 @@ Sometime called Niitaka class.
    <superStructureVertical effectInch="0" actualInch="0" />
    <armorType>NoArmor</armorType>
   </armorRating>
-  <remark>https://ja.wikipedia.org/wiki/%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B9%9D%E5%8F%B7%E5%9E%8B%E6%B0%B4%E9%9B%B7%E8%89%87
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E7%AC%AC%E4%B8%89%E5%8D%81%E4%B9%9D%E5%8F%B7%E5%9E%8B%E6%B0%B4%E9%9B%B7%E8%89%87
 
 - TB 39
 - TB 40
@@ -20265,7 +20370,8 @@ Sometime called Niitaka class.
 - TB 63
 - TB 64
 - TB 65
-- TB 66 </remark>
+- TB 66 </english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\TB 42.jpg</path>
@@ -20417,7 +20523,8 @@ Sometime called Niitaka class.
    <superStructureVertical effectInch="0" actualInch="0" />
    <armorType>NoArmor</armorType>
   </armorRating>
-  <remark>https://ja.wikipedia.org/wiki/%E7%AC%AC%E5%85%AD%E5%8D%81%E4%B8%83%E5%8F%B7%E5%9E%8B%E6%B0%B4%E9%9B%B7%E8%89%87
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E7%AC%AC%E5%85%AD%E5%8D%81%E4%B8%83%E5%8F%B7%E5%9E%8B%E6%B0%B4%E9%9B%B7%E8%89%87
 
 - TB 67
 - TB 68
@@ -20427,7 +20534,8 @@ Sometime called Niitaka class.
 - TB 72
 - TB 73
 - TB 74
-- TB 75</remark>
+- TB 75</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\TB 68.jpg</path>
@@ -20985,7 +21093,9 @@ Sometime called Niitaka class.
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:Japanese_armored_cruiser_Yakumo_left_elevation_plan.jpg</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Yakumo</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Yakumo</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Yakumo.jpg</path>
@@ -21447,12 +21557,14 @@ Sometime called Niitaka class.
    <armorType>HarveyNickelSteel</armorType>
   </armorRating>
   <portraitUrl>https://naval-encyclopedia.com/ww1/japan/suma-class-cruisers.php</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Suma-class_cruiser
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Suma-class_cruiser
 
 - Suma 須磨
 - Akashi 明石
 
-Correction: SK5 length 37 -&gt; 307</remark>
+Correction: SK5 length 37 -&gt; 307</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Suma.jpg</path>
@@ -21940,11 +22052,13 @@ Correction: SK5 length 37 -&gt; 307</remark>
    <armorType>HighTensileSteel</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:Russian_cruiser_Varyag_(1899)_left_elevation_plan.jpg</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Russian_cruiser_Varyag_(1899)
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Russian_cruiser_Varyag_(1899)
 
 Варя́г
 
-SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 1440 -&gt; 1680</remark>
+SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 1440 -&gt; 1680</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Varyag.jpg</path>
@@ -22531,9 +22645,11 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
    <armorType>NoArmor</armorType>
   </armorRating>
   <portraitUrl>https://upload.wikimedia.org/wikipedia/commons/f/f2/Koreets.jpg</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Russian_gunboat_Korietz
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Russian_gunboat_Korietz
 
-Кореец</remark>
+Кореец</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Koreets.jpg</path>
@@ -23210,14 +23326,16 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:Poltava_correct_Brasseys1902.png</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Petropavlovsk-class_battleship
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Petropavlovsk-class_battleship
 
 Полтава
 
 - Petropavlovsk (Петропавловск)
 - Poltava (Полтава)
 - Sevastopol (Севастополь)
-</remark>
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Poltava.png</path>
@@ -23388,11 +23506,13 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
    <armorType>NoArmor</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:Fig_of_japanese_Shirakumo_1902.gif</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Japanese_destroyer_Shirakumo_%281901%29
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_destroyer_Shirakumo_%281901%29
 
 
 
-</remark>
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Shirakumo.jpg</path>
@@ -23563,10 +23683,12 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
    <armorType>NoArmor</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:Fig_of_japanese_Shirakumo_1902.gif</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Akatsuki-class_destroyer_(1901)
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Akatsuki-class_destroyer_(1901)
 
 - Akatsuki 暁
-- Kasumi 霞</remark>
+- Kasumi 霞</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Shirakumo.jpg</path>
@@ -23737,14 +23859,16 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
    <armorType>NoArmor</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:Fig_of_japanese_Shirakumo_1902.gif</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Ikazuchi-class_destroyer
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Ikazuchi-class_destroyer
 
 - Ikazuchi 雷
 - Inazuma 電
 - Akebono 曙
 - Sazanami 漣
 - Niji 霓
-- Oboro 朧</remark>
+- Oboro 朧</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Shirakumo.jpg</path>
@@ -23913,14 +24037,16 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
    <armorType>NoArmor</armorType>
   </armorRating>
   <portraitUrl>https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:Fig_of_japanese_destroyer_Shinonome_1899.gif</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Murakumo-class_destroyer
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Murakumo-class_destroyer
 
 - Murakumo 叢雲
 - Shinonome 東雲
 - Yugiri 夕霧
 - Shiranui 不知火
 - Kagero 陽炎
-- Usugumo 薄雲</remark>
+- Usugumo 薄雲</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Shinonome.jpg</path>
@@ -24091,7 +24217,8 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>https://commons.wikimedia.org/wiki/File:Fig_of_IJN_DD_HARUSAME_1903.gif</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Harusame-class_destroyer
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Harusame-class_destroyer
 
 - Harusame 春雨
 - Murasame 村雨
@@ -24099,7 +24226,8 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
 - Asagiri 朝霧
 - Ariake 有明
 - Fubuki 吹雪
-- Arare 霰</remark>
+- Arare 霰</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Harusame.jpg</path>
@@ -24706,9 +24834,11 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Russian_battleship_Tsesarevich
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Russian_battleship_Tsesarevich
 
-https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
+https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\tsesarevich.png</path>
@@ -25284,11 +25414,13 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
    <armorType>HarveyNickelSteel</armorType>
   </armorRating>
   <portraitUrl>https://upload.wikimedia.org/wikipedia/commons/4/47/Peresvet_Brassey%27s.png</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Peresvet-class_battleship
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Peresvet-class_battleship
 
 - Peresvet Пересвет
 - Oslyabya Ослябя
-- Pobeda Победа</remark>
+- Pobeda Победа</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Peresvet.png</path>
@@ -25864,11 +25996,13 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
    <armorType>HarveyNickelSteel</armorType>
   </armorRating>
   <portraitUrl>https://upload.wikimedia.org/wikipedia/commons/4/47/Peresvet_Brassey%27s.png</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Peresvet-class_battleship
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Peresvet-class_battleship
 
 - Peresvet Пересвет
 - Oslyabya Ослябя
-- Pobeda Победа</remark>
+- Pobeda Победа</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Peresvet.png</path>
@@ -26592,9 +26726,11 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:Retvizan_Brassey%27s1915_corrected.png</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Russian_battleship_Retvizan
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Russian_battleship_Retvizan
 
-Ретвизан</remark>
+Ретвизан</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Retvizan.png</path>
@@ -27178,8 +27314,10 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
    <armorType>HarveyNickelSteel</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/Bayan-class_cruiser#/media/File:Brasseys_Bayan_2.jpg</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Bayan-class_cruiser
-</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Bayan-class_cruiser
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Bayan.jpg</path>
@@ -27647,10 +27785,12 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</remark>
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>https://naval-encyclopedia.com/ww1/russia/askold-1900.php</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Russian_cruiser_Askold
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Russian_cruiser_Askold
 https://naval-encyclopedia.com/ww1/russia/askold-1900.php
 
-Аскольд</remark>
+Аскольд</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Askold.png</path>
@@ -28056,9 +28196,11 @@ https://naval-encyclopedia.com/ww1/russia/askold-1900.php
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>https://picryl.com/media/pallada-class-brasseys-naval-annual-1903-259240</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Pallada-class_cruiser
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Pallada-class_cruiser
 
-</remark>
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Pallada.png</path>
@@ -28453,10 +28595,12 @@ https://naval-encyclopedia.com/ww1/russia/askold-1900.php
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>https://naval-encyclopedia.com/ww1/russia/boyarin.php</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Russian_cruiser_Boyarin
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Russian_cruiser_Boyarin
 https://naval-encyclopedia.com/ww1/russia/boyarin.php
 
-Боярин</remark>
+Боярин</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Boyarin.png</path>
@@ -28826,10 +28970,12 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
    <armorType>HighTensileSteel</armorType>
   </armorRating>
   <portraitUrl>https://naval-encyclopedia.com/ww1/russia/cruiser-novik-1898.php</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Russian_cruiser_Novik
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Russian_cruiser_Novik
 https://naval-encyclopedia.com/ww1/russia/cruiser-novik-1898.php
 
-Новик</remark>
+Новик</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Novik.png</path>
@@ -28993,14 +29139,16 @@ https://naval-encyclopedia.com/ww1/russia/cruiser-novik-1898.php
    <armorType>NoArmor</armorType>
   </armorRating>
   <portraitUrl>https://commons.wikimedia.org/wiki/File:%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%86%D0%B8%D0%B8_%D0%BA%D0%BE%D1%80%D0%BF%D1%83%D1%81%D0%B0_%D1%8D%D1%81%D0%BA%D0%B0%D0%B4%D1%80%D0%B5%D0%BD%D0%BD%D1%8B%D1%85_%D0%BC%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D1%86%D0%B5%D0%B2_%D1%82%D0%B8%D0%BF%D0%B0_%C2%AB%D0%91%D1%83%D0%B9%D0%BD%D1%8B%D0%B9%C2%BB.jpg?uselang=ru</portraitUrl>
-  <remark>https://ru.wikipedia.org/wiki/%D0%9C%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D1%86%D1%8B_%D1%82%D0%B8%D0%BF%D0%B0_%C2%AB%D0%91%D1%83%D0%B9%D0%BD%D1%8B%D0%B9%C2%BB
+  <remark>
+   <english>https://ru.wikipedia.org/wiki/%D0%9C%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D1%86%D1%8B_%D1%82%D0%B8%D0%BF%D0%B0_%C2%AB%D0%91%D1%83%D0%B9%D0%BD%D1%8B%D0%B9%C2%BB
 
 Буйный (Puilki, Buinyi)
 
 https://en.wikipedia.org/wiki/List_of_destroyers_of_the_Imperial_Russian_Navy
 
 https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%D0%BA%D0%B0%D0%B4%D1%80%D0%B5%D0%BD%D0%BD%D1%8B%D1%85_%D0%BC%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D1%86%D0%B5%D0%B2_%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D0%B8_%D0%B8_%D0%A1%D0%A1%D0%A1%D0%A0_%D0%BF%D0%BE_%D1%82%D0%B8%D0%BF%D0%B0%D0%BC#%D0%A2%D0%B8%D0%BF_%C2%AB%D0%91%D1%83%D0%B9%D0%BD%D1%8B%D0%B9%C2%BB
-</remark>
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Puilki.jpg</path>
@@ -29175,9 +29323,11 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
    <superStructureVertical effectInch="0" actualInch="0" />
    <armorType>NoArmor</armorType>
   </armorRating>
-  <remark>This is derived from DoB and SK5 data, but it looks like it's inconsistent with
+  <remark>
+   <english>This is derived from DoB and SK5 data, but it looks like it's inconsistent with
 
-https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%D0%BA%D0%B0%D0%B4%D1%80%D0%B5%D0%BD%D0%BD%D1%8B%D1%85_%D0%BC%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D1%86%D0%B5%D0%B2_%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D0%B8_%D0%B8_%D0%A1%D0%A1%D0%A1%D0%A0_%D0%BF%D0%BE_%D1%82%D0%B8%D0%BF%D0%B0%D0%BC#%D0%A2%D0%B8%D0%BF_%C2%AB%D0%91%D1%83%D0%B9%D0%BD%D1%8B%D0%B9%C2%BB</remark>
+https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%D0%BA%D0%B0%D0%B4%D1%80%D0%B5%D0%BD%D0%BD%D1%8B%D1%85_%D0%BC%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D1%86%D0%B5%D0%B2_%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D0%B8_%D0%B8_%D0%A1%D0%A1%D0%A1%D0%A0_%D0%BF%D0%BE_%D1%82%D0%B8%D0%BF%D0%B0%D0%BC#%D0%A2%D0%B8%D0%BF_%C2%AB%D0%91%D1%83%D0%B9%D0%BD%D1%8B%D0%B9%C2%BB</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Bezstrashni_Top.jpg</path>
@@ -29741,9 +29891,11 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:Battleship_Mikasa_from_JFS1906_Cropped.png</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Japanese_battleship_Mikasa
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_battleship_Mikasa
 
-</remark>
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Mikasa.png</path>
@@ -30305,9 +30457,11 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
    <armorType>HarveyNickelSteel</armorType>
   </armorRating>
   <portraitUrl>https://upload.wikimedia.org/wikipedia/commons/e/ef/Asahi%26ShikishimaDrawing.jpg</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Japanese_battleship_Asahi
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_battleship_Asahi
 
-</remark>
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Asahi.jpg</path>
@@ -30881,7 +31035,9 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
    <armorType>HarveyNickelSteel</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:Shikishimas.png</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Shikishima-class_battleship</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Shikishima-class_battleship</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Shikishimas.png</path>
@@ -31433,7 +31589,9 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
    <armorType>HarveyNickelSteel</armorType>
   </armorRating>
   <portraitUrl>https://commons.wikimedia.org/wiki/File:Kasagi_class_-_Brassey%27s_Naval_Annual_1898.png</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Kasagi-class_cruiser</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Kasagi-class_cruiser</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Kasagi.png</path>
@@ -31985,9 +32143,11 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
    <armorType>HarveyNickelSteel</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:Takasago-brassey1902.jpg</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Takasago
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Takasago
 
-Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the SK5 taxology), but SK5 list it as a CA for some reason.</remark>
+Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the SK5 taxology), but SK5 list it as a CA for some reason.</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Takasago.jpg</path>
@@ -32211,7 +32371,9 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <superStructureVertical effectInch="0" actualInch="0" />
    <armorType>NotSpecified</armorType>
   </armorRating>
-  <remark>Dawn of the Battle scenario book Dawn of the Rising Sun</remark>
+  <remark>
+   <english>Dawn of the Battle scenario book Dawn of the Rising Sun</english>
+  </remark>
   <isPoorlySupported>true</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\fort.jpg</path>
@@ -32457,7 +32619,9 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>https://besour.livejournal.com/181387.html?es=1</portraitUrl>
-  <remark>Dawn of the Battle scenario book Dawn of the Rising Sun</remark>
+  <remark>
+   <english>Dawn of the Battle scenario book Dawn of the Rising Sun</english>
+  </remark>
   <isPoorlySupported>true</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Port_Arthur_no_15_battery_444px.png</path>
@@ -32672,7 +32836,9 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <superStructureVertical effectInch="0" actualInch="0" />
    <armorType>NotSpecified</armorType>
   </armorRating>
-  <remark>Dawn of the Battle scenario book Dawn of the Rising Sun</remark>
+  <remark>
+   <english>Dawn of the Battle scenario book Dawn of the Rising Sun</english>
+  </remark>
   <isPoorlySupported>true</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\fort.jpg</path>
@@ -33107,8 +33273,10 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <superStructureVertical effectInch="0" actualInch="0" />
    <armorType>NotSpecified</armorType>
   </armorRating>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Tsukushi
-</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Tsukushi
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Yang Wei.jpg</path>
@@ -33400,7 +33568,9 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:Japanese_gunboat_Oshima_off_Kobe_1897.jpg</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Japanese_gunboat_%C5%8Cshima</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_gunboat_%C5%8Cshima</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Oshima.jpg</path>
@@ -35281,8 +35451,10 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <armorType>KruppCemented1894</armorType>
   </armorRating>
   <portraitUrl>https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:Kasuga_plan.jpg</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Kasuga-class_cruiser
-</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Kasuga-class_cruiser
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Kasuga.jpg</path>
@@ -35831,7 +36003,9 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <armorType>KruppCemented1894</armorType>
   </armorRating>
   <portraitUrl>Adaption of Kasuga</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Nisshin</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Nisshin</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Nisshin_Icon.png</path>
@@ -36117,7 +36291,9 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <superStructureVertical effectInch="0" actualInch="0" />
    <armorType>NotSpecified</armorType>
   </armorRating>
-  <remark>https://en.wikipedia.org/wiki/Japanese_cruiser_Yaeyama</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Yaeyama</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Yaeyama_Top.jpg</path>
@@ -36577,9 +36753,11 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <armorType>MildSteel</armorType>
   </armorRating>
   <portraitUrl>https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:Esmeralda_(ship,_1884)_-_Brassey%27s_Naval_Annual_1887.png</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Chilean_cruiser_Esmeralda_(1883)
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Chilean_cruiser_Esmeralda_(1883)
 
-Esmeralda or Idzumi (Izumi)</remark>
+Esmeralda or Idzumi (Izumi)</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Esmeralda.png</path>
@@ -36757,11 +36935,13 @@ Esmeralda or Idzumi (Izumi)</remark>
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>https://commons.wikimedia.org/wiki/File:%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%86%D0%B8%D0%B8_%D0%BA%D0%BE%D1%80%D0%BF%D1%83%D1%81%D0%B0_%D1%8D%D1%81%D0%BA%D0%B0%D0%B4%D1%80%D0%B5%D0%BD%D0%BD%D1%8B%D1%85_%D0%BC%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D1%86%D0%B5%D0%B2_%D1%82%D0%B8%D0%BF%D0%B0_%C2%AB%D0%91%D1%83%D0%B9%D0%BD%D1%8B%D0%B9%C2%BB.jpg</portraitUrl>
-  <remark>Бойкий (миноносец)
+  <remark>
+   <english>Бойкий (миноносец)
 
 https://ru.wikipedia.org/wiki/%D0%9C%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D1%86%D1%8B_%D1%82%D0%B8%D0%BF%D0%B0_%C2%AB%D0%91%D1%83%D0%B9%D0%BD%D1%8B%D0%B9%C2%BB
 
-</remark>
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Boiki.jpg</path>
@@ -36914,11 +37094,13 @@ https://ru.wikipedia.org/wiki/%D0%9C%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D1%86%D
    <superStructureVertical effectInch="0" actualInch="0" />
    <armorType>NotSpecified</armorType>
   </armorRating>
-  <remark>Vnimatelny or Vnimatelni or Forel (before 1902)
+  <remark>
+   <english>Vnimatelny or Vnimatelni or Forel (before 1902)
 
 Форель (с 9 марта 1902 г. — «Внимательный».)
 
-https://ru.wikipedia.org/wiki/%D0%9C%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D1%86%D1%8B_%D1%82%D0%B8%D0%BF%D0%B0_%C2%AB%D0%A4%D0%BE%D1%80%D0%B5%D0%BB%D1%8C%C2%BB</remark>
+https://ru.wikipedia.org/wiki/%D0%9C%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D1%86%D1%8B_%D1%82%D0%B8%D0%BF%D0%B0_%C2%AB%D0%A4%D0%BE%D1%80%D0%B5%D0%BB%D1%8C%C2%BB</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Vnimatelni_Top.jpg</path>
@@ -37452,10 +37634,12 @@ https://ru.wikipedia.org/wiki/%D0%9C%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D1%86%D
    <armorType>HarveyNickelSteel</armorType>
   </armorRating>
   <portraitUrl>Illustrated History of Chinese Warships 1855–1911 (by Chen Yue)  中国军舰图志 1855-1911 （陈悦）</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Hai_Qi-class_cruiser
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Hai_Qi-class_cruiser
 
 Hai Qi (Hai Chi, 海圻) and Hai Tien (Hai Tian, 海天)
-</remark>
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Hai Chi.jpg</path>
@@ -37972,10 +38156,12 @@ Hai Qi (Hai Chi, 海圻) and Hai Tien (Hai Tian, 海天)
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>Illustrated History of Chinese Warships 1855–1911 (by Chen Yue)  中国军舰图志 1855-1911 （陈悦）</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Hai_Yung-class_cruiser
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Hai_Yung-class_cruiser
 
 https://naval-encyclopedia.com/ww1/china/hai-yung-class-cruisers.php
-</remark>
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Hai Yung.jpg</path>
@@ -38538,10 +38724,12 @@ https://naval-encyclopedia.com/ww1/china/hai-yung-class-cruisers.php
    <armorType>HighTensileSteel</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/Chilean_cruiser_Blanco_Encalada</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Chilean_cruiser_Blanco_Encalada
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Chilean_cruiser_Blanco_Encalada
 
 Alternate history: Suppose the China had purchased this ship from Chile.
-</remark>
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Blanco_Encalada.png</path>
@@ -39076,10 +39264,12 @@ Alternate history: Suppose the China had purchased this ship from Chile.
    <armorType>HarveyMildSteel</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/Chilean_battleship_Capit%C3%A1n_Prat</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Chilean_battleship_Capit%C3%A1n_Prat
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Chilean_battleship_Capit%C3%A1n_Prat
 
 Alternate history: Suppose the China had purchased this ship from Chile.
-</remark>
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Capitan_Prat.png</path>
@@ -39539,9 +39729,11 @@ Alternate history: Suppose the China had purchased this ship from Chile.
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/Chilean_cruiser_Esmeralda_(1883)</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Chilean_cruiser_Esmeralda_(1883)
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Chilean_cruiser_Esmeralda_(1883)
 
-Alternate history: Suppose the China had purchased this ship from Chile. (In true history, it's purchased by Japan).</remark>
+Alternate history: Suppose the China had purchased this ship from Chile. (In true history, it's purchased by Japan).</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Esmeralda.png</path>
@@ -40009,9 +40201,11 @@ Alternate history: Suppose the China had purchased this ship from Chile. (In tru
    <superStructureVertical effectInch="0.4" actualInch="0.4" />
    <armorType>NotSpecified</armorType>
   </armorRating>
-  <remark>https://naval-encyclopedia.com/ww1/chile/presidente-pinto-class-cruisers.php
+  <remark>
+   <english>https://naval-encyclopedia.com/ww1/chile/presidente-pinto-class-cruisers.php
 
-Alternate history: Suppose the China had purchased this ship from Chile.</remark>
+Alternate history: Suppose the China had purchased this ship from Chile.</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Presidente Errazuriz.jpg</path>
@@ -40191,9 +40385,11 @@ Alternate history: Suppose the China had purchased this ship from Chile.</remark
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/Almirante_Lynch-class_torpedo_gunboat</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Almirante_Lynch-class_torpedo_gunboat
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Almirante_Lynch-class_torpedo_gunboat
 
-Alternate history: Suppose the China had purchased this ship from Chile.</remark>
+Alternate history: Suppose the China had purchased this ship from Chile.</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Almirante Lynch.jpg</path>
@@ -40723,9 +40919,11 @@ Alternate history: Suppose the China had purchased this ship from Chile.</remark
    <armorType>MildSteel</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/ARA_Veinticinco_de_Mayo_(1890)</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/ARA_Veinticinco_de_Mayo_(1890)
+  <remark>
+   <english>https://en.wikipedia.org/wiki/ARA_Veinticinco_de_Mayo_(1890)
 
-Alternate history: Suppose the China had purchased this ship from Argentina.</remark>
+Alternate history: Suppose the China had purchased this ship from Argentina.</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Veinticinco de Mayo.jpg</path>
@@ -41229,9 +41427,11 @@ Alternate history: Suppose the China had purchased this ship from Argentina.</re
    <armorType>MildSteel</armorType>
   </armorRating>
   <portraitUrl>https://naval-encyclopedia.com/ww1/argentina/9-de-julio.php</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/ARA_Nueve_de_Julio_(1892)
+  <remark>
+   <english>https://en.wikipedia.org/wiki/ARA_Nueve_de_Julio_(1892)
 
-https://naval-encyclopedia.com/ww1/argentina/9-de-julio.php</remark>
+https://naval-encyclopedia.com/ww1/argentina/9-de-julio.php</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Nueve_de_Julio.png</path>
@@ -41724,7 +41924,9 @@ https://naval-encyclopedia.com/ww1/argentina/9-de-julio.php</remark>
    <armorType>CompoundHardSteelFacedWroughtIron</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/ARA_Almirante_Brown_(1880)</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/ARA_Almirante_Brown_(1880)</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/ARA_Almirante_Brown_(1880)</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Almirante_Brown.png</path>
@@ -41977,10 +42179,12 @@ https://naval-encyclopedia.com/ww1/argentina/9-de-julio.php</remark>
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>Illustrated History of Chinese Warships 1855–1911 (by Chen Yue)  中国军舰图志 1855-1911 （陈悦）</portraitUrl>
-  <remark>Mosquito boats (蚊子船), Rendel gunboats
+  <remark>
+   <english>Mosquito boats (蚊子船), Rendel gunboats
 
 https://zh.wikipedia.org/wiki/Epsilon%E7%B4%9A%E7%A0%B2%E8%89%87
-</remark>
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Zhen Bei.jpg</path>
@@ -42423,9 +42627,11 @@ https://zh.wikipedia.org/wiki/Epsilon%E7%B4%9A%E7%A0%B2%E8%89%87
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>Illustrated History of Chinese Warships 1855–1911 (by Chen Yue)  中国军舰图志 1855-1911 （陈悦）</portraitUrl>
-  <remark>Kaiji, Kai Che, or Kai Chi (开济)
+  <remark>
+   <english>Kaiji, Kai Che, or Kai Chi (开济)
 
-https://www.historyofwar.org/articles/weapons_kai_che.html</remark>
+https://www.historyofwar.org/articles/weapons_kai_che.html</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Kai Che_Top.jpg</path>
@@ -42867,7 +43073,9 @@ https://www.historyofwar.org/articles/weapons_kai_che.html</remark>
    <superStructureVertical effectInch="0" actualInch="0" />
    <armorType>NotSpecified</armorType>
   </armorRating>
-  <remark>https://tieba.baidu.com/p/6156678705</remark>
+  <remark>
+   <english>https://tieba.baidu.com/p/6156678705</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Ching Ching.jpg</path>
@@ -43339,7 +43547,9 @@ https://www.historyofwar.org/articles/weapons_kai_che.html</remark>
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>Illustrated History of Chinese Warships 1855–1911 (by Chen Yue)  中国军舰图志 1855-1911 （陈悦）</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Chinese_cruiser_Nan_Chen</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Chinese_cruiser_Nan_Chen</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Nan Chen.jpg</path>
@@ -43798,7 +44008,9 @@ https://www.historyofwar.org/articles/weapons_kai_che.html</remark>
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>Illustrated History of Chinese Warships 1855–1911 (by Chen Yue)  中国军舰图志 1855-1911 （陈悦）</portraitUrl>
-  <remark>https://naval-encyclopedia.com/ww1/china/pao-min-1885.php</remark>
+  <remark>
+   <english>https://naval-encyclopedia.com/ww1/china/pao-min-1885.php</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Pao Min.jpg</path>
@@ -44504,9 +44716,11 @@ https://www.historyofwar.org/articles/weapons_kai_che.html</remark>
    <armorType>CompoundHardSteelFacedWroughtIron</armorType>
   </armorRating>
   <portraitUrl>https://ru.wikipedia.org/wiki/%D0%98%D0%BC%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80_%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B9_I_(%D0%B1%D1%80%D0%BE%D0%BD%D0%B5%D0%BD%D0%BE%D1%81%D0%B5%D1%86)</portraitUrl>
-  <remark>Император Николай I
+  <remark>
+   <english>Император Николай I
 
-https://en.wikipedia.org/wiki/Russian_battleship_Imperator_Nikolai_I_(1889)</remark>
+https://en.wikipedia.org/wiki/Russian_battleship_Imperator_Nikolai_I_(1889)</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Imperator Nikolai I.jpg</path>
@@ -45062,11 +45276,13 @@ https://en.wikipedia.org/wiki/Russian_battleship_Imperator_Nikolai_I_(1889)</rem
    <armorType>CompoundHardSteelFacedWroughtIron</armorType>
   </armorRating>
   <portraitUrl>https://ru.wikipedia.org/wiki/%D0%90%D0%B4%D0%BC%D0%B8%D1%80%D0%B0%D0%BB_%D0%9D%D0%B0%D1%85%D0%B8%D0%BC%D0%BE%D0%B2_(%D0%B1%D1%80%D0%BE%D0%BD%D0%B5%D0%BD%D0%BE%D1%81%D0%BD%D1%8B%D0%B9_%D0%BA%D1%80%D0%B5%D0%B9%D1%81%D0%B5%D1%80)</portraitUrl>
-  <remark>Адмирал Нахимов
+  <remark>
+   <english>Адмирал Нахимов
 
 https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Nakhimov_(1885)
 
-</remark>
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Admiral Nakhimov.jpg</path>
@@ -45426,9 +45642,11 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Nakhimov_(1885)
    <armorType>CompoundHardSteelFacedWroughtIron</armorType>
   </armorRating>
   <portraitUrl>https://ru.wikipedia.org/wiki/%D0%90%D0%B4%D0%BC%D0%B8%D1%80%D0%B0%D0%BB_%D0%9D%D0%B0%D1%85%D0%B8%D0%BC%D0%BE%D0%B2_(%D0%B1%D1%80%D0%BE%D0%BD%D0%B5%D0%BD%D0%BE%D1%81%D0%BD%D1%8B%D0%B9_%D0%BA%D1%80%D0%B5%D0%B9%D1%81%D0%B5%D1%80)</portraitUrl>
-  <remark>Адмирал Нахимов
+  <remark>
+   <english>Адмирал Нахимов
 
-https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Nakhimov_(1885)</remark>
+https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Nakhimov_(1885)</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Admiral Nakhimov.jpg</path>
@@ -45968,10 +46186,12 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Nakhimov_(1885)</remark>
    <armorType>CompoundHardSteelFacedWroughtIron</armorType>
   </armorRating>
   <portraitUrl>https://commons.wikimedia.org/wiki/File:Pamyat_Azova_-_Brassey%27s_Naval_Annual_1894.png</portraitUrl>
-  <remark>Память Азова
+  <remark>
+   <english>Память Азова
 
 https://en.wikipedia.org/wiki/Russian_cruiser_Pamiat_Azova
-</remark>
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Pamyat_Azova.jpg</path>
@@ -46513,12 +46733,14 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Pamiat_Azova
    <armorType>CompoundHardSteelFacedWroughtIron</armorType>
   </armorRating>
   <portraitUrl>https://naval-encyclopedia.com/industrial-era/1890-fleets/russia/vladimir-monomakh.php</portraitUrl>
-  <remark>Владимир Мономах
+  <remark>
+   <english>Владимир Мономах
 
 https://en.wikipedia.org/wiki/Russian_cruiser_Vladimir_Monomakh
 
 Strange FC Code given by SK5 datasheet, which may overestimate its fire control level.
-</remark>
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Vladimir_Monomakh.jpg</path>
@@ -46900,9 +47122,11 @@ Strange FC Code given by SK5 datasheet, which may overestimate its fire control 
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>https://www.the-blueprints.com/blueprints/ships/cruisers-ussr/66037/view/admiral_kornilov_1891_protected_cruiser/</portraitUrl>
-  <remark>Адмирал Корнилов
+  <remark>
+   <english>Адмирал Корнилов
 
-https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Kornilov</remark>
+https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Kornilov</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\admiral-kornilov.jpg</path>
@@ -47505,7 +47729,9 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Kornilov</remark>
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/Borodino-class_battleship</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Borodino-class_battleship</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Borodino-class_battleship</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Borodino.jpg</path>
@@ -48038,9 +48264,11 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Kornilov</remark>
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>https://commons.wikimedia.org/wiki/File:Russia%27s_Sea_Power,_Fig._5_-_Sissoi_Veliky.jpg</portraitUrl>
-  <remark>Сисой Великий
+  <remark>
+   <english>Сисой Великий
 
-https://en.wikipedia.org/wiki/Russian_battleship_Sissoi_Veliky</remark>
+https://en.wikipedia.org/wiki/Russian_battleship_Sissoi_Veliky</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Sissoi_Veliky.jpg</path>
@@ -48734,9 +48962,11 @@ https://en.wikipedia.org/wiki/Russian_battleship_Sissoi_Veliky</remark>
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>https://commons.wikimedia.org/wiki/File:Russia%27s_Sea_Power,_Fig._5_-_Sissoi_Veliky.jpg</portraitUrl>
-  <remark>Сисой Великий
+  <remark>
+   <english>Сисой Великий
 
-https://en.wikipedia.org/wiki/Russian_battleship_Sissoi_Veliky</remark>
+https://en.wikipedia.org/wiki/Russian_battleship_Sissoi_Veliky</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Sissoi_Veliky.jpg</path>
@@ -49274,9 +49504,11 @@ https://en.wikipedia.org/wiki/Russian_battleship_Sissoi_Veliky</remark>
    <armorType>CompoundHardSteelFacedWroughtIron</armorType>
   </armorRating>
   <portraitUrl>https://www.the-blueprints.com/blueprints/ships/battleships-ussr/34807/view/russia_navarin_battleship/</portraitUrl>
-  <remark>Наварин
+  <remark>
+   <english>Наварин
 
-https://en.wikipedia.org/wiki/Russian_battleship_Navarin</remark>
+https://en.wikipedia.org/wiki/Russian_battleship_Navarin</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Navarin.jpg</path>
@@ -49579,11 +49811,13 @@ https://en.wikipedia.org/wiki/Russian_battleship_Navarin</remark>
    <armorType>CompoundHardSteelFacedWroughtIron</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:HMS_Inflexible_Diagrams_Brasseys_1888.jpg</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/HMS_Inflexible_(1876)
+  <remark>
+   <english>https://en.wikipedia.org/wiki/HMS_Inflexible_(1876)
 
 One of reference ship class of Ding Yuan
 
-</remark>
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Inflexible.jpg</path>
@@ -50087,9 +50321,11 @@ One of reference ship class of Ding Yuan
    <armorType>HarveyNickelSteel</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:Centurion_class_battleship_diagrams_Brasseys_1896.jpg</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Centurion-class_battleship
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Centurion-class_battleship
 
-</remark>
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Centurion.jpg</path>
@@ -50462,10 +50698,12 @@ One of reference ship class of Ding Yuan
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:HMS_Dreadnought_(1911)_profile_drawing.png</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/HMS_Dreadnought_(1906)
+  <remark>
+   <english>https://en.wikipedia.org/wiki/HMS_Dreadnought_(1906)
 
 Reference only, a new damage schema is required to work properly.
-</remark>
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Dreadnought.jpg</path>
@@ -51000,10 +51238,12 @@ Reference only, a new damage schema is required to work properly.
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:Invincible&amp;IndefatigableSketch.jpg</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Invincible-class_battlecruiser
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Invincible-class_battlecruiser
 
 Reference only, a new damage schema is required to work properly.
-</remark>
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Invincible.jpg</path>
@@ -51643,8 +51883,10 @@ Reference only, a new damage schema is required to work properly.
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:Edgar_class_cruiser_diagram_Brasseys_1897.jpg</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Edgar-class_cruiser
-</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Edgar-class_cruiser
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Edgar.jpg</path>
@@ -52142,9 +52384,11 @@ Reference only, a new damage schema is required to work properly.
    <armorType>MildSteel</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:HMS_Orlando_Class.jpg</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Orlando-class_cruiser
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Orlando-class_cruiser
 
-</remark>
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Orlando.jpg</path>
@@ -52473,8 +52717,10 @@ Reference only, a new damage schema is required to work properly.
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:HMS_Mercury_(1878).jpg</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Iris-class_cruiser
-</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Iris-class_cruiser
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Mercury.jpg</path>
@@ -52975,9 +53221,11 @@ Reference only, a new damage schema is required to work properly.
    <superStructureVertical effectInch="0.4" actualInch="0.5" />
    <armorType>MildSteel</armorType>
   </armorRating>
-  <remark>https://en.wikipedia.org/wiki/Apollo-class_cruiser
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Apollo-class_cruiser
 
-</remark>
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Apollo.jpg</path>
@@ -53287,9 +53535,11 @@ Reference only, a new damage schema is required to work properly.
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/Phoenix-class_sloop</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Phoenix-class_sloop
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Phoenix-class_sloop
 
-Sloop</remark>
+Sloop</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Algerine.jpg</path>
@@ -53451,9 +53701,11 @@ Sloop</remark>
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:HMS_Whiting_(1896)_in_1897.png</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/C-class_destroyer_(1913)
+  <remark>
+   <english>https://en.wikipedia.org/wiki/C-class_destroyer_(1913)
 
-Complement 50 is inferred.</remark>
+Complement 50 is inferred.</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Whiting.png</path>
@@ -53615,11 +53867,13 @@ Complement 50 is inferred.</remark>
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/HMS_Fame_(1896)</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/D-class_destroyer_(1913)
+  <remark>
+   <english>https://en.wikipedia.org/wiki/D-class_destroyer_(1913)
 
 Complement 50 is inferred.
 
-</remark>
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Fame.jpg</path>
@@ -54138,13 +54392,15 @@ Complement 50 is inferred.
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>https://rjw.narod.ru/1tihook/sivuch.htm</portraitUrl>
-  <remark>Сивуч (канонерская лодка)
+  <remark>
+   <english>Сивуч (канонерская лодка)
 
 https://ru.wikipedia.org/wiki/%D0%A1%D0%B8%D0%B2%D1%83%D1%87_(%D0%BA%D0%B0%D0%BD%D0%BE%D0%BD%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F_%D0%BB%D0%BE%D0%B4%D0%BA%D0%B0)
 
 https://rjw.narod.ru/1tihook/sivuch.htm
 
-Sivuch or Gilyak</remark>
+Sivuch or Gilyak</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Sivuch.jpg</path>
@@ -54256,9 +54512,11 @@ Sivuch or Gilyak</remark>
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:Iltis-class_gunboat_plan_and_profile.png</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Iltis-class_gunboat
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Iltis-class_gunboat
 
-</remark>
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Iltis.jpg</path>
@@ -54647,12 +54905,14 @@ Sivuch or Gilyak</remark>
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>https://commons.wikimedia.org/wiki/Category:Com%C3%A8te_class_gunboat</portraitUrl>
-  <remark>https://fr.wikipedia.org/wiki/Liste_des_canonni%C3%A8res_fran%C3%A7aises
+  <remark>
+   <english>https://fr.wikipedia.org/wiki/Liste_des_canonni%C3%A8res_fran%C3%A7aises
 
 Source: In Mahan's Wake
 Length, beam and draft, turn speed are from Maya since I can't find data for it
 
-Battery select a closer historical battery.</remark>
+Battery select a closer historical battery.</english>
+  </remark>
   <isPoorlySupported>true</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Comète.jpg</path>
@@ -54770,8 +55030,10 @@ Battery select a closer historical battery.</remark>
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>https://www.worldnavalships.com/surprise_class.htm</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Surprise-class_cruiser#HMS_Alacrity
-</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Surprise-class_cruiser#HMS_Alacrity
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Alacrity (1898).jpg</path>
@@ -54939,9 +55201,11 @@ Battery select a closer historical battery.</remark>
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>https://www.history.navy.mil/our-collections/photography/numerical-list-of-images/nhhc-series/nh-series/NH-72000/NH-72549.html</portraitUrl>
-  <remark>https://www.kchf.ru/eng/ship/cruisers/kazarsky.htm
+  <remark>
+   <english>https://www.kchf.ru/eng/ship/cruisers/kazarsky.htm
 https://www.history.navy.mil/our-collections/photography/numerical-list-of-images/nhhc-series/nh-series/NH-72000/NH-72549.html
-</remark>
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Kazarski.jpg</path>
@@ -55247,10 +55511,12 @@ https://www.history.navy.mil/our-collections/photography/numerical-list-of-image
    <armorType>WroughtIron</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:SMS_Sachsen_MKL_Bd._12_1890_(128867094).jpg</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/SMS_Sachsen_(1877)
+  <remark>
+   <english>https://en.wikipedia.org/wiki/SMS_Sachsen_(1877)
 
 One of Ting Yuen's Reference class
-</remark>
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Sachsen.jpg</path>
@@ -55804,8 +56070,10 @@ One of Ting Yuen's Reference class
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:Victoria_Louise_line_drawing.png</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Victoria_Louise-class_cruiser
-</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Victoria_Louise-class_cruiser
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Victoria_Louise.jpg</path>
@@ -56181,9 +56449,11 @@ One of Ting Yuen's Reference class
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:Kaiserin_Augusta_line_drawing.png</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/SMS_Kaiserin_Augusta
+  <remark>
+   <english>https://en.wikipedia.org/wiki/SMS_Kaiserin_Augusta
 
-</remark>
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Kaiserin_Augusta.jpg</path>
@@ -56512,9 +56782,11 @@ One of Ting Yuen's Reference class
    <armorType>MildSteel</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:Gefion_line_drawing.png</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/SMS_Gefion
+  <remark>
+   <english>https://en.wikipedia.org/wiki/SMS_Gefion
 
-</remark>
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Gefion.jpg</path>
@@ -57044,7 +57316,9 @@ One of Ting Yuen's Reference class
    <armorType>HarveyNickelSteel</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:D%27Entrecasteaux_Brasseys1902.png</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/French_cruiser_D%27Entrecasteaux</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/French_cruiser_D%27Entrecasteaux</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\D'Entrecasteaux.jpg</path>
@@ -57547,8 +57821,10 @@ One of Ting Yuen's Reference class
    <armorType>HarveyNickelSteel</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:Descartes_class_drawing.jpg</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Descartes-class_cruiser
-</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Descartes-class_cruiser
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Descartes.jpg</path>
@@ -57813,8 +58089,10 @@ One of Ting Yuen's Reference class
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>https://laststandonzombieisland.com/tag/canonniere-la-zelee/</portraitUrl>
-  <remark>https://laststandonzombieisland.com/tag/canonniere-la-zelee/
-</remark>
+  <remark>
+   <english>https://laststandonzombieisland.com/tag/canonniere-la-zelee/
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Zelee.jpg</path>
@@ -58339,8 +58617,10 @@ One of Ting Yuen's Reference class
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:Italian_cruiser_Calabria_plan_and_profile.jpg</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Italian_cruiser_Calabria
-</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Italian_cruiser_Calabria
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Calabria.jpg</path>
@@ -58851,8 +59131,10 @@ One of Ting Yuen's Reference class
    <armorType>MildSteel</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:Regioni-class_cruiser_plan_and_profile.jpg</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Regioni-class_cruiser
-</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Regioni-class_cruiser
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Regioni.jpg</path>
@@ -59257,9 +59539,11 @@ One of Ting Yuen's Reference class
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:Zenta-class_line_drawing.jpg</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Zenta-class_cruiser
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Zenta-class_cruiser
 
-</remark>
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Zenta.jpg</path>
@@ -59634,8 +59918,10 @@ One of Ting Yuen's Reference class
    <armorType>MildSteel</armorType>
   </armorRating>
   <portraitUrl>https://www.navsource.net/archives/04/c1/c1.htm</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/USS_Newark_(C-1)
-</remark>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/USS_Newark_(C-1)
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Newark_C1.jpg</path>
@@ -59768,10 +60054,12 @@ One of Ting Yuen's Reference class
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>Illustrated History of Chinese Warships 1855–1911 (by Chen Yue)  中国军舰图志 1855-1911 （陈悦）</portraitUrl>
-  <remark>Hai Hua, Hai Hola or Haihola
+  <remark>
+   <english>Hai Hua, Hai Hola or Haihola
 
 https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%88%B0
-</remark>
+</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Hai Hola.jpg</path>
@@ -60083,10 +60371,12 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>Illustrated History of Chinese Warships 1855–1911 (by Chen Yue)  中国军舰图志 1855-1911 （陈悦）</portraitUrl>
-  <remark>https://baike.baidu.com/item/%E9%A3%9E%E9%9C%86%E5%8F%B7%E7%82%AE%E8%88%B0/9031261
+  <remark>
+   <english>https://baike.baidu.com/item/%E9%A3%9E%E9%9C%86%E5%8F%B7%E7%82%AE%E8%88%B0/9031261
 
 
-</remark>
+</english>
+  </remark>
   <isPoorlySupported>true</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Fei Ting.jpg</path>
@@ -60402,9 +60692,11 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
    <armorType>NotSpecified</armorType>
   </armorRating>
   <portraitUrl>Illustrated History of Chinese Warships 1855–1911 (by Chen Yue)  中国军舰图志 1855-1911 （陈悦）</portraitUrl>
-  <remark>https://zh.wikipedia.org/wiki/%E9%A3%9E%E9%B9%B0%E5%8F%B7%E9%B1%BC%E9%9B%B7%E7%82%AE%E8%88%B0
+  <remark>
+   <english>https://zh.wikipedia.org/wiki/%E9%A3%9E%E9%B9%B0%E5%8F%B7%E9%B1%BC%E9%9B%B7%E7%82%AE%E8%88%B0
 
-</remark>
+</english>
+  </remark>
   <isPoorlySupported>true</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Fei Ying.jpg</path>
@@ -61415,7 +61707,9 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
    <superStructureVertical effectInch="0" actualInch="0" />
    <armorType>NotSpecified</armorType>
   </armorRating>
-  <remark>5x Krupp 8cm L/19 C/65, 3x 6pdr/3.5cwt RML are ignored</remark>
+  <remark>
+   <english>5x Krupp 8cm L/19 C/65, 3x 6pdr/3.5cwt RML are ignored</english>
+  </remark>
   <isPoorlySupported>true</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\fort.jpg</path>
@@ -62586,8 +62880,10 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
    <superStructureVertical effectInch="0" actualInch="0" />
    <armorType>NotSpecified</armorType>
   </armorRating>
-  <remark>https://ru.wikipedia.org/wiki/%D0%93%D0%B8%D0%BB%D1%8F%D0%BA_(%D0%BA%D0%B0%D0%BD%D0%BE%D0%BD%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F_%D0%BB%D0%BE%D0%B4%D0%BA%D0%B0)
-</remark>
+  <remark>
+   <english>https://ru.wikipedia.org/wiki/%D0%93%D0%B8%D0%BB%D1%8F%D0%BA_(%D0%BA%D0%B0%D0%BD%D0%BE%D0%BD%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F_%D0%BB%D0%BE%D0%B4%D0%BA%D0%B0)
+</english>
+  </remark>
   <isPoorlySupported>true</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Gilyak_1898.jpg</path>
@@ -63265,9 +63561,11 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
    <armorType>HarveyNickelSteel</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:Royal_Sovereign_class_diagrams_Brasseys_1906.jpg</portraitUrl>
-  <remark>https://en.wikipedia.org/wiki/Royal_Sovereign-class_battleship
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Royal_Sovereign-class_battleship
 
-First pre-dreadnoughts</remark>
+First pre-dreadnoughts</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Royal_Sovereign.jpg</path>

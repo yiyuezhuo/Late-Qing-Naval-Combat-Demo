@@ -1319,7 +1319,7 @@ namespace NavalCombatCore
         );
 
         [CreateProperty]
-        public string shipClassRemark => shipClass?.remark ?? "";
+        public string shipClassRemark => shipClass?.remark?.shortName ?? "";
 
         [CreateProperty]
         public bool isInEditMode => GamePreference.Instance.isInEditMode;

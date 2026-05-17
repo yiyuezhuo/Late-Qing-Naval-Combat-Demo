@@ -387,16 +387,17 @@
                                     </ui:VisualElement>
                                     <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
                                         <ui:VisualElement style="flex-grow: 1; flex-basis: 0;">
-                                            <ui:Label text="Remark">
-                                                <Bindings>
-                                                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(67808446287872)"/>
-                                                </Bindings>
-                                            </ui:Label>
-                                            <ui:TextField multiline="true" vertical-scroller-visibility="Auto" value="__________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________" style="height: 250px; white-space: normal;">
-                                                <Bindings>
-                                                    <ui:DataBinding property="value" data-source-path="remark" binding-mode="TwoWay"/>
-                                                </Bindings>
-                                            </ui:TextField>
+                                            <ui:VisualElement style="flex-direction: row; align-items: center;">
+                                                <ui:Label text="Remark" style="flex-grow: 1;">
+                                                    <Bindings>
+                                                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(67808446287872)"/>
+                                                    </Bindings>
+                                                </ui:Label>
+                                                <ui:Button text="Set" name="SetRemarkButton"/>
+                                            </ui:VisualElement>
+                                            <ui:ScrollView vertical-scroller-visibility="Auto" horizontal-scroller-visibility="Hidden" style="height: 250px;">
+                                                <MarkdownRenderer name="ShipClassRemarkMarkdownRenderer" selectable="true" max-image-height="220"/>
+                                            </ui:ScrollView>
                                         </ui:VisualElement>
                                         <ui:VisualElement style="flex-basis: 0;"/>
                                     </ui:VisualElement>

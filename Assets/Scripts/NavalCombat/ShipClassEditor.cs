@@ -614,6 +614,7 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
 
             RequestSectorArcRefresh(currentShipClass, true);
             RequestDefaultPlaceholderPreviewRefresh(currentShipClass, true);
+            RefreshShipClassRemarkPreview();
         };
 
         var speedIncreaseMultiColumnListView = root.Q<MultiColumnListView>("SpeedIncreaseMultiColumnListView");
@@ -653,6 +654,26 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
             torpedoDamageClassHelpButton.clicked += () =>
             {
                 DialogRoot.Instance.PopupMarkdownDialog(TorpedoDamageClassMarkdown, Localize("Torpedo Damage Class"));
+            };
+        }
+
+        var setRemarkButton = root.Q<Button>("SetRemarkButton");
+        if (setRemarkButton != null)
+        {
+            setRemarkButton.clicked += () =>
+            {
+                var shipClass = selectedShipClass;
+                if (shipClass == null)
+                {
+                    DialogRoot.Instance.PopupMessageDialog(Localize("No ship class is selected."));
+                    return;
+                }
+
+                shipClass.remark ??= new GlobalString();
+                DialogRoot.Instance.PopupGlobalStringMarkdownEditorDialog(
+                    shipClass.remark,
+                    Localize("Remark"),
+                    RefreshShipClassRemarkPreview);
             };
         }
 
@@ -1004,6 +1025,7 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
     protected override void OnShow()
     {
         RequestDefaultPlaceholderPreviewRefresh();
+        RefreshShipClassRemarkPreview();
         shown?.Invoke(this, EventArgs.Empty);
     }
 
@@ -1038,6 +1060,7 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
         GetFullObjects();
         RefreshFilter();
         RequestDefaultPlaceholderPreviewRefresh(selectedShipClass, true);
+        RefreshShipClassRemarkPreview();
     }
 
     [CreateProperty]
@@ -2580,6 +2603,12 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
     }
 
     static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
+
+    void RefreshShipClassRemarkPreview()
+    {
+        root?.Q<MarkdownRenderer>("ShipClassRemarkMarkdownRenderer")
+            ?.SetMarkdownWithoutNotify(selectedShipClass?.remark?.shortName ?? string.Empty);
+    }
 
     static void RefreshPictureField(VisualElement fieldRoot, PictureReference pictureReference)
     {

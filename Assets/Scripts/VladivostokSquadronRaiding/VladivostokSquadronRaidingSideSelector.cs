@@ -43,7 +43,7 @@ public class VladivostokSquadronRaidingSideSelector
         {
             english="Vladivostok Squadron",
             japanese="浦塩艦隊",
-            chineseSimplified="海参崴分队",
+            chineseSimplified="海参崴分舰队",
         },
         country = Country.Russia
     };

@@ -4938,8 +4938,8 @@
     <name>
      <english>Yokosuka Port</english>
      <japanese>横須賀港</japanese>
-     <chineseSimplified>横须贺港口</chineseSimplified>
-     <chineseTraditional>橫須賀港口</chineseTraditional>
+     <chineseSimplified>横须贺港</chineseSimplified>
+     <chineseTraditional>橫須賀港</chineseTraditional>
     </name>
     <strength>0</strength>
     <strengthManualOverride>false</strengthManualOverride>
@@ -4973,8 +4973,8 @@
     <name>
      <english>Kure Port</english>
      <japanese>呉港</japanese>
-     <chineseSimplified>吴港口</chineseSimplified>
-     <chineseTraditional>吳港口</chineseTraditional>
+     <chineseSimplified>吴港</chineseSimplified>
+     <chineseTraditional>吳港</chineseTraditional>
     </name>
     <strength>0</strength>
     <strengthManualOverride>false</strengthManualOverride>
@@ -5008,8 +5008,8 @@
     <name>
      <english>Sasebo Port</english>
      <japanese>佐世保港</japanese>
-     <chineseSimplified>佐世保港口</chineseSimplified>
-     <chineseTraditional>佐世保港口</chineseTraditional>
+     <chineseSimplified>佐世保港</chineseSimplified>
+     <chineseTraditional>佐世保港</chineseTraditional>
     </name>
     <strength>0</strength>
     <strengthManualOverride>false</strengthManualOverride>
@@ -5043,8 +5043,8 @@
     <name>
      <english>Vladivostok Port</english>
      <japanese>ウラジオストク港</japanese>
-     <chineseSimplified>海参崴港口</chineseSimplified>
-     <chineseTraditional>海參崴港口</chineseTraditional>
+     <chineseSimplified>海参崴港</chineseSimplified>
+     <chineseTraditional>海參崴港</chineseTraditional>
     </name>
     <strength>0</strength>
     <strengthManualOverride>false</strengthManualOverride>
@@ -5120,8 +5120,8 @@
     <name>
      <english>Vladivostok Squadron HQ</english>
      <japanese>ウラジオストク分隊司令部</japanese>
-     <chineseSimplified>海参崴分队总部</chineseSimplified>
-     <chineseTraditional>海參崴分隊總部</chineseTraditional>
+     <chineseSimplified>海参崴分舰队司令部</chineseSimplified>
+     <chineseTraditional>海參崴分艦隊司令部</chineseTraditional>
     </name>
     <type>HeadQuarter</type>
     <size>Division</size>
@@ -5205,8 +5205,8 @@
     <name>
      <english>Vladivostok Squadron</english>
      <japanese>浦塩艦隊</japanese>
-     <chineseSimplified>海参崴分队</chineseSimplified>
-     <chineseTraditional>海參崴分隊</chineseTraditional>
+     <chineseSimplified>海参崴分舰队</chineseSimplified>
+     <chineseTraditional>海參崴分艦隊</chineseTraditional>
     </name>
     <type>Fleet</type>
     <size>Bridge</size>

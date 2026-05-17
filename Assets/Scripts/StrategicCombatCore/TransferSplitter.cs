@@ -23,8 +23,8 @@ namespace StrategicCombatCore
         {
             english = " loaded",
             japanese = "（積載済み）",
-            chineseSimplified = " 装载",
-            chineseTraditional = " 裝載",
+            chineseSimplified = " 已装载",
+            chineseTraditional = " 已裝載",
         };
 
         void ResolveBuilding(bool endCurrentShip)

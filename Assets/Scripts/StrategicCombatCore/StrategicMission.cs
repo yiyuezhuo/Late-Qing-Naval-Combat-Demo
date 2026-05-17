@@ -926,7 +926,7 @@ namespace StrategicCombatCore
             english = "Intercept to ",
             japanese = "迎撃: ",
             chineseSimplified = "拦截至 ",
-            chineseTraditional = "拦截至 "
+            chineseTraditional = "攔截至 "
         };
 
         protected override void DoTransition()

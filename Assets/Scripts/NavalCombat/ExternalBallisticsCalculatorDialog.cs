@@ -472,7 +472,7 @@ public sealed partial class ExternalBallisticsCalculatorDialog
 
         var tab = new Tab
         {
-            label = Localize("External Ballistics (外弹道学)"),
+            label = Localize("External Ballistics"),
             style =
             {
                 flexGrow = 1

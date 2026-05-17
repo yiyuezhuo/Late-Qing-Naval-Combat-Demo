@@ -38,4 +38,8 @@ when a term needs special handling.
 | Rapid Fire Battery / Rapid Firing Battery | 速射炮组 | 速射砲組 | Use for the shipboard rapid-fire battery record/group in UI labels. Avoid `炮台` / `砲台` unless the source literally means a fixed artillery battery. |
 | Resolve (combat/result processing) | 结算 | 結算 | Use for combat/result processing UI actions. Avoid `解决` / `解決` for this gameplay operation. |
 | Mount | 炮架 | 砲架 | Generic gun/weapon mount. Use `鱼雷发射管` / `魚雷發射管` for torpedo-specific mounts when appropriate. Avoid translating this as generic loading/carrying. |
+| Disabled (some status labels) | 受损 | 受損 | Some compact UI/status labels intentionally use `受损` / `受損` for `Disabled` to present the player-facing state as damage rather than a strict inoperable flag. Do not normalize these blindly to `失效`. |
+| Torpedo Settings | 可用模式 | 可用模式 | In the torpedo UI this label intentionally means available torpedo modes, not generic settings. |
+| Level (victory status) | 程度 | 程度 | Keep `程度` for the compact victory-status level label. |
+| Flooding Obstruction | 浮动障碍 | 浮動障礙 | Intentional gameplay state wording; do not change to a literal flooding translation. |
 

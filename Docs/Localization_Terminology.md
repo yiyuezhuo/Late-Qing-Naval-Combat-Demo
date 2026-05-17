@@ -19,9 +19,11 @@ when a term needs special handling.
 | Quick-firing gun / rapid-firing gun | 速射砲 | Use for the historical naval weapon type. Avoid literal `連射砲`. |
 | Battery (shipboard battery UI) | 砲兵装 | Use for shipboard battery labels, records, firepower, and selectors. Use `砲台` only when the source literally means a fixed coast/land battery, fort battery, or historical place name. |
 | Rapid Fire Battery / Rapid Firing Battery | 速射砲兵装 | Use for the shipboard rapid-fire battery record/group in UI labels. Use bare `速射砲` for individual weapon names, and `速射砲群` only when the text explicitly emphasizes a group of guns. Avoid `砲台` and `砲側` for battery/record/selector labels. |
+| Damage Effect / Damage Effects | 損傷効果 | Use for damage-effect records, DE-related UI, damage tabs, and prose that refers to applied damage effects. Avoid `ダメージ状況` when the source specifically means Damage Effect. |
 | Severity | 重大度 | Use for damage-effect and shipboard-fire severity values. Keep existing `重大度` wording instead of introducing variants such as `深刻度`. |
 | Resolve (combat/result processing) | 処理 | Use `処理` for combat/result processing UI actions, e.g. `海戦処理` and `ターン処理`. Avoid literal `解決` except for mathematical/computation solutions such as a torpedo firing solution. |
 | Mount | 砲架 | Use for gun/weapon mounts in UI and damage text. Use `魚雷発射管` or `魚雷発射機` for torpedo-specific mounts when the component is explicitly a torpedo tube/launcher. Avoid generic `マウント` and avoid confusing mount with `搭載`. |
+| Scenario | シナリオ | Use for game scenarios, tutorial scenarios, scenario picker labels, and scenario prose. Avoid Chinese-style `劇本` in Japanese UI and tutorial text. |
 | Encounter Rock | 過岩 | Scenario location name. Keep `過岩`; do not replace with a katakana transliteration. |
 
 ## Chinese

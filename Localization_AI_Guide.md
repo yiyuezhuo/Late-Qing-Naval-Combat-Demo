@@ -106,6 +106,13 @@ Scenario tutorial scripts may use inline `getLocalized(en, ja, zhHans, zhHant)` 
   - Named ships and ship classes: use `Assets\StreamingAssets\Scenarios\NamedShips.xml` and `ShipClasses.xml`.
   - Scenario-specific group or object names: use that scenario XML's localized `GlobalString` values when present.
   - Dynamically generated anonymous names should keep the localized base name and append the generated suffix directly, for example `吉野1` / `吉野2`.
+- Do not treat all localized game-data fields as mechanical translations of the
+  English field. Weapon names, builder descriptions, and similar source-data
+  fields may intentionally contain different source information by locale, such
+  as a historical Chinese name, a builder name, or a locally documented
+  designation that is not present in English. Flag these only when they conflict
+  with a known source, are malformed for the locale, or the user explicitly asks
+  for strict English-baseline normalization.
 - Preserve keyboard keys and hotkeys such as `F` and `Ins`.
 - Preserve abbreviations that are used as product/domain terms unless there is an established localized key. `OOB` is intentionally kept as `OOB`; translate the surrounding noun if needed, for example `OOB 関係` / `OOB 关系` / `OOB 關係`.
 

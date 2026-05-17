@@ -32,6 +32,7 @@ public class VladivostokSquadronRaidingSideSelector
             english="2nd Fleet",
             japanese="第2艦隊",
             chineseSimplified="第2舰队",
+            chineseTraditional="第2艦隊",
         },
         country = Country.Japan,
     };
@@ -44,6 +45,7 @@ public class VladivostokSquadronRaidingSideSelector
             english="Vladivostok Squadron",
             japanese="浦塩艦隊",
             chineseSimplified="海参崴分舰队",
+            chineseTraditional="海參崴分艦隊",
         },
         country = Country.Russia
     };

@@ -170,7 +170,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 8421312729088
-    m_Localized: "DE 112, \u885D\u64CA\u640D\u50B7. \u4E3B\u70AE\u8207\u706B\u63A7\u7CFB\u7D71\u504F\u96E2\u6821\u51C6."
+    m_Localized: "DE 112, \u885D\u64CA\u640D\u50B7\u3002\u4E3B\u7832\u8207\u706B\u63A7\u7CFB\u7D71\u504F\u96E2\u6821\u6E96\u3002"
     m_Metadata:
       m_Items: []
   - m_Id: 8439805415424
@@ -190,7 +190,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 8525448908800
-    m_Localized: "DE 114, \u547D\u4E2D\u526F\u70AE\u5F39\u85E5\u5EAB\u6216\u5F85\u767C\u5F48\u85E5"
+    m_Localized: "DE 114, \u547D\u4E2D\u526F\u7832\u5F48\u85E5\u5EAB\u6216\u5F85\u767C\u5F48\u85E5"
     m_Metadata:
       m_Items: []
   - m_Id: 8554884534272
@@ -895,11 +895,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 89783843590144
-    m_Localized: "DE *601, \u4E3B\u70AE\u8207\u706B\u63A7\u7CFB\u7D71\u504F\u96E2\u6821\u51C6\uFF0C\u9B5A\u96F7\u767C\u5C04\u7BA1\u53D7\u640D"
+    m_Localized: "DE *601, \u4E3B\u7832\u8207\u706B\u63A7\u7CFB\u7D71\u504F\u96E2\u6821\u6E96\uFF0C\u9B5A\u96F7\u767C\u5C04\u7BA1\u53D7\u640D"
     m_Metadata:
       m_Items: []
   - m_Id: 89807516241920
-    m_Localized: "DE *601, \u4E3B\u70AE\u8207\u706B\u63A7\u7CFB\u7D71\u504F\u96E2\u6821\u51C6"
+    m_Localized: "DE *601, \u4E3B\u7832\u8207\u706B\u63A7\u7CFB\u7D71\u504F\u96E2\u6821\u6E96"
     m_Metadata:
       m_Items: []
   - m_Id: 89815208595456
@@ -3547,7 +3547,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -116
-    m_Localized: "\u6C92\u6709\u53D7\u5230\u7684\u7832\u64CA\u547D\u4E2D\u3002"
+    m_Localized: "\u6C92\u6709\u53D7\u5230\u7832\u7D44\u547D\u4E2D\u3002"
     m_Metadata:
       m_Items: []
   - m_Id: -117
@@ -3792,10 +3792,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -177
-    m_Localized: "\u672A\u8A2D\u5B9A\u73A9\u5BB6\u9663\u71DF\uFF0C\u7121\u6CD5\u5224\u5B9A\u8981\u5C0D\u54EA\u500B
-      Side \u9032\u884C\u8A2D\u5B9A\u3002\u82E5\u8981\u5728\u6C92\u6709 Viewer Side
-      \u7684\u60C5\u6CC1\u4E0B\u8A2D\u5B9A\u81EA\u52D5\u5316\uFF0C\u8ACB\u4F7F\u7528
-      Side State Editor\u3002"
+    m_Localized: "\u672A\u8A2D\u5B9A\u73A9\u5BB6\u9663\u71DF\uFF0C\u7121\u6CD5\u5224\u5B9A\u8981\u8A2D\u5B9A\u54EA\u500B\u9663\u71DF\u3002\u82E5\u8981\u5728\u6C92\u6709\u73A9\u5BB6\u9663\u71DF\u7684\u60C5\u6CC1\u4E0B\u8A2D\u5B9A\u81EA\u52D5\u5316\uFF0C\u8ACB\u4F7F\u7528\u9663\u71DF\u72C0\u614B\u7DE8\u8F2F\u5668\u3002"
     m_Metadata:
       m_Items: []
   - m_Id: -178
@@ -3857,8 +3854,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -192
-    m_Localized: "\u4F7F\u7528\u76EE\u524D\u5DE6\u4E0A\u503C\uFF0C\u7136\u5F8C\u5957\u7528\u64EC\u5408\u7684
-      Broad/Narrow\u3001\u5C04\u7A0B\u6BB5\u548C\u901F\u5EA6\u6BD4\u4F8B\u3002"
+    m_Localized: "\u4F7F\u7528\u76EE\u524D\u5DE6\u4E0A\u503C\uFF0C\u7136\u5F8C\u5957\u7528\u64EC\u5408\u7684\u5BEC\u5074/\u7A84\u5074\u3001\u5C04\u7A0B\u6BB5\u548C\u901F\u5EA6\u6BD4\u4F8B\u3002"
     m_Metadata:
       m_Items: []
   - m_Id: -193
@@ -4152,7 +4148,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -265
-    m_Localized: "Terminal Ballistics (\u7D42\u9EDE\u5F48\u9053\u5B78)"
+    m_Localized: "\u7D42\u9EDE\u5F48\u9053\u5B78"
     m_Metadata:
       m_Items: []
   - m_Id: -266

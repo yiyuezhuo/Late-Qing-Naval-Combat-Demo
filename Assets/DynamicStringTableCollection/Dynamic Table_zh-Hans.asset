@@ -3548,7 +3548,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -116
-    m_Localized: "\u6CA1\u6709\u53D7\u5230\u7684\u70AE\u51FB\u547D\u4E2D\u3002"
+    m_Localized: "\u6CA1\u6709\u53D7\u5230\u70AE\u7EC4\u547D\u4E2D\u3002"
     m_Metadata:
       m_Items: []
   - m_Id: -117
@@ -3793,10 +3793,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -177
-    m_Localized: "\u672A\u8BBE\u7F6E\u73A9\u5BB6\u9635\u8425\uFF0C\u65E0\u6CD5\u5224\u5B9A\u8981\u5BF9\u54EA\u4E2A
-      Side \u8FDB\u884C\u8BBE\u7F6E\u3002\u82E5\u8981\u5728\u6CA1\u6709 Viewer Side
-      \u7684\u60C5\u51B5\u4E0B\u8BBE\u7F6E\u81EA\u52A8\u5316\uFF0C\u8BF7\u4F7F\u7528
-      Side State Editor\u3002"
+    m_Localized: "\u672A\u8BBE\u7F6E\u73A9\u5BB6\u9635\u8425\uFF0C\u65E0\u6CD5\u5224\u5B9A\u8981\u914D\u7F6E\u54EA\u4E2A\u9635\u8425\u3002\u82E5\u8981\u5728\u6CA1\u6709\u73A9\u5BB6\u9635\u8425\u7684\u60C5\u51B5\u4E0B\u914D\u7F6E\u81EA\u52A8\u5316\uFF0C\u8BF7\u4F7F\u7528\u9635\u8425\u72B6\u6001\u7F16\u8F91\u5668\u3002"
     m_Metadata:
       m_Items: []
   - m_Id: -178
@@ -3858,8 +3855,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -192
-    m_Localized: "\u4F7F\u7528\u5F53\u524D\u5DE6\u4E0A\u503C\uFF0C\u7136\u540E\u5957\u7528\u62DF\u5408\u7684
-      Broad/Narrow\u3001\u5C04\u7A0B\u6BB5\u548C\u901F\u5EA6\u6BD4\u4F8B\u3002"
+    m_Localized: "\u4F7F\u7528\u5F53\u524D\u5DE6\u4E0A\u503C\uFF0C\u7136\u540E\u5957\u7528\u62DF\u5408\u7684\u5BBD\u4FA7/\u7A84\u4FA7\u3001\u5C04\u7A0B\u6BB5\u548C\u901F\u5EA6\u6BD4\u4F8B\u3002"
     m_Metadata:
       m_Items: []
   - m_Id: -193
@@ -4153,7 +4149,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -265
-    m_Localized: "Terminal Ballistics (\u7EC8\u70B9\u5F39\u9053\u5B66)"
+    m_Localized: "\u7EC8\u70B9\u5F39\u9053\u5B66"
     m_Metadata:
       m_Items: []
   - m_Id: -266

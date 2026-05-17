@@ -1415,7 +1415,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 358301486977024
-    m_Localized: "\u5EFA\u7ACB\u9810\u8A2D\u8266\u8239\u72B6\u6001"
+    m_Localized: "\u5EFA\u7ACB\u9810\u8A2D\u8266\u8239\u72C0\u614B"
     m_Metadata:
       m_Items: []
   - m_Id: 358609889955840
@@ -2623,7 +2623,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 69800000000045
-    m_Localized: "\u6C92\u6709\u53D7\u5230 Battery \u547D\u4E2D\u7684\u8A18\u9304\u3002"
+    m_Localized: "\u6C92\u6709\u53D7\u5230\u7832\u7D44\u547D\u4E2D\u7684\u8A18\u9304\u3002"
     m_Metadata:
       m_Items: []
   - m_Id: 69800000000046
@@ -3231,7 +3231,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -112
-    m_Localized: NAAB-like Calculator
+    m_Localized: "NAAB-like \u8A08\u7B97\u5668"
     m_Metadata:
       m_Items: []
   - m_Id: -113

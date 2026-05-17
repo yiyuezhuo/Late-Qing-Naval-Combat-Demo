@@ -45559,8 +45559,8 @@ Getting Started: Select Observation Mode, then advance time using the Spacebar o
     <name>
      <english>Miyakojima</english>
      <japanese>宮古島</japanese>
-     <chineseSimplified>宫吉岛</chineseSimplified>
-     <chineseTraditional>宮吉島</chineseTraditional>
+     <chineseSimplified>宫古岛</chineseSimplified>
+     <chineseTraditional>宮古島</chineseTraditional>
     </name>
     <sideObjectId>3e93b8e8-9c59-4e2c-92e0-0eee1b7e0d7d</sideObjectId>
     <cells>
@@ -46406,8 +46406,8 @@ Getting Started: Select Observation Mode, then advance time using the Spacebar o
      <Label>
       <english>Kalgan</english>
       <japanese>張家界</japanese>
-      <chineseSimplified>张家界</chineseSimplified>
-      <chineseTraditional>張家界</chineseTraditional>
+      <chineseSimplified>张家口</chineseSimplified>
+      <chineseTraditional>張家口</chineseTraditional>
      </Label>
     </Cell>
     <Cell x="10" y="36" terrain="Rough" longitude="115.193924" latitude="41.4110947" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" />
@@ -47371,8 +47371,8 @@ Getting Started: Select Observation Mode, then advance time using the Spacebar o
      <Label>
       <english>Miyakojima</english>
       <japanese>宮古島</japanese>
-      <chineseSimplified>宫吉岛</chineseSimplified>
-      <chineseTraditional>宮吉島</chineseTraditional>
+      <chineseSimplified>宫古岛</chineseSimplified>
+      <chineseTraditional>宮古島</chineseTraditional>
      </Label>
     </Cell>
     <Cell x="28" y="6" terrain="DeepWater" longitude="125.367935" latitude="25.3963928" />

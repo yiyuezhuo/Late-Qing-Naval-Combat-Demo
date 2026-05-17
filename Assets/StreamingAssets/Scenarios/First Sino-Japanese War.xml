@@ -34805,7 +34805,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <LandUnit>
     <name>
      <english>Port Arthur</english>
-     <japanese>旅順ポート</japanese>
+     <japanese>旅順港</japanese>
      <chineseSimplified>旅顺港口</chineseSimplified>
      <chineseTraditional>旅順港口</chineseTraditional>
     </name>
@@ -35146,7 +35146,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <LandUnit>
     <name>
      <english>Grand Council HQ</english>
-     <japanese>軍機処 HQ</japanese>
+     <japanese>軍機処本部</japanese>
      <chineseSimplified>军机处 HQ</chineseSimplified>
      <chineseTraditional>軍機處 HQ</chineseTraditional>
     </name>
@@ -35181,7 +35181,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <LandUnit>
     <name>
      <english>Viceroy of Zhili HQ</english>
-     <japanese>直隷総督 HQ</japanese>
+     <japanese>直隷総督府</japanese>
      <chineseSimplified>直隶总督 HQ</chineseSimplified>
      <chineseTraditional>直隸總督 HQ</chineseTraditional>
     </name>
@@ -35216,7 +35216,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <LandUnit>
     <name>
      <english>Beiyang Fleet HQ</english>
-     <japanese>北洋水師提督府 HQ</japanese>
+     <japanese>北洋水師提督府</japanese>
      <chineseSimplified>北洋水师提督府 HQ</chineseSimplified>
      <chineseTraditional>北洋水師提督府 HQ</chineseTraditional>
     </name>
@@ -35251,7 +35251,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <LandUnit>
     <name>
      <english>General of Shengjing HQ</english>
-     <japanese>盛京将軍 HQ</japanese>
+     <japanese>盛京将軍府</japanese>
      <chineseSimplified>盛京将军 HQ</chineseSimplified>
      <chineseTraditional>盛京將軍 HQ</chineseTraditional>
     </name>
@@ -35286,7 +35286,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <LandUnit>
     <name>
      <english>Viceroy of Liangjiang HQ</english>
-     <japanese>両江総督 HQ</japanese>
+     <japanese>両江総督府</japanese>
      <chineseSimplified>两江总督 HQ</chineseSimplified>
      <chineseTraditional>兩江總督 HQ</chineseTraditional>
     </name>
@@ -35321,7 +35321,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <LandUnit>
     <name>
      <english>Nanyang Fleet HQ</english>
-     <japanese>南洋水師 HQ</japanese>
+     <japanese>南洋水師司令部</japanese>
      <chineseSimplified>南洋水师总部</chineseSimplified>
      <chineseTraditional>南洋水師總部</chineseTraditional>
     </name>
@@ -35356,7 +35356,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <LandUnit>
     <name>
      <english>Viceroy of Huguang HQ</english>
-     <japanese>湖広総督 HQ</japanese>
+     <japanese>湖広総督府</japanese>
      <chineseSimplified>湖广总督 HQ</chineseSimplified>
      <chineseTraditional>湖廣總督 HQ</chineseTraditional>
     </name>
@@ -35391,7 +35391,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <LandUnit>
     <name>
      <english>Viceroy of Liangguang HQ</english>
-     <japanese>両広総督 HQ</japanese>
+     <japanese>両広総督府</japanese>
      <chineseSimplified>两广总督 HQ</chineseSimplified>
      <chineseTraditional>兩廣總督 HQ</chineseTraditional>
     </name>
@@ -35426,7 +35426,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <LandUnit>
     <name>
      <english>Viceroy of Minzhe HQ</english>
-     <japanese>閩浙総督 HQ</japanese>
+     <japanese>閩浙総督府</japanese>
      <chineseSimplified>闽浙总督 HQ</chineseSimplified>
      <chineseTraditional>閩浙總督 HQ</chineseTraditional>
     </name>
@@ -35461,7 +35461,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <LandUnit>
     <name>
      <english>Governor of Taiwan HQ</english>
-     <japanese>台湾巡撫 HQ</japanese>
+     <japanese>台湾巡撫府</japanese>
      <chineseSimplified>台湾巡抚 HQ</chineseSimplified>
      <chineseTraditional>臺灣巡撫 HQ</chineseTraditional>
     </name>
@@ -35496,7 +35496,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <LandUnit>
     <name>
      <english>Imperial General Headquarters HQ</english>
-     <japanese>大本営 HQ</japanese>
+     <japanese>大本営</japanese>
      <chineseSimplified>大本营 HQ</chineseSimplified>
      <chineseTraditional>大本營 HQ</chineseTraditional>
     </name>
@@ -35531,7 +35531,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <LandUnit>
     <name>
      <english>Imperial Japanese Navy General Staff  HQ</english>
-     <japanese>軍令部 HQ</japanese>
+     <japanese>軍令部</japanese>
      <chineseSimplified>军令部 HQ</chineseSimplified>
      <chineseTraditional>軍令部 HQ</chineseTraditional>
     </name>
@@ -35566,7 +35566,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <LandUnit>
     <name>
      <english>1st Army HQ</english>
-     <japanese>第一軍 HQ</japanese>
+     <japanese>第一軍司令部</japanese>
      <chineseSimplified>第一军 HQ</chineseSimplified>
      <chineseTraditional>第一軍 HQ</chineseTraditional>
     </name>
@@ -35601,7 +35601,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <LandUnit>
     <name>
      <english>2nd Army HQ</english>
-     <japanese>第二軍 HQ</japanese>
+     <japanese>第二軍司令部</japanese>
      <chineseSimplified>第二军 HQ</chineseSimplified>
      <chineseTraditional>第二軍 HQ</chineseTraditional>
     </name>
@@ -35868,7 +35868,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <LandUnit>
     <name>
      <english>Hong Kong HQ</english>
-     <japanese>香港 HQ</japanese>
+     <japanese>香港司令部</japanese>
      <chineseSimplified>香港 HQ</chineseSimplified>
      <chineseTraditional>香港 HQ</chineseTraditional>
     </name>
@@ -42185,7 +42185,7 @@ Xu Ping, "Sino-Japanese War: A Comprehensive Overview of Chinese and Japanese Fo
    <StrategicGroup>
     <name>
      <english>Commander-in-Chief, China HQ</english>
-     <japanese>中国艦隊 (イギリス) HQ</japanese>
+     <japanese>イギリス中国艦隊司令部</japanese>
      <chineseSimplified>中国舰队 (英国) HQ</chineseSimplified>
      <chineseTraditional>中國艦隊 (英國) HQ</chineseTraditional>
     </name>

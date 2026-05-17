@@ -834,7 +834,7 @@
    <awakeDistanceYards>0</awakeDistanceYards>
    <globalDescription>
     <english>Two single ships with all automation disabled.</english>
-    <japanese>すべての自動化が無効化された2隻の単独船。</japanese>
+    <japanese>自動化をすべて無効にした単艦同士の対戦。</japanese>
     <chineseSimplified>两艘单独的船只，所有自动化在一开始已被禁用。</chineseSimplified>
     <chineseTraditional>兩艘單獨的船隻，所有自動化功能均被禁用。</chineseTraditional>
    </globalDescription>

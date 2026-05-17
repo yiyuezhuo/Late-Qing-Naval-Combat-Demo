@@ -19104,6 +19104,9 @@ Azuma or Adzuma (SK5 name)</english>
    <armorType>HarveyNickelSteel</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:Asama_Brassey%27s.jpg</portraitUrl>
+  <remark>
+   <english>none</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\Asama.jpg</path>
@@ -33929,6 +33932,9 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <superStructureVertical effectInch="0" actualInch="0" />
    <armorType>NotSpecified</armorType>
   </armorRating>
+  <remark>
+   <english>none</english>
+  </remark>
   <isPoorlySupported>true</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\fort.jpg</path>
@@ -34443,6 +34449,9 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <superStructureVertical effectInch="0" actualInch="0" />
    <armorType>NotSpecified</armorType>
   </armorRating>
+  <remark>
+   <english>none</english>
+  </remark>
   <isPoorlySupported>true</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\fort.jpg</path>
@@ -34808,6 +34817,9 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <superStructureVertical effectInch="0" actualInch="0" />
    <armorType>NotSpecified</armorType>
   </armorRating>
+  <remark>
+   <english>none</english>
+  </remark>
   <isPoorlySupported>true</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\fort.jpg</path>
@@ -61182,6 +61194,9 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
    <superStructureVertical effectInch="0" actualInch="0" />
    <armorType>NotSpecified</armorType>
   </armorRating>
+  <remark>
+   <english>none</english>
+  </remark>
   <isPoorlySupported>true</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\fort.jpg</path>
@@ -62566,6 +62581,9 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
    <superStructureVertical effectInch="0" actualInch="0" />
    <armorType>NotSpecified</armorType>
   </armorRating>
+  <remark>
+   <english>none</english>
+  </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
    <path>Pictures\Ships\fort.jpg</path>

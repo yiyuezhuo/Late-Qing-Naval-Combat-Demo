@@ -63,37 +63,37 @@
                             <AttributeOverrides element-name="DepartmentPositionName" text="Beiyang Minister  / 北洋大臣" />
                         </ui:Instance>
                         <ui:Instance template="DepartmentPosition" data-source-path="viceroyOfZhili">
-                            <AttributeOverrides element-name="DepartmentPositionName" text="Viceroy of Zhili / 直隶总督" />
+                            <AttributeOverrides element-name="DepartmentPositionName" text="Viceroy of Zhili / 直隷総督" />
                         </ui:Instance>
                         <ui:Instance template="DepartmentPosition" data-source-path="generalOfFengTian">
-                            <AttributeOverrides element-name="DepartmentPositionName" text="General of Fengtian / 奉天将军" />
+                            <AttributeOverrides element-name="DepartmentPositionName" text="General of Fengtian / 奉天将軍" />
                         </ui:Instance>
                         <ui:Instance template="DepartmentPosition" data-source-path="governorOfShandong">
-                            <AttributeOverrides element-name="DepartmentPositionName" text="Governor of Shandong / 山东巡抚" />
+                            <AttributeOverrides element-name="DepartmentPositionName" text="Governor of Shandong / 山東巡撫" />
                         </ui:Instance>
                         <ui:Instance template="DepartmentPosition" data-source-path="admiralOfTheBeiyangFleet">
-                            <AttributeOverrides element-name="DepartmentPositionName" text="Admiral of the Beiyang Fleet / 北洋水师提督" />
+                            <AttributeOverrides element-name="DepartmentPositionName" text="Admiral of the Beiyang Fleet / 北洋水師提督" />
                         </ui:Instance>
                     </ui:VisualElement>
                     <ui:VisualElement data-source-path="ministryOfWar" class="border-box">
                         <ui:Label text="Ministry of War / 兵部" />
                         <ui:Instance template="DepartmentPosition" data-source-path="ministerOfWarManchu">
-                            <AttributeOverrides element-name="DepartmentPositionName" text="Minister of War (Manchu) / 兵部尚书 (满缺)" />
+                            <AttributeOverrides element-name="DepartmentPositionName" text="Minister of War (Manchu) / 兵部尚書（満洲缺）" />
                         </ui:Instance>
                         <ui:Instance template="DepartmentPosition" data-source-path="ministerOfWarHan">
-                            <AttributeOverrides element-name="DepartmentPositionName" text="Minister of War (Han) / 兵部尚书 (汉缺)" />
+                            <AttributeOverrides element-name="DepartmentPositionName" text="Minister of War (Han) / 兵部尚書（漢缺）" />
                         </ui:Instance>
                     </ui:VisualElement>
                     <ui:VisualElement data-source-path="navalMinistry" class="border-box">
-                        <ui:Label text="Naval Ministry / 总理海军事务衙门" />
+                        <ui:Label text="Naval Ministry / 総理海軍事務衙門" />
                         <ui:Instance template="DepartmentPosition" data-source-path="grandMinisterOfTheNavy">
-                            <AttributeOverrides element-name="DepartmentPositionName" text="Grand Minister of the Navy / 总理大臣" />
+                            <AttributeOverrides element-name="DepartmentPositionName" text="Grand Minister of the Navy / 総理海軍事務大臣" />
                         </ui:Instance>
                         <ui:Instance template="DepartmentPosition" data-source-path="associateMinisterOfTheNavy">
-                            <AttributeOverrides element-name="DepartmentPositionName" text="Associate Minister of the Navy / 会办大臣" />
+                            <AttributeOverrides element-name="DepartmentPositionName" text="Associate Minister of the Navy / 会辦大臣" />
                         </ui:Instance>
                         <ui:Instance template="DepartmentPosition" data-source-path="assistantMinisterOfTheNavy">
-                            <AttributeOverrides element-name="DepartmentPositionName" text="Assistant Minister of the Navy / 帮办大臣" />
+                            <AttributeOverrides element-name="DepartmentPositionName" text="Assistant Minister of the Navy / 幇辦大臣" />
                         </ui:Instance>
                     </ui:VisualElement>
                 </ui:VisualElement>

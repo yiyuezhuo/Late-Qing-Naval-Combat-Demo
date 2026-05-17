@@ -14035,7 +14035,7 @@ Draft &amp; Complement is placeholder.
   <draftFoot>26.5</draftFoot>
   <engineDesc>
    <english>VTE</english>
-   <japanese>直立型三段膨張式三気筒レシプロ機関2基2軸推進 </japanese>
+   <japanese>直立型三段膨張式三気筒レシプロ機関2基2軸推進</japanese>
    <chineseSimplified>双传动轴，两台三胀往复式蒸汽机</chineseSimplified>
    <chineseTraditional>雙傳動軸，兩臺三脹往復式蒸汽機</chineseTraditional>
   </engineDesc>
@@ -19462,7 +19462,7 @@ Sometime called Niitaka class.
  <ShipClass>
   <name>
    <english>Bogatry</english>
-   <japanese>ボガツイリ</japanese>
+   <japanese>ボガトィーリ</japanese>
    <chineseSimplified>博加特里</chineseSimplified>
    <chineseTraditional>博加特里</chineseTraditional>
   </name>
@@ -22673,7 +22673,7 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
  <ShipClass>
   <name>
    <english>Poltava</english>
-   <japanese>ポルターヴァ</japanese>
+   <japanese>ポルタヴァ</japanese>
    <chineseSimplified>波尔塔瓦</chineseSimplified>
    <chineseTraditional>波爾塔瓦</chineseTraditional>
   </name>
@@ -27814,7 +27814,7 @@ https://naval-encyclopedia.com/ww1/russia/askold-1900.php
  <ShipClass>
   <name>
    <english>Pallada</english>
-   <japanese>ヂアーナ</japanese>
+   <japanese>パルラーダ</japanese>
    <chineseSimplified>帕拉达</chineseSimplified>
    <chineseTraditional>帕拉達</chineseTraditional>
   </name>
@@ -34118,7 +34118,7 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
    <BatteryRecord>
     <name>
      <english>15cm Mortar</english>
-     <japanese />
+     <japanese>15cm臼砲</japanese>
      <chineseSimplified>15厘米臼炮</chineseSimplified>
      <chineseTraditional>15釐米臼炮</chineseTraditional>
     </name>
@@ -36974,7 +36974,7 @@ https://ru.wikipedia.org/wiki/%D0%9C%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D1%86%D
  <ShipClass>
   <name>
    <english>Vnimatelni</english>
-   <japanese>ウラースツヌイ</japanese>
+   <japanese>ヴニマーテリヌイ</japanese>
    <chineseSimplified>弗尼马捷利尼</chineseSimplified>
    <chineseTraditional>弗尼馬捷利尼</chineseTraditional>
   </name>
@@ -46773,7 +46773,7 @@ Strange FC Code given by SK5 datasheet, which may overestimate its fire control 
  <ShipClass>
   <name>
    <english>Admiral Kornilov</english>
-   <japanese>コルニロフ</japanese>
+   <japanese>アドミラル・コルニーロフ</japanese>
    <chineseSimplified>科尔尼洛夫</chineseSimplified>
    <chineseTraditional>科爾尼洛夫</chineseTraditional>
   </name>
@@ -47764,7 +47764,7 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Kornilov</english>
  <ShipClass>
   <name>
    <english>Sissoi Veliki</english>
-   <japanese>シソイ・ヴェリキィー</japanese>
+   <japanese>シソイ・ヴェリキー</japanese>
    <chineseSimplified>西索伊·维利基</chineseSimplified>
    <chineseTraditional>西索伊·維利基</chineseTraditional>
   </name>
@@ -48301,7 +48301,7 @@ https://en.wikipedia.org/wiki/Russian_battleship_Sissoi_Veliky</english>
  <ShipClass>
   <name>
    <english>Sissoi Veliki (1905)</english>
-   <japanese>シソイ・ヴェリキィー (1905)</japanese>
+   <japanese>シソイ・ヴェリキー (1905)</japanese>
    <chineseSimplified>西索伊·维利基 (1905)</chineseSimplified>
    <chineseTraditional>西索伊·維利基 (1905)</chineseTraditional>
   </name>
@@ -49850,7 +49850,7 @@ One of reference ship class of Ding Yuan
  <ShipClass>
   <name>
    <english>Centurion</english>
-   <japanese>バーフラー</japanese>
+   <japanese>センチュリオン</japanese>
    <chineseSimplified>百夫长</chineseSimplified>
    <chineseTraditional>百夫長</chineseTraditional>
   </name>
@@ -53906,7 +53906,7 @@ Complement 50 is inferred.
  <ShipClass>
   <name>
    <english>Sivuch</english>
-   <japanese>シヴチ</japanese>
+   <japanese>シヴーチ</japanese>
    <chineseSimplified>西武奇</chineseSimplified>
    <chineseTraditional>西武奇</chineseTraditional>
   </name>

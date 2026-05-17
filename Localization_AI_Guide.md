@@ -42,8 +42,10 @@ Use the helper that matches the target table:
   pipelines, command arguments, `Set-Content`, or `Out-File`.
 - Do not run long localization scripts through PowerShell here-strings such as
   `@' ... '@ | python -`, especially when the script contains Japanese/Chinese
-  literals or regular expressions. This is only tolerable for short, ASCII-only,
-  read-only probes whose output will be re-checked before acting.
+  literals or regular expressions. For write-back tasks, this remains unsafe even
+  if Python performs the final file write, because the script or replacement text
+  can be corrupted before Python receives it. This is only tolerable for short,
+  ASCII-only, read-only probes whose output will be re-checked before acting.
 - For one-off read-only scans that contain multilingual patterns, prefer saving a
   UTF-8 `.py` file under `.codex-tmp\` and running it with
   `python .codex-tmp\scan_....py`.
@@ -116,6 +118,12 @@ For exact replacements in scenario XML, use:
   encoding and line endings, and fails if the expected occurrence count does not
   match. It also refuses to write files whose XML encoding declaration disagrees
   with the actual bytes.
+- Do not bypass this helper with PowerShell inline Python such as
+  `@' ... '@ | python -` for XML write-back. Even if Python performs the final
+  `write_bytes()`, the script or multilingual literals may already have been
+  corrupted while passing through PowerShell. Use a UTF-8 JSON batch file with
+  this helper, or a real UTF-8 `.py` file that reads multilingual data from a
+  UTF-8 file.
 - Delete one-off batch JSON files after applying and reviewing the diff.
 - To scan scenario XML for common mojibake markers with Python UTF-8 decoding,
   use `python Tools\update_scenario_localized_text.py --scan-mojibake`. Treat

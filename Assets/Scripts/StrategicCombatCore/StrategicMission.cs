@@ -869,7 +869,7 @@ namespace StrategicCombatCore
         static GlobalString oneShotRaidingPrefix = new()
         {
             english = "Raiding to ",
-            japanese = "通商破壊 ",
+            japanese = "通商破壊: ",
             chineseSimplified = "破交 ",
             chineseTraditional = "破交 "
         };
@@ -908,7 +908,7 @@ namespace StrategicCombatCore
         static GlobalString tradeProtectionPatrolPrefix = new()
         {
             english = "Trade Protection Patrol to ",
-            japanese = "通商保護哨戒へ ",
+            japanese = "通商保護哨戒: ",
             chineseSimplified = "贸易保护巡逻至 ",
             chineseTraditional = "貿易保護巡邏至 "
         };
@@ -916,7 +916,7 @@ namespace StrategicCombatCore
         static GlobalString sweepPrefix = new()
         {
             english = "Sweep to ",
-            japanese = "掃討へ ",
+            japanese = "掃討: ",
             chineseSimplified = "扫荡至 ",
             chineseTraditional = "掃蕩至 "
         };
@@ -924,7 +924,7 @@ namespace StrategicCombatCore
         static GlobalString interceptionPrefix = new()
         {
             english = "Intercept to ",
-            japanese = "迎撃へ ",
+            japanese = "迎撃: ",
             chineseSimplified = "拦截至 ",
             chineseTraditional = "拦截至 "
         };

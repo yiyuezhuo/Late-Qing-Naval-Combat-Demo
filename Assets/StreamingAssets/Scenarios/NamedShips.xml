@@ -810,7 +810,7 @@ After Lin commited suicide, Lin took command of the ship.</english>
   <completedDate>08/00/1891</completedDate>
   <fateDesc>
    <english>Scrapped 1922</english>
-   <japanese />
+   <japanese>1922年解体</japanese>
   </fateDesc>
   <applicableYearBegin>1894</applicableYearBegin>
   <applicableYearEnd>1902</applicableYearEnd>
@@ -1094,7 +1094,7 @@ No class update from 1894 to 1904</english>
   </name>
   <builderDesc>
    <english>London &amp; Glasgow Shipbuilding Company</english>
-   <japanese> ロンドン＆グラスゴー造船所</japanese>
+   <japanese>ロンドン＆グラスゴー造船所</japanese>
    <chineseSimplified>伦敦与格拉斯哥造船厂</chineseSimplified>
    <chineseTraditional>倫敦與格拉斯哥造船廠</chineseTraditional>
   </builderDesc>
@@ -2689,7 +2689,7 @@ The "Li Yun" ship was originally a cargo vessel of the China Merchants Steam Nav
 
 Chen Yue (2015), "Records of Beiyang Navy Warships"
 
-「利運」艦は、元々は輪船招商局の貨物船で、排水量1080トン、機関110馬力であった。後に北洋海軍が87431両の銀で購入し、輸送艦に改造した。この艦について伝わる資料は非常に少なく、現在知られているのは、甲申事変の際に中国軍隊を朝鮮に輸送し、平乱のために上陸させたこと、日清戦争中に北洋地域で頻繁に輸送任務に就き、銘字軍を大東溝に輸送する作戦に参加したことだけである。日清戦争後、輪船招商局の艦隊リストには依然として「利運」という艦が存在していたが、同一の艦であるかどうかは、今後の研究と時間を待って判断する必要がある。
+「利運」艦は、元々は輪船招商局の貨物船で、排水量1080トン、機関110馬力であった。後に北洋海軍が87431両の銀で購入し、輸送艦に改造した。この艦について伝わる資料は非常に少なく、現在知られているのは、甲申事変の際に中国軍を朝鮮に輸送し、平乱のために上陸させたこと、日清戦争中に北洋地域で頻繁に輸送任務に就き、銘字軍を大東溝に輸送する作戦に参加したことだけである。日清戦争後、輪船招商局の艦隊リストには依然として「利運」という艦が存在していたが、同一の艦であるかどうかは、今後の研究を待って判断する必要がある。
 
 陳悦 (2015)、『北洋海軍艦船志』
 
@@ -2732,7 +2732,7 @@ The "Hai Jing" ship was the 13th warship built by the Fuzhou Shipbuilding Admini
 
 Chen Yue (2015), "Records of Beiyang Navy Warships"
 
-「海鏡」艦は、福建船政が建造した13番目の軍艦で、「付波」級の改良型軍艦に属し、フランス人顧問の安楽陶の監督下で建造され、1873年2月28日に起工し、同年11月8日に進水した。この軍艦は全木造構造で、艦型としては旧式の砲艦を商船に改造したものである。排水量1258トン、動力は普通の立式蒸気機関1基を使用し、出力は600馬力、設計速力は9ノットであった。竣工後、すぐに商船に改造され輪船招商局に配属され、台湾海峡の往来輸送に用いられた。北洋海防が成立した後は北洋に転属し、北洋海軍に所属し、甲申の朝鮮平乱事件にも参加した。日清戦争では、小型輸送艦としての「海鏡」は戦闘に参加せず、旅順で日本軍に捕獲され解体された。
+「海鏡」艦は、福建船政が建造した13番目の軍艦で、「付波」級の改良型軍艦に属し、フランス人顧問の安楽陶の監督下で建造され、1873年2月28日に起工し、同年11月8日に進水した。この軍艦は全木造構造で、艦型としては旧式の砲艦を商船に改造したものである。排水量1258トン、動力は通常の直立式蒸気機関1基を使用し、出力は600馬力、設計速力は9ノットであった。竣工後、すぐに商船に改造され輪船招商局に配属され、台湾海峡の往来輸送に用いられた。北洋海防が成立した後は北洋に転属し、北洋海軍に所属し、甲申の朝鮮平乱事件にも参加した。日清戦争では、小型輸送艦としての「海鏡」は戦闘に参加せず、旅順で日本軍に捕獲され解体された。
 
 陳悦 (2015)、『北洋海軍艦船志』
 
@@ -3084,7 +3084,7 @@ Chen Yue (2015), "Records of Beiyang Navy Warships"
   <shipClassObjectId>163a91ed-89c1-457d-af1d-730f52eed190</shipClassObjectId>
   <name>
    <english>Bogatry</english>
-   <japanese>ボガツイリ</japanese>
+   <japanese>ボガトィーリ</japanese>
    <chineseSimplified>博加特里</chineseSimplified>
    <chineseTraditional>博加特里</chineseTraditional>
   </name>
@@ -4783,7 +4783,7 @@ Generic Placeholder class</english>
   <shipClassObjectId>a393ba20-f090-4bc7-9c13-ea60f9c97827</shipClassObjectId>
   <name>
    <english>Poltava</english>
-   <japanese>ポルタワ</japanese>
+   <japanese>ポルタヴァ</japanese>
    <chineseSimplified>波尔塔瓦</chineseSimplified>
    <chineseTraditional>波爾塔瓦</chineseTraditional>
   </name>
@@ -5425,7 +5425,7 @@ Peresviet or Peresvet</english>
   <shipClassObjectId>025afc73-b558-4402-bd99-183e76905cf8</shipClassObjectId>
   <name>
    <english>Diana</english>
-   <japanese>ヂアーナ</japanese>
+   <japanese>ディアーナ</japanese>
    <chineseSimplified>戴安娜</chineseSimplified>
    <chineseTraditional>戴安娜</chineseTraditional>
   </name>
@@ -5534,7 +5534,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
   <shipClassObjectId>ef43861e-c0f7-4f2c-bd99-dd117a3e94f1</shipClassObjectId>
   <name>
    <english>Novik</english>
-   <japanese>ヴィーク</japanese>
+   <japanese>ノヴィーク</japanese>
    <chineseSimplified>诺维克</chineseSimplified>
    <chineseTraditional>諾維克</chineseTraditional>
   </name>
@@ -5561,7 +5561,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
   <shipClassObjectId>ef43861e-c0f7-4f2c-bd99-dd117a3e94f1</shipClassObjectId>
   <name>
    <english>Novik (16.03.1904)</english>
-   <japanese>ヴィーク(16.03.1904)</japanese>
+   <japanese>ノヴィーク (16.03.1904)</japanese>
    <chineseSimplified>诺维克 (16.03.1904)</chineseSimplified>
    <chineseTraditional>諾維克 (16.03.1904)</chineseTraditional>
   </name>
@@ -5590,7 +5590,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
   <shipClassObjectId>a37c48c4-507b-454a-9568-58901c8a7e67</shipClassObjectId>
   <name>
    <english>Rastoropni</english>
-   <japanese>ブイヌイ</japanese>
+   <japanese>ラストロープヌイ</japanese>
    <chineseSimplified>布伊内</chineseSimplified>
    <chineseTraditional>布伊內</chineseTraditional>
   </name>
@@ -6586,7 +6586,7 @@ https://ru.wikipedia.org/wiki/%D0%91%D1%83%D0%B9%D0%BD%D1%8B%D0%B9_(%D0%BC%D0%B8
   <shipClassObjectId>0d31a3f3-3e32-46a9-96d9-e4dd8457273b</shipClassObjectId>
   <name>
    <english>Vinoslivi</english>
-   <japanese>ウイノスリーウィ</japanese>
+   <japanese>ヴィノスリーヴィイ</japanese>
    <chineseSimplified>维诺斯拉维</chineseSimplified>
    <chineseTraditional>維諾斯拉維</chineseTraditional>
   </name>
@@ -6613,7 +6613,7 @@ https://ru.wikipedia.org/wiki/%D0%92%D1%8B%D0%BD%D0%BE%D1%81%D0%BB%D0%B8%D0%B2%D
   <shipClassObjectId>0d31a3f3-3e32-46a9-96d9-e4dd8457273b</shipClassObjectId>
   <name>
    <english>Vlastni</english>
-   <japanese>ウラースツヌイ</japanese>
+   <japanese>ヴラーストヌイ</japanese>
    <chineseSimplified>弗拉斯特尼</chineseSimplified>
    <chineseTraditional>弗拉斯特尼</chineseTraditional>
   </name>
@@ -6640,7 +6640,7 @@ https://ru.wikipedia.org/wiki/%D0%92%D0%BB%D0%B0%D1%81%D1%82%D0%BD%D1%8B%D0%B9_(
   <shipClassObjectId>0d31a3f3-3e32-46a9-96d9-e4dd8457273b</shipClassObjectId>
   <name>
    <english>Grozovoi</english>
-   <japanese>グロゾウォイ</japanese>
+   <japanese>グロザヴォイ</japanese>
    <chineseSimplified>格罗佐沃伊</chineseSimplified>
    <chineseTraditional>格羅佐沃伊</chineseTraditional>
   </name>
@@ -7031,7 +7031,7 @@ https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%81%D0%BF%D0%BE%D1%89%D0%B0%D0%B4%D
   <shipClassObjectId>3e164e3e-793a-4336-b321-675b48caed09</shipClassObjectId>
   <name>
    <english>Almirante Condell</english>
-   <japanese>コンデル </japanese>
+   <japanese>アルミランテ・コンデル</japanese>
    <chineseSimplified>康德尔</chineseSimplified>
    <chineseTraditional>康德爾</chineseTraditional>
   </name>
@@ -7656,7 +7656,7 @@ https://baike.baidu.com/item/%E9%95%9C%E6%B8%85%E5%8F%B7/9669520
   <shipClassObjectId>8ee06f5a-1261-423f-87d2-f278a2c84a2b</shipClassObjectId>
   <name>
    <english>Admiral Kornilov</english>
-   <japanese>コルニロフ</japanese>
+   <japanese>アドミラル・コルニーロフ</japanese>
    <chineseSimplified>科尔尼洛夫</chineseSimplified>
    <chineseTraditional>科爾尼洛夫</chineseTraditional>
   </name>
@@ -7828,7 +7828,7 @@ https://en.wikipedia.org/wiki/Russian_battleship_Oslyabya</english>
   <shipClassObjectId>1ef7b167-a724-4d35-bf66-dbb7fc485db5</shipClassObjectId>
   <name>
    <english>Sissoi Veliki (1898/9/24)</english>
-   <japanese>シソイ・ヴェリキィー (1898/9/24)</japanese>
+   <japanese>シソイ・ヴェリキー (1898/9/24)</japanese>
    <chineseSimplified>西索伊·维利基 (1898/9/24)</chineseSimplified>
    <chineseTraditional>西索伊·維利基 (1898/9/24)</chineseTraditional>
   </name>
@@ -7857,7 +7857,7 @@ https://en.wikipedia.org/wiki/Russian_battleship_Sissoi_Veliky</english>
   <shipClassObjectId>0063382d-2b69-44cf-a252-1103ba061669</shipClassObjectId>
   <name>
    <english>Sissoi Veliki (1905)</english>
-   <japanese>シソイ・ヴェリキィー (1905)</japanese>
+   <japanese>シソイ・ヴェリキー (1905)</japanese>
    <chineseSimplified>西索伊·维利基 (1905)</chineseSimplified>
    <chineseTraditional>西索伊·維利基 (1905)</chineseTraditional>
   </name>
@@ -7940,7 +7940,7 @@ https://en.wikipedia.org/wiki/Russian_battleship_Navarin</english>
   <shipClassObjectId>3882344c-6fd6-417e-b12e-6730c72593d9</shipClassObjectId>
   <name>
    <english>Centurion</english>
-   <japanese>バーフラー</japanese>
+   <japanese>センチュリオン</japanese>
    <chineseSimplified>百夫长</chineseSimplified>
    <chineseTraditional>百夫長</chineseTraditional>
   </name>
@@ -7968,7 +7968,7 @@ https://dreadnoughtproject.org/tfs/index.php/H.M.S._Centurion_(1892)</english>
   <shipClassObjectId>3882344c-6fd6-417e-b12e-6730c72593d9</shipClassObjectId>
   <name>
    <english>Centurion (1897/12/31)</english>
-   <japanese>バーフラー (1897/12/31)</japanese>
+   <japanese>センチュリオン (1897/12/31)</japanese>
    <chineseSimplified>百夫长 (1897/12/31)</chineseSimplified>
    <chineseTraditional>百夫長 (1897/12/31)</chineseTraditional>
   </name>
@@ -8370,7 +8370,7 @@ https://ru.wikipedia.org/wiki/%D0%91%D0%BE%D0%B1%D1%80_(%D0%BA%D0%B0%D0%BD%D0%BE
   <shipClassObjectId>2822fe12-a31a-44ee-a8ba-9c08b0f8d630</shipClassObjectId>
   <name>
    <english>Sivuch</english>
-   <japanese>シヴチ</japanese>
+   <japanese>シヴーチ</japanese>
    <chineseSimplified>西武奇</chineseSimplified>
    <chineseTraditional>西武奇</chineseTraditional>
   </name>
@@ -8602,7 +8602,7 @@ https://en.wikipedia.org/wiki/Surprise-class_cruiser#HMS_Alacrity
   <shipClassObjectId>d75b5e07-1645-48cd-b58c-cf134d8f0021</shipClassObjectId>
   <name>
    <english>Gaidamak</english>
-   <japanese>ガイダマク</japanese>
+   <japanese>ガイダマーク</japanese>
    <chineseSimplified>盖达马克</chineseSimplified>
    <chineseTraditional>蓋達馬克</chineseTraditional>
   </name>

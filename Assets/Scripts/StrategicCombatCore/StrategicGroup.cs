@@ -252,7 +252,7 @@ namespace StrategicCombatCore
         static readonly GlobalString advanceBaseSuffix = new()
         {
             english = " Advance Base",
-            japanese = " 前進基地",
+            japanese = "前進基地",
             chineseSimplified = " 前进基地",
             chineseTraditional = " 前進基地",
         };
@@ -260,7 +260,7 @@ namespace StrategicCombatCore
         static readonly GlobalString depotSuffix = new()
         {
             english = " Depot",
-            japanese = " 倉庫",
+            japanese = "倉庫",
             chineseSimplified = " 仓库",
             chineseTraditional = " 倉庫",
         };

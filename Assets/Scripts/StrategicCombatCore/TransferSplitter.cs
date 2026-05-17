@@ -22,7 +22,7 @@ namespace StrategicCombatCore
         static GlobalString loadedSuffix = new()
         {
             english = " loaded",
-            japanese = " 積載",
+            japanese = "（積載済み）",
             chineseSimplified = " 装载",
             chineseTraditional = " 装载",
         };

@@ -32982,6 +32982,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <LandUnit>
     <name>
      <english>Taipei Depot</english>
+     <japanese>台北倉庫</japanese>
      <chineseSimplified>台北仓库</chineseSimplified>
      <chineseTraditional>臺北倉庫</chineseTraditional>
     </name>
@@ -33380,6 +33381,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <LandUnit>
     <name>
      <english>Feng Tian Depot</english>
+     <japanese>奉天倉庫</japanese>
      <chineseSimplified>奉天仓库</chineseSimplified>
      <chineseTraditional>奉天倉庫</chineseTraditional>
     </name>
@@ -33820,7 +33822,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <LandUnit>
     <name>
      <english>Ji Left Cav</english>
-     <japanese>吉字左翼騎馬隊 </japanese>
+     <japanese>吉字左翼騎馬隊</japanese>
      <chineseSimplified>吉字左翼马队</chineseSimplified>
      <chineseTraditional>吉字左翼馬隊</chineseTraditional>
     </name>
@@ -35015,6 +35017,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
    <LandUnit>
     <name>
      <english>Guangzhou Depot</english>
+     <japanese>広州倉庫</japanese>
      <chineseSimplified>广州仓库</chineseSimplified>
      <chineseTraditional>廣州倉庫</chineseTraditional>
     </name>
@@ -36449,7 +36452,7 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
    <StrategicGroup>
     <name>
      <english>Peking Base</english>
-     <japanese />
+     <japanese>北京基地</japanese>
      <chineseSimplified>北京基地</chineseSimplified>
      <chineseTraditional>北京基地</chineseTraditional>
     </name>
@@ -36793,7 +36796,7 @@ Although Shiduo was the nominal leader of the Grand Council (lead grand councill
    <StrategicGroup>
     <name>
      <english>Weihaiwei Base</english>
-     <japanese />
+     <japanese>威海衛基地</japanese>
      <chineseSimplified>威海卫基地</chineseSimplified>
      <chineseTraditional>威海衛基地</chineseTraditional>
     </name>
@@ -40289,7 +40292,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <StrategicGroup>
     <name>
      <english>Nanyang Fleet HQ</english>
-     <japanese />
+     <japanese>南洋艦隊司令部</japanese>
      <chineseSimplified>南洋水师总部</chineseSimplified>
      <chineseTraditional>南洋水師總部</chineseTraditional>
     </name>
@@ -40486,7 +40489,7 @@ This division was composed of soldiers from southern Kyushu, including Kumamoto,
    <StrategicGroup>
     <name>
      <english>Fuzhou Base</english>
-     <japanese />
+     <japanese>福州基地</japanese>
      <chineseSimplified>福州基地</chineseSimplified>
      <chineseTraditional>福州基地</chineseTraditional>
     </name>
@@ -41212,7 +41215,7 @@ Xu Ping, "Sino-Japanese War: Chinese and Japanese Forces Overview 1894-1895"
    <StrategicGroup>
     <name>
      <english>Taipei Base</english>
-     <japanese />
+     <japanese>台北基地</japanese>
      <chineseSimplified>台北基地</chineseSimplified>
      <chineseTraditional>臺北基地</chineseTraditional>
     </name>
@@ -42286,7 +42289,7 @@ Getting Started: Select Observation Mode, then advance time using the Spacebar o
 
 戦役および戦略モードは、早期アクセス版／デモ版ではまだ未完成で、現在も開発中です。ここではその一部をプレビューできます。
 
-はじめに：観戦モードを選択し、スペースキーまたは右上のボタンで時間を進めてください。陸戦が自動的に進行する様子を見守り、その後、海戦を手動で解決してください。</japanese>
+はじめに：観戦モードを選択し、スペースキーまたは右上のボタンで時間を進めてください。陸戦が自動的に進行する様子を見守り、その後、海戦を手動で処理してください。</japanese>
     <chineseSimplified>甲午战争是1894-1895中国（清朝）与日本为争夺朝鲜霸权的战争。其中中国海军比日本海军稍弱，特别是缺乏速射炮和合适的弹药。陆军方面，中国的精锐“新式”军队数量不多，质量也劣于日军的近代化正规军，其他军队数量很多但战斗力很弱。同时中国内部因为派系斗争原因，只能动员部分力量投入战场。最终日本胜利，从中国处夺取了朝鲜的霸权。
 
 战役与战略模式在EA/DEMO版中尚未完成仍在开发中，你可以在此预览它的一部分。

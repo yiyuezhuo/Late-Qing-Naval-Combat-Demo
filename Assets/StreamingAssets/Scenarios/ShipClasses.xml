@@ -2097,8 +2097,7 @@
   <portraitUrl>https://en.wikipedia.org/wiki/Japanese_cruiser_Akitsushima#/media/File:Akitsushima_plan_1904.png</portraitUrl>
   <remark>
    <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Akitsushima
-
-SK5 data book seems to forget to update Akitsushima's fire control table to reflect its fire control code's upgrade.</english>
+</english>
   </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
@@ -2573,9 +2572,7 @@ SK5 data book seems to forget to update Akitsushima's fire control table to refl
   <portraitUrl>https://en.wikipedia.org/wiki/Japanese_cruiser_Naniwa#/media/File:Naniwa_class_cruiser_left_elevation_and_deck_plan_Brasseys_1888.jpg</portraitUrl>
   <remark>
    <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Naniwa
-
-Though Naniwa is usually classified as a protected cruiser (designated CL in the SK5 taxonomy), for some reason SK5 lists it as a CA, so I use CA as well. (Note JTS Naval Campaign does this as well).
-Of course, these two classifications make no practical difference aside from the type symbol displayed next to the ship's name.</english>
+</english>
   </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
@@ -2935,8 +2932,6 @@ Of course, these two classifications make no practical difference aside from the
 
 The graphic is the version of the earlier version, which is not a accurate representation of 1903 version.
 
-Though Naniwa is usually classified as a protected cruiser (designated CL in the SK5 taxonomy), for some reason SK5 lists it as a CA, so I use CA as well. (Note JTS Naval Campaign does this as well).
-Of course, these two classifications make no practical difference aside from the type symbol displayed next to the ship's name.
 </english>
   </remark>
   <isPoorlySupported>false</isPoorlySupported>
@@ -3359,17 +3354,17 @@ Of course, these two classifications make no practical difference aside from the
   <standardTurnDegPer2Min>90</standardTurnDegPer2Min>
   <emergencyTurnDegPer2Min>120</emergencyTurnDegPer2Min>
   <armorRating>
-   <armorTypeFactor>0.68</armorTypeFactor>
-   <deck effectInch="2.7" actualInch="4" />
+   <armorTypeFactor>0.75</armorTypeFactor>
+   <deck effectInch="3" actualInch="4" />
    <turretHorizontal effectInch="0" actualInch="0" />
    <superStructureHorizontal effectInch="1" actualInch="1.4" />
-   <conningTower effectInch="1" actualInch="1.5" />
+   <conningTower effectInch="1.1" actualInch="1.5" />
    <mainBelt effectInch="0" actualInch="0" />
    <beltEnd effectInch="0" actualInch="0" />
-   <barbette effectInch="9.5" actualInch="14" />
-   <turretVertical effectInch="1" actualInch="1.5" />
-   <superStructureVertical effectInch="1.3" actualInch="1.9" />
-   <armorType>CompoundHardSteelFacedWroughtIron</armorType>
+   <barbette effectInch="10.5" actualInch="14" />
+   <turretVertical effectInch="1.1" actualInch="1.5" />
+   <superStructureVertical effectInch="1.4" actualInch="1.9" />
+   <armorType>MildSteel</armorType>
   </armorRating>
   <portraitUrl>https://www.the-blueprints.com/blueprints/ships/ships-china/90585/view/china_-_rocn_jiyuan_protected_cruiser_1895/</portraitUrl>
   <remark>
@@ -3377,7 +3372,9 @@ Of course, these two classifications make no practical difference aside from the
 
 Chi Yuan or Jiyuan
 
-15cm RKL/35 C/80 FC Table is not determined by FC code</english>
+15cm RKL/35 C/80 FC Table is not determined by FC code
+
+Correction: SK5 Original Armor Factor: 0.68 (armor type CompoundHardSteelFacedWroughtIron) =&gt; 0.75 (armor Type MildSteel), source: https://www.historyofwar.org/articles/weapons_tsi_yuen.html</english>
   </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
@@ -4168,14 +4165,16 @@ Chi Yuan or Jiyuan
    <beltEnd effectInch="0" actualInch="0" />
    <barbette effectInch="9.5" actualInch="14" />
    <turretVertical effectInch="0.7" actualInch="1" />
-   <superStructureVertical effectInch="2.8" actualInch="4.2" />
+   <superStructureVertical effectInch="2.9" actualInch="4.2" />
    <armorType>CompoundHardSteelFacedWroughtIron</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:Japanese_battleship_Chen_Yuen.jpg</portraitUrl>
   <remark>
    <english>https://en.wikipedia.org/wiki/Dingyuan-class_ironclad
 
-Ting Yuen or Dingyuan</english>
+Ting Yuen or Dingyuan
+
+Correction: SK5 Original Armor Factor: 0.75 (armor type MildSteel) =&gt; 0.68 (armor Type CompoundHardSteelFacedWroughtIron), source: https://en.wikipedia.org/wiki/Chinese_ironclad_Zhenyuan</english>
   </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
@@ -4644,23 +4643,25 @@ Ting Yuen or Dingyuan</english>
   <standardTurnDegPer2Min>90</standardTurnDegPer2Min>
   <emergencyTurnDegPer2Min>120</emergencyTurnDegPer2Min>
   <armorRating>
-   <armorTypeFactor>0.75</armorTypeFactor>
-   <deck effectInch="2.2" actualInch="3" />
+   <armorTypeFactor>0.68</armorTypeFactor>
+   <deck effectInch="2" actualInch="3" />
    <turretHorizontal effectInch="0" actualInch="0" />
-   <superStructureHorizontal effectInch="1.3" actualInch="1.8" />
-   <conningTower effectInch="9" actualInch="12" />
+   <superStructureHorizontal effectInch="1.2" actualInch="1.8" />
+   <conningTower effectInch="8.2" actualInch="12" />
    <mainBelt effectInch="0" actualInch="0" />
    <beltEnd effectInch="0" actualInch="0" />
    <barbette effectInch="0" actualInch="0" />
-   <turretVertical effectInch="9" actualInch="12" />
-   <superStructureVertical effectInch="2.2" actualInch="3" />
-   <armorType>MildSteel</armorType>
+   <turretVertical effectInch="8.2" actualInch="12" />
+   <superStructureVertical effectInch="2" actualInch="3" />
+   <armorType>CompoundHardSteelFacedWroughtIron</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:Japanese_battleship_Chen_Yuen.jpg</portraitUrl>
   <remark>
    <english>https://en.wikipedia.org/wiki/Chinese_ironclad_Zhenyuan
 
-Acquisition &amp; modified by Japan in 1895</english>
+Acquisition &amp; modified by Japan in 1895
+
+Correction: SK5 Original Armor Factor: 0.75 (armor type MildSteel) =&gt; 0.68 (armor Type CompoundHardSteelFacedWroughtIron), source: https://en.wikipedia.org/wiki/Chinese_ironclad_Zhenyuan</english>
   </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
@@ -5087,8 +5088,7 @@ Acquisition &amp; modified by Japan in 1895</english>
    <english>https://en.wikipedia.org/wiki/Chinese_cruiser_Chaoyong
 
 Chao Yung or Chao Yong
-
-I can't see why SK5 classify a Unprotected Cruiser to CA though.</english>
+</english>
   </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
@@ -5566,8 +5566,7 @@ I can't see why SK5 classify a Unprotected Cruiser to CA though.</english>
   <portraitUrl>https://forum.warthunder.com/t/qing-dynasty-beiyang-fleet-zhiyuan-chih-yuen-protected-cruiser/17129</portraitUrl>
   <remark>
    <english>https://en.wikipedia.org/wiki/Chinese_cruiser_Zhiyuan
-
-For some reason, SK5 classify it to CA</english>
+</english>
   </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
@@ -7855,23 +7854,26 @@ Fu Lung or Fulong
   <standardTurnDegPer2Min>60</standardTurnDegPer2Min>
   <emergencyTurnDegPer2Min>90</emergencyTurnDegPer2Min>
   <armorRating>
-   <armorTypeFactor>0.75</armorTypeFactor>
+   <armorTypeFactor>0.6</armorTypeFactor>
    <deck effectInch="0" actualInch="0" />
    <turretHorizontal effectInch="0" actualInch="0" />
-   <superStructureHorizontal effectInch="0.8" actualInch="1.1" />
+   <superStructureHorizontal effectInch="0.7" actualInch="1.1" />
    <conningTower effectInch="0" actualInch="0" />
-   <mainBelt effectInch="6.8" actualInch="9" />
-   <beltEnd effectInch="3" actualInch="4" />
+   <mainBelt effectInch="5.4" actualInch="9" />
+   <beltEnd effectInch="2.4" actualInch="4" />
    <barbette effectInch="0" actualInch="0" />
-   <turretVertical effectInch="6" actualInch="8" />
-   <superStructureVertical effectInch="1.6" actualInch="2.2" />
-   <armorType>MildSteel</armorType>
+   <turretVertical effectInch="4.8" actualInch="8" />
+   <superStructureVertical effectInch="1.3" actualInch="2.2" />
+   <armorType>WroughtIron</armorType>
   </armorRating>
   <portraitUrl>https://combrig-models.com/index.php/1700/65-japanese-navy-1860-1918/518-fuso1900</portraitUrl>
   <remark>
    <english>https://en.wikipedia.org/wiki/Japanese_ironclad_Fus%C5%8D
 
-[Central-battery](https://en.wikipedia.org/wiki/Central_battery_ship) ironclad</english>
+[Central-battery](https://en.wikipedia.org/wiki/Central_battery_ship) ironclad
+
+Correction: SK5 Armor Factor 0.75 (Mild Steel) =&gt; 0.6 (Wrought Iron)
+</english>
   </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
@@ -9479,7 +9481,6 @@ Hashidate ((橋立, 1894)
 
 (Though Itsukushima is similar to 2 ships, the main gun make significant variance)
 
-For reason, it's classified as CA in SK5.
 </english>
   </remark>
   <isPoorlySupported>false</isPoorlySupported>
@@ -16706,11 +16707,12 @@ Portrait is taken from Saikyō Maru (西京丸)</english>
    <barbette effectInch="1.7" actualInch="2" />
    <turretVertical effectInch="0" actualInch="0" />
    <superStructureVertical effectInch="1.4" actualInch="1.7" />
-   <armorType>NotSpecified</armorType>
+   <armorType>KruppCemented1894</armorType>
   </armorRating>
   <portraitUrl>https://naval-encyclopedia.com/ww1/russia/rossiya-class-cruisers-1896.php</portraitUrl>
   <remark>
-   <english>https://en.wikipedia.org/wiki/Russian_cruiser_Gromoboi</english>
+   <english>https://en.wikipedia.org/wiki/Russian_cruiser_Gromoboi
+</english>
   </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
@@ -17446,21 +17448,23 @@ Portrait is taken from Saikyō Maru (西京丸)</english>
   <standardTurnDegPer2Min>60</standardTurnDegPer2Min>
   <emergencyTurnDegPer2Min>90</emergencyTurnDegPer2Min>
   <armorRating>
-   <armorTypeFactor>0.74</armorTypeFactor>
-   <deck effectInch="1.9" actualInch="2.5" />
+   <armorTypeFactor>0.9</armorTypeFactor>
+   <deck effectInch="2.2" actualInch="2.5" />
    <turretHorizontal effectInch="0" actualInch="0" />
-   <superStructureHorizontal effectInch="1.3" actualInch="1.8" />
-   <conningTower effectInch="8.9" actualInch="12" />
-   <mainBelt effectInch="7.4" actualInch="10" />
+   <superStructureHorizontal effectInch="1.6" actualInch="1.8" />
+   <conningTower effectInch="10.8" actualInch="12" />
+   <mainBelt effectInch="9" actualInch="10" />
    <beltEnd effectInch="0" actualInch="0" />
-   <barbette effectInch="6.7" actualInch="9" />
+   <barbette effectInch="8.1" actualInch="9" />
    <turretVertical effectInch="0" actualInch="0" />
-   <superStructureVertical effectInch="2.3" actualInch="3.1" />
-   <armorType>HarveyMildSteel</armorType>
+   <superStructureVertical effectInch="2.8" actualInch="3.1" />
+   <armorType>NickelSteel</armorType>
   </armorRating>
   <portraitUrl>https://military-history.fandom.com/wiki/Russian_cruiser_Rurik_(1892)</portraitUrl>
   <remark>
-   <english>https://en.wikipedia.org/wiki/Russian_cruiser_Rurik_(1892)</english>
+   <english>https://en.wikipedia.org/wiki/Russian_cruiser_Rurik_(1892)
+
+Correction: SK5 Original Armor Factor: 0.74 (armor type HarveyMildSteel) =&gt; 0.9 (armor Type NickelSteel), source: https://en.wikipedia.org/wiki/Russian_cruiser_Rurik_(1892)</english>
   </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
@@ -17997,11 +18001,12 @@ Portrait is taken from Saikyō Maru (西京丸)</english>
    <barbette effectInch="5" actualInch="6" />
    <turretVertical effectInch="5" actualInch="6" />
    <superStructureVertical effectInch="2.4" actualInch="2.9" />
-   <armorType>NotSpecified</armorType>
+   <armorType>KruppCemented1894</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:Izumo-class_armored_cruiser_left_elevation_plan.jpg</portraitUrl>
   <remark>
-   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Izumo</english>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Izumo
+</english>
   </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
@@ -18585,13 +18590,14 @@ Portrait is taken from Saikyō Maru (西京丸)</english>
    <barbette effectInch="5" actualInch="6" />
    <turretVertical effectInch="5.2" actualInch="6.3" />
    <superStructureVertical effectInch="2.4" actualInch="2.9" />
-   <armorType>NotSpecified</armorType>
+   <armorType>KruppCemented1894</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/Japanese_cruiser_Azuma</portraitUrl>
   <remark>
    <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Azuma
 
-Azuma or Adzuma (SK5 name)</english>
+Azuma or Adzuma (SK5 name)
+</english>
   </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
@@ -21119,11 +21125,12 @@ Sometime called Niitaka class.
    <barbette effectInch="5" actualInch="6" />
    <turretVertical effectInch="5.2" actualInch="6.3" />
    <superStructureVertical effectInch="2.4" actualInch="2.9" />
-   <armorType>NotSpecified</armorType>
+   <armorType>KruppCemented1894</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:Japanese_armored_cruiser_Yakumo_left_elevation_plan.jpg</portraitUrl>
   <remark>
-   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Yakumo</english>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Yakumo
+</english>
   </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
@@ -22068,17 +22075,17 @@ Correction: SK5 length 37 -&gt; 307</english>
   <standardTurnDegPer2Min>60</standardTurnDegPer2Min>
   <emergencyTurnDegPer2Min>90</emergencyTurnDegPer2Min>
   <armorRating>
-   <armorTypeFactor>0.82</armorTypeFactor>
-   <deck effectInch="1.2" actualInch="1.5" />
+   <armorTypeFactor>0.9</armorTypeFactor>
+   <deck effectInch="1.4" actualInch="1.5" />
    <turretHorizontal effectInch="0" actualInch="0" />
-   <superStructureHorizontal effectInch="0.3" actualInch="0.4" />
-   <conningTower effectInch="4.9" actualInch="6" />
+   <superStructureHorizontal effectInch="0.4" actualInch="0.4" />
+   <conningTower effectInch="5.4" actualInch="6" />
    <mainBelt effectInch="0" actualInch="0" />
    <beltEnd effectInch="0" actualInch="0" />
-   <barbette effectInch="1.2" actualInch="1.5" />
+   <barbette effectInch="1.4" actualInch="1.5" />
    <turretVertical effectInch="0" actualInch="0" />
    <superStructureVertical effectInch="0.4" actualInch="0.5" />
-   <armorType>HighTensileSteel</armorType>
+   <armorType>NickelSteel</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:Russian_cruiser_Varyag_(1899)_left_elevation_plan.jpg</portraitUrl>
   <remark>
@@ -22086,7 +22093,9 @@ Correction: SK5 length 37 -&gt; 307</english>
 
 Варя́г
 
-SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 1440 -&gt; 1680</english>
+SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 1440 -&gt; 1680
+
+Correction: SK5 Original Armor Factor: 0.82 (armor type HighTensileSteel) =&gt; 0.9 (armor Type NickelSteel), source: https://en.topwar.ru/166338-retvizan-vs-cesarevich-ili-a-pochemu-ne-kramp.html</english>
   </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
@@ -23345,14 +23354,14 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
    <armorTypeFactor>0.83</armorTypeFactor>
    <deck effectInch="2.1" actualInch="2.5" />
    <turretHorizontal effectInch="1.7" actualInch="2" />
-   <superStructureHorizontal effectInch="2.1" actualInch="2.6" />
+   <superStructureHorizontal effectInch="2.2" actualInch="2.6" />
    <conningTower effectInch="7.5" actualInch="9" />
    <mainBelt effectInch="12" actualInch="14.5" />
    <beltEnd effectInch="0" actualInch="0" />
    <barbette effectInch="8.3" actualInch="10" />
    <turretVertical effectInch="8.3" actualInch="10" />
-   <superStructureVertical effectInch="3.6" actualInch="4.4" />
-   <armorType>NotSpecified</armorType>
+   <superStructureVertical effectInch="3.7" actualInch="4.4" />
+   <armorType>KruppCemented1894</armorType>
   </armorRating>
   <portraitUrl>https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:Poltava_correct_Brasseys1902.png</portraitUrl>
   <remark>
@@ -24860,13 +24869,14 @@ SK5 Data Ammunition rpg is not consistent with total ammunition, correction: 144
    <barbette effectInch="8.1" actualInch="9.8" />
    <turretVertical effectInch="8.1" actualInch="9.8" />
    <superStructureVertical effectInch="3.8" actualInch="4.6" />
-   <armorType>NotSpecified</armorType>
+   <armorType>KruppCemented1894</armorType>
   </armorRating>
   <portraitUrl>https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</portraitUrl>
   <remark>
    <english>https://en.wikipedia.org/wiki/Russian_battleship_Tsesarevich
 
-https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</english>
+https://naval-encyclopedia.com/ww1/russia/tsesarevich.php
+</english>
   </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
@@ -25448,7 +25458,8 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</english>
 
 - Peresvet Пересвет
 - Oslyabya Ослябя
-- Pobeda Победа</english>
+- Pobeda Победа
+</english>
   </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
@@ -26030,7 +26041,8 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</english>
 
 - Peresvet Пересвет
 - Oslyabya Ослябя
-- Pobeda Победа</english>
+- Pobeda Победа
+</english>
   </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
@@ -26751,14 +26763,15 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</english>
    <beltEnd effectInch="0" actualInch="0" />
    <barbette effectInch="6.6" actualInch="8" />
    <turretVertical effectInch="7.5" actualInch="9" />
-   <superStructureVertical effectInch="2.8" actualInch="3.3" />
-   <armorType>NotSpecified</armorType>
+   <superStructureVertical effectInch="2.7" actualInch="3.3" />
+   <armorType>KruppCemented1894</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:Retvizan_Brassey%27s1915_corrected.png</portraitUrl>
   <remark>
    <english>https://en.wikipedia.org/wiki/Russian_battleship_Retvizan
 
-Ретвизан</english>
+Ретвизан
+</english>
   </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
@@ -27811,14 +27824,15 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php</english>
    <barbette effectInch="1.2" actualInch="1.5" />
    <turretVertical effectInch="0" actualInch="0" />
    <superStructureVertical effectInch="0.5" actualInch="0.6" />
-   <armorType>NotSpecified</armorType>
+   <armorType>KruppNickelSteel</armorType>
   </armorRating>
   <portraitUrl>https://naval-encyclopedia.com/ww1/russia/askold-1900.php</portraitUrl>
   <remark>
    <english>https://en.wikipedia.org/wiki/Russian_cruiser_Askold
 https://naval-encyclopedia.com/ww1/russia/askold-1900.php
 
-Аскольд</english>
+Аскольд
+</english>
   </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
@@ -28612,7 +28626,7 @@ https://naval-encyclopedia.com/ww1/russia/askold-1900.php
   <emergencyTurnDegPer2Min>90</emergencyTurnDegPer2Min>
   <armorRating>
    <armorTypeFactor>0.83</armorTypeFactor>
-   <deck effectInch="1" actualInch="1.3" />
+   <deck effectInch="1.1" actualInch="1.3" />
    <turretHorizontal effectInch="0" actualInch="0" />
    <superStructureHorizontal effectInch="0.2" actualInch="0.2" />
    <conningTower effectInch="2.5" actualInch="3" />
@@ -28621,14 +28635,15 @@ https://naval-encyclopedia.com/ww1/russia/askold-1900.php
    <barbette effectInch="0" actualInch="0" />
    <turretVertical effectInch="0" actualInch="0" />
    <superStructureVertical effectInch="0.2" actualInch="0.2" />
-   <armorType>NotSpecified</armorType>
+   <armorType>KruppNickelSteel</armorType>
   </armorRating>
   <portraitUrl>https://naval-encyclopedia.com/ww1/russia/boyarin.php</portraitUrl>
   <remark>
    <english>https://en.wikipedia.org/wiki/Russian_cruiser_Boyarin
 https://naval-encyclopedia.com/ww1/russia/boyarin.php
 
-Боярин</english>
+Боярин
+</english>
   </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
@@ -28986,24 +29001,26 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
   <standardTurnDegPer2Min>60</standardTurnDegPer2Min>
   <emergencyTurnDegPer2Min>90</emergencyTurnDegPer2Min>
   <armorRating>
-   <armorTypeFactor>0.82</armorTypeFactor>
-   <deck effectInch="1.4" actualInch="1.8" />
+   <armorTypeFactor>0.9</armorTypeFactor>
+   <deck effectInch="1.6" actualInch="1.8" />
    <turretHorizontal effectInch="0" actualInch="0" />
-   <superStructureHorizontal effectInch="0.2" actualInch="0.3" />
+   <superStructureHorizontal effectInch="0.3" actualInch="0.3" />
    <conningTower effectInch="0" actualInch="0" />
    <mainBelt effectInch="0" actualInch="0" />
    <beltEnd effectInch="0" actualInch="0" />
    <barbette effectInch="0" actualInch="0" />
    <turretVertical effectInch="0" actualInch="0" />
    <superStructureVertical effectInch="0.1" actualInch="0.1" />
-   <armorType>HighTensileSteel</armorType>
+   <armorType>NickelSteel</armorType>
   </armorRating>
   <portraitUrl>https://naval-encyclopedia.com/ww1/russia/cruiser-novik-1898.php</portraitUrl>
   <remark>
    <english>https://en.wikipedia.org/wiki/Russian_cruiser_Novik
 https://naval-encyclopedia.com/ww1/russia/cruiser-novik-1898.php
 
-Новик</english>
+Новик
+
+Correction: SK5 Original Armor Factor: 0.82 (armor type HighTensileSteel) =&gt; 0.9 (armor Type NickelSteel), source: https://myownonpmirror.com/ships/russia/ru_cr_novik.html</english>
   </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
@@ -29361,7 +29378,7 @@ The SK5 data gives a torpedo tube layout that is inconsistent with the source im
 
 https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%D0%BA%D0%B0%D0%B4%D1%80%D0%B5%D0%BD%D0%BD%D1%8B%D1%85_%D0%BC%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D1%86%D0%B5%D0%B2_%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D0%B8_%D0%B8_%D0%A1%D0%A1%D0%A1%D0%A0_%D0%BF%D0%BE_%D1%82%D0%B8%D0%BF%D0%B0%D0%BC#%D0%A2%D0%B8%D0%BF_%C2%AB%D0%91%D1%83%D0%B9%D0%BD%D1%8B%D0%B9%C2%BB</english>
   </remark>
-  <isPoorlySupported>false</isPoorlySupported>
+  <isPoorlySupported>true</isPoorlySupported>
   <portraitReference>
    <path>Pictures/Ships/Bezstrashni_Top.jpg</path>
    <isBuiltin>true</isBuiltin>
@@ -29921,12 +29938,11 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
    <barbette effectInch="11.6" actualInch="14" />
    <turretVertical effectInch="5" actualInch="6" />
    <superStructureVertical effectInch="3.8" actualInch="4.6" />
-   <armorType>NotSpecified</armorType>
+   <armorType>KruppCemented1894</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:Battleship_Mikasa_from_JFS1906_Cropped.png</portraitUrl>
   <remark>
    <english>https://en.wikipedia.org/wiki/Japanese_battleship_Mikasa
-
 </english>
   </remark>
   <isPoorlySupported>false</isPoorlySupported>
@@ -32178,8 +32194,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
   <portraitUrl>https://en.wikipedia.org/wiki/File:Takasago-brassey1902.jpg</portraitUrl>
   <remark>
    <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Takasago
-
-Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the SK5 taxology), but SK5 list it as a CA for some reason.</english>
+</english>
   </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
@@ -35480,22 +35495,23 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
   <standardTurnDegPer2Min>60</standardTurnDegPer2Min>
   <emergencyTurnDegPer2Min>90</emergencyTurnDegPer2Min>
   <armorRating>
-   <armorTypeFactor>0.83</armorTypeFactor>
+   <armorTypeFactor>0.78</armorTypeFactor>
    <deck effectInch="1.2" actualInch="1.5" />
-   <turretHorizontal effectInch="2.9" actualInch="3.5" />
-   <superStructureHorizontal effectInch="1.3" actualInch="1.6" />
-   <conningTower effectInch="5" actualInch="6" />
-   <mainBelt effectInch="5" actualInch="6" />
+   <turretHorizontal effectInch="2.7" actualInch="3.5" />
+   <superStructureHorizontal effectInch="1.2" actualInch="1.6" />
+   <conningTower effectInch="4.7" actualInch="6" />
+   <mainBelt effectInch="4.7" actualInch="6" />
    <beltEnd effectInch="0" actualInch="0" />
-   <barbette effectInch="5" actualInch="6" />
-   <turretVertical effectInch="5" actualInch="6" />
-   <superStructureVertical effectInch="2" actualInch="2.4" />
-   <armorType>KruppCemented1894</armorType>
+   <barbette effectInch="4.7" actualInch="6" />
+   <turretVertical effectInch="4.7" actualInch="6" />
+   <superStructureVertical effectInch="1.9" actualInch="2.4" />
+   <armorType>HarveyNickelSteel</armorType>
   </armorRating>
   <portraitUrl>https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:Kasuga_plan.jpg</portraitUrl>
   <remark>
    <english>https://en.wikipedia.org/wiki/Kasuga-class_cruiser
-</english>
+
+Correction: SK5 Original Armor Factor: 0.83 (armor type KruppCemented1894) =&gt; 0.78 (armor Type HarveyNickelSteel), source: https://naval-encyclopedia.com/ww1/japan/kasuga-class-armoured-cruisers.php</english>
   </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
@@ -36032,21 +36048,23 @@ Takasago usually is classified as a Protected Cruiser (or Light Cruiser in the S
   <standardTurnDegPer2Min>60</standardTurnDegPer2Min>
   <emergencyTurnDegPer2Min>90</emergencyTurnDegPer2Min>
   <armorRating>
-   <armorTypeFactor>0.83</armorTypeFactor>
+   <armorTypeFactor>0.78</armorTypeFactor>
    <deck effectInch="1.2" actualInch="1.5" />
-   <turretHorizontal effectInch="2.9" actualInch="3.5" />
-   <superStructureHorizontal effectInch="1.3" actualInch="1.6" />
-   <conningTower effectInch="5" actualInch="6" />
-   <mainBelt effectInch="5" actualInch="6" />
+   <turretHorizontal effectInch="2.7" actualInch="3.5" />
+   <superStructureHorizontal effectInch="1.2" actualInch="1.6" />
+   <conningTower effectInch="4.7" actualInch="6" />
+   <mainBelt effectInch="4.7" actualInch="6" />
    <beltEnd effectInch="0" actualInch="0" />
-   <barbette effectInch="5" actualInch="6" />
-   <turretVertical effectInch="5" actualInch="6" />
-   <superStructureVertical effectInch="2" actualInch="2.4" />
-   <armorType>KruppCemented1894</armorType>
+   <barbette effectInch="4.7" actualInch="6" />
+   <turretVertical effectInch="4.7" actualInch="6" />
+   <superStructureVertical effectInch="1.9" actualInch="2.4" />
+   <armorType>HarveyNickelSteel</armorType>
   </armorRating>
   <portraitUrl>Adaption of Kasuga</portraitUrl>
   <remark>
-   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Nisshin</english>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Nisshin
+
+Correction: SK5 Original Armor Factor: 0.83 (armor type KruppCemented1894) =&gt; 0.78 (armor Type HarveyNickelSteel), source: https://naval-encyclopedia.com/ww1/japan/kasuga-class-armoured-cruisers.php</english>
   </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
@@ -38754,15 +38772,15 @@ https://naval-encyclopedia.com/ww1/china/hai-yung-class-cruisers.php
   <emergencyTurnDegPer2Min>120</emergencyTurnDegPer2Min>
   <armorRating>
    <armorTypeFactor>0.82</armorTypeFactor>
-   <deck effectInch="1.4" actualInch="1.8" />
+   <deck effectInch="1.5" actualInch="1.8" />
    <turretHorizontal effectInch="0" actualInch="0" />
-   <superStructureHorizontal effectInch="0.6" actualInch="0.8" />
+   <superStructureHorizontal effectInch="0.7" actualInch="0.8" />
    <conningTower effectInch="4.9" actualInch="6" />
    <mainBelt effectInch="0" actualInch="0" />
    <beltEnd effectInch="0" actualInch="0" />
    <barbette effectInch="3.3" actualInch="4" />
    <turretVertical effectInch="4.9" actualInch="6" />
-   <superStructureVertical effectInch="0.9" actualInch="1.2" />
+   <superStructureVertical effectInch="1" actualInch="1.2" />
    <armorType>HighTensileSteel</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/Chilean_cruiser_Blanco_Encalada</portraitUrl>
@@ -47768,11 +47786,12 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Kornilov</english>
    <barbette effectInch="7.5" actualInch="9" />
    <turretVertical effectInch="8.3" actualInch="10" />
    <superStructureVertical effectInch="3.2" actualInch="3.9" />
-   <armorType>NotSpecified</armorType>
+   <armorType>KruppCemented1894</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/Borodino-class_battleship</portraitUrl>
   <remark>
-   <english>https://en.wikipedia.org/wiki/Borodino-class_battleship</english>
+   <english>https://en.wikipedia.org/wiki/Borodino-class_battleship
+</english>
   </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
@@ -48303,13 +48322,15 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Kornilov</english>
    <barbette effectInch="4.5" actualInch="5" />
    <turretVertical effectInch="9" actualInch="10" />
    <superStructureVertical effectInch="3.7" actualInch="4.1" />
-   <armorType>NotSpecified</armorType>
+   <armorType>NickelSteel</armorType>
   </armorRating>
   <portraitUrl>https://commons.wikimedia.org/wiki/File:Russia%27s_Sea_Power,_Fig._5_-_Sissoi_Veliky.jpg</portraitUrl>
   <remark>
    <english>Сисой Великий
 
-https://en.wikipedia.org/wiki/Russian_battleship_Sissoi_Veliky</english>
+https://en.wikipedia.org/wiki/Russian_battleship_Sissoi_Veliky
+
+</english>
   </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
@@ -49001,13 +49022,14 @@ https://en.wikipedia.org/wiki/Russian_battleship_Sissoi_Veliky</english>
    <barbette effectInch="4.5" actualInch="5" />
    <turretVertical effectInch="9" actualInch="10" />
    <superStructureVertical effectInch="3.7" actualInch="4.1" />
-   <armorType>NotSpecified</armorType>
+   <armorType>NickelSteel</armorType>
   </armorRating>
   <portraitUrl>https://commons.wikimedia.org/wiki/File:Russia%27s_Sea_Power,_Fig._5_-_Sissoi_Veliky.jpg</portraitUrl>
   <remark>
    <english>Сисой Великий
 
-https://en.wikipedia.org/wiki/Russian_battleship_Sissoi_Veliky</english>
+https://en.wikipedia.org/wiki/Russian_battleship_Sissoi_Veliky
+</english>
   </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
@@ -50365,7 +50387,6 @@ One of reference ship class of Ding Yuan
   <portraitUrl>https://en.wikipedia.org/wiki/File:Centurion_class_battleship_diagrams_Brasseys_1896.jpg</portraitUrl>
   <remark>
    <english>https://en.wikipedia.org/wiki/Centurion-class_battleship
-
 </english>
   </remark>
   <isPoorlySupported>false</isPoorlySupported>
@@ -50737,7 +50758,7 @@ One of reference ship class of Ding Yuan
    <barbette effectInch="9.1" actualInch="11" />
    <turretVertical effectInch="10" actualInch="12" />
    <superStructureVertical effectInch="4.1" actualInch="4.9" />
-   <armorType>NotSpecified</armorType>
+   <armorType>KruppCementedWW1Era1905</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:HMS_Dreadnought_(1911)_profile_drawing.png</portraitUrl>
   <remark>
@@ -51277,7 +51298,7 @@ Reference only, a new damage schema is required to work properly.
    <barbette effectInch="5.8" actualInch="7" />
    <turretVertical effectInch="5.8" actualInch="7" />
    <superStructureVertical effectInch="2.6" actualInch="3.1" />
-   <armorType>NotSpecified</armorType>
+   <armorType>KruppCementedWW1Era1905</armorType>
   </armorRating>
   <portraitUrl>https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:Invincible&amp;IndefatigableSketch.jpg</portraitUrl>
   <remark>
@@ -52413,23 +52434,23 @@ Reference only, a new damage schema is required to work properly.
   <standardTurnDegPer2Min>60</standardTurnDegPer2Min>
   <emergencyTurnDegPer2Min>90</emergencyTurnDegPer2Min>
   <armorRating>
-   <armorTypeFactor>0.75</armorTypeFactor>
-   <deck effectInch="1.5" actualInch="2" />
+   <armorTypeFactor>0.68</armorTypeFactor>
+   <deck effectInch="1.4" actualInch="2" />
    <turretHorizontal effectInch="0" actualInch="0" />
-   <superStructureHorizontal effectInch="1" actualInch="1.3" />
-   <conningTower effectInch="9" actualInch="12" />
-   <mainBelt effectInch="7.5" actualInch="10" />
+   <superStructureHorizontal effectInch="0.9" actualInch="1.3" />
+   <conningTower effectInch="8.2" actualInch="12" />
+   <mainBelt effectInch="6.8" actualInch="10" />
    <beltEnd effectInch="0" actualInch="0" />
    <barbette effectInch="0" actualInch="0" />
-   <turretVertical effectInch="1.5" actualInch="2" />
-   <superStructureVertical effectInch="1.6" actualInch="2.2" />
-   <armorType>MildSteel</armorType>
+   <turretVertical effectInch="1.4" actualInch="2" />
+   <superStructureVertical effectInch="1.5" actualInch="2.2" />
+   <armorType>CompoundHardSteelFacedWroughtIron</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:HMS_Orlando_Class.jpg</portraitUrl>
   <remark>
    <english>https://en.wikipedia.org/wiki/Orlando-class_cruiser
 
-</english>
+Correction: SK5 Original Armor Factor: 0.75 (armor type MildSteel) =&gt; 0.68 (armor Type CompoundHardSteelFacedWroughtIron), source: https://en.wikipedia.org/wiki/HMS_Undaunted_(1886)</english>
   </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
@@ -56109,7 +56130,7 @@ One of Ting Yuen's Reference class
    <barbette effectInch="0" actualInch="0" />
    <turretVertical effectInch="3.2" actualInch="3.9" />
    <superStructureVertical effectInch="0.5" actualInch="0.6" />
-   <armorType>NotSpecified</armorType>
+   <armorType>KruppNickelSteel</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:Victoria_Louise_line_drawing.png</portraitUrl>
   <remark>
@@ -56488,12 +56509,11 @@ One of Ting Yuen's Reference class
    <barbette effectInch="0" actualInch="0" />
    <turretVertical effectInch="0" actualInch="0" />
    <superStructureVertical effectInch="0.2" actualInch="0.3" />
-   <armorType>NotSpecified</armorType>
+   <armorType>KruppNickelSteel</armorType>
   </armorRating>
   <portraitUrl>https://en.wikipedia.org/wiki/File:Kaiserin_Augusta_line_drawing.png</portraitUrl>
   <remark>
    <english>https://en.wikipedia.org/wiki/SMS_Kaiserin_Augusta
-
 </english>
   </remark>
   <isPoorlySupported>false</isPoorlySupported>
@@ -61225,7 +61245,7 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
    <armorType>NotSpecified</armorType>
   </armorRating>
   <remark>
-   <english>none</english>
+   <english>Dotb</english>
   </remark>
   <isPoorlySupported>true</isPoorlySupported>
   <portraitReference>
@@ -61753,7 +61773,9 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
    <armorType>NotSpecified</armorType>
   </armorRating>
   <remark>
-   <english>5x Krupp 8cm L/19 C/65, 3x 6pdr/3.5cwt RML are ignored</english>
+   <english>5x Krupp 8cm L/19 C/65, 3x 6pdr/3.5cwt RML are ignored
+
+Dotb</english>
   </remark>
   <isPoorlySupported>true</isPoorlySupported>
   <portraitReference>
@@ -62612,7 +62634,7 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
    <armorType>NotSpecified</armorType>
   </armorRating>
   <remark>
-   <english>none</english>
+   <english>Dotb</english>
   </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
@@ -63612,7 +63634,8 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
   <remark>
    <english>https://en.wikipedia.org/wiki/Royal_Sovereign-class_battleship
 
-First pre-dreadnoughts</english>
+First pre-dreadnoughts
+</english>
   </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>

@@ -537,14 +537,14 @@ public partial class MarkdownRenderer : BindableElement
         switch (inline)
         {
             case LiteralInline literal:
-                builder.Append(EscapeRichText(literal.Content.ToString()));
+                AppendNoParseText(builder, literal.Content.ToString());
                 break;
             case LineBreakInline lineBreak:
                 builder.Append(lineBreak.IsHard ? "\n" : " ");
                 break;
             case CodeInline code:
                 builder.Append("<color=#d7c496>");
-                builder.Append(EscapeRichText(code.Content));
+                AppendNoParseText(builder, code.Content);
                 builder.Append("</color>");
                 break;
             case EmphasisInline emphasis:
@@ -554,16 +554,16 @@ public partial class MarkdownRenderer : BindableElement
                 AppendLink(link, builder, handlers, images);
                 break;
             case AutolinkInline autoLink:
-                AppendUrl(autoLink.Url, autoLink.Url, builder, handlers);
+                AppendUrl(autoLink.Url, BuildNoParseText(autoLink.Url), builder, handlers);
                 break;
             case HtmlInline html:
-                builder.Append(EscapeRichText(html.Tag));
+                AppendNoParseText(builder, html.Tag);
                 break;
             case ContainerInline container:
                 AppendInlineChildren(container, builder, handlers, images);
                 break;
             default:
-                builder.Append(EscapeRichText(inline.ToString()));
+                AppendNoParseText(builder, inline.ToString());
                 break;
         }
     }
@@ -584,14 +584,14 @@ public partial class MarkdownRenderer : BindableElement
         AppendInlineChildren(link, labelBuilder, nestedHandlers, nestedImages);
 
         var hasLabel = !string.IsNullOrWhiteSpace(labelBuilder.ToString());
-        var label = hasLabel ? labelBuilder.ToString() : EscapeRichText(link.Url);
-        var altText = StripRichText(label ?? "");
+        var label = hasLabel ? labelBuilder.ToString() : BuildNoParseText(link.Url);
+        var altText = BuildPlainText(link);
 
         if (link.IsImage)
         {
             images.Add(new MarkdownImage(link.Url, altText));
             if (!string.IsNullOrWhiteSpace(altText))
-                builder.Append(EscapeRichText(altText));
+                AppendNoParseText(builder, altText);
             return;
         }
 
@@ -694,31 +694,60 @@ public partial class MarkdownRenderer : BindableElement
                 || url.StartsWith("mailto:", StringComparison.OrdinalIgnoreCase));
     }
 
-    static string EscapeRichText(string text)
+    static string BuildNoParseText(string text)
     {
         if (string.IsNullOrEmpty(text))
             return "";
 
-        return text
-            .Replace("&", "&amp;")
-            .Replace("<", "&lt;")
-            .Replace(">", "&gt;");
+        var builder = new StringBuilder();
+        AppendNoParseText(builder, text);
+        return builder.ToString();
     }
 
-    static string StripRichText(string text)
+    static void AppendNoParseText(StringBuilder builder, string text)
     {
         if (string.IsNullOrEmpty(text))
+            return;
+
+        const string closingTag = "</noparse>";
+        var index = 0;
+
+        while (index < text.Length)
+        {
+            var closingIndex = text.IndexOf(closingTag, index, StringComparison.OrdinalIgnoreCase);
+            if (closingIndex < 0)
+            {
+                AppendNoParseSegment(builder, text.Substring(index));
+                return;
+            }
+
+            AppendNoParseSegment(builder, text.Substring(index, closingIndex - index));
+            AppendNoParseSegment(builder, "<");
+            AppendNoParseSegment(builder, text.Substring(closingIndex + 1, closingTag.Length - 1));
+            index = closingIndex + closingTag.Length;
+        }
+    }
+
+    static void AppendNoParseSegment(StringBuilder builder, string text)
+    {
+        if (string.IsNullOrEmpty(text))
+            return;
+
+        builder.Append("<noparse>");
+        builder.Append(text);
+        builder.Append("</noparse>");
+    }
+
+    string BuildPlainText(LinkInline link)
+    {
+        if (link == null)
             return "";
 
-        return text
-            .Replace("<b>", "")
-            .Replace("</b>", "")
-            .Replace("<i>", "")
-            .Replace("</i>", "")
-            .Replace("<s>", "")
-            .Replace("</s>", "")
-            .Replace("<color=#d7c496>", "")
-            .Replace("</color>", "");
+        var builder = new StringBuilder();
+        foreach (var child in link)
+            AppendInlinePlainText(child, builder);
+
+        return builder.ToString();
     }
 
     readonly struct MarkdownImage

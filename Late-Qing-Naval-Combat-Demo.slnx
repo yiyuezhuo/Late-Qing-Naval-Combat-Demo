@@ -3,4 +3,5 @@
   <Project Path="NativeFilePicker.Runtime.csproj" />
   <Project Path="Assembly-CSharp-Editor.csproj" />
   <Project Path="NativeFilePicker.Editor.csproj" />
+  <Project Path="Tools/PlaceholderImageCli/PlaceholderImageCli.csproj" />
 </Solution>

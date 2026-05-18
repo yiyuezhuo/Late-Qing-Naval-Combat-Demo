@@ -11,6 +11,7 @@ This is a Unity 6 project for tactical/strategic naval warfare scenarios.
 ## Build, Test, and Development Commands
 - Don't write test.
 - `Tools/NaabLikeCheck` is a small C# console harness for manual NAAB-like ballistics parity checks.
+- `Tools/PlaceholderImageCli` renders ship placeholder images outside Unity for visual iteration; see `Tools/PlaceholderImageCli/README.md` for usage and tuning notes.
 
 ## Coding Style & Naming Conventions
 - C# uses 4-space indentation and standard Unity/.NET style.

@@ -41,6 +41,7 @@ ExportedObj/
 !Tools/JbmLegacyCLI/JbmLegacyCLI.csproj
 !Tools/M79LegacyCLI/M79LegacyCLI.csproj
 !Tools/McCoyLegacyCLI/McCoyLegacyCLI.csproj
+!Tools/PlaceholderImageCli/PlaceholderImageCli.csproj
 *.unityproj
 *.sln
 *.suo
@@ -103,6 +104,8 @@ Tools/M79LegacyCLI/bin/
 Tools/M79LegacyCLI/obj/
 Tools/McCoyLegacyCLI/bin/
 Tools/McCoyLegacyCLI/obj/
+Tools/PlaceholderImageCli/bin/
+Tools/PlaceholderImageCli/obj/
 
 References/NAAB2x
 References/Facehard69

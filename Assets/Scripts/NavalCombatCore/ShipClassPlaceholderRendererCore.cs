@@ -279,6 +279,7 @@ public static class ShipClassPlaceholderImageRendererCore
         public RgbaColor hullOutline;
         public RgbaColor interiorLine;
         public RgbaColor detailFill;
+        public RgbaColor torpedoBaseFill;
         public RgbaColor mountFill;
         public RgbaColor rapidFire;
         public RgbaColor funnelFill;
@@ -669,7 +670,7 @@ public static class ShipClassPlaceholderImageRendererCore
                 var mountCount = PixelMath.Max(1, entry.record.mounts);
                 foreach (var pos in positions.Skip(positionIndex).Take(mountCount))
                 {
-                    DrawDeckTorpedoMount(canvas, pos, entry.direction, entry.record.barrels, entry.size, entry.record.trainable, palette.hullOutline, palette.detailFill);
+                    DrawDeckTorpedoMount(canvas, pos, entry.direction, entry.record.barrels, entry.size, entry.record.trainable, palette.hullOutline, palette.detailFill, palette.torpedoBaseFill);
                 }
 
                 positionIndex += mountCount;
@@ -1237,7 +1238,7 @@ public static class ShipClassPlaceholderImageRendererCore
         }
     }
 
-    static void DrawDeckTorpedoMount(PixelCanvas canvas, PixelVector2 pos, PixelVector2 direction, int barrels, float size, bool trainable, RgbaColor outline, RgbaColor detailFill)
+    static void DrawDeckTorpedoMount(PixelCanvas canvas, PixelVector2 pos, PixelVector2 direction, int barrels, float size, bool trainable, RgbaColor outline, RgbaColor detailFill, RgbaColor torpedoBaseFill)
     {
         var along = direction.sqrMagnitude < 0.0001f ? PixelVector2.right : direction.normalized;
         var perp = new PixelVector2(-along.y, along.x);
@@ -1253,7 +1254,7 @@ public static class ShipClassPlaceholderImageRendererCore
         {
             var pivotRadius = PixelMath.Max(bankWidth * 0.72f, size * 0.50f);
             canvas.FillEllipse(pos, pivotRadius + 1.2f, pivotRadius + 1.2f, outline);
-            canvas.FillEllipse(pos, pivotRadius, pivotRadius, detailFill);
+            canvas.FillEllipse(pos, pivotRadius, pivotRadius, torpedoBaseFill);
             canvas.DrawLine(pos - perp * pivotRadius, pos + perp * pivotRadius, 1, outline);
         }
 
@@ -1450,6 +1451,7 @@ public static class ShipClassPlaceholderImageRendererCore
                 hullOutline = new RgbaColor(28, 28, 28, 255),
                 interiorLine = new RgbaColor(0, 0, 0, 255),
                 detailFill = new RgbaColor(255, 255, 255, 255),
+                torpedoBaseFill = new RgbaColor(210, 210, 210, 255),
                 mountFill = new RgbaColor(36, 36, 36, 255),
                 rapidFire = new RgbaColor(0, 0, 0, 255),
                 funnelFill = new RgbaColor(255, 255, 255, 255),
@@ -1463,6 +1465,7 @@ public static class ShipClassPlaceholderImageRendererCore
                 hullOutline = new RgbaColor(0, 0, 0, 255),
                 interiorLine = new RgbaColor(0, 0, 0, 255),
                 detailFill = new RgbaColor(255, 255, 255, 255),
+                torpedoBaseFill = new RgbaColor(220, 220, 220, 255),
                 mountFill = new RgbaColor(0, 0, 0, 255),
                 rapidFire = new RgbaColor(0, 0, 0, 255),
                 funnelFill = new RgbaColor(255, 255, 255, 255),
@@ -1476,6 +1479,7 @@ public static class ShipClassPlaceholderImageRendererCore
                 hullOutline = new RgbaColor(0, 0, 0, 255),
                 interiorLine = new RgbaColor(0, 0, 0, 230),
                 detailFill = new RgbaColor(255, 255, 255, 220),
+                torpedoBaseFill = new RgbaColor(210, 210, 210, 230),
                 mountFill = new RgbaColor(0, 0, 0, 255),
                 rapidFire = new RgbaColor(0, 0, 0, 220),
                 funnelFill = new RgbaColor(255, 255, 255, 230),

@@ -40254,11 +40254,11 @@ Alternate history: Suppose the China had purchased this ship from Chile.</englis
    <isBuiltin>true</isBuiltin>
   </portraitReference>
   <portraitTopReference>
-   <path>Pictures\Ships\Presidente Errazuriz_Top.jpg</path>
+   <path>Pictures/Ships/Presidente Errazuriz_Top.jpg</path>
    <isBuiltin>true</isBuiltin>
   </portraitTopReference>
   <portraitIconReference>
-   <path>Pictures\Ships\Presidente Errazuriz_Icon.png</path>
+   <path>Pictures/Ships/Presidente Errazuriz_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
   <isGraphicPlaceholder>true</isGraphicPlaceholder>
@@ -40438,11 +40438,11 @@ Alternate history: Suppose the China had purchased this ship from Chile.</englis
    <isBuiltin>true</isBuiltin>
   </portraitReference>
   <portraitTopReference>
-   <path>Pictures\Ships\Almirante Lynch_Top.jpg</path>
+   <path>Pictures/Ships/Almirante Lynch_Top.jpg</path>
    <isBuiltin>true</isBuiltin>
   </portraitTopReference>
   <portraitIconReference>
-   <path>Pictures\Ships\Almirante Lynch_Icon.png</path>
+   <path>Pictures/Ships/Almirante Lynch_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
   <isGraphicPlaceholder>true</isGraphicPlaceholder>
@@ -42680,11 +42680,11 @@ https://www.historyofwar.org/articles/weapons_kai_che.html</english>
    <isBuiltin>true</isBuiltin>
   </portraitReference>
   <portraitTopReference>
-   <path>Pictures\Ships\Kai Che_Top.jpg</path>
+   <path>Pictures/Ships/Kai Che_Top.jpg</path>
    <isBuiltin>true</isBuiltin>
   </portraitTopReference>
   <portraitIconReference>
-   <path>Pictures\Ships\Kai Che_Icon.png</path>
+   <path>Pictures/Ships/Kai Che_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
   <isGraphicPlaceholder>true</isGraphicPlaceholder>
@@ -52769,11 +52769,11 @@ Reference only, a new damage schema is required to work properly.
    <isBuiltin>true</isBuiltin>
   </portraitReference>
   <portraitTopReference>
-   <path>Pictures\Ships\Iris_Top.jpg</path>
+   <path>Pictures/Ships/Iris_Top.jpg</path>
    <isBuiltin>true</isBuiltin>
   </portraitTopReference>
   <portraitIconReference>
-   <path>Pictures\Ships\Iris_Icon.png</path>
+   <path>Pictures/Ships/Iris_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
   <isGraphicPlaceholder>true</isGraphicPlaceholder>
@@ -53588,11 +53588,11 @@ Sloop</english>
    <isBuiltin>true</isBuiltin>
   </portraitReference>
   <portraitTopReference>
-   <path>Pictures\Ships\Phoenix_Top.jpg</path>
+   <path>Pictures/Ships/Phoenix_Top.jpg</path>
    <isBuiltin>true</isBuiltin>
   </portraitTopReference>
   <portraitIconReference>
-   <path>Pictures\Ships\Phoenix_Icon.png</path>
+   <path>Pictures/Ships/Phoenix_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
   <isGraphicPlaceholder>true</isGraphicPlaceholder>
@@ -53754,11 +53754,11 @@ Complement 50 is inferred.</english>
    <isBuiltin>true</isBuiltin>
   </portraitReference>
   <portraitTopReference>
-   <path>Pictures\Ships\30-Knotters 1895-96_Top.jpg</path>
+   <path>Pictures/Ships/30-Knotters 1895-96 Class_Top.jpg</path>
    <isBuiltin>true</isBuiltin>
   </portraitTopReference>
   <portraitIconReference>
-   <path>Pictures\Ships\30-Knotters 1895-96_Icon.png</path>
+   <path>Pictures/Ships/30-Knotters 1895-96 Class_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
   <isGraphicPlaceholder>true</isGraphicPlaceholder>
@@ -53922,11 +53922,11 @@ Complement 50 is inferred.
    <isBuiltin>true</isBuiltin>
   </portraitReference>
   <portraitTopReference>
-   <path>Pictures\Ships\30-Knotters 1894-95 Class_Top.jpg</path>
+   <path>Pictures/Ships/30-Knotters 1894-95 Class_Top.jpg</path>
    <isBuiltin>true</isBuiltin>
   </portraitTopReference>
   <portraitIconReference>
-   <path>Pictures\Ships\30-Knotters 1894-95 Class_Icon.png</path>
+   <path>Pictures/Ships/30-Knotters 1894-95 Class_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
   <isGraphicPlaceholder>true</isGraphicPlaceholder>
@@ -54449,11 +54449,11 @@ Sivuch or Gilyak</english>
    <isBuiltin>true</isBuiltin>
   </portraitReference>
   <portraitTopReference>
-   <path>Pictures\Ships\Sivuch_Top.jpg</path>
+   <path>Pictures/Ships/Sivuch_Top.jpg</path>
    <isBuiltin>true</isBuiltin>
   </portraitTopReference>
   <portraitIconReference>
-   <path>Pictures\Ships\Sivuch_Icon.png</path>
+   <path>Pictures/Ships/Sivuch_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
   <isGraphicPlaceholder>true</isGraphicPlaceholder>
@@ -55082,14 +55082,14 @@ Battery select a closer historical battery.</english>
    <isBuiltin>true</isBuiltin>
   </portraitReference>
   <portraitTopReference>
-   <path>Pictures\Ships\Alacrity (1898)_Top.jpg</path>
+   <path>Pictures/Ships/Alacrity (1898)_Top.jpg</path>
    <isBuiltin>true</isBuiltin>
   </portraitTopReference>
   <portraitIconReference>
-   <path>Pictures\Ships\Alacrity (1898)_Icon.png</path>
+   <path>Pictures/Ships/Alacrity (1898)_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
-  <isGraphicPlaceholder>false</isGraphicPlaceholder>
+  <isGraphicPlaceholder>true</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>0586c4ab-2588-42e5-b3e6-e66d42564a80</objectId>
  </ShipClass>
@@ -55254,14 +55254,14 @@ https://www.history.navy.mil/our-collections/photography/numerical-list-of-image
    <isBuiltin>true</isBuiltin>
   </portraitReference>
   <portraitTopReference>
-   <path>Pictures\Ships\Kazarski_Top.jpg</path>
+   <path>Pictures/Ships/Kazarski_Top.jpg</path>
    <isBuiltin>true</isBuiltin>
   </portraitTopReference>
   <portraitIconReference>
-   <path>Pictures\Ships\Kazarski_Icon.png</path>
+   <path>Pictures/Ships/Kazarski_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
-  <isGraphicPlaceholder>false</isGraphicPlaceholder>
+  <isGraphicPlaceholder>true</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>d75b5e07-1645-48cd-b58c-cf134d8f0021</objectId>
  </ShipClass>
@@ -62938,14 +62938,14 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
    <isBuiltin>true</isBuiltin>
   </portraitReference>
   <portraitTopReference>
-   <path>Pictures\Ships\Gilyak (1898)_Top.jpg</path>
+   <path>Pictures/Ships/Gilyak (1898)_Top.jpg</path>
    <isBuiltin>true</isBuiltin>
   </portraitTopReference>
   <portraitIconReference>
-   <path>Pictures\Ships\Gilyak (1898)_Icon.png</path>
+   <path>Pictures/Ships/Gilyak (1898)_Icon.png</path>
    <isBuiltin>true</isBuiltin>
   </portraitIconReference>
-  <isGraphicPlaceholder>false</isGraphicPlaceholder>
+  <isGraphicPlaceholder>true</isGraphicPlaceholder>
   <ram>None</ram>
   <objectId>db248dda-a65a-48f3-b5c8-6904346b2782</objectId>
  </ShipClass>

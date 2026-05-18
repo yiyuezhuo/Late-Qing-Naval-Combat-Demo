@@ -562,6 +562,77 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
         chineseTraditional = "火控碼表示 SK5 資料中火控組件的一種特定組合。修改地位、火控碼、時代或組件欄位時，如果有對應標準表，會用標準表更新火控表；否則該砲組會被標記為使用自訂表。火控碼和組件值本身不影響結算，因為它們的效果已經完整體現在火控表中，而火控表起到充分統計量的作用。",
     };
 
+    const string Sk5CodeExamplesMarkdown = @"FCS Examples:
+
+| fcs_code | class_name | service_period | weapon |
+| -------- | ---------- | -------------- | ------ |
+| 1A3 | [IOWA](https://en.wikipedia.org/wiki/Iowa-class_battleship) | 1943-1945 | 16""/50 Mk 7 |
+| 2A3 | [IOWA](https://en.wikipedia.org/wiki/Iowa-class_battleship) | 1943-1945 | 5""/38 Mk 12 |
+| 1B3 | [COLORADO](https://en.wikipedia.org/wiki/Colorado-class_battleship) | 1944-1945 | 16""/45 Mk 1, 5, 8 |
+| 2B3 | [WICHITA](https://en.wikipedia.org/wiki/USS_Wichita_%28CA-45%29) | 1942-1943 | 5""/38 Mk 12 |
+| 1C3 | [KING GEORGE V](https://en.wikipedia.org/wiki/King_George_V-class_battleship_%281939%29) | 1944-1945 | 14""/45 Mk VII |
+| 1D3 | [RICHELIEU](https://en.wikipedia.org/wiki/Richelieu-class_battleship) | 1943-1944 | 380mm/45 M1935 |
+| 1E3 | [BISMARCK](https://en.wikipedia.org/wiki/Bismarck-class_battleship) | 1940-1941 | 38cm L/47 C/34 |
+| 2E3 | [BISMARCK](https://en.wikipedia.org/wiki/Bismarck-class_battleship) | 1940-1941 | 15cm/L55 C28 |
+| 1F3 | [YAMATO (大和)](https://en.wikipedia.org/wiki/Yamato-class_battleship) | 1941-1943 | 46cm/45 Type 94 |
+| 2F3 | [YAMATO (大和)](https://en.wikipedia.org/wiki/Yamato-class_battleship) | 1941-1943 | 15.5cm/60 Type 3 |
+| 1G3 | [HOOD](https://en.wikipedia.org/wiki/HMS_Hood) | 1940-1941 | 15""/42 Mk I |
+| 2G3 | [NELSON](https://en.wikipedia.org/wiki/Nelson-class_battleship) | 1927-1940 | 6""/50 BL Mk XXII |
+| 1G2 | [HOOD](https://en.wikipedia.org/wiki/HMS_Hood) | 1920-1931 | 15""/42 Mk I |
+| 2G2 | [NAGATO (長門)](https://en.wikipedia.org/wiki/Nagato-class_battleship) | 1936-1942 | 12.7cm/40 Type 89 |
+| 1H3 | [RICHELIEU](https://en.wikipedia.org/wiki/Richelieu-class_battleship) | 1940-1943 | 380mm/45 M1935 |
+| 2H3 | [RICHELIEU](https://en.wikipedia.org/wiki/Richelieu-class_battleship) | 1940-1943 | 152mm/55 M1930 |
+| 1H2 | [DUNKERQUE](https://en.wikipedia.org/wiki/Dunkerque-class_battleship) | 1938-1942 | 330mm/50 M1931 |
+| 2H2 | [BISMARCK](https://en.wikipedia.org/wiki/Bismarck-class_battleship) | 1940-1941 | 10.5cm/L65 C37 |
+| 1J3 | [RENOWN](https://en.wikipedia.org/wiki/Renown-class_battlecruiser) | 1926-1936 | 15""/42 Mk I |
+| 2J3 | [RICHELIEU](https://en.wikipedia.org/wiki/Richelieu-class_battleship) | 1940-1943 | 100mm/45 M1932 |
+| 1J2 | [NAGATO (長門)](https://en.wikipedia.org/wiki/Nagato-class_battleship) | 1920-1933 | 41cm/45 3rd Year |
+| 2J2 | [NAGATO (長門)](https://en.wikipedia.org/wiki/Nagato-class_battleship) | 1920-1933 | 14cm/50 Type 3 |
+| 1K3 | [GANGUT](https://en.wikipedia.org/wiki/Gangut-class_battleship) | 1931-1939 | 305mm/52 M1910 |
+| 1K2 | [BOGATYR](https://en.wikipedia.org/wiki/Bogatyr-class_cruiser) | 1932-1940 | 130mm/55 M1913 |
+| 1M3 | [BRIDGEWATER](https://en.wikipedia.org/wiki/Bridgewater-class_sloop) | 1929-1939 | 4""/45 QF MkV HA |
+| 1M2 | [TSESSAREVITCH](https://en.wikipedia.org/wiki/Russian_battleship_Tsesarevich) | 1914-1919 | 305mm/40 M1892 |
+| 2M2 | [DUBOURDIEU](https://naval-encyclopedia.com/ww1/france/asw-french-escorts.php) | 1919-1940 | 100mm/45 M1893 |
+| 1N3 | [1924 TYPE](https://en.wikipedia.org/wiki/Type_24_torpedo_boat) | 1929-1932 | 10.5cm SKC/28 |
+| 1N2 | [DREADNOUGHT](https://en.wikipedia.org/wiki/HMS_Dreadnought_%281906%29) | 1914-1916 | 12.0""/45 BL Mk X |
+| 2N2 | [HOOD](https://en.wikipedia.org/wiki/HMS_Hood) | 1920-1931 | 5.5""/50 BL Mk I |
+| 1Q3 | [COURBET](https://en.wikipedia.org/wiki/Courbet-class_battleship) | 1923-1926 | 305mm/45 M1910 |
+| 1Q2 | [MIKASA (三笠)](https://en.wikipedia.org/wiki/Japanese_battleship_Mikasa) | 1908-1916 | 30cm/40.4 EOC |
+| 2Q2 | [FUSO (扶桑)](https://en.wikipedia.org/wiki/Fus%C5%8D-class_battleship) | 1915-1922 | 15cm/50 41st Year |
+| 1Q1 | [DREADNOUGHT](https://en.wikipedia.org/wiki/HMS_Dreadnought_%281906%29) | 1906-1914 | 12.0""/45 BL Mk X |
+| 2Q1 | [ROSSIYA](https://en.wikipedia.org/wiki/Russian_cruiser_Rossia) | 1906-1916 | 152mm/45 M1892 |
+| 1R2 | [DOGALI](https://en.wikipedia.org/wiki/Italian_cruiser_Dogali) | 1897-1908 | 152mm/40 M1883 |
+| 1R1 | [SCHARNHORST](https://en.wikipedia.org/wiki/Scharnhorst-class_cruiser) | 1907-1909 | 21cm SKL/40 C/01 |
+| 2R1 | [GANGUT](https://en.wikipedia.org/wiki/Gangut-class_battleship) | 1922-1928 | 120mm/50 M1905 |
+| 1S3 | [V (ADMIRALTY)](https://en.wikipedia.org/wiki/V_and_W-class_destroyer) | 1921-1940 | 4""/45 QF Mk V |
+| 1S2 | [ROON](https://en.wikipedia.org/wiki/Roon-class_cruiser) | 1912-1916 | 21cm SKL/40 C/01 |
+| 2S2 | [MIKASA (三笠)](https://en.wikipedia.org/wiki/Japanese_battleship_Mikasa) | 1908-1916 | 15cm/45 EOC/VSM |
+| 1S1 | [MIKASA (三笠)](https://en.wikipedia.org/wiki/Japanese_battleship_Mikasa) | 1902-1905 | 30cm/40.4 EOC |
+| 2S1 | [KASUGA (春日)](https://en.wikipedia.org/wiki/Kasuga-class_cruiser) | 1904-1914 | 20cm/45 No. 2 EOC |
+| 1T2 | [ROON](https://en.wikipedia.org/wiki/Roon-class_cruiser) | 1906-1912 | 21cm SKL/40 C/01 |
+| 2T2 | [SCHARNHORST](https://en.wikipedia.org/wiki/Scharnhorst-class_cruiser) | 1907-1909 | 15cm SKL/40 C/97 |
+| 1T1 | [ROYAL SOVEREIGN](https://en.wikipedia.org/wiki/Royal_Sovereign-class_battleship) | 1892-1903 | 13.5""/30 BL Mk III |
+| 2T1 | [ROON](https://en.wikipedia.org/wiki/Roon-class_cruiser) | 1906-1912 | 15cm SKL/40 C/97 |
+| 1U1 | [HAI YUNG (海容)](https://en.wikipedia.org/wiki/Hai_Yung-class_cruiser) | 1898-1929 | 15cm SKL/40 C/97 |
+| 2U1 | [ORLANDO](https://en.wikipedia.org/wiki/Orlando-class_cruiser) | 1896-1902 | 6""/26 QFC |
+| 1V2 | [KUBANETZ](https://ru.wikipedia.org/wiki/%D0%9A%D1%83%D0%B1%D0%B0%D0%BD%D0%B5%D1%86_%28%D0%BA%D0%B0%D0%BD%D0%BE%D0%BD%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F_%D0%BB%D0%BE%D0%B4%D0%BA%D0%B0%29) | 1914-1918 | 152mm/45 M1892 |
+| 1V1 | [EKATERINA II](https://en.wikipedia.org/wiki/Ekaterina_II-class_battleship) | 1908-1912 | 305mm/30 M1877 |
+| 1W2 | [GENERAL ADMIRAL](https://en.wikipedia.org/wiki/General-Admiral-class_cruiser) | 1900-1910 | 203mm/22 M1867 |
+| 2W2 | [PETROPAVLOVSK](https://en.wikipedia.org/wiki/Petropavlovsk-class_battleship) | 1906-1918 | 152mm/45 M1892 |
+| 1W1 | [PETROPAVLOVSK](https://en.wikipedia.org/wiki/Petropavlovsk-class_battleship) | 1899-1905 | 305mm/40 M1892 |
+| 2W1 | [PETROPAVLOVSK](https://en.wikipedia.org/wiki/Petropavlovsk-class_battleship) | 1899-1905 | 152mm/45 M1892 |
+| 1X2 | [ILTIS](https://en.wikipedia.org/wiki/Iltis-class_gunboat) | 1910-1914 | 10.5cm SKL/40 |
+| 2X2 | [MAJESTIC](https://en.wikipedia.org/wiki/Majestic-class_battleship) | 1912-1915 | 6""/40 QF Mk I,II,III |
+| 1X1 | [YOSHINO (吉野)](https://en.wikipedia.org/wiki/Japanese_cruiser_Yoshino) | 1901-1904 | 15cm/45 EOC/VSM |
+| 2X1 | [ROYAL SOVEREIGN](https://en.wikipedia.org/wiki/Royal_Sovereign-class_battleship) | 1908-1913 | 6""/40 QF Mk I,II,III |
+| 2Y2 | [RURIK](https://en.wikipedia.org/wiki/Russian_cruiser_Rurik_%281892%29) | 1900-1904 | 152mm/45 M1892 |
+| 1Y1 | [TING YUEN (定遠)](https://en.wikipedia.org/wiki/Dingyuan-class_ironclad) | 1885-1895 | 30.5cm RKL/25 C/80 |
+| 2Y1 | [MIKASA (三笠)](https://en.wikipedia.org/wiki/Japanese_battleship_Mikasa) | 1902-1905 | 15cm/45 EOC/VSM |
+| 1Z1 | [FUSO (扶桑)](https://en.wikipedia.org/wiki/Japanese_ironclad_Fus%C5%8D) | 1878-1894 | 24cm RKL/20 C/67 |
+| 2Z1 | [TING YUEN (定遠)](https://en.wikipedia.org/wiki/Dingyuan-class_ironclad) | 1885-1895 | 15cm RKL/35 C/80 |";
+
+    static string GetSk5CodeHelpMarkdown() => $"{Sk5CodeHelpMessage.GetShortName()}\n\n{Sk5CodeExamplesMarkdown}";
+
     ListView batteryRecordsListView;
     VisualElement portraitTopPreview;
     VisualElement portraitIconPreview;
@@ -694,7 +765,7 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
             {
                 sk5CodeHelpButton.clicked += () =>
                 {
-                    DialogRoot.Instance.PopupMessageDialog(Sk5CodeHelpMessage.GetShortName(), Localize("SK5 Code"));
+                    DialogRoot.Instance.PopupMarkdownDialog(GetSk5CodeHelpMarkdown(), Localize("SK5 Code"));
                 };
             }
 

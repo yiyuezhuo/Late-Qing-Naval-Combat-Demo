@@ -35,13 +35,15 @@ when a term needs special handling.
 | Fire Control Radar | 火控雷达 | 火控雷達 | Use the same `火控` wording as Fire Control System in Chinese UI text. |
 | Fire Control Table | 火控表 | 火控表 | Use for the SK5/game table. |
 | Fire Control Code | 火控码 | 火控碼 | Use for codes such as `1Q1`. |
+| Range Band | 射程段 | 射程段 | Use for SK5/game range-band labels, calculators, and prose. Avoid mixing with `距离段` / `距離段` or `距离带` / `距離帶`. |
 | Role (SK5 fire-control context) | 地位 | 地位 | Use for the SK5 fire-control role/category field. Keep this wording even when `role` would normally be translated as `角色`. |
 | EA / Early Access | EA | EA | Keep the abbreviation `EA` unchanged when it appears in UI or scenario prose. |
 | latent variable model | 隐变量模型 | 隱變量模型 | Prefer this over literal mixed English phrases such as `latent model` or `latent-rounding model`. |
 | Quick-firing gun / rapid-firing gun | 速射炮 | 速射砲 | Use for the historical naval weapon type. Avoid literal `连射炮` / `連射砲`. |
 | Rapid Fire Battery / Rapid Firing Battery | 速射炮组 | 速射砲組 | Use for the shipboard rapid-fire battery record/group in UI labels. Avoid `炮台` / `砲台` unless the source literally means a fixed artillery battery. |
 | Resolve (combat/result processing) | 结算 | 結算 | Use for combat/result processing UI actions. Avoid `解决` / `解決` for this gameplay operation. |
-| Mount | 炮架 | 砲架 | Generic gun/weapon mount. Use `鱼雷发射管` / `魚雷發射管` for torpedo-specific mounts when appropriate. Avoid translating this as generic loading/carrying. |
+| Mount | 炮座 | 砲座 | Generic gun/weapon mount in UI and damage text. Use `鱼雷发射管` / `魚雷發射管` for torpedo-specific mounts when appropriate. Avoid translating this as generic loading/carrying. |
+| Barbette | 炮塔座圈 | 砲塔座圈 | Use for the armor location / structural barbette concept. Keep it distinct from `Mount` (`炮座` / `砲座`). |
 | Disabled (some status labels) | 受损 | 受損 | Some compact UI/status labels intentionally use `受损` / `受損` for `Disabled` to present the player-facing state as damage rather than a strict inoperable flag. Do not normalize these blindly to `失效`. |
 | Torpedo Settings | 可用模式 | 可用模式 | In the torpedo UI this label intentionally means available torpedo modes, not generic settings. |
 | Level (victory status) | 程度 | 程度 | Keep `程度` for the compact victory-status level label. |

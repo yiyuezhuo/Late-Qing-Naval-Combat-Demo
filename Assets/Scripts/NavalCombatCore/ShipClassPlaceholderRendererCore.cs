@@ -262,6 +262,9 @@ public struct ShipClassPlaceholderImageRenderSettings
 
 public static class ShipClassPlaceholderImageRendererCore
 {
+    const float TrainableTorpedoLauncherFootprintFeet = 6.12f;
+    const float AdditionalTrainableTorpedoTubeFootprintFeet = 2f;
+
     public enum RenderVariant
     {
         Preview,
@@ -465,8 +468,8 @@ public static class ShipClassPlaceholderImageRendererCore
         DrawHull(canvas, shipClass, shipPixelRect, settings, palette, topEdge, bottomEdge);
         DrawDeckLines(canvas, shipPixelRect, settings, palette, topEdge, bottomEdge);
         DrawSuperstructure(canvas, shipClass, shipPixelRect, centerY, settings, palette, topEdge, bottomEdge);
-        DrawBatteryMounts(canvas, shipClass, shipPixelRect, centerY, settings, palette, topEdge, bottomEdge);
         DrawTorpedoMounts(canvas, shipClass, shipPixelRect, centerY, settings, palette, topEdge, bottomEdge);
+        DrawBatteryMounts(canvas, shipClass, shipPixelRect, centerY, settings, palette, topEdge, bottomEdge);
         DrawRapidFireDetails(canvas, shipClass, shipPixelRect, centerY, settings, palette, topEdge, bottomEdge);
         DrawMasts(canvas, shipClass, shipPixelRect, centerY, settings, palette, topEdge, bottomEdge);
 
@@ -626,20 +629,50 @@ public static class ShipClassPlaceholderImageRendererCore
     {
         var torpedoVisualScale = EvaluateTorpedoGlyphVisualScale(shipPixelRect);
         var deckObstacles = BuildSuperstructureObstacles(shipClass, shipPixelRect, centerY, settings, topEdge, bottomEdge);
-        foreach (var record in shipClass.torpedoMountLocationRecords ?? new List<PlaceholderMountRenderRecord>())
+
+        var torpedoEntries = (shipClass.torpedoMountLocationRecords ?? new List<PlaceholderMountRenderRecord>())
+            .Select((record, index) =>
+            {
+                var submerged = IsSubmergedTorpedoRecord(record);
+                var baseSize = PixelMath.Clamp(5f + record.barrels * 0.7f, 5f, 11f) * settings.weaponScale * 2f * torpedoVisualScale;
+                return new
+                {
+                    record,
+                    index,
+                    submerged,
+                    size = ResolveTorpedoSymbolSize(shipClass, record, baseSize, shipPixelRect, settings, submerged),
+                    direction = submerged
+                        ? GetSubmergedMountOutwardDirection(record.mountLocation, ResolveMountDirection(record))
+                        : ResolveMountDirection(record),
+                };
+            })
+            .ToList();
+
+        foreach (var entry in torpedoEntries.Where(entry => entry.submerged))
         {
-            var submerged = IsSubmergedTorpedoRecord(record);
-            var baseSize = PixelMath.Clamp(5f + record.barrels * 0.7f, 5f, 11f) * settings.weaponScale * 2f * torpedoVisualScale;
-            var size = submerged ? baseSize : baseSize * 2f;
-            var direction = submerged
-                ? GetSubmergedMountOutwardDirection(record.mountLocation, ResolveMountDirection(record))
-                : ResolveMountDirection(record);
-            var positions = submerged
-                ? ResolveSubmergedTorpedoPositions(record, size, shipPixelRect, centerY, topEdge, bottomEdge, direction)
-                : ResolveDeckTorpedoPositions(record.mountLocation, record.mounts, size, shipPixelRect, centerY, topEdge, bottomEdge, deckObstacles);
+            var positions = ResolveSubmergedTorpedoPositions(entry.record, entry.size, shipPixelRect, centerY, topEdge, bottomEdge, entry.direction);
             foreach (var pos in positions)
             {
-                DrawTorpedoMount(canvas, pos, direction, record.barrels, size, submerged ? false : record.trainable, palette.mountFill, palette.hullOutline, palette.detailFill);
+                DrawSubmergedTorpedoMount(canvas, pos, entry.direction, entry.record.barrels, entry.size, palette.mountFill, palette.hullOutline);
+            }
+        }
+
+        foreach (var group in torpedoEntries.Where(entry => !entry.submerged).GroupBy(entry => entry.record.mountLocation))
+        {
+            var totalMounts = group.Sum(entry => PixelMath.Max(1, entry.record.mounts));
+            var layoutSize = group.Max(entry => entry.size);
+            var keepSideMountsAligned = group.Any(entry => entry.record.trainable);
+            var positions = ResolveDeckTorpedoPositions(shipClass.type, group.Key, keepSideMountsAligned, totalMounts, layoutSize, shipPixelRect, centerY, topEdge, bottomEdge, deckObstacles);
+            var positionIndex = 0;
+            foreach (var entry in group.OrderBy(entry => entry.index))
+            {
+                var mountCount = PixelMath.Max(1, entry.record.mounts);
+                foreach (var pos in positions.Skip(positionIndex).Take(mountCount))
+                {
+                    DrawDeckTorpedoMount(canvas, pos, entry.direction, entry.record.barrels, entry.size, entry.record.trainable, palette.hullOutline, palette.detailFill);
+                }
+
+                positionIndex += mountCount;
             }
         }
     }
@@ -649,27 +682,61 @@ public static class ShipClassPlaceholderImageRendererCore
         var rapidFireRecords = shipClass.rapidFireBatteryRecords ?? new List<PlaceholderRapidFireRenderRecord>();
         var portBarrels = rapidFireRecords.Sum(r => (r.barrelsLevelPort ?? new List<int>()).FirstOrDefault());
         var starboardBarrels = rapidFireRecords.Sum(r => (r.barrelsLevelStarboard ?? new List<int>()).FirstOrDefault());
-        DrawRapidFireSide(canvas, shipPixelRect, centerY, topEdge, bottomEdge, portBarrels, false, palette.rapidFire, settings.weaponScale);
-        DrawRapidFireSide(canvas, shipPixelRect, centerY, topEdge, bottomEdge, starboardBarrels, true, palette.rapidFire, settings.weaponScale);
+        DrawRapidFireSide(canvas, shipClass, shipPixelRect, centerY, topEdge, bottomEdge, portBarrels, false, palette.rapidFire, settings.weaponScale);
+        DrawRapidFireSide(canvas, shipClass, shipPixelRect, centerY, topEdge, bottomEdge, starboardBarrels, true, palette.rapidFire, settings.weaponScale);
     }
 
-    static void DrawRapidFireSide(PixelCanvas canvas, PixelRect shipPixelRect, float centerY, float[] topEdge, float[] bottomEdge, int count, bool starboard, RgbaColor color, float weaponScale)
+    static void DrawRapidFireSide(PixelCanvas canvas, ShipClassPlaceholderRenderInput shipClass, PixelRect shipPixelRect, float centerY, float[] topEdge, float[] bottomEdge, int count, bool starboard, RgbaColor color, float weaponScale)
     {
         if (count <= 0)
             return;
 
-        var rendered = PixelMath.Clamp(count, 1, 12);
-        for (var i = 0; i < rendered; i++)
+        var range = ResolveRapidFireDistributionRange(shipClass);
+        var inboardRatio = ResolveRapidFireInboardRatio(shipClass);
+        for (var i = 0; i < count; i++)
         {
-            var t = rendered == 1 ? 0.5f : i / (float)(rendered - 1);
-            var x = PixelMath.Lerp(shipPixelRect.xMin + shipPixelRect.width * 0.24f, shipPixelRect.xMin + shipPixelRect.width * 0.76f, t);
+            var t = count == 1 ? 0.5f : i / (float)(count - 1);
+            var x = shipPixelRect.xMin + shipPixelRect.width * PixelMath.Lerp(range.x, range.y, t);
             var halfBreadth = SampleHullHalfBreadth(topEdge, bottomEdge, PixelMath.RoundToInt(x));
-            var y = centerY + (starboard ? 1 : -1) * halfBreadth * 0.68f;
-            var direction = starboard ? 1f : -1f;
-            var halfSpan = 2f * weaponScale;
-            var elevation = 3f * weaponScale;
-            canvas.DrawLine(new PixelVector2(x - halfSpan, y), new PixelVector2(x + halfSpan, y + direction * elevation), 1, color);
+            var sideSign = starboard ? 1f : -1f;
+            var y = centerY + sideSign * halfBreadth * inboardRatio;
+            DrawRapidFireGun(canvas, new PixelVector2(x, y), sideSign, color, weaponScale);
         }
+    }
+
+    static PixelVector2 ResolveRapidFireDistributionRange(ShipClassPlaceholderRenderInput shipClass)
+    {
+        var isSmallCombatant = shipClass.type == PlaceholderShipType.Destroyer || shipClass.type == PlaceholderShipType.TorpedoBoat;
+        if (isSmallCombatant)
+            return BuildCenteredRange(PixelMath.Clamp(shipClass.lengthFoot / 620f, 0.28f, 0.38f));
+
+        if (shipClass.type == PlaceholderShipType.Transport || shipClass.type == PlaceholderShipType.Repair || shipClass.type == PlaceholderShipType.ArmedMerchantCruiser)
+            return BuildCenteredRange(PixelMath.Clamp(shipClass.lengthFoot / 760f, 0.44f, 0.56f));
+
+        return BuildCenteredRange(PixelMath.Clamp(shipClass.lengthFoot / 600f, 0.50f, 0.68f));
+    }
+
+    static PixelVector2 BuildCenteredRange(float span)
+    {
+        var halfSpan = span * 0.5f;
+        return new PixelVector2(0.5f - halfSpan, 0.5f + halfSpan);
+    }
+
+    static float ResolveRapidFireInboardRatio(ShipClassPlaceholderRenderInput shipClass)
+    {
+        return shipClass.type == PlaceholderShipType.Destroyer || shipClass.type == PlaceholderShipType.TorpedoBoat
+            ? 0.58f
+            : 0.78f;
+    }
+
+    static void DrawRapidFireGun(PixelCanvas canvas, PixelVector2 pos, float sideSign, RgbaColor color, float weaponScale)
+    {
+        var mountRadius = PixelMath.Clamp(2.4f * weaponScale, 2f, 4.4f);
+        var barrelLength = PixelMath.Clamp(8.4f * weaponScale, 6f, 13f);
+        var barrelStart = pos;
+        var barrelEnd = pos + new PixelVector2(0f, sideSign * barrelLength);
+        canvas.FillEllipse(pos, mountRadius, mountRadius, color);
+        canvas.DrawLine(barrelStart, barrelEnd, 1, color);
     }
 
     static void DrawMasts(PixelCanvas canvas, ShipClassPlaceholderRenderInput shipClass, PixelRect shipPixelRect, float centerY, ShipClassPlaceholderImageRenderSettings settings, RenderPalette palette, float[] topEdge, float[] bottomEdge)
@@ -689,6 +756,33 @@ public static class ShipClassPlaceholderImageRendererCore
             canvas.DrawLine(new PixelVector2(x - halfTick, centerY), new PixelVector2(x + halfTick, centerY), 1, palette.mastLine);
             canvas.FillEllipse(new PixelVector2(x, centerY), 1.2f, 1.2f, palette.mastLine);
         }
+    }
+
+    static float ResolveTorpedoSymbolSize(ShipClassPlaceholderRenderInput shipClass, PlaceholderMountRenderRecord record, float baseSize, PixelRect shipPixelRect, ShipClassPlaceholderImageRenderSettings settings, bool submerged)
+    {
+        if (submerged)
+            return baseSize;
+
+        if (!record.trainable)
+            return baseSize * 1.55f;
+
+        var pixelsPerFoot = EstimatePixelsPerFoot(shipClass, shipPixelRect);
+        var footprintFeet = TrainableTorpedoLauncherFootprintFeet + PixelMath.Max(0, record.barrels - 1) * AdditionalTrainableTorpedoTubeFootprintFeet;
+        var physicalSize = footprintFeet * pixelsPerFoot * settings.weaponScale;
+        return PixelMath.Max(baseSize * 1.7f, physicalSize);
+    }
+
+    static float EstimatePixelsPerFoot(ShipClassPlaceholderRenderInput shipClass, PixelRect shipPixelRect)
+    {
+        var lengthScale = shipClass.lengthFoot > 0f ? shipPixelRect.width / shipClass.lengthFoot : 0f;
+        var beamScale = shipClass.beamFoot > 0f ? shipPixelRect.height / shipClass.beamFoot : 0f;
+        if (lengthScale > 0f && beamScale > 0f)
+            return PixelMath.Min(lengthScale, beamScale);
+        if (lengthScale > 0f)
+            return lengthScale;
+        if (beamScale > 0f)
+            return beamScale;
+        return 1f;
     }
 
     static void DrawFunnel(PixelCanvas canvas, FunnelShape funnel, RenderPalette palette)
@@ -753,19 +847,113 @@ public static class ShipClassPlaceholderImageRendererCore
         return positions;
     }
 
-    static List<PixelVector2> ResolveDeckTorpedoPositions(PlaceholderMountLocation location, int mountCount, float symbolSize, PixelRect shipPixelRect, float centerY, float[] topEdge, float[] bottomEdge, List<PixelRect> obstacles)
+    static List<PixelVector2> ResolveDeckTorpedoPositions(PlaceholderShipType shipType, PlaceholderMountLocation location, bool keepSideMountsAligned, int mountCount, float symbolSize, PixelRect shipPixelRect, float centerY, float[] topEdge, float[] bottomEdge, List<PixelRect> obstacles)
     {
-        var positions = ResolveMountPositions(location, mountCount, symbolSize * 2.8f, shipPixelRect, centerY, topEdge, bottomEdge);
+        var positions = ResolveDeckTorpedoBasePositions(shipType, location, keepSideMountsAligned, mountCount, symbolSize, shipPixelRect, centerY, topEdge, bottomEdge);
         if (obstacles == null || obstacles.Count == 0)
             return positions;
 
         var adjusted = new List<PixelVector2>(positions.Count);
+        var reservedObstacles = new List<PixelRect>(obstacles);
         foreach (var pos in positions)
         {
-            adjusted.Add(ResolveDeckMountAvoidance(pos, symbolSize, shipPixelRect, obstacles));
+            var adjustedPos = ResolveDeckMountAvoidance(pos, symbolSize, shipPixelRect, reservedObstacles);
+            adjusted.Add(adjustedPos);
+            reservedObstacles.Add(ExpandPixelRect(GetDeckMountBounds(adjustedPos, symbolSize), 4f));
         }
 
         return adjusted;
+    }
+
+    static List<PixelVector2> ResolveDeckTorpedoBasePositions(PlaceholderShipType shipType, PlaceholderMountLocation location, bool keepSideMountsAligned, int mountCount, float symbolSize, PixelRect shipPixelRect, float centerY, float[] topEdge, float[] bottomEdge)
+    {
+        var anchors = GetAnchor(location);
+        var isSideLocation =
+            location == PlaceholderMountLocation.PortForward ||
+            location == PlaceholderMountLocation.StarboardForward ||
+            location == PlaceholderMountLocation.PortMidship ||
+            location == PlaceholderMountLocation.StarboardMidship ||
+            location == PlaceholderMountLocation.PortAfter ||
+            location == PlaceholderMountLocation.StarboardAfter;
+        var count = PixelMath.Max(1, mountCount);
+        var baseSpread = isSideLocation
+            ? PixelMath.Max(symbolSize * 2.4f, shipPixelRect.width * 0.06f)
+            : PixelMath.Max(symbolSize * 2.45f, shipPixelRect.width * 0.06f);
+        var spread = count <= 1 ? 0f : PixelMath.Min(baseSpread, shipPixelRect.width * (isSideLocation ? 0.16f : 0.18f));
+        var positions = new List<PixelVector2>(count);
+        for (var i = 0; i < count; i++)
+        {
+            var offsetT = count <= 1 ? 0f : i - (count - 1) / 2f;
+            var x = ResolveDeckTorpedoBaseX(shipType, location, anchors.x, offsetT, spread, symbolSize, shipPixelRect);
+            var halfBreadth = SampleHullHalfBreadth(topEdge, bottomEdge, PixelMath.RoundToInt(x));
+            var y = ResolveDeckTorpedoBaseY(location, anchors.y, halfBreadth, symbolSize, centerY, topEdge, bottomEdge, x);
+
+            if (isSideLocation && count > 1 && !keepSideMountsAligned)
+            {
+                var stagger = PixelMath.Abs(offsetT) < 0.1f ? 0f : PixelMath.Sign(offsetT) * PixelMath.Min(symbolSize * 0.18f, halfBreadth * 0.08f);
+                y += GetDeckTorpedoSideSign(location) * stagger;
+            }
+
+            positions.Add(new PixelVector2(x, y));
+        }
+
+        return positions;
+    }
+
+    static float ResolveDeckTorpedoBaseX(PlaceholderShipType shipType, PlaceholderMountLocation location, float anchorX, float offsetT, float spread, float symbolSize, PixelRect shipPixelRect)
+    {
+        var endSign = GetDeckTorpedoEndSign(location);
+        if (endSign != 0f)
+        {
+            if (UsesInboardEndDeckTorpedoPlacement(shipType))
+                return shipPixelRect.xMin + shipPixelRect.width * anchorX + offsetT * spread;
+
+            var inset = PixelMath.Clamp(symbolSize * 2.8f, shipPixelRect.width * 0.075f, shipPixelRect.width * 0.16f);
+            var endX = endSign > 0f ? shipPixelRect.xMax - inset : shipPixelRect.xMin + inset;
+            return endX - endSign * offsetT * spread;
+        }
+
+        return shipPixelRect.xMin + shipPixelRect.width * anchorX + offsetT * spread;
+    }
+
+    static float ResolveDeckTorpedoBaseY(PlaceholderMountLocation location, float anchorY, float halfBreadth, float symbolSize, float centerY, float[] topEdge, float[] bottomEdge, float x)
+    {
+        var sideSign = GetDeckTorpedoSideSign(location);
+        if (sideSign == 0f)
+            return centerY + halfBreadth * anchorY;
+
+        var clampedX = PixelMath.Clamp(PixelMath.RoundToInt(x), 0, topEdge.Length - 1);
+        var edgeY = sideSign < 0f ? topEdge[clampedX] : bottomEdge[clampedX];
+        if (float.IsNaN(edgeY))
+            return centerY + halfBreadth * anchorY;
+
+        var inset = PixelMath.Min(PixelMath.Max(symbolSize * 0.55f, 4f), PixelMath.Max(1f, halfBreadth * 0.7f));
+        return edgeY - sideSign * inset;
+    }
+
+    static float GetDeckTorpedoSideSign(PlaceholderMountLocation location)
+    {
+        return location switch
+        {
+            PlaceholderMountLocation.PortForward or PlaceholderMountLocation.PortMidship or PlaceholderMountLocation.PortAfter => -1f,
+            PlaceholderMountLocation.StarboardForward or PlaceholderMountLocation.StarboardMidship or PlaceholderMountLocation.StarboardAfter => 1f,
+            _ => 0f
+        };
+    }
+
+    static float GetDeckTorpedoEndSign(PlaceholderMountLocation location)
+    {
+        return location switch
+        {
+            PlaceholderMountLocation.Forward => 1f,
+            PlaceholderMountLocation.After => -1f,
+            _ => 0f
+        };
+    }
+
+    static bool UsesInboardEndDeckTorpedoPlacement(PlaceholderShipType shipType)
+    {
+        return shipType == PlaceholderShipType.Destroyer || shipType == PlaceholderShipType.TorpedoBoat;
     }
 
     static bool IsSubmergedTorpedoRecord(PlaceholderMountRenderRecord record)
@@ -1025,23 +1213,16 @@ public static class ShipClassPlaceholderImageRendererCore
         canvas.DrawLine(rear, front, 1, outline);
     }
 
-    static void DrawTorpedoMount(PixelCanvas canvas, PixelVector2 pos, PixelVector2 direction, int barrels, float size, bool trainable, RgbaColor fill, RgbaColor outline, RgbaColor detailFill)
+    static void DrawSubmergedTorpedoMount(PixelCanvas canvas, PixelVector2 pos, PixelVector2 direction, int barrels, float size, RgbaColor fill, RgbaColor outline)
     {
         var along = direction.sqrMagnitude < 0.0001f ? PixelVector2.right : direction.normalized;
         var perp = new PixelVector2(-along.y, along.x);
-        var halfLength = size;
-        var halfWidth = PixelMath.Max(2f, size * (trainable ? 0.34f : 0.25f));
+        var halfLength = size * 0.85f;
+        var halfWidth = PixelMath.Max(1.8f, size * 0.22f);
         var bodyStart = pos - along * halfLength;
         var bodyEnd = pos + along * halfLength;
-        var outlineThickness = PixelMath.Max(2, PixelMath.RoundToInt(halfWidth * 2f + 2f));
+        var outlineThickness = PixelMath.Max(2, PixelMath.RoundToInt(halfWidth * 2f + 1f));
         var fillThickness = PixelMath.Max(1, PixelMath.RoundToInt(halfWidth * 2f - 1f));
-
-        if (trainable)
-        {
-            canvas.FillEllipse(pos, halfLength * 0.55f, halfLength * 0.55f, detailFill);
-            canvas.DrawLine(pos, pos, PixelMath.Max(1, PixelMath.RoundToInt(halfLength * 1.1f)), outline);
-            canvas.FillEllipse(pos, halfLength * 0.36f, halfLength * 0.36f, detailFill);
-        }
 
         canvas.DrawLine(bodyStart, bodyEnd, outlineThickness, outline);
         canvas.DrawLine(bodyStart, bodyEnd, fillThickness, fill);
@@ -1054,11 +1235,47 @@ public static class ShipClassPlaceholderImageRendererCore
             var end = pos + perp * spread + along * halfLength * 0.7f;
             canvas.DrawLine(start, end, 1, outline);
         }
+    }
+
+    static void DrawDeckTorpedoMount(PixelCanvas canvas, PixelVector2 pos, PixelVector2 direction, int barrels, float size, bool trainable, RgbaColor outline, RgbaColor detailFill)
+    {
+        var along = direction.sqrMagnitude < 0.0001f ? PixelVector2.right : direction.normalized;
+        var perp = new PixelVector2(-along.y, along.x);
+        var tubes = PixelMath.Clamp(barrels, 1, 4);
+        var tubeLength = size * (trainable ? 1.85f : 1.95f);
+        var tubeThickness = trainable
+            ? PixelMath.Clamp(size * 0.18f, 4f, 11f)
+            : PixelMath.Clamp(size * 0.27f, 3.5f, 7.5f);
+        var tubeSpacing = tubes == 1 ? 0f : PixelMath.Max(tubeThickness * 1.2f, size * 0.26f);
+        var bankWidth = tubeThickness + tubeSpacing * (tubes - 1);
 
         if (trainable)
         {
-            canvas.FillEllipse(pos, halfWidth * 1.3f, halfWidth * 1.3f, detailFill);
-            canvas.DrawLine(pos, pos + along * (halfLength + 3f), 1, outline);
+            var pivotRadius = PixelMath.Max(bankWidth * 0.72f, size * 0.50f);
+            canvas.FillEllipse(pos, pivotRadius + 1.2f, pivotRadius + 1.2f, outline);
+            canvas.FillEllipse(pos, pivotRadius, pivotRadius, detailFill);
+            canvas.DrawLine(pos - perp * pivotRadius, pos + perp * pivotRadius, 1, outline);
+        }
+
+        for (var i = 0; i < tubes; i++)
+        {
+            var spread = tubes == 1 ? 0f : (i - (tubes - 1) / 2f) * tubeSpacing;
+            var center = pos + perp * spread;
+            var start = center - along * (tubeLength * 0.5f);
+            var end = center + along * (tubeLength * 0.5f);
+            var outlineThickness = PixelMath.Max(3, PixelMath.RoundToInt(tubeThickness + 2f));
+            var fillThickness = PixelMath.Max(1, PixelMath.RoundToInt(tubeThickness));
+            canvas.DrawLine(start, end, outlineThickness, outline);
+            canvas.DrawLine(start, end, fillThickness, detailFill);
+            canvas.DrawLine(start + along * (tubeLength * 0.12f), end - along * (tubeLength * 0.12f), 1, outline);
+            canvas.FillEllipse(end, tubeThickness * 0.55f, tubeThickness * 0.55f, outline);
+            canvas.FillEllipse(end, tubeThickness * 0.28f, tubeThickness * 0.28f, detailFill);
+        }
+
+        if (trainable)
+        {
+            canvas.FillEllipse(pos, PixelMath.Max(1.6f, tubeThickness * 0.42f), PixelMath.Max(1.6f, tubeThickness * 0.42f), outline);
+            canvas.DrawLine(pos, pos + along * (tubeLength * 0.62f), 1, outline);
         }
     }
 

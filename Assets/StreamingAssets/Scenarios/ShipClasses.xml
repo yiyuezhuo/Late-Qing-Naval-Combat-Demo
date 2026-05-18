@@ -7869,7 +7869,9 @@ Fu Lung or Fulong
   </armorRating>
   <portraitUrl>https://combrig-models.com/index.php/1700/65-japanese-navy-1860-1918/518-fuso1900</portraitUrl>
   <remark>
-   <english>https://en.wikipedia.org/wiki/Japanese_ironclad_Fus%C5%8D</english>
+   <english>https://en.wikipedia.org/wiki/Japanese_ironclad_Fus%C5%8D
+
+[Central-battery](https://en.wikipedia.org/wiki/Central_battery_ship) ironclad</english>
   </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
@@ -29048,11 +29050,12 @@ https://naval-encyclopedia.com/ww1/russia/cruiser-novik-1898.php
    </name>
    <mountLocationRecords>
     <MountLocationRecord>
-     <mountLocation>StarboardMidship</mountLocation>
+     <mountLocation>Midship</mountLocation>
      <barrels>1</barrels>
      <mounts>1</mounts>
      <mountArcs>
       <MountArcRecord startDeg="30" CoverageDeg="120" isCrossDeckFire="false" />
+      <MountArcRecord startDeg="210" CoverageDeg="120" isCrossDeckFire="false" />
      </mountArcs>
      <trainable>true</trainable>
      <reloadLimit>0</reloadLimit>
@@ -29060,16 +29063,17 @@ https://naval-encyclopedia.com/ww1/russia/cruiser-novik-1898.php
      <objectId>c1b38bc5-0974-4982-af73-65ed5edda04b</objectId>
     </MountLocationRecord>
     <MountLocationRecord>
-     <mountLocation>PortMidship</mountLocation>
+     <mountLocation>Midship</mountLocation>
      <barrels>1</barrels>
      <mounts>1</mounts>
      <mountArcs>
+      <MountArcRecord startDeg="30" CoverageDeg="120" isCrossDeckFire="false" />
       <MountArcRecord startDeg="210" CoverageDeg="120" isCrossDeckFire="false" />
      </mountArcs>
      <trainable>true</trainable>
      <reloadLimit>0</reloadLimit>
      <mountArcsPattern>Normal</mountArcsPattern>
-     <objectId>49357dec-7f54-4589-9fd6-9667abba858b</objectId>
+     <objectId>29fa5e79-cca3-4684-bebd-87757610cddd</objectId>
     </MountLocationRecord>
    </mountLocationRecords>
    <torpedoSettings>
@@ -29174,6 +29178,8 @@ https://naval-encyclopedia.com/ww1/russia/cruiser-novik-1898.php
 https://en.wikipedia.org/wiki/List_of_destroyers_of_the_Imperial_Russian_Navy
 
 https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%D0%BA%D0%B0%D0%B4%D1%80%D0%B5%D0%BD%D0%BD%D1%8B%D1%85_%D0%BC%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D1%86%D0%B5%D0%B2_%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D0%B8_%D0%B8_%D0%A1%D0%A1%D0%A1%D0%A0_%D0%BF%D0%BE_%D1%82%D0%B8%D0%BF%D0%B0%D0%BC#%D0%A2%D0%B8%D0%BF_%C2%AB%D0%91%D1%83%D0%B9%D0%BD%D1%8B%D0%B9%C2%BB
+
+The SK5 data gives a torpedo tube layout that is inconsistent with the source image; I regard the distribution shown in the source image as more reliable than the one in SK5.
 </english>
   </remark>
   <isPoorlySupported>false</isPoorlySupported>

@@ -278,6 +278,9 @@ public static class ShipClassPlaceholderImageRendererCore
         public RgbaColor detailFill;
         public RgbaColor mountFill;
         public RgbaColor rapidFire;
+        public RgbaColor funnelFill;
+        public RgbaColor funnelOutline;
+        public RgbaColor mastLine;
     }
 
     sealed class PixelCanvas
@@ -410,6 +413,22 @@ public static class ShipClassPlaceholderImageRendererCore
         public float bridgeCenter;
         public float superstructureLength;
         public float deckhouseCenter;
+    }
+
+    readonly struct FunnelShape
+    {
+        public readonly PixelVector2 center;
+        public readonly float radiusX;
+        public readonly float radiusY;
+
+        public FunnelShape(PixelVector2 center, float radiusX, float radiusY)
+        {
+            this.center = center;
+            this.radiusX = radiusX;
+            this.radiusY = radiusY;
+        }
+
+        public PixelRect Bounds => new(center.x - radiusX, center.y - radiusY, radiusX * 2f, radiusY * 2f);
     }
 
     static readonly Dictionary<PlaceholderShipType, HullProfile> HullProfiles = new()
@@ -558,26 +577,9 @@ public static class ShipClassPlaceholderImageRendererCore
         var deckhouse = BuildCenteredPixelRect(shipPixelRect, NormalizeForeAftX(profile.deckhouseCenter), mainLength * 0.55f, mainWidth * 0.7f, centerY);
         DrawDeckBlock(canvas, deckhouse, palette.detailFill, palette.hullOutline, PixelMath.Max(1, settings.lineWidth - 1));
 
-        var funnelCount = ResolveFunnelCount(shipClass, settings);
-        if (funnelCount <= 0)
-            return;
-
-        var baseXMin = shipPixelRect.xMin + shipPixelRect.width * NormalizeForeAftX(0.62f + settings.funnelSpacingBias * 0.2f);
-        var baseXMax = shipPixelRect.xMin + shipPixelRect.width * NormalizeForeAftX(0.40f + settings.funnelSpacingBias * 0.2f);
-        if (funnelCount == 1)
+        foreach (var funnel in BuildFunnelShapes(shipClass, shipPixelRect, centerY, settings, topEdge, bottomEdge))
         {
-            baseXMin = baseXMax = shipPixelRect.xMin + shipPixelRect.width * NormalizeForeAftX(0.48f + settings.funnelSpacingBias * 0.2f);
-        }
-
-        for (var i = 0; i < funnelCount; i++)
-        {
-            var t = funnelCount == 1 ? 0.5f : i / (float)(funnelCount - 1);
-            var x = PixelMath.Lerp(baseXMin, baseXMax, t);
-            var halfBreadth = SampleHullHalfBreadth(topEdge, bottomEdge, PixelMath.RoundToInt(x));
-            var funnelHeight = PixelMath.Max(5f, halfBreadth * 0.9f * settings.superstructureHeightScale);
-            var funnelWidth = PixelMath.Max(4f, shipPixelRect.width * 0.015f);
-            var rect = new PixelRect(x - funnelWidth / 2f, centerY - funnelHeight / 2f, funnelWidth, funnelHeight);
-            DrawDeckBlock(canvas, rect, palette.hullOutline, palette.hullOutline, 1);
+            DrawFunnel(canvas, funnel, palette);
         }
     }
 
@@ -681,9 +683,27 @@ public static class ShipClassPlaceholderImageRendererCore
         foreach (var x in mastXs)
         {
             var halfBreadth = SampleHullHalfBreadth(topEdge, bottomEdge, PixelMath.RoundToInt(x));
-            var height = PixelMath.Max(6f, halfBreadth * 0.95f);
-            canvas.DrawLine(new PixelVector2(x, centerY - height / 2f), new PixelVector2(x, centerY + height / 2f), 1, palette.interiorLine);
+            var height = PixelMath.Clamp(halfBreadth * 0.34f, 6f, 18f);
+            var halfTick = PixelMath.Clamp(shipPixelRect.width * 0.004f, 2f, 5f);
+            canvas.DrawLine(new PixelVector2(x, centerY - height / 2f), new PixelVector2(x, centerY + height / 2f), 1, palette.mastLine);
+            canvas.DrawLine(new PixelVector2(x - halfTick, centerY), new PixelVector2(x + halfTick, centerY), 1, palette.mastLine);
+            canvas.FillEllipse(new PixelVector2(x, centerY), 1.2f, 1.2f, palette.mastLine);
         }
+    }
+
+    static void DrawFunnel(PixelCanvas canvas, FunnelShape funnel, RenderPalette palette)
+    {
+        canvas.FillEllipse(funnel.center, funnel.radiusX, funnel.radiusY, palette.funnelOutline);
+        canvas.FillEllipse(
+            funnel.center,
+            PixelMath.Max(1f, funnel.radiusX - 1.5f),
+            PixelMath.Max(1f, funnel.radiusY - 1.5f),
+            palette.funnelFill);
+        canvas.DrawLine(
+            new PixelVector2(funnel.center.x, funnel.center.y - funnel.radiusY * 0.55f),
+            new PixelVector2(funnel.center.x, funnel.center.y + funnel.radiusY * 0.55f),
+            1,
+            palette.funnelOutline);
     }
 
     static void DrawDeckBlock(PixelCanvas canvas, PixelRect rect, RgbaColor fill, RgbaColor outline, int lineWidth)
@@ -921,26 +941,37 @@ public static class ShipClassPlaceholderImageRendererCore
         obstacles.Add(ExpandPixelRect(BuildCenteredPixelRect(shipPixelRect, NormalizeForeAftX(profile.bridgeCenter), mainLength, mainWidth, centerY), 3f));
         obstacles.Add(ExpandPixelRect(BuildCenteredPixelRect(shipPixelRect, NormalizeForeAftX(profile.deckhouseCenter), mainLength * 0.55f, mainWidth * 0.7f, centerY), 3f));
 
+        foreach (var funnel in BuildFunnelShapes(shipClass, shipPixelRect, centerY, settings, topEdge, bottomEdge))
+        {
+            obstacles.Add(ExpandPixelRect(funnel.Bounds, 4f));
+        }
+
+        return obstacles;
+    }
+
+    static List<FunnelShape> BuildFunnelShapes(ShipClassPlaceholderRenderInput shipClass, PixelRect shipPixelRect, float centerY, ShipClassPlaceholderImageRenderSettings settings, float[] topEdge, float[] bottomEdge)
+    {
         var funnelCount = ResolveFunnelCount(shipClass, settings);
         if (funnelCount <= 0)
-            return obstacles;
+            return new List<FunnelShape>();
 
         var baseXMin = shipPixelRect.xMin + shipPixelRect.width * NormalizeForeAftX(0.62f + settings.funnelSpacingBias * 0.2f);
         var baseXMax = shipPixelRect.xMin + shipPixelRect.width * NormalizeForeAftX(0.40f + settings.funnelSpacingBias * 0.2f);
         if (funnelCount == 1)
             baseXMin = baseXMax = shipPixelRect.xMin + shipPixelRect.width * NormalizeForeAftX(0.48f + settings.funnelSpacingBias * 0.2f);
 
+        var shapes = new List<FunnelShape>(funnelCount);
         for (var i = 0; i < funnelCount; i++)
         {
             var t = funnelCount == 1 ? 0.5f : i / (float)(funnelCount - 1);
             var x = PixelMath.Lerp(baseXMin, baseXMax, t);
             var halfBreadth = SampleHullHalfBreadth(topEdge, bottomEdge, PixelMath.RoundToInt(x));
-            var funnelHeight = PixelMath.Max(5f, halfBreadth * 0.9f * settings.superstructureHeightScale);
-            var funnelWidth = PixelMath.Max(4f, shipPixelRect.width * 0.015f);
-            obstacles.Add(ExpandPixelRect(new PixelRect(x - funnelWidth / 2f, centerY - funnelHeight / 2f, funnelWidth, funnelHeight), 4f));
+            var radiusX = PixelMath.Clamp(shipPixelRect.width * 0.012f, 4.5f, 9f) * settings.superstructureHeightScale;
+            var radiusY = PixelMath.Clamp(halfBreadth * 0.20f, 4f, 9f) * settings.superstructureHeightScale;
+            shapes.Add(new FunnelShape(new PixelVector2(x, centerY), radiusX, radiusY));
         }
 
-        return obstacles;
+        return shapes;
     }
 
     static PixelRect ExpandPixelRect(PixelRect rect, float amount)
@@ -1204,6 +1235,9 @@ public static class ShipClassPlaceholderImageRendererCore
                 detailFill = new RgbaColor(255, 255, 255, 255),
                 mountFill = new RgbaColor(36, 36, 36, 255),
                 rapidFire = new RgbaColor(0, 0, 0, 255),
+                funnelFill = new RgbaColor(255, 255, 255, 255),
+                funnelOutline = new RgbaColor(52, 52, 52, 255),
+                mastLine = new RgbaColor(44, 44, 44, 230),
             },
             RenderVariant.IconPng => new RenderPalette
             {
@@ -1214,6 +1248,9 @@ public static class ShipClassPlaceholderImageRendererCore
                 detailFill = new RgbaColor(255, 255, 255, 255),
                 mountFill = new RgbaColor(0, 0, 0, 255),
                 rapidFire = new RgbaColor(0, 0, 0, 255),
+                funnelFill = new RgbaColor(255, 255, 255, 255),
+                funnelOutline = new RgbaColor(0, 0, 0, 235),
+                mastLine = new RgbaColor(0, 0, 0, 220),
             },
             _ => new RenderPalette
             {
@@ -1224,6 +1261,9 @@ public static class ShipClassPlaceholderImageRendererCore
                 detailFill = new RgbaColor(255, 255, 255, 220),
                 mountFill = new RgbaColor(0, 0, 0, 255),
                 rapidFire = new RgbaColor(0, 0, 0, 220),
+                funnelFill = new RgbaColor(255, 255, 255, 230),
+                funnelOutline = new RgbaColor(0, 0, 0, 220),
+                mastLine = new RgbaColor(0, 0, 0, 190),
             }
         };
     }

@@ -972,10 +972,15 @@ namespace NavalCombatCore
 
         void SyncFireControlTableByFireControlCode()
         {
-            if (!ResetFireControlTableFromStandardCode())
+            if (!SyncFireControlTableFromFireControlCode())
             {
                 customFireControlTable = true;
             }
+        }
+
+        bool SyncFireControlTableFromFireControlCode()
+        {
+            return global::ShipClassEditor.SyncFireControlTableFromFireControlCode(this);
         }
 
         bool ResetFireControlTableFromStandardCode()

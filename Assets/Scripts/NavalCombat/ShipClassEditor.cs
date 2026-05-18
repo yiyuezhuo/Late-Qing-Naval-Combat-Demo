@@ -1920,6 +1920,116 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
         return true;
     }
 
+    readonly struct FireControlCodeParts
+    {
+        public readonly int prefix;
+        public readonly int letterRank;
+        public readonly int suffix;
+
+        public FireControlCodeParts(int prefix, char letter, int suffix)
+        {
+            this.prefix = prefix;
+            letterRank = char.ToUpperInvariant(letter) - 'A';
+            this.suffix = suffix;
+        }
+    }
+
+    public static bool TryGetInterpolatedFireControlTableRecords(BatteryRecord batteryRecord, out string fullCode, out List<FireControlTableRecord> records)
+    {
+        fullCode = BuildFireControlFullCode(batteryRecord);
+        records = null;
+        if (!TryParseFireControlFullCode(fullCode, out var targetCode))
+            return false;
+
+        var upperTables = new List<List<FireControlTableRecord>>();
+        var lowerTables = new List<List<FireControlTableRecord>>();
+        foreach (var (standardCode, tableData) in StandardFireControlTableData)
+        {
+            if (!TryParseFireControlFullCode(standardCode, out var standardCodeParts))
+                continue;
+
+            var standardRecords = ParseStandardFireControlTable(tableData);
+            if (IsUpperFireControlCode(standardCodeParts, targetCode))
+                upperTables.Add(standardRecords);
+            if (IsLowerFireControlCode(standardCodeParts, targetCode))
+                lowerTables.Add(standardRecords);
+        }
+
+        if (upperTables.Count == 0 || lowerTables.Count == 0)
+            return false;
+
+        records = BuildInterpolatedFireControlTableRecords(upperTables, lowerTables);
+        return true;
+    }
+
+    static bool TryParseFireControlFullCode(string fullCode, out FireControlCodeParts codeParts)
+    {
+        codeParts = default;
+        if (string.IsNullOrEmpty(fullCode) || fullCode.Length != 3)
+            return false;
+
+        var letter = char.ToUpperInvariant(fullCode[1]);
+        if (!int.TryParse(fullCode.Substring(0, 1), out var prefix)
+            || letter < 'A'
+            || letter > 'Z'
+            || !int.TryParse(fullCode.Substring(2, 1), out var suffix))
+            return false;
+
+        codeParts = new FireControlCodeParts(prefix, letter, suffix);
+        return true;
+    }
+
+    static bool IsUpperFireControlCode(FireControlCodeParts candidate, FireControlCodeParts target)
+    {
+        return candidate.prefix <= target.prefix
+            && candidate.letterRank <= target.letterRank
+            && candidate.suffix >= target.suffix;
+    }
+
+    static bool IsLowerFireControlCode(FireControlCodeParts candidate, FireControlCodeParts target)
+    {
+        return candidate.prefix >= target.prefix
+            && candidate.letterRank >= target.letterRank
+            && candidate.suffix <= target.suffix;
+    }
+
+    static List<FireControlTableRecord> BuildInterpolatedFireControlTableRecords(
+        IReadOnlyList<List<FireControlTableRecord>> upperTables,
+        IReadOnlyList<List<FireControlTableRecord>> lowerTables)
+    {
+        return StandardFireControlSpeedThresholds
+            .Select((speedThresholdKnot, rowIndex) => new FireControlTableRecord
+            {
+                speedThresholdKnot = speedThresholdKnot,
+                shortBroad = InterpolateFireControlCell(upperTables, lowerTables, rowIndex, record => record.shortBroad),
+                shortNarrow = InterpolateFireControlCell(upperTables, lowerTables, rowIndex, record => record.shortNarrow),
+                mediumBroad = InterpolateFireControlCell(upperTables, lowerTables, rowIndex, record => record.mediumBroad),
+                mediumNarrow = InterpolateFireControlCell(upperTables, lowerTables, rowIndex, record => record.mediumNarrow),
+                longBroad = InterpolateFireControlCell(upperTables, lowerTables, rowIndex, record => record.longBroad),
+                longNarrow = InterpolateFireControlCell(upperTables, lowerTables, rowIndex, record => record.longNarrow),
+                extremeBroad = InterpolateFireControlCell(upperTables, lowerTables, rowIndex, record => record.extremeBroad),
+                extremeNarrow = InterpolateFireControlCell(upperTables, lowerTables, rowIndex, record => record.extremeNarrow),
+            })
+            .ToList();
+    }
+
+    static float InterpolateFireControlCell(
+        IReadOnlyList<List<FireControlTableRecord>> upperTables,
+        IReadOnlyList<List<FireControlTableRecord>> lowerTables,
+        int rowIndex,
+        Func<FireControlTableRecord, float> selector)
+    {
+        var upperValue = upperTables
+            .Where(table => table.Count > rowIndex)
+            .Select(table => selector(table[rowIndex]))
+            .Min();
+        var lowerValue = lowerTables
+            .Where(table => table.Count > rowIndex)
+            .Select(table => selector(table[rowIndex]))
+            .Max();
+        return RoundFireControlValue((upperValue + lowerValue) / 2f);
+    }
+
     readonly struct LatentFireControlBase
     {
         public readonly float min;
@@ -2255,6 +2365,25 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
         batteryRecord.fireControlTableRecords = standardRecords;
         batteryRecord.customFireControlTable = false;
         return true;
+    }
+
+    public static bool SyncFireControlTableFromFireControlCode(BatteryRecord batteryRecord)
+    {
+        if (TryGetStandardFireControlTableRecords(batteryRecord, out _, out var standardRecords))
+        {
+            batteryRecord.fireControlTableRecords = standardRecords;
+            batteryRecord.customFireControlTable = false;
+            return true;
+        }
+
+        if (TryGetInterpolatedFireControlTableRecords(batteryRecord, out _, out var interpolatedRecords))
+        {
+            batteryRecord.fireControlTableRecords = interpolatedRecords;
+            batteryRecord.customFireControlTable = true;
+            return true;
+        }
+
+        return false;
     }
 
     VisualElement BuildFireControlStandardComparisonTable(string title, string description, List<FireControlTableRecord> records, IReadOnlyList<FireControlTableRecord> standardRecords)

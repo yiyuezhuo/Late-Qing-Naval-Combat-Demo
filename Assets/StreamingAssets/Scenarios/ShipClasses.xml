@@ -10,6 +10,7 @@
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
   <country>Japan</country>
+  <referenceYear>1893</referenceYear>
   <displacementTons>4150</displacementTons>
   <complementMen>360</complementMen>
   <lengthFoot>360</lengthFoot>
@@ -546,6 +547,7 @@
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
   <country>Japan</country>
+  <referenceYear>1901</referenceYear>
   <displacementTons>4150</displacementTons>
   <complementMen>360</complementMen>
   <lengthFoot>360</lengthFoot>
@@ -1079,6 +1081,7 @@
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
   <country>Japan</country>
+  <referenceYear>1894</referenceYear>
   <displacementTons>3100</displacementTons>
   <complementMen>330</complementMen>
   <lengthFoot>301</lengthFoot>
@@ -1604,6 +1607,7 @@
   <type>LightCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Japan</country>
+  <referenceYear>1902</referenceYear>
   <displacementTons>3100</displacementTons>
   <complementMen>330</complementMen>
   <lengthFoot>301</lengthFoot>
@@ -2126,6 +2130,7 @@
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
   <country>Japan</country>
+  <referenceYear>1885</referenceYear>
   <displacementTons>3750</displacementTons>
   <complementMen>325</complementMen>
   <lengthFoot>300</lengthFoot>
@@ -2601,6 +2606,7 @@
   <type>LightCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Japan</country>
+  <referenceYear>1903</referenceYear>
   <displacementTons>3750</displacementTons>
   <complementMen>325</complementMen>
   <lengthFoot>300</lengthFoot>
@@ -2961,6 +2967,7 @@ The graphic is the version of the earlier version, which is not a accurate repre
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
   <country>China</country>
+  <referenceYear>1884</referenceYear>
   <displacementTons>2300</displacementTons>
   <complementMen>200</complementMen>
   <lengthFoot>236</lengthFoot>
@@ -3403,6 +3410,7 @@ Correction: SK5 Original Armor Factor: 0.68 (armor type CompoundHardSteelFacedWr
   <type>PatrolGunboat</type>
   <extraShipType>TorpedoCruiser</extraShipType>
   <country>China</country>
+  <referenceYear>1891</referenceYear>
   <displacementTons>1000</displacementTons>
   <complementMen>120</complementMen>
   <lengthFoot>235</lengthFoot>
@@ -3738,6 +3746,7 @@ Correction: SK5 Original Armor Factor: 0.68 (armor type CompoundHardSteelFacedWr
   <type>Battleship</type>
   <extraShipType>Ironclad</extraShipType>
   <country>China</country>
+  <referenceYear>1885</referenceYear>
   <displacementTons>7400</displacementTons>
   <complementMen>350</complementMen>
   <lengthFoot>308</lengthFoot>
@@ -4203,6 +4212,7 @@ Correction: SK5 Original Armor Factor: 0.75 (armor type MildSteel) =&gt; 0.68 (a
   <type>Battleship</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Japan</country>
+  <referenceYear>1896</referenceYear>
   <displacementTons>7220</displacementTons>
   <complementMen>250</complementMen>
   <lengthFoot>298</lengthFoot>
@@ -4690,6 +4700,7 @@ Correction: SK5 Original Armor Factor: 0.75 (armor type MildSteel) =&gt; 0.68 (a
   <type>LightCruiser</type>
   <extraShipType>UnprotectedCruiser</extraShipType>
   <country>China</country>
+  <referenceYear>1881</referenceYear>
   <displacementTons>1450</displacementTons>
   <complementMen>177</complementMen>
   <lengthFoot>210</lengthFoot>
@@ -5117,6 +5128,7 @@ Chao Yung or Chao Yong
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
   <country>China</country>
+  <referenceYear>1887</referenceYear>
   <displacementTons>2300</displacementTons>
   <complementMen>260</complementMen>
   <lengthFoot>250</lengthFoot>
@@ -5595,6 +5607,7 @@ Chao Yung or Chao Yong
   <type>ArmoredCruiser</type>
   <extraShipType>ArmoredCruiser</extraShipType>
   <country>China</country>
+  <referenceYear>1889</referenceYear>
   <displacementTons>2850</displacementTons>
   <complementMen>270</complementMen>
   <lengthFoot>270</lengthFoot>
@@ -6019,6 +6032,7 @@ King Yuan or Jingyuan</english>
   <type>ArmoredCruiser</type>
   <extraShipType>ArmoredCruiser</extraShipType>
   <country>China</country>
+  <referenceYear>1889</referenceYear>
   <displacementTons>2200</displacementTons>
   <complementMen>202</complementMen>
   <lengthFoot>197</lengthFoot>
@@ -6449,6 +6463,7 @@ Ping Yuen or Pingyuan
   <type>LightCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>China</country>
+  <referenceYear>1888</referenceYear>
   <displacementTons>1300</displacementTons>
   <complementMen>150</complementMen>
   <lengthFoot>221</lengthFoot>
@@ -6851,6 +6866,7 @@ Ping Yuen or Pingyuan
   <type>PatrolGunboat</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>China</country>
+  <referenceYear>1877</referenceYear>
   <displacementTons>1268</displacementTons>
   <complementMen>110</complementMen>
   <lengthFoot>210</lengthFoot>
@@ -7259,6 +7275,7 @@ https://baike.baidu.com/item/%E5%A8%81%E8%BF%9C%E5%8F%B7%E7%BB%83%E4%B9%A0%E8%88
   <type>TorpedoBoat</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>China</country>
+  <referenceYear>1886</referenceYear>
   <displacementTons>120</displacementTons>
   <complementMen>20</complementMen>
   <lengthFoot>140</lengthFoot>
@@ -7401,6 +7418,7 @@ Fu Lung or Fulong
   <type>Battleship</type>
   <extraShipType>Ironclad</extraShipType>
   <country>Japan</country>
+  <referenceYear>1894</referenceYear>
   <displacementTons>3800</displacementTons>
   <complementMen>250</complementMen>
   <lengthFoot>220</lengthFoot>
@@ -7902,6 +7920,7 @@ Correction: SK5 Armor Factor 0.75 (Mild Steel) =&gt; 0.6 (Wrought Iron)
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
   <country>Japan</country>
+  <referenceYear>1891</referenceYear>
   <displacementTons>4220</displacementTons>
   <complementMen>360</complementMen>
   <lengthFoot>301</lengthFoot>
@@ -8446,6 +8465,7 @@ Itsukushima (厳島, 1891)
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
   <country>Japan</country>
+  <referenceYear>1902</referenceYear>
   <displacementTons>4220</displacementTons>
   <complementMen>360</complementMen>
   <lengthFoot>301</lengthFoot>
@@ -8981,6 +9001,7 @@ Itsukushima (厳島, 1891)
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
   <country>Japan</country>
+  <referenceYear>1891</referenceYear>
   <displacementTons>4220</displacementTons>
   <complementMen>360</complementMen>
   <lengthFoot>301</lengthFoot>
@@ -9510,6 +9531,7 @@ Hashidate ((橋立, 1894)
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
   <country>Japan</country>
+  <referenceYear>1902</referenceYear>
   <displacementTons>4220</displacementTons>
   <complementMen>360</complementMen>
   <lengthFoot>301</lengthFoot>
@@ -10028,6 +10050,7 @@ Hashidate ((橋立, 1894)
   <type>ArmoredCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Japan</country>
+  <referenceYear>1878</referenceYear>
   <displacementTons>2260</displacementTons>
   <complementMen>314</complementMen>
   <lengthFoot>230</lengthFoot>
@@ -10478,6 +10501,7 @@ Hiei (比叡, 1878)</english>
   <type>ArmoredCruiser</type>
   <extraShipType>ArmoredCruiser</extraShipType>
   <country>Japan</country>
+  <referenceYear>1890</referenceYear>
   <displacementTons>2400</displacementTons>
   <complementMen>350</complementMen>
   <lengthFoot>310</lengthFoot>
@@ -10867,6 +10891,7 @@ Hiei (比叡, 1878)</english>
   <type>PatrolGunboat</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Japan</country>
+  <referenceYear>1887</referenceYear>
   <displacementTons>612</displacementTons>
   <complementMen>104</complementMen>
   <lengthFoot>154</lengthFoot>
@@ -11241,6 +11266,7 @@ Hiei (比叡, 1878)</english>
   <type>ArmedMerchantCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Japan</country>
+  <referenceYear>1888</referenceYear>
   <displacementTons>2913</displacementTons>
   <complementMen>150</complementMen>
   <lengthFoot>325</lengthFoot>
@@ -11493,6 +11519,7 @@ Hiei (比叡, 1878)</english>
   <type>LightCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Japan</country>
+  <referenceYear>1887</referenceYear>
   <displacementTons>1476</displacementTons>
   <complementMen>231</complementMen>
   <lengthFoot>206</lengthFoot>
@@ -11946,6 +11973,7 @@ Cancel Armor Type Factor</english>
   <type>LightCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Japan</country>
+  <referenceYear>1885</referenceYear>
   <displacementTons>1525</displacementTons>
   <complementMen>214</complementMen>
   <lengthFoot>212</lengthFoot>
@@ -12345,6 +12373,7 @@ Cancel Armor Type Factor</english>
   <type>LightCruiser</type>
   <extraShipType>UnprotectedCruiser</extraShipType>
   <country>Japan</country>
+  <referenceYear>1888</referenceYear>
   <displacementTons>1750</displacementTons>
   <complementMen>220</complementMen>
   <lengthFoot>232</lengthFoot>
@@ -12799,6 +12828,7 @@ Cancel Armor Type Factor</english>
   <type>TorpedoBoat</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Japan</country>
+  <referenceYear>1892</referenceYear>
   <displacementTons>54</displacementTons>
   <complementMen>16</complementMen>
   <lengthFoot>115</lengthFoot>
@@ -12946,6 +12976,7 @@ TB 5,6,7,8,9,10,11,12,13,14,16,17,18,19</english>
   <type>TorpedoBoat</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Japan</country>
+  <referenceYear>1893</referenceYear>
   <displacementTons>53</displacementTons>
   <complementMen>20</complementMen>
   <lengthFoot>112</lengthFoot>
@@ -13091,6 +13122,7 @@ TB 5,6,7,8,9,10,11,12,13,14,16,17,18,19</english>
   <type>TorpedoBoat</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Japan</country>
+  <referenceYear>1893</referenceYear>
   <displacementTons>80</displacementTons>
   <complementMen>21</complementMen>
   <lengthFoot>118</lengthFoot>
@@ -13243,6 +13275,7 @@ TB 21, TB 24</english>
   <type>TorpedoBoat</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Japan</country>
+  <referenceYear>1893</referenceYear>
   <displacementTons>85</displacementTons>
   <complementMen>20</complementMen>
   <lengthFoot>128</lengthFoot>
@@ -13388,6 +13421,7 @@ TB 22, 23, 25, 31, 32, 33, 34, 35, 36, 37, 38, 44, 45, 46, 47, 48, 49, 60, 61
   <type>TorpedoBoat</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Japan</country>
+  <referenceYear>1888</referenceYear>
   <displacementTons>203</displacementTons>
   <complementMen>30</complementMen>
   <lengthFoot>165</lengthFoot>
@@ -13538,6 +13572,7 @@ Complement is inferred</english>
   <type>TorpedoBoat</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>China</country>
+  <referenceYear>1886</referenceYear>
   <displacementTons>90</displacementTons>
   <complementMen>25</complementMen>
   <lengthFoot>127</lengthFoot>
@@ -13678,6 +13713,7 @@ Complement is inferred</english>
   <type>TorpedoBoat</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>China</country>
+  <referenceYear>1887</referenceYear>
   <displacementTons>74</displacementTons>
   <complementMen>28</complementMen>
   <lengthFoot>110.59</lengthFoot>
@@ -13819,6 +13855,7 @@ https://baike.baidu.com/item/%E2%80%9C%E5%B7%A6%E4%BA%8C%E2%80%9D%E5%8F%B7%E9%B1
   <type>TorpedoBoat</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>China</country>
+  <referenceYear>1885</referenceYear>
   <displacementTons>15.7</displacementTons>
   <complementMen>10</complementMen>
   <lengthFoot>64.7</lengthFoot>
@@ -13926,6 +13963,7 @@ Complement is placeholder</english>
   <type>TorpedoBoat</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>China</country>
+  <referenceYear>1884</referenceYear>
   <displacementTons>15.7</displacementTons>
   <complementMen>10</complementMen>
   <lengthFoot>52.2</lengthFoot>
@@ -14055,6 +14093,7 @@ Draft &amp; Complement is placeholder.
   <type>Battleship</type>
   <extraShipType>Predreatought</extraShipType>
   <country>Japan</country>
+  <referenceYear>1897</referenceYear>
   <displacementTons>12530</displacementTons>
   <complementMen>637</complementMen>
   <lengthFoot>390</lengthFoot>
@@ -14608,6 +14647,7 @@ Draft &amp; Complement is placeholder.
   <type>Battleship</type>
   <extraShipType>Predreatought</extraShipType>
   <country>Japan</country>
+  <referenceYear>1902</referenceYear>
   <displacementTons>12530</displacementTons>
   <complementMen>652</complementMen>
   <lengthFoot>390</lengthFoot>
@@ -15180,6 +15220,7 @@ Draft &amp; Complement is placeholder.
   <type>Transport</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Japan</country>
+  <referenceYear>1888</referenceYear>
   <displacementTons>3000</displacementTons>
   <complementMen>150</complementMen>
   <lengthFoot>325</lengthFoot>
@@ -15271,6 +15312,7 @@ Portrait is taken from Saikyō Maru (西京丸)</english>
   <type>Transport</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>China</country>
+  <referenceYear>1888</referenceYear>
   <displacementTons>3000</displacementTons>
   <complementMen>150</complementMen>
   <lengthFoot>325</lengthFoot>
@@ -15362,6 +15404,7 @@ Portrait is taken from Saikyō Maru (西京丸)</english>
   <type>Repair</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Japan</country>
+  <referenceYear>1868</referenceYear>
   <displacementTons>2198</displacementTons>
   <complementMen>150</complementMen>
   <lengthFoot>327</lengthFoot>
@@ -15456,6 +15499,7 @@ Portrait is taken from Saikyō Maru (西京丸)</english>
   <type>ArmoredCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Russia</country>
+  <referenceYear>1897</referenceYear>
   <displacementTons>13675</displacementTons>
   <complementMen>842</complementMen>
   <lengthFoot>480</lengthFoot>
@@ -16107,6 +16151,7 @@ Portrait is taken from Saikyō Maru (西京丸)</english>
   <type>ArmoredCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Russia</country>
+  <referenceYear>1900</referenceYear>
   <displacementTons>13220</displacementTons>
   <complementMen>877</complementMen>
   <lengthFoot>481</lengthFoot>
@@ -16741,6 +16786,7 @@ Portrait is taken from Saikyō Maru (西京丸)</english>
   <type>ArmoredCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Russia</country>
+  <referenceYear>1900</referenceYear>
   <displacementTons>11690</displacementTons>
   <complementMen>817</complementMen>
   <lengthFoot>435</lengthFoot>
@@ -17493,6 +17539,7 @@ Correction: SK5 Original Armor Factor: 0.74 (armor type HarveyMildSteel) =&gt; 0
   <type>ArmoredCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Japan</country>
+  <referenceYear>1900</referenceYear>
   <displacementTons>9750</displacementTons>
   <complementMen>672</complementMen>
   <lengthFoot>434</lengthFoot>
@@ -18035,6 +18082,7 @@ Correction: SK5 Original Armor Factor: 0.74 (armor type HarveyMildSteel) =&gt; 0
   <type>ArmoredCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Japan</country>
+  <referenceYear>1900</referenceYear>
   <displacementTons>9307</displacementTons>
   <complementMen>650</complementMen>
   <lengthFoot>452</lengthFoot>
@@ -18626,6 +18674,7 @@ Azuma or Adzuma (SK5 name)
   <type>ArmoredCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Japan</country>
+  <referenceYear>1899</referenceYear>
   <displacementTons>9700</displacementTons>
   <complementMen>726</complementMen>
   <lengthFoot>442</lengthFoot>
@@ -19166,6 +19215,7 @@ Azuma or Adzuma (SK5 name)
   <type>LightCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Japan</country>
+  <referenceYear>1904</referenceYear>
   <displacementTons>3120</displacementTons>
   <complementMen>320</complementMen>
   <lengthFoot>339</lengthFoot>
@@ -19501,6 +19551,7 @@ Sometime called Niitaka class.
   <type>LightCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Russia</country>
+  <referenceYear>1902</referenceYear>
   <displacementTons>6645</displacementTons>
   <complementMen>576</complementMen>
   <lengthFoot>440</lengthFoot>
@@ -19946,6 +19997,7 @@ Sometime called Niitaka class.
   <type>TorpedoBoat</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Japan</country>
+  <referenceYear>1899</referenceYear>
   <displacementTons>152</displacementTons>
   <complementMen>26</complementMen>
   <lengthFoot>148</lengthFoot>
@@ -20115,6 +20167,7 @@ Sometime called Niitaka class.
   <type>TorpedoBoat</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Japan</country>
+  <referenceYear>1898</referenceYear>
   <displacementTons>89</displacementTons>
   <complementMen>20</complementMen>
   <lengthFoot>128</lengthFoot>
@@ -20269,6 +20322,7 @@ Sometime called Niitaka class.
   <type>TorpedoBoat</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Japan</country>
+  <referenceYear>1899</referenceYear>
   <displacementTons>102</displacementTons>
   <complementMen>20</complementMen>
   <lengthFoot>152</lengthFoot>
@@ -20434,6 +20488,7 @@ Sometime called Niitaka class.
   <type>TorpedoBoat</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Japan</country>
+  <referenceYear>1903</referenceYear>
   <displacementTons>87</displacementTons>
   <complementMen>24</complementMen>
   <lengthFoot>132</lengthFoot>
@@ -20598,6 +20653,7 @@ Sometime called Niitaka class.
   <type>ArmoredCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Japan</country>
+  <referenceYear>1900</referenceYear>
   <displacementTons>9735</displacementTons>
   <complementMen>700</complementMen>
   <lengthFoot>434</lengthFoot>
@@ -21159,6 +21215,7 @@ Sometime called Niitaka class.
   <type>LightCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Japan</country>
+  <referenceYear>1904</referenceYear>
   <displacementTons>2657</displacementTons>
   <complementMen>330</complementMen>
   <lengthFoot>307</lengthFoot>
@@ -21628,6 +21685,7 @@ Correction: SK5 length 37 -&gt; 307</english>
   <type>LightCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Russia</country>
+  <referenceYear>1900</referenceYear>
   <displacementTons>6500</displacementTons>
   <complementMen>580</complementMen>
   <lengthFoot>425</lengthFoot>
@@ -22124,6 +22182,7 @@ Correction: SK5 Original Armor Factor: 0.82 (armor type HighTensileSteel) =&gt; 
   <type>PatrolGunboat</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Russia</country>
+  <referenceYear>1887</referenceYear>
   <displacementTons>1270</displacementTons>
   <complementMen>179</complementMen>
   <lengthFoot>206</lengthFoot>
@@ -22715,6 +22774,7 @@ Correction: SK5 Original Armor Factor: 0.82 (armor type HighTensileSteel) =&gt; 
   <type>Battleship</type>
   <extraShipType>Predreatought</extraShipType>
   <country>Russia</country>
+  <referenceYear>1899</referenceYear>
   <displacementTons>11842</displacementTons>
   <complementMen>632</complementMen>
   <lengthFoot>369</lengthFoot>
@@ -23401,6 +23461,7 @@ Correction: SK5 Original Armor Factor: 0.82 (armor type HighTensileSteel) =&gt; 
   <type>Destroyer</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Japan</country>
+  <referenceYear>1902</referenceYear>
   <displacementTons>342</displacementTons>
   <complementMen>60</complementMen>
   <lengthFoot>222</lengthFoot>
@@ -23578,6 +23639,7 @@ Correction: SK5 Original Armor Factor: 0.82 (armor type HighTensileSteel) =&gt; 
   <type>Destroyer</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Japan</country>
+  <referenceYear>1902</referenceYear>
   <displacementTons>342</displacementTons>
   <complementMen>60</complementMen>
   <lengthFoot>222</lengthFoot>
@@ -23754,6 +23816,7 @@ Correction: SK5 Original Armor Factor: 0.82 (armor type HighTensileSteel) =&gt; 
   <type>Destroyer</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Japan</country>
+  <referenceYear>1899</referenceYear>
   <displacementTons>363</displacementTons>
   <complementMen>55</complementMen>
   <lengthFoot>224</lengthFoot>
@@ -23934,6 +23997,7 @@ Correction: SK5 Original Armor Factor: 0.82 (armor type HighTensileSteel) =&gt; 
   <type>Destroyer</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Japan</country>
+  <referenceYear>1899</referenceYear>
   <displacementTons>275</displacementTons>
   <complementMen>54</complementMen>
   <lengthFoot>215</lengthFoot>
@@ -24112,6 +24176,7 @@ Correction: SK5 Original Armor Factor: 0.82 (armor type HighTensileSteel) =&gt; 
   <type>Destroyer</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Japan</country>
+  <referenceYear>1903</referenceYear>
   <displacementTons>375</displacementTons>
   <complementMen>60</complementMen>
   <lengthFoot>234</lengthFoot>
@@ -24293,6 +24358,7 @@ Correction: SK5 Original Armor Factor: 0.82 (armor type HighTensileSteel) =&gt; 
   <type>Battleship</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Russia</country>
+  <referenceYear>1903</referenceYear>
   <displacementTons>12915</displacementTons>
   <complementMen>778</complementMen>
   <lengthFoot>389</lengthFoot>
@@ -24905,6 +24971,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php
   <type>Battleship</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Russia</country>
+  <referenceYear>1901</referenceYear>
   <displacementTons>12683</displacementTons>
   <complementMen>764</complementMen>
   <lengthFoot>434</lengthFoot>
@@ -25488,6 +25555,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php
   <type>Battleship</type>
   <extraShipType>Predreatought</extraShipType>
   <country>Russia</country>
+  <referenceYear>1901</referenceYear>
   <displacementTons>12683</displacementTons>
   <complementMen>764</complementMen>
   <lengthFoot>434</lengthFoot>
@@ -26071,6 +26139,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php
   <type>Battleship</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Russia</country>
+  <referenceYear>1902</referenceYear>
   <displacementTons>12900</displacementTons>
   <complementMen>750</complementMen>
   <lengthFoot>387</lengthFoot>
@@ -26800,6 +26869,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php
   <type>ArmoredCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Russia</country>
+  <referenceYear>1903</referenceYear>
   <displacementTons>7725</displacementTons>
   <complementMen>568</complementMen>
   <lengthFoot>450</lengthFoot>
@@ -27387,6 +27457,7 @@ https://naval-encyclopedia.com/ww1/russia/tsesarevich.php
   <type>LightCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Russia</country>
+  <referenceYear>1901</referenceYear>
   <displacementTons>5905</displacementTons>
   <complementMen>576</complementMen>
   <lengthFoot>437</lengthFoot>
@@ -27861,6 +27932,7 @@ https://naval-encyclopedia.com/ww1/russia/askold-1900.php
   <type>LightCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Russia</country>
+  <referenceYear>1902</referenceYear>
   <displacementTons>6823</displacementTons>
   <complementMen>571</complementMen>
   <lengthFoot>416</lengthFoot>
@@ -28271,6 +28343,7 @@ https://naval-encyclopedia.com/ww1/russia/askold-1900.php
   <type>LightCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Russia</country>
+  <referenceYear>1902</referenceYear>
   <displacementTons>3200</displacementTons>
   <complementMen>266</complementMen>
   <lengthFoot>345</lengthFoot>
@@ -28672,6 +28745,7 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
   <type>LightCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Russia</country>
+  <referenceYear>1901</referenceYear>
   <displacementTons>3080</displacementTons>
   <complementMen>337</complementMen>
   <lengthFoot>360</lengthFoot>
@@ -29049,6 +29123,7 @@ Correction: SK5 Original Armor Factor: 0.82 (armor type HighTensileSteel) =&gt; 
   <type>Destroyer</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Russia</country>
+  <referenceYear>1898</referenceYear>
   <displacementTons>220</displacementTons>
   <complementMen>58</complementMen>
   <lengthFoot>190</lengthFoot>
@@ -29226,6 +29301,7 @@ The SK5 data gives a torpedo tube layout that is inconsistent with the source im
   <type>Destroyer</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Russia</country>
+  <referenceYear>1899</referenceYear>
   <displacementTons>346</displacementTons>
   <complementMen>64</complementMen>
   <lengthFoot>203</lengthFoot>
@@ -29405,6 +29481,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
   <type>Battleship</type>
   <extraShipType>Predreatought</extraShipType>
   <country>Japan</country>
+  <referenceYear>1902</referenceYear>
   <displacementTons>15140</displacementTons>
   <complementMen>830</complementMen>
   <lengthFoot>415</lengthFoot>
@@ -29972,6 +30049,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
   <type>Battleship</type>
   <extraShipType>Predreatought</extraShipType>
   <country>Japan</country>
+  <referenceYear>1900</referenceYear>
   <displacementTons>15200</displacementTons>
   <complementMen>836</complementMen>
   <lengthFoot>415</lengthFoot>
@@ -30538,6 +30616,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
   <type>Battleship</type>
   <extraShipType>Predreatought</extraShipType>
   <country>Japan</country>
+  <referenceYear>1900</referenceYear>
   <displacementTons>14850</displacementTons>
   <complementMen>836</complementMen>
   <lengthFoot>415</lengthFoot>
@@ -31114,6 +31193,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
   <country>Japan</country>
+  <referenceYear>1899</referenceYear>
   <displacementTons>4900</displacementTons>
   <complementMen>405</complementMen>
   <lengthFoot>374</lengthFoot>
@@ -31668,6 +31748,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
   <country>Japan</country>
+  <referenceYear>1898</referenceYear>
   <displacementTons>4160</displacementTons>
   <complementMen>425</complementMen>
   <lengthFoot>360</lengthFoot>
@@ -32223,6 +32304,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
   <type>LandBattery</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Russia</country>
+  <referenceYear>1904</referenceYear>
   <displacementTons>0</displacementTons>
   <complementMen>0</complementMen>
   <lengthFoot>200</lengthFoot>
@@ -32449,6 +32531,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
   <type>LandBattery</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Russia</country>
+  <referenceYear>1904</referenceYear>
   <displacementTons>0</displacementTons>
   <complementMen>0</complementMen>
   <lengthFoot>200</lengthFoot>
@@ -32697,6 +32780,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
   <type>LandBattery</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Russia</country>
+  <referenceYear>1904</referenceYear>
   <displacementTons>0</displacementTons>
   <complementMen>0</complementMen>
   <lengthFoot>200</lengthFoot>
@@ -32914,6 +32998,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
   <type>LightCruiser</type>
   <extraShipType>UnprotectedCruiser</extraShipType>
   <country>Japan</country>
+  <referenceYear>1883</referenceYear>
   <displacementTons>1947</displacementTons>
   <complementMen>186</complementMen>
   <lengthFoot>192</lengthFoot>
@@ -33352,6 +33437,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
   <type>PatrolGunboat</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Japan</country>
+  <referenceYear>1892</referenceYear>
   <displacementTons>630</displacementTons>
   <complementMen>130</complementMen>
   <lengthFoot>176</lengthFoot>
@@ -33646,6 +33732,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
   <type>LandBattery</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>China</country>
+  <referenceYear>1894</referenceYear>
   <displacementTons>0</displacementTons>
   <complementMen>0</complementMen>
   <lengthFoot>200</lengthFoot>
@@ -34007,6 +34094,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
   <type>LandBattery</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>China</country>
+  <referenceYear>1894</referenceYear>
   <displacementTons>0</displacementTons>
   <complementMen>0</complementMen>
   <lengthFoot>200</lengthFoot>
@@ -34524,6 +34612,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
   <type>LandBattery</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>China</country>
+  <referenceYear>1894</referenceYear>
   <displacementTons>0</displacementTons>
   <complementMen>0</complementMen>
   <lengthFoot>200</lengthFoot>
@@ -34892,6 +34981,7 @@ https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%8D%D1%81%
   <type>ArmoredCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Japan</country>
+  <referenceYear>1904</referenceYear>
   <displacementTons>7628</displacementTons>
   <complementMen>600</complementMen>
   <lengthFoot>357</lengthFoot>
@@ -35540,6 +35630,7 @@ Correction: SK5 Original Armor Factor: 0.83 (armor type KruppCemented1894) =&gt;
   <type>ArmoredCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Japan</country>
+  <referenceYear>1904</referenceYear>
   <displacementTons>7690</displacementTons>
   <complementMen>600</complementMen>
   <lengthFoot>357</lengthFoot>
@@ -36093,6 +36184,7 @@ Correction: SK5 Original Armor Factor: 0.83 (armor type KruppCemented1894) =&gt;
   <type>LightCruiser</type>
   <extraShipType>UnprotectedCruiser</extraShipType>
   <country>Japan</country>
+  <referenceYear>1892</referenceYear>
   <displacementTons>1584</displacementTons>
   <complementMen>200</complementMen>
   <lengthFoot>318</lengthFoot>
@@ -36381,6 +36473,7 @@ Correction: SK5 Original Armor Factor: 0.83 (armor type KruppCemented1894) =&gt;
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
   <country>Japan</country>
+  <referenceYear>1900</referenceYear>
   <displacementTons>2920</displacementTons>
   <complementMen>296</complementMen>
   <lengthFoot>270</lengthFoot>
@@ -36845,6 +36938,7 @@ Esmeralda or Idzumi (Izumi)</english>
   <type>Destroyer</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Russia</country>
+  <referenceYear>1902</referenceYear>
   <displacementTons>350</displacementTons>
   <complementMen>62</complementMen>
   <lengthFoot>210</lengthFoot>
@@ -37029,6 +37123,7 @@ https://ru.wikipedia.org/wiki/%D0%9C%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D1%86%D
   <type>Destroyer</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Russia</country>
+  <referenceYear>1901</referenceYear>
   <displacementTons>312</displacementTons>
   <complementMen>59</complementMen>
   <lengthFoot>186</lengthFoot>
@@ -37188,6 +37283,7 @@ https://ru.wikipedia.org/wiki/%D0%9C%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D1%86%D
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
   <country>China</country>
+  <referenceYear>1899</referenceYear>
   <displacementTons>4300</displacementTons>
   <complementMen>350</complementMen>
   <lengthFoot>396</lengthFoot>
@@ -37727,6 +37823,7 @@ Hai Qi (Hai Chi, 海圻) and Hai Tien (Hai Tian, 海天)
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
   <country>China</country>
+  <referenceYear>1898</referenceYear>
   <displacementTons>2680</displacementTons>
   <complementMen>244</complementMen>
   <lengthFoot>328</lengthFoot>
@@ -37917,8 +38014,8 @@ Hai Qi (Hai Chi, 海圻) and Hai Tien (Hai Tian, 海天)
      <japanese />
      <chineseSimplified />
     </name>
-    <damageRating>12</damageRating>
-    <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
+    <damageRating>11</damageRating>
+    <maxRateOfFireShootPerMin>12</maxRateOfFireShootPerMin>
     <fireControlPositions>2</fireControlPositions>
     <fireControlType>
      <role>Secondary</role>
@@ -37931,14 +38028,14 @@ Hai Qi (Hai Chi, 海圻) and Hai Tien (Hai Tian, 海天)
      <stabilization>Manual</stabilization>
      <powerRemoteControl>None</powerRemoteControl>
     </fireControlType>
-    <rangeYards>9899</rangeYards>
+    <rangeYards>14849</rangeYards>
     <hasFireControlRadar>false</hasFireControlRadar>
     <fireControlRadarModifier>0</fireControlRadarModifier>
     <fireControlRadarName>
      <english>None</english>
     </fireControlRadarName>
-    <shellSizeInch>4.7</shellSizeInch>
-    <shellWeightPounds>45</shellWeightPounds>
+    <shellSizeInch>4.1</shellSizeInch>
+    <shellWeightPounds>38.4</shellWeightPounds>
     <ammunitionCapacity>1440</ammunitionCapacity>
     <fireControlTableRecords>
      <FireControlTableRecord>
@@ -38220,7 +38317,8 @@ Hai Qi (Hai Chi, 海圻) and Hai Tien (Hai Tian, 海天)
    <english>https://en.wikipedia.org/wiki/Hai_Yung-class_cruiser
 
 https://naval-encyclopedia.com/ww1/china/hai-yung-class-cruisers.php
-</english>
+
+Correction: SK5 start date 1889 =&gt; 1898</english>
   </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>
@@ -38249,6 +38347,7 @@ https://naval-encyclopedia.com/ww1/china/hai-yung-class-cruisers.php
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
   <country>China</country>
+  <referenceYear>1894</referenceYear>
   <displacementTons>4568</displacementTons>
   <complementMen>427</complementMen>
   <lengthFoot>370</lengthFoot>
@@ -38817,6 +38916,7 @@ Alternate history: Suppose the China had purchased this ship from Chile.
   <type>Battleship</type>
   <extraShipType>Ironclad</extraShipType>
   <country>China</country>
+  <referenceYear>1893</referenceYear>
   <displacementTons>6901</displacementTons>
   <complementMen>480</complementMen>
   <lengthFoot>328</lengthFoot>
@@ -39357,6 +39457,7 @@ Alternate history: Suppose the China had purchased this ship from Chile.
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
   <country>China</country>
+  <referenceYear>1884</referenceYear>
   <displacementTons>2950</displacementTons>
   <complementMen>296</complementMen>
   <lengthFoot>270</lengthFoot>
@@ -39821,6 +39922,7 @@ Alternate history: Suppose the China had purchased this ship from Chile. (In tru
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
   <country>China</country>
+  <referenceYear>1892</referenceYear>
   <displacementTons>2047</displacementTons>
   <complementMen>170</complementMen>
   <lengthFoot>268</lengthFoot>
@@ -40293,6 +40395,7 @@ Alternate history: Suppose the China had purchased this ship from Chile.</englis
   <type>TorpedoBoat</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>China</country>
+  <referenceYear>1890</referenceYear>
   <displacementTons>713</displacementTons>
   <complementMen>87</complementMen>
   <lengthFoot>230</lengthFoot>
@@ -40477,6 +40580,7 @@ Alternate history: Suppose the China had purchased this ship from Chile.</englis
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
   <country>China</country>
+  <referenceYear>1891</referenceYear>
   <displacementTons>3180</displacementTons>
   <complementMen>300</complementMen>
   <lengthFoot>330</lengthFoot>
@@ -41011,6 +41115,7 @@ Alternate history: Suppose the China had purchased this ship from Argentina.</en
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
   <country>China</country>
+  <referenceYear>1893</referenceYear>
   <displacementTons>3600</displacementTons>
   <complementMen>327</complementMen>
   <lengthFoot>354</lengthFoot>
@@ -41519,6 +41624,7 @@ https://naval-encyclopedia.com/ww1/argentina/9-de-julio.php</english>
   <type>ArmoredCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>China</country>
+  <referenceYear>1882</referenceYear>
   <displacementTons>4200</displacementTons>
   <complementMen>520</complementMen>
   <lengthFoot>240</lengthFoot>
@@ -42014,6 +42120,7 @@ https://naval-encyclopedia.com/ww1/argentina/9-de-julio.php</english>
   <type>PatrolGunboat</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>China</country>
+  <referenceYear>1880</referenceYear>
   <displacementTons>430</displacementTons>
   <complementMen>28</complementMen>
   <lengthFoot>125</lengthFoot>
@@ -42272,6 +42379,7 @@ https://zh.wikipedia.org/wiki/Epsilon%E7%B4%9A%E7%A0%B2%E8%89%87
   <type>LightCruiser</type>
   <extraShipType>UnprotectedCruiser</extraShipType>
   <country>China</country>
+  <referenceYear>1884</referenceYear>
   <displacementTons>2110</displacementTons>
   <complementMen>300</complementMen>
   <lengthFoot>252</lengthFoot>
@@ -42719,6 +42827,7 @@ https://www.historyofwar.org/articles/weapons_kai_che.html</english>
   <type>LightCruiser</type>
   <extraShipType>UnprotectedCruiser</extraShipType>
   <country>China</country>
+  <referenceYear>1886</referenceYear>
   <displacementTons>2110</displacementTons>
   <complementMen>300</complementMen>
   <lengthFoot>250</lengthFoot>
@@ -43163,6 +43272,7 @@ https://www.historyofwar.org/articles/weapons_kai_che.html</english>
   <type>LightCruiser</type>
   <extraShipType>UnprotectedCruiser</extraShipType>
   <country>China</country>
+  <referenceYear>1882</referenceYear>
   <displacementTons>2200</displacementTons>
   <complementMen>250</complementMen>
   <lengthFoot>252</lengthFoot>
@@ -43637,6 +43747,7 @@ https://www.historyofwar.org/articles/weapons_kai_che.html</english>
   <type>LightCruiser</type>
   <extraShipType>UnprotectedCruiser</extraShipType>
   <country>China</country>
+  <referenceYear>1885</referenceYear>
   <displacementTons>1480</displacementTons>
   <complementMen>200</complementMen>
   <lengthFoot>213</lengthFoot>
@@ -44098,6 +44209,7 @@ https://www.historyofwar.org/articles/weapons_kai_che.html</english>
   <type>Battleship</type>
   <extraShipType>Predreatought</extraShipType>
   <country>Russia</country>
+  <referenceYear>1891</referenceYear>
   <displacementTons>9672</displacementTons>
   <complementMen>611</complementMen>
   <lengthFoot>334</lengthFoot>
@@ -44808,6 +44920,7 @@ https://en.wikipedia.org/wiki/Russian_battleship_Imperator_Nikolai_I_(1889)</eng
   <type>ArmoredCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Russia</country>
+  <referenceYear>1887</referenceYear>
   <displacementTons>8524</displacementTons>
   <complementMen>570</complementMen>
   <lengthFoot>333</lengthFoot>
@@ -45370,6 +45483,7 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Nakhimov_(1885)
   <type>ArmoredCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Russia</country>
+  <referenceYear>1900</referenceYear>
   <displacementTons>8524</displacementTons>
   <complementMen>570</complementMen>
   <lengthFoot>333</lengthFoot>
@@ -45734,6 +45848,7 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Nakhimov_(1885)</english>
   <type>ArmoredCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Russia</country>
+  <referenceYear>1890</referenceYear>
   <displacementTons>6674</displacementTons>
   <complementMen>640</complementMen>
   <lengthFoot>384</lengthFoot>
@@ -46279,6 +46394,7 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Pamiat_Azova
   <type>ArmoredCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Russia</country>
+  <referenceYear>1883</referenceYear>
   <displacementTons>5593</displacementTons>
   <complementMen>566</complementMen>
   <lengthFoot>297</lengthFoot>
@@ -46828,6 +46944,7 @@ Strange FC Code given by SK5 datasheet, which may overestimate its fire control 
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
   <country>Russia</country>
+  <referenceYear>1888</referenceYear>
   <displacementTons>5863</displacementTons>
   <complementMen>479</complementMen>
   <lengthFoot>368</lengthFoot>
@@ -47214,6 +47331,7 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Kornilov</english>
   <type>Battleship</type>
   <extraShipType>Predreatought</extraShipType>
   <country>Russia</country>
+  <referenceYear>1904</referenceYear>
   <displacementTons>13516</displacementTons>
   <complementMen>826</complementMen>
   <lengthFoot>397</lengthFoot>
@@ -47820,6 +47938,7 @@ https://en.wikipedia.org/wiki/Russian_cruiser_Admiral_Kornilov</english>
   <type>Battleship</type>
   <extraShipType>Predreatought</extraShipType>
   <country>Russia</country>
+  <referenceYear>1896</referenceYear>
   <displacementTons>10400</displacementTons>
   <complementMen>586</complementMen>
   <lengthFoot>352</lengthFoot>
@@ -48359,6 +48478,7 @@ https://en.wikipedia.org/wiki/Russian_battleship_Sissoi_Veliky
   <type>Battleship</type>
   <extraShipType>Predreatought</extraShipType>
   <country>Russia</country>
+  <referenceYear>1905</referenceYear>
   <displacementTons>10400</displacementTons>
   <complementMen>586</complementMen>
   <lengthFoot>352</lengthFoot>
@@ -49058,6 +49178,7 @@ https://en.wikipedia.org/wiki/Russian_battleship_Sissoi_Veliky
   <type>Battleship</type>
   <extraShipType>Predreatought</extraShipType>
   <country>Russia</country>
+  <referenceYear>1905</referenceYear>
   <displacementTons>10206</displacementTons>
   <complementMen>622</complementMen>
   <lengthFoot>358</lengthFoot>
@@ -49600,6 +49721,7 @@ https://en.wikipedia.org/wiki/Russian_battleship_Navarin</english>
   <type>Battleship</type>
   <extraShipType>Ironclad</extraShipType>
   <country>Britain</country>
+  <referenceYear>1880</referenceYear>
   <displacementTons>11880</displacementTons>
   <complementMen>443</complementMen>
   <lengthFoot>320</lengthFoot>
@@ -49909,6 +50031,7 @@ One of reference ship class of Ding Yuan
   <type>Battleship</type>
   <extraShipType>Predreatought</extraShipType>
   <country>Britain</country>
+  <referenceYear>1894</referenceYear>
   <displacementTons>10634</displacementTons>
   <complementMen>620</complementMen>
   <lengthFoot>360</lengthFoot>
@@ -50416,6 +50539,7 @@ One of reference ship class of Ding Yuan
   <type>Battleship</type>
   <extraShipType>Dreadnought</extraShipType>
   <country>Britain</country>
+  <referenceYear>1906</referenceYear>
   <displacementTons>18120</displacementTons>
   <complementMen>700</complementMen>
   <lengthFoot>520</lengthFoot>
@@ -50794,6 +50918,7 @@ Reference only, a new damage schema is required to work properly.
   <type>Battlecruiser</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Britain</country>
+  <referenceYear>1908</referenceYear>
   <displacementTons>17420</displacementTons>
   <complementMen>730</complementMen>
   <lengthFoot>560</lengthFoot>
@@ -51334,6 +51459,7 @@ Reference only, a new damage schema is required to work properly.
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
   <country>Britain</country>
+  <referenceYear>1893</referenceYear>
   <displacementTons>7350</displacementTons>
   <complementMen>544</complementMen>
   <lengthFoot>387</lengthFoot>
@@ -51977,6 +52103,7 @@ Reference only, a new damage schema is required to work properly.
   <type>ArmoredCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Britain</country>
+  <referenceYear>1888</referenceYear>
   <displacementTons>5600</displacementTons>
   <complementMen>484</complementMen>
   <lengthFoot>300</lengthFoot>
@@ -52479,6 +52606,7 @@ Correction: SK5 Original Armor Factor: 0.75 (armor type MildSteel) =&gt; 0.68 (a
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
   <country>Britain</country>
+  <referenceYear>1887</referenceYear>
   <displacementTons>3730</displacementTons>
   <complementMen>275</complementMen>
   <lengthFoot>300</lengthFoot>
@@ -52811,6 +52939,7 @@ Correction: SK5 Original Armor Factor: 0.75 (armor type MildSteel) =&gt; 0.68 (a
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
   <country>Britain</country>
+  <referenceYear>1892</referenceYear>
   <displacementTons>3500</displacementTons>
   <complementMen>273</complementMen>
   <lengthFoot>314</lengthFoot>
@@ -53316,6 +53445,7 @@ Correction: SK5 Original Armor Factor: 0.75 (armor type MildSteel) =&gt; 0.68 (a
   <type>LightCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Britain</country>
+  <referenceYear>1896</referenceYear>
   <displacementTons>1050</displacementTons>
   <complementMen>106</complementMen>
   <lengthFoot>185</lengthFoot>
@@ -53630,6 +53760,7 @@ Sloop</english>
   <type>Destroyer</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Britain</country>
+  <referenceYear>1897</referenceYear>
   <displacementTons>310</displacementTons>
   <complementMen>50</complementMen>
   <lengthFoot>220</lengthFoot>
@@ -53796,6 +53927,7 @@ Complement 50 is inferred.</english>
   <type>Destroyer</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Britain</country>
+  <referenceYear>1897</referenceYear>
   <displacementTons>310</displacementTons>
   <complementMen>50</complementMen>
   <lengthFoot>210</lengthFoot>
@@ -53964,6 +54096,7 @@ Complement 50 is inferred.
   <type>PatrolGunboat</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Russia</country>
+  <referenceYear>1885</referenceYear>
   <displacementTons>1134</displacementTons>
   <complementMen>170</complementMen>
   <lengthFoot>188</lengthFoot>
@@ -54491,6 +54624,7 @@ Sivuch or Gilyak</english>
   <type>PatrolGunboat</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Germany</country>
+  <referenceYear>1898</referenceYear>
   <displacementTons>1000</displacementTons>
   <complementMen>130</complementMen>
   <lengthFoot>210</lengthFoot>
@@ -54607,6 +54741,7 @@ Sivuch or Gilyak</english>
   <type>PatrolGunboat</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>France</country>
+  <referenceYear>1898</referenceYear>
   <displacementTons>503</displacementTons>
   <complementMen>78</complementMen>
   <lengthFoot>154</lengthFoot>
@@ -55003,6 +55138,7 @@ Battery select a closer historical battery.</english>
   <type>LightCruiser</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Britain</country>
+  <referenceYear>1898</referenceYear>
   <displacementTons>1580</displacementTons>
   <complementMen>93</complementMen>
   <lengthFoot>250</lengthFoot>
@@ -55124,6 +55260,7 @@ Battery select a closer historical battery.</english>
   <type>PatrolGunboat</type>
   <extraShipType>TorpedoCruiser</extraShipType>
   <country>Russia</country>
+  <referenceYear>1890</referenceYear>
   <displacementTons>394</displacementTons>
   <complementMen>65</complementMen>
   <lengthFoot>198</lengthFoot>
@@ -55296,6 +55433,7 @@ https://www.history.navy.mil/our-collections/photography/numerical-list-of-image
   <type>Battleship</type>
   <extraShipType>Ironclad</extraShipType>
   <country>Germany</country>
+  <referenceYear>1878</referenceYear>
   <displacementTons>6900</displacementTons>
   <complementMen>317</complementMen>
   <lengthFoot>306</lengthFoot>
@@ -55607,6 +55745,7 @@ One of Ting Yuen's Reference class
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
   <country>Germany</country>
+  <referenceYear>1898</referenceYear>
   <displacementTons>6599</displacementTons>
   <complementMen>477</complementMen>
   <lengthFoot>362</lengthFoot>
@@ -56164,6 +56303,7 @@ One of Ting Yuen's Reference class
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
   <country>Germany</country>
+  <referenceYear>1897</referenceYear>
   <displacementTons>6218</displacementTons>
   <complementMen>430</complementMen>
   <lengthFoot>401</lengthFoot>
@@ -56543,6 +56683,7 @@ One of Ting Yuen's Reference class
   <type>LightCruiser</type>
   <extraShipType>UnprotectedCruiser</extraShipType>
   <country>Germany</country>
+  <referenceYear>1894</referenceYear>
   <displacementTons>4208</displacementTons>
   <complementMen>302</complementMen>
   <lengthFoot>358</lengthFoot>
@@ -56876,6 +57017,7 @@ One of Ting Yuen's Reference class
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
   <country>France</country>
+  <referenceYear>1899</referenceYear>
   <displacementTons>7995</displacementTons>
   <complementMen>559</complementMen>
   <lengthFoot>384</lengthFoot>
@@ -57408,6 +57550,7 @@ One of Ting Yuen's Reference class
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
   <country>France</country>
+  <referenceYear>1896</referenceYear>
   <displacementTons>3960</displacementTons>
   <complementMen>383</complementMen>
   <lengthFoot>316</lengthFoot>
@@ -57914,6 +58057,7 @@ One of Ting Yuen's Reference class
   <type>PatrolGunboat</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>France</country>
+  <referenceYear>1896</referenceYear>
   <displacementTons>630</displacementTons>
   <complementMen>99</complementMen>
   <lengthFoot>164</lengthFoot>
@@ -58182,6 +58326,7 @@ One of Ting Yuen's Reference class
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
   <country>Italy</country>
+  <referenceYear>1897</referenceYear>
   <displacementTons>2453</displacementTons>
   <complementMen>254</complementMen>
   <lengthFoot>266</lengthFoot>
@@ -58710,6 +58855,7 @@ One of Ting Yuen's Reference class
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
   <country>Italy</country>
+  <referenceYear>1893</referenceYear>
   <displacementTons>2338</displacementTons>
   <complementMen>278</complementMen>
   <lengthFoot>278</lengthFoot>
@@ -59224,6 +59370,7 @@ One of Ting Yuen's Reference class
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
   <country>AustriaHungary</country>
+  <referenceYear>1899</referenceYear>
   <displacementTons>2359</displacementTons>
   <complementMen>308</complementMen>
   <lengthFoot>315</lengthFoot>
@@ -59633,6 +59780,7 @@ One of Ting Yuen's Reference class
   <type>LightCruiser</type>
   <extraShipType>ProtectedCruiser</extraShipType>
   <country>UnitedStates</country>
+  <referenceYear>1891</referenceYear>
   <displacementTons>4083</displacementTons>
   <complementMen>384</complementMen>
   <lengthFoot>328</lengthFoot>
@@ -60011,6 +60159,7 @@ One of Ting Yuen's Reference class
   <type>Destroyer</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>China</country>
+  <referenceYear>1898</referenceYear>
   <displacementTons>305</displacementTons>
   <complementMen>57</complementMen>
   <lengthFoot>194</lengthFoot>
@@ -60149,6 +60298,7 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
   <type>PatrolGunboat</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>China</country>
+  <referenceYear>1895</referenceYear>
   <displacementTons>349</displacementTons>
   <complementMen>58</complementMen>
   <lengthFoot>209</lengthFoot>
@@ -60466,6 +60616,7 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
   <type>PatrolGunboat</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>China</country>
+  <referenceYear>1895</referenceYear>
   <displacementTons>850</displacementTons>
   <complementMen>108</complementMen>
   <lengthFoot>259</lengthFoot>
@@ -60786,6 +60937,7 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
   <type>LandBattery</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>China</country>
+  <referenceYear>1900</referenceYear>
   <displacementTons>0</displacementTons>
   <complementMen>0</complementMen>
   <lengthFoot>200</lengthFoot>
@@ -61274,6 +61426,7 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
   <type>LandBattery</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>China</country>
+  <referenceYear>1900</referenceYear>
   <displacementTons>0</displacementTons>
   <complementMen>1</complementMen>
   <lengthFoot>200</lengthFoot>
@@ -61804,6 +61957,7 @@ Dotb</english>
   <type>LandBattery</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>China</country>
+  <referenceYear>1900</referenceYear>
   <displacementTons>0</displacementTons>
   <complementMen>1</complementMen>
   <lengthFoot>200</lengthFoot>
@@ -62663,6 +62817,7 @@ Dotb</english>
   <type>PatrolGunboat</type>
   <extraShipType>NotSpecified</extraShipType>
   <country>Russia</country>
+  <referenceYear>1898</referenceYear>
   <displacementTons>1239</displacementTons>
   <complementMen>159</complementMen>
   <lengthFoot>207</lengthFoot>
@@ -62981,6 +63136,7 @@ Dotb</english>
   <type>Battleship</type>
   <extraShipType>Predreatought</extraShipType>
   <country>Britain</country>
+  <referenceYear>1892</referenceYear>
   <displacementTons>14262</displacementTons>
   <complementMen>670</complementMen>
   <lengthFoot>380</lengthFoot>

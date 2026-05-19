@@ -1137,6 +1137,7 @@ namespace NavalCombatCore
         public ShipType type;
         public ExtraShipType extraShipType;
         public Country country;
+        public int referenceYear;
         // public int applicableYearBegin = 1900;
         // public int applicableYearEnd = 1900;
         public float displacementTons;

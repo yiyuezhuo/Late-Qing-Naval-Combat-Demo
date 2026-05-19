@@ -35,6 +35,7 @@ Use `python Tools/normalize_localization_ids.py --apply` to re-normalize IDs aft
 
 ## Data analysis related thing
 Check Data_Analysis_AI_Guide.md before running ad hoc analysis over project data files, especially scenario XML.
+Store non-persistent analysis tools, generated reports, and other temporary data outputs under `Tools/Temp_Reports/`.
 
 ## Local command guardrails
 - Only build this repo’s solution: `Late-Qing-Naval-Combat-Demo.slnx`.

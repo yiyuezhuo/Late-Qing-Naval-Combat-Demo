@@ -3682,6 +3682,10 @@ MonoBehaviour:
     m_Key: Rapid Fire Battery Meta Info
     m_Metadata:
       m_Items: []
+  - m_Id: -224
+    m_Key: Reference Year
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

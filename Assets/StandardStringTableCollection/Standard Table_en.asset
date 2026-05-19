@@ -3690,6 +3690,10 @@ MonoBehaviour:
     m_Localized: Rapid Fire Battery Meta Info
     m_Metadata:
       m_Items: []
+  - m_Id: -224
+    m_Localized: Reference Year
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

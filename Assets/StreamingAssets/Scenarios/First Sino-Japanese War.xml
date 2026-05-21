@@ -16590,7 +16590,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>1020</supplyTons>
+    <supplyTons>980</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -16741,7 +16741,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>1020</supplyTons>
+    <supplyTons>980</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -16892,7 +16892,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>1020</supplyTons>
+    <supplyTons>980</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -17043,7 +17043,7 @@
     <recentCollisionClock remainSeconds="0" />
     <preCollsionAvoiding>false</preCollsionAvoiding>
     <autoReattachAfterRepair>false</autoReattachAfterRepair>
-    <supplyTons>1020</supplyTons>
+    <supplyTons>980</supplyTons>
     <supplyTransferState>
      <requestRecord>
       <targetSupplyTons>0</targetSupplyTons>
@@ -32991,7 +32991,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>2386.6800022125244</supplyTons>
+    <supplyTons>2577.6200022697449</supplyTons>
     <supplyGeneratedTons>100</supplyGeneratedTons>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
     <supplyTransferState>
@@ -33901,7 +33901,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>261619.84810531139</supplyTons>
+    <supplyTons>281616.84810531139</supplyTons>
     <supplyGeneratedTons>10000</supplyGeneratedTons>
     <remark>Generic Super Depot Supply Source.</remark>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
@@ -33945,7 +33945,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>279764.29524803162</supplyTons>
+    <supplyTons>299683.7392449379</supplyTons>
     <supplyGeneratedTons>10000</supplyGeneratedTons>
     <remark>Generic Super Depot Supply Source.</remark>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
@@ -34087,7 +34087,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>21127.440248012543</supplyTons>
+    <supplyTons>20967.678248882294</supplyTons>
     <supplyGeneratedTons>0</supplyGeneratedTons>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
     <supplyTransferState>
@@ -34240,7 +34240,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>82.529947757720947</supplyTons>
+    <supplyTons>55.019946455955505</supplyTons>
     <supplyGeneratedTons>0</supplyGeneratedTons>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
     <supplyTransferState>
@@ -34332,7 +34332,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>110.16004168987274</supplyTons>
+    <supplyTons>73.440041095018387</supplyTons>
     <supplyGeneratedTons>0</supplyGeneratedTons>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
     <supplyTransferState>
@@ -34473,7 +34473,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>24165.70968413353</supplyTons>
+    <supplyTons>24162.70968413353</supplyTons>
     <supplyGeneratedTons>0</supplyGeneratedTons>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
     <supplyTransferState>
@@ -34523,7 +34523,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>722.65515959262848</supplyTons>
+    <supplyTons>695.38515985012054</supplyTons>
     <supplyGeneratedTons>0</supplyGeneratedTons>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
     <supplyTransferState>
@@ -34629,7 +34629,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>2521.5</supplyTons>
+    <supplyTons>2518.5</supplyTons>
     <supplyGeneratedTons>0</supplyGeneratedTons>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
     <supplyTransferState>
@@ -35838,7 +35838,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
     <suppression>0</suppression>
     <morale>1</morale>
     <fatigue>0</fatigue>
-    <supplyTons>500</supplyTons>
+    <supplyTons>1500</supplyTons>
     <supplyGeneratedTons>500</supplyGeneratedTons>
     <landUnitTemplateId>3648c0eb-1297-4a05-a022-886cd284b133</landUnitTemplateId>
     <supplyTransferState>
@@ -35857,6 +35857,7 @@ Each cavalry battalion has 277 personnel (excluding laborers)
        <pathCells />
       </SupplyFlowRecord>
      </requestedRecords>
+     <resolvedSupplyCapTons>8262.8</resolvedSupplyCapTons>
     </supplyTransferState>
     <portLevel>0</portLevel>
     <repairShipyardLevel>0</repairShipyardLevel>
@@ -44554,8 +44555,9 @@ Getting Started: Select Observation Mode, then advance time using the Spacebar o
     <waypoints>
      <XY x="24" y="32" />
      <XY x="21" y="30" />
-     <XY x="21" y="28" />
+     <XY x="23" y="28" />
      <XY x="22" y="28" />
+     <XY x="14" y="31" />
      <XY x="15" y="31" />
      <XY x="13" y="33" />
     </waypoints>
@@ -47133,7 +47135,7 @@ Getting Started: Select Observation Mode, then advance time using the Spacebar o
     <Cell x="23" y="25" terrain="ShallowWater" longitude="122.59211" latitude="35.9884033" />
     <Cell x="23" y="26" terrain="ShallowWater" longitude="122.562744" latitude="36.5296249" />
     <Cell x="23" y="27" terrain="Field" longitude="122.535049" latitude="37.07104" IsCoast="true" sideObjectIdHex="dd43c3f3-1a02-46ca-b287-4ac069c23218" blockSeaMovementsStr="5" />
-    <Cell x="23" y="28" terrain="ShallowWater" longitude="122.5094" latitude="37.6125565">
+    <Cell x="23" y="28" terrain="Clear" longitude="122.5094" latitude="37.6125565" IsCoast="true">
      <StrategicGroupReferences>
       <StrategicGroupReference>
        <referenceId>a7d4f7b4-4ada-4f34-8588-509c87c5a037</referenceId>

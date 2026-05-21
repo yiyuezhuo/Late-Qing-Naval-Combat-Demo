@@ -104,6 +104,7 @@
                     <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-106)"/>
                 </Bindings>
             </ui:Button>
+            <ui:Button text="?" name="PenetrationTableHelpButton" tooltip="Penetration Table Reference" style="width: 24px; min-width: 24px; height: 20px; margin-left: 2px; padding-left: 0; padding-right: 0;"/>
         </ui:VisualElement>
         <ui:MultiColumnListView data-source-path="fireControlTableRecords" binding-source-selection-mode="AutoAssign" header-title="Fire Control Table" show-foldout-header="true" show-add-remove-footer="true" name="FireControlTableMultiColumnListView">
             <ui:Columns>

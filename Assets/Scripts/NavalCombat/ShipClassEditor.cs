@@ -554,6 +554,12 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
 | H            | [45cm C/06](http://www.navweaps.com/Weapons/WTGER_PreWWII.php#45_cm_%2817.7%22%29_C%2F06_and_C%2F06_D) | GERMANY / SS / [U-9](https://en.wikipedia.org/wiki/SM_U-9)                                                                                    | 1907 | 270          | 17.7            |
 | I            | [14"" Whitehead](https://en.wikipedia.org/wiki/Whitehead_torpedo)                                       | CHILE / TB / [Almirante Lynch](https://en.wikipedia.org/wiki/Chilean_torpedo_gunboat_Almirante_Lynch)                                         | 1868 | 118          | 14              |";
 
+    const string PenetrationTableHelpMarkdown = @"Penetration tables are relatively physics-based, so players may simply use historical values or values derived from a ballistic calculator, such as the [NAaB calculator](http://www.panzer-war.com/Naab/NAaB.html). WWII Class A/B armor should be used to generate a similar penetration table. A roughly 12-second interval should be added to infer the 2-minute rate of fire from flight time.
+
+The game also includes a built-in McCoy-Okun ballistic calculator for setting these values. Check the **""Meta Info (McCoy Okun)""** button for this.
+
+However, these methods do not follow SK's [""stylized"" method](https://groups.io/g/SEEKRIEG/topic/67566219#msg666). A simple statistical model to exploit correlations to produce value closer to SK5's own data can be used to set default value with the **""Reset Penetration Table""** button.";
+
     static readonly GlobalString Sk5CodeHelpMessage = new()
     {
         english = "Fire Control Code denotes a specific combination of Fire Control Components in SK5 data. Changing Role, Fire Control Code, Era, or component fields updates the Fire Control Table from the standard table when available; otherwise the battery is marked as using a custom table. The code and component values themselves do not affect resolution because their effects are already fully captured by the Fire Control Table, which acts as a sufficient statistic.",
@@ -783,6 +789,7 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
             var mountsListView = el.Q<ListView>("MountsListView");
             var sk5CodeHelpButton = el.Q<Button>("Sk5CodeHelpButton");
             var fireControlModelComparisonButton = el.Q<Button>("FireControlModelComparisonButton");
+            var penetrationTableHelpButton = el.Q<Button>("PenetrationTableHelpButton");
             var batteryRecordMetaInfoButton = el.Q<Button>("BatteryRecordMetaInfoButton");
             var batteryRecordMetaInfoMcCoyOkunButton = el.Q<Button>("BatteryRecordMetaInfoMcCoyOkunButton");
             if (sk5CodeHelpButton != null)
@@ -840,6 +847,14 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
                     }
 
                     PopupFireControlModelComparisonDialog(batteryRecord);
+                };
+            }
+
+            if (penetrationTableHelpButton != null)
+            {
+                penetrationTableHelpButton.clicked += () =>
+                {
+                    DialogRoot.Instance.PopupMarkdownDialog(PenetrationTableHelpMarkdown, Localize("Reset Penetration Table"));
                 };
             }
 

@@ -40,10 +40,10 @@
     <fireControlType>
      <role>Primary</role>
      <era>Predreadnought</era>
-     <code>Y</code>
+     <code>X</code>
      <gunSight>Basic</gunSight>
      <fireControlInstrument>Basic</fireControlInstrument>
-     <rangeFinder>None</rangeFinder>
+     <rangeFinder>Optical</rangeFinder>
      <directorControl>None</directorControl>
      <stabilization>Manual</stabilization>
      <powerRemoteControl>None</powerRemoteControl>
@@ -60,21 +60,21 @@
     <fireControlTableRecords>
      <FireControlTableRecord>
       <speedThresholdKnot>9</speedThresholdKnot>
-      <shortBroad>9</shortBroad>
-      <shortNarrow>5</shortNarrow>
-      <mediumBroad>5</mediumBroad>
-      <mediumNarrow>3</mediumNarrow>
-      <longBroad>4</longBroad>
-      <longNarrow>2</longNarrow>
-      <extremeBroad>3</extremeBroad>
+      <shortBroad>11</shortBroad>
+      <shortNarrow>6</shortNarrow>
+      <mediumBroad>7</mediumBroad>
+      <mediumNarrow>4</mediumNarrow>
+      <longBroad>5</longBroad>
+      <longNarrow>3</longNarrow>
+      <extremeBroad>4</extremeBroad>
       <extremeNarrow>2</extremeNarrow>
      </FireControlTableRecord>
      <FireControlTableRecord>
       <speedThresholdKnot>18</speedThresholdKnot>
-      <shortBroad>6</shortBroad>
+      <shortBroad>7</shortBroad>
       <shortNarrow>4</shortNarrow>
       <mediumBroad>4</mediumBroad>
-      <mediumNarrow>2</mediumNarrow>
+      <mediumNarrow>3</mediumNarrow>
       <longBroad>3</longBroad>
       <longNarrow>2</longNarrow>
       <extremeBroad>2</extremeBroad>
@@ -82,7 +82,7 @@
      </FireControlTableRecord>
      <FireControlTableRecord>
       <speedThresholdKnot>27</speedThresholdKnot>
-      <shortBroad>5</shortBroad>
+      <shortBroad>6</shortBroad>
       <shortNarrow>3</shortNarrow>
       <mediumBroad>3</mediumBroad>
       <mediumNarrow>2</mediumNarrow>
@@ -93,22 +93,22 @@
      </FireControlTableRecord>
      <FireControlTableRecord>
       <speedThresholdKnot>36</speedThresholdKnot>
+      <shortBroad>5</shortBroad>
+      <shortNarrow>3</shortNarrow>
+      <mediumBroad>3</mediumBroad>
+      <mediumNarrow>2</mediumNarrow>
+      <longBroad>2</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>2</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>45</speedThresholdKnot>
       <shortBroad>4</shortBroad>
       <shortNarrow>2</shortNarrow>
       <mediumBroad>2</mediumBroad>
       <mediumNarrow>1</mediumNarrow>
       <longBroad>2</longBroad>
-      <longNarrow>1</longNarrow>
-      <extremeBroad>1</extremeBroad>
-      <extremeNarrow>1</extremeNarrow>
-     </FireControlTableRecord>
-     <FireControlTableRecord>
-      <speedThresholdKnot>45</speedThresholdKnot>
-      <shortBroad>3</shortBroad>
-      <shortNarrow>2</shortNarrow>
-      <mediumBroad>2</mediumBroad>
-      <mediumNarrow>1</mediumNarrow>
-      <longBroad>1</longBroad>
       <longNarrow>1</longNarrow>
       <extremeBroad>1</extremeBroad>
       <extremeNarrow>1</extremeNarrow>
@@ -518,7 +518,9 @@
   </armorRating>
   <portraitUrl>https://upload.wikimedia.org/wikipedia/commons/2/24/Yoshino_The-Naval-Annual1897.jpg</portraitUrl>
   <remark>
-   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Yoshino</english>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Yoshino
+
+Correction: SK5 give FC Code Y which doesn't reflect FA1 optical rangefinder advantage, so I follow DotB method (precious gunnery standard 0* in the Mahan's Wake scenarios) to set it to Optical.</english>
   </remark>
   <isPoorlySupported>false</isPoorlySupported>
   <portraitReference>

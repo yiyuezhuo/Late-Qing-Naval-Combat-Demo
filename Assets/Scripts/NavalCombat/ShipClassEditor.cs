@@ -542,7 +542,7 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
 | Vickers Non-Cemented                   |             0.84 | VICKERS HARDENED NON-CEMENTED / VH                       | Q                | Q=0.839                  | rounded                 |
 | Molybdenum Non-Cemented                |             0.97 | MOLYBDENUM NON-CEMENTED / MNC                            | Average Quality  | 0.97                     | direct                  |";
 
-    const string TorpedoDamageClassMarkdown = @"| Damage Class | Type                                                                                                   | Firing Ship Example                                                                                                                           | Year | warhead (lb) | diameter (inch) |
+    const string TorpedoDamageClassMarkdown = @"| Damage Class |  Example Type                                                                                                   | Firing Ship Example                                                                                                                           | Year | warhead (lb) | diameter (inch) |
 | ------------ | ------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | ---- | ------------ | --------------- |
 | A            | [61cm Type 93 M1-2](https://en.wikipedia.org/wiki/Type_93_torpedo)                                     | JAPAN / DD / [Kawakaze (江風)](https://en.wikipedia.org/wiki/Japanese_destroyer_Kawakaze_(1936))                                                | 1933 | 1080         | 24              |
 | B            | [61cm Type 90](https://en.wikipedia.org/wiki/61_cm_Type_90_torpedo)                                    | JAPAN / DD / [Shikinami (敷波)](https://en.wikipedia.org/wiki/Japanese_destroyer_Shikinami_(1929))                                              | 1933 | 880          | 24              |
@@ -564,7 +564,31 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
 
     const string Sk5CodeExamplesMarkdown = @"FCS Examples:
 
-| fcs_code | class_name | service_period | weapon |
+- Gun Sight
+	- None: [TING YUEN (定遠)](https://en.wikipedia.org/wiki/Dingyuan-class_ironclad) 1885-1895
+	- Telescope: [Bradley Fiske](https://en.wikipedia.org/wiki/Bradley_A._Fiske)'s [Yorktown](https://en.wikipedia.org/wiki/USS_Yorktown_(PG-1)) 1889-1909 (1892 experiment) & [Percy Scott](https://en.wikipedia.org/wiki/Percy_Scott)'s [Scylla](https://en.wikipedia.org/wiki/Apollo-class_cruiser) 1892-1902 (1897 experiment)
+- Fire Control Instrument
+	- None: [FUSO (扶桑)](https://en.wikipedia.org/wiki/Japanese_ironclad_Fus%C5%8D)  1878-1894
+	- Basic: [TING YUEN (定遠)](https://en.wikipedia.org/wiki/Dingyuan-class_ironclad) 1885-1895
+	- Mechanical Computer: [DREADNOUGHT](https://en.wikipedia.org/wiki/HMS_Dreadnought_%281906%29) 1914-1916 ([Dreyer Fire Control Table](https://dreadnoughtproject.org/tfs/index.php/Dreyer_Fire_Control_Table), after refits in 1912–13)
+	- Advanced Mechanical Computer: [Queen Elizabeth](https://en.wikipedia.org/wiki/HMS_Queen_Elizabeth_(1913))  1941-1942 ([Admiralty Fire Control Table](https://en.wikipedia.org/wiki/Admiralty_Fire_Control_Table), after refits in 1937-1941)
+- Range Finder
+	- None: [TING YUEN (定遠)](https://en.wikipedia.org/wiki/Dingyuan-class_ironclad)  1885-1895
+	- Optical: [YOSHINO (吉野)](https://en.wikipedia.org/wiki/Japanese_cruiser_Yoshino) 1893-1900 ([Barr & Stroud FA1](https://dreadnoughtproject.org/tfs/index.php/Barr_and_Stroud_Rangefinders))
+- Director Control
+	- None: [MIKASA (三笠)](https://en.wikipedia.org/wiki/Japanese_battleship_Mikasa)
+	- Early Follow The Pointer: [Borodino](https://en.wikipedia.org/wiki/Borodino-class_battleship) 1904-1905 ([Geisler system (1894)](https://topwar.ru/182618-cusima-faktory-tochnosti-russkoj-artillerii.html), системы Гейслера). denoting information transmission (observer -> gunnery center -> gun position) systems using electronic or equivalent beyond sound & hand.
+	- Director: [Thunderer](https://dreadnoughtproject.org/tfs/index.php/H.M.S._Thunderer_(1911)) 1912-1917 ([British Tripod Director Firing System](https://dreadnoughtproject.org/tfs/index.php/British_Tripod_Director_Firing_System), after refit in 1916) (See also: [British Adoption of Director Firing](https://dreadnoughtproject.org/tfs/index.php/British_Adoption_of_Director_Firing))
+- Stabilization
+	- Manual: [König](https://en.wikipedia.org/wiki/SMS_K%C3%B6nig ""SMS König"") 1914-1916
+	- Gyro Assisted: [König](https://en.wikipedia.org/wiki/SMS_K%C3%B6nig ""SMS König"") 1917-1919 ([Abfeuer-Gerät C/16 gyroscopic stabilizing system](https://tidsskrift.dk/frakrigogfred/article/download/27001/23754/62314) after 1917 refit)
+	- Stable Element: [Washington](https://en.wikipedia.org/wiki/USS_Washington_(BB-56)) 1941-1942 ([Stable-vertical gun directors Mk 41](https://www.eugeneleeslover.com/USNAVY/CHAPTER-20-A.html))
+- Power Remote Control: [A Comparison](https://combinedfleet.com/b_fire.htm)
+	- None: [YAMATO (大和)](https://en.wikipedia.org/wiki/Yamato-class_battleship) 1941-1943
+	- Partial: [BISMARCK](https://en.wikipedia.org/wiki/Bismarck-class_battleship) 1940-1941 (elevation only, no training)
+	- Full: [IOWA](https://en.wikipedia.org/wiki/Iowa-class_battleship) 1943-1945
+
+| FCS Code | Example Class | Period | Weapon |
 | -------- | ---------- | -------------- | ------ |
 | 1A3 | [IOWA](https://en.wikipedia.org/wiki/Iowa-class_battleship) | 1943-1945 | 16""/50 Mk 7 |
 | 2A3 | [IOWA](https://en.wikipedia.org/wiki/Iowa-class_battleship) | 1943-1945 | 5""/38 Mk 12 |

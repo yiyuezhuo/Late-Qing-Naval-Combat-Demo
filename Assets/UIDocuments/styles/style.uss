@@ -1306,7 +1306,7 @@
 
 .markdown-list-item {
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     margin-top: 0;
     margin-bottom: 0;
 }
@@ -1321,6 +1321,7 @@
 }
 
 .markdown-list-bullet-marker {
+    height: 18px;
     align-items: flex-end;
     justify-content: center;
 }

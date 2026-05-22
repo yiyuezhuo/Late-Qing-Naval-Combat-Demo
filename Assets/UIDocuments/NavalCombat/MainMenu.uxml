@@ -109,6 +109,9 @@
                         </ui:Button>
                     </ui:VisualElement>
                 </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 1; flex-direction: row; justify-content: center; height: 20px;">
+                    <ui:Button icon-image="project://database/Assets/Textures/GitHub_Invertocat_White.png?fileID=2800000&amp;guid=788cf74ca55c1994db5d65f5c6fd38b1&amp;type=3#GitHub_Invertocat_White" text="" name="GitHubButton" style="margin-top: 0; margin-bottom: 0; width: 20px; padding-left: 0; padding-right: 0;"/>
+                </ui:VisualElement>
                 <ui:Label text="Version" name="VersionLabel" data-source-type="MainMenu, Assembly-CSharp" style="-unity-text-align: upper-center;">
                     <Bindings>
                         <ui:DataBinding property="text" data-source-path="versionStr" binding-mode="ToTarget"/>

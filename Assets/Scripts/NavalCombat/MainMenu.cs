@@ -11,6 +11,8 @@ using YYZ;
 
 public class MainMenu : SingletonDocument<MainMenu>
 {
+    const string GitHubRepositoryUrl = "https://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo";
+
     protected override void Awake()
     {
         base.Awake();
@@ -25,6 +27,7 @@ public class MainMenu : SingletonDocument<MainMenu>
         var mccoyOkunCalculatorButton = root.Q<Button>("McCoyOkunCalculatorButton");
         var changelogButton = root.Q<Button>("ChangelogButton");
         var aboutButton = root.Q<Button>("AboutButton");
+        var githubButton = root.Q<Button>("GitHubButton");
         var exitButton = root.Q<Button>("ExitButton");
 
         selectScenarioButton.clicked += DialogRoot.Instance.PopupScenarioPickerDialogForSwitchingSceneWithSelectedScenario;
@@ -70,10 +73,14 @@ public class MainMenu : SingletonDocument<MainMenu>
         changelogButton.text = MyLocale.Get("Changelog");
         changelogButton.clicked += () =>
         {
-            DialogRoot.Instance.PopupConfirmOpenURLDialog("https://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo/releases");
+            DialogRoot.Instance.PopupConfirmOpenURLDialog($"{GitHubRepositoryUrl}/releases");
         };
         aboutButton.text = MyLocale.Get("About");
         aboutButton.clicked += DialogRoot.Instance.PopupAboutDialogDocument;
+        githubButton.clicked += () =>
+        {
+            DialogRoot.Instance.PopupConfirmOpenURLDialog(GitHubRepositoryUrl);
+        };
 
         root.Q<Button>("StartAsEmptyButton").clicked += () =>
         {

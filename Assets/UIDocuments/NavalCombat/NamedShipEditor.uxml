@@ -83,9 +83,6 @@
                                         <ui:Instance template="GlobalStringEditor" data-source-path="name">
                                             <AttributeOverrides element-name="GlobalStringLabel" text="Name"/>
                                         </ui:Instance>
-                                        <Bindings>
-                                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
-                                        </Bindings>
                                     </ui:VisualElement>
                                     <ui:TextField label="Default Leader" readonly="true">
                                         <Bindings>
@@ -97,7 +94,6 @@
                                         <ui:Button text="Select Default Leader" name="SelectDefaultLeaderButton" style="flex-grow: 1;">
                                             <Bindings>
                                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(100642477215744)"/>
-                                                <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                                             </Bindings>
                                         </ui:Button>
                                         <ui:Button text="Go to Leader" name="GotoLeaderButton">
@@ -119,18 +115,11 @@
                                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(100841559855104)"/>
                                             </Bindings>
                                         </ui:Slider>
-                                        <Bindings>
-                                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
-                                        </Bindings>
                                     </ui:VisualElement>
                                     <ui:VisualElement>
                                         <ui:VisualElement style="flex-direction: row; align-items: center;">
                                             <ui:Label text="Remark" style="flex-grow: 1;"/>
-                                            <ui:Button text="Set" name="SetRemarkButton">
-                                                <Bindings>
-                                                    <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
-                                                </Bindings>
-                                            </ui:Button>
+                                            <ui:Button text="Set" name="SetRemarkButton"/>
                                         </ui:VisualElement>
                                         <ui:ScrollView vertical-scroller-visibility="Auto" horizontal-scroller-visibility="Hidden" style="min-height: 100px; max-height: 220px;">
                                             <MarkdownRenderer name="NamedShipRemarkMarkdownRenderer" selectable="true" max-image-height="180">

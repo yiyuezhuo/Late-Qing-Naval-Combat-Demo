@@ -156,9 +156,6 @@
                                 <ui:VisualElement style="flex-grow: 1; flex-basis: 50%;">
                                     <ui:Instance template="ArmorRatingEditor" data-source-path="armorRating"/>
                                 </ui:VisualElement>
-                                <Bindings>
-                                    <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
-                                </Bindings>
                             </ui:VisualElement>
                             <Bindings>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66810558451712)"/>
@@ -219,9 +216,6 @@
                                         </Bindings>
                                     </ui:ListView>
                                 </ui:VisualElement>
-                                <Bindings>
-                                    <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
-                                </Bindings>
                             </ui:VisualElement>
                             <Bindings>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66886194335744)"/>
@@ -232,7 +226,6 @@
                                 <ui:Button text="Import To Selected" name="ImportToSelectedBatteryButton">
                                     <Bindings>
                                         <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(73144209149952)"/>
-                                        <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                                     </Bindings>
                                 </ui:Button>
                                 <ui:Button text="Export Selected" name="ExportSelectedBatteryButton">
@@ -248,15 +241,11 @@
                                 <ui:Button text="Set Selected by Battery Selector" name="SetSelectedByBatterySelectorButton">
                                     <Bindings>
                                         <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(36692937234092032)"/>
-                                        <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                                     </Bindings>
                                 </ui:Button>
                             </ui:VisualElement>
                             <ui:ScrollView style="height: 100%; flex-grow: 1;">
                                 <ui:ListView item-template="project://database/Assets/UIDocuments/NavalCombat/BatteryRecordEditor.uxml?fileID=9197481963319205126&amp;guid=e85d42eaff3911a4d850ecd233a8d27c&amp;type=3#BatteryRecordEditor" binding-source-selection-mode="AutoAssign" show-add-remove-footer="true" virtualization-method="DynamicHeight" name="BatteryRecordsListView" data-source-path="batteryRecords" style="flex-grow: 0;"/>
-                                <Bindings>
-                                    <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
-                                </Bindings>
                             </ui:ScrollView>
                             <Bindings>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(67032395190272)"/>
@@ -274,9 +263,6 @@
                                 <ui:ScrollView>
                                     <ui:ListView data-source-path="rapidFireBatteryRecords" binding-source-selection-mode="AutoAssign" item-template="project://database/Assets/UIDocuments/NavalCombat/RapidFireBatteryRecordEditor.uxml?fileID=9197481963319205126&amp;guid=c54c25b0a3728a647b6d6db069dbe92f&amp;type=3#RapidFireBatteryRecordEditor" virtualization-method="DynamicHeight" name="RapidFireBatteryListView" show-add-remove-footer="true"/>
                                 </ui:ScrollView>
-                                <Bindings>
-                                    <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
-                                </Bindings>
                             </ui:VisualElement>
                             <Bindings>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(67081078476800)"/>
@@ -357,13 +343,7 @@
                                                 </Bindings>
                                             </ui:ListView>
                                         </ui:VisualElement>
-                                        <Bindings>
-                                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
-                                        </Bindings>
                                     </ui:VisualElement>
-                                    <Bindings>
-                                        <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
-                                    </Bindings>
                                 </ui:VisualElement>
                             </ui:ScrollView>
                             <Bindings>
@@ -411,9 +391,6 @@
                                         </ui:VisualElement>
                                         <ui:VisualElement style="flex-basis: 0;"/>
                                     </ui:VisualElement>
-                                    <Bindings>
-                                        <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
-                                    </Bindings>
                                 </ui:VisualElement>
                             </ui:ScrollView>
                             <Bindings>
@@ -427,13 +404,11 @@
                                         <ui:Button text="Generate Placeholder Image" name="GeneratePlaceholderImageButton" style="margin-right: 6px;">
                                             <Bindings>
                                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000049)"/>
-                                                <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                                             </Bindings>
                                         </ui:Button>
                                         <ui:Toggle label="Graphic Placeholder" style="margin-right: 6px;">
                                             <Bindings>
                                                 <ui:DataBinding property="value" data-source-path="isGraphicPlaceholder" binding-mode="TwoWay"/>
-                                                <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
                                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(65032134881611777)"/>
                                             </Bindings>
                                         </ui:Toggle>

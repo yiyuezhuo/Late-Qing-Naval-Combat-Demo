@@ -426,11 +426,11 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         [CreateProperty] public float windscreenWeight { get => (float)owner.facehardDetails.WindscreenWeight; set { if (SetDouble(owner.facehardDetails.WindscreenWeight, value, v => owner.facehardDetails.WindscreenWeight = v, nameof(windscreenWeight), 0)) owner.RefreshProjectileDerivedState(); } }
         [CreateProperty] public float remainingNoseWeight => (float)owner.NoseWeights.RemainWeight;
         [CreateProperty] public string remainingNoseWeightLabel => RemainingNoseWeightLabel(owner.NoseWeights.CapHead, owner.ResolvedCapType);
-        [CreateProperty] public float plim { get => (float)(isCustomProjectile ? owner.facehardDetails.ProjectileLimitQuality : owner.CurrentProjectilePreset?.ProjectileLimitQuality ?? owner.facehardDetails.ProjectileLimitQuality); set { if (isCustomProjectile) SetDouble(owner.facehardDetails.ProjectileLimitQuality, value, v => owner.facehardDetails.ProjectileLimitQuality = v, nameof(plim), 0.001); } }
-        [CreateProperty] public float pdam { get => (float)(isCustomProjectile ? owner.facehardDetails.ProjectileDamageQuality : owner.CurrentProjectilePreset?.ProjectileDamageQuality ?? owner.facehardDetails.ProjectileDamageQuality); set { if (isCustomProjectile) SetDouble(owner.facehardDetails.ProjectileDamageQuality, value, v => owner.facehardDetails.ProjectileDamageQuality = v, nameof(pdam), 0.001); } }
-        [CreateProperty] public int shatResIndex { get => Mathf.Clamp((int)Math.Round(isCustomProjectile ? owner.facehardDetails.ShatterResistance : owner.CurrentProjectilePreset?.ShatterResistance ?? owner.facehardDetails.ShatterResistance), 0, ShatterResistanceLabelKeys.Length - 1); set { if (isCustomProjectile) SetDouble(owner.facehardDetails.ShatterResistance, value, v => owner.facehardDetails.ShatterResistance = v, nameof(shatResIndex)); } }
-        [CreateProperty] public int breakUnderNblIndex { get => Mathf.Clamp((int)Math.Round(isCustomProjectile ? owner.facehardDetails.BreakUnderNbl : owner.CurrentProjectilePreset?.BreakUnderNbl ?? owner.facehardDetails.BreakUnderNbl), 0, BreakUnderNblLabelKeys.Length - 1); set { if (isCustomProjectile) SetDouble(owner.facehardDetails.BreakUnderNbl, value, v => owner.facehardDetails.BreakUnderNbl = v, nameof(breakUnderNblIndex)); } }
-        [CreateProperty] public int lightCaseIndex { get => Mathf.Clamp((int)Math.Round(isCustomProjectile ? owner.facehardDetails.LightCase : owner.CurrentProjectilePreset?.LightCase ?? owner.facehardDetails.LightCase), 0, LightCaseLabelKeys.Length - 1); set { if (isCustomProjectile) SetDouble(owner.facehardDetails.LightCase, value, v => owner.facehardDetails.LightCase = v, nameof(lightCaseIndex)); } }
+        [CreateProperty] public float plim { get => (float)(isCustomProjectile ? owner.facehardDetails.ProjectileLimitQuality : owner.ResolvedProjectilePreset?.ProjectileLimitQuality ?? owner.facehardDetails.ProjectileLimitQuality); set { if (isCustomProjectile) SetDouble(owner.facehardDetails.ProjectileLimitQuality, value, v => owner.facehardDetails.ProjectileLimitQuality = v, nameof(plim), 0.001); } }
+        [CreateProperty] public float pdam { get => (float)(isCustomProjectile ? owner.facehardDetails.ProjectileDamageQuality : owner.ResolvedProjectilePreset?.ProjectileDamageQuality ?? owner.facehardDetails.ProjectileDamageQuality); set { if (isCustomProjectile) SetDouble(owner.facehardDetails.ProjectileDamageQuality, value, v => owner.facehardDetails.ProjectileDamageQuality = v, nameof(pdam), 0.001); } }
+        [CreateProperty] public int shatResIndex { get => Mathf.Clamp((int)Math.Round(isCustomProjectile ? owner.facehardDetails.ShatterResistance : owner.ResolvedProjectilePreset?.ShatterResistance ?? owner.facehardDetails.ShatterResistance), 0, ShatterResistanceLabelKeys.Length - 1); set { if (isCustomProjectile) SetDouble(owner.facehardDetails.ShatterResistance, value, v => owner.facehardDetails.ShatterResistance = v, nameof(shatResIndex)); } }
+        [CreateProperty] public int breakUnderNblIndex { get => Mathf.Clamp((int)Math.Round(isCustomProjectile ? owner.facehardDetails.BreakUnderNbl : owner.ResolvedProjectilePreset?.BreakUnderNbl ?? owner.facehardDetails.BreakUnderNbl), 0, BreakUnderNblLabelKeys.Length - 1); set { if (isCustomProjectile) SetDouble(owner.facehardDetails.BreakUnderNbl, value, v => owner.facehardDetails.BreakUnderNbl = v, nameof(breakUnderNblIndex)); } }
+        [CreateProperty] public int lightCaseIndex { get => Mathf.Clamp((int)Math.Round(isCustomProjectile ? owner.facehardDetails.LightCase : owner.ResolvedProjectilePreset?.LightCase ?? owner.facehardDetails.LightCase), 0, LightCaseLabelKeys.Length - 1); set { if (isCustomProjectile) SetDouble(owner.facehardDetails.LightCase, value, v => owner.facehardDetails.LightCase = v, nameof(lightCaseIndex)); } }
 
         [CreateProperty] public bool isCustomProjectile => owner.facehardDetails.ProjectilePresetId == "custom";
         [CreateProperty] public bool projectileCustomFieldEnabled => isCustomProjectile;
@@ -550,12 +550,14 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
     bool roundSyncBackValuesToOneDecimal = true;
     List<ResultRow> tableRows = new();
     bool hasCalculated;
+    FacehardResult inputPreview;
 
     List<BallisticSample> Samples => BallisticSampleCatalog.All();
     List<McCoyPlusDragPreset> DragPresets => McCoyPlus.DragPresets();
     List<FacehardCapType> CapValues { get; } = new() { FacehardCapType.Hard, FacehardCapType.ThinHard, FacehardCapType.Soft, FacehardCapType.Hood, FacehardCapType.None };
     FacehardProjectilePreset CurrentProjectilePreset => FacehardCalculator.FacehardProjectilePresets.FirstOrDefault(item => item.Id == facehardDetails.ProjectilePresetId)
         ?? FacehardCalculator.FacehardProjectilePresets.FirstOrDefault(item => item.Id == "custom");
+    FacehardProjectilePreset ResolvedProjectilePreset => inputPreview?.ProjectilePreset ?? CurrentProjectilePreset;
     List<FacehardProjectilePreset> ProjectileChoices
     {
         get
@@ -568,7 +570,7 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
         }
     }
     FacehardNoseCoveringWeights NoseWeights => FacehardCalculator.FacehardNoseCoveringWeights(facehardDetails);
-    FacehardCapType ResolvedCapType => ResolvedCapTypeFor(facehardDetails);
+    FacehardCapType ResolvedCapType => inputPreview?.ResolvedCapType ?? ResolvedCapTypeFor(facehardDetails);
 
     public BatteryRecordMetaInfoMcCoyOkunDialog(BatteryRecord batteryRecord, Action callback)
     {
@@ -690,6 +692,7 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
 
     void RefreshInputBindings(bool notifyAll = false)
     {
+        RefreshResolvedInputPreview();
         RefreshInputChoices();
         UpdateInputWarnings();
         if (notifyAll)
@@ -705,8 +708,14 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
 
     void RefreshProjectileDerivedState()
     {
+        RefreshResolvedInputPreview();
         UpdateInputWarnings();
         viewModel?.NotifyProjectileState();
+    }
+
+    void RefreshResolvedInputPreview()
+    {
+        inputPreview = FacehardCalculator.CalculateFacehard(facehardDetails, false);
     }
 
     void RefreshInputChoices()

@@ -1315,6 +1315,9 @@ namespace NavalCombatCore
 
         [CreateProperty]
         public bool isInEditMode => GamePreference.Instance.isInEditMode;
+
+        [CreateProperty]
+        public bool isDebug => GamePreference.Instance.isDebug;
     }
 
     public partial class RapidFiringTargettingStatus

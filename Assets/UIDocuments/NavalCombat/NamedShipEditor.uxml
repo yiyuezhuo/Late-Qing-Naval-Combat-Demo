@@ -119,6 +119,28 @@
                                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(100841559855104)"/>
                                             </Bindings>
                                         </ui:Slider>
+                                        <Bindings>
+                                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
+                                        </Bindings>
+                                    </ui:VisualElement>
+                                    <ui:VisualElement>
+                                        <ui:VisualElement style="flex-direction: row; align-items: center;">
+                                            <ui:Label text="Remark" style="flex-grow: 1;"/>
+                                            <ui:Button text="Set" name="SetRemarkButton">
+                                                <Bindings>
+                                                    <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
+                                                </Bindings>
+                                            </ui:Button>
+                                        </ui:VisualElement>
+                                        <ui:ScrollView vertical-scroller-visibility="Auto" horizontal-scroller-visibility="Hidden" style="min-height: 100px; max-height: 220px;">
+                                            <MarkdownRenderer name="NamedShipRemarkMarkdownRenderer" selectable="true" max-image-height="180">
+                                                <Bindings>
+                                                    <ui:DataBinding property="value" data-source-path="remark.shortName" binding-mode="ToTarget"/>
+                                                </Bindings>
+                                            </MarkdownRenderer>
+                                        </ui:ScrollView>
+                                    </ui:VisualElement>
+                                    <ui:VisualElement style="flex-grow: 1;">
                                         <ui:SliderInt label="Applicable Year Begin" high-value="1945" low-value="1870" show-input-field="true">
                                             <Bindings>
                                                 <ui:DataBinding property="value" data-source-path="applicableYearBegin" binding-mode="TwoWay"/>
@@ -156,30 +178,13 @@
                                             </Bindings>
                                         </ui:Toggle>
                                         <Bindings>
-                                            <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
+                                            <ui:DataBinding property="style.display" data-source-path="isDebug" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
                                         </Bindings>
                                     </ui:VisualElement>
                                 </ui:ScrollView>
                             </ui:VisualElement>
                             <ui:VisualElement style="flex-grow: 1; flex-basis: 100px;">
                                 <ui:Instance template="NamedShipVisualizer" name="NamedShipVisualizer"/>
-                                <ui:VisualElement>
-                                    <ui:VisualElement style="flex-direction: row; align-items: center;">
-                                        <ui:Label text="Remark" style="flex-grow: 1;"/>
-                                        <ui:Button text="Set" name="SetRemarkButton">
-                                            <Bindings>
-                                                <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
-                                            </Bindings>
-                                        </ui:Button>
-                                    </ui:VisualElement>
-                                    <ui:ScrollView vertical-scroller-visibility="Auto" horizontal-scroller-visibility="Hidden" style="min-height: 100px; max-height: 220px;">
-                                        <MarkdownRenderer name="NamedShipRemarkMarkdownRenderer" selectable="true" max-image-height="180">
-                                            <Bindings>
-                                                <ui:DataBinding property="value" data-source-path="remark.shortName" binding-mode="ToTarget"/>
-                                            </Bindings>
-                                        </MarkdownRenderer>
-                                    </ui:ScrollView>
-                                </ui:VisualElement>
                                 <ui:Label text="Class Remark">
                                     <Bindings>
                                         <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(38036319399219200)"/>

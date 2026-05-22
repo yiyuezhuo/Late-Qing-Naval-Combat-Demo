@@ -5137,6 +5137,18 @@ MonoBehaviour:
       \u2192 \u4E38\u3081\u5024\u3001\u305D\u306E\u4E0B\u306B\u4E38\u3081\u5024\u2212\u73FE\u5728\u5024\u306E\u5DEE\u3068\u3057\u3066\u8868\u793A\u3055\u308C\u307E\u3059\u3002"
     m_Metadata:
       m_Items: []
+  - m_Id: -502
+    m_Localized: "\u88C5\u7532\u7A2E\u5225"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -503
+    m_Localized: "\u5C04\u6483\u6307\u63EE\u30B3\u30FC\u30C9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: -504
+    m_Localized: "\u8CAB\u901A\u529B\u751F\u6210"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -1,4 +1,5 @@
 if (tutorial7Phase === Tutorial7Phase.WaitingForFormationPosition) {
+    const manualPath = getManualPath();
     let tutorial7FormationPositionMsg = getLocalized(`
 Now insert two other ships (Ex. China ships Chi Yuan and Kuang Yi), set Attach to Group to Red and click "Set to Formation Position" to arrange them. 
 
@@ -12,6 +13,7 @@ You can also experiment with some other editing, like:
 
 - Create/Delete group in the OOB editor
 - Drag Ship/Group in the OOB Editor to change OOB relationship
+- For Custom Ship Class, see the Tutorial: Creating a Custom Ship Class in a Custom Scenario section in the [manual](<${manualPath}>).
 
 Once you feel you have tested enough, exit this tutorial and move on to the next one.
 `,
@@ -28,6 +30,7 @@ Once you feel you have tested enough, exit this tutorial and move on to the next
 
 - OOBエディタでグループ作成／グループ削除を行う
 - OOBエディタで艦船/グループをドラッグしてOOB関係を変更する
+- カスタム艦級については、[マニュアル](<${manualPath}>)の Tutorial: Creating a Custom Ship Class in a Custom Scenario セクションを参照してください。
 
 十分に試したら、このチュートリアルを終了して次へ進んでください。
 `,
@@ -44,6 +47,7 @@ Once you feel you have tested enough, exit this tutorial and move on to the next
 
 - 在战斗序列编辑器中创建编组/删除编组
 - 在战斗序列编辑器中拖动舰船/编组以改变OOB关系
+- 对于自定义舰级，可以查看[手册](<${manualPath}>)的 Tutorial: Creating a Custom Ship Class in a Custom Scenario 一节。
 
 当你觉得已经测试足够后，退出本教程并进入下一个教程。
 `,
@@ -60,6 +64,7 @@ Once you feel you have tested enough, exit this tutorial and move on to the next
 
 - 在戰鬥序列編輯器中創建編組/刪除編組
 - 在戰鬥序列編輯器中拖動艦船/編組以改變OOB關係
+- 對於自訂艦級，可以查看[手冊](<${manualPath}>)的 Tutorial: Creating a Custom Ship Class in a Custom Scenario 一節。
 
 當你覺得已經測試足夠後，退出本教學並進入下一個教學。
 `);

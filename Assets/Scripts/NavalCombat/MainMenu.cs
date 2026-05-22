@@ -66,10 +66,7 @@ public class MainMenu : SingletonDocument<MainMenu>
         mccoyOkunCalculatorButton.clicked += () => DialogRoot.Instance.PopupMcCoyOkunCalculatorDialog();
 
         root.Q<Button>("ManualButton").text = MyLocale.Get("Manual");
-        root.Q<Button>("ManualButton").clicked += () => {
-            var readmePath = Application.streamingAssetsPath + "/" + "Manuals/readme.pdf"; // This file is under version control, should be manual placed.
-            DialogRoot.Instance.PopupConfirmOpenURLDialog(readmePath);
-        };
+        root.Q<Button>("ManualButton").clicked += ManualUtils.PopupReadme;
         changelogButton.text = MyLocale.Get("Changelog");
         changelogButton.clicked += () =>
         {

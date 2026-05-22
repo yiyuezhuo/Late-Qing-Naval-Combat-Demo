@@ -268,10 +268,7 @@ public class TopTabs : SingletonDocument<TopTabs>
         };
 
         root.Q<Button>("ManualButton").text = MyLocale.Get("Manual");
-        root.Q<Button>("ManualButton").clicked += () => {
-            var readmePath = Application.streamingAssetsPath + "/" + "Manuals/readme.pdf"; // This file is under version control, should be manual placed.
-            DialogRoot.Instance.PopupConfirmOpenURLDialog(readmePath);
-        };
+        root.Q<Button>("ManualButton").clicked += ManualUtils.PopupReadme;
         var onlineManualButton = root.Q<Button>("OnlineManualButton");
         onlineManualButton.text = MyLocale.Get("Online Manual");
         onlineManualButton.clicked += () =>

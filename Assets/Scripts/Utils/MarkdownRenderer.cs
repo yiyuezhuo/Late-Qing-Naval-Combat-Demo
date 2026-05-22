@@ -608,7 +608,7 @@ public partial class MarkdownRenderer : BindableElement
             return;
 
         var handlerId = $"md-link-{handlers.Count}";
-        if (_openExternalLinks && IsExternalUrl(url))
+        if (_openExternalLinks && IsOpenableUrl(url))
         {
             handlers[handlerId] = () => OpenUrl(url);
             builder.Append("<link=\"").Append(handlerId).Append("\">");
@@ -630,11 +630,11 @@ public partial class MarkdownRenderer : BindableElement
         var dialogRoot = DialogRoot.Instance;
         if (dialogRoot != null)
         {
-            dialogRoot.PopupConfirmOpenURLDialog(url);
+            dialogRoot.PopupConfirmOpenURLDialog(ResolveContentPath(url));
             return;
         }
 
-        Application.OpenURL(url);
+        Application.OpenURL(ResolveContentPath(url));
     }
 
     VisualElement CreateImageElement(string url, string altText)
@@ -692,6 +692,14 @@ public partial class MarkdownRenderer : BindableElement
             && (url.StartsWith("http://", StringComparison.OrdinalIgnoreCase)
                 || url.StartsWith("https://", StringComparison.OrdinalIgnoreCase)
                 || url.StartsWith("mailto:", StringComparison.OrdinalIgnoreCase));
+    }
+
+    static bool IsOpenableUrl(string url)
+    {
+        return IsExternalUrl(url)
+            || (!string.IsNullOrWhiteSpace(url)
+                && (url.StartsWith("file://", StringComparison.OrdinalIgnoreCase)
+                    || Path.IsPathRooted(url)));
     }
 
     static string BuildNoParseText(string text)

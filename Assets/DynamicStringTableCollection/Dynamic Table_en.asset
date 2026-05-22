@@ -5091,6 +5091,18 @@ MonoBehaviour:
     m_Localized: 'Each cell is shown as current / latent variable -> rounded, then rounded-current delta.'
     m_Metadata:
       m_Items: []
+  - m_Id: -502
+    m_Localized: Armor Type
+    m_Metadata:
+      m_Items: []
+  - m_Id: -503
+    m_Localized: Fire Control Code
+    m_Metadata:
+      m_Items: []
+  - m_Id: -504
+    m_Localized: Penetration Generation
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

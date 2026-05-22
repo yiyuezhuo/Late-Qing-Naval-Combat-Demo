@@ -504,7 +504,7 @@ public partial class BatteryPenetrationFireControlChart : VisualElement
 
 public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, ShipClass>
 {
-    const string ArmorTypeMarkdown = @"Armor Type Factor is derived from Okun's [Table of Metallurgical Properties of Naval Armor and Construction Materials](http://www.navweaps.com/index_nathan/metalprpsept2009.php) 
+    const string ArmorTypeReferenceMarkdown = @"Armor Type Factor is derived from Okun's [Table of Metallurgical Properties of Naval Armor and Construction Materials](http://www.navweaps.com/index_nathan/metalprpsept2009.php) 
 
 
 | Armor Type                             | SK5 Armor Factor | Okun Material / Rule                                     | Okun Field       | Okun Value               | Derivation              |
@@ -542,6 +542,14 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
 | Vickers Non-Cemented                   |             0.84 | VICKERS HARDENED NON-CEMENTED / VH                       | Q                | Q=0.839                  | rounded                 |
 | Molybdenum Non-Cemented                |             0.97 | MOLYBDENUM NON-CEMENTED / MNC                            | Average Quality  | 0.97                     | direct                  |";
 
+    static readonly GlobalString ArmorTypeHelpMarkdown = new()
+    {
+        english = ArmorTypeReferenceMarkdown,
+        japanese = @"装甲種別係数は、Okun の [Table of Metallurgical Properties of Naval Armor and Construction Materials](http://www.navweaps.com/index_nathan/metalprpsept2009.php) から導出されています。",
+        chineseSimplified = @"装甲类型系数来自 Okun 的 [Table of Metallurgical Properties of Naval Armor and Construction Materials](http://www.navweaps.com/index_nathan/metalprpsept2009.php)。",
+        chineseTraditional = @"裝甲類型係數來自 Okun 的 [Table of Metallurgical Properties of Naval Armor and Construction Materials](http://www.navweaps.com/index_nathan/metalprpsept2009.php)。",
+    };
+
     const string TorpedoDamageClassMarkdown = @"| Damage Class |  Example Type                                                                                                   | Firing Ship Example                                                                                                                           | Year | warhead (lb) | diameter (inch) |
 | ------------ | ------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | ---- | ------------ | --------------- |
 | A            | [61cm Type 93 M1-2](https://en.wikipedia.org/wiki/Type_93_torpedo)                                     | JAPAN / DD / [Kawakaze (江風)](https://en.wikipedia.org/wiki/Japanese_destroyer_Kawakaze_(1936))                                                | 1933 | 1080         | 24              |
@@ -554,11 +562,29 @@ public class ShipClassEditor : LeftObjectPickerRightEditor<ShipClassEditor, Ship
 | H            | [45cm C/06](http://www.navweaps.com/Weapons/WTGER_PreWWII.php#45_cm_%2817.7%22%29_C%2F06_and_C%2F06_D) | GERMANY / SS / [U-9](https://en.wikipedia.org/wiki/SM_U-9)                                                                                    | 1907 | 270          | 17.7            |
 | I            | [14"" Whitehead](https://en.wikipedia.org/wiki/Whitehead_torpedo)                                       | CHILE / TB / [Almirante Lynch](https://en.wikipedia.org/wiki/Chilean_torpedo_gunboat_Almirante_Lynch)                                         | 1868 | 118          | 14              |";
 
-    const string PenetrationTableHelpMarkdown = @"Penetration tables are relatively physics-based, so players may simply use historical values or values derived from a ballistic calculator, such as the [NAaB calculator](http://www.panzer-war.com/Naab/NAaB.html). WWII Class A/B armor should be used to generate a similar penetration table. A roughly 12-second interval should be added to infer the 2-minute rate of fire from flight time.
+    static readonly GlobalString PenetrationGenerationHelpMarkdown = new()
+    {
+        english = @"Penetration tables are relatively physics-based, so players may simply use historical values or values derived from a ballistic calculator, such as the [NAaB calculator](http://www.panzer-war.com/Naab/NAaB.html). WWII Class A/B armor should be used to generate a similar penetration table. A roughly 12-second interval should be added to infer the 2-minute rate of fire from flight time.
 
 The game also includes a built-in McCoy-Okun ballistic calculator for setting these values. Check the **""Meta Info (McCoy Okun)""** button for this.
 
-However, these methods do not follow SK's [""stylized"" method](https://groups.io/g/SEEKRIEG/topic/67566219#msg666). A simple statistical model to exploit correlations to produce value closer to SK5's own data can be used to set default value with the **""Reset Penetration Table""** button.";
+However, these methods do not follow SK's [""stylized"" method](https://groups.io/g/SEEKRIEG/topic/67566219#msg666). A simple statistical model to exploit correlations to produce value closer to SK5's own data can be used to set default value with the **""Reset Penetration Table""** button.",
+        japanese = @"貫通力表は比較的物理ベースなので、プレイヤーは単に史実値、または [NAaB calculator](http://www.panzer-war.com/Naab/NAaB.html) などの弾道計算機から導出された値を使えます。同様の貫通力表を生成するには WWII Class A/B armor を使用してください。飛翔時間から 2 分あたりの発射速度を推定するには、おおよそ 12 秒の間隔を加えてください。
+
+ゲーム内にも McCoy-Okun 弾道計算機があります。これらの値を設定するには **""メタ情報 (McCoy Okun)""** ボタンを確認してください。
+
+ただし、これらの方法は SK の [""stylized"" method](https://groups.io/g/SEEKRIEG/topic/67566219#msg666) には従っていません。相関を利用して SK5 自身のデータにより近い値を生成する簡単な統計モデルを、**""貫通力表をリセット""** ボタンで既定値の設定に使用できます。",
+        chineseSimplified = @"穿深表相对基于物理，因此玩家可以直接使用史实数值，或使用 [NAaB calculator](http://www.panzer-war.com/Naab/NAaB.html) 等弹道计算器推导出的数值。应使用 WWII Class A/B armor 来生成类似的穿深表。应加入约 12 秒的间隔，以便根据飞行时间推断 2 分钟射速。
+
+游戏内也内置了 McCoy-Okun 弹道计算器。要用它设置这些数值，请查看 **""元信息 (McCoy Okun)""** 按钮。
+
+不过，这些方法并不遵循 SK 的 [""stylized"" method](https://groups.io/g/SEEKRIEG/topic/67566219#msg666)。可以使用一个利用相关性的简单统计模型，通过 **""重置穿深表""** 按钮设置更接近 SK5 自身数据的默认值。",
+        chineseTraditional = @"穿深表相對基於物理，因此玩家可以直接使用史實數值，或使用 [NAaB calculator](http://www.panzer-war.com/Naab/NAaB.html) 等彈道計算器推導出的數值。應使用 WWII Class A/B armor 來生成類似的穿深表。應加入約 12 秒的間隔，以便根據飛行時間推斷 2 分鐘射速。
+
+遊戲內也內建了 McCoy-Okun 彈道計算器。要用它設定這些數值，請查看 **""元資訊 (McCoy Okun)""** 按鈕。
+
+不過，這些方法並不遵循 SK 的 [""stylized"" method](https://groups.io/g/SEEKRIEG/topic/67566219#msg666)。可以使用一個利用相關性的簡單統計模型，透過 **""重設穿深表""** 按鈕設定更接近 SK5 自身資料的預設值。",
+    };
 
     static readonly GlobalString Sk5CodeHelpMessage = new()
     {
@@ -568,22 +594,24 @@ However, these methods do not follow SK's [""stylized"" method](https://groups.i
         chineseTraditional = "火控碼表示 SK5 資料中火控組件的一種特定組合。修改地位、火控碼、時代或組件欄位時，如果有對應標準表，會用標準表更新火控表；否則該砲組會被標記為使用自訂表。火控碼和組件值本身不影響結算，因為它們的效果已經完整體現在火控表中，而火控表起到充分統計量的作用。",
     };
 
-    const string Sk5CodeExamplesMarkdown = @"FCS Examples:
+    static readonly GlobalString Sk5CodeExamplesMarkdown = new()
+    {
+        english = @"FCS Examples:
 
 - Gun Sight
 	- None: [TING YUEN (定遠)](https://en.wikipedia.org/wiki/Dingyuan-class_ironclad) 1885-1895
 	- Telescope: [Bradley Fiske](https://en.wikipedia.org/wiki/Bradley_A._Fiske)'s [Yorktown](https://en.wikipedia.org/wiki/USS_Yorktown_(PG-1)) 1889-1909 (1892 experiment) & [Percy Scott](https://en.wikipedia.org/wiki/Percy_Scott)'s [Scylla](https://en.wikipedia.org/wiki/Apollo-class_cruiser) 1892-1902 (1897 experiment)
 - Fire Control Instrument
-	- None: [FUSO (扶桑)](https://en.wikipedia.org/wiki/Japanese_ironclad_Fus%C5%8D)  1878-1894
+	- None: [FUSO (扶桑)](https://en.wikipedia.org/wiki/Japanese_ironclad_Fus%C5%8D) 1878-1894
 	- Basic: [TING YUEN (定遠)](https://en.wikipedia.org/wiki/Dingyuan-class_ironclad) 1885-1895
-	- Mechanical Computer: [DREADNOUGHT](https://en.wikipedia.org/wiki/HMS_Dreadnought_%281906%29) 1914-1916 ([Dreyer Fire Control Table](https://dreadnoughtproject.org/tfs/index.php/Dreyer_Fire_Control_Table), after refits in 1912–13)
-	- Advanced Mechanical Computer: [Queen Elizabeth](https://en.wikipedia.org/wiki/HMS_Queen_Elizabeth_(1913))  1941-1942 ([Admiralty Fire Control Table](https://en.wikipedia.org/wiki/Admiralty_Fire_Control_Table), after refits in 1937-1941)
-- Range Finder
-	- None: [TING YUEN (定遠)](https://en.wikipedia.org/wiki/Dingyuan-class_ironclad)  1885-1895
+	- Mechanical Computer: [DREADNOUGHT](https://en.wikipedia.org/wiki/HMS_Dreadnought_%281906%29) 1914-1916 ([Dreyer Fire Control Table](https://dreadnoughtproject.org/tfs/index.php/Dreyer_Fire_Control_Table), after refits in 1912-13)
+	- Advanced Mechanical Computer: [Queen Elizabeth](https://en.wikipedia.org/wiki/HMS_Queen_Elizabeth_(1913)) 1941-1942 ([Admiralty Fire Control Table](https://en.wikipedia.org/wiki/Admiralty_Fire_Control_Table), after refits in 1937-1941)
+- Range-Finder
+	- None: [TING YUEN (定遠)](https://en.wikipedia.org/wiki/Dingyuan-class_ironclad) 1885-1895
 	- Optical: [YOSHINO (吉野)](https://en.wikipedia.org/wiki/Japanese_cruiser_Yoshino) 1893-1900 ([Barr & Stroud FA1](https://dreadnoughtproject.org/tfs/index.php/Barr_and_Stroud_Rangefinders))
-- Director Control
+- Director
 	- None: [MIKASA (三笠)](https://en.wikipedia.org/wiki/Japanese_battleship_Mikasa)
-	- Early Follow The Pointer: [Borodino](https://en.wikipedia.org/wiki/Borodino-class_battleship) 1904-1905 ([Geisler system (1894)](https://topwar.ru/182618-cusima-faktory-tochnosti-russkoj-artillerii.html), системы Гейслера). denoting information transmission (observer -> gunnery center -> gun position) systems using electronic or equivalent beyond sound & hand.
+	- Follow The Pointer: [Borodino](https://en.wikipedia.org/wiki/Borodino-class_battleship) 1904-1905 ([Geisler system (1894)](https://topwar.ru/182618-cusima-faktory-tochnosti-russkoj-artillerii.html), системы Гейслера). denoting information transmission (observer -> gunnery center -> gun position) systems using electronic or equivalent beyond sound & hand.
 	- Director: [Thunderer](https://dreadnoughtproject.org/tfs/index.php/H.M.S._Thunderer_(1911)) 1912-1917 ([British Tripod Director Firing System](https://dreadnoughtproject.org/tfs/index.php/British_Tripod_Director_Firing_System), after refit in 1916) (See also: [British Adoption of Director Firing](https://dreadnoughtproject.org/tfs/index.php/British_Adoption_of_Director_Firing))
 - Stabilization
 	- Manual: [König](https://en.wikipedia.org/wiki/SMS_K%C3%B6nig ""SMS König"") 1914-1916
@@ -592,9 +620,85 @@ However, these methods do not follow SK's [""stylized"" method](https://groups.i
 - Power Remote Control: [A Comparison](https://combinedfleet.com/b_fire.htm)
 	- None: [YAMATO (大和)](https://en.wikipedia.org/wiki/Yamato-class_battleship) 1941-1943
 	- Partial: [BISMARCK](https://en.wikipedia.org/wiki/Bismarck-class_battleship) 1940-1941 (elevation only, no training)
-	- Full: [IOWA](https://en.wikipedia.org/wiki/Iowa-class_battleship) 1943-1945
+	- Full: [IOWA](https://en.wikipedia.org/wiki/Iowa-class_battleship) 1943-1945",
+        japanese = @"FCS 例:
 
-| FCS Code | Example Class | Period | Weapon |
+- 照準器
+	- 無: [TING YUEN (定遠)](https://en.wikipedia.org/wiki/Dingyuan-class_ironclad) 1885-1895
+	- 望遠照準器: [Bradley Fiske](https://en.wikipedia.org/wiki/Bradley_A._Fiske)'s [Yorktown](https://en.wikipedia.org/wiki/USS_Yorktown_(PG-1)) 1889-1909 (1892年実験) & [Percy Scott](https://en.wikipedia.org/wiki/Percy_Scott)'s [Scylla](https://en.wikipedia.org/wiki/Apollo-class_cruiser) 1892-1902 (1897年実験)
+- 計算器
+	- 無: [FUSO (扶桑)](https://en.wikipedia.org/wiki/Japanese_ironclad_Fus%C5%8D) 1878-1894
+	- 基本: [TING YUEN (定遠)](https://en.wikipedia.org/wiki/Dingyuan-class_ironclad) 1885-1895
+	- 機械式計算機: [DREADNOUGHT](https://en.wikipedia.org/wiki/HMS_Dreadnought_%281906%29) 1914-1916 ([ドライヤー射撃指揮盤](https://dreadnoughtproject.org/tfs/index.php/Dreyer_Fire_Control_Table), 1912-13年改装後)
+	- 高性能機械式計算機: [Queen Elizabeth](https://en.wikipedia.org/wiki/HMS_Queen_Elizabeth_(1913)) 1941-1942 ([アドミラルティ射撃指揮盤](https://en.wikipedia.org/wiki/Admiralty_Fire_Control_Table), 1937-1941年改装後)
+- 測距儀
+	- 無: [TING YUEN (定遠)](https://en.wikipedia.org/wiki/Dingyuan-class_ironclad) 1885-1895
+	- 光学測距儀: [YOSHINO (吉野)](https://en.wikipedia.org/wiki/Japanese_cruiser_Yoshino) 1893-1900 ([Barr & Stroud FA1](https://dreadnoughtproject.org/tfs/index.php/Barr_and_Stroud_Rangefinders))
+- 指揮装置
+	- 無: [MIKASA (三笠)](https://en.wikipedia.org/wiki/Japanese_battleship_Mikasa)
+	- ポインタ追従: [Borodino](https://en.wikipedia.org/wiki/Borodino-class_battleship) 1904-1905 ([ガイスラー・システム (1894)](https://topwar.ru/182618-cusima-faktory-tochnosti-russkoj-artillerii.html), системы Гейслера). 音声と手作業を超える、電気式または同等の情報伝達 (観測者 -> 砲術中枢 -> 砲位) システムを指します。
+	- 射撃指揮装置: [Thunderer](https://dreadnoughtproject.org/tfs/index.php/H.M.S._Thunderer_(1911)) 1912-1917 ([British Tripod Director Firing System](https://dreadnoughtproject.org/tfs/index.php/British_Tripod_Director_Firing_System), 1916年改装後) (参照: [British Adoption of Director Firing](https://dreadnoughtproject.org/tfs/index.php/British_Adoption_of_Director_Firing))
+- 安定化
+	- 手動: [König](https://en.wikipedia.org/wiki/SMS_K%C3%B6nig ""SMS König"") 1914-1916
+	- ジャイロ補助: [König](https://en.wikipedia.org/wiki/SMS_K%C3%B6nig ""SMS König"") 1917-1919 ([Abfeuer-Gerät C/16 gyroscopic stabilizing system](https://tidsskrift.dk/frakrigogfred/article/download/27001/23754/62314) 1917年改装後)
+	- 安定化装置: [Washington](https://en.wikipedia.org/wiki/USS_Washington_(BB-56)) 1941-1942 ([Stable-vertical gun directors Mk 41](https://www.eugeneleeslover.com/USNAVY/CHAPTER-20-A.html))
+- 動力遠隔操作: [比較](https://combinedfleet.com/b_fire.htm)
+	- 無: [YAMATO (大和)](https://en.wikipedia.org/wiki/Yamato-class_battleship) 1941-1943
+	- 部分的: [BISMARCK](https://en.wikipedia.org/wiki/Bismarck-class_battleship) 1940-1941 (仰角のみ、旋回なし)
+	- 完全: [IOWA](https://en.wikipedia.org/wiki/Iowa-class_battleship) 1943-1945",
+        chineseSimplified = @"FCS 示例:
+
+- 瞄准镜
+	- 无: [TING YUEN (定远)](https://en.wikipedia.org/wiki/Dingyuan-class_ironclad) 1885-1895
+	- 光学瞄具: [Bradley Fiske](https://en.wikipedia.org/wiki/Bradley_A._Fiske)'s [Yorktown](https://en.wikipedia.org/wiki/USS_Yorktown_(PG-1)) 1889-1909 (1892 年实验) & [Percy Scott](https://en.wikipedia.org/wiki/Percy_Scott)'s [Scylla](https://en.wikipedia.org/wiki/Apollo-class_cruiser) 1892-1902 (1897 年实验)
+- 计算器
+	- 无: [FUSO (扶桑)](https://en.wikipedia.org/wiki/Japanese_ironclad_Fus%C5%8D) 1878-1894
+	- 简单: [TING YUEN (定远)](https://en.wikipedia.org/wiki/Dingyuan-class_ironclad) 1885-1895
+	- 机械计算机: [DREADNOUGHT](https://en.wikipedia.org/wiki/HMS_Dreadnought_%281906%29) 1914-1916 ([德雷尔火控台](https://dreadnoughtproject.org/tfs/index.php/Dreyer_Fire_Control_Table), 1912-13 年改装后)
+	- 高级机械计算机: [Queen Elizabeth](https://en.wikipedia.org/wiki/HMS_Queen_Elizabeth_(1913)) 1941-1942 ([海军部火控台](https://en.wikipedia.org/wiki/Admiralty_Fire_Control_Table), 1937-1941 年改装后)
+- 测距器
+	- 无: [TING YUEN (定远)](https://en.wikipedia.org/wiki/Dingyuan-class_ironclad) 1885-1895
+	- 光学测距仪: [YOSHINO (吉野)](https://en.wikipedia.org/wiki/Japanese_cruiser_Yoshino) 1893-1900 ([Barr & Stroud FA1](https://dreadnoughtproject.org/tfs/index.php/Barr_and_Stroud_Rangefinders))
+- 指挥仪
+	- 无: [MIKASA (三笠)](https://en.wikipedia.org/wiki/Japanese_battleship_Mikasa)
+	- 随动指针: [Borodino](https://en.wikipedia.org/wiki/Borodino-class_battleship) 1904-1905 ([盖斯勒系统（1894）](https://topwar.ru/182618-cusima-faktory-tochnosti-russkoj-artillerii.html), системы Гейслера)。表示使用电子或同等方式、超出声音与手动传递的信息传输 (观察员 -> 射击中心 -> 炮位) 系统。
+	- 指挥仪: [Thunderer](https://dreadnoughtproject.org/tfs/index.php/H.M.S._Thunderer_(1911)) 1912-1917 ([British Tripod Director Firing System](https://dreadnoughtproject.org/tfs/index.php/British_Tripod_Director_Firing_System), 1916 年改装后) (另见: [British Adoption of Director Firing](https://dreadnoughtproject.org/tfs/index.php/British_Adoption_of_Director_Firing))
+- 稳定化
+	- 手动: [König](https://en.wikipedia.org/wiki/SMS_K%C3%B6nig ""SMS König"") 1914-1916
+	- 陀螺仪辅助: [König](https://en.wikipedia.org/wiki/SMS_K%C3%B6nig ""SMS König"") 1917-1919 ([Abfeuer-Gerät C/16 gyroscopic stabilizing system](https://tidsskrift.dk/frakrigogfred/article/download/27001/23754/62314) 1917 年改装后)
+	- 稳定仪: [Washington](https://en.wikipedia.org/wiki/USS_Washington_(BB-56)) 1941-1942 ([Stable-vertical gun directors Mk 41](https://www.eugeneleeslover.com/USNAVY/CHAPTER-20-A.html))
+- 遥控: [比较](https://combinedfleet.com/b_fire.htm)
+	- 无: [YAMATO (大和)](https://en.wikipedia.org/wiki/Yamato-class_battleship) 1941-1943
+	- 有限: [BISMARCK](https://en.wikipedia.org/wiki/Bismarck-class_battleship) 1940-1941 (仅俯仰，无旋回)
+	- 完全: [IOWA](https://en.wikipedia.org/wiki/Iowa-class_battleship) 1943-1945",
+        chineseTraditional = @"FCS 範例:
+
+- 瞄準鏡
+	- 無: [TING YUEN (定遠)](https://en.wikipedia.org/wiki/Dingyuan-class_ironclad) 1885-1895
+	- 光學瞄具: [Bradley Fiske](https://en.wikipedia.org/wiki/Bradley_A._Fiske)'s [Yorktown](https://en.wikipedia.org/wiki/USS_Yorktown_(PG-1)) 1889-1909 (1892 年實驗) & [Percy Scott](https://en.wikipedia.org/wiki/Percy_Scott)'s [Scylla](https://en.wikipedia.org/wiki/Apollo-class_cruiser) 1892-1902 (1897 年實驗)
+- 計算器
+	- 無: [FUSO (扶桑)](https://en.wikipedia.org/wiki/Japanese_ironclad_Fus%C5%8D) 1878-1894
+	- 簡單: [TING YUEN (定遠)](https://en.wikipedia.org/wiki/Dingyuan-class_ironclad) 1885-1895
+	- 機械計算機: [DREADNOUGHT](https://en.wikipedia.org/wiki/HMS_Dreadnought_%281906%29) 1914-1916 ([德雷爾火控台](https://dreadnoughtproject.org/tfs/index.php/Dreyer_Fire_Control_Table), 1912-13 年改裝後)
+	- 高級機械計算機: [Queen Elizabeth](https://en.wikipedia.org/wiki/HMS_Queen_Elizabeth_(1913)) 1941-1942 ([海軍部火控台](https://en.wikipedia.org/wiki/Admiralty_Fire_Control_Table), 1937-1941 年改裝後)
+- 測距器
+	- 無: [TING YUEN (定遠)](https://en.wikipedia.org/wiki/Dingyuan-class_ironclad) 1885-1895
+	- 光學測距儀: [YOSHINO (吉野)](https://en.wikipedia.org/wiki/Japanese_cruiser_Yoshino) 1893-1900 ([Barr & Stroud FA1](https://dreadnoughtproject.org/tfs/index.php/Barr_and_Stroud_Rangefinders))
+- 指揮儀
+	- 無: [MIKASA (三笠)](https://en.wikipedia.org/wiki/Japanese_battleship_Mikasa)
+	- 隨動指針: [Borodino](https://en.wikipedia.org/wiki/Borodino-class_battleship) 1904-1905 ([蓋斯勒系統（1894）](https://topwar.ru/182618-cusima-faktory-tochnosti-russkoj-artillerii.html), системы Гейслера)。表示使用電子或同等方式、超出聲音與手動傳遞的資訊傳輸 (觀察員 -> 射擊中心 -> 砲位) 系統。
+	- 指揮儀: [Thunderer](https://dreadnoughtproject.org/tfs/index.php/H.M.S._Thunderer_(1911)) 1912-1917 ([British Tripod Director Firing System](https://dreadnoughtproject.org/tfs/index.php/British_Tripod_Director_Firing_System), 1916 年改裝後) (另見: [British Adoption of Director Firing](https://dreadnoughtproject.org/tfs/index.php/British_Adoption_of_Director_Firing))
+- 穩定化
+	- 手動: [König](https://en.wikipedia.org/wiki/SMS_K%C3%B6nig ""SMS König"") 1914-1916
+	- 陀螺儀輔助: [König](https://en.wikipedia.org/wiki/SMS_K%C3%B6nig ""SMS König"") 1917-1919 ([Abfeuer-Gerät C/16 gyroscopic stabilizing system](https://tidsskrift.dk/frakrigogfred/article/download/27001/23754/62314) 1917 年改裝後)
+	- 穩定儀: [Washington](https://en.wikipedia.org/wiki/USS_Washington_(BB-56)) 1941-1942 ([Stable-vertical gun directors Mk 41](https://www.eugeneleeslover.com/USNAVY/CHAPTER-20-A.html))
+- 遙控: [比較](https://combinedfleet.com/b_fire.htm)
+	- 無: [YAMATO (大和)](https://en.wikipedia.org/wiki/Yamato-class_battleship) 1941-1943
+	- 有限: [BISMARCK](https://en.wikipedia.org/wiki/Bismarck-class_battleship) 1940-1941 (僅俯仰，無旋回)
+	- 完全: [IOWA](https://en.wikipedia.org/wiki/Iowa-class_battleship) 1943-1945",
+    };
+
+    const string Sk5CodeExampleTableMarkdown = @"| FCS Code | Example Class | Period | Weapon |
 | -------- | ---------- | -------------- | ------ |
 | 1A3 | [IOWA](https://en.wikipedia.org/wiki/Iowa-class_battleship) | 1943-1945 | 16""/50 Mk 7 |
 | 2A3 | [IOWA](https://en.wikipedia.org/wiki/Iowa-class_battleship) | 1943-1945 | 5""/38 Mk 12 |
@@ -661,7 +765,20 @@ However, these methods do not follow SK's [""stylized"" method](https://groups.i
 | 1Z1 | [FUSO (扶桑)](https://en.wikipedia.org/wiki/Japanese_ironclad_Fus%C5%8D) | 1878-1894 | 24cm RKL/20 C/67 |
 | 2Z1 | [TING YUEN (定遠)](https://en.wikipedia.org/wiki/Dingyuan-class_ironclad) | 1885-1895 | 15cm RKL/35 C/80 |";
 
-    static string GetSk5CodeHelpMarkdown() => $"{Sk5CodeHelpMessage.GetShortName()}\n\n{Sk5CodeExamplesMarkdown}";
+    static string GetArmorTypeHelpMarkdown()
+    {
+        var markdown = ArmorTypeHelpMarkdown.GetShortName();
+        if (markdown == ArmorTypeHelpMarkdown.english)
+            return markdown;
+
+        var tableStart = ArmorTypeReferenceMarkdown.IndexOf("| Armor Type", StringComparison.Ordinal);
+        if (tableStart < 0)
+            return markdown;
+
+        return $"{markdown}\n\n{ArmorTypeReferenceMarkdown[tableStart..]}";
+    }
+
+    static string GetFireControlCodeHelpMarkdown() => $"{Sk5CodeHelpMessage.GetShortName()}\n\n{Sk5CodeExamplesMarkdown.GetShortName()}\n\n{Sk5CodeExampleTableMarkdown}";
 
     ListView batteryRecordsListView;
     VisualElement portraitTopPreview;
@@ -744,7 +861,9 @@ However, these methods do not follow SK's [""stylized"" method](https://groups.i
         {
             armorTypeHelpButton.clicked += () =>
             {
-                DialogRoot.Instance.PopupMarkdownDialog(ArmorTypeMarkdown, Localize("Armor Type"));
+                DialogRoot.Instance.PopupMarkdownDialog(
+                    GetArmorTypeHelpMarkdown(),
+                    Localize("Armor Type"));
             };
         }
 
@@ -796,7 +915,7 @@ However, these methods do not follow SK's [""stylized"" method](https://groups.i
             {
                 sk5CodeHelpButton.clicked += () =>
                 {
-                    DialogRoot.Instance.PopupMarkdownDialog(GetSk5CodeHelpMarkdown(), Localize("SK5 Code"));
+                    DialogRoot.Instance.PopupMarkdownDialog(GetFireControlCodeHelpMarkdown(), Localize("Fire Control Code"));
                 };
             }
 
@@ -854,7 +973,9 @@ However, these methods do not follow SK's [""stylized"" method](https://groups.i
             {
                 penetrationTableHelpButton.clicked += () =>
                 {
-                    DialogRoot.Instance.PopupMarkdownDialog(PenetrationTableHelpMarkdown, Localize("Reset Penetration Table"));
+                    DialogRoot.Instance.PopupMarkdownDialog(
+                        PenetrationGenerationHelpMarkdown.GetShortName(),
+                        Localize("Penetration Generation"));
                 };
             }
 

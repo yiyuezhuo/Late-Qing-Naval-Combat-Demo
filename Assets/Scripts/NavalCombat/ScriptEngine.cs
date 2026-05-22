@@ -26,6 +26,7 @@ public class ScriptEngine
         engine.SetValue("msgBox", new Action<object>(Msg));
         engine.SetValue("msgBoxDelay", new Action<object, object>(MsgDelay));
         engine.SetValue("markdownBox", new Action<object>(Markdown));
+        engine.SetValue("getManualPath", new Func<string>(ManualUtils.GetReadmePath));
         engine.SetValue("getShipLogByName", new Func<object, object>(GetShipLogByName));
         engine.SetValue("getDistanceYard", new Func<object, object, float>(GetDistanceYard));
         engine.SetValue("getPositiveAngleDifference", new Func<object, object, float>(GetPositiveAngleDifference));

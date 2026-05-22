@@ -5089,6 +5089,18 @@ MonoBehaviour:
       delta.
     m_Metadata:
       m_Items: []
+  - m_Id: -502
+    m_Key: Armor Type
+    m_Metadata:
+      m_Items: []
+  - m_Id: -503
+    m_Key: Fire Control Code
+    m_Metadata:
+      m_Items: []
+  - m_Id: -504
+    m_Key: Penetration Generation
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

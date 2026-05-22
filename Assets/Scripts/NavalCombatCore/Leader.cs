@@ -17,11 +17,11 @@ namespace CoreUtils
         NotSpecified,
         Coward, // Assigned to leader who flee or retreat unexpected. (Liu Buchan)
         Brave, // Assigned to leader who commit suicide attack (Deng Shichang)
-        ExperiencedCaptain, // Leader may get the trait if its ship / division has a active role in the battle.
-        ExperiencedTactician, // Leader may get the trait if it command high-level organization in a fleet in a combat.
-        ExperiencedStrategist, // Leader may get the trait if it generate a combat in a theater (average probability) and barely hold planning position in a intense theater (low-probability, Fleet in being, Fabian).
-        ExperiencedNavalBureaucrat, // Leader may get the trait when it has role in the high command, general staff or work on budget decision and competition.
-        NotFromNavalBackground, // Assigned to Ding Ruchang
+        // ExperiencedCaptain, // Leader may get the trait if its ship / division has a active role in the battle.
+        // ExperiencedTactician, // Leader may get the trait if it command high-level organization in a fleet in a combat.
+        // ExperiencedStrategist, // Leader may get the trait if it generate a combat in a theater (average probability) and barely hold planning position in a intense theater (low-probability, Fleet in being, Fabian).
+        // ExperiencedNavalBureaucrat, // Leader may get the trait when it has role in the high command, general staff or work on budget decision and competition.
+        // NotFromNavalBackground, // Assigned to Ding Ruchang
         Lucky, // Tōshō Heihachirō
         Unlucky // Marklov
     }

@@ -1303,6 +1303,9 @@ public sealed class BatteryRecordMetaInfoMcCoyOkunDialog
 
         var newRecords = BuildCalculatedPenetrationRecords();
         batteryRecord.rangeYards = (float)input.McCoy.MaxRange;
+        batteryRecord.shellSizeInch = (float)facehardDetails.ProjectileDiameter;
+        batteryRecord.shellWeightPounds = (float)facehardDetails.ProjectileWeight;
+        batteryRecord.UpdateDamageRatingDefault();
         batteryRecord.penetrationTableRecords ??= new List<PenetrationTableRecord>();
         batteryRecord.penetrationTableRecords.Clear();
         batteryRecord.penetrationTableRecords.AddRange(newRecords);

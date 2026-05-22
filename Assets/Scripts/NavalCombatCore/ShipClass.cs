@@ -556,6 +556,10 @@ namespace NavalCombatCore
 
     public partial class BatteryRecord : IObjectIdLabeled
     {
+        const float DamageRatingShellSizeCoef = 1.30f;
+        const float DamageRatingShellWeightSqrtCoef = 0.82f;
+        const float DamageRatingIntercept = 0.4f;
+
         public string objectId { get; set; }
         public GlobalString name = new();
         public float damageRating;
@@ -596,6 +600,16 @@ namespace NavalCombatCore
         public float GetRoundsPerGun()
         {
             return (float)ammunitionCapacity / mountLocationRecords.Sum(mnt => mnt.mounts * mnt.barrels);
+        }
+
+        public void UpdateDamageRatingDefault()
+        {
+            var shellSize = Math.Max(0f, shellSizeInch);
+            var shellWeight = Math.Max(0f, shellWeightPounds);
+            damageRating = MathF.Floor(DamageRatingIntercept
+                + DamageRatingShellSizeCoef * shellSize
+                + DamageRatingShellWeightSqrtCoef * MathF.Sqrt(shellWeight)
+                + 0.5f);
         }
 
         static XmlSerializer serializer = new XmlSerializer(typeof(BatteryRecord));

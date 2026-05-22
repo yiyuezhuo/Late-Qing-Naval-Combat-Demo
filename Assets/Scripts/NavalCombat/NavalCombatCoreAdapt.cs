@@ -750,10 +750,6 @@ namespace NavalCombatCore
 
     public partial class BatteryRecord
     {
-        const float DamageRatingShellSizeCoef = 1.30f;
-        const float DamageRatingShellWeightSqrtCoef = 0.82f;
-        const float DamageRatingIntercept = 0.4f;
-
         [CreateProperty]
         public string labelName
         {
@@ -790,15 +786,6 @@ namespace NavalCombatCore
                 shellWeightPounds = value;
                 UpdateDamageRatingDefault();
             }
-        }
-
-        void UpdateDamageRatingDefault()
-        {
-            var shellSize = Math.Max(0f, shellSizeInch);
-            var shellWeight = Math.Max(0f, shellWeightPounds);
-            damageRating = RoundHalfUp(DamageRatingIntercept
-                + DamageRatingShellSizeCoef * shellSize
-                + DamageRatingShellWeightSqrtCoef * Mathf.Sqrt(shellWeight));
         }
 
         [XmlIgnore]

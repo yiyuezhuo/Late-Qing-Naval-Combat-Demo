@@ -653,7 +653,7 @@ However, these methods do not follow SK's [""stylized"" method](https://groups.i
 	- 光学瞄具: [Bradley Fiske](https://en.wikipedia.org/wiki/Bradley_A._Fiske)'s [Yorktown](https://en.wikipedia.org/wiki/USS_Yorktown_(PG-1)) 1889-1909 (1892 年实验) & [Percy Scott](https://en.wikipedia.org/wiki/Percy_Scott)'s [Scylla](https://en.wikipedia.org/wiki/Apollo-class_cruiser) 1892-1902 (1897 年实验)
 - 计算器
 	- 无: [FUSO (扶桑)](https://en.wikipedia.org/wiki/Japanese_ironclad_Fus%C5%8D) 1878-1894
-	- 简单: [TING YUEN (定远)](https://en.wikipedia.org/wiki/Dingyuan-class_ironclad) 1885-1895
+	- 简易: [TING YUEN (定远)](https://en.wikipedia.org/wiki/Dingyuan-class_ironclad) 1885-1895
 	- 机械计算机: [DREADNOUGHT](https://en.wikipedia.org/wiki/HMS_Dreadnought_%281906%29) 1914-1916 ([德雷尔火控台](https://dreadnoughtproject.org/tfs/index.php/Dreyer_Fire_Control_Table), 1912-13 年改装后)
 	- 高级机械计算机: [Queen Elizabeth](https://en.wikipedia.org/wiki/HMS_Queen_Elizabeth_(1913)) 1941-1942 ([海军部火控台](https://en.wikipedia.org/wiki/Admiralty_Fire_Control_Table), 1937-1941 年改装后)
 - 测距器
@@ -678,7 +678,7 @@ However, these methods do not follow SK's [""stylized"" method](https://groups.i
 	- 光學瞄具: [Bradley Fiske](https://en.wikipedia.org/wiki/Bradley_A._Fiske)'s [Yorktown](https://en.wikipedia.org/wiki/USS_Yorktown_(PG-1)) 1889-1909 (1892 年實驗) & [Percy Scott](https://en.wikipedia.org/wiki/Percy_Scott)'s [Scylla](https://en.wikipedia.org/wiki/Apollo-class_cruiser) 1892-1902 (1897 年實驗)
 - 計算器
 	- 無: [FUSO (扶桑)](https://en.wikipedia.org/wiki/Japanese_ironclad_Fus%C5%8D) 1878-1894
-	- 簡單: [TING YUEN (定遠)](https://en.wikipedia.org/wiki/Dingyuan-class_ironclad) 1885-1895
+	- 簡易: [TING YUEN (定遠)](https://en.wikipedia.org/wiki/Dingyuan-class_ironclad) 1885-1895
 	- 機械計算機: [DREADNOUGHT](https://en.wikipedia.org/wiki/HMS_Dreadnought_%281906%29) 1914-1916 ([德雷爾火控台](https://dreadnoughtproject.org/tfs/index.php/Dreyer_Fire_Control_Table), 1912-13 年改裝後)
 	- 高級機械計算機: [Queen Elizabeth](https://en.wikipedia.org/wiki/HMS_Queen_Elizabeth_(1913)) 1941-1942 ([海軍部火控台](https://en.wikipedia.org/wiki/Admiralty_Fire_Control_Table), 1937-1941 年改裝後)
 - 測距器

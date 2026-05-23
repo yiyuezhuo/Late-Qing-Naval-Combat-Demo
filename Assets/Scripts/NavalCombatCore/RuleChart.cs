@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using MathNet.Numerics.Distributions;
 using System.Linq;
 using System.Collections.Generic;
@@ -38,6 +39,10 @@ namespace NavalCombatCore
     /// </summary>
     public static class RuleChart
     {
+        static float ParseFloatInvariant(string text) => float.Parse(text, CultureInfo.InvariantCulture);
+        static double ParseDoubleInvariant(string text) => double.Parse(text, CultureInfo.InvariantCulture);
+        static int ParseIntInvariant(string text) => int.Parse(text, CultureInfo.InvariantCulture);
+
         public static Dictionary<CargoType, DamageEffectCauseMerchantVessel> cargoTypeToDamageEffectCauseMerchantVessel = new Dictionary<CargoType, DamageEffectCauseMerchantVessel>
         {
             { CargoType.GeneralCargo, DamageEffectCauseMerchantVessel.GeneralCargo },
@@ -248,7 +253,7 @@ namespace NavalCombatCore
 
         public static SimpleTable<float, float, float> penetrationTableHighExplosiveShellsTable = SimpleTable<float, float, float>.FromCSV(
             penetrationTableHighExplosiveShellsText,
-            float.Parse, float.Parse, x => x == "" ? -1 : float.Parse(x)
+            ParseFloatInvariant, ParseFloatInvariant, x => x == "" ? -1 : ParseFloatInvariant(x)
         );
 
         public static float ResolvePenetrationHEPenetration(float boreInch, float apPenetrationInch)
@@ -386,7 +391,7 @@ namespace NavalCombatCore
 84,125,250,290,460,270,320,480,330,350,380,420,89,180,31,145,135,125,115,18";
 
         public static SimpleTable<float, string, float> shellDamageFactorsTable = SimpleTable<float, string, float>.FromCSV(shellDamageFactorsCsvText,
-            float.Parse, s => s, float.Parse
+            ParseFloatInvariant, s => s, ParseFloatInvariant
         );
 
         public class ShellDamageResult
@@ -492,7 +497,7 @@ namespace NavalCombatCore
 
         public static SimpleTable<float, string, float> rapidFiringBatteryDamageTable = SimpleTable<float, string, float>.FromCSV(
             rapidFiringBatteryDamageTableCsvText,
-            float.Parse, x => x, float.Parse
+            ParseFloatInvariant, x => x, ParseFloatInvariant
         );
 
         public static float RollRapidFireBatteryDamage(float rapidFiringBatteryRating)
@@ -518,7 +523,7 @@ namespace NavalCombatCore
 
         public static SimpleTable<float, string, float> torpedoDamageTable = SimpleTable<float, string, float>.FromCSV(
             torpedoDamageTableCsvText,
-            float.Parse, x => x, float.Parse
+            ParseFloatInvariant, x => x, ParseFloatInvariant
         );
 
         public static float RollTorpedoDamage(TorpedoDamageClass damageClass, TorpedoPistolType pistolType)
@@ -645,7 +650,7 @@ namespace NavalCombatCore
 2,174,176,178,176,183,183,182,617,517,183";
 
         public static SimpleTable<double, string, string> damageDeterminationTableWarships1880to1905 = SimpleTable<double, string, string>.FromCSV(damageDeterminationTableWarships1880to1905CsvText,
-            double.Parse, x => x, x => x
+            ParseDoubleInvariant, x => x, x => x
         );
 
         public static string ResolveDamageEffectId(DamageEffectCause cause)
@@ -670,7 +675,7 @@ namespace NavalCombatCore
 
         public static SimpleTable<double, string, string> damageDeterminationTableLandBattery = SimpleTable<double, string, string>.FromCSV(
             damageDeterminationTableLandBatteryCsvText,
-            double.Parse, x => x, x => x
+            ParseDoubleInvariant, x => x, x => x
         );
 
         public static string ResolveDamageEffectIdLandBattery(DamageEffectCauseLandBattery cause)
@@ -739,7 +744,7 @@ namespace NavalCombatCore
 5,,,,913,,913,913,913,913";
 
         public static SimpleTable<double, string, string> damageDeterminationTableMerchantVessel = SimpleTable<double, string, string>.FromCSV(damageDeterminationTableMerchantVesselCsvText,
-            double.Parse, x => x, x => x
+            ParseDoubleInvariant, x => x, x => x
         );
 
         public static string ResolveDamageEffectIdMerchantVessel(DamageEffectCauseMerchantVessel cause)
@@ -841,7 +846,7 @@ namespace NavalCombatCore
 
         public static SimpleTable<float, float, float> rammingTargetSpeedFactorTable = SimpleTable<float, float, float>.FromCSV(
             rammingTargetSpeedFactorTableCsvText,
-            float.Parse, float.Parse, float.Parse
+            ParseFloatInvariant, ParseFloatInvariant, ParseFloatInvariant
         );
 
         public static string rammingRamSpeedFactorTableCsvText = @"SPEED (kts),20,30,40,50,60,70,80,90,100,110,120,130,140,150,160
@@ -863,7 +868,7 @@ namespace NavalCombatCore
 
         public static SimpleTable<float, float, float> rammingRamSpeedFactorTable = SimpleTable<float, float, float>.FromCSV(
             rammingRamSpeedFactorTableCsvText,
-            float.Parse, float.Parse, float.Parse
+            ParseFloatInvariant, ParseFloatInvariant, ParseFloatInvariant
         );
 
         public static string rammingDamageFactorTableCsvText = @"FACTOR,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160
@@ -894,7 +899,7 @@ namespace NavalCombatCore
 
         public static SimpleTable<float, float, float> rammingDamageFactorTable = SimpleTable<float, float, float>.FromCSV(
             rammingDamageFactorTableCsvText,
-            float.Parse, float.Parse, float.Parse
+            ParseFloatInvariant, ParseFloatInvariant, ParseFloatInvariant
         );
 
         public class RamResolutionResult
@@ -1041,7 +1046,7 @@ namespace NavalCombatCore
 
         public static SimpleTable<float, float, float> seaStateGunneryReductionTable = SimpleTable<float, float, float>.FromCSV(
             seaStateGunneryReductionTableCsvText,
-            float.Parse, float.Parse, float.Parse
+            ParseFloatInvariant, ParseFloatInvariant, ParseFloatInvariant
         );
 
         public static float ResolveSeaStateOffset(float displacementTons, int seaState, out bool blocked)
@@ -1065,7 +1070,7 @@ namespace NavalCombatCore
 2,21300,22900,24500,26300,27800,28500
 3,24300,25900,27500,29300,30800,31500
 4,25700,27300,28800,30700,32200,32900",
-            int.Parse, int.Parse, float.Parse
+            ParseIntInvariant, ParseIntInvariant, ParseFloatInvariant
         );
 
         public static SimpleTable<int, int, float> visibilityDaylightVeryClear2 = SimpleTable<int, int, float>.FromCSV(@"Obs Size,-1,0,1,2,3,4
@@ -1075,7 +1080,7 @@ namespace NavalCombatCore
 2,17800,19100,20400,21900,23200,23700
 3,20300,21600,22900,24400,25700,26300
 4,21400,22700,24000,25600,26800,27400",
-            int.Parse, int.Parse, float.Parse
+            ParseIntInvariant, ParseIntInvariant, ParseFloatInvariant
         );
 
         public static SimpleTable<int, int, float> visibilityDaylightVeryClear1 = SimpleTable<int, int, float>.FromCSV(@"Obs Size,-1,0,1,2,3,4
@@ -1085,7 +1090,7 @@ namespace NavalCombatCore
 2,12800,13700,14600,15600,16400,16800
 3,14700,15500,16400,17400,18300,18600
 4,15500,16400,17200,18300,19100,19500",
-            int.Parse, int.Parse, float.Parse
+            ParseIntInvariant, ParseIntInvariant, ParseFloatInvariant
         );
 
         public static SimpleTable<int, int, float> visibilityDaylightClear = SimpleTable<int, int, float>.FromCSV(@"Obs Size,-1,0,1,2,3,4
@@ -1095,7 +1100,7 @@ namespace NavalCombatCore
 2,8100,8600,9100,9700,10200,10500
 3,9300,9800,10300,10900,11400,11600
 4,9800,10300,10800,11400,11900,12200",
-            int.Parse, int.Parse, float.Parse
+            ParseIntInvariant, ParseIntInvariant, ParseFloatInvariant
         );
 
         public static SimpleTable<int, int, float> visibilityDaylightLightHaze = SimpleTable<int, int, float>.FromCSV(@"Obs Size,-1,0,1,2,3,4
@@ -1105,7 +1110,7 @@ namespace NavalCombatCore
 2,7400,7600,7800,8100,8300,8400
 3,8500,8800,9000,9300,9500,9600
 4,9100,9300,9500,9800,10000,10100",
-            int.Parse, int.Parse, float.Parse
+            ParseIntInvariant, ParseIntInvariant, ParseFloatInvariant
         );
 
         public static SimpleTable<int, int, float> visibilityNightMoonlightExceptionallyClear = SimpleTable<int, int, float>.FromCSV(@"Obs Size,-1,0,1,2,3,4
@@ -1115,7 +1120,7 @@ namespace NavalCombatCore
 2,7400,7600,7800,8100,8300,8400
 3,8500,8800,9000,9300,9500,9600
 4,9100,9300,9500,9800,10000,10100",
-            int.Parse, int.Parse, float.Parse
+            ParseIntInvariant, ParseIntInvariant, ParseFloatInvariant
         );
 
         public static SimpleTable<int, int, float> visibilityNightMoonlightVeryClear = SimpleTable<int, int, float>.FromCSV(@"Obs Size,-1,0,1,2,3,4
@@ -1125,7 +1130,7 @@ namespace NavalCombatCore
 2,7400,7600,7800,8100,8300,8400
 3,8500,8800,9000,9300,9500,9600
 4,9100,9300,9500,9800,10000,10100",
-            int.Parse, int.Parse, float.Parse
+            ParseIntInvariant, ParseIntInvariant, ParseFloatInvariant
         );
 
         public static float GetVisibilityRangeYards(int obsSize, int tgtSize, VisibilityDescription visibility, DayNightLevel dayNightLevel, 

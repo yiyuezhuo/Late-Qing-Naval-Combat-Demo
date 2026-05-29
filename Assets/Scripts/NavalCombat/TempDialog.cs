@@ -62,6 +62,9 @@ public class TempDialog: ISwitchable
 
         Utils.BindItemsSourceRecursive(el);
 
+        if (positionMode == PositionMode.Centering || positionMode == PositionMode.Left)
+            EnsureDialogBounds();
+
         if (confirmButton != null)
         {
             confirmButton.clicked += () =>
@@ -118,13 +121,6 @@ public class TempDialog: ISwitchable
         }
 
 
-        // if (positionMode == PositionMode.Centering || positionMode == PositionMode.Left)
-        // {
-        //     el.style.position = Position.Absolute;
-        //     el.style.translate = StyleKeyword.Null;
-        //     PositionAfterLayout();
-        // }
-
         if (fullScreen)
         {
             el.style.flexGrow = 1;
@@ -163,46 +159,12 @@ public class TempDialog: ISwitchable
         // OnShown();
     }
 
-    // void PositionAfterLayout()
-    // {
-    //     if (TryPosition())
-    //         return;
-
-    //     void OnGeometryChanged(GeometryChangedEvent _)
-    //     {
-    //         if (TryPosition())
-    //             el.UnregisterCallback<GeometryChangedEvent>(OnGeometryChanged);
-    //     }
-
-    //     el.RegisterCallback<GeometryChangedEvent>(OnGeometryChanged);
-    // }
-
-    // bool TryPosition()
-    // {
-    //     if (root == null || el == null)
-    //         return false;
-
-    //     var rootWidth = root.resolvedStyle.width;
-    //     var rootHeight = root.resolvedStyle.height;
-    //     var elementWidth = el.resolvedStyle.width;
-    //     var elementHeight = el.resolvedStyle.height;
-
-    //     if (!IsValidLayoutSize(rootWidth)
-    //         || !IsValidLayoutSize(rootHeight)
-    //         || !IsValidLayoutSize(elementWidth)
-    //         || !IsValidLayoutSize(elementHeight))
-    //         return false;
-
-    //     var left = positionMode == PositionMode.Left ? 0 : (rootWidth - elementWidth) * 0.5f;
-    //     var top = (rootHeight - elementHeight) * 0.5f;
-
-    //     el.style.left = left < 0 ? 0 : left;
-    //     el.style.top = top < 0 ? 0 : top;
-    //     return true;
-    // }
-
-    static bool IsValidLayoutSize(float value)
+    void EnsureDialogBounds()
     {
-        return !float.IsNaN(value) && value > 0;
+        if (el.style.maxWidth.keyword == StyleKeyword.Null)
+            el.style.maxWidth = new Length(100, LengthUnit.Percent);
+
+        if (el.style.maxHeight.keyword == StyleKeyword.Null)
+            el.style.maxHeight = new Length(100, LengthUnit.Percent);
     }
 }

@@ -62,101 +62,103 @@
                 <ui:VisualElement>
                     <ui:TabView name="ShipClassEditorTabView" style="min-width: 600px;">
                         <ui:Tab label="Basic">
-                            <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                                <ui:VisualElement style="flex-grow: 1; flex-basis: 50%;">
-                                    <ui:Instance template="GlobalStringEditor" data-source-path="name">
-                                        <AttributeOverrides element-name="GlobalStringLabel" text="Class Name"/>
-                                    </ui:Instance>
-                                    <LocalizedEnumField type-str="NavalCombatCore.ShipType" label="Type">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="typeProp" source-to-ui-converters="ShipType =&gt; int" ui-to-source-converters="int =&gt; ShipType" binding-mode="TwoWay"/>
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69223554125824)"/>
-                                        </Bindings>
-                                    </LocalizedEnumField>
-                                    <LocalizedEnumField type-str="NavalCombatCore.ExtraShipType" label="Extra Type">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="extraShipType" source-to-ui-converters="ExtraShipType =&gt; int" ui-to-source-converters="int =&gt; ExtraShipType" binding-mode="TwoWay"/>
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(38923844569436160)"/>
-                                        </Bindings>
-                                    </LocalizedEnumField>
-                                    <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                                        <LocalizedEnumField type-str="CoreUtils.Country" label="Country" style="flex-grow: 1;">
+                            <ui:ScrollView>
+                                <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                                    <ui:VisualElement style="flex-grow: 1; flex-basis: 50%;">
+                                        <ui:Instance template="GlobalStringEditor" data-source-path="name">
+                                            <AttributeOverrides element-name="GlobalStringLabel" text="Class Name"/>
+                                        </ui:Instance>
+                                        <LocalizedEnumField type-str="NavalCombatCore.ShipType" label="Type">
                                             <Bindings>
-                                                <ui:DataBinding property="value" data-source-path="country" source-to-ui-converters="Country =&gt; int" ui-to-source-converters="int =&gt; Country" binding-mode="TwoWay"/>
-                                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69304797794304)"/>
+                                                <ui:DataBinding property="value" data-source-path="typeProp" source-to-ui-converters="ShipType =&gt; int" ui-to-source-converters="int =&gt; ShipType" binding-mode="TwoWay"/>
+                                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69223554125824)"/>
                                             </Bindings>
                                         </LocalizedEnumField>
-                                        <ui:VisualElement style="flex-grow: 0; -unity-background-scale-mode: scale-to-fit; width: 50px;">
+                                        <LocalizedEnumField type-str="NavalCombatCore.ExtraShipType" label="Extra Type">
                                             <Bindings>
-                                                <ui:DataBinding property="style.backgroundImage" data-source-path="country" binding-mode="ToTarget" source-to-ui-converters="Country =&gt; StyleBackground"/>
+                                                <ui:DataBinding property="value" data-source-path="extraShipType" source-to-ui-converters="ExtraShipType =&gt; int" ui-to-source-converters="int =&gt; ExtraShipType" binding-mode="TwoWay"/>
+                                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(38923844569436160)"/>
                                             </Bindings>
+                                        </LocalizedEnumField>
+                                        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                                            <LocalizedEnumField type-str="CoreUtils.Country" label="Country" style="flex-grow: 1;">
+                                                <Bindings>
+                                                    <ui:DataBinding property="value" data-source-path="country" source-to-ui-converters="Country =&gt; int" ui-to-source-converters="int =&gt; Country" binding-mode="TwoWay"/>
+                                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69304797794304)"/>
+                                                </Bindings>
+                                            </LocalizedEnumField>
+                                            <ui:VisualElement style="flex-grow: 0; -unity-background-scale-mode: scale-to-fit; width: 50px;">
+                                                <Bindings>
+                                                    <ui:DataBinding property="style.backgroundImage" data-source-path="country" binding-mode="ToTarget" source-to-ui-converters="Country =&gt; StyleBackground"/>
+                                                </Bindings>
+                                            </ui:VisualElement>
                                         </ui:VisualElement>
+                                        <ui:IntegerField label="Reference Year">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="referenceYear" binding-mode="TwoWay"/>
+                                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-224)"/>
+                                            </Bindings>
+                                        </ui:IntegerField>
+                                        <ui:FloatField label="Displacement (tons)">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="displacementTonsProp" binding-mode="TwoWay"/>
+                                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(85386828877824)"/>
+                                            </Bindings>
+                                        </ui:FloatField>
+                                        <ui:FloatField label="Damage Point">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="damagePoint" binding-mode="TwoWay"/>
+                                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69481491238912)"/>
+                                            </Bindings>
+                                        </ui:FloatField>
+                                        <ui:IntegerField label="Dmg Ctrl Rating">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="damageControlRatingUnmodified" binding-mode="TwoWay"/>
+                                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69540668674048)"/>
+                                            </Bindings>
+                                        </ui:IntegerField>
+                                        <ui:FloatField label="Length (foot)">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="lengthFootProp" binding-mode="TwoWay"/>
+                                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(86174229762048)"/>
+                                            </Bindings>
+                                        </ui:FloatField>
+                                        <ui:FloatField label="Beam (foot)">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="beamFootProp" binding-mode="TwoWay"/>
+                                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(86429511880704)"/>
+                                            </Bindings>
+                                        </ui:FloatField>
+                                        <ui:FloatField label="Draft (foot)">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="draftFoot" binding-mode="TwoWay"/>
+                                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(86574546718720)"/>
+                                            </Bindings>
+                                        </ui:FloatField>
+                                        <ui:IntegerField label="Target Size">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="targetSizeModifier" binding-mode="TwoWay"/>
+                                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69380098134016)"/>
+                                            </Bindings>
+                                        </ui:IntegerField>
+                                        <ui:IntegerField label="Complement (men)">
+                                            <Bindings>
+                                                <ui:DataBinding property="value" data-source-path="complementMen" binding-mode="TwoWay"/>
+                                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(85458081714176)"/>
+                                            </Bindings>
+                                        </ui:IntegerField>
+                                        <LocalizedEnumField label="Ram" type-str="NavalCombatCore.RamType">
+                                            <Bindings>
+                                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69683560222720)"/>
+                                                <ui:DataBinding property="value" data-source-path="ram" source-to-ui-converters="RamType =&gt; int" ui-to-source-converters="int =&gt; RamType" binding-mode="TwoWay"/>
+                                            </Bindings>
+                                        </LocalizedEnumField>
                                     </ui:VisualElement>
-                                    <ui:IntegerField label="Reference Year">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="referenceYear" binding-mode="TwoWay"/>
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-224)"/>
-                                        </Bindings>
-                                    </ui:IntegerField>
-                                    <ui:FloatField label="Displacement (tons)">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="displacementTonsProp" binding-mode="TwoWay"/>
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(85386828877824)"/>
-                                        </Bindings>
-                                    </ui:FloatField>
-                                    <ui:FloatField label="Damage Point">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="damagePoint" binding-mode="TwoWay"/>
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69481491238912)"/>
-                                        </Bindings>
-                                    </ui:FloatField>
-                                    <ui:IntegerField label="Dmg Ctrl Rating">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="damageControlRatingUnmodified" binding-mode="TwoWay"/>
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69540668674048)"/>
-                                        </Bindings>
-                                    </ui:IntegerField>
-                                    <ui:FloatField label="Length (foot)">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="lengthFootProp" binding-mode="TwoWay"/>
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(86174229762048)"/>
-                                        </Bindings>
-                                    </ui:FloatField>
-                                    <ui:FloatField label="Beam (foot)">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="beamFootProp" binding-mode="TwoWay"/>
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(86429511880704)"/>
-                                        </Bindings>
-                                    </ui:FloatField>
-                                    <ui:FloatField label="Draft (foot)">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="draftFoot" binding-mode="TwoWay"/>
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(86574546718720)"/>
-                                        </Bindings>
-                                    </ui:FloatField>
-                                    <ui:IntegerField label="Target Size">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="targetSizeModifier" binding-mode="TwoWay"/>
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69380098134016)"/>
-                                        </Bindings>
-                                    </ui:IntegerField>
-                                    <ui:IntegerField label="Complement (men)">
-                                        <Bindings>
-                                            <ui:DataBinding property="value" data-source-path="complementMen" binding-mode="TwoWay"/>
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(85458081714176)"/>
-                                        </Bindings>
-                                    </ui:IntegerField>
-                                    <LocalizedEnumField label="Ram" type-str="NavalCombatCore.RamType">
-                                        <Bindings>
-                                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69683560222720)"/>
-                                            <ui:DataBinding property="value" data-source-path="ram" source-to-ui-converters="RamType =&gt; int" ui-to-source-converters="int =&gt; RamType" binding-mode="TwoWay"/>
-                                        </Bindings>
-                                    </LocalizedEnumField>
+                                    <ui:VisualElement style="flex-grow: 1; flex-basis: 50%;">
+                                        <ui:Instance template="ArmorRatingEditor" data-source-path="armorRating"/>
+                                    </ui:VisualElement>
                                 </ui:VisualElement>
-                                <ui:VisualElement style="flex-grow: 1; flex-basis: 50%;">
-                                    <ui:Instance template="ArmorRatingEditor" data-source-path="armorRating"/>
-                                </ui:VisualElement>
-                            </ui:VisualElement>
+                            </ui:ScrollView>
                             <Bindings>
                                 <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(66810558451712)"/>
                             </Bindings>

@@ -73,110 +73,112 @@
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement style="flex-grow: 1.2; flex-basis: 100px;">
-                <ui:VisualElement data-source-path="currentSelectedShipGroup" style="flex-grow: 0;">
-                    <ui:Instance template="GlobalStringEditor" data-source-path="name">
-                        <AttributeOverrides element-name="GlobalStringLabel" text="Group Name"/>
-                    </ui:Instance>
-                    <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                        <ui:VisualElement style="flex-grow: 1;">
-                            <ui:Label text="Leader Name" name="LeaderNameLabel" style="white-space: normal;">
+                <ui:ScrollView>
+                    <ui:VisualElement data-source-path="currentSelectedShipGroup" style="flex-grow: 0;">
+                        <ui:Instance template="GlobalStringEditor" data-source-path="name">
+                            <AttributeOverrides element-name="GlobalStringLabel" text="Group Name"/>
+                        </ui:Instance>
+                        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                            <ui:VisualElement style="flex-grow: 1;">
+                                <ui:Label text="Leader Name" name="LeaderNameLabel" style="white-space: normal;">
+                                    <Bindings>
+                                        <ui:DataBinding property="text" data-source-path="leaderReference.nameLink" binding-mode="ToTarget"/>
+                                    </Bindings>
+                                </ui:Label>
+                                <ui:Button text="Set Leader" name="SetLeaderButton">
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(173227382575104)"/>
+                                        <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
+                                    </Bindings>
+                                </ui:Button>
+                                <ui:EnumField label="Type" value="Center" type="NavalCombatCore.GroupType, Assembly-CSharp" style="display: none;">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="type" binding-mode="TwoWay"/>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69223554125824)"/>
+                                    </Bindings>
+                                </ui:EnumField>
+                                <ui:EnumField label="Formation" value="Center" type="NavalCombatCore.FormationType, Assembly-CSharp" style="display: none;">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="formation" binding-mode="TwoWay"/>
+                                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(173393841917952)"/>
+                                    </Bindings>
+                                </ui:EnumField>
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex-grow: 0; flex-basis: 100px; -unity-background-scale-mode: scale-to-fit;">
                                 <Bindings>
-                                    <ui:DataBinding property="text" data-source-path="leaderReference.nameLink" binding-mode="ToTarget"/>
+                                    <ui:DataBinding property="style.backgroundImage" data-source-path="leaderReference.portrait" binding-mode="ToTarget"/>
                                 </Bindings>
-                            </ui:Label>
-                            <ui:Button text="Set Leader" name="SetLeaderButton">
-                                <Bindings>
-                                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(173227382575104)"/>
-                                    <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
-                                </Bindings>
-                            </ui:Button>
-                            <ui:EnumField label="Type" value="Center" type="NavalCombatCore.GroupType, Assembly-CSharp" style="display: none;">
-                                <Bindings>
-                                    <ui:DataBinding property="value" data-source-path="type" binding-mode="TwoWay"/>
-                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69223554125824)"/>
-                                </Bindings>
-                            </ui:EnumField>
-                            <ui:EnumField label="Formation" value="Center" type="NavalCombatCore.FormationType, Assembly-CSharp" style="display: none;">
-                                <Bindings>
-                                    <ui:DataBinding property="value" data-source-path="formation" binding-mode="TwoWay"/>
-                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(173393841917952)"/>
-                                </Bindings>
-                            </ui:EnumField>
+                            </ui:VisualElement>
                         </ui:VisualElement>
-                        <ui:VisualElement style="flex-grow: 0; flex-basis: 100px; -unity-background-scale-mode: scale-to-fit;">
-                            <Bindings>
-                                <ui:DataBinding property="style.backgroundImage" data-source-path="leaderReference.portrait" binding-mode="ToTarget"/>
-                            </Bindings>
+                        <ui:Instance template="DoctrineEditor" data-source-path="doctrineProp" style="padding-left: 5px; padding-right: 5px;"/>
+                        <ui:VisualElement style="padding-left: 5px; padding-right: 5px; padding-top: 4px; padding-bottom: 4px;">
+                            <ui:VisualElement style="flex-direction: row; align-items: center;">
+                                <ui:Label text="Remark" style="flex-grow: 1;">
+                                    <Bindings>
+                                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(67808446287872)"/>
+                                    </Bindings>
+                                </ui:Label>
+                                <ui:Button text="Set" name="SetRemarkButton">
+                                    <Bindings>
+                                        <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
+                                    </Bindings>
+                                </ui:Button>
+                            </ui:VisualElement>
+                            <ui:ScrollView vertical-scroller-visibility="Auto" horizontal-scroller-visibility="Hidden" style="height: 100px;">
+                                <MarkdownRenderer name="ShipGroupRemarkMarkdownRenderer" selectable="true" max-image-height="90">
+                                    <Bindings>
+                                        <ui:DataBinding property="value" data-source-path="remark.shortName" binding-mode="ToTarget"/>
+                                    </Bindings>
+                                </MarkdownRenderer>
+                            </ui:ScrollView>
                         </ui:VisualElement>
-                    </ui:VisualElement>
-                    <ui:Instance template="DoctrineEditor" data-source-path="doctrineProp" style="padding-left: 5px; padding-right: 5px;"/>
-                    <ui:VisualElement style="padding-left: 5px; padding-right: 5px; padding-top: 4px; padding-bottom: 4px;">
-                        <ui:VisualElement style="flex-direction: row; align-items: center;">
-                            <ui:Label text="Remark" style="flex-grow: 1;">
-                                <Bindings>
-                                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(67808446287872)"/>
-                                </Bindings>
-                            </ui:Label>
-                            <ui:Button text="Set" name="SetRemarkButton">
-                                <Bindings>
-                                    <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
-                                </Bindings>
-                            </ui:Button>
-                        </ui:VisualElement>
-                        <ui:ScrollView vertical-scroller-visibility="Auto" horizontal-scroller-visibility="Hidden" style="height: 100px;">
-                            <MarkdownRenderer name="ShipGroupRemarkMarkdownRenderer" selectable="true" max-image-height="90">
-                                <Bindings>
-                                    <ui:DataBinding property="value" data-source-path="remark.shortName" binding-mode="ToTarget"/>
-                                </Bindings>
-                            </MarkdownRenderer>
-                        </ui:ScrollView>
-                    </ui:VisualElement>
-                    <Bindings>
-                        <ui:DataBinding property="style.display" binding-mode="ToTarget" source-to-ui-converters="ShipGroup =&gt; DisplayStyle"/>
-                    </Bindings>
-                </ui:VisualElement>
-                <ui:VisualElement data-source-path="currentSelectedShipLog" style="flex-grow: 0;">
-                    <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                        <ui:VisualElement style="flex-grow: 1;">
-                            <ui:Label text="Selected ShipLog&apos;s name" name="ShipLogNameLinkLabel">
-                                <Bindings>
-                                    <ui:DataBinding property="text" binding-mode="ToTarget" source-to-ui-converters="ShipLog =&gt; ShipLog&apos;s merge name" data-source-path="namedShipDescLink"/>
-                                </Bindings>
-                            </ui:Label>
-                            <ui:Label text="Selected ShipLog&apos;s captain&apos;s name" name="CaptainLabel" style="white-space: normal;">
-                                <Bindings>
-                                    <ui:DataBinding property="text" binding-mode="ToTarget" data-source-path="captainDescLink"/>
-                                </Bindings>
-                            </ui:Label>
-                        </ui:VisualElement>
-                        <ui:Image name="LeaderImage" style="max-height: 50px; min-width: 10px; max-width: 50px;">
-                            <Bindings>
-                                <ui:DataBinding property="source" data-source-path="namedShipProp.defaultLeaderReference.portraitTexture2D" binding-mode="ToTarget"/>
-                            </Bindings>
-                        </ui:Image>
-                        <ui:Image name="CountryFlagImage" style="height: auto; max-height: 50px; min-width: 10px; max-width: 50px;">
-                            <Bindings>
-                                <ui:DataBinding property="source" data-source-path="shipClassProperty.countryFlagTexture" binding-mode="ToTarget"/>
-                            </Bindings>
-                        </ui:Image>
-                    </ui:VisualElement>
-                    <ui:Instance template="DoctrineEditor" data-source-path="doctrineProp"/>
-                    <Bindings>
-                        <ui:DataBinding property="style.display" binding-mode="ToTarget" source-to-ui-converters="ShipLog to DisplayStyle"/>
-                    </Bindings>
-                    <ui:Image style="max-height: 100px;">
                         <Bindings>
-                            <ui:DataBinding property="source" data-source-path="shipClassProperty.portraitIconReference.texture2d" binding-mode="ToTarget"/>
+                            <ui:DataBinding property="style.display" binding-mode="ToTarget" source-to-ui-converters="ShipGroup =&gt; DisplayStyle"/>
                         </Bindings>
-                    </ui:Image>
-                </ui:VisualElement>
-                <ui:Toggle label="Take Command (Multiplayer - Client)">
-                    <Bindings>
-                        <ui:DataBinding property="style.display" data-source-path="currentSelectedAny" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
-                        <ui:DataBinding property="value" data-source-path="currentSelectedObjectTakeCommand" binding-mode="TwoWay"/>
-                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(48774426079694848)"/>
-                    </Bindings>
-                </ui:Toggle>
+                    </ui:VisualElement>
+                    <ui:VisualElement data-source-path="currentSelectedShipLog" style="flex-grow: 0;">
+                        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                            <ui:VisualElement style="flex-grow: 1;">
+                                <ui:Label text="Selected ShipLog&apos;s name" name="ShipLogNameLinkLabel">
+                                    <Bindings>
+                                        <ui:DataBinding property="text" binding-mode="ToTarget" source-to-ui-converters="ShipLog =&gt; ShipLog&apos;s merge name" data-source-path="namedShipDescLink"/>
+                                    </Bindings>
+                                </ui:Label>
+                                <ui:Label text="Selected ShipLog&apos;s captain&apos;s name" name="CaptainLabel" style="white-space: normal;">
+                                    <Bindings>
+                                        <ui:DataBinding property="text" binding-mode="ToTarget" data-source-path="captainDescLink"/>
+                                    </Bindings>
+                                </ui:Label>
+                            </ui:VisualElement>
+                            <ui:Image name="LeaderImage" style="max-height: 50px; min-width: 10px; max-width: 50px;">
+                                <Bindings>
+                                    <ui:DataBinding property="source" data-source-path="namedShipProp.defaultLeaderReference.portraitTexture2D" binding-mode="ToTarget"/>
+                                </Bindings>
+                            </ui:Image>
+                            <ui:Image name="CountryFlagImage" style="height: auto; max-height: 50px; min-width: 10px; max-width: 50px;">
+                                <Bindings>
+                                    <ui:DataBinding property="source" data-source-path="shipClassProperty.countryFlagTexture" binding-mode="ToTarget"/>
+                                </Bindings>
+                            </ui:Image>
+                        </ui:VisualElement>
+                        <ui:Instance template="DoctrineEditor" data-source-path="doctrineProp"/>
+                        <Bindings>
+                            <ui:DataBinding property="style.display" binding-mode="ToTarget" source-to-ui-converters="ShipLog to DisplayStyle"/>
+                        </Bindings>
+                        <ui:Image style="max-height: 100px;">
+                            <Bindings>
+                                <ui:DataBinding property="source" data-source-path="shipClassProperty.portraitIconReference.texture2d" binding-mode="ToTarget"/>
+                            </Bindings>
+                        </ui:Image>
+                    </ui:VisualElement>
+                    <ui:Toggle label="Take Command (Multiplayer - Client)">
+                        <Bindings>
+                            <ui:DataBinding property="style.display" data-source-path="currentSelectedAny" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
+                            <ui:DataBinding property="value" data-source-path="currentSelectedObjectTakeCommand" binding-mode="TwoWay"/>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(48774426079694848)"/>
+                        </Bindings>
+                    </ui:Toggle>
+                </ui:ScrollView>
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

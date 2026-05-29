@@ -51,8 +51,8 @@ public class TempDialog: ISwitchable
 
     public void Popup()
     {
-        // var el = template.CloneTree();
-        el = template.CloneTree();
+        template.CloneTree(root);
+        el = root[root.childCount - 1];
         el.dataSource = templateDataSource;
 
         onCreated?.Invoke(this, el);
@@ -61,8 +61,6 @@ public class TempDialog: ISwitchable
         var cancelButton = el.Q<Button>("CancelButton");
 
         Utils.BindItemsSourceRecursive(el);
-
-        root.Add(el);
 
         if (confirmButton != null)
         {
@@ -94,29 +92,39 @@ public class TempDialog: ISwitchable
             }
         }
 
-        if (positionMode == PositionMode.Centering)
+        // if (positionMode == PositionMode.Centering)
+        // {
+        //     el.style.position = Position.Absolute;
+        //     el.style.left = new Length(50, LengthUnit.Percent);
+        //     el.style.top = new Length(50, LengthUnit.Percent);
+        //     el.style.translate = new StyleTranslate(
+        //         new Translate(
+        //             new Length(-50, LengthUnit.Percent),
+        //             new Length(-50, LengthUnit.Percent)
+        //         )
+        //     );
+        // }
+        // else if(positionMode == PositionMode.Left)
+        // {
+        //     el.style.position = Position.Absolute;
+        //     el.style.left = new Length(0, LengthUnit.Percent);
+        //     el.style.top = new Length(50, LengthUnit.Percent);
+        //     el.style.translate = new StyleTranslate(
+        //         new Translate(
+        //             new Length(0, LengthUnit.Percent),
+        //             new Length(-50, LengthUnit.Percent)
+        //         )
+        //     );
+        // }
+
+
+        if (positionMode == PositionMode.Centering || positionMode == PositionMode.Left)
         {
+
+            
             el.style.position = Position.Absolute;
-            el.style.left = new Length(50, LengthUnit.Percent);
-            el.style.top = new Length(50, LengthUnit.Percent);
-            el.style.translate = new StyleTranslate(
-                new Translate(
-                    new Length(-50, LengthUnit.Percent),
-                    new Length(-50, LengthUnit.Percent)
-                )
-            );
-        }
-        else if(positionMode == PositionMode.Left)
-        {
-            el.style.position = Position.Absolute;
-            el.style.left = new Length(0, LengthUnit.Percent);
-            el.style.top = new Length(50, LengthUnit.Percent);
-            el.style.translate = new StyleTranslate(
-                new Translate(
-                    new Length(0, LengthUnit.Percent),
-                    new Length(-50, LengthUnit.Percent)
-                )
-            );
+            el.style.translate = StyleKeyword.Null;
+            PositionAfterLayout();
         }
 
         if (fullScreen)
@@ -155,5 +163,48 @@ public class TempDialog: ISwitchable
         el.style.display = DisplayStyle.Flex;
 
         // OnShown();
+    }
+
+    void PositionAfterLayout()
+    {
+        if (TryPosition())
+            return;
+
+        void OnGeometryChanged(GeometryChangedEvent _)
+        {
+            if (TryPosition())
+                el.UnregisterCallback<GeometryChangedEvent>(OnGeometryChanged);
+        }
+
+        el.RegisterCallback<GeometryChangedEvent>(OnGeometryChanged);
+    }
+
+    bool TryPosition()
+    {
+        if (root == null || el == null)
+            return false;
+
+        var rootWidth = root.resolvedStyle.width;
+        var rootHeight = root.resolvedStyle.height;
+        var elementWidth = el.resolvedStyle.width;
+        var elementHeight = el.resolvedStyle.height;
+
+        if (!IsValidLayoutSize(rootWidth)
+            || !IsValidLayoutSize(rootHeight)
+            || !IsValidLayoutSize(elementWidth)
+            || !IsValidLayoutSize(elementHeight))
+            return false;
+
+        var left = positionMode == PositionMode.Left ? 0 : (rootWidth - elementWidth) * 0.5f;
+        var top = (rootHeight - elementHeight) * 0.5f;
+
+        el.style.left = left < 0 ? 0 : left;
+        el.style.top = top < 0 ? 0 : top;
+        return true;
+    }
+
+    static bool IsValidLayoutSize(float value)
+    {
+        return !float.IsNaN(value) && value > 0;
     }
 }

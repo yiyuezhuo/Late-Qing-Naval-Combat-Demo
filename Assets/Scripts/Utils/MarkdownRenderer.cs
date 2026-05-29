@@ -676,6 +676,9 @@ public partial class MarkdownRenderer : BindableElement
         if (string.IsNullOrWhiteSpace(url))
             return null;
 
+        if (ManualUtils.IsManualUrl(url))
+            return url;
+
         if (IsExternalUrl(url) || url.StartsWith("file://", StringComparison.OrdinalIgnoreCase))
             return url;
 
@@ -696,7 +699,8 @@ public partial class MarkdownRenderer : BindableElement
 
     static bool IsOpenableUrl(string url)
     {
-        return IsExternalUrl(url)
+        return ManualUtils.IsManualUrl(url)
+            || IsExternalUrl(url)
             || (!string.IsNullOrWhiteSpace(url)
                 && (url.StartsWith("file://", StringComparison.OrdinalIgnoreCase)
                     || Path.IsPathRooted(url)));

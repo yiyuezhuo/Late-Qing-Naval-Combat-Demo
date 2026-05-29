@@ -4422,6 +4422,16 @@ public class DialogRoot : SingletonDocument<DialogRoot>
 
     public void PopupConfirmOpenURLDialog(string url, string title = null)
     {
+        if (ManualUtils.IsManualUrl(url))
+        {
+            PopupConfirmDialog(
+                Localize("Confirm to open url {0} ?", Localize("Manual")),
+                ManualUtils.OpenReadme,
+                title
+            );
+            return;
+        }
+
         PopupConfirmDialog(
             Localize("Confirm to open url {0} ?", url),
             () => Application.OpenURL(url),

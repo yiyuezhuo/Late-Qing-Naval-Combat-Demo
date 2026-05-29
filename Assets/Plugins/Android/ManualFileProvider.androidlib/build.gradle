@@ -1,0 +1,21 @@
+apply plugin: 'com.android.library'
+
+dependencies {
+    implementation 'androidx.core:core:1.9.0'
+}
+
+android {
+    namespace 'com.yyz.lateqing.manualprovider'
+    compileSdk Integer.parseInt((findProperty('unity.compileSdkVersion') ?: '36').toString())
+
+    defaultConfig {
+        minSdk Integer.parseInt((findProperty('unity.minSdkVersion') ?: '25').toString())
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            res.srcDirs = ['res']
+        }
+    }
+}

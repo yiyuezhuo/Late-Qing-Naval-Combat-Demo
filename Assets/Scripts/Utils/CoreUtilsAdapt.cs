@@ -24,7 +24,7 @@ namespace CoreUtils
         {
             get
             {
-#if UNITY_WEBGL && !UNITY_EDITOR
+#if (UNITY_WEBGL || UNITY_ANDROID) && !UNITY_EDITOR
                 return false;
 #else
                 return true;

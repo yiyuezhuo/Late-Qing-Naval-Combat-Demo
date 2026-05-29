@@ -1,7 +1,16 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:VisualElement picking-mode="Ignore" data-source-type="ExceptionTracker, Assembly-CSharp" style="flex-grow: 1; position: absolute; top: 40%;">
         <ui:VisualElement picking-mode="Ignore" style="flex-grow: 1; flex-direction: row;">
-            <ui:Button text="Clear" name="ClearButton"/>
+            <ui:Button text="Clear" name="ClearButton">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(69800000000026)" />
+                </Bindings>
+            </ui:Button>
+            <ui:Button text="Copy to clipboard" name="CopyToClipboardButton">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-225)" />
+                </Bindings>
+            </ui:Button>
         </ui:VisualElement>
         <ui:VisualElement picking-mode="Ignore" style="flex-grow: 1; flex-direction: row;">
             <ui:Image source="project://database/Assets/Textures/Unexpected_Exceptions.png?fileID=2800000&amp;guid=6b31dd79379ab3140a301c4d791c41b2&amp;type=3#Unexpected_Exceptions" style="max-width: 100px; max-height: 100px;"/>
@@ -9,7 +18,7 @@
         <Bindings>
             <ui:DataBinding property="style.display" data-source-path="shouldDisplay" binding-mode="ToTarget" source-to-ui-converters="Bool to DisplayStyle"/>
         </Bindings>
-        <ui:TextField multiline="true" style="max-width: 350px; white-space: normal; max-height: 100px;">
+        <ui:TextField name="ExceptionMessageTextField" multiline="true" style="max-width: 350px; white-space: normal; max-height: 100px;">
             <Bindings>
                 <ui:DataBinding property="value" data-source-path="exceptionMessage" binding-mode="ToTarget"/>
             </Bindings>

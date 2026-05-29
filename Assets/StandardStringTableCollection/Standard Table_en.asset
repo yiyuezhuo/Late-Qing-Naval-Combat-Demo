@@ -3694,6 +3694,10 @@ MonoBehaviour:
     m_Localized: Reference Year
     m_Metadata:
       m_Items: []
+  - m_Id: -225
+    m_Localized: Copy to clipboard
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -238,7 +238,7 @@
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-44)"/>
                         </Bindings>
                     </ui:Button>
-                    <ui:Button text="McCoy Okun Calculator" name="McCoyOkunCalculatorButton" >
+                    <ui:Button text="McCoy Okun Calculator" name="McCoyOkunCalculatorButton">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-164)"/>
                         </Bindings>
@@ -286,6 +286,7 @@
                     <ui:Button text="Location" name="LocationLabelsEditorButton">
                         <Bindings>
                             <ui:DataBinding property="enabledSelf" data-source-path="isInEditMode" binding-mode="ToTarget"/>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(77184133402624)"/>
                         </Bindings>
                     </ui:Button>
                     <ui:Button text="Delete (Del)" name="DeleteButton">

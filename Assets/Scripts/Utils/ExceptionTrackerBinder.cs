@@ -92,9 +92,17 @@ public class ExceptionTrackerBinder : MonoBehaviour
         root.dataSource = ExceptionTracker.Instance;
 
         var clearButton = root.Q<Button>("ClearButton");
+        var copyButton = root.Q<Button>("CopyToClipboardButton");
+        var exceptionMessageTextField = root.Q<TextField>("ExceptionMessageTextField");
+
         clearButton.clicked += () =>
         {
             ExceptionTracker.Instance.Clear();
+        };
+
+        copyButton.clicked += () =>
+        {
+            GUIUtility.systemCopyBuffer = exceptionMessageTextField?.value ?? "";
         };
     }
 }

@@ -80,6 +80,9 @@ public class CameraController2 : MonoBehaviour
     public EventHandler cameraMoved;
     public EventHandler cameraZoomed;
 
+    bool prevCameraZooming;
+
+
     void Awake()
     {
         cameras = GetComponentsInChildren<Camera>().ToList();
@@ -147,6 +150,8 @@ public class CameraController2 : MonoBehaviour
 
     void UpdateZoom(Camera cam)
     {
+        var cameraZooming = false;
+
         var delta = -GetZoomDeltaSign();
         if (delta != 0)
         {
@@ -161,7 +166,8 @@ public class CameraController2 : MonoBehaviour
                 cam.orthographicSize = zoomLevel[newZoomIdx];
             }
 
-            cameraZoomed?.Invoke(this, EventArgs.Empty);
+            // cameraZoomed?.Invoke(this, EventArgs.Empty);
+            cameraZooming = true;
         }
         
         // Touch Pinch Zooming
@@ -183,8 +189,17 @@ public class CameraController2 : MonoBehaviour
                     zoomLevel[0],
                     zoomLevel[^1]
                 );
+
+                cameraZooming = true;
             }
         }
+        
+        if(!cameraZooming && prevCameraZooming) // An ongoing zooming is over
+        {
+            cameraZoomed?.Invoke(this, EventArgs.Empty);
+        }
+
+        prevCameraZooming = cameraZooming;
     }
 
     public int GetZoomDeltaSign()

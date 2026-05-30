@@ -225,6 +225,8 @@ public class TopTabs : SingletonDocument<TopTabs>
             GameManager.Instance.ToggleSelectedShipWaypointEditing();
         };
 
+        root.Q<Button>("CancelActionButton").clicked += GameManager.Instance.CancelCurrentAction;
+
         var goToMainMenuButton = root.Q<Button>("GoToMainMenuButton");
         // goToMainMenuButton.clicked += () => SceneManager.LoadScene("Main Menu");
         goToMainMenuButton.clicked += () =>

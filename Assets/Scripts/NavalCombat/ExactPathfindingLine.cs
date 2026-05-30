@@ -53,6 +53,12 @@ public class ExactPathfindingLine : SingletonMonoBehaviour<ExactPathfindingLine>
         ShowText(Localize("Exact Pathfinding: choose source"), TryGetCurrentHitPoint(out var hitPoint) ? hitPoint : transform.position);
     }
 
+    public void Cancel()
+    {
+        state = State.Idle;
+        ClearAndHide();
+    }
+
     void EnsureVisuals()
     {
         var iconLayer = GetIconLayer();
@@ -306,10 +312,5 @@ public class ExactPathfindingLine : SingletonMonoBehaviour<ExactPathfindingLine>
             BeginChooseStart();
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            state = State.Idle;
-            ClearAndHide();
-        }
     }
 }

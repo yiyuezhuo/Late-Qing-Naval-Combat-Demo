@@ -53,6 +53,12 @@ public class MeasureLine : SingletonMonoBehaviour<MeasureLine>
         text.enabled = false;
     }
 
+    public void Cancel()
+    {
+        state = State.Idle;
+        Hide();
+    }
+
     static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
 
     // Update is called once per frame
@@ -122,10 +128,5 @@ public class MeasureLine : SingletonMonoBehaviour<MeasureLine>
             state = State.ChooseStart;
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            state = State.Idle;
-            Hide();
-        }
     }
 }

@@ -1101,6 +1101,36 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         ResetShipManualRoutePreview();
     }
 
+    public void CancelCurrentAction()
+    {
+        var measureLine = MeasureLine.Instance;
+        if (measureLine != null)
+            measureLine.Cancel();
+
+        var pathfindingLine = PathfindingLine.Instance;
+        if (pathfindingLine != null)
+            pathfindingLine.Cancel();
+
+        var exactPathfindingLine = ExactPathfindingLine.Instance;
+        if (exactPathfindingLine != null)
+            exactPathfindingLine.Cancel();
+
+        var losLine = LOSLine.Instance;
+        if (losLine != null)
+            losLine.Cancel();
+
+        if (state == State.SelectingWaypointDestination)
+        {
+            ExitSelectedShipWaypointEditing();
+            return;
+        }
+
+        state = State.Idle;
+        selectedShipLogObjectId = null;
+        rightClickCandidateActive = false;
+        ClearPendingRightClickAction();
+    }
+
     void ExitSelectedShipWaypointEditing()
     {
         if (state == State.SelectingWaypointDestination)
@@ -1716,16 +1746,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                if (state == State.SelectingWaypointDestination)
-                {
-                    ExitSelectedShipWaypointEditing();
-                    return;
-                }
-
-                state = State.Idle;
-                selectedShipLogObjectId = null;
-                rightClickCandidateActive = false;
-                ClearPendingRightClickAction();
+                CancelCurrentAction();
                 return;
             }
 

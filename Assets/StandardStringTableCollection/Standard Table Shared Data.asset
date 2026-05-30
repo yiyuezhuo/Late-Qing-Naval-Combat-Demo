@@ -3690,6 +3690,10 @@ MonoBehaviour:
     m_Key: Copy to clipboard
     m_Metadata:
       m_Items: []
+  - m_Id: -226
+    m_Key: Cancel (Esc)
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

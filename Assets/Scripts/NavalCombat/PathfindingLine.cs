@@ -58,6 +58,12 @@ public class PathfindingLine : SingletonMonoBehaviour<PathfindingLine>
         ShowText(Localize("Pathfinding: choose source"), TryGetCurrentHitPoint(out var hitPoint) ? hitPoint : transform.position);
     }
 
+    public void Cancel()
+    {
+        state = State.Idle;
+        ClearAndHide();
+    }
+
     void EnsurePathfinder()
     {
         var currentProvider = ElevationService.Instance.elevationProvider as ElevationProvider;
@@ -334,10 +340,5 @@ public class PathfindingLine : SingletonMonoBehaviour<PathfindingLine>
             BeginChooseStart();
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            state = State.Idle;
-            ClearAndHide();
-        }
     }
 }

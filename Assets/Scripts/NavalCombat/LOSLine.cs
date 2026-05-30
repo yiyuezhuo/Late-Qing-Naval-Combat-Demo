@@ -59,6 +59,12 @@ public class LOSLine : SingletonMonoBehaviour<LOSLine>, IMaskCheckService
         text.enabled = false;
     }
 
+    public void Cancel()
+    {
+        state = State.Idle;
+        Hide();
+    }
+
     public (MaskCheckResult, Vector3, Vector3) Check2(LatLon src, LatLon dst)
     {
         var raycastStart = Utils.LatLonHeightFootToVector3(src, 100);
@@ -256,10 +262,5 @@ public class LOSLine : SingletonMonoBehaviour<LOSLine>, IMaskCheckService
             state = State.ChooseStart;
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            state = State.Idle;
-            Hide();
-        }
     }
 }

@@ -35,11 +35,6 @@
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(60764813168640)"/>
                         </Bindings>
                     </ui:Button>
-                    <ui:Button text="Waypoint (W)" name="WaypointButton">
-                        <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-53)"/>
-                        </Bindings>
-                    </ui:Button>
                     <ui:Button text="Detach (I)" name="DetachButton">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(60962738180096)"/>
@@ -188,9 +183,24 @@
                     <UnityEngine.Localization.LocalizedString property="label" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(61714353262592)"/>
                 </Bindings>
                 <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
+                    <ui:Button text="Cancel (Esc)" name="CancelActionButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-226)"/>
+                        </Bindings>
+                    </ui:Button>
                     <ui:Button text="Distance Measure (D)" name="DistanceMeasureButton">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(63539483676672)"/>
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="LOS Measure (S)" name="MaskMeasureButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(63593606975488)"/>
+                        </Bindings>
+                    </ui:Button>
+                    <ui:Button text="Waypoint (W)" name="WaypointButton">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-53)"/>
                         </Bindings>
                     </ui:Button>
                     <ui:Button text="Pathfinding (P)" name="PathfindingButton">
@@ -201,11 +211,6 @@
                     <ui:Button text="Exact Pathfinding (Alt + P)" name="ExactPathfindingButton">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(-52)"/>
-                        </Bindings>
-                    </ui:Button>
-                    <ui:Button text="LOS Measure (S)" name="MaskMeasureButton">
-                        <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:7dfd13ea0ff0ef0408a7f015356a0054" entry="Id(63593606975488)"/>
                         </Bindings>
                     </ui:Button>
                     <ui:Button text="Clear Trajectories" name="ClearTrajectoriesButton">

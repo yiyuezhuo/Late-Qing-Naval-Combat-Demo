@@ -3698,6 +3698,10 @@ MonoBehaviour:
     m_Localized: Copy to clipboard
     m_Metadata:
       m_Items: []
+  - m_Id: -226
+    m_Localized: Cancel (Esc)
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -4,7 +4,7 @@ Welcome to the Second Tutorial Scenario of the First Sino-Japanese War. In this 
 There are two ships on the map. Now, measure the distance between them. This can be achieved by:
 
 - Pressing the hotkey "D" to enter distance measuring mode. Click on the position of one ship, and then click on the position of the other ship. The distance will be displayed.
-- Switching to the "Tool" tab in the top bar, clicking the "Distance Measuring" button to enter distance measuring mode, and then clicking on the two locations.
+- Switching to the "Tools" tab in the top bar, clicking the "Distance Measuring" button to enter distance measuring mode, and then clicking on the two locations.
 `,
 `
 日清戦争第二チュートリアルシナリオへようこそ。このチュートリアルでは、グループの操作方法を学びます。

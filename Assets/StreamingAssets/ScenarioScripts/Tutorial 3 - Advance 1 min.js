@@ -21,7 +21,7 @@ Turn off "Current Only" (which clears logs as time advances, so only the "curren
 
 Advance time until a hit is scored.
 
-Note: To better observe the projectile animation, you may want to use the Space key for automatic time advance (its ×10 rate is much slower than the manual ×120 advance). Automatic time advance can be toggled on or off using the Space key or the corresponding toggle in the top UI. Manual advance is only available when automatic time advance is turned off.
+Note: To better observe the projectile animation, you may want to use the Space key for automatic time advance (its ×10 rate is much slower than the manual ×120 advance). Automatic time advance can be toggled on or off using the Space key or the "Play" toggle in the Command tab of the top UI. Manual advance is only available when automatic time advance is turned off.
 `,
 `
 艦艇の射撃が開始されました！
@@ -42,7 +42,7 @@ Note: To better observe the projectile animation, you may want to use the Space 
 
 命中が記録されるまで時間を進めてください。
 
-注意：弾丸のアニメーションをよく見るには、スペースキーで自動的に時間を進める機能（×10）を使うとよいでしょう（手動での×120時間進行よりもはるかに遅いです）。この自動時間進行は、スペースキーまたは画面上部のUIにあるトグルでオン／オフを切り替えられます。手動で時間を進める機能は、自動時間がオフのときのみ利用可能です。
+注意：弾丸のアニメーションをよく見るには、スペースキーで自動的に時間を進める機能（×10）を使うとよいでしょう（手動での×120時間進行よりもはるかに遅いです）。この自動時間進行は、スペースキーまたは画面上部UIの「コマンド」タブにある「再生」トグルでオン／オフを切り替えられます。手動で時間を進める機能は、自動時間がオフのときのみ利用可能です。
 `,
 `
 舰艇开始射击！
@@ -63,7 +63,7 @@ Note: To better observe the projectile animation, you may want to use the Space 
 
 推进时间直至出现命中记录。
 
-注意：为了看清楚弹药动画过程，可以考虑用空格键进行自动时间推进（其 x10 比例比手动推进的 x120 慢得多）。空格键或者顶部UI中的对应开关可以打开/关闭自动时间推进。手动推进仅在关闭自动时间推进时可用。
+注意：为了看清楚弹药动画过程，可以考虑用空格键进行自动时间推进（其 x10 比例比手动推进的 x120 慢得多）。空格键或者顶部 UI“命令”标签页中的“播放”开关可以打开/关闭自动时间推进。手动推进仅在关闭自动时间推进时可用。
 `,
 `
 艦艇開始射擊！
@@ -84,7 +84,7 @@ Note: To better observe the projectile animation, you may want to use the Space 
 
 推進時間直至出現命中記錄。
 
-注意：若要更清楚地觀察彈藥動畫過程，可考慮使用空白鍵啟用自動時間推進（其 ×10 速率遠慢於手動 ×120 推進）。自動時間推進可透過空白鍵或頂部 UI 中的對應勾選框開啟或關閉。僅當自動時間推進關閉時，才可使用手動推進。
+注意：若要更清楚地觀察彈藥動畫過程，可考慮使用空白鍵啟用自動時間推進（其 ×10 速率遠慢於手動 ×120 推進）。自動時間推進可透過空白鍵或頂部 UI「命令」標籤頁中的「播放」開關開啟或關閉。僅當自動時間推進關閉時，才可使用手動推進。
 `);
 
     msgBoxDelay(msg, 0.3);
@@ -125,7 +125,7 @@ if(!damageEffectPrompted && hasAnyDamageEffect())
     let msg = getLocalized(`
 A Damage Effect (Sub State) is applied to a ship!
 
-You may determine affected ships by global log, or open the Ship State View and switch to the Damage Effect tab and check each ship.
+You may determine affected ships by global log, or open the Ship State View and switch to the Damage Effect tab.
 
 Each hit inflicts a "homogeneous" amount of damage point loss, while more "heterogeneity" and location-specific damage—such as magazine explosions, flooding, rudder disablement, FCS misalignment, and so on—is handled by damage effects.
 
@@ -134,7 +134,7 @@ Some damage effects may be permanent or temporary, and they are displayed in the
 `
 艦艇に損傷効果（サブ状態）が適用されました！
 
-全体ログで影響を受けた艦船を確認するか、艦船状態ビューを開いて「損傷効果」タブに切り替え、各艦を確認してください。
+全体ログで影響を受けた艦船を確認するか、艦船状態ビューを開いて「損傷効果」タブに切り替えてください。
 
 各命中は「均一的」な損傷点の増加をもたらしますが、弾薬庫爆発・浸水・舵故障・射撃指揮装置誤差など、より「不均一」で部位特異的な損傷は損傷効果によって処理されます。
 
@@ -143,7 +143,7 @@ Some damage effects may be permanent or temporary, and they are displayed in the
 `
 舰艇已施加损伤效果（子状态）！
 
-您可通过全局日志判定受影响舰艇，或打开舰艇状态视图切换到"损伤效果"标签页，使用键盘上下键查看各舰状态。
+您可通过全局日志判定受影响舰艇，或打开舰艇状态视图切换到"损伤效果"标签页。
 
 每次命中会造成"均匀"的损伤点增加，而更"不均匀"且部位特定的损伤（如弹药库爆炸、进水、舵机失效、火控系统错位等）则由损伤效果处理。
 
@@ -152,7 +152,7 @@ Some damage effects may be permanent or temporary, and they are displayed in the
 `
 艦艇已施加損傷效果（子狀態）！
 
-您可通過全局日志判定受影響艦艇，或打開艦艇狀態檢視切換到「損傷效果」標籤頁，使用鍵盤上下鍵查看各艦狀態。
+您可通過全局日志判定受影響艦艇，或打開艦艇狀態檢視切換到「損傷效果」標籤頁。
 
 每次命中會造成「均勻」的損傷點增加，而更「不均勻」且部位特定的損傷（如彈藥庫爆炸、進水、舵機失效、火控系統錯位等）則由損傷效果處理。
 

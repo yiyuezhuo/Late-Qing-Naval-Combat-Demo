@@ -3,12 +3,7 @@ using System.Collections.Generic;
 using NavalCombatCore;
 using Unity.Collections;
 using UnityEngine;
-
-public struct ShoreFieldSample
-{
-    public float distancePixels;
-    public Vector2 gradient;
-}
+using CoreVector2 = System.Numerics.Vector2;
 
 #pragma warning disable CS0649
 [Serializable]
@@ -24,7 +19,7 @@ class ShoreFieldMetadata
 #pragma warning restore CS0649
 
 // Elevation Service Dependency Injector
-public class ElevationProvider : MonoBehaviour, IElevationProvider
+public class ElevationProvider : MonoBehaviour, IShoreFieldProvider
 {
     const float DistanceTextureDecodeScale = 255f;
 
@@ -282,12 +277,12 @@ public class ElevationProvider : MonoBehaviour, IElevationProvider
         var bottomDistance = Mathf.Lerp(s01.distancePixels, s11.distancePixels, tx);
         var distance = Mathf.Lerp(topDistance, bottomDistance, ty);
 
-        var topGradient = Vector2.Lerp(s00.gradient, s10.gradient, tx);
-        var bottomGradient = Vector2.Lerp(s01.gradient, s11.gradient, tx);
-        var gradient = Vector2.Lerp(topGradient, bottomGradient, ty);
-        if (gradient.sqrMagnitude > 1f)
+        var topGradient = CoreVector2.Lerp(s00.gradient, s10.gradient, tx);
+        var bottomGradient = CoreVector2.Lerp(s01.gradient, s11.gradient, tx);
+        var gradient = CoreVector2.Lerp(topGradient, bottomGradient, ty);
+        if (gradient.LengthSquared() > 1f)
         {
-            gradient.Normalize();
+            gradient = CoreVector2.Normalize(gradient);
         }
 
         return new ShoreFieldSample
@@ -302,12 +297,12 @@ public class ElevationProvider : MonoBehaviour, IElevationProvider
         var index = y * roiShoreFieldWidth + x;
         var pixel = GetROIShoreFieldPixel(index);
 
-        var gradient = new Vector2(
+        var gradient = new CoreVector2(
             pixel.g / DistanceTextureDecodeScale * 2f - 1f,
             pixel.b / DistanceTextureDecodeScale * 2f - 1f);
-        if (gradient.sqrMagnitude > 1f)
+        if (gradient.LengthSquared() > 1f)
         {
-            gradient.Normalize();
+            gradient = CoreVector2.Normalize(gradient);
         }
 
         return new ShoreFieldSample

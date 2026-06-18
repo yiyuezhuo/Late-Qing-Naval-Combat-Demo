@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using CoreUtils;
 using GeographicLib;
-using UnityEngine;
+using Vector2 = System.Numerics.Vector2;
 
 namespace NavalCombatCore
 {
@@ -124,10 +124,11 @@ namespace NavalCombatCore
             if (speedMeterPerSecond <= 0 || !enableROIShoreFieldAvoidance)
                 return false;
 
-            if (ElevationService.Instance.elevationProvider is not ElevationProvider elevationProvider)
+            var shoreFieldProvider = ElevationService.Instance.shoreFieldProvider;
+            if (shoreFieldProvider == null || !shoreFieldProvider.HasValidROIShoreField())
                 return false;
 
-            if (!elevationProvider.TrySampleROIShoreField(latLon, out var currentSample))
+            if (!shoreFieldProvider.TrySampleROIShoreField(latLon, out var currentSample))
                 return false;
 
             if (currentSample.distancePixels >= parameters.roiEarlyExitDistancePixels)
@@ -139,7 +140,7 @@ namespace NavalCombatCore
             var previewDistanceM = speedMeterPerSecond * parameters.roiPreviewSeconds;
             Geodesic.WGS84.Direct(latLon.LatDeg, latLon.LonDeg, initialDesiredHeadingDeg, previewDistanceM, out double lat2, out double lon2);
             var previewLatLon = new LatLon((float)lat2, (float)lon2);
-            if (!elevationProvider.TrySampleROIShoreField(previewLatLon, out var previewSample))
+            if (!shoreFieldProvider.TrySampleROIShoreField(previewLatLon, out var previewSample))
                 return false;
 
             var goal = HeadingDegToVector(initialDesiredHeadingDeg);
@@ -147,7 +148,7 @@ namespace NavalCombatCore
             var previewDistancePixels = previewSample.distancePixels;
             var avoidWeight = previewDistancePixels <= parameters.roiHardClearancePixels
                 ? 1f
-                : Mathf.Clamp01((parameters.roiInfluenceDistancePixels - previewDistancePixels) / (parameters.roiInfluenceDistancePixels - parameters.roiHardClearancePixels));
+                : Clamp01((parameters.roiInfluenceDistancePixels - previewDistancePixels) / (parameters.roiInfluenceDistancePixels - parameters.roiHardClearancePixels));
 
             if (avoidWeight <= 0f)
             {
@@ -155,11 +156,11 @@ namespace NavalCombatCore
                 return true;
             }
 
-            if (away.sqrMagnitude <= ROIShoreGradientEpsilon)
+            if (away.LengthSquared() <= ROIShoreGradientEpsilon)
                 return false;
 
-            away.Normalize();
-            var tangentLeft = new Vector2(-away.y, away.x);
+            away = Vector2.Normalize(away);
+            var tangentLeft = new Vector2(-away.Y, away.X);
             var tangentRight = -tangentLeft;
             var tangent = Vector2.Dot(goal, tangentLeft) >= Vector2.Dot(goal, tangentRight) ? tangentLeft : tangentRight;
 
@@ -167,10 +168,10 @@ namespace NavalCombatCore
                 ? tangent * 0.55f + away * 1.0f
                 : goal * (1f - avoidWeight) + tangent * avoidWeight * 0.7f + away * avoidWeight * 0.9f;
 
-            if (steer.sqrMagnitude <= ROIShoreGradientEpsilon)
+            if (steer.LengthSquared() <= ROIShoreGradientEpsilon)
                 return false;
 
-            steer.Normalize();
+            steer = Vector2.Normalize(steer);
             newHeadingDeg = VectorToHeadingDeg(steer);
             return true;
         }
@@ -216,13 +217,13 @@ namespace NavalCombatCore
 
         static Vector2 HeadingDegToVector(float headingDeg)
         {
-            var rad = headingDeg * Mathf.Deg2Rad;
-            return new Vector2(Mathf.Sin(rad), Mathf.Cos(rad));
+            var rad = headingDeg * MathF.PI / 180f;
+            return new Vector2(MathF.Sin(rad), MathF.Cos(rad));
         }
 
         static float VectorToHeadingDeg(Vector2 direction)
         {
-            return MeasureUtils.NormalizeAngle(Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg);
+            return MeasureUtils.NormalizeAngle(MathF.Atan2(direction.X, direction.Y) * 180f / MathF.PI);
         }
 
         static Vector2 ResolveAwayVector(ShoreFieldSample currentSample, ShoreFieldSample previewSample)
@@ -230,14 +231,16 @@ namespace NavalCombatCore
             var previewGradient = previewSample.gradient;
             var currentGradient = currentSample.gradient;
 
-            if (previewGradient.sqrMagnitude > ROIShoreGradientEpsilon && currentGradient.sqrMagnitude > ROIShoreGradientEpsilon)
-                return previewGradient.normalized * 0.8f + currentGradient.normalized * 0.2f;
+            if (previewGradient.LengthSquared() > ROIShoreGradientEpsilon && currentGradient.LengthSquared() > ROIShoreGradientEpsilon)
+                return Vector2.Normalize(previewGradient) * 0.8f + Vector2.Normalize(currentGradient) * 0.2f;
 
-            if (previewGradient.sqrMagnitude > ROIShoreGradientEpsilon)
+            if (previewGradient.LengthSquared() > ROIShoreGradientEpsilon)
                 return previewGradient;
 
             return currentGradient;
         }
+
+        static float Clamp01(float value) => Math.Clamp(value, 0f, 1f);
 
     }
 }

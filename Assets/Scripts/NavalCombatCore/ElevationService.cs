@@ -1,5 +1,4 @@
-
-
+using System.Collections.Generic;
 using System.Numerics;
 
 namespace NavalCombatCore
@@ -21,11 +20,25 @@ namespace NavalCombatCore
         bool TrySampleROIShoreField(LatLon latLon, out ShoreFieldSample sample);
     }
 
+    public interface IOperationalRoutePlanner
+    {
+        bool TryBuildOperationalRoute(ShipLog shipLog, LatLon targetPosition, out List<LatLon> routePoints);
+    }
+
     public class FallbackElevationProvider : IElevationProvider
     {
         public float GetElevation(LatLon latLon)
         {
             return 0;
+        }
+    }
+
+    public class FallbackOperationalRoutePlanner : IOperationalRoutePlanner
+    {
+        public bool TryBuildOperationalRoute(ShipLog shipLog, LatLon targetPosition, out List<LatLon> routePoints)
+        {
+            routePoints = null;
+            return false;
         }
     }
 
@@ -43,6 +56,19 @@ namespace NavalCombatCore
         public float GetElevation(LatLon latLon)
         {
             return elevationProvider.GetElevation(latLon);
+        }
+    }
+
+    public class OperationalRoutePlannerService
+    {
+        public IOperationalRoutePlanner routePlanner = new FallbackOperationalRoutePlanner();
+
+        static OperationalRoutePlannerService instance = new OperationalRoutePlannerService();
+        public static OperationalRoutePlannerService Instance => instance;
+
+        public bool TryBuildOperationalRoute(ShipLog shipLog, LatLon targetPosition, out List<LatLon> routePoints)
+        {
+            return routePlanner.TryBuildOperationalRoute(shipLog, targetPosition, out routePoints);
         }
     }
 }

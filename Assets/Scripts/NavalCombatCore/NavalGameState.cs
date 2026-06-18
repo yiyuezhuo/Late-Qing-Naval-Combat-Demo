@@ -555,82 +555,6 @@ namespace NavalCombatCore
             return true;
         }
 
-        static List<LatLon> ExtractPathRouteSegmentPoints(PathfindingResult result)
-        {
-            var extractedPoints = new List<LatLon>();
-            if (result?.success != true || result.points == null || result.points.Count <= 1)
-                return extractedPoints;
-
-            var startIndex = 1;
-            var endExclusive = result.points.Count;
-            if (endExclusive - startIndex > 1)
-                endExclusive--;
-
-            for (var i = startIndex; i < endExclusive; i++)
-            {
-                var point = result.points[i];
-                if (point != null)
-                    extractedPoints.Add(point.Clone());
-            }
-
-            if (extractedPoints.Count == 0)
-            {
-                var fallbackPoint = result.points[^1];
-                if (fallbackPoint != null)
-                    extractedPoints.Add(fallbackPoint.Clone());
-            }
-
-            return extractedPoints;
-        }
-
-        static void TrimAutomaticOperationalRouteLeadingPoints(ShipLog shipLog, ElevationProvider elevationProvider, List<LatLon> routePoints)
-        {
-            if (shipLog == null || elevationProvider == null || routePoints == null)
-                return;
-            if (!elevationProvider.TryGetROIPixelCoords(shipLog.position, out var shipPixelX, out var shipPixelY))
-                return;
-
-            const float trimDistancePixelsSquared = 4f;
-            while (routePoints.Count > 1)
-            {
-                if (!elevationProvider.TryGetROIPixelCoords(routePoints[0], out var waypointPixelX, out var waypointPixelY))
-                    break;
-
-                var deltaX = waypointPixelX - shipPixelX;
-                var deltaY = waypointPixelY - shipPixelY;
-                if (deltaX * deltaX + deltaY * deltaY > trimDistancePixelsSquared)
-                    break;
-
-                routePoints.RemoveAt(0);
-            }
-        }
-
-        static bool TryBuildAutomaticOperationalRoute(ShipLog shipLog, LatLon targetPosition, out List<LatLon> routePoints)
-        {
-            routePoints = null;
-            if (shipLog == null || targetPosition == null)
-                return false;
-            if (ElevationService.Instance.elevationProvider is not ElevationProvider elevationProvider || !elevationProvider.HasValidROIShoreField())
-                return false;
-
-            var threshold = GamePreference.Instance.pathfindingShorePassableDistancePixels;
-            var sourcePoint = shipLog.position;
-            var exactPathfinder = new ExactROIShoreFieldPathfinder(elevationProvider, sourcePoint);
-            var exactResult = exactPathfinder.FindPath(sourcePoint, targetPosition, threshold);
-            PathfindingResult selectedResult = exactResult;
-            if (exactResult != null
-                && !exactResult.success
-                && exactResult.failureReason == PathfindingFailureReason.SearchWindowExceeded)
-            {
-                var coarsePathfinder = new ROIShoreFieldPathfinder(elevationProvider);
-                selectedResult = coarsePathfinder.FindPath(sourcePoint, targetPosition, threshold);
-            }
-
-            routePoints = ExtractPathRouteSegmentPoints(selectedResult);
-            TrimAutomaticOperationalRouteLeadingPoints(shipLog, elevationProvider, routePoints);
-            return routePoints.Count > 0;
-        }
-
         void ApplyOperationalCombatRoute(ShipLog shipLog, ShipHostileProximityInfo proximityInfo)
         {
             var targetShip = proximityInfo?.nearestEnemy;
@@ -653,7 +577,7 @@ namespace NavalCombatCore
             if (!shipLog.ShouldReplanAutomaticOperationalRoute(targetShip, targetPosition, OperationalRouteReplanTargetDriftYards))
                 return;
 
-            if (TryBuildAutomaticOperationalRoute(shipLog, targetPosition, out var routePoints))
+            if (OperationalRoutePlannerService.Instance.TryBuildOperationalRoute(shipLog, targetPosition, out var routePoints))
             {
                 shipLog.ReplaceRouteFromPath(routePoints);
                 shipLog.SetAutomaticOperationalRouteState(targetShip, targetPosition, nextReplanTime);

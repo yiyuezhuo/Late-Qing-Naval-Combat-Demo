@@ -61,6 +61,7 @@ public class ElevationProvider : MonoBehaviour, IShoreFieldProvider
         roiHeightTextureRawArray = roiHeightTexture.GetRawTextureData<ushort>();
 
         ElevationService.Instance.elevationProvider = this;
+        OperationalRoutePlannerService.Instance.routePlanner = new ROIShoreFieldOperationalRoutePlanner(this);
 
         ApplyShaderTexturesAndParams();
         TryLoadROIShoreField();
@@ -439,5 +440,92 @@ public class ElevationProvider : MonoBehaviour, IShoreFieldProvider
             latLon
         );
         return value;
+    }
+}
+
+public sealed class ROIShoreFieldOperationalRoutePlanner : IOperationalRoutePlanner
+{
+    const float TrimDistancePixelsSquared = 4f;
+
+    readonly ElevationProvider elevationProvider;
+
+    public ROIShoreFieldOperationalRoutePlanner(ElevationProvider elevationProvider)
+    {
+        this.elevationProvider = elevationProvider;
+    }
+
+    public bool TryBuildOperationalRoute(ShipLog shipLog, LatLon targetPosition, out List<LatLon> routePoints)
+    {
+        routePoints = null;
+        if (shipLog == null || targetPosition == null)
+            return false;
+        if (elevationProvider == null || !elevationProvider.HasValidROIShoreField())
+            return false;
+
+        var threshold = GamePreference.Instance.pathfindingShorePassableDistancePixels;
+        var sourcePoint = shipLog.position;
+        var exactPathfinder = new ExactROIShoreFieldPathfinder(elevationProvider, sourcePoint);
+        var exactResult = exactPathfinder.FindPath(sourcePoint, targetPosition, threshold);
+        PathfindingResult selectedResult = exactResult;
+        if (exactResult != null
+            && !exactResult.success
+            && exactResult.failureReason == PathfindingFailureReason.SearchWindowExceeded)
+        {
+            var coarsePathfinder = new ROIShoreFieldPathfinder(elevationProvider);
+            selectedResult = coarsePathfinder.FindPath(sourcePoint, targetPosition, threshold);
+        }
+
+        routePoints = ExtractRouteSegmentPoints(selectedResult);
+        TrimLeadingPoints(shipLog, routePoints);
+        return routePoints.Count > 0;
+    }
+
+    static List<LatLon> ExtractRouteSegmentPoints(PathfindingResult result)
+    {
+        var extractedPoints = new List<LatLon>();
+        if (result?.success != true || result.points == null || result.points.Count <= 1)
+            return extractedPoints;
+
+        var startIndex = 1;
+        var endExclusive = result.points.Count;
+        if (endExclusive - startIndex > 1)
+            endExclusive--;
+
+        for (var i = startIndex; i < endExclusive; i++)
+        {
+            var point = result.points[i];
+            if (point != null)
+                extractedPoints.Add(point.Clone());
+        }
+
+        if (extractedPoints.Count == 0)
+        {
+            var fallbackPoint = result.points[^1];
+            if (fallbackPoint != null)
+                extractedPoints.Add(fallbackPoint.Clone());
+        }
+
+        return extractedPoints;
+    }
+
+    void TrimLeadingPoints(ShipLog shipLog, List<LatLon> routePoints)
+    {
+        if (shipLog == null || routePoints == null)
+            return;
+        if (!elevationProvider.TryGetROIPixelCoords(shipLog.position, out var shipPixelX, out var shipPixelY))
+            return;
+
+        while (routePoints.Count > 1)
+        {
+            if (!elevationProvider.TryGetROIPixelCoords(routePoints[0], out var waypointPixelX, out var waypointPixelY))
+                break;
+
+            var deltaX = waypointPixelX - shipPixelX;
+            var deltaY = waypointPixelY - shipPixelY;
+            if (deltaX * deltaX + deltaY * deltaY > TrimDistancePixelsSquared)
+                break;
+
+            routePoints.RemoveAt(0);
+        }
     }
 }

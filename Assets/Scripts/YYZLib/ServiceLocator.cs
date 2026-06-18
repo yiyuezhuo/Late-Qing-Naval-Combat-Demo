@@ -61,11 +61,11 @@ namespace YYZ
             return null;
         }
 
-        public static void Register<T>(T service) where T : class
+        public static void Register<T>(T service, bool logOverride = true) where T : class
         {
             var type = typeof(T);
             var currentValue = Get<T>();
-            if (currentValue != null)
+            if (logOverride && currentValue != null)
             {
                 var logger = Get<ILoggerService>();
                 logger.Log($"Overriding service: {currentValue} -> {service}");

@@ -9,8 +9,11 @@ Current probe scope:
 - `Assets/Scripts/YYZLib/**/*.cs`
 - `Assets/Scripts/NavalCombatCore/**/*.cs`
 
-Known omissions exposed by `dotnet build Tools/NavalCombatHeadless/NavalCombatHeadless.csproj -v minimal`:
+Current status:
 
-- Several Core partial members are currently implemented in Unity-side adaptation files, such as `ShipLog.MarkNonPhysicalPoseChanged`, `MountStatusRecord.mountLocation`, `GlobalString.mergedName`, and log housekeeping helpers.
-- Core currently calls the Unity-side `Utils` helper for list synchronization.
-- `VictoryStatus` depends on `InfluenceMapUtility`, which currently lives in the Unity-side naval combat folder.
+- `dotnet build Tools/NavalCombatHeadless/NavalCombatHeadless.csproj -v minimal` compiles the probe.
+- Runtime CLI loading, scenario selection, ticking, and output formatting are intentionally not implemented yet.
+
+Next likely step:
+
+- Add a small runner entry point that loads a naval combat state/scenario, registers explicit headless service defaults, runs a fixed number of ticks, and writes a concise text or JSON summary.

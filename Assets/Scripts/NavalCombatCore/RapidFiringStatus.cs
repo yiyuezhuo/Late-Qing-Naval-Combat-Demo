@@ -231,7 +231,7 @@ namespace NavalCombatCore
 
         public float EvaluateFirepowerScore()
         {
-            var r = rapidFireBatteryRecord;
+            var r = GetRapidFireBatteryRecord();
             if (r == null)
                 return 0;
 

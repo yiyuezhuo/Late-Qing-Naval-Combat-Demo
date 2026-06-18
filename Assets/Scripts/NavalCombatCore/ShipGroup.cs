@@ -177,7 +177,7 @@ namespace NavalCombatCore
             yield return doctrine;
         }
 
-        public string GetMemberName() => name.mergedName;
+        public string GetMemberName() => name.GetMergedName();
         // public GroupController ResolveController()
         // {
         //     if (controller != GroupController.Inherited)

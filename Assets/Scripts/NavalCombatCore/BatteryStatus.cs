@@ -54,6 +54,8 @@ namespace NavalCombatCore
         public void ResetDamageExpenditureState(ResetDamageExpenditureStateContext ctx)
         {
             var batteryRecord = GetBatteryRecord();
+            if (batteryRecord == null)
+                return;
 
             // ammunition.ArmorPiercing = batteryRecord.ammunitionCapacity / 2;
             // ammunition.common = batteryRecord.ammunitionCapacity / 2;
@@ -61,12 +63,12 @@ namespace NavalCombatCore
             ResetExpenditureState(ctx);
 
             var expectedLength = batteryRecord.mountLocationRecords.Sum(r => r.mounts);
-            Utils.SyncListToLength(expectedLength, mountStatus, this);
+            CoreCollectionUtils.SyncListToLength(expectedLength, mountStatus, this);
             foreach (var s in mountStatus)
                 s.ResetDamageExpenditureState();
 
             // fireControlHits = 0;
-            Utils.SyncListToLength(batteryRecord.fireControlPositions, fireControlSystemStatusRecords, this);
+            CoreCollectionUtils.SyncListToLength(batteryRecord.fireControlPositions, fireControlSystemStatusRecords, this);
             foreach (var s in fireControlSystemStatusRecords)
                 s.ResetToIntegrityState();
 
@@ -75,6 +77,10 @@ namespace NavalCombatCore
 
         public void ResetExpenditureState(ResetDamageExpenditureStateContext ctx)
         {
+            var batteryRecord = GetBatteryRecord();
+            if (batteryRecord == null)
+                return;
+
             ctx.SetAmmunition(batteryRecord.shellSizeInch, batteryRecord.ammunitionCapacity, ammunition);
         }
 

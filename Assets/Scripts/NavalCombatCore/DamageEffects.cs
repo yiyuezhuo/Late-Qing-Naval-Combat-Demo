@@ -251,7 +251,8 @@ namespace NavalCombatCore
         public static bool TryToSampleAAdjacentMount(DamageEffectContext ctx, MountStatusRecord baseMount, out MountStatusRecord adjMount)
         {
             var mountCtx = baseMount.GetFullContext();
-            var potentialList = mountCtx.batteryStatus.mountStatus.Where(mnt => mnt.mountLocation == baseMount.mountLocation).ToList();
+            var baseLocation = baseMount.GetMountLocation();
+            var potentialList = mountCtx.batteryStatus.mountStatus.Where(mnt => mnt.GetMountLocation() == baseLocation).ToList();
             if (potentialList.Count == 0)
             {
                 adjMount = null;
@@ -771,9 +772,9 @@ namespace NavalCombatCore
                         // ctx.subject.damagePoint += 2 * ctx.baseDamagePoint;
                         ctx.subject.AddDamagePoint(2 * ctx.baseDamagePoint);
 
-                        var affectedLocation = mount.mountLocation;
+                        var affectedLocation = mount.GetMountLocation();
                         foreach(var affectedMount in ctx.subject.batteryStatus.SelectMany(bs => bs.mountStatus)
-                            .Where(mnt => mnt.mountLocation == affectedLocation))
+                            .Where(mnt => mnt.GetMountLocation() == affectedLocation))
                         {
                             affectedMount.status = MaxEnum(affectedMount.status, MountStatus.Disabled);
                         }
@@ -813,9 +814,9 @@ namespace NavalCombatCore
                         // ctx.subject.damagePoint += ctx.baseDamagePoint; // DOuble total DP caused by this hit
                         ctx.subject.AddDamagePoint(ctx.baseDamagePoint);
 
-                        var affectedSector = secOrTerMount.mountLocation;
+                        var affectedSector = secOrTerMount.GetMountLocation();
                         foreach(var affectedMount in ctx.subject.batteryStatus.SelectMany(bs => bs.mountStatus)
-                            .Where(mnt => mnt.mountLocation == affectedSector))
+                            .Where(mnt => mnt.GetMountLocation() == affectedSector))
                         {
                             affectedMount.status = MaxEnum(affectedMount.status, MountStatus.Disabled);
                         }
@@ -1169,7 +1170,8 @@ namespace NavalCombatCore
 
                     if(IsAB(ctx))
                     {
-                        var affectedMounts = ctx.subject.batteryStatus.SelectMany(bs => bs.mountStatus).Where(mnt => mnt.mountLocation == secondaryMount.mountLocation).ToList();
+                        var affectedLocation = secondaryMount.GetMountLocation();
+                        var affectedMounts = ctx.subject.batteryStatus.SelectMany(bs => bs.mountStatus).Where(mnt => mnt.GetMountLocation() == affectedLocation).ToList();
                         foreach(var mnt in affectedMounts)
                         {
                             SetOOA(mnt);
@@ -1567,7 +1569,8 @@ namespace NavalCombatCore
 
                     if(TryToSampleAPrimaryBatteryMount(ctx, out var primaryMount))
                     {
-                        foreach(var mnt in ctx.subject.batteryStatus[0].mountStatus.Where(mnt => mnt.mountLocation == primaryMount.mountLocation))
+                        var affectedLocation = primaryMount.GetMountLocation();
+                        foreach(var mnt in ctx.subject.batteryStatus[0].mountStatus.Where(mnt => mnt.GetMountLocation() == affectedLocation))
                         {
                             var DE = new BatteryMountStatusModifier()
                             {
@@ -1732,7 +1735,8 @@ namespace NavalCombatCore
 
                 if(TryToSampleAPrimaryBatteryMount(ctx, out var primaryMount))
                 {
-                    foreach(var affectedMount in ctx.subject.batteryStatus[0].mountStatus.Where(mnt => mnt.mountLocation == primaryMount.mountLocation))
+                    var affectedLocation = primaryMount.GetMountLocation();
+                    foreach(var affectedMount in ctx.subject.batteryStatus[0].mountStatus.Where(mnt => mnt.GetMountLocation() == affectedLocation))
                     {
                         var DE = new BatteryMountStatusModifier()
                         {
@@ -2297,7 +2301,7 @@ namespace NavalCombatCore
 
                 if(IsAB(ctx))
                 {
-                    var locations = ctx.subject.batteryStatus.SelectMany(bs => bs.mountStatus).Select(mnt => mnt.mountLocation).ToHashSet();
+                    var locations = ctx.subject.batteryStatus.SelectMany(bs => bs.mountStatus).Select(mnt => mnt.GetMountLocation()).ToHashSet();
                     if(locations.Count > 0)
                     {
                         var location =  RandomUtils.Sample(locations.ToList());
@@ -2320,7 +2324,7 @@ namespace NavalCombatCore
                         };
                         DEMaster.BeginAt(ctx.subject);
 
-                        foreach(var mount in ctx.subject.batteryStatus.SelectMany(bs => bs.mountStatus).Where(mnt => mnt.mountLocation == location))
+                        foreach(var mount in ctx.subject.batteryStatus.SelectMany(bs => bs.mountStatus).Where(mnt => mnt.GetMountLocation() == location))
                         {
                             var DESub = new BatteryMountStatusModifier()
                             {

@@ -173,48 +173,22 @@ public static class InfluenceMapUtility
 
     public static List<ShipGroup> GetShipGroupsInOobOrder(NavalGameState state)
     {
-        return GetShipGroupsInOobOrder(state?.shipGroups, objectId => CoreUtils.EntityManager.Instance.Get<IShipGroupMember>(objectId));
+        return ShipGroupOrderUtils.GetShipGroupsInOobOrder(state);
     }
 
     public static List<ShipGroup> GetTopLevelShipGroupsInOobOrder(NavalGameState state)
     {
-        return GetTopLevelShipGroupsInOobOrder(state?.shipGroups);
+        return ShipGroupOrderUtils.GetTopLevelShipGroupsInOobOrder(state);
     }
 
     public static List<ShipGroup> GetTopLevelShipGroupsInOobOrder(IReadOnlyList<ShipGroup> shipGroups)
     {
-        if (shipGroups == null)
-            return new List<ShipGroup>();
-
-        return shipGroups.Where(group => group != null && string.IsNullOrEmpty(group.parentObjectId)).ToList();
+        return ShipGroupOrderUtils.GetTopLevelShipGroupsInOobOrder(shipGroups);
     }
 
     public static List<ShipGroup> GetShipGroupsInOobOrder(IReadOnlyList<ShipGroup> shipGroups, Func<string, IShipGroupMember> resolver)
     {
-        var orderedGroups = new List<ShipGroup>();
-        if (shipGroups == null || resolver == null)
-            return orderedGroups;
-
-        void Visit(ShipGroup group)
-        {
-            if (group == null)
-                return;
-
-            orderedGroups.Add(group);
-            foreach (var childObjectId in group.childrenObjectIds ?? Enumerable.Empty<string>())
-            {
-                var childGroup = resolver(childObjectId) as ShipGroup;
-                if (childGroup != null)
-                    Visit(childGroup);
-            }
-        }
-
-        foreach (var rootGroup in shipGroups.Where(group => group != null && string.IsNullOrEmpty(group.parentObjectId)))
-        {
-            Visit(rootGroup);
-        }
-
-        return orderedGroups;
+        return ShipGroupOrderUtils.GetShipGroupsInOobOrder(shipGroups, resolver);
     }
 
     public static List<ShipLog> GetDeployedShipsForGroup(ShipGroup group)

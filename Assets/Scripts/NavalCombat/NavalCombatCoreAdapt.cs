@@ -281,14 +281,6 @@ namespace NavalCombatCore
             return string.Join("\n", lines);
         }
 
-        [XmlIgnore]
-        public int NonPhysicalPoseRevision { get; private set; }
-
-        public void MarkNonPhysicalPoseChanged()
-        {
-            NonPhysicalPoseRevision++;
-        }
-
         [CreateProperty]
         public ShipClass shipClassProperty
         {
@@ -1117,7 +1109,7 @@ namespace NavalCombatCore
         [CreateProperty]
         public MountLocation mountLocation
         {
-            get => mountLocationRecordInfo?.record?.mountLocation ?? MountLocation.NotSpecified;
+            get => GetMountLocation();
         }
 
         [CreateProperty]
@@ -1188,7 +1180,7 @@ namespace NavalCombatCore
     {
         public string GetInfo()
         {
-            var r = rapidFireBatteryRecord;
+            var r = GetRapidFireBatteryRecord();
             if (r == null)
                 return "Not Valid";
 

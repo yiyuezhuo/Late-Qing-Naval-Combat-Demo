@@ -48,6 +48,7 @@ namespace CoreUtils
         {
             return GetNameFromType(shortMode);
         }
+
         public string GetNameFromType(LanguageType type)
         {
             return type switch

@@ -147,7 +147,7 @@ namespace NavalCombatCore
             if (gameState == null)
                 return sideVictoryStatuses;
 
-            var topGroups = global::InfluenceMapUtility.GetTopLevelShipGroupsInOobOrder(gameState);
+            var topGroups = ShipGroupOrderUtils.GetTopLevelShipGroupsInOobOrder(gameState);
             var topGroupSet = new HashSet<string>(
                 topGroups
                     .Where(group => group?.objectId != null)

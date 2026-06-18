@@ -773,7 +773,7 @@ namespace NavalCombatCore
             return MeasureUtils.ApproximateDistanceYards(automaticOperationalRouteTargetPosition, targetPosition) > targetDriftToleranceYards;
         }
 
-        public string GetMemberName() => namedShip?.name?.mergedName ?? "[Not Specified]";// name.mergedName;
+        public string GetMemberName() => namedShip?.name?.GetMergedName() ?? "[Not Specified]";// name.mergedName;
 
         public override IEnumerable<IObjectIdLabeled> GetSubObjects()
         {
@@ -810,6 +810,14 @@ namespace NavalCombatCore
 
         public List<ShipLogLog> logs = new(); // TODO: Switch to structure logging?
         public List<TimeLoc> timeLocLogs = new();
+
+        [XmlIgnore]
+        public int NonPhysicalPoseRevision { get; private set; }
+
+        public void MarkNonPhysicalPoseChanged()
+        {
+            NonPhysicalPoseRevision++;
+        }
 
         public CargoAreas cargoAreas = new();
 
@@ -1072,6 +1080,42 @@ namespace NavalCombatCore
             NavalGameState.Instance.tempSubjectLogs.Insert(0, new() { subjectId = objectId, log = log });
         }
 
+        public void ClearLogs()
+        {
+            logs.Clear();
+
+            foreach (var bty in batteryStatus)
+            {
+                foreach (var btyMnt in bty.mountStatus)
+                {
+                    btyMnt.logs.Clear();
+                }
+            }
+
+            foreach (var rf in rapidFiringStatus)
+            {
+                rf.logs.Clear();
+            }
+        }
+
+        public void InsertLogs(ShipLog other)
+        {
+            logs.InsertRange(0, other.logs);
+
+            foreach (var (selfBty, otherBty) in batteryStatus.Zip(other.batteryStatus, (x, y) => (x, y)))
+            {
+                foreach (var (selfMnt, otherMnt) in selfBty.mountStatus.Zip(otherBty.mountStatus, (x, y) => (x, y)))
+                {
+                    selfMnt.logs.InsertRange(0, otherMnt.logs);
+                }
+            }
+
+            foreach (var (selfRf, otherRf) in rapidFiringStatus.Zip(other.rapidFiringStatus, (x, y) => (x, y)))
+            {
+                selfRf.logs.InsertRange(0, otherRf.logs);
+            }
+        }
+
         public bool IsOnMap() => mapState == MapState.Deployed;
 
         // The method sync list, reset damage and expenditures and misc dynamic states (like processing seconds).
@@ -1094,11 +1138,11 @@ namespace NavalCombatCore
             timeLocLogs.Clear();
 
             var _shipClass = shipClass;
-            Utils.SyncListPairLength(_shipClass.batteryRecords, batteryStatus, this);
+            CoreCollectionUtils.SyncListPairLength(_shipClass.batteryRecords, batteryStatus, this);
             foreach (var batteryStatusRec in batteryStatus)
                 batteryStatusRec.ResetDamageExpenditureState(ctx);
 
-            Utils.SyncListToLength(
+            CoreCollectionUtils.SyncListToLength(
                 _shipClass.torpedoSector.mountLocationRecords.Sum(r => r.mounts),
                 torpedoSectorStatus.mountStatus,
                 this
@@ -1107,7 +1151,7 @@ namespace NavalCombatCore
                 m.ResetDamageExpenditureState();
             torpedoSectorStatus.ammunition = _shipClass.torpedoSector.ammunitionCapacity - torpedoSectorStatus.mountStatus.Sum(m => m.reloadedLoad);
 
-            Utils.SyncListPairLength(_shipClass.rapidFireBatteryRecords, rapidFiringStatus, this);
+            CoreCollectionUtils.SyncListPairLength(_shipClass.rapidFireBatteryRecords, rapidFiringStatus, this);
             foreach (var r in rapidFiringStatus)
                 r.ResetDamageExpenditureState();
 
@@ -1318,46 +1362,6 @@ namespace NavalCombatCore
             );
 
             return string.Join("\n", lines);
-        }
-
-        public string GeneratePreScenarioDamageByRatio(float targetDamageRatioPercent)
-        {
-            ResetDamageExpenditureState(new(), true);
-            targetDamageRatioPercent = Math.Clamp(targetDamageRatioPercent, 0, 100);
-
-            if (shipClass == null)
-            {
-                var emptyPreview = BuildPreScenarioDamageCleanupLogPreview();
-                CleanupPreScenarioDamageGenerationLogs();
-                return emptyPreview;
-            }
-
-            var targetDamagePoint = Math.Max(0, shipClass.damagePoint * targetDamageRatioPercent * 0.01f);
-            if (targetDamagePoint > 0)
-            {
-                var guard = 0;
-                while (damagePoint <= targetDamagePoint && guard < 4096)
-                {
-                    ApplyRandomPreScenarioAPShellHit();
-                    if (pendingDamagePoint > 0)
-                    {
-                        damagePoint += pendingDamagePoint;
-                        pendingDamagePoint = 0;
-                    }
-                    guard++;
-                }
-
-                if (damagePoint <= targetDamagePoint)
-                {
-                    damagePoint = targetDamagePoint + 1;
-                }
-            }
-
-            pendingDamagePoint = 0;
-            TacticalToStrategicPostHousekeeping();
-            var cleanupLogPreview = BuildPreScenarioDamageCleanupLogPreview();
-            CleanupPreScenarioDamageGenerationLogs();
-            return cleanupLogPreview;
         }
 
         public void ResetExpenditureState(ResetDamageExpenditureStateContext ctx)

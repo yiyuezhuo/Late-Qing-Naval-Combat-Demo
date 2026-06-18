@@ -327,7 +327,7 @@ namespace NavalCombatCore
                 // shipLog.AddStringLog($"Begin: {description} {cause}");
                 shipLog.AddStringLog(Localize(
                     "Begin: {0} {1}",
-                    description, cause
+                    Describe(), cause
                 ));
             }
 
@@ -344,7 +344,7 @@ namespace NavalCombatCore
             {
                 shipLog.AddStringLog(Localize(
                     "End: {0} {1}",
-                    description, cause
+                    Describe(), cause
                 ));
             }
 
@@ -1149,13 +1149,13 @@ namespace NavalCombatCore
             else if (d <= (c ? 18 : 13))
             {
                 // Permanent loss of half the remaining ammunition supply for all [PRIMARY/SECONDARY] battery mounts in one section.
-                var locations = shipLog.batteryStatus.SelectMany(bs => bs.mountStatus).Select(mnt => mnt.mountLocation).ToList();
+                var locations = shipLog.batteryStatus.SelectMany(bs => bs.mountStatus).Select(mnt => mnt.GetMountLocation()).ToList();
                 if (locations.Count > 0)
                 {
                     var location = RandomUtils.Sample(locations);
                     foreach (var battery in shipLog.batteryStatus)
                     {
-                        var p = ((float)battery.mountStatus.Count(m => m.mountLocation == location)) / battery.mountStatus.Count;
+                        var p = ((float)battery.mountStatus.Count(m => m.GetMountLocation() == location)) / battery.mountStatus.Count;
                         battery.ammunition.CostPercent(p);
                     }
                 }
@@ -1253,8 +1253,8 @@ namespace NavalCombatCore
                 // No launch or recovery of aircraft possible
                 if (shipLog.batteryStatus.Count > 1 && shipLog.batteryStatus[1].mountStatus.Count > 0)
                 {
-                    var location = RandomUtils.Sample(shipLog.batteryStatus[1].mountStatus.Select(mnt => mnt.mountLocation).ToList());
-                    foreach (var mount in shipLog.batteryStatus[1].mountStatus.Where(mnt => mnt.mountLocation == location))
+                    var location = RandomUtils.Sample(shipLog.batteryStatus[1].mountStatus.Select(mnt => mnt.GetMountLocation()).ToList());
+                    foreach (var mount in shipLog.batteryStatus[1].mountStatus.Where(mnt => mnt.GetMountLocation() == location))
                     {
                         DamageEffectChart.SetOOA(mount);
                     }

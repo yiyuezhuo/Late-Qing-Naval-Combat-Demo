@@ -495,6 +495,11 @@ namespace NavalCombatCore
             return GetModifiedStatus() == MountStatus.Operational;
         }
 
+        public MountLocation GetMountLocation()
+        {
+            return GetMountLocationRecordInfo()?.record?.mountLocation ?? MountLocation.NotSpecified;
+        }
+
         public enum BreakdownBlockedReason
         {
             None,

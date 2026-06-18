@@ -143,6 +143,46 @@ namespace NavalCombatCore
             }
         }
 
+        public string GeneratePreScenarioDamageByRatio(float targetDamageRatioPercent)
+        {
+            ResetDamageExpenditureState(new(), true);
+            targetDamageRatioPercent = Math.Clamp(targetDamageRatioPercent, 0, 100);
+
+            if (shipClass == null)
+            {
+                var emptyPreview = BuildPreScenarioDamageCleanupLogPreview();
+                CleanupPreScenarioDamageGenerationLogs();
+                return emptyPreview;
+            }
+
+            var targetDamagePoint = Math.Max(0, shipClass.damagePoint * targetDamageRatioPercent * 0.01f);
+            if (targetDamagePoint > 0)
+            {
+                var guard = 0;
+                while (damagePoint <= targetDamagePoint && guard < 4096)
+                {
+                    ApplyRandomPreScenarioAPShellHit();
+                    if (pendingDamagePoint > 0)
+                    {
+                        damagePoint += pendingDamagePoint;
+                        pendingDamagePoint = 0;
+                    }
+                    guard++;
+                }
+
+                if (damagePoint <= targetDamagePoint)
+                {
+                    damagePoint = targetDamagePoint + 1;
+                }
+            }
+
+            pendingDamagePoint = 0;
+            TacticalToStrategicPostHousekeeping();
+            var cleanupLogPreview = BuildPreScenarioDamageCleanupLogPreview();
+            CleanupPreScenarioDamageGenerationLogs();
+            return cleanupLogPreview;
+        }
+
         /// <summary>
         /// Trim logs, missing hit logs are removed. Hitting and hit records are reserved. (maybe generate a dedicated records?)
         /// </summary>
@@ -154,45 +194,5 @@ namespace NavalCombatCore
             }
         }
 
-        public void ClearLogs() // TODO: Move to NavalCombatCore
-        {
-            logs.Clear();
-
-            foreach (var bty in batteryStatus)
-            {
-                foreach (var btyMnt in bty.mountStatus)
-                {
-                    // btyMnt.ClearLogs();
-                    btyMnt.logs.Clear();
-                }
-            }
-
-            foreach (var rf in rapidFiringStatus)
-            {
-                // rf.ClearLogs();
-                rf.logs.Clear();
-            }
-        }
-
-        public void InsertLogs(ShipLog other) // TODO: Move to NavalCombatCore
-        {
-            // logs.AddRange(other.logs);
-            logs.InsertRange(0, other.logs);
-
-            foreach (var (selfBty, otherBty) in batteryStatus.Zip(other.batteryStatus, (x, y) => (x, y)))
-            {
-                foreach (var (selfMnt, otherMnt) in selfBty.mountStatus.Zip(otherBty.mountStatus, (x, y) => (x, y)))
-                {
-                    // selfMnt.logs.AddRange(otherMnt.logs);
-                    selfMnt.logs.InsertRange(0, otherMnt.logs);
-                }
-            }
-
-            foreach (var (selfRf, otherRf) in rapidFiringStatus.Zip(other.rapidFiringStatus, (x, y) => (x, y)))
-            {
-                // selfRf.logs.AddRange(otherRf.logs);
-                selfRf.logs.InsertRange(0, otherRf.logs);
-            }
-        }
     }
 }

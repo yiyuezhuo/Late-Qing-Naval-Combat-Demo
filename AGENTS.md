@@ -23,6 +23,7 @@ This is a Unity 6 project for tactical/strategic naval warfare scenarios.
 
 ## UI Binding & Model Adaptation
 - For UI Toolkit binding-only properties marked with `[CreateProperty]`, put them in the relevant `*Adapt.cs` partial/adaptation file, not in the core model file.
+- Unity UI Toolkit binding can bind fields directly, but properties must be marked with `[CreateProperty]`; ordinary unmarked properties are not bindable.
 - Keep gameplay/domain formulas and invariants in the core model layer; adaptation properties may call core helpers but should not own the rule.
 - Prefer binding through a small property with a setter for derived side effects instead of registering UI callbacks in editor scripts.
 

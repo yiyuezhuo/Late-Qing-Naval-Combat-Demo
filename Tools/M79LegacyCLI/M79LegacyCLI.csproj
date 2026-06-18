@@ -6,8 +6,6 @@
     <Nullable>disable</Nullable>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\..\Assets\Scripts\YYZLib\Ballistic\BallisticCommon.cs" Link="BallisticCommon.cs" />
-    <Compile Include="..\..\Assets\Scripts\YYZLib\Ballistic\BallisticOptions.cs" Link="BallisticOptions.cs" />
-    <Compile Include="..\..\Assets\Scripts\YYZLib\Ballistic\M79.cs" Link="M79.cs" />
+    <Compile Include="..\..\Assets\Scripts\YYZLib\Ballistic\*.cs" LinkBase="Ballistic" />
   </ItemGroup>
 </Project>

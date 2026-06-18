@@ -6,7 +6,6 @@
     <Nullable>disable</Nullable>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\..\Assets\Scripts\NavalCombatCore\NaabLikeEmbeddedData.cs" Link="NaabLikeEmbeddedData.cs" />
-    <Compile Include="..\..\Assets\Scripts\NavalCombatCore\NaabLikeBallistics.cs" Link="NaabLikeBallistics.cs" />
+    <Compile Include="..\..\Assets\Scripts\NavalCombatCore\Ballistics\NaabLike\*.cs" LinkBase="NaabLike" />
   </ItemGroup>
 </Project>

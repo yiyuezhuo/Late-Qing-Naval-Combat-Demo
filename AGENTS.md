@@ -9,6 +9,8 @@ This is a Unity 6 project for tactical/strategic naval warfare scenarios.
 - `Assets/Editor/`: editor automation (build preprocessors and custom menu tools).
 
 ## Build, Test, and Development Commands
+
+- When validating a build from the command line, use `dotnet build "Late-Qing-Naval-Combat-Demo.slnx" -v minimal`.
 - Don't write test.
 - `Tools/NaabLikeCheck` is a small C# console harness for manual NAAB-like ballistics parity checks.
 - `Tools/PlaceholderImageCli` renders ship placeholder images outside Unity for visual iteration; see `Tools/PlaceholderImageCli/README.md` for usage and tuning notes.
@@ -36,10 +38,6 @@ Use `python Tools/normalize_localization_ids.py --apply` to re-normalize IDs aft
 ## Data analysis related thing
 Check Data_Analysis_AI_Guide.md before running ad hoc analysis over project data files, especially scenario XML.
 Store non-persistent analysis tools, generated reports, and other temporary data outputs under `Tools/Temp_Reports/`.
-
-## Local command guardrails
-- Only build this repo’s solution: `Late-Qing-Naval-Combat-Demo.slnx`.
-- When validating a build from the command line, use `dotnet build "Late-Qing-Naval-Combat-Demo.slnx" -v minimal`.
 
 ## XML editing guardrails
 - For bulk edits to scenario XML under `Assets/StreamingAssets/Scenarios/`, prefer Python scripts over PowerShell text replacement/write-back.

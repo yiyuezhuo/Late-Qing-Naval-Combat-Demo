@@ -30,6 +30,16 @@
         @if (replay != null)
         {
             <section class="panel">
+                <h2>Language</h2>
+                <select class="language-select" value="@selectedLanguage" @onchange="OnLanguageChanged">
+                    @foreach (var option in LanguageOptions)
+                    {
+                        <option value="@option.Code">@option.Label</option>
+                    }
+                </select>
+            </section>
+
+            <section class="panel">
                 <h2>Time</h2>
                 <div class="time-readout">@selectedTime.ToString("u")</div>
                 <input class="time-slider"
@@ -63,7 +73,7 @@
                             <button class="timeline-item" @onclick="() => JumpTo(evt.time)">
                                 <span class="event-time">@evt.time.ToString("HH:mm:ss")</span>
                                 <span class="event-kind">@evt.kind</span>
-                                <span class="event-text">@evt.shipName: @evt.description</span>
+                                <span class="event-text">@DisplayName(evt.shipNameVariants, evt.shipName): @evt.description</span>
                             </button>
                         }
                     </div>
@@ -108,20 +118,20 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var ship in replay.ships.OrderBy(s => s.groupName).ThenBy(s => s.name))
+                            @foreach (var ship in replay.ships.OrderBy(s => DisplayName(s.groupNameVariants, s.groupName)).ThenBy(s => DisplayName(s.nameVariants, s.name)))
                             {
                                 var point = GetPoint(ship);
                                 var shot = GetRecentShotFor(ship.id);
                                 <tr>
-                                    <td><span class="ship-dot" style="background:@ship.color"></span>@ship.name</td>
-                                    <td>@ship.groupName</td>
+                                    <td><span class="ship-dot" style="background:@ship.color"></span>@DisplayName(ship.nameVariants, ship.name)</td>
+                                    <td>@DisplayName(ship.groupNameVariants, ship.groupName)</td>
                                     <td>@ship.type</td>
                                     <td>@FormatPosition(point)</td>
                                     <td>@(point?.speedKnots.ToString("0.#") ?? "-") kt</td>
                                     <td>@(point?.headingDeg.ToString("0") ?? "-")</td>
                                     <td>@ship.finalDamagePoint.ToString("0.#") / @ship.maxDamagePoint.ToString("0.#")</td>
                                     <td>@(point?.mapState ?? "-") / @(point?.operationalState ?? "-")</td>
-                                    <td>@(shot == null ? "-" : $"{shot.weapon} from {shot.shooterName} at {shot.time:HH:mm:ss}")</td>
+                                    <td>@(shot == null ? "-" : $"{shot.weapon} from {DisplayName(shot.shooterNameVariants, shot.shooterName)} at {shot.time:HH:mm:ss}")</td>
                                 </tr>
                             }
                         </tbody>
@@ -140,6 +150,15 @@
     DateTime selectedTime;
     int selectedTimeIndex;
     bool mapInitialized;
+    string selectedLanguage = "english";
+
+    static readonly (string Code, string Label)[] LanguageOptions =
+    {
+        ("english", "English"),
+        ("japanese", "日本語"),
+        ("chineseSimplified", "简体中文"),
+        ("chineseTraditional", "繁體中文")
+    };
 
     int MaxTimeIndex => Math.Max(0, (replay?.sampleTimes.Count ?? 1) - 1);
 
@@ -194,7 +213,23 @@
 
         if (mapInitialized)
         {
+            await JS.InvokeVoidAsync("replayMap.setLanguage", selectedLanguage);
             await JS.InvokeVoidAsync("replayMap.setReplay", replay);
+            await JS.InvokeVoidAsync("replayMap.setTime", selectedTime);
+        }
+    }
+
+    async Task OnLanguageChanged(ChangeEventArgs args)
+    {
+        await SelectLanguage(args.Value?.ToString() ?? "english");
+    }
+
+    async Task SelectLanguage(string language)
+    {
+        selectedLanguage = language;
+        if (mapInitialized)
+        {
+            await JS.InvokeVoidAsync("replayMap.setLanguage", selectedLanguage);
             await JS.InvokeVoidAsync("replayMap.setTime", selectedTime);
         }
     }
@@ -238,7 +273,7 @@
         if (replay == null)
             return;
 
-        var acmi = AcmiExporter.Export(replay);
+        var acmi = AcmiExporter.Export(replay, selectedLanguage);
         var fileName = Path.GetFileNameWithoutExtension(replay.sourceName) + ".acmi";
         await JS.InvokeVoidAsync("replayMap.downloadText", fileName, acmi, "text/plain");
     }
@@ -262,5 +297,10 @@
     static string FormatPosition(ReplayPoint point)
     {
         return point == null ? "-" : $"{point.lat:0.0000}, {point.lon:0.0000}";
+    }
+
+    string DisplayName(ReplayName name, string fallback)
+    {
+        return ReplayAnalyzerService.SelectName(name, selectedLanguage, fallback);
     }
 }

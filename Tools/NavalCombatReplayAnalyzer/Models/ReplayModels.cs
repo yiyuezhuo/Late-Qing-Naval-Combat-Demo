@@ -34,11 +34,21 @@ public class ReplayViewModel
     public List<DateTime> sampleTimes { get; set; } = new();
 }
 
+public class ReplayName
+{
+    public string english { get; set; }
+    public string japanese { get; set; }
+    public string chineseSimplified { get; set; }
+    public string chineseTraditional { get; set; }
+}
+
 public class ReplayShip
 {
     public string id { get; set; }
     public string name { get; set; }
+    public ReplayName nameVariants { get; set; } = new();
     public string groupName { get; set; }
+    public ReplayName groupNameVariants { get; set; } = new();
     public string type { get; set; }
     public string country { get; set; }
     public string color { get; set; }
@@ -65,8 +75,10 @@ public class ReplayShot
     public DateTime time { get; set; }
     public string shooterId { get; set; }
     public string shooterName { get; set; }
+    public ReplayName shooterNameVariants { get; set; } = new();
     public string targetId { get; set; }
     public string targetName { get; set; }
+    public ReplayName targetNameVariants { get; set; } = new();
     public string weapon { get; set; }
     public float damagePoint { get; set; }
     public ReplayPoint shooterPoint { get; set; }
@@ -78,6 +90,7 @@ public class ReplayEvent
     public DateTime time { get; set; }
     public string shipId { get; set; }
     public string shipName { get; set; }
+    public ReplayName shipNameVariants { get; set; } = new();
     public string kind { get; set; }
     public string description { get; set; }
 }

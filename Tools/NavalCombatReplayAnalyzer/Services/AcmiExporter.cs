@@ -6,7 +6,7 @@ namespace NavalCombatReplayAnalyzer.Services;
 
 public class AcmiExporter
 {
-    public string Export(ReplayViewModel replay)
+    public string Export(ReplayViewModel replay, string language = "english")
     {
         var sb = new StringBuilder();
         sb.AppendLine("FileType=text/acmi/tacview");
@@ -30,6 +30,9 @@ public class AcmiExporter
                     continue;
 
                 var objectId = objectIds[ship.id];
+                var shipName = ReplayAnalyzerService.SelectName(ship.nameVariants, language, ship.name);
+                if (string.IsNullOrWhiteSpace(shipName))
+                    shipName = ship.id;
                 var transform = string.Join("|", new[]
                 {
                     point.lon.ToString("0.######", CultureInfo.InvariantCulture),
@@ -44,8 +47,8 @@ public class AcmiExporter
                 sb.Append(",T=");
                 sb.Append(transform);
                 sb.Append(",Name=");
-                sb.Append(Escape(ship.name));
-                sb.Append(",Type=Sea+Warship");
+                sb.Append(Escape(shipName));
+                sb.Append(",Type=Sea+Watercraft+Warship");
                 sb.Append(",Color=");
                 sb.Append(color);
                 sb.Append(",LongName=");
@@ -57,8 +60,10 @@ public class AcmiExporter
         foreach (var shot in replay.shots)
         {
             var seconds = Math.Max(0, (shot.time - replay.startTime).TotalSeconds);
+            var shooterName = ReplayAnalyzerService.SelectName(shot.shooterNameVariants, language, shot.shooterName);
+            var targetName = ReplayAnalyzerService.SelectName(shot.targetNameVariants, language, shot.targetName);
             sb.AppendLine($"#{seconds.ToString("0.###", CultureInfo.InvariantCulture)}");
-            sb.AppendLine($"0,Event=Message|{Escape($"{shot.weapon}: {shot.shooterName} -> {shot.targetName}, DP {shot.damagePoint:0.##}")}");
+            sb.AppendLine($"0,Event=Message|{Escape($"{shot.weapon}: {shooterName} -> {targetName}, DP {shot.damagePoint:0.##}")}");
         }
 
         return sb.ToString();

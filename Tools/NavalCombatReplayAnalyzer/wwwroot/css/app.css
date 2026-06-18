@@ -75,6 +75,7 @@ main,
 
 input[type="text"],
 .path-row input,
+select,
 button {
   font: inherit;
 }
@@ -101,6 +102,15 @@ button:hover {
 
 .wide-button {
   width: 100%;
+}
+
+.language-select {
+  width: 100%;
+  border: 1px solid #c8d0da;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #1f2933;
+  padding: 8px 9px;
 }
 
 .error {

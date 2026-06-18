@@ -38,8 +38,7 @@ public class ReplayAnalyzerService
         state.streamingAssetReference ??= new ReplayStreamingAssetReference();
         state.navalGameState ??= new NavalGameState();
 
-        if (!string.IsNullOrWhiteSpace(sourcePath))
-            CompleteFromStreamingAssetReference(state, Path.GetDirectoryName(sourcePath));
+        CompleteFromStreamingAssetReference(state, ResolveScenarioRootForSource(sourcePath));
 
         NavalGameState.UpdateInstance(state.navalGameState);
         return state;
@@ -62,19 +61,23 @@ public class ReplayAnalyzerService
         };
 
         var rootGroups = gameState.shipGroups.Where(group => group?.parentObjectId == null).ToList();
-        var groupNameByShipId = new Dictionary<string, string>();
+        var groupNameByShipId = new Dictionary<string, ReplayName>();
         foreach (var rootGroup in rootGroups)
         {
+            var groupName = BuildName(rootGroup.name, rootGroup.GetMemberName());
             foreach (var ship in rootGroup.Walk<ShipLog>())
             {
                 if (!string.IsNullOrWhiteSpace(ship?.objectId))
-                    groupNameByShipId[ship.objectId] = rootGroup.GetMemberName();
+                    groupNameByShipId[ship.objectId] = groupName;
             }
         }
 
         var shipById = gameState.shipLogs
             .Where(ship => ship != null && !string.IsNullOrWhiteSpace(ship.objectId))
             .ToDictionary(ship => ship.objectId, ship => ship);
+        var namedShipById = gameState.namedShips
+            .Where(namedShip => namedShip != null && !string.IsNullOrWhiteSpace(namedShip.objectId))
+            .ToDictionary(namedShip => namedShip.objectId, namedShip => namedShip);
 
         foreach (var ship in gameState.shipLogs.Where(ship => ship != null))
         {
@@ -82,18 +85,24 @@ public class ReplayAnalyzerService
             if (points.Count == 0)
                 continue;
 
-            var country = ship.shipClass?.country ?? Country.General;
+            var namedShip = ResolveNamedShip(ship, namedShipById);
+            var shipClass = ship.shipClass ?? namedShip?.shipClass;
+            var country = shipClass?.country ?? Country.General;
+            var shipName = ResolveShipName(ship, namedShip);
+            var groupName = groupNameByShipId.GetValueOrDefault(ship.objectId) ?? BuildName(null, "Ungrouped");
             replay.ships.Add(new ReplayShip
             {
                 id = ship.objectId,
-                name = ship.GetMemberName(),
-                groupName = groupNameByShipId.GetValueOrDefault(ship.objectId) ?? "Ungrouped",
-                type = ship.shipClass?.type.ToString() ?? "Unknown",
+                name = SelectName(shipName, "english"),
+                nameVariants = shipName,
+                groupName = SelectName(groupName, "english"),
+                groupNameVariants = groupName,
+                type = shipClass?.type.ToString() ?? "Unknown",
                 country = country.ToString(),
                 color = ResolveColor(country, replay.ships.Count),
                 isDestroyed = ship.mapState == MapState.Destroyed,
                 finalDamagePoint = ship.damagePoint,
-                maxDamagePoint = Math.Max(1, ship.shipClass?.damagePoint ?? 1),
+                maxDamagePoint = Math.Max(1, shipClass?.damagePoint ?? 1),
                 track = points
             });
         }
@@ -116,7 +125,7 @@ public class ReplayAnalyzerService
         }
 
         replay.shots = BuildShots(gameState, shipById, replay.ships).ToList();
-        replay.events = BuildEvents(gameState, replay.ships).ToList();
+        replay.events = BuildEvents(gameState, replay.ships, namedShipById).ToList();
         return replay;
     }
 
@@ -155,8 +164,82 @@ public class ReplayAnalyzerService
             });
         }
 
-        return points.OrderBy(point => point.time);
+        points = points.OrderBy(point => point.time).ToList();
+        InferKinematics(points, ship.headingDeg, ship.speedKnots);
+        return points;
     }
+
+    static void InferKinematics(List<ReplayPoint> points, float fallbackHeadingDeg, float fallbackSpeedKnots)
+    {
+        if (points.Count == 0)
+            return;
+
+        for (var i = 0; i < points.Count; i++)
+        {
+            var previous = i > 0 ? points[i - 1] : null;
+            var current = points[i];
+            var next = i + 1 < points.Count ? points[i + 1] : null;
+
+            var headingSegment = next != null && HasMovement(current, next)
+                ? (current, next)
+                : previous != null && HasMovement(previous, current)
+                    ? (previous, current)
+                    : ((ReplayPoint, ReplayPoint)?)null;
+
+            if (headingSegment.HasValue)
+                current.headingDeg = (float)InitialBearingDeg(headingSegment.Value.Item1, headingSegment.Value.Item2);
+            else
+                current.headingDeg = fallbackHeadingDeg;
+
+            var speedSegment = next != null && next.time > current.time
+                ? (current, next)
+                : previous != null && current.time > previous.time
+                    ? (previous, current)
+                    : ((ReplayPoint, ReplayPoint)?)null;
+
+            if (speedSegment.HasValue)
+            {
+                var hours = (speedSegment.Value.Item2.time - speedSegment.Value.Item1.time).TotalHours;
+                var nauticalMiles = GreatCircleDistanceNm(speedSegment.Value.Item1, speedSegment.Value.Item2);
+                current.speedKnots = hours > 0 ? (float)(nauticalMiles / hours) : fallbackSpeedKnots;
+            }
+            else
+            {
+                current.speedKnots = fallbackSpeedKnots;
+            }
+        }
+    }
+
+    static bool HasMovement(ReplayPoint a, ReplayPoint b)
+    {
+        return GreatCircleDistanceNm(a, b) >= 0.001;
+    }
+
+    static double InitialBearingDeg(ReplayPoint from, ReplayPoint to)
+    {
+        var lat1 = DegreesToRadians(from.lat);
+        var lat2 = DegreesToRadians(to.lat);
+        var dLon = DegreesToRadians(to.lon - from.lon);
+        var y = Math.Sin(dLon) * Math.Cos(lat2);
+        var x = Math.Cos(lat1) * Math.Sin(lat2) - Math.Sin(lat1) * Math.Cos(lat2) * Math.Cos(dLon);
+        return (RadiansToDegrees(Math.Atan2(y, x)) + 360) % 360;
+    }
+
+    static double GreatCircleDistanceNm(ReplayPoint a, ReplayPoint b)
+    {
+        const double earthRadiusNm = 3440.065;
+        var lat1 = DegreesToRadians(a.lat);
+        var lat2 = DegreesToRadians(b.lat);
+        var dLat = lat2 - lat1;
+        var dLon = DegreesToRadians(b.lon - a.lon);
+        var sinLat = Math.Sin(dLat / 2);
+        var sinLon = Math.Sin(dLon / 2);
+        var h = sinLat * sinLat + Math.Cos(lat1) * Math.Cos(lat2) * sinLon * sinLon;
+        return 2 * earthRadiusNm * Math.Asin(Math.Min(1, Math.Sqrt(h)));
+    }
+
+    static double DegreesToRadians(double degrees) => degrees * Math.PI / 180;
+    static double RadiansToDegrees(double radians) => radians * 180 / Math.PI;
 
     static IEnumerable<ReplayShot> BuildShots(NavalGameState gameState, Dictionary<string, ShipLog> shipById, List<ReplayShip> replayShips)
     {
@@ -187,8 +270,10 @@ public class ReplayAnalyzerService
                     time = log.time,
                     shooterId = shooter.objectId,
                     shooterName = replayShooter.name,
+                    shooterNameVariants = replayShooter.nameVariants,
                     targetId = target.objectId,
                     targetName = replayTarget.name,
+                    targetNameVariants = replayTarget.nameVariants,
                     weapon = weapon,
                     damagePoint = damagePoint,
                     shooterPoint = GetPointAtOrBefore(replayShooter.track, log.time),
@@ -198,13 +283,17 @@ public class ReplayAnalyzerService
         }
     }
 
-    static IEnumerable<ReplayEvent> BuildEvents(NavalGameState gameState, List<ReplayShip> replayShips)
+    static IEnumerable<ReplayEvent> BuildEvents(NavalGameState gameState, List<ReplayShip> replayShips, Dictionary<string, NamedShip> namedShipById)
     {
         var replayShipById = replayShips.ToDictionary(ship => ship.id, ship => ship);
         var emittedSunk = new HashSet<string>();
 
         foreach (var ship in gameState.shipLogs.Where(ship => ship != null))
         {
+            var shipName = replayShipById.TryGetValue(ship.objectId, out var replayShipForName)
+                ? replayShipForName.nameVariants
+                : ResolveShipName(ship, ResolveNamedShip(ship, namedShipById));
+
             foreach (var log in ship.logs ?? Enumerable.Empty<ShipLogLog>())
             {
                 var description = log.SummaryContent();
@@ -214,7 +303,8 @@ public class ReplayAnalyzerService
                     {
                         time = log.time,
                         shipId = ship.objectId,
-                        shipName = ship.GetMemberName(),
+                        shipName = SelectName(shipName, "english"),
+                        shipNameVariants = shipName,
                         kind = "Hit",
                         description = description
                     };
@@ -230,7 +320,8 @@ public class ReplayAnalyzerService
                     {
                         time = log.time,
                         shipId = ship.objectId,
-                        shipName = ship.GetMemberName(),
+                        shipName = SelectName(shipName, "english"),
+                        shipNameVariants = shipName,
                         kind = "Major",
                         description = description
                     };
@@ -244,8 +335,9 @@ public class ReplayAnalyzerService
                     time = replayShip.track.LastOrDefault()?.time ?? gameState.scenarioState.dateTime,
                     shipId = ship.objectId,
                     shipName = replayShip.name,
+                    shipNameVariants = replayShip.nameVariants,
                     kind = "Sunk",
-                    description = $"{replayShip.name} is destroyed/sunk."
+                    description = "Destroyed/Sunk"
                 };
             }
         }
@@ -275,11 +367,85 @@ public class ReplayAnalyzerService
         return fallback[index % fallback.Length];
     }
 
+    static NamedShip ResolveNamedShip(ShipLog ship, Dictionary<string, NamedShip> namedShipById)
+    {
+        if (ship == null)
+            return null;
+
+        var namedShip = ship.namedShip;
+        if (namedShip != null)
+            return namedShip;
+
+        return !string.IsNullOrWhiteSpace(ship.namedShipObjectId) && namedShipById.TryGetValue(ship.namedShipObjectId, out namedShip)
+            ? namedShip
+            : null;
+    }
+
+    public static string SelectName(ReplayName name, string language, string fallback = null)
+    {
+        if (name == null)
+            return fallback ?? "";
+
+        var selected = language switch
+        {
+            "japanese" => name.japanese,
+            "chineseSimplified" => name.chineseSimplified,
+            "chineseTraditional" => name.chineseTraditional,
+            _ => name.english
+        };
+
+        return FirstValidName(selected, name.english, name.japanese, name.chineseSimplified, name.chineseTraditional, fallback)
+            ?? "";
+    }
+
+    static ReplayName ResolveShipName(ShipLog ship, NamedShip namedShip)
+    {
+        var name = BuildName(namedShip?.name, null);
+        if (!IsMissingName(SelectName(name, "english", null)))
+            return name;
+
+        name = BuildName(ship?.namedShip?.name, null);
+        if (!IsMissingName(SelectName(name, "english", null)))
+            return name;
+
+        var fallback = ship?.GetMemberName();
+        if (!IsMissingName(fallback))
+            return BuildName(null, fallback);
+
+        return BuildName(null, ship?.namedShipObjectId ?? ship?.objectId ?? "Unnamed ship");
+    }
+
+    static bool IsMissingName(string name)
+    {
+        return string.IsNullOrWhiteSpace(name)
+            || name == "[Not Specified]"
+            || name == "none";
+    }
+
+    static ReplayName BuildName(GlobalString name, string fallback)
+    {
+        return new ReplayName
+        {
+            english = FirstValidName(name?.english, fallback),
+            japanese = FirstValidName(name?.japanese, name?.english, fallback),
+            chineseSimplified = FirstValidName(name?.chineseSimplified, name?.english, fallback),
+            chineseTraditional = FirstValidName(name?.chineseTraditional, name?.chineseSimplified, name?.english, fallback)
+        };
+    }
+
+    static string FirstValidName(params string[] values)
+    {
+        foreach (var value in values)
+        {
+            if (!IsMissingName(value))
+                return value;
+        }
+
+        return null;
+    }
+
     static void CompleteFromStreamingAssetReference(ReplayFullState state, string scenarioRoot)
     {
-        if (string.IsNullOrWhiteSpace(scenarioRoot))
-            return;
-
         var gameState = state.navalGameState;
         var reference = state.streamingAssetReference;
 
@@ -295,12 +461,24 @@ public class ReplayAnalyzerService
 
     static bool CanFill<T>(List<T> list) => list == null || list.Count == 0;
 
+    static string ResolveScenarioRootForSource(string sourcePath)
+    {
+        if (!string.IsNullOrWhiteSpace(sourcePath))
+        {
+            var directory = Path.GetDirectoryName(sourcePath);
+            if (!string.IsNullOrWhiteSpace(directory) && Directory.Exists(directory))
+                return directory;
+        }
+
+        return GetDefaultScenarioRoot();
+    }
+
     static string ResolveScenarioOrSavePath(string path)
     {
         if (File.Exists(path))
             return Path.GetFullPath(path);
 
-        var scenarioRoot = Path.Combine(FindRepositoryRoot(), "Assets", "StreamingAssets", "Scenarios");
+        var scenarioRoot = GetDefaultScenarioRoot();
         var candidate = Path.Combine(scenarioRoot, path);
         if (File.Exists(candidate))
             return candidate;
@@ -313,6 +491,11 @@ public class ReplayAnalyzerService
         }
 
         throw new FileNotFoundException($"Save/scenario not found: {path}");
+    }
+
+    static string GetDefaultScenarioRoot()
+    {
+        return Path.Combine(FindRepositoryRoot(), "Assets", "StreamingAssets", "Scenarios");
     }
 
     static string FindRepositoryRoot()
@@ -337,6 +520,10 @@ public class ReplayAnalyzerService
         var candidate = Path.Combine(scenarioRoot, path);
         if (File.Exists(candidate))
             return candidate;
+
+        var defaultCandidate = Path.Combine(GetDefaultScenarioRoot(), path);
+        if (File.Exists(defaultCandidate))
+            return defaultCandidate;
 
         throw new FileNotFoundException($"Referenced scenario file not found: {path}", candidate);
     }

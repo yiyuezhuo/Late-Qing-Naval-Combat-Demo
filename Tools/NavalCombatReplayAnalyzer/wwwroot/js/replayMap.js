@@ -1,6 +1,7 @@
 window.replayMap = (() => {
   let map;
   let replay;
+  let currentLanguage = "english";
   const layers = {
     tracks: [],
     markers: new Map(),
@@ -54,7 +55,7 @@ window.replayMap = (() => {
           weight: 2,
           opacity: 0.72
         }).addTo(map);
-        track.bindTooltip(`${ship.name}<br>${ship.groupName}`);
+        track.bindTooltip(`${localizeName(ship.nameVariants, ship.name)}<br>${localizeName(ship.groupNameVariants, ship.groupName)}`);
         layers.tracks.push(track);
         latLngs.forEach(p => bounds.push(p));
       }
@@ -89,8 +90,8 @@ window.replayMap = (() => {
 
       marker.setLatLng([point.lat, point.lon]);
       marker.bindTooltip(`
-        <strong>${escapeHtml(ship.name)}</strong><br>
-        ${escapeHtml(ship.groupName)}<br>
+        <strong>${escapeHtml(localizeName(ship.nameVariants, ship.name))}</strong><br>
+        ${escapeHtml(localizeName(ship.groupNameVariants, ship.groupName))}<br>
         ${point.lat.toFixed(4)}, ${point.lon.toFixed(4)}<br>
         ${point.speedKnots.toFixed(1)} kt, ${point.headingDeg.toFixed(0)} deg<br>
         ${escapeHtml(point.mapState)} / ${escapeHtml(point.operationalState)}
@@ -115,7 +116,14 @@ window.replayMap = (() => {
           dashArray: "8 8"
         }
       ).addTo(map);
-      layers.shotLine.bindTooltip(`${shot.weapon}: ${shot.shooterName} -> ${shot.targetName}`);
+      layers.shotLine.bindTooltip(`${shot.weapon}: ${localizeName(shot.shooterNameVariants, shot.shooterName)} -> ${localizeName(shot.targetNameVariants, shot.targetName)}`);
+    }
+  }
+
+  function setLanguage(language) {
+    currentLanguage = language || "english";
+    if (map && replay) {
+      setReplay(replay);
     }
   }
 
@@ -221,7 +229,7 @@ window.replayMap = (() => {
         const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
         label.setAttribute("x", projected.x + 12);
         label.setAttribute("y", projected.y - 10);
-        label.textContent = ship.name;
+        label.textContent = localizeName(ship.nameVariants, ship.name);
         markers.appendChild(label);
       }
 
@@ -290,5 +298,20 @@ window.replayMap = (() => {
       .replaceAll('"', "&quot;");
   }
 
-  return { init, setReplay, setTime, downloadText };
+  function localizeName(name, fallback) {
+    if (!name) return fallback || "";
+    const selected = name[currentLanguage];
+    return firstText(selected, name.english, name.japanese, name.chineseSimplified, name.chineseTraditional, fallback);
+  }
+
+  function firstText(...values) {
+    for (const value of values) {
+      if (value && String(value).trim() && value !== "none" && value !== "[Not Specified]") {
+        return value;
+      }
+    }
+    return "";
+  }
+
+  return { init, setReplay, setTime, setLanguage, downloadText };
 })();

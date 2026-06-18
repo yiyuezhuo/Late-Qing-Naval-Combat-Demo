@@ -5,7 +5,6 @@ using System;
 using GeographicLib;
 using System.Xml.Serialization;
 using System.Diagnostics;
-using MathNet.Numerics.Distributions;
 
 using CoreUtils;
 using YYZ;
@@ -96,7 +95,7 @@ namespace NavalCombatCore
 
             if (!newPositionBlocked)
             {
-                var maskCheckService = ServiceLocator.Get<IMaskCheckService>();
+                var maskCheckService = NavalCombatServices.GetMaskCheckService();
                 var collideCheckResult = maskCheckService.CollideCheck(this, distNm * MeasureUtils.navalMileToYard + GetLengthFoot() / 2 * MeasureUtils.footToYard);
                 var collidedShipLog = collideCheckResult?.collided;
 

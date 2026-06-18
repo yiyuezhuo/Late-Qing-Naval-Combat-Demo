@@ -517,7 +517,14 @@ public class TopTabs : SingletonDocument<TopTabs>
 
         DialogRoot.Instance.PopupRelativeFormationDialog(model =>
         {
-            NavalGameState.Instance.ApplyRelativeFormation(anchorShip, model);
+            NavalGameState.Instance.ApplyRelativeFormation(anchorShip, new RelativeFormationRequest()
+            {
+                mode = (NavalCombatCore.RelativeFormationMode)model.modeValue,
+                angleDeg = model.angleDeg,
+                distanceYards = model.distanceYards,
+                isSymmetric = model.isSymmetric,
+                absolute = model.absolute,
+            });
         });
     }
 

@@ -76,7 +76,7 @@ namespace NavalCombatCore
             {
                 if (maskCheckResult == null)
                 {
-                    maskCheckResult = ServiceLocator.Get<IMaskCheckService>().Check(shooter, target);
+                    maskCheckResult = NavalCombatServices.GetMaskCheckService().Check(shooter, target);
                 }
                 return maskCheckResult;
             }
@@ -228,7 +228,7 @@ namespace NavalCombatCore
             var key = (shooter, target);
             if (!fireSafetySupplementaryMap.TryGetValue(key, out var supplementary))
             {
-                var maskCheckService = ServiceLocator.Get<IMaskCheckService>();
+                var maskCheckService = NavalCombatServices.GetMaskCheckService();
                 supplementary = fireSafetySupplementaryMap[key] = new ShipLogPairSafetySupplementary()
                 {
                     shooter = shooter,

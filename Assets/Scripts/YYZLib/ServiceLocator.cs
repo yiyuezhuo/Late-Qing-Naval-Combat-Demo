@@ -49,7 +49,6 @@ namespace YYZ
         {
             {typeof(ILoggerService), new FallbackLogger()},
             {typeof(ILocalizeService), new FallbackLocalizeService()}
-            // {typeof(IMaskCheckService), new FallbackMaskChecker()}
         };
 
         public static T Get<T>() where T : class

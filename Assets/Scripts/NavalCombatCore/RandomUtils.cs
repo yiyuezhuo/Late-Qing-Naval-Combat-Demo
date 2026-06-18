@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace NavalCombatCore
 {
@@ -24,7 +25,43 @@ namespace NavalCombatCore
         //     return seed;
         // }
 
-        // LLM Generated
+        public static int SampleIndex(IReadOnlyList<double> weights, Random random = null)
+        {
+            if (weights == null || weights.Count == 0)
+                throw new ArgumentException("Weights cannot be null or empty");
+
+            random ??= rand;
+
+            var totalWeight = 0.0;
+            foreach (var weight in weights)
+            {
+                if (double.IsNaN(weight) || weight < 0)
+                    throw new ArgumentException("Weights cannot be negative or NaN");
+                totalWeight += weight;
+            }
+
+            if (totalWeight <= 0)
+                throw new ArgumentException("Total weight must be greater than 0");
+
+            var randomValue = random.NextDouble() * totalWeight;
+            var cumulativeWeight = 0.0;
+            for (var i = 0; i < weights.Count; i++)
+            {
+                cumulativeWeight += weights[i];
+                if (randomValue < cumulativeWeight)
+                    return i;
+            }
+
+            return weights.Count - 1;
+        }
+
+        public static int SampleIndex(IEnumerable<double> weights, Random random = null)
+        {
+            if (weights == null)
+                throw new ArgumentException("Weights cannot be null");
+            return SampleIndex(weights.ToArray(), random);
+        }
+
         public static T Sample<T>(List<T> list, List<float> weights, Random random = null)
         {
             if (list == null || list.Count == 0)
@@ -33,7 +70,7 @@ namespace NavalCombatCore
             if (weights == null || weights.Count != list.Count)
                 throw new ArgumentException("Weights list must have the same length as the input list");
             
-            random ??= new Random();
+            random ??= rand;
             
             // Calculate total weight
             float totalWeight = 0f;

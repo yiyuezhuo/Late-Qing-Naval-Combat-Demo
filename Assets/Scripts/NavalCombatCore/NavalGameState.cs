@@ -10,6 +10,21 @@ using YYZ;
 
 namespace NavalCombatCore
 {
+    public enum RelativeFormationMode
+    {
+        KeepCurrentPosition,
+        LineAbreast,
+        LineOfBearing,
+    }
+
+    public class RelativeFormationRequest
+    {
+        public RelativeFormationMode mode;
+        public float angleDeg = 90f;
+        public float distanceYards = 250f;
+        public bool isSymmetric;
+        public bool absolute;
+    }
 
     public enum PostureType
     {
@@ -1230,25 +1245,25 @@ namespace NavalCombatCore
             ApplyKeepCurrentRelativeFormation(controlTree.edges, absolute);
         }
 
-        public void ApplyRelativeFormation(ShipLog anchorShip, RelativeFormationDialogModel model)
+        public void ApplyRelativeFormation(ShipLog anchorShip, RelativeFormationRequest request)
         {
             if (anchorShip == null)
                 throw new ArgumentNullException(nameof(anchorShip));
-            if (model == null)
-                throw new ArgumentNullException(nameof(model));
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
 
             var controlTree = BuildFormationControlTree(anchorShip);
             if (controlTree.edges.Count == 0)
                 return;
 
-            switch (model.mode)
+            switch (request.mode)
             {
                 case RelativeFormationMode.KeepCurrentPosition:
-                    ApplyKeepCurrentRelativeFormation(controlTree.edges, model.absolute);
+                    ApplyKeepCurrentRelativeFormation(controlTree.edges, request.absolute);
                     break;
                 case RelativeFormationMode.LineAbreast:
                 case RelativeFormationMode.LineOfBearing:
-                    ApplyPatternRelativeFormation(anchorShip, controlTree.childrenMap, controlTree.oobOrderIndex, model);
+                    ApplyPatternRelativeFormation(anchorShip, controlTree.childrenMap, controlTree.oobOrderIndex, request);
                     break;
             }
         }
@@ -1538,18 +1553,18 @@ namespace NavalCombatCore
             ShipLog anchorShip,
             Dictionary<ShipLog, List<ShipLog>> childrenMap,
             Dictionary<string, int> oobOrderIndex,
-            RelativeFormationDialogModel model)
+            RelativeFormationRequest request)
         {
             var chain = FlattenFormationTreeForFollow(anchorShip, childrenMap, oobOrderIndex);
             if (chain.Count == 0)
                 return;
 
-            if (!model.isSymmetric)
+            if (!request.isSymmetric)
             {
                 ShipLog previousShip = anchorShip;
                 foreach (var ship in chain)
                 {
-                    SetRelativeFormationLink(ship, previousShip, model.distanceYards, model.angleDeg, model.absolute);
+                    SetRelativeFormationLink(ship, previousShip, request.distanceYards, request.angleDeg, request.absolute);
                     previousShip = ship;
                 }
                 return;
@@ -1557,19 +1572,19 @@ namespace NavalCombatCore
 
             ShipLog rightPreviousShip = anchorShip;
             ShipLog leftPreviousShip = anchorShip;
-            var mirroredAngle = MeasureUtils.NormalizeAngle(360f - model.angleDeg);
+            var mirroredAngle = MeasureUtils.NormalizeAngle(360f - request.angleDeg);
 
             for (var i = 0; i < chain.Count; i++)
             {
                 var ship = chain[i];
                 if (i % 2 == 0)
                 {
-                    SetRelativeFormationLink(ship, rightPreviousShip, model.distanceYards, model.angleDeg, model.absolute);
+                    SetRelativeFormationLink(ship, rightPreviousShip, request.distanceYards, request.angleDeg, request.absolute);
                     rightPreviousShip = ship;
                 }
                 else
                 {
-                    SetRelativeFormationLink(ship, leftPreviousShip, model.distanceYards, mirroredAngle, model.absolute);
+                    SetRelativeFormationLink(ship, leftPreviousShip, request.distanceYards, mirroredAngle, request.absolute);
                     leftPreviousShip = ship;
                 }
             }

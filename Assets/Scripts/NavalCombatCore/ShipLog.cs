@@ -1937,7 +1937,7 @@ namespace NavalCombatCore
                 // }
                 // newPositionBlocked = collided != null; // TODO: Handle deliberately hostile ramming and speed change
 
-                var maskCheckService = ServiceLocator.Get<IMaskCheckService>();
+                var maskCheckService = NavalCombatServices.GetMaskCheckService();
                 var collideCheckResult = maskCheckService.CollideCheck(this, distNm * MeasureUtils.navalMileToYard + GetLengthFoot() / 2 * MeasureUtils.footToYard);
                 if (collideCheckResult != null)
                 {

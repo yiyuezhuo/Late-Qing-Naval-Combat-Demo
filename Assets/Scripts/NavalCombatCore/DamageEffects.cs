@@ -3,7 +3,6 @@ using System.Xml.Serialization;
 using System.Xml;
 using System.Collections.Generic;
 using System.Linq;
-using MathNet.Numerics.Distributions;
 
 using CoreUtils;
 using YYZ;
@@ -1237,7 +1236,7 @@ namespace NavalCombatCore
 
                 if(IsAB(ctx))
                 {
-                    var idx = Categorical.Sample(new[]{10.0, 20, 70});
+                    var idx = RandomUtils.SampleIndex(new[]{10.0, 20, 70});
                     var speedOffset = idx - 3;
                     ctx.subject.dynamicStatus.maxSpeedKnotsOffset += speedOffset;
 
@@ -1312,7 +1311,7 @@ namespace NavalCombatCore
 
                 if(IsAB(ctx))
                 {
-                    var idx = Categorical.Sample(new[]{60.0, 30, 10});
+                    var idx = RandomUtils.SampleIndex(new[]{60.0, 30, 10});
                     var speedOffset = -(idx + 1);
                     ctx.subject.dynamicStatus.maxSpeedKnotsOffset += speedOffset;
                     ctx.subject.dynamicStatus.accelerationOffset += -1;

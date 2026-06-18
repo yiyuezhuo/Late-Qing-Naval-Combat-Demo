@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 using System.Xml;
 using System.IO;
-using MathNet.Numerics.Distributions;
 using System.Linq;
 using System.Collections;
 
@@ -1117,7 +1116,7 @@ namespace NavalCombatCore
 
         // public static ArmorLocation RollArmorLocation(TargetAspect targetAspect, RangeBand rangeBand)
         // {
-        //     var idx = Categorical.Sample(GetLocationWeights(targetAspect, rangeBand));
+        //     var idx = RandomUtils.SampleIndex(GetLocationWeights(targetAspect, rangeBand));
         //     return (ArmorLocation)idx;
         // }
     }

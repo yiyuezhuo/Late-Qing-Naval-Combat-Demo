@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\Assets\Scripts\CoreUtils\**\*.cs" LinkBase="CoreUtils" />
+    <Compile Include="..\..\Assets\Scripts\YYZLib\**\*.cs" LinkBase="YYZLib" />
+    <Compile Include="..\..\Assets\Scripts\NavalCombatCore\**\*.cs" LinkBase="NavalCombatCore" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="GeographicLib">
+      <HintPath>..\..\Assets\Libs\GeographicLib.dll</HintPath>
+    </Reference>
+    <Reference Include="SunCalcSharp">
+      <HintPath>..\..\Assets\Libs\SunCalcSharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

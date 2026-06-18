@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using CoreUtils;
+using YYZ;
 
 namespace NavalCombatCore
 {
@@ -31,10 +32,20 @@ namespace NavalCombatCore
 
     public class FallbackMaskChecker : IMaskCheckService
     {
+        public static readonly FallbackMaskChecker Instance = new();
+
         public MaskCheckResult Check(LatLon src, LatLon dst) => new();
         public MaskCheckResult Check(ShipLog observer, ShipLog target) => new();
         public CollideCheckResult CollideCheck(IObjectIdLabeled observer, float testDistanceYards) => null;
         public bool IsSafeToFireTorpedoAt(ShipLog shooter, ShipLog target) => true;
+    }
+
+    public static class NavalCombatServices
+    {
+        public static IMaskCheckService GetMaskCheckService()
+        {
+            return ServiceLocator.Get<IMaskCheckService>() ?? FallbackMaskChecker.Instance;
+        }
     }
 
 }

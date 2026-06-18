@@ -1,6 +1,5 @@
 using System;
 using System.Globalization;
-using MathNet.Numerics.Distributions;
 using System.Linq;
 using System.Collections.Generic;
 using System.Xml.Serialization;
@@ -143,7 +142,7 @@ namespace NavalCombatCore
 
         public static ArmorLocation RollArmorLocation(TargetAspect targetAspect, RangeBand rangeBand)
         {
-            var idx = Categorical.Sample(GetLocationWeights(targetAspect, rangeBand));
+            var idx = RandomUtils.SampleIndex(GetLocationWeights(targetAspect, rangeBand));
             return (ArmorLocation)idx;
         }
 
@@ -156,7 +155,7 @@ namespace NavalCombatCore
                 _ => new[] { 20.0, 79.0, 1.0 } // Long / Extreme
             };
 
-            var idx = Categorical.Sample(weights);
+            var idx = RandomUtils.SampleIndex(weights);
             return idx switch
             {
                 0 => ArmorLocation.Deck,
@@ -439,7 +438,7 @@ namespace NavalCombatCore
             {
                 case HitPenDetType.PenetrateWithDetonate:
                     var (baseOffset, subOffsetWeights) = classAHitWeights[ammoType];
-                    var colIdx = baseOffset + Categorical.Sample(subOffsetWeights);
+                    var colIdx = baseOffset + RandomUtils.SampleIndex(subOffsetWeights);
 
                     damagePoint = shellDamageFactorsTable.cells[row.index, colIdx];
                     damageEffectProb = shellDamageFactorsTable.cells[row.index, 11] * 0.01;
@@ -502,7 +501,7 @@ namespace NavalCombatCore
         public static float RollRapidFireBatteryDamage(float rapidFiringBatteryRating)
         {
             var rowIdx = rapidFiringBatteryDamageTable.rows.Select((r, i) => (r, i)).LastOrDefault(ri => rapidFiringBatteryRating >= ri.r).i;
-            var colIdx = Categorical.Sample(new double[] { 25, 50, 25 });
+            var colIdx = RandomUtils.SampleIndex(new double[] { 25, 50, 25 });
             return rapidFiringBatteryDamageTable.cells[rowIdx, colIdx];
         }
 
@@ -528,7 +527,7 @@ namespace NavalCombatCore
         public static float RollTorpedoDamage(TorpedoDamageClass damageClass, TorpedoPistolType pistolType)
         {
             var colIdx = Math.Min(torpedoDamageTable.cols.Length - 1, (int)damageClass * 2 + (int)pistolType);
-            var rowIdx = Categorical.Sample(torpedoDamageTable.rows.Select(x => (double)x).ToArray());
+            var rowIdx = RandomUtils.SampleIndex(torpedoDamageTable.rows.Select(x => (double)x).ToArray());
             return torpedoDamageTable.cells[rowIdx, colIdx];
         }
 
@@ -655,7 +654,7 @@ namespace NavalCombatCore
         public static string ResolveDamageEffectId(DamageEffectCause cause)
         {
             var colIdx = Math.Min((int)cause, damageDeterminationTableWarships1880to1905.cols.Length - 1);
-            var rowIdx = Categorical.Sample(damageDeterminationTableWarships1880to1905.rows);
+            var rowIdx = RandomUtils.SampleIndex(damageDeterminationTableWarships1880to1905.rows);
             return damageDeterminationTableWarships1880to1905.cells[rowIdx, colIdx];
         }
 
@@ -693,7 +692,7 @@ namespace NavalCombatCore
             if (colIdx < 0)
                 colIdx = 0;
 
-            var rowIdx = Categorical.Sample(damageDeterminationTableLandBattery.rows);
+            var rowIdx = RandomUtils.SampleIndex(damageDeterminationTableLandBattery.rows);
             return damageDeterminationTableLandBattery.cells[rowIdx, colIdx];
         }
 
@@ -709,14 +708,14 @@ namespace NavalCombatCore
 
         public static HitLocationMerchantVessel SampleHitLocationMerchantVessel()
         {
-            return (HitLocationMerchantVessel)Categorical.Sample(hitLocationMerchantVesselWeights);
+            return (HitLocationMerchantVessel)RandomUtils.SampleIndex(hitLocationMerchantVesselWeights);
         }
 
         // The rulebook don't tell how to handle torpedo attack merchant vessel so I made this variant. (at least it's reasonable than torpedo column in warship table?)    
         static double[] hitLocationMerchantVesselWeightsTorpedo = new double[]{12, 20, 20, 20, 20}; // Remove superstructure
         public static HitLocationMerchantVessel SampleHitLocationMerchantVesselTorpedo()
         {
-            return (HitLocationMerchantVessel)(Categorical.Sample(hitLocationMerchantVesselWeightsTorpedo) + 1);
+            return (HitLocationMerchantVessel)(RandomUtils.SampleIndex(hitLocationMerchantVesselWeightsTorpedo) + 1);
         }
 
 
@@ -749,7 +748,7 @@ namespace NavalCombatCore
         public static string ResolveDamageEffectIdMerchantVessel(DamageEffectCauseMerchantVessel cause)
         {
             var colIdx = Math.Min((int)cause, damageDeterminationTableMerchantVessel.cols.Length - 1);
-            var rowIdx = Categorical.Sample(damageDeterminationTableMerchantVessel.rows);
+            var rowIdx = RandomUtils.SampleIndex(damageDeterminationTableMerchantVessel.rows);
             return damageDeterminationTableMerchantVessel.cells[rowIdx, colIdx];
         }
 

@@ -1,0 +1,266 @@
+@page "/"
+@inject ReplayAnalyzerService Analyzer
+@inject AcmiExporter AcmiExporter
+@inject IJSRuntime JS
+
+<div class="app-shell">
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-title">Naval Replay Analyzer</div>
+            <div class="brand-subtitle">Headless save review and Tacview export</div>
+        </div>
+
+        <section class="panel">
+            <h2>Open</h2>
+            <label class="field-label">Upload save XML</label>
+            <InputFile OnChange="OpenUploadedFile" accept=".xml,.scen.xml" />
+
+            <label class="field-label path-label">Server path or scenario name</label>
+            <div class="path-row">
+                <input @bind="serverPath" @bind:event="oninput" placeholder="SJS - Manual Single Ship Duel.scen.xml" />
+                <button @onclick="OpenServerPath">Open</button>
+            </div>
+
+            @if (!string.IsNullOrWhiteSpace(errorMessage))
+            {
+                <div class="error">@errorMessage</div>
+            }
+        </section>
+
+        @if (replay != null)
+        {
+            <section class="panel">
+                <h2>Time</h2>
+                <div class="time-readout">@selectedTime.ToString("u")</div>
+                <input class="time-slider"
+                       type="range"
+                       min="0"
+                       max="@MaxTimeIndex"
+                       value="@selectedTimeIndex"
+                       @oninput="OnTimeSliderInput" />
+                <div class="range-row">
+                    <span>@replay.startTime.ToString("HH:mm")</span>
+                    <span>@replay.endTime.ToString("HH:mm")</span>
+                </div>
+            </section>
+
+            <section class="panel">
+                <h2>Export</h2>
+                <button class="wide-button" @onclick="DownloadAcmi">Download ACMI</button>
+            </section>
+
+            <section class="panel timeline-panel">
+                <h2>Timeline</h2>
+                @if (replay.events.Count == 0)
+                {
+                    <div class="empty">No major events or hits found.</div>
+                }
+                else
+                {
+                    <div class="timeline">
+                        @foreach (var evt in replay.events.OrderBy(e => e.time))
+                        {
+                            <button class="timeline-item" @onclick="() => JumpTo(evt.time)">
+                                <span class="event-time">@evt.time.ToString("HH:mm:ss")</span>
+                                <span class="event-kind">@evt.kind</span>
+                                <span class="event-text">@evt.shipName: @evt.description</span>
+                            </button>
+                        }
+                    </div>
+                }
+            </section>
+        }
+    </aside>
+
+    <section class="main">
+        <div class="topbar">
+            @if (replay == null)
+            {
+                <span>Open a headless save or scenario XML to begin.</span>
+            }
+            else
+            {
+                <span>@replay.sourceName</span>
+                <span>@replay.ships.Count ships</span>
+                <span>@replay.shots.Count hit records</span>
+                <span>@replay.events.Count events</span>
+            }
+        </div>
+
+        <div id="map"></div>
+
+        @if (replay != null)
+        {
+            <div class="bottom-dock">
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Ship</th>
+                                <th>Group</th>
+                                <th>Type</th>
+                                <th>Position</th>
+                                <th>Speed</th>
+                                <th>Heading</th>
+                                <th>Damage</th>
+                                <th>Status</th>
+                                <th>Recent Hit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var ship in replay.ships.OrderBy(s => s.groupName).ThenBy(s => s.name))
+                            {
+                                var point = GetPoint(ship);
+                                var shot = GetRecentShotFor(ship.id);
+                                <tr>
+                                    <td><span class="ship-dot" style="background:@ship.color"></span>@ship.name</td>
+                                    <td>@ship.groupName</td>
+                                    <td>@ship.type</td>
+                                    <td>@FormatPosition(point)</td>
+                                    <td>@(point?.speedKnots.ToString("0.#") ?? "-") kt</td>
+                                    <td>@(point?.headingDeg.ToString("0") ?? "-")</td>
+                                    <td>@ship.finalDamagePoint.ToString("0.#") / @ship.maxDamagePoint.ToString("0.#")</td>
+                                    <td>@(point?.mapState ?? "-") / @(point?.operationalState ?? "-")</td>
+                                    <td>@(shot == null ? "-" : $"{shot.weapon} from {shot.shooterName} at {shot.time:HH:mm:ss}")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        }
+    </section>
+</div>
+
+@code {
+    ReplayViewModel replay;
+    ReplayFullState loadedState;
+    string serverPath = "";
+    string errorMessage = "";
+    DateTime selectedTime;
+    int selectedTimeIndex;
+    bool mapInitialized;
+
+    int MaxTimeIndex => Math.Max(0, (replay?.sampleTimes.Count ?? 1) - 1);
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("replayMap.init", "map");
+            mapInitialized = true;
+        }
+    }
+
+    async Task OpenUploadedFile(InputFileChangeEventArgs args)
+    {
+        errorMessage = "";
+        try
+        {
+            var file = args.File;
+            await using var stream = file.OpenReadStream(200 * 1024 * 1024);
+            using var reader = new StreamReader(stream);
+            var xml = await reader.ReadToEndAsync();
+            loadedState = Analyzer.LoadFromXml(xml, file.Name);
+            await SetReplay(Analyzer.BuildReplay(loadedState));
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+    }
+
+    async Task OpenServerPath()
+    {
+        errorMessage = "";
+        try
+        {
+            loadedState = Analyzer.LoadFromPath(serverPath);
+            await SetReplay(Analyzer.BuildReplay(loadedState));
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+    }
+
+    async Task SetReplay(ReplayViewModel nextReplay)
+    {
+        replay = nextReplay;
+        selectedTimeIndex = 0;
+        selectedTime = replay.sampleTimes.FirstOrDefault();
+        if (selectedTime == default)
+            selectedTime = replay.startTime;
+
+        if (mapInitialized)
+        {
+            await JS.InvokeVoidAsync("replayMap.setReplay", replay);
+            await JS.InvokeVoidAsync("replayMap.setTime", selectedTime);
+        }
+    }
+
+    async Task OnTimeSliderInput(ChangeEventArgs args)
+    {
+        if (replay == null)
+            return;
+
+        selectedTimeIndex = int.TryParse(args.Value?.ToString(), out var value)
+            ? Math.Clamp(value, 0, MaxTimeIndex)
+            : 0;
+        selectedTime = replay.sampleTimes.Count == 0 ? replay.startTime : replay.sampleTimes[selectedTimeIndex];
+        await JS.InvokeVoidAsync("replayMap.setTime", selectedTime);
+    }
+
+    async Task JumpTo(DateTime time)
+    {
+        if (replay == null || replay.sampleTimes.Count == 0)
+            return;
+
+        var bestIndex = 0;
+        var bestDelta = TimeSpan.MaxValue;
+        for (var i = 0; i < replay.sampleTimes.Count; i++)
+        {
+            var delta = (replay.sampleTimes[i] - time).Duration();
+            if (delta < bestDelta)
+            {
+                bestDelta = delta;
+                bestIndex = i;
+            }
+        }
+
+        selectedTimeIndex = bestIndex;
+        selectedTime = replay.sampleTimes[selectedTimeIndex];
+        await JS.InvokeVoidAsync("replayMap.setTime", selectedTime);
+    }
+
+    async Task DownloadAcmi()
+    {
+        if (replay == null)
+            return;
+
+        var acmi = AcmiExporter.Export(replay);
+        var fileName = Path.GetFileNameWithoutExtension(replay.sourceName) + ".acmi";
+        await JS.InvokeVoidAsync("replayMap.downloadText", fileName, acmi, "text/plain");
+    }
+
+    ReplayPoint GetPoint(ReplayShip ship)
+    {
+        return ReplayAnalyzerService.GetPointAtOrBefore(ship.track, selectedTime);
+    }
+
+    ReplayShot GetRecentShotFor(string shipId)
+    {
+        if (replay == null)
+            return null;
+
+        return replay.shots
+            .Where(shot => shot.targetId == shipId && shot.time <= selectedTime)
+            .OrderByDescending(shot => shot.time)
+            .FirstOrDefault();
+    }
+
+    static string FormatPosition(ReplayPoint point)
+    {
+        return point == null ? "-" : $"{point.lat:0.0000}, {point.lon:0.0000}";
+    }
+}

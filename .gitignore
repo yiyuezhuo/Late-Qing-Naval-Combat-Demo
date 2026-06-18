@@ -43,6 +43,7 @@ ExportedObj/
 !Tools/McCoyLegacyCLI/McCoyLegacyCLI.csproj
 !Tools/PlaceholderImageCli/PlaceholderImageCli.csproj
 !Tools/NavalCombatHeadless/NavalCombatHeadless.csproj
+!Tools/NavalCombatReplayAnalyzer/NavalCombatReplayAnalyzer.csproj
 *.unityproj
 *.sln
 *.suo
@@ -110,6 +111,8 @@ Tools/PlaceholderImageCli/bin/
 Tools/PlaceholderImageCli/obj/
 Tools/NavalCombatHeadless/bin/
 Tools/NavalCombatHeadless/obj/
+Tools/NavalCombatReplayAnalyzer/bin/
+Tools/NavalCombatReplayAnalyzer/obj/
 Tools/Temp_Reports
 
 References/NAAB2x

@@ -1,0 +1,74 @@
+using System.Globalization;
+using System.Text;
+using NavalCombatReplayAnalyzer.Models;
+
+namespace NavalCombatReplayAnalyzer.Services;
+
+public class AcmiExporter
+{
+    public string Export(ReplayViewModel replay)
+    {
+        var sb = new StringBuilder();
+        sb.AppendLine("FileType=text/acmi/tacview");
+        sb.AppendLine("FileVersion=2.2");
+        sb.AppendLine($"0,ReferenceTime={replay.startTime:yyyy-MM-ddTHH:mm:ssZ}");
+        sb.AppendLine("0,Title=Naval Combat Replay");
+
+        var objectIds = replay.ships
+            .Select((ship, index) => (ship, id: index + 1))
+            .ToDictionary(pair => pair.ship.id, pair => pair.id);
+
+        foreach (var time in replay.sampleTimes)
+        {
+            var seconds = Math.Max(0, (time - replay.startTime).TotalSeconds);
+            sb.AppendLine($"#{seconds.ToString("0.###", CultureInfo.InvariantCulture)}");
+
+            foreach (var ship in replay.ships)
+            {
+                var point = ReplayAnalyzerService.GetPointAtOrBefore(ship.track, time);
+                if (point == null)
+                    continue;
+
+                var objectId = objectIds[ship.id];
+                var transform = string.Join("|", new[]
+                {
+                    point.lon.ToString("0.######", CultureInfo.InvariantCulture),
+                    point.lat.ToString("0.######", CultureInfo.InvariantCulture),
+                    "0",
+                    "0",
+                    "0",
+                    point.headingDeg.ToString("0.###", CultureInfo.InvariantCulture)
+                });
+                var color = ship.color.TrimStart('#');
+                sb.Append(objectId);
+                sb.Append(",T=");
+                sb.Append(transform);
+                sb.Append(",Name=");
+                sb.Append(Escape(ship.name));
+                sb.Append(",Type=Sea+Warship");
+                sb.Append(",Color=");
+                sb.Append(color);
+                sb.Append(",LongName=");
+                sb.Append(Escape($"{ship.groupName} / {ship.type} / {point.speedKnots:0.#} kt"));
+                sb.AppendLine();
+            }
+        }
+
+        foreach (var shot in replay.shots)
+        {
+            var seconds = Math.Max(0, (shot.time - replay.startTime).TotalSeconds);
+            sb.AppendLine($"#{seconds.ToString("0.###", CultureInfo.InvariantCulture)}");
+            sb.AppendLine($"0,Event=Message|{Escape($"{shot.weapon}: {shot.shooterName} -> {shot.targetName}, DP {shot.damagePoint:0.##}")}");
+        }
+
+        return sb.ToString();
+    }
+
+    static string Escape(string value)
+    {
+        return (value ?? "")
+            .Replace("\\", "\\\\")
+            .Replace(",", "\\,")
+            .Replace("\n", " ");
+    }
+}

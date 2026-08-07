@@ -17,18 +17,10 @@ public class ReplayAnalyzerService
         "abandon"
     };
 
-    static readonly Dictionary<Country, string> countryColors = new()
+    static readonly string[] sideColors =
     {
-        { Country.China, "#d63b2f" },
-        { Country.Japan, "#2f6fd6" },
-        { Country.Russia, "#64a1d8" },
-        { Country.Britain, "#8d4bd6" },
-        { Country.France, "#3a9d7c" },
-        { Country.Germany, "#555555" },
-        { Country.UnitedStates, "#4d8f3a" },
-        { Country.Italy, "#8aa23f" },
-        { Country.AustriaHungary, "#b17a32" },
-        { Country.Portugal, "#2c8d6b" },
+        "#d63b2f",
+        "#2f6fd6"
     };
 
     public ReplayFullState LoadFromXml(string xml, string sourcePath = null)
@@ -62,13 +54,19 @@ public class ReplayAnalyzerService
 
         var rootGroups = gameState.shipGroups.Where(group => group?.parentObjectId == null).ToList();
         var groupNameByShipId = new Dictionary<string, ReplayName>();
-        foreach (var rootGroup in rootGroups)
+        var sideColorByShipId = new Dictionary<string, string>();
+        for (var rootGroupIndex = 0; rootGroupIndex < rootGroups.Count; rootGroupIndex++)
         {
+            var rootGroup = rootGroups[rootGroupIndex];
             var groupName = BuildName(rootGroup.name, rootGroup.GetMemberName());
+            var sideColor = ResolveSideColor(rootGroupIndex);
             foreach (var ship in rootGroup.Walk<ShipLog>())
             {
                 if (!string.IsNullOrWhiteSpace(ship?.objectId))
+                {
                     groupNameByShipId[ship.objectId] = groupName;
+                    sideColorByShipId[ship.objectId] = sideColor;
+                }
             }
         }
 
@@ -87,7 +85,6 @@ public class ReplayAnalyzerService
 
             var namedShip = ResolveNamedShip(ship, namedShipById);
             var shipClass = ship.shipClass ?? namedShip?.shipClass;
-            var country = shipClass?.country ?? Country.General;
             var shipName = ResolveShipName(ship, namedShip);
             var groupName = groupNameByShipId.GetValueOrDefault(ship.objectId) ?? BuildName(null, "Ungrouped");
             replay.ships.Add(new ReplayShip
@@ -98,8 +95,8 @@ public class ReplayAnalyzerService
                 groupName = SelectName(groupName, "english"),
                 groupNameVariants = groupName,
                 type = shipClass?.type.ToString() ?? "Unknown",
-                country = country.ToString(),
-                color = ResolveColor(country, replay.ships.Count),
+                country = (shipClass?.country ?? Country.General).ToString(),
+                color = sideColorByShipId.GetValueOrDefault(ship.objectId) ?? ResolveSideColor(replay.ships.Count),
                 isDestroyed = ship.mapState == MapState.Destroyed,
                 finalDamagePoint = ship.damagePoint,
                 maxDamagePoint = Math.Max(1, shipClass?.damagePoint ?? 1),
@@ -358,14 +355,7 @@ public class ReplayAnalyzerService
         return last;
     }
 
-    static string ResolveColor(Country country, int index)
-    {
-        if (countryColors.TryGetValue(country, out var color))
-            return color;
-
-        var fallback = new[] { "#e4572e", "#4c78a8", "#59a14f", "#b279a2", "#f28e2b", "#76b7b2" };
-        return fallback[index % fallback.Length];
-    }
+    static string ResolveSideColor(int index) => sideColors[index % sideColors.Length];
 
     static NamedShip ResolveNamedShip(ShipLog ship, Dictionary<string, NamedShip> namedShipById)
     {

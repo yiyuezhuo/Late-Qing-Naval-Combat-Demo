@@ -104,6 +104,17 @@ button:hover {
   width: 100%;
 }
 
+.shape-input {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #c8d0da;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #1f2933;
+  padding: 8px 9px;
+  margin-bottom: 10px;
+}
+
 .language-select {
   width: 100%;
   border: 1px solid #c8d0da;

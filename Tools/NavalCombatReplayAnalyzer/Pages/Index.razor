@@ -56,6 +56,8 @@
 
             <section class="panel">
                 <h2>Export</h2>
+                <label class="field-label">Tacview shape</label>
+                <input class="shape-input" @bind="acmiShape" @bind:event="oninput" placeholder="ship.obj" />
                 <button class="wide-button" @onclick="DownloadAcmi">Download ACMI</button>
             </section>
 
@@ -151,6 +153,7 @@
     int selectedTimeIndex;
     bool mapInitialized;
     string selectedLanguage = "english";
+    string acmiShape = "ship.obj";
 
     static readonly (string Code, string Label)[] LanguageOptions =
     {
@@ -273,7 +276,7 @@
         if (replay == null)
             return;
 
-        var acmi = AcmiExporter.Export(replay, selectedLanguage);
+        var acmi = AcmiExporter.Export(replay, selectedLanguage, acmiShape);
         var fileName = Path.GetFileNameWithoutExtension(replay.sourceName) + ".acmi";
         await JS.InvokeVoidAsync("replayMap.downloadText", fileName, acmi, "text/plain");
     }

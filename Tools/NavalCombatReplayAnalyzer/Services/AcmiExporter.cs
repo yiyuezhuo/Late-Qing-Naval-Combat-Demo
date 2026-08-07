@@ -6,8 +6,10 @@ namespace NavalCombatReplayAnalyzer.Services;
 
 public class AcmiExporter
 {
-    public string Export(ReplayViewModel replay, string language = "english")
+    public string Export(ReplayViewModel replay, string language = "english", string shape = "ship.obj")
     {
+        shape = string.IsNullOrWhiteSpace(shape) ? "" : shape.Trim();
+
         var sb = new StringBuilder();
         sb.AppendLine("FileType=text/acmi/tacview");
         sb.AppendLine("FileVersion=2.2");
@@ -42,17 +44,21 @@ public class AcmiExporter
                     "0",
                     point.headingDeg.ToString("0.###", CultureInfo.InvariantCulture)
                 });
-                var color = ship.color.TrimStart('#');
                 sb.Append(objectId);
                 sb.Append(",T=");
                 sb.Append(transform);
                 sb.Append(",Name=");
                 sb.Append(Escape(shipName));
                 sb.Append(",Type=Sea+Watercraft+Warship");
+                if (!string.IsNullOrWhiteSpace(shape))
+                {
+                    sb.Append(",Shape=");
+                    sb.Append(Escape(shape));
+                }
                 sb.Append(",Color=");
-                sb.Append(color);
+                sb.Append(ResolveTacviewColor(ship.color));
                 sb.Append(",LongName=");
-                sb.Append(Escape($"{ship.groupName} / {ship.type} / {point.speedKnots:0.#} kt"));
+                sb.Append(Escape(shipName));
                 sb.AppendLine();
             }
         }
@@ -75,5 +81,17 @@ public class AcmiExporter
             .Replace("\\", "\\\\")
             .Replace(",", "\\,")
             .Replace("\n", " ");
+    }
+
+    static string ResolveTacviewColor(string color)
+    {
+        return color?.ToLowerInvariant() switch
+        {
+            "#d63b2f" => "Red",
+            "d63b2f" => "Red",
+            "#2f6fd6" => "Blue",
+            "2f6fd6" => "Blue",
+            _ => "Blue"
+        };
     }
 }

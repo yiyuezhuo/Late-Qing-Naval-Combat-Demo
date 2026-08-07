@@ -55,7 +55,6 @@ window.replayMap = (() => {
           weight: 2,
           opacity: 0.72
         }).addTo(map);
-        track.bindTooltip(`${localizeName(ship.nameVariants, ship.name)}<br>${localizeName(ship.groupNameVariants, ship.groupName)}`);
         layers.tracks.push(track);
         latLngs.forEach(p => bounds.push(p));
       }
@@ -116,7 +115,6 @@ window.replayMap = (() => {
           dashArray: "8 8"
         }
       ).addTo(map);
-      layers.shotLine.bindTooltip(`${shot.weapon}: ${localizeName(shot.shooterNameVariants, shot.shooterName)} -> ${localizeName(shot.targetNameVariants, shot.targetName)}`);
     }
   }
 

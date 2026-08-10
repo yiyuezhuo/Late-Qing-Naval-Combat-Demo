@@ -117,6 +117,33 @@
   <objectId>f1c20165-d89f-4b65-b32e-0ce478dc4ddd</objectId>
  </NamedShip>
  <NamedShip>
+  <shipClassObjectId>6197af50-741d-4f54-881a-f0eeec00996f</shipClassObjectId>
+  <name>
+   <english>Akitsushima (1905/1/7)</english>
+   <japanese>秋津洲 (1905/1/7)</japanese>
+   <chineseSimplified>秋津洲 (1905/1/7)</chineseSimplified>
+   <chineseTraditional>秋津洲 (1905/1/7)</chineseTraditional>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>aa802495-43e0-455d-8433-beb7f9c75d89</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Akitsushima</english>
+  </remark>
+  <objectId>46fab434-9bfc-4407-872b-ad23758b736a</objectId>
+ </NamedShip>
+ <NamedShip>
   <shipClassObjectId>053c1b1d-f232-4d90-b4d6-40c0568d7ae7</shipClassObjectId>
   <name>
    <english>Naniwa</english>
@@ -796,6 +823,33 @@ After Lin commited suicide, Lin took command of the ship.</english>
   <objectId>c579addb-d566-4c32-a05e-69b8363f6dfa</objectId>
  </NamedShip>
  <NamedShip>
+  <shipClassObjectId>4804a957-f872-4939-9e41-b7c0f78262ce</shipClassObjectId>
+  <name>
+   <english>Hashidate (1905/1/7)</english>
+   <japanese>橋立 (1905/1/7)</japanese>
+   <chineseSimplified>桥立 (1905/1/7)</chineseSimplified>
+   <chineseTraditional>橋立 (1905/1/7)</chineseTraditional>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>9d3843b2-bd56-4238-8eb1-a971c19f2f37</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Hashidate</english>
+  </remark>
+  <objectId>db02cfdf-c7aa-4633-bcb2-7e10016c97e1</objectId>
+ </NamedShip>
+ <NamedShip>
   <shipClassObjectId>0ad25eb3-621a-4dcd-8b44-28ed6e1de245</shipClassObjectId>
   <name>
    <english>Itsukushima</english>
@@ -909,6 +963,33 @@ After Lin commited suicide, Lin took command of the ship.</english>
    <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Matsushima</english>
   </remark>
   <objectId>c6f4a70c-e182-4eda-834f-6015d90eb2d9</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>487c248d-c78b-47c0-841a-2bd768b47662</shipClassObjectId>
+  <name>
+   <english>Matsushima (1905/1/12)</english>
+   <japanese>松島 (1905/1/12)</japanese>
+   <chineseSimplified>松島 (1905/1/12)</chineseSimplified>
+   <chineseTraditional>松島 (1905/1/12)</chineseTraditional>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>d6c6ba2c-8d07-48d3-a4b4-118ffe08546e</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>
+   <english>none</english>
+  </remark>
+  <objectId>a4170ae3-7af2-4fb9-a71d-e741b141e9ce</objectId>
  </NamedShip>
  <NamedShip>
   <shipClassObjectId>053c1b1d-f232-4d90-b4d6-40c0568d7ae7</shipClassObjectId>
@@ -4285,7 +4366,9 @@ Generic Placeholder class</english>
   </fateDesc>
   <applicableYearBegin>1900</applicableYearBegin>
   <applicableYearEnd>1900</applicableYearEnd>
-  <defaultLeaderReference />
+  <defaultLeaderReference>
+   <referenceObjectId>8f8ff7c9-b426-4fae-ba3d-d5288ab905ce</referenceObjectId>
+  </defaultLeaderReference>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
@@ -4295,6 +4378,33 @@ Generic Placeholder class</english>
 </english>
   </remark>
   <objectId>3e2a1597-9996-4113-a4e2-c194a7a50244</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>37bce09e-d947-41ff-acfb-f32541659e54</shipClassObjectId>
+  <name>
+   <english>Suma (1905/1/21)</english>
+   <japanese>須磨 (1905/1/21)</japanese>
+   <chineseSimplified>須磨 (1905/1/21)</chineseSimplified>
+   <chineseTraditional>須磨 (1905/1/21)</chineseTraditional>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>757f02e5-56ee-4377-a2c5-bd1d965dcfd8</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>
+   <english>none</english>
+  </remark>
+  <objectId>45d58cfc-4b11-46ef-ac01-47b762937609</objectId>
  </NamedShip>
  <NamedShip>
   <shipClassObjectId>b0405588-457f-4015-b3e2-7d1950c4569b</shipClassObjectId>
@@ -5840,6 +5950,33 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
  <NamedShip>
   <shipClassObjectId>a93b6888-fb63-4f58-85a3-30289f2dbb9f</shipClassObjectId>
   <name>
+   <english>Kasagi (1905/1/7)</english>
+   <japanese>笠置 (1905/1/7)</japanese>
+   <chineseSimplified>笠置 (1905/1/7)</chineseSimplified>
+   <chineseTraditional>笠置 (1905/1/7)</chineseTraditional>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>768f16af-9c1e-433e-8914-3d5b4624ad94</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>
+   <english>none</english>
+  </remark>
+  <objectId>3d3b0b4f-a9ce-4ecb-a106-09cf56ce7fa7</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>a93b6888-fb63-4f58-85a3-30289f2dbb9f</shipClassObjectId>
+  <name>
    <english>Chitose</english>
    <japanese>千歳</japanese>
    <chineseSimplified>千岁</chineseSimplified>
@@ -6452,6 +6589,33 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
   <objectId>68a5becf-73ad-4263-ad2d-7be24831ebb9</objectId>
  </NamedShip>
  <NamedShip>
+  <shipClassObjectId>70a0611e-34d3-41a9-9215-bd4a1a3b65b7</shipClassObjectId>
+  <name>
+   <english>Kasuga (1905/1/7)</english>
+   <japanese>春日 (1905/1/7)</japanese>
+   <chineseSimplified>春日 (1905/1/7)</chineseSimplified>
+   <chineseTraditional>春日 (1905/1/7)</chineseTraditional>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>e1247c52-775e-4e40-953e-46d7b9cf76be</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E6%98%A5%E6%97%A5_(%E8%A3%85%E7%94%B2%E5%B7%A1%E6%B4%8B%E8%89%A6)</english>
+  </remark>
+  <objectId>fb055f3e-de32-44db-bbf1-6177ee9b50c5</objectId>
+ </NamedShip>
+ <NamedShip>
   <shipClassObjectId>a920ccf3-30ab-4b93-a1d9-f203e824d1f0</shipClassObjectId>
   <name>
    <english>Nisshin</english>
@@ -6527,6 +6691,33 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
    <english>https://en.wikipedia.org/wiki/Chilean_cruiser_Esmeralda_(1883)</english>
   </remark>
   <objectId>60217514-9922-42dd-9be9-e94b0a048996</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>340b332a-554f-4d10-a067-e22e9741b1eb</shipClassObjectId>
+  <name>
+   <english>Idzumi (1905/5/8)</english>
+   <japanese>和泉 (1905/5/8)</japanese>
+   <chineseSimplified>和泉 (1905/5/8)</chineseSimplified>
+   <chineseTraditional>和泉 (1905/5/8)</chineseTraditional>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>fcf4725b-4de5-4040-a7a5-1d7ef84a1b45</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>
+   <english>none</english>
+  </remark>
+  <objectId>7b7bf3ba-d80f-41f7-966b-24bc3415bdb6</objectId>
  </NamedShip>
  <NamedShip>
   <shipClassObjectId>da10240c-9e79-48b3-bf88-9e62ca88c818</shipClassObjectId>
@@ -9245,5 +9436,84 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
 </english>
   </remark>
   <objectId>1747168c-86cd-446f-a51f-e0de0328ab4c</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>18849fd3-4dd6-4dbd-ac7c-2b97f956f752</shipClassObjectId>
+  <name>
+   <english>Tatsuta</english>
+   <japanese>龍田</japanese>
+   <chineseSimplified>龙田</chineseSimplified>
+   <chineseTraditional>龍田</chineseTraditional>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>99fd2c09-618f-49e9-9a43-8d88091f1d2d</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Tatsuta_(1894)</english>
+  </remark>
+  <objectId>6d1fefc2-e0e5-4479-afba-5b721d7c4df1</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>16bb06b6-5c51-4eb6-a2a7-19ac7821a2da</shipClassObjectId>
+  <name>
+   <english>Chihaya</english>
+   <japanese>千早</japanese>
+   <chineseSimplified>千早</chineseSimplified>
+   <chineseTraditional>千早</chineseTraditional>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>b208596c-2dec-4aaf-9fc3-4637e67faa12</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Chihaya</english>
+  </remark>
+  <objectId>4ccf804a-37f5-4b46-9633-b906181abf49</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>8e928947-032c-48de-83c8-459228d5ebfb</shipClassObjectId>
+  <name>
+   <english>Fubuki</english>
+   <japanese>吹雪</japanese>
+   <chineseSimplified>吹雪</chineseSimplified>
+   <chineseTraditional>吹雪</chineseTraditional>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E5%90%B9%E9%9B%AA_(%E6%98%A5%E9%9B%A8%E5%9E%8B%E9%A7%86%E9%80%90%E8%89%A6)</english>
+  </remark>
+  <objectId>693ef2d4-25c0-428c-9faf-a7da2fdc6574</objectId>
  </NamedShip>
 </ArrayOfNamedShip>

@@ -4700,7 +4700,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -404
-    m_Localized: Loaded max range, projectile weight, and projectile diameter from BatteryRecord.
+    m_Localized: Loaded max range, projectile weight, and projectile diameter from
+      BatteryRecord.
     m_Metadata:
       m_Items: []
   - m_Id: -405
@@ -4868,7 +4869,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -446
-    m_Localized: The selected lost-covering weight consumes all non-body weight; Facehard69 requires remaining cap/hood weight for this state.
+    m_Localized: The selected lost-covering weight consumes all non-body weight;
+      Facehard69 requires remaining cap/hood weight for this state.
     m_Metadata:
       m_Items: []
   - m_Id: -447
@@ -4928,23 +4930,23 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -461
-    m_Localized: 'best BC {0}, score {1}'
+    m_Localized: best BC {0}, score {1}
     m_Metadata:
       m_Items: []
   - m_Id: -462
-    m_Localized: 'current BC {0}, score {1}'
+    m_Localized: current BC {0}, score {1}
     m_Metadata:
       m_Items: []
   - m_Id: -463
-    m_Localized: 'mismatch {0}, max range error {1} yd'
+    m_Localized: mismatch {0}, max range error {1} yd
     m_Metadata:
       m_Items: []
   - m_Id: -464
-    m_Localized: 'mismatch {0}, max range target failed'
+    m_Localized: mismatch {0}, max range target failed
     m_Metadata:
       m_Items: []
   - m_Id: -465
-    m_Localized: 'pass {0}/4, candidate {1}/{2}'
+    m_Localized: pass {0}/4, candidate {1}/{2}
     m_Metadata:
       m_Items: []
   - m_Id: -466
@@ -4996,11 +4998,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -478
-    m_Localized: 'Save & Close'
+    m_Localized: Save & Close
     m_Metadata:
       m_Items: []
   - m_Id: -479
-    m_Localized: 'Clear & Close'
+    m_Localized: Clear & Close
     m_Metadata:
       m_Items: []
   - m_Id: -480
@@ -5024,7 +5026,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -485
-    m_Localized: No standard fire control table is available for this Role/Code/Era combination.
+    m_Localized: No standard fire control table is available for this Role/Code/Era
+      combination.
     m_Metadata:
       m_Items: []
   - m_Id: -486
@@ -5032,11 +5035,14 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -487
-    m_Localized: This battery uses a custom fire control table. Resetting will replace it with the standard table generated from Role/Code/Era and clear the Custom flag.
+    m_Localized: This battery uses a custom fire control table. Resetting will replace
+      it with the standard table generated from Role/Code/Era and clear the Custom
+      flag.
     m_Metadata:
       m_Items: []
   - m_Id: -488
-    m_Localized: 'Custom Fire Control Table: differences from the standard code table are expected.'
+    m_Localized: 'Custom Fire Control Table: differences from the standard code table
+      are expected.'
     m_Metadata:
       m_Items: []
   - m_Id: -489
@@ -5048,7 +5054,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -491
-    m_Localized: Does not match the standard code table. Review the table/code or mark it as Custom.
+    m_Localized: Does not match the standard code table. Review the table/code or
+      mark it as Custom.
     m_Metadata:
       m_Items: []
   - m_Id: -492
@@ -5064,7 +5071,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -495
-    m_Localized: Uses the standard SK5 table generated from the current Role, Code, and Era.
+    m_Localized: Uses the standard SK5 table generated from the current Role, Code,
+      and Era.
     m_Metadata:
       m_Items: []
   - m_Id: -496
@@ -5072,7 +5080,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -497
-    m_Localized: No latent variable model parameters are available for the current Role/Code/Era.
+    m_Localized: No latent variable model parameters are available for the current
+      Role/Code/Era.
     m_Metadata:
       m_Items: []
   - m_Id: -498
@@ -5084,11 +5093,13 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -500
-    m_Localized: Uses midpoint latent base and midpoint range/speed/aspect multipliers from the SK5 fire-control latent variable model.
+    m_Localized: Uses midpoint latent base and midpoint range/speed/aspect multipliers
+      from the SK5 fire-control latent variable model.
     m_Metadata:
       m_Items: []
   - m_Id: -501
-    m_Localized: 'Each cell is shown as current / latent variable -> rounded, then rounded-current delta.'
+    m_Localized: Each cell is shown as current / latent variable -> rounded, then
+      rounded-current delta.
     m_Metadata:
       m_Items: []
   - m_Id: -502
@@ -5101,6 +5112,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: -504
     m_Localized: Penetration Generation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 109522275935096832
+    m_Localized: RJH - The Battle of Tsushima
     m_Metadata:
       m_Items: []
   references:

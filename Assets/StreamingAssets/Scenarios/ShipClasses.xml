@@ -63812,4 +63812,633 @@ First pre-dreadnoughts
   <ram>Ram</ram>
   <objectId>1d7706a1-be5c-4ba8-9f39-e901de5d4242</objectId>
  </ShipClass>
+ <ShipClass>
+  <name>
+   <english>Tatsuta (1903)</english>
+   <japanese>龍田</japanese>
+   <chineseSimplified>龙田</chineseSimplified>
+   <chineseTraditional>龍田</chineseTraditional>
+  </name>
+  <type>LightCruiser</type>
+  <extraShipType>UnprotectedCruiser</extraShipType>
+  <country>Japan</country>
+  <referenceYear>1903</referenceYear>
+  <displacementTons>850</displacementTons>
+  <complementMen>100</complementMen>
+  <lengthFoot>240</lengthFoot>
+  <beamFoot>28</beamFoot>
+  <draftFoot>9.5</draftFoot>
+  <engineDesc>
+   <english>2-shaft VTE</english>
+  </engineDesc>
+  <boilersDesc>
+   <english>4 Kampon</english>
+  </boilersDesc>
+  <batteryRecords>
+   <BatteryRecord>
+    <name>
+     <english>4.7''/40 QF Type 41</english>
+     <japanese>4.7インチ速射砲</japanese>
+     <chineseSimplified>4.7英寸速射炮</chineseSimplified>
+     <chineseTraditional>4.7英寸速射砲</chineseTraditional>
+    </name>
+    <damageRating>12</damageRating>
+    <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
+    <fireControlPositions>1</fireControlPositions>
+    <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
+     <code>X</code>
+     <gunSight>Basic</gunSight>
+     <fireControlInstrument>Basic</fireControlInstrument>
+     <rangeFinder>Optical</rangeFinder>
+     <directorControl>None</directorControl>
+     <stabilization>Manual</stabilization>
+     <powerRemoteControl>None</powerRemoteControl>
+    </fireControlType>
+    <rangeYards>9899</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
+    <fireControlRadarModifier>0</fireControlRadarModifier>
+    <fireControlRadarName>
+     <english>None</english>
+    </fireControlRadarName>
+    <shellSizeInch>4.7</shellSizeInch>
+    <shellWeightPounds>45</shellWeightPounds>
+    <ammunitionCapacity>120</ammunitionCapacity>
+    <fireControlTableRecords>
+     <FireControlTableRecord>
+      <speedThresholdKnot>9</speedThresholdKnot>
+      <shortBroad>11</shortBroad>
+      <shortNarrow>6</shortNarrow>
+      <mediumBroad>7</mediumBroad>
+      <mediumNarrow>4</mediumNarrow>
+      <longBroad>5</longBroad>
+      <longNarrow>3</longNarrow>
+      <extremeBroad>4</extremeBroad>
+      <extremeNarrow>2</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>18</speedThresholdKnot>
+      <shortBroad>7</shortBroad>
+      <shortNarrow>4</shortNarrow>
+      <mediumBroad>4</mediumBroad>
+      <mediumNarrow>3</mediumNarrow>
+      <longBroad>3</longBroad>
+      <longNarrow>2</longNarrow>
+      <extremeBroad>2</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>27</speedThresholdKnot>
+      <shortBroad>6</shortBroad>
+      <shortNarrow>3</shortNarrow>
+      <mediumBroad>3</mediumBroad>
+      <mediumNarrow>2</mediumNarrow>
+      <longBroad>2</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>2</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>36</speedThresholdKnot>
+      <shortBroad>5</shortBroad>
+      <shortNarrow>3</shortNarrow>
+      <mediumBroad>3</mediumBroad>
+      <mediumNarrow>2</mediumNarrow>
+      <longBroad>2</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>2</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>45</speedThresholdKnot>
+      <shortBroad>4</shortBroad>
+      <shortNarrow>2</shortNarrow>
+      <mediumBroad>2</mediumBroad>
+      <mediumNarrow>1</mediumNarrow>
+      <longBroad>2</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>1</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+    </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
+    <penetrationTableBaseType>Common</penetrationTableBaseType>
+    <penetrationTableRecords>
+     <PenetrationTableRecord>
+      <distanceYards>2000</distanceYards>
+      <rateOfFire>7.4</rateOfFire>
+      <rangeBand>Short</rangeBand>
+      <horizontalPenetrationInchs>0</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>3.3</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+     <PenetrationTableRecord>
+      <distanceYards>4000</distanceYards>
+      <rateOfFire>5.7</rateOfFire>
+      <rangeBand>Short</rangeBand>
+      <horizontalPenetrationInchs>0.2</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>2.1</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+     <PenetrationTableRecord>
+      <distanceYards>6000</distanceYards>
+      <rateOfFire>4.4</rateOfFire>
+      <rangeBand>Medium</rangeBand>
+      <horizontalPenetrationInchs>0.2</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>1.6</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+     <PenetrationTableRecord>
+      <distanceYards>8000</distanceYards>
+      <rateOfFire>3.5</rateOfFire>
+      <rangeBand>Long</rangeBand>
+      <horizontalPenetrationInchs>0.4</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>1.4</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+     <PenetrationTableRecord>
+      <distanceYards>10000</distanceYards>
+      <rateOfFire>2.8</rateOfFire>
+      <rangeBand>Long</rangeBand>
+      <horizontalPenetrationInchs>0.7</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>1.2</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+    </penetrationTableRecords>
+    <mountLocationRecords>
+     <MountLocationRecord>
+      <mountLocation>Forward</mountLocation>
+      <barrels>1</barrels>
+      <mounts>1</mounts>
+      <mountArcs>
+       <MountArcRecord startDeg="240" CoverageDeg="240" isCrossDeckFire="false" />
+      </mountArcs>
+      <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
+      <mountArcsPattern>Normal</mountArcsPattern>
+      <objectId>f4779657-52fc-48d0-8d3e-ec1532ad541a</objectId>
+     </MountLocationRecord>
+     <MountLocationRecord>
+      <mountLocation>After</mountLocation>
+      <barrels>1</barrels>
+      <mounts>1</mounts>
+      <mountArcs>
+       <MountArcRecord startDeg="60" CoverageDeg="240" isCrossDeckFire="false" />
+      </mountArcs>
+      <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
+      <mountArcsPattern>Normal</mountArcsPattern>
+      <objectId>08acd92b-2d27-4947-ab55-f1dd2367ba87</objectId>
+     </MountLocationRecord>
+    </mountLocationRecords>
+    <objectId>b8767eb8-fd9d-40c0-8f1c-bd749c106b2a</objectId>
+   </BatteryRecord>
+  </batteryRecords>
+  <torpedoSector>
+   <name>
+    <english>18'' Mk IV</english>
+   </name>
+   <mountLocationRecords>
+    <MountLocationRecord>
+     <mountLocation>Forward</mountLocation>
+     <barrels>1</barrels>
+     <mounts>1</mounts>
+     <mountArcs>
+      <MountArcRecord startDeg="345" CoverageDeg="30" isCrossDeckFire="false" />
+     </mountArcs>
+     <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
+     <mountArcsPattern>Narrow</mountArcsPattern>
+     <objectId>941f5b76-a5db-4218-93a0-0e2f85979d11</objectId>
+    </MountLocationRecord>
+    <MountLocationRecord>
+     <mountLocation>StarboardMidship</mountLocation>
+     <barrels>2</barrels>
+     <mounts>1</mounts>
+     <mountArcs>
+      <MountArcRecord startDeg="30" CoverageDeg="120" isCrossDeckFire="false" />
+     </mountArcs>
+     <trainable>true</trainable>
+     <reloadLimit>0</reloadLimit>
+     <mountArcsPattern>Normal</mountArcsPattern>
+     <objectId>072c5a38-d1a4-4756-b831-fe18444fd184</objectId>
+    </MountLocationRecord>
+    <MountLocationRecord>
+     <mountLocation>PortMidship</mountLocation>
+     <barrels>2</barrels>
+     <mounts>1</mounts>
+     <mountArcs>
+      <MountArcRecord startDeg="210" CoverageDeg="120" isCrossDeckFire="false" />
+     </mountArcs>
+     <trainable>true</trainable>
+     <reloadLimit>0</reloadLimit>
+     <mountArcsPattern>Normal</mountArcsPattern>
+     <objectId>e951b822-d400-4a9f-8e2b-6f36571f2ce2</objectId>
+    </MountLocationRecord>
+   </mountLocationRecords>
+   <torpedoSettings>
+    <TorpedoSetting rangeYards="1000" speedKnots="26" />
+    <TorpedoSetting rangeYards="2000" speedKnots="18" />
+   </torpedoSettings>
+   <ammunitionCapacity>10</ammunitionCapacity>
+   <damageClass>H</damageClass>
+   <dudProbability>0.5</dudProbability>
+   <pistolType>Contact</pistolType>
+  </torpedoSector>
+  <rapidFireBatteryRecords>
+   <RapidFireBatteryRecord>
+    <name>
+     <english>3''/40 12pdr QF</english>
+     <japanese />
+     <chineseSimplified />
+     <chineseTraditional />
+    </name>
+    <maxRangeYards>7990</maxRangeYards>
+    <effectiveRangeYards>3596</effectiveRangeYards>
+    <fireControlRecords>
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="5" fireControlEffectiveRange="8" />
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="4" fireControlEffectiveRange="6" />
+    </fireControlRecords>
+    <metaInfo>
+     <shellSizeInch>1.3</shellSizeInch>
+     <shellWeightPounds>0</shellWeightPounds>
+     <fireControlTier>2</fireControlTier>
+    </metaInfo>
+    <damageFactor>6</damageFactor>
+    <barrelsLevelPort>
+     <int>2</int>
+    </barrelsLevelPort>
+    <barrelsLevelStarboard>
+     <int>2</int>
+    </barrelsLevelStarboard>
+   </RapidFireBatteryRecord>
+  </rapidFireBatteryRecords>
+  <targetSizeModifier>0</targetSizeModifier>
+  <damagePoint>530</damagePoint>
+  <speedKnots>21</speedKnots>
+  <damageControlRatingUnmodified>1</damageControlRatingUnmodified>
+  <speedKnotsEngineRoomsLevels>
+   <float>21</float>
+   <float>12</float>
+  </speedKnotsEngineRoomsLevels>
+  <speedKnotsPropulsionShaftLevels>
+   <float>21</float>
+   <float>11</float>
+  </speedKnotsPropulsionShaftLevels>
+  <speedKnotsBoilerRooms>
+   <float>21</float>
+   <float>13</float>
+  </speedKnotsBoilerRooms>
+  <speedIncreaseRecord>
+   <SpeedIncreaseRecord thresholdSpeedKnots="0" increaseSpeedKnots="5" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="5" increaseSpeedKnots="4" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="10" increaseSpeedKnots="2" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="15" increaseSpeedKnots="1" />
+  </speedIncreaseRecord>
+  <standardTurnDegPer2Min>120</standardTurnDegPer2Min>
+  <emergencyTurnDegPer2Min>150</emergencyTurnDegPer2Min>
+  <armorRating>
+   <armorTypeFactor>0</armorTypeFactor>
+   <deck effectInch="0" actualInch="0" />
+   <turretHorizontal effectInch="0" actualInch="0" />
+   <superStructureHorizontal effectInch="0" actualInch="0" />
+   <conningTower effectInch="0" actualInch="0" />
+   <mainBelt effectInch="0" actualInch="0" />
+   <beltEnd effectInch="0" actualInch="0" />
+   <barbette effectInch="0" actualInch="0" />
+   <turretVertical effectInch="0" actualInch="0" />
+   <superStructureVertical effectInch="0" actualInch="0" />
+   <armorType>NoArmor</armorType>
+  </armorRating>
+  <portraitUrl>https://en.wikipedia.org/wiki/File:Tatsuta.jpg</portraitUrl>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Tatsuta_(1894)</english>
+  </remark>
+  <isPoorlySupported>false</isPoorlySupported>
+  <portraitReference>
+   <path>Pictures\Ships\Tatsuta.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <portraitTopReference>
+   <path>Pictures\Ships\Tatsuta_Top.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitTopReference>
+  <portraitIconReference>
+   <path>Pictures\Ships\Tatsuta_Icon.png</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitIconReference>
+  <isGraphicPlaceholder>false</isGraphicPlaceholder>
+  <ram>None</ram>
+  <objectId>18849fd3-4dd6-4dbd-ac7c-2b97f956f752</objectId>
+ </ShipClass>
+ <ShipClass>
+  <name>
+   <english>Chihaya</english>
+   <japanese>千早</japanese>
+   <chineseSimplified>千早</chineseSimplified>
+   <chineseTraditional>千早</chineseTraditional>
+  </name>
+  <type>LightCruiser</type>
+  <extraShipType>UnprotectedCruiser</extraShipType>
+  <country>Japan</country>
+  <referenceYear>1901</referenceYear>
+  <displacementTons>1238</displacementTons>
+  <complementMen>125</complementMen>
+  <lengthFoot>288</lengthFoot>
+  <beamFoot>32</beamFoot>
+  <draftFoot>9</draftFoot>
+  <engineDesc>
+   <english>2-shaft VTE</english>
+  </engineDesc>
+  <boilersDesc>
+   <english>4 Nomand</english>
+  </boilersDesc>
+  <batteryRecords>
+   <BatteryRecord>
+    <name>
+     <english>4.7''/40 QF Type 41</english>
+     <japanese>4.7インチ速射砲</japanese>
+     <chineseSimplified>4.7英寸速射炮</chineseSimplified>
+     <chineseTraditional>4.7英寸速射砲</chineseTraditional>
+    </name>
+    <damageRating>12</damageRating>
+    <maxRateOfFireShootPerMin>6</maxRateOfFireShootPerMin>
+    <fireControlPositions>1</fireControlPositions>
+    <fireControlType>
+     <role>Primary</role>
+     <era>Predreadnought</era>
+     <code>Y</code>
+     <gunSight>Basic</gunSight>
+     <fireControlInstrument>Basic</fireControlInstrument>
+     <rangeFinder>None</rangeFinder>
+     <directorControl>None</directorControl>
+     <stabilization>Manual</stabilization>
+     <powerRemoteControl>None</powerRemoteControl>
+    </fireControlType>
+    <rangeYards>9899</rangeYards>
+    <hasFireControlRadar>false</hasFireControlRadar>
+    <fireControlRadarModifier>0</fireControlRadarModifier>
+    <fireControlRadarName>
+     <english>None</english>
+    </fireControlRadarName>
+    <shellSizeInch>4.7</shellSizeInch>
+    <shellWeightPounds>45</shellWeightPounds>
+    <ammunitionCapacity>160</ammunitionCapacity>
+    <fireControlTableRecords>
+     <FireControlTableRecord>
+      <speedThresholdKnot>9</speedThresholdKnot>
+      <shortBroad>9</shortBroad>
+      <shortNarrow>5</shortNarrow>
+      <mediumBroad>5</mediumBroad>
+      <mediumNarrow>3</mediumNarrow>
+      <longBroad>4</longBroad>
+      <longNarrow>2</longNarrow>
+      <extremeBroad>3</extremeBroad>
+      <extremeNarrow>2</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>18</speedThresholdKnot>
+      <shortBroad>6</shortBroad>
+      <shortNarrow>4</shortNarrow>
+      <mediumBroad>4</mediumBroad>
+      <mediumNarrow>2</mediumNarrow>
+      <longBroad>3</longBroad>
+      <longNarrow>2</longNarrow>
+      <extremeBroad>2</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>27</speedThresholdKnot>
+      <shortBroad>5</shortBroad>
+      <shortNarrow>3</shortNarrow>
+      <mediumBroad>3</mediumBroad>
+      <mediumNarrow>2</mediumNarrow>
+      <longBroad>2</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>2</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>36</speedThresholdKnot>
+      <shortBroad>4</shortBroad>
+      <shortNarrow>2</shortNarrow>
+      <mediumBroad>2</mediumBroad>
+      <mediumNarrow>1</mediumNarrow>
+      <longBroad>2</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>1</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+     <FireControlTableRecord>
+      <speedThresholdKnot>45</speedThresholdKnot>
+      <shortBroad>3</shortBroad>
+      <shortNarrow>2</shortNarrow>
+      <mediumBroad>2</mediumBroad>
+      <mediumNarrow>1</mediumNarrow>
+      <longBroad>1</longBroad>
+      <longNarrow>1</longNarrow>
+      <extremeBroad>1</extremeBroad>
+      <extremeNarrow>1</extremeNarrow>
+     </FireControlTableRecord>
+    </fireControlTableRecords>
+    <customFireControlTable>false</customFireControlTable>
+    <penetrationTableBaseType>Common</penetrationTableBaseType>
+    <penetrationTableRecords>
+     <PenetrationTableRecord>
+      <distanceYards>2000</distanceYards>
+      <rateOfFire>7.4</rateOfFire>
+      <rangeBand>Short</rangeBand>
+      <horizontalPenetrationInchs>0</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>3.3</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+     <PenetrationTableRecord>
+      <distanceYards>4000</distanceYards>
+      <rateOfFire>5.7</rateOfFire>
+      <rangeBand>Short</rangeBand>
+      <horizontalPenetrationInchs>0.2</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>2.1</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+     <PenetrationTableRecord>
+      <distanceYards>6000</distanceYards>
+      <rateOfFire>4.4</rateOfFire>
+      <rangeBand>Medium</rangeBand>
+      <horizontalPenetrationInchs>0.2</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>1.6</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+     <PenetrationTableRecord>
+      <distanceYards>8000</distanceYards>
+      <rateOfFire>3.5</rateOfFire>
+      <rangeBand>Long</rangeBand>
+      <horizontalPenetrationInchs>0.4</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>1.4</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+     <PenetrationTableRecord>
+      <distanceYards>10000</distanceYards>
+      <rateOfFire>2.8</rateOfFire>
+      <rangeBand>Long</rangeBand>
+      <horizontalPenetrationInchs>0.7</horizontalPenetrationInchs>
+      <verticalPenetrationInchs>1.2</verticalPenetrationInchs>
+     </PenetrationTableRecord>
+    </penetrationTableRecords>
+    <mountLocationRecords>
+     <MountLocationRecord>
+      <mountLocation>Forward</mountLocation>
+      <barrels>1</barrels>
+      <mounts>1</mounts>
+      <mountArcs>
+       <MountArcRecord startDeg="240" CoverageDeg="240" isCrossDeckFire="false" />
+      </mountArcs>
+      <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
+      <mountArcsPattern>Normal</mountArcsPattern>
+      <objectId>da3e5484-a044-4a70-85b4-0f0d323d5e40</objectId>
+     </MountLocationRecord>
+     <MountLocationRecord>
+      <mountLocation>After</mountLocation>
+      <barrels>1</barrels>
+      <mounts>1</mounts>
+      <mountArcs>
+       <MountArcRecord startDeg="60" CoverageDeg="240" isCrossDeckFire="false" />
+      </mountArcs>
+      <trainable>false</trainable>
+      <reloadLimit>0</reloadLimit>
+      <mountArcsPattern>Normal</mountArcsPattern>
+      <objectId>289447b0-2668-423f-be23-d6c7f8d23d7e</objectId>
+     </MountLocationRecord>
+    </mountLocationRecords>
+    <objectId>f7669a12-f62d-454a-bad0-a86f0c0b0214</objectId>
+   </BatteryRecord>
+  </batteryRecords>
+  <torpedoSector>
+   <name>
+    <english>18'' Mk IV</english>
+   </name>
+   <mountLocationRecords>
+    <MountLocationRecord>
+     <mountLocation>Forward</mountLocation>
+     <barrels>1</barrels>
+     <mounts>1</mounts>
+     <mountArcs>
+      <MountArcRecord startDeg="345" CoverageDeg="30" isCrossDeckFire="false" />
+     </mountArcs>
+     <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
+     <mountArcsPattern>Narrow</mountArcsPattern>
+     <objectId>08a172a0-5f4d-4baa-b280-d1fc5a9c02ed</objectId>
+    </MountLocationRecord>
+    <MountLocationRecord>
+     <mountLocation>StarboardMidship</mountLocation>
+     <barrels>1</barrels>
+     <mounts>1</mounts>
+     <mountArcs>
+      <MountArcRecord startDeg="75" CoverageDeg="30" isCrossDeckFire="false" />
+     </mountArcs>
+     <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
+     <mountArcsPattern>Narrow</mountArcsPattern>
+     <objectId>138d1584-6f48-457b-868f-9cc616acfafe</objectId>
+    </MountLocationRecord>
+    <MountLocationRecord>
+     <mountLocation>PortMidship</mountLocation>
+     <barrels>1</barrels>
+     <mounts>1</mounts>
+     <mountArcs>
+      <MountArcRecord startDeg="255" CoverageDeg="30" isCrossDeckFire="false" />
+     </mountArcs>
+     <trainable>false</trainable>
+     <reloadLimit>0</reloadLimit>
+     <mountArcsPattern>Narrow</mountArcsPattern>
+     <objectId>d8bf1b29-6827-4093-8e78-1032e1c72674</objectId>
+    </MountLocationRecord>
+   </mountLocationRecords>
+   <torpedoSettings>
+    <TorpedoSetting rangeYards="1000" speedKnots="26" />
+    <TorpedoSetting rangeYards="2000" speedKnots="18" />
+   </torpedoSettings>
+   <ammunitionCapacity>6</ammunitionCapacity>
+   <damageClass>H</damageClass>
+   <dudProbability>0.5</dudProbability>
+   <pistolType>Contact</pistolType>
+  </torpedoSector>
+  <rapidFireBatteryRecords>
+   <RapidFireBatteryRecord>
+    <name>
+     <english>3''/40 12pdr QF</english>
+     <japanese />
+     <chineseSimplified />
+     <chineseTraditional />
+    </name>
+    <maxRangeYards>7990</maxRangeYards>
+    <effectiveRangeYards>3596</effectiveRangeYards>
+    <fireControlRecords>
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="5" fireControlEffectiveRange="8" />
+     <RapidFireBatteryFireControlLevelRecord fireControlMaxRange="4" fireControlEffectiveRange="6" />
+    </fireControlRecords>
+    <metaInfo>
+     <shellSizeInch>1.3</shellSizeInch>
+     <shellWeightPounds>0</shellWeightPounds>
+     <fireControlTier>2</fireControlTier>
+    </metaInfo>
+    <damageFactor>6</damageFactor>
+    <barrelsLevelPort>
+     <int>2</int>
+    </barrelsLevelPort>
+    <barrelsLevelStarboard>
+     <int>2</int>
+    </barrelsLevelStarboard>
+   </RapidFireBatteryRecord>
+  </rapidFireBatteryRecords>
+  <targetSizeModifier>0</targetSizeModifier>
+  <damagePoint>639</damagePoint>
+  <speedKnots>21</speedKnots>
+  <damageControlRatingUnmodified>2</damageControlRatingUnmodified>
+  <speedKnotsEngineRoomsLevels>
+   <float>21</float>
+   <float>12</float>
+  </speedKnotsEngineRoomsLevels>
+  <speedKnotsPropulsionShaftLevels>
+   <float>21</float>
+   <float>11</float>
+  </speedKnotsPropulsionShaftLevels>
+  <speedKnotsBoilerRooms>
+   <float>21</float>
+   <float>13</float>
+  </speedKnotsBoilerRooms>
+  <speedIncreaseRecord>
+   <SpeedIncreaseRecord thresholdSpeedKnots="0" increaseSpeedKnots="5" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="5" increaseSpeedKnots="4" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="10" increaseSpeedKnots="2" />
+   <SpeedIncreaseRecord thresholdSpeedKnots="15" increaseSpeedKnots="1" />
+  </speedIncreaseRecord>
+  <standardTurnDegPer2Min>120</standardTurnDegPer2Min>
+  <emergencyTurnDegPer2Min>150</emergencyTurnDegPer2Min>
+  <armorRating>
+   <armorTypeFactor>0</armorTypeFactor>
+   <deck effectInch="0" actualInch="0" />
+   <turretHorizontal effectInch="0" actualInch="0" />
+   <superStructureHorizontal effectInch="0" actualInch="0" />
+   <conningTower effectInch="0" actualInch="0" />
+   <mainBelt effectInch="0" actualInch="0" />
+   <beltEnd effectInch="0" actualInch="0" />
+   <barbette effectInch="0" actualInch="0" />
+   <turretVertical effectInch="0" actualInch="0" />
+   <superStructureVertical effectInch="0" actualInch="0" />
+   <armorType>NoArmor</armorType>
+  </armorRating>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Chihaya</english>
+  </remark>
+  <isPoorlySupported>false</isPoorlySupported>
+  <portraitReference>
+   <path>Pictures\Ships\Chihaya_Top.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <portraitTopReference>
+   <path>Pictures\Ships\Chihaya_Top.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitTopReference>
+  <portraitIconReference>
+   <path>Pictures\Ships\Chihaya_Icon.png</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitIconReference>
+  <isGraphicPlaceholder>true</isGraphicPlaceholder>
+  <ram>None</ram>
+  <objectId>16bb06b6-5c51-4eb6-a2a7-19ac7821a2da</objectId>
+ </ShipClass>
 </ArrayOfShipClass>

@@ -5813,4 +5813,165 @@ https://en.wikipedia.org/wiki/George_C._Remey</english>
   </remark>
   <objectId>8e90bf3a-1069-43ef-a48a-bd361c0ec096</objectId>
  </Leader>
+ <Leader>
+  <name>
+   <english>Okumiya Mamoru</english>
+   <japanese>奥宮衛</japanese>
+   <chineseSimplified>奥宫卫</chineseSimplified>
+   <chineseTraditional>奥宮衛</chineseTraditional>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Japan_Generic_Leader.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E5%A5%A5%E5%AE%AE%E8%A1%9B</english>
+  </remark>
+  <objectId>d6c6ba2c-8d07-48d3-a4b4-118ffe08546e</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Fukui Masayoshi</english>
+   <japanese>福井正義</japanese>
+   <chineseSimplified>福井正义</chineseSimplified>
+   <chineseTraditional>福井正義</chineseTraditional>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Japan_Generic_Leader.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>
+   <english>https://kitabatake.world.coocan.jp/kaidai1.html</english>
+  </remark>
+  <objectId>9d3843b2-bd56-4238-8eb1-a971c19f2f37</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Hirose Katsuhiko</english>
+   <japanese>広瀬勝比古</japanese>
+   <chineseSimplified>广濑腾比古</chineseSimplified>
+   <chineseTraditional>広瀬勝比古</chineseTraditional>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Hirose Katsuhiko.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Hirose_Katsuhiko</english>
+  </remark>
+  <objectId>aa802495-43e0-455d-8433-beb7f9c75d89</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Tsuchiya Tamotsu</english>
+   <japanese>土屋保</japanese>
+   <chineseSimplified>土屋保</chineseSimplified>
+   <chineseTraditional>土屋保</chineseTraditional>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Japan_Generic_Leader.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>
+   <english>https://kitabatake.world.coocan.jp/kaidai1.html</english>
+  </remark>
+  <objectId>8f8ff7c9-b426-4fae-ba3d-d5288ab905ce</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Tochinai Sōjirō</english>
+   <japanese>栃内曽次郎</japanese>
+   <chineseSimplified>栃内曾次郎</chineseSimplified>
+   <chineseTraditional>栃内曽次郎</chineseTraditional>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Tochinai Sōjirō.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>
+   <english>https://en.wikipedia.org/wiki/S%C5%8Djir%C5%8D_Tochiuchi</english>
+  </remark>
+  <objectId>757f02e5-56ee-4377-a2c5-bd1d965dcfd8</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Yamagata Bunzo</english>
+   <japanese>山縣文蔵</japanese>
+   <chineseSimplified>山县文藏</chineseSimplified>
+   <chineseTraditional>山縣文蔵</chineseTraditional>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Japan_Generic_Leader.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>
+   <english>https://www.jacar.archives.go.jp/das/term-en/00001590</english>
+  </remark>
+  <objectId>99fd2c09-618f-49e9-9a43-8d88091f1d2d</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Eguchi Rinroku</english>
+   <japanese>江口麟六</japanese>
+   <chineseSimplified>江口麟六</chineseSimplified>
+   <chineseTraditional>江口麟六</chineseTraditional>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Japan_Generic_Leader.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>
+   <english>https://hush.web.fc2.com/name/Biography/014e.html</english>
+  </remark>
+  <objectId>b208596c-2dec-4aaf-9fc3-4637e67faa12</objectId>
+ </Leader>
 </ArrayOfLeader>

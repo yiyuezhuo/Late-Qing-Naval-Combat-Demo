@@ -2075,7 +2075,7 @@ namespace NavalCombatCore
         public int GetDamageControlRating()
         {
             var modOffset = GetSubStates<IDamageControlModifier>().Select(m => m.GetDamageControlRatingOffset()).DefaultIfEmpty(0).Sum();
-            return Math.Max(0, shipClass?.damageControlRatingUnmodified ?? 0 - damageControlRatingHits + modOffset);
+            return Math.Max(0, (shipClass?.damageControlRatingUnmodified ?? 0) - damageControlRatingHits + modOffset);
         }
 
         public void DamageControlAssetAllocation()
@@ -2179,14 +2179,18 @@ namespace NavalCombatCore
             // Sunk due to flooded machinery spaces
             var machinerySpaces = shipClass.speedKnotsEngineRoomsLevels.Count + shipClass.speedKnotsBoilerRooms.Count;
             var floodedMachinerySpaces = dynamicStatus.engineRoomFloodingHits + dynamicStatus.boilerRoomFloodingHits;
-            var floodedPercent = floodedMachinerySpaces / Math.Max(1, machinerySpaces);
+            var floodedPercent = (float)floodedMachinerySpaces / Math.Max(1, machinerySpaces);
 
-            if (floodedPercent >= NavalCombatCoreUtils.CalibrateSurviceProbFromTurnProb(0.8f, deltaSeconds))
+            if (floodedPercent >= 0.8f)
             {
-                mapState = MapState.Destroyed;
-                AddStringLog(Localize(
-                    "Sunk due to flooded machinery spaces"
-                ));
+                var sinkingProbability = NavalCombatCoreUtils.CalibrateSurviceProbFromTurnProb(0.75f, deltaSeconds);
+                if (RandomUtils.NextFloat() < sinkingProbability)
+                {
+                    mapState = MapState.Destroyed;
+                    AddStringLog(Localize(
+                        "Sunk due to flooded machinery spaces"
+                    ));
+                }
             }
         }
 

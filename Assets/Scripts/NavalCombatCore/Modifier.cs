@@ -1134,7 +1134,7 @@ namespace NavalCombatCore
         public override void DoOnClockTick(ISubject subject, float deltaSeconds)
         {
             var shipLog = subject as ShipLog;
-            if (shipLog != null)
+            if (shipLog == null)
                 return;
 
             var persistentOffset = shipLog.GetSubStates<ISevereFloodingRollModifier>().Select(mod => mod.GetSevereFloodingRollOffset()).DefaultIfEmpty(0).Max();

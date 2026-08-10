@@ -2825,7 +2825,7 @@
        <elapsedSeconds>0</elapsedSeconds>
       </turnClock>
       <objectId>07bea554-9dd4-4dda-8606-d50929fe83c3</objectId>
-      <fireControlValueCoef>0.5</fireControlValueCoef>
+      <fireControlValueCoef>1</fireControlValueCoef>
       <fireControlValueOffset>-1</fireControlValueOffset>
      </SubState>
      <SubState xsi:type="ArmorModifier">

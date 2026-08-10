@@ -134,11 +134,14 @@ namespace NavalCombatCore
         protected static string Localize(string key, params object[] args) => ServiceLocator.Get<ILocalizeService>().Get(key, args);
 
         // public bool permanent; // If it's not permanent then this can be damage controlled.
+        protected virtual bool UsesDamageControlAllocation =>
+            lifeCycle == StateLifeCycle.SeverityBased || lifeCycle == StateLifeCycle.ShipboardFire;
+
         public virtual bool damageControllable
         {
             get
             {
-                if (lifeCycle == StateLifeCycle.SeverityBased || lifeCycle == StateLifeCycle.ShipboardFire)
+                if (UsesDamageControlAllocation)
                 {
                     var shipLog = EntityManager.Instance.GetParent<ShipLog>(this);
                     if (shipLog != null)
@@ -631,7 +634,7 @@ namespace NavalCombatCore
 
     public class FireControlValueModifier : SubState, IFireControlValueModifier
     {
-        public float fireControlValueCoef = 0.5f;
+        public float fireControlValueCoef = 1f;
         public float fireControlValueOffset = 0f;
 
         public float GetFireControlValueCoef()
@@ -829,10 +832,18 @@ namespace NavalCombatCore
     public class FeedwaterPumpDamaged : SubState, IDynamicModifier
     {
         public float lostAllPropulsionPercentage = 15;
+        public float restorePropulsionPercentage = 15;
         public bool hasLoseAllPropulsion = false;
         public override void DoOnClockTick(ISubject subject, float deltaSeconds)
         {
-            if (!hasLoseAllPropulsion && RandomUtils.D100F() <= lostAllPropulsionPercentage)
+            if (hasLoseAllPropulsion)
+            {
+                if (RandomUtils.D100F() <= restorePropulsionPercentage)
+                {
+                    hasLoseAllPropulsion = false;
+                }
+            }
+            else if (RandomUtils.D100F() <= lostAllPropulsionPercentage)
             {
                 hasLoseAllPropulsion = true;
             }
@@ -841,8 +852,8 @@ namespace NavalCombatCore
         public float GetMaxSpeedKnotCoef() => hasLoseAllPropulsion ? 0 : 1;
 
         public override string Describe() => Localize(
-            "FeedwaterPumpDamaged(lostAllPropulsionPercentage={0}, hasLoseAllPropulsion={1}) ({2})",
-            lostAllPropulsionPercentage, hasLoseAllPropulsion, DescribeLiftCycle()
+            "FeedwaterPumpDamaged(lostAllPropulsionPercentage={0}, restorePropulsionPercentage={1}, hasLoseAllPropulsion={2}) ({3})",
+            lostAllPropulsionPercentage, restorePropulsionPercentage, hasLoseAllPropulsion, DescribeLiftCycle()
         );
 
         public override CampaignPersistence GetCampaignPersistence() => CampaignPersistence.Volatile;
@@ -1129,7 +1140,7 @@ namespace NavalCombatCore
     {
         public float dieRollOffset = 0;
 
-        public override bool damageControllable => true;
+        protected override bool UsesDamageControlAllocation => true;
 
         public override void DoOnClockTick(ISubject subject, float deltaSeconds)
         {
@@ -1149,13 +1160,22 @@ namespace NavalCombatCore
             else if (d <= (c ? 18 : 13))
             {
                 // Permanent loss of half the remaining ammunition supply for all [PRIMARY/SECONDARY] battery mounts in one section.
-                var locations = shipLog.batteryStatus.SelectMany(bs => bs.mountStatus).Select(mnt => mnt.GetMountLocation()).ToList();
+                var batteries = shipLog.batteryStatus.Take(2).ToList();
+                var locations = batteries
+                    .SelectMany(bs => bs.mountStatus)
+                    .Select(mnt => mnt.GetMountLocation())
+                    .Distinct()
+                    .ToList();
                 if (locations.Count > 0)
                 {
                     var location = RandomUtils.Sample(locations);
-                    foreach (var battery in shipLog.batteryStatus)
+                    foreach (var battery in batteries)
                     {
-                        var p = ((float)battery.mountStatus.Count(m => m.GetMountLocation() == location)) / battery.mountStatus.Count;
+                        if (battery.mountStatus.Count == 0)
+                            continue;
+
+                        var mountsInSection = battery.mountStatus.Count(m => m.GetMountLocation() == location);
+                        var p = 0.5f * mountsInSection / battery.mountStatus.Count;
                         battery.ammunition.CostPercent(p);
                     }
                 }
@@ -1298,11 +1318,11 @@ namespace NavalCombatCore
                 // One [ENGINE ROOM/BOILER ROOM] is OOA due to flooding
                 if (RandomUtils.NextFloat() < 0.5f)
                 {
-                    shipLog.dynamicStatus.engineRoomHits += 1;
+                    shipLog.dynamicStatus.engineRoomFloodingHits += 1;
                 }
                 else
                 {
-                    shipLog.dynamicStatus.boilerRoomHits += 1;
+                    shipLog.dynamicStatus.boilerRoomFloodingHits += 1;
                 }
             }
             else if (d <= 98)
@@ -1312,9 +1332,9 @@ namespace NavalCombatCore
                 // Momentum rules apply. If all propulsion is lost, rolls continue and ship may not begin acceleration until turn following a roll of 01-20 (01-15)
                 var DE = new FeedwaterPumpDamaged()
                 {
-                    lifeCycle = StateLifeCycle.DieRollPassed,
+                    lifeCycle = StateLifeCycle.Permanent,
                     lostAllPropulsionPercentage = c ? 20 : 30, // "Active"
-                    dieRollThreshold = c ? 20 : 15, // Restore
+                    restorePropulsionPercentage = c ? 20 : 15,
                     cause = Localize("M6, Damage to main feedwater pump")
                 };
                 DE.BeginAt(shipLog);
@@ -1325,7 +1345,11 @@ namespace NavalCombatCore
                 {
                     // Ship capsizes and begins to sink. Ship will remain an obstruction for all following turns until a roll of 01-25
                     shipLog.operationalState = ShipOperationalState.FloodingObstruction;
-                    var state = new SinkingState();
+                    var state = new SinkingState()
+                    {
+                        lifeCycle = StateLifeCycle.DieRollPassed,
+                        dieRollThreshold = 25,
+                    };
                     state.BeginAt(shipLog);
                 }
             }
@@ -1568,7 +1592,7 @@ namespace NavalCombatCore
             if (subject is ShipLog shipLog)
             {
                 var seaState = NavalGameState.Instance.scenarioState.seaStateBeaufort;
-                var offset = 10;
+                var offset = 0;
                 if (seaState <= 3)
                 { }
                 else if (seaState <= 5)

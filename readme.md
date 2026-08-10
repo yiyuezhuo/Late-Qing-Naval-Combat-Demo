@@ -3,7 +3,8 @@
 - Releases:
     - Steam (PC): https://store.steampowered.com/app/3996220/First_SinoJapanese_War/
     - GitHub Release (PC/Android): https://github.com/yiyuezhuo/Late-Qing-Naval-Combat-Demo/releases
-    - Itch (Webgl, version is much slower than the current version): https://yiyuezhuo.itch.io/battle-of-yalu-river-1894
+    - Itch: https://yiyuezhuo.itch.io/battle-of-yalu-river-1894
+    - Google Play: https://play.google.com/store/apps/details?id=io.github.yiyuezhuo.lateqingnavalcombatdemo
 - Manuals:
     - <a href="https://github.com/yiyuezhuo/First-Sino-Japanese-War-Manual">Game Manual</a>
 - Game Communities

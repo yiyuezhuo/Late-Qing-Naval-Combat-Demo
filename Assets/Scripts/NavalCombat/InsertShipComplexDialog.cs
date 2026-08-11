@@ -69,7 +69,7 @@ public class InsertShipComplexDialog
         var gameState = NavalGameState.Instance;
 
         shipGroupDropdownField = root.Q<DropdownField>("ShipGroupDropdownField");
-        shipGroupDropdownField.choices = gameState.shipGroups.Select(g => g.name.GetMergedName()).ToList();
+        shipGroupDropdownField.choices = gameState.shipGroups.Select(GetShipGroupLabel).ToList();
         var groupIdx = gameState.shipGroups.FindIndex(g => g.objectId == suggestedGroupId);
         if(groupIdx != -1)
         {
@@ -77,6 +77,22 @@ public class InsertShipComplexDialog
         }
 
         RefreshColumns();
+    }
+
+    static string GetShipGroupLabel(ShipGroup group)
+    {
+        var groupNames = new List<string>();
+        var visitedGroups = new HashSet<ShipGroup>();
+        var currentGroup = group;
+
+        while (currentGroup != null && visitedGroups.Add(currentGroup))
+        {
+            groupNames.Add(currentGroup.name.GetMergedName());
+            currentGroup = ((IShipGroupMember)currentGroup).GetParentGroup();
+        }
+
+        groupNames.Reverse();
+        return string.Join(" / ", groupNames);
     }
 
     public void RefreshColumns()

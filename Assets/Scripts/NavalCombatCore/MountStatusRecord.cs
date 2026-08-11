@@ -931,7 +931,7 @@ namespace NavalCombatCore
             // Battle factor
             // Sea State + Crew Rating (from Ship Log)
             breakdown.seaStateOffset = RuleChart.ResolveSeaStateOffset(
-                ctx.shipClass.displacementTons,
+                ctx.shipClass.damagePoint,
                 NavalGameState.Instance.scenarioState.seaStateBeaufort,
                 out bool blocked
             );

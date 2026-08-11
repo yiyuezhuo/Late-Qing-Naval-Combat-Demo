@@ -457,7 +457,7 @@ namespace NavalCombatCore
 
             breakdown.targetSizeOffset = target.shipClass.targetSizeModifier;
             breakdown.seaStateOffset = RuleChart.ResolveSeaStateOffset(
-                shooter.shipClass.displacementTons,
+                shooter.shipClass.damagePoint,
                 NavalGameState.Instance.scenarioState.seaStateBeaufort,
                 out bool blocked
             );

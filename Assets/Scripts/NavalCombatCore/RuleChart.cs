@@ -257,8 +257,14 @@ namespace NavalCombatCore
         public static float ResolvePenetrationHEPenetration(float boreInch, float apPenetrationInch)
         {
             var t = penetrationTableHighExplosiveShellsTable;
-            var row = t.rows.Select((threshold, index) => (threshold, index)).FirstOrDefault(r => boreInch >= r.threshold);
-            var col = t.cols.Select((threshold, index) => (threshold, index)).FirstOrDefault(r => apPenetrationInch >= r.threshold);
+            var row = t.rows.Select((threshold, index) => (threshold, index))
+                .Where(r => boreInch >= r.threshold)
+                .DefaultIfEmpty((threshold: t.rows[^1], index: t.rows.Length - 1))
+                .First();
+            var col = t.cols.Select((threshold, index) => (threshold, index))
+                .Where(r => apPenetrationInch >= r.threshold)
+                .DefaultIfEmpty((threshold: t.cols[^1], index: t.cols.Length - 1))
+                .First();
             var cell = t.cells[row.index, col.index];
             if (cell != -1)
                 return cell;
@@ -430,7 +436,10 @@ namespace NavalCombatCore
 
         public static ShellDamageResult ResolveShellDamageResult(float damageFactor, HitPenDetType hitPenDetType, AmmunitionType ammoType)
         {
-            var row = shellDamageFactorsTable.rows.Select((value, index) => (value, index)).Last(r => damageFactor >= r.value);
+            var row = shellDamageFactorsTable.rows.Select((value, index) => (value, index))
+                .Where(r => damageFactor >= r.value)
+                .DefaultIfEmpty((value: shellDamageFactorsTable.rows[0], index: 0))
+                .Last();
             var damagePoint = 0f;
             // var causeDamageEffect = false;
             double damageEffectProb = 0;
@@ -1047,13 +1056,16 @@ namespace NavalCombatCore
             ParseFloatInvariant, ParseFloatInvariant, ParseFloatInvariant
         );
 
-        public static float ResolveSeaStateOffset(float displacementTons, int seaState, out bool blocked)
+        public static float ResolveSeaStateOffset(float damagePoint, int seaState, out bool blocked)
         {
             blocked = false;
             if (seaState < 4)
                 return 0;
             var c4 = seaStateGunneryReductionTable;
-            var row = Enumerable.Range(0, c4.rows.Length).DefaultIfEmpty(c4.rows.Length - 1).First(r => displacementTons <= c4.rows[r]);
+            var row = Enumerable.Range(0, c4.rows.Length)
+                .Where(r => damagePoint <= c4.rows[r])
+                .DefaultIfEmpty(c4.rows.Length - 1)
+                .First();
             var col = Enumerable.Range(0, c4.cols.Length).LastOrDefault(c => c4.cols[c] <= seaState);
             var offset = seaStateGunneryReductionTable.cells[row, col];
             blocked = offset == -100;
@@ -1159,8 +1171,14 @@ namespace NavalCombatCore
                 };
             }
             
-            var row = Enumerable.Range(0, tb.rows.Length).DefaultIfEmpty(tb.rows.Length - 1).FirstOrDefault(r => obsSize == tb.rows[r]);
-            var col = Enumerable.Range(0, tb.cols.Length).DefaultIfEmpty(tb.cols.Length - 1).LastOrDefault(c => tgtSize == tb.cols[c]);
+            var row = Enumerable.Range(0, tb.rows.Length)
+                .Where(r => obsSize <= tb.rows[r])
+                .DefaultIfEmpty(tb.rows.Length - 1)
+                .First();
+            var col = Enumerable.Range(0, tb.cols.Length)
+                .Where(c => tgtSize <= tb.cols[c])
+                .DefaultIfEmpty(tb.cols.Length - 1)
+                .First();
             var rangeYards = tb.cells[row, col];
             // var rangeYards = selectedTable.cells[obsSize, tgtSize];
 

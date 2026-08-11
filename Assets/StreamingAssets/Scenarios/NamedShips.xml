@@ -7898,6 +7898,33 @@ https://baike.baidu.com/item/%E9%95%9C%E6%B8%85%E5%8F%B7/9669520
   <objectId>1a9d9c90-fec5-4f57-bcbc-27c188a58cbb</objectId>
  </NamedShip>
  <NamedShip>
+  <shipClassObjectId>4d543c27-bc16-4fb7-8c94-f6e70214e305</shipClassObjectId>
+  <name>
+   <english>Vladimir Monomakh (1904/12/13)</english>
+   <japanese>ヴラジーミル・モノマフ (1904/12/13)</japanese>
+   <chineseSimplified>弗拉基米尔·莫诺马赫</chineseSimplified>
+   <chineseTraditional>弗拉基米爾·莫諾馬赫 (1904/12/13)</chineseTraditional>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>e7107314-acea-4cd0-af3b-b8dcdfe89f50</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>
+   <english>none</english>
+  </remark>
+  <objectId>b275a4a8-3260-4d68-97d8-f20085595c80</objectId>
+ </NamedShip>
+ <NamedShip>
   <shipClassObjectId>8ee06f5a-1261-423f-87d2-f278a2c84a2b</shipClassObjectId>
   <name>
    <english>Admiral Kornilov</english>
@@ -9817,5 +9844,610 @@ https://ru.wikipedia.org/wiki/%D0%9E%D0%BB%D0%B5%D0%B3_(%D0%B1%D1%80%D0%BE%D0%BD
    <english>none</english>
   </remark>
   <objectId>e78b1b32-4a3f-4739-b2c8-1768e51f5e28</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>8feef812-ee3b-463d-885c-fa43b26c580a</shipClassObjectId>
+  <name>
+   <english>Almaz</english>
+   <japanese>アルマース</japanese>
+   <chineseSimplified>阿而马兹</chineseSimplified>
+   <chineseTraditional>阿爾馬茲</chineseTraditional>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>b7cc6b6b-23a6-4e37-8609-7e970c8845c1</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>
+   <english>Алмаз
+
+https://en.wikipedia.org/wiki/Russian_cruiser_Almaz</english>
+  </remark>
+  <objectId>eebee06b-0696-4189-9308-50d17494bdcd</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>0af5219a-0244-4793-a244-caaddca891d8</shipClassObjectId>
+  <name>
+   <english>Anadyr</english>
+   <japanese>アナディリ</japanese>
+   <chineseSimplified>阿纳德尔 </chineseSimplified>
+   <chineseTraditional>阿納德爾</chineseTraditional>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>
+   <english>Or Anaduir
+
+Jul 1904: Purchased by Russia, assigned to the Second Pacific Squadron as a coal transport.</english>
+  </remark>
+  <objectId>9613e1ee-f9d3-4b00-9e30-da39a3a723e8</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>6d3eedcd-bb85-4146-84d4-da76eae2c60b</shipClassObjectId>
+  <name>
+   <english>Irtuish</english>
+   <japanese>イルトゥイシ</japanese>
+   <chineseSimplified>伊尔图伊什 </chineseSimplified>
+   <chineseTraditional>伊爾圖伊什 </chineseTraditional>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>
+   <english>One of six identical cargo-passenger steamships purchase by Hamburg-America Line.</english>
+  </remark>
+  <objectId>66aa8fac-0d8a-4a9d-86e6-e0812ad255e4</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>9d3fe438-a19b-407c-8e8c-aa01f696c400</shipClassObjectId>
+  <name>
+   <english>Kamchatka</english>
+   <japanese>カムチャツカ</japanese>
+   <chineseSimplified>堪察加</chineseSimplified>
+   <chineseTraditional>堪察加</chineseTraditional>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>-1</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>
+   <english>Joke maker</english>
+  </remark>
+  <objectId>88db2389-8725-451c-b10c-d2284c96cc69</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>cc922f81-6e17-4494-a5a3-955c2956d18b</shipClassObjectId>
+  <name>
+   <english>Koreya</english>
+   <japanese>コリャ</japanese>
+   <chineseSimplified>科里亚</chineseSimplified>
+   <chineseTraditional>科里亞</chineseTraditional>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>
+   <english>Chartered as a coal transport and assigned to the Second Pacific Squadron.</english>
+  </remark>
+  <objectId>4562b779-6b23-4e3a-ad7e-ccd67abcaddd</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>00e707b5-266f-43cd-bbd5-116379cf5cd9</shipClassObjectId>
+  <name>
+   <english>Rus</english>
+   <japanese>ロシア</japanese>
+   <chineseSimplified>罗斯</chineseSimplified>
+   <chineseTraditional>羅斯</chineseTraditional>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>
+   <english>Ocean-going tug
+
+Sep 1904: Purchased by Russia and assigned to the Volunteer Fleet.</english>
+  </remark>
+  <objectId>46371d09-cba3-4e27-bf14-94bd3fb0d821</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>0db1427e-ca81-4984-80ca-263987220c88</shipClassObjectId>
+  <name>
+   <english>Svir</english>
+   <japanese>スヴィリ</japanese>
+   <chineseSimplified>斯维里</chineseSimplified>
+   <chineseTraditional>斯維里</chineseTraditional>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>
+   <english> Sep 1904: Purchased by Russia and assigned to the Volunteer Fleet.</english>
+  </remark>
+  <objectId>9f71f9f4-773d-4e0d-8d5e-eb91082d97cb</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>b361591f-a2bd-488e-9ff5-0c36ad901883</shipClassObjectId>
+  <name>
+   <english>Orel (hospital ship)</english>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>
+   <english>1904: Transferred to the Volunteer Fleet, assigned to the Russian Red Cross as a hospital ship. </english>
+  </remark>
+  <objectId>e9b1df1a-0fa7-476e-81b0-ce2a8ada9fbe</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>ca3de1bb-f64e-4cab-b66c-5c6469890eb7</shipClassObjectId>
+  <name>
+   <english>Kostroma</english>
+   <japanese>コストロマ</japanese>
+   <chineseSimplified>科斯特罗马 </chineseSimplified>
+   <chineseTraditional>科斯特羅馬</chineseTraditional>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>
+   <english>Jan 1905: transferred to the Volunteer Fleet and was assigned to the Russian Red Cross as a hospital ship.</english>
+  </remark>
+  <objectId>73a6c56b-a197-4812-94bf-4a82354a6212</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>4e7b89f1-a21e-4a7e-8978-eac517bf5769</shipClassObjectId>
+  <name>
+   <english>Svietlana</english>
+   <japanese>スヴェトラーナ</japanese>
+   <chineseSimplified>斯维特兰娜</chineseSimplified>
+   <chineseTraditional>斯維特蘭娜</chineseTraditional>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>d243465d-87a1-4307-b708-054e6b3116c1</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>
+   <english>Светлана
+
+https://en.wikipedia.org/wiki/Russian_cruiser_Svetlana_(1896)</english>
+  </remark>
+  <objectId>302f41e1-7e2a-490d-8a04-45cc6a8b8d3e</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>d1846ab2-391e-451e-83b3-e0f8b224e205</shipClassObjectId>
+  <name>
+   <english>Ural</english>
+   <japanese>ウラル </japanese>
+   <chineseSimplified>乌拉尔 </chineseSimplified>
+   <chineseTraditional>烏拉爾  </chineseTraditional>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>
+   <english>28 May 1904: Commissioned into the Volunteer Fleet.</english>
+  </remark>
+  <objectId>5ae89307-2861-49f9-9391-b2776d878060</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>da10240c-9e79-48b3-bf88-9e62ca88c818</shipClassObjectId>
+  <name>
+   <english>Byedovi</english>
+   <japanese>ベドヴィー</japanese>
+   <chineseSimplified>别多沃伊</chineseSimplified>
+   <chineseTraditional>別多沃伊</chineseTraditional>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>
+   <english>Бедовый
+
+Bedovyi or Byedovoi
+
+https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D0%B4%D0%BE%D0%B2%D1%8B%D0%B9_(%D0%BC%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D0%B5%D1%86)</english>
+  </remark>
+  <objectId>634ce45c-0249-431b-8a38-ce3c4d23c978</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>da10240c-9e79-48b3-bf88-9e62ca88c818</shipClassObjectId>
+  <name>
+   <english>Buini</english>
+   <japanese>ブールヌイ</japanese>
+   <chineseSimplified>布尔内</chineseSimplified>
+   <chineseTraditional>布爾內</chineseTraditional>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>
+   <english>Буйный
+
+Or Burnyi
+
+https://ru.wikipedia.org/wiki/%D0%91%D1%83%D0%B9%D0%BD%D1%8B%D0%B9_(%D0%BC%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D0%B5%D1%86)</english>
+  </remark>
+  <objectId>231bc743-77a0-47c4-befa-5a7e8a49876a</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>da10240c-9e79-48b3-bf88-9e62ca88c818</shipClassObjectId>
+  <name>
+   <english>Bravi</english>
+   <japanese>ブラヴィイ</japanese>
+   <chineseSimplified>布拉维</chineseSimplified>
+   <chineseTraditional>布拉維</chineseTraditional>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>
+   <english>Бравый
+
+Or Bravyi
+
+https://ru.wikipedia.org/wiki/%D0%91%D1%80%D0%B0%D0%B2%D1%8B%D0%B9_(%D0%BC%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D0%B5%D1%86)</english>
+  </remark>
+  <objectId>c96eaee6-ed42-412d-90ae-3cdc25588647</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>da10240c-9e79-48b3-bf88-9e62ca88c818</shipClassObjectId>
+  <name>
+   <english>Buistri</english>
+   <japanese>ブイストルイ</japanese>
+   <chineseSimplified>贝斯特雷</chineseSimplified>
+   <chineseTraditional>貝斯特雷</chineseTraditional>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>
+   <english>Быстрый
+
+Or Bystryi
+
+https://ru.wikipedia.org/wiki/%D0%91%D1%8B%D1%81%D1%82%D1%80%D1%8B%D0%B9_(%D0%BC%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D0%B5%D1%86)</english>
+  </remark>
+  <objectId>19c46e69-37d7-43ec-b010-97f59ae6eac6</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>da10240c-9e79-48b3-bf88-9e62ca88c818</shipClassObjectId>
+  <name>
+   <english>Blestyashtchi</english>
+   <japanese>ブレスチャシイ</japanese>
+   <chineseSimplified>布列斯佳希</chineseSimplified>
+   <chineseTraditional>布列斯佳希</chineseTraditional>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>
+   <english>Блестящий
+
+Or Blistiashchii, Blestyashchi
+
+https://ru.wikipedia.org/wiki/%D0%91%D0%BB%D0%B5%D1%81%D1%82%D1%8F%D1%89%D0%B8%D0%B9_(%D0%BC%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D0%B5%D1%86)</english>
+  </remark>
+  <objectId>13689f93-00f0-41be-9218-ffd5af7fa711</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>da10240c-9e79-48b3-bf88-9e62ca88c818</shipClassObjectId>
+  <name>
+   <english>Bezuprechni</english>
+   <japanese>ベズプレチヌイ</japanese>
+   <chineseSimplified>别祖普列奇内</chineseSimplified>
+   <chineseTraditional>別祖普列奇內</chineseTraditional>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>
+   <english>Безупречный
+
+Or Bezuprechnyi
+
+https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D0%B7%D1%83%D0%BF%D1%80%D0%B5%D1%87%D0%BD%D1%8B%D0%B9_(%D0%BC%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D0%B5%D1%86)</english>
+  </remark>
+  <objectId>2b6b70dd-32fe-4877-ba34-97e9ac46054b</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>da10240c-9e79-48b3-bf88-9e62ca88c818</shipClassObjectId>
+  <name>
+   <english>Bodri</english>
+   <japanese>ボドリー</japanese>
+   <chineseSimplified>博德里</chineseSimplified>
+   <chineseTraditional>博德里</chineseTraditional>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>
+   <english>Бодрый
+
+Or Bodryi
+
+https://ru.wikipedia.org/wiki/%D0%91%D0%BE%D0%B4%D1%80%D1%8B%D0%B9_(%D0%BC%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D0%B5%D1%86)</english>
+  </remark>
+  <objectId>97d32b44-b02b-48e9-b726-29dc99024c65</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>da10240c-9e79-48b3-bf88-9e62ca88c818</shipClassObjectId>
+  <name>
+   <english>Gromki</english>
+   <japanese>グロムキー</japanese>
+   <chineseSimplified>格罗姆基</chineseSimplified>
+   <chineseTraditional>格羅姆基</chineseTraditional>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>
+   <english>Гро́мкий
+
+Or Gromkii 
+
+https://ru.wikipedia.org/wiki/%D0%93%D1%80%D0%BE%D0%BC%D0%BA%D0%B8%D0%B9_(%D0%BC%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D0%B5%D1%86)</english>
+  </remark>
+  <objectId>36d85a10-bcee-424c-a6c6-cb9edcbbbc00</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>da10240c-9e79-48b3-bf88-9e62ca88c818</shipClassObjectId>
+  <name>
+   <english>Grozni</english>
+   <japanese>グロズヌイ</japanese>
+   <chineseSimplified>格罗兹尼</chineseSimplified>
+   <chineseTraditional>格羅茲尼</chineseTraditional>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>
+   <english>Гро́зный
+
+Or Groznyi
+
+https://ru.wikipedia.org/wiki/%D0%93%D1%80%D0%BE%D0%B7%D0%BD%D1%8B%D0%B9_(%D0%BC%D0%B8%D0%BD%D0%BE%D0%BD%D0%BE%D1%81%D0%B5%D1%86)</english>
+  </remark>
+  <objectId>dff6e41b-99c0-447c-88cc-f4760858571f</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>160bd04d-9507-42a8-a7a4-d64b071b80da</shipClassObjectId>
+  <name>
+   <english>Izumrud</english>
+   <japanese>イズムルード</japanese>
+   <chineseSimplified>翡翠</chineseSimplified>
+   <chineseTraditional>翡翠</chineseTraditional>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>bfa9491c-9f3b-41f7-ae1f-777d74430605</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>
+   <english>Жемчуг
+
+https://ru.wikipedia.org/wiki/%D0%91%D1%80%D0%BE%D0%BD%D0%B5%D0%BF%D0%B0%D0%BB%D1%83%D0%B1%D0%BD%D1%8B%D0%B5_%D0%BA%D1%80%D0%B5%D0%B9%D1%81%D0%B5%D1%80%D0%B0_%D1%82%D0%B8%D0%BF%D0%B0_%C2%AB%D0%96%D0%B5%D0%BC%D1%87%D1%83%D0%B3%C2%BB</english>
+  </remark>
+  <objectId>0aae610c-2d17-428a-9924-889784e36fbf</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>160bd04d-9507-42a8-a7a4-d64b071b80da</shipClassObjectId>
+  <name>
+   <english>Zhemchug</english>
+   <japanese>ジェムチュク</japanese>
+   <chineseSimplified>珍珠</chineseSimplified>
+   <chineseTraditional>珍珠</chineseTraditional>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>b745d2b7-a126-400a-b181-0cc3ed56b051</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>
+   <english>Изумруд
+
+Or Jemtchug
+
+https://ru.wikipedia.org/wiki/%D0%98%D0%B7%D1%83%D0%BC%D1%80%D1%83%D0%B4_(%D0%B1%D1%80%D0%BE%D0%BD%D0%B5%D0%BF%D0%B0%D0%BB%D1%83%D0%B1%D0%BD%D1%8B%D0%B9_%D0%BA%D1%80%D0%B5%D0%B9%D1%81%D0%B5%D1%80)</english>
+  </remark>
+  <objectId>d01a58d5-71d0-49f9-8364-72790273e413</objectId>
  </NamedShip>
 </ArrayOfNamedShip>

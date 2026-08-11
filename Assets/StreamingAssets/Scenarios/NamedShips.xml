@@ -9516,4 +9516,109 @@ https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%BE%99%E7%BA%A7%E9%A9%B1%E9%80%90%E8%
   </remark>
   <objectId>693ef2d4-25c0-428c-9faf-a7da2fdc6574</objectId>
  </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>8e928947-032c-48de-83c8-459228d5ebfb</shipClassObjectId>
+  <name>
+   <english>Ariake</english>
+   <japanese>有明</japanese>
+   <chineseSimplified>有明</chineseSimplified>
+   <chineseTraditional>有明</chineseTraditional>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E6%9C%89%E6%98%8E_(%E6%98%A5%E9%9B%A8%E5%9E%8B%E9%A7%86%E9%80%90%E8%89%A6)</english>
+  </remark>
+  <objectId>441a42b1-186a-47ed-88cb-734330471acf</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>8e928947-032c-48de-83c8-459228d5ebfb</shipClassObjectId>
+  <name>
+   <english>Arare</english>
+   <japanese>霰</japanese>
+   <chineseSimplified>霰</chineseSimplified>
+   <chineseTraditional>霰</chineseTraditional>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>
+   <english>none</english>
+  </remark>
+  <objectId>900c7082-7869-4011-a780-4b22f0817ee5</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>246a2fca-8734-4257-bac8-f356798960f7</shipClassObjectId>
+  <name>
+   <english>Akatsuki II</english>
+   <japanese>暁 II</japanese>
+   <chineseSimplified>晓 II</chineseSimplified>
+   <chineseTraditional>暁 II</chineseTraditional>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference />
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Russian_destroyer_Reshitel'nyi
+
+Akatsuki (暁, 1904) or Yamabiko (山彦, 1905), the original captured PUILKI class russian destroyer Ryeshitelni. It's renamed to Akatsuki to conceal the loss of the first Akatsuki
+</english>
+  </remark>
+  <objectId>0762d7ae-c7e7-4d25-868f-e68498579207</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>54c063c0-2e97-48f7-994d-5aa026c9b88f</shipClassObjectId>
+  <name>
+   <english>Otowa</english>
+   <japanese>音羽</japanese>
+   <chineseSimplified>音羽</chineseSimplified>
+   <chineseTraditional>音羽</chineseTraditional>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>7f62987b-9ea3-49f9-be53-4621cb54995b</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Otowa</english>
+  </remark>
+  <objectId>555f3d83-7f7a-47f5-a75a-df88b91117c7</objectId>
+ </NamedShip>
 </ArrayOfNamedShip>

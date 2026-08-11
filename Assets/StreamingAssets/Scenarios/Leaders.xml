@@ -5974,4 +5974,27 @@ https://en.wikipedia.org/wiki/George_C._Remey</english>
   </remark>
   <objectId>b208596c-2dec-4aaf-9fc3-4637e67faa12</objectId>
  </Leader>
+ <Leader>
+  <name>
+   <english>Arima Ryokitsu</english>
+   <japanese>有馬良橘</japanese>
+   <chineseSimplified>有马良橘</chineseSimplified>
+   <chineseTraditional>有馬良橘</chineseTraditional>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Arima_Ryokitsu.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Arima_Ry%C5%8Dkitsu</english>
+  </remark>
+  <objectId>7f62987b-9ea3-49f9-be53-4621cb54995b</objectId>
+ </Leader>
 </ArrayOfLeader>

@@ -5997,4 +5997,180 @@ https://en.wikipedia.org/wiki/George_C._Remey</english>
   </remark>
   <objectId>7f62987b-9ea3-49f9-be53-4621cb54995b</objectId>
  </Leader>
+ <Leader>
+  <name>
+   <english>Vladimir Smirnov</english>
+   <japanese>ウラジーミル・スミルノフ</japanese>
+   <chineseSimplified>弗拉基米尔·斯米尔诺夫</chineseSimplified>
+   <chineseTraditional>弗拉基米爾·斯米爾諾夫</chineseTraditional>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Russia_Generic_Leader.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits>
+   <LeaderTrait>Coward</LeaderTrait>
+  </traits>
+  <remark>
+   <english>Смирнов, Владимир Васильевич
+
+https://ru.wikipedia.org/wiki/%D0%A1%D0%BC%D0%B8%D1%80%D0%BD%D0%BE%D0%B2,_%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BC%D0%B8%D1%80_%D0%92%D0%B0%D1%81%D0%B8%D0%BB%D1%8C%D0%B5%D0%B2%D0%B8%D1%87_(%D0%BA%D0%B0%D0%BF%D0%B8%D1%82%D0%B0%D0%BD_1-%D0%B3%D0%BE_%D1%80%D0%B0%D0%BD%D0%B3%D0%B0)</english>
+  </remark>
+  <objectId>639d50cb-65e9-47f9-a6bd-6cb58d228b16</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Vladimir Miklukha</english>
+   <japanese>ウラジーミル・ミクルーハ</japanese>
+   <chineseSimplified>弗拉基米尔·米克卢哈</chineseSimplified>
+   <chineseTraditional>弗拉基米爾·米克盧哈</chineseTraditional>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Vladimir Miklukha.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>
+   <english>Миклуха, Владимир Николаевич
+
+https://en.wikipedia.org/wiki/Vladimir_Miklukha
+</english>
+  </remark>
+  <objectId>8c272e70-515b-47fa-bfc9-4bc73b4bf7b3</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Sergey Grigoryev</english>
+   <japanese>セルゲイ・グリゴリエフ</japanese>
+   <chineseSimplified>谢尔盖·格里戈里耶夫</chineseSimplified>
+   <chineseTraditional>謝爾蓋·格里戈里耶夫</chineseTraditional>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Russia_Generic_Leader.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>
+   <english>Григорьев, Сергей Иванович 
+
+https://ru.wikipedia.org/wiki/%D0%93%D1%80%D0%B8%D0%B3%D0%BE%D1%80%D1%8C%D0%B5%D0%B2,_%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B9_%D0%98%D0%B2%D0%B0%D0%BD%D0%BE%D0%B2%D0%B8%D1%87_(%D1%83%D1%87%D0%B0%D1%81%D1%82%D0%BD%D0%B8%D0%BA_%D0%A6%D1%83%D1%81%D0%B8%D0%BC%D1%81%D0%BA%D0%BE%D0%B3%D0%BE_%D1%81%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F)</english>
+  </remark>
+  <objectId>c4ea5934-f0a2-475e-97b2-28ff64b1aa0d</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Nikolai Lishin</english>
+   <japanese>ニコライ・リシン</japanese>
+   <chineseSimplified>尼古拉·利申</chineseSimplified>
+   <chineseTraditional>尼古拉·利申</chineseTraditional>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Nikolai_Lishin.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>
+   <english>Лишин, Николай Григорьевич
+
+https://en.wikipedia.org/wiki/Nikolai_Lishin</english>
+  </remark>
+  <objectId>270fc0f4-ce09-4c23-8a92-c6b88ba3793c</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Tsuchiya Tamotsu</english>
+   <japanese>土屋保</japanese>
+   <chineseSimplified>土屋保</chineseSimplified>
+   <chineseTraditional>土屋保</chineseTraditional>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Japan_Generic_Leader.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>
+   <english>https://kitabatake.world.coocan.jp/kaidai1.html</english>
+  </remark>
+  <objectId>9f843957-c44f-42ce-b58d-43e8e16036d2</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Leonid Dobrotvorsky</english>
+   <japanese>レオニード・ドブロトヴォルスキー</japanese>
+   <chineseSimplified>列昂尼德·多布罗特沃尔斯基</chineseSimplified>
+   <chineseTraditional>列昂尼德·多布羅特沃爾斯基</chineseTraditional>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Leonid Dobrotvorsky.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>
+   <english>Леонид Фёдорович (Теодорович) Добротворский
+
+https://ru.wikipedia.org/wiki/%D0%94%D0%BE%D0%B1%D1%80%D0%BE%D1%82%D0%B2%D0%BE%D1%80%D1%81%D0%BA%D0%B8%D0%B9,_%D0%9B%D0%B5%D0%BE%D0%BD%D0%B8%D0%B4_%D0%A4%D1%91%D0%B4%D0%BE%D1%80%D0%BE%D0%B2%D0%B8%D1%87</english>
+  </remark>
+  <objectId>2082636c-5370-4297-877d-4343114d716a</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Ivan Lebedev</english>
+   <japanese>イワン・レベデフ</japanese>
+   <chineseSimplified>伊万·列别杰夫</chineseSimplified>
+   <chineseTraditional>伊萬·列別傑夫</chineseTraditional>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Ivan Lebedev.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>
+   <english>Лебедев, Иван Николаевич 
+
+https://en.wikipedia.org/wiki/Ivan_Lebedev</english>
+  </remark>
+  <objectId>3a46b7d7-f273-4994-bd86-0a0b43c8f676</objectId>
+ </Leader>
 </ArrayOfLeader>

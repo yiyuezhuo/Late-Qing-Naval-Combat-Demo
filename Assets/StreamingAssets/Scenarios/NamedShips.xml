@@ -880,6 +880,33 @@ After Lin commited suicide, Lin took command of the ship.</english>
   <objectId>9105d76e-8241-4d51-8347-43448099ba54</objectId>
  </NamedShip>
  <NamedShip>
+  <shipClassObjectId>4804a957-f872-4939-9e41-b7c0f78262ce</shipClassObjectId>
+  <name>
+   <english>Itsukushima (1905/1/21)</english>
+   <japanese>厳島 (1905/1/21)</japanese>
+   <chineseSimplified>严岛 (1905/1/21)</chineseSimplified>
+   <chineseTraditional>厳島 (1905/1/21)</chineseTraditional>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>9f843957-c44f-42ce-b58d-43e8e16036d2</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Itsukushima</english>
+  </remark>
+  <objectId>f7ff8de5-4225-4b48-9b44-09b1082ee871</objectId>
+ </NamedShip>
+ <NamedShip>
   <shipClassObjectId>a333035a-806e-4246-b57f-157148f73332</shipClassObjectId>
   <name>
    <english>Hiei</english>
@@ -7738,6 +7765,33 @@ https://baike.baidu.com/item/%E9%95%9C%E6%B8%85%E5%8F%B7/9669520
   <objectId>9bd9d71e-cab1-4a51-b106-8381954a0fbc</objectId>
  </NamedShip>
  <NamedShip>
+  <shipClassObjectId>eaa23897-fc0d-4820-9d10-e9770b60459c</shipClassObjectId>
+  <name>
+   <english>Imperator Nicolai I (1904/12/13)</english>
+   <japanese>インペラートル・ニコライ1世 (1904/12/13)</japanese>
+   <chineseSimplified>尼古拉一世 (1904/12/13)</chineseSimplified>
+   <chineseTraditional>尼古拉一世 (1904/12/13)</chineseTraditional>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>639d50cb-65e9-47f9-a6bd-6cb58d228b16</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Russian_battleship_Imperator_Nikolai_I_(1889)</english>
+  </remark>
+  <objectId>5694c941-1fed-4229-aa41-560483ad7b16</objectId>
+ </NamedShip>
+ <NamedShip>
   <shipClassObjectId>51264139-cca5-436f-965a-bdb07e1c8bdb</shipClassObjectId>
   <name>
    <english>Admiral Nakhimov</english>
@@ -9620,5 +9674,148 @@ Akatsuki (暁, 1904) or Yamabiko (山彦, 1905), the original captured PUILKI cl
    <english>https://en.wikipedia.org/wiki/Japanese_cruiser_Otowa</english>
   </remark>
   <objectId>555f3d83-7f7a-47f5-a75a-df88b91117c7</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>f8c51b08-2a1d-4cf1-8825-b339a04bc245</shipClassObjectId>
+  <name>
+   <english>Admiral Ushakov</english>
+   <japanese>アドミラル・ウシャコフ</japanese>
+   <chineseSimplified>乌沙科夫海军上将</chineseSimplified>
+   <chineseTraditional>烏沙科夫海軍上將</chineseTraditional>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>8c272e70-515b-47fa-bfc9-4bc73b4bf7b3</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>
+   <english>Адмирал Ушаков
+
+https://en.wikipedia.org/wiki/Russian_coast_defense_ship_Admiral_Ushakov</english>
+  </remark>
+  <objectId>e8769dff-5577-421a-b67a-7a225ba0d053</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>f8c51b08-2a1d-4cf1-8825-b339a04bc245</shipClassObjectId>
+  <name>
+   <english>Admiral Senyavin</english>
+   <japanese>アドミラル・セニャーヴィン</japanese>
+   <chineseSimplified>谢尼亚文海军上将</chineseSimplified>
+   <chineseTraditional>謝尼亞文海軍上將</chineseTraditional>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>c4ea5934-f0a2-475e-97b2-28ff64b1aa0d</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>
+   <english>Адмирал Сенявин
+
+https://en.wikipedia.org/wiki/Russian_coast_defense_ship_Admiral_Seniavin</english>
+  </remark>
+  <objectId>37714c49-fa02-4dbe-bd0f-17a5fa35ed98</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>c3f446b4-6a45-4b8a-9fcf-51ef19945a33</shipClassObjectId>
+  <name>
+   <english>Admiral Apraksin</english>
+   <japanese>ゲネラル＝アドミラル・アプラクシン</japanese>
+   <chineseSimplified>阿普拉克辛海军大将</chineseSimplified>
+   <chineseTraditional>阿普拉克辛海軍大將</chineseTraditional>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>270fc0f4-ce09-4c23-8a92-c6b88ba3793c</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>
+   <english>Генерал-адмирал Апраксин
+
+https://en.wikipedia.org/wiki/Russian_coast_defense_ship_General-Admiral_Apraksin</english>
+  </remark>
+  <objectId>dd8f63f2-0160-4ae9-a943-207062eed25a</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>163a91ed-89c1-457d-af1d-730f52eed190</shipClassObjectId>
+  <name>
+   <english>Oleg</english>
+   <japanese>オレーク</japanese>
+   <chineseSimplified>奥列格</chineseSimplified>
+   <chineseTraditional>奧列格</chineseTraditional>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>2082636c-5370-4297-877d-4343114d716a</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>
+   <english>Олег
+
+https://ru.wikipedia.org/wiki/%D0%9E%D0%BB%D0%B5%D0%B3_(%D0%B1%D1%80%D0%BE%D0%BD%D0%B5%D0%BF%D0%B0%D0%BB%D1%83%D0%B1%D0%BD%D1%8B%D0%B9_%D0%BA%D1%80%D0%B5%D0%B9%D1%81%D0%B5%D1%80)</english>
+  </remark>
+  <objectId>f57efd1b-dc2b-41f0-a5a4-5ec260dc0ad4</objectId>
+ </NamedShip>
+ <NamedShip>
+  <shipClassObjectId>6bd9377f-946a-48b0-aa04-3c683171afab</shipClassObjectId>
+  <name>
+   <english>Dmitri Donskoi (1903)</english>
+   <japanese>ドミトリー・ドンスコイ</japanese>
+   <chineseSimplified>德米特里·顿斯科伊</chineseSimplified>
+   <chineseTraditional>德米特里·頓斯科伊</chineseTraditional>
+  </name>
+  <builderDesc>
+   <english>none</english>
+  </builderDesc>
+  <fateDesc>
+   <english>none</english>
+  </fateDesc>
+  <applicableYearBegin>1900</applicableYearBegin>
+  <applicableYearEnd>1900</applicableYearEnd>
+  <defaultLeaderReference>
+   <referenceObjectId>3a46b7d7-f273-4994-bd86-0a0b43c8f676</referenceObjectId>
+  </defaultLeaderReference>
+  <crewRating>0</crewRating>
+  <speedModifier>0</speedModifier>
+  <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>
+  <remark>
+   <english>none</english>
+  </remark>
+  <objectId>e78b1b32-4a3f-4739-b2c8-1768e51f5e28</objectId>
  </NamedShip>
 </ArrayOfNamedShip>

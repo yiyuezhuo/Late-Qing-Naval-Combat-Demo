@@ -354,7 +354,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>3e4bd3fe-7260-43c9-a0c1-233cd3d0cd95</parentObjectId>
+    <parentObjectId>c7bbc5f4-8d0b-473e-8f5d-3258d5a9e833</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -773,7 +773,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>3e4bd3fe-7260-43c9-a0c1-233cd3d0cd95</parentObjectId>
+    <parentObjectId>c7bbc5f4-8d0b-473e-8f5d-3258d5a9e833</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -1147,7 +1147,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>3e4bd3fe-7260-43c9-a0c1-233cd3d0cd95</parentObjectId>
+    <parentObjectId>c7bbc5f4-8d0b-473e-8f5d-3258d5a9e833</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -1557,7 +1557,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>3e4bd3fe-7260-43c9-a0c1-233cd3d0cd95</parentObjectId>
+    <parentObjectId>c7bbc5f4-8d0b-473e-8f5d-3258d5a9e833</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -1982,7 +1982,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>3e4bd3fe-7260-43c9-a0c1-233cd3d0cd95</parentObjectId>
+    <parentObjectId>c7bbc5f4-8d0b-473e-8f5d-3258d5a9e833</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -2385,7 +2385,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>3e4bd3fe-7260-43c9-a0c1-233cd3d0cd95</parentObjectId>
+    <parentObjectId>c7bbc5f4-8d0b-473e-8f5d-3258d5a9e833</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -4002,7 +4002,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>3e4bd3fe-7260-43c9-a0c1-233cd3d0cd95</parentObjectId>
+    <parentObjectId>c7bbc5f4-8d0b-473e-8f5d-3258d5a9e833</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -4420,7 +4420,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>36ccfa0d-5e22-4e63-8d81-bd16ef1cd7c6</parentObjectId>
+    <parentObjectId>ebe6a667-1b8c-43cd-ab2f-af1f8020e90f</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -4821,7 +4821,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>36ccfa0d-5e22-4e63-8d81-bd16ef1cd7c6</parentObjectId>
+    <parentObjectId>ebe6a667-1b8c-43cd-ab2f-af1f8020e90f</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -5240,7 +5240,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>36ccfa0d-5e22-4e63-8d81-bd16ef1cd7c6</parentObjectId>
+    <parentObjectId>ebe6a667-1b8c-43cd-ab2f-af1f8020e90f</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -5632,7 +5632,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>36ccfa0d-5e22-4e63-8d81-bd16ef1cd7c6</parentObjectId>
+    <parentObjectId>ebe6a667-1b8c-43cd-ab2f-af1f8020e90f</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -6051,7 +6051,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>36ccfa0d-5e22-4e63-8d81-bd16ef1cd7c6</parentObjectId>
+    <parentObjectId>ebe6a667-1b8c-43cd-ab2f-af1f8020e90f</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -6470,7 +6470,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>36ccfa0d-5e22-4e63-8d81-bd16ef1cd7c6</parentObjectId>
+    <parentObjectId>ebe6a667-1b8c-43cd-ab2f-af1f8020e90f</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -6700,7 +6700,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>36ccfa0d-5e22-4e63-8d81-bd16ef1cd7c6</parentObjectId>
+    <parentObjectId>ebe6a667-1b8c-43cd-ab2f-af1f8020e90f</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -13174,9 +13174,9 @@
      <LatDeg>34.1605759</LatDeg>
      <LonDeg>129.935425</LonDeg>
     </position>
-    <speedKnots>11</speedKnots>
+    <speedKnots>9</speedKnots>
     <headingDeg>23</headingDeg>
-    <desiredSpeedKnots>11</desiredSpeedKnots>
+    <desiredSpeedKnots>9</desiredSpeedKnots>
     <desiredHeadingDeg>23</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
@@ -13574,9 +13574,9 @@
      <LatDeg>34.15678</LatDeg>
      <LonDeg>129.933487</LonDeg>
     </position>
-    <speedKnots>11</speedKnots>
+    <speedKnots>9</speedKnots>
     <headingDeg>23</headingDeg>
-    <desiredSpeedKnots>11</desiredSpeedKnots>
+    <desiredSpeedKnots>9</desiredSpeedKnots>
     <desiredHeadingDeg>23</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
@@ -13995,9 +13995,9 @@
      <LatDeg>34.1529846</LatDeg>
      <LonDeg>129.931549</LonDeg>
     </position>
-    <speedKnots>11</speedKnots>
+    <speedKnots>9</speedKnots>
     <headingDeg>23</headingDeg>
-    <desiredSpeedKnots>11</desiredSpeedKnots>
+    <desiredSpeedKnots>9</desiredSpeedKnots>
     <desiredHeadingDeg>23</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
@@ -14378,9 +14378,9 @@
      <LatDeg>34.14919</LatDeg>
      <LonDeg>129.929611</LonDeg>
     </position>
-    <speedKnots>11</speedKnots>
+    <speedKnots>9</speedKnots>
     <headingDeg>23</headingDeg>
-    <desiredSpeedKnots>11</desiredSpeedKnots>
+    <desiredSpeedKnots>9</desiredSpeedKnots>
     <desiredHeadingDeg>23</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
@@ -14635,9 +14635,9 @@
      <LatDeg>34.14354</LatDeg>
      <LonDeg>129.926346</LonDeg>
     </position>
-    <speedKnots>11</speedKnots>
+    <speedKnots>9</speedKnots>
     <headingDeg>23</headingDeg>
-    <desiredSpeedKnots>11</desiredSpeedKnots>
+    <desiredSpeedKnots>9</desiredSpeedKnots>
     <desiredHeadingDeg>23</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
@@ -15050,9 +15050,9 @@
      <LatDeg>34.1397438</LatDeg>
      <LonDeg>129.924408</LonDeg>
     </position>
-    <speedKnots>11</speedKnots>
+    <speedKnots>9</speedKnots>
     <headingDeg>23</headingDeg>
-    <desiredSpeedKnots>11</desiredSpeedKnots>
+    <desiredSpeedKnots>9</desiredSpeedKnots>
     <desiredHeadingDeg>23</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
@@ -15361,9 +15361,9 @@
      <LatDeg>34.13595</LatDeg>
      <LonDeg>129.92247</LonDeg>
     </position>
-    <speedKnots>11</speedKnots>
+    <speedKnots>9</speedKnots>
     <headingDeg>23</headingDeg>
-    <desiredSpeedKnots>11</desiredSpeedKnots>
+    <desiredSpeedKnots>9</desiredSpeedKnots>
     <desiredHeadingDeg>23</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
@@ -15681,9 +15681,9 @@
      <LatDeg>34.1321526</LatDeg>
      <LonDeg>129.920532</LonDeg>
     </position>
-    <speedKnots>11</speedKnots>
+    <speedKnots>9</speedKnots>
     <headingDeg>23</headingDeg>
-    <desiredSpeedKnots>11</desiredSpeedKnots>
+    <desiredSpeedKnots>9</desiredSpeedKnots>
     <desiredHeadingDeg>23</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
@@ -16001,10 +16001,10 @@
      <LatDeg>34.205265</LatDeg>
      <LonDeg>129.849319</LonDeg>
     </position>
-    <speedKnots>16</speedKnots>
-    <headingDeg>13</headingDeg>
-    <desiredSpeedKnots>16</desiredSpeedKnots>
-    <desiredHeadingDeg>13</desiredHeadingDeg>
+    <speedKnots>13</speedKnots>
+    <headingDeg>23</headingDeg>
+    <desiredSpeedKnots>13</desiredSpeedKnots>
+    <desiredHeadingDeg>23</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
     <isLandTarget>false</isLandTarget>
@@ -16293,7 +16293,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>5f406f72-f087-494e-b150-987c47c42304</parentObjectId>
+    <parentObjectId>018d911a-51d6-4000-a406-00b85f352a06</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -16364,13 +16364,13 @@
     <namedShipObjectId>5dfb7c37-32da-47f7-be68-06832bcf8b59</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>34.20125</LatDeg>
-     <LonDeg>129.8482</LonDeg>
+     <LatDeg>34.20147</LatDeg>
+     <LonDeg>129.847382</LonDeg>
     </position>
-    <speedKnots>16</speedKnots>
-    <headingDeg>13</headingDeg>
-    <desiredSpeedKnots>16</desiredSpeedKnots>
-    <desiredHeadingDeg>13</desiredHeadingDeg>
+    <speedKnots>13</speedKnots>
+    <headingDeg>23</headingDeg>
+    <desiredSpeedKnots>13</desiredSpeedKnots>
+    <desiredHeadingDeg>23</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
     <isLandTarget>false</isLandTarget>
@@ -16569,7 +16569,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>5f406f72-f087-494e-b150-987c47c42304</parentObjectId>
+    <parentObjectId>018d911a-51d6-4000-a406-00b85f352a06</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -16640,13 +16640,13 @@
     <namedShipObjectId>a4170ae3-7af2-4fb9-a71d-e741b141e9ce</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>34.19723</LatDeg>
-     <LonDeg>129.847092</LonDeg>
+     <LatDeg>34.1976738</LatDeg>
+     <LonDeg>129.845444</LonDeg>
     </position>
-    <speedKnots>16</speedKnots>
-    <headingDeg>13</headingDeg>
-    <desiredSpeedKnots>16</desiredSpeedKnots>
-    <desiredHeadingDeg>13</desiredHeadingDeg>
+    <speedKnots>13</speedKnots>
+    <headingDeg>23</headingDeg>
+    <desiredSpeedKnots>13</desiredSpeedKnots>
+    <desiredHeadingDeg>23</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
     <isLandTarget>false</isLandTarget>
@@ -16945,7 +16945,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>5f406f72-f087-494e-b150-987c47c42304</parentObjectId>
+    <parentObjectId>018d911a-51d6-4000-a406-00b85f352a06</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -17016,13 +17016,13 @@
     <namedShipObjectId>db02cfdf-c7aa-4633-bcb2-7e10016c97e1</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>34.1932144</LatDeg>
-     <LonDeg>129.845978</LonDeg>
+     <LatDeg>34.19388</LatDeg>
+     <LonDeg>129.8435</LonDeg>
     </position>
-    <speedKnots>16</speedKnots>
-    <headingDeg>13</headingDeg>
-    <desiredSpeedKnots>16</desiredSpeedKnots>
-    <desiredHeadingDeg>13</desiredHeadingDeg>
+    <speedKnots>13</speedKnots>
+    <headingDeg>23</headingDeg>
+    <desiredSpeedKnots>13</desiredSpeedKnots>
+    <desiredHeadingDeg>23</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
     <isLandTarget>false</isLandTarget>
@@ -17312,7 +17312,7 @@
     <portSearchlightDirectionDeg>270</portSearchlightDirectionDeg>
     <starboardSearchlightEnabled>false</starboardSearchlightEnabled>
     <starboardSearchlightDirectionDeg>90</starboardSearchlightDirectionDeg>
-    <parentObjectId>5f406f72-f087-494e-b150-987c47c42304</parentObjectId>
+    <parentObjectId>018d911a-51d6-4000-a406-00b85f352a06</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -17386,10 +17386,10 @@
      <LatDeg>34.1873474</LatDeg>
      <LonDeg>129.843292</LonDeg>
     </position>
-    <speedKnots>16</speedKnots>
-    <headingDeg>13</headingDeg>
-    <desiredSpeedKnots>16</desiredSpeedKnots>
-    <desiredHeadingDeg>13</desiredHeadingDeg>
+    <speedKnots>13</speedKnots>
+    <headingDeg>23</headingDeg>
+    <desiredSpeedKnots>13</desiredSpeedKnots>
+    <desiredHeadingDeg>23</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
     <isLandTarget>false</isLandTarget>
@@ -17686,13 +17686,13 @@
     <namedShipObjectId>81fc0fc2-b4c8-4efc-9a4e-adde31586429</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>34.18333</LatDeg>
-     <LonDeg>129.842178</LonDeg>
+     <LatDeg>34.18355</LatDeg>
+     <LonDeg>129.841354</LonDeg>
     </position>
-    <speedKnots>16</speedKnots>
-    <headingDeg>13</headingDeg>
-    <desiredSpeedKnots>16</desiredSpeedKnots>
-    <desiredHeadingDeg>13</desiredHeadingDeg>
+    <speedKnots>13</speedKnots>
+    <headingDeg>23</headingDeg>
+    <desiredSpeedKnots>13</desiredSpeedKnots>
+    <desiredHeadingDeg>23</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
     <isLandTarget>false</isLandTarget>
@@ -17995,13 +17995,13 @@
     <namedShipObjectId>46fab434-9bfc-4407-872b-ad23758b736a</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>34.1793137</LatDeg>
-     <LonDeg>129.841064</LonDeg>
+     <LatDeg>34.1797562</LatDeg>
+     <LonDeg>129.839417</LonDeg>
     </position>
-    <speedKnots>16</speedKnots>
-    <headingDeg>13</headingDeg>
-    <desiredSpeedKnots>16</desiredSpeedKnots>
-    <desiredHeadingDeg>13</desiredHeadingDeg>
+    <speedKnots>13</speedKnots>
+    <headingDeg>23</headingDeg>
+    <desiredSpeedKnots>13</desiredSpeedKnots>
+    <desiredHeadingDeg>23</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
     <isLandTarget>false</isLandTarget>
@@ -18335,13 +18335,13 @@
     <namedShipObjectId>f8609106-2fb7-4789-956b-bd930efb8950</namedShipObjectId>
     <damagePoint>0</damagePoint>
     <position>
-     <LatDeg>34.2021751</LatDeg>
-     <LonDeg>129.843369</LonDeg>
+     <LatDeg>34.20308</LatDeg>
+     <LonDeg>129.842819</LonDeg>
     </position>
-    <speedKnots>16</speedKnots>
-    <headingDeg>13</headingDeg>
-    <desiredSpeedKnots>16</desiredSpeedKnots>
-    <desiredHeadingDeg>13</desiredHeadingDeg>
+    <speedKnots>13</speedKnots>
+    <headingDeg>23</headingDeg>
+    <desiredSpeedKnots>13</desiredSpeedKnots>
+    <desiredHeadingDeg>23</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
     <isLandTarget>false</isLandTarget>
@@ -18568,9 +18568,9 @@
      <LatDeg>34.1194458</LatDeg>
      <LonDeg>129.911438</LonDeg>
     </position>
-    <speedKnots>11</speedKnots>
+    <speedKnots>9</speedKnots>
     <headingDeg>23</headingDeg>
-    <desiredSpeedKnots>11</desiredSpeedKnots>
+    <desiredSpeedKnots>9</desiredSpeedKnots>
     <desiredHeadingDeg>23</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
@@ -18868,9 +18868,9 @@
      <LatDeg>34.12324</LatDeg>
      <LonDeg>129.913376</LonDeg>
     </position>
-    <speedKnots>11</speedKnots>
+    <speedKnots>9</speedKnots>
     <headingDeg>23</headingDeg>
-    <desiredSpeedKnots>11</desiredSpeedKnots>
+    <desiredSpeedKnots>9</desiredSpeedKnots>
     <desiredHeadingDeg>23</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
@@ -19185,9 +19185,9 @@
      <LatDeg>34.11565</LatDeg>
      <LonDeg>129.9095</LonDeg>
     </position>
-    <speedKnots>11</speedKnots>
+    <speedKnots>9</speedKnots>
     <headingDeg>23</headingDeg>
-    <desiredSpeedKnots>11</desiredSpeedKnots>
+    <desiredSpeedKnots>9</desiredSpeedKnots>
     <desiredHeadingDeg>23</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
@@ -19485,9 +19485,9 @@
      <LatDeg>34.1209259</LatDeg>
      <LonDeg>129.9394</LonDeg>
     </position>
-    <speedKnots>11</speedKnots>
+    <speedKnots>9</speedKnots>
     <headingDeg>23</headingDeg>
-    <desiredSpeedKnots>11</desiredSpeedKnots>
+    <desiredSpeedKnots>9</desiredSpeedKnots>
     <desiredHeadingDeg>23</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
@@ -19645,9 +19645,9 @@
      <LatDeg>34.11713</LatDeg>
      <LonDeg>129.937469</LonDeg>
     </position>
-    <speedKnots>11</speedKnots>
+    <speedKnots>9</speedKnots>
     <headingDeg>23</headingDeg>
-    <desiredSpeedKnots>11</desiredSpeedKnots>
+    <desiredSpeedKnots>9</desiredSpeedKnots>
     <desiredHeadingDeg>23</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
@@ -19806,9 +19806,9 @@
      <LatDeg>34.1133347</LatDeg>
      <LonDeg>129.935532</LonDeg>
     </position>
-    <speedKnots>11</speedKnots>
+    <speedKnots>9</speedKnots>
     <headingDeg>23</headingDeg>
-    <desiredSpeedKnots>11</desiredSpeedKnots>
+    <desiredSpeedKnots>9</desiredSpeedKnots>
     <desiredHeadingDeg>23</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
@@ -19967,9 +19967,9 @@
      <LatDeg>34.10954</LatDeg>
      <LonDeg>129.9336</LonDeg>
     </position>
-    <speedKnots>11</speedKnots>
+    <speedKnots>9</speedKnots>
     <headingDeg>23</headingDeg>
-    <desiredSpeedKnots>11</desiredSpeedKnots>
+    <desiredSpeedKnots>9</desiredSpeedKnots>
     <desiredHeadingDeg>23</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
@@ -20118,9 +20118,9 @@
      <LatDeg>34.1057434</LatDeg>
      <LonDeg>129.931656</LonDeg>
     </position>
-    <speedKnots>11</speedKnots>
+    <speedKnots>9</speedKnots>
     <headingDeg>23</headingDeg>
-    <desiredSpeedKnots>11</desiredSpeedKnots>
+    <desiredSpeedKnots>9</desiredSpeedKnots>
     <desiredHeadingDeg>23</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
@@ -20269,9 +20269,9 @@
      <LatDeg>34.1019478</LatDeg>
      <LonDeg>129.929718</LonDeg>
     </position>
-    <speedKnots>11</speedKnots>
+    <speedKnots>9</speedKnots>
     <headingDeg>23</headingDeg>
-    <desiredSpeedKnots>11</desiredSpeedKnots>
+    <desiredSpeedKnots>9</desiredSpeedKnots>
     <desiredHeadingDeg>23</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
@@ -20420,9 +20420,9 @@
      <LatDeg>34.09699</LatDeg>
      <LonDeg>129.926865</LonDeg>
     </position>
-    <speedKnots>11</speedKnots>
+    <speedKnots>9</speedKnots>
     <headingDeg>23</headingDeg>
-    <desiredSpeedKnots>11</desiredSpeedKnots>
+    <desiredSpeedKnots>9</desiredSpeedKnots>
     <desiredHeadingDeg>23</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
@@ -20683,9 +20683,9 @@
      <LatDeg>34.0931931</LatDeg>
      <LonDeg>129.924927</LonDeg>
     </position>
-    <speedKnots>11</speedKnots>
+    <speedKnots>9</speedKnots>
     <headingDeg>23</headingDeg>
-    <desiredSpeedKnots>11</desiredSpeedKnots>
+    <desiredSpeedKnots>9</desiredSpeedKnots>
     <desiredHeadingDeg>23</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
@@ -20853,9 +20853,9 @@
      <LatDeg>34.0893974</LatDeg>
      <LonDeg>129.922989</LonDeg>
     </position>
-    <speedKnots>11</speedKnots>
+    <speedKnots>9</speedKnots>
     <headingDeg>23</headingDeg>
-    <desiredSpeedKnots>11</desiredSpeedKnots>
+    <desiredSpeedKnots>9</desiredSpeedKnots>
     <desiredHeadingDeg>23</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
@@ -21071,9 +21071,9 @@
      <LatDeg>34.1117249</LatDeg>
      <LonDeg>129.9401</LonDeg>
     </position>
-    <speedKnots>11</speedKnots>
+    <speedKnots>9</speedKnots>
     <headingDeg>23</headingDeg>
-    <desiredSpeedKnots>11</desiredSpeedKnots>
+    <desiredSpeedKnots>9</desiredSpeedKnots>
     <desiredHeadingDeg>23</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
@@ -21427,9 +21427,9 @@
      <LatDeg>34.15357</LatDeg>
      <LonDeg>129.965012</LonDeg>
     </position>
-    <speedKnots>11</speedKnots>
+    <speedKnots>9</speedKnots>
     <headingDeg>23</headingDeg>
-    <desiredSpeedKnots>11</desiredSpeedKnots>
+    <desiredSpeedKnots>9</desiredSpeedKnots>
     <desiredHeadingDeg>23</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
@@ -21600,9 +21600,9 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
-    <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
-    <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>11</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>23</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -21708,9 +21708,9 @@
      <LatDeg>34.1497726</LatDeg>
      <LonDeg>129.963074</LonDeg>
     </position>
-    <speedKnots>11</speedKnots>
+    <speedKnots>9</speedKnots>
     <headingDeg>23</headingDeg>
-    <desiredSpeedKnots>11</desiredSpeedKnots>
+    <desiredSpeedKnots>9</desiredSpeedKnots>
     <desiredHeadingDeg>23</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
@@ -21798,9 +21798,9 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
-    <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
-    <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>11</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>23</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -21906,9 +21906,9 @@
      <LatDeg>34.145977</LatDeg>
      <LonDeg>129.961136</LonDeg>
     </position>
-    <speedKnots>11</speedKnots>
+    <speedKnots>9</speedKnots>
     <headingDeg>23</headingDeg>
-    <desiredSpeedKnots>11</desiredSpeedKnots>
+    <desiredSpeedKnots>9</desiredSpeedKnots>
     <desiredHeadingDeg>23</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
@@ -21996,9 +21996,9 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
-    <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
-    <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>11</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>23</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -22104,9 +22104,9 @@
      <LatDeg>34.14237</LatDeg>
      <LonDeg>129.95903</LonDeg>
     </position>
-    <speedKnots>11</speedKnots>
+    <speedKnots>9</speedKnots>
     <headingDeg>23</headingDeg>
-    <desiredSpeedKnots>11</desiredSpeedKnots>
+    <desiredSpeedKnots>9</desiredSpeedKnots>
     <desiredHeadingDeg>23</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
@@ -22277,9 +22277,9 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
-    <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
-    <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>11</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>23</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -22385,9 +22385,9 @@
      <LatDeg>34.1385727</LatDeg>
      <LonDeg>129.957092</LonDeg>
     </position>
-    <speedKnots>11</speedKnots>
+    <speedKnots>9</speedKnots>
     <headingDeg>23</headingDeg>
-    <desiredSpeedKnots>11</desiredSpeedKnots>
+    <desiredSpeedKnots>9</desiredSpeedKnots>
     <desiredHeadingDeg>23</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
@@ -22475,9 +22475,9 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
-    <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
-    <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>11</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>23</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -22583,9 +22583,9 @@
      <LatDeg>34.1347771</LatDeg>
      <LonDeg>129.955154</LonDeg>
     </position>
-    <speedKnots>11</speedKnots>
+    <speedKnots>9</speedKnots>
     <headingDeg>23</headingDeg>
-    <desiredSpeedKnots>11</desiredSpeedKnots>
+    <desiredSpeedKnots>9</desiredSpeedKnots>
     <desiredHeadingDeg>23</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
@@ -22673,9 +22673,9 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
-    <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
-    <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>11</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>23</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -22781,9 +22781,9 @@
      <LatDeg>34.0917625</LatDeg>
      <LonDeg>129.930435</LonDeg>
     </position>
-    <speedKnots>11</speedKnots>
+    <speedKnots>9</speedKnots>
     <headingDeg>23</headingDeg>
-    <desiredSpeedKnots>11</desiredSpeedKnots>
+    <desiredSpeedKnots>9</desiredSpeedKnots>
     <desiredHeadingDeg>23</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
@@ -22870,9 +22870,9 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
-    <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
-    <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>11</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>23</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -22978,9 +22978,9 @@
      <LatDeg>34.0879669</LatDeg>
      <LonDeg>129.9285</LonDeg>
     </position>
-    <speedKnots>11</speedKnots>
+    <speedKnots>9</speedKnots>
     <headingDeg>23</headingDeg>
-    <desiredSpeedKnots>11</desiredSpeedKnots>
+    <desiredSpeedKnots>9</desiredSpeedKnots>
     <desiredHeadingDeg>23</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
@@ -23068,9 +23068,9 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
-    <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
-    <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>11</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>23</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -23176,9 +23176,9 @@
      <LatDeg>34.08417</LatDeg>
      <LonDeg>129.926559</LonDeg>
     </position>
-    <speedKnots>11</speedKnots>
+    <speedKnots>9</speedKnots>
     <headingDeg>23</headingDeg>
-    <desiredSpeedKnots>11</desiredSpeedKnots>
+    <desiredSpeedKnots>9</desiredSpeedKnots>
     <desiredHeadingDeg>23</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
@@ -23266,9 +23266,9 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
-    <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
-    <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>11</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>23</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -23374,9 +23374,9 @@
      <LatDeg>34.0803757</LatDeg>
      <LonDeg>129.924622</LonDeg>
     </position>
-    <speedKnots>11</speedKnots>
+    <speedKnots>9</speedKnots>
     <headingDeg>23</headingDeg>
-    <desiredSpeedKnots>11</desiredSpeedKnots>
+    <desiredSpeedKnots>9</desiredSpeedKnots>
     <desiredHeadingDeg>23</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
@@ -23464,9 +23464,9 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
-    <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
-    <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>11</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>23</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -23572,9 +23572,9 @@
      <LatDeg>34.07658</LatDeg>
      <LonDeg>129.922684</LonDeg>
     </position>
-    <speedKnots>11</speedKnots>
+    <speedKnots>9</speedKnots>
     <headingDeg>23</headingDeg>
-    <desiredSpeedKnots>11</desiredSpeedKnots>
+    <desiredSpeedKnots>9</desiredSpeedKnots>
     <desiredHeadingDeg>23</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
@@ -23662,9 +23662,9 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
-    <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
-    <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>11</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>23</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -23770,9 +23770,9 @@
      <LatDeg>33.9675446</LatDeg>
      <LonDeg>129.8314</LonDeg>
     </position>
-    <speedKnots>11</speedKnots>
+    <speedKnots>9</speedKnots>
     <headingDeg>23</headingDeg>
-    <desiredSpeedKnots>11</desiredSpeedKnots>
+    <desiredSpeedKnots>9</desiredSpeedKnots>
     <desiredHeadingDeg>23</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
@@ -23812,9 +23812,9 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
-    <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
-    <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>11</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>23</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -23920,9 +23920,9 @@
      <LatDeg>33.96375</LatDeg>
      <LonDeg>129.829468</LonDeg>
     </position>
-    <speedKnots>11</speedKnots>
+    <speedKnots>9</speedKnots>
     <headingDeg>23</headingDeg>
-    <desiredSpeedKnots>11</desiredSpeedKnots>
+    <desiredSpeedKnots>9</desiredSpeedKnots>
     <desiredHeadingDeg>23</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
@@ -23963,9 +23963,9 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
-    <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
-    <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>11</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>23</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -24071,10 +24071,10 @@
      <LatDeg>34.08252</LatDeg>
      <LonDeg>130.048859</LonDeg>
     </position>
-    <speedKnots>16</speedKnots>
-    <headingDeg>13</headingDeg>
-    <desiredSpeedKnots>16</desiredSpeedKnots>
-    <desiredHeadingDeg>13</desiredHeadingDeg>
+    <speedKnots>12</speedKnots>
+    <headingDeg>23</headingDeg>
+    <desiredSpeedKnots>12</desiredSpeedKnots>
+    <desiredHeadingDeg>23</desiredHeadingDeg>
     <mapState>Deployed</mapState>
     <operationalState>Operational</operationalState>
     <isLandTarget>false</isLandTarget>
@@ -24275,9 +24275,9 @@
     <relativeToTargetDistanceYards>250</relativeToTargetDistanceYards>
     <relativeToTargetAzimuth>135</relativeToTargetAzimuth>
     <relativeToAbsolute>false</relativeToAbsolute>
-    <surpriseAttackInitialCommandCaptured>false</surpriseAttackInitialCommandCaptured>
-    <surpriseAttackInitialDesiredSpeedKnots>0</surpriseAttackInitialDesiredSpeedKnots>
-    <surpriseAttackInitialDesiredHeadingDeg>0</surpriseAttackInitialDesiredHeadingDeg>
+    <surpriseAttackInitialCommandCaptured>true</surpriseAttackInitialCommandCaptured>
+    <surpriseAttackInitialDesiredSpeedKnots>16</surpriseAttackInitialDesiredSpeedKnots>
+    <surpriseAttackInitialDesiredHeadingDeg>13</surpriseAttackInitialDesiredHeadingDeg>
     <isEvasiveManeuvering>false</isEvasiveManeuvering>
     <pendingDamagePoint>0</pendingDamagePoint>
     <logs />
@@ -24379,21 +24379,15 @@
   <shipGroups>
    <ShipGroup>
     <childrenObjectIds>
-     <string>c7bbc5f4-8d0b-473e-8f5d-3258d5a9e833</string>
-     <string>019671a8-c1bc-4084-92d7-5ec084e41755</string>
-     <string>ebe6a667-1b8c-43cd-ab2f-af1f8020e90f</string>
-     <string>0d6a4ae1-9777-45ce-99e3-0be26d94bc5a</string>
-     <string>74e15f31-fbdb-431f-b4a3-9a9052846b35</string>
-     <string>93b4be26-30c5-439a-b619-03d335ffd6b5</string>
-     <string>c461ac49-e5ee-490c-8b9e-316de89b67bf</string>
-     <string>018d911a-51d6-4000-a406-00b85f352a06</string>
-     <string>689f8ed2-5735-44cf-837d-08c7b2db898e</string>
+     <string>3e4bd3fe-7260-43c9-a0c1-233cd3d0cd95</string>
+     <string>36ccfa0d-5e22-4e63-8d81-bd16ef1cd7c6</string>
+     <string>5f406f72-f087-494e-b150-987c47c42304</string>
     </childrenObjectIds>
     <name>
      <english>Combined Fleet</english>
-     <japanese />
-     <chineseSimplified />
-     <chineseTraditional />
+     <japanese>聯合艦隊</japanese>
+     <chineseSimplified>联合舰队</chineseSimplified>
+     <chineseTraditional>聯合艦隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
@@ -24485,7 +24479,9 @@
     <remark>
      <english>none</english>
     </remark>
-    <leaderReference />
+    <leaderReference>
+     <referenceObjectId>b173afb5-e05d-48b5-9840-4ef77f12d05f</referenceObjectId>
+    </leaderReference>
     <type>General</type>
     <formation>General</formation>
     <objectId>5fbbb343-13eb-4e5b-9a3a-5fcc88d19161</objectId>
@@ -24551,23 +24547,30 @@
    </ShipGroup>
    <ShipGroup>
     <childrenObjectIds>
-     <string>3e4bd3fe-7260-43c9-a0c1-233cd3d0cd95</string>
-     <string>a2c1669c-5917-43f1-93e0-6f00d643d9f6</string>
-     <string>0df4c873-9b09-4a66-8ac4-43f82bfc7713</string>
+     <string>a2ced0f7-23ce-4611-87d9-bba5cde1464c</string>
+     <string>ca6716c1-b34d-4862-ae2f-1de077175f03</string>
+     <string>efe1d139-4508-4fbc-974f-af612c54e726</string>
+     <string>7c223ccd-1922-4167-b656-c26ad5e110ce</string>
+     <string>e0b744df-12be-4952-a56d-35ce77faa3f4</string>
+     <string>928aea88-f567-418d-86e6-aa1225aae833</string>
+     <string>0a90bfea-774e-403e-8aed-bb4798b07f6b</string>
     </childrenObjectIds>
     <name>
      <english>First Division</english>
+     <japanese>第1戦隊</japanese>
+     <chineseSimplified>第1战队</chineseSimplified>
+     <chineseTraditional>第1戦隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
     </remark>
     <leaderReference>
-     <referenceObjectId>bbdc13c1-a909-411c-b949-ad82485ab108</referenceObjectId>
+     <referenceObjectId>74729e4e-1b29-410d-8e4a-c4e384e48fba</referenceObjectId>
     </leaderReference>
     <type>General</type>
     <formation>General</formation>
     <objectId>c7bbc5f4-8d0b-473e-8f5d-3258d5a9e833</objectId>
-    <parentObjectId>b4a0ca2f-56fb-4f31-b720-0a547f47f349</parentObjectId>
+    <parentObjectId>3e4bd3fe-7260-43c9-a0c1-233cd3d0cd95</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -24630,25 +24633,28 @@
    </ShipGroup>
    <ShipGroup>
     <childrenObjectIds>
-     <string>a2ced0f7-23ce-4611-87d9-bba5cde1464c</string>
-     <string>ca6716c1-b34d-4862-ae2f-1de077175f03</string>
-     <string>efe1d139-4508-4fbc-974f-af612c54e726</string>
-     <string>7c223ccd-1922-4167-b656-c26ad5e110ce</string>
-     <string>e0b744df-12be-4952-a56d-35ce77faa3f4</string>
-     <string>928aea88-f567-418d-86e6-aa1225aae833</string>
-     <string>0a90bfea-774e-403e-8aed-bb4798b07f6b</string>
+     <string>c7bbc5f4-8d0b-473e-8f5d-3258d5a9e833</string>
+     <string>019671a8-c1bc-4084-92d7-5ec084e41755</string>
+     <string>a2c1669c-5917-43f1-93e0-6f00d643d9f6</string>
+     <string>0df4c873-9b09-4a66-8ac4-43f82bfc7713</string>
+     <string>93b4be26-30c5-439a-b619-03d335ffd6b5</string>
     </childrenObjectIds>
     <name>
      <english>First Squadron</english>
+     <japanese>第一艦隊</japanese>
+     <chineseSimplified>第一舰队</chineseSimplified>
+     <chineseTraditional>第一艦隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
     </remark>
-    <leaderReference />
+    <leaderReference>
+     <referenceObjectId>bbdc13c1-a909-411c-b949-ad82485ab108</referenceObjectId>
+    </leaderReference>
     <type>General</type>
     <formation>General</formation>
     <objectId>3e4bd3fe-7260-43c9-a0c1-233cd3d0cd95</objectId>
-    <parentObjectId>c7bbc5f4-8d0b-473e-8f5d-3258d5a9e833</parentObjectId>
+    <parentObjectId>b4a0ca2f-56fb-4f31-b720-0a547f47f349</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -24719,15 +24725,20 @@
     </childrenObjectIds>
     <name>
      <english>1st Destroyer Division</english>
+     <japanese>第1駆逐隊</japanese>
+     <chineseSimplified>第1驱逐队</chineseSimplified>
+     <chineseTraditional>第1駆逐隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
     </remark>
-    <leaderReference />
+    <leaderReference>
+     <referenceObjectId>2b3165c1-48fa-4b4e-9dbc-a6b17763051c</referenceObjectId>
+    </leaderReference>
     <type>General</type>
     <formation>General</formation>
     <objectId>a2c1669c-5917-43f1-93e0-6f00d643d9f6</objectId>
-    <parentObjectId>c7bbc5f4-8d0b-473e-8f5d-3258d5a9e833</parentObjectId>
+    <parentObjectId>3e4bd3fe-7260-43c9-a0c1-233cd3d0cd95</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -24797,15 +24808,20 @@
     </childrenObjectIds>
     <name>
      <english>2nd Destroyer Division</english>
+     <japanese>第2駆逐隊</japanese>
+     <chineseSimplified>第2驱逐队</chineseSimplified>
+     <chineseTraditional>第2駆逐隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
     </remark>
-    <leaderReference />
+    <leaderReference>
+     <referenceObjectId>f7621f43-df7e-436b-bda3-2993a5752799</referenceObjectId>
+    </leaderReference>
     <type>General</type>
     <formation>General</formation>
     <objectId>0df4c873-9b09-4a66-8ac4-43f82bfc7713</objectId>
-    <parentObjectId>c7bbc5f4-8d0b-473e-8f5d-3258d5a9e833</parentObjectId>
+    <parentObjectId>3e4bd3fe-7260-43c9-a0c1-233cd3d0cd95</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -24875,15 +24891,20 @@
     </childrenObjectIds>
     <name>
      <english>Thrid Division</english>
+     <japanese>第3戦隊</japanese>
+     <chineseSimplified>第3战队</chineseSimplified>
+     <chineseTraditional>第3戦隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
     </remark>
-    <leaderReference />
+    <leaderReference>
+     <referenceObjectId>d7303b6c-feef-4a49-8613-dc89cc9b029e</referenceObjectId>
+    </leaderReference>
     <type>General</type>
     <formation>General</formation>
     <objectId>019671a8-c1bc-4084-92d7-5ec084e41755</objectId>
-    <parentObjectId>b4a0ca2f-56fb-4f31-b720-0a547f47f349</parentObjectId>
+    <parentObjectId>3e4bd3fe-7260-43c9-a0c1-233cd3d0cd95</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -24953,15 +24974,20 @@
     </childrenObjectIds>
     <name>
      <english>4th Destroyer Division</english>
+     <japanese>第4駆逐隊</japanese>
+     <chineseSimplified>第4驱逐队</chineseSimplified>
+     <chineseTraditional>第4駆逐隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
     </remark>
-    <leaderReference />
+    <leaderReference>
+     <referenceObjectId>c453116e-8d06-4c96-866f-13f1f7595e6c</referenceObjectId>
+    </leaderReference>
     <type>General</type>
     <formation>General</formation>
     <objectId>0d6a4ae1-9777-45ce-99e3-0be26d94bc5a</objectId>
-    <parentObjectId>b4a0ca2f-56fb-4f31-b720-0a547f47f349</parentObjectId>
+    <parentObjectId>36ccfa0d-5e22-4e63-8d81-bd16ef1cd7c6</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -25024,19 +25050,30 @@
    </ShipGroup>
    <ShipGroup>
     <childrenObjectIds>
-     <string>36ccfa0d-5e22-4e63-8d81-bd16ef1cd7c6</string>
+     <string>066fdf72-c4d4-41ca-af85-5b376d5a2f9b</string>
+     <string>0eccc6b8-e79a-4cf0-8b37-d3f2e5a4b073</string>
+     <string>5cac8fc8-244a-4a27-a64b-e38478938fb7</string>
+     <string>ca472026-a140-495f-8509-8aa62f814401</string>
+     <string>b1796ee4-046b-4af0-9087-84e81bccd09d</string>
+     <string>df98b702-f47b-4263-8621-92aec31225c9</string>
+     <string>662909ed-1bbb-46fd-ae5c-aed519ecf6e0</string>
     </childrenObjectIds>
     <name>
      <english>Second Division</english>
+     <japanese>第2戦隊</japanese>
+     <chineseSimplified>第2战队</chineseSimplified>
+     <chineseTraditional>第2戦隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
     </remark>
-    <leaderReference />
+    <leaderReference>
+     <referenceObjectId>9f945d21-51ff-4ff7-9c05-fdc7628eb2f3</referenceObjectId>
+    </leaderReference>
     <type>General</type>
     <formation>General</formation>
     <objectId>ebe6a667-1b8c-43cd-ab2f-af1f8020e90f</objectId>
-    <parentObjectId>b4a0ca2f-56fb-4f31-b720-0a547f47f349</parentObjectId>
+    <parentObjectId>36ccfa0d-5e22-4e63-8d81-bd16ef1cd7c6</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -25099,25 +25136,27 @@
    </ShipGroup>
    <ShipGroup>
     <childrenObjectIds>
-     <string>066fdf72-c4d4-41ca-af85-5b376d5a2f9b</string>
-     <string>0eccc6b8-e79a-4cf0-8b37-d3f2e5a4b073</string>
-     <string>5cac8fc8-244a-4a27-a64b-e38478938fb7</string>
-     <string>ca472026-a140-495f-8509-8aa62f814401</string>
-     <string>b1796ee4-046b-4af0-9087-84e81bccd09d</string>
-     <string>df98b702-f47b-4263-8621-92aec31225c9</string>
-     <string>662909ed-1bbb-46fd-ae5c-aed519ecf6e0</string>
+     <string>ebe6a667-1b8c-43cd-ab2f-af1f8020e90f</string>
+     <string>c461ac49-e5ee-490c-8b9e-316de89b67bf</string>
+     <string>0d6a4ae1-9777-45ce-99e3-0be26d94bc5a</string>
+     <string>74e15f31-fbdb-431f-b4a3-9a9052846b35</string>
     </childrenObjectIds>
     <name>
      <english>Second Squadron</english>
+     <japanese>第二艦隊</japanese>
+     <chineseSimplified>第二舰队</chineseSimplified>
+     <chineseTraditional>第二艦隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
     </remark>
-    <leaderReference />
+    <leaderReference>
+     <referenceObjectId>43bfbde8-70e0-4d42-8122-3dc082557429</referenceObjectId>
+    </leaderReference>
     <type>General</type>
     <formation>General</formation>
     <objectId>36ccfa0d-5e22-4e63-8d81-bd16ef1cd7c6</objectId>
-    <parentObjectId>ebe6a667-1b8c-43cd-ab2f-af1f8020e90f</parentObjectId>
+    <parentObjectId>b4a0ca2f-56fb-4f31-b720-0a547f47f349</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -25187,15 +25226,20 @@
     </childrenObjectIds>
     <name>
      <english>5th Destoyer Division</english>
+     <japanese>第5駆逐隊</japanese>
+     <chineseSimplified>第5驱逐队</chineseSimplified>
+     <chineseTraditional>第5駆逐隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
     </remark>
-    <leaderReference />
+    <leaderReference>
+     <referenceObjectId>531370fb-aaa6-499c-9d5c-06224c6acf86</referenceObjectId>
+    </leaderReference>
     <type>General</type>
     <formation>General</formation>
     <objectId>74e15f31-fbdb-431f-b4a3-9a9052846b35</objectId>
-    <parentObjectId>b4a0ca2f-56fb-4f31-b720-0a547f47f349</parentObjectId>
+    <parentObjectId>36ccfa0d-5e22-4e63-8d81-bd16ef1cd7c6</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -25265,15 +25309,20 @@
     </childrenObjectIds>
     <name>
      <english>3rd Destroyer Division</english>
+     <japanese>第3駆逐隊</japanese>
+     <chineseSimplified>第3驱逐队</chineseSimplified>
+     <chineseTraditional>第3駆逐隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
     </remark>
-    <leaderReference />
+    <leaderReference>
+     <referenceObjectId>113a72e0-42a8-437b-909d-7520e54a3edb</referenceObjectId>
+    </leaderReference>
     <type>General</type>
     <formation>General</formation>
     <objectId>93b4be26-30c5-439a-b619-03d335ffd6b5</objectId>
-    <parentObjectId>b4a0ca2f-56fb-4f31-b720-0a547f47f349</parentObjectId>
+    <parentObjectId>3e4bd3fe-7260-43c9-a0c1-233cd3d0cd95</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -25343,15 +25392,20 @@
     </childrenObjectIds>
     <name>
      <english>Fourth Division</english>
+     <japanese>第4戦隊</japanese>
+     <chineseSimplified>第4战队</chineseSimplified>
+     <chineseTraditional>第4戦隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
     </remark>
-    <leaderReference />
+    <leaderReference>
+     <referenceObjectId>c6361d17-bfe6-4b7e-b981-47474396e2bd</referenceObjectId>
+    </leaderReference>
     <type>General</type>
     <formation>General</formation>
     <objectId>c461ac49-e5ee-490c-8b9e-316de89b67bf</objectId>
-    <parentObjectId>b4a0ca2f-56fb-4f31-b720-0a547f47f349</parentObjectId>
+    <parentObjectId>36ccfa0d-5e22-4e63-8d81-bd16ef1cd7c6</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -25414,19 +25468,27 @@
    </ShipGroup>
    <ShipGroup>
     <childrenObjectIds>
-     <string>5f406f72-f087-494e-b150-987c47c42304</string>
+     <string>9ca1ad3c-13ab-40ff-b47a-bcf03a697f60</string>
+     <string>4365420a-53b7-4c1d-a10c-5a5dbf2f16da</string>
+     <string>f8ad3b9c-67e1-40c8-8af9-2f3aaa2cab46</string>
+     <string>c34c84e2-fc7c-4253-a17f-bc9870c681e1</string>
     </childrenObjectIds>
     <name>
      <english>Fifth Division</english>
+     <japanese>第5戦隊</japanese>
+     <chineseSimplified>第5战队</chineseSimplified>
+     <chineseTraditional>第5戦隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
     </remark>
-    <leaderReference />
+    <leaderReference>
+     <referenceObjectId>94a92131-7824-4073-b21e-ceb00447704c</referenceObjectId>
+    </leaderReference>
     <type>General</type>
     <formation>General</formation>
     <objectId>018d911a-51d6-4000-a406-00b85f352a06</objectId>
-    <parentObjectId>b4a0ca2f-56fb-4f31-b720-0a547f47f349</parentObjectId>
+    <parentObjectId>5f406f72-f087-494e-b150-987c47c42304</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -25489,22 +25551,25 @@
    </ShipGroup>
    <ShipGroup>
     <childrenObjectIds>
-     <string>9ca1ad3c-13ab-40ff-b47a-bcf03a697f60</string>
-     <string>4365420a-53b7-4c1d-a10c-5a5dbf2f16da</string>
-     <string>f8ad3b9c-67e1-40c8-8af9-2f3aaa2cab46</string>
-     <string>c34c84e2-fc7c-4253-a17f-bc9870c681e1</string>
+     <string>018d911a-51d6-4000-a406-00b85f352a06</string>
+     <string>689f8ed2-5735-44cf-837d-08c7b2db898e</string>
     </childrenObjectIds>
     <name>
      <english>Third Squadron</english>
+     <japanese>第三艦隊</japanese>
+     <chineseSimplified>第三舰队</chineseSimplified>
+     <chineseTraditional>第三艦隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
     </remark>
-    <leaderReference />
+    <leaderReference>
+     <referenceObjectId>96e917d5-4465-4c27-b0db-2fde75bd1073</referenceObjectId>
+    </leaderReference>
     <type>General</type>
     <formation>General</formation>
     <objectId>5f406f72-f087-494e-b150-987c47c42304</objectId>
-    <parentObjectId>018d911a-51d6-4000-a406-00b85f352a06</parentObjectId>
+    <parentObjectId>b4a0ca2f-56fb-4f31-b720-0a547f47f349</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -25575,15 +25640,20 @@
     </childrenObjectIds>
     <name>
      <english>Sixth Division</english>
+     <japanese>第6戦隊</japanese>
+     <chineseSimplified>第6战队</chineseSimplified>
+     <chineseTraditional>第6戦隊</chineseTraditional>
     </name>
     <remark>
      <english>none</english>
     </remark>
-    <leaderReference />
+    <leaderReference>
+     <referenceObjectId>ecbffe12-5f10-47d8-8001-7474333d70a5</referenceObjectId>
+    </leaderReference>
     <type>General</type>
     <formation>General</formation>
     <objectId>689f8ed2-5735-44cf-837d-08c7b2db898e</objectId>
-    <parentObjectId>b4a0ca2f-56fb-4f31-b720-0a547f47f349</parentObjectId>
+    <parentObjectId>5f406f72-f087-494e-b150-987c47c42304</parentObjectId>
     <doctrine>
      <maneuverAutomaticType>
       <isInherited>true</isInherited>
@@ -25657,7 +25727,9 @@
     <remark>
      <english>none</english>
     </remark>
-    <leaderReference />
+    <leaderReference>
+     <referenceObjectId>b173afb5-e05d-48b5-9840-4ef77f12d05f</referenceObjectId>
+    </leaderReference>
     <type>General</type>
     <formation>General</formation>
     <objectId>0a0da0b3-67d0-49b1-b8f2-f89623809962</objectId>
@@ -25735,7 +25807,9 @@
     <remark>
      <english>none</english>
     </remark>
-    <leaderReference />
+    <leaderReference>
+     <referenceObjectId>ca9c5e84-af8a-4891-8c4e-dc3321e7d568</referenceObjectId>
+    </leaderReference>
     <type>General</type>
     <formation>General</formation>
     <objectId>83f19c44-8249-4c29-9883-f13ce9a975af</objectId>
@@ -25813,7 +25887,9 @@
     <remark>
      <english>none</english>
     </remark>
-    <leaderReference />
+    <leaderReference>
+     <referenceObjectId>14a31b4d-8735-4b66-b1ed-c849fdc62356</referenceObjectId>
+    </leaderReference>
     <type>General</type>
     <formation>General</formation>
     <objectId>35971477-2519-425c-8b4f-0afa40f1c246</objectId>
@@ -25967,7 +26043,9 @@
     <remark>
      <english>none</english>
     </remark>
-    <leaderReference />
+    <leaderReference>
+     <referenceObjectId>6d536f8e-3600-4bfa-9796-7ba514ec6398</referenceObjectId>
+    </leaderReference>
     <type>General</type>
     <formation>General</formation>
     <objectId>1d26a729-8a95-45ce-8098-3c107d075841</objectId>
@@ -26352,14 +26430,25 @@
   <scenarioState>
    <locationLabels />
    <dateTime>1905-05-27T04:39:00Z</dateTime>
-   <beginDateTime>1905-05-27T10:39:00Z</beginDateTime>
+   <beginDateTime>1905-05-27T04:39:00Z</beginDateTime>
    <visibility>VeryClear2</visibility>
    <seaStateBeaufort>4</seaStateBeaufort>
    <hasMoonlight>true</hasMoonlight>
    <surpriseAttack>false</surpriseAttack>
    <awakeDistanceYards>0</awakeDistanceYards>
    <globalDescription>
-    <english>https://en.wikipedia.org/wiki/Battle_of_Tsushima</english>
+    <english>https://en.wikipedia.org/wiki/Battle_of_Tsushima
+
+The Battle of Tsushima was the final decisive engagement between the Russian and Japanese fleets. The demoralized Russian fleet was destroyed while inflicting very little loss on the Japanese fleet.</english>
+    <japanese>https://en.wikipedia.org/wiki/Battle_of_Tsushima
+
+日本海海戦は、ロシア艦隊と日本艦隊の間で行われた最後の決定的な海戦である。士気の低下したロシア艦隊は、日本艦隊にほとんど損害を与えることができないまま壊滅した。</japanese>
+    <chineseSimplified>https://en.wikipedia.org/wiki/Battle_of_Tsushima
+
+对马海战是俄罗斯舰队与日本舰队之间最后一场决定性的海战。士气低落的俄国舰队遭到毁灭性打击，而给日本舰队造成的损失却微乎其微。</chineseSimplified>
+    <chineseTraditional>https://en.wikipedia.org/wiki/Battle_of_Tsushima
+
+對馬海戰是俄羅斯艦隊與日本艦隊之間最後一場決定性的海戰。士氣低落的俄國艦隊遭到毀滅性打擊，而給日本艦隊造成的損失卻微乎其微。</chineseTraditional>
    </globalDescription>
    <weaponSimulationAssignmentClock>
     <intervalSeconds>120</intervalSeconds>
@@ -26376,8 +26465,8 @@
    <firstRemainOneOperationalFleet>false</firstRemainOneOperationalFleet>
    <firstDisengaged>false</firstDisengaged>
    <firstReachEndDateTime>false</firstReachEndDateTime>
-   <hasEndDateTime>false</hasEndDateTime>
-   <endDateTime>1895-04-17T00:00:00Z</endDateTime>
+   <hasEndDateTime>true</hasEndDateTime>
+   <endDateTime>1905-05-27T10:20:00Z</endDateTime>
    <backgroundPictureReference>
     <path>Pictures\Backgrounds\Tsushima_27_May_1905.jpg</path>
     <isBuiltin>true</isBuiltin>

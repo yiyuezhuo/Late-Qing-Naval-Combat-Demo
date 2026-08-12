@@ -6299,4 +6299,223 @@ https://ru.wikipedia.org/wiki/%D0%A4%D0%B5%D1%80%D0%B7%D0%B5%D0%BD,_%D0%92%D0%B0
   </remark>
   <objectId>b745d2b7-a126-400a-b181-0cc3ed56b051</objectId>
  </Leader>
+ <Leader>
+  <name>
+   <english>Shimamura Hayao</english>
+   <japanese>島村速雄</japanese>
+   <chineseSimplified>岛村速雄</chineseSimplified>
+   <chineseTraditional>島村速雄</chineseTraditional>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Shimamura Hayao.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>AboveAverage</navalStrategic>
+  <navalOperational>AboveAverage</navalOperational>
+  <navalTactical>AboveAverage</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>
+   <english>https://en.wikipedia.org/wiki/Shimamura_Hayao</english>
+  </remark>
+  <objectId>9f945d21-51ff-4ff7-9c05-fdc7628eb2f3</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Zinovy Rozhestvensky</english>
+   <japanese>ジノヴィー・ロジェストヴェンスキー</japanese>
+   <chineseSimplified>齐诺维·罗杰斯特文斯基</chineseSimplified>
+   <chineseTraditional>齊諾維·羅傑斯特文斯基</chineseTraditional>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Zinovy Rozhestvensky.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Average</navalStrategic>
+  <navalOperational>Average</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits>
+   <LeaderTrait>Unlucky</LeaderTrait>
+  </traits>
+  <remark>
+   <english>Зиновий Петрович Рожественский
+
+https://en.wikipedia.org/wiki/Zinovy_Rozhestvensky</english>
+  </remark>
+  <objectId>b173afb5-e05d-48b5-9840-4ef77f12d05f</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Nikolai Nebogatov</english>
+   <japanese>ニコライ・ネボガトフ</japanese>
+   <chineseSimplified>尼古拉·涅鲍加托夫</chineseSimplified>
+   <chineseTraditional>尼古拉·涅鮑加托夫</chineseTraditional>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Nikolai Nebogatov.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Average</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>
+   <english>Николай Иванович Небогатов
+
+https://en.wikipedia.org/wiki/Nikolai_Nebogatov</english>
+  </remark>
+  <objectId>14a31b4d-8735-4b66-b1ed-c849fdc62356</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Oskar Enqvist</english>
+   <japanese>オスカル・エンクヴィスト</japanese>
+   <chineseSimplified>奥斯卡·恩奎斯特</chineseSimplified>
+   <chineseTraditional>奧斯卡·恩奎斯特</chineseTraditional>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Oskar Enqvist.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Average</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>
+   <english>О́скар Адо́льфович Э́нквист
+
+https://en.wikipedia.org/wiki/Oskar_Enqvist</english>
+  </remark>
+  <objectId>6d536f8e-3600-4bfa-9796-7ba514ec6398</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Yajima Junkichi</english>
+   <japanese>矢島純吉</japanese>
+   <chineseSimplified>矢岛纯吉</chineseSimplified>
+   <chineseTraditional>矢島純吉</chineseTraditional>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Yajima Junkichi.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Average</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>
+   <english>https://ja.wikipedia.org/wiki/%E7%9F%A2%E5%B3%B6%E7%B4%94%E5%90%89</english>
+  </remark>
+  <objectId>f7621f43-df7e-436b-bda3-2993a5752799</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Yoshijima Juutarou</english>
+   <japanese>吉島重太郎</japanese>
+   <chineseSimplified>吉岛重太郎</chineseSimplified>
+   <chineseTraditional>吉島重太郎</chineseTraditional>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Japan_Generic_Leader.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Average</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>
+   <english>Or 吉嶋重太郎
+
+https://hush.web.fc2.com/name/Biography/7512yosa.html</english>
+  </remark>
+  <objectId>113a72e0-42a8-437b-909d-7520e54a3edb</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Fujinaga Saburou</english>
+   <japanese>藤本秀四郎</japanese>
+   <chineseSimplified>藤本秀四郎</chineseSimplified>
+   <chineseTraditional>藤本秀四郎</chineseTraditional>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Japan_Generic_Leader.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Average</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>
+   <english>https://hush.web.fc2.com/name/Biography/532141fushina.html</english>
+  </remark>
+  <objectId>2b3165c1-48fa-4b4e-9dbc-a6b17763051c</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Hirose Juntarou</english>
+   <japanese>広瀬順太郎</japanese>
+   <chineseSimplified>广濑顺太郎</chineseSimplified>
+   <chineseTraditional>広瀬順太郎</chineseTraditional>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Japan_Generic_Leader.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Average</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>
+   <english>https://hush.web.fc2.com/name/Biography/5283hiru.html</english>
+  </remark>
+  <objectId>531370fb-aaa6-499c-9d5c-06224c6acf86</objectId>
+ </Leader>
+ <Leader>
+  <name>
+   <english>Evgeny Egoriev</english>
+   <japanese>エフゲニー・エゴリエフ</japanese>
+   <chineseSimplified>叶夫根尼·叶戈里耶夫</chineseSimplified>
+   <chineseTraditional>葉夫根尼·葉戈里耶夫</chineseTraditional>
+  </name>
+  <portraitReference>
+   <path>Pictures\Leaders\Evgeny Egoriev.jpg</path>
+   <isBuiltin>true</isBuiltin>
+  </portraitReference>
+  <navalStrategic>Unknown</navalStrategic>
+  <navalOperational>Unknown</navalOperational>
+  <navalTactical>Average</navalTactical>
+  <landStrategic>Unknown</landStrategic>
+  <landOperational>Unknown</landOperational>
+  <landTactical>Unknown</landTactical>
+  <traits />
+  <remark>
+   <english>Евге́ний Рома́нович Его́рьев
+
+https://en.wikipedia.org/wiki/Evgeny_Egoriev</english>
+  </remark>
+  <objectId>9c0ea307-6bed-4db5-aa03-79bbd9705832</objectId>
+ </Leader>
 </ArrayOfLeader>

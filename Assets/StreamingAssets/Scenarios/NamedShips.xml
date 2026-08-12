@@ -5656,7 +5656,9 @@ https://naval-encyclopedia.com/ww1/russia/boyarin.php
   </fateDesc>
   <applicableYearBegin>1900</applicableYearBegin>
   <applicableYearEnd>1900</applicableYearEnd>
-  <defaultLeaderReference />
+  <defaultLeaderReference>
+   <referenceObjectId>9c0ea307-6bed-4db5-aa03-79bbd9705832</referenceObjectId>
+  </defaultLeaderReference>
   <crewRating>0</crewRating>
   <speedModifier>0</speedModifier>
   <notAvailableForFirstSinoJapaneseWar>false</notAvailableForFirstSinoJapaneseWar>

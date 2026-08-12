@@ -14,6 +14,7 @@ public class OOBEditor : HideableDocument<OOBEditor>
     const string TreeDragObjectIdsDataKey = "OOBEditor.TreeDragObjectIds";
 
     public TreeView oobTreeView;
+    public bool showAdvancedControls;
 
     // IShipGroupMember currentSelectedGroupMember;
     string currentSelectedObjectId;

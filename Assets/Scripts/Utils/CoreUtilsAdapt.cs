@@ -58,6 +58,12 @@ namespace CoreUtils
         public void RequestIfNotRequestedYetOtherwiseExecuteDirectly(Action<StyleBackground> callback)
         {
             var path = ResolvePath();
+            if (string.IsNullOrEmpty(path))
+            {
+                callback?.Invoke(null);
+                return;
+            }
+
             UnityWebRequestImageReader.Instance.RequestIfNotRequestedYetOtherwiseExecuteDirectly(new()
             {
                 path=path,

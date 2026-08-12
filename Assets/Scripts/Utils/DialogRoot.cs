@@ -138,7 +138,13 @@ public class ScenarioPickerDialog : INotifyBindablePropertyChanged // ScenarioPi
 
                             // currentBackground = fullState.navalGameState.scenarioState.backgroundPictureReference.pictureStyleBackground;
                             currentGameState = fullState.navalGameState;
-                            scenarioPreviewPanel.style.backgroundImage = currentGameState.scenarioState.backgroundPictureReference.pictureStyleBackground;
+                            currentGameState.scenarioState.backgroundPictureReference.RequestIfNotRequestedYetOtherwiseExecuteDirectly(styleBackground =>
+                            {
+                                if (!Equals(scenarioListView.selectedItem, scenarioPath))
+                                    return;
+
+                                scenarioPreviewPanel.style.backgroundImage = styleBackground;
+                            });
                         })
                     );
                 }

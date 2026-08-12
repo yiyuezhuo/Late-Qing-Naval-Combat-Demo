@@ -20,8 +20,6 @@ Different mounts have different firing arcs defined in their ship class correspo
 Turn off "Current Only" (which clears logs as time advances, so only the "current" log is shown) in the global log panel (bottom-left corner).
 
 Advance time until a hit is scored.
-
-Note: To better observe the projectile animation, you may want to use the Space key for automatic time advance (its ×10 rate is much slower than the manual ×120 advance). Automatic time advance can be toggled on or off using the Space key or the "Play" toggle in the Command tab of the top UI. Manual advance is only available when automatic time advance is turned off.
 `,
 `
 艦艇の射撃が開始されました！
@@ -41,8 +39,6 @@ Note: To better observe the projectile animation, you may want to use the Space 
 グローバルログパネル（画面左下）で「現在のみ表示」（時間経過とともにログを消去し「現在」のログのみ表示する機能）を無効にしてください。
 
 命中が記録されるまで時間を進めてください。
-
-注意：弾丸のアニメーションをよく見るには、スペースキーで自動的に時間を進める機能（×10）を使うとよいでしょう（手動での×120時間進行よりもはるかに遅いです）。この自動時間進行は、スペースキーまたは画面上部UIの「コマンド」タブにある「再生」トグルでオン／オフを切り替えられます。手動で時間を進める機能は、自動時間がオフのときのみ利用可能です。
 `,
 `
 舰艇开始射击！
@@ -62,8 +58,6 @@ Note: To better observe the projectile animation, you may want to use the Space 
 在全局日志面板（左下角）关闭"仅显示当前"（该功能会在时间推进时清除日志，只显示"当前"日志）。
 
 推进时间直至出现命中记录。
-
-注意：为了看清楚弹药动画过程，可以考虑用空格键进行自动时间推进（其 x10 比例比手动推进的 x120 慢得多）。空格键或者顶部 UI“命令”标签页中的“播放”开关可以打开/关闭自动时间推进。手动推进仅在关闭自动时间推进时可用。
 `,
 `
 艦艇開始射擊！
@@ -83,8 +77,6 @@ Note: To better observe the projectile animation, you may want to use the Space 
 在全局日志面板（左下角）關閉「僅顯示當前」（該功能會在時間推進時清除日志，只顯示「當前」日志）。
 
 推進時間直至出現命中記錄。
-
-注意：若要更清楚地觀察彈藥動畫過程，可考慮使用空白鍵啟用自動時間推進（其 ×10 速率遠慢於手動 ×120 推進）。自動時間推進可透過空白鍵或頂部 UI「命令」標籤頁中的「播放」開關開啟或關閉。僅當自動時間推進關閉時，才可使用手動推進。
 `);
 
     msgBoxDelay(msg, 0.3);

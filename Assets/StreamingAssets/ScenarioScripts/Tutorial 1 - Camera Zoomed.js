@@ -3,38 +3,54 @@ if(phase === Phase.WaitForCameraZoom)
     let msg = getLocalized(`
 Camera is zoomed.
 
-Now move and zoom the camera to re-center the ship on the screen, then press the "1" key on your keyboard or click the "Advance 1 min" button in the top bar to advance 1 minute.
+Now move and zoom the camera to re-center the ship on the screen, then press Space to start advancing time. Press Space again to pause. The Play toggle in the top bar performs the same action, and the adjacent selector controls the advance speed.
 
-Note: Hotkeys such as “1” only work when no UI element has focus. Certain UI interactions—such as clicking UI elements, dragging sliders, or typing text or numbers—may assign focus to the UI and block hotkeys. In this case, pressing 1 will be consumed by the UI (e.g., entering 1 into an input field) instead of triggering the hotkey. UI focus can be cleared by clicking anywhere on the map.
+The default ×120 speed is suitable for normal play. When many things are happening at once, reduce it to ×30, ×10, or lower as needed.
 
-Also, many buttons list their hotkeys in parentheses. Hotkeys are the developer-recommended primary interaction method on devices with a keyboard. Buttons should mainly serve as reminders of the hotkeys, or as a workaround for mobile devices.
+When you need precise control, press “1” to advance exactly one minute, or use the “Advance 1 Min (1)” button in the top bar. This is called “WEGO-style simultaneous turn resolution.”
+
+Tip: If a hotkey does not respond, click an empty area of the map and try again. Interacting with a slider or input field can temporarily prevent hotkeys from working.
+
+On mouse-and-keyboard devices, use hotkeys as the primary controls. The top-bar controls mainly serve as hotkey reminders and as alternatives for touch input.
 `,
 `
 カメラがズームされました。
 
-次に、カメラを移動およびズームして画面の中央に艦艇を再配置し、キーボードの「1」を押すか、上部バーの「1分進める」ボタンを押してください。
+次に、カメラを移動およびズームして艦艇を画面中央に戻し、スペースキーを押して時間の進行を開始してください。もう一度スペースキーを押すと一時停止します。上部バーの「再生」トグルでも同じ操作ができ、その隣の選択欄で進行速度を変更できます。
 
-注意: 「1」などのホットキーは、UI 要素にフォーカスがない場合のみ有効です。UI 要素のクリック、スライダーのドラッグ、テキストや数値の入力などの操作により、UI にフォーカスが設定され、ホットキーが無効になることがあります。この場合、「1」を押してもホットキーは発動せず、UI によって入力として消費されます（例：入力欄に「1」が入力される）。マップ上の任意の場所をクリックすることで、UI のフォーカスを解除できます。
+通常のプレイには既定の ×120 が適しています。同時に多くのことが起きている場合は、必要に応じて ×30、×10、またはそれ以下に下げてください。
 
-また、多くのボタンには括弧内に対応するホットキーが表示されています。ホットキーは、キーボードを備えたデバイスにおいて開発者が推奨する主要な操作方法です。ボタンは主にホットキーの確認用として、またはモバイル端末向けの代替操作手段として使用されることを想定しています。
+時間を細かく制御したい場合は、「1」を押すと正確に1分進められます。上部バーの「1分進める（1）」ボタンでも同じ操作ができます。これは「WEGO方式の同時ターン解決」と呼ばれます。
+
+ヒント：ホットキーが反応しない場合は、マップ上の何もない場所をクリックしてから、もう一度試してください。スライダーや入力欄を操作した後は、ホットキーが一時的に効かなくなることがあります。
+
+マウスとキーボードを使用する端末では、ホットキーを主要な操作方法として使用してください。上部バーの操作項目は、主にホットキーの確認用およびタッチ操作向けの代替手段です。
 `,
 `
 摄像机已缩放。
 
-现在移动并缩放摄像机，使舰船重新位于屏幕中央，然后按下键盘上的“1”键，或点击顶部栏中的“推进1分钟(1)”按钮，使时间前进 1 分钟。
+现在移动并缩放视角，使舰船重新位于屏幕中央，然后按空格键开始推进时间。再次按空格键可暂停。顶部栏中的“播放”开关具有相同作用，旁边的选项可调整推进速度。
 
-注意： 当没有任何 UI 元素获得焦点时，快捷键（例如“1”）才会生效。点击 UI 元素、拖动滑块或输入文字、数字等操作可能会使 UI 获得焦点，从而屏蔽快捷键。在这种情况下，按下 1 会被 UI 作为输入消耗（例如在输入框中输入数字 1），而不会触发快捷键。可通过点击地图上任意位置来清除 UI 焦点。
+默认的 ×120 适合一般操作。当同时发生的事情较多时，可以根据需要降低到 ×30、×10 或更低。
 
-此外，许多按钮会在括号中标注其对应的快捷键。对于带有键盘的设备，快捷键是开发者推荐的主要交互方式。按钮主要用于提示快捷键，或作为移动设备上的临时替代方案。
+需要精确控制时间时，可以按“1”单次推进一分钟，也可以使用顶部栏中的“推进 1 分钟（1）”按钮。这被称为“同步回合制式（WEGO）推进”。
+
+提示：如果快捷键没有反应，请点击一下地图空白处，然后再试。操作滑块或输入框后，快捷键有时会暂时失效。
+
+在键鼠设备上，请优先使用快捷键。顶部栏中的操作项主要用于提示对应的快捷键，并为触屏操作提供替代方式。
 `,
 `
 攝影機已縮放。
 
-現在移動並縮放攝影機，使艦船重新置於畫面中央，然後按下鍵盤上的「1」鍵，或點擊頂部欄中的「推進1分鐘(1)」按鈕，讓時間前進 1 分鐘。
+現在移動並縮放視角，使艦船重新置於畫面中央，然後按空白鍵開始推進時間。再次按空白鍵可暫停。頂部欄中的「播放」開關具有相同作用，旁邊的選項可調整推進速度。
 
-注意： 快捷鍵（例如「1」）僅在沒有任何 UI 元素取得焦點時才會生效。點擊 UI 元素、拖動滑桿，或輸入文字、數字等操作，可能會使 UI 取得焦點並阻擋快捷鍵。在此情況下，按下 1 會被 UI 作為輸入消耗（例如在輸入欄位中輸入數字 1），而不會觸發快捷鍵。可透過點擊地圖上任意位置來清除 UI 焦點。
+預設的 ×120 適合一般操作。當同時發生的事情較多時，可以視需要降低到 ×30、×10 或更低。
 
-此外，許多按鈕會在括號中標示其對應的快捷鍵。對於具備鍵盤的裝置，快捷鍵是開發者建議的主要操作方式。按鈕本身主要作為快捷鍵的提示，或是行動裝置上的替代方案。
+需要精確控制時間時，可以按「1」單次推進一分鐘，也可以使用頂部欄中的「推進 1 分鐘（1）」按鈕。這稱為「同步回合制式（WEGO）推進」。
+
+提示：如果快捷鍵沒有反應，請點擊一下地圖空白處，然後再試。操作滑桿或輸入欄位後，快捷鍵有時會暫時失效。
+
+在鍵鼠裝置上，請優先使用快捷鍵。頂部欄中的操作項目主要用於提示對應的快捷鍵，並為觸控操作提供替代方式。
 `
 )
 

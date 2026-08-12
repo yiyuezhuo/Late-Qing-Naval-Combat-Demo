@@ -5118,6 +5118,10 @@ MonoBehaviour:
     m_Localized: RJH - The Battle of Tsushima
     m_Metadata:
       m_Items: []
+  - m_Id: 110071156062195712
+    m_Localized: RJS - Six-Six Fleet vs Combined Pacific Fleets
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

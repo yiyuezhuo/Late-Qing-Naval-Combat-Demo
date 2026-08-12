@@ -87,7 +87,7 @@ public class InsertShipComplexDialog
 
         while (currentGroup != null && visitedGroups.Add(currentGroup))
         {
-            groupNames.Add(currentGroup.name.GetMergedName());
+            groupNames.Add(currentGroup.name.GetShortName());
             currentGroup = ((IShipGroupMember)currentGroup).GetParentGroup();
         }
 

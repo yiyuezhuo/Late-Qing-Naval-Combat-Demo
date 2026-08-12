@@ -5105,6 +5105,10 @@ MonoBehaviour:
     m_Key: RJH - The Battle of Tsushima.scen.xml
     m_Metadata:
       m_Items: []
+  - m_Id: 110071156062195712
+    m_Key: RJS - Six-Six Fleet vs Combined Pacific Fleets.scen.xml
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

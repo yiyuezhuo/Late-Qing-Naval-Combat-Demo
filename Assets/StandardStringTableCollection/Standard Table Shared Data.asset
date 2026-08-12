@@ -3259,7 +3259,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: -118
-    m_Key: Drag to reattach or reorder.
+    m_Key: Drag ship or group to reattach or reorder
     m_Metadata:
       m_Items: []
   - m_Id: -119
@@ -3692,6 +3692,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: -226
     m_Key: Cancel (Esc)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 124732148029231104
+    m_Key: Advanced
     m_Metadata:
       m_Items: []
   m_Metadata:

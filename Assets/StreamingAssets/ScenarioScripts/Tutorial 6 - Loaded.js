@@ -1,7 +1,7 @@
 let tutorial6IntroMsg = getLocalized(`
 Welcome to Tutorial 6 - Hierarchical Automation & AI. In the previous tutorial, you already tried disabling Automatic Fire for a single ship in Doctrine. Besides setting it at the single-ship level, you can also set it at non-ship formation levels in the OOB. If child nodes use "Inherit", they will inherit the value defined on that formation.
 
-At the moment, both sides have Automatic Fire set to Manual at their top-level formations, so every unit inheriting that doctrine will not fire automatically. Use "Advance 1 Min (1)" a few times until the next prompt appears.
+At the moment, both sides have Automatic Fire set to Manual at their top-level formations, so every unit inheriting that doctrine will not fire automatically. Advance time until the next prompt appears.
 `,
 `
 チュートリアル6 - 階層的自動化とAIへようこそ。前のチュートリアルでは、ドクトリンで単艦の自動射撃を無効にする方法を試しました。これは単艦レベルだけでなく、OOB 内の艦船ではない編制レベルでも設定できます。その場合、下位ノードが「継承」になっていれば、その編制で定義した値を受け継ぎます。

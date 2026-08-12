@@ -9,7 +9,7 @@ The default ×120 speed is suitable for normal play. When many things are happen
 
 When you need precise control, press “1” to advance exactly one minute, or use the “Advance 1 Min (1)” button in the top bar. This is called “WEGO-style simultaneous turn resolution.”
 
-Tip: If a hotkey does not respond, click an empty area of the map and try again. Interacting with a slider or input field can temporarily prevent hotkeys from working.
+Tip: Hotkeys do not work while the input focus is on a UI control. Click an empty area of the map to return focus to the map before using hotkeys.
 
 On mouse-and-keyboard devices, use hotkeys as the primary controls. The top-bar controls mainly serve as hotkey reminders and as alternatives for touch input.
 `,
@@ -22,7 +22,7 @@ On mouse-and-keyboard devices, use hotkeys as the primary controls. The top-bar 
 
 時間を細かく制御したい場合は、「1」を押すと正確に1分進められます。上部バーの「1分進める（1）」ボタンでも同じ操作ができます。これは「WEGO方式の同時ターン解決」と呼ばれます。
 
-ヒント：ホットキーが反応しない場合は、マップ上の何もない場所をクリックしてから、もう一度試してください。スライダーや入力欄を操作した後は、ホットキーが一時的に効かなくなることがあります。
+ヒント：操作フォーカスが UI コントロールにある間、ホットキーは機能しません。ホットキーを使用する前に、マップ上の何もない場所をクリックしてフォーカスをマップに戻してください。
 
 マウスとキーボードを使用する端末では、ホットキーを主要な操作方法として使用してください。上部バーの操作項目は、主にホットキーの確認用およびタッチ操作向けの代替手段です。
 `,
@@ -35,7 +35,7 @@ On mouse-and-keyboard devices, use hotkeys as the primary controls. The top-bar 
 
 需要精确控制时间时，可以按“1”单次推进一分钟，也可以使用顶部栏中的“推进 1 分钟（1）”按钮。这被称为“同步回合制式（WEGO）推进”。
 
-提示：如果快捷键没有反应，请点击一下地图空白处，然后再试。操作滑块或输入框后，快捷键有时会暂时失效。
+提示：当操作焦点位于界面控件上时，快捷键不会生效。点击地图空白处可将焦点移回地图，然后再使用快捷键。
 
 在键鼠设备上，请优先使用快捷键。顶部栏中的操作项主要用于提示对应的快捷键，并为触屏操作提供替代方式。
 `,
@@ -48,7 +48,7 @@ On mouse-and-keyboard devices, use hotkeys as the primary controls. The top-bar 
 
 需要精確控制時間時，可以按「1」單次推進一分鐘，也可以使用頂部欄中的「推進 1 分鐘（1）」按鈕。這稱為「同步回合制式（WEGO）推進」。
 
-提示：如果快捷鍵沒有反應，請點擊一下地圖空白處，然後再試。操作滑桿或輸入欄位後，快捷鍵有時會暫時失效。
+提示：當操作焦點位於介面控制項上時，快捷鍵不會生效。點擊地圖空白處可將焦點移回地圖，然後再使用快捷鍵。
 
 在鍵鼠裝置上，請優先使用快捷鍵。頂部欄中的操作項目主要用於提示對應的快捷鍵，並為觸控操作提供替代方式。
 `

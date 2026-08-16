@@ -1,3 +1,5 @@
+
+
 # First Sino-Japanese War
 
 - Releases:
@@ -29,6 +31,8 @@ A key example is torpedo effectiveness: in DoB, a 500-yard shot yields a check t
 On the other hand, gunnery introduce too much attrition compared to historical case. But since it's the core of SK5, I don't modifiy it much and just provide a global hit change coef to do correction.
 
 ## Devlopment
+
+When validating a build from the command line, use `dotnet build "Late-Qing-Naval-Combat-Demo.slnx" -v minimal`.
 
 ### Doc
 
